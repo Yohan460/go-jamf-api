@@ -1,6 +1,6 @@
 # Jamf API in Go
 
-## install
+## Install
 
 ```go
 import "github.com/sioncojp/go-jamf-api"
@@ -8,4 +8,4 @@ import "github.com/sioncojp/go-jamf-api"
 
 ## Usage
 
-sample code: [get_departments.go](examples/get_departments.go)
+sample code: [examples](examples)

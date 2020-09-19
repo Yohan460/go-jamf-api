@@ -18,15 +18,14 @@ const (
 )
 
 func main() {
+	name := "testDepartment"
 	c := jamf.NewClient(Token, Organization)
 
-	d, err := c.GetDepartments()
+	d, err := c.CreateDepartment(&name)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
 
-	for _, v := range d.Results {
-		fmt.Printf("%s: %s\n", *v.Id, *v.Name)
-	}
+	fmt.Printf("%s: %s\n", *d.Id, *d.Href)
 }
