@@ -35,11 +35,7 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return err
-		}
-		return fmt.Errorf("api error %s: %s", resp.Status, body)
+		return fmt.Errorf("api error %s: it's possible that the Token/Organization is just wrong", resp.Status)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
