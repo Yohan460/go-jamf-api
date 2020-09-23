@@ -122,5 +122,9 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
 
+	for k, v := range c.ExtraHeader {
+		req.Header.Add(k, v)
+	}
+
 	return req, nil
 }
