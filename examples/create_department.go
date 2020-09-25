@@ -1,3 +1,5 @@
+// In curl:
+// curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" "$jssurl/uapi/v1/departments" -d "{\"name\": \"hoge\"}"
 package main
 
 import (

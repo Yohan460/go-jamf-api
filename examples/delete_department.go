@@ -1,3 +1,5 @@
+// In curl:
+// curl -X DELETE -H "Content-Type: application/json" -H "Authorization: Bearer $token" "$jssurl/uapi/v1/departments/1"
 package main
 
 import (
