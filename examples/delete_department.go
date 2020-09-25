@@ -8,20 +8,21 @@ import (
 )
 
 const (
-	// Token ... To get the token in curl, please do the following
-	// curl -u username:password -X POST "https://xxxx.jamfcloud.com/uapi/auth/tokens"
-	// If your password contains consecutive symbols, your 401 may be returned
-	Token = "xxx"
+	User     = "xxxx"
+	Password = "xxxx"
 
 	// Organization ... xxxx.jamfcloud.com
-	Organization = "xxx"
+	Organization = "xxxx"
 )
 
 func main() {
-	c := jamf.NewClient(Token, Organization)
-
-	err := c.DeleteDepartment("fuga")
+	c, err := jamf.NewClient(User, Password, Organization)
 	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	if err := c.DeleteDepartment("fuga"); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}

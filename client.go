@@ -1,12 +1,19 @@
 package jamf
 
 import (
+	"fmt"
 	"net/http"
 	"time"
 )
 
+const (
+	uriAuthToken = "/auth/tokens"
+)
+
+// Client ... stores an object to talk with Jamf API
 type Client struct {
-	token, organization string
+	user, password, organization string
+	token                        *string
 
 	// The Http Client that is used to make requests
 	HttpClient       *http.Client
@@ -16,13 +23,34 @@ type Client struct {
 	ExtraHeader map[string]string
 }
 
+type ResponseAuthToken struct {
+	Token   *string `json:"token,omitempty"`
+	Expires *int    `json:"expires,omitempty"`
+}
+
 // NewClient ... returns a new jamf.Client which can be used to access the API
-func NewClient(token, organization string) *Client {
-	return &Client{
-		token:            token,
+func NewClient(user, password, organization string) (*Client, error) {
+	c := &Client{
+		user:             user,
+		password:         password,
 		organization:     organization,
+		token:            nil,
 		HttpClient:       http.DefaultClient,
 		HttpRetryTimeout: 60 * time.Second,
 		ExtraHeader:      make(map[string]string),
 	}
+
+	var out *ResponseAuthToken
+
+	if err := c.doRequest("POST", uriAuthToken, nil, &out); err != nil {
+		return nil, fmt.Errorf("cannot get a token: %v", err)
+	}
+
+	c.token = out.Token
+
+	// initialize what don't need
+	c.user = ""
+	c.password = ""
+
+	return c, nil
 }

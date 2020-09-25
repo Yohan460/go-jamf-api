@@ -120,10 +120,17 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 
 	// Set the necessary headers
 	req.Header.Add("Content-Type", "application/json")
-	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", c.token))
+	if c.token != nil {
+		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+	}
 
 	for k, v := range c.ExtraHeader {
 		req.Header.Add(k, v)
+	}
+
+	// For NewClient
+	if c.user != "" && c.password != "" {
+		req.SetBasicAuth(c.user, c.password)
 	}
 
 	return req, nil
