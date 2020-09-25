@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	User     = "xxxx"
+	Username = "xxxx"
 	Password = "xxxx"
 
 	// Organization ... xxxx.jamfcloud.com
@@ -16,7 +16,7 @@ const (
 )
 
 func main() {
-	c, err := jamf.NewClient(User, Password, Organization)
+	c, err := jamf.NewClient(Username, Password, Organization)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

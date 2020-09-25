@@ -129,8 +129,8 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 	}
 
 	// For NewClient
-	if c.user != "" && c.password != "" {
-		req.SetBasicAuth(c.user, c.password)
+	if c.username != "" && c.password != "" {
+		req.SetBasicAuth(c.username, c.password)
 	}
 
 	return req, nil
