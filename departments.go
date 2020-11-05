@@ -31,12 +31,16 @@ func (c *Client) DepartmentFindIdByName(name string) (string, error) {
 	return id, nil
 }
 
-func (c *Client) GetDepartment(name string) (data *Department, err error) {
+func (c *Client) GetDepartmentWithName(name string) (data *Department, err error) {
 	id, err := c.DepartmentFindIdByName(name)
 	if err != nil {
 		return nil, err
 	}
 
+	return c.GetDepartment(id)
+}
+
+func (c *Client) GetDepartment(id string) (data *Department, err error) {
 	var out *Department
 	uri := fmt.Sprintf("%s/%s", uriDepartments, id)
 
