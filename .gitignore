@@ -1,6 +1,7 @@
 *.pid
 *.swp
 .DS_Store
+bin/
 
 ### Other ###
 .idea/

@@ -13,10 +13,6 @@ import (
 
 // doJsonRequest ... A method to send a request to the jamf api
 func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
-	if out == nil {
-		return nil
-	}
-
 	req, err := c.createRequest(method, api, reqbody)
 	if err != nil {
 		return err
@@ -35,7 +31,11 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		return fmt.Errorf("api error %s: it's possible that the Token/Organization is just wrong", resp.Status)
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return err
+		}
+		return fmt.Errorf("api error %s: %s", resp.Status, body)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
