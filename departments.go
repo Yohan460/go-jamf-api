@@ -4,7 +4,7 @@ import "fmt"
 
 const uriDepartments = "/v1/departments"
 
-type ResponseDepartment struct {
+type ResponseDepartments struct {
 	TotalCount *int         `json:"totalCount,omitempty"`
 	Results    []Department `json:"results,omitempty"`
 }
@@ -15,7 +15,7 @@ type Department struct {
 	Href *string `json:"href,omitempty"`
 }
 
-func (c *Client) DepartmentFindIdByName(name string) (string, error) {
+func (c *Client) GetDepartmentIdByName(name string) (string, error) {
 	var id string
 	d, err := c.GetDepartments()
 	if err != nil {
@@ -31,8 +31,8 @@ func (c *Client) DepartmentFindIdByName(name string) (string, error) {
 	return id, nil
 }
 
-func (c *Client) GetDepartmentWithName(name string) (data *Department, err error) {
-	id, err := c.DepartmentFindIdByName(name)
+func (c *Client) GetDepartmentByName(name string) (data *Department, err error) {
+	id, err := c.GetDepartmentIdByName(name)
 	if err != nil {
 		return nil, err
 	}
@@ -49,8 +49,8 @@ func (c *Client) GetDepartment(id string) (data *Department, err error) {
 	return
 }
 
-func (c *Client) GetDepartments() (data *ResponseDepartment, err error) {
-	var out *ResponseDepartment
+func (c *Client) GetDepartments() (data *ResponseDepartments, err error) {
+	var out *ResponseDepartments
 	err = c.doRequest("GET", uriDepartments, nil, &out)
 	data = out
 	return
@@ -88,7 +88,7 @@ func (c *Client) UpdateDepartment(d *Department) (*Department, error) {
 }
 
 func (c *Client) DeleteDepartment(name string) error {
-	id, err := c.DepartmentFindIdByName(name)
+	id, err := c.GetCategoryIdByName(name)
 	if err != nil {
 		return err
 	}

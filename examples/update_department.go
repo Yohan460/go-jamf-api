@@ -26,7 +26,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	data, err := c.GetDepartment(before)
+	data, err := c.GetDepartmentByName(before)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
