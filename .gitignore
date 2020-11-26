@@ -2,6 +2,7 @@
 *.swp
 .DS_Store
 bin/
+tmp/
 
 ### Other ###
 .idea/
