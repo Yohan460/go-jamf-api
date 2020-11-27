@@ -13,14 +13,14 @@ const (
 	Username = "xxxx"
 	Password = "xxxx"
 
-	// Organization ... xxxx.jamfcloud.com
-	Organization = "xxxx"
+	// URL ... xxxx.jamfcloud.com
+	URL = "xxxx"
 )
 
 func main() {
 	before := "fuga"
 	after := "testDepartment"
-	c, err := jamf.NewClient(Username, Password, Organization)
+	c, err := jamf.NewClient(Username, Password, URL)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
