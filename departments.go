@@ -88,7 +88,7 @@ func (c *Client) UpdateDepartment(d *Department) (*Department, error) {
 }
 
 func (c *Client) DeleteDepartment(name string) error {
-	id, err := c.GetCategoryIdByName(name)
+	id, err := c.GetDepartmentIdByName(name)
 	if err != nil {
 		return err
 	}
