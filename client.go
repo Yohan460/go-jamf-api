@@ -12,8 +12,8 @@ const (
 
 // Client ... stores an object to talk with Jamf API
 type Client struct {
-	username, password, organization string
-	token                            *string
+	username, password, url string
+	token                   *string
 
 	// The Http Client that is used to make requests
 	HttpClient       *http.Client
@@ -29,11 +29,11 @@ type ResponseAuthToken struct {
 }
 
 // NewClient ... returns a new jamf.Client which can be used to access the API
-func NewClient(username, password, organization string) (*Client, error) {
+func NewClient(username, password, url string) (*Client, error) {
 	c := &Client{
 		username:         username,
 		password:         password,
-		organization:     organization,
+		url:              url,
 		token:            nil,
 		HttpClient:       http.DefaultClient,
 		HttpRetryTimeout: 60 * time.Second,

@@ -97,7 +97,7 @@ func (c *Client) doRequestWithRetries(req *http.Request) (*http.Response, error)
 
 // uriForApi ... Generate uri for api
 func (c *Client) uriForAPI(api string) string {
-	return fmt.Sprintf("https://%s.jamfcloud.com/uapi%s", c.organization, api)
+	return fmt.Sprintf("https://%s/uapi%s", c.url, api)
 }
 
 // createRequest ...　Generate a http request for api.
