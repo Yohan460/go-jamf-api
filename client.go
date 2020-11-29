@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	uriAuthToken = "/auth/tokens"
+	uriAuthToken = "/uapi/auth/tokens"
 )
 
 // Client ... stores an object to talk with Jamf API
@@ -47,10 +47,6 @@ func NewClient(username, password, url string) (*Client, error) {
 	}
 
 	c.token = out.Token
-
-	// initialize what don't need
-	c.username = ""
-	c.password = ""
 
 	return c, nil
 }

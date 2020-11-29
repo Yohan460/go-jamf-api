@@ -3,10 +3,12 @@ package jamf
 import (
 	"bytes"
 	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"github.com/cenkalti/backoff"
 )
@@ -48,7 +50,13 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 		body = []byte{'{', '}'}
 	}
 
-	return json.Unmarshal(body, &out)
+	if strings.Contains(api, "JSSResource") {
+		err = xml.Unmarshal(body, out)
+	} else {
+		err = json.Unmarshal(body, out)
+	}
+
+	return err
 }
 
 // doRequestWithRetries ... GET/DELETE depends on the jamf server, the retry process is largely
@@ -97,20 +105,29 @@ func (c *Client) doRequestWithRetries(req *http.Request) (*http.Response, error)
 
 // uriForApi ... Generate uri for api
 func (c *Client) uriForAPI(api string) string {
-	return fmt.Sprintf("https://%s/uapi%s", c.url, api)
+	return fmt.Sprintf("https://%s%s", c.url, api)
 }
 
 // createRequest ...　Generate a http request for api.
 func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.Request, error) {
 	var bodyReader io.Reader
 
-	// Convert the request body to json
+	// Convert the request body to the appropriate type
 	if method != "GET" && reqbody != nil {
-		b, err := json.Marshal(reqbody)
-		if err != nil {
-			return nil, err
+
+		if strings.Contains(api, "JSSResource") {
+			b, err := xml.Marshal(reqbody)
+			if err != nil {
+				return nil, err
+			}
+			bodyReader = bytes.NewReader(b)
+		} else {
+			b, err := json.Marshal(reqbody)
+			if err != nil {
+				return nil, err
+			}
+			bodyReader = bytes.NewReader(b)
 		}
-		bodyReader = bytes.NewReader(b)
 	}
 
 	req, err := http.NewRequest(method, c.uriForAPI(api), bodyReader)
@@ -119,19 +136,19 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 	}
 
 	// Set the necessary headers
-	req.Header.Add("Content-Type", "application/json")
-	if c.token != nil {
-		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+	if strings.Contains(api, "JSSResource") || c.token == nil {
+		req.Header.Add("Content-Type", "application/xml")
+		req.SetBasicAuth(c.username, c.password)
+	} else {
+		req.Header.Add("Content-Type", "application/json")
+		if c.token != nil {
+			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+		}
 	}
 
 	for k, v := range c.ExtraHeader {
 		req.Header.Add(k, v)
 	}
 
-	// For NewClient
-	if c.username != "" && c.password != "" {
-		req.SetBasicAuth(c.username, c.password)
-	}
-
-	return req, nil
+	return req, err
 }
