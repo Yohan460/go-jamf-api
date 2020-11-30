@@ -5,7 +5,7 @@ import "fmt"
 const uriComputerGroups = "/JSSResource/computergroups"
 
 type ComputerGroupsResponse struct {
-	Count   int                         `xml:"size"`
+	Size    int                         `xml:"size"`
 	Results []ComputerGroupListResponse `xml:"computer_group"`
 }
 
@@ -16,14 +16,14 @@ type ComputerGroupListResponse struct {
 }
 
 type ComputerGroup struct {
-	ID            int                      `xml:"id"`
-	Name          string                   `xml:"name"`
-	IsSmart       bool                     `xml:"is_smart"`
-	Site          Site                     `xml:"site"`
-	Criteria      []ComputerGroupCriterion `xml:"criteria>criterion"`
-	CriteriaCount int                      `xml:"criteria>size"`
-	Computers     []Computer               `xml:"computers>computer"`
-	ComputerCount int                      `xml:"computers>size"`
+	ID           int                      `xml:"id"`
+	Name         string                   `xml:"name"`
+	IsSmart      bool                     `xml:"is_smart"`
+	Site         Site                     `xml:"site"`
+	Criteria     []ComputerGroupCriterion `xml:"criteria>criterion"`
+	CriteriaSize int                      `xml:"criteria>size"`
+	Computers    []Computer               `xml:"computers>computer"`
+	ComputerSize int                      `xml:"computers>size"`
 }
 
 type ComputerGroupRequest struct {
