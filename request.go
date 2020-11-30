@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -11,6 +12,10 @@ import (
 	"strings"
 
 	"github.com/cenkalti/backoff"
+)
+
+const (
+	duplicateNameErr string = "Duplicate Name"
 )
 
 // doJsonRequest ... A method to send a request to the jamf api
@@ -33,11 +38,16 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return err
+		switch resp.StatusCode {
+		case 409:
+			return errors.New(duplicateNameErr)
+		default:
+			body, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				return err
+			}
+			return fmt.Errorf("api error %s: %s", resp.Status, body)
 		}
-		return fmt.Errorf("api error %s: %s", resp.Status, body)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)

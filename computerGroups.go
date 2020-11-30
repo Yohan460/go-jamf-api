@@ -22,7 +22,7 @@ type ComputerGroup struct {
 	Site          Site                     `xml:"site"`
 	Criteria      []ComputerGroupCriterion `xml:"criteria>criterion"`
 	CriteriaCount int                      `xml:"criteria>size"`
-	Computers     []ComputerGroupResp      `xml:"computers>computer"`
+	Computers     []Computer               `xml:"computers>computer"`
 	ComputerCount int                      `xml:"computers>size"`
 }
 
@@ -67,7 +67,7 @@ func (c *Client) GetComputerGroupIdByName(name string) (int, error) {
 	return id, err
 }
 
-func (c *Client) GetComputerGroupByName(name string) (data *ComputerGroup, err error) {
+func (c *Client) GetComputerGroupByName(name string) (*ComputerGroup, error) {
 	id, err := c.GetComputerGroupIdByName(name)
 	if err != nil {
 		return nil, err
@@ -76,23 +76,24 @@ func (c *Client) GetComputerGroupByName(name string) (data *ComputerGroup, err e
 	return c.GetComputerGroup(id)
 }
 
-func (c *Client) GetComputerGroup(id int) (data *ComputerGroup, err error) {
+func (c *Client) GetComputerGroup(id int) (*ComputerGroup, error) {
 	var out *ComputerGroup
 	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, id)
-	err = c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, &out)
 
 	return out, err
 }
 
-func (c *Client) GetComputerGroups() (data *ComputerGroupsResponse, err error) {
+func (c *Client) GetComputerGroups() (*ComputerGroupsResponse, error) {
 	out := &ComputerGroupsResponse{}
-	err = c.doRequest("GET", uriComputerGroups, nil, &out)
+	err := c.doRequest("GET", uriComputerGroups, nil, out)
 
 	return out, err
 }
 
-func (c *Client) CreateComputerGroup(computerGroupRequest *ComputerGroupRequest) error {
+func (c *Client) CreateComputerGroup(computerGroupRequest *ComputerGroupRequest) (int, error) {
 
+	group := &ComputerGroup{}
 	reqBody := &struct {
 		*ComputerGroupRequest
 		XMLName struct{} `xml:"computer_group"`
@@ -100,12 +101,14 @@ func (c *Client) CreateComputerGroup(computerGroupRequest *ComputerGroupRequest)
 		ComputerGroupRequest: computerGroupRequest,
 	}
 
-	return c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerGroups), reqBody, &struct{}{})
+	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerGroups), reqBody, group)
+	return group.ID, err
 }
 
-func (c *Client) UpdateComputerGroup(d *ComputerGroup) error {
-	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, d.ID)
+func (c *Client) UpdateComputerGroup(d *ComputerGroup) (int, error) {
 
+	group := &ComputerGroup{}
+	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, d.ID)
 	reqBody := &struct {
 		*ComputerGroup
 		XMLName struct{} `xml:"computer_group"`
@@ -113,10 +116,16 @@ func (c *Client) UpdateComputerGroup(d *ComputerGroup) error {
 		ComputerGroup: d,
 	}
 
-	return c.doRequest("PUT", uri, reqBody, &struct{}{})
+	err := c.doRequest("PUT", uri, reqBody, group)
+
+	return group.ID, err
 }
 
-func (c *Client) DeleteComputerGroup(id int) error {
+func (c *Client) DeleteComputerGroup(id int) (int, error) {
+
+	group := &ComputerGroup{}
 	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, id)
-	return c.doRequest("DELETE", uri, nil, &struct{}{})
+	err := c.doRequest("DELETE", uri, nil, group)
+
+	return group.ID, err
 }
