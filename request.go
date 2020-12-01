@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"encoding/xml"
-	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
+	"regexp"
 	"strings"
 
 	"github.com/cenkalti/backoff"
@@ -38,16 +38,13 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		switch resp.StatusCode {
-		case 409:
-			return errors.New(duplicateNameErr)
-		default:
-			body, err := ioutil.ReadAll(resp.Body)
-			if err != nil {
-				return err
-			}
-			return fmt.Errorf("api error %s: %s", resp.Status, body)
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			return err
 		}
+		re := regexp.MustCompile(`\r?\n`)
+		out := re.ReplaceAllString(string(body), " ")
+		return fmt.Errorf("api error %s: %s", resp.Status, out)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)

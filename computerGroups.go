@@ -27,11 +27,11 @@ type ComputerGroup struct {
 }
 
 type ComputerGroupRequest struct {
-	Name      string                      `xml:"name"`
-	IsSmart   bool                        `xml:"is_smart"`
-	Site      Site                        `xml:"site"`
-	Criteria  []ComputerGroupCriterion    `xml:"criteria>criterion"`
-	Computers []ComputerGroupListResponse `xml:"computers>computer,omitempty"`
+	Name      string                   `xml:"name"`
+	IsSmart   bool                     `xml:"is_smart"`
+	Site      Site                     `xml:"site"`
+	Criteria  []ComputerGroupCriterion `xml:"criteria>criterion"`
+	Computers []Computer               `xml:"computers>computer,omitempty"`
 }
 
 type ComputerGroupCriterion struct {
