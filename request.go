@@ -44,7 +44,7 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 		}
 		re := regexp.MustCompile(`\r?\n`)
 		out := re.ReplaceAllString(string(body), " ")
-		return fmt.Errorf("api error %s: %s", resp.Status, out)
+		return fmt.Errorf("API Error: %s, URI: %s, Body: %s", resp.Status, api, out)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)

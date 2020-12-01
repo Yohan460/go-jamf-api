@@ -1,6 +1,10 @@
 package jamf
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/bradfitz/slice"
+)
 
 const uriComputerGroups = "/JSSResource/computergroups"
 
@@ -91,14 +95,15 @@ func (c *Client) GetComputerGroups() (*ComputerGroupsResponse, error) {
 	return out, err
 }
 
-func (c *Client) CreateComputerGroup(computerGroupRequest *ComputerGroupRequest) (int, error) {
+func (c *Client) CreateComputerGroup(d *ComputerGroupRequest) (int, error) {
 
 	group := &ComputerGroup{}
+	d.Criteria = validateComputerGroupCriteriaOrder(d.Criteria)
 	reqBody := &struct {
 		*ComputerGroupRequest
 		XMLName struct{} `xml:"computer_group"`
 	}{
-		ComputerGroupRequest: computerGroupRequest,
+		ComputerGroupRequest: d,
 	}
 
 	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerGroups), reqBody, group)
@@ -108,6 +113,7 @@ func (c *Client) CreateComputerGroup(computerGroupRequest *ComputerGroupRequest)
 func (c *Client) UpdateComputerGroup(d *ComputerGroup) (int, error) {
 
 	group := &ComputerGroup{}
+	d.Criteria = validateComputerGroupCriteriaOrder(d.Criteria)
 	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, d.ID)
 	reqBody := &struct {
 		*ComputerGroup
@@ -128,4 +134,11 @@ func (c *Client) DeleteComputerGroup(id int) (int, error) {
 	err := c.doRequest("DELETE", uri, nil, group)
 
 	return group.ID, err
+}
+
+func validateComputerGroupCriteriaOrder(criteria []ComputerGroupCriterion) []ComputerGroupCriterion {
+	slice.Sort(criteria[:], func(i, j int) bool {
+		return criteria[i].Priority < criteria[j].Priority
+	})
+	return criteria
 }
