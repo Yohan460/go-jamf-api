@@ -1,2 +1,4 @@
+github.com/bradfitz/slice v0.0.0-20180809154707-2b758aa73013 h1:/P9/RL0xgWE+ehnCUUN5h3RpG3dmoMCOONO1CCvq23Y=
+github.com/bradfitz/slice v0.0.0-20180809154707-2b758aa73013/go.mod h1:pccXHIvs3TV/TUqSNyEvF99sxjX2r4FFRIyw6TZY9+w=
 github.com/cenkalti/backoff v2.2.1+incompatible h1:tNowT99t7UNflLxfYYSlKYsBpXdEet03Pg2g16Swow4=
 github.com/cenkalti/backoff v2.2.1+incompatible/go.mod h1:90ReRw6GdpyfrHakVjL/QHaoyV4aDUVVkXQJJJ3NXXM=
