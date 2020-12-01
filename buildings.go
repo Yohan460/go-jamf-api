@@ -2,7 +2,7 @@ package jamf
 
 import "fmt"
 
-const uriBuildings = "/v1/buildings"
+const uriBuildings = "/uapi/v1/buildings"
 
 type ResponseBuildings struct {
 	TotalCount *int       `json:"totalCount,omitempty"`
@@ -34,10 +34,10 @@ func (c *Client) GetBuildingIdByName(name string) (string, error) {
 			break
 		}
 	}
-	return id, nil
+	return id, err
 }
 
-func (c *Client) GetBuildingByName(name string) (data *Building, err error) {
+func (c *Client) GetBuildingByName(name string) (*Building, error) {
 	id, err := c.GetBuildingIdByName(name)
 	if err != nil {
 		return nil, err
@@ -46,21 +46,19 @@ func (c *Client) GetBuildingByName(name string) (data *Building, err error) {
 	return c.GetBuilding(id)
 }
 
-func (c *Client) GetBuilding(id string) (data *Building, err error) {
+func (c *Client) GetBuilding(id string) (*Building, error) {
 	var out *Building
 	uri := fmt.Sprintf("%s/%s", uriBuildings, id)
+	err := c.doRequest("GET", uri, nil, &out)
 
-	err = c.doRequest("GET", uri, nil, &out)
-	data = out
-	return
+	return out, err
 }
 
-func (c *Client) GetBuildings() (data *ResponseBuildings, err error) {
+func (c *Client) GetBuildings() (*ResponseBuildings, error) {
 	out := &ResponseBuildings{}
-	err = c.doRequest("GET", uriBuildings, nil, &out)
-	data = out
+	err := c.doRequest("GET", uriBuildings, nil, &out)
 
-	return
+	return out, err
 }
 
 func (c *Client) CreateBuilding(name, sa1, sa2, city, sp, zpc, country *string) (*Building, error) {
@@ -84,10 +82,8 @@ func (c *Client) CreateBuilding(name, sa1, sa2, city, sp, zpc, country *string) 
 
 	var out *Building
 
-	if err := c.doRequest("POST", uriBuildings, in, &out); err != nil {
-		return nil, err
-	}
-	return out, nil
+	err := c.doRequest("POST", uriBuildings, in, &out)
+	return out, err
 }
 
 func (c *Client) UpdateBuilding(d *Building) (*Building, error) {
@@ -112,10 +108,8 @@ func (c *Client) UpdateBuilding(d *Building) (*Building, error) {
 		Country:        d.Country,
 	}
 
-	if err := c.doRequest("PUT", uri, in, &out); err != nil {
-		return nil, err
-	}
-	return out, nil
+	err := c.doRequest("PUT", uri, in, &out)
+	return out, err
 }
 
 func (c *Client) DeleteBuilding(name string) error {

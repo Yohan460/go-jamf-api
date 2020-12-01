@@ -2,7 +2,7 @@ package jamf
 
 import "fmt"
 
-const uriCategories = "/v1/categories"
+const uriCategories = "/uapi/v1/categories"
 
 type ResponseCategories struct {
 	TotalCount *int       `json:"totalCount,omitempty"`
@@ -29,10 +29,10 @@ func (c *Client) GetCategoryIdByName(name string) (string, error) {
 			break
 		}
 	}
-	return id, nil
+	return id, err
 }
 
-func (c *Client) GetCategoryByName(name string) (data *Category, err error) {
+func (c *Client) GetCategoryByName(name string) (*Category, error) {
 	id, err := c.GetCategoryIdByName(name)
 	if err != nil {
 		return nil, err
@@ -41,20 +41,18 @@ func (c *Client) GetCategoryByName(name string) (data *Category, err error) {
 	return c.GetCategory(id)
 }
 
-func (c *Client) GetCategory(id string) (data *Category, err error) {
+func (c *Client) GetCategory(id string) (*Category, error) {
 	var out *Category
 	uri := fmt.Sprintf("%s/%s", uriCategories, id)
 
-	err = c.doRequest("GET", uri, nil, &out)
-	data = out
-	return
+	err := c.doRequest("GET", uri, nil, &out)
+	return out, err
 }
 
-func (c *Client) GetCategories() (data *ResponseCategories, err error) {
+func (c *Client) GetCategories() (*ResponseCategories, error) {
 	var out *ResponseCategories
-	err = c.doRequest("GET", uriCategories, nil, &out)
-	data = out
-	return
+	err := c.doRequest("GET", uriCategories, nil, &out)
+	return out, err
 }
 
 func (c *Client) CreateCategory(name *string, priority *int) (*Category, error) {
@@ -68,10 +66,8 @@ func (c *Client) CreateCategory(name *string, priority *int) (*Category, error) 
 
 	var out *Category
 
-	if err := c.doRequest("POST", uriCategories, in, &out); err != nil {
-		return nil, err
-	}
-	return out, nil
+	err := c.doRequest("POST", uriCategories, in, &out)
+	return out, err
 }
 
 func (c *Client) UpdateCategory(d *Category) (*Category, error) {
@@ -86,10 +82,8 @@ func (c *Client) UpdateCategory(d *Category) (*Category, error) {
 		Priority: d.Priority,
 	}
 
-	if err := c.doRequest("PUT", uri, in, &out); err != nil {
-		return nil, err
-	}
-	return out, nil
+	err := c.doRequest("PUT", uri, in, &out)
+	return out, err
 }
 
 func (c *Client) DeleteCategory(name string) error {
