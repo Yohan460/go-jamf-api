@@ -18,6 +18,42 @@ const (
 	duplicateNameErr string = "Duplicate Name"
 )
 
+type Error interface {
+	Error() string
+	StatusCode() int
+	URI() string
+	Body() string
+}
+type errorInfo struct {
+	statusCode int
+	uri        string
+	body       string
+}
+
+func newError(statusCode int, uri, body string) Error {
+	var e = new(errorInfo)
+	e.statusCode = statusCode
+	e.uri = uri
+	e.body = body
+	return e
+}
+
+func (e *errorInfo) Error() string {
+	return fmt.Sprintf("API Error: %v URI: %s Body: %s", e.statusCode, e.uri, e.body)
+}
+
+func (e *errorInfo) StatusCode() int {
+	return e.statusCode
+}
+
+func (e *errorInfo) URI() string {
+	return e.uri
+}
+
+func (e *errorInfo) Body() string {
+	return e.body
+}
+
 // doJsonRequest ... A method to send a request to the jamf api
 func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 	req, err := c.createRequest(method, api, reqbody)
@@ -44,7 +80,7 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 		}
 		re := regexp.MustCompile(`\r?\n`)
 		out := re.ReplaceAllString(string(body), " ")
-		return fmt.Errorf("API Error: %s, URI: %s, Body: %s", resp.Status, api, out)
+		return newError(resp.StatusCode, api, out)
 	}
 
 	body, err := ioutil.ReadAll(resp.Body)
