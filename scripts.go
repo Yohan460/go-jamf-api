@@ -94,7 +94,7 @@ func (c *Client) UpdateScript(d *Script) (*Script, error) {
 	return script, err
 }
 
-func (c *Client) DeleteScript(id int) (string, error) {
+func (c *Client) DeleteScript(id string) (string, error) {
 
 	group := &Script{}
 	err := c.doRequest("DELETE", fmt.Sprintf("%s/id/%v", uriScripts, id), nil, group)
