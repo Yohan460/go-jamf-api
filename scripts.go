@@ -89,7 +89,7 @@ func (c *Client) CreateScript(d *Script) (string, error) {
 func (c *Client) UpdateScript(d *Script) (*Script, error) {
 
 	script := &Script{}
-	err := c.doRequest("PUT", fmt.Sprintf("%s/id/%v", uriScripts, d.ID), d, script)
+	err := c.doRequest("PUT", fmt.Sprintf("%s/%v", uriScripts, d.ID), d, script)
 
 	return script, err
 }
@@ -97,7 +97,7 @@ func (c *Client) UpdateScript(d *Script) (*Script, error) {
 func (c *Client) DeleteScript(id string) (string, error) {
 
 	group := &Script{}
-	err := c.doRequest("DELETE", fmt.Sprintf("%s/id/%v", uriScripts, id), nil, group)
+	err := c.doRequest("DELETE", fmt.Sprintf("%s/%v", uriScripts, id), nil, group)
 
 	return group.ID, err
 }
