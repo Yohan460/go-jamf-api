@@ -11,6 +11,7 @@ type Policy struct {
 	Scope                PolicyScope                `xml:"scope,omitempty"`
 	SelfService          PolicySelfService          `xml:"self_service"`
 	PackageConfiguration PolicyPackageConfiguration `xml:"package_configuration,omitempty"`
+	ScriptsConfiguration PolicyScripts              `xml:"scripts,omitempty"`
 	Reboot               PolicyReboot               `xml:"reboot"`
 	Maintenance          PolicyMaintenance          `xml:"maintenance"`
 	FilesAndProcesses    PolicyFilesAndProcesses    `xml:"files_processes"`
@@ -79,11 +80,11 @@ type PolicyGeneralOverrideDefaultSettings struct {
 }
 
 type PolicyScope struct {
-	AllComputers   string                    `xml:"all_computers"`
-	Computers      string                    `xml:"computers"`
-	ComputerGroups PolicyScopeComputerGroups `xml:"computer_groups"`
-	// Buildings      string                    `xml:"buildings"`
-	// Departments    string                    `xml:"departments"`
+	AllComputers   bool                        `xml:"all_computers"`
+	Computers      []ComputerPolicyList        `xml:"computers>computer,omitempty"`
+	ComputerGroups []ComputerGroupListResponse `xml:"computer_groups>computer_group,omitempty"`
+	Buildings      []BuildingPolicyList        `xml:"buildings>building,omitempty"`
+	Departments    []DepartmentPolicyList      `xml:"departments>department,omitempty"`
 	// LimitToUsers   struct {
 	// 	UserGroups string `xml:"user_groups"`
 	// } `xml:"limit_to_users"`
@@ -91,8 +92,19 @@ type PolicyScope struct {
 	Exclusions  PolicyScopeExclusions  `xml:"exclusions"`
 }
 
-type PolicyScopeComputerGroups struct {
-	ComputerGroups []ComputerGroupListResponse `xml:"computer_group"`
+type ComputerPolicyList struct {
+	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
+	Name string `json:"name,omitempty" xml:"name,omitempty"`
+	UDID string `json:"udid,omitempty" xml:"udid,omitempty"`
+}
+
+type BuildingPolicyList struct {
+	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
+	Name string `json:"name,omitempty" xml:"name,omitempty"`
+}
+type DepartmentPolicyList struct {
+	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
+	Name string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 type PolicySelfService struct {
@@ -130,7 +142,30 @@ type PolicyPackageConfiguration struct {
 }
 
 type PolicyPackageConfigurationPackage struct {
-	ID int `xml:"id,omitempty"`
+	ID                int    `xml:"id,omitempty"`
+	Name              string `xml:"name,omitempty"`
+	Action            string `xml:"action,omitempty"`
+	FillUserTemplate  bool   `xml:"fut,omitempty"`
+	FillExistingUsers bool   `xml:"feu,omitempty"`
+	UpdateAutorun     bool   `xml:"update_autorun,omitempty"`
+}
+
+type PolicyScripts struct {
+	Scripts []PolicyScript `xml:"script,omitempty"`
+}
+
+type PolicyScript struct {
+	ID          string `xml:"id,omitempty"`
+	Name        string `xml:"name,omitempty"`
+	Priority    string `xml:"priority,omitempty"`
+	Parameter4  string `xml:"parameter4,omitempty"`
+	Parameter5  string `xml:"parameter5,omitempty"`
+	Parameter6  string `xml:"parameter6,omitempty"`
+	Parameter7  string `xml:"parameter7,omitempty"`
+	Parameter8  string `xml:"parameter8,omitempty"`
+	Parameter9  string `xml:"parameter9,omitempty"`
+	Parameter10 string `xml:"parameter10,omitempty"`
+	Paramete114 string `xml:"parameter11,omitempty"`
 }
 
 type PolicyReboot struct {
@@ -229,10 +264,14 @@ func (c *Client) GetPolicies() (*PolicyListResponse, error) {
 func (c *Client) CreatePolicy(d *Policy) (int, error) {
 
 	// Setting defaults, per jamf unwritten requirements :/
+
+	// Category Defaults
 	if d.General.Category.ID == "" || d.General.Category.Name == "" {
 		d.General.Category.ID = "-1"
 		d.General.Category.Name = "No category assigned"
 	}
+
+	// Reboot Defaults
 	if d.Reboot.StartupDisk == "" {
 		d.Reboot.StartupDisk = "Current Startup Disk"
 	}
@@ -244,6 +283,24 @@ func (c *Client) CreatePolicy(d *Policy) (int, error) {
 	}
 	if d.Reboot.MinutesUntilReboot == 0 {
 		d.Reboot.MinutesUntilReboot = 5
+	}
+
+	// Package Defaults
+	if len(d.PackageConfiguration.Packages) != 0 {
+		for i := range d.PackageConfiguration.Packages {
+			if d.PackageConfiguration.Packages[i].Action == "" {
+				d.PackageConfiguration.Packages[i].Action = "INSTALL"
+			}
+		}
+	}
+
+	// Script Defaults
+	if len(d.ScriptsConfiguration.Scripts) != 0 {
+		for i := range d.ScriptsConfiguration.Scripts {
+			if d.ScriptsConfiguration.Scripts[i].Priority == "" {
+				d.ScriptsConfiguration.Scripts[i].Priority = "After"
+			}
+		}
 	}
 
 	res := &PolicyListItem{}
