@@ -50,31 +50,31 @@ type PolicyGeneralCategory struct {
 	Name string `xml:"name"`
 }
 
-// TODO Get types
+// TODO Get types and test
 type PolicyGeneralDateTimeLimitations struct {
 	ActivationDate      string `xml:"activation_date"`
-	ActivationDateEpoch string `xml:"activation_date_epoch"`
+	ActivationDateEpoch int    `xml:"activation_date_epoch"`
 	ActivationDateUtc   string `xml:"activation_date_utc"`
 	ExpirationDate      string `xml:"expiration_date"`
-	ExpirationDateEpoch string `xml:"expiration_date_epoch"`
+	ExpirationDateEpoch int    `xml:"expiration_date_epoch"`
 	ExpirationDateUtc   string `xml:"expiration_date_utc"`
 	NoExecuteOn         string `xml:"no_execute_on"`
 	NoExecuteStart      string `xml:"no_execute_start"`
 	NoExecuteEnd        string `xml:"no_execute_end"`
 }
 
-// TODO Get types
+// TODO Get types and test
 type PolicyGeneralNetworkLimitations struct {
 	MinimumNetworkConnection string `xml:"minimum_network_connection"`
-	AnyIpAddress             string `xml:"any_ip_address"`
+	AnyIpAddress             bool   `xml:"any_ip_address"`
 	NetworkSegments          string `xml:"network_segments"`
 }
 
-// TODO Get types
+// TODO Get types and test
 type PolicyGeneralOverrideDefaultSettings struct {
 	TargetDrive       string `xml:"target_drive"`
 	DistributionPoint string `xml:"distribution_point"`
-	ForceAfpSmb       string `xml:"force_afp_smb"`
+	ForceAfpSmb       bool   `xml:"force_afp_smb"`
 	Sus               string `xml:"sus"`
 	NetbootServer     string `xml:"netboot_server"`
 }
@@ -164,7 +164,7 @@ type PolicyScript struct {
 	Parameter8  string `xml:"parameter8,omitempty"`
 	Parameter9  string `xml:"parameter9,omitempty"`
 	Parameter10 string `xml:"parameter10,omitempty"`
-	Paramete114 string `xml:"parameter11,omitempty"`
+	Parameter11 string `xml:"parameter11,omitempty"`
 }
 
 type PolicyReboot struct {
@@ -179,16 +179,16 @@ type PolicyReboot struct {
 }
 
 type PolicyMaintenance struct {
-	Recon                    string `xml:"recon"`
-	ResetName                string `xml:"reset_name"`
-	InstallAllCachedPackages string `xml:"install_all_cached_packages"`
-	Heal                     string `xml:"heal"`
-	Prebindings              string `xml:"prebindings"`
-	Permissions              string `xml:"permissions"`
-	Byhost                   string `xml:"byhost"`
-	SystemCache              string `xml:"system_cache"`
-	UserCache                string `xml:"user_cache"`
-	Verify                   string `xml:"verify"`
+	Recon                    bool `xml:"recon"`
+	ResetName                bool `xml:"reset_name"`
+	InstallAllCachedPackages bool `xml:"install_all_cached_packages"`
+	Heal                     bool `xml:"heal"`
+	Prebindings              bool `xml:"prebindings"`
+	Permissions              bool `xml:"permissions"`
+	Byhost                   bool `xml:"byhost"`
+	SystemCache              bool `xml:"system_cache"`
+	UserCache                bool `xml:"user_cache"`
+	Verify                   bool `xml:"verify"`
 }
 
 type PolicyFilesAndProcesses struct {
