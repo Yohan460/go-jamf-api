@@ -89,30 +89,44 @@ type PolicyScope struct {
 }
 
 type ComputerPolicyList struct {
-	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
-	Name string `json:"name,omitempty" xml:"name,omitempty"`
-	UDID string `json:"udid,omitempty" xml:"udid,omitempty"`
+	ID   int    `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
+	UDID string `xml:"udid,omitempty"`
 }
 
 type BuildingPolicyList struct {
-	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
-	Name string `json:"name,omitempty" xml:"name,omitempty"`
+	ID   int    `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
 }
+
 type DepartmentPolicyList struct {
-	ID   int    `json:"id,omitempty" xml:"id,omitempty"`
-	Name string `json:"name,omitempty" xml:"name,omitempty"`
+	ID   int    `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
 }
 
 type PolicySelfService struct {
-	UseForSelfService           string `xml:"use_for_self_service"`
-	SelfServiceDisplayName      string `xml:"self_service_display_name"`
-	InstallButtonText           string `xml:"install_button_text"`
-	ReinstallButtonText         string `xml:"reinstall_button_text"`
-	SelfServiceDescription      string `xml:"self_service_description"`
-	ForceUsersToViewDescription string `xml:"force_users_to_view_description"`
-	SelfServiceIcon             string `xml:"self_service_icon"`
-	FeatureOnMainPage           string `xml:"feature_on_main_page"`
-	SelfServiceCategories       string `xml:"self_service_categories"`
+	UseForSelfService           bool                        `xml:"use_for_self_service"`
+	SelfServiceDisplayName      string                      `xml:"self_service_display_name"`
+	InstallButtonText           string                      `xml:"install_button_text"`
+	ReinstallButtonText         string                      `xml:"reinstall_button_text"`
+	SelfServiceDescription      string                      `xml:"self_service_description"`
+	ForceUsersToViewDescription bool                        `xml:"force_users_to_view_description"`
+	SelfServiceIcon             PolicySelfServiceIcon       `xml:"self_service_icon,omitempty"`
+	FeatureOnMainPage           bool                        `xml:"feature_on_main_page"`
+	SelfServiceCategories       []PolicySelfServiceCategory `xml:"self_service_categories>category,omitempty"`
+}
+
+type PolicySelfServiceIcon struct {
+	ID       int    `xml:"id,omitempty"`
+	Filename string `xml:"filename,omitempty"`
+	URI      string `xml:"uri,omitempty"`
+}
+
+type PolicySelfServiceCategory struct {
+	ID        int    `xml:"id,omitempty"`
+	Name      string `xml:"name,omitempty"`
+	DisplayIn bool   `xml:"display_in,omitempty"`
+	FeatureIn bool   `xml:"feature_in,omitempty"`
 }
 
 type PolicyScopeExclusions struct {
@@ -179,20 +193,20 @@ type PolicyMaintenance struct {
 
 type PolicyFilesAndProcesses struct {
 	SearchByPath         string `xml:"search_by_path"`
-	DeleteFile           string `xml:"delete_file"`
+	DeleteFile           bool   `xml:"delete_file"`
 	LocateFile           string `xml:"locate_file"`
-	UpdateLocateDatabase string `xml:"update_locate_database"`
+	UpdateLocateDatabase bool   `xml:"update_locate_database"`
 	SpotlightSearch      string `xml:"spotlight_search"`
 	SearchForProcess     string `xml:"search_for_process"`
-	KillProcess          string `xml:"kill_process"`
+	KillProcess          bool   `xml:"kill_process"`
 	RunCommand           string `xml:"run_command"`
 }
 
 type PolicyUserInteraction struct {
 	MessageStart          string `xml:"message_start"`
-	AllowUsersToDefer     string `xml:"allow_users_to_defer"`
+	AllowUsersToDefer     bool   `xml:"allow_users_to_defer"`
 	AllowDeferralUntilUtc string `xml:"allow_deferral_until_utc"`
-	AllowDeferralMinutes  string `xml:"allow_deferral_minutes"`
+	AllowDeferralMinutes  int    `xml:"allow_deferral_minutes"`
 	MessageFinish         string `xml:"message_finish"`
 }
 
