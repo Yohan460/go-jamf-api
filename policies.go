@@ -85,11 +85,7 @@ type PolicyScope struct {
 	ComputerGroups []ComputerGroupListResponse `xml:"computer_groups>computer_group,omitempty"`
 	Buildings      []BuildingPolicyList        `xml:"buildings>building,omitempty"`
 	Departments    []DepartmentPolicyList      `xml:"departments>department,omitempty"`
-	// LimitToUsers   struct {
-	// 	UserGroups string `xml:"user_groups"`
-	// } `xml:"limit_to_users"`
-	Limitations PolicyScopeLimitations `xml:"limitations"`
-	Exclusions  PolicyScopeExclusions  `xml:"exclusions"`
+	Exclusions     PolicyScopeExclusions       `xml:"exclusions,omitempty"`
 }
 
 type ComputerPolicyList struct {
@@ -119,22 +115,11 @@ type PolicySelfService struct {
 	SelfServiceCategories       string `xml:"self_service_categories"`
 }
 
-type PolicyScopeLimitations struct {
-	Users           string `xml:"users"`
-	UserGroups      string `xml:"user_groups"`
-	NetworkSegments string `xml:"network_segments"`
-	Ibeacons        string `xml:"ibeacons"`
-}
-
 type PolicyScopeExclusions struct {
-	Computers       string `xml:"computers"`
-	ComputerGroups  string `xml:"computer_groups"`
-	Buildings       string `xml:"buildings"`
-	Departments     string `xml:"departments"`
-	Users           string `xml:"users"`
-	UserGroups      string `xml:"user_groups"`
-	NetworkSegments string `xml:"network_segments"`
-	Ibeacons        string `xml:"ibeacons"`
+	Computers      []ComputerPolicyList        `xml:"computers>computer,omitempty"`
+	ComputerGroups []ComputerGroupListResponse `xml:"computer_groups>computer_group,omitempty"`
+	Buildings      []BuildingPolicyList        `xml:"buildings>building,omitempty"`
+	Departments    []DepartmentPolicyList      `xml:"departments>department,omitempty"`
 }
 
 type PolicyPackageConfiguration struct {
