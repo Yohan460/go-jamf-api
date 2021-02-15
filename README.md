@@ -3,7 +3,7 @@
 ## Install
 
 ```go
-import "github.com/sioncojp/go-jamf-api"
+import "github.com/yohan460/go-jamf-api"
 ```
 
 ## Usage

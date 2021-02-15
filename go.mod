@@ -1,4 +1,4 @@
-module github.com/sioncojp/go-jamf-api
+module github.com/yohan460/go-jamf-api
 
 go 1.12
 

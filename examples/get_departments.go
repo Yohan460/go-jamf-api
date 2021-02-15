@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sioncojp/go-jamf-api"
+	"github.com/yohan460/go-jamf-api"
 )
 
 const (
