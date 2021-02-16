@@ -88,15 +88,19 @@ func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
 		return err
 	}
 
-	// If we got no body, by default let's just make an empty JSON dict.
-	if len(body) == 0 {
-		body = []byte{'{', '}'}
-	}
+	// Making sure we have someplace to put the response
+	if out != nil {
 
-	if strings.Contains(api, "JSSResource") {
-		err = xml.Unmarshal(body, out)
-	} else {
-		err = json.Unmarshal(body, out)
+		// If we got no body, by default let's just make an empty JSON dict.
+		if len(body) == 0 {
+			body = []byte{'{', '}'}
+		}
+
+		if strings.Contains(api, "JSSResource") {
+			err = xml.Unmarshal(body, out)
+		} else {
+			err = json.Unmarshal(body, out)
+		}
 	}
 
 	return err
