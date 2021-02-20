@@ -21,6 +21,11 @@ type Building struct {
 	Href           *string `json:"href,omitempty"`
 }
 
+type BuildingScope struct {
+	ID   int    `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
+}
+
 func (c *Client) GetBuildingIdByName(name string) (string, error) {
 	var id string
 	d, err := c.GetBuildings()
