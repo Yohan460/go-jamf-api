@@ -37,17 +37,12 @@ type PolicyGeneral struct {
 	LocationUserOnly           bool                                 `xml:"location_user_only"`
 	TargetDrive                string                               `xml:"target_drive"`
 	Offline                    bool                                 `xml:"offline"`
-	Category                   PolicyGeneralCategory                `xml:"category"`
+	Category                   GeneralCategory                      `xml:"category,omitempty"`
 	DateTimeLimitations        PolicyGeneralDateTimeLimitations     `xml:"date_time_limitations"`
 	NetworkLimitations         PolicyGeneralNetworkLimitations      `xml:"network_limitations"`
 	OverrideDefaultSettings    PolicyGeneralOverrideDefaultSettings `xml:"override_default_settings"`
 	NetworkRequirements        string                               `xml:"network_requirements"`
 	Site                       Site                                 `xml:"site"`
-}
-
-type PolicyGeneralCategory struct {
-	ID   string `xml:"id"`
-	Name string `xml:"name"`
 }
 
 // TODO Get types and test
@@ -81,59 +76,30 @@ type PolicyGeneralOverrideDefaultSettings struct {
 
 type PolicyScope struct {
 	AllComputers   bool                        `xml:"all_computers"`
-	Computers      []ComputerPolicyList        `xml:"computers>computer,omitempty"`
+	Computers      []ComputerScope             `xml:"computers>computer,omitempty"`
 	ComputerGroups []ComputerGroupListResponse `xml:"computer_groups>computer_group,omitempty"`
-	Buildings      []BuildingPolicyList        `xml:"buildings>building,omitempty"`
-	Departments    []DepartmentPolicyList      `xml:"departments>department,omitempty"`
+	Buildings      []BuildingScope             `xml:"buildings>building,omitempty"`
+	Departments    []DepartmentScope           `xml:"departments>department,omitempty"`
 	Exclusions     PolicyScopeExclusions       `xml:"exclusions,omitempty"`
 }
 
-type ComputerPolicyList struct {
-	ID   int    `xml:"id,omitempty"`
-	Name string `xml:"name,omitempty"`
-	UDID string `xml:"udid,omitempty"`
-}
-
-type BuildingPolicyList struct {
-	ID   int    `xml:"id,omitempty"`
-	Name string `xml:"name,omitempty"`
-}
-
-type DepartmentPolicyList struct {
-	ID   int    `xml:"id,omitempty"`
-	Name string `xml:"name,omitempty"`
-}
-
 type PolicySelfService struct {
-	UseForSelfService           bool                        `xml:"use_for_self_service"`
-	SelfServiceDisplayName      string                      `xml:"self_service_display_name"`
-	InstallButtonText           string                      `xml:"install_button_text"`
-	ReinstallButtonText         string                      `xml:"reinstall_button_text"`
-	SelfServiceDescription      string                      `xml:"self_service_description"`
-	ForceUsersToViewDescription bool                        `xml:"force_users_to_view_description"`
-	SelfServiceIcon             PolicySelfServiceIcon       `xml:"self_service_icon,omitempty"`
-	FeatureOnMainPage           bool                        `xml:"feature_on_main_page"`
-	SelfServiceCategories       []PolicySelfServiceCategory `xml:"self_service_categories>category,omitempty"`
-}
-
-type PolicySelfServiceIcon struct {
-	ID       int    `xml:"id,omitempty"`
-	Filename string `xml:"filename,omitempty"`
-	URI      string `xml:"uri,omitempty"`
-}
-
-type PolicySelfServiceCategory struct {
-	ID        int    `xml:"id,omitempty"`
-	Name      string `xml:"name,omitempty"`
-	DisplayIn bool   `xml:"display_in,omitempty"`
-	FeatureIn bool   `xml:"feature_in,omitempty"`
+	UseForSelfService           bool                  `xml:"use_for_self_service"`
+	SelfServiceDisplayName      string                `xml:"self_service_display_name"`
+	InstallButtonText           string                `xml:"install_button_text"`
+	ReinstallButtonText         string                `xml:"reinstall_button_text"`
+	SelfServiceDescription      string                `xml:"self_service_description"`
+	ForceUsersToViewDescription bool                  `xml:"force_users_to_view_description"`
+	SelfServiceIcon             SelfServiceIcon       `xml:"self_service_icon,omitempty"`
+	FeatureOnMainPage           bool                  `xml:"feature_on_main_page"`
+	SelfServiceCategories       []SelfServiceCategory `xml:"self_service_categories>category,omitempty"`
 }
 
 type PolicyScopeExclusions struct {
-	Computers      []ComputerPolicyList        `xml:"computers>computer,omitempty"`
+	Computers      []ComputerScope             `xml:"computers>computer,omitempty"`
 	ComputerGroups []ComputerGroupListResponse `xml:"computer_groups>computer_group,omitempty"`
-	Buildings      []BuildingPolicyList        `xml:"buildings>building,omitempty"`
-	Departments    []DepartmentPolicyList      `xml:"departments>department,omitempty"`
+	Buildings      []BuildingScope             `xml:"buildings>building,omitempty"`
+	Departments    []DepartmentScope           `xml:"departments>department,omitempty"`
 }
 
 type PolicyPackageConfiguration struct {

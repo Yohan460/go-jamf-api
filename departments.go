@@ -15,6 +15,11 @@ type Department struct {
 	Href *string `json:"href,omitempty"`
 }
 
+type DepartmentScope struct {
+	ID   int    `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
+}
+
 func (c *Client) GetDepartmentIdByName(name string) (string, error) {
 	var id string
 	d, err := c.GetDepartments()

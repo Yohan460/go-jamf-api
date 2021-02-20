@@ -16,6 +16,11 @@ type Category struct {
 	Href     *string `json:"href,omitempty"`
 }
 
+type GeneralCategory struct {
+	ID   string `xml:"id,omitempty"`
+	Name string `xml:"name,omitempty"`
+}
+
 func (c *Client) GetCategoryIdByName(name string) (string, error) {
 	var id string
 	d, err := c.GetCategories()
