@@ -54,14 +54,14 @@ func (c *Client) GetBuildingByName(name string) (*Building, error) {
 func (c *Client) GetBuilding(id string) (*Building, error) {
 	var out *Building
 	uri := fmt.Sprintf("%s/%s", uriBuildings, id)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
 
 func (c *Client) GetBuildings() (*ResponseBuildings, error) {
 	out := &ResponseBuildings{}
-	err := c.doRequest("GET", uriBuildings, nil, &out)
+	err := c.doRequest("GET", uriBuildings, nil, nil, &out)
 
 	return out, err
 }
@@ -87,7 +87,7 @@ func (c *Client) CreateBuilding(name, sa1, sa2, city, sp, zpc, country *string) 
 
 	var out *Building
 
-	err := c.doRequest("POST", uriBuildings, in, &out)
+	err := c.doRequest("POST", uriBuildings, in, nil, &out)
 	return out, err
 }
 
@@ -113,7 +113,7 @@ func (c *Client) UpdateBuilding(d *Building) (*Building, error) {
 		Country:        d.Country,
 	}
 
-	err := c.doRequest("PUT", uri, in, &out)
+	err := c.doRequest("PUT", uri, in, nil, &out)
 	return out, err
 }
 
@@ -124,5 +124,5 @@ func (c *Client) DeleteBuilding(name string) error {
 	}
 
 	uri := fmt.Sprintf("%s/%s", uriBuildings, id)
-	return c.doRequest("DELETE", uri, nil, nil)
+	return c.doRequest("DELETE", uri, nil, nil, nil)
 }

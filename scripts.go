@@ -56,7 +56,7 @@ func (c *Client) GetScriptByName(name string) (*Script, error) {
 func (c *Client) GetScript(id string) (*Script, error) {
 
 	var out *Script
-	err := c.doRequest("GET", fmt.Sprintf("%s/%v", uriScripts, id), nil, &out)
+	err := c.doRequest("GET", fmt.Sprintf("%s/%v", uriScripts, id), nil, nil, &out)
 
 	return out, err
 }
@@ -64,7 +64,7 @@ func (c *Client) GetScript(id string) (*Script, error) {
 func (c *Client) GetScripts() (*ScriptsListResponse, error) {
 
 	out := &ScriptsListResponse{}
-	err := c.doRequest("GET", uriScripts, nil, out)
+	err := c.doRequest("GET", uriScripts, nil, nil, out)
 
 	return out, err
 }
@@ -81,7 +81,7 @@ func (c *Client) CreateScript(d *Script) (string, error) {
 	}
 
 	resp := &ScriptCreateResponse{}
-	err := c.doRequest("POST", uriScripts, d, resp)
+	err := c.doRequest("POST", uriScripts, d, nil, resp)
 
 	return resp.ID, err
 }
@@ -89,7 +89,7 @@ func (c *Client) CreateScript(d *Script) (string, error) {
 func (c *Client) UpdateScript(d *Script) (*Script, error) {
 
 	script := &Script{}
-	err := c.doRequest("PUT", fmt.Sprintf("%s/%v", uriScripts, d.ID), d, script)
+	err := c.doRequest("PUT", fmt.Sprintf("%s/%v", uriScripts, d.ID), d, nil, script)
 
 	return script, err
 }
@@ -97,7 +97,7 @@ func (c *Client) UpdateScript(d *Script) (*Script, error) {
 func (c *Client) DeleteScript(id string) (string, error) {
 
 	group := &Script{}
-	err := c.doRequest("DELETE", fmt.Sprintf("%s/%v", uriScripts, id), nil, group)
+	err := c.doRequest("DELETE", fmt.Sprintf("%s/%v", uriScripts, id), nil, nil, group)
 
 	return group.ID, err
 }

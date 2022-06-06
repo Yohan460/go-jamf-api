@@ -89,14 +89,14 @@ func (c *Client) GetComputerGroupByName(name string) (*ComputerGroup, error) {
 func (c *Client) GetComputerGroup(id int) (*ComputerGroup, error) {
 	var out *ComputerGroup
 	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, id)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
 
 func (c *Client) GetComputerGroups() (*ComputerGroupsResponse, error) {
 	out := &ComputerGroupsResponse{}
-	err := c.doRequest("GET", uriComputerGroups, nil, out)
+	err := c.doRequest("GET", uriComputerGroups, nil, nil, out)
 
 	return out, err
 }
@@ -112,7 +112,7 @@ func (c *Client) CreateComputerGroup(d *ComputerGroupRequest) (int, error) {
 		ComputerGroupRequest: d,
 	}
 
-	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerGroups), reqBody, group)
+	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerGroups), reqBody, nil, group)
 	return group.ID, err
 }
 
@@ -128,7 +128,7 @@ func (c *Client) UpdateComputerGroup(d *ComputerGroup) (int, error) {
 		ComputerGroup: d,
 	}
 
-	err := c.doRequest("PUT", uri, reqBody, group)
+	err := c.doRequest("PUT", uri, reqBody, nil, group)
 
 	return group.ID, err
 }
@@ -137,7 +137,7 @@ func (c *Client) DeleteComputerGroup(id int) (int, error) {
 
 	group := &ComputerGroup{}
 	uri := fmt.Sprintf("%s/id/%v", uriComputerGroups, id)
-	err := c.doRequest("DELETE", uri, nil, group)
+	err := c.doRequest("DELETE", uri, nil, nil, group)
 
 	return group.ID, err
 }
