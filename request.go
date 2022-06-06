@@ -187,15 +187,23 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 		req.URL.RawQuery = params.Encode()
 	}
 
+	// Ensuring valid token
+	if c.token != nil {
+		err = c.refreshAuthToken()
+		if err != nil {
+			return req, err
+		}
+		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+	} else {
+		// Handle inital token setup in client setup
+		req.SetBasicAuth(c.username, c.password)
+	}
+
 	// Set the necessary headers
 	if strings.Contains(api, "JSSResource") || c.token == nil {
 		req.Header.Add("Content-Type", "application/xml")
-		req.SetBasicAuth(c.username, c.password)
 	} else {
 		req.Header.Add("Content-Type", "application/json")
-		if c.token != nil {
-			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
-		}
 	}
 
 	for k, v := range c.ExtraHeader {
