@@ -49,13 +49,13 @@ func (c *Client) GetDepartment(id string) (*Department, error) {
 	var out *Department
 	uri := fmt.Sprintf("%s/%s", uriDepartments, id)
 
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 	return out, err
 }
 
 func (c *Client) GetDepartments() (*ResponseDepartments, error) {
 	var out *ResponseDepartments
-	err := c.doRequest("GET", uriDepartments, nil, &out)
+	err := c.doRequest("GET", uriDepartments, nil, nil, &out)
 	return out, err
 }
 
@@ -68,7 +68,7 @@ func (c *Client) CreateDepartment(name *string) (*Department, error) {
 
 	var out *Department
 
-	err := c.doRequest("POST", uriDepartments, in, &out)
+	err := c.doRequest("POST", uriDepartments, in, nil, &out)
 	return out, err
 }
 
@@ -82,7 +82,7 @@ func (c *Client) UpdateDepartment(d *Department) (*Department, error) {
 		Name: d.Name,
 	}
 
-	err := c.doRequest("PUT", uri, in, &out)
+	err := c.doRequest("PUT", uri, in, nil, &out)
 	return out, err
 }
 
@@ -93,5 +93,5 @@ func (c *Client) DeleteDepartment(name string) error {
 	}
 
 	uri := fmt.Sprintf("%s/%s", uriDepartments, id)
-	return c.doRequest("DELETE", uri, nil, nil)
+	return c.doRequest("DELETE", uri, nil, nil, nil)
 }

@@ -338,21 +338,21 @@ const (
 func (c *Client) GetComputerDataSubsetByID(id int, subset ComputerDataSubsetName) (*Computer, error) {
 	var out *Computer
 	uri := fmt.Sprintf("%s/id/%v/subset/%v", uriComputers, id, subset)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 	return out, err
 }
 
 func (c *Client) GetComputerDataSubsetByUDID(udid string, subset ComputerDataSubsetName) (*Computer, error) {
 	var out *Computer
 	uri := fmt.Sprintf("%s/udid/%v/subset/%v", uriComputers, udid, subset)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 	return out, err
 }
 
 func (c *Client) GetComputerByID(id int) (*Computer, error) {
 	var out *Computer
 	uri := fmt.Sprintf("%s/id/%v", uriComputers, id)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
@@ -360,7 +360,7 @@ func (c *Client) GetComputerByID(id int) (*Computer, error) {
 func (c *Client) GetComputerByUDID(udid string) (*Computer, error) {
 	var out *Computer
 	uri := fmt.Sprintf("%s/udid/%v", uriComputers, udid)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
@@ -368,7 +368,7 @@ func (c *Client) GetComputerByUDID(udid string) (*Computer, error) {
 func (c *Client) GetComputers() (*ComputersResponse, error) {
 	out := &ComputersResponse{}
 	uri := fmt.Sprintf("%s/subset/basic", uriComputers)
-	err := c.doRequest("GET", uri, nil, out)
+	err := c.doRequest("GET", uri, nil, nil, out)
 
 	return out, err
 }

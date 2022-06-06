@@ -107,14 +107,14 @@ func (c *Client) GetComputerConfigurationProfileByName(name string) (*ComputerCo
 func (c *Client) GetComputerConfigurationProfile(id int) (*ComputerConfigurationProfile, error) {
 	var out *ComputerConfigurationProfile
 	uri := fmt.Sprintf("%s/id/%v", uriComputerConfigurationProfiles, id)
-	err := c.doRequest("GET", uri, nil, &out)
+	err := c.doRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
 
 func (c *Client) GetComputerConfigurationProfiles() (*ComputerConfigurationProfileListResponse, error) {
 	out := &ComputerConfigurationProfileListResponse{}
-	err := c.doRequest("GET", uriComputerConfigurationProfiles, nil, out)
+	err := c.doRequest("GET", uriComputerConfigurationProfiles, nil, nil, out)
 
 	return out, err
 }
@@ -137,7 +137,7 @@ func (c *Client) CreateComputerConfigurationProfile(d *ComputerConfigurationProf
 		ComputerConfigurationProfile: d,
 	}
 
-	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerConfigurationProfiles), reqBody, res)
+	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriComputerConfigurationProfiles), reqBody, nil, res)
 	return res.ID, err
 }
 
@@ -152,7 +152,7 @@ func (c *Client) UpdateComputerConfigurationProfile(d *ComputerConfigurationProf
 		ComputerConfigurationProfile: d,
 	}
 
-	err := c.doRequest("PUT", uri, reqBody, res)
+	err := c.doRequest("PUT", uri, reqBody, nil, res)
 
 	return res.General.ID, err
 }
@@ -161,7 +161,7 @@ func (c *Client) DeleteComputerConfigurationProfile(id int) (int, error) {
 
 	profile := &ComputerConfigurationProfile{}
 	uri := fmt.Sprintf("%s/id/%v", uriComputerConfigurationProfiles, id)
-	err := c.doRequest("DELETE", uri, nil, profile)
+	err := c.doRequest("DELETE", uri, nil, nil, profile)
 
 	return profile.General.ID, err
 }

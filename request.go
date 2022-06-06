@@ -8,6 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"regexp"
 	"strings"
 
@@ -55,8 +56,8 @@ func (e *errorInfo) Body() string {
 }
 
 // doJsonRequest ... A method to send a request to the jamf api
-func (c *Client) doRequest(method, api string, reqbody, out interface{}) error {
-	req, err := c.createRequest(method, api, reqbody)
+func (c *Client) doRequest(method, api string, reqbody interface{}, params *url.Values, out interface{}) error {
+	req, err := c.createRequest(method, api, params, reqbody)
 	if err != nil {
 		return err
 	}
@@ -156,7 +157,7 @@ func (c *Client) uriForAPI(api string) string {
 }
 
 // createRequest ...　Generate a http request for api.
-func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.Request, error) {
+func (c *Client) createRequest(method, api string, params *url.Values, reqbody interface{}) (*http.Request, error) {
 	var bodyReader io.Reader
 
 	// Convert the request body to the appropriate type
@@ -179,26 +180,22 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 
 	req, err := http.NewRequest(method, c.uriForAPI(api), bodyReader)
 	if err != nil {
-		return req, err
+		return nil, err
 	}
 
-	// Ensuring valid token
-	if c.token != nil {
-		err = c.refreshAuthToken()
-		if err != nil {
-			return req, err
-		}
-		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
-	} else {
-
-		// Handle inital token setup in client setup
-		req.SetBasicAuth(c.username, c.password)
+	if params != nil {
+		req.URL.RawQuery = params.Encode()
 	}
 
-	if strings.Contains(api, "JSSResource") {
+	// Set the necessary headers
+	if strings.Contains(api, "JSSResource") || c.token == nil {
 		req.Header.Add("Content-Type", "application/xml")
+		req.SetBasicAuth(c.username, c.password)
 	} else {
 		req.Header.Add("Content-Type", "application/json")
+		if c.token != nil {
+			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+		}
 	}
 
 	for k, v := range c.ExtraHeader {
