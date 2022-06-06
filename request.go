@@ -180,7 +180,7 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 
 	req, err := http.NewRequest(method, c.uriForAPI(api), bodyReader)
 	if err != nil {
-		return nil, err
+		return req, err
 	}
 
 	if params != nil {
@@ -195,12 +195,13 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 		}
 		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
 	} else {
+
 		// Handle inital token setup in client setup
 		req.SetBasicAuth(c.username, c.password)
 	}
 
 	// Set the necessary headers
-	if strings.Contains(api, "JSSResource") || c.token == nil {
+	if strings.Contains(api, "JSSResource") {
 		req.Header.Add("Content-Type", "application/xml")
 	} else {
 		req.Header.Add("Content-Type", "application/json")
