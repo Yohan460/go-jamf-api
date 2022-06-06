@@ -179,18 +179,26 @@ func (c *Client) createRequest(method, api string, reqbody interface{}) (*http.R
 
 	req, err := http.NewRequest(method, c.uriForAPI(api), bodyReader)
 	if err != nil {
-		return nil, err
+		return req, err
 	}
 
-	// Set the necessary headers
-	if strings.Contains(api, "JSSResource") || c.token == nil {
-		req.Header.Add("Content-Type", "application/xml")
+	// Ensuring valid token
+	if c.token != nil {
+		err = c.refreshAuthToken()
+		if err != nil {
+			return req, err
+		}
+		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
+	} else {
+
+		// Handle inital token setup in client setup
 		req.SetBasicAuth(c.username, c.password)
+	}
+
+	if strings.Contains(api, "JSSResource") {
+		req.Header.Add("Content-Type", "application/xml")
 	} else {
 		req.Header.Add("Content-Type", "application/json")
-		if c.token != nil {
-			req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
-		}
 	}
 
 	for k, v := range c.ExtraHeader {
