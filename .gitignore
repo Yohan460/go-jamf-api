@@ -9,3 +9,6 @@ tmp/
 
 ### .gitkeep ###
 !.gitkeep
+
+### IDE Settings ###
+.vscode/
