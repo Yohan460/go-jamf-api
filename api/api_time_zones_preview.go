@@ -19,12 +19,30 @@ import (
 )
 
 
+type TimeZonesPreviewApi interface {
+
+	/*
+	V1TimeZonesGet Return information about the currently supported Time Zones 
+
+	Returns information about the currently supported time zones
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1TimeZonesGetRequest
+	*/
+	V1TimeZonesGet(ctx context.Context) ApiV1TimeZonesGetRequest
+
+	// V1TimeZonesGetExecute executes the request
+	//  @return []TimeZone
+	V1TimeZonesGetExecute(r ApiV1TimeZonesGetRequest) ([]TimeZone, *http.Response, error)
+}
+
 // TimeZonesPreviewApiService TimeZonesPreviewApi service
 type TimeZonesPreviewApiService service
 
 type ApiV1TimeZonesGetRequest struct {
 	ctx context.Context
-	ApiService *TimeZonesPreviewApiService
+	ApiService TimeZonesPreviewApi
 }
 
 func (r ApiV1TimeZonesGetRequest) Execute() ([]TimeZone, *http.Response, error) {

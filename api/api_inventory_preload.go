@@ -21,12 +21,602 @@ import (
 )
 
 
+type InventoryPreloadApi interface {
+
+	/*
+	InventoryPreloadCsvTemplateGet Get the Inventory Preload CSV template 
+
+	Retrieves the Inventory Preload CSV template.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadCsvTemplateGetRequest
+
+	Deprecated
+	*/
+	InventoryPreloadCsvTemplateGet(ctx context.Context) ApiInventoryPreloadCsvTemplateGetRequest
+
+	// InventoryPreloadCsvTemplateGetExecute executes the request
+	//  @return map[string]interface{}
+	// Deprecated
+	InventoryPreloadCsvTemplateGetExecute(r ApiInventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	InventoryPreloadDelete Delete all Inventory Preload records 
+
+	Deletes all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadDeleteRequest
+
+	Deprecated
+	*/
+	InventoryPreloadDelete(ctx context.Context) ApiInventoryPreloadDeleteRequest
+
+	// InventoryPreloadDeleteExecute executes the request
+	// Deprecated
+	InventoryPreloadDeleteExecute(r ApiInventoryPreloadDeleteRequest) (*http.Response, error)
+
+	/*
+	InventoryPreloadGet Return all Inventory Preload records 
+
+	Returns all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadGetRequest
+
+	Deprecated
+	*/
+	InventoryPreloadGet(ctx context.Context) ApiInventoryPreloadGetRequest
+
+	// InventoryPreloadGetExecute executes the request
+	//  @return []InventoryPreloadRecordSearchResults
+	// Deprecated
+	InventoryPreloadGetExecute(r ApiInventoryPreloadGetRequest) ([]InventoryPreloadRecordSearchResults, *http.Response, error)
+
+	/*
+	InventoryPreloadHistoryGet Get Inventory Preload history entries 
+
+	Gets Inventory Preload history entries.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadHistoryGetRequest
+
+	Deprecated
+	*/
+	InventoryPreloadHistoryGet(ctx context.Context) ApiInventoryPreloadHistoryGetRequest
+
+	// InventoryPreloadHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	// Deprecated
+	InventoryPreloadHistoryGetExecute(r ApiInventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	InventoryPreloadHistoryNotesPost Add Inventory Preload history object notes 
+
+	Adds Inventory Preload history object notes.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadHistoryNotesPostRequest
+
+	Deprecated
+	*/
+	InventoryPreloadHistoryNotesPost(ctx context.Context) ApiInventoryPreloadHistoryNotesPostRequest
+
+	// InventoryPreloadHistoryNotesPostExecute executes the request
+	//  @return ObjectHistory
+	// Deprecated
+	InventoryPreloadHistoryNotesPostExecute(r ApiInventoryPreloadHistoryNotesPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	InventoryPreloadIdDelete Delete an Inventory Preload record 
+
+	Deletes an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiInventoryPreloadIdDeleteRequest
+
+	Deprecated
+	*/
+	InventoryPreloadIdDelete(ctx context.Context, id int32) ApiInventoryPreloadIdDeleteRequest
+
+	// InventoryPreloadIdDeleteExecute executes the request
+	// Deprecated
+	InventoryPreloadIdDeleteExecute(r ApiInventoryPreloadIdDeleteRequest) (*http.Response, error)
+
+	/*
+	InventoryPreloadIdGet Get an Inventory Preload record 
+
+	Retrieves an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiInventoryPreloadIdGetRequest
+
+	Deprecated
+	*/
+	InventoryPreloadIdGet(ctx context.Context, id int32) ApiInventoryPreloadIdGetRequest
+
+	// InventoryPreloadIdGetExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	InventoryPreloadIdGetExecute(r ApiInventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	InventoryPreloadIdPut Update an Inventory Preload record 
+
+	Updates an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiInventoryPreloadIdPutRequest
+
+	Deprecated
+	*/
+	InventoryPreloadIdPut(ctx context.Context, id int32) ApiInventoryPreloadIdPutRequest
+
+	// InventoryPreloadIdPutExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	InventoryPreloadIdPutExecute(r ApiInventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	InventoryPreloadPost Create a new Inventory Preload record using JSON or CSV 
+
+	Create a new Inventory Preload record using JSON or CSV.
+A CSV template can be downloaded from /api/inventory-preload/csv-template.
+Serial number and device type are required. All other fields are optional.
+When a matching serial number exists in the Inventory Preload data, the record will be overwritten with the CSV data.
+If the CSV file contains a new username and an email address is provided, the new user is created in Jamf Pro.
+If the CSV file contains an existing username, the following user-related fields are updated in Jamf Pro.
+Full Name,
+Email Address,
+Phone Number,
+Position.
+This endpoint does not do full validation of each record in the CSV data.
+To do full validation, use the /inventory-preload/validate-csv endpoint first.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadPostRequest
+
+	Deprecated
+	*/
+	InventoryPreloadPost(ctx context.Context) ApiInventoryPreloadPostRequest
+
+	// InventoryPreloadPostExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	InventoryPreloadPostExecute(r ApiInventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	InventoryPreloadValidateCsvPost Validate a given CSV file 
+
+	Validate a given CSV file.
+Serial number and device type are required. All other fields are optional.
+A CSV template can be downloaded from /api/inventory-preload/csv-template.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiInventoryPreloadValidateCsvPostRequest
+
+	Deprecated
+	*/
+	InventoryPreloadValidateCsvPost(ctx context.Context) ApiInventoryPreloadValidateCsvPostRequest
+
+	// InventoryPreloadValidateCsvPostExecute executes the request
+	//  @return InventoryPreloadCsvValidationSuccess
+	// Deprecated
+	InventoryPreloadValidateCsvPostExecute(r ApiInventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+
+	/*
+	V1InventoryPreloadCsvTemplateGet Retrieve the Inventory Preload CSV template 
+
+	Retrieves the Inventory Preload CSV template.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadCsvTemplateGetRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV1InventoryPreloadCsvTemplateGetRequest
+
+	// V1InventoryPreloadCsvTemplateGetExecute executes the request
+	//  @return map[string]interface{}
+	// Deprecated
+	V1InventoryPreloadCsvTemplateGetExecute(r ApiV1InventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	V1InventoryPreloadDelete Delete all Inventory Preload records 
+
+	Deletes all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadDeleteRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadDelete(ctx context.Context) ApiV1InventoryPreloadDeleteRequest
+
+	// V1InventoryPreloadDeleteExecute executes the request
+	// Deprecated
+	V1InventoryPreloadDeleteExecute(r ApiV1InventoryPreloadDeleteRequest) (*http.Response, error)
+
+	/*
+	V1InventoryPreloadGet Return all Inventory Preload records 
+
+	Returns all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadGetRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadGet(ctx context.Context) ApiV1InventoryPreloadGetRequest
+
+	// V1InventoryPreloadGetExecute executes the request
+	//  @return InventoryPreloadRecordSearchResults
+	// Deprecated
+	V1InventoryPreloadGetExecute(r ApiV1InventoryPreloadGetRequest) (*InventoryPreloadRecordSearchResults, *http.Response, error)
+
+	/*
+	V1InventoryPreloadHistoryGet Get Inventory Preload history entries 
+
+	Gets Inventory Preload history entries.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadHistoryGetRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadHistoryGet(ctx context.Context) ApiV1InventoryPreloadHistoryGetRequest
+
+	// V1InventoryPreloadHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	// Deprecated
+	V1InventoryPreloadHistoryGetExecute(r ApiV1InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1InventoryPreloadHistoryPost Add Inventory Preload history object notes 
+
+	Adds Inventory Preload history object notes.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadHistoryPostRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadHistoryPost(ctx context.Context) ApiV1InventoryPreloadHistoryPostRequest
+
+	// V1InventoryPreloadHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	// Deprecated
+	V1InventoryPreloadHistoryPostExecute(r ApiV1InventoryPreloadHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1InventoryPreloadIdDelete Delete an Inventory Preload record 
+
+	Deletes an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV1InventoryPreloadIdDeleteRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadIdDelete(ctx context.Context, id int32) ApiV1InventoryPreloadIdDeleteRequest
+
+	// V1InventoryPreloadIdDeleteExecute executes the request
+	// Deprecated
+	V1InventoryPreloadIdDeleteExecute(r ApiV1InventoryPreloadIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1InventoryPreloadIdGet Get an Inventory Preload record 
+
+	Retrieves an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV1InventoryPreloadIdGetRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadIdGet(ctx context.Context, id int32) ApiV1InventoryPreloadIdGetRequest
+
+	// V1InventoryPreloadIdGetExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	V1InventoryPreloadIdGetExecute(r ApiV1InventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	V1InventoryPreloadIdPut Update an Inventory Preload record 
+
+	Updates an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV1InventoryPreloadIdPutRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadIdPut(ctx context.Context, id int32) ApiV1InventoryPreloadIdPutRequest
+
+	// V1InventoryPreloadIdPutExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	V1InventoryPreloadIdPutExecute(r ApiV1InventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	V1InventoryPreloadPost Create a new Inventory Preload record using JSON or CSV 
+
+	Create a new Inventory Preload record using JSON or CSV.
+A CSV template can be downloaded from /api/inventory-preload/csv-template.
+Serial number and device type are required. All other fields are optional.
+When a matching serial number exists in the Inventory Preload data, the record will be overwritten with the CSV data.
+If the CSV file contains a new username and an email address is provided, the new user is created in Jamf Pro.
+If the CSV file contains an existing username, the following user-related fields are updated in Jamf Pro.
+Full Name,
+Email Address,
+Phone Number,
+Position.
+This endpoint does not do full validation of each record in the CSV data.
+To do full validation, use the /inventory-preload/validate-csv endpoint first.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadPostRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadPost(ctx context.Context) ApiV1InventoryPreloadPostRequest
+
+	// V1InventoryPreloadPostExecute executes the request
+	//  @return InventoryPreloadRecord
+	// Deprecated
+	V1InventoryPreloadPostExecute(r ApiV1InventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
+
+	/*
+	V1InventoryPreloadValidateCsvPost Validate a given CSV file 
+
+	Validate a given CSV file.
+Serial number and device type are required. All other fields are optional.
+A CSV template can be downloaded from /api/inventory-preload/csv-template.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryPreloadValidateCsvPostRequest
+
+	Deprecated
+	*/
+	V1InventoryPreloadValidateCsvPost(ctx context.Context) ApiV1InventoryPreloadValidateCsvPostRequest
+
+	// V1InventoryPreloadValidateCsvPostExecute executes the request
+	//  @return InventoryPreloadCsvValidationSuccess
+	// Deprecated
+	V1InventoryPreloadValidateCsvPostExecute(r ApiV1InventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+
+	/*
+	V2InventoryPreloadCsvGet Download all Inventory Preload records
+
+	Returns all Inventory Preload records as a CSV file.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadCsvGetRequest
+	*/
+	V2InventoryPreloadCsvGet(ctx context.Context) ApiV2InventoryPreloadCsvGetRequest
+
+	// V2InventoryPreloadCsvGetExecute executes the request
+	//  @return string
+	V2InventoryPreloadCsvGetExecute(r ApiV2InventoryPreloadCsvGetRequest) (string, *http.Response, error)
+
+	/*
+	V2InventoryPreloadCsvPost Create one or more new Inventory Preload records using CSV 
+
+	Create one or more new Inventory Preload records using CSV.
+A CSV template can be downloaded from /v2/inventory-preload/csv-template.
+Serial number and device type are required. All other fields are optional.
+When a matching serial number exists in the Inventory Preload data, the record will be overwritten with the CSV data.
+If the CSV file contains a new username and an email address is provided, the new user is created in Jamf Pro.
+If the CSV file contains an existing username, the following user-related fields are updated in Jamf Pro.
+Full Name,
+Email Address,
+Phone Number,
+Position.
+This endpoint does not do full validation of each record in the CSV data.
+To do full validation, use the `/v2/inventory-preload/csv-validate` endpoint first.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadCsvPostRequest
+	*/
+	V2InventoryPreloadCsvPost(ctx context.Context) ApiV2InventoryPreloadCsvPostRequest
+
+	// V2InventoryPreloadCsvPostExecute executes the request
+	//  @return []HrefResponse
+	V2InventoryPreloadCsvPostExecute(r ApiV2InventoryPreloadCsvPostRequest) ([]HrefResponse, *http.Response, error)
+
+	/*
+	V2InventoryPreloadCsvTemplateGet Download the Inventory Preload CSV template
+
+	Retrieves the Inventory Preload CSV file template.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadCsvTemplateGetRequest
+	*/
+	V2InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV2InventoryPreloadCsvTemplateGetRequest
+
+	// V2InventoryPreloadCsvTemplateGetExecute executes the request
+	//  @return string
+	V2InventoryPreloadCsvTemplateGetExecute(r ApiV2InventoryPreloadCsvTemplateGetRequest) (string, *http.Response, error)
+
+	/*
+	V2InventoryPreloadCsvValidatePost Validate a given CSV file 
+
+	Validate a given CSV file.
+Serial number and device type are required. All other fields are optional.
+A CSV template can be downloaded from `/v2/inventory-preload/csv-template`.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadCsvValidatePostRequest
+	*/
+	V2InventoryPreloadCsvValidatePost(ctx context.Context) ApiV2InventoryPreloadCsvValidatePostRequest
+
+	// V2InventoryPreloadCsvValidatePostExecute executes the request
+	//  @return InventoryPreloadCsvValidationSuccess
+	V2InventoryPreloadCsvValidatePostExecute(r ApiV2InventoryPreloadCsvValidatePostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+
+	/*
+	V2InventoryPreloadEaColumnsGet Retrieve a list of extension attribute columns 
+
+	Retrieve a list of extension attribute columns currently associated
+with inventory preload records
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadEaColumnsGetRequest
+	*/
+	V2InventoryPreloadEaColumnsGet(ctx context.Context) ApiV2InventoryPreloadEaColumnsGetRequest
+
+	// V2InventoryPreloadEaColumnsGetExecute executes the request
+	//  @return InventoryPreloadExtensionAttributeColumnResult
+	V2InventoryPreloadEaColumnsGetExecute(r ApiV2InventoryPreloadEaColumnsGetRequest) (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error)
+
+	/*
+	V2InventoryPreloadExportPost Export a collection of inventory preload records 
+
+	Export a collection of inventory preload records
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadExportPostRequest
+	*/
+	V2InventoryPreloadExportPost(ctx context.Context) ApiV2InventoryPreloadExportPostRequest
+
+	// V2InventoryPreloadExportPostExecute executes the request
+	//  @return interface{}
+	V2InventoryPreloadExportPostExecute(r ApiV2InventoryPreloadExportPostRequest) (interface{}, *http.Response, error)
+
+	/*
+	V2InventoryPreloadHistoryGet Get Inventory Preload history entries 
+
+	Gets Inventory Preload history entries.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadHistoryGetRequest
+	*/
+	V2InventoryPreloadHistoryGet(ctx context.Context) ApiV2InventoryPreloadHistoryGetRequest
+
+	// V2InventoryPreloadHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V2InventoryPreloadHistoryGetExecute(r ApiV2InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V2InventoryPreloadHistoryPost Add Inventory Preload history object notes
+
+	Adds Inventory Preload history object notes.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadHistoryPostRequest
+	*/
+	V2InventoryPreloadHistoryPost(ctx context.Context) ApiV2InventoryPreloadHistoryPostRequest
+
+	// V2InventoryPreloadHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V2InventoryPreloadHistoryPostExecute(r ApiV2InventoryPreloadHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsDeleteAllPost Delete all Inventory Preload records 
+
+	Deletes all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadRecordsDeleteAllPostRequest
+	*/
+	V2InventoryPreloadRecordsDeleteAllPost(ctx context.Context) ApiV2InventoryPreloadRecordsDeleteAllPostRequest
+
+	// V2InventoryPreloadRecordsDeleteAllPostExecute executes the request
+	V2InventoryPreloadRecordsDeleteAllPostExecute(r ApiV2InventoryPreloadRecordsDeleteAllPostRequest) (*http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsGet Return all Inventory Preload records
+
+	Returns all Inventory Preload records.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadRecordsGetRequest
+	*/
+	V2InventoryPreloadRecordsGet(ctx context.Context) ApiV2InventoryPreloadRecordsGetRequest
+
+	// V2InventoryPreloadRecordsGetExecute executes the request
+	//  @return InventoryPreloadRecordSearchResultsV2
+	V2InventoryPreloadRecordsGetExecute(r ApiV2InventoryPreloadRecordsGetRequest) (*InventoryPreloadRecordSearchResultsV2, *http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsIdDelete Delete an Inventory Preload record 
+
+	Deletes an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV2InventoryPreloadRecordsIdDeleteRequest
+	*/
+	V2InventoryPreloadRecordsIdDelete(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdDeleteRequest
+
+	// V2InventoryPreloadRecordsIdDeleteExecute executes the request
+	V2InventoryPreloadRecordsIdDeleteExecute(r ApiV2InventoryPreloadRecordsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsIdGet Get an Inventory Preload record
+
+	Retrieves an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV2InventoryPreloadRecordsIdGetRequest
+	*/
+	V2InventoryPreloadRecordsIdGet(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdGetRequest
+
+	// V2InventoryPreloadRecordsIdGetExecute executes the request
+	//  @return InventoryPreloadRecordV2
+	V2InventoryPreloadRecordsIdGetExecute(r ApiV2InventoryPreloadRecordsIdGetRequest) (*InventoryPreloadRecordV2, *http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsIdPut Update an Inventory Preload record
+
+	Updates an Inventory Preload record.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Inventory Preload identifier
+	@return ApiV2InventoryPreloadRecordsIdPutRequest
+	*/
+	V2InventoryPreloadRecordsIdPut(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdPutRequest
+
+	// V2InventoryPreloadRecordsIdPutExecute executes the request
+	//  @return InventoryPreloadRecordV2
+	V2InventoryPreloadRecordsIdPutExecute(r ApiV2InventoryPreloadRecordsIdPutRequest) (*InventoryPreloadRecordV2, *http.Response, error)
+
+	/*
+	V2InventoryPreloadRecordsPost Create a new Inventory Preload record using JSON
+
+	Create a new Inventory Preload record using JSON.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2InventoryPreloadRecordsPostRequest
+	*/
+	V2InventoryPreloadRecordsPost(ctx context.Context) ApiV2InventoryPreloadRecordsPostRequest
+
+	// V2InventoryPreloadRecordsPostExecute executes the request
+	//  @return HrefResponse
+	V2InventoryPreloadRecordsPostExecute(r ApiV2InventoryPreloadRecordsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // InventoryPreloadApiService InventoryPreloadApi service
 type InventoryPreloadApiService service
 
 type ApiInventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiInventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -128,7 +718,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGetExecute(r Api
 
 type ApiInventoryPreloadDeleteRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiInventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
@@ -219,7 +809,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadDeleteExecute(r ApiInventor
 
 type ApiInventoryPreloadGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	pagesize *int32
 	sort *string
@@ -358,7 +948,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPr
 
 type ApiInventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -508,7 +1098,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInve
 
 type ApiInventoryPreloadHistoryNotesPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -631,7 +1221,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r A
 
 type ApiInventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 }
 
@@ -735,7 +1325,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdDeleteExecute(r ApiInvent
 
 type ApiInventoryPreloadIdGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 }
 
@@ -850,7 +1440,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventory
 
 type ApiInventoryPreloadIdPutRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
@@ -977,7 +1567,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventory
 
 type ApiInventoryPreloadPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
@@ -1112,7 +1702,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryP
 
 type ApiInventoryPreloadValidateCsvPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	body *map[string]interface{}
 }
 
@@ -1238,7 +1828,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r Ap
 
 type ApiV1InventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV1InventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1340,7 +1930,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGetExecute(r A
 
 type ApiV1InventoryPreloadDeleteRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV1InventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
@@ -1431,7 +2021,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadDeleteExecute(r ApiV1Inve
 
 type ApiV1InventoryPreloadGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -1581,7 +2171,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1Invento
 
 type ApiV1InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -1731,7 +2321,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1
 
 type ApiV1InventoryPreloadHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -1854,7 +2444,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV
 
 type ApiV1InventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 }
 
@@ -1958,7 +2548,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdDeleteExecute(r ApiV1In
 
 type ApiV1InventoryPreloadIdGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 }
 
@@ -2073,7 +2663,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1Inven
 
 type ApiV1InventoryPreloadIdPutRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id int32
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
@@ -2200,7 +2790,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1Inven
 
 type ApiV1InventoryPreloadPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
@@ -2335,7 +2925,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1Invent
 
 type ApiV1InventoryPreloadValidateCsvPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	body *map[string]interface{}
 }
 
@@ -2461,7 +3051,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r 
 
 type ApiV2InventoryPreloadCsvGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV2InventoryPreloadCsvGetRequest) Execute() (string, *http.Response, error) {
@@ -2560,7 +3150,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGetExecute(r ApiV2Inve
 
 type ApiV2InventoryPreloadCsvPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	file *string
 }
 
@@ -2691,7 +3281,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 
 type ApiV2InventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV2InventoryPreloadCsvTemplateGetRequest) Execute() (string, *http.Response, error) {
@@ -2790,7 +3380,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGetExecute(r A
 
 type ApiV2InventoryPreloadCsvValidatePostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	file *string
 }
 
@@ -2912,7 +3502,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 
 type ApiV2InventoryPreloadEaColumnsGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV2InventoryPreloadEaColumnsGetRequest) Execute() (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error) {
@@ -3013,7 +3603,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGetExecute(r Api
 
 type ApiV2InventoryPreloadExportPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	exportFields *[]string
 	exportLabels *[]string
 	page *int32
@@ -3213,7 +3803,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 
 type ApiV2InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -3358,7 +3948,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2
 
 type ApiV2InventoryPreloadHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -3478,7 +4068,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV
 
 type ApiV2InventoryPreloadRecordsDeleteAllPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 }
 
 func (r ApiV2InventoryPreloadRecordsDeleteAllPostRequest) Execute() (*http.Response, error) {
@@ -3566,7 +4156,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsDeleteAllPostExecu
 
 type ApiV2InventoryPreloadRecordsGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -3711,7 +4301,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2
 
 type ApiV2InventoryPreloadRecordsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id string
 }
 
@@ -3812,7 +4402,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDeleteExecute(r 
 
 type ApiV2InventoryPreloadRecordsIdGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id string
 }
 
@@ -3924,7 +4514,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r Api
 
 type ApiV2InventoryPreloadRecordsIdPutRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	id string
 	inventoryPreloadRecordV2 *InventoryPreloadRecordV2
 }
@@ -4048,7 +4638,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r Api
 
 type ApiV2InventoryPreloadRecordsPostRequest struct {
 	ctx context.Context
-	ApiService *InventoryPreloadApiService
+	ApiService InventoryPreloadApi
 	inventoryPreloadRecordV2 *InventoryPreloadRecordV2
 }
 

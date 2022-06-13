@@ -22,12 +22,304 @@ import (
 )
 
 
+type EnrollmentCustomizationApi interface {
+
+	/*
+	V1EnrollmentCustomizationGet Retrieve sorted and paged Enrollment Customizations 
+
+	Retrieves sorted and paged Enrollment Customizations
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EnrollmentCustomizationGetRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationGet(ctx context.Context) ApiV1EnrollmentCustomizationGetRequest
+
+	// V1EnrollmentCustomizationGetExecute executes the request
+	//  @return EnrollmentCustomizationSearchResults
+	// Deprecated
+	V1EnrollmentCustomizationGetExecute(r ApiV1EnrollmentCustomizationGetRequest) (*EnrollmentCustomizationSearchResults, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdDelete Delete an Enrollment Customization with the supplied id 
+
+	Deletes an Enrollment Customization with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdDeleteRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdDeleteRequest
+
+	// V1EnrollmentCustomizationIdDeleteExecute executes the request
+	// Deprecated
+	V1EnrollmentCustomizationIdDeleteExecute(r ApiV1EnrollmentCustomizationIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdGet Retrieve an Enrollment Customization with the supplied id 
+
+	Retrieves an Enrollment Customization with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdGetRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdGetRequest
+
+	// V1EnrollmentCustomizationIdGetExecute executes the request
+	//  @return GetEnrollmentCustomization
+	// Deprecated
+	V1EnrollmentCustomizationIdGetExecute(r ApiV1EnrollmentCustomizationIdGetRequest) (*GetEnrollmentCustomization, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdHistoryGet Get sorted and paged Enrollment Customization history objects 
+
+	Gets sorted and paged enrollment customization history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdHistoryGetRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest
+
+	// V1EnrollmentCustomizationIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	// Deprecated
+	V1EnrollmentCustomizationIdHistoryGetExecute(r ApiV1EnrollmentCustomizationIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdHistoryPost Add Enrollment Customization history object notes 
+
+	Adds enrollment customization history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdHistoryPostRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryPostRequest
+
+	// V1EnrollmentCustomizationIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	// Deprecated
+	V1EnrollmentCustomizationIdHistoryPostExecute(r ApiV1EnrollmentCustomizationIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdPrestagesGet Retrieve the list of Prestages using this Enrollment Customization 
+
+	Retrieves the list of Prestages using this Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdPrestagesGetRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPrestagesGetRequest
+
+	// V1EnrollmentCustomizationIdPrestagesGetExecute executes the request
+	//  @return PrestageDependencies
+	// Deprecated
+	V1EnrollmentCustomizationIdPrestagesGetExecute(r ApiV1EnrollmentCustomizationIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdPut Update an Enrollment Customization 
+
+	Updates an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdPutRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPutRequest
+
+	// V1EnrollmentCustomizationIdPutExecute executes the request
+	//  @return GetEnrollmentCustomization
+	// Deprecated
+	V1EnrollmentCustomizationIdPutExecute(r ApiV1EnrollmentCustomizationIdPutRequest) (*GetEnrollmentCustomization, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationImagesPost Upload an image
+
+	Uploads an image
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EnrollmentCustomizationImagesPostRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationImagesPost(ctx context.Context) ApiV1EnrollmentCustomizationImagesPostRequest
+
+	// V1EnrollmentCustomizationImagesPostExecute executes the request
+	//  @return BrandingImageUrl
+	// Deprecated
+	V1EnrollmentCustomizationImagesPostExecute(r ApiV1EnrollmentCustomizationImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationPost Create an Enrollment Customization 
+
+	Create an enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EnrollmentCustomizationPostRequest
+
+	Deprecated
+	*/
+	V1EnrollmentCustomizationPost(ctx context.Context) ApiV1EnrollmentCustomizationPostRequest
+
+	// V1EnrollmentCustomizationPostExecute executes the request
+	//  @return GetEnrollmentCustomization
+	// Deprecated
+	V1EnrollmentCustomizationPostExecute(r ApiV1EnrollmentCustomizationPostRequest) (*GetEnrollmentCustomization, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsGet Retrieve sorted and paged Enrollment Customizations 
+
+	Retrieves sorted and paged Enrollment Customizations
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2EnrollmentCustomizationsGetRequest
+	*/
+	V2EnrollmentCustomizationsGet(ctx context.Context) ApiV2EnrollmentCustomizationsGetRequest
+
+	// V2EnrollmentCustomizationsGetExecute executes the request
+	//  @return EnrollmentCustomizationSearchResultsV2
+	V2EnrollmentCustomizationsGetExecute(r ApiV2EnrollmentCustomizationsGetRequest) (*EnrollmentCustomizationSearchResultsV2, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdDelete Delete an Enrollment Customization with the supplied id 
+
+	Deletes an Enrollment Customization with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdDeleteRequest
+	*/
+	V2EnrollmentCustomizationsIdDelete(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdDeleteRequest
+
+	// V2EnrollmentCustomizationsIdDeleteExecute executes the request
+	V2EnrollmentCustomizationsIdDeleteExecute(r ApiV2EnrollmentCustomizationsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdGet Retrieve an Enrollment Customization with the supplied id 
+
+	Retrieves an Enrollment Customization with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdGetRequest
+	*/
+	V2EnrollmentCustomizationsIdGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdGetRequest
+
+	// V2EnrollmentCustomizationsIdGetExecute executes the request
+	//  @return EnrollmentCustomizationV2
+	V2EnrollmentCustomizationsIdGetExecute(r ApiV2EnrollmentCustomizationsIdGetRequest) (*EnrollmentCustomizationV2, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdHistoryGet Get sorted and paged Enrollment Customization history objects 
+
+	Gets sorted and paged enrollment customization history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdHistoryGetRequest
+	*/
+	V2EnrollmentCustomizationsIdHistoryGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryGetRequest
+
+	// V2EnrollmentCustomizationsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V2EnrollmentCustomizationsIdHistoryGetExecute(r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdHistoryPost Add Enrollment Customization history object notes 
+
+	Adds enrollment customization history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdHistoryPostRequest
+	*/
+	V2EnrollmentCustomizationsIdHistoryPost(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryPostRequest
+
+	// V2EnrollmentCustomizationsIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V2EnrollmentCustomizationsIdHistoryPostExecute(r ApiV2EnrollmentCustomizationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdPrestagesGet Retrieve the list of Prestages using this Enrollment Customization 
+
+	Retrieves the list of Prestages using this Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdPrestagesGetRequest
+	*/
+	V2EnrollmentCustomizationsIdPrestagesGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPrestagesGetRequest
+
+	// V2EnrollmentCustomizationsIdPrestagesGetExecute executes the request
+	//  @return PrestageDependencies
+	V2EnrollmentCustomizationsIdPrestagesGetExecute(r ApiV2EnrollmentCustomizationsIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsIdPut Update an Enrollment Customization 
+
+	Updates an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV2EnrollmentCustomizationsIdPutRequest
+	*/
+	V2EnrollmentCustomizationsIdPut(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPutRequest
+
+	// V2EnrollmentCustomizationsIdPutExecute executes the request
+	//  @return EnrollmentCustomizationV2
+	V2EnrollmentCustomizationsIdPutExecute(r ApiV2EnrollmentCustomizationsIdPutRequest) (*EnrollmentCustomizationV2, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsImagesPost Upload an image
+
+	Uploads an image
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2EnrollmentCustomizationsImagesPostRequest
+	*/
+	V2EnrollmentCustomizationsImagesPost(ctx context.Context) ApiV2EnrollmentCustomizationsImagesPostRequest
+
+	// V2EnrollmentCustomizationsImagesPostExecute executes the request
+	//  @return BrandingImageUrl
+	V2EnrollmentCustomizationsImagesPostExecute(r ApiV2EnrollmentCustomizationsImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsPost Create an Enrollment Customization 
+
+	Create an enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2EnrollmentCustomizationsPostRequest
+	*/
+	V2EnrollmentCustomizationsPost(ctx context.Context) ApiV2EnrollmentCustomizationsPostRequest
+
+	// V2EnrollmentCustomizationsPostExecute executes the request
+	//  @return HrefResponse
+	V2EnrollmentCustomizationsPostExecute(r ApiV2EnrollmentCustomizationsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // EnrollmentCustomizationApiService EnrollmentCustomizationApi service
 type EnrollmentCustomizationApiService service
 
 type ApiV1EnrollmentCustomizationGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -177,7 +469,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(
 
 type ApiV1EnrollmentCustomizationIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 }
 
@@ -272,7 +564,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDeleteExe
 
 type ApiV1EnrollmentCustomizationIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 }
 
@@ -387,7 +679,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecut
 
 type ApiV1EnrollmentCustomizationIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 	page *int32
 	size *int32
@@ -549,7 +841,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGe
 
 type ApiV1EnrollmentCustomizationIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -676,7 +968,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 
 type ApiV1EnrollmentCustomizationIdPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 }
 
@@ -791,7 +1083,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 
 type ApiV1EnrollmentCustomizationIdPutRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id int32
 	enrollmentCustomization *EnrollmentCustomization
 }
@@ -918,7 +1210,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecut
 
 type ApiV1EnrollmentCustomizationImagesPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	file **os.File
 }
 
@@ -1044,7 +1336,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostE
 
 type ApiV1EnrollmentCustomizationPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	enrollmentCustomization *EnrollmentCustomization
 }
 
@@ -1158,7 +1450,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPostExecute
 
 type ApiV2EnrollmentCustomizationsGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -1293,7 +1585,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute
 
 type ApiV2EnrollmentCustomizationsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 }
 
@@ -1385,7 +1677,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDeleteEx
 
 type ApiV2EnrollmentCustomizationsIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 }
 
@@ -1497,7 +1789,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecu
 
 type ApiV2EnrollmentCustomizationsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 	page *int32
 	pageSize *int32
@@ -1636,7 +1928,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryG
 
 type ApiV2EnrollmentCustomizationsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -1760,7 +2052,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 
 type ApiV2EnrollmentCustomizationsIdPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 }
 
@@ -1872,7 +2164,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 
 type ApiV2EnrollmentCustomizationsIdPutRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	id string
 	enrollmentCustomizationV2 *EnrollmentCustomizationV2
 }
@@ -1996,7 +2288,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecu
 
 type ApiV2EnrollmentCustomizationsImagesPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	file **os.File
 }
 
@@ -2119,7 +2411,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 
 type ApiV2EnrollmentCustomizationsPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationApiService
+	ApiService EnrollmentCustomizationApi
 	enrollmentCustomizationV2 *EnrollmentCustomizationV2
 }
 

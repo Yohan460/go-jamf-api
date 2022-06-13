@@ -20,12 +20,75 @@ import (
 )
 
 
+type DeviceCommunicationSettingsApi interface {
+
+	/*
+	V1DeviceCommunicationSettingsGet Retrieves all settings for device communication 
+
+	Retrieves all device communication settings, including automatic renewal of the MDM profile.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceCommunicationSettingsGetRequest
+	*/
+	V1DeviceCommunicationSettingsGet(ctx context.Context) ApiV1DeviceCommunicationSettingsGetRequest
+
+	// V1DeviceCommunicationSettingsGetExecute executes the request
+	//  @return DeviceCommunicationSettings
+	V1DeviceCommunicationSettingsGetExecute(r ApiV1DeviceCommunicationSettingsGetRequest) (*DeviceCommunicationSettings, *http.Response, error)
+
+	/*
+	V1DeviceCommunicationSettingsHistoryGet Get Device Communication settings history 
+
+	Gets Device Communication settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceCommunicationSettingsHistoryGetRequest
+	*/
+	V1DeviceCommunicationSettingsHistoryGet(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryGetRequest
+
+	// V1DeviceCommunicationSettingsHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1DeviceCommunicationSettingsHistoryGetExecute(r ApiV1DeviceCommunicationSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1DeviceCommunicationSettingsHistoryPost Add Device Communication Settings history notes 
+
+	Adds Device Communication Settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceCommunicationSettingsHistoryPostRequest
+	*/
+	V1DeviceCommunicationSettingsHistoryPost(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryPostRequest
+
+	// V1DeviceCommunicationSettingsHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1DeviceCommunicationSettingsHistoryPostExecute(r ApiV1DeviceCommunicationSettingsHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1DeviceCommunicationSettingsPut Update device communication settings 
+
+	Update device communication settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceCommunicationSettingsPutRequest
+	*/
+	V1DeviceCommunicationSettingsPut(ctx context.Context) ApiV1DeviceCommunicationSettingsPutRequest
+
+	// V1DeviceCommunicationSettingsPutExecute executes the request
+	//  @return DeviceCommunicationSettings
+	V1DeviceCommunicationSettingsPutExecute(r ApiV1DeviceCommunicationSettingsPutRequest) (*DeviceCommunicationSettings, *http.Response, error)
+}
+
 // DeviceCommunicationSettingsApiService DeviceCommunicationSettingsApi service
 type DeviceCommunicationSettingsApiService service
 
 type ApiV1DeviceCommunicationSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceCommunicationSettingsApiService
+	ApiService DeviceCommunicationSettingsApi
 }
 
 func (r ApiV1DeviceCommunicationSettingsGetRequest) Execute() (*DeviceCommunicationSettings, *http.Response, error) {
@@ -125,7 +188,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet
 
 type ApiV1DeviceCommunicationSettingsHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceCommunicationSettingsApiService
+	ApiService DeviceCommunicationSettingsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -271,7 +334,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 
 type ApiV1DeviceCommunicationSettingsHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *DeviceCommunicationSettingsApiService
+	ApiService DeviceCommunicationSettingsApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -392,7 +455,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 
 type ApiV1DeviceCommunicationSettingsPutRequest struct {
 	ctx context.Context
-	ApiService *DeviceCommunicationSettingsApiService
+	ApiService DeviceCommunicationSettingsApi
 	deviceCommunicationSettings *DeviceCommunicationSettings
 }
 

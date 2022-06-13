@@ -19,12 +19,71 @@ import (
 )
 
 
+type JamfProServerUrlPreviewApi interface {
+
+	/*
+	V1JamfProServerUrlGet Get Jamf Pro Server URL settings 
+
+	Get Jamf Pro Server URL settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProServerUrlGetRequest
+	*/
+	V1JamfProServerUrlGet(ctx context.Context) ApiV1JamfProServerUrlGetRequest
+
+	// V1JamfProServerUrlGetExecute executes the request
+	//  @return JamfProServerUrl
+	V1JamfProServerUrlGetExecute(r ApiV1JamfProServerUrlGetRequest) (*JamfProServerUrl, *http.Response, error)
+
+	/*
+	V1JamfProServerUrlHistoryGet Get Jamf Pro Server URL settings history 
+
+	Gets Jamf Pro Server URL settings history
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProServerUrlHistoryGetRequest
+	*/
+	V1JamfProServerUrlHistoryGet(ctx context.Context) ApiV1JamfProServerUrlHistoryGetRequest
+
+	// V1JamfProServerUrlHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1JamfProServerUrlHistoryGetExecute(r ApiV1JamfProServerUrlHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1JamfProServerUrlHistoryPost Add Jamf Pro Server URL settings history notes 
+
+	Adds Jamf Pro Server URL settings history notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProServerUrlHistoryPostRequest
+	*/
+	V1JamfProServerUrlHistoryPost(ctx context.Context) ApiV1JamfProServerUrlHistoryPostRequest
+
+	// V1JamfProServerUrlHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1JamfProServerUrlHistoryPostExecute(r ApiV1JamfProServerUrlHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1JamfProServerUrlPut Update Jamf Pro Server URL settings 
+
+	Update Jamf Pro Server URL settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProServerUrlPutRequest
+	*/
+	V1JamfProServerUrlPut(ctx context.Context) ApiV1JamfProServerUrlPutRequest
+
+	// V1JamfProServerUrlPutExecute executes the request
+	//  @return JamfProServerUrl
+	V1JamfProServerUrlPutExecute(r ApiV1JamfProServerUrlPutRequest) (*JamfProServerUrl, *http.Response, error)
+}
+
 // JamfProServerUrlPreviewApiService JamfProServerUrlPreviewApi service
 type JamfProServerUrlPreviewApiService service
 
 type ApiV1JamfProServerUrlGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProServerUrlPreviewApiService
+	ApiService JamfProServerUrlPreviewApi
 }
 
 func (r ApiV1JamfProServerUrlGetRequest) Execute() (*JamfProServerUrl, *http.Response, error) {
@@ -123,7 +182,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGetExecute(r ApiV1
 
 type ApiV1JamfProServerUrlHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProServerUrlPreviewApiService
+	ApiService JamfProServerUrlPreviewApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -270,7 +329,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(
 
 type ApiV1JamfProServerUrlHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProServerUrlPreviewApiService
+	ApiService JamfProServerUrlPreviewApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -400,7 +459,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 
 type ApiV1JamfProServerUrlPutRequest struct {
 	ctx context.Context
-	ApiService *JamfProServerUrlPreviewApiService
+	ApiService JamfProServerUrlPreviewApi
 	jamfProServerUrl *JamfProServerUrl
 }
 

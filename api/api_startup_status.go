@@ -19,12 +19,29 @@ import (
 )
 
 
+type StartupStatusApi interface {
+
+	/*
+	StartupStatusGet Retrieve information about application startup 
+
+	Retrieves information about application startup. Current startup operation taking place (if any) and overall startup completion percentage.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiStartupStatusGetRequest
+	*/
+	StartupStatusGet(ctx context.Context) ApiStartupStatusGetRequest
+
+	// StartupStatusGetExecute executes the request
+	//  @return StartupStatus
+	StartupStatusGetExecute(r ApiStartupStatusGetRequest) (*StartupStatus, *http.Response, error)
+}
+
 // StartupStatusApiService StartupStatusApi service
 type StartupStatusApiService service
 
 type ApiStartupStatusGetRequest struct {
 	ctx context.Context
-	ApiService *StartupStatusApiService
+	ApiService StartupStatusApi
 }
 
 func (r ApiStartupStatusGetRequest) Execute() (*StartupStatus, *http.Response, error) {

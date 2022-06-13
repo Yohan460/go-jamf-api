@@ -20,12 +20,49 @@ import (
 )
 
 
+type SmartComputerGroupsPreviewApi interface {
+
+	/*
+	V1ComputersIdRecalculateSmartGroupsPost Recalculate a smart group for the given id 
+
+	Recalculates a smart group for the given id and then
+returns the count of smart groups the computer falls into
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of computer
+	@return ApiV1ComputersIdRecalculateSmartGroupsPostRequest
+	*/
+	V1ComputersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) ApiV1ComputersIdRecalculateSmartGroupsPostRequest
+
+	// V1ComputersIdRecalculateSmartGroupsPostExecute executes the request
+	//  @return RecalculationResults
+	V1ComputersIdRecalculateSmartGroupsPostExecute(r ApiV1ComputersIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error)
+
+	/*
+	V1SmartComputerGroupsIdRecalculatePost Recalculate the smart group for the given id 
+
+	Recalculates the smart group for the given id and then
+returns the ids for the computers in the smart group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of smart group
+	@return ApiV1SmartComputerGroupsIdRecalculatePostRequest
+	*/
+	V1SmartComputerGroupsIdRecalculatePost(ctx context.Context, id int32) ApiV1SmartComputerGroupsIdRecalculatePostRequest
+
+	// V1SmartComputerGroupsIdRecalculatePostExecute executes the request
+	//  @return RecalculationResults
+	V1SmartComputerGroupsIdRecalculatePostExecute(r ApiV1SmartComputerGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error)
+}
+
 // SmartComputerGroupsPreviewApiService SmartComputerGroupsPreviewApi service
 type SmartComputerGroupsPreviewApiService service
 
 type ApiV1ComputersIdRecalculateSmartGroupsPostRequest struct {
 	ctx context.Context
-	ApiService *SmartComputerGroupsPreviewApiService
+	ApiService SmartComputerGroupsPreviewApi
 	id int32
 }
 
@@ -139,7 +176,7 @@ func (a *SmartComputerGroupsPreviewApiService) V1ComputersIdRecalculateSmartGrou
 
 type ApiV1SmartComputerGroupsIdRecalculatePostRequest struct {
 	ctx context.Context
-	ApiService *SmartComputerGroupsPreviewApiService
+	ApiService SmartComputerGroupsPreviewApi
 	id int32
 }
 

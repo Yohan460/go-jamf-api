@@ -19,10 +19,10 @@ import (
 type MdmCommandRequestCommandData struct {
 	DeleteUserCommand *DeleteUserCommand
 	EnableLostModeCommand *EnableLostModeCommand
+	LogOutUserCommand *LogOutUserCommand
 	RestartDeviceCommand *RestartDeviceCommand
 	SetRecoveryLockCommand *SetRecoveryLockCommand
 	SettingsCommand *SettingsCommand
-	MapmapOfStringinterface{} *map[string]interface{}
 }
 
 // DeleteUserCommandAsMdmCommandRequestCommandData is a convenience function that returns DeleteUserCommand wrapped in MdmCommandRequestCommandData
@@ -36,6 +36,13 @@ func DeleteUserCommandAsMdmCommandRequestCommandData(v *DeleteUserCommand) MdmCo
 func EnableLostModeCommandAsMdmCommandRequestCommandData(v *EnableLostModeCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		EnableLostModeCommand: v,
+	}
+}
+
+// LogOutUserCommandAsMdmCommandRequestCommandData is a convenience function that returns LogOutUserCommand wrapped in MdmCommandRequestCommandData
+func LogOutUserCommandAsMdmCommandRequestCommandData(v *LogOutUserCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		LogOutUserCommand: v,
 	}
 }
 
@@ -57,13 +64,6 @@ func SetRecoveryLockCommandAsMdmCommandRequestCommandData(v *SetRecoveryLockComm
 func SettingsCommandAsMdmCommandRequestCommandData(v *SettingsCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		SettingsCommand: v,
-	}
-}
-
-// map[string]interface{}AsMdmCommandRequestCommandData is a convenience function that returns map[string]interface{} wrapped in MdmCommandRequestCommandData
-func MapmapOfStringinterface{}AsMdmCommandRequestCommandData(v *map[string]interface{}) MdmCommandRequestCommandData {
-	return MdmCommandRequestCommandData{
-		MapmapOfStringinterface{}: v,
 	}
 }
 
@@ -96,6 +96,19 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.EnableLostModeCommand = nil
+	}
+
+	// try to unmarshal data into LogOutUserCommand
+	err = newStrictDecoder(data).Decode(&dst.LogOutUserCommand)
+	if err == nil {
+		jsonLogOutUserCommand, _ := json.Marshal(dst.LogOutUserCommand)
+		if string(jsonLogOutUserCommand) == "{}" { // empty struct
+			dst.LogOutUserCommand = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.LogOutUserCommand = nil
 	}
 
 	// try to unmarshal data into RestartDeviceCommand
@@ -137,27 +150,14 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.SettingsCommand = nil
 	}
 
-	// try to unmarshal data into MapmapOfStringinterface{}
-	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringinterface{})
-	if err == nil {
-		jsonMapmapOfStringinterface{}, _ := json.Marshal(dst.MapmapOfStringinterface{})
-		if string(jsonMapmapOfStringinterface{}) == "{}" { // empty struct
-			dst.MapmapOfStringinterface{} = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.MapmapOfStringinterface{} = nil
-	}
-
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.DeleteUserCommand = nil
 		dst.EnableLostModeCommand = nil
+		dst.LogOutUserCommand = nil
 		dst.RestartDeviceCommand = nil
 		dst.SetRecoveryLockCommand = nil
 		dst.SettingsCommand = nil
-		dst.MapmapOfStringinterface{} = nil
 
 		return fmt.Errorf("Data matches more than one schema in oneOf(MdmCommandRequestCommandData)")
 	} else if match == 1 {
@@ -177,6 +177,10 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.EnableLostModeCommand)
 	}
 
+	if src.LogOutUserCommand != nil {
+		return json.Marshal(&src.LogOutUserCommand)
+	}
+
 	if src.RestartDeviceCommand != nil {
 		return json.Marshal(&src.RestartDeviceCommand)
 	}
@@ -187,10 +191,6 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 
 	if src.SettingsCommand != nil {
 		return json.Marshal(&src.SettingsCommand)
-	}
-
-	if src.MapmapOfStringinterface{} != nil {
-		return json.Marshal(&src.MapmapOfStringinterface{})
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -209,6 +209,10 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.EnableLostModeCommand
 	}
 
+	if obj.LogOutUserCommand != nil {
+		return obj.LogOutUserCommand
+	}
+
 	if obj.RestartDeviceCommand != nil {
 		return obj.RestartDeviceCommand
 	}
@@ -219,10 +223,6 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 
 	if obj.SettingsCommand != nil {
 		return obj.SettingsCommand
-	}
-
-	if obj.MapmapOfStringinterface{} != nil {
-		return obj.MapmapOfStringinterface{}
 	}
 
 	// all schemas are nil

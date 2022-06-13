@@ -22,12 +22,218 @@ import (
 )
 
 
+type VenafiPreviewApi interface {
+
+	/*
+	V1PkiVenafiIdConnectionStatusGet Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdConnectionStatusGetRequest
+	*/
+	V1PkiVenafiIdConnectionStatusGet(ctx context.Context, id string) ApiV1PkiVenafiIdConnectionStatusGetRequest
+
+	// V1PkiVenafiIdConnectionStatusGetExecute executes the request
+	//  @return VenafiServiceStatus
+	V1PkiVenafiIdConnectionStatusGetExecute(r ApiV1PkiVenafiIdConnectionStatusGetRequest) (*VenafiServiceStatus, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdDelete Delete a Venafi PKI configuration from Jamf Pro 
+
+	Delete a Venafi PKI configuration from Jamf Pro
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdDeleteRequest
+	*/
+	V1PkiVenafiIdDelete(ctx context.Context, id string) ApiV1PkiVenafiIdDeleteRequest
+
+	// V1PkiVenafiIdDeleteExecute executes the request
+	V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1PkiVenafiIdDependentProfilesGet Get configuration profile data using specified Venafi CA object 
+
+	Get configuration profile data using specified Venafi CA object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdDependentProfilesGetRequest
+	*/
+	V1PkiVenafiIdDependentProfilesGet(ctx context.Context, id string) ApiV1PkiVenafiIdDependentProfilesGetRequest
+
+	// V1PkiVenafiIdDependentProfilesGetExecute executes the request
+	//  @return VenafiPkiPayloadRecordSearchResults
+	V1PkiVenafiIdDependentProfilesGetExecute(r ApiV1PkiVenafiIdDependentProfilesGetRequest) (*VenafiPkiPayloadRecordSearchResults, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdGet Retrieve a Venafi PKI configuration from Jamf Pro 
+
+	Retrieve a Venafi PKI configuration from Jamf Pro
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdGetRequest
+	*/
+	V1PkiVenafiIdGet(ctx context.Context, id string) ApiV1PkiVenafiIdGetRequest
+
+	// V1PkiVenafiIdGetExecute executes the request
+	//  @return VenafiCaRecord
+	V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetRequest) (*VenafiCaRecord, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdHistoryGet Get specified Venafi CA history object 
+
+	Get specified Venafi CA history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdHistoryGetRequest
+	*/
+	V1PkiVenafiIdHistoryGet(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryGetRequest
+
+	// V1PkiVenafiIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenafiIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdHistoryPost Add specified Venafi CA Object Note 
+
+	Adds specified Venafi CA Object Note
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department history record
+	@return ApiV1PkiVenafiIdHistoryPostRequest
+	*/
+	V1PkiVenafiIdHistoryPost(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryPostRequest
+
+	// V1PkiVenafiIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVenafiIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdJamfPublicKeyGet Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Downloads a certificate for an existing Venafi configuration that can be used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdJamfPublicKeyGetRequest
+	*/
+	V1PkiVenafiIdJamfPublicKeyGet(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyGetRequest
+
+	// V1PkiVenafiIdJamfPublicKeyGetExecute executes the request
+	//  @return *os.File
+	V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1PkiVenafiIdJamfPublicKeyGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdJamfPublicKeyRegeneratePost Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Regenerates a certificate for an existing Venafi configuration that can be used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
+	*/
+	V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
+
+	// V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute executes the request
+	V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) (*http.Response, error)
+
+	/*
+	V1PkiVenafiIdPatch Update a Venafi PKI configuration in Jamf Pro 
+
+	Update a Venafi PKI configuration in Jamf Pro
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdPatchRequest
+	*/
+	V1PkiVenafiIdPatch(ctx context.Context, id string) ApiV1PkiVenafiIdPatchRequest
+
+	// V1PkiVenafiIdPatchExecute executes the request
+	//  @return VenafiCaRecord
+	V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPatchRequest) (*VenafiCaRecord, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdProxyTrustStoreDelete Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Removes the uploaded PKI Proxy Server public key to do basic TLS certificate validation between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest
+	*/
+	V1PkiVenafiIdProxyTrustStoreDelete(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest
+
+	// V1PkiVenafiIdProxyTrustStoreDeleteExecute executes the request
+	V1PkiVenafiIdProxyTrustStoreDeleteExecute(r ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest) (*http.Response, error)
+
+	/*
+	V1PkiVenafiIdProxyTrustStoreGet Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Downloads the uploaded PKI Proxy Server public key to do basic TLS certificate validation between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdProxyTrustStoreGetRequest
+	*/
+	V1PkiVenafiIdProxyTrustStoreGet(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreGetRequest
+
+	// V1PkiVenafiIdProxyTrustStoreGetExecute executes the request
+	//  @return *os.File
+	V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1PkiVenafiIdProxyTrustStoreGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1PkiVenafiIdProxyTrustStorePost Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+
+	Uploads the PKI Proxy Server public key to do basic TLS certificate validation between Jamf Pro and a Jamf Pro PKI Proxy Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Venafi configuration
+	@return ApiV1PkiVenafiIdProxyTrustStorePostRequest
+	*/
+	V1PkiVenafiIdProxyTrustStorePost(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStorePostRequest
+
+	// V1PkiVenafiIdProxyTrustStorePostExecute executes the request
+	V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV1PkiVenafiIdProxyTrustStorePostRequest) (*http.Response, error)
+
+	/*
+	V1PkiVenafiPost Create a PKI configuration in Jamf Pro for Venafi 
+
+	Creates a Venafi PKI configuration in Jamf Pro, which can be used to issue certificates
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PkiVenafiPostRequest
+	*/
+	V1PkiVenafiPost(ctx context.Context) ApiV1PkiVenafiPostRequest
+
+	// V1PkiVenafiPostExecute executes the request
+	//  @return HrefResponse
+	V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // VenafiPreviewApiService VenafiPreviewApi service
 type VenafiPreviewApiService service
 
 type ApiV1PkiVenafiIdConnectionStatusGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -140,7 +346,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV
 
 type ApiV1PkiVenafiIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -252,7 +458,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdD
 
 type ApiV1PkiVenafiIdDependentProfilesGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -356,7 +562,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGetExecute(r Api
 
 type ApiV1PkiVenafiIdGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -469,7 +675,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetR
 
 type ApiV1PkiVenafiIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 	page *int32
 	pageSize *int32
@@ -628,7 +834,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenaf
 
 type ApiV1PkiVenafiIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -763,7 +969,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 
 type ApiV1PkiVenafiIdJamfPublicKeyGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -886,7 +1092,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1Pk
 
 type ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -988,7 +1194,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecut
 
 type ApiV1PkiVenafiIdPatchRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 	venafiCaRecord *VenafiCaRecord
 }
@@ -1122,7 +1328,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 
 type ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -1224,7 +1430,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r Ap
 
 type ApiV1PkiVenafiIdProxyTrustStoreGetRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 }
 
@@ -1347,7 +1553,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1
 
 type ApiV1PkiVenafiIdProxyTrustStorePostRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	id string
 	body **os.File
 }
@@ -1470,7 +1676,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV
 
 type ApiV1PkiVenafiPostRequest struct {
 	ctx context.Context
-	ApiService *VenafiPreviewApiService
+	ApiService VenafiPreviewApi
 	venafiCaRecord *VenafiCaRecord
 }
 

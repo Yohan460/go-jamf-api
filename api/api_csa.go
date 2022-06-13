@@ -19,12 +19,74 @@ import (
 )
 
 
+type CsaApi interface {
+
+	/*
+	V1CsaTokenDelete Delete the CSA token exchange - This will disable Jamf Pro's ability to authenticate with cloud-hosted services 
+
+	Delete the CSA token exchange - This will disable Jamf Pro's ability to authenticate with cloud-hosted services
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CsaTokenDeleteRequest
+	*/
+	V1CsaTokenDelete(ctx context.Context) ApiV1CsaTokenDeleteRequest
+
+	// V1CsaTokenDeleteExecute executes the request
+	V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CsaTokenGet Get details regarding the CSA token exchange 
+
+	Get details regarding the CSA token exchange
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CsaTokenGetRequest
+	*/
+	V1CsaTokenGet(ctx context.Context) ApiV1CsaTokenGetRequest
+
+	// V1CsaTokenGetExecute executes the request
+	//  @return CsaToken
+	V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaToken, *http.Response, error)
+
+	/*
+	V1CsaTokenPost Initialize the CSA token exchange 
+
+	Initializes the CSA token exchange - This will allow Jamf Pro to authenticate with cloud-hosted services
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CsaTokenPostRequest
+	*/
+	V1CsaTokenPost(ctx context.Context) ApiV1CsaTokenPostRequest
+
+	// V1CsaTokenPostExecute executes the request
+	//  @return CsaToken
+	V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaToken, *http.Response, error)
+
+	/*
+	V1CsaTokenPut Re-initialize the CSA token exchange with new credentials 
+
+	Re-initialize the CSA token exchange with new credentials
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CsaTokenPutRequest
+	*/
+	V1CsaTokenPut(ctx context.Context) ApiV1CsaTokenPutRequest
+
+	// V1CsaTokenPutExecute executes the request
+	//  @return CsaToken
+	V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaToken, *http.Response, error)
+}
+
 // CsaApiService CsaApi service
 type CsaApiService service
 
 type ApiV1CsaTokenDeleteRequest struct {
 	ctx context.Context
-	ApiService *CsaApiService
+	ApiService CsaApi
 }
 
 func (r ApiV1CsaTokenDeleteRequest) Execute() (*http.Response, error) {
@@ -122,7 +184,7 @@ func (a *CsaApiService) V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*
 
 type ApiV1CsaTokenGetRequest struct {
 	ctx context.Context
-	ApiService *CsaApiService
+	ApiService CsaApi
 }
 
 func (r ApiV1CsaTokenGetRequest) Execute() (*CsaToken, *http.Response, error) {
@@ -231,7 +293,7 @@ func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaTok
 
 type ApiV1CsaTokenPostRequest struct {
 	ctx context.Context
-	ApiService *CsaApiService
+	ApiService CsaApi
 	jamfNationCredentials *JamfNationCredentials
 }
 
@@ -359,7 +421,7 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 
 type ApiV1CsaTokenPutRequest struct {
 	ctx context.Context
-	ApiService *CsaApiService
+	ApiService CsaApi
 	jamfNationCredentials *JamfNationCredentials
 }
 

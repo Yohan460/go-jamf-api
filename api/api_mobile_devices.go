@@ -21,12 +21,164 @@ import (
 )
 
 
+type MobileDevicesApi interface {
+
+	/*
+	V1MobileDevicesGet Get Mobile Device objects 
+
+	Gets Mobile Device objects.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDevicesGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicesGet(ctx context.Context) ApiV1MobileDevicesGetRequest
+
+	// V1MobileDevicesGetExecute executes the request
+	//  @return []MobileDevice
+	// Deprecated
+	V1MobileDevicesGetExecute(r ApiV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error)
+
+	/*
+	V1MobileDevicesIdDetailGet Get Mobile Device 
+
+	Get MobileDevice
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV1MobileDevicesIdDetailGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicesIdDetailGet(ctx context.Context, id int32) ApiV1MobileDevicesIdDetailGetRequest
+
+	// V1MobileDevicesIdDetailGetExecute executes the request
+	//  @return MobileDeviceDetails
+	// Deprecated
+	V1MobileDevicesIdDetailGetExecute(r ApiV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error)
+
+	/*
+	V1MobileDevicesIdGet Get Mobile Device 
+
+	Get MobileDevice
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV1MobileDevicesIdGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicesIdGet(ctx context.Context, id int32) ApiV1MobileDevicesIdGetRequest
+
+	// V1MobileDevicesIdGetExecute executes the request
+	//  @return MobileDevice
+	// Deprecated
+	V1MobileDevicesIdGetExecute(r ApiV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error)
+
+	/*
+	V1MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
+
+	Updates fields on a mobile device that are allowed to be modified by users.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV1MobileDevicesIdPatchRequest
+
+	Deprecated
+	*/
+	V1MobileDevicesIdPatch(ctx context.Context, id int32) ApiV1MobileDevicesIdPatchRequest
+
+	// V1MobileDevicesIdPatchExecute executes the request
+	//  @return MobileDeviceDetails
+	// Deprecated
+	V1MobileDevicesIdPatchExecute(r ApiV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error)
+
+	/*
+	V1SearchMobileDevicesPost Search Mobile Devices 
+
+	Search Mobile Devices
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SearchMobileDevicesPostRequest
+
+	Deprecated
+	*/
+	V1SearchMobileDevicesPost(ctx context.Context) ApiV1SearchMobileDevicesPostRequest
+
+	// V1SearchMobileDevicesPostExecute executes the request
+	//  @return MobileDeviceSearchResults
+	// Deprecated
+	V1SearchMobileDevicesPostExecute(r ApiV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error)
+
+	/*
+	V2MobileDevicesGet Get Mobile Device objects 
+
+	Gets Mobile Device objects.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MobileDevicesGetRequest
+	*/
+	V2MobileDevicesGet(ctx context.Context) ApiV2MobileDevicesGetRequest
+
+	// V2MobileDevicesGetExecute executes the request
+	//  @return MobileDeviceSearchResultsV2
+	V2MobileDevicesGetExecute(r ApiV2MobileDevicesGetRequest) (*MobileDeviceSearchResultsV2, *http.Response, error)
+
+	/*
+	V2MobileDevicesIdDetailGet Get Mobile Device 
+
+	Get MobileDevice
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV2MobileDevicesIdDetailGetRequest
+	*/
+	V2MobileDevicesIdDetailGet(ctx context.Context, id string) ApiV2MobileDevicesIdDetailGetRequest
+
+	// V2MobileDevicesIdDetailGetExecute executes the request
+	//  @return MobileDeviceDetailsGetV2
+	V2MobileDevicesIdDetailGetExecute(r ApiV2MobileDevicesIdDetailGetRequest) (*MobileDeviceDetailsGetV2, *http.Response, error)
+
+	/*
+	V2MobileDevicesIdGet Get Mobile Device 
+
+	Get MobileDevice
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV2MobileDevicesIdGetRequest
+	*/
+	V2MobileDevicesIdGet(ctx context.Context, id string) ApiV2MobileDevicesIdGetRequest
+
+	// V2MobileDevicesIdGetExecute executes the request
+	//  @return MobileDeviceV2
+	V2MobileDevicesIdGetExecute(r ApiV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error)
+
+	/*
+	V2MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
+
+	Updates fields on a mobile device that are allowed to be modified by users.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return ApiV2MobileDevicesIdPatchRequest
+	*/
+	V2MobileDevicesIdPatch(ctx context.Context, id string) ApiV2MobileDevicesIdPatchRequest
+
+	// V2MobileDevicesIdPatchExecute executes the request
+	//  @return MobileDeviceDetailsV2
+	V2MobileDevicesIdPatchExecute(r ApiV2MobileDevicesIdPatchRequest) (*MobileDeviceDetailsV2, *http.Response, error)
+}
+
 // MobileDevicesApiService MobileDevicesApi service
 type MobileDevicesApiService service
 
 type ApiV1MobileDevicesGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 }
 
 func (r ApiV1MobileDevicesGetRequest) Execute() ([]MobileDevice, *http.Response, error) {
@@ -129,7 +281,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesGetExecute(r ApiV1MobileDevices
 
 type ApiV1MobileDevicesIdDetailGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id int32
 }
 
@@ -235,7 +387,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGetExecute(r ApiV1Mobil
 
 type ApiV1MobileDevicesIdGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id int32
 }
 
@@ -341,7 +493,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdGetExecute(r ApiV1MobileDevic
 
 type ApiV1MobileDevicesIdPatchRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id int32
 	updateMobileDevice *UpdateMobileDevice
 }
@@ -458,7 +610,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdPatchExecute(r ApiV1MobileDev
 
 type ApiV1SearchMobileDevicesPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	mobileDeviceSearchParams *MobileDeviceSearchParams
 }
 
@@ -568,7 +720,7 @@ func (a *MobileDevicesApiService) V1SearchMobileDevicesPostExecute(r ApiV1Search
 
 type ApiV2MobileDevicesGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -704,7 +856,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevices
 
 type ApiV2MobileDevicesIdDetailGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id string
 }
 
@@ -816,7 +968,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2Mobil
 
 type ApiV2MobileDevicesIdGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id string
 }
 
@@ -928,7 +1080,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevic
 
 type ApiV2MobileDevicesIdPatchRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicesApiService
+	ApiService MobileDevicesApi
 	id string
 	updateMobileDeviceV2 *UpdateMobileDeviceV2
 }

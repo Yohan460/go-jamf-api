@@ -20,12 +20,46 @@ import (
 )
 
 
+type JamfProNotificationsApi interface {
+
+	/*
+	V1NotificationsGet Get Notifications for user and site 
+
+	Gets notifications for user and site
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1NotificationsGetRequest
+	*/
+	V1NotificationsGet(ctx context.Context) ApiV1NotificationsGetRequest
+
+	// V1NotificationsGetExecute executes the request
+	//  @return []NotificationV1
+	V1NotificationsGetExecute(r ApiV1NotificationsGetRequest) ([]NotificationV1, *http.Response, error)
+
+	/*
+	V1NotificationsTypeIdDelete Delete Notifications 
+
+	Deletes notifications with given type and id.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance ID of the notification
+	@param type_ type of the notification
+	@return ApiV1NotificationsTypeIdDeleteRequest
+	*/
+	V1NotificationsTypeIdDelete(ctx context.Context, id string, type_ NotificationType) ApiV1NotificationsTypeIdDeleteRequest
+
+	// V1NotificationsTypeIdDeleteExecute executes the request
+	V1NotificationsTypeIdDeleteExecute(r ApiV1NotificationsTypeIdDeleteRequest) (*http.Response, error)
+}
+
 // JamfProNotificationsApiService JamfProNotificationsApi service
 type JamfProNotificationsApiService service
 
 type ApiV1NotificationsGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProNotificationsApiService
+	ApiService JamfProNotificationsApi
 }
 
 func (r ApiV1NotificationsGetRequest) Execute() ([]NotificationV1, *http.Response, error) {
@@ -125,7 +159,7 @@ func (a *JamfProNotificationsApiService) V1NotificationsGetExecute(r ApiV1Notifi
 
 type ApiV1NotificationsTypeIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *JamfProNotificationsApiService
+	ApiService JamfProNotificationsApi
 	id string
 	type_ NotificationType
 }

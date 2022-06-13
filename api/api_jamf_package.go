@@ -19,12 +19,43 @@ import (
 )
 
 
+type JamfPackageApi interface {
+
+	/*
+	V1JamfPackageGet Get the packages for a given Jamf application 
+
+	Get the packages for a given Jamf application.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfPackageGetRequest
+	*/
+	V1JamfPackageGet(ctx context.Context) ApiV1JamfPackageGetRequest
+
+	// V1JamfPackageGetExecute executes the request
+	//  @return []JamfPackageResponse
+	V1JamfPackageGetExecute(r ApiV1JamfPackageGetRequest) ([]JamfPackageResponse, *http.Response, error)
+
+	/*
+	V2JamfPackageGet Get the packages for a given Jamf application 
+
+	Get the packages for a given Jamf application.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2JamfPackageGetRequest
+	*/
+	V2JamfPackageGet(ctx context.Context) ApiV2JamfPackageGetRequest
+
+	// V2JamfPackageGetExecute executes the request
+	//  @return JamfApplicationResponse
+	V2JamfPackageGetExecute(r ApiV2JamfPackageGetRequest) (*JamfApplicationResponse, *http.Response, error)
+}
+
 // JamfPackageApiService JamfPackageApi service
 type JamfPackageApiService service
 
 type ApiV1JamfPackageGetRequest struct {
 	ctx context.Context
-	ApiService *JamfPackageApiService
+	ApiService JamfPackageApi
 	application *string
 }
 
@@ -143,7 +174,7 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 
 type ApiV2JamfPackageGetRequest struct {
 	ctx context.Context
-	ApiService *JamfPackageApiService
+	ApiService JamfPackageApi
 	application *string
 }
 

@@ -20,12 +20,72 @@ import (
 )
 
 
+type MdmApi interface {
+
+	/*
+	PreviewMdmCommandsPost Post a command for creation and queuing 
+
+	Provided an MDM command type and appropriate information, will create and then queue said command.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPreviewMdmCommandsPostRequest
+	*/
+	PreviewMdmCommandsPost(ctx context.Context) ApiPreviewMdmCommandsPostRequest
+
+	// PreviewMdmCommandsPostExecute executes the request
+	//  @return []HrefResponse
+	PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
+
+	/*
+	V1DeployPackagePost Deploy packages using MDM
+
+	Deploys packages to macOS devices using the InstallEnterpriseApplication MDM command.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeployPackagePostRequest
+	*/
+	V1DeployPackagePost(ctx context.Context) ApiV1DeployPackagePostRequest
+
+	// V1DeployPackagePostExecute executes the request
+	//  @return VerbosePackageDeploymentResponse
+	V1DeployPackagePostExecute(r ApiV1DeployPackagePostRequest) (*VerbosePackageDeploymentResponse, *http.Response, error)
+
+	/*
+	V1MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
+
+	Get information about mdm commands made by Jamf Pro.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MdmCommandsGetRequest
+	*/
+	V1MdmCommandsGet(ctx context.Context) ApiV1MdmCommandsGetRequest
+
+	// V1MdmCommandsGetExecute executes the request
+	//  @return []MdmCommand
+	V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error)
+
+	/*
+	V1MdmRenewProfilePost Renew MDM Profile 
+
+	Renews the device's MDM Profile, including the device identity certificate within the MDM Profile.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MdmRenewProfilePostRequest
+	*/
+	V1MdmRenewProfilePost(ctx context.Context) ApiV1MdmRenewProfilePostRequest
+
+	// V1MdmRenewProfilePostExecute executes the request
+	//  @return RenewMdmProfileResponse
+	V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error)
+}
+
 // MdmApiService MdmApi service
 type MdmApiService service
 
 type ApiPreviewMdmCommandsPostRequest struct {
 	ctx context.Context
-	ApiService *MdmApiService
+	ApiService MdmApi
 	mdmCommandRequest *MdmCommandRequest
 }
 
@@ -142,7 +202,7 @@ func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPos
 
 type ApiV1DeployPackagePostRequest struct {
 	ctx context.Context
-	ApiService *MdmApiService
+	ApiService MdmApi
 	installPackage *InstallPackage
 	verbose *bool
 }
@@ -262,7 +322,7 @@ func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostReque
 
 type ApiV1MdmCommandsGetRequest struct {
 	ctx context.Context
-	ApiService *MdmApiService
+	ApiService MdmApi
 	uuids *[]string
 }
 
@@ -401,7 +461,7 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 
 type ApiV1MdmRenewProfilePostRequest struct {
 	ctx context.Context
-	ApiService *MdmApiService
+	ApiService MdmApi
 	udids *Udids
 }
 

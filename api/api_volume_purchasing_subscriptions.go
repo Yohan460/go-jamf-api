@@ -21,12 +21,87 @@ import (
 )
 
 
+type VolumePurchasingSubscriptionsApi interface {
+
+	/*
+	V1VolumePurchasingSubscriptionsGet Retrieve Volume Purchasing Subscriptions
+
+	Retrieves Volume Purchasing Subscriptions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1VolumePurchasingSubscriptionsGetRequest
+	*/
+	V1VolumePurchasingSubscriptionsGet(ctx context.Context) ApiV1VolumePurchasingSubscriptionsGetRequest
+
+	// V1VolumePurchasingSubscriptionsGetExecute executes the request
+	//  @return VolumePurchasingSubscriptions
+	V1VolumePurchasingSubscriptionsGetExecute(r ApiV1VolumePurchasingSubscriptionsGetRequest) (*VolumePurchasingSubscriptions, *http.Response, error)
+
+	/*
+	V1VolumePurchasingSubscriptionsIdDelete Delete a Volume Purchasing Subscription with the supplied id
+
+	Deletes a Volume Purchasing Subscription with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Subscription identifier
+	@return ApiV1VolumePurchasingSubscriptionsIdDeleteRequest
+	*/
+	V1VolumePurchasingSubscriptionsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdDeleteRequest
+
+	// V1VolumePurchasingSubscriptionsIdDeleteExecute executes the request
+	V1VolumePurchasingSubscriptionsIdDeleteExecute(r ApiV1VolumePurchasingSubscriptionsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1VolumePurchasingSubscriptionsIdGet Retrieve a Volume Purchasing Subscription with the supplied id
+
+	Retrieves a Volume Purchasing Subscription with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Subscription identifier
+	@return ApiV1VolumePurchasingSubscriptionsIdGetRequest
+	*/
+	V1VolumePurchasingSubscriptionsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdGetRequest
+
+	// V1VolumePurchasingSubscriptionsIdGetExecute executes the request
+	//  @return VolumePurchasingSubscription
+	V1VolumePurchasingSubscriptionsIdGetExecute(r ApiV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error)
+
+	/*
+	V1VolumePurchasingSubscriptionsIdPut Update a Volume Purchasing Subscription
+
+	Updates a Volume Purchasing Subscription
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Subscription identifier
+	@return ApiV1VolumePurchasingSubscriptionsIdPutRequest
+	*/
+	V1VolumePurchasingSubscriptionsIdPut(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdPutRequest
+
+	// V1VolumePurchasingSubscriptionsIdPutExecute executes the request
+	//  @return VolumePurchasingSubscription
+	V1VolumePurchasingSubscriptionsIdPutExecute(r ApiV1VolumePurchasingSubscriptionsIdPutRequest) (*VolumePurchasingSubscription, *http.Response, error)
+
+	/*
+	V1VolumePurchasingSubscriptionsPost Create a Volume Purchasing Subscription
+
+	Creates a Volume Purchasing Subscription
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1VolumePurchasingSubscriptionsPostRequest
+	*/
+	V1VolumePurchasingSubscriptionsPost(ctx context.Context) ApiV1VolumePurchasingSubscriptionsPostRequest
+
+	// V1VolumePurchasingSubscriptionsPostExecute executes the request
+	//  @return HrefResponse
+	V1VolumePurchasingSubscriptionsPostExecute(r ApiV1VolumePurchasingSubscriptionsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // VolumePurchasingSubscriptionsApiService VolumePurchasingSubscriptionsApi service
 type VolumePurchasingSubscriptionsApiService service
 
 type ApiV1VolumePurchasingSubscriptionsGetRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingSubscriptionsApiService
+	ApiService VolumePurchasingSubscriptionsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -161,7 +236,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 type ApiV1VolumePurchasingSubscriptionsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingSubscriptionsApiService
+	ApiService VolumePurchasingSubscriptionsApi
 	id string
 }
 
@@ -262,7 +337,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 type ApiV1VolumePurchasingSubscriptionsIdGetRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingSubscriptionsApiService
+	ApiService VolumePurchasingSubscriptionsApi
 	id string
 }
 
@@ -374,7 +449,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 type ApiV1VolumePurchasingSubscriptionsIdPutRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingSubscriptionsApiService
+	ApiService VolumePurchasingSubscriptionsApi
 	id string
 	volumePurchasingSubscriptionBase *VolumePurchasingSubscriptionBase
 }
@@ -508,7 +583,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 type ApiV1VolumePurchasingSubscriptionsPostRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingSubscriptionsApiService
+	ApiService VolumePurchasingSubscriptionsApi
 	volumePurchasingSubscriptionBase *VolumePurchasingSubscriptionBase
 }
 

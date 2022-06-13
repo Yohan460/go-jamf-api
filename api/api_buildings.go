@@ -21,12 +21,136 @@ import (
 )
 
 
+type BuildingsApi interface {
+
+	/*
+	V1BuildingsDeleteMultiplePost Delete multiple Buildings by their ids 
+
+	multiple many Buildings by their ids
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1BuildingsDeleteMultiplePostRequest
+	*/
+	V1BuildingsDeleteMultiplePost(ctx context.Context) ApiV1BuildingsDeleteMultiplePostRequest
+
+	// V1BuildingsDeleteMultiplePostExecute executes the request
+	V1BuildingsDeleteMultiplePostExecute(r ApiV1BuildingsDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V1BuildingsGet Search for sorted and paged Buildings 
+
+	Search for sorted and paged buildings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1BuildingsGetRequest
+	*/
+	V1BuildingsGet(ctx context.Context) ApiV1BuildingsGetRequest
+
+	// V1BuildingsGetExecute executes the request
+	//  @return BuildingSearchResults
+	V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) (*BuildingSearchResults, *http.Response, error)
+
+	/*
+	V1BuildingsIdDelete Remove specified Building record 
+
+	Removes specified building record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of building record
+	@return ApiV1BuildingsIdDeleteRequest
+	*/
+	V1BuildingsIdDelete(ctx context.Context, id string) ApiV1BuildingsIdDeleteRequest
+
+	// V1BuildingsIdDeleteExecute executes the request
+	V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1BuildingsIdGet Get specified Building object 
+
+	Gets specified Building object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of building record
+	@return ApiV1BuildingsIdGetRequest
+	*/
+	V1BuildingsIdGet(ctx context.Context, id string) ApiV1BuildingsIdGetRequest
+
+	// V1BuildingsIdGetExecute executes the request
+	//  @return Building
+	V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetRequest) (*Building, *http.Response, error)
+
+	/*
+	V1BuildingsIdHistoryGet Get specified Building History object 
+
+	Gets specified Building history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of building history record
+	@return ApiV1BuildingsIdHistoryGetRequest
+	*/
+	V1BuildingsIdHistoryGet(ctx context.Context, id string) ApiV1BuildingsIdHistoryGetRequest
+
+	// V1BuildingsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1BuildingsIdHistoryPost Add specified Building history object notes 
+
+	Adds specified Building history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of building history record
+	@return ApiV1BuildingsIdHistoryPostRequest
+	*/
+	V1BuildingsIdHistoryPost(ctx context.Context, id string) ApiV1BuildingsIdHistoryPostRequest
+
+	// V1BuildingsIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1BuildingsIdPut Update specified Building object 
+
+	Update specified building object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of building record
+	@return ApiV1BuildingsIdPutRequest
+	*/
+	V1BuildingsIdPut(ctx context.Context, id string) ApiV1BuildingsIdPutRequest
+
+	// V1BuildingsIdPutExecute executes the request
+	//  @return Building
+	V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutRequest) (*Building, *http.Response, error)
+
+	/*
+	V1BuildingsPost Create Building record 
+
+	Create building record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1BuildingsPostRequest
+	*/
+	V1BuildingsPost(ctx context.Context) ApiV1BuildingsPostRequest
+
+	// V1BuildingsPostExecute executes the request
+	//  @return HrefResponse
+	V1BuildingsPostExecute(r ApiV1BuildingsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // BuildingsApiService BuildingsApi service
 type BuildingsApiService service
 
 type ApiV1BuildingsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	ids *Ids
 }
 
@@ -135,7 +259,7 @@ func (a *BuildingsApiService) V1BuildingsDeleteMultiplePostExecute(r ApiV1Buildi
 
 type ApiV1BuildingsGetRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -280,7 +404,7 @@ func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) 
 
 type ApiV1BuildingsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	id string
 }
 
@@ -373,7 +497,7 @@ func (a *BuildingsApiService) V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDelet
 
 type ApiV1BuildingsIdGetRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	id string
 }
 
@@ -486,7 +610,7 @@ func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetReque
 
 type ApiV1BuildingsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	id string
 	page *int32
 	pageSize *int32
@@ -645,7 +769,7 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdH
 
 type ApiV1BuildingsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -780,7 +904,7 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 
 type ApiV1BuildingsIdPutRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	id string
 	building *Building
 }
@@ -896,7 +1020,7 @@ func (a *BuildingsApiService) V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutReque
 
 type ApiV1BuildingsPostRequest struct {
 	ctx context.Context
-	ApiService *BuildingsApiService
+	ApiService BuildingsApi
 	building *Building
 }
 

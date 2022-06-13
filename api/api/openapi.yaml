@@ -30706,6 +30706,13 @@ components:
           type: string
       type: object
     LogOutUserCommand:
+      properties:
+        RequestType:
+          example: LogOutUser
+          type: string
+        RequestRequiresNetworkTether:
+          example: false
+          type: boolean
       type: object
     MacOsBrandingConfiguration:
       example:

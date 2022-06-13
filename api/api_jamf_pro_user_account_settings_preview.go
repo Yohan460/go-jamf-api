@@ -20,12 +20,71 @@ import (
 )
 
 
+type JamfProUserAccountSettingsPreviewApi interface {
+
+	/*
+	UserObjPreferenceKeyDelete Remove specified setting for authenticated user 
+
+	Remove specified setting for authenticated user
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param key key of user setting to be persisted
+	@return ApiUserObjPreferenceKeyDeleteRequest
+
+	Deprecated
+	*/
+	UserObjPreferenceKeyDelete(ctx context.Context, key string) ApiUserObjPreferenceKeyDeleteRequest
+
+	// UserObjPreferenceKeyDeleteExecute executes the request
+	// Deprecated
+	UserObjPreferenceKeyDeleteExecute(r ApiUserObjPreferenceKeyDeleteRequest) (*http.Response, error)
+
+	/*
+	UserObjPreferenceKeyGet Get the user setting for the authenticated user and key 
+
+	Gets the user setting for the authenticated user and key.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param key user setting to be retrieved
+	@return ApiUserObjPreferenceKeyGetRequest
+
+	Deprecated
+	*/
+	UserObjPreferenceKeyGet(ctx context.Context, key string) ApiUserObjPreferenceKeyGetRequest
+
+	// UserObjPreferenceKeyGetExecute executes the request
+	//  @return map[string]interface{}
+	// Deprecated
+	UserObjPreferenceKeyGetExecute(r ApiUserObjPreferenceKeyGetRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	UserObjPreferenceKeyPut Persist the user setting 
+
+	Persists the user setting
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param key key of user setting to be persisted
+	@return ApiUserObjPreferenceKeyPutRequest
+
+	Deprecated
+	*/
+	UserObjPreferenceKeyPut(ctx context.Context, key string) ApiUserObjPreferenceKeyPutRequest
+
+	// UserObjPreferenceKeyPutExecute executes the request
+	//  @return map[string]interface{}
+	// Deprecated
+	UserObjPreferenceKeyPutExecute(r ApiUserObjPreferenceKeyPutRequest) (map[string]interface{}, *http.Response, error)
+}
+
 // JamfProUserAccountSettingsPreviewApiService JamfProUserAccountSettingsPreviewApi service
 type JamfProUserAccountSettingsPreviewApiService service
 
 type ApiUserObjPreferenceKeyDeleteRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsPreviewApiService
+	ApiService JamfProUserAccountSettingsPreviewApi
 	key string
 }
 
@@ -130,7 +189,7 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete
 
 type ApiUserObjPreferenceKeyGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsPreviewApiService
+	ApiService JamfProUserAccountSettingsPreviewApi
 	key string
 }
 
@@ -246,7 +305,7 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExe
 
 type ApiUserObjPreferenceKeyPutRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsPreviewApiService
+	ApiService JamfProUserAccountSettingsPreviewApi
 	key string
 	body *string
 }

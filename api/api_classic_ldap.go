@@ -20,12 +20,30 @@ import (
 )
 
 
+type ClassicLdapApi interface {
+
+	/*
+	V1ClassicLdapIdGet Get mappings for OnPrem Ldap configuration with given id.
+
+	Get mappings for OnPrem Ldap configuration with given id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id OnPrem Ldap identifier
+	@return ApiV1ClassicLdapIdGetRequest
+	*/
+	V1ClassicLdapIdGet(ctx context.Context, id string) ApiV1ClassicLdapIdGetRequest
+
+	// V1ClassicLdapIdGetExecute executes the request
+	//  @return ClassicLdapMappings
+	V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGetRequest) (*ClassicLdapMappings, *http.Response, error)
+}
+
 // ClassicLdapApiService ClassicLdapApi service
 type ClassicLdapApiService service
 
 type ApiV1ClassicLdapIdGetRequest struct {
 	ctx context.Context
-	ApiService *ClassicLdapApiService
+	ApiService ClassicLdapApi
 	id string
 }
 

@@ -20,12 +20,277 @@ import (
 )
 
 
+type EnrollmentCustomizationPreviewApi interface {
+
+	/*
+	V1EnrollmentCustomizationIdAllGet Get all Panels for single Enrollment Customization 
+
+	Get all panels for single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdAllGetRequest
+	*/
+	V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdAllGetRequest
+
+	// V1EnrollmentCustomizationIdAllGetExecute executes the request
+	//  @return EnrollmentCustomizationPanelList
+	V1EnrollmentCustomizationIdAllGetExecute(r ApiV1EnrollmentCustomizationIdAllGetRequest) (*EnrollmentCustomizationPanelList, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdAllPanelIdDelete Delete a single Panel from an Enrollment Customization 
+
+	Delete a single panel from an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+	*/
+	V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+
+	// V1EnrollmentCustomizationIdAllPanelIdDeleteExecute executes the request
+	V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdAllPanelIdGet Get a single Panel for a single Enrollment Customization 
+
+	Get a single panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest
+	*/
+	V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest
+
+	// V1EnrollmentCustomizationIdAllPanelIdGetExecute executes the request
+	//  @return GetEnrollmentCustomizationPanel
+	V1EnrollmentCustomizationIdAllPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest) (*GetEnrollmentCustomizationPanel, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdLdapPanelIdDelete Delete an LDAP single panel from an Enrollment Customization 
+
+	Delete an LDAP single Panel from an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+	*/
+	V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+
+	// V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute executes the request
+	V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdLdapPanelIdGet Get a single LDAP panel for a single Enrollment Customization 
+
+	Get a single LDAP panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+	*/
+	V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+
+	// V1EnrollmentCustomizationIdLdapPanelIdGetExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelLdapAuth
+	V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdLdapPanelIdPut Update a single LDAP Panel for a single Enrollment Customization 
+
+	Update a single LDAP panel for a single enrollment customization. If multiple LDAP access groups are defined with the same name and id, only one will be saved.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+	*/
+	V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+
+	// V1EnrollmentCustomizationIdLdapPanelIdPutExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelLdapAuth
+	V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdLdapPost Create an LDAP Panel for a single Enrollment Customization 
+
+	Create an LDAP panel for a single enrollment customization. If multiple LDAP access groups are defined with the same name and id, only one will be saved.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdLdapPostRequest
+	*/
+	V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdLdapPostRequest
+
+	// V1EnrollmentCustomizationIdLdapPostExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelLdapAuth
+	V1EnrollmentCustomizationIdLdapPostExecute(r ApiV1EnrollmentCustomizationIdLdapPostRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdSsoPanelIdDelete Delete a single SSO Panel from an Enrollment Customization 
+
+	Delete a single SSO panel from an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+	*/
+	V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+
+	// V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute executes the request
+	V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdSsoPanelIdGet Get a single SSO Panel for a single Enrollment Customization 
+
+	Get a single SSO panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+	*/
+	V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+
+	// V1EnrollmentCustomizationIdSsoPanelIdGetExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelSsoAuth
+	V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdSsoPanelIdPut Update a single SSO Panel for a single Enrollment Customization 
+
+	Update a single SSO panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+	*/
+	V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+
+	// V1EnrollmentCustomizationIdSsoPanelIdPutExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelSsoAuth
+	V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdSsoPost Create an SSO Panel for a single Enrollment Customization 
+
+	Create an SSO panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdSsoPostRequest
+	*/
+	V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdSsoPostRequest
+
+	// V1EnrollmentCustomizationIdSsoPostExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelSsoAuth
+	V1EnrollmentCustomizationIdSsoPostExecute(r ApiV1EnrollmentCustomizationIdSsoPostRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdTextPanelIdDelete Delete a Text single Panel from an Enrollment Customization 
+
+	Delete a Text single panel from an Enrollment Customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+	*/
+	V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+
+	// V1EnrollmentCustomizationIdTextPanelIdDeleteExecute executes the request
+	V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdTextPanelIdGet Get a single Text Panel for a single Enrollment Customization 
+
+	Get a single Text panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest
+	*/
+	V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest
+
+	// V1EnrollmentCustomizationIdTextPanelIdGetExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelText
+	V1EnrollmentCustomizationIdTextPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet Get the markdown output of a single Text Panel for a single Enrollment 
+
+	Get the markdown output of a single Text panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+	*/
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+
+	// V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute executes the request
+	//  @return Markdown
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) (*Markdown, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdTextPanelIdPut Update a single Text Panel for a single Enrollment Customization 
+
+	Update a single Text panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@param panelId Panel object identifier
+	@return ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest
+	*/
+	V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest
+
+	// V1EnrollmentCustomizationIdTextPanelIdPutExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelText
+	V1EnrollmentCustomizationIdTextPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationIdTextPost Create a Text Panel for a single Enrollment Customization 
+
+	Create a Text panel for a single enrollment customization
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Enrollment Customization identifier
+	@return ApiV1EnrollmentCustomizationIdTextPostRequest
+	*/
+	V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdTextPostRequest
+
+	// V1EnrollmentCustomizationIdTextPostExecute executes the request
+	//  @return GetEnrollmentCustomizationPanelText
+	V1EnrollmentCustomizationIdTextPostExecute(r ApiV1EnrollmentCustomizationIdTextPostRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+
+	/*
+	V1EnrollmentCustomizationParseMarkdownPost Parse the given string as markdown text and return Html output 
+
+	Parse the given string as markdown text and return Html output
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EnrollmentCustomizationParseMarkdownPostRequest
+	*/
+	V1EnrollmentCustomizationParseMarkdownPost(ctx context.Context) ApiV1EnrollmentCustomizationParseMarkdownPostRequest
+
+	// V1EnrollmentCustomizationParseMarkdownPostExecute executes the request
+	//  @return Markdown
+	V1EnrollmentCustomizationParseMarkdownPostExecute(r ApiV1EnrollmentCustomizationParseMarkdownPostRequest) (*Markdown, *http.Response, error)
+}
+
 // EnrollmentCustomizationPreviewApiService EnrollmentCustomizationPreviewApi service
 type EnrollmentCustomizationPreviewApiService service
 
 type ApiV1EnrollmentCustomizationIdAllGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 }
 
@@ -137,7 +402,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 
 type ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -233,7 +498,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 
 type ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -349,7 +614,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 
 type ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -445,7 +710,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 type ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -561,7 +826,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 type ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
@@ -689,7 +954,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 type ApiV1EnrollmentCustomizationIdLdapPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
 }
@@ -813,7 +1078,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 type ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -909,7 +1174,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 type ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -1025,7 +1290,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 type ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
@@ -1153,7 +1418,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 type ApiV1EnrollmentCustomizationIdSsoPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
 }
@@ -1277,7 +1542,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 type ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -1373,7 +1638,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 type ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -1489,7 +1754,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 type ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 }
@@ -1605,7 +1870,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 type ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
@@ -1733,7 +1998,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 type ApiV1EnrollmentCustomizationIdTextPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	id int32
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
 }
@@ -1857,7 +2122,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 type ApiV1EnrollmentCustomizationParseMarkdownPostRequest struct {
 	ctx context.Context
-	ApiService *EnrollmentCustomizationPreviewApiService
+	ApiService EnrollmentCustomizationPreviewApi
 	markdown *Markdown
 }
 

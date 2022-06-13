@@ -19,12 +19,81 @@ import (
 )
 
 
+type PoliciesPreviewApi interface {
+
+	/*
+	SettingsObjPolicyPropertiesGet Get Policy Properties object 
+
+	Gets `Policy Properties` object.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSettingsObjPolicyPropertiesGetRequest
+
+	Deprecated
+	*/
+	SettingsObjPolicyPropertiesGet(ctx context.Context) ApiSettingsObjPolicyPropertiesGetRequest
+
+	// SettingsObjPolicyPropertiesGetExecute executes the request
+	//  @return PolicyProperties
+	// Deprecated
+	SettingsObjPolicyPropertiesGetExecute(r ApiSettingsObjPolicyPropertiesGetRequest) (*PolicyProperties, *http.Response, error)
+
+	/*
+	SettingsObjPolicyPropertiesPut Update Policy Properties object 
+
+	Update Policy Properties object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSettingsObjPolicyPropertiesPutRequest
+
+	Deprecated
+	*/
+	SettingsObjPolicyPropertiesPut(ctx context.Context) ApiSettingsObjPolicyPropertiesPutRequest
+
+	// SettingsObjPolicyPropertiesPutExecute executes the request
+	//  @return PolicyProperties
+	// Deprecated
+	SettingsObjPolicyPropertiesPutExecute(r ApiSettingsObjPolicyPropertiesPutRequest) (*PolicyProperties, *http.Response, error)
+
+	/*
+	V1PolicyPropertiesGet Get Policy Properties object 
+
+	Gets `Policy Properties` object.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PolicyPropertiesGetRequest
+	*/
+	V1PolicyPropertiesGet(ctx context.Context) ApiV1PolicyPropertiesGetRequest
+
+	// V1PolicyPropertiesGetExecute executes the request
+	//  @return PolicyPropertiesV1
+	V1PolicyPropertiesGetExecute(r ApiV1PolicyPropertiesGetRequest) (*PolicyPropertiesV1, *http.Response, error)
+
+	/*
+	V1PolicyPropertiesPut Update Policy Properties object 
+
+	Update Policy Properties object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PolicyPropertiesPutRequest
+	*/
+	V1PolicyPropertiesPut(ctx context.Context) ApiV1PolicyPropertiesPutRequest
+
+	// V1PolicyPropertiesPutExecute executes the request
+	//  @return PolicyPropertiesV1
+	V1PolicyPropertiesPutExecute(r ApiV1PolicyPropertiesPutRequest) (*PolicyPropertiesV1, *http.Response, error)
+}
+
 // PoliciesPreviewApiService PoliciesPreviewApi service
 type PoliciesPreviewApiService service
 
 type ApiSettingsObjPolicyPropertiesGetRequest struct {
 	ctx context.Context
-	ApiService *PoliciesPreviewApiService
+	ApiService PoliciesPreviewApi
 }
 
 func (r ApiSettingsObjPolicyPropertiesGetRequest) Execute() (*PolicyProperties, *http.Response, error) {
@@ -127,7 +196,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGetExecute(r ApiS
 
 type ApiSettingsObjPolicyPropertiesPutRequest struct {
 	ctx context.Context
-	ApiService *PoliciesPreviewApiService
+	ApiService PoliciesPreviewApi
 	policyProperties *PolicyProperties
 }
 
@@ -242,7 +311,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPutExecute(r ApiS
 
 type ApiV1PolicyPropertiesGetRequest struct {
 	ctx context.Context
-	ApiService *PoliciesPreviewApiService
+	ApiService PoliciesPreviewApi
 }
 
 func (r ApiV1PolicyPropertiesGetRequest) Execute() (*PolicyPropertiesV1, *http.Response, error) {
@@ -342,7 +411,7 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesGetExecute(r ApiV1PolicyPr
 
 type ApiV1PolicyPropertiesPutRequest struct {
 	ctx context.Context
-	ApiService *PoliciesPreviewApiService
+	ApiService PoliciesPreviewApi
 	policyPropertiesV1 *PolicyPropertiesV1
 }
 

@@ -20,12 +20,30 @@ import (
 )
 
 
+type PatchPolicyLogsPreviewApi interface {
+
+	/*
+	PatchPatchPoliciesIdLogsGet Return the Patch Policy Attempt details 
+
+	Returns the patch policy attempt details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch policy id
+	@return ApiPatchPatchPoliciesIdLogsGetRequest
+	*/
+	PatchPatchPoliciesIdLogsGet(ctx context.Context, id int32) ApiPatchPatchPoliciesIdLogsGetRequest
+
+	// PatchPatchPoliciesIdLogsGetExecute executes the request
+	//  @return []PatchPolicyAttempt
+	PatchPatchPoliciesIdLogsGetExecute(r ApiPatchPatchPoliciesIdLogsGetRequest) ([]PatchPolicyAttempt, *http.Response, error)
+}
+
 // PatchPolicyLogsPreviewApiService PatchPolicyLogsPreviewApi service
 type PatchPolicyLogsPreviewApiService service
 
 type ApiPatchPatchPoliciesIdLogsGetRequest struct {
 	ctx context.Context
-	ApiService *PatchPolicyLogsPreviewApiService
+	ApiService PatchPolicyLogsPreviewApi
 	id int32
 	deviceId *int32
 }

@@ -21,12 +21,337 @@ import (
 )
 
 
+type ComputerPrestagesApi interface {
+
+	/*
+	V1ComputerPrestagesGet Search for sorted and paged Computer Prestages 
+
+	Search for sorted and paged computer prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerPrestagesGetRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesGet(ctx context.Context) ApiV1ComputerPrestagesGetRequest
+
+	// V1ComputerPrestagesGetExecute executes the request
+	//  @return ComputerPrestageSearchResults
+	// Deprecated
+	V1ComputerPrestagesGetExecute(r ApiV1ComputerPrestagesGetRequest) (*ComputerPrestageSearchResults, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
+
+	Deletes a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdDeleteRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdDeleteRequest
+
+	// V1ComputerPrestagesIdDeleteExecute executes the request
+	// Deprecated
+	V1ComputerPrestagesIdDeleteExecute(r ApiV1ComputerPrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
+
+	Retrieves a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdGetRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdGetRequest
+
+	// V1ComputerPrestagesIdGetExecute executes the request
+	//  @return GetComputerPrestage
+	// Deprecated
+	V1ComputerPrestagesIdGetExecute(r ApiV1ComputerPrestagesIdGetRequest) (*GetComputerPrestage, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdPut Update a Computer Prestage 
+
+	Updates a Computer Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdPutRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdPut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdPutRequest
+
+	// V1ComputerPrestagesIdPutExecute executes the request
+	//  @return GetComputerPrestage
+	// Deprecated
+	V1ComputerPrestagesIdPutExecute(r ApiV1ComputerPrestagesIdPutRequest) (*GetComputerPrestage, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdScopeDelete Remove device Scope for a specific Computer Prestage 
+
+	Remove device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdScopeDeleteRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeDeleteRequest
+
+	// V1ComputerPrestagesIdScopeDeleteExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1ComputerPrestagesIdScopeDeleteExecute(r ApiV1ComputerPrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdScopeGet Get device Scope for a specific Computer Prestage 
+
+	Get device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdScopeGetRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeGetRequest
+
+	// V1ComputerPrestagesIdScopeGetExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1ComputerPrestagesIdScopeGetExecute(r ApiV1ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdScopePost Add device Scope for a specific Computer Prestage 
+
+	Add device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdScopePostRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePostRequest
+
+	// V1ComputerPrestagesIdScopePostExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1ComputerPrestagesIdScopePostExecute(r ApiV1ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesIdScopePut Replace device Scope for a specific Computer Prestage 
+
+	Replace device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV1ComputerPrestagesIdScopePutRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePutRequest
+
+	// V1ComputerPrestagesIdScopePutExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1ComputerPrestagesIdScopePutExecute(r ApiV1ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesPost Create a Computer Prestage 
+
+	Create a computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerPrestagesPostRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesPost(ctx context.Context) ApiV1ComputerPrestagesPostRequest
+
+	// V1ComputerPrestagesPostExecute executes the request
+	//  @return GetComputerPrestage
+	// Deprecated
+	V1ComputerPrestagesPostExecute(r ApiV1ComputerPrestagesPostRequest) (*GetComputerPrestage, *http.Response, error)
+
+	/*
+	V1ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages 
+
+	Get all device scope for all computer prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerPrestagesScopeGetRequest
+
+	Deprecated
+	*/
+	V1ComputerPrestagesScopeGet(ctx context.Context) ApiV1ComputerPrestagesScopeGetRequest
+
+	// V1ComputerPrestagesScopeGetExecute executes the request
+	//  @return PrestageScope
+	// Deprecated
+	V1ComputerPrestagesScopeGetExecute(r ApiV1ComputerPrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesGet Get sorted and paged Computer Prestages 
+
+	Gets sorted and paged computer prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ComputerPrestagesGetRequest
+	*/
+	V2ComputerPrestagesGet(ctx context.Context) ApiV2ComputerPrestagesGetRequest
+
+	// V2ComputerPrestagesGetExecute executes the request
+	//  @return ComputerPrestageSearchResultsV2
+	V2ComputerPrestagesGetExecute(r ApiV2ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
+
+	Deletes a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdDeleteRequest
+	*/
+	V2ComputerPrestagesIdDelete(ctx context.Context, id string) ApiV2ComputerPrestagesIdDeleteRequest
+
+	// V2ComputerPrestagesIdDeleteExecute executes the request
+	V2ComputerPrestagesIdDeleteExecute(r ApiV2ComputerPrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
+
+	Retrieves a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdGetRequest
+	*/
+	V2ComputerPrestagesIdGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdGetRequest
+
+	// V2ComputerPrestagesIdGetExecute executes the request
+	//  @return GetComputerPrestageV2
+	V2ComputerPrestagesIdGetExecute(r ApiV2ComputerPrestagesIdGetRequest) (*GetComputerPrestageV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdPut Update a Computer Prestage 
+
+	Updates a Computer Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdPutRequest
+	*/
+	V2ComputerPrestagesIdPut(ctx context.Context, id string) ApiV2ComputerPrestagesIdPutRequest
+
+	// V2ComputerPrestagesIdPutExecute executes the request
+	//  @return GetComputerPrestageV2
+	V2ComputerPrestagesIdPutExecute(r ApiV2ComputerPrestagesIdPutRequest) (*GetComputerPrestageV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdScopeDeleteMultiplePost Remove device Scope for a specific Computer Prestage 
+
+	Remove device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
+	*/
+	V2ComputerPrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
+
+	// V2ComputerPrestagesIdScopeDeleteMultiplePostExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdScopeGet Get device Scope for a specific Computer Prestage 
+
+	Get device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdScopeGetRequest
+	*/
+	V2ComputerPrestagesIdScopeGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeGetRequest
+
+	// V2ComputerPrestagesIdScopeGetExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2ComputerPrestagesIdScopeGetExecute(r ApiV2ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdScopePost Add device Scope for a specific Computer Prestage 
+
+	Add device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdScopePostRequest
+	*/
+	V2ComputerPrestagesIdScopePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePostRequest
+
+	// V2ComputerPrestagesIdScopePostExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2ComputerPrestagesIdScopePostExecute(r ApiV2ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesIdScopePut Replace device Scope for a specific Computer Prestage 
+
+	Replace device scope for a specific computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ApiV2ComputerPrestagesIdScopePutRequest
+	*/
+	V2ComputerPrestagesIdScopePut(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePutRequest
+
+	// V2ComputerPrestagesIdScopePutExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2ComputerPrestagesIdScopePutExecute(r ApiV2ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesPost Create a Computer Prestage 
+
+	Create a computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ComputerPrestagesPostRequest
+	*/
+	V2ComputerPrestagesPost(ctx context.Context) ApiV2ComputerPrestagesPostRequest
+
+	// V2ComputerPrestagesPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputerPrestagesPostExecute(r ApiV2ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages 
+
+	Get all device scope for all computer prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2ComputerPrestagesScopeGetRequest
+	*/
+	V2ComputerPrestagesScopeGet(ctx context.Context) ApiV2ComputerPrestagesScopeGetRequest
+
+	// V2ComputerPrestagesScopeGetExecute executes the request
+	//  @return PrestageScopeV2
+	V2ComputerPrestagesScopeGetExecute(r ApiV2ComputerPrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
+}
+
 // ComputerPrestagesApiService ComputerPrestagesApi service
 type ComputerPrestagesApiService service
 
 type ApiV1ComputerPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -176,7 +501,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesGetExecute(r ApiV1Compu
 
 type ApiV1ComputerPrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 }
 
@@ -271,7 +596,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdDeleteExecute(r ApiV1
 
 type ApiV1ComputerPrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 }
 
@@ -386,7 +711,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdGetExecute(r ApiV1Com
 
 type ApiV1ComputerPrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 	putComputerPrestage *PutComputerPrestage
 }
@@ -533,7 +858,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdPutExecute(r ApiV1Com
 
 type ApiV1ComputerPrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -680,7 +1005,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 
 type ApiV1ComputerPrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 }
 
@@ -795,7 +1120,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r Api
 
 type ApiV1ComputerPrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -942,7 +1267,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 
 type ApiV1ComputerPrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -1089,7 +1414,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 
 type ApiV1ComputerPrestagesPostRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	computerPrestage *ComputerPrestage
 }
 
@@ -1212,7 +1537,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesPostExecute(r ApiV1Comp
 
 type ApiV1ComputerPrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 }
 
 func (r ApiV1ComputerPrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
@@ -1314,7 +1639,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGetExecute(r ApiV1
 
 type ApiV2ComputerPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -1449,7 +1774,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2Compu
 
 type ApiV2ComputerPrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 }
 
@@ -1541,7 +1866,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDeleteExecute(r ApiV2
 
 type ApiV2ComputerPrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 }
 
@@ -1653,7 +1978,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2Com
 
 type ApiV2ComputerPrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 	putComputerPrestageV2 *PutComputerPrestageV2
 }
@@ -1797,7 +2122,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 
 type ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -1941,7 +2266,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 
 type ApiV2ComputerPrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 }
 
@@ -2053,7 +2378,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r Api
 
 type ApiV2ComputerPrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -2197,7 +2522,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 
 type ApiV2ComputerPrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -2341,7 +2666,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 
 type ApiV2ComputerPrestagesPostRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 	postComputerPrestageV2 *PostComputerPrestageV2
 }
 
@@ -2461,7 +2786,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2Comp
 
 type ApiV2ComputerPrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerPrestagesApiService
+	ApiService ComputerPrestagesApi
 }
 
 func (r ApiV2ComputerPrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {

@@ -20,12 +20,92 @@ import (
 )
 
 
+type AdvancedUserContentSearchesApi interface {
+
+	/*
+	V1AdvancedUserContentSearchesGet Get All Advanced User Content Search objects 
+
+	Get All Advanced User Content Search Objects
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedUserContentSearchesGetRequest
+	*/
+	V1AdvancedUserContentSearchesGet(ctx context.Context) ApiV1AdvancedUserContentSearchesGetRequest
+
+	// V1AdvancedUserContentSearchesGetExecute executes the request
+	//  @return AdvancedUserContentSearchSearchResults
+	V1AdvancedUserContentSearchesGetExecute(r ApiV1AdvancedUserContentSearchesGetRequest) (*AdvancedUserContentSearchSearchResults, *http.Response, error)
+
+	/*
+	V1AdvancedUserContentSearchesIdDelete Remove specified Advanced User Content Search object 
+
+	Removes specified Advanced User Content Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of Advanced User Content Search record
+	@return ApiV1AdvancedUserContentSearchesIdDeleteRequest
+	*/
+	V1AdvancedUserContentSearchesIdDelete(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdDeleteRequest
+
+	// V1AdvancedUserContentSearchesIdDeleteExecute executes the request
+	V1AdvancedUserContentSearchesIdDeleteExecute(r ApiV1AdvancedUserContentSearchesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1AdvancedUserContentSearchesIdGet Get Specified Advanced User Content Search object 
+
+	Gets Specified Advanced User Content Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Advanced User Content Search
+	@return ApiV1AdvancedUserContentSearchesIdGetRequest
+	*/
+	V1AdvancedUserContentSearchesIdGet(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdGetRequest
+
+	// V1AdvancedUserContentSearchesIdGetExecute executes the request
+	//  @return AdvancedUserContentSearch
+	V1AdvancedUserContentSearchesIdGetExecute(r ApiV1AdvancedUserContentSearchesIdGetRequest) (*AdvancedUserContentSearch, *http.Response, error)
+
+	/*
+	V1AdvancedUserContentSearchesIdPut Get Specified Advanced User Content Search object 
+
+	Gets Specified Advanced User Content Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Advanced User Content Search
+	@return ApiV1AdvancedUserContentSearchesIdPutRequest
+	*/
+	V1AdvancedUserContentSearchesIdPut(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdPutRequest
+
+	// V1AdvancedUserContentSearchesIdPutExecute executes the request
+	//  @return AdvancedUserContentSearch
+	V1AdvancedUserContentSearchesIdPutExecute(r ApiV1AdvancedUserContentSearchesIdPutRequest) (*AdvancedUserContentSearch, *http.Response, error)
+
+	/*
+	V1AdvancedUserContentSearchesPost Create Advanced User Content Search object 
+
+	Creates Advanced User Content Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedUserContentSearchesPostRequest
+	*/
+	V1AdvancedUserContentSearchesPost(ctx context.Context) ApiV1AdvancedUserContentSearchesPostRequest
+
+	// V1AdvancedUserContentSearchesPostExecute executes the request
+	//  @return HrefResponse
+	V1AdvancedUserContentSearchesPostExecute(r ApiV1AdvancedUserContentSearchesPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // AdvancedUserContentSearchesApiService AdvancedUserContentSearchesApi service
 type AdvancedUserContentSearchesApiService service
 
 type ApiV1AdvancedUserContentSearchesGetRequest struct {
 	ctx context.Context
-	ApiService *AdvancedUserContentSearchesApiService
+	ApiService AdvancedUserContentSearchesApi
 }
 
 func (r ApiV1AdvancedUserContentSearchesGetRequest) Execute() (*AdvancedUserContentSearchSearchResults, *http.Response, error) {
@@ -125,7 +205,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet
 
 type ApiV1AdvancedUserContentSearchesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *AdvancedUserContentSearchesApiService
+	ApiService AdvancedUserContentSearchesApi
 	id string
 }
 
@@ -227,7 +307,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdD
 
 type ApiV1AdvancedUserContentSearchesIdGetRequest struct {
 	ctx context.Context
-	ApiService *AdvancedUserContentSearchesApiService
+	ApiService AdvancedUserContentSearchesApi
 	id string
 }
 
@@ -340,7 +420,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 
 type ApiV1AdvancedUserContentSearchesIdPutRequest struct {
 	ctx context.Context
-	ApiService *AdvancedUserContentSearchesApiService
+	ApiService AdvancedUserContentSearchesApi
 	id string
 	advancedUserContentSearch *AdvancedUserContentSearch
 }
@@ -464,7 +544,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 
 type ApiV1AdvancedUserContentSearchesPostRequest struct {
 	ctx context.Context
-	ApiService *AdvancedUserContentSearchesApiService
+	ApiService AdvancedUserContentSearchesApi
 	advancedUserContentSearch *AdvancedUserContentSearch
 }
 

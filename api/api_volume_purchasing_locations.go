@@ -21,12 +21,131 @@ import (
 )
 
 
+type VolumePurchasingLocationsApi interface {
+
+	/*
+	V1VolumePurchasingLocationsGet Retrieve Volume Purchasing Locations
+
+	Retrieves Volume Purchasing Locations
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1VolumePurchasingLocationsGetRequest
+	*/
+	V1VolumePurchasingLocationsGet(ctx context.Context) ApiV1VolumePurchasingLocationsGetRequest
+
+	// V1VolumePurchasingLocationsGetExecute executes the request
+	//  @return VolumePurchasingLocations
+	V1VolumePurchasingLocationsGetExecute(r ApiV1VolumePurchasingLocationsGetRequest) (*VolumePurchasingLocations, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdDelete Delete a Volume Purchasing Location with the supplied id
+
+	Deletes a Volume Purchasing Location with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return ApiV1VolumePurchasingLocationsIdDeleteRequest
+	*/
+	V1VolumePurchasingLocationsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdDeleteRequest
+
+	// V1VolumePurchasingLocationsIdDeleteExecute executes the request
+	V1VolumePurchasingLocationsIdDeleteExecute(r ApiV1VolumePurchasingLocationsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdGet Retrieve a Volume Purchasing Location with the supplied id
+
+	Retrieves a Volume Purchasing Location with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return ApiV1VolumePurchasingLocationsIdGetRequest
+	*/
+	V1VolumePurchasingLocationsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdGetRequest
+
+	// V1VolumePurchasingLocationsIdGetExecute executes the request
+	//  @return VolumePurchasingLocation
+	V1VolumePurchasingLocationsIdGetExecute(r ApiV1VolumePurchasingLocationsIdGetRequest) (*VolumePurchasingLocation, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdHistoryGet Get specified Volume Purchasing Location history object 
+
+	Gets specified Volume Purchasing Location history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of Volume Purchasing Location history record
+	@return ApiV1VolumePurchasingLocationsIdHistoryGetRequest
+	*/
+	V1VolumePurchasingLocationsIdHistoryGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdHistoryGetRequest
+
+	// V1VolumePurchasingLocationsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1VolumePurchasingLocationsIdHistoryGetExecute(r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdPatch Update a Volume Purchasing Location
+
+	Updates a Volume Purchasing Location
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return ApiV1VolumePurchasingLocationsIdPatchRequest
+	*/
+	V1VolumePurchasingLocationsIdPatch(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdPatchRequest
+
+	// V1VolumePurchasingLocationsIdPatchExecute executes the request
+	//  @return VolumePurchasingLocation
+	V1VolumePurchasingLocationsIdPatchExecute(r ApiV1VolumePurchasingLocationsIdPatchRequest) (*VolumePurchasingLocation, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdReclaimPost Reclaim a Volume Purchasing Location with the supplied id
+
+	Reclaims a Volume Purchasing Location with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return ApiV1VolumePurchasingLocationsIdReclaimPostRequest
+	*/
+	V1VolumePurchasingLocationsIdReclaimPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdReclaimPostRequest
+
+	// V1VolumePurchasingLocationsIdReclaimPostExecute executes the request
+	V1VolumePurchasingLocationsIdReclaimPostExecute(r ApiV1VolumePurchasingLocationsIdReclaimPostRequest) (*http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdRevokeLicensesPost Revoke licenses for a Volume Purchasing Location with the supplied id
+
+	Revokes licenses for a Volume Purchasing Location with the supplied id. The licenses must be revokable - any asset whose licenses are irrevocable will not be revoked.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
+	*/
+	V1VolumePurchasingLocationsIdRevokeLicensesPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
+
+	// V1VolumePurchasingLocationsIdRevokeLicensesPostExecute executes the request
+	V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) (*http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsPost Create a Volume Purchasing Location
+
+	Creates a Volume Purchasing Location using an sToken
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1VolumePurchasingLocationsPostRequest
+	*/
+	V1VolumePurchasingLocationsPost(ctx context.Context) ApiV1VolumePurchasingLocationsPostRequest
+
+	// V1VolumePurchasingLocationsPostExecute executes the request
+	//  @return HrefResponse
+	V1VolumePurchasingLocationsPostExecute(r ApiV1VolumePurchasingLocationsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // VolumePurchasingLocationsApiService VolumePurchasingLocationsApi service
 type VolumePurchasingLocationsApiService service
 
 type ApiV1VolumePurchasingLocationsGetRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -171,7 +290,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExec
 
 type ApiV1VolumePurchasingLocationsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 }
 
@@ -272,7 +391,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelet
 
 type ApiV1VolumePurchasingLocationsIdGetRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 }
 
@@ -384,7 +503,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetEx
 
 type ApiV1VolumePurchasingLocationsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 	page *int32
 	pageSize *int32
@@ -543,7 +662,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 
 type ApiV1VolumePurchasingLocationsIdPatchRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 	volumePurchasingLocationPatch *VolumePurchasingLocationPatch
 }
@@ -687,7 +806,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 
 type ApiV1VolumePurchasingLocationsIdReclaimPostRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 }
 
@@ -779,7 +898,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRecla
 
 type ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	id string
 }
 
@@ -880,7 +999,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevok
 
 type ApiV1VolumePurchasingLocationsPostRequest struct {
 	ctx context.Context
-	ApiService *VolumePurchasingLocationsApiService
+	ApiService VolumePurchasingLocationsApi
 	volumePurchasingLocationPost *VolumePurchasingLocationPost
 }
 

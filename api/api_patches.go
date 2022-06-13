@@ -20,12 +20,103 @@ import (
 )
 
 
+type PatchesApi interface {
+
+	/*
+	PatchIdGet Return Active Patch Summary 
+
+	Returns active patch summary.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchIdGetRequest
+
+	Deprecated
+	*/
+	PatchIdGet(ctx context.Context, id int32) ApiPatchIdGetRequest
+
+	// PatchIdGetExecute executes the request
+	//  @return ActivePatchSummary
+	// Deprecated
+	PatchIdGetExecute(r ApiPatchIdGetRequest) (*ActivePatchSummary, *http.Response, error)
+
+	/*
+	PatchIdPut Update patch report 
+
+	Updates patch report.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchIdPutRequest
+
+	Deprecated
+	*/
+	PatchIdPut(ctx context.Context, id int32) ApiPatchIdPutRequest
+
+	// PatchIdPutExecute executes the request
+	//  @return ActivePatchSummary
+	// Deprecated
+	PatchIdPutExecute(r ApiPatchIdPutRequest) (*ActivePatchSummary, *http.Response, error)
+
+	/*
+	PatchIdVersionsGet Return patch versions 
+
+	Returns patch versions.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchIdVersionsGetRequest
+
+	Deprecated
+	*/
+	PatchIdVersionsGet(ctx context.Context, id int32) ApiPatchIdVersionsGetRequest
+
+	// PatchIdVersionsGetExecute executes the request
+	//  @return []PatchVersion
+	// Deprecated
+	PatchIdVersionsGetExecute(r ApiPatchIdVersionsGetRequest) ([]PatchVersion, *http.Response, error)
+
+	/*
+	PatchObjPolicyIdGet Return Patch Policy Summary 
+
+	Returns patch policy summary.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch policy id
+	@return ApiPatchObjPolicyIdGetRequest
+
+	Deprecated
+	*/
+	PatchObjPolicyIdGet(ctx context.Context, id int32) ApiPatchObjPolicyIdGetRequest
+
+	// PatchObjPolicyIdGetExecute executes the request
+	//  @return PatchPolicySummary
+	// Deprecated
+	PatchObjPolicyIdGetExecute(r ApiPatchObjPolicyIdGetRequest) (*PatchPolicySummary, *http.Response, error)
+
+	/*
+	PatchSvcDisclaimerAgreePost Accept Patch reporting disclaimer 
+
+	Accept Patch reporting disclaimer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchSvcDisclaimerAgreePostRequest
+
+	Deprecated
+	*/
+	PatchSvcDisclaimerAgreePost(ctx context.Context) ApiPatchSvcDisclaimerAgreePostRequest
+
+	// PatchSvcDisclaimerAgreePostExecute executes the request
+	// Deprecated
+	PatchSvcDisclaimerAgreePostExecute(r ApiPatchSvcDisclaimerAgreePostRequest) (*http.Response, error)
+}
+
 // PatchesApiService PatchesApi service
 type PatchesApiService service
 
 type ApiPatchIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesApiService
+	ApiService PatchesApi
 	id int32
 }
 
@@ -131,7 +222,7 @@ func (a *PatchesApiService) PatchIdGetExecute(r ApiPatchIdGetRequest) (*ActivePa
 
 type ApiPatchIdPutRequest struct {
 	ctx context.Context
-	ApiService *PatchesApiService
+	ApiService PatchesApi
 	id int32
 	activePatchSummary *ActivePatchSummary
 }
@@ -249,7 +340,7 @@ func (a *PatchesApiService) PatchIdPutExecute(r ApiPatchIdPutRequest) (*ActivePa
 
 type ApiPatchIdVersionsGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesApiService
+	ApiService PatchesApi
 	id int32
 }
 
@@ -355,7 +446,7 @@ func (a *PatchesApiService) PatchIdVersionsGetExecute(r ApiPatchIdVersionsGetReq
 
 type ApiPatchObjPolicyIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesApiService
+	ApiService PatchesApi
 	id int32
 }
 
@@ -461,7 +552,7 @@ func (a *PatchesApiService) PatchObjPolicyIdGetExecute(r ApiPatchObjPolicyIdGetR
 
 type ApiPatchSvcDisclaimerAgreePostRequest struct {
 	ctx context.Context
-	ApiService *PatchesApiService
+	ApiService PatchesApi
 }
 
 func (r ApiPatchSvcDisclaimerAgreePostRequest) Execute() (*http.Response, error) {

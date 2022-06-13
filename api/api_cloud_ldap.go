@@ -21,12 +21,533 @@ import (
 )
 
 
+type CloudLdapApi interface {
+
+	/*
+	V1CloudLdapsDefaultsMappingsGet Get default mappings
+
+	Get default mappings which will work with Google Cloud Identity Provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudLdapsDefaultsMappingsGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsDefaultsMappingsGet(ctx context.Context) ApiV1CloudLdapsDefaultsMappingsGetRequest
+
+	// V1CloudLdapsDefaultsMappingsGetExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	// Deprecated
+	V1CloudLdapsDefaultsMappingsGetExecute(r ApiV1CloudLdapsDefaultsMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsDefaultsServerConfigurationGet Get default server configuration
+
+	Get default server configuration which will work with Google Cloud Identity Provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudLdapsDefaultsServerConfigurationGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudLdapsDefaultsServerConfigurationGetRequest
+
+	// V1CloudLdapsDefaultsServerConfigurationGetExecute executes the request
+	//  @return DeprecatedServerResponse
+	// Deprecated
+	V1CloudLdapsDefaultsServerConfigurationGetExecute(r ApiV1CloudLdapsDefaultsServerConfigurationGetRequest) (*DeprecatedServerResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsGet Get all Cloud Identity Providers configurations.
+
+	Returns all configured Cloud Identity Provider instances without keystore data.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudLdapsGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsGet(ctx context.Context) ApiV1CloudLdapsGetRequest
+
+	// V1CloudLdapsGetExecute executes the request
+	//  @return DeprecatedConfigurationSearchResults
+	// Deprecated
+	V1CloudLdapsGetExecute(r ApiV1CloudLdapsGetRequest) (*DeprecatedConfigurationSearchResults, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdConnectionBindGet Get bind connection pool statistics
+
+	Get all search connection pool for chosen Cloud Identity Provider.
+numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
+numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
+numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
+numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
+numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
+numReleasedValid - The number of valid connections released back to the pool.
+numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
+numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
+numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
+maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
+numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
+numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
+numAvailableConnections - The number of connections currently available for use in the pool.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdConnectionBindGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionBindGetRequest
+
+	// V1CloudLdapsIdConnectionBindGetExecute executes the request
+	//  @return CloudLdapConnectionPoolStatistics
+	// Deprecated
+	V1CloudLdapsIdConnectionBindGetExecute(r ApiV1CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdConnectionSearchGet Get search connection pool statistics
+
+	Get all search connection pool for chosen Cloud Identity Provider.
+numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
+numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
+numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
+numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
+numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
+numReleasedValid - The number of valid connections released back to the pool.
+numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
+numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
+numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
+maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
+numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
+numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
+numAvailableConnections - The number of connections currently available for use in the pool.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdConnectionSearchGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionSearchGetRequest
+
+	// V1CloudLdapsIdConnectionSearchGetExecute executes the request
+	//  @return CloudLdapConnectionPoolStatistics
+	// Deprecated
+	V1CloudLdapsIdConnectionSearchGetExecute(r ApiV1CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdDelete Delete Cloud Identity Provider configuration.
+
+	Delete Cloud Identity Provider configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdDeleteRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdDelete(ctx context.Context, id string) ApiV1CloudLdapsIdDeleteRequest
+
+	// V1CloudLdapsIdDeleteExecute executes the request
+	// Deprecated
+	V1CloudLdapsIdDeleteExecute(r ApiV1CloudLdapsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CloudLdapsIdGet Get Cloud Identity Provider configuration with given id.
+
+	Get Cloud Identity Provider configuration with given id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdGet(ctx context.Context, id string) ApiV1CloudLdapsIdGetRequest
+
+	// V1CloudLdapsIdGetExecute executes the request
+	//  @return DeprecatedConfigurationResponse
+	// Deprecated
+	V1CloudLdapsIdGetExecute(r ApiV1CloudLdapsIdGetRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdHistoryGet Get Cloud Identity Provider history
+
+	Gets specified Cloud Identity Provider object history
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdHistoryGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdHistoryGet(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryGetRequest
+
+	// V1CloudLdapsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	// Deprecated
+	V1CloudLdapsIdHistoryGetExecute(r ApiV1CloudLdapsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdHistoryPost Add Cloud Identity Provider history note
+
+	Adds specified Cloud Identity Provider object history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdHistoryPostRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdHistoryPost(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryPostRequest
+
+	// V1CloudLdapsIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	// Deprecated
+	V1CloudLdapsIdHistoryPostExecute(r ApiV1CloudLdapsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdMappingsGet Get mappings configurations for Cloud Identity Providers server configuration.
+
+	Get all mappings configurations for Cloud Identity Providers server configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdMappingsGetRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsGetRequest
+
+	// V1CloudLdapsIdMappingsGetExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	// Deprecated
+	V1CloudLdapsIdMappingsGetExecute(r ApiV1CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdMappingsPut Update Cloud Identity Provider mappings configuration.
+
+	Update Cloud Identity Provider mappings configuration. Cannot be used for partial updates, all content body must be sent.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdMappingsPutRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsPutRequest
+
+	// V1CloudLdapsIdMappingsPutExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	// Deprecated
+	V1CloudLdapsIdMappingsPutExecute(r ApiV1CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdPut Old update Cloud Identity Provider configuration
+
+	Update Cloud Identity Provider configuration. Cannot be used for partial updates, all content body must be sent.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdPutRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdPut(ctx context.Context, id string) ApiV1CloudLdapsIdPutRequest
+
+	// V1CloudLdapsIdPutExecute executes the request
+	//  @return DeprecatedConfigurationResponse
+	// Deprecated
+	V1CloudLdapsIdPutExecute(r ApiV1CloudLdapsIdPutRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdTestGroupPost Get group test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdTestGroupPostRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdTestGroupPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestGroupPostRequest
+
+	// V1CloudLdapsIdTestGroupPostExecute executes the request
+	//  @return GroupTestSearchResponse
+	// Deprecated
+	V1CloudLdapsIdTestGroupPostExecute(r ApiV1CloudLdapsIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdTestUserMembershipPost Get membership test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdTestUserMembershipPostRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserMembershipPostRequest
+
+	// V1CloudLdapsIdTestUserMembershipPostExecute executes the request
+	//  @return MembershipTestSearchResponse
+	// Deprecated
+	V1CloudLdapsIdTestUserMembershipPostExecute(r ApiV1CloudLdapsIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsIdTestUserPost Get user test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudLdapsIdTestUserPostRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsIdTestUserPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserPostRequest
+
+	// V1CloudLdapsIdTestUserPostExecute executes the request
+	//  @return UserTestSearchResponse
+	// Deprecated
+	V1CloudLdapsIdTestUserPostExecute(r ApiV1CloudLdapsIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error)
+
+	/*
+	V1CloudLdapsPost Create Cloud Identity Provider configuration
+
+	Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudLdapsPostRequest
+
+	Deprecated
+	*/
+	V1CloudLdapsPost(ctx context.Context) ApiV1CloudLdapsPostRequest
+
+	// V1CloudLdapsPostExecute executes the request
+	//  @return DeprecatedConfigurationResponse
+	// Deprecated
+	V1CloudLdapsPostExecute(r ApiV1CloudLdapsPostRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
+
+	/*
+	V1LdapKeystoreVerifyPost Validate keystore for Cloud Identity Provider secure connection
+
+	Validate keystore for Cloud Identity Provider secure connection
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1LdapKeystoreVerifyPostRequest
+	*/
+	V1LdapKeystoreVerifyPost(ctx context.Context) ApiV1LdapKeystoreVerifyPostRequest
+
+	// V1LdapKeystoreVerifyPostExecute executes the request
+	//  @return CloudLdapKeystore
+	V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystoreVerifyPostRequest) (*CloudLdapKeystore, *http.Response, error)
+
+	/*
+	V2CloudLdapsDefaultsProviderMappingsGet Get default mappings
+
+	Get default mappings for Cloud Identity Provider Provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param provider Cloud Identity Provider name
+	@return ApiV2CloudLdapsDefaultsProviderMappingsGetRequest
+	*/
+	V2CloudLdapsDefaultsProviderMappingsGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderMappingsGetRequest
+
+	// V2CloudLdapsDefaultsProviderMappingsGetExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	V2CloudLdapsDefaultsProviderMappingsGetExecute(r ApiV2CloudLdapsDefaultsProviderMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsDefaultsProviderServerConfigurationGet Get default server configuration
+
+	Get default server configuration for Cloud Identity Provider Identity Provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param provider Cloud Identity Provider name
+	@return ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
+	*/
+	V2CloudLdapsDefaultsProviderServerConfigurationGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
+
+	// V2CloudLdapsDefaultsProviderServerConfigurationGetExecute executes the request
+	//  @return CloudLdapServerResponse
+	V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) (*CloudLdapServerResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdConnectionBindGet Get bind connection pool statistics
+
+	Get all search connection pool for chosen Cloud Identity Provider.
+numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
+numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
+numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
+numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
+numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
+numReleasedValid - The number of valid connections released back to the pool.
+numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
+numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
+numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
+maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
+numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
+numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
+numAvailableConnections - The number of connections currently available for use in the pool.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdConnectionBindGetRequest
+	*/
+	V2CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionBindGetRequest
+
+	// V2CloudLdapsIdConnectionBindGetExecute executes the request
+	//  @return CloudLdapConnectionPoolStatistics
+	V2CloudLdapsIdConnectionBindGetExecute(r ApiV2CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdConnectionSearchGet Get search connection pool statistics
+
+	Get all search connection pool for chosen Cloud Identity Provider.
+numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
+numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
+numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
+numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
+numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
+numReleasedValid - The number of valid connections released back to the pool.
+numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
+numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
+numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
+maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
+numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
+numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
+numAvailableConnections - The number of connections currently available for use in the pool.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdConnectionSearchGetRequest
+	*/
+	V2CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionSearchGetRequest
+
+	// V2CloudLdapsIdConnectionSearchGetExecute executes the request
+	//  @return CloudLdapConnectionPoolStatistics
+	V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdConnectionStatusGet Tests the communication with the specified cloud connection 
+
+	Tests the communication with the specified cloud connection
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdConnectionStatusGetRequest
+	*/
+	V2CloudLdapsIdConnectionStatusGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionStatusGetRequest
+
+	// V2CloudLdapsIdConnectionStatusGetExecute executes the request
+	//  @return CloudLdapConnectionStatus
+	V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2CloudLdapsIdConnectionStatusGetRequest) (*CloudLdapConnectionStatus, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdDelete Delete Cloud Identity Provider configuration.
+
+	Delete Cloud Identity Provider configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdDeleteRequest
+	*/
+	V2CloudLdapsIdDelete(ctx context.Context, id string) ApiV2CloudLdapsIdDeleteRequest
+
+	// V2CloudLdapsIdDeleteExecute executes the request
+	V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2CloudLdapsIdGet Get Cloud Identity Provider configuration with given id.
+
+	Get Cloud Identity Provider configuration with given id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdGetRequest
+	*/
+	V2CloudLdapsIdGet(ctx context.Context, id string) ApiV2CloudLdapsIdGetRequest
+
+	// V2CloudLdapsIdGetExecute executes the request
+	//  @return LdapConfigurationResponse
+	V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetRequest) (*LdapConfigurationResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdMappingsGet Get mappings configurations for Cloud Identity Providers server configuration.
+
+	Get all mappings configurations for Cloud Identity Providers server configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdMappingsGetRequest
+	*/
+	V2CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsGetRequest
+
+	// V2CloudLdapsIdMappingsGetExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdMappingsPut Update Cloud Identity Provider mappings configuration.
+
+	Update Cloud Identity Provider mappings configuration. Cannot be used for partial updates, all content body must be sent.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdMappingsPutRequest
+	*/
+	V2CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsPutRequest
+
+	// V2CloudLdapsIdMappingsPutExecute executes the request
+	//  @return CloudLdapMappingsResponse
+	V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsIdPut Update Cloud Identity Provider configuration
+
+	Update Cloud Identity Provider configuration. Cannot be used for partial updates, all content body must be sent.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV2CloudLdapsIdPutRequest
+	*/
+	V2CloudLdapsIdPut(ctx context.Context, id string) ApiV2CloudLdapsIdPutRequest
+
+	// V2CloudLdapsIdPutExecute executes the request
+	//  @return LdapConfigurationResponse
+	V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutRequest) (*LdapConfigurationResponse, *http.Response, error)
+
+	/*
+	V2CloudLdapsPost Create Cloud Identity Provider configuration
+
+	Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CloudLdapsPostRequest
+	*/
+	V2CloudLdapsPost(ctx context.Context) ApiV2CloudLdapsPostRequest
+
+	// V2CloudLdapsPostExecute executes the request
+	//  @return HrefResponse
+	V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // CloudLdapApiService CloudLdapApi service
 type CloudLdapApiService service
 
 type ApiV1CloudLdapsDefaultsMappingsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 }
 
 func (r ApiV1CloudLdapsDefaultsMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
@@ -137,7 +658,7 @@ func (a *CloudLdapApiService) V1CloudLdapsDefaultsMappingsGetExecute(r ApiV1Clou
 
 type ApiV1CloudLdapsDefaultsServerConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 }
 
 func (r ApiV1CloudLdapsDefaultsServerConfigurationGetRequest) Execute() (*DeprecatedServerResponse, *http.Response, error) {
@@ -248,7 +769,7 @@ func (a *CloudLdapApiService) V1CloudLdapsDefaultsServerConfigurationGetExecute(
 
 type ApiV1CloudLdapsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -406,7 +927,7 @@ func (a *CloudLdapApiService) V1CloudLdapsGetExecute(r ApiV1CloudLdapsGetRequest
 
 type ApiV1CloudLdapsIdConnectionBindGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -545,7 +1066,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdConnectionBindGetExecute(r ApiV1Clou
 
 type ApiV1CloudLdapsIdConnectionSearchGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -684,7 +1205,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdConnectionSearchGetExecute(r ApiV1Cl
 
 type ApiV1CloudLdapsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -798,7 +1319,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdDeleteExecute(r ApiV1CloudLdapsIdDel
 
 type ApiV1CloudLdapsIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -923,7 +1444,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdGetExecute(r ApiV1CloudLdapsIdGetReq
 
 type ApiV1CloudLdapsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	page *int32
 	size *int32
@@ -1104,7 +1625,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdHistoryGetExecute(r ApiV1CloudLdapsI
 
 type ApiV1CloudLdapsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -1242,7 +1763,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdHistoryPostExecute(r ApiV1CloudLdaps
 
 type ApiV1CloudLdapsIdMappingsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -1367,7 +1888,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdMappingsGetExecute(r ApiV1CloudLdaps
 
 type ApiV1CloudLdapsIdMappingsPutRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	cloudLdapMappingsRequest *CloudLdapMappingsRequest
 }
@@ -1514,7 +2035,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdMappingsPutExecute(r ApiV1CloudLdaps
 
 type ApiV1CloudLdapsIdPutRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	deprecatedConfigurationUpdate *DeprecatedConfigurationUpdate
 }
@@ -1651,7 +2172,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdPutExecute(r ApiV1CloudLdapsIdPutReq
 
 type ApiV1CloudLdapsIdTestGroupPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	groupTestSearchRequest *GroupTestSearchRequest
 }
@@ -1778,7 +2299,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdTestGroupPostExecute(r ApiV1CloudLda
 
 type ApiV1CloudLdapsIdTestUserMembershipPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	membershipTestSearchRequest *MembershipTestSearchRequest
 }
@@ -1905,7 +2426,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdTestUserMembershipPostExecute(r ApiV
 
 type ApiV1CloudLdapsIdTestUserPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	userTestSearchRequest *UserTestSearchRequest
 }
@@ -2032,7 +2553,7 @@ func (a *CloudLdapApiService) V1CloudLdapsIdTestUserPostExecute(r ApiV1CloudLdap
 
 type ApiV1CloudLdapsPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	deprecatedConfigurationRequest *DeprecatedConfigurationRequest
 }
 
@@ -2155,7 +2676,7 @@ func (a *CloudLdapApiService) V1CloudLdapsPostExecute(r ApiV1CloudLdapsPostReque
 
 type ApiV1LdapKeystoreVerifyPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	cloudLdapKeystoreFile *CloudLdapKeystoreFile
 }
 
@@ -2274,7 +2795,7 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystor
 
 type ApiV2CloudLdapsDefaultsProviderMappingsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	provider string
 }
 
@@ -2396,7 +2917,7 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 
 type ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	provider string
 }
 
@@ -2518,7 +3039,7 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 
 type ApiV2CloudLdapsIdConnectionBindGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -2654,7 +3175,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 
 type ApiV2CloudLdapsIdConnectionSearchGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -2790,7 +3311,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 
 type ApiV2CloudLdapsIdConnectionStatusGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -2913,7 +3434,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 
 type ApiV2CloudLdapsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -3024,7 +3545,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDel
 
 type ApiV2CloudLdapsIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -3146,7 +3667,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 
 type ApiV2CloudLdapsIdMappingsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 }
 
@@ -3268,7 +3789,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 
 type ApiV2CloudLdapsIdMappingsPutRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	cloudLdapMappingsRequest *CloudLdapMappingsRequest
 }
@@ -3412,7 +3933,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 
 type ApiV2CloudLdapsIdPutRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	id string
 	ldapConfigurationUpdate *LdapConfigurationUpdate
 }
@@ -3556,7 +4077,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 
 type ApiV2CloudLdapsPostRequest struct {
 	ctx context.Context
-	ApiService *CloudLdapApiService
+	ApiService CloudLdapApi
 	ldapConfigurationRequest *LdapConfigurationRequest
 }
 

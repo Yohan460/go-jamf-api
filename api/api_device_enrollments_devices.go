@@ -20,12 +20,30 @@ import (
 )
 
 
+type DeviceEnrollmentsDevicesApi interface {
+
+	/*
+	V1DeviceEnrollmentsIdDevicesGet Retrieve a list of Devices assigned to the supplied id 
+
+	Retrieves a list of devices assigned to the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdDevicesGetRequest
+	*/
+	V1DeviceEnrollmentsIdDevicesGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDevicesGetRequest
+
+	// V1DeviceEnrollmentsIdDevicesGetExecute executes the request
+	//  @return DeviceEnrollmentDeviceSearchResults
+	V1DeviceEnrollmentsIdDevicesGetExecute(r ApiV1DeviceEnrollmentsIdDevicesGetRequest) (*DeviceEnrollmentDeviceSearchResults, *http.Response, error)
+}
+
 // DeviceEnrollmentsDevicesApiService DeviceEnrollmentsDevicesApi service
 type DeviceEnrollmentsDevicesApiService service
 
 type ApiV1DeviceEnrollmentsIdDevicesGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsDevicesApiService
+	ApiService DeviceEnrollmentsDevicesApi
 	id string
 }
 

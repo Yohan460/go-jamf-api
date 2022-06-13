@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **UserName** | Pointer to **string** |  | [optional] 
 **ForceDeletion** | Pointer to **bool** |  | [optional] 
 **DeleteAllUsers** | Pointer to **bool** |  | [optional] 
+**RequestType** | Pointer to **string** |  | [optional] 
+**RequestRequiresNetworkTether** | Pointer to **bool** |  | [optional] 
 **BootstrapTokenAllowed** | Pointer to **bool** |  | [optional] 
 **Bluetooth** | Pointer to **bool** |  | [optional] 
 **AppAnalytics** | Pointer to [**AppAnalyticsSetting**](AppAnalyticsSetting.md) |  | [optional] 
@@ -223,6 +225,56 @@ SetDeleteAllUsers sets DeleteAllUsers field to given value.
 `func (o *MdmCommandRequestCommandData) HasDeleteAllUsers() bool`
 
 HasDeleteAllUsers returns a boolean if a field has been set.
+
+### GetRequestType
+
+`func (o *MdmCommandRequestCommandData) GetRequestType() string`
+
+GetRequestType returns the RequestType field if non-nil, zero value otherwise.
+
+### GetRequestTypeOk
+
+`func (o *MdmCommandRequestCommandData) GetRequestTypeOk() (*string, bool)`
+
+GetRequestTypeOk returns a tuple with the RequestType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestType
+
+`func (o *MdmCommandRequestCommandData) SetRequestType(v string)`
+
+SetRequestType sets RequestType field to given value.
+
+### HasRequestType
+
+`func (o *MdmCommandRequestCommandData) HasRequestType() bool`
+
+HasRequestType returns a boolean if a field has been set.
+
+### GetRequestRequiresNetworkTether
+
+`func (o *MdmCommandRequestCommandData) GetRequestRequiresNetworkTether() bool`
+
+GetRequestRequiresNetworkTether returns the RequestRequiresNetworkTether field if non-nil, zero value otherwise.
+
+### GetRequestRequiresNetworkTetherOk
+
+`func (o *MdmCommandRequestCommandData) GetRequestRequiresNetworkTetherOk() (*bool, bool)`
+
+GetRequestRequiresNetworkTetherOk returns a tuple with the RequestRequiresNetworkTether field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestRequiresNetworkTether
+
+`func (o *MdmCommandRequestCommandData) SetRequestRequiresNetworkTether(v bool)`
+
+SetRequestRequiresNetworkTether sets RequestRequiresNetworkTether field to given value.
+
+### HasRequestRequiresNetworkTether
+
+`func (o *MdmCommandRequestCommandData) HasRequestRequiresNetworkTether() bool`
+
+HasRequestRequiresNetworkTether returns a boolean if a field has been set.
 
 ### GetBootstrapTokenAllowed
 

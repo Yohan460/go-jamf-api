@@ -19,12 +19,75 @@ import (
 )
 
 
+type EngageApi interface {
+
+	/*
+	V1EngageGet Get Engage settings 
+
+	Get Engage settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EngageGetRequest
+	*/
+	V1EngageGet(ctx context.Context) ApiV1EngageGetRequest
+
+	// V1EngageGetExecute executes the request
+	//  @return Engage
+	V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage, *http.Response, error)
+
+	/*
+	V1EngageHistoryGet Get Engage settings history 
+
+	Gets Engage settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EngageHistoryGetRequest
+	*/
+	V1EngageHistoryGet(ctx context.Context) ApiV1EngageHistoryGetRequest
+
+	// V1EngageHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1EngageHistoryPost Add Engage settings history notes 
+
+	Adds Engage settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EngageHistoryPostRequest
+	*/
+	V1EngageHistoryPost(ctx context.Context) ApiV1EngageHistoryPostRequest
+
+	// V1EngageHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1EngagePut Update Engage settings 
+
+	Update Engage settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EngagePutRequest
+	*/
+	V1EngagePut(ctx context.Context) ApiV1EngagePutRequest
+
+	// V1EngagePutExecute executes the request
+	//  @return Engage
+	V1EngagePutExecute(r ApiV1EngagePutRequest) (*Engage, *http.Response, error)
+}
+
 // EngageApiService EngageApi service
 type EngageApiService service
 
 type ApiV1EngageGetRequest struct {
 	ctx context.Context
-	ApiService *EngageApiService
+	ApiService EngageApi
 }
 
 func (r ApiV1EngageGetRequest) Execute() (*Engage, *http.Response, error) {
@@ -124,7 +187,7 @@ func (a *EngageApiService) V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage,
 
 type ApiV1EngageHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *EngageApiService
+	ApiService EngageApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -292,7 +355,7 @@ func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequ
 
 type ApiV1EngageHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *EngageApiService
+	ApiService EngageApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -413,7 +476,7 @@ func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRe
 
 type ApiV1EngagePutRequest struct {
 	ctx context.Context
-	ApiService *EngageApiService
+	ApiService EngageApi
 	engage *Engage
 }
 

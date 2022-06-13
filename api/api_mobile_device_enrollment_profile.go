@@ -21,12 +21,30 @@ import (
 )
 
 
+type MobileDeviceEnrollmentProfileApi interface {
+
+	/*
+	V1MobileDeviceEnrollmentProfileIdDownloadProfileGet Retrieve the MDM Enrollment Profile 
+
+	Retrieve the MDM Enrollment Profile
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id MDM Enrollment Profile identifier
+	@return ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
+	*/
+	V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(ctx context.Context, id string) ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
+
+	// V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute executes the request
+	//  @return *os.File
+	V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) (**os.File, *http.Response, error)
+}
+
 // MobileDeviceEnrollmentProfileApiService MobileDeviceEnrollmentProfileApi service
 type MobileDeviceEnrollmentProfileApiService service
 
 type ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDeviceEnrollmentProfileApiService
+	ApiService MobileDeviceEnrollmentProfileApi
 	id string
 }
 

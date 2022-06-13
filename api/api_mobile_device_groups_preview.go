@@ -19,12 +19,30 @@ import (
 )
 
 
+type MobileDeviceGroupsPreviewApi interface {
+
+	/*
+	V1MobileDeviceGroupsGet Return the list of all Mobile Device Groups 
+
+	Returns the list of all mobile device groups.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDeviceGroupsGetRequest
+	*/
+	V1MobileDeviceGroupsGet(ctx context.Context) ApiV1MobileDeviceGroupsGetRequest
+
+	// V1MobileDeviceGroupsGetExecute executes the request
+	//  @return []MobileDeviceGroup
+	V1MobileDeviceGroupsGetExecute(r ApiV1MobileDeviceGroupsGetRequest) ([]MobileDeviceGroup, *http.Response, error)
+}
+
 // MobileDeviceGroupsPreviewApiService MobileDeviceGroupsPreviewApi service
 type MobileDeviceGroupsPreviewApiService service
 
 type ApiV1MobileDeviceGroupsGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDeviceGroupsPreviewApiService
+	ApiService MobileDeviceGroupsPreviewApi
 }
 
 func (r ApiV1MobileDeviceGroupsGetRequest) Execute() ([]MobileDeviceGroup, *http.Response, error) {

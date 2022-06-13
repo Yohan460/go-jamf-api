@@ -19,12 +19,30 @@ import (
 )
 
 
+type AppStoreCountryCodesPreviewApi interface {
+
+	/*
+	V1AppStoreCountryCodesGet Return a list of Countries and the associated Codes 
+
+	Returns a list of countries and the associated codes that can be use for the App Store locale
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppStoreCountryCodesGetRequest
+	*/
+	V1AppStoreCountryCodesGet(ctx context.Context) ApiV1AppStoreCountryCodesGetRequest
+
+	// V1AppStoreCountryCodesGetExecute executes the request
+	//  @return CountryCodes
+	V1AppStoreCountryCodesGetExecute(r ApiV1AppStoreCountryCodesGetRequest) (*CountryCodes, *http.Response, error)
+}
+
 // AppStoreCountryCodesPreviewApiService AppStoreCountryCodesPreviewApi service
 type AppStoreCountryCodesPreviewApiService service
 
 type ApiV1AppStoreCountryCodesGetRequest struct {
 	ctx context.Context
-	ApiService *AppStoreCountryCodesPreviewApiService
+	ApiService AppStoreCountryCodesPreviewApi
 }
 
 func (r ApiV1AppStoreCountryCodesGetRequest) Execute() (*CountryCodes, *http.Response, error) {

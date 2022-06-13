@@ -21,12 +21,102 @@ import (
 )
 
 
+type CertificateAuthorityApi interface {
+
+	/*
+	V1PkiCertificateAuthorityActiveDerGet Returns X.509 of active Certificate Authority (CA) in DER format
+
+	Returns X.509 of active Certificate Authority (CA) in DER format
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PkiCertificateAuthorityActiveDerGetRequest
+	*/
+	V1PkiCertificateAuthorityActiveDerGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveDerGetRequest
+
+	// V1PkiCertificateAuthorityActiveDerGetExecute executes the request
+	//  @return *os.File
+	V1PkiCertificateAuthorityActiveDerGetExecute(r ApiV1PkiCertificateAuthorityActiveDerGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1PkiCertificateAuthorityActiveGet Returns X.509 details of the active Certificate Authority (CA)
+
+	Returns X.509 details of the active Certificate Authority (CA)
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PkiCertificateAuthorityActiveGetRequest
+	*/
+	V1PkiCertificateAuthorityActiveGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveGetRequest
+
+	// V1PkiCertificateAuthorityActiveGetExecute executes the request
+	//  @return CertificateRecord
+	V1PkiCertificateAuthorityActiveGetExecute(r ApiV1PkiCertificateAuthorityActiveGetRequest) (*CertificateRecord, *http.Response, error)
+
+	/*
+	V1PkiCertificateAuthorityActivePemGet Returns active Certificate Authority (CA) in PEM format
+
+	Returns active Certificate Authority (CA) in PEM format
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1PkiCertificateAuthorityActivePemGetRequest
+	*/
+	V1PkiCertificateAuthorityActivePemGet(ctx context.Context) ApiV1PkiCertificateAuthorityActivePemGetRequest
+
+	// V1PkiCertificateAuthorityActivePemGetExecute executes the request
+	//  @return *os.File
+	V1PkiCertificateAuthorityActivePemGetExecute(r ApiV1PkiCertificateAuthorityActivePemGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1PkiCertificateAuthorityIdDerGet Returns X.509 current Certificate Authority (CA) with provided ID in DER format
+
+	Returns X.509 current Certificate Authority (CA) with provided ID in DER format
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id UUID of the Certificate Authority (CA)
+	@return ApiV1PkiCertificateAuthorityIdDerGetRequest
+	*/
+	V1PkiCertificateAuthorityIdDerGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdDerGetRequest
+
+	// V1PkiCertificateAuthorityIdDerGetExecute executes the request
+	//  @return *os.File
+	V1PkiCertificateAuthorityIdDerGetExecute(r ApiV1PkiCertificateAuthorityIdDerGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1PkiCertificateAuthorityIdGet Returns X.509 details of Certificate Authority (CA) with provided ID
+
+	Returns X.509 details of Certificate Authority (CA) with provided ID
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id UUID of the Certificate Authority (CA)
+	@return ApiV1PkiCertificateAuthorityIdGetRequest
+	*/
+	V1PkiCertificateAuthorityIdGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdGetRequest
+
+	// V1PkiCertificateAuthorityIdGetExecute executes the request
+	//  @return CertificateRecord
+	V1PkiCertificateAuthorityIdGetExecute(r ApiV1PkiCertificateAuthorityIdGetRequest) (*CertificateRecord, *http.Response, error)
+
+	/*
+	V1PkiCertificateAuthorityIdPemGet Returns current Certificate Authority (CA) with provided ID in PEM format
+
+	Returns current Certificate Authority (CA) with provided ID in PEM format
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id UUID of the Certificate Authority (CA)
+	@return ApiV1PkiCertificateAuthorityIdPemGetRequest
+	*/
+	V1PkiCertificateAuthorityIdPemGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdPemGetRequest
+
+	// V1PkiCertificateAuthorityIdPemGetExecute executes the request
+	//  @return *os.File
+	V1PkiCertificateAuthorityIdPemGetExecute(r ApiV1PkiCertificateAuthorityIdPemGetRequest) (**os.File, *http.Response, error)
+}
+
 // CertificateAuthorityApiService CertificateAuthorityApi service
 type CertificateAuthorityApiService service
 
 type ApiV1PkiCertificateAuthorityActiveDerGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 }
 
 func (r ApiV1PkiCertificateAuthorityActiveDerGetRequest) Execute() (**os.File, *http.Response, error) {
@@ -125,7 +215,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGetEx
 
 type ApiV1PkiCertificateAuthorityActiveGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 }
 
 func (r ApiV1PkiCertificateAuthorityActiveGetRequest) Execute() (*CertificateRecord, *http.Response, error) {
@@ -224,7 +314,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGetExecu
 
 type ApiV1PkiCertificateAuthorityActivePemGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 }
 
 func (r ApiV1PkiCertificateAuthorityActivePemGetRequest) Execute() (**os.File, *http.Response, error) {
@@ -323,7 +413,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGetEx
 
 type ApiV1PkiCertificateAuthorityIdDerGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 	id string
 }
 
@@ -445,7 +535,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecut
 
 type ApiV1PkiCertificateAuthorityIdGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 	id string
 }
 
@@ -567,7 +657,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 
 type ApiV1PkiCertificateAuthorityIdPemGetRequest struct {
 	ctx context.Context
-	ApiService *CertificateAuthorityApiService
+	ApiService CertificateAuthorityApi
 	id string
 }
 

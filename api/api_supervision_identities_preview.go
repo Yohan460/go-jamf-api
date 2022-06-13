@@ -21,12 +21,116 @@ import (
 )
 
 
+type SupervisionIdentitiesPreviewApi interface {
+
+	/*
+	V1SupervisionIdentitiesGet Search for sorted and paged Supervision Identities 
+
+	Search for sorted and paged supervision identities
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SupervisionIdentitiesGetRequest
+	*/
+	V1SupervisionIdentitiesGet(ctx context.Context) ApiV1SupervisionIdentitiesGetRequest
+
+	// V1SupervisionIdentitiesGetExecute executes the request
+	//  @return SupervisionIdentitySearchResults
+	V1SupervisionIdentitiesGetExecute(r ApiV1SupervisionIdentitiesGetRequest) (*SupervisionIdentitySearchResults, *http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesIdDelete Delete a Supervision Identity with the supplied id 
+
+	Deletes a Supervision Identity with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Supervision Identity identifier
+	@return ApiV1SupervisionIdentitiesIdDeleteRequest
+	*/
+	V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDeleteRequest
+
+	// V1SupervisionIdentitiesIdDeleteExecute executes the request
+	V1SupervisionIdentitiesIdDeleteExecute(r ApiV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesIdDownloadGet Download the Supervision Identity .p12 file 
+
+	Download the Supervision Identity .p12 file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Supervision Identity identifier
+	@return ApiV1SupervisionIdentitiesIdDownloadGetRequest
+	*/
+	V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDownloadGetRequest
+
+	// V1SupervisionIdentitiesIdDownloadGetExecute executes the request
+	//  @return *os.File
+	V1SupervisionIdentitiesIdDownloadGetExecute(r ApiV1SupervisionIdentitiesIdDownloadGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesIdGet Retrieve a Supervision Identity with the supplied id 
+
+	Retrieves a Supervision Identity with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Supervision Identity identifier
+	@return ApiV1SupervisionIdentitiesIdGetRequest
+	*/
+	V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdGetRequest
+
+	// V1SupervisionIdentitiesIdGetExecute executes the request
+	//  @return SupervisionIdentity
+	V1SupervisionIdentitiesIdGetExecute(r ApiV1SupervisionIdentitiesIdGetRequest) (*SupervisionIdentity, *http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesIdPut Update a Supervision Identity with the supplied information 
+
+	Updates a Supervision Identity with the supplied information
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Supervision Identity identifier
+	@return ApiV1SupervisionIdentitiesIdPutRequest
+	*/
+	V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdPutRequest
+
+	// V1SupervisionIdentitiesIdPutExecute executes the request
+	//  @return SupervisionIdentity
+	V1SupervisionIdentitiesIdPutExecute(r ApiV1SupervisionIdentitiesIdPutRequest) (*SupervisionIdentity, *http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesPost Create a Supervision Identity for the supplied information 
+
+	Creates a Supervision Identity for the supplied information
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SupervisionIdentitiesPostRequest
+	*/
+	V1SupervisionIdentitiesPost(ctx context.Context) ApiV1SupervisionIdentitiesPostRequest
+
+	// V1SupervisionIdentitiesPostExecute executes the request
+	//  @return SupervisionIdentity
+	V1SupervisionIdentitiesPostExecute(r ApiV1SupervisionIdentitiesPostRequest) (*SupervisionIdentity, *http.Response, error)
+
+	/*
+	V1SupervisionIdentitiesUploadPost Upload the Supervision Identity .p12 file 
+
+	Uploads the Supervision Identity .p12 file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SupervisionIdentitiesUploadPostRequest
+	*/
+	V1SupervisionIdentitiesUploadPost(ctx context.Context) ApiV1SupervisionIdentitiesUploadPostRequest
+
+	// V1SupervisionIdentitiesUploadPostExecute executes the request
+	//  @return SupervisionIdentity
+	V1SupervisionIdentitiesUploadPostExecute(r ApiV1SupervisionIdentitiesUploadPostRequest) (*SupervisionIdentity, *http.Response, error)
+}
+
 // SupervisionIdentitiesPreviewApiService SupervisionIdentitiesPreviewApi service
 type SupervisionIdentitiesPreviewApiService service
 
 type ApiV1SupervisionIdentitiesGetRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -173,7 +277,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecu
 
 type ApiV1SupervisionIdentitiesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	id int32
 }
 
@@ -274,7 +378,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete
 
 type ApiV1SupervisionIdentitiesIdDownloadGetRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	id int32
 }
 
@@ -386,7 +490,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownlo
 
 type ApiV1SupervisionIdentitiesIdGetRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	id int32
 }
 
@@ -498,7 +602,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExe
 
 type ApiV1SupervisionIdentitiesIdPutRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	id int32
 	supervisionIdentityUpdate *SupervisionIdentityUpdate
 }
@@ -631,7 +735,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 
 type ApiV1SupervisionIdentitiesPostRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	supervisionIdentityCreate *SupervisionIdentityCreate
 }
 
@@ -750,7 +854,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExec
 
 type ApiV1SupervisionIdentitiesUploadPostRequest struct {
 	ctx context.Context
-	ApiService *SupervisionIdentitiesPreviewApiService
+	ApiService SupervisionIdentitiesPreviewApi
 	supervisionIdentityCertificateUpload *SupervisionIdentityCertificateUpload
 }
 

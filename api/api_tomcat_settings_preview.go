@@ -19,12 +19,28 @@ import (
 )
 
 
+type TomcatSettingsPreviewApi interface {
+
+	/*
+	SettingsIssueTomcatSslCertificatePost Generate a SSL Certificate using Jamf Certificate Authority 
+
+	generate a SSL Certificate using Jamf Certificate Authority
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSettingsIssueTomcatSslCertificatePostRequest
+	*/
+	SettingsIssueTomcatSslCertificatePost(ctx context.Context) ApiSettingsIssueTomcatSslCertificatePostRequest
+
+	// SettingsIssueTomcatSslCertificatePostExecute executes the request
+	SettingsIssueTomcatSslCertificatePostExecute(r ApiSettingsIssueTomcatSslCertificatePostRequest) (*http.Response, error)
+}
+
 // TomcatSettingsPreviewApiService TomcatSettingsPreviewApi service
 type TomcatSettingsPreviewApiService service
 
 type ApiSettingsIssueTomcatSslCertificatePostRequest struct {
 	ctx context.Context
-	ApiService *TomcatSettingsPreviewApiService
+	ApiService TomcatSettingsPreviewApi
 }
 
 func (r ApiSettingsIssueTomcatSslCertificatePostRequest) Execute() (*http.Response, error) {

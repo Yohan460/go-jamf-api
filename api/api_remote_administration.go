@@ -19,12 +19,29 @@ import (
 )
 
 
+type RemoteAdministrationApi interface {
+
+	/*
+	PreviewRemoteAdministrationConfigurationsGet Get information about all remote administration configurations.
+
+	Remote administration feature creates a secure screen-sharing experience between Jamf Pro administrators and their end-users.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPreviewRemoteAdministrationConfigurationsGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsGet(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsGetExecute executes the request
+	//  @return RemoteAdministrationSearchResults
+	PreviewRemoteAdministrationConfigurationsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsGetRequest) (*RemoteAdministrationSearchResults, *http.Response, error)
+}
+
 // RemoteAdministrationApiService RemoteAdministrationApi service
 type RemoteAdministrationApiService service
 
 type ApiPreviewRemoteAdministrationConfigurationsGetRequest struct {
 	ctx context.Context
-	ApiService *RemoteAdministrationApiService
+	ApiService RemoteAdministrationApi
 	page *int32
 	pageSize *int32
 }

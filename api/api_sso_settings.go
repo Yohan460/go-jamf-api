@@ -21,12 +21,126 @@ import (
 )
 
 
+type SsoSettingsApi interface {
+
+	/*
+	V1SsoDependenciesGet Retrieve the list of Enrollment Customizations using SSO 
+
+	Retrieves the list of Enrollment Customizations using SSO
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoDependenciesGetRequest
+	*/
+	V1SsoDependenciesGet(ctx context.Context) ApiV1SsoDependenciesGetRequest
+
+	// V1SsoDependenciesGetExecute executes the request
+	//  @return EnrollmentCustomizationDependencies
+	V1SsoDependenciesGetExecute(r ApiV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error)
+
+	/*
+	V1SsoDisablePost Disable SSO 
+
+	Disable SSO
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoDisablePostRequest
+	*/
+	V1SsoDisablePost(ctx context.Context) ApiV1SsoDisablePostRequest
+
+	// V1SsoDisablePostExecute executes the request
+	V1SsoDisablePostExecute(r ApiV1SsoDisablePostRequest) (*http.Response, error)
+
+	/*
+	V1SsoGet Retrieve the current Single Sign On configuration settings 
+
+	Retrieves the current Single Sign On configuration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoGetRequest
+	*/
+	V1SsoGet(ctx context.Context) ApiV1SsoGetRequest
+
+	// V1SsoGetExecute executes the request
+	//  @return SsoSettings
+	V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSettings, *http.Response, error)
+
+	/*
+	V1SsoHistoryGet Get SSO history object 
+
+	Gets SSO history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoHistoryGetRequest
+	*/
+	V1SsoHistoryGet(ctx context.Context) ApiV1SsoHistoryGetRequest
+
+	// V1SsoHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1SsoHistoryPost Add SSO history object notes 
+
+	Adds SSO history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoHistoryPostRequest
+	*/
+	V1SsoHistoryPost(ctx context.Context) ApiV1SsoHistoryPostRequest
+
+	// V1SsoHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1SsoMetadataDownloadGet Download the Jamf Pro SAML metadata file 
+
+	Download the Jamf Pro SAML metadata file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoMetadataDownloadGetRequest
+	*/
+	V1SsoMetadataDownloadGet(ctx context.Context) ApiV1SsoMetadataDownloadGetRequest
+
+	// V1SsoMetadataDownloadGetExecute executes the request
+	//  @return *os.File
+	V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetadataDownloadGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1SsoPut Updates the current Single Sign On configuration settings 
+
+	Updates the current Single Sign On configuration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoPutRequest
+	*/
+	V1SsoPut(ctx context.Context) ApiV1SsoPutRequest
+
+	// V1SsoPutExecute executes the request
+	//  @return SsoSettings
+	V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSettings, *http.Response, error)
+
+	/*
+	V1SsoValidatePost Endpoint for validation of a saml metadata url 
+
+	Validation of a content available under provided metadata URL.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SsoValidatePostRequest
+	*/
+	V1SsoValidatePost(ctx context.Context) ApiV1SsoValidatePostRequest
+
+	// V1SsoValidatePostExecute executes the request
+	V1SsoValidatePostExecute(r ApiV1SsoValidatePostRequest) (*http.Response, error)
+}
+
 // SsoSettingsApiService SsoSettingsApi service
 type SsoSettingsApiService service
 
 type ApiV1SsoDependenciesGetRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 }
 
 func (r ApiV1SsoDependenciesGetRequest) Execute() (*EnrollmentCustomizationDependencies, *http.Response, error) {
@@ -125,7 +239,7 @@ func (a *SsoSettingsApiService) V1SsoDependenciesGetExecute(r ApiV1SsoDependenci
 
 type ApiV1SsoDisablePostRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 }
 
 func (r ApiV1SsoDisablePostRequest) Execute() (*http.Response, error) {
@@ -213,7 +327,7 @@ func (a *SsoSettingsApiService) V1SsoDisablePostExecute(r ApiV1SsoDisablePostReq
 
 type ApiV1SsoGetRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 }
 
 func (r ApiV1SsoGetRequest) Execute() (*SsoSettings, *http.Response, error) {
@@ -312,7 +426,7 @@ func (a *SsoSettingsApiService) V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSetti
 
 type ApiV1SsoHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -458,7 +572,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetReque
 
 type ApiV1SsoHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -578,7 +692,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostReq
 
 type ApiV1SsoMetadataDownloadGetRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 }
 
 func (r ApiV1SsoMetadataDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
@@ -677,7 +791,7 @@ func (a *SsoSettingsApiService) V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetada
 
 type ApiV1SsoPutRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 	ssoSettings *SsoSettings
 }
 
@@ -796,7 +910,7 @@ func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSetti
 
 type ApiV1SsoValidatePostRequest struct {
 	ctx context.Context
-	ApiService *SsoSettingsApiService
+	ApiService SsoSettingsApi
 	ssoMetadataUrl *SsoMetadataUrl
 }
 

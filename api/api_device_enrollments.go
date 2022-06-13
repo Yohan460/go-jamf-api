@@ -22,12 +22,205 @@ import (
 )
 
 
+type DeviceEnrollmentsApi interface {
+
+	/*
+	V1DeviceEnrollmentsGet Read all sorted and paged Device Enrollment instances 
+
+	Search for sorted and paged device enrollment instances
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceEnrollmentsGetRequest
+	*/
+	V1DeviceEnrollmentsGet(ctx context.Context) ApiV1DeviceEnrollmentsGetRequest
+
+	// V1DeviceEnrollmentsGetExecute executes the request
+	//  @return DeviceEnrollmentInstanceSearchResults
+	V1DeviceEnrollmentsGetExecute(r ApiV1DeviceEnrollmentsGetRequest) (*DeviceEnrollmentInstanceSearchResults, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdDelete Delete a Device Enrollment Instance with the supplied id 
+
+	Deletes a Device Enrollment Instance with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdDeleteRequest
+	*/
+	V1DeviceEnrollmentsIdDelete(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDeleteRequest
+
+	// V1DeviceEnrollmentsIdDeleteExecute executes the request
+	V1DeviceEnrollmentsIdDeleteExecute(r ApiV1DeviceEnrollmentsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdDisownPost Disown devices from the given Device Enrollment Instance 
+
+	Disowns devices from the given device enrollment instance
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdDisownPostRequest
+	*/
+	V1DeviceEnrollmentsIdDisownPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDisownPostRequest
+
+	// V1DeviceEnrollmentsIdDisownPostExecute executes the request
+	//  @return DeviceEnrollmentDisownResponse
+	V1DeviceEnrollmentsIdDisownPostExecute(r ApiV1DeviceEnrollmentsIdDisownPostRequest) (*DeviceEnrollmentDisownResponse, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdGet Retrieve a Device Enrollment Instance with the supplied id 
+
+	Retrieves a Device Enrollment Instance with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdGetRequest
+	*/
+	V1DeviceEnrollmentsIdGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdGetRequest
+
+	// V1DeviceEnrollmentsIdGetExecute executes the request
+	//  @return DeviceEnrollmentInstance
+	V1DeviceEnrollmentsIdGetExecute(r ApiV1DeviceEnrollmentsIdGetRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdHistoryGet Get sorted and paged Device Enrollment history objects 
+
+	Gets sorted and paged device enrollment history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdHistoryGetRequest
+	*/
+	V1DeviceEnrollmentsIdHistoryGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryGetRequest
+
+	// V1DeviceEnrollmentsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1DeviceEnrollmentsIdHistoryGetExecute(r ApiV1DeviceEnrollmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdHistoryPost Add Device Enrollment history object notes 
+
+	Adds device enrollment history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdHistoryPostRequest
+	*/
+	V1DeviceEnrollmentsIdHistoryPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryPostRequest
+
+	// V1DeviceEnrollmentsIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1DeviceEnrollmentsIdHistoryPostExecute(r ApiV1DeviceEnrollmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdPut Update a Device Enrollment Instance with the supplied id 
+
+	Updates a Device Enrollment Instance with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdPutRequest
+	*/
+	V1DeviceEnrollmentsIdPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdPutRequest
+
+	// V1DeviceEnrollmentsIdPutExecute executes the request
+	//  @return DeviceEnrollmentInstance
+	V1DeviceEnrollmentsIdPutExecute(r ApiV1DeviceEnrollmentsIdPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdSyncsGet Get all instance sync states for a single Device Enrollment Instance 
+
+	Get all instance sync states for a single instance
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdSyncsGetRequest
+	*/
+	V1DeviceEnrollmentsIdSyncsGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsGetRequest
+
+	// V1DeviceEnrollmentsIdSyncsGetExecute executes the request
+	//  @return []DeviceEnrollmentInstanceSyncStatus
+	V1DeviceEnrollmentsIdSyncsGetExecute(r ApiV1DeviceEnrollmentsIdSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdSyncsLatestGet Get the latest sync state for a single Device Enrollment Instance 
+
+	Get the latest sync state for a single instance
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest
+	*/
+	V1DeviceEnrollmentsIdSyncsLatestGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest
+
+	// V1DeviceEnrollmentsIdSyncsLatestGetExecute executes the request
+	//  @return DeviceEnrollmentInstanceSyncStatus
+	V1DeviceEnrollmentsIdSyncsLatestGetExecute(r ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest) (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsIdUploadTokenPut Update a Device Enrollment Instance with the supplied Token 
+
+	Updates a device enrollment instance with the supplied token.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Device Enrollment Instance identifier
+	@return ApiV1DeviceEnrollmentsIdUploadTokenPutRequest
+	*/
+	V1DeviceEnrollmentsIdUploadTokenPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdUploadTokenPutRequest
+
+	// V1DeviceEnrollmentsIdUploadTokenPutExecute executes the request
+	//  @return DeviceEnrollmentInstance
+	V1DeviceEnrollmentsIdUploadTokenPutExecute(r ApiV1DeviceEnrollmentsIdUploadTokenPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsPublicKeyGet Retrieve the Jamf Pro Device Enrollment public key 
+
+	Retrieve the Jamf Pro device enrollment public key
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceEnrollmentsPublicKeyGetRequest
+	*/
+	V1DeviceEnrollmentsPublicKeyGet(ctx context.Context) ApiV1DeviceEnrollmentsPublicKeyGetRequest
+
+	// V1DeviceEnrollmentsPublicKeyGetExecute executes the request
+	//  @return *os.File
+	V1DeviceEnrollmentsPublicKeyGetExecute(r ApiV1DeviceEnrollmentsPublicKeyGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsSyncsGet Get all instance sync states for all Device Enrollment Instances 
+
+	Get all instance sync states for all instances
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceEnrollmentsSyncsGetRequest
+	*/
+	V1DeviceEnrollmentsSyncsGet(ctx context.Context) ApiV1DeviceEnrollmentsSyncsGetRequest
+
+	// V1DeviceEnrollmentsSyncsGetExecute executes the request
+	//  @return []DeviceEnrollmentInstanceSyncStatus
+	V1DeviceEnrollmentsSyncsGetExecute(r ApiV1DeviceEnrollmentsSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+
+	/*
+	V1DeviceEnrollmentsUploadTokenPost Create a Device Enrollment Instance with the supplied Token 
+
+	Creates a device enrollment instance with the supplied token.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DeviceEnrollmentsUploadTokenPostRequest
+	*/
+	V1DeviceEnrollmentsUploadTokenPost(ctx context.Context) ApiV1DeviceEnrollmentsUploadTokenPostRequest
+
+	// V1DeviceEnrollmentsUploadTokenPostExecute executes the request
+	//  @return HrefResponse
+	V1DeviceEnrollmentsUploadTokenPostExecute(r ApiV1DeviceEnrollmentsUploadTokenPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // DeviceEnrollmentsApiService DeviceEnrollmentsApi service
 type DeviceEnrollmentsApiService service
 
 type ApiV1DeviceEnrollmentsGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -162,7 +355,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1Devic
 
 type ApiV1DeviceEnrollmentsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 }
 
@@ -263,7 +456,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDeleteExecute(r ApiV1
 
 type ApiV1DeviceEnrollmentsIdDisownPostRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 	deviceEnrollmentDisownBody *DeviceEnrollmentDisownBody
 }
@@ -375,7 +568,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPostExecute(r A
 
 type ApiV1DeviceEnrollmentsIdGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 }
 
@@ -487,7 +680,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1Dev
 
 type ApiV1DeviceEnrollmentsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 	page *int32
 	pageSize *int32
@@ -636,7 +829,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGetExecute(r A
 
 type ApiV1DeviceEnrollmentsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -760,7 +953,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r 
 
 type ApiV1DeviceEnrollmentsIdPutRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 	deviceEnrollmentInstance *DeviceEnrollmentInstance
 }
@@ -883,7 +1076,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1Dev
 
 type ApiV1DeviceEnrollmentsIdSyncsGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 }
 
@@ -986,7 +1179,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGetExecute(r Api
 
 type ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 }
 
@@ -1089,7 +1282,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGetExecute
 
 type ApiV1DeviceEnrollmentsIdUploadTokenPutRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	id string
 	deviceEnrollmentToken *DeviceEnrollmentToken
 }
@@ -1223,7 +1416,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 
 type ApiV1DeviceEnrollmentsPublicKeyGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 }
 
 func (r ApiV1DeviceEnrollmentsPublicKeyGetRequest) Execute() (**os.File, *http.Response, error) {
@@ -1322,7 +1515,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGetExecute(r A
 
 type ApiV1DeviceEnrollmentsSyncsGetRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 }
 
 func (r ApiV1DeviceEnrollmentsSyncsGetRequest) Execute() ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
@@ -1421,7 +1614,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGetExecute(r ApiV1
 
 type ApiV1DeviceEnrollmentsUploadTokenPostRequest struct {
 	ctx context.Context
-	ApiService *DeviceEnrollmentsApiService
+	ApiService DeviceEnrollmentsApi
 	deviceEnrollmentToken *DeviceEnrollmentToken
 }
 

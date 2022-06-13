@@ -25,7 +25,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import api "github.com/yohan460/go-jamf-api/api"
+import api "github.com/GIT_USER_ID/GIT_REPO_ID/api"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -901,6 +901,7 @@ Class | Method | HTTP request | Description
  - [LocationInformation](docs/LocationInformation.md)
  - [LocationInformationV2](docs/LocationInformationV2.md)
  - [LocationV2](docs/LocationV2.md)
+ - [LogOutUserCommand](docs/LogOutUserCommand.md)
  - [MacOsBrandingConfiguration](docs/MacOsBrandingConfiguration.md)
  - [MacOsBrandingSearchResults](docs/MacOsBrandingSearchResults.md)
  - [MacOsManagedSoftwareUpdate](docs/MacOsManagedSoftwareUpdate.md)

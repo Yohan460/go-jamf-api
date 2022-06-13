@@ -20,12 +20,29 @@ import (
 )
 
 
+type SelfServiceBrandingPreviewApi interface {
+
+	/*
+	SelfServiceBrandingImagesPost Upload an image 
+
+	Uploads an image
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSelfServiceBrandingImagesPostRequest
+	*/
+	SelfServiceBrandingImagesPost(ctx context.Context) ApiSelfServiceBrandingImagesPostRequest
+
+	// SelfServiceBrandingImagesPostExecute executes the request
+	//  @return BrandingImageUrl
+	SelfServiceBrandingImagesPostExecute(r ApiSelfServiceBrandingImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+}
+
 // SelfServiceBrandingPreviewApiService SelfServiceBrandingPreviewApi service
 type SelfServiceBrandingPreviewApiService service
 
 type ApiSelfServiceBrandingImagesPostRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingPreviewApiService
+	ApiService SelfServiceBrandingPreviewApi
 	file **os.File
 }
 

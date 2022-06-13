@@ -21,12 +21,117 @@ import (
 )
 
 
+type JamfConnectApi interface {
+
+	/*
+	V1JamfConnectConfigProfilesGet Search for config profiles linked to Jamf Connect 
+
+	Search for config profiles linked to Jamf Connect
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfConnectConfigProfilesGetRequest
+	*/
+	V1JamfConnectConfigProfilesGet(ctx context.Context) ApiV1JamfConnectConfigProfilesGetRequest
+
+	// V1JamfConnectConfigProfilesGetExecute executes the request
+	//  @return LinkedConnectProfileSearchResults
+	V1JamfConnectConfigProfilesGetExecute(r ApiV1JamfConnectConfigProfilesGetRequest) (*LinkedConnectProfileSearchResults, *http.Response, error)
+
+	/*
+	V1JamfConnectConfigProfilesIdPut Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
+
+	Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id the UUID of the profile to update
+	@return ApiV1JamfConnectConfigProfilesIdPutRequest
+	*/
+	V1JamfConnectConfigProfilesIdPut(ctx context.Context, id string) ApiV1JamfConnectConfigProfilesIdPutRequest
+
+	// V1JamfConnectConfigProfilesIdPutExecute executes the request
+	//  @return LinkedConnectProfile
+	V1JamfConnectConfigProfilesIdPutExecute(r ApiV1JamfConnectConfigProfilesIdPutRequest) (*LinkedConnectProfile, *http.Response, error)
+
+	/*
+	V1JamfConnectDeploymentsIdTasksGet Search for deployment tasks for a config profile linked to Jamf Connect 
+
+	Search for config profiles linked to Jamf Connect
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id the UUID of the Jamf Connect deployment
+	@return ApiV1JamfConnectDeploymentsIdTasksGetRequest
+	*/
+	V1JamfConnectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksGetRequest
+
+	// V1JamfConnectDeploymentsIdTasksGetExecute executes the request
+	//  @return DeploymentTaskSearchResults
+	V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV1JamfConnectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
+
+	/*
+	V1JamfConnectDeploymentsIdTasksRetryPost Request a retry of Connect install tasks 
+
+	Request a retry of Connect install tasks
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id the UUID of the deployment associated with the retry
+	@return ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest
+	*/
+	V1JamfConnectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest
+
+	// V1JamfConnectDeploymentsIdTasksRetryPostExecute executes the request
+	V1JamfConnectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
+
+	/*
+	V1JamfConnectGet Get the Jamf Connect settings that you have access to see 
+
+	Get the Jamf Connect settings that you have access to see.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfConnectGetRequest
+	*/
+	V1JamfConnectGet(ctx context.Context) ApiV1JamfConnectGetRequest
+
+	// V1JamfConnectGetExecute executes the request
+	V1JamfConnectGetExecute(r ApiV1JamfConnectGetRequest) (*http.Response, error)
+
+	/*
+	V1JamfConnectHistoryGet Get Jamf Connect history 
+
+	Get Jamf Connect history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfConnectHistoryGetRequest
+	*/
+	V1JamfConnectHistoryGet(ctx context.Context) ApiV1JamfConnectHistoryGetRequest
+
+	// V1JamfConnectHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1JamfConnectHistoryGetExecute(r ApiV1JamfConnectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1JamfConnectHistoryPost Add Jamf Connect history notes 
+
+	Add Jamf Connect history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfConnectHistoryPostRequest
+	*/
+	V1JamfConnectHistoryPost(ctx context.Context) ApiV1JamfConnectHistoryPostRequest
+
+	// V1JamfConnectHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1JamfConnectHistoryPostExecute(r ApiV1JamfConnectHistoryPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // JamfConnectApiService JamfConnectApi service
 type JamfConnectApiService service
 
 type ApiV1JamfConnectConfigProfilesGetRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -171,7 +276,7 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1Jam
 
 type ApiV1JamfConnectConfigProfilesIdPutRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	id string
 	linkedConnectProfile *LinkedConnectProfile
 }
@@ -283,7 +388,7 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPutExecute(r ApiV1J
 
 type ApiV1JamfConnectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	id string
 	page *int32
 	pageSize *int32
@@ -432,7 +537,7 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV
 
 type ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	id string
 	ids *Ids
 }
@@ -556,7 +661,7 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(
 
 type ApiV1JamfConnectGetRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 }
 
 func (r ApiV1JamfConnectGetRequest) Execute() (*http.Response, error) {
@@ -653,7 +758,7 @@ func (a *JamfConnectApiService) V1JamfConnectGetExecute(r ApiV1JamfConnectGetReq
 
 type ApiV1JamfConnectHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -799,7 +904,7 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnec
 
 type ApiV1JamfConnectHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *JamfConnectApiService
+	ApiService JamfConnectApi
 	objectHistoryNote *ObjectHistoryNote
 }
 

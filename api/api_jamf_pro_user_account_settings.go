@@ -20,12 +20,62 @@ import (
 )
 
 
+type JamfProUserAccountSettingsApi interface {
+
+	/*
+	V1UserPreferencesKeyIdDelete Remove specified setting for authenticated user 
+
+	Remove specified setting for authenticated user
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param keyId unique key of user setting to be persisted
+	@return ApiV1UserPreferencesKeyIdDeleteRequest
+	*/
+	V1UserPreferencesKeyIdDelete(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdDeleteRequest
+
+	// V1UserPreferencesKeyIdDeleteExecute executes the request
+	V1UserPreferencesKeyIdDeleteExecute(r ApiV1UserPreferencesKeyIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1UserPreferencesKeyIdGet Get the user setting for the authenticated user and key 
+
+	Gets the user setting for the authenticated user and key.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param keyId user setting to be retrieved
+	@return ApiV1UserPreferencesKeyIdGetRequest
+	*/
+	V1UserPreferencesKeyIdGet(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdGetRequest
+
+	// V1UserPreferencesKeyIdGetExecute executes the request
+	//  @return map[string]interface{}
+	V1UserPreferencesKeyIdGetExecute(r ApiV1UserPreferencesKeyIdGetRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	V1UserPreferencesKeyIdPut Persist the user setting 
+
+	Persists the user setting
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param keyId unique key of user setting to be persisted
+	@return ApiV1UserPreferencesKeyIdPutRequest
+	*/
+	V1UserPreferencesKeyIdPut(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdPutRequest
+
+	// V1UserPreferencesKeyIdPutExecute executes the request
+	//  @return map[string]interface{}
+	V1UserPreferencesKeyIdPutExecute(r ApiV1UserPreferencesKeyIdPutRequest) (map[string]interface{}, *http.Response, error)
+}
+
 // JamfProUserAccountSettingsApiService JamfProUserAccountSettingsApi service
 type JamfProUserAccountSettingsApiService service
 
 type ApiV1UserPreferencesKeyIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsApiService
+	ApiService JamfProUserAccountSettingsApi
 	keyId string
 }
 
@@ -118,7 +168,7 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDeleteExecu
 
 type ApiV1UserPreferencesKeyIdGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsApiService
+	ApiService JamfProUserAccountSettingsApi
 	keyId string
 }
 
@@ -222,7 +272,7 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGetExecute(
 
 type ApiV1UserPreferencesKeyIdPutRequest struct {
 	ctx context.Context
-	ApiService *JamfProUserAccountSettingsApiService
+	ApiService JamfProUserAccountSettingsApi
 	keyId string
 	body *map[string]interface{}
 }

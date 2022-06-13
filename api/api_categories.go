@@ -21,12 +21,137 @@ import (
 )
 
 
+type CategoriesApi interface {
+
+	/*
+	V1CategoriesDeleteMultiplePost Delete multiple Categories by their IDs 
+
+	Delete multiple Categories by their IDs
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CategoriesDeleteMultiplePostRequest
+	*/
+	V1CategoriesDeleteMultiplePost(ctx context.Context) ApiV1CategoriesDeleteMultiplePostRequest
+
+	// V1CategoriesDeleteMultiplePostExecute executes the request
+	V1CategoriesDeleteMultiplePostExecute(r ApiV1CategoriesDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V1CategoriesGet Get Category objects 
+
+	Gets `Category` objects.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CategoriesGetRequest
+	*/
+	V1CategoriesGet(ctx context.Context) ApiV1CategoriesGetRequest
+
+	// V1CategoriesGetExecute executes the request
+	//  @return CategoriesSearchResults
+	V1CategoriesGetExecute(r ApiV1CategoriesGetRequest) (*CategoriesSearchResults, *http.Response, error)
+
+	/*
+	V1CategoriesIdDelete Remove specified Category record 
+
+	Removes specified category record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of category record
+	@return ApiV1CategoriesIdDeleteRequest
+	*/
+	V1CategoriesIdDelete(ctx context.Context, id string) ApiV1CategoriesIdDeleteRequest
+
+	// V1CategoriesIdDeleteExecute executes the request
+	V1CategoriesIdDeleteExecute(r ApiV1CategoriesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CategoriesIdGet Get specified Category object 
+
+	Gets specified Category object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of category record
+	@return ApiV1CategoriesIdGetRequest
+	*/
+	V1CategoriesIdGet(ctx context.Context, id string) ApiV1CategoriesIdGetRequest
+
+	// V1CategoriesIdGetExecute executes the request
+	//  @return Category
+	V1CategoriesIdGetExecute(r ApiV1CategoriesIdGetRequest) (*Category, *http.Response, error)
+
+	/*
+	V1CategoriesIdHistoryGet Get specified Category history object 
+
+	Gets specified Category history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of category history record
+	@return ApiV1CategoriesIdHistoryGetRequest
+	*/
+	V1CategoriesIdHistoryGet(ctx context.Context, id string) ApiV1CategoriesIdHistoryGetRequest
+
+	// V1CategoriesIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1CategoriesIdHistoryGetExecute(r ApiV1CategoriesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1CategoriesIdHistoryPost Add specified Category history object notes 
+
+	Adds specified Category history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of category history record
+	@return ApiV1CategoriesIdHistoryPostRequest
+	*/
+	V1CategoriesIdHistoryPost(ctx context.Context, id string) ApiV1CategoriesIdHistoryPostRequest
+
+	// V1CategoriesIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1CategoriesIdHistoryPostExecute(r ApiV1CategoriesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1CategoriesIdPut Update specified Category object 
+
+	Update specified category object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of category record
+	@return ApiV1CategoriesIdPutRequest
+	*/
+	V1CategoriesIdPut(ctx context.Context, id string) ApiV1CategoriesIdPutRequest
+
+	// V1CategoriesIdPutExecute executes the request
+	//  @return Category
+	V1CategoriesIdPutExecute(r ApiV1CategoriesIdPutRequest) (*Category, *http.Response, error)
+
+	/*
+	V1CategoriesPost Create Category record 
+
+	Create category record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CategoriesPostRequest
+	*/
+	V1CategoriesPost(ctx context.Context) ApiV1CategoriesPostRequest
+
+	// V1CategoriesPostExecute executes the request
+	//  @return HrefResponse
+	V1CategoriesPostExecute(r ApiV1CategoriesPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // CategoriesApiService CategoriesApi service
 type CategoriesApiService service
 
 type ApiV1CategoriesDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	ids *Ids
 }
 
@@ -135,7 +260,7 @@ func (a *CategoriesApiService) V1CategoriesDeleteMultiplePostExecute(r ApiV1Cate
 
 type ApiV1CategoriesGetRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -281,7 +406,7 @@ func (a *CategoriesApiService) V1CategoriesGetExecute(r ApiV1CategoriesGetReques
 
 type ApiV1CategoriesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	id string
 }
 
@@ -374,7 +499,7 @@ func (a *CategoriesApiService) V1CategoriesIdDeleteExecute(r ApiV1CategoriesIdDe
 
 type ApiV1CategoriesIdGetRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	id string
 }
 
@@ -487,7 +612,7 @@ func (a *CategoriesApiService) V1CategoriesIdGetExecute(r ApiV1CategoriesIdGetRe
 
 type ApiV1CategoriesIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	id string
 	page *int32
 	pageSize *int32
@@ -646,7 +771,7 @@ func (a *CategoriesApiService) V1CategoriesIdHistoryGetExecute(r ApiV1Categories
 
 type ApiV1CategoriesIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -781,7 +906,7 @@ func (a *CategoriesApiService) V1CategoriesIdHistoryPostExecute(r ApiV1Categorie
 
 type ApiV1CategoriesIdPutRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	id string
 	category *Category
 }
@@ -897,7 +1022,7 @@ func (a *CategoriesApiService) V1CategoriesIdPutExecute(r ApiV1CategoriesIdPutRe
 
 type ApiV1CategoriesPostRequest struct {
 	ctx context.Context
-	ApiService *CategoriesApiService
+	ApiService CategoriesApi
 	category *Category
 }
 

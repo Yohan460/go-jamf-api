@@ -22,12 +22,597 @@ import (
 )
 
 
+type MobileDevicePrestagesApi interface {
+
+	/*
+	V1MobileDevicePrestagesGet Search for sorted and paged Mobile Device Prestages 
+
+	Search for sorted and paged mobile device prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDevicePrestagesGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesGet(ctx context.Context) ApiV1MobileDevicePrestagesGetRequest
+
+	// V1MobileDevicePrestagesGetExecute executes the request
+	//  @return MobileDevicePrestageSearchResults
+	// Deprecated
+	V1MobileDevicePrestagesGetExecute(r ApiV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdAttachmentsDelete Remove an attachment for a Mobile Device Prestage 
+
+	Remove an attachment for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+
+	// V1MobileDevicePrestagesIdAttachmentsDeleteExecute executes the request
+	// Deprecated
+	V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
+
+	Get attachments for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdAttachmentsGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsGetRequest
+
+	// V1MobileDevicePrestagesIdAttachmentsGetExecute executes the request
+	//  @return []FileAttachment
+	// Deprecated
+	V1MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
+
+	Add an attachment to a Mobile Device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
+	@return ApiV1MobileDevicePrestagesIdAttachmentsPostRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsPostRequest
+
+	// V1MobileDevicePrestagesIdAttachmentsPostExecute executes the request
+	//  @return PrestageFileAttachment
+	// Deprecated
+	V1MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
+
+	Deletes a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdDeleteRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdDeleteRequest
+
+	// V1MobileDevicePrestagesIdDeleteExecute executes the request
+	// Deprecated
+	V1MobileDevicePrestagesIdDeleteExecute(r ApiV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
+
+	Retrieves a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdGetRequest
+
+	// V1MobileDevicePrestagesIdGetExecute executes the request
+	//  @return GetMobileDevicePrestage
+	// Deprecated
+	V1MobileDevicePrestagesIdGetExecute(r ApiV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
+
+	Gets sorted and paged mobile device prestage history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdHistoryGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest
+
+	// V1MobileDevicePrestagesIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	// Deprecated
+	V1MobileDevicePrestagesIdHistoryGetExecute(r ApiV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
+
+	Adds mobile device prestage history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdHistoryPostRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryPostRequest
+
+	// V1MobileDevicePrestagesIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	// Deprecated
+	V1MobileDevicePrestagesIdHistoryPostExecute(r ApiV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
+
+	Updates a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdPutRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdPutRequest
+
+	// V1MobileDevicePrestagesIdPutExecute executes the request
+	//  @return GetMobileDevicePrestage
+	// Deprecated
+	V1MobileDevicePrestagesIdPutExecute(r ApiV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdScopeDelete Remove Device Scope for a specific Mobile Device Prestage 
+
+	Remove device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdScopeDeleteRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeDeleteRequest
+
+	// V1MobileDevicePrestagesIdScopeDeleteExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1MobileDevicePrestagesIdScopeDeleteExecute(r ApiV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
+
+	Get device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdScopeGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeGetRequest
+
+	// V1MobileDevicePrestagesIdScopeGetExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1MobileDevicePrestagesIdScopeGetExecute(r ApiV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
+
+	Add device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdScopePostRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePostRequest
+
+	// V1MobileDevicePrestagesIdScopePostExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1MobileDevicePrestagesIdScopePostExecute(r ApiV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
+
+	Replace device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesIdScopePutRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePutRequest
+
+	// V1MobileDevicePrestagesIdScopePutExecute executes the request
+	//  @return PrestageScopeResponse
+	// Deprecated
+	V1MobileDevicePrestagesIdScopePutExecute(r ApiV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesPost Create a Mobile Device Prestage 
+
+	Create a mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDevicePrestagesPostRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesPost(ctx context.Context) ApiV1MobileDevicePrestagesPostRequest
+
+	// V1MobileDevicePrestagesPostExecute executes the request
+	//  @return GetMobileDevicePrestage
+	// Deprecated
+	V1MobileDevicePrestagesPostExecute(r ApiV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
+
+	Get all device scope for all mobile device prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDevicePrestagesScopeGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesScopeGet(ctx context.Context) ApiV1MobileDevicePrestagesScopeGetRequest
+
+	// V1MobileDevicePrestagesScopeGetExecute executes the request
+	//  @return PrestageScope
+	// Deprecated
+	V1MobileDevicePrestagesScopeGetExecute(r ApiV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesSyncGet Get all Prestage sync States for all prestages 
+
+	Get all prestage sync states for all prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MobileDevicePrestagesSyncGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesSyncGet(ctx context.Context) ApiV1MobileDevicePrestagesSyncGetRequest
+
+	// V1MobileDevicePrestagesSyncGetExecute executes the request
+	//  @return []PrestageSyncStatus
+	// Deprecated
+	V1MobileDevicePrestagesSyncGetExecute(r ApiV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesSyncIdGet Get all prestage sync states for a single prestage 
+
+	Get all prestage sync states for a single prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesSyncIdGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdGetRequest
+
+	// V1MobileDevicePrestagesSyncIdGetExecute executes the request
+	//  @return []PrestageSyncStatus
+	// Deprecated
+	V1MobileDevicePrestagesSyncIdGetExecute(r ApiV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error)
+
+	/*
+	V1MobileDevicePrestagesSyncIdLatestGet Get the latest Sync State for a single Prestage 
+
+	Get the latest sync state for a single prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV1MobileDevicePrestagesSyncIdLatestGetRequest
+
+	Deprecated
+	*/
+	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdLatestGetRequest
+
+	// V1MobileDevicePrestagesSyncIdLatestGetExecute executes the request
+	//  @return PrestageSyncStatus
+	// Deprecated
+	V1MobileDevicePrestagesSyncIdLatestGetExecute(r ApiV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages 
+
+	Gets sorted and paged mobile device prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MobileDevicePrestagesGetRequest
+	*/
+	V2MobileDevicePrestagesGet(ctx context.Context) ApiV2MobileDevicePrestagesGetRequest
+
+	// V2MobileDevicePrestagesGetExecute executes the request
+	//  @return MobileDevicePrestageSearchResultsV2
+	V2MobileDevicePrestagesGetExecute(r ApiV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost Remove an attachment for a Mobile Device Prestage 
+
+	Remove an attachment for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+	*/
+	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+
+	// V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute executes the request
+	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
+
+	Get attachments for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdAttachmentsGetRequest
+	*/
+	V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsGetRequest
+
+	// V2MobileDevicePrestagesIdAttachmentsGetExecute executes the request
+	//  @return []FileAttachmentV2
+	V2MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
+
+	Add an attachment to a Mobile Device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
+	@return ApiV2MobileDevicePrestagesIdAttachmentsPostRequest
+	*/
+	V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsPostRequest
+
+	// V2MobileDevicePrestagesIdAttachmentsPostExecute executes the request
+	//  @return PrestageFileAttachmentV2
+	V2MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
+
+	Deletes a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdDeleteRequest
+	*/
+	V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdDeleteRequest
+
+	// V2MobileDevicePrestagesIdDeleteExecute executes the request
+	V2MobileDevicePrestagesIdDeleteExecute(r ApiV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
+
+	Retrieves a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdGetRequest
+	*/
+	V2MobileDevicePrestagesIdGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdGetRequest
+
+	// V2MobileDevicePrestagesIdGetExecute executes the request
+	//  @return GetMobileDevicePrestageV2
+	V2MobileDevicePrestagesIdGetExecute(r ApiV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
+
+	Gets sorted and paged mobile device prestage history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdHistoryGetRequest
+	*/
+	V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryGetRequest
+
+	// V2MobileDevicePrestagesIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V2MobileDevicePrestagesIdHistoryGetExecute(r ApiV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
+
+	Adds mobile device prestage history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdHistoryPostRequest
+	*/
+	V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryPostRequest
+
+	// V2MobileDevicePrestagesIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V2MobileDevicePrestagesIdHistoryPostExecute(r ApiV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
+
+	Updates a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdPutRequest
+	*/
+	V2MobileDevicePrestagesIdPut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdPutRequest
+
+	// V2MobileDevicePrestagesIdPutExecute executes the request
+	//  @return GetMobileDevicePrestageV2
+	V2MobileDevicePrestagesIdPutExecute(r ApiV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdScopeDeleteMultiplePost Remove Device Scope for a specific Mobile Device Prestage 
+
+	Remove device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
+	*/
+	V2MobileDevicePrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
+
+	// V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
+
+	Get device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdScopeGetRequest
+	*/
+	V2MobileDevicePrestagesIdScopeGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeGetRequest
+
+	// V2MobileDevicePrestagesIdScopeGetExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2MobileDevicePrestagesIdScopeGetExecute(r ApiV2MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
+
+	Add device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdScopePostRequest
+	*/
+	V2MobileDevicePrestagesIdScopePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePostRequest
+
+	// V2MobileDevicePrestagesIdScopePostExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2MobileDevicePrestagesIdScopePostExecute(r ApiV2MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
+
+	Replace device scope for a specific mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdScopePutRequest
+	*/
+	V2MobileDevicePrestagesIdScopePut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePutRequest
+
+	// V2MobileDevicePrestagesIdScopePutExecute executes the request
+	//  @return PrestageScopeResponseV2
+	V2MobileDevicePrestagesIdScopePutExecute(r ApiV2MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdSyncsGet Get all prestage sync states for a single prestage 
+
+	Get all prestage sync states for a single prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdSyncsGetRequest
+	*/
+	V2MobileDevicePrestagesIdSyncsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsGetRequest
+
+	// V2MobileDevicePrestagesIdSyncsGetExecute executes the request
+	//  @return []PrestageSyncStatusV2
+	V2MobileDevicePrestagesIdSyncsGetExecute(r ApiV2MobileDevicePrestagesIdSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesIdSyncsLatestGet Get the latest Sync State for a single Prestage 
+
+	Get the latest sync state for a single prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest
+	*/
+	V2MobileDevicePrestagesIdSyncsLatestGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest
+
+	// V2MobileDevicePrestagesIdSyncsLatestGetExecute executes the request
+	//  @return PrestageSyncStatusV2
+	V2MobileDevicePrestagesIdSyncsLatestGetExecute(r ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest) (*PrestageSyncStatusV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesPost Create a Mobile Device Prestage 
+
+	Create a mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MobileDevicePrestagesPostRequest
+	*/
+	V2MobileDevicePrestagesPost(ctx context.Context) ApiV2MobileDevicePrestagesPostRequest
+
+	// V2MobileDevicePrestagesPostExecute executes the request
+	//  @return HrefResponse
+	V2MobileDevicePrestagesPostExecute(r ApiV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
+
+	Get all device scope for all mobile device prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MobileDevicePrestagesScopeGetRequest
+	*/
+	V2MobileDevicePrestagesScopeGet(ctx context.Context) ApiV2MobileDevicePrestagesScopeGetRequest
+
+	// V2MobileDevicePrestagesScopeGetExecute executes the request
+	//  @return PrestageScopeV2
+	V2MobileDevicePrestagesScopeGetExecute(r ApiV2MobileDevicePrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
+
+	/*
+	V2MobileDevicePrestagesSyncsGet Get all Prestage sync States for all prestages 
+
+	Get all prestage sync states for all prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2MobileDevicePrestagesSyncsGetRequest
+	*/
+	V2MobileDevicePrestagesSyncsGet(ctx context.Context) ApiV2MobileDevicePrestagesSyncsGetRequest
+
+	// V2MobileDevicePrestagesSyncsGetExecute executes the request
+	//  @return []PrestageSyncStatusV2
+	V2MobileDevicePrestagesSyncsGetExecute(r ApiV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
+}
+
 // MobileDevicePrestagesApiService MobileDevicePrestagesApi service
 type MobileDevicePrestagesApiService service
 
 type ApiV1MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -177,7 +762,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r Ap
 
 type ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	fileAttachmentDelete *FileAttachmentDelete
 }
@@ -283,7 +868,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDe
 
 type ApiV1MobileDevicePrestagesIdAttachmentsGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -398,7 +983,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 
 type ApiV1MobileDevicePrestagesIdAttachmentsPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	file **os.File
 }
@@ -547,7 +1132,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 
 type ApiV1MobileDevicePrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -642,7 +1227,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDeleteExecute
 
 type ApiV1MobileDevicePrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -757,7 +1342,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r 
 
 type ApiV1MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	page *int32
 	size *int32
@@ -919,7 +1504,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGetExe
 
 type ApiV1MobileDevicePrestagesIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -1046,7 +1631,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostEx
 
 type ApiV1MobileDevicePrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	putMobileDevicePrestage *PutMobileDevicePrestage
 }
@@ -1183,7 +1768,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 
 type ApiV1MobileDevicePrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -1330,7 +1915,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 
 type ApiV1MobileDevicePrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -1445,7 +2030,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecu
 
 type ApiV1MobileDevicePrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -1592,7 +2177,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 
 type ApiV1MobileDevicePrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -1739,7 +2324,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 
 type ApiV1MobileDevicePrestagesPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	mobileDevicePrestage *MobileDevicePrestage
 }
 
@@ -1853,7 +2438,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPostExecute(r A
 
 type ApiV1MobileDevicePrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 }
 
 func (r ApiV1MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
@@ -1955,7 +2540,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGetExecute
 
 type ApiV1MobileDevicePrestagesSyncGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 }
 
 func (r ApiV1MobileDevicePrestagesSyncGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
@@ -2057,7 +2642,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGetExecute(
 
 type ApiV1MobileDevicePrestagesSyncIdGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -2163,7 +2748,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGetExecut
 
 type ApiV1MobileDevicePrestagesSyncIdLatestGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id int32
 }
 
@@ -2269,7 +2854,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet
 
 type ApiV2MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -2404,7 +2989,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r Ap
 
 type ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	ids *Ids
 }
@@ -2507,7 +3092,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDe
 
 type ApiV2MobileDevicePrestagesIdAttachmentsGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -2619,7 +3204,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 
 type ApiV2MobileDevicePrestagesIdAttachmentsPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	file **os.File
 }
@@ -2765,7 +3350,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 
 type ApiV2MobileDevicePrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -2857,7 +3442,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDeleteExecute
 
 type ApiV2MobileDevicePrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -2969,7 +3554,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r 
 
 type ApiV2MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	page *int32
 	pageSize *int32
@@ -3108,7 +3693,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGetExe
 
 type ApiV2MobileDevicePrestagesIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -3232,7 +3817,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostEx
 
 type ApiV2MobileDevicePrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	putMobileDevicePrestageV2 *PutMobileDevicePrestageV2
 }
@@ -3366,7 +3951,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 
 type ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -3510,7 +4095,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 
 type ApiV2MobileDevicePrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -3622,7 +4207,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecu
 
 type ApiV2MobileDevicePrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -3766,7 +4351,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 
 type ApiV2MobileDevicePrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
@@ -3910,7 +4495,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 
 type ApiV2MobileDevicePrestagesIdSyncsGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -4013,7 +4598,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGetExecu
 
 type ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	id string
 }
 
@@ -4116,7 +4701,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGe
 
 type ApiV2MobileDevicePrestagesPostRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 	mobileDevicePrestageV2 *MobileDevicePrestageV2
 }
 
@@ -4227,7 +4812,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPostExecute(r A
 
 type ApiV2MobileDevicePrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 }
 
 func (r ApiV2MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {
@@ -4326,7 +4911,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGetExecute
 
 type ApiV2MobileDevicePrestagesSyncsGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDevicePrestagesApiService
+	ApiService MobileDevicePrestagesApi
 }
 
 func (r ApiV2MobileDevicePrestagesSyncsGetRequest) Execute() ([]PrestageSyncStatusV2, *http.Response, error) {

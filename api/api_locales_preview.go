@@ -19,12 +19,30 @@ import (
 )
 
 
+type LocalesPreviewApi interface {
+
+	/*
+	V1LocalesGet Return locales that can be used in other features 
+
+	Returns locales that can be used in other features.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1LocalesGetRequest
+	*/
+	V1LocalesGet(ctx context.Context) ApiV1LocalesGetRequest
+
+	// V1LocalesGetExecute executes the request
+	//  @return []Locale
+	V1LocalesGetExecute(r ApiV1LocalesGetRequest) ([]Locale, *http.Response, error)
+}
+
 // LocalesPreviewApiService LocalesPreviewApi service
 type LocalesPreviewApiService service
 
 type ApiV1LocalesGetRequest struct {
 	ctx context.Context
-	ApiService *LocalesPreviewApiService
+	ApiService LocalesPreviewApi
 }
 
 func (r ApiV1LocalesGetRequest) Execute() ([]Locale, *http.Response, error) {

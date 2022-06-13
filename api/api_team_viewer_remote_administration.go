@@ -20,12 +20,180 @@ import (
 )
 
 
+type TeamViewerRemoteAdministrationApi interface {
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet Get a paginated list of sessions 
+
+	Returns a paginated list of sessions for a given configuration ID
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute executes the request
+	//  @return SessionDetailsSearchResults
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) (*SessionDetailsSearchResults, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost Create a new session
+
+	Creates a new Team Viewer session to be used to establish a remote connection
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute executes the request
+	//  @return HrefResponse
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost Close a session
+
+	Changes the session state from open to close. Closing a session means it is not possible to establish new remote connection between devices
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@param sessionId ID of the Team Viewer session
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute executes the request
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) (*http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet Get a session by its ID 
+
+	Returns a session details if found.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@param sessionId ID of the Team Viewer session
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute executes the request
+	//  @return SessionDetails
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) (*SessionDetails, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost Resend nofications for a session
+
+	Resends configured notifications (e.g. Self Service push notifications).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@param sessionId ID of the Team Viewer session
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute executes the request
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) (*http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet Get a session status by its ID 
+
+	Returns a session status if found.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param configurationId ID of the Team Viewer connection configuration
+	@param sessionId ID of the Team Viewer session
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute executes the request
+	//  @return SessionStatus
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) (*SessionStatus, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete Delete Team Viewer Remote Administration connection configuration
+
+	Deletes Team Viewer Remote Administration connection configuration
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute executes the request
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) (*http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdGet Get Team Viewer Remote Administration connection configuration
+
+	Returns Team Viewer Remote Administration connection configuration
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute executes the request
+	//  @return ConnectionConfigurationResponse
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) (*ConnectionConfigurationResponse, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch Update Team Viewer Remote Administration connection configuration
+
+	Updates Team Viewer Remote Administration connection configuration
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute executes the request
+	//  @return ConnectionConfigurationResponse
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) (*ConnectionConfigurationResponse, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet Get Team Viewer Remote Administration connection status
+
+	Returns Team Viewer Remote Administration connection status
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id ID of the Team Viewer connection configuration
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute executes the request
+	//  @return ConnectionConfigurationStatusResponse
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) (*ConnectionConfigurationStatusResponse, *http.Response, error)
+
+	/*
+	PreviewRemoteAdministrationConfigurationsTeamViewerPost Create Team Viewer Remote Administration connection configuration
+
+	Creates Team Viewer Remote Administration connection configuration
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
+	*/
+	PreviewRemoteAdministrationConfigurationsTeamViewerPost(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
+
+	// PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute executes the request
+	//  @return HrefResponse
+	PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // TeamViewerRemoteAdministrationApiService TeamViewerRemoteAdministrationApi service
 type TeamViewerRemoteAdministrationApiService service
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	page *int32
 	pageSize *int32
@@ -165,7 +333,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	sessionCandidateRequest *SessionCandidateRequest
 }
@@ -309,7 +477,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	sessionId string
 }
@@ -424,7 +592,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	sessionId string
 }
@@ -540,7 +708,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	sessionId string
 }
@@ -655,7 +823,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	configurationId string
 	sessionId string
 }
@@ -781,7 +949,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	id string
 }
 
@@ -873,7 +1041,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	id string
 }
 
@@ -985,7 +1153,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	id string
 	connectionConfigurationUpdateRequest *ConnectionConfigurationUpdateRequest
 }
@@ -1119,7 +1287,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	id string
 }
 
@@ -1222,7 +1390,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 type ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest struct {
 	ctx context.Context
-	ApiService *TeamViewerRemoteAdministrationApiService
+	ApiService TeamViewerRemoteAdministrationApi
 	connectionConfigurationCandidateRequest *ConnectionConfigurationCandidateRequest
 }
 

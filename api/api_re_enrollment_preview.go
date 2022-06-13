@@ -19,12 +19,75 @@ import (
 )
 
 
+type ReEnrollmentPreviewApi interface {
+
+	/*
+	V1ReenrollmentGet Get Re-enrollment object 
+
+	Gets Re-enrollment object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ReenrollmentGetRequest
+	*/
+	V1ReenrollmentGet(ctx context.Context) ApiV1ReenrollmentGetRequest
+
+	// V1ReenrollmentGetExecute executes the request
+	//  @return Reenrollment
+	V1ReenrollmentGetExecute(r ApiV1ReenrollmentGetRequest) (*Reenrollment, *http.Response, error)
+
+	/*
+	V1ReenrollmentHistoryGet Get Re-enrollment history object 
+
+	Gets Re-enrollment history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ReenrollmentHistoryGetRequest
+	*/
+	V1ReenrollmentHistoryGet(ctx context.Context) ApiV1ReenrollmentHistoryGetRequest
+
+	// V1ReenrollmentHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1ReenrollmentHistoryGetExecute(r ApiV1ReenrollmentHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1ReenrollmentHistoryPost Add specified Re-enrollment history object notes 
+
+	Adds specified Re-enrollment history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ReenrollmentHistoryPostRequest
+	*/
+	V1ReenrollmentHistoryPost(ctx context.Context) ApiV1ReenrollmentHistoryPostRequest
+
+	// V1ReenrollmentHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1ReenrollmentHistoryPostExecute(r ApiV1ReenrollmentHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1ReenrollmentPut Update the Re-enrollment object 
+
+	Update the Re-enrollment object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ReenrollmentPutRequest
+	*/
+	V1ReenrollmentPut(ctx context.Context) ApiV1ReenrollmentPutRequest
+
+	// V1ReenrollmentPutExecute executes the request
+	//  @return Reenrollment
+	V1ReenrollmentPutExecute(r ApiV1ReenrollmentPutRequest) (*Reenrollment, *http.Response, error)
+}
+
 // ReEnrollmentPreviewApiService ReEnrollmentPreviewApi service
 type ReEnrollmentPreviewApiService service
 
 type ApiV1ReenrollmentGetRequest struct {
 	ctx context.Context
-	ApiService *ReEnrollmentPreviewApiService
+	ApiService ReEnrollmentPreviewApi
 }
 
 func (r ApiV1ReenrollmentGetRequest) Execute() (*Reenrollment, *http.Response, error) {
@@ -133,7 +196,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1Reenroll
 
 type ApiV1ReenrollmentHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *ReEnrollmentPreviewApiService
+	ApiService ReEnrollmentPreviewApi
 	page *int32
 	size *int32
 	pagesize *int32
@@ -281,7 +344,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1R
 
 type ApiV1ReenrollmentHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *ReEnrollmentPreviewApiService
+	ApiService ReEnrollmentPreviewApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -402,7 +465,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1
 
 type ApiV1ReenrollmentPutRequest struct {
 	ctx context.Context
-	ApiService *ReEnrollmentPreviewApiService
+	ApiService ReEnrollmentPreviewApi
 	reenrollment *Reenrollment
 }
 

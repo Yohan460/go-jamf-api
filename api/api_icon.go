@@ -21,12 +21,44 @@ import (
 )
 
 
+type IconApi interface {
+
+	/*
+	V1IconIdGet Get an icon 
+
+	Get an icon
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of the icon
+	@return ApiV1IconIdGetRequest
+	*/
+	V1IconIdGet(ctx context.Context, id string) ApiV1IconIdGetRequest
+
+	// V1IconIdGetExecute executes the request
+	//  @return IconResponse
+	V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconResponse, *http.Response, error)
+
+	/*
+	V1IconPost Upload an icon 
+
+	Uploads an icon
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1IconPostRequest
+	*/
+	V1IconPost(ctx context.Context) ApiV1IconPostRequest
+
+	// V1IconPostExecute executes the request
+	//  @return IconResponse
+	V1IconPostExecute(r ApiV1IconPostRequest) (*IconResponse, *http.Response, error)
+}
+
 // IconApiService IconApi service
 type IconApiService service
 
 type ApiV1IconIdGetRequest struct {
 	ctx context.Context
-	ApiService *IconApiService
+	ApiService IconApi
 	id string
 }
 
@@ -129,7 +161,7 @@ func (a *IconApiService) V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconRespo
 
 type ApiV1IconPostRequest struct {
 	ctx context.Context
-	ApiService *IconApiService
+	ApiService IconApi
 	file **os.File
 }
 

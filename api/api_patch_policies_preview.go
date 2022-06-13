@@ -20,12 +20,72 @@ import (
 )
 
 
+type PatchPoliciesPreviewApi interface {
+
+	/*
+	PatchPatchPoliciesGet Return a list of patch policies 
+
+	Returns a list of patch policies.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchPatchPoliciesGetRequest
+	*/
+	PatchPatchPoliciesGet(ctx context.Context) ApiPatchPatchPoliciesGetRequest
+
+	// PatchPatchPoliciesGetExecute executes the request
+	//  @return []PatchPolicySummary
+	PatchPatchPoliciesGetExecute(r ApiPatchPatchPoliciesGetRequest) ([]PatchPolicySummary, *http.Response, error)
+
+	/*
+	PatchPatchPoliciesIdDashboardDelete Remove a patch policy from the dashboard 
+
+	Removes a patch policy from the dashboard.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchPatchPoliciesIdDashboardDeleteRequest
+	*/
+	PatchPatchPoliciesIdDashboardDelete(ctx context.Context, id int32) ApiPatchPatchPoliciesIdDashboardDeleteRequest
+
+	// PatchPatchPoliciesIdDashboardDeleteExecute executes the request
+	PatchPatchPoliciesIdDashboardDeleteExecute(r ApiPatchPatchPoliciesIdDashboardDeleteRequest) (*http.Response, error)
+
+	/*
+	PatchPatchPoliciesIdDashboardGet Return whether or not the requested patch policy is on the dashboard 
+
+	Returns whether or not the requested patch policy is on the dashboard
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch policy id
+	@return ApiPatchPatchPoliciesIdDashboardGetRequest
+	*/
+	PatchPatchPoliciesIdDashboardGet(ctx context.Context, id int32) ApiPatchPatchPoliciesIdDashboardGetRequest
+
+	// PatchPatchPoliciesIdDashboardGetExecute executes the request
+	//  @return PatchPolicyOnDashboard
+	PatchPatchPoliciesIdDashboardGetExecute(r ApiPatchPatchPoliciesIdDashboardGetRequest) (*PatchPolicyOnDashboard, *http.Response, error)
+
+	/*
+	PatchPatchPoliciesIdDashboardPost Add a patch policy to the dashboard 
+
+	Adds a patch policy to the dashboard.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch policy id
+	@return ApiPatchPatchPoliciesIdDashboardPostRequest
+	*/
+	PatchPatchPoliciesIdDashboardPost(ctx context.Context, id int32) ApiPatchPatchPoliciesIdDashboardPostRequest
+
+	// PatchPatchPoliciesIdDashboardPostExecute executes the request
+	PatchPatchPoliciesIdDashboardPostExecute(r ApiPatchPatchPoliciesIdDashboardPostRequest) (*http.Response, error)
+}
+
 // PatchPoliciesPreviewApiService PatchPoliciesPreviewApi service
 type PatchPoliciesPreviewApiService service
 
 type ApiPatchPatchPoliciesGetRequest struct {
 	ctx context.Context
-	ApiService *PatchPoliciesPreviewApiService
+	ApiService PatchPoliciesPreviewApi
 	onDashboard *bool
 	enabled *bool
 }
@@ -144,7 +204,7 @@ func (a *PatchPoliciesPreviewApiService) PatchPatchPoliciesGetExecute(r ApiPatch
 
 type ApiPatchPatchPoliciesIdDashboardDeleteRequest struct {
 	ctx context.Context
-	ApiService *PatchPoliciesPreviewApiService
+	ApiService PatchPoliciesPreviewApi
 	id int32
 }
 
@@ -236,7 +296,7 @@ func (a *PatchPoliciesPreviewApiService) PatchPatchPoliciesIdDashboardDeleteExec
 
 type ApiPatchPatchPoliciesIdDashboardGetRequest struct {
 	ctx context.Context
-	ApiService *PatchPoliciesPreviewApiService
+	ApiService PatchPoliciesPreviewApi
 	id int32
 }
 
@@ -348,7 +408,7 @@ func (a *PatchPoliciesPreviewApiService) PatchPatchPoliciesIdDashboardGetExecute
 
 type ApiPatchPatchPoliciesIdDashboardPostRequest struct {
 	ctx context.Context
-	ApiService *PatchPoliciesPreviewApiService
+	ApiService PatchPoliciesPreviewApi
 	id int32
 }
 

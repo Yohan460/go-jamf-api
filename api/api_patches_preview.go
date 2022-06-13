@@ -20,12 +20,216 @@ import (
 )
 
 
+type PatchesPreviewApi interface {
+
+	/*
+	PatchDisclaimerAgreePost Accept Patch reporting disclaimer 
+
+	Accept Patch reporting disclaimer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchDisclaimerAgreePostRequest
+	*/
+	PatchDisclaimerAgreePost(ctx context.Context) ApiPatchDisclaimerAgreePostRequest
+
+	// PatchDisclaimerAgreePostExecute executes the request
+	PatchDisclaimerAgreePostExecute(r ApiPatchDisclaimerAgreePostRequest) (*http.Response, error)
+
+	/*
+	PatchObjIdGet Return Active Patch Summary 
+
+	Returns active patch summary.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchObjIdGetRequest
+	*/
+	PatchObjIdGet(ctx context.Context, id int32) ApiPatchObjIdGetRequest
+
+	// PatchObjIdGetExecute executes the request
+	//  @return ActivePatchSummary
+	PatchObjIdGetExecute(r ApiPatchObjIdGetRequest) (*ActivePatchSummary, *http.Response, error)
+
+	/*
+	PatchObjIdPut Update patch report 
+
+	Updates patch report.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchObjIdPutRequest
+	*/
+	PatchObjIdPut(ctx context.Context, id int32) ApiPatchObjIdPutRequest
+
+	// PatchObjIdPutExecute executes the request
+	//  @return ActivePatchSummary
+	PatchObjIdPutExecute(r ApiPatchObjIdPutRequest) (*ActivePatchSummary, *http.Response, error)
+
+	/*
+	PatchObjIdVersionsGet Return patch versions 
+
+	Returns patch versions.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch id
+	@return ApiPatchObjIdVersionsGetRequest
+	*/
+	PatchObjIdVersionsGet(ctx context.Context, id int32) ApiPatchObjIdVersionsGetRequest
+
+	// PatchObjIdVersionsGetExecute executes the request
+	//  @return []PatchVersion
+	PatchObjIdVersionsGetExecute(r ApiPatchObjIdVersionsGetRequest) ([]PatchVersion, *http.Response, error)
+
+	/*
+	PatchObjPolicyIdLogsEligibleRetryCountGet Return the count of the Patch Policy Logs for the policy is that are eligible for a retry attempt 
+
+	return the count of the patch policy logs for the policy ID that are eligible for a retry attempt
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id policy id
+	@return ApiPatchObjPolicyIdLogsEligibleRetryCountGetRequest
+	*/
+	PatchObjPolicyIdLogsEligibleRetryCountGet(ctx context.Context, id int32) ApiPatchObjPolicyIdLogsEligibleRetryCountGetRequest
+
+	// PatchObjPolicyIdLogsEligibleRetryCountGetExecute executes the request
+	//  @return int32
+	PatchObjPolicyIdLogsEligibleRetryCountGetExecute(r ApiPatchObjPolicyIdLogsEligibleRetryCountGetRequest) (int32, *http.Response, error)
+
+	/*
+	PatchObjPolicyIdSoftwareTitleConfigurationIdGet Return the Software Title Configuration Id for the given patch 
+
+	Return the Software Title Configuration Id for the given patch policy.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id policy id
+	@return ApiPatchObjPolicyIdSoftwareTitleConfigurationIdGetRequest
+	*/
+	PatchObjPolicyIdSoftwareTitleConfigurationIdGet(ctx context.Context, id int32) ApiPatchObjPolicyIdSoftwareTitleConfigurationIdGetRequest
+
+	// PatchObjPolicyIdSoftwareTitleConfigurationIdGetExecute executes the request
+	//  @return int32
+	PatchObjPolicyIdSoftwareTitleConfigurationIdGetExecute(r ApiPatchObjPolicyIdSoftwareTitleConfigurationIdGetRequest) (int32, *http.Response, error)
+
+	/*
+	PatchObjSoftwareTitleConfigurationIdGet Return the Software Title Configuration 
+
+	Returns the software title configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id software title configuration id
+	@return ApiPatchObjSoftwareTitleConfigurationIdGetRequest
+	*/
+	PatchObjSoftwareTitleConfigurationIdGet(ctx context.Context, id int32) ApiPatchObjSoftwareTitleConfigurationIdGetRequest
+
+	// PatchObjSoftwareTitleConfigurationIdGetExecute executes the request
+	//  @return SoftwareTitleConfiguration
+	PatchObjSoftwareTitleConfigurationIdGetExecute(r ApiPatchObjSoftwareTitleConfigurationIdGetRequest) (*SoftwareTitleConfiguration, *http.Response, error)
+
+	/*
+	PatchObjSoftwareTitleIdPoliciesGet Return the Summaries of the Patch Policies for the software title 
+
+	Returns the summaries of the patch policies for the software title.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id software title id
+	@return ApiPatchObjSoftwareTitleIdPoliciesGetRequest
+	*/
+	PatchObjSoftwareTitleIdPoliciesGet(ctx context.Context, id int32) ApiPatchObjSoftwareTitleIdPoliciesGetRequest
+
+	// PatchObjSoftwareTitleIdPoliciesGetExecute executes the request
+	//  @return SoftwareTitlePatchPolicySummaries
+	PatchObjSoftwareTitleIdPoliciesGetExecute(r ApiPatchObjSoftwareTitleIdPoliciesGetRequest) (*SoftwareTitlePatchPolicySummaries, *http.Response, error)
+
+	/*
+	PatchObjsPolicyIdGet Return Patch Policy Summary 
+
+	Returns patch policy summary.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id patch policy id
+	@return ApiPatchObjsPolicyIdGetRequest
+	*/
+	PatchObjsPolicyIdGet(ctx context.Context, id int32) ApiPatchObjsPolicyIdGetRequest
+
+	// PatchObjsPolicyIdGetExecute executes the request
+	//  @return PatchPolicySummary
+	PatchObjsPolicyIdGetExecute(r ApiPatchObjsPolicyIdGetRequest) (*PatchPolicySummary, *http.Response, error)
+
+	/*
+	PatchOnDashboardGet Return list of Patch ids on dashboard 
+
+	Returns list of patch ids on dashboard.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchOnDashboardGetRequest
+	*/
+	PatchOnDashboardGet(ctx context.Context) ApiPatchOnDashboardGetRequest
+
+	// PatchOnDashboardGetExecute executes the request
+	//  @return []int32
+	PatchOnDashboardGetExecute(r ApiPatchOnDashboardGetRequest) ([]int32, *http.Response, error)
+
+	/*
+	PatchRetryPolicyPost Retry policy 
+
+	Retry policy
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchRetryPolicyPostRequest
+	*/
+	PatchRetryPolicyPost(ctx context.Context) ApiPatchRetryPolicyPostRequest
+
+	// PatchRetryPolicyPostExecute executes the request
+	PatchRetryPolicyPostExecute(r ApiPatchRetryPolicyPostRequest) (*http.Response, error)
+
+	/*
+	PatchSearchActivePatchHistoryPost Search the history for a Specific Active Patch 
+
+	Searches the history for a specific active patch.  This is used to get detailed information about the computers/devices that a specific patch has been applied to.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchSearchActivePatchHistoryPostRequest
+	*/
+	PatchSearchActivePatchHistoryPost(ctx context.Context) ApiPatchSearchActivePatchHistoryPostRequest
+
+	// PatchSearchActivePatchHistoryPostExecute executes the request
+	//  @return ActivePatchHistorySearchResults
+	PatchSearchActivePatchHistoryPostExecute(r ApiPatchSearchActivePatchHistoryPostRequest) (*ActivePatchHistorySearchResults, *http.Response, error)
+
+	/*
+	PatchSearchPatchPolicyLogsPost Return Patch Policy Logs 
+
+	Return patch policy logs
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchSearchPatchPolicyLogsPostRequest
+	*/
+	PatchSearchPatchPolicyLogsPost(ctx context.Context) ApiPatchSearchPatchPolicyLogsPostRequest
+
+	// PatchSearchPatchPolicyLogsPostExecute executes the request
+	//  @return PatchPolicyLogSearchResults
+	PatchSearchPatchPolicyLogsPostExecute(r ApiPatchSearchPatchPolicyLogsPostRequest) (*PatchPolicyLogSearchResults, *http.Response, error)
+
+	/*
+	PatchSvcRetryPolicyPost Retry policy 
+
+	Retry policy
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPatchSvcRetryPolicyPostRequest
+	*/
+	PatchSvcRetryPolicyPost(ctx context.Context) ApiPatchSvcRetryPolicyPostRequest
+
+	// PatchSvcRetryPolicyPostExecute executes the request
+	PatchSvcRetryPolicyPostExecute(r ApiPatchSvcRetryPolicyPostRequest) (*http.Response, error)
+}
+
 // PatchesPreviewApiService PatchesPreviewApi service
 type PatchesPreviewApiService service
 
 type ApiPatchDisclaimerAgreePostRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 }
 
 func (r ApiPatchDisclaimerAgreePostRequest) Execute() (*http.Response, error) {
@@ -113,7 +317,7 @@ func (a *PatchesPreviewApiService) PatchDisclaimerAgreePostExecute(r ApiPatchDis
 
 type ApiPatchObjIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -216,7 +420,7 @@ func (a *PatchesPreviewApiService) PatchObjIdGetExecute(r ApiPatchObjIdGetReques
 
 type ApiPatchObjIdPutRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 	activePatchSummary *ActivePatchSummary
 }
@@ -331,7 +535,7 @@ func (a *PatchesPreviewApiService) PatchObjIdPutExecute(r ApiPatchObjIdPutReques
 
 type ApiPatchObjIdVersionsGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -434,7 +638,7 @@ func (a *PatchesPreviewApiService) PatchObjIdVersionsGetExecute(r ApiPatchObjIdV
 
 type ApiPatchObjPolicyIdLogsEligibleRetryCountGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -537,7 +741,7 @@ func (a *PatchesPreviewApiService) PatchObjPolicyIdLogsEligibleRetryCountGetExec
 
 type ApiPatchObjPolicyIdSoftwareTitleConfigurationIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -640,7 +844,7 @@ func (a *PatchesPreviewApiService) PatchObjPolicyIdSoftwareTitleConfigurationIdG
 
 type ApiPatchObjSoftwareTitleConfigurationIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -743,7 +947,7 @@ func (a *PatchesPreviewApiService) PatchObjSoftwareTitleConfigurationIdGetExecut
 
 type ApiPatchObjSoftwareTitleIdPoliciesGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -846,7 +1050,7 @@ func (a *PatchesPreviewApiService) PatchObjSoftwareTitleIdPoliciesGetExecute(r A
 
 type ApiPatchObjsPolicyIdGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	id int32
 }
 
@@ -949,7 +1153,7 @@ func (a *PatchesPreviewApiService) PatchObjsPolicyIdGetExecute(r ApiPatchObjsPol
 
 type ApiPatchOnDashboardGetRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 }
 
 func (r ApiPatchOnDashboardGetRequest) Execute() ([]int32, *http.Response, error) {
@@ -1048,7 +1252,7 @@ func (a *PatchesPreviewApiService) PatchOnDashboardGetExecute(r ApiPatchOnDashbo
 
 type ApiPatchRetryPolicyPostRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	retryPatchPolicyParams *RetryPatchPolicyParams
 }
 
@@ -1144,7 +1348,7 @@ func (a *PatchesPreviewApiService) PatchRetryPolicyPostExecute(r ApiPatchRetryPo
 
 type ApiPatchSearchActivePatchHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	searchActivePatchHistoryParams *SearchActivePatchHistoryParams
 }
 
@@ -1252,7 +1456,7 @@ func (a *PatchesPreviewApiService) PatchSearchActivePatchHistoryPostExecute(r Ap
 
 type ApiPatchSearchPatchPolicyLogsPostRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	searchPatchPolicyLogParams *SearchPatchPolicyLogParams
 }
 
@@ -1359,7 +1563,7 @@ func (a *PatchesPreviewApiService) PatchSearchPatchPolicyLogsPostExecute(r ApiPa
 
 type ApiPatchSvcRetryPolicyPostRequest struct {
 	ctx context.Context
-	ApiService *PatchesPreviewApiService
+	ApiService PatchesPreviewApi
 	retryPatchPolicyParams *RetryPatchPolicyParams
 }
 

@@ -19,12 +19,43 @@ import (
 )
 
 
+type MacosManagedSoftwareUpdatesApi interface {
+
+	/*
+	V1MacosManagedSoftwareUpdatesAvailableUpdatesGet Retrieve available MacOs Managed Software Updates
+
+	Retrieves available MacOs Managed Software Updates
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+	*/
+	V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+
+	// V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute executes the request
+	//  @return AvailableUpdates
+	V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableUpdates, *http.Response, error)
+
+	/*
+	V1MacosManagedSoftwareUpdatesSendUpdatesPost Send MacOs Managed Software Updates
+
+	Sends MacOs Managed Software Updates
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+	*/
+	V1MacosManagedSoftwareUpdatesSendUpdatesPost(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+
+	// V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute executes the request
+	//  @return MacOsManagedSoftwareUpdateResponse
+	V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) (*MacOsManagedSoftwareUpdateResponse, *http.Response, error)
+}
+
 // MacosManagedSoftwareUpdatesApiService MacosManagedSoftwareUpdatesApi service
 type MacosManagedSoftwareUpdatesApiService service
 
 type ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest struct {
 	ctx context.Context
-	ApiService *MacosManagedSoftwareUpdatesApiService
+	ApiService MacosManagedSoftwareUpdatesApi
 }
 
 func (r ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) Execute() (*AvailableUpdates, *http.Response, error) {
@@ -123,7 +154,7 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAva
 
 type ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest struct {
 	ctx context.Context
-	ApiService *MacosManagedSoftwareUpdatesApiService
+	ApiService MacosManagedSoftwareUpdatesApi
 	macOsManagedSoftwareUpdate *MacOsManagedSoftwareUpdate
 }
 

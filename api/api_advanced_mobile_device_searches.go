@@ -20,12 +20,121 @@ import (
 )
 
 
+type AdvancedMobileDeviceSearchesApi interface {
+
+	/*
+	V1AdvancedMobileDeviceSearchesChoicesGet Get Mobile Device Advanced Search criteria choices 
+
+	Gets Mobile Device Advanced Search criteria choices. A list of potentially valid choices can be found by navigating to the Criteria page of the Advanced Mobile Device Search creation process. A few are "App Name", "Building", and "Display Name".
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedMobileDeviceSearchesChoicesGetRequest
+	*/
+	V1AdvancedMobileDeviceSearchesChoicesGet(ctx context.Context) ApiV1AdvancedMobileDeviceSearchesChoicesGetRequest
+
+	// V1AdvancedMobileDeviceSearchesChoicesGetExecute executes the request
+	//  @return AdvancedSearchCriteriaChoices
+	V1AdvancedMobileDeviceSearchesChoicesGetExecute(r ApiV1AdvancedMobileDeviceSearchesChoicesGetRequest) (*AdvancedSearchCriteriaChoices, *http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesDeleteMultiplePost Remove specified Advanced Search objects 
+
+	Removes specified Advanced Search Objects
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedMobileDeviceSearchesDeleteMultiplePostRequest
+	*/
+	V1AdvancedMobileDeviceSearchesDeleteMultiplePost(ctx context.Context) ApiV1AdvancedMobileDeviceSearchesDeleteMultiplePostRequest
+
+	// V1AdvancedMobileDeviceSearchesDeleteMultiplePostExecute executes the request
+	V1AdvancedMobileDeviceSearchesDeleteMultiplePostExecute(r ApiV1AdvancedMobileDeviceSearchesDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesGet Get Advanced Search objects 
+
+	Gets Advanced Search Objects
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedMobileDeviceSearchesGetRequest
+	*/
+	V1AdvancedMobileDeviceSearchesGet(ctx context.Context) ApiV1AdvancedMobileDeviceSearchesGetRequest
+
+	// V1AdvancedMobileDeviceSearchesGetExecute executes the request
+	//  @return AdvancedSearchSearchResults
+	V1AdvancedMobileDeviceSearchesGetExecute(r ApiV1AdvancedMobileDeviceSearchesGetRequest) (*AdvancedSearchSearchResults, *http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesIdDelete Remove specified Advanced Search object 
+
+	Removes specified Advanced Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of advanced search record
+	@return ApiV1AdvancedMobileDeviceSearchesIdDeleteRequest
+	*/
+	V1AdvancedMobileDeviceSearchesIdDelete(ctx context.Context, id string) ApiV1AdvancedMobileDeviceSearchesIdDeleteRequest
+
+	// V1AdvancedMobileDeviceSearchesIdDeleteExecute executes the request
+	V1AdvancedMobileDeviceSearchesIdDeleteExecute(r ApiV1AdvancedMobileDeviceSearchesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesIdGet Get specified Advanced Search object 
+
+	Gets Specified Advanced Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Advanced Search
+	@return ApiV1AdvancedMobileDeviceSearchesIdGetRequest
+	*/
+	V1AdvancedMobileDeviceSearchesIdGet(ctx context.Context, id string) ApiV1AdvancedMobileDeviceSearchesIdGetRequest
+
+	// V1AdvancedMobileDeviceSearchesIdGetExecute executes the request
+	//  @return AdvancedSearch
+	V1AdvancedMobileDeviceSearchesIdGetExecute(r ApiV1AdvancedMobileDeviceSearchesIdGetRequest) (*AdvancedSearch, *http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesIdPut Get specified Advanced Search object 
+
+	Gets Specified Advanced Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Advanced Search
+	@return ApiV1AdvancedMobileDeviceSearchesIdPutRequest
+	*/
+	V1AdvancedMobileDeviceSearchesIdPut(ctx context.Context, id string) ApiV1AdvancedMobileDeviceSearchesIdPutRequest
+
+	// V1AdvancedMobileDeviceSearchesIdPutExecute executes the request
+	//  @return AdvancedSearch
+	V1AdvancedMobileDeviceSearchesIdPutExecute(r ApiV1AdvancedMobileDeviceSearchesIdPutRequest) (*AdvancedSearch, *http.Response, error)
+
+	/*
+	V1AdvancedMobileDeviceSearchesPost Create Advanced Search object 
+
+	Creates Advanced Search Object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AdvancedMobileDeviceSearchesPostRequest
+	*/
+	V1AdvancedMobileDeviceSearchesPost(ctx context.Context) ApiV1AdvancedMobileDeviceSearchesPostRequest
+
+	// V1AdvancedMobileDeviceSearchesPostExecute executes the request
+	//  @return HrefResponse
+	V1AdvancedMobileDeviceSearchesPostExecute(r ApiV1AdvancedMobileDeviceSearchesPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // AdvancedMobileDeviceSearchesApiService AdvancedMobileDeviceSearchesApi service
 type AdvancedMobileDeviceSearchesApiService service
 
 type ApiV1AdvancedMobileDeviceSearchesChoicesGetRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	criteria *string
 	site *string
 	contains *string
@@ -153,7 +262,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesC
 
 type ApiV1AdvancedMobileDeviceSearchesDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	ids *Ids
 }
 
@@ -263,7 +372,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesD
 
 type ApiV1AdvancedMobileDeviceSearchesGetRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 }
 
 func (r ApiV1AdvancedMobileDeviceSearchesGetRequest) Execute() (*AdvancedSearchSearchResults, *http.Response, error) {
@@ -363,7 +472,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesG
 
 type ApiV1AdvancedMobileDeviceSearchesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	id string
 }
 
@@ -465,7 +574,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesI
 
 type ApiV1AdvancedMobileDeviceSearchesIdGetRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	id string
 }
 
@@ -578,7 +687,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesI
 
 type ApiV1AdvancedMobileDeviceSearchesIdPutRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	id string
 	advancedSearch *AdvancedSearch
 }
@@ -702,7 +811,7 @@ func (a *AdvancedMobileDeviceSearchesApiService) V1AdvancedMobileDeviceSearchesI
 
 type ApiV1AdvancedMobileDeviceSearchesPostRequest struct {
 	ctx context.Context
-	ApiService *AdvancedMobileDeviceSearchesApiService
+	ApiService AdvancedMobileDeviceSearchesApi
 	advancedSearch *AdvancedSearch
 }
 

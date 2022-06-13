@@ -19,12 +19,42 @@ import (
 )
 
 
+type JamfProInitializationApi interface {
+
+	/*
+	V1SystemInitializeDatabaseConnectionPost Provide Database Password during startup 
+
+	Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SystemInitializeDatabaseConnectionPostRequest
+	*/
+	V1SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiV1SystemInitializeDatabaseConnectionPostRequest
+
+	// V1SystemInitializeDatabaseConnectionPostExecute executes the request
+	V1SystemInitializeDatabaseConnectionPostExecute(r ApiV1SystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
+
+	/*
+	V1SystemInitializePost Set up fresh installed Jamf Pro Server 
+
+	Set up fresh installed Jamf Pro Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SystemInitializePostRequest
+	*/
+	V1SystemInitializePost(ctx context.Context) ApiV1SystemInitializePostRequest
+
+	// V1SystemInitializePostExecute executes the request
+	V1SystemInitializePostExecute(r ApiV1SystemInitializePostRequest) (*http.Response, error)
+}
+
 // JamfProInitializationApiService JamfProInitializationApi service
 type JamfProInitializationApiService service
 
 type ApiV1SystemInitializeDatabaseConnectionPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProInitializationApiService
+	ApiService JamfProInitializationApi
 	databasePassword *DatabasePassword
 }
 
@@ -142,7 +172,7 @@ func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPo
 
 type ApiV1SystemInitializePostRequest struct {
 	ctx context.Context
-	ApiService *JamfProInitializationApiService
+	ApiService JamfProInitializationApi
 	initializeV1 *InitializeV1
 }
 

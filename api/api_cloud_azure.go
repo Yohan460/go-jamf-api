@@ -20,12 +20,159 @@ import (
 )
 
 
+type CloudAzureApi interface {
+
+	/*
+	V1AzureAdMigrationReportsIdDownloadGet Download report of provided report ID
+
+	Returns excel file of generated report
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Existing report ID
+	@return ApiV1AzureAdMigrationReportsIdDownloadGetRequest
+	*/
+	V1AzureAdMigrationReportsIdDownloadGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdDownloadGetRequest
+
+	// V1AzureAdMigrationReportsIdDownloadGetExecute executes the request
+	//  @return interface{}
+	V1AzureAdMigrationReportsIdDownloadGetExecute(r ApiV1AzureAdMigrationReportsIdDownloadGetRequest) (interface{}, *http.Response, error)
+
+	/*
+	V1AzureAdMigrationReportsIdGet Check status of azure ad migration report
+
+	Returns dto with minimal info about running process
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Existing report ID
+	@return ApiV1AzureAdMigrationReportsIdGetRequest
+	*/
+	V1AzureAdMigrationReportsIdGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdGetRequest
+
+	// V1AzureAdMigrationReportsIdGetExecute executes the request
+	//  @return AzureAdMigrationReportProcessStatus
+	V1AzureAdMigrationReportsIdGetExecute(r ApiV1AzureAdMigrationReportsIdGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error)
+
+	/*
+	V1AzureAdMigrationReportsPendingGet Get pending azure migration report
+
+	Returs dto with info about pending report
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AzureAdMigrationReportsPendingGetRequest
+	*/
+	V1AzureAdMigrationReportsPendingGet(ctx context.Context) ApiV1AzureAdMigrationReportsPendingGetRequest
+
+	// V1AzureAdMigrationReportsPendingGetExecute executes the request
+	//  @return AzureAdMigrationReportProcessStatus
+	V1AzureAdMigrationReportsPendingGetExecute(r ApiV1AzureAdMigrationReportsPendingGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error)
+
+	/*
+	V1AzureAdMigrationReportsPost Start Azure Ad Migration report generation
+
+	Starts a new process in background that will generate Excel report
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AzureAdMigrationReportsPostRequest
+	*/
+	V1AzureAdMigrationReportsPost(ctx context.Context) ApiV1AzureAdMigrationReportsPostRequest
+
+	// V1AzureAdMigrationReportsPostExecute executes the request
+	//  @return HrefResponse
+	V1AzureAdMigrationReportsPostExecute(r ApiV1AzureAdMigrationReportsPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1CloudAzureDefaultsMappingsGet Get default mappings
+
+	This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudAzureDefaultsMappingsGetRequest
+	*/
+	V1CloudAzureDefaultsMappingsGet(ctx context.Context) ApiV1CloudAzureDefaultsMappingsGetRequest
+
+	// V1CloudAzureDefaultsMappingsGetExecute executes the request
+	//  @return AzureMappings
+	V1CloudAzureDefaultsMappingsGetExecute(r ApiV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error)
+
+	/*
+	V1CloudAzureDefaultsServerConfigurationGet Get default server configuration
+
+	This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudAzureDefaultsServerConfigurationGetRequest
+	*/
+	V1CloudAzureDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudAzureDefaultsServerConfigurationGetRequest
+
+	// V1CloudAzureDefaultsServerConfigurationGetExecute executes the request
+	//  @return AzureServerConfiguration
+	V1CloudAzureDefaultsServerConfigurationGetExecute(r ApiV1CloudAzureDefaultsServerConfigurationGetRequest) (*AzureServerConfiguration, *http.Response, error)
+
+	/*
+	V1CloudAzureIdDelete Delete Cloud Identity Provider configuration.
+
+	Delete Cloud Identity Provider configuration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudAzureIdDeleteRequest
+	*/
+	V1CloudAzureIdDelete(ctx context.Context, id string) ApiV1CloudAzureIdDeleteRequest
+
+	// V1CloudAzureIdDeleteExecute executes the request
+	V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CloudAzureIdGet Get Azure Cloud Identity Provider configuration with given ID.
+
+	Get Azure Cloud Identity Provider configuration with given ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudAzureIdGetRequest
+	*/
+	V1CloudAzureIdGet(ctx context.Context, id string) ApiV1CloudAzureIdGetRequest
+
+	// V1CloudAzureIdGetExecute executes the request
+	//  @return AzureConfiguration
+	V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRequest) (*AzureConfiguration, *http.Response, error)
+
+	/*
+	V1CloudAzureIdPut Update Azure Cloud Identity Provider configuration
+
+	Update Azure Cloud Identity Provider configuration. Cannot be used for partial updates, all content body must be sent.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudAzureIdPutRequest
+	*/
+	V1CloudAzureIdPut(ctx context.Context, id string) ApiV1CloudAzureIdPutRequest
+
+	// V1CloudAzureIdPutExecute executes the request
+	//  @return AzureConfiguration
+	V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRequest) (*AzureConfiguration, *http.Response, error)
+
+	/*
+	V1CloudAzurePost Create Azure Cloud Identity Provider configuration
+
+	Create new Azure Cloud Identity Provider configuration with unique display name.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudAzurePostRequest
+	*/
+	V1CloudAzurePost(ctx context.Context) ApiV1CloudAzurePostRequest
+
+	// V1CloudAzurePostExecute executes the request
+	//  @return HrefResponse
+	V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // CloudAzureApiService CloudAzureApi service
 type CloudAzureApiService service
 
 type ApiV1AzureAdMigrationReportsIdDownloadGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	id string
 }
 
@@ -137,7 +284,7 @@ func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdDownloadGetExecute(r A
 
 type ApiV1AzureAdMigrationReportsIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	id string
 }
 
@@ -249,7 +396,7 @@ func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdGetExecute(r ApiV1Azur
 
 type ApiV1AzureAdMigrationReportsPendingGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 }
 
 func (r ApiV1AzureAdMigrationReportsPendingGetRequest) Execute() (*AzureAdMigrationReportProcessStatus, *http.Response, error) {
@@ -357,7 +504,7 @@ func (a *CloudAzureApiService) V1AzureAdMigrationReportsPendingGetExecute(r ApiV
 
 type ApiV1AzureAdMigrationReportsPostRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	azureAdMigrationReportRequest *AzureAdMigrationReportRequest
 }
 
@@ -477,7 +624,7 @@ func (a *CloudAzureApiService) V1AzureAdMigrationReportsPostExecute(r ApiV1Azure
 
 type ApiV1CloudAzureDefaultsMappingsGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 }
 
 func (r ApiV1CloudAzureDefaultsMappingsGetRequest) Execute() (*AzureMappings, *http.Response, error) {
@@ -595,7 +742,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 
 type ApiV1CloudAzureDefaultsServerConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 }
 
 func (r ApiV1CloudAzureDefaultsServerConfigurationGetRequest) Execute() (*AzureServerConfiguration, *http.Response, error) {
@@ -713,7 +860,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 
 type ApiV1CloudAzureIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	id string
 }
 
@@ -824,7 +971,7 @@ func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDe
 
 type ApiV1CloudAzureIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	id string
 }
 
@@ -946,7 +1093,7 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 
 type ApiV1CloudAzureIdPutRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	id string
 	azureConfigurationUpdate *AzureConfigurationUpdate
 }
@@ -1090,7 +1237,7 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 
 type ApiV1CloudAzurePostRequest struct {
 	ctx context.Context
-	ApiService *CloudAzureApiService
+	ApiService CloudAzureApi
 	azureConfigurationRequest *AzureConfigurationRequest
 }
 

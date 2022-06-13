@@ -19,12 +19,30 @@ import (
 )
 
 
+type SitesPreviewApi interface {
+
+	/*
+	SettingsSitesGet Find all sites 
+
+	Found all sites.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSettingsSitesGetRequest
+	*/
+	SettingsSitesGet(ctx context.Context) ApiSettingsSitesGetRequest
+
+	// SettingsSitesGetExecute executes the request
+	//  @return []Site
+	SettingsSitesGetExecute(r ApiSettingsSitesGetRequest) ([]Site, *http.Response, error)
+}
+
 // SitesPreviewApiService SitesPreviewApi service
 type SitesPreviewApiService service
 
 type ApiSettingsSitesGetRequest struct {
 	ctx context.Context
-	ApiService *SitesPreviewApiService
+	ApiService SitesPreviewApi
 }
 
 func (r ApiSettingsSitesGetRequest) Execute() ([]Site, *http.Response, error) {

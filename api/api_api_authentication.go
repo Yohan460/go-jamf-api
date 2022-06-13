@@ -19,12 +19,156 @@ import (
 )
 
 
+type ApiAuthenticationApi interface {
+
+	/*
+	AuthCurrentPost Get the authorization details associated with the current API token 
+
+	Get the authorization details associated with the current API token for the users current site
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthCurrentPostRequest
+
+	Deprecated
+	*/
+	AuthCurrentPost(ctx context.Context) ApiAuthCurrentPostRequest
+
+	// AuthCurrentPostExecute executes the request
+	//  @return CurrentAuthorization
+	// Deprecated
+	AuthCurrentPostExecute(r ApiAuthCurrentPostRequest) (*CurrentAuthorization, *http.Response, error)
+
+	/*
+	AuthGet Get all the Authorization details associated with the current api 
+
+	Get all the authorization details associated with the current api token
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthGetRequest
+
+	Deprecated
+	*/
+	AuthGet(ctx context.Context) ApiAuthGetRequest
+
+	// AuthGetExecute executes the request
+	//  @return Authorization
+	// Deprecated
+	AuthGetExecute(r ApiAuthGetRequest) (*Authorization, *http.Response, error)
+
+	/*
+	AuthInvalidateTokenPost Invalidate current token 
+
+	Invalidates current token
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthInvalidateTokenPostRequest
+
+	Deprecated
+	*/
+	AuthInvalidateTokenPost(ctx context.Context) ApiAuthInvalidateTokenPostRequest
+
+	// AuthInvalidateTokenPostExecute executes the request
+	// Deprecated
+	AuthInvalidateTokenPostExecute(r ApiAuthInvalidateTokenPostRequest) (*http.Response, error)
+
+	/*
+	AuthKeepAlivePost Invalidate existing token and generates new token 
+
+	Invalidates existing token and generates new token with extended expiration based on existing token credentials.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthKeepAlivePostRequest
+
+	Deprecated
+	*/
+	AuthKeepAlivePost(ctx context.Context) ApiAuthKeepAlivePostRequest
+
+	// AuthKeepAlivePostExecute executes the request
+	//  @return AuthToken
+	// Deprecated
+	AuthKeepAlivePostExecute(r ApiAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error)
+
+	/*
+	AuthTokensPost Create a token based on other authentication details (basic, etc.) 
+
+	Create a token based on other authentication details (basic, etc.)
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthTokensPostRequest
+
+	Deprecated
+	*/
+	AuthTokensPost(ctx context.Context) ApiAuthTokensPostRequest
+
+	// AuthTokensPostExecute executes the request
+	//  @return AuthToken
+	// Deprecated
+	AuthTokensPostExecute(r ApiAuthTokensPostRequest) (*AuthToken, *http.Response, error)
+
+	/*
+	V1AuthGet Get all the Authorization details associated with the current api 
+
+	Get all the authorization details associated with the current api token
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AuthGetRequest
+	*/
+	V1AuthGet(ctx context.Context) ApiV1AuthGetRequest
+
+	// V1AuthGetExecute executes the request
+	//  @return AuthorizationV1
+	V1AuthGetExecute(r ApiV1AuthGetRequest) (*AuthorizationV1, *http.Response, error)
+
+	/*
+	V1AuthInvalidateTokenPost Invalidate current token 
+
+	Invalidates current token
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AuthInvalidateTokenPostRequest
+	*/
+	V1AuthInvalidateTokenPost(ctx context.Context) ApiV1AuthInvalidateTokenPostRequest
+
+	// V1AuthInvalidateTokenPostExecute executes the request
+	V1AuthInvalidateTokenPostExecute(r ApiV1AuthInvalidateTokenPostRequest) (*http.Response, error)
+
+	/*
+	V1AuthKeepAlivePost Invalidate existing token and generates new token 
+
+	Invalidates existing token and generates new token with extended expiration based on existing token credentials.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AuthKeepAlivePostRequest
+	*/
+	V1AuthKeepAlivePost(ctx context.Context) ApiV1AuthKeepAlivePostRequest
+
+	// V1AuthKeepAlivePostExecute executes the request
+	//  @return AuthTokenV1
+	V1AuthKeepAlivePostExecute(r ApiV1AuthKeepAlivePostRequest) (*AuthTokenV1, *http.Response, error)
+
+	/*
+	V1AuthTokenPost Create a token based on other authentication details (basic, etc.) 
+
+	Create a token based on other authentication details (basic, etc.)
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AuthTokenPostRequest
+	*/
+	V1AuthTokenPost(ctx context.Context) ApiV1AuthTokenPostRequest
+
+	// V1AuthTokenPostExecute executes the request
+	//  @return AuthTokenV1
+	V1AuthTokenPostExecute(r ApiV1AuthTokenPostRequest) (*AuthTokenV1, *http.Response, error)
+}
+
 // ApiAuthenticationApiService ApiAuthenticationApi service
 type ApiAuthenticationApiService service
 
 type ApiAuthCurrentPostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiAuthCurrentPostRequest) Execute() (*CurrentAuthorization, *http.Response, error) {
@@ -126,7 +270,7 @@ func (a *ApiAuthenticationApiService) AuthCurrentPostExecute(r ApiAuthCurrentPos
 
 type ApiAuthGetRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiAuthGetRequest) Execute() (*Authorization, *http.Response, error) {
@@ -228,7 +372,7 @@ func (a *ApiAuthenticationApiService) AuthGetExecute(r ApiAuthGetRequest) (*Auth
 
 type ApiAuthInvalidateTokenPostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiAuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
@@ -319,7 +463,7 @@ func (a *ApiAuthenticationApiService) AuthInvalidateTokenPostExecute(r ApiAuthIn
 
 type ApiAuthKeepAlivePostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiAuthKeepAlivePostRequest) Execute() (*AuthToken, *http.Response, error) {
@@ -421,7 +565,7 @@ func (a *ApiAuthenticationApiService) AuthKeepAlivePostExecute(r ApiAuthKeepAliv
 
 type ApiAuthTokensPostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiAuthTokensPostRequest) Execute() (*AuthToken, *http.Response, error) {
@@ -524,7 +668,7 @@ func (a *ApiAuthenticationApiService) AuthTokensPostExecute(r ApiAuthTokensPostR
 
 type ApiV1AuthGetRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiV1AuthGetRequest) Execute() (*AuthorizationV1, *http.Response, error) {
@@ -623,7 +767,7 @@ func (a *ApiAuthenticationApiService) V1AuthGetExecute(r ApiV1AuthGetRequest) (*
 
 type ApiV1AuthInvalidateTokenPostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiV1AuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
@@ -711,7 +855,7 @@ func (a *ApiAuthenticationApiService) V1AuthInvalidateTokenPostExecute(r ApiV1Au
 
 type ApiV1AuthKeepAlivePostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiV1AuthKeepAlivePostRequest) Execute() (*AuthTokenV1, *http.Response, error) {
@@ -810,7 +954,7 @@ func (a *ApiAuthenticationApiService) V1AuthKeepAlivePostExecute(r ApiV1AuthKeep
 
 type ApiV1AuthTokenPostRequest struct {
 	ctx context.Context
-	ApiService *ApiAuthenticationApiService
+	ApiService ApiAuthenticationApi
 }
 
 func (r ApiV1AuthTokenPostRequest) Execute() (*AuthTokenV1, *http.Response, error) {

@@ -19,12 +19,30 @@ import (
 )
 
 
+type JamfProVersionApi interface {
+
+	/*
+	V1JamfProVersionGet Return information about the Jamf Pro including the current version 
+
+	Returns information about the Jamf Pro including the current version.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProVersionGetRequest
+	*/
+	V1JamfProVersionGet(ctx context.Context) ApiV1JamfProVersionGetRequest
+
+	// V1JamfProVersionGetExecute executes the request
+	//  @return JamfProVersion
+	V1JamfProVersionGetExecute(r ApiV1JamfProVersionGetRequest) (*JamfProVersion, *http.Response, error)
+}
+
 // JamfProVersionApiService JamfProVersionApi service
 type JamfProVersionApiService service
 
 type ApiV1JamfProVersionGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProVersionApiService
+	ApiService JamfProVersionApi
 }
 
 func (r ApiV1JamfProVersionGetRequest) Execute() (*JamfProVersion, *http.Response, error) {

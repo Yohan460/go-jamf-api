@@ -19,12 +19,85 @@ import (
 )
 
 
+type LdapApi interface {
+
+	/*
+	LdapGroupsGet Retrieve the configured access groups that contain the text in the search param 
+
+	Retrieves the configured access groups that contain the text in the searchParam.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiLdapGroupsGetRequest
+	*/
+	LdapGroupsGet(ctx context.Context) ApiLdapGroupsGetRequest
+
+	// LdapGroupsGetExecute executes the request
+	//  @return LdapGroupSearchResults
+	LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
+
+	/*
+	LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Providers. 
+
+	Retrieve all Servers including LDAP and Cloud Identity Providers.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiLdapServersGetRequest
+	*/
+	LdapServersGet(ctx context.Context) ApiLdapServersGetRequest
+
+	// LdapServersGetExecute executes the request
+	//  @return []LdapServer
+	LdapServersGetExecute(r ApiLdapServersGetRequest) ([]LdapServer, *http.Response, error)
+
+	/*
+	V1LdapGroupsGet Retrieve the configured access groups that contain the text in the search param 
+
+	Retrieves the configured access groups that contain the text in the searchParam.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1LdapGroupsGetRequest
+	*/
+	V1LdapGroupsGet(ctx context.Context) ApiV1LdapGroupsGetRequest
+
+	// V1LdapGroupsGetExecute executes the request
+	//  @return LdapGroupSearchResults
+	V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
+
+	/*
+	V1LdapLdapServersGet Retrieve all LDAP Servers. 
+
+	Retrieves all not migrated, LDAP Servers.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1LdapLdapServersGetRequest
+	*/
+	V1LdapLdapServersGet(ctx context.Context) ApiV1LdapLdapServersGetRequest
+
+	// V1LdapLdapServersGetExecute executes the request
+	//  @return []LdapServer
+	V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRequest) ([]LdapServer, *http.Response, error)
+
+	/*
+	V1LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Providers. 
+
+	Retrieve all active Servers including LDAP and Cloud Identity Providers.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1LdapServersGetRequest
+	*/
+	V1LdapServersGet(ctx context.Context) ApiV1LdapServersGetRequest
+
+	// V1LdapServersGetExecute executes the request
+	//  @return []LdapServer
+	V1LdapServersGetExecute(r ApiV1LdapServersGetRequest) ([]LdapServer, *http.Response, error)
+}
+
 // LdapApiService LdapApi service
 type LdapApiService service
 
 type ApiLdapGroupsGetRequest struct {
 	ctx context.Context
-	ApiService *LdapApiService
+	ApiService LdapApi
 	q *string
 }
 
@@ -133,7 +206,7 @@ func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapG
 
 type ApiLdapServersGetRequest struct {
 	ctx context.Context
-	ApiService *LdapApiService
+	ApiService LdapApi
 }
 
 func (r ApiLdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
@@ -232,7 +305,7 @@ func (a *LdapApiService) LdapServersGetExecute(r ApiLdapServersGetRequest) ([]Ld
 
 type ApiV1LdapGroupsGetRequest struct {
 	ctx context.Context
-	ApiService *LdapApiService
+	ApiService LdapApi
 	q *string
 }
 
@@ -341,7 +414,7 @@ func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*L
 
 type ApiV1LdapLdapServersGetRequest struct {
 	ctx context.Context
-	ApiService *LdapApiService
+	ApiService LdapApi
 }
 
 func (r ApiV1LdapLdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
@@ -440,7 +513,7 @@ func (a *LdapApiService) V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRe
 
 type ApiV1LdapServersGetRequest struct {
 	ctx context.Context
-	ApiService *LdapApiService
+	ApiService LdapApi
 }
 
 func (r ApiV1LdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {

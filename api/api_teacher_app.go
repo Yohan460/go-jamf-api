@@ -20,12 +20,73 @@ import (
 )
 
 
+type TeacherAppApi interface {
+
+	/*
+	V1TeacherAppGet Get the Jamf Teacher settings that you have access to see 
+
+	Get the Jamf Teacher settings that you have access to see.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1TeacherAppGetRequest
+	*/
+	V1TeacherAppGet(ctx context.Context) ApiV1TeacherAppGetRequest
+
+	// V1TeacherAppGetExecute executes the request
+	//  @return TeacherSettingsResponse
+	V1TeacherAppGetExecute(r ApiV1TeacherAppGetRequest) (*TeacherSettingsResponse, *http.Response, error)
+
+	/*
+	V1TeacherAppHistoryGet Get Jamf Teacher app settings history 
+
+	Gets Jamf Teacher app settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1TeacherAppHistoryGetRequest
+	*/
+	V1TeacherAppHistoryGet(ctx context.Context) ApiV1TeacherAppHistoryGetRequest
+
+	// V1TeacherAppHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1TeacherAppHistoryPost Add Jamf Teacher app settings history notes 
+
+	Adds Jamf Teacher app settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1TeacherAppHistoryPostRequest
+	*/
+	V1TeacherAppHistoryPost(ctx context.Context) ApiV1TeacherAppHistoryPostRequest
+
+	// V1TeacherAppHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1TeacherAppPut Update a Jamf Teacher settings object 
+
+	Update a Jamf Teacher settings object.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1TeacherAppPutRequest
+	*/
+	V1TeacherAppPut(ctx context.Context) ApiV1TeacherAppPutRequest
+
+	// V1TeacherAppPutExecute executes the request
+	//  @return TeacherSettingsResponse
+	V1TeacherAppPutExecute(r ApiV1TeacherAppPutRequest) (*TeacherSettingsResponse, *http.Response, error)
+}
+
 // TeacherAppApiService TeacherAppApi service
 type TeacherAppApiService service
 
 type ApiV1TeacherAppGetRequest struct {
 	ctx context.Context
-	ApiService *TeacherAppApiService
+	ApiService TeacherAppApi
 }
 
 func (r ApiV1TeacherAppGetRequest) Execute() (*TeacherSettingsResponse, *http.Response, error) {
@@ -124,7 +185,7 @@ func (a *TeacherAppApiService) V1TeacherAppGetExecute(r ApiV1TeacherAppGetReques
 
 type ApiV1TeacherAppHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *TeacherAppApiService
+	ApiService TeacherAppApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -270,7 +331,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHi
 
 type ApiV1TeacherAppHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *TeacherAppApiService
+	ApiService TeacherAppApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -391,7 +452,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppH
 
 type ApiV1TeacherAppPutRequest struct {
 	ctx context.Context
-	ApiService *TeacherAppApiService
+	ApiService TeacherAppApi
 	teacherSettingsRequest *TeacherSettingsRequest
 }
 

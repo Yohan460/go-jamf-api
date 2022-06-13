@@ -19,12 +19,29 @@ import (
 )
 
 
+type MobileDeviceExtensionAttributesPreviewApi interface {
+
+	/*
+	DevicesExtensionAttributesGet Get Mobile Device Extension Attribute values placed in select paramter 
+
+	Gets Mobile Device Extension Attribute values placed in select parameter.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiDevicesExtensionAttributesGetRequest
+	*/
+	DevicesExtensionAttributesGet(ctx context.Context) ApiDevicesExtensionAttributesGetRequest
+
+	// DevicesExtensionAttributesGetExecute executes the request
+	//  @return MobileDeviceExtensionAttributeResults
+	DevicesExtensionAttributesGetExecute(r ApiDevicesExtensionAttributesGetRequest) (*MobileDeviceExtensionAttributeResults, *http.Response, error)
+}
+
 // MobileDeviceExtensionAttributesPreviewApiService MobileDeviceExtensionAttributesPreviewApi service
 type MobileDeviceExtensionAttributesPreviewApiService service
 
 type ApiDevicesExtensionAttributesGetRequest struct {
 	ctx context.Context
-	ApiService *MobileDeviceExtensionAttributesPreviewApiService
+	ApiService MobileDeviceExtensionAttributesPreviewApi
 	select_ *string
 }
 

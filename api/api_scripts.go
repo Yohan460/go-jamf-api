@@ -22,12 +22,134 @@ import (
 )
 
 
+type ScriptsApi interface {
+
+	/*
+	V1ScriptsGet Search for sorted and paged Scripts 
+
+	Search for sorted and paged scripts
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ScriptsGetRequest
+	*/
+	V1ScriptsGet(ctx context.Context) ApiV1ScriptsGetRequest
+
+	// V1ScriptsGetExecute executes the request
+	//  @return ScriptsSearchResults
+	V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*ScriptsSearchResults, *http.Response, error)
+
+	/*
+	V1ScriptsIdDelete Delete a Script at the specified id 
+
+	Deletes a script at the specified id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Script object identifier
+	@return ApiV1ScriptsIdDeleteRequest
+	*/
+	V1ScriptsIdDelete(ctx context.Context, id string) ApiV1ScriptsIdDeleteRequest
+
+	// V1ScriptsIdDeleteExecute executes the request
+	V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1ScriptsIdDownloadGet Download a text file of the Script contents 
+
+	Download a text file of the script contents
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of the script to be downloaded
+	@return ApiV1ScriptsIdDownloadGetRequest
+	*/
+	V1ScriptsIdDownloadGet(ctx context.Context, id string) ApiV1ScriptsIdDownloadGetRequest
+
+	// V1ScriptsIdDownloadGetExecute executes the request
+	//  @return *os.File
+	V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownloadGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1ScriptsIdGet Retrieve a full script object 
+
+	Retrieves a full script object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Script object identifier
+	@return ApiV1ScriptsIdGetRequest
+	*/
+	V1ScriptsIdGet(ctx context.Context, id string) ApiV1ScriptsIdGetRequest
+
+	// V1ScriptsIdGetExecute executes the request
+	//  @return Script
+	V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*Script, *http.Response, error)
+
+	/*
+	V1ScriptsIdHistoryGet Get specified Script history object 
+
+	Gets specified Script history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of script history record
+	@return ApiV1ScriptsIdHistoryGetRequest
+	*/
+	V1ScriptsIdHistoryGet(ctx context.Context, id string) ApiV1ScriptsIdHistoryGetRequest
+
+	// V1ScriptsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1ScriptsIdHistoryPost Add specified Script history object notes 
+
+	Adds specified Script history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of script history record
+	@return ApiV1ScriptsIdHistoryPostRequest
+	*/
+	V1ScriptsIdHistoryPost(ctx context.Context, id string) ApiV1ScriptsIdHistoryPostRequest
+
+	// V1ScriptsIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1ScriptsIdPut Replace the script at the id with the supplied information 
+
+	Replaces the script at the id with the supplied information
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Script object identifier
+	@return ApiV1ScriptsIdPutRequest
+	*/
+	V1ScriptsIdPut(ctx context.Context, id string) ApiV1ScriptsIdPutRequest
+
+	// V1ScriptsIdPutExecute executes the request
+	//  @return Script
+	V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*Script, *http.Response, error)
+
+	/*
+	V1ScriptsPost Create a Script 
+
+	Creates a script
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ScriptsPostRequest
+	*/
+	V1ScriptsPost(ctx context.Context) ApiV1ScriptsPostRequest
+
+	// V1ScriptsPostExecute executes the request
+	//  @return HrefResponse
+	V1ScriptsPostExecute(r ApiV1ScriptsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // ScriptsApiService ScriptsApi service
 type ScriptsApiService service
 
 type ApiV1ScriptsGetRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -172,7 +294,7 @@ func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*Scri
 
 type ApiV1ScriptsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 }
 
@@ -264,7 +386,7 @@ func (a *ScriptsApiService) V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteReque
 
 type ApiV1ScriptsIdDownloadGetRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 }
 
@@ -376,7 +498,7 @@ func (a *ScriptsApiService) V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownlo
 
 type ApiV1ScriptsIdGetRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 }
 
@@ -488,7 +610,7 @@ func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*
 
 type ApiV1ScriptsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 	page *int32
 	pageSize *int32
@@ -647,7 +769,7 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistory
 
 type ApiV1ScriptsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -782,7 +904,7 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 
 type ApiV1ScriptsIdPutRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	id string
 	script *Script
 }
@@ -906,7 +1028,7 @@ func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*
 
 type ApiV1ScriptsPostRequest struct {
 	ctx context.Context
-	ApiService *ScriptsApiService
+	ApiService ScriptsApi
 	script *Script
 }
 

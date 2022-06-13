@@ -19,12 +19,29 @@ import (
 )
 
 
+type ComputersPreviewApi interface {
+
+	/*
+	PreviewComputersGet Return a list of Computers 
+
+	Returns a list of computers.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiPreviewComputersGetRequest
+	*/
+	PreviewComputersGet(ctx context.Context) ApiPreviewComputersGetRequest
+
+	// PreviewComputersGetExecute executes the request
+	//  @return ComputersSearchResults
+	PreviewComputersGetExecute(r ApiPreviewComputersGetRequest) (*ComputersSearchResults, *http.Response, error)
+}
+
 // ComputersPreviewApiService ComputersPreviewApi service
 type ComputersPreviewApiService service
 
 type ApiPreviewComputersGetRequest struct {
 	ctx context.Context
-	ApiService *ComputersPreviewApiService
+	ApiService ComputersPreviewApi
 	page *int32
 	size *int32
 	pagesize *int32

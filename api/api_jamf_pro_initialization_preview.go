@@ -19,12 +19,48 @@ import (
 )
 
 
+type JamfProInitializationPreviewApi interface {
+
+	/*
+	SystemInitializeDatabaseConnectionPost Provide Database Password during startup 
+
+	Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSystemInitializeDatabaseConnectionPostRequest
+
+	Deprecated
+	*/
+	SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiSystemInitializeDatabaseConnectionPostRequest
+
+	// SystemInitializeDatabaseConnectionPostExecute executes the request
+	// Deprecated
+	SystemInitializeDatabaseConnectionPostExecute(r ApiSystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
+
+	/*
+	SystemInitializePost Set up fresh installed Jamf Pro Server 
+
+	Set up fresh installed Jamf Pro Server
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiSystemInitializePostRequest
+
+	Deprecated
+	*/
+	SystemInitializePost(ctx context.Context) ApiSystemInitializePostRequest
+
+	// SystemInitializePostExecute executes the request
+	// Deprecated
+	SystemInitializePostExecute(r ApiSystemInitializePostRequest) (*http.Response, error)
+}
+
 // JamfProInitializationPreviewApiService JamfProInitializationPreviewApi service
 type JamfProInitializationPreviewApiService service
 
 type ApiSystemInitializeDatabaseConnectionPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProInitializationPreviewApiService
+	ApiService JamfProInitializationPreviewApi
 	databasePassword *DatabasePassword
 }
 
@@ -145,7 +181,7 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 
 type ApiSystemInitializePostRequest struct {
 	ctx context.Context
-	ApiService *JamfProInitializationPreviewApiService
+	ApiService JamfProInitializationPreviewApi
 	initialize *Initialize
 }
 

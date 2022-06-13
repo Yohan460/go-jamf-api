@@ -20,12 +20,98 @@ import (
 )
 
 
+type SsoCertificateApi interface {
+
+	/*
+	V2SsoCertDelete Delete the currently configured certificate used by SSO 
+
+	Deletes the currently configured certificate used by SSO.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertDeleteRequest
+	*/
+	V2SsoCertDelete(ctx context.Context) ApiV2SsoCertDeleteRequest
+
+	// V2SsoCertDeleteExecute executes the request
+	V2SsoCertDeleteExecute(r ApiV2SsoCertDeleteRequest) (*http.Response, error)
+
+	/*
+	V2SsoCertDownloadGet Download the certificate currently configured for use with Jamf Pro's SSO configuration 
+
+	Downloads the certificate currently configured for use with Jamf Pro's SSO configuration
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertDownloadGetRequest
+	*/
+	V2SsoCertDownloadGet(ctx context.Context) ApiV2SsoCertDownloadGetRequest
+
+	// V2SsoCertDownloadGetExecute executes the request
+	//  @return *os.File
+	V2SsoCertDownloadGetExecute(r ApiV2SsoCertDownloadGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V2SsoCertGet Retrieve the certificate currently configured for use with SSO 
+
+	Retrieves the certificate currently configured for use with SSO.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertGetRequest
+	*/
+	V2SsoCertGet(ctx context.Context) ApiV2SsoCertGetRequest
+
+	// V2SsoCertGetExecute executes the request
+	//  @return SsoKeystoreResponseWithDetails
+	V2SsoCertGetExecute(r ApiV2SsoCertGetRequest) (*SsoKeystoreResponseWithDetails, *http.Response, error)
+
+	/*
+	V2SsoCertParsePost Parse the certificate to get details about certificate type and keys needed to upload certificate file 
+
+	Parse the certificate to get details about certificate type and keys needed to upload certificate file.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertParsePostRequest
+	*/
+	V2SsoCertParsePost(ctx context.Context) ApiV2SsoCertParsePostRequest
+
+	// V2SsoCertParsePostExecute executes the request
+	//  @return SsoKeystoreCertParseResponse
+	V2SsoCertParsePostExecute(r ApiV2SsoCertParsePostRequest) (*SsoKeystoreCertParseResponse, *http.Response, error)
+
+	/*
+	V2SsoCertPost Jamf Pro will generate a new certificate and use it to sign SSO 
+
+	Jamf Pro will generate a new certificate and use it to sign SSO requests to the identity provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertPostRequest
+	*/
+	V2SsoCertPost(ctx context.Context) ApiV2SsoCertPostRequest
+
+	// V2SsoCertPostExecute executes the request
+	//  @return SsoKeystoreResponseWithDetails
+	V2SsoCertPostExecute(r ApiV2SsoCertPostRequest) (*SsoKeystoreResponseWithDetails, *http.Response, error)
+
+	/*
+	V2SsoCertPut Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
+
+	Update the certificate used by Jamf Pro to sign SSO requests to the identify provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2SsoCertPutRequest
+	*/
+	V2SsoCertPut(ctx context.Context) ApiV2SsoCertPutRequest
+
+	// V2SsoCertPutExecute executes the request
+	//  @return SsoKeystoreResponseWithDetails
+	V2SsoCertPutExecute(r ApiV2SsoCertPutRequest) (*SsoKeystoreResponseWithDetails, *http.Response, error)
+}
+
 // SsoCertificateApiService SsoCertificateApi service
 type SsoCertificateApiService service
 
 type ApiV2SsoCertDeleteRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 }
 
 func (r ApiV2SsoCertDeleteRequest) Execute() (*http.Response, error) {
@@ -113,7 +199,7 @@ func (a *SsoCertificateApiService) V2SsoCertDeleteExecute(r ApiV2SsoCertDeleteRe
 
 type ApiV2SsoCertDownloadGetRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 }
 
 func (r ApiV2SsoCertDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
@@ -212,7 +298,7 @@ func (a *SsoCertificateApiService) V2SsoCertDownloadGetExecute(r ApiV2SsoCertDow
 
 type ApiV2SsoCertGetRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 }
 
 func (r ApiV2SsoCertGetRequest) Execute() (*SsoKeystoreResponseWithDetails, *http.Response, error) {
@@ -311,7 +397,7 @@ func (a *SsoCertificateApiService) V2SsoCertGetExecute(r ApiV2SsoCertGetRequest)
 
 type ApiV2SsoCertParsePostRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 	ssoKeystoreParse *SsoKeystoreParse
 }
 
@@ -430,7 +516,7 @@ func (a *SsoCertificateApiService) V2SsoCertParsePostExecute(r ApiV2SsoCertParse
 
 type ApiV2SsoCertPostRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 }
 
 func (r ApiV2SsoCertPostRequest) Execute() (*SsoKeystoreResponseWithDetails, *http.Response, error) {
@@ -529,7 +615,7 @@ func (a *SsoCertificateApiService) V2SsoCertPostExecute(r ApiV2SsoCertPostReques
 
 type ApiV2SsoCertPutRequest struct {
 	ctx context.Context
-	ApiService *SsoCertificateApiService
+	ApiService SsoCertificateApi
 	ssoKeystore *SsoKeystore
 }
 

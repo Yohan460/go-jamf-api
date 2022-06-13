@@ -19,12 +19,30 @@ import (
 )
 
 
+type JamfProInformationPreviewApi interface {
+
+	/*
+	V1JamfProInformationGet Get basic information about the Jamf Pro Server 
+
+	Preview version of the endpoint. There may still be some breaking changes in the future.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProInformationGetRequest
+	*/
+	V1JamfProInformationGet(ctx context.Context) ApiV1JamfProInformationGetRequest
+
+	// V1JamfProInformationGetExecute executes the request
+	//  @return JamfProInformation
+	V1JamfProInformationGetExecute(r ApiV1JamfProInformationGetRequest) (*JamfProInformation, *http.Response, error)
+}
+
 // JamfProInformationPreviewApiService JamfProInformationPreviewApi service
 type JamfProInformationPreviewApiService service
 
 type ApiV1JamfProInformationGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProInformationPreviewApiService
+	ApiService JamfProInformationPreviewApi
 }
 
 func (r ApiV1JamfProInformationGetRequest) Execute() (*JamfProInformation, *http.Response, error) {

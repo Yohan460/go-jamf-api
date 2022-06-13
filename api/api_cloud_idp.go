@@ -21,12 +21,135 @@ import (
 )
 
 
+type CloudIdpApi interface {
+
+	/*
+	V1CloudIdpExportPost Export Cloud Identity Providers collection 
+
+	Export Cloud Identity Providers collection
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudIdpExportPostRequest
+	*/
+	V1CloudIdpExportPost(ctx context.Context) ApiV1CloudIdpExportPostRequest
+
+	// V1CloudIdpExportPostExecute executes the request
+	//  @return interface{}
+	V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPostRequest) (interface{}, *http.Response, error)
+
+	/*
+	V1CloudIdpGet Get information about all Cloud Identity Providers configurations.
+
+	Returns basic informations about all configured Cloud Identity Provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CloudIdpGetRequest
+	*/
+	V1CloudIdpGet(ctx context.Context) ApiV1CloudIdpGetRequest
+
+	// V1CloudIdpGetExecute executes the request
+	//  @return ConfigurationSearchResults
+	V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*ConfigurationSearchResults, *http.Response, error)
+
+	/*
+	V1CloudIdpIdGet Get Cloud Identity Provider configuration with given ID.
+
+	Get Cloud Identity Provider configuration with given ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdGetRequest
+	*/
+	V1CloudIdpIdGet(ctx context.Context, id string) ApiV1CloudIdpIdGetRequest
+
+	// V1CloudIdpIdGetExecute executes the request
+	//  @return CloudIdPCommon
+	V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest) (*CloudIdPCommon, *http.Response, error)
+
+	/*
+	V1CloudIdpIdHistoryGet Get Cloud Identity Provider history
+
+	Gets specified Cloud Identity Provider object history
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdHistoryGetRequest
+	*/
+	V1CloudIdpIdHistoryGet(ctx context.Context, id string) ApiV1CloudIdpIdHistoryGetRequest
+
+	// V1CloudIdpIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1CloudIdpIdHistoryPost Add Cloud Identity Provider history note
+
+	Adds specified Cloud Identity Provider object history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdHistoryPostRequest
+	*/
+	V1CloudIdpIdHistoryPost(ctx context.Context, id string) ApiV1CloudIdpIdHistoryPostRequest
+
+	// V1CloudIdpIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1CloudIdpIdTestGroupPost Get group test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdTestGroupPostRequest
+	*/
+	V1CloudIdpIdTestGroupPost(ctx context.Context, id string) ApiV1CloudIdpIdTestGroupPostRequest
+
+	// V1CloudIdpIdTestGroupPostExecute executes the request
+	//  @return GroupTestSearchResponse
+	V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error)
+
+	/*
+	V1CloudIdpIdTestUserMembershipPost Get membership test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdTestUserMembershipPostRequest
+	*/
+	V1CloudIdpIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserMembershipPostRequest
+
+	// V1CloudIdpIdTestUserMembershipPostExecute executes the request
+	//  @return MembershipTestSearchResponse
+	V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1CloudIdpIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error)
+
+	/*
+	V1CloudIdpIdTestUserPost Get user test search
+
+	Do test search to ensure about configuration and mappings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Cloud Identity Provider identifier
+	@return ApiV1CloudIdpIdTestUserPostRequest
+	*/
+	V1CloudIdpIdTestUserPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserPostRequest
+
+	// V1CloudIdpIdTestUserPostExecute executes the request
+	//  @return UserTestSearchResponse
+	V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error)
+}
+
 // CloudIdpApiService CloudIdpApi service
 type CloudIdpApiService service
 
 type ApiV1CloudIdpExportPostRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	exportFields *[]string
 	exportLabels *[]string
 	page *int32
@@ -236,7 +359,7 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 
 type ApiV1CloudIdpGetRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -371,7 +494,7 @@ func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*C
 
 type ApiV1CloudIdpIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 }
 
@@ -493,7 +616,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 
 type ApiV1CloudIdpIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 	page *int32
 	pageSize *int32
@@ -651,7 +774,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 
 type ApiV1CloudIdpIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -786,7 +909,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 
 type ApiV1CloudIdpIdTestGroupPostRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 	groupTestSearchRequest *GroupTestSearchRequest
 }
@@ -910,7 +1033,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdT
 
 type ApiV1CloudIdpIdTestUserMembershipPostRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 	membershipTestSearchRequest *MembershipTestSearchRequest
 }
@@ -1034,7 +1157,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1Cl
 
 type ApiV1CloudIdpIdTestUserPostRequest struct {
 	ctx context.Context
-	ApiService *CloudIdpApiService
+	ApiService CloudIdpApi
 	id string
 	userTestSearchRequest *UserTestSearchRequest
 }

@@ -21,12 +21,87 @@ import (
 )
 
 
+type SelfServiceBrandingIosApi interface {
+
+	/*
+	V1SelfServiceBrandingIosGet Search for sorted and paged iOS branding configurations 
+
+	Search for sorted and paged iOS branding configurations
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceBrandingIosGetRequest
+	*/
+	V1SelfServiceBrandingIosGet(ctx context.Context) ApiV1SelfServiceBrandingIosGetRequest
+
+	// V1SelfServiceBrandingIosGetExecute executes the request
+	//  @return IosBrandingSearchResults
+	V1SelfServiceBrandingIosGetExecute(r ApiV1SelfServiceBrandingIosGetRequest) (*IosBrandingSearchResults, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingIosIdDelete Delete the Self Service iOS branding configuration indicated by the provided id 
+
+	Delete the Self Service iOS branding configuration indicated by the provided id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of iOS branding configuration
+	@return ApiV1SelfServiceBrandingIosIdDeleteRequest
+	*/
+	V1SelfServiceBrandingIosIdDelete(ctx context.Context, id string) ApiV1SelfServiceBrandingIosIdDeleteRequest
+
+	// V1SelfServiceBrandingIosIdDeleteExecute executes the request
+	V1SelfServiceBrandingIosIdDeleteExecute(r ApiV1SelfServiceBrandingIosIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1SelfServiceBrandingIosIdGet Read a single Self Service iOS branding configuration indicated by the provided id 
+
+	Read a single Self Service iOS branding configuration indicated by the provided id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of iOS branding configuration
+	@return ApiV1SelfServiceBrandingIosIdGetRequest
+	*/
+	V1SelfServiceBrandingIosIdGet(ctx context.Context, id string) ApiV1SelfServiceBrandingIosIdGetRequest
+
+	// V1SelfServiceBrandingIosIdGetExecute executes the request
+	//  @return IosBrandingConfiguration
+	V1SelfServiceBrandingIosIdGetExecute(r ApiV1SelfServiceBrandingIosIdGetRequest) (*IosBrandingConfiguration, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingIosIdPut Update a Self Service iOS branding configuration with the supplied details 
+
+	Update a Self Service iOS branding configuration with the supplied details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of iOS branding configuration
+	@return ApiV1SelfServiceBrandingIosIdPutRequest
+	*/
+	V1SelfServiceBrandingIosIdPut(ctx context.Context, id string) ApiV1SelfServiceBrandingIosIdPutRequest
+
+	// V1SelfServiceBrandingIosIdPutExecute executes the request
+	//  @return IosBrandingConfiguration
+	V1SelfServiceBrandingIosIdPutExecute(r ApiV1SelfServiceBrandingIosIdPutRequest) (*IosBrandingConfiguration, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingIosPost Create a Self Service iOS branding configuration with the supplied 
+
+	Create a Self Service iOS branding configuration with the supplied details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceBrandingIosPostRequest
+	*/
+	V1SelfServiceBrandingIosPost(ctx context.Context) ApiV1SelfServiceBrandingIosPostRequest
+
+	// V1SelfServiceBrandingIosPostExecute executes the request
+	//  @return HrefResponse
+	V1SelfServiceBrandingIosPostExecute(r ApiV1SelfServiceBrandingIosPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // SelfServiceBrandingIosApiService SelfServiceBrandingIosApi service
 type SelfServiceBrandingIosApiService service
 
 type ApiV1SelfServiceBrandingIosGetRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingIosApiService
+	ApiService SelfServiceBrandingIosApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -161,7 +236,7 @@ func (a *SelfServiceBrandingIosApiService) V1SelfServiceBrandingIosGetExecute(r 
 
 type ApiV1SelfServiceBrandingIosIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingIosApiService
+	ApiService SelfServiceBrandingIosApi
 	id string
 }
 
@@ -262,7 +337,7 @@ func (a *SelfServiceBrandingIosApiService) V1SelfServiceBrandingIosIdDeleteExecu
 
 type ApiV1SelfServiceBrandingIosIdGetRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingIosApiService
+	ApiService SelfServiceBrandingIosApi
 	id string
 }
 
@@ -365,7 +440,7 @@ func (a *SelfServiceBrandingIosApiService) V1SelfServiceBrandingIosIdGetExecute(
 
 type ApiV1SelfServiceBrandingIosIdPutRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingIosApiService
+	ApiService SelfServiceBrandingIosApi
 	id string
 	iosBrandingConfiguration *IosBrandingConfiguration
 }
@@ -486,7 +561,7 @@ func (a *SelfServiceBrandingIosApiService) V1SelfServiceBrandingIosIdPutExecute(
 
 type ApiV1SelfServiceBrandingIosPostRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingIosApiService
+	ApiService SelfServiceBrandingIosApi
 	iosBrandingConfiguration *IosBrandingConfiguration
 }
 

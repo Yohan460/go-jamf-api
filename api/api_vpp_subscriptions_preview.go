@@ -20,12 +20,52 @@ import (
 )
 
 
+type VppSubscriptionsPreviewApi interface {
+
+	/*
+	VppSubscriptionsGet Found all VPP - subscriptions 
+
+	Found all vpp - subscriptions.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVppSubscriptionsGetRequest
+
+	Deprecated
+	*/
+	VppSubscriptionsGet(ctx context.Context) ApiVppSubscriptionsGetRequest
+
+	// VppSubscriptionsGetExecute executes the request
+	//  @return []VppTokenSubscription
+	// Deprecated
+	VppSubscriptionsGetExecute(r ApiVppSubscriptionsGetRequest) ([]VppTokenSubscription, *http.Response, error)
+
+	/*
+	VppSubscriptionsIdGet Found VPP subscription by id 
+
+	Found vpp subscription by id.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of vpp subscription to be retrieved
+	@return ApiVppSubscriptionsIdGetRequest
+
+	Deprecated
+	*/
+	VppSubscriptionsIdGet(ctx context.Context, id int32) ApiVppSubscriptionsIdGetRequest
+
+	// VppSubscriptionsIdGetExecute executes the request
+	//  @return VppTokenSubscription
+	// Deprecated
+	VppSubscriptionsIdGetExecute(r ApiVppSubscriptionsIdGetRequest) (*VppTokenSubscription, *http.Response, error)
+}
+
 // VppSubscriptionsPreviewApiService VppSubscriptionsPreviewApi service
 type VppSubscriptionsPreviewApiService service
 
 type ApiVppSubscriptionsGetRequest struct {
 	ctx context.Context
-	ApiService *VppSubscriptionsPreviewApiService
+	ApiService VppSubscriptionsPreviewApi
 }
 
 func (r ApiVppSubscriptionsGetRequest) Execute() ([]VppTokenSubscription, *http.Response, error) {
@@ -128,7 +168,7 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGetExecute(r ApiVppS
 
 type ApiVppSubscriptionsIdGetRequest struct {
 	ctx context.Context
-	ApiService *VppSubscriptionsPreviewApiService
+	ApiService VppSubscriptionsPreviewApi
 	id int32
 }
 

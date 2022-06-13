@@ -422,6 +422,7 @@ docs/Location.md
 docs/LocationInformation.md
 docs/LocationInformationV2.md
 docs/LocationV2.md
+docs/LogOutUserCommand.md
 docs/MacOsBrandingConfiguration.md
 docs/MacOsBrandingSearchResults.md
 docs/MacOsManagedSoftwareUpdate.md
@@ -939,6 +940,7 @@ model_location.go
 model_location_information.go
 model_location_information_v2.go
 model_location_v2.go
+model_log_out_user_command.go
 model_mac_os_branding_configuration.go
 model_mac_os_branding_search_results.go
 model_mac_os_managed_software_update.go

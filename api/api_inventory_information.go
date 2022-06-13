@@ -19,12 +19,30 @@ import (
 )
 
 
+type InventoryInformationApi interface {
+
+	/*
+	V1InventoryInformationGet Get statistics about managed/unmanaged devices and computers in the inventory 
+
+	Gets statistics about managed/unmanaged devices and computers in the inventory.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1InventoryInformationGetRequest
+	*/
+	V1InventoryInformationGet(ctx context.Context) ApiV1InventoryInformationGetRequest
+
+	// V1InventoryInformationGetExecute executes the request
+	//  @return InventoryInformation
+	V1InventoryInformationGetExecute(r ApiV1InventoryInformationGetRequest) (*InventoryInformation, *http.Response, error)
+}
+
 // InventoryInformationApiService InventoryInformationApi service
 type InventoryInformationApiService service
 
 type ApiV1InventoryInformationGetRequest struct {
 	ctx context.Context
-	ApiService *InventoryInformationApiService
+	ApiService InventoryInformationApi
 }
 
 func (r ApiV1InventoryInformationGetRequest) Execute() (*InventoryInformation, *http.Response, error) {

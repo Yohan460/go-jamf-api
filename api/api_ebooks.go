@@ -21,12 +21,61 @@ import (
 )
 
 
+type EbooksApi interface {
+
+	/*
+	V1EbooksGet Get Ebook object 
+
+	Gets ebook object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1EbooksGetRequest
+	*/
+	V1EbooksGet(ctx context.Context) ApiV1EbooksGetRequest
+
+	// V1EbooksGetExecute executes the request
+	//  @return EbookSearchResults
+	V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSearchResults, *http.Response, error)
+
+	/*
+	V1EbooksIdGet Get specified Ebook object 
+
+	Gets specified Ebook object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of ebook record
+	@return ApiV1EbooksIdGetRequest
+	*/
+	V1EbooksIdGet(ctx context.Context, id string) ApiV1EbooksIdGetRequest
+
+	// V1EbooksIdGetExecute executes the request
+	//  @return Ebook
+	V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebook, *http.Response, error)
+
+	/*
+	V1EbooksIdScopeGet Get specified scope of Ebook object 
+
+	Gets specified scope of Ebook object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of ebook record
+	@return ApiV1EbooksIdScopeGetRequest
+	*/
+	V1EbooksIdScopeGet(ctx context.Context, id string) ApiV1EbooksIdScopeGetRequest
+
+	// V1EbooksIdScopeGetExecute executes the request
+	//  @return EbookScope
+	V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequest) (*EbookScope, *http.Response, error)
+}
+
 // EbooksApiService EbooksApi service
 type EbooksApiService service
 
 type ApiV1EbooksGetRequest struct {
 	ctx context.Context
-	ApiService *EbooksApiService
+	ApiService EbooksApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -161,7 +210,7 @@ func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSe
 
 type ApiV1EbooksIdGetRequest struct {
 	ctx context.Context
-	ApiService *EbooksApiService
+	ApiService EbooksApi
 	id string
 }
 
@@ -274,7 +323,7 @@ func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebo
 
 type ApiV1EbooksIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService *EbooksApiService
+	ApiService EbooksApi
 	id string
 }
 

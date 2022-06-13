@@ -19,12 +19,45 @@ import (
 )
 
 
+type SelfServiceApi interface {
+
+	/*
+	V1SelfServiceSettingsGet Get an object representation of Self Service settings 
+
+	gets an object representation of Self Service settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceSettingsGetRequest
+	*/
+	V1SelfServiceSettingsGet(ctx context.Context) ApiV1SelfServiceSettingsGetRequest
+
+	// V1SelfServiceSettingsGetExecute executes the request
+	//  @return SelfServiceSettings
+	V1SelfServiceSettingsGetExecute(r ApiV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error)
+
+	/*
+	V1SelfServiceSettingsPut Put an object representation of Self Service settings 
+
+	puts an object representation of Self Service settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceSettingsPutRequest
+	*/
+	V1SelfServiceSettingsPut(ctx context.Context) ApiV1SelfServiceSettingsPutRequest
+
+	// V1SelfServiceSettingsPutExecute executes the request
+	//  @return SelfServiceSettings
+	V1SelfServiceSettingsPutExecute(r ApiV1SelfServiceSettingsPutRequest) (*SelfServiceSettings, *http.Response, error)
+}
+
 // SelfServiceApiService SelfServiceApi service
 type SelfServiceApiService service
 
 type ApiV1SelfServiceSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceApiService
+	ApiService SelfServiceApi
 }
 
 func (r ApiV1SelfServiceSettingsGetRequest) Execute() (*SelfServiceSettings, *http.Response, error) {
@@ -124,7 +157,7 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsGetExecute(r ApiV1SelfServi
 
 type ApiV1SelfServiceSettingsPutRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceApiService
+	ApiService SelfServiceApi
 	selfServiceSettings *SelfServiceSettings
 }
 

@@ -20,12 +20,71 @@ import (
 )
 
 
+type ComputerInventoryCollectionSettingsApi interface {
+
+	/*
+	V1ComputerInventoryCollectionSettingsCustomPathIdDelete Delete Custom Path from Computer Inventory Collection Settings
+
+	Delete Custom Path from Computer Inventory Collection Settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of Custom Path
+	@return ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+	*/
+	V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+
+	// V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute executes the request
+	V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1ComputerInventoryCollectionSettingsCustomPathPost Create Computer Inventory Collection Settings Custom Path
+
+	Creates a custom search path to use when collecting applications, fonts, and plug-ins.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+	*/
+	V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+
+	// V1ComputerInventoryCollectionSettingsCustomPathPostExecute executes the request
+	//  @return HrefResponse
+	V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1ComputerInventoryCollectionSettingsGet Returns computer inventory settings
+
+	Returns computer inventory settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerInventoryCollectionSettingsGetRequest
+	*/
+	V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsGetRequest
+
+	// V1ComputerInventoryCollectionSettingsGetExecute executes the request
+	//  @return ComputerInventoryCollectionSettings
+	V1ComputerInventoryCollectionSettingsGetExecute(r ApiV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
+
+	/*
+	V1ComputerInventoryCollectionSettingsPatch Update computer inventory settings
+
+	Update computer inventory settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputerInventoryCollectionSettingsPatchRequest
+	*/
+	V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsPatchRequest
+
+	// V1ComputerInventoryCollectionSettingsPatchExecute executes the request
+	//  @return ComputerInventoryCollectionSettings
+	V1ComputerInventoryCollectionSettingsPatchExecute(r ApiV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
+}
+
 // ComputerInventoryCollectionSettingsApiService ComputerInventoryCollectionSettingsApi service
 type ComputerInventoryCollectionSettingsApiService service
 
 type ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryCollectionSettingsApiService
+	ApiService ComputerInventoryCollectionSettingsApi
 	id string
 }
 
@@ -126,7 +185,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 type ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryCollectionSettingsApiService
+	ApiService ComputerInventoryCollectionSettingsApi
 	createPath *CreatePath
 }
 
@@ -246,7 +305,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 type ApiV1ComputerInventoryCollectionSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryCollectionSettingsApiService
+	ApiService ComputerInventoryCollectionSettingsApi
 }
 
 func (r ApiV1ComputerInventoryCollectionSettingsGetRequest) Execute() (*ComputerInventoryCollectionSettings, *http.Response, error) {
@@ -345,7 +404,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 type ApiV1ComputerInventoryCollectionSettingsPatchRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryCollectionSettingsApiService
+	ApiService ComputerInventoryCollectionSettingsApi
 	computerInventoryCollectionSettings *ComputerInventoryCollectionSettings
 }
 

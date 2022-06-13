@@ -21,12 +21,138 @@ import (
 )
 
 
+type DepartmentsApi interface {
+
+	/*
+	V1DepartmentsDeleteMultiplePost Deletes all departments by ids passed in body 
+
+	Deletes all departments by ids passed in body
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DepartmentsDeleteMultiplePostRequest
+	*/
+	V1DepartmentsDeleteMultiplePost(ctx context.Context) ApiV1DepartmentsDeleteMultiplePostRequest
+
+	// V1DepartmentsDeleteMultiplePostExecute executes the request
+	V1DepartmentsDeleteMultiplePostExecute(r ApiV1DepartmentsDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V1DepartmentsGet Search for Departments 
+
+	Search for Departments
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DepartmentsGetRequest
+	*/
+	V1DepartmentsGet(ctx context.Context) ApiV1DepartmentsGetRequest
+
+	// V1DepartmentsGetExecute executes the request
+	//  @return DepartmentsSearchResults
+	V1DepartmentsGetExecute(r ApiV1DepartmentsGetRequest) (*DepartmentsSearchResults, *http.Response, error)
+
+	/*
+	V1DepartmentsIdDelete Remove specified department record 
+
+	Removes specified department record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department record
+	@return ApiV1DepartmentsIdDeleteRequest
+	*/
+	V1DepartmentsIdDelete(ctx context.Context, id string) ApiV1DepartmentsIdDeleteRequest
+
+	// V1DepartmentsIdDeleteExecute executes the request
+	V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1DepartmentsIdGet Get specified Department object 
+
+	Gets specified Department object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department record
+	@return ApiV1DepartmentsIdGetRequest
+	*/
+	V1DepartmentsIdGet(ctx context.Context, id string) ApiV1DepartmentsIdGetRequest
+
+	// V1DepartmentsIdGetExecute executes the request
+	//  @return Department
+	V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGetRequest) (*Department, *http.Response, error)
+
+	/*
+	V1DepartmentsIdHistoryGet Get specified Department history object 
+
+	Gets specified Department history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department history record
+	@return ApiV1DepartmentsIdHistoryGetRequest
+	*/
+	V1DepartmentsIdHistoryGet(ctx context.Context, id string) ApiV1DepartmentsIdHistoryGetRequest
+
+	// V1DepartmentsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1DepartmentsIdHistoryGetExecute(r ApiV1DepartmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1DepartmentsIdHistoryPost Add specified Department history object notes 
+
+	Adds specified Department history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department history record
+	@return ApiV1DepartmentsIdHistoryPostRequest
+	*/
+	V1DepartmentsIdHistoryPost(ctx context.Context, id string) ApiV1DepartmentsIdHistoryPostRequest
+
+	// V1DepartmentsIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1DepartmentsIdHistoryPostExecute(r ApiV1DepartmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1DepartmentsIdPut Update specified department object 
+
+	Update specified department object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of department record
+	@return ApiV1DepartmentsIdPutRequest
+	*/
+	V1DepartmentsIdPut(ctx context.Context, id string) ApiV1DepartmentsIdPutRequest
+
+	// V1DepartmentsIdPutExecute executes the request
+	//  @return Department
+	V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPutRequest) (*Department, *http.Response, error)
+
+	/*
+	V1DepartmentsPost Create department record 
+
+	Create department record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1DepartmentsPostRequest
+	*/
+	V1DepartmentsPost(ctx context.Context) ApiV1DepartmentsPostRequest
+
+	// V1DepartmentsPostExecute executes the request
+	//  @return HrefResponse
+	V1DepartmentsPostExecute(r ApiV1DepartmentsPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // DepartmentsApiService DepartmentsApi service
 type DepartmentsApiService service
 
 type ApiV1DepartmentsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	ids *Ids
 }
 
@@ -136,7 +262,7 @@ func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePostExecute(r ApiV1De
 
 type ApiV1DepartmentsGetRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -282,7 +408,7 @@ func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetReq
 
 type ApiV1DepartmentsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	id string
 }
 
@@ -375,7 +501,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsI
 
 type ApiV1DepartmentsIdGetRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	id string
 }
 
@@ -488,7 +614,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGe
 
 type ApiV1DepartmentsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	id string
 	page *int32
 	pageSize *int32
@@ -647,7 +773,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1Departme
 
 type ApiV1DepartmentsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
@@ -782,7 +908,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 
 type ApiV1DepartmentsIdPutRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	id string
 	department *Department
 }
@@ -898,7 +1024,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPu
 
 type ApiV1DepartmentsPostRequest struct {
 	ctx context.Context
-	ApiService *DepartmentsApiService
+	ApiService DepartmentsApi
 	department *Department
 }
 

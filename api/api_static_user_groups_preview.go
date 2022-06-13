@@ -20,12 +20,46 @@ import (
 )
 
 
+type StaticUserGroupsPreviewApi interface {
+
+	/*
+	V1StaticUserGroupsGet Return a list of all Static User Groups 
+
+	Returns a list of all static user groups.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1StaticUserGroupsGetRequest
+	*/
+	V1StaticUserGroupsGet(ctx context.Context) ApiV1StaticUserGroupsGetRequest
+
+	// V1StaticUserGroupsGetExecute executes the request
+	//  @return []StaticUserGroup
+	V1StaticUserGroupsGetExecute(r ApiV1StaticUserGroupsGetRequest) ([]StaticUserGroup, *http.Response, error)
+
+	/*
+	V1StaticUserGroupsIdGet Return a specific Static User Group by id 
+
+	Returns a specific static user group by id.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Instance id of static user group record
+	@return ApiV1StaticUserGroupsIdGetRequest
+	*/
+	V1StaticUserGroupsIdGet(ctx context.Context, id int32) ApiV1StaticUserGroupsIdGetRequest
+
+	// V1StaticUserGroupsIdGetExecute executes the request
+	//  @return StaticUserGroup
+	V1StaticUserGroupsIdGetExecute(r ApiV1StaticUserGroupsIdGetRequest) (*StaticUserGroup, *http.Response, error)
+}
+
 // StaticUserGroupsPreviewApiService StaticUserGroupsPreviewApi service
 type StaticUserGroupsPreviewApiService service
 
 type ApiV1StaticUserGroupsGetRequest struct {
 	ctx context.Context
-	ApiService *StaticUserGroupsPreviewApiService
+	ApiService StaticUserGroupsPreviewApi
 }
 
 func (r ApiV1StaticUserGroupsGetRequest) Execute() ([]StaticUserGroup, *http.Response, error) {
@@ -125,7 +159,7 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGetExecute(r ApiV1
 
 type ApiV1StaticUserGroupsIdGetRequest struct {
 	ctx context.Context
-	ApiService *StaticUserGroupsPreviewApiService
+	ApiService StaticUserGroupsPreviewApi
 	id int32
 }
 

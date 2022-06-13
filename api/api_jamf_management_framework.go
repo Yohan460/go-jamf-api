@@ -20,12 +20,31 @@ import (
 )
 
 
+type JamfManagementFrameworkApi interface {
+
+	/*
+	V1JamfManagementFrameworkRedeployIdPost Redeploy Jamf Management Framework 
+
+	Redeploys the Jamf Management Framework for enrolled device
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer
+	@return ApiV1JamfManagementFrameworkRedeployIdPostRequest
+	*/
+	V1JamfManagementFrameworkRedeployIdPost(ctx context.Context, id string) ApiV1JamfManagementFrameworkRedeployIdPostRequest
+
+	// V1JamfManagementFrameworkRedeployIdPostExecute executes the request
+	//  @return RedeployJamfManagementFrameworkResponse
+	V1JamfManagementFrameworkRedeployIdPostExecute(r ApiV1JamfManagementFrameworkRedeployIdPostRequest) (*RedeployJamfManagementFrameworkResponse, *http.Response, error)
+}
+
 // JamfManagementFrameworkApiService JamfManagementFrameworkApi service
 type JamfManagementFrameworkApiService service
 
 type ApiV1JamfManagementFrameworkRedeployIdPostRequest struct {
 	ctx context.Context
-	ApiService *JamfManagementFrameworkApiService
+	ApiService JamfManagementFrameworkApi
 	id string
 }
 

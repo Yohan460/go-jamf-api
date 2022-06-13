@@ -21,12 +21,157 @@ import (
 )
 
 
+type JamfProtectApi interface {
+
+	/*
+	V1JamfProtectDelete Delete Jamf Protect API registration.
+
+	Deletes an existing Jamf Protect API registration if present. Jamf Protect API integration will be disabled.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectDeleteRequest
+	*/
+	V1JamfProtectDelete(ctx context.Context) ApiV1JamfProtectDeleteRequest
+
+	// V1JamfProtectDeleteExecute executes the request
+	V1JamfProtectDeleteExecute(r ApiV1JamfProtectDeleteRequest) (*http.Response, error)
+
+	/*
+	V1JamfProtectDeploymentsIdTasksGet Search for deployment tasks for a config profile linked to Jamf Protect 
+
+	Search for config profiles linked to Jamf Protect
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id the UUID of the Jamf Protect deployment
+	@return ApiV1JamfProtectDeploymentsIdTasksGetRequest
+	*/
+	V1JamfProtectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksGetRequest
+
+	// V1JamfProtectDeploymentsIdTasksGetExecute executes the request
+	//  @return DeploymentTaskSearchResults
+	V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV1JamfProtectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
+
+	/*
+	V1JamfProtectDeploymentsIdTasksRetryPost Request a retry of Protect install tasks 
+
+	Request a retry of Protect install tasks
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id the UUID of the deployment associated with the retry
+	@return ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest
+	*/
+	V1JamfProtectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest
+
+	// V1JamfProtectDeploymentsIdTasksRetryPostExecute executes the request
+	V1JamfProtectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
+
+	/*
+	V1JamfProtectGet Jamf Protect integration settings
+
+	Jamf Protect integration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectGetRequest
+	*/
+	V1JamfProtectGet(ctx context.Context) ApiV1JamfProtectGetRequest
+
+	// V1JamfProtectGetExecute executes the request
+	//  @return ProtectSettingsResponse
+	V1JamfProtectGetExecute(r ApiV1JamfProtectGetRequest) (*ProtectSettingsResponse, *http.Response, error)
+
+	/*
+	V1JamfProtectHistoryGet Get Jamf Protect history 
+
+	Get Jamf Protect history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectHistoryGetRequest
+	*/
+	V1JamfProtectHistoryGet(ctx context.Context) ApiV1JamfProtectHistoryGetRequest
+
+	// V1JamfProtectHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1JamfProtectHistoryGetExecute(r ApiV1JamfProtectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1JamfProtectHistoryPost Add Jamf Protect history notes 
+
+	Add Jamf Protect history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectHistoryPostRequest
+	*/
+	V1JamfProtectHistoryPost(ctx context.Context) ApiV1JamfProtectHistoryPostRequest
+
+	// V1JamfProtectHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1JamfProtectHistoryPostExecute(r ApiV1JamfProtectHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1JamfProtectPlansGet Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
+
+	Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectPlansGetRequest
+	*/
+	V1JamfProtectPlansGet(ctx context.Context) ApiV1JamfProtectPlansGetRequest
+
+	// V1JamfProtectPlansGetExecute executes the request
+	//  @return PlanSearchResults
+	V1JamfProtectPlansGetExecute(r ApiV1JamfProtectPlansGetRequest) (*PlanSearchResults, *http.Response, error)
+
+	/*
+	V1JamfProtectPlansSyncPost Sync Plans with Jamf Protect
+
+	Sync Plans with Jamf Protect. Configuration profiles associated with new plans will be imported to Jamf Pro.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectPlansSyncPostRequest
+	*/
+	V1JamfProtectPlansSyncPost(ctx context.Context) ApiV1JamfProtectPlansSyncPostRequest
+
+	// V1JamfProtectPlansSyncPostExecute executes the request
+	V1JamfProtectPlansSyncPostExecute(r ApiV1JamfProtectPlansSyncPostRequest) (*http.Response, error)
+
+	/*
+	V1JamfProtectPut Jamf Protect integration settings
+
+	Jamf Protect integration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectPutRequest
+	*/
+	V1JamfProtectPut(ctx context.Context) ApiV1JamfProtectPutRequest
+
+	// V1JamfProtectPutExecute executes the request
+	//  @return ProtectSettingsResponse
+	V1JamfProtectPutExecute(r ApiV1JamfProtectPutRequest) (*ProtectSettingsResponse, *http.Response, error)
+
+	/*
+	V1JamfProtectRegisterPost Register a Jamf Protect API configuration with Jamf Pro
+
+	Register a Jamf Protect API configuration with Jamf Pro
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1JamfProtectRegisterPostRequest
+	*/
+	V1JamfProtectRegisterPost(ctx context.Context) ApiV1JamfProtectRegisterPostRequest
+
+	// V1JamfProtectRegisterPostExecute executes the request
+	//  @return ProtectSettingsResponse
+	V1JamfProtectRegisterPostExecute(r ApiV1JamfProtectRegisterPostRequest) (*ProtectSettingsResponse, *http.Response, error)
+}
+
 // JamfProtectApiService JamfProtectApi service
 type JamfProtectApiService service
 
 type ApiV1JamfProtectDeleteRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 }
 
 func (r ApiV1JamfProtectDeleteRequest) Execute() (*http.Response, error) {
@@ -133,7 +278,7 @@ func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDel
 
 type ApiV1JamfProtectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	id string
 	page *int32
 	pageSize *int32
@@ -282,7 +427,7 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV
 
 type ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	id string
 	ids *Ids
 }
@@ -406,7 +551,7 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(
 
 type ApiV1JamfProtectGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 }
 
 func (r ApiV1JamfProtectGetRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
@@ -534,7 +679,7 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 
 type ApiV1JamfProtectHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -680,7 +825,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtec
 
 type ApiV1JamfProtectHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -801,7 +946,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProte
 
 type ApiV1JamfProtectPlansGetRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -946,7 +1091,7 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectP
 
 type ApiV1JamfProtectPlansSyncPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 }
 
 func (r ApiV1JamfProtectPlansSyncPostRequest) Execute() (*http.Response, error) {
@@ -1053,7 +1198,7 @@ func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfPro
 
 type ApiV1JamfProtectPutRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	protectUpdatableSettingsRequest *ProtectUpdatableSettingsRequest
 }
 
@@ -1164,7 +1309,7 @@ func (a *JamfProtectApiService) V1JamfProtectPutExecute(r ApiV1JamfProtectPutReq
 
 type ApiV1JamfProtectRegisterPostRequest struct {
 	ctx context.Context
-	ApiService *JamfProtectApiService
+	ApiService JamfProtectApi
 	protectRegistrationRequest *ProtectRegistrationRequest
 }
 

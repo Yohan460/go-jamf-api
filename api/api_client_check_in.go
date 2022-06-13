@@ -20,12 +20,147 @@ import (
 )
 
 
+type ClientCheckInApi interface {
+
+	/*
+	V2CheckInGet Get Client Check-In settings 
+
+	Gets `Client Check-In` object.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CheckInGetRequest
+
+	Deprecated
+	*/
+	V2CheckInGet(ctx context.Context) ApiV2CheckInGetRequest
+
+	// V2CheckInGetExecute executes the request
+	//  @return ClientCheckInV2
+	// Deprecated
+	V2CheckInGetExecute(r ApiV2CheckInGetRequest) (*ClientCheckInV2, *http.Response, error)
+
+	/*
+	V2CheckInHistoryGet Get Client Check-In history object 
+
+	Gets Client Check-In history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CheckInHistoryGetRequest
+
+	Deprecated
+	*/
+	V2CheckInHistoryGet(ctx context.Context) ApiV2CheckInHistoryGetRequest
+
+	// V2CheckInHistoryGetExecute executes the request
+	//  @return HistorySearchResultsV1
+	// Deprecated
+	V2CheckInHistoryGetExecute(r ApiV2CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
+
+	/*
+	V2CheckInHistoryPost Add a Note to Client Check-In History 
+
+	Adds Client Check-In history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CheckInHistoryPostRequest
+
+	Deprecated
+	*/
+	V2CheckInHistoryPost(ctx context.Context) ApiV2CheckInHistoryPostRequest
+
+	// V2CheckInHistoryPostExecute executes the request
+	//  @return HrefResponse
+	// Deprecated
+	V2CheckInHistoryPostExecute(r ApiV2CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2CheckInPut Update Client Check-In object 
+
+	Update Client Check-In object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV2CheckInPutRequest
+
+	Deprecated
+	*/
+	V2CheckInPut(ctx context.Context) ApiV2CheckInPutRequest
+
+	// V2CheckInPutExecute executes the request
+	//  @return ClientCheckInV2
+	// Deprecated
+	V2CheckInPutExecute(r ApiV2CheckInPutRequest) (*ClientCheckInV2, *http.Response, error)
+
+	/*
+	V3CheckInGet Get Client Check-In settings 
+
+	Gets `Client Check-In` object.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV3CheckInGetRequest
+	*/
+	V3CheckInGet(ctx context.Context) ApiV3CheckInGetRequest
+
+	// V3CheckInGetExecute executes the request
+	//  @return ClientCheckInV3
+	V3CheckInGetExecute(r ApiV3CheckInGetRequest) (*ClientCheckInV3, *http.Response, error)
+
+	/*
+	V3CheckInHistoryGet Get Client Check-In history object 
+
+	Gets Client Check-In history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV3CheckInHistoryGetRequest
+	*/
+	V3CheckInHistoryGet(ctx context.Context) ApiV3CheckInHistoryGetRequest
+
+	// V3CheckInHistoryGetExecute executes the request
+	//  @return HistorySearchResultsV1
+	V3CheckInHistoryGetExecute(r ApiV3CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
+
+	/*
+	V3CheckInHistoryPost Add a Note to Client Check-In History 
+
+	Adds Client Check-In history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV3CheckInHistoryPostRequest
+	*/
+	V3CheckInHistoryPost(ctx context.Context) ApiV3CheckInHistoryPostRequest
+
+	// V3CheckInHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V3CheckInHistoryPostExecute(r ApiV3CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V3CheckInPut Update Client Check-In object 
+
+	Update Client Check-In object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV3CheckInPutRequest
+	*/
+	V3CheckInPut(ctx context.Context) ApiV3CheckInPutRequest
+
+	// V3CheckInPutExecute executes the request
+	//  @return ClientCheckInV3
+	V3CheckInPutExecute(r ApiV3CheckInPutRequest) (*ClientCheckInV3, *http.Response, error)
+}
+
 // ClientCheckInApiService ClientCheckInApi service
 type ClientCheckInApiService service
 
 type ApiV2CheckInGetRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 }
 
 func (r ApiV2CheckInGetRequest) Execute() (*ClientCheckInV2, *http.Response, error) {
@@ -128,7 +263,7 @@ func (a *ClientCheckInApiService) V2CheckInGetExecute(r ApiV2CheckInGetRequest) 
 
 type ApiV2CheckInHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -277,7 +412,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHisto
 
 type ApiV2CheckInHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -401,7 +536,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHist
 
 type ApiV2CheckInPutRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	clientCheckInV2 *ClientCheckInV2
 }
 
@@ -516,7 +651,7 @@ func (a *ClientCheckInApiService) V2CheckInPutExecute(r ApiV2CheckInPutRequest) 
 
 type ApiV3CheckInGetRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 }
 
 func (r ApiV3CheckInGetRequest) Execute() (*ClientCheckInV3, *http.Response, error) {
@@ -616,7 +751,7 @@ func (a *ClientCheckInApiService) V3CheckInGetExecute(r ApiV3CheckInGetRequest) 
 
 type ApiV3CheckInHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -762,7 +897,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHisto
 
 type ApiV3CheckInHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -883,7 +1018,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHist
 
 type ApiV3CheckInPutRequest struct {
 	ctx context.Context
-	ApiService *ClientCheckInApiService
+	ApiService ClientCheckInApi
 	clientCheckInV3 *ClientCheckInV3
 }
 

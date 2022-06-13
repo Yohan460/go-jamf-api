@@ -49,181 +49,181 @@ type APIClient struct {
 
 	// API Services
 
-	AdvancedMobileDeviceSearchesApi *AdvancedMobileDeviceSearchesApiService
+	AdvancedMobileDeviceSearchesApi AdvancedMobileDeviceSearchesApi
 
-	AdvancedUserContentSearchesApi *AdvancedUserContentSearchesApiService
+	AdvancedUserContentSearchesApi AdvancedUserContentSearchesApi
 
-	ApiAuthenticationApi *ApiAuthenticationApiService
+	ApiAuthenticationApi ApiAuthenticationApi
 
-	AppDynamicsConfigurationPreviewApi *AppDynamicsConfigurationPreviewApiService
+	AppDynamicsConfigurationPreviewApi AppDynamicsConfigurationPreviewApi
 
-	AppRequestPreviewApi *AppRequestPreviewApiService
+	AppRequestPreviewApi AppRequestPreviewApi
 
-	AppStoreCountryCodesPreviewApi *AppStoreCountryCodesPreviewApiService
+	AppStoreCountryCodesPreviewApi AppStoreCountryCodesPreviewApi
 
-	BuildingsApi *BuildingsApiService
+	BuildingsApi BuildingsApi
 
-	CacheSettingsApi *CacheSettingsApiService
+	CacheSettingsApi CacheSettingsApi
 
-	CategoriesApi *CategoriesApiService
+	CategoriesApi CategoriesApi
 
-	CertificateAuthorityApi *CertificateAuthorityApiService
+	CertificateAuthorityApi CertificateAuthorityApi
 
-	ClassicLdapApi *ClassicLdapApiService
+	ClassicLdapApi ClassicLdapApi
 
-	ClientCheckInApi *ClientCheckInApiService
+	ClientCheckInApi ClientCheckInApi
 
-	CloudAzureApi *CloudAzureApiService
+	CloudAzureApi CloudAzureApi
 
-	CloudIdpApi *CloudIdpApiService
+	CloudIdpApi CloudIdpApi
 
-	CloudLdapApi *CloudLdapApiService
+	CloudLdapApi CloudLdapApi
 
-	ComputerInventoryApi *ComputerInventoryApiService
+	ComputerInventoryApi ComputerInventoryApi
 
-	ComputerInventoryCollectionSettingsApi *ComputerInventoryCollectionSettingsApiService
+	ComputerInventoryCollectionSettingsApi ComputerInventoryCollectionSettingsApi
 
-	ComputerPrestagesApi *ComputerPrestagesApiService
+	ComputerPrestagesApi ComputerPrestagesApi
 
-	ComputersPreviewApi *ComputersPreviewApiService
+	ComputersPreviewApi ComputersPreviewApi
 
-	ConditionalAccessApi *ConditionalAccessApiService
+	ConditionalAccessApi ConditionalAccessApi
 
-	CsaApi *CsaApiService
+	CsaApi CsaApi
 
-	DepartmentsApi *DepartmentsApiService
+	DepartmentsApi DepartmentsApi
 
-	DeviceCommunicationSettingsApi *DeviceCommunicationSettingsApiService
+	DeviceCommunicationSettingsApi DeviceCommunicationSettingsApi
 
-	DeviceEnrollmentsApi *DeviceEnrollmentsApiService
+	DeviceEnrollmentsApi DeviceEnrollmentsApi
 
-	DeviceEnrollmentsDevicesApi *DeviceEnrollmentsDevicesApiService
+	DeviceEnrollmentsDevicesApi DeviceEnrollmentsDevicesApi
 
-	EbooksApi *EbooksApiService
+	EbooksApi EbooksApi
 
-	EngageApi *EngageApiService
+	EngageApi EngageApi
 
-	EnrollmentApi *EnrollmentApiService
+	EnrollmentApi EnrollmentApi
 
-	EnrollmentCustomizationApi *EnrollmentCustomizationApiService
+	EnrollmentCustomizationApi EnrollmentCustomizationApi
 
-	EnrollmentCustomizationPreviewApi *EnrollmentCustomizationPreviewApiService
+	EnrollmentCustomizationPreviewApi EnrollmentCustomizationPreviewApi
 
-	IconApi *IconApiService
+	IconApi IconApi
 
-	InventoryInformationApi *InventoryInformationApiService
+	InventoryInformationApi InventoryInformationApi
 
-	InventoryPreloadApi *InventoryPreloadApiService
+	InventoryPreloadApi InventoryPreloadApi
 
-	JamfConnectApi *JamfConnectApiService
+	JamfConnectApi JamfConnectApi
 
-	JamfManagementFrameworkApi *JamfManagementFrameworkApiService
+	JamfManagementFrameworkApi JamfManagementFrameworkApi
 
-	JamfPackageApi *JamfPackageApiService
+	JamfPackageApi JamfPackageApi
 
-	JamfProInformationPreviewApi *JamfProInformationPreviewApiService
+	JamfProInformationPreviewApi JamfProInformationPreviewApi
 
-	JamfProInitializationApi *JamfProInitializationApiService
+	JamfProInitializationApi JamfProInitializationApi
 
-	JamfProInitializationPreviewApi *JamfProInitializationPreviewApiService
+	JamfProInitializationPreviewApi JamfProInitializationPreviewApi
 
-	JamfProNotificationsApi *JamfProNotificationsApiService
+	JamfProNotificationsApi JamfProNotificationsApi
 
-	JamfProNotificationsPreviewApi *JamfProNotificationsPreviewApiService
+	JamfProNotificationsPreviewApi JamfProNotificationsPreviewApi
 
-	JamfProServerUrlPreviewApi *JamfProServerUrlPreviewApiService
+	JamfProServerUrlPreviewApi JamfProServerUrlPreviewApi
 
-	JamfProUserAccountSettingsApi *JamfProUserAccountSettingsApiService
+	JamfProUserAccountSettingsApi JamfProUserAccountSettingsApi
 
-	JamfProUserAccountSettingsPreviewApi *JamfProUserAccountSettingsPreviewApiService
+	JamfProUserAccountSettingsPreviewApi JamfProUserAccountSettingsPreviewApi
 
-	JamfProVersionApi *JamfProVersionApiService
+	JamfProVersionApi JamfProVersionApi
 
-	JamfProtectApi *JamfProtectApiService
+	JamfProtectApi JamfProtectApi
 
-	LdapApi *LdapApiService
+	LdapApi LdapApi
 
-	LocalesPreviewApi *LocalesPreviewApiService
+	LocalesPreviewApi LocalesPreviewApi
 
-	MacosManagedSoftwareUpdatesApi *MacosManagedSoftwareUpdatesApiService
+	MacosManagedSoftwareUpdatesApi MacosManagedSoftwareUpdatesApi
 
-	MdmApi *MdmApiService
+	MdmApi MdmApi
 
-	MobileDeviceEnrollmentProfileApi *MobileDeviceEnrollmentProfileApiService
+	MobileDeviceEnrollmentProfileApi MobileDeviceEnrollmentProfileApi
 
-	MobileDeviceExtensionAttributesPreviewApi *MobileDeviceExtensionAttributesPreviewApiService
+	MobileDeviceExtensionAttributesPreviewApi MobileDeviceExtensionAttributesPreviewApi
 
-	MobileDeviceGroupsPreviewApi *MobileDeviceGroupsPreviewApiService
+	MobileDeviceGroupsPreviewApi MobileDeviceGroupsPreviewApi
 
-	MobileDevicePrestagesApi *MobileDevicePrestagesApiService
+	MobileDevicePrestagesApi MobileDevicePrestagesApi
 
-	MobileDevicesApi *MobileDevicesApiService
+	MobileDevicesApi MobileDevicesApi
 
-	ParentAppPreviewApi *ParentAppPreviewApiService
+	ParentAppPreviewApi ParentAppPreviewApi
 
-	PatchPoliciesPreviewApi *PatchPoliciesPreviewApiService
+	PatchPoliciesPreviewApi PatchPoliciesPreviewApi
 
-	PatchPolicyLogsPreviewApi *PatchPolicyLogsPreviewApiService
+	PatchPolicyLogsPreviewApi PatchPolicyLogsPreviewApi
 
-	PatchesApi *PatchesApiService
+	PatchesApi PatchesApi
 
-	PatchesPreviewApi *PatchesPreviewApiService
+	PatchesPreviewApi PatchesPreviewApi
 
-	PoliciesPreviewApi *PoliciesPreviewApiService
+	PoliciesPreviewApi PoliciesPreviewApi
 
-	ReEnrollmentPreviewApi *ReEnrollmentPreviewApiService
+	ReEnrollmentPreviewApi ReEnrollmentPreviewApi
 
-	RemoteAdministrationApi *RemoteAdministrationApiService
+	RemoteAdministrationApi RemoteAdministrationApi
 
-	ScriptsApi *ScriptsApiService
+	ScriptsApi ScriptsApi
 
-	SelfServiceApi *SelfServiceApiService
+	SelfServiceApi SelfServiceApi
 
-	SelfServiceBrandingIosApi *SelfServiceBrandingIosApiService
+	SelfServiceBrandingIosApi SelfServiceBrandingIosApi
 
-	SelfServiceBrandingMacosApi *SelfServiceBrandingMacosApiService
+	SelfServiceBrandingMacosApi SelfServiceBrandingMacosApi
 
-	SelfServiceBrandingPreviewApi *SelfServiceBrandingPreviewApiService
+	SelfServiceBrandingPreviewApi SelfServiceBrandingPreviewApi
 
-	SitesPreviewApi *SitesPreviewApiService
+	SitesPreviewApi SitesPreviewApi
 
-	SmartComputerGroupsPreviewApi *SmartComputerGroupsPreviewApiService
+	SmartComputerGroupsPreviewApi SmartComputerGroupsPreviewApi
 
-	SmartMobileDeviceGroupsPreviewApi *SmartMobileDeviceGroupsPreviewApiService
+	SmartMobileDeviceGroupsPreviewApi SmartMobileDeviceGroupsPreviewApi
 
-	SmartUserGroupsPreviewApi *SmartUserGroupsPreviewApiService
+	SmartUserGroupsPreviewApi SmartUserGroupsPreviewApi
 
-	SsoCertificateApi *SsoCertificateApiService
+	SsoCertificateApi SsoCertificateApi
 
-	SsoCertificatePreviewApi *SsoCertificatePreviewApiService
+	SsoCertificatePreviewApi SsoCertificatePreviewApi
 
-	SsoSettingsApi *SsoSettingsApiService
+	SsoSettingsApi SsoSettingsApi
 
-	StartupStatusApi *StartupStatusApiService
+	StartupStatusApi StartupStatusApi
 
-	StaticUserGroupsPreviewApi *StaticUserGroupsPreviewApiService
+	StaticUserGroupsPreviewApi StaticUserGroupsPreviewApi
 
-	SupervisionIdentitiesPreviewApi *SupervisionIdentitiesPreviewApiService
+	SupervisionIdentitiesPreviewApi SupervisionIdentitiesPreviewApi
 
-	TeacherAppApi *TeacherAppApiService
+	TeacherAppApi TeacherAppApi
 
-	TeamViewerRemoteAdministrationApi *TeamViewerRemoteAdministrationApiService
+	TeamViewerRemoteAdministrationApi TeamViewerRemoteAdministrationApi
 
-	TimeZonesPreviewApi *TimeZonesPreviewApiService
+	TimeZonesPreviewApi TimeZonesPreviewApi
 
-	TomcatSettingsPreviewApi *TomcatSettingsPreviewApiService
+	TomcatSettingsPreviewApi TomcatSettingsPreviewApi
 
-	UserSessionPreviewApi *UserSessionPreviewApiService
+	UserSessionPreviewApi UserSessionPreviewApi
 
-	VenafiPreviewApi *VenafiPreviewApiService
+	VenafiPreviewApi VenafiPreviewApi
 
-	VolumePurchasingLocationsApi *VolumePurchasingLocationsApiService
+	VolumePurchasingLocationsApi VolumePurchasingLocationsApi
 
-	VolumePurchasingSubscriptionsApi *VolumePurchasingSubscriptionsApiService
+	VolumePurchasingSubscriptionsApi VolumePurchasingSubscriptionsApi
 
-	VppAdminAccountsPreviewApi *VppAdminAccountsPreviewApiService
+	VppAdminAccountsPreviewApi VppAdminAccountsPreviewApi
 
-	VppSubscriptionsPreviewApi *VppSubscriptionsPreviewApiService
+	VppSubscriptionsPreviewApi VppSubscriptionsPreviewApi
 }
 
 type service struct {

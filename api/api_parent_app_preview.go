@@ -19,12 +19,75 @@ import (
 )
 
 
+type ParentAppPreviewApi interface {
+
+	/*
+	V1ParentAppGet Get the current Jamf Parent app settings 
+
+	Get the current Jamf Parent app settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ParentAppGetRequest
+	*/
+	V1ParentAppGet(ctx context.Context) ApiV1ParentAppGetRequest
+
+	// V1ParentAppGetExecute executes the request
+	//  @return ParentApp
+	V1ParentAppGetExecute(r ApiV1ParentAppGetRequest) (*ParentApp, *http.Response, error)
+
+	/*
+	V1ParentAppHistoryGet Get Jamf Parent app settings history 
+
+	Gets Jamf Parent app settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ParentAppHistoryGetRequest
+	*/
+	V1ParentAppHistoryGet(ctx context.Context) ApiV1ParentAppHistoryGetRequest
+
+	// V1ParentAppHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1ParentAppHistoryGetExecute(r ApiV1ParentAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1ParentAppHistoryPost Add Jamf Parent app settings history notes 
+
+	Adds Jamf Parent app settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ParentAppHistoryPostRequest
+	*/
+	V1ParentAppHistoryPost(ctx context.Context) ApiV1ParentAppHistoryPostRequest
+
+	// V1ParentAppHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1ParentAppHistoryPostExecute(r ApiV1ParentAppHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1ParentAppPut Update Jamf Parent app settings 
+
+	Update Jamf Parent app settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ParentAppPutRequest
+	*/
+	V1ParentAppPut(ctx context.Context) ApiV1ParentAppPutRequest
+
+	// V1ParentAppPutExecute executes the request
+	//  @return ParentApp
+	V1ParentAppPutExecute(r ApiV1ParentAppPutRequest) (*ParentApp, *http.Response, error)
+}
+
 // ParentAppPreviewApiService ParentAppPreviewApi service
 type ParentAppPreviewApiService service
 
 type ApiV1ParentAppGetRequest struct {
 	ctx context.Context
-	ApiService *ParentAppPreviewApiService
+	ApiService ParentAppPreviewApi
 }
 
 func (r ApiV1ParentAppGetRequest) Execute() (*ParentApp, *http.Response, error) {
@@ -124,7 +187,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppGetExecute(r ApiV1ParentAppGetRe
 
 type ApiV1ParentAppHistoryGetRequest struct {
 	ctx context.Context
-	ApiService *ParentAppPreviewApiService
+	ApiService ParentAppPreviewApi
 	page *int32
 	pageSize *int32
 	filter *string
@@ -262,7 +325,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentA
 
 type ApiV1ParentAppHistoryPostRequest struct {
 	ctx context.Context
-	ApiService *ParentAppPreviewApiService
+	ApiService ParentAppPreviewApi
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -383,7 +446,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1Parent
 
 type ApiV1ParentAppPutRequest struct {
 	ctx context.Context
-	ApiService *ParentAppPreviewApiService
+	ApiService ParentAppPreviewApi
 	parentApp *ParentApp
 }
 

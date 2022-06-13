@@ -19,12 +19,44 @@ import (
 )
 
 
+type CacheSettingsApi interface {
+
+	/*
+	V1CacheSettingsGet Get Cache Settings 
+
+	gets cache settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CacheSettingsGetRequest
+	*/
+	V1CacheSettingsGet(ctx context.Context) ApiV1CacheSettingsGetRequest
+
+	// V1CacheSettingsGetExecute executes the request
+	//  @return CacheSettings
+	V1CacheSettingsGetExecute(r ApiV1CacheSettingsGetRequest) (*CacheSettings, *http.Response, error)
+
+	/*
+	V1CacheSettingsPut Update Cache Settings 
+
+	updates cache settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1CacheSettingsPutRequest
+	*/
+	V1CacheSettingsPut(ctx context.Context) ApiV1CacheSettingsPutRequest
+
+	// V1CacheSettingsPutExecute executes the request
+	//  @return CacheSettings
+	V1CacheSettingsPutExecute(r ApiV1CacheSettingsPutRequest) (*CacheSettings, *http.Response, error)
+}
+
 // CacheSettingsApiService CacheSettingsApi service
 type CacheSettingsApiService service
 
 type ApiV1CacheSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *CacheSettingsApiService
+	ApiService CacheSettingsApi
 }
 
 func (r ApiV1CacheSettingsGetRequest) Execute() (*CacheSettings, *http.Response, error) {
@@ -123,7 +155,7 @@ func (a *CacheSettingsApiService) V1CacheSettingsGetExecute(r ApiV1CacheSettings
 
 type ApiV1CacheSettingsPutRequest struct {
 	ctx context.Context
-	ApiService *CacheSettingsApiService
+	ApiService CacheSettingsApi
 	cacheSettings *CacheSettings
 }
 

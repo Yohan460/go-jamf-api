@@ -21,12 +21,87 @@ import (
 )
 
 
+type SelfServiceBrandingMacosApi interface {
+
+	/*
+	V1SelfServiceBrandingMacosGet Search for sorted and paged macOS branding configurations 
+
+	Search for sorted and paged macOS branding configurations
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceBrandingMacosGetRequest
+	*/
+	V1SelfServiceBrandingMacosGet(ctx context.Context) ApiV1SelfServiceBrandingMacosGetRequest
+
+	// V1SelfServiceBrandingMacosGetExecute executes the request
+	//  @return MacOsBrandingSearchResults
+	V1SelfServiceBrandingMacosGetExecute(r ApiV1SelfServiceBrandingMacosGetRequest) (*MacOsBrandingSearchResults, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingMacosIdDelete Delete the Self Service macOS branding configuration indicated by the provided id 
+
+	Delete the Self Service macOS branding configuration indicated by the provided id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of macOS branding configuration
+	@return ApiV1SelfServiceBrandingMacosIdDeleteRequest
+	*/
+	V1SelfServiceBrandingMacosIdDelete(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdDeleteRequest
+
+	// V1SelfServiceBrandingMacosIdDeleteExecute executes the request
+	V1SelfServiceBrandingMacosIdDeleteExecute(r ApiV1SelfServiceBrandingMacosIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1SelfServiceBrandingMacosIdGet Read a single Self Service macOS branding configuration indicated by the provided id 
+
+	Read a single Self Service macOS branding configuration indicated by the provided id.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of macOS branding configuration
+	@return ApiV1SelfServiceBrandingMacosIdGetRequest
+	*/
+	V1SelfServiceBrandingMacosIdGet(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdGetRequest
+
+	// V1SelfServiceBrandingMacosIdGetExecute executes the request
+	//  @return MacOsBrandingConfiguration
+	V1SelfServiceBrandingMacosIdGetExecute(r ApiV1SelfServiceBrandingMacosIdGetRequest) (*MacOsBrandingConfiguration, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingMacosIdPut Update a Self Service macOS branding configuration with the supplied details 
+
+	Update a Self Service macOS branding configuration with the supplied details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of macOS branding configuration
+	@return ApiV1SelfServiceBrandingMacosIdPutRequest
+	*/
+	V1SelfServiceBrandingMacosIdPut(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdPutRequest
+
+	// V1SelfServiceBrandingMacosIdPutExecute executes the request
+	//  @return MacOsBrandingConfiguration
+	V1SelfServiceBrandingMacosIdPutExecute(r ApiV1SelfServiceBrandingMacosIdPutRequest) (*MacOsBrandingConfiguration, *http.Response, error)
+
+	/*
+	V1SelfServiceBrandingMacosPost Create a Self Service macOS branding configuration with the supplied 
+
+	Create a Self Service macOS branding configuration with the supplied details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1SelfServiceBrandingMacosPostRequest
+	*/
+	V1SelfServiceBrandingMacosPost(ctx context.Context) ApiV1SelfServiceBrandingMacosPostRequest
+
+	// V1SelfServiceBrandingMacosPostExecute executes the request
+	//  @return HrefResponse
+	V1SelfServiceBrandingMacosPostExecute(r ApiV1SelfServiceBrandingMacosPostRequest) (*HrefResponse, *http.Response, error)
+}
+
 // SelfServiceBrandingMacosApiService SelfServiceBrandingMacosApi service
 type SelfServiceBrandingMacosApiService service
 
 type ApiV1SelfServiceBrandingMacosGetRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingMacosApiService
+	ApiService SelfServiceBrandingMacosApi
 	page *int32
 	pageSize *int32
 	sort *[]string
@@ -161,7 +236,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecut
 
 type ApiV1SelfServiceBrandingMacosIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingMacosApiService
+	ApiService SelfServiceBrandingMacosApi
 	id string
 }
 
@@ -262,7 +337,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDeleteE
 
 type ApiV1SelfServiceBrandingMacosIdGetRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingMacosApiService
+	ApiService SelfServiceBrandingMacosApi
 	id string
 }
 
@@ -365,7 +440,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGetExec
 
 type ApiV1SelfServiceBrandingMacosIdPutRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingMacosApiService
+	ApiService SelfServiceBrandingMacosApi
 	id string
 	macOsBrandingConfiguration *MacOsBrandingConfiguration
 }
@@ -486,7 +561,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExec
 
 type ApiV1SelfServiceBrandingMacosPostRequest struct {
 	ctx context.Context
-	ApiService *SelfServiceBrandingMacosApiService
+	ApiService SelfServiceBrandingMacosApi
 	macOsBrandingConfiguration *MacOsBrandingConfiguration
 }
 

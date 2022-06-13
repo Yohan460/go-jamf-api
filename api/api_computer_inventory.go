@@ -22,12 +22,149 @@ import (
 )
 
 
+type ComputerInventoryApi interface {
+
+	/*
+	V1ComputersInventoryDetailIdGet Return a Computer details with all sections 
+
+	Return a Computer details with all sections
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryDetailIdGetRequest
+	*/
+	V1ComputersInventoryDetailIdGet(ctx context.Context, id string) ApiV1ComputersInventoryDetailIdGetRequest
+
+	// V1ComputersInventoryDetailIdGetExecute executes the request
+	//  @return ComputerInventoryResponse
+	V1ComputersInventoryDetailIdGetExecute(r ApiV1ComputersInventoryDetailIdGetRequest) (*ComputerInventoryResponse, *http.Response, error)
+
+	/*
+	V1ComputersInventoryDetailIdPatch Return a updated computer instance 
+
+	Return a updated computer instance
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryDetailIdPatchRequest
+	*/
+	V1ComputersInventoryDetailIdPatch(ctx context.Context, id string) ApiV1ComputersInventoryDetailIdPatchRequest
+
+	// V1ComputersInventoryDetailIdPatchExecute executes the request
+	//  @return ComputerInventoryResponse
+	V1ComputersInventoryDetailIdPatchExecute(r ApiV1ComputersInventoryDetailIdPatchRequest) (*ComputerInventoryResponse, *http.Response, error)
+
+	/*
+	V1ComputersInventoryGet Return a Computer Inventory for paginated list of computers 
+
+	Return a Computer Inventory for paginated list of computers
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1ComputersInventoryGetRequest
+	*/
+	V1ComputersInventoryGet(ctx context.Context) ApiV1ComputersInventoryGetRequest
+
+	// V1ComputersInventoryGetExecute executes the request
+	//  @return ComputerInventorySearchResults
+	V1ComputersInventoryGetExecute(r ApiV1ComputersInventoryGetRequest) (*ComputerInventorySearchResults, *http.Response, error)
+
+	/*
+	V1ComputersInventoryIdAttachmentsAttachmentIdDelete Remove attachment 
+
+	Remove attachment
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@param attachmentId instance id of attachment object
+	@return ApiV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+	*/
+	V1ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx context.Context, id string, attachmentId string) ApiV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+
+	// V1ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute executes the request
+	V1ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r ApiV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1ComputersInventoryIdAttachmentsAttachmentIdGet Download attachment file 
+
+	Download attachment file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@param attachmentId instance id of attachment object
+	@return ApiV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+	*/
+	V1ComputersInventoryIdAttachmentsAttachmentIdGet(ctx context.Context, id string, attachmentId string) ApiV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+
+	// V1ComputersInventoryIdAttachmentsAttachmentIdGetExecute executes the request
+	//  @return *os.File
+	V1ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r ApiV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest) (**os.File, *http.Response, error)
+
+	/*
+	V1ComputersInventoryIdAttachmentsPost Upload attachment and assign to computer 
+
+	Upload attachment and assign to computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryIdAttachmentsPostRequest
+	*/
+	V1ComputersInventoryIdAttachmentsPost(ctx context.Context, id string) ApiV1ComputersInventoryIdAttachmentsPostRequest
+
+	// V1ComputersInventoryIdAttachmentsPostExecute executes the request
+	//  @return HrefResponse
+	V1ComputersInventoryIdAttachmentsPostExecute(r ApiV1ComputersInventoryIdAttachmentsPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V1ComputersInventoryIdDelete Remove specified Computer record 
+
+	Remove specified Computer record
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryIdDeleteRequest
+	*/
+	V1ComputersInventoryIdDelete(ctx context.Context, id string) ApiV1ComputersInventoryIdDeleteRequest
+
+	// V1ComputersInventoryIdDeleteExecute executes the request
+	V1ComputersInventoryIdDeleteExecute(r ApiV1ComputersInventoryIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1ComputersInventoryIdGet Return a Computer General details 
+
+	Return a Computer General details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryIdGetRequest
+	*/
+	V1ComputersInventoryIdGet(ctx context.Context, id string) ApiV1ComputersInventoryIdGetRequest
+
+	// V1ComputersInventoryIdGetExecute executes the request
+	//  @return ComputerInventoryResponse
+	V1ComputersInventoryIdGetExecute(r ApiV1ComputersInventoryIdGetRequest) (*ComputerInventoryResponse, *http.Response, error)
+
+	/*
+	V1ComputersInventoryIdViewRecoveryLockPasswordGet Return a Computers Recovery Lock Password 
+
+	Return a Computers Recovery Lock Password
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ApiV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+	*/
+	V1ComputersInventoryIdViewRecoveryLockPasswordGet(ctx context.Context, id string) ApiV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+
+	// V1ComputersInventoryIdViewRecoveryLockPasswordGetExecute executes the request
+	//  @return ComputerInventoryRecoveryLockPasswordResponse
+	V1ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r ApiV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest) (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error)
+}
+
 // ComputerInventoryApiService ComputerInventoryApi service
 type ComputerInventoryApiService service
 
 type ApiV1ComputersInventoryDetailIdGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 }
 
@@ -139,7 +276,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryDetailIdGetExecute(r A
 
 type ApiV1ComputersInventoryDetailIdPatchRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 	computerInventoryUpdateRequest *ComputerInventoryUpdateRequest
 }
@@ -262,7 +399,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryDetailIdPatchExecute(r
 
 type ApiV1ComputersInventoryGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	section *[]ComputerSection
 	page *int32
 	pageSize *int32
@@ -425,7 +562,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryGetExecute(r ApiV1Comp
 
 type ApiV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 	attachmentId string
 }
@@ -530,7 +667,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryIdAttachmentsAttachmen
 
 type ApiV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 	attachmentId string
 }
@@ -646,7 +783,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryIdAttachmentsAttachmen
 
 type ApiV1ComputersInventoryIdAttachmentsPostRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 	file **os.File
 }
@@ -782,7 +919,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryIdAttachmentsPostExecu
 
 type ApiV1ComputersInventoryIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 }
 
@@ -883,7 +1020,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryIdDeleteExecute(r ApiV
 
 type ApiV1ComputersInventoryIdGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 	section *[]ComputerSection
 }
@@ -1013,7 +1150,7 @@ func (a *ComputerInventoryApiService) V1ComputersInventoryIdGetExecute(r ApiV1Co
 
 type ApiV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest struct {
 	ctx context.Context
-	ApiService *ComputerInventoryApiService
+	ApiService ComputerInventoryApi
 	id string
 }
 

@@ -19,12 +19,31 @@ import (
 )
 
 
+type AppDynamicsConfigurationPreviewApi interface {
+
+	/*
+	V1AppDynamicsScriptConfigurationGet Get Application Dynamics Config object 
+
+	Gets `AppDynamicsConfig` object.
+Details for using the response as script configuration are available in the official documentation - https://docs.appdynamics.com/display/PRO45/Configure+the+JavaScript+Agent
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppDynamicsScriptConfigurationGetRequest
+	*/
+	V1AppDynamicsScriptConfigurationGet(ctx context.Context) ApiV1AppDynamicsScriptConfigurationGetRequest
+
+	// V1AppDynamicsScriptConfigurationGetExecute executes the request
+	//  @return AppDynamicsConfig
+	V1AppDynamicsScriptConfigurationGetExecute(r ApiV1AppDynamicsScriptConfigurationGetRequest) (*AppDynamicsConfig, *http.Response, error)
+}
+
 // AppDynamicsConfigurationPreviewApiService AppDynamicsConfigurationPreviewApi service
 type AppDynamicsConfigurationPreviewApiService service
 
 type ApiV1AppDynamicsScriptConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService *AppDynamicsConfigurationPreviewApiService
+	ApiService AppDynamicsConfigurationPreviewApi
 }
 
 func (r ApiV1AppDynamicsScriptConfigurationGetRequest) Execute() (*AppDynamicsConfig, *http.Response, error) {

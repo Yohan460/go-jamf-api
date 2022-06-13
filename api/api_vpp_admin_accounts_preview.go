@@ -19,12 +19,30 @@ import (
 )
 
 
+type VppAdminAccountsPreviewApi interface {
+
+	/*
+	VppAdminAccountsGet Found all VPP Admin Accounts 
+
+	Found all vpp admin accounts.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiVppAdminAccountsGetRequest
+	*/
+	VppAdminAccountsGet(ctx context.Context) ApiVppAdminAccountsGetRequest
+
+	// VppAdminAccountsGetExecute executes the request
+	//  @return []VppAdminAccount
+	VppAdminAccountsGetExecute(r ApiVppAdminAccountsGetRequest) ([]VppAdminAccount, *http.Response, error)
+}
+
 // VppAdminAccountsPreviewApiService VppAdminAccountsPreviewApi service
 type VppAdminAccountsPreviewApiService service
 
 type ApiVppAdminAccountsGetRequest struct {
 	ctx context.Context
-	ApiService *VppAdminAccountsPreviewApiService
+	ApiService VppAdminAccountsPreviewApi
 }
 
 func (r ApiVppAdminAccountsGetRequest) Execute() ([]VppAdminAccount, *http.Response, error) {

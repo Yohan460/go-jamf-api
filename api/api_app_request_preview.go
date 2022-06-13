@@ -20,12 +20,136 @@ import (
 )
 
 
+type AppRequestPreviewApi interface {
+
+	/*
+	V1AppRequestFormInputFieldsGet Search for Form Input Fields 
+
+	Search for form input fields
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppRequestFormInputFieldsGetRequest
+	*/
+	V1AppRequestFormInputFieldsGet(ctx context.Context) ApiV1AppRequestFormInputFieldsGetRequest
+
+	// V1AppRequestFormInputFieldsGetExecute executes the request
+	//  @return AppRequestFormInputFieldSearchResults
+	V1AppRequestFormInputFieldsGetExecute(r ApiV1AppRequestFormInputFieldsGetRequest) (*AppRequestFormInputFieldSearchResults, *http.Response, error)
+
+	/*
+	V1AppRequestFormInputFieldsIdDelete Remove specified Form Input Field record 
+
+	Removes specified form input field record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Instance id of form input field record
+	@return ApiV1AppRequestFormInputFieldsIdDeleteRequest
+	*/
+	V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdDeleteRequest
+
+	// V1AppRequestFormInputFieldsIdDeleteExecute executes the request
+	V1AppRequestFormInputFieldsIdDeleteExecute(r ApiV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V1AppRequestFormInputFieldsIdGet Get specified Form Input Field object 
+
+	Gets specified form input field object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Instance id of form input field record
+	@return ApiV1AppRequestFormInputFieldsIdGetRequest
+	*/
+	V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdGetRequest
+
+	// V1AppRequestFormInputFieldsIdGetExecute executes the request
+	//  @return AppRequestFormInputField
+	V1AppRequestFormInputFieldsIdGetExecute(r ApiV1AppRequestFormInputFieldsIdGetRequest) (*AppRequestFormInputField, *http.Response, error)
+
+	/*
+	V1AppRequestFormInputFieldsIdPut Update specified Form Input Field object 
+
+	Update specified form input field object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Instance id of form input field record
+	@return ApiV1AppRequestFormInputFieldsIdPutRequest
+	*/
+	V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdPutRequest
+
+	// V1AppRequestFormInputFieldsIdPutExecute executes the request
+	//  @return AppRequestFormInputField
+	V1AppRequestFormInputFieldsIdPutExecute(r ApiV1AppRequestFormInputFieldsIdPutRequest) (*AppRequestFormInputField, *http.Response, error)
+
+	/*
+	V1AppRequestFormInputFieldsPost Create Form Input Field record 
+
+	Create form input field record
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppRequestFormInputFieldsPostRequest
+	*/
+	V1AppRequestFormInputFieldsPost(ctx context.Context) ApiV1AppRequestFormInputFieldsPostRequest
+
+	// V1AppRequestFormInputFieldsPostExecute executes the request
+	//  @return AppRequestFormInputField
+	V1AppRequestFormInputFieldsPostExecute(r ApiV1AppRequestFormInputFieldsPostRequest) (*AppRequestFormInputField, *http.Response, error)
+
+	/*
+	V1AppRequestFormInputFieldsPut Replace all Form Input Fields 
+
+	Replace all form input fields. Will delete, update, and create all input fields accordingly.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppRequestFormInputFieldsPutRequest
+	*/
+	V1AppRequestFormInputFieldsPut(ctx context.Context) ApiV1AppRequestFormInputFieldsPutRequest
+
+	// V1AppRequestFormInputFieldsPutExecute executes the request
+	//  @return []AppRequestFormInputField
+	V1AppRequestFormInputFieldsPutExecute(r ApiV1AppRequestFormInputFieldsPutRequest) ([]AppRequestFormInputField, *http.Response, error)
+
+	/*
+	V1AppRequestSettingsGet Get Applicastion Request Settings 
+
+	Get app request settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppRequestSettingsGetRequest
+	*/
+	V1AppRequestSettingsGet(ctx context.Context) ApiV1AppRequestSettingsGetRequest
+
+	// V1AppRequestSettingsGetExecute executes the request
+	//  @return AppRequestSettings
+	V1AppRequestSettingsGetExecute(r ApiV1AppRequestSettingsGetRequest) (*AppRequestSettings, *http.Response, error)
+
+	/*
+	V1AppRequestSettingsPut Update Application Request Settings 
+
+	Update app request settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiV1AppRequestSettingsPutRequest
+	*/
+	V1AppRequestSettingsPut(ctx context.Context) ApiV1AppRequestSettingsPutRequest
+
+	// V1AppRequestSettingsPutExecute executes the request
+	//  @return AppRequestSettings
+	V1AppRequestSettingsPutExecute(r ApiV1AppRequestSettingsPutRequest) (*AppRequestSettings, *http.Response, error)
+}
+
 // AppRequestPreviewApiService AppRequestPreviewApi service
 type AppRequestPreviewApiService service
 
 type ApiV1AppRequestFormInputFieldsGetRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 }
 
 func (r ApiV1AppRequestFormInputFieldsGetRequest) Execute() (*AppRequestFormInputFieldSearchResults, *http.Response, error) {
@@ -124,7 +248,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGetExecute(r Ap
 
 type ApiV1AppRequestFormInputFieldsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	id int32
 }
 
@@ -226,7 +350,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDeleteExecute
 
 type ApiV1AppRequestFormInputFieldsIdGetRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	id int32
 }
 
@@ -339,7 +463,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r 
 
 type ApiV1AppRequestFormInputFieldsIdPutRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	id int32
 	appRequestFormInputField *AppRequestFormInputField
 }
@@ -474,7 +598,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 
 type ApiV1AppRequestFormInputFieldsPostRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	appRequestFormInputField *AppRequestFormInputField
 }
 
@@ -595,7 +719,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r A
 
 type ApiV1AppRequestFormInputFieldsPutRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	appRequestFormInputField *[]AppRequestFormInputField
 }
 
@@ -726,7 +850,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 
 type ApiV1AppRequestSettingsGetRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 }
 
 func (r ApiV1AppRequestSettingsGetRequest) Execute() (*AppRequestSettings, *http.Response, error) {
@@ -826,7 +950,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsGetExecute(r ApiV1AppR
 
 type ApiV1AppRequestSettingsPutRequest struct {
 	ctx context.Context
-	ApiService *AppRequestPreviewApiService
+	ApiService AppRequestPreviewApi
 	appRequestSettings *AppRequestSettings
 }
 

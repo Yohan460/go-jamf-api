@@ -19,12 +19,45 @@ import (
 )
 
 
+type UserSessionPreviewApi interface {
+
+	/*
+	UserGet Return all Jamf Pro user acounts 
+
+	Return all Jamf Pro user acounts.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUserGetRequest
+	*/
+	UserGet(ctx context.Context) ApiUserGetRequest
+
+	// UserGetExecute executes the request
+	//  @return []Account
+	UserGetExecute(r ApiUserGetRequest) ([]Account, *http.Response, error)
+
+	/*
+	UserUpdateSessionPost Update values in the User's current session 
+
+	Updates values in the user's current session.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUserUpdateSessionPostRequest
+	*/
+	UserUpdateSessionPost(ctx context.Context) ApiUserUpdateSessionPostRequest
+
+	// UserUpdateSessionPostExecute executes the request
+	//  @return Session
+	UserUpdateSessionPostExecute(r ApiUserUpdateSessionPostRequest) (*Session, *http.Response, error)
+}
+
 // UserSessionPreviewApiService UserSessionPreviewApi service
 type UserSessionPreviewApiService service
 
 type ApiUserGetRequest struct {
 	ctx context.Context
-	ApiService *UserSessionPreviewApiService
+	ApiService UserSessionPreviewApi
 }
 
 func (r ApiUserGetRequest) Execute() ([]Account, *http.Response, error) {
@@ -124,7 +157,7 @@ func (a *UserSessionPreviewApiService) UserGetExecute(r ApiUserGetRequest) ([]Ac
 
 type ApiUserUpdateSessionPostRequest struct {
 	ctx context.Context
-	ApiService *UserSessionPreviewApiService
+	ApiService UserSessionPreviewApi
 	session *Session
 }
 
