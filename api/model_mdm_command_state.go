@@ -20,10 +20,10 @@ type MdmCommandState string
 
 // List of MdmCommandState
 const (
-	PENDING MdmCommandState = "PENDING"
-	ACKNOWLEDGED MdmCommandState = "ACKNOWLEDGED"
-	NOT_NOW MdmCommandState = "NOT_NOW"
-	ERROR MdmCommandState = "ERROR"
+	MDMCOMMANDSTATE_PENDING MdmCommandState = "PENDING"
+	MDMCOMMANDSTATE_ACKNOWLEDGED MdmCommandState = "ACKNOWLEDGED"
+	MDMCOMMANDSTATE_NOT_NOW MdmCommandState = "NOT_NOW"
+	MDMCOMMANDSTATE_ERROR MdmCommandState = "ERROR"
 )
 
 // All allowed values of MdmCommandState enum

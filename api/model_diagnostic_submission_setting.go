@@ -20,8 +20,8 @@ type DiagnosticSubmissionSetting string
 
 // List of DiagnosticSubmissionSetting
 const (
-	ENABLE_DIAGNOSTIC_SUBMISSION DiagnosticSubmissionSetting = "ENABLE_DIAGNOSTIC_SUBMISSION"
-	DISABLE_DIAGNOSTIC_SUBMISSION DiagnosticSubmissionSetting = "DISABLE_DIAGNOSTIC_SUBMISSION"
+	DIAGNOSTICSUBMISSIONSETTING_ENABLE_DIAGNOSTIC_SUBMISSION DiagnosticSubmissionSetting = "ENABLE_DIAGNOSTIC_SUBMISSION"
+	DIAGNOSTICSUBMISSIONSETTING_DISABLE_DIAGNOSTIC_SUBMISSION DiagnosticSubmissionSetting = "DISABLE_DIAGNOSTIC_SUBMISSION"
 )
 
 // All allowed values of DiagnosticSubmissionSetting enum

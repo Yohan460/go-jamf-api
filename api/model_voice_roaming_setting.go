@@ -20,8 +20,8 @@ type VoiceRoamingSetting string
 
 // List of VoiceRoamingSetting
 const (
-	ENABLE_VOICE_ROAMING VoiceRoamingSetting = "ENABLE_VOICE_ROAMING"
-	DISABLE_VOICE_ROAMING VoiceRoamingSetting = "DISABLE_VOICE_ROAMING"
+	VOICEROAMINGSETTING_ENABLE_VOICE_ROAMING VoiceRoamingSetting = "ENABLE_VOICE_ROAMING"
+	VOICEROAMINGSETTING_DISABLE_VOICE_ROAMING VoiceRoamingSetting = "DISABLE_VOICE_ROAMING"
 )
 
 // All allowed values of VoiceRoamingSetting enum

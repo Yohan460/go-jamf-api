@@ -20,11 +20,11 @@ type MdmClientType string
 
 // List of MdmClientType
 const (
-	MOBILE_DEVICE MdmClientType = "MOBILE_DEVICE"
-	TV MdmClientType = "TV"
-	COMPUTER MdmClientType = "COMPUTER"
-	COMPUTER_USER MdmClientType = "COMPUTER_USER"
-	MOBILE_DEVICE_USER MdmClientType = "MOBILE_DEVICE_USER"
+	MDMCLIENTTYPE_MOBILE_DEVICE MdmClientType = "MOBILE_DEVICE"
+	MDMCLIENTTYPE_TV MdmClientType = "TV"
+	MDMCLIENTTYPE_COMPUTER MdmClientType = "COMPUTER"
+	MDMCLIENTTYPE_COMPUTER_USER MdmClientType = "COMPUTER_USER"
+	MDMCLIENTTYPE_MOBILE_DEVICE_USER MdmClientType = "MOBILE_DEVICE_USER"
 )
 
 // All allowed values of MdmClientType enum

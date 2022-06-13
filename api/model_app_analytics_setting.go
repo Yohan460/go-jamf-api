@@ -20,8 +20,8 @@ type AppAnalyticsSetting string
 
 // List of AppAnalyticsSetting
 const (
-	ENABLE_APP_ANALYTICS AppAnalyticsSetting = "ENABLE_APP_ANALYTICS"
-	DISABLE_APP_ANALYTICS AppAnalyticsSetting = "DISABLE_APP_ANALYTICS"
+	APPANALYTICSSETTING_ENABLE_APP_ANALYTICS AppAnalyticsSetting = "ENABLE_APP_ANALYTICS"
+	APPANALYTICSSETTING_DISABLE_APP_ANALYTICS AppAnalyticsSetting = "DISABLE_APP_ANALYTICS"
 )
 
 // All allowed values of AppAnalyticsSetting enum

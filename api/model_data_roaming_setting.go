@@ -20,8 +20,8 @@ type DataRoamingSetting string
 
 // List of DataRoamingSetting
 const (
-	ENABLE_DATA_ROAMING DataRoamingSetting = "ENABLE_DATA_ROAMING"
-	DISABLE_DATA_ROAMING DataRoamingSetting = "DISABLE_DATA_ROAMING"
+	DATAROAMINGSETTING_ENABLE_DATA_ROAMING DataRoamingSetting = "ENABLE_DATA_ROAMING"
+	DATAROAMINGSETTING_DISABLE_DATA_ROAMING DataRoamingSetting = "DISABLE_DATA_ROAMING"
 )
 
 // All allowed values of DataRoamingSetting enum

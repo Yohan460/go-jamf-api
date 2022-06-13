@@ -20,8 +20,8 @@ type PersonalHotspotSetting string
 
 // List of PersonalHotspotSetting
 const (
-	ENABLE_PERSONAL_HOTSPOT PersonalHotspotSetting = "ENABLE_PERSONAL_HOTSPOT"
-	DISABLE_PERSONAL_HOTSPOT PersonalHotspotSetting = "DISABLE_PERSONAL_HOTSPOT"
+	PERSONALHOTSPOTSETTING_ENABLE_PERSONAL_HOTSPOT PersonalHotspotSetting = "ENABLE_PERSONAL_HOTSPOT"
+	PERSONALHOTSPOTSETTING_DISABLE_PERSONAL_HOTSPOT PersonalHotspotSetting = "DISABLE_PERSONAL_HOTSPOT"
 )
 
 // All allowed values of PersonalHotspotSetting enum
