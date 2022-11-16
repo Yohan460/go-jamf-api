@@ -50,13 +50,13 @@ func (c *Client) GetCategory(id string) (*Category, error) {
 	var out *Category
 	uri := fmt.Sprintf("%s/%s", uriCategories, id)
 
-	err := c.doRequest("GET", uri, nil, nil, &out)
+	err := c.DoRequest("GET", uri, nil, nil, &out)
 	return out, err
 }
 
 func (c *Client) GetCategories() (*ResponseCategories, error) {
 	var out *ResponseCategories
-	err := c.doRequest("GET", uriCategories, nil, nil, &out)
+	err := c.DoRequest("GET", uriCategories, nil, nil, &out)
 	return out, err
 }
 
@@ -71,7 +71,7 @@ func (c *Client) CreateCategory(name *string, priority *int) (*Category, error) 
 
 	var out *Category
 
-	err := c.doRequest("POST", uriCategories, in, nil, &out)
+	err := c.DoRequest("POST", uriCategories, in, nil, &out)
 	return out, err
 }
 
@@ -87,7 +87,7 @@ func (c *Client) UpdateCategory(d *Category) (*Category, error) {
 		Priority: d.Priority,
 	}
 
-	err := c.doRequest("PUT", uri, in, nil, &out)
+	err := c.DoRequest("PUT", uri, in, nil, &out)
 	return out, err
 }
 
@@ -98,5 +98,5 @@ func (c *Client) DeleteCategory(name string) error {
 	}
 
 	uri := fmt.Sprintf("%s/%s", uriCategories, id)
-	return c.doRequest("DELETE", uri, nil, nil, nil)
+	return c.DoRequest("DELETE", uri, nil, nil, nil)
 }
