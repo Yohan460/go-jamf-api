@@ -56,7 +56,7 @@ func (e *errorInfo) Body() string {
 }
 
 // doJsonRequest ... A method to send a request to the jamf api
-func (c *Client) doRequest(method, api string, reqbody interface{}, params *url.Values, out interface{}) error {
+func (c *Client) DoRequest(method, api string, reqbody interface{}, params *url.Values, out interface{}) error {
 	req, err := c.createRequest(method, api, params, reqbody)
 	if err != nil {
 		return err

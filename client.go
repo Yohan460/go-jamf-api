@@ -59,7 +59,7 @@ func (c *Client) refreshAuthToken() error {
 	c.token = nil
 
 	var out *responseAuthToken
-	if err := c.doRequest("POST", uriAuthToken, nil, nil, &out); err != nil {
+	if err := c.DoRequest("POST", uriAuthToken, nil, nil, &out); err != nil {
 		return err
 	}
 	c.token = out.Token

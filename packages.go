@@ -61,14 +61,14 @@ func (c *Client) GetPackageByName(name string) (*Package, error) {
 func (c *Client) GetPackage(id int) (*Package, error) {
 	var out *Package
 	uri := fmt.Sprintf("%s/id/%v", uriPackages, id)
-	err := c.doRequest("GET", uri, nil, nil, &out)
+	err := c.DoRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
 
 func (c *Client) GetPackages() (*PackageListResponse, error) {
 	out := &PackageListResponse{}
-	err := c.doRequest("GET", uriPackages, nil, nil, out)
+	err := c.DoRequest("GET", uriPackages, nil, nil, out)
 
 	return out, err
 }
@@ -98,7 +98,7 @@ func (c *Client) CreatePackage(d *Package) (int, error) {
 		Package: d,
 	}
 
-	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriPackages), reqBody, nil, res)
+	err := c.DoRequest("POST", fmt.Sprintf("%s/id/0", uriPackages), reqBody, nil, res)
 	return res.ID, err
 }
 
@@ -117,7 +117,7 @@ func (c *Client) UpdatePackage(d *Package) (int, error) {
 		Package: d,
 	}
 
-	err := c.doRequest("PUT", uri, reqBody, nil, res)
+	err := c.DoRequest("PUT", uri, reqBody, nil, res)
 
 	return res.ID, err
 }
@@ -126,7 +126,7 @@ func (c *Client) DeletePackage(id int) (int, error) {
 
 	group := &Package{}
 	uri := fmt.Sprintf("%s/id/%v", uriPackages, id)
-	err := c.doRequest("DELETE", uri, nil, nil, group)
+	err := c.DoRequest("DELETE", uri, nil, nil, group)
 
 	return group.ID, err
 }

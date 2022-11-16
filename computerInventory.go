@@ -520,7 +520,7 @@ func (c *Client) GetComputerInventories(query *ComputerInventoriesQuery) (*Compu
 			additionalHeaders.Add("filter", query.Filter)
 		}
 	}
-	err := c.doRequest("GET", uriComputerInventory, nil, &additionalHeaders, &out)
+	err := c.DoRequest("GET", uriComputerInventory, nil, &additionalHeaders, &out)
 	return out, err
 }
 
@@ -531,7 +531,7 @@ func (c *Client) GetComputerInventoryByID(id string, sections ...ComputerInvento
 	for _, section := range sections {
 		additionalHeaders.Add("section", string(section))
 	}
-	err := c.doRequest("GET", uri, nil, &additionalHeaders, &out)
+	err := c.DoRequest("GET", uri, nil, &additionalHeaders, &out)
 	return out, err
 }
 
@@ -539,20 +539,20 @@ func (c *Client) DeleteComputerInventoryByID(id string) error {
 	var out *ComputerInventory
 	uri := fmt.Sprintf("%s/%v", uriComputerInventoryDetail, id)
 	additionalHeaders := url.Values{}
-	err := c.doRequest("DELETE", uri, nil, &additionalHeaders, &out)
+	err := c.DoRequest("DELETE", uri, nil, &additionalHeaders, &out)
 	return err
 }
 
 func (c *Client) GetComputerInventoryDetailByID(id string) (*ComputerInventory, error) {
 	var out *ComputerInventory
 	uri := fmt.Sprintf("%s/%v", uriComputerInventoryDetail, id)
-	err := c.doRequest("GET", uri, nil, nil, &out)
+	err := c.DoRequest("GET", uri, nil, nil, &out)
 	return out, err
 }
 
 func (c *Client) UpdateComputerInventoryDetailByID(id string, computer ComputerInventory) (*ComputerInventory, error) {
 	var out *ComputerInventory
 	uri := fmt.Sprintf("%s/%v", uriComputerInventoryDetail, id)
-	err := c.doRequest("PATCH", uri, computer, nil, &out)
+	err := c.DoRequest("PATCH", uri, computer, nil, &out)
 	return out, err
 }

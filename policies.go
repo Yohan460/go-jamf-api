@@ -214,14 +214,14 @@ func (c *Client) GetPolicyByName(name string) (*Policy, error) {
 func (c *Client) GetPolicy(id int) (*Policy, error) {
 	var out *Policy
 	uri := fmt.Sprintf("%s/id/%v", uriPolicys, id)
-	err := c.doRequest("GET", uri, nil, nil, &out)
+	err := c.DoRequest("GET", uri, nil, nil, &out)
 
 	return out, err
 }
 
 func (c *Client) GetPolicies() (*PolicyListResponse, error) {
 	out := &PolicyListResponse{}
-	err := c.doRequest("GET", uriPolicys, nil, nil, out)
+	err := c.DoRequest("GET", uriPolicys, nil, nil, out)
 
 	return out, err
 }
@@ -276,7 +276,7 @@ func (c *Client) CreatePolicy(d *Policy) (int, error) {
 		Policy: d,
 	}
 
-	err := c.doRequest("POST", fmt.Sprintf("%s/id/0", uriPolicys), reqBody, nil, res)
+	err := c.DoRequest("POST", fmt.Sprintf("%s/id/0", uriPolicys), reqBody, nil, res)
 	return res.ID, err
 }
 
@@ -291,7 +291,7 @@ func (c *Client) UpdatePolicy(d *Policy) (int, error) {
 		Policy: d,
 	}
 
-	err := c.doRequest("PUT", uri, reqBody, nil, res)
+	err := c.DoRequest("PUT", uri, reqBody, nil, res)
 
 	return res.ID, err
 }
@@ -300,7 +300,7 @@ func (c *Client) DeletePolicy(id int) (int, error) {
 
 	policy := &Policy{}
 	uri := fmt.Sprintf("%s/id/%v", uriPolicys, id)
-	err := c.doRequest("DELETE", uri, nil, nil, policy)
+	err := c.DoRequest("DELETE", uri, nil, nil, policy)
 
 	return policy.General.ID, err
 }
