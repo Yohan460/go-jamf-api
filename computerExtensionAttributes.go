@@ -4,7 +4,6 @@ import "fmt"
 
 const uriComputerExtensionAttributes = "/JSSResource/computerextensionattributes"
 
-// TODO: omitempty not emptying struct
 type ComputerExtensionAttributeInputType struct {
 	Type     string   `xml:"type"`
 	Platform string   `xml:"platform,omitempty"`
@@ -98,17 +97,3 @@ func (c *Client) DeleteComputerExtensionAttribute(id int) (int, error) {
 
 	return attribute.Id, err
 }
-
-// Id
-// Name
-// Enabled
-// Description
-// DataType         string, integer, date
-// InputType
-// InventoryDisplay General, Hardware, Operating System, User and Location, Purchasing, Extension Attributes
-// ReconDisplay     Computer, User and Location, Purchasing, Extension Attributes
-
-// Type     script, text field, popup menu
-// Platform mac, windows
-// Script
-// Choices
