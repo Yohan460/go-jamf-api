@@ -15,7 +15,7 @@ type ComputerExtensionAttribute struct {
 	Id               int                                 `xml:"id"`
 	Name             string                              `xml:"name"`
 	Enabled          bool                                `xml:"enabled,omitempty"`
-	Description      string                              `xml:"description,omitempty"`
+	Description      string                              `xml:"description"`
 	DataType         string                              `xml:"data_type"`
 	InputType        ComputerExtensionAttributeInputType `xml:"input_type,omitempty"`
 	InventoryDisplay string                              `xml:"inventory_display,omitempty"`
