@@ -45,21 +45,14 @@ type MobileDeviceGroupDeviceEntry struct {
 }
 
 type MobileDeviceGroupCriterion struct {
-	Name         string                 `xml:"name"`
-	Priority     int                    `xml:"priority"`
-	AndOr        MobileDeviceGroupAndOr `xml:"and_or"`
-	SearchType   string                 `xml:"search_type"`
-	SearchValue  string                 `xml:"value"`
-	OpeningParen bool                   `xml:"opening_paren"`
-	ClosingParen bool                   `xml:"closing_paren"`
+	Name         string           `xml:"name"`
+	Priority     int              `xml:"priority"`
+	AndOr        DeviceGroupAndOr `xml:"and_or"`
+	SearchType   string           `xml:"search_type"`
+	SearchValue  string           `xml:"value"`
+	OpeningParen bool             `xml:"opening_paren"`
+	ClosingParen bool             `xml:"closing_paren"`
 }
-
-type MobileDeviceGroupAndOr string
-
-const (
-	And MobileDeviceGroupAndOr = "and"
-	Or  MobileDeviceGroupAndOr = "or"
-)
 
 func (c *Client) GetMobileDeviceGroupIdByName(name string) (int, error) {
 	var id int
