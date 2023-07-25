@@ -45,20 +45,20 @@ type ComputerGroupComputerEntry struct {
 }
 
 type ComputerGroupCriterion struct {
-	Name         string             `xml:"name"`
-	Priority     int                `xml:"priority"`
-	AndOr        ComputerGroupAndOr `xml:"and_or"`
-	SearchType   string             `xml:"search_type"`
-	SearchValue  string             `xml:"value"`
-	OpeningParen bool               `xml:"opening_paren"`
-	ClosingParen bool               `xml:"closing_paren"`
+	Name         string           `xml:"name"`
+	Priority     int              `xml:"priority"`
+	AndOr        DeviceGroupAndOr `xml:"and_or"`
+	SearchType   string           `xml:"search_type"`
+	SearchValue  string           `xml:"value"`
+	OpeningParen bool             `xml:"opening_paren"`
+	ClosingParen bool             `xml:"closing_paren"`
 }
 
-type ComputerGroupAndOr string
+type DeviceGroupAndOr string
 
 const (
-	And ComputerGroupAndOr = "and"
-	Or  ComputerGroupAndOr = "or"
+	And DeviceGroupAndOr = "and"
+	Or  DeviceGroupAndOr = "or"
 )
 
 func (c *Client) GetComputerGroupIdByName(name string) (int, error) {
