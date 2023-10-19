@@ -5,13 +5,13 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
-	"github.com/google/go-querystring/query"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"regexp"
 	"strings"
+
+	"github.com/google/go-querystring/query"
 
 	"github.com/cenkalti/backoff"
 )
@@ -76,7 +76,7 @@ func (c *Client) DoRequest(method, api string, reqbody interface{}, params *url.
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			return err
 		}
@@ -85,7 +85,7 @@ func (c *Client) DoRequest(method, api string, reqbody interface{}, params *url.
 		return newError(resp.StatusCode, api, out)
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
@@ -121,7 +121,7 @@ func (c *Client) doRequestWithRetries(req *http.Request) (*http.Response, error)
 	bo.MaxElapsedTime = c.HttpRetryTimeout
 
 	if req.Body != nil {
-		body, err = ioutil.ReadAll(req.Body)
+		body, err = io.ReadAll(req.Body)
 		if err != nil {
 			return resp, err
 		}
@@ -129,7 +129,7 @@ func (c *Client) doRequestWithRetries(req *http.Request) (*http.Response, error)
 
 	boReq := func() error {
 		if body != nil {
-			req.Body = ioutil.NopCloser(bytes.NewReader(body))
+			req.Body = io.NopCloser(bytes.NewReader(body))
 		}
 
 		resp, err = c.HttpClient.Do(req)
