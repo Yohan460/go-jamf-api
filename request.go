@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"github.com/google/go-querystring/query"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -169,6 +170,12 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 				return nil, err
 			}
 			bodyReader = bytes.NewReader(b)
+		} else if strings.Contains(api, "api/oauth/token") {
+			b, err := query.Values(reqbody)
+			if err != nil {
+				return nil, err
+			}
+			bodyReader = strings.NewReader(b.Encode())
 		} else {
 			b, err := json.Marshal(reqbody)
 			if err != nil {
@@ -194,15 +201,16 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 			return req, err
 		}
 		req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", *c.token))
-	} else {
-
-		// Handle inital token setup in client setup
+	} else if c.clientId == "" {
+		// Handle initial token setup in client setup
 		req.SetBasicAuth(c.username, c.password)
 	}
 
 	// Set the necessary headers
 	if strings.Contains(api, "JSSResource") {
 		req.Header.Add("Content-Type", "application/xml")
+	} else if strings.Contains(api, "api/oauth/token") {
+		req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	} else {
 		req.Header.Add("Content-Type", "application/json")
 	}
