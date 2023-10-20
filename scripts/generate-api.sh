@@ -48,10 +48,16 @@ if [[ "${returncode}" != "0" ]]; then
 fi
 
 # Patch the generic object generation
-# echo "Patching generic object generation"
-# find ./api -type f -name "*.go" -exec sed -i '' 's/MapmapOfStringinterface\{\}/Generic/g' {} \;
-# returncode=$?
-# if [[ "${returncode}" != "0" ]]; then
-#     echo "Failed to patch generic object generation"
-#     exit 1
-# fi
+echo "Patching generic object generation"
+find ./api -type f -name "*.go" -exec sed -i '' 's/MapmapOfStringinterface[\{][\}]/Generic/g' {} \;;
+returncode=$?
+if [[ "${returncode}" != "0" ]]; then
+    echo "Failed to patch generic object generation"
+    exit 1
+fi
+
+# Patch reserved go file name suffixes
+echo "Patching reserved go file name suffixes"
+for file in api/*ios.go; do
+    mv "$file" "${file%ios.go}ios_.go"
+done

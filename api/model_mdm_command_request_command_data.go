@@ -25,7 +25,7 @@ type MdmCommandRequestCommandData struct {
 	SetAutoAdminPasswordCommand *SetAutoAdminPasswordCommand
 	SetRecoveryLockCommand *SetRecoveryLockCommand
 	SettingsCommand *SettingsCommand
-	MapmapOfStringinterface{} *map[string]interface{}
+	Generic *map[string]interface{}
 }
 
 // DeclarativeManagementCommandAsMdmCommandRequestCommandData is a convenience function that returns DeclarativeManagementCommand wrapped in MdmCommandRequestCommandData
@@ -85,9 +85,9 @@ func SettingsCommandAsMdmCommandRequestCommandData(v *SettingsCommand) MdmComman
 }
 
 // map[string]interface{}AsMdmCommandRequestCommandData is a convenience function that returns map[string]interface{} wrapped in MdmCommandRequestCommandData
-func MapmapOfStringinterface{}AsMdmCommandRequestCommandData(v *map[string]interface{}) MdmCommandRequestCommandData {
+func GenericAsMdmCommandRequestCommandData(v *map[string]interface{}) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
-		MapmapOfStringinterface{}: v,
+		Generic: v,
 	}
 }
 
@@ -200,17 +200,17 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.SettingsCommand = nil
 	}
 
-	// try to unmarshal data into MapmapOfStringinterface{}
-	err = newStrictDecoder(data).Decode(&dst.MapmapOfStringinterface{})
+	// try to unmarshal data into Generic
+	err = newStrictDecoder(data).Decode(&dst.Generic)
 	if err == nil {
-		jsonMapmapOfStringinterface{}, _ := json.Marshal(dst.MapmapOfStringinterface{})
-		if string(jsonMapmapOfStringinterface{}) == "{}" { // empty struct
-			dst.MapmapOfStringinterface{} = nil
+		jsonGeneric, _ := json.Marshal(dst.Generic)
+		if string(jsonGeneric) == "{}" { // empty struct
+			dst.Generic = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.MapmapOfStringinterface{} = nil
+		dst.Generic = nil
 	}
 
 	if match > 1 { // more than 1 match
@@ -223,7 +223,7 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.SetAutoAdminPasswordCommand = nil
 		dst.SetRecoveryLockCommand = nil
 		dst.SettingsCommand = nil
-		dst.MapmapOfStringinterface{} = nil
+		dst.Generic = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(MdmCommandRequestCommandData)")
 	} else if match == 1 {
@@ -267,8 +267,8 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.SettingsCommand)
 	}
 
-	if src.MapmapOfStringinterface{} != nil {
-		return json.Marshal(&src.MapmapOfStringinterface{})
+	if src.Generic != nil {
+		return json.Marshal(&src.Generic)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -311,8 +311,8 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.SettingsCommand
 	}
 
-	if obj.MapmapOfStringinterface{} != nil {
-		return obj.MapmapOfStringinterface{}
+	if obj.Generic != nil {
+		return obj.Generic
 	}
 
 	// all schemas are nil
