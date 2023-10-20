@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SsoMetadataUrl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SsoMetadataUrl{}
+
 // SsoMetadataUrl struct for SsoMetadataUrl
 type SsoMetadataUrl struct {
 	IdpUrl string `json:"idpUrl"`
@@ -62,11 +65,17 @@ func (o *SsoMetadataUrl) SetIdpUrl(v string) {
 }
 
 func (o SsoMetadataUrl) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["idpUrl"] = o.IdpUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SsoMetadataUrl) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["idpUrl"] = o.IdpUrl
+	return toSerialize, nil
 }
 
 type NullableSsoMetadataUrl struct {

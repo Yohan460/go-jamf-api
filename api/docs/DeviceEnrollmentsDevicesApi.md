@@ -1,10 +1,10 @@
-# \DeviceEnrollmentsDevicesApi
+# \DeviceEnrollmentsDevicesAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1DeviceEnrollmentsIdDevicesGet**](DeviceEnrollmentsDevicesApi.md#V1DeviceEnrollmentsIdDevicesGet) | **Get** /v1/device-enrollments/{id}/devices | Retrieve a list of Devices assigned to the supplied id 
+[**V1DeviceEnrollmentsIdDevicesGet**](DeviceEnrollmentsDevicesAPI.md#V1DeviceEnrollmentsIdDevicesGet) | **Get** /v1/device-enrollments/{id}/devices | Retrieve a list of Devices assigned to the supplied id 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsDevicesApi.V1DeviceEnrollmentsIdDevicesGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsDevicesApi.V1DeviceEnrollmentsIdDevicesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdDevicesGet`: DeviceEnrollmentDeviceSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsDevicesApi.V1DeviceEnrollmentsIdDevicesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet`: %v\n", resp)
 }
 ```
 

@@ -4,18 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Language** | **string** |  | 
+**Language** | **string** | Language codes supported by Jamf Pro | [default to "en"]
 **DateFormat** | **string** |  | 
 **Timezone** | **string** |  | 
 **DisableRelativeDates** | **bool** |  | 
 **DisablePageLeaveCheck** | **bool** |  | 
 **DisableTablePagination** | **bool** |  | 
+**DisableShortcutsTooltips** | **bool** |  | 
+**ConfigProfilesSortingMethod** | **string** |  | 
 
 ## Methods
 
 ### NewAccountPreferencesV4
 
-`func NewAccountPreferencesV4(language string, dateFormat string, timezone string, disableRelativeDates bool, disablePageLeaveCheck bool, disableTablePagination bool, ) *AccountPreferencesV4`
+`func NewAccountPreferencesV4(language string, dateFormat string, timezone string, disableRelativeDates bool, disablePageLeaveCheck bool, disableTablePagination bool, disableShortcutsTooltips bool, configProfilesSortingMethod string, ) *AccountPreferencesV4`
 
 NewAccountPreferencesV4 instantiates a new AccountPreferencesV4 object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +150,46 @@ and a boolean to check if the value has been set.
 `func (o *AccountPreferencesV4) SetDisableTablePagination(v bool)`
 
 SetDisableTablePagination sets DisableTablePagination field to given value.
+
+
+### GetDisableShortcutsTooltips
+
+`func (o *AccountPreferencesV4) GetDisableShortcutsTooltips() bool`
+
+GetDisableShortcutsTooltips returns the DisableShortcutsTooltips field if non-nil, zero value otherwise.
+
+### GetDisableShortcutsTooltipsOk
+
+`func (o *AccountPreferencesV4) GetDisableShortcutsTooltipsOk() (*bool, bool)`
+
+GetDisableShortcutsTooltipsOk returns a tuple with the DisableShortcutsTooltips field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisableShortcutsTooltips
+
+`func (o *AccountPreferencesV4) SetDisableShortcutsTooltips(v bool)`
+
+SetDisableShortcutsTooltips sets DisableShortcutsTooltips field to given value.
+
+
+### GetConfigProfilesSortingMethod
+
+`func (o *AccountPreferencesV4) GetConfigProfilesSortingMethod() string`
+
+GetConfigProfilesSortingMethod returns the ConfigProfilesSortingMethod field if non-nil, zero value otherwise.
+
+### GetConfigProfilesSortingMethodOk
+
+`func (o *AccountPreferencesV4) GetConfigProfilesSortingMethodOk() (*string, bool)`
+
+GetConfigProfilesSortingMethodOk returns a tuple with the ConfigProfilesSortingMethod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigProfilesSortingMethod
+
+`func (o *AccountPreferencesV4) SetConfigProfilesSortingMethod(v string)`
+
+SetConfigProfilesSortingMethod sets ConfigProfilesSortingMethod field to given value.
 
 
 

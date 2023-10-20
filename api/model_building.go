@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Building type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Building{}
+
 // Building struct for Building
 type Building struct {
 	Id *string `json:"id,omitempty"`
@@ -46,7 +49,7 @@ func NewBuildingWithDefaults() *Building {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Building) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *Building) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Building) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +67,7 @@ func (o *Building) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Building) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -102,7 +105,7 @@ func (o *Building) SetName(v string) {
 
 // GetStreetAddress1 returns the StreetAddress1 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetStreetAddress1() string {
-	if o == nil || o.StreetAddress1.Get() == nil {
+	if o == nil || IsNil(o.StreetAddress1.Get()) {
 		var ret string
 		return ret
 	}
@@ -144,7 +147,7 @@ func (o *Building) UnsetStreetAddress1() {
 
 // GetStreetAddress2 returns the StreetAddress2 field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetStreetAddress2() string {
-	if o == nil || o.StreetAddress2.Get() == nil {
+	if o == nil || IsNil(o.StreetAddress2.Get()) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *Building) UnsetStreetAddress2() {
 
 // GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetCity() string {
-	if o == nil || o.City.Get() == nil {
+	if o == nil || IsNil(o.City.Get()) {
 		var ret string
 		return ret
 	}
@@ -228,7 +231,7 @@ func (o *Building) UnsetCity() {
 
 // GetStateProvince returns the StateProvince field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetStateProvince() string {
-	if o == nil || o.StateProvince.Get() == nil {
+	if o == nil || IsNil(o.StateProvince.Get()) {
 		var ret string
 		return ret
 	}
@@ -270,7 +273,7 @@ func (o *Building) UnsetStateProvince() {
 
 // GetZipPostalCode returns the ZipPostalCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetZipPostalCode() string {
-	if o == nil || o.ZipPostalCode.Get() == nil {
+	if o == nil || IsNil(o.ZipPostalCode.Get()) {
 		var ret string
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *Building) UnsetZipPostalCode() {
 
 // GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Building) GetCountry() string {
-	if o == nil || o.Country.Get() == nil {
+	if o == nil || IsNil(o.Country.Get()) {
 		var ret string
 		return ret
 	}
@@ -353,13 +356,19 @@ func (o *Building) UnsetCountry() {
 }
 
 func (o Building) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Building) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if o.StreetAddress1.IsSet() {
 		toSerialize["streetAddress1"] = o.StreetAddress1.Get()
 	}
@@ -378,7 +387,7 @@ func (o Building) MarshalJSON() ([]byte, error) {
 	if o.Country.IsSet() {
 		toSerialize["country"] = o.Country.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableBuilding struct {

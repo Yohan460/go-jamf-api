@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerAttachment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerAttachment{}
+
 // ComputerAttachment struct for ComputerAttachment
 type ComputerAttachment struct {
 	Id *string `json:"id,omitempty"`
@@ -42,7 +45,7 @@ func NewComputerAttachmentWithDefaults() *ComputerAttachment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComputerAttachment) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ComputerAttachment) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerAttachment) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *ComputerAttachment) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ComputerAttachment) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ComputerAttachment) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerAttachment) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ComputerAttachment) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerAttachment) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -92,7 +95,7 @@ func (o *ComputerAttachment) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerAttachment) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ComputerAttachment) SetName(v string) {
 
 // GetFileType returns the FileType field value if set, zero value otherwise.
 func (o *ComputerAttachment) GetFileType() string {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ComputerAttachment) GetFileType() string {
 // GetFileTypeOk returns a tuple with the FileType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerAttachment) GetFileTypeOk() (*string, bool) {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		return nil, false
 	}
 	return o.FileType, true
@@ -124,7 +127,7 @@ func (o *ComputerAttachment) GetFileTypeOk() (*string, bool) {
 
 // HasFileType returns a boolean if a field has been set.
 func (o *ComputerAttachment) HasFileType() bool {
-	if o != nil && o.FileType != nil {
+	if o != nil && !IsNil(o.FileType) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ComputerAttachment) SetFileType(v string) {
 
 // GetSizeBytes returns the SizeBytes field value if set, zero value otherwise.
 func (o *ComputerAttachment) GetSizeBytes() int64 {
-	if o == nil || o.SizeBytes == nil {
+	if o == nil || IsNil(o.SizeBytes) {
 		var ret int64
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ComputerAttachment) GetSizeBytes() int64 {
 // GetSizeBytesOk returns a tuple with the SizeBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerAttachment) GetSizeBytesOk() (*int64, bool) {
-	if o == nil || o.SizeBytes == nil {
+	if o == nil || IsNil(o.SizeBytes) {
 		return nil, false
 	}
 	return o.SizeBytes, true
@@ -156,7 +159,7 @@ func (o *ComputerAttachment) GetSizeBytesOk() (*int64, bool) {
 
 // HasSizeBytes returns a boolean if a field has been set.
 func (o *ComputerAttachment) HasSizeBytes() bool {
-	if o != nil && o.SizeBytes != nil {
+	if o != nil && !IsNil(o.SizeBytes) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *ComputerAttachment) SetSizeBytes(v int64) {
 }
 
 func (o ComputerAttachment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FileType != nil {
-		toSerialize["fileType"] = o.FileType
-	}
-	if o.SizeBytes != nil {
-		toSerialize["sizeBytes"] = o.SizeBytes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerAttachment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FileType) {
+		toSerialize["fileType"] = o.FileType
+	}
+	if !IsNil(o.SizeBytes) {
+		toSerialize["sizeBytes"] = o.SizeBytes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerAttachment struct {

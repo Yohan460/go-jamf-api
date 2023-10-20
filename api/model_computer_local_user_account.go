@@ -14,9 +14,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerLocalUserAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerLocalUserAccount{}
+
 // ComputerLocalUserAccount struct for ComputerLocalUserAccount
 type ComputerLocalUserAccount struct {
 	Uid *string `json:"uid,omitempty"`
+	UserGuid *string `json:"userGuid,omitempty"`
 	Username *string `json:"username,omitempty"`
 	FullName *string `json:"fullName,omitempty"`
 	Admin *bool `json:"admin,omitempty"`
@@ -54,7 +58,7 @@ func NewComputerLocalUserAccountWithDefaults() *ComputerLocalUserAccount {
 
 // GetUid returns the Uid field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetUid() string {
-	if o == nil || o.Uid == nil {
+	if o == nil || IsNil(o.Uid) {
 		var ret string
 		return ret
 	}
@@ -64,7 +68,7 @@ func (o *ComputerLocalUserAccount) GetUid() string {
 // GetUidOk returns a tuple with the Uid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetUidOk() (*string, bool) {
-	if o == nil || o.Uid == nil {
+	if o == nil || IsNil(o.Uid) {
 		return nil, false
 	}
 	return o.Uid, true
@@ -72,7 +76,7 @@ func (o *ComputerLocalUserAccount) GetUidOk() (*string, bool) {
 
 // HasUid returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasUid() bool {
-	if o != nil && o.Uid != nil {
+	if o != nil && !IsNil(o.Uid) {
 		return true
 	}
 
@@ -84,9 +88,41 @@ func (o *ComputerLocalUserAccount) SetUid(v string) {
 	o.Uid = &v
 }
 
+// GetUserGuid returns the UserGuid field value if set, zero value otherwise.
+func (o *ComputerLocalUserAccount) GetUserGuid() string {
+	if o == nil || IsNil(o.UserGuid) {
+		var ret string
+		return ret
+	}
+	return *o.UserGuid
+}
+
+// GetUserGuidOk returns a tuple with the UserGuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerLocalUserAccount) GetUserGuidOk() (*string, bool) {
+	if o == nil || IsNil(o.UserGuid) {
+		return nil, false
+	}
+	return o.UserGuid, true
+}
+
+// HasUserGuid returns a boolean if a field has been set.
+func (o *ComputerLocalUserAccount) HasUserGuid() bool {
+	if o != nil && !IsNil(o.UserGuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserGuid gets a reference to the given string and assigns it to the UserGuid field.
+func (o *ComputerLocalUserAccount) SetUserGuid(v string) {
+	o.UserGuid = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -96,7 +132,7 @@ func (o *ComputerLocalUserAccount) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -104,7 +140,7 @@ func (o *ComputerLocalUserAccount) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -118,7 +154,7 @@ func (o *ComputerLocalUserAccount) SetUsername(v string) {
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetFullName() string {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
@@ -128,7 +164,7 @@ func (o *ComputerLocalUserAccount) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetFullNameOk() (*string, bool) {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
 	return o.FullName, true
@@ -136,7 +172,7 @@ func (o *ComputerLocalUserAccount) GetFullNameOk() (*string, bool) {
 
 // HasFullName returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasFullName() bool {
-	if o != nil && o.FullName != nil {
+	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
 
@@ -150,7 +186,7 @@ func (o *ComputerLocalUserAccount) SetFullName(v string) {
 
 // GetAdmin returns the Admin field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetAdmin() bool {
-	if o == nil || o.Admin == nil {
+	if o == nil || IsNil(o.Admin) {
 		var ret bool
 		return ret
 	}
@@ -160,7 +196,7 @@ func (o *ComputerLocalUserAccount) GetAdmin() bool {
 // GetAdminOk returns a tuple with the Admin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetAdminOk() (*bool, bool) {
-	if o == nil || o.Admin == nil {
+	if o == nil || IsNil(o.Admin) {
 		return nil, false
 	}
 	return o.Admin, true
@@ -168,7 +204,7 @@ func (o *ComputerLocalUserAccount) GetAdminOk() (*bool, bool) {
 
 // HasAdmin returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasAdmin() bool {
-	if o != nil && o.Admin != nil {
+	if o != nil && !IsNil(o.Admin) {
 		return true
 	}
 
@@ -182,7 +218,7 @@ func (o *ComputerLocalUserAccount) SetAdmin(v bool) {
 
 // GetHomeDirectory returns the HomeDirectory field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetHomeDirectory() string {
-	if o == nil || o.HomeDirectory == nil {
+	if o == nil || IsNil(o.HomeDirectory) {
 		var ret string
 		return ret
 	}
@@ -192,7 +228,7 @@ func (o *ComputerLocalUserAccount) GetHomeDirectory() string {
 // GetHomeDirectoryOk returns a tuple with the HomeDirectory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetHomeDirectoryOk() (*string, bool) {
-	if o == nil || o.HomeDirectory == nil {
+	if o == nil || IsNil(o.HomeDirectory) {
 		return nil, false
 	}
 	return o.HomeDirectory, true
@@ -200,7 +236,7 @@ func (o *ComputerLocalUserAccount) GetHomeDirectoryOk() (*string, bool) {
 
 // HasHomeDirectory returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasHomeDirectory() bool {
-	if o != nil && o.HomeDirectory != nil {
+	if o != nil && !IsNil(o.HomeDirectory) {
 		return true
 	}
 
@@ -214,7 +250,7 @@ func (o *ComputerLocalUserAccount) SetHomeDirectory(v string) {
 
 // GetHomeDirectorySizeMb returns the HomeDirectorySizeMb field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetHomeDirectorySizeMb() int64 {
-	if o == nil || o.HomeDirectorySizeMb == nil {
+	if o == nil || IsNil(o.HomeDirectorySizeMb) {
 		var ret int64
 		return ret
 	}
@@ -224,7 +260,7 @@ func (o *ComputerLocalUserAccount) GetHomeDirectorySizeMb() int64 {
 // GetHomeDirectorySizeMbOk returns a tuple with the HomeDirectorySizeMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetHomeDirectorySizeMbOk() (*int64, bool) {
-	if o == nil || o.HomeDirectorySizeMb == nil {
+	if o == nil || IsNil(o.HomeDirectorySizeMb) {
 		return nil, false
 	}
 	return o.HomeDirectorySizeMb, true
@@ -232,7 +268,7 @@ func (o *ComputerLocalUserAccount) GetHomeDirectorySizeMbOk() (*int64, bool) {
 
 // HasHomeDirectorySizeMb returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasHomeDirectorySizeMb() bool {
-	if o != nil && o.HomeDirectorySizeMb != nil {
+	if o != nil && !IsNil(o.HomeDirectorySizeMb) {
 		return true
 	}
 
@@ -246,7 +282,7 @@ func (o *ComputerLocalUserAccount) SetHomeDirectorySizeMb(v int64) {
 
 // GetFileVault2Enabled returns the FileVault2Enabled field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetFileVault2Enabled() bool {
-	if o == nil || o.FileVault2Enabled == nil {
+	if o == nil || IsNil(o.FileVault2Enabled) {
 		var ret bool
 		return ret
 	}
@@ -256,7 +292,7 @@ func (o *ComputerLocalUserAccount) GetFileVault2Enabled() bool {
 // GetFileVault2EnabledOk returns a tuple with the FileVault2Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetFileVault2EnabledOk() (*bool, bool) {
-	if o == nil || o.FileVault2Enabled == nil {
+	if o == nil || IsNil(o.FileVault2Enabled) {
 		return nil, false
 	}
 	return o.FileVault2Enabled, true
@@ -264,7 +300,7 @@ func (o *ComputerLocalUserAccount) GetFileVault2EnabledOk() (*bool, bool) {
 
 // HasFileVault2Enabled returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasFileVault2Enabled() bool {
-	if o != nil && o.FileVault2Enabled != nil {
+	if o != nil && !IsNil(o.FileVault2Enabled) {
 		return true
 	}
 
@@ -278,7 +314,7 @@ func (o *ComputerLocalUserAccount) SetFileVault2Enabled(v bool) {
 
 // GetUserAccountType returns the UserAccountType field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetUserAccountType() string {
-	if o == nil || o.UserAccountType == nil {
+	if o == nil || IsNil(o.UserAccountType) {
 		var ret string
 		return ret
 	}
@@ -288,7 +324,7 @@ func (o *ComputerLocalUserAccount) GetUserAccountType() string {
 // GetUserAccountTypeOk returns a tuple with the UserAccountType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetUserAccountTypeOk() (*string, bool) {
-	if o == nil || o.UserAccountType == nil {
+	if o == nil || IsNil(o.UserAccountType) {
 		return nil, false
 	}
 	return o.UserAccountType, true
@@ -296,7 +332,7 @@ func (o *ComputerLocalUserAccount) GetUserAccountTypeOk() (*string, bool) {
 
 // HasUserAccountType returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasUserAccountType() bool {
-	if o != nil && o.UserAccountType != nil {
+	if o != nil && !IsNil(o.UserAccountType) {
 		return true
 	}
 
@@ -310,7 +346,7 @@ func (o *ComputerLocalUserAccount) SetUserAccountType(v string) {
 
 // GetPasswordMinLength returns the PasswordMinLength field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetPasswordMinLength() int32 {
-	if o == nil || o.PasswordMinLength == nil {
+	if o == nil || IsNil(o.PasswordMinLength) {
 		var ret int32
 		return ret
 	}
@@ -320,7 +356,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinLength() int32 {
 // GetPasswordMinLengthOk returns a tuple with the PasswordMinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int32, bool) {
-	if o == nil || o.PasswordMinLength == nil {
+	if o == nil || IsNil(o.PasswordMinLength) {
 		return nil, false
 	}
 	return o.PasswordMinLength, true
@@ -328,7 +364,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int32, bool) {
 
 // HasPasswordMinLength returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasPasswordMinLength() bool {
-	if o != nil && o.PasswordMinLength != nil {
+	if o != nil && !IsNil(o.PasswordMinLength) {
 		return true
 	}
 
@@ -342,7 +378,7 @@ func (o *ComputerLocalUserAccount) SetPasswordMinLength(v int32) {
 
 // GetPasswordMaxAge returns the PasswordMaxAge field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int32 {
-	if o == nil || o.PasswordMaxAge == nil {
+	if o == nil || IsNil(o.PasswordMaxAge) {
 		var ret int32
 		return ret
 	}
@@ -352,7 +388,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int32 {
 // GetPasswordMaxAgeOk returns a tuple with the PasswordMaxAge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int32, bool) {
-	if o == nil || o.PasswordMaxAge == nil {
+	if o == nil || IsNil(o.PasswordMaxAge) {
 		return nil, false
 	}
 	return o.PasswordMaxAge, true
@@ -360,7 +396,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int32, bool) {
 
 // HasPasswordMaxAge returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasPasswordMaxAge() bool {
-	if o != nil && o.PasswordMaxAge != nil {
+	if o != nil && !IsNil(o.PasswordMaxAge) {
 		return true
 	}
 
@@ -374,7 +410,7 @@ func (o *ComputerLocalUserAccount) SetPasswordMaxAge(v int32) {
 
 // GetPasswordMinComplexCharacters returns the PasswordMinComplexCharacters field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int32 {
-	if o == nil || o.PasswordMinComplexCharacters == nil {
+	if o == nil || IsNil(o.PasswordMinComplexCharacters) {
 		var ret int32
 		return ret
 	}
@@ -384,7 +420,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int32 {
 // GetPasswordMinComplexCharactersOk returns a tuple with the PasswordMinComplexCharacters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int32, bool) {
-	if o == nil || o.PasswordMinComplexCharacters == nil {
+	if o == nil || IsNil(o.PasswordMinComplexCharacters) {
 		return nil, false
 	}
 	return o.PasswordMinComplexCharacters, true
@@ -392,7 +428,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int32, 
 
 // HasPasswordMinComplexCharacters returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasPasswordMinComplexCharacters() bool {
-	if o != nil && o.PasswordMinComplexCharacters != nil {
+	if o != nil && !IsNil(o.PasswordMinComplexCharacters) {
 		return true
 	}
 
@@ -406,7 +442,7 @@ func (o *ComputerLocalUserAccount) SetPasswordMinComplexCharacters(v int32) {
 
 // GetPasswordHistoryDepth returns the PasswordHistoryDepth field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int32 {
-	if o == nil || o.PasswordHistoryDepth == nil {
+	if o == nil || IsNil(o.PasswordHistoryDepth) {
 		var ret int32
 		return ret
 	}
@@ -416,7 +452,7 @@ func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int32 {
 // GetPasswordHistoryDepthOk returns a tuple with the PasswordHistoryDepth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int32, bool) {
-	if o == nil || o.PasswordHistoryDepth == nil {
+	if o == nil || IsNil(o.PasswordHistoryDepth) {
 		return nil, false
 	}
 	return o.PasswordHistoryDepth, true
@@ -424,7 +460,7 @@ func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int32, bool) {
 
 // HasPasswordHistoryDepth returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasPasswordHistoryDepth() bool {
-	if o != nil && o.PasswordHistoryDepth != nil {
+	if o != nil && !IsNil(o.PasswordHistoryDepth) {
 		return true
 	}
 
@@ -438,7 +474,7 @@ func (o *ComputerLocalUserAccount) SetPasswordHistoryDepth(v int32) {
 
 // GetPasswordRequireAlphanumeric returns the PasswordRequireAlphanumeric field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetPasswordRequireAlphanumeric() bool {
-	if o == nil || o.PasswordRequireAlphanumeric == nil {
+	if o == nil || IsNil(o.PasswordRequireAlphanumeric) {
 		var ret bool
 		return ret
 	}
@@ -448,7 +484,7 @@ func (o *ComputerLocalUserAccount) GetPasswordRequireAlphanumeric() bool {
 // GetPasswordRequireAlphanumericOk returns a tuple with the PasswordRequireAlphanumeric field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetPasswordRequireAlphanumericOk() (*bool, bool) {
-	if o == nil || o.PasswordRequireAlphanumeric == nil {
+	if o == nil || IsNil(o.PasswordRequireAlphanumeric) {
 		return nil, false
 	}
 	return o.PasswordRequireAlphanumeric, true
@@ -456,7 +492,7 @@ func (o *ComputerLocalUserAccount) GetPasswordRequireAlphanumericOk() (*bool, bo
 
 // HasPasswordRequireAlphanumeric returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasPasswordRequireAlphanumeric() bool {
-	if o != nil && o.PasswordRequireAlphanumeric != nil {
+	if o != nil && !IsNil(o.PasswordRequireAlphanumeric) {
 		return true
 	}
 
@@ -470,7 +506,7 @@ func (o *ComputerLocalUserAccount) SetPasswordRequireAlphanumeric(v bool) {
 
 // GetComputerAzureActiveDirectoryId returns the ComputerAzureActiveDirectoryId field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetComputerAzureActiveDirectoryId() string {
-	if o == nil || o.ComputerAzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.ComputerAzureActiveDirectoryId) {
 		var ret string
 		return ret
 	}
@@ -480,7 +516,7 @@ func (o *ComputerLocalUserAccount) GetComputerAzureActiveDirectoryId() string {
 // GetComputerAzureActiveDirectoryIdOk returns a tuple with the ComputerAzureActiveDirectoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetComputerAzureActiveDirectoryIdOk() (*string, bool) {
-	if o == nil || o.ComputerAzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.ComputerAzureActiveDirectoryId) {
 		return nil, false
 	}
 	return o.ComputerAzureActiveDirectoryId, true
@@ -488,7 +524,7 @@ func (o *ComputerLocalUserAccount) GetComputerAzureActiveDirectoryIdOk() (*strin
 
 // HasComputerAzureActiveDirectoryId returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasComputerAzureActiveDirectoryId() bool {
-	if o != nil && o.ComputerAzureActiveDirectoryId != nil {
+	if o != nil && !IsNil(o.ComputerAzureActiveDirectoryId) {
 		return true
 	}
 
@@ -502,7 +538,7 @@ func (o *ComputerLocalUserAccount) SetComputerAzureActiveDirectoryId(v string) {
 
 // GetUserAzureActiveDirectoryId returns the UserAzureActiveDirectoryId field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetUserAzureActiveDirectoryId() string {
-	if o == nil || o.UserAzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.UserAzureActiveDirectoryId) {
 		var ret string
 		return ret
 	}
@@ -512,7 +548,7 @@ func (o *ComputerLocalUserAccount) GetUserAzureActiveDirectoryId() string {
 // GetUserAzureActiveDirectoryIdOk returns a tuple with the UserAzureActiveDirectoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetUserAzureActiveDirectoryIdOk() (*string, bool) {
-	if o == nil || o.UserAzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.UserAzureActiveDirectoryId) {
 		return nil, false
 	}
 	return o.UserAzureActiveDirectoryId, true
@@ -520,7 +556,7 @@ func (o *ComputerLocalUserAccount) GetUserAzureActiveDirectoryIdOk() (*string, b
 
 // HasUserAzureActiveDirectoryId returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasUserAzureActiveDirectoryId() bool {
-	if o != nil && o.UserAzureActiveDirectoryId != nil {
+	if o != nil && !IsNil(o.UserAzureActiveDirectoryId) {
 		return true
 	}
 
@@ -534,7 +570,7 @@ func (o *ComputerLocalUserAccount) SetUserAzureActiveDirectoryId(v string) {
 
 // GetAzureActiveDirectoryId returns the AzureActiveDirectoryId field value if set, zero value otherwise.
 func (o *ComputerLocalUserAccount) GetAzureActiveDirectoryId() string {
-	if o == nil || o.AzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.AzureActiveDirectoryId) {
 		var ret string
 		return ret
 	}
@@ -544,7 +580,7 @@ func (o *ComputerLocalUserAccount) GetAzureActiveDirectoryId() string {
 // GetAzureActiveDirectoryIdOk returns a tuple with the AzureActiveDirectoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocalUserAccount) GetAzureActiveDirectoryIdOk() (*string, bool) {
-	if o == nil || o.AzureActiveDirectoryId == nil {
+	if o == nil || IsNil(o.AzureActiveDirectoryId) {
 		return nil, false
 	}
 	return o.AzureActiveDirectoryId, true
@@ -552,7 +588,7 @@ func (o *ComputerLocalUserAccount) GetAzureActiveDirectoryIdOk() (*string, bool)
 
 // HasAzureActiveDirectoryId returns a boolean if a field has been set.
 func (o *ComputerLocalUserAccount) HasAzureActiveDirectoryId() bool {
-	if o != nil && o.AzureActiveDirectoryId != nil {
+	if o != nil && !IsNil(o.AzureActiveDirectoryId) {
 		return true
 	}
 
@@ -565,56 +601,67 @@ func (o *ComputerLocalUserAccount) SetAzureActiveDirectoryId(v string) {
 }
 
 func (o ComputerLocalUserAccount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Uid != nil {
-		toSerialize["uid"] = o.Uid
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.FullName != nil {
-		toSerialize["fullName"] = o.FullName
-	}
-	if o.Admin != nil {
-		toSerialize["admin"] = o.Admin
-	}
-	if o.HomeDirectory != nil {
-		toSerialize["homeDirectory"] = o.HomeDirectory
-	}
-	if o.HomeDirectorySizeMb != nil {
-		toSerialize["homeDirectorySizeMb"] = o.HomeDirectorySizeMb
-	}
-	if o.FileVault2Enabled != nil {
-		toSerialize["fileVault2Enabled"] = o.FileVault2Enabled
-	}
-	if o.UserAccountType != nil {
-		toSerialize["userAccountType"] = o.UserAccountType
-	}
-	if o.PasswordMinLength != nil {
-		toSerialize["passwordMinLength"] = o.PasswordMinLength
-	}
-	if o.PasswordMaxAge != nil {
-		toSerialize["passwordMaxAge"] = o.PasswordMaxAge
-	}
-	if o.PasswordMinComplexCharacters != nil {
-		toSerialize["passwordMinComplexCharacters"] = o.PasswordMinComplexCharacters
-	}
-	if o.PasswordHistoryDepth != nil {
-		toSerialize["passwordHistoryDepth"] = o.PasswordHistoryDepth
-	}
-	if o.PasswordRequireAlphanumeric != nil {
-		toSerialize["passwordRequireAlphanumeric"] = o.PasswordRequireAlphanumeric
-	}
-	if o.ComputerAzureActiveDirectoryId != nil {
-		toSerialize["computerAzureActiveDirectoryId"] = o.ComputerAzureActiveDirectoryId
-	}
-	if o.UserAzureActiveDirectoryId != nil {
-		toSerialize["userAzureActiveDirectoryId"] = o.UserAzureActiveDirectoryId
-	}
-	if o.AzureActiveDirectoryId != nil {
-		toSerialize["azureActiveDirectoryId"] = o.AzureActiveDirectoryId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerLocalUserAccount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uid) {
+		toSerialize["uid"] = o.Uid
+	}
+	if !IsNil(o.UserGuid) {
+		toSerialize["userGuid"] = o.UserGuid
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	if !IsNil(o.Admin) {
+		toSerialize["admin"] = o.Admin
+	}
+	if !IsNil(o.HomeDirectory) {
+		toSerialize["homeDirectory"] = o.HomeDirectory
+	}
+	if !IsNil(o.HomeDirectorySizeMb) {
+		toSerialize["homeDirectorySizeMb"] = o.HomeDirectorySizeMb
+	}
+	if !IsNil(o.FileVault2Enabled) {
+		toSerialize["fileVault2Enabled"] = o.FileVault2Enabled
+	}
+	if !IsNil(o.UserAccountType) {
+		toSerialize["userAccountType"] = o.UserAccountType
+	}
+	if !IsNil(o.PasswordMinLength) {
+		toSerialize["passwordMinLength"] = o.PasswordMinLength
+	}
+	if !IsNil(o.PasswordMaxAge) {
+		toSerialize["passwordMaxAge"] = o.PasswordMaxAge
+	}
+	if !IsNil(o.PasswordMinComplexCharacters) {
+		toSerialize["passwordMinComplexCharacters"] = o.PasswordMinComplexCharacters
+	}
+	if !IsNil(o.PasswordHistoryDepth) {
+		toSerialize["passwordHistoryDepth"] = o.PasswordHistoryDepth
+	}
+	if !IsNil(o.PasswordRequireAlphanumeric) {
+		toSerialize["passwordRequireAlphanumeric"] = o.PasswordRequireAlphanumeric
+	}
+	if !IsNil(o.ComputerAzureActiveDirectoryId) {
+		toSerialize["computerAzureActiveDirectoryId"] = o.ComputerAzureActiveDirectoryId
+	}
+	if !IsNil(o.UserAzureActiveDirectoryId) {
+		toSerialize["userAzureActiveDirectoryId"] = o.UserAzureActiveDirectoryId
+	}
+	if !IsNil(o.AzureActiveDirectoryId) {
+		toSerialize["azureActiveDirectoryId"] = o.AzureActiveDirectoryId
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerLocalUserAccount struct {

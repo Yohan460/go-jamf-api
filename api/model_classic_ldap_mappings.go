@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClassicLdapMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClassicLdapMappings{}
+
 // ClassicLdapMappings Classic Ldap mappings configuration
 type ClassicLdapMappings struct {
 	UserObjectMapIdTo string `json:"userObjectMapIdTo"`
@@ -380,47 +383,29 @@ func (o *ClassicLdapMappings) SetUserGroupObjectMapUuidTo(v string) {
 }
 
 func (o ClassicLdapMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userObjectMapIdTo"] = o.UserObjectMapIdTo
-	}
-	if true {
-		toSerialize["userObjectMapUsernameTo"] = o.UserObjectMapUsernameTo
-	}
-	if true {
-		toSerialize["userObjectMapRealNameTo"] = o.UserObjectMapRealNameTo
-	}
-	if true {
-		toSerialize["userObjectMapEmailTo"] = o.UserObjectMapEmailTo
-	}
-	if true {
-		toSerialize["userObjectMapDepartmentTo"] = o.UserObjectMapDepartmentTo
-	}
-	if true {
-		toSerialize["userObjectMapBuildingTo"] = o.UserObjectMapBuildingTo
-	}
-	if true {
-		toSerialize["userObjectMapRoomTo"] = o.UserObjectMapRoomTo
-	}
-	if true {
-		toSerialize["userObjectMapPhoneTo"] = o.UserObjectMapPhoneTo
-	}
-	if true {
-		toSerialize["userObjectMapPositionTo"] = o.UserObjectMapPositionTo
-	}
-	if true {
-		toSerialize["userObjectMapUuidTo"] = o.UserObjectMapUuidTo
-	}
-	if true {
-		toSerialize["userGroupObjectMapIdTo"] = o.UserGroupObjectMapIdTo
-	}
-	if true {
-		toSerialize["userGroupObjectMapGroupNameTo"] = o.UserGroupObjectMapGroupNameTo
-	}
-	if true {
-		toSerialize["userGroupObjectMapUuidTo"] = o.UserGroupObjectMapUuidTo
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClassicLdapMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userObjectMapIdTo"] = o.UserObjectMapIdTo
+	toSerialize["userObjectMapUsernameTo"] = o.UserObjectMapUsernameTo
+	toSerialize["userObjectMapRealNameTo"] = o.UserObjectMapRealNameTo
+	toSerialize["userObjectMapEmailTo"] = o.UserObjectMapEmailTo
+	toSerialize["userObjectMapDepartmentTo"] = o.UserObjectMapDepartmentTo
+	toSerialize["userObjectMapBuildingTo"] = o.UserObjectMapBuildingTo
+	toSerialize["userObjectMapRoomTo"] = o.UserObjectMapRoomTo
+	toSerialize["userObjectMapPhoneTo"] = o.UserObjectMapPhoneTo
+	toSerialize["userObjectMapPositionTo"] = o.UserObjectMapPositionTo
+	toSerialize["userObjectMapUuidTo"] = o.UserObjectMapUuidTo
+	toSerialize["userGroupObjectMapIdTo"] = o.UserGroupObjectMapIdTo
+	toSerialize["userGroupObjectMapGroupNameTo"] = o.UserGroupObjectMapGroupNameTo
+	toSerialize["userGroupObjectMapUuidTo"] = o.UserGroupObjectMapUuidTo
+	return toSerialize, nil
 }
 
 type NullableClassicLdapMappings struct {

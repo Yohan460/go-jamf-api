@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the StaticUserGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StaticUserGroup{}
+
 // StaticUserGroup struct for StaticUserGroup
 type StaticUserGroup struct {
 	Id *int32 `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewStaticUserGroupWithDefaults() *StaticUserGroup {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *StaticUserGroup) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *StaticUserGroup) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StaticUserGroup) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -57,7 +60,7 @@ func (o *StaticUserGroup) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *StaticUserGroup) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *StaticUserGroup) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *StaticUserGroup) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *StaticUserGroup) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StaticUserGroup) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *StaticUserGroup) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *StaticUserGroup) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *StaticUserGroup) SetName(v string) {
 }
 
 func (o StaticUserGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StaticUserGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableStaticUserGroup struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExternalRecipient type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExternalRecipient{}
+
 // ExternalRecipient struct for ExternalRecipient
 type ExternalRecipient struct {
 	Name string `json:"name"`
@@ -88,14 +91,18 @@ func (o *ExternalRecipient) SetEmail(v string) {
 }
 
 func (o ExternalRecipient) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["email"] = o.Email
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ExternalRecipient) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	toSerialize["email"] = o.Email
+	return toSerialize, nil
 }
 
 type NullableExternalRecipient struct {

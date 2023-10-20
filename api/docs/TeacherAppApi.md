@@ -1,13 +1,13 @@
-# \TeacherAppApi
+# \TeacherAppAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1TeacherAppGet**](TeacherAppApi.md#V1TeacherAppGet) | **Get** /v1/teacher-app | Get the Jamf Teacher settings that you have access to see 
-[**V1TeacherAppHistoryGet**](TeacherAppApi.md#V1TeacherAppHistoryGet) | **Get** /v1/teacher-app/history | Get Jamf Teacher app settings history 
-[**V1TeacherAppHistoryPost**](TeacherAppApi.md#V1TeacherAppHistoryPost) | **Post** /v1/teacher-app/history | Add Jamf Teacher app settings history notes 
-[**V1TeacherAppPut**](TeacherAppApi.md#V1TeacherAppPut) | **Put** /v1/teacher-app | Update a Jamf Teacher settings object 
+[**V1TeacherAppGet**](TeacherAppAPI.md#V1TeacherAppGet) | **Get** /v1/teacher-app | Get the Jamf Teacher settings that you have access to see 
+[**V1TeacherAppHistoryGet**](TeacherAppAPI.md#V1TeacherAppHistoryGet) | **Get** /v1/teacher-app/history | Get Jamf Teacher app settings history 
+[**V1TeacherAppHistoryPost**](TeacherAppAPI.md#V1TeacherAppHistoryPost) | **Post** /v1/teacher-app/history | Add Jamf Teacher app settings history notes 
+[**V1TeacherAppPut**](TeacherAppAPI.md#V1TeacherAppPut) | **Put** /v1/teacher-app | Update a Jamf Teacher settings object 
 
 
 
@@ -28,20 +28,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeacherAppApi.V1TeacherAppGet(context.Background()).Execute()
+    resp, r, err := apiClient.TeacherAppAPI.V1TeacherAppGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppApi.V1TeacherAppGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppAPI.V1TeacherAppGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1TeacherAppGet`: TeacherSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeacherAppApi.V1TeacherAppGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeacherAppAPI.V1TeacherAppGet`: %v\n", resp)
 }
 ```
 
@@ -89,7 +89,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeacherAppApi.V1TeacherAppHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.TeacherAppAPI.V1TeacherAppHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppApi.V1TeacherAppHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppAPI.V1TeacherAppHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1TeacherAppHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `TeacherAppApi.V1TeacherAppHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeacherAppAPI.V1TeacherAppHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -161,7 +161,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -169,13 +169,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeacherAppApi.V1TeacherAppHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.TeacherAppAPI.V1TeacherAppHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppApi.V1TeacherAppHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppAPI.V1TeacherAppHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1TeacherAppHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeacherAppApi.V1TeacherAppHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeacherAppAPI.V1TeacherAppHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -227,7 +227,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -235,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeacherAppApi.V1TeacherAppPut(context.Background()).TeacherSettingsRequest(teacherSettingsRequest).Execute()
+    resp, r, err := apiClient.TeacherAppAPI.V1TeacherAppPut(context.Background()).TeacherSettingsRequest(teacherSettingsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppApi.V1TeacherAppPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeacherAppAPI.V1TeacherAppPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1TeacherAppPut`: TeacherSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeacherAppApi.V1TeacherAppPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeacherAppAPI.V1TeacherAppPut`: %v\n", resp)
 }
 ```
 

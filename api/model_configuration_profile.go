@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConfigurationProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConfigurationProfile{}
+
 // ConfigurationProfile struct for ConfigurationProfile
 type ConfigurationProfile struct {
 	DisplayName *string `json:"displayName,omitempty"`
@@ -41,7 +44,7 @@ func NewConfigurationProfileWithDefaults() *ConfigurationProfile {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *ConfigurationProfile) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ConfigurationProfile) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationProfile) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -59,7 +62,7 @@ func (o *ConfigurationProfile) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *ConfigurationProfile) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ConfigurationProfile) SetDisplayName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ConfigurationProfile) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ConfigurationProfile) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationProfile) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -91,7 +94,7 @@ func (o *ConfigurationProfile) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ConfigurationProfile) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ConfigurationProfile) SetVersion(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *ConfigurationProfile) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ConfigurationProfile) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationProfile) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -123,7 +126,7 @@ func (o *ConfigurationProfile) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *ConfigurationProfile) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ConfigurationProfile) SetUuid(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *ConfigurationProfile) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ConfigurationProfile) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConfigurationProfile) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -155,7 +158,7 @@ func (o *ConfigurationProfile) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *ConfigurationProfile) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ConfigurationProfile) SetIdentifier(v string) {
 }
 
 func (o ConfigurationProfile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConfigurationProfile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullableConfigurationProfile struct {

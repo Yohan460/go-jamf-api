@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Session type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Session{}
+
 // Session struct for Session
 type Session struct {
 	CurrentSiteId *int32 `json:"currentSiteId,omitempty"`
@@ -38,7 +41,7 @@ func NewSessionWithDefaults() *Session {
 
 // GetCurrentSiteId returns the CurrentSiteId field value if set, zero value otherwise.
 func (o *Session) GetCurrentSiteId() int32 {
-	if o == nil || o.CurrentSiteId == nil {
+	if o == nil || IsNil(o.CurrentSiteId) {
 		var ret int32
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *Session) GetCurrentSiteId() int32 {
 // GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Session) GetCurrentSiteIdOk() (*int32, bool) {
-	if o == nil || o.CurrentSiteId == nil {
+	if o == nil || IsNil(o.CurrentSiteId) {
 		return nil, false
 	}
 	return o.CurrentSiteId, true
@@ -56,7 +59,7 @@ func (o *Session) GetCurrentSiteIdOk() (*int32, bool) {
 
 // HasCurrentSiteId returns a boolean if a field has been set.
 func (o *Session) HasCurrentSiteId() bool {
-	if o != nil && o.CurrentSiteId != nil {
+	if o != nil && !IsNil(o.CurrentSiteId) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *Session) SetCurrentSiteId(v int32) {
 }
 
 func (o Session) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CurrentSiteId != nil {
-		toSerialize["currentSiteId"] = o.CurrentSiteId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Session) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CurrentSiteId) {
+		toSerialize["currentSiteId"] = o.CurrentSiteId
+	}
+	return toSerialize, nil
 }
 
 type NullableSession struct {

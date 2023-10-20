@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type StaticUserGroupsPreviewApi interface {
+type StaticUserGroupsPreviewAPI interface {
 
 	/*
 	V1StaticUserGroupsGet Return a list of all Static User Groups 
@@ -29,13 +29,13 @@ type StaticUserGroupsPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1StaticUserGroupsGetRequest
+	@return StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest
 	*/
-	V1StaticUserGroupsGet(ctx context.Context) ApiV1StaticUserGroupsGetRequest
+	V1StaticUserGroupsGet(ctx context.Context) StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest
 
 	// V1StaticUserGroupsGetExecute executes the request
 	//  @return []StaticUserGroup
-	V1StaticUserGroupsGetExecute(r ApiV1StaticUserGroupsGetRequest) ([]StaticUserGroup, *http.Response, error)
+	V1StaticUserGroupsGetExecute(r StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest) ([]StaticUserGroup, *http.Response, error)
 
 	/*
 	V1StaticUserGroupsIdGet Return a specific Static User Group by id 
@@ -45,24 +45,24 @@ type StaticUserGroupsPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Instance id of static user group record
-	@return ApiV1StaticUserGroupsIdGetRequest
+	@return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 	*/
-	V1StaticUserGroupsIdGet(ctx context.Context, id int32) ApiV1StaticUserGroupsIdGetRequest
+	V1StaticUserGroupsIdGet(ctx context.Context, id int32) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 
 	// V1StaticUserGroupsIdGetExecute executes the request
 	//  @return StaticUserGroup
-	V1StaticUserGroupsIdGetExecute(r ApiV1StaticUserGroupsIdGetRequest) (*StaticUserGroup, *http.Response, error)
+	V1StaticUserGroupsIdGetExecute(r StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest) (*StaticUserGroup, *http.Response, error)
 }
 
-// StaticUserGroupsPreviewApiService StaticUserGroupsPreviewApi service
-type StaticUserGroupsPreviewApiService service
+// StaticUserGroupsPreviewAPIService StaticUserGroupsPreviewAPI service
+type StaticUserGroupsPreviewAPIService service
 
-type ApiV1StaticUserGroupsGetRequest struct {
+type StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest struct {
 	ctx context.Context
-	ApiService StaticUserGroupsPreviewApi
+	ApiService StaticUserGroupsPreviewAPI
 }
 
-func (r ApiV1StaticUserGroupsGetRequest) Execute() ([]StaticUserGroup, *http.Response, error) {
+func (r StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest) Execute() ([]StaticUserGroup, *http.Response, error) {
 	return r.ApiService.V1StaticUserGroupsGetExecute(r)
 }
 
@@ -73,10 +73,10 @@ Returns a list of all static user groups.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1StaticUserGroupsGetRequest
+ @return StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest
 */
-func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGet(ctx context.Context) ApiV1StaticUserGroupsGetRequest {
-	return ApiV1StaticUserGroupsGetRequest{
+func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsGet(ctx context.Context) StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest {
+	return StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -84,7 +84,7 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGet(ctx context.Co
 
 // Execute executes the request
 //  @return []StaticUserGroup
-func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGetExecute(r ApiV1StaticUserGroupsGetRequest) ([]StaticUserGroup, *http.Response, error) {
+func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsGetExecute(r StaticUserGroupsPreviewAPIV1StaticUserGroupsGetRequest) ([]StaticUserGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -92,7 +92,7 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGetExecute(r ApiV1
 		localVarReturnValue  []StaticUserGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StaticUserGroupsPreviewApiService.V1StaticUserGroupsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StaticUserGroupsPreviewAPIService.V1StaticUserGroupsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -130,9 +130,9 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -157,13 +157,13 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1StaticUserGroupsIdGetRequest struct {
+type StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest struct {
 	ctx context.Context
-	ApiService StaticUserGroupsPreviewApi
+	ApiService StaticUserGroupsPreviewAPI
 	id int32
 }
 
-func (r ApiV1StaticUserGroupsIdGetRequest) Execute() (*StaticUserGroup, *http.Response, error) {
+func (r StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest) Execute() (*StaticUserGroup, *http.Response, error) {
 	return r.ApiService.V1StaticUserGroupsIdGetExecute(r)
 }
 
@@ -175,10 +175,10 @@ Returns a specific static user group by id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Instance id of static user group record
- @return ApiV1StaticUserGroupsIdGetRequest
+ @return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 */
-func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGet(ctx context.Context, id int32) ApiV1StaticUserGroupsIdGetRequest {
-	return ApiV1StaticUserGroupsIdGetRequest{
+func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsIdGet(ctx context.Context, id int32) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest {
+	return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -187,7 +187,7 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGet(ctx context.
 
 // Execute executes the request
 //  @return StaticUserGroup
-func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGetExecute(r ApiV1StaticUserGroupsIdGetRequest) (*StaticUserGroup, *http.Response, error) {
+func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsIdGetExecute(r StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest) (*StaticUserGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -195,13 +195,13 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGetExecute(r Api
 		localVarReturnValue  *StaticUserGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StaticUserGroupsPreviewApiService.V1StaticUserGroupsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StaticUserGroupsPreviewAPIService.V1StaticUserGroupsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/static-user-groups/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -234,9 +234,9 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -253,7 +253,8 @@ func (a *StaticUserGroupsPreviewApiService) V1StaticUserGroupsIdGetExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

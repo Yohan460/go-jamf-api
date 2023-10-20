@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceExtensionAttributeResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceExtensionAttributeResults{}
+
 // MobileDeviceExtensionAttributeResults struct for MobileDeviceExtensionAttributeResults
 type MobileDeviceExtensionAttributeResults struct {
 	ExtensionAttributes []MobileDeviceExtensionAttributeResultsExtensionAttributesInner `json:"extensionAttributes,omitempty"`
@@ -38,7 +41,7 @@ func NewMobileDeviceExtensionAttributeResultsWithDefaults() *MobileDeviceExtensi
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *MobileDeviceExtensionAttributeResults) GetExtensionAttributes() []MobileDeviceExtensionAttributeResultsExtensionAttributesInner {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []MobileDeviceExtensionAttributeResultsExtensionAttributesInner
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *MobileDeviceExtensionAttributeResults) GetExtensionAttributes() []Mobil
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceExtensionAttributeResults) GetExtensionAttributesOk() ([]MobileDeviceExtensionAttributeResultsExtensionAttributesInner, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -56,7 +59,7 @@ func (o *MobileDeviceExtensionAttributeResults) GetExtensionAttributesOk() ([]Mo
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *MobileDeviceExtensionAttributeResults) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *MobileDeviceExtensionAttributeResults) SetExtensionAttributes(v []Mobil
 }
 
 func (o MobileDeviceExtensionAttributeResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceExtensionAttributeResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceExtensionAttributeResults struct {

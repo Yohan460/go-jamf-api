@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 )
 
 
-type SelfServiceBrandingPreviewApi interface {
+type SelfServiceBrandingPreviewAPI interface {
 
 	/*
 	SelfServiceBrandingImagesPost Upload an image 
@@ -28,31 +28,31 @@ type SelfServiceBrandingPreviewApi interface {
 	Uploads an image
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSelfServiceBrandingImagesPostRequest
+	@return SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest
 	*/
-	SelfServiceBrandingImagesPost(ctx context.Context) ApiSelfServiceBrandingImagesPostRequest
+	SelfServiceBrandingImagesPost(ctx context.Context) SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest
 
 	// SelfServiceBrandingImagesPostExecute executes the request
 	//  @return BrandingImageUrl
-	SelfServiceBrandingImagesPostExecute(r ApiSelfServiceBrandingImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+	SelfServiceBrandingImagesPostExecute(r SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
 }
 
-// SelfServiceBrandingPreviewApiService SelfServiceBrandingPreviewApi service
-type SelfServiceBrandingPreviewApiService service
+// SelfServiceBrandingPreviewAPIService SelfServiceBrandingPreviewAPI service
+type SelfServiceBrandingPreviewAPIService service
 
-type ApiSelfServiceBrandingImagesPostRequest struct {
+type SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingPreviewApi
-	file **os.File
+	ApiService SelfServiceBrandingPreviewAPI
+	file *os.File
 }
 
 // The file to upload
-func (r ApiSelfServiceBrandingImagesPostRequest) File(file *os.File) ApiSelfServiceBrandingImagesPostRequest {
-	r.file = &file
+func (r SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest) File(file *os.File) SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiSelfServiceBrandingImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
+func (r SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
 	return r.ApiService.SelfServiceBrandingImagesPostExecute(r)
 }
 
@@ -62,10 +62,10 @@ SelfServiceBrandingImagesPost Upload an image
 Uploads an image
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSelfServiceBrandingImagesPostRequest
+ @return SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest
 */
-func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPost(ctx context.Context) ApiSelfServiceBrandingImagesPostRequest {
-	return ApiSelfServiceBrandingImagesPostRequest{
+func (a *SelfServiceBrandingPreviewAPIService) SelfServiceBrandingImagesPost(ctx context.Context) SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest {
+	return SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -73,7 +73,7 @@ func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPost(ctx
 
 // Execute executes the request
 //  @return BrandingImageUrl
-func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPostExecute(r ApiSelfServiceBrandingImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
+func (a *SelfServiceBrandingPreviewAPIService) SelfServiceBrandingImagesPostExecute(r SelfServiceBrandingPreviewAPISelfServiceBrandingImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -81,7 +81,7 @@ func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPostExec
 		localVarReturnValue  *BrandingImageUrl
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingPreviewApiService.SelfServiceBrandingImagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingPreviewAPIService.SelfServiceBrandingImagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -118,14 +118,17 @@ func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPostExec
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -136,9 +139,9 @@ func (a *SelfServiceBrandingPreviewApiService) SelfServiceBrandingImagesPostExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

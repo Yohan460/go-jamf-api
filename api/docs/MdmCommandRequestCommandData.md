@@ -8,11 +8,14 @@ Name | Type | Description | Notes
 **LostModeMessage** | Pointer to **string** |  | [optional] 
 **LostModePhone** | Pointer to **string** |  | [optional] 
 **LostModeFootnote** | Pointer to **string** |  | [optional] 
+**PreserveDataPlan** | Pointer to **bool** | If true, preserve the data plan on an iPhone or iPad with eSIM functionality, if one exists. This value is available in iOS 11 and later. | [optional] [default to false]
+**DisallowProximitySetup** | Pointer to **bool** | If true, disable Proximity Setup on the next reboot and skip the pane in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS 14, don’t use this option with any other option. | [optional] [default to false]
+**Pin** | Pointer to **string** | The six-character PIN for Find My. This value is available in macOS 10.8 and later. | [optional] 
+**ObliterationBehavior** | Pointer to **string** | This key defines the fallback behavior for erasing a device. | [optional] 
+**ReturnToService** | Pointer to [**EraseDeviceCommandReturnToService**](EraseDeviceCommandReturnToService.md) |  | [optional] 
 **UserName** | Pointer to **string** |  | [optional] 
 **ForceDeletion** | Pointer to **bool** |  | [optional] 
 **DeleteAllUsers** | Pointer to **bool** |  | [optional] 
-**RequestType** | Pointer to **string** |  | [optional] 
-**RequestRequiresNetworkTether** | Pointer to **bool** |  | [optional] 
 **BootstrapTokenAllowed** | Pointer to **bool** |  | [optional] 
 **Bluetooth** | Pointer to **bool** |  | [optional] 
 **AppAnalytics** | Pointer to [**AppAnalyticsSetting**](AppAnalyticsSetting.md) |  | [optional] 
@@ -27,10 +30,14 @@ Name | Type | Description | Notes
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
 **TimeZone** | Pointer to **string** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **int32** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
 **RebuildKernelCache** | Pointer to **bool** |  | [optional] 
 **KextPaths** | Pointer to **[]string** | Only used if RebuildKernelCache is true | [optional] 
 **NotifyUser** | Pointer to **bool** |  | [optional] 
 **NewPassword** | Pointer to **string** | The new password for Recovery Lock. Set as an empty string to clear the Recovery Lock password. | [optional] 
+**Data** | Pointer to **string** | Base64 encoded data to be sent with the command | [optional] 
+**Guid** | Pointer to **string** | The unique identifier of the local administrator account. Must match the GUID of an administrator account that MDM created during Device Enrollment Program (DEP) enrollment. | [optional] 
+**Password** | Pointer to **string** | The new password for the local administrator account. | [optional] 
 
 ## Methods
 
@@ -151,6 +158,131 @@ SetLostModeFootnote sets LostModeFootnote field to given value.
 
 HasLostModeFootnote returns a boolean if a field has been set.
 
+### GetPreserveDataPlan
+
+`func (o *MdmCommandRequestCommandData) GetPreserveDataPlan() bool`
+
+GetPreserveDataPlan returns the PreserveDataPlan field if non-nil, zero value otherwise.
+
+### GetPreserveDataPlanOk
+
+`func (o *MdmCommandRequestCommandData) GetPreserveDataPlanOk() (*bool, bool)`
+
+GetPreserveDataPlanOk returns a tuple with the PreserveDataPlan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreserveDataPlan
+
+`func (o *MdmCommandRequestCommandData) SetPreserveDataPlan(v bool)`
+
+SetPreserveDataPlan sets PreserveDataPlan field to given value.
+
+### HasPreserveDataPlan
+
+`func (o *MdmCommandRequestCommandData) HasPreserveDataPlan() bool`
+
+HasPreserveDataPlan returns a boolean if a field has been set.
+
+### GetDisallowProximitySetup
+
+`func (o *MdmCommandRequestCommandData) GetDisallowProximitySetup() bool`
+
+GetDisallowProximitySetup returns the DisallowProximitySetup field if non-nil, zero value otherwise.
+
+### GetDisallowProximitySetupOk
+
+`func (o *MdmCommandRequestCommandData) GetDisallowProximitySetupOk() (*bool, bool)`
+
+GetDisallowProximitySetupOk returns a tuple with the DisallowProximitySetup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisallowProximitySetup
+
+`func (o *MdmCommandRequestCommandData) SetDisallowProximitySetup(v bool)`
+
+SetDisallowProximitySetup sets DisallowProximitySetup field to given value.
+
+### HasDisallowProximitySetup
+
+`func (o *MdmCommandRequestCommandData) HasDisallowProximitySetup() bool`
+
+HasDisallowProximitySetup returns a boolean if a field has been set.
+
+### GetPin
+
+`func (o *MdmCommandRequestCommandData) GetPin() string`
+
+GetPin returns the Pin field if non-nil, zero value otherwise.
+
+### GetPinOk
+
+`func (o *MdmCommandRequestCommandData) GetPinOk() (*string, bool)`
+
+GetPinOk returns a tuple with the Pin field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPin
+
+`func (o *MdmCommandRequestCommandData) SetPin(v string)`
+
+SetPin sets Pin field to given value.
+
+### HasPin
+
+`func (o *MdmCommandRequestCommandData) HasPin() bool`
+
+HasPin returns a boolean if a field has been set.
+
+### GetObliterationBehavior
+
+`func (o *MdmCommandRequestCommandData) GetObliterationBehavior() string`
+
+GetObliterationBehavior returns the ObliterationBehavior field if non-nil, zero value otherwise.
+
+### GetObliterationBehaviorOk
+
+`func (o *MdmCommandRequestCommandData) GetObliterationBehaviorOk() (*string, bool)`
+
+GetObliterationBehaviorOk returns a tuple with the ObliterationBehavior field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObliterationBehavior
+
+`func (o *MdmCommandRequestCommandData) SetObliterationBehavior(v string)`
+
+SetObliterationBehavior sets ObliterationBehavior field to given value.
+
+### HasObliterationBehavior
+
+`func (o *MdmCommandRequestCommandData) HasObliterationBehavior() bool`
+
+HasObliterationBehavior returns a boolean if a field has been set.
+
+### GetReturnToService
+
+`func (o *MdmCommandRequestCommandData) GetReturnToService() EraseDeviceCommandReturnToService`
+
+GetReturnToService returns the ReturnToService field if non-nil, zero value otherwise.
+
+### GetReturnToServiceOk
+
+`func (o *MdmCommandRequestCommandData) GetReturnToServiceOk() (*EraseDeviceCommandReturnToService, bool)`
+
+GetReturnToServiceOk returns a tuple with the ReturnToService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReturnToService
+
+`func (o *MdmCommandRequestCommandData) SetReturnToService(v EraseDeviceCommandReturnToService)`
+
+SetReturnToService sets ReturnToService field to given value.
+
+### HasReturnToService
+
+`func (o *MdmCommandRequestCommandData) HasReturnToService() bool`
+
+HasReturnToService returns a boolean if a field has been set.
+
 ### GetUserName
 
 `func (o *MdmCommandRequestCommandData) GetUserName() string`
@@ -225,56 +357,6 @@ SetDeleteAllUsers sets DeleteAllUsers field to given value.
 `func (o *MdmCommandRequestCommandData) HasDeleteAllUsers() bool`
 
 HasDeleteAllUsers returns a boolean if a field has been set.
-
-### GetRequestType
-
-`func (o *MdmCommandRequestCommandData) GetRequestType() string`
-
-GetRequestType returns the RequestType field if non-nil, zero value otherwise.
-
-### GetRequestTypeOk
-
-`func (o *MdmCommandRequestCommandData) GetRequestTypeOk() (*string, bool)`
-
-GetRequestTypeOk returns a tuple with the RequestType field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestType
-
-`func (o *MdmCommandRequestCommandData) SetRequestType(v string)`
-
-SetRequestType sets RequestType field to given value.
-
-### HasRequestType
-
-`func (o *MdmCommandRequestCommandData) HasRequestType() bool`
-
-HasRequestType returns a boolean if a field has been set.
-
-### GetRequestRequiresNetworkTether
-
-`func (o *MdmCommandRequestCommandData) GetRequestRequiresNetworkTether() bool`
-
-GetRequestRequiresNetworkTether returns the RequestRequiresNetworkTether field if non-nil, zero value otherwise.
-
-### GetRequestRequiresNetworkTetherOk
-
-`func (o *MdmCommandRequestCommandData) GetRequestRequiresNetworkTetherOk() (*bool, bool)`
-
-GetRequestRequiresNetworkTetherOk returns a tuple with the RequestRequiresNetworkTether field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestRequiresNetworkTether
-
-`func (o *MdmCommandRequestCommandData) SetRequestRequiresNetworkTether(v bool)`
-
-SetRequestRequiresNetworkTether sets RequestRequiresNetworkTether field to given value.
-
-### HasRequestRequiresNetworkTether
-
-`func (o *MdmCommandRequestCommandData) HasRequestRequiresNetworkTether() bool`
-
-HasRequestRequiresNetworkTether returns a boolean if a field has been set.
 
 ### GetBootstrapTokenAllowed
 
@@ -626,6 +708,31 @@ SetSoftwareUpdateSettings sets SoftwareUpdateSettings field to given value.
 
 HasSoftwareUpdateSettings returns a boolean if a field has been set.
 
+### GetPasscodeLockGracePeriod
+
+`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriod() int32`
+
+GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field if non-nil, zero value otherwise.
+
+### GetPasscodeLockGracePeriodOk
+
+`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriodOk() (*int32, bool)`
+
+GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasscodeLockGracePeriod
+
+`func (o *MdmCommandRequestCommandData) SetPasscodeLockGracePeriod(v int32)`
+
+SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
+
+### HasPasscodeLockGracePeriod
+
+`func (o *MdmCommandRequestCommandData) HasPasscodeLockGracePeriod() bool`
+
+HasPasscodeLockGracePeriod returns a boolean if a field has been set.
+
 ### GetRebuildKernelCache
 
 `func (o *MdmCommandRequestCommandData) GetRebuildKernelCache() bool`
@@ -725,6 +832,81 @@ SetNewPassword sets NewPassword field to given value.
 `func (o *MdmCommandRequestCommandData) HasNewPassword() bool`
 
 HasNewPassword returns a boolean if a field has been set.
+
+### GetData
+
+`func (o *MdmCommandRequestCommandData) GetData() string`
+
+GetData returns the Data field if non-nil, zero value otherwise.
+
+### GetDataOk
+
+`func (o *MdmCommandRequestCommandData) GetDataOk() (*string, bool)`
+
+GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetData
+
+`func (o *MdmCommandRequestCommandData) SetData(v string)`
+
+SetData sets Data field to given value.
+
+### HasData
+
+`func (o *MdmCommandRequestCommandData) HasData() bool`
+
+HasData returns a boolean if a field has been set.
+
+### GetGuid
+
+`func (o *MdmCommandRequestCommandData) GetGuid() string`
+
+GetGuid returns the Guid field if non-nil, zero value otherwise.
+
+### GetGuidOk
+
+`func (o *MdmCommandRequestCommandData) GetGuidOk() (*string, bool)`
+
+GetGuidOk returns a tuple with the Guid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGuid
+
+`func (o *MdmCommandRequestCommandData) SetGuid(v string)`
+
+SetGuid sets Guid field to given value.
+
+### HasGuid
+
+`func (o *MdmCommandRequestCommandData) HasGuid() bool`
+
+HasGuid returns a boolean if a field has been set.
+
+### GetPassword
+
+`func (o *MdmCommandRequestCommandData) GetPassword() string`
+
+GetPassword returns the Password field if non-nil, zero value otherwise.
+
+### GetPasswordOk
+
+`func (o *MdmCommandRequestCommandData) GetPasswordOk() (*string, bool)`
+
+GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPassword
+
+`func (o *MdmCommandRequestCommandData) SetPassword(v string)`
+
+SetPassword sets Password field to given value.
+
+### HasPassword
+
+`func (o *MdmCommandRequestCommandData) HasPassword() bool`
+
+HasPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

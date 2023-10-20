@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Recipient type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Recipient{}
+
 // Recipient struct for Recipient
 type Recipient struct {
 	Id *int32 `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewRecipientWithDefaults() *Recipient {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Recipient) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *Recipient) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Recipient) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *Recipient) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Recipient) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *Recipient) SetId(v int32) {
 
 // GetRealName returns the RealName field value if set, zero value otherwise.
 func (o *Recipient) GetRealName() string {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *Recipient) GetRealName() string {
 // GetRealNameOk returns a tuple with the RealName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Recipient) GetRealNameOk() (*string, bool) {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		return nil, false
 	}
 	return o.RealName, true
@@ -90,7 +93,7 @@ func (o *Recipient) GetRealNameOk() (*string, bool) {
 
 // HasRealName returns a boolean if a field has been set.
 func (o *Recipient) HasRealName() bool {
-	if o != nil && o.RealName != nil {
+	if o != nil && !IsNil(o.RealName) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *Recipient) SetRealName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *Recipient) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *Recipient) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Recipient) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -122,7 +125,7 @@ func (o *Recipient) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *Recipient) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *Recipient) SetEmail(v string) {
 }
 
 func (o Recipient) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.RealName != nil {
-		toSerialize["realName"] = o.RealName
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Recipient) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.RealName) {
+		toSerialize["realName"] = o.RealName
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	return toSerialize, nil
 }
 
 type NullableRecipient struct {

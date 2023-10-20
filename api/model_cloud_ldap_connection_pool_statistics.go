@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapConnectionPoolStatistics type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapConnectionPoolStatistics{}
+
 // CloudLdapConnectionPoolStatistics Ldap Cloud Identity Provider conection pool statistics
 type CloudLdapConnectionPoolStatistics struct {
 	NumConnectionsClosedDefunct *int64 `json:"numConnectionsClosedDefunct,omitempty"`
@@ -50,7 +53,7 @@ func NewCloudLdapConnectionPoolStatisticsWithDefaults() *CloudLdapConnectionPool
 
 // GetNumConnectionsClosedDefunct returns the NumConnectionsClosedDefunct field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedDefunct() int64 {
-	if o == nil || o.NumConnectionsClosedDefunct == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedDefunct) {
 		var ret int64
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedDefunct() int
 // GetNumConnectionsClosedDefunctOk returns a tuple with the NumConnectionsClosedDefunct field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedDefunctOk() (*int64, bool) {
-	if o == nil || o.NumConnectionsClosedDefunct == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedDefunct) {
 		return nil, false
 	}
 	return o.NumConnectionsClosedDefunct, true
@@ -68,7 +71,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedDefunctOk() (
 
 // HasNumConnectionsClosedDefunct returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumConnectionsClosedDefunct() bool {
-	if o != nil && o.NumConnectionsClosedDefunct != nil {
+	if o != nil && !IsNil(o.NumConnectionsClosedDefunct) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumConnectionsClosedDefunct(v int
 
 // GetNumConnectionsClosedExpired returns the NumConnectionsClosedExpired field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedExpired() int64 {
-	if o == nil || o.NumConnectionsClosedExpired == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedExpired) {
 		var ret int64
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedExpired() int
 // GetNumConnectionsClosedExpiredOk returns a tuple with the NumConnectionsClosedExpired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedExpiredOk() (*int64, bool) {
-	if o == nil || o.NumConnectionsClosedExpired == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedExpired) {
 		return nil, false
 	}
 	return o.NumConnectionsClosedExpired, true
@@ -100,7 +103,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedExpiredOk() (
 
 // HasNumConnectionsClosedExpired returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumConnectionsClosedExpired() bool {
-	if o != nil && o.NumConnectionsClosedExpired != nil {
+	if o != nil && !IsNil(o.NumConnectionsClosedExpired) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumConnectionsClosedExpired(v int
 
 // GetNumConnectionsClosedUnneeded returns the NumConnectionsClosedUnneeded field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedUnneeded() int64 {
-	if o == nil || o.NumConnectionsClosedUnneeded == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedUnneeded) {
 		var ret int64
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedUnneeded() in
 // GetNumConnectionsClosedUnneededOk returns a tuple with the NumConnectionsClosedUnneeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedUnneededOk() (*int64, bool) {
-	if o == nil || o.NumConnectionsClosedUnneeded == nil {
+	if o == nil || IsNil(o.NumConnectionsClosedUnneeded) {
 		return nil, false
 	}
 	return o.NumConnectionsClosedUnneeded, true
@@ -132,7 +135,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumConnectionsClosedUnneededOk() 
 
 // HasNumConnectionsClosedUnneeded returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumConnectionsClosedUnneeded() bool {
-	if o != nil && o.NumConnectionsClosedUnneeded != nil {
+	if o != nil && !IsNil(o.NumConnectionsClosedUnneeded) {
 		return true
 	}
 
@@ -146,7 +149,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumConnectionsClosedUnneeded(v in
 
 // GetNumFailedCheckouts returns the NumFailedCheckouts field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumFailedCheckouts() int64 {
-	if o == nil || o.NumFailedCheckouts == nil {
+	if o == nil || IsNil(o.NumFailedCheckouts) {
 		var ret int64
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumFailedCheckouts() int64 {
 // GetNumFailedCheckoutsOk returns a tuple with the NumFailedCheckouts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumFailedCheckoutsOk() (*int64, bool) {
-	if o == nil || o.NumFailedCheckouts == nil {
+	if o == nil || IsNil(o.NumFailedCheckouts) {
 		return nil, false
 	}
 	return o.NumFailedCheckouts, true
@@ -164,7 +167,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumFailedCheckoutsOk() (*int64, b
 
 // HasNumFailedCheckouts returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumFailedCheckouts() bool {
-	if o != nil && o.NumFailedCheckouts != nil {
+	if o != nil && !IsNil(o.NumFailedCheckouts) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumFailedCheckouts(v int64) {
 
 // GetNumFailedConnectionAttempts returns the NumFailedConnectionAttempts field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumFailedConnectionAttempts() int64 {
-	if o == nil || o.NumFailedConnectionAttempts == nil {
+	if o == nil || IsNil(o.NumFailedConnectionAttempts) {
 		var ret int64
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumFailedConnectionAttempts() int
 // GetNumFailedConnectionAttemptsOk returns a tuple with the NumFailedConnectionAttempts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumFailedConnectionAttemptsOk() (*int64, bool) {
-	if o == nil || o.NumFailedConnectionAttempts == nil {
+	if o == nil || IsNil(o.NumFailedConnectionAttempts) {
 		return nil, false
 	}
 	return o.NumFailedConnectionAttempts, true
@@ -196,7 +199,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumFailedConnectionAttemptsOk() (
 
 // HasNumFailedConnectionAttempts returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumFailedConnectionAttempts() bool {
-	if o != nil && o.NumFailedConnectionAttempts != nil {
+	if o != nil && !IsNil(o.NumFailedConnectionAttempts) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumFailedConnectionAttempts(v int
 
 // GetNumReleasedValid returns the NumReleasedValid field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumReleasedValid() int64 {
-	if o == nil || o.NumReleasedValid == nil {
+	if o == nil || IsNil(o.NumReleasedValid) {
 		var ret int64
 		return ret
 	}
@@ -220,7 +223,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumReleasedValid() int64 {
 // GetNumReleasedValidOk returns a tuple with the NumReleasedValid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumReleasedValidOk() (*int64, bool) {
-	if o == nil || o.NumReleasedValid == nil {
+	if o == nil || IsNil(o.NumReleasedValid) {
 		return nil, false
 	}
 	return o.NumReleasedValid, true
@@ -228,7 +231,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumReleasedValidOk() (*int64, boo
 
 // HasNumReleasedValid returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumReleasedValid() bool {
-	if o != nil && o.NumReleasedValid != nil {
+	if o != nil && !IsNil(o.NumReleasedValid) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumReleasedValid(v int64) {
 
 // GetNumSuccessfulCheckouts returns the NumSuccessfulCheckouts field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckouts() int64 {
-	if o == nil || o.NumSuccessfulCheckouts == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckouts) {
 		var ret int64
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckouts() int64 {
 // GetNumSuccessfulCheckoutsOk returns a tuple with the NumSuccessfulCheckouts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsOk() (*int64, bool) {
-	if o == nil || o.NumSuccessfulCheckouts == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckouts) {
 		return nil, false
 	}
 	return o.NumSuccessfulCheckouts, true
@@ -260,7 +263,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsOk() (*int6
 
 // HasNumSuccessfulCheckouts returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumSuccessfulCheckouts() bool {
-	if o != nil && o.NumSuccessfulCheckouts != nil {
+	if o != nil && !IsNil(o.NumSuccessfulCheckouts) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumSuccessfulCheckouts(v int64) {
 
 // GetNumSuccessfulCheckoutsNewConnection returns the NumSuccessfulCheckoutsNewConnection field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsNewConnection() int64 {
-	if o == nil || o.NumSuccessfulCheckoutsNewConnection == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsNewConnection) {
 		var ret int64
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsNewConnecti
 // GetNumSuccessfulCheckoutsNewConnectionOk returns a tuple with the NumSuccessfulCheckoutsNewConnection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsNewConnectionOk() (*int64, bool) {
-	if o == nil || o.NumSuccessfulCheckoutsNewConnection == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsNewConnection) {
 		return nil, false
 	}
 	return o.NumSuccessfulCheckoutsNewConnection, true
@@ -292,7 +295,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsNewConnecti
 
 // HasNumSuccessfulCheckoutsNewConnection returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumSuccessfulCheckoutsNewConnection() bool {
-	if o != nil && o.NumSuccessfulCheckoutsNewConnection != nil {
+	if o != nil && !IsNil(o.NumSuccessfulCheckoutsNewConnection) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumSuccessfulCheckoutsNewConnecti
 
 // GetNumSuccessfulConnectionAttempts returns the NumSuccessfulConnectionAttempts field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulConnectionAttempts() int64 {
-	if o == nil || o.NumSuccessfulConnectionAttempts == nil {
+	if o == nil || IsNil(o.NumSuccessfulConnectionAttempts) {
 		var ret int64
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulConnectionAttempts()
 // GetNumSuccessfulConnectionAttemptsOk returns a tuple with the NumSuccessfulConnectionAttempts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulConnectionAttemptsOk() (*int64, bool) {
-	if o == nil || o.NumSuccessfulConnectionAttempts == nil {
+	if o == nil || IsNil(o.NumSuccessfulConnectionAttempts) {
 		return nil, false
 	}
 	return o.NumSuccessfulConnectionAttempts, true
@@ -324,7 +327,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulConnectionAttemptsOk
 
 // HasNumSuccessfulConnectionAttempts returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumSuccessfulConnectionAttempts() bool {
-	if o != nil && o.NumSuccessfulConnectionAttempts != nil {
+	if o != nil && !IsNil(o.NumSuccessfulConnectionAttempts) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumSuccessfulConnectionAttempts(v
 
 // GetMaximumAvailableConnections returns the MaximumAvailableConnections field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetMaximumAvailableConnections() int64 {
-	if o == nil || o.MaximumAvailableConnections == nil {
+	if o == nil || IsNil(o.MaximumAvailableConnections) {
 		var ret int64
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetMaximumAvailableConnections() int
 // GetMaximumAvailableConnectionsOk returns a tuple with the MaximumAvailableConnections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetMaximumAvailableConnectionsOk() (*int64, bool) {
-	if o == nil || o.MaximumAvailableConnections == nil {
+	if o == nil || IsNil(o.MaximumAvailableConnections) {
 		return nil, false
 	}
 	return o.MaximumAvailableConnections, true
@@ -356,7 +359,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetMaximumAvailableConnectionsOk() (
 
 // HasMaximumAvailableConnections returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasMaximumAvailableConnections() bool {
-	if o != nil && o.MaximumAvailableConnections != nil {
+	if o != nil && !IsNil(o.MaximumAvailableConnections) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetMaximumAvailableConnections(v int
 
 // GetNumSuccessfulCheckoutsWithoutWaiting returns the NumSuccessfulCheckoutsWithoutWaiting field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsWithoutWaiting() int64 {
-	if o == nil || o.NumSuccessfulCheckoutsWithoutWaiting == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsWithoutWaiting) {
 		var ret int64
 		return ret
 	}
@@ -380,7 +383,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsWithoutWait
 // GetNumSuccessfulCheckoutsWithoutWaitingOk returns a tuple with the NumSuccessfulCheckoutsWithoutWaiting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsWithoutWaitingOk() (*int64, bool) {
-	if o == nil || o.NumSuccessfulCheckoutsWithoutWaiting == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsWithoutWaiting) {
 		return nil, false
 	}
 	return o.NumSuccessfulCheckoutsWithoutWaiting, true
@@ -388,7 +391,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsWithoutWait
 
 // HasNumSuccessfulCheckoutsWithoutWaiting returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumSuccessfulCheckoutsWithoutWaiting() bool {
-	if o != nil && o.NumSuccessfulCheckoutsWithoutWaiting != nil {
+	if o != nil && !IsNil(o.NumSuccessfulCheckoutsWithoutWaiting) {
 		return true
 	}
 
@@ -402,7 +405,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumSuccessfulCheckoutsWithoutWait
 
 // GetNumSuccessfulCheckoutsAfterWaiting returns the NumSuccessfulCheckoutsAfterWaiting field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsAfterWaiting() int64 {
-	if o == nil || o.NumSuccessfulCheckoutsAfterWaiting == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsAfterWaiting) {
 		var ret int64
 		return ret
 	}
@@ -412,7 +415,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsAfterWaitin
 // GetNumSuccessfulCheckoutsAfterWaitingOk returns a tuple with the NumSuccessfulCheckoutsAfterWaiting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsAfterWaitingOk() (*int64, bool) {
-	if o == nil || o.NumSuccessfulCheckoutsAfterWaiting == nil {
+	if o == nil || IsNil(o.NumSuccessfulCheckoutsAfterWaiting) {
 		return nil, false
 	}
 	return o.NumSuccessfulCheckoutsAfterWaiting, true
@@ -420,7 +423,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumSuccessfulCheckoutsAfterWaitin
 
 // HasNumSuccessfulCheckoutsAfterWaiting returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumSuccessfulCheckoutsAfterWaiting() bool {
-	if o != nil && o.NumSuccessfulCheckoutsAfterWaiting != nil {
+	if o != nil && !IsNil(o.NumSuccessfulCheckoutsAfterWaiting) {
 		return true
 	}
 
@@ -434,7 +437,7 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumSuccessfulCheckoutsAfterWaitin
 
 // GetNumAvailableConnections returns the NumAvailableConnections field value if set, zero value otherwise.
 func (o *CloudLdapConnectionPoolStatistics) GetNumAvailableConnections() int64 {
-	if o == nil || o.NumAvailableConnections == nil {
+	if o == nil || IsNil(o.NumAvailableConnections) {
 		var ret int64
 		return ret
 	}
@@ -444,7 +447,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumAvailableConnections() int64 {
 // GetNumAvailableConnectionsOk returns a tuple with the NumAvailableConnections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapConnectionPoolStatistics) GetNumAvailableConnectionsOk() (*int64, bool) {
-	if o == nil || o.NumAvailableConnections == nil {
+	if o == nil || IsNil(o.NumAvailableConnections) {
 		return nil, false
 	}
 	return o.NumAvailableConnections, true
@@ -452,7 +455,7 @@ func (o *CloudLdapConnectionPoolStatistics) GetNumAvailableConnectionsOk() (*int
 
 // HasNumAvailableConnections returns a boolean if a field has been set.
 func (o *CloudLdapConnectionPoolStatistics) HasNumAvailableConnections() bool {
-	if o != nil && o.NumAvailableConnections != nil {
+	if o != nil && !IsNil(o.NumAvailableConnections) {
 		return true
 	}
 
@@ -465,47 +468,55 @@ func (o *CloudLdapConnectionPoolStatistics) SetNumAvailableConnections(v int64) 
 }
 
 func (o CloudLdapConnectionPoolStatistics) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.NumConnectionsClosedDefunct != nil {
-		toSerialize["numConnectionsClosedDefunct"] = o.NumConnectionsClosedDefunct
-	}
-	if o.NumConnectionsClosedExpired != nil {
-		toSerialize["numConnectionsClosedExpired"] = o.NumConnectionsClosedExpired
-	}
-	if o.NumConnectionsClosedUnneeded != nil {
-		toSerialize["numConnectionsClosedUnneeded"] = o.NumConnectionsClosedUnneeded
-	}
-	if o.NumFailedCheckouts != nil {
-		toSerialize["numFailedCheckouts"] = o.NumFailedCheckouts
-	}
-	if o.NumFailedConnectionAttempts != nil {
-		toSerialize["numFailedConnectionAttempts"] = o.NumFailedConnectionAttempts
-	}
-	if o.NumReleasedValid != nil {
-		toSerialize["numReleasedValid"] = o.NumReleasedValid
-	}
-	if o.NumSuccessfulCheckouts != nil {
-		toSerialize["numSuccessfulCheckouts"] = o.NumSuccessfulCheckouts
-	}
-	if o.NumSuccessfulCheckoutsNewConnection != nil {
-		toSerialize["numSuccessfulCheckoutsNewConnection"] = o.NumSuccessfulCheckoutsNewConnection
-	}
-	if o.NumSuccessfulConnectionAttempts != nil {
-		toSerialize["numSuccessfulConnectionAttempts"] = o.NumSuccessfulConnectionAttempts
-	}
-	if o.MaximumAvailableConnections != nil {
-		toSerialize["maximumAvailableConnections"] = o.MaximumAvailableConnections
-	}
-	if o.NumSuccessfulCheckoutsWithoutWaiting != nil {
-		toSerialize["numSuccessfulCheckoutsWithoutWaiting"] = o.NumSuccessfulCheckoutsWithoutWaiting
-	}
-	if o.NumSuccessfulCheckoutsAfterWaiting != nil {
-		toSerialize["numSuccessfulCheckoutsAfterWaiting"] = o.NumSuccessfulCheckoutsAfterWaiting
-	}
-	if o.NumAvailableConnections != nil {
-		toSerialize["numAvailableConnections"] = o.NumAvailableConnections
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapConnectionPoolStatistics) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NumConnectionsClosedDefunct) {
+		toSerialize["numConnectionsClosedDefunct"] = o.NumConnectionsClosedDefunct
+	}
+	if !IsNil(o.NumConnectionsClosedExpired) {
+		toSerialize["numConnectionsClosedExpired"] = o.NumConnectionsClosedExpired
+	}
+	if !IsNil(o.NumConnectionsClosedUnneeded) {
+		toSerialize["numConnectionsClosedUnneeded"] = o.NumConnectionsClosedUnneeded
+	}
+	if !IsNil(o.NumFailedCheckouts) {
+		toSerialize["numFailedCheckouts"] = o.NumFailedCheckouts
+	}
+	if !IsNil(o.NumFailedConnectionAttempts) {
+		toSerialize["numFailedConnectionAttempts"] = o.NumFailedConnectionAttempts
+	}
+	if !IsNil(o.NumReleasedValid) {
+		toSerialize["numReleasedValid"] = o.NumReleasedValid
+	}
+	if !IsNil(o.NumSuccessfulCheckouts) {
+		toSerialize["numSuccessfulCheckouts"] = o.NumSuccessfulCheckouts
+	}
+	if !IsNil(o.NumSuccessfulCheckoutsNewConnection) {
+		toSerialize["numSuccessfulCheckoutsNewConnection"] = o.NumSuccessfulCheckoutsNewConnection
+	}
+	if !IsNil(o.NumSuccessfulConnectionAttempts) {
+		toSerialize["numSuccessfulConnectionAttempts"] = o.NumSuccessfulConnectionAttempts
+	}
+	if !IsNil(o.MaximumAvailableConnections) {
+		toSerialize["maximumAvailableConnections"] = o.MaximumAvailableConnections
+	}
+	if !IsNil(o.NumSuccessfulCheckoutsWithoutWaiting) {
+		toSerialize["numSuccessfulCheckoutsWithoutWaiting"] = o.NumSuccessfulCheckoutsWithoutWaiting
+	}
+	if !IsNil(o.NumSuccessfulCheckoutsAfterWaiting) {
+		toSerialize["numSuccessfulCheckoutsAfterWaiting"] = o.NumSuccessfulCheckoutsAfterWaiting
+	}
+	if !IsNil(o.NumAvailableConnections) {
+		toSerialize["numAvailableConnections"] = o.NumAvailableConnections
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapConnectionPoolStatistics struct {

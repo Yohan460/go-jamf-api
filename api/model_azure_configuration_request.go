@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AzureConfigurationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureConfigurationRequest{}
+
 // AzureConfigurationRequest A Cloud Identity Provider Azure configuration for responses
 type AzureConfigurationRequest struct {
 	CloudIdPCommon CloudIdPCommonRequest `json:"cloudIdPCommon"`
@@ -88,14 +91,18 @@ func (o *AzureConfigurationRequest) SetServer(v AzureServerConfigurationRequest)
 }
 
 func (o AzureConfigurationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["cloudIdPCommon"] = o.CloudIdPCommon
-	}
-	if true {
-		toSerialize["server"] = o.Server
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AzureConfigurationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["cloudIdPCommon"] = o.CloudIdPCommon
+	toSerialize["server"] = o.Server
+	return toSerialize, nil
 }
 
 type NullableAzureConfigurationRequest struct {

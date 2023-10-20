@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MacOsBrandingConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MacOsBrandingConfiguration{}
+
 // MacOsBrandingConfiguration struct for MacOsBrandingConfiguration
 type MacOsBrandingConfiguration struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewMacOsBrandingConfigurationWithDefaults() *MacOsBrandingConfiguration {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *MacOsBrandingConfiguration) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -61,7 +64,7 @@ func (o *MacOsBrandingConfiguration) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *MacOsBrandingConfiguration) SetId(v string) {
 
 // GetApplicationName returns the ApplicationName field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetApplicationName() string {
-	if o == nil || o.ApplicationName == nil {
+	if o == nil || IsNil(o.ApplicationName) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *MacOsBrandingConfiguration) GetApplicationName() string {
 // GetApplicationNameOk returns a tuple with the ApplicationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetApplicationNameOk() (*string, bool) {
-	if o == nil || o.ApplicationName == nil {
+	if o == nil || IsNil(o.ApplicationName) {
 		return nil, false
 	}
 	return o.ApplicationName, true
@@ -93,7 +96,7 @@ func (o *MacOsBrandingConfiguration) GetApplicationNameOk() (*string, bool) {
 
 // HasApplicationName returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasApplicationName() bool {
-	if o != nil && o.ApplicationName != nil {
+	if o != nil && !IsNil(o.ApplicationName) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *MacOsBrandingConfiguration) SetApplicationName(v string) {
 
 // GetBrandingName returns the BrandingName field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetBrandingName() string {
-	if o == nil || o.BrandingName == nil {
+	if o == nil || IsNil(o.BrandingName) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingName() string {
 // GetBrandingNameOk returns a tuple with the BrandingName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetBrandingNameOk() (*string, bool) {
-	if o == nil || o.BrandingName == nil {
+	if o == nil || IsNil(o.BrandingName) {
 		return nil, false
 	}
 	return o.BrandingName, true
@@ -125,7 +128,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingNameOk() (*string, bool) {
 
 // HasBrandingName returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasBrandingName() bool {
-	if o != nil && o.BrandingName != nil {
+	if o != nil && !IsNil(o.BrandingName) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *MacOsBrandingConfiguration) SetBrandingName(v string) {
 
 // GetBrandingNameSecondary returns the BrandingNameSecondary field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetBrandingNameSecondary() string {
-	if o == nil || o.BrandingNameSecondary == nil {
+	if o == nil || IsNil(o.BrandingNameSecondary) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingNameSecondary() string {
 // GetBrandingNameSecondaryOk returns a tuple with the BrandingNameSecondary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetBrandingNameSecondaryOk() (*string, bool) {
-	if o == nil || o.BrandingNameSecondary == nil {
+	if o == nil || IsNil(o.BrandingNameSecondary) {
 		return nil, false
 	}
 	return o.BrandingNameSecondary, true
@@ -157,7 +160,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingNameSecondaryOk() (*string, bool
 
 // HasBrandingNameSecondary returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasBrandingNameSecondary() bool {
-	if o != nil && o.BrandingNameSecondary != nil {
+	if o != nil && !IsNil(o.BrandingNameSecondary) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *MacOsBrandingConfiguration) SetBrandingNameSecondary(v string) {
 
 // GetIconId returns the IconId field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetIconId() int32 {
-	if o == nil || o.IconId == nil {
+	if o == nil || IsNil(o.IconId) {
 		var ret int32
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *MacOsBrandingConfiguration) GetIconId() int32 {
 // GetIconIdOk returns a tuple with the IconId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int32, bool) {
-	if o == nil || o.IconId == nil {
+	if o == nil || IsNil(o.IconId) {
 		return nil, false
 	}
 	return o.IconId, true
@@ -189,7 +192,7 @@ func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int32, bool) {
 
 // HasIconId returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasIconId() bool {
-	if o != nil && o.IconId != nil {
+	if o != nil && !IsNil(o.IconId) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *MacOsBrandingConfiguration) SetIconId(v int32) {
 
 // GetBrandingHeaderImageId returns the BrandingHeaderImageId field value if set, zero value otherwise.
 func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int32 {
-	if o == nil || o.BrandingHeaderImageId == nil {
+	if o == nil || IsNil(o.BrandingHeaderImageId) {
 		var ret int32
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int32 {
 // GetBrandingHeaderImageIdOk returns a tuple with the BrandingHeaderImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int32, bool) {
-	if o == nil || o.BrandingHeaderImageId == nil {
+	if o == nil || IsNil(o.BrandingHeaderImageId) {
 		return nil, false
 	}
 	return o.BrandingHeaderImageId, true
@@ -221,7 +224,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int32, bool)
 
 // HasBrandingHeaderImageId returns a boolean if a field has been set.
 func (o *MacOsBrandingConfiguration) HasBrandingHeaderImageId() bool {
-	if o != nil && o.BrandingHeaderImageId != nil {
+	if o != nil && !IsNil(o.BrandingHeaderImageId) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int32) {
 }
 
 func (o MacOsBrandingConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ApplicationName != nil {
-		toSerialize["applicationName"] = o.ApplicationName
-	}
-	if o.BrandingName != nil {
-		toSerialize["brandingName"] = o.BrandingName
-	}
-	if o.BrandingNameSecondary != nil {
-		toSerialize["brandingNameSecondary"] = o.BrandingNameSecondary
-	}
-	if o.IconId != nil {
-		toSerialize["iconId"] = o.IconId
-	}
-	if o.BrandingHeaderImageId != nil {
-		toSerialize["brandingHeaderImageId"] = o.BrandingHeaderImageId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MacOsBrandingConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ApplicationName) {
+		toSerialize["applicationName"] = o.ApplicationName
+	}
+	if !IsNil(o.BrandingName) {
+		toSerialize["brandingName"] = o.BrandingName
+	}
+	if !IsNil(o.BrandingNameSecondary) {
+		toSerialize["brandingNameSecondary"] = o.BrandingNameSecondary
+	}
+	if !IsNil(o.IconId) {
+		toSerialize["iconId"] = o.IconId
+	}
+	if !IsNil(o.BrandingHeaderImageId) {
+		toSerialize["brandingHeaderImageId"] = o.BrandingHeaderImageId
+	}
+	return toSerialize, nil
 }
 
 type NullableMacOsBrandingConfiguration struct {

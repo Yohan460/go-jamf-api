@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type SupervisionIdentitiesPreviewApi interface {
+type SupervisionIdentitiesPreviewAPI interface {
 
 	/*
 	V1SupervisionIdentitiesGet Search for sorted and paged Supervision Identities 
@@ -29,13 +29,13 @@ type SupervisionIdentitiesPreviewApi interface {
 	Search for sorted and paged supervision identities
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SupervisionIdentitiesGetRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest
 	*/
-	V1SupervisionIdentitiesGet(ctx context.Context) ApiV1SupervisionIdentitiesGetRequest
+	V1SupervisionIdentitiesGet(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest
 
 	// V1SupervisionIdentitiesGetExecute executes the request
 	//  @return SupervisionIdentitySearchResults
-	V1SupervisionIdentitiesGetExecute(r ApiV1SupervisionIdentitiesGetRequest) (*SupervisionIdentitySearchResults, *http.Response, error)
+	V1SupervisionIdentitiesGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) (*SupervisionIdentitySearchResults, *http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesIdDelete Delete a Supervision Identity with the supplied id 
@@ -44,12 +44,12 @@ type SupervisionIdentitiesPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Supervision Identity identifier
-	@return ApiV1SupervisionIdentitiesIdDeleteRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 	*/
-	V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDeleteRequest
+	V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 
 	// V1SupervisionIdentitiesIdDeleteExecute executes the request
-	V1SupervisionIdentitiesIdDeleteExecute(r ApiV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error)
+	V1SupervisionIdentitiesIdDeleteExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesIdDownloadGet Download the Supervision Identity .p12 file 
@@ -58,13 +58,13 @@ type SupervisionIdentitiesPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Supervision Identity identifier
-	@return ApiV1SupervisionIdentitiesIdDownloadGetRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 	*/
-	V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDownloadGetRequest
+	V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 
 	// V1SupervisionIdentitiesIdDownloadGetExecute executes the request
 	//  @return *os.File
-	V1SupervisionIdentitiesIdDownloadGetExecute(r ApiV1SupervisionIdentitiesIdDownloadGetRequest) (**os.File, *http.Response, error)
+	V1SupervisionIdentitiesIdDownloadGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesIdGet Retrieve a Supervision Identity with the supplied id 
@@ -73,13 +73,13 @@ type SupervisionIdentitiesPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Supervision Identity identifier
-	@return ApiV1SupervisionIdentitiesIdGetRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 	*/
-	V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdGetRequest
+	V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 
 	// V1SupervisionIdentitiesIdGetExecute executes the request
 	//  @return SupervisionIdentity
-	V1SupervisionIdentitiesIdGetExecute(r ApiV1SupervisionIdentitiesIdGetRequest) (*SupervisionIdentity, *http.Response, error)
+	V1SupervisionIdentitiesIdGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest) (*SupervisionIdentity, *http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesIdPut Update a Supervision Identity with the supplied information 
@@ -88,13 +88,13 @@ type SupervisionIdentitiesPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Supervision Identity identifier
-	@return ApiV1SupervisionIdentitiesIdPutRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 	*/
-	V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdPutRequest
+	V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 
 	// V1SupervisionIdentitiesIdPutExecute executes the request
 	//  @return SupervisionIdentity
-	V1SupervisionIdentitiesIdPutExecute(r ApiV1SupervisionIdentitiesIdPutRequest) (*SupervisionIdentity, *http.Response, error)
+	V1SupervisionIdentitiesIdPutExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest) (*SupervisionIdentity, *http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesPost Create a Supervision Identity for the supplied information 
@@ -102,13 +102,13 @@ type SupervisionIdentitiesPreviewApi interface {
 	Creates a Supervision Identity for the supplied information
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SupervisionIdentitiesPostRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest
 	*/
-	V1SupervisionIdentitiesPost(ctx context.Context) ApiV1SupervisionIdentitiesPostRequest
+	V1SupervisionIdentitiesPost(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest
 
 	// V1SupervisionIdentitiesPostExecute executes the request
 	//  @return SupervisionIdentity
-	V1SupervisionIdentitiesPostExecute(r ApiV1SupervisionIdentitiesPostRequest) (*SupervisionIdentity, *http.Response, error)
+	V1SupervisionIdentitiesPostExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest) (*SupervisionIdentity, *http.Response, error)
 
 	/*
 	V1SupervisionIdentitiesUploadPost Upload the Supervision Identity .p12 file 
@@ -116,21 +116,21 @@ type SupervisionIdentitiesPreviewApi interface {
 	Uploads the Supervision Identity .p12 file
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SupervisionIdentitiesUploadPostRequest
+	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest
 	*/
-	V1SupervisionIdentitiesUploadPost(ctx context.Context) ApiV1SupervisionIdentitiesUploadPostRequest
+	V1SupervisionIdentitiesUploadPost(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest
 
 	// V1SupervisionIdentitiesUploadPostExecute executes the request
 	//  @return SupervisionIdentity
-	V1SupervisionIdentitiesUploadPostExecute(r ApiV1SupervisionIdentitiesUploadPostRequest) (*SupervisionIdentity, *http.Response, error)
+	V1SupervisionIdentitiesUploadPostExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest) (*SupervisionIdentity, *http.Response, error)
 }
 
-// SupervisionIdentitiesPreviewApiService SupervisionIdentitiesPreviewApi service
-type SupervisionIdentitiesPreviewApiService service
+// SupervisionIdentitiesPreviewAPIService SupervisionIdentitiesPreviewAPI service
+type SupervisionIdentitiesPreviewAPIService service
 
-type ApiV1SupervisionIdentitiesGetRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -138,35 +138,35 @@ type ApiV1SupervisionIdentitiesGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1SupervisionIdentitiesGetRequest) Page(page int32) ApiV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Page(page int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1SupervisionIdentitiesGetRequest) Size(size int32) ApiV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Size(size int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1SupervisionIdentitiesGetRequest) Pagesize(pagesize int32) ApiV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Pagesize(pagesize int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1SupervisionIdentitiesGetRequest) PageSize(pageSize int32) ApiV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) PageSize(pageSize int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1SupervisionIdentitiesGetRequest) Sort(sort string) ApiV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Sort(sort string) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1SupervisionIdentitiesGetRequest) Execute() (*SupervisionIdentitySearchResults, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Execute() (*SupervisionIdentitySearchResults, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesGetExecute(r)
 }
 
@@ -176,10 +176,10 @@ V1SupervisionIdentitiesGet Search for sorted and paged Supervision Identities
 Search for sorted and paged supervision identities
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SupervisionIdentitiesGetRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGet(ctx context.Context) ApiV1SupervisionIdentitiesGetRequest {
-	return ApiV1SupervisionIdentitiesGetRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesGet(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -187,7 +187,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGet(ctx 
 
 // Execute executes the request
 //  @return SupervisionIdentitySearchResults
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecute(r ApiV1SupervisionIdentitiesGetRequest) (*SupervisionIdentitySearchResults, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) (*SupervisionIdentitySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -195,7 +195,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecu
 		localVarReturnValue  *SupervisionIdentitySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -207,19 +207,34 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecu
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "id:asc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -248,9 +263,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -275,13 +290,13 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesIdDeleteRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	id int32
 }
 
-func (r ApiV1SupervisionIdentitiesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesIdDeleteExecute(r)
 }
 
@@ -292,10 +307,10 @@ Deletes a Supervision Identity with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Supervision Identity identifier
- @return ApiV1SupervisionIdentitiesIdDeleteRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDeleteRequest {
-	return ApiV1SupervisionIdentitiesIdDeleteRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -303,20 +318,20 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete
 }
 
 // Execute executes the request
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDeleteExecute(r ApiV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDeleteExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/supervision-identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -349,9 +364,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -368,7 +383,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -376,13 +392,13 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDelete
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesIdDownloadGetRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	id int32
 }
 
-func (r ApiV1SupervisionIdentitiesIdDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesIdDownloadGetExecute(r)
 }
 
@@ -393,10 +409,10 @@ Download the Supervision Identity .p12 file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Supervision Identity identifier
- @return ApiV1SupervisionIdentitiesIdDownloadGetRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdDownloadGetRequest {
-	return ApiV1SupervisionIdentitiesIdDownloadGetRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -405,21 +421,21 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownlo
 
 // Execute executes the request
 //  @return *os.File
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownloadGetExecute(r ApiV1SupervisionIdentitiesIdDownloadGetRequest) (**os.File, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDownloadGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesIdDownloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesIdDownloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/supervision-identities/{id}/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -452,9 +468,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownlo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -471,7 +487,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownlo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -488,13 +505,13 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdDownlo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesIdGetRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	id int32
 }
 
-func (r ApiV1SupervisionIdentitiesIdGetRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesIdGetExecute(r)
 }
 
@@ -505,10 +522,10 @@ Retrieves a Supervision Identity with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Supervision Identity identifier
- @return ApiV1SupervisionIdentitiesIdGetRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdGetRequest {
-	return ApiV1SupervisionIdentitiesIdGetRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -517,7 +534,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGet(ct
 
 // Execute executes the request
 //  @return SupervisionIdentity
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExecute(r ApiV1SupervisionIdentitiesIdGetRequest) (*SupervisionIdentity, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdGetExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest) (*SupervisionIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -525,13 +542,13 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExe
 		localVarReturnValue  *SupervisionIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/supervision-identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -564,9 +581,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -583,7 +600,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -600,19 +618,19 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesIdPutRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	id int32
 	supervisionIdentityUpdate *SupervisionIdentityUpdate
 }
 
-func (r ApiV1SupervisionIdentitiesIdPutRequest) SupervisionIdentityUpdate(supervisionIdentityUpdate SupervisionIdentityUpdate) ApiV1SupervisionIdentitiesIdPutRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest) SupervisionIdentityUpdate(supervisionIdentityUpdate SupervisionIdentityUpdate) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest {
 	r.supervisionIdentityUpdate = &supervisionIdentityUpdate
 	return r
 }
 
-func (r ApiV1SupervisionIdentitiesIdPutRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesIdPutExecute(r)
 }
 
@@ -623,10 +641,10 @@ Updates a Supervision Identity with the supplied information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Supervision Identity identifier
- @return ApiV1SupervisionIdentitiesIdPutRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) ApiV1SupervisionIdentitiesIdPutRequest {
-	return ApiV1SupervisionIdentitiesIdPutRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -635,7 +653,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPut(ct
 
 // Execute executes the request
 //  @return SupervisionIdentity
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExecute(r ApiV1SupervisionIdentitiesIdPutRequest) (*SupervisionIdentity, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdPutExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest) (*SupervisionIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -643,13 +661,13 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 		localVarReturnValue  *SupervisionIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/supervision-identities/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -687,9 +705,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -706,7 +724,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -716,7 +735,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -733,18 +753,18 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesIdPutExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesPostRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	supervisionIdentityCreate *SupervisionIdentityCreate
 }
 
-func (r ApiV1SupervisionIdentitiesPostRequest) SupervisionIdentityCreate(supervisionIdentityCreate SupervisionIdentityCreate) ApiV1SupervisionIdentitiesPostRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest) SupervisionIdentityCreate(supervisionIdentityCreate SupervisionIdentityCreate) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest {
 	r.supervisionIdentityCreate = &supervisionIdentityCreate
 	return r
 }
 
-func (r ApiV1SupervisionIdentitiesPostRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesPostExecute(r)
 }
 
@@ -754,10 +774,10 @@ V1SupervisionIdentitiesPost Create a Supervision Identity for the supplied infor
 Creates a Supervision Identity for the supplied information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SupervisionIdentitiesPostRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPost(ctx context.Context) ApiV1SupervisionIdentitiesPostRequest {
-	return ApiV1SupervisionIdentitiesPostRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesPost(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -765,7 +785,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPost(ctx
 
 // Execute executes the request
 //  @return SupervisionIdentity
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExecute(r ApiV1SupervisionIdentitiesPostRequest) (*SupervisionIdentity, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesPostExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesPostRequest) (*SupervisionIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -773,7 +793,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExec
 		localVarReturnValue  *SupervisionIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -816,9 +836,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -835,7 +855,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -852,19 +873,19 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesPostExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SupervisionIdentitiesUploadPostRequest struct {
+type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest struct {
 	ctx context.Context
-	ApiService SupervisionIdentitiesPreviewApi
+	ApiService SupervisionIdentitiesPreviewAPI
 	supervisionIdentityCertificateUpload *SupervisionIdentityCertificateUpload
 }
 
 // The base 64 encoded .p12 file alone with other needed information
-func (r ApiV1SupervisionIdentitiesUploadPostRequest) SupervisionIdentityCertificateUpload(supervisionIdentityCertificateUpload SupervisionIdentityCertificateUpload) ApiV1SupervisionIdentitiesUploadPostRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest) SupervisionIdentityCertificateUpload(supervisionIdentityCertificateUpload SupervisionIdentityCertificateUpload) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest {
 	r.supervisionIdentityCertificateUpload = &supervisionIdentityCertificateUpload
 	return r
 }
 
-func (r ApiV1SupervisionIdentitiesUploadPostRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
 	return r.ApiService.V1SupervisionIdentitiesUploadPostExecute(r)
 }
 
@@ -874,10 +895,10 @@ V1SupervisionIdentitiesUploadPost Upload the Supervision Identity .p12 file
 Uploads the Supervision Identity .p12 file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SupervisionIdentitiesUploadPostRequest
+ @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest
 */
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPost(ctx context.Context) ApiV1SupervisionIdentitiesUploadPostRequest {
-	return ApiV1SupervisionIdentitiesUploadPostRequest{
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesUploadPost(ctx context.Context) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest {
+	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -885,7 +906,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPo
 
 // Execute executes the request
 //  @return SupervisionIdentity
-func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPostExecute(r ApiV1SupervisionIdentitiesUploadPostRequest) (*SupervisionIdentity, *http.Response, error) {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesUploadPostExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesUploadPostRequest) (*SupervisionIdentity, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -893,7 +914,7 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPo
 		localVarReturnValue  *SupervisionIdentity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewApiService.V1SupervisionIdentitiesUploadPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SupervisionIdentitiesPreviewAPIService.V1SupervisionIdentitiesUploadPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -936,9 +957,9 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -955,7 +976,8 @@ func (a *SupervisionIdentitiesPreviewApiService) V1SupervisionIdentitiesUploadPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SsoKeystoreParse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SsoKeystoreParse{}
+
 // SsoKeystoreParse struct for SsoKeystoreParse
 type SsoKeystoreParse struct {
 	KeystorePassword string `json:"keystorePassword"`
@@ -114,17 +117,19 @@ func (o *SsoKeystoreParse) SetKeystoreFileName(v string) {
 }
 
 func (o SsoKeystoreParse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["keystorePassword"] = o.KeystorePassword
-	}
-	if true {
-		toSerialize["keystoreFile"] = o.KeystoreFile
-	}
-	if true {
-		toSerialize["keystoreFileName"] = o.KeystoreFileName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SsoKeystoreParse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["keystorePassword"] = o.KeystorePassword
+	toSerialize["keystoreFile"] = o.KeystoreFile
+	toSerialize["keystoreFileName"] = o.KeystoreFileName
+	return toSerialize, nil
 }
 
 type NullableSsoKeystoreParse struct {

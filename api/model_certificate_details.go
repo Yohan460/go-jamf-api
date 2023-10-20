@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificateDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateDetails{}
+
 // CertificateDetails struct for CertificateDetails
 type CertificateDetails struct {
 	Subject *string `json:"subject,omitempty"`
@@ -47,7 +50,7 @@ func NewCertificateDetailsWithDefaults() *CertificateDetails {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *CertificateDetails) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -57,7 +60,7 @@ func (o *CertificateDetails) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateDetails) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -65,7 +68,7 @@ func (o *CertificateDetails) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *CertificateDetails) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -79,7 +82,7 @@ func (o *CertificateDetails) SetSubject(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *CertificateDetails) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -89,7 +92,7 @@ func (o *CertificateDetails) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateDetails) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -97,7 +100,7 @@ func (o *CertificateDetails) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *CertificateDetails) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -110,14 +113,22 @@ func (o *CertificateDetails) SetSerialNumber(v string) {
 }
 
 func (o CertificateDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateDetails struct {

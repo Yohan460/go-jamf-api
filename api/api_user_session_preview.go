@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type UserSessionPreviewApi interface {
+type UserSessionPreviewAPI interface {
 
 	/*
 	UserGet Return all Jamf Pro user acounts 
@@ -28,13 +28,13 @@ type UserSessionPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUserGetRequest
+	@return UserSessionPreviewAPIUserGetRequest
 	*/
-	UserGet(ctx context.Context) ApiUserGetRequest
+	UserGet(ctx context.Context) UserSessionPreviewAPIUserGetRequest
 
 	// UserGetExecute executes the request
 	//  @return []Account
-	UserGetExecute(r ApiUserGetRequest) ([]Account, *http.Response, error)
+	UserGetExecute(r UserSessionPreviewAPIUserGetRequest) ([]Account, *http.Response, error)
 
 	/*
 	UserUpdateSessionPost Update values in the User's current session 
@@ -43,24 +43,24 @@ type UserSessionPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUserUpdateSessionPostRequest
+	@return UserSessionPreviewAPIUserUpdateSessionPostRequest
 	*/
-	UserUpdateSessionPost(ctx context.Context) ApiUserUpdateSessionPostRequest
+	UserUpdateSessionPost(ctx context.Context) UserSessionPreviewAPIUserUpdateSessionPostRequest
 
 	// UserUpdateSessionPostExecute executes the request
 	//  @return Session
-	UserUpdateSessionPostExecute(r ApiUserUpdateSessionPostRequest) (*Session, *http.Response, error)
+	UserUpdateSessionPostExecute(r UserSessionPreviewAPIUserUpdateSessionPostRequest) (*Session, *http.Response, error)
 }
 
-// UserSessionPreviewApiService UserSessionPreviewApi service
-type UserSessionPreviewApiService service
+// UserSessionPreviewAPIService UserSessionPreviewAPI service
+type UserSessionPreviewAPIService service
 
-type ApiUserGetRequest struct {
+type UserSessionPreviewAPIUserGetRequest struct {
 	ctx context.Context
-	ApiService UserSessionPreviewApi
+	ApiService UserSessionPreviewAPI
 }
 
-func (r ApiUserGetRequest) Execute() ([]Account, *http.Response, error) {
+func (r UserSessionPreviewAPIUserGetRequest) Execute() ([]Account, *http.Response, error) {
 	return r.ApiService.UserGetExecute(r)
 }
 
@@ -71,10 +71,10 @@ Return all Jamf Pro user acounts.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUserGetRequest
+ @return UserSessionPreviewAPIUserGetRequest
 */
-func (a *UserSessionPreviewApiService) UserGet(ctx context.Context) ApiUserGetRequest {
-	return ApiUserGetRequest{
+func (a *UserSessionPreviewAPIService) UserGet(ctx context.Context) UserSessionPreviewAPIUserGetRequest {
+	return UserSessionPreviewAPIUserGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -82,7 +82,7 @@ func (a *UserSessionPreviewApiService) UserGet(ctx context.Context) ApiUserGetRe
 
 // Execute executes the request
 //  @return []Account
-func (a *UserSessionPreviewApiService) UserGetExecute(r ApiUserGetRequest) ([]Account, *http.Response, error) {
+func (a *UserSessionPreviewAPIService) UserGetExecute(r UserSessionPreviewAPIUserGetRequest) ([]Account, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -90,7 +90,7 @@ func (a *UserSessionPreviewApiService) UserGetExecute(r ApiUserGetRequest) ([]Ac
 		localVarReturnValue  []Account
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSessionPreviewApiService.UserGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSessionPreviewAPIService.UserGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -128,9 +128,9 @@ func (a *UserSessionPreviewApiService) UserGetExecute(r ApiUserGetRequest) ([]Ac
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -155,19 +155,19 @@ func (a *UserSessionPreviewApiService) UserGetExecute(r ApiUserGetRequest) ([]Ac
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUserUpdateSessionPostRequest struct {
+type UserSessionPreviewAPIUserUpdateSessionPostRequest struct {
 	ctx context.Context
-	ApiService UserSessionPreviewApi
+	ApiService UserSessionPreviewAPI
 	session *Session
 }
 
 // Values to update in user&#39;s current session.
-func (r ApiUserUpdateSessionPostRequest) Session(session Session) ApiUserUpdateSessionPostRequest {
+func (r UserSessionPreviewAPIUserUpdateSessionPostRequest) Session(session Session) UserSessionPreviewAPIUserUpdateSessionPostRequest {
 	r.session = &session
 	return r
 }
 
-func (r ApiUserUpdateSessionPostRequest) Execute() (*Session, *http.Response, error) {
+func (r UserSessionPreviewAPIUserUpdateSessionPostRequest) Execute() (*Session, *http.Response, error) {
 	return r.ApiService.UserUpdateSessionPostExecute(r)
 }
 
@@ -178,10 +178,10 @@ Updates values in the user's current session.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUserUpdateSessionPostRequest
+ @return UserSessionPreviewAPIUserUpdateSessionPostRequest
 */
-func (a *UserSessionPreviewApiService) UserUpdateSessionPost(ctx context.Context) ApiUserUpdateSessionPostRequest {
-	return ApiUserUpdateSessionPostRequest{
+func (a *UserSessionPreviewAPIService) UserUpdateSessionPost(ctx context.Context) UserSessionPreviewAPIUserUpdateSessionPostRequest {
+	return UserSessionPreviewAPIUserUpdateSessionPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -189,7 +189,7 @@ func (a *UserSessionPreviewApiService) UserUpdateSessionPost(ctx context.Context
 
 // Execute executes the request
 //  @return Session
-func (a *UserSessionPreviewApiService) UserUpdateSessionPostExecute(r ApiUserUpdateSessionPostRequest) (*Session, *http.Response, error) {
+func (a *UserSessionPreviewAPIService) UserUpdateSessionPostExecute(r UserSessionPreviewAPIUserUpdateSessionPostRequest) (*Session, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -197,7 +197,7 @@ func (a *UserSessionPreviewApiService) UserUpdateSessionPostExecute(r ApiUserUpd
 		localVarReturnValue  *Session
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSessionPreviewApiService.UserUpdateSessionPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserSessionPreviewAPIService.UserUpdateSessionPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -237,9 +237,9 @@ func (a *UserSessionPreviewApiService) UserUpdateSessionPostExecute(r ApiUserUpd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

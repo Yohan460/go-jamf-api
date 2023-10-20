@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the MdmCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MdmCommand{}
+
 // MdmCommand struct for MdmCommand
 type MdmCommand struct {
 	Uuid *string `json:"uuid,omitempty"`
@@ -43,7 +46,7 @@ func NewMdmCommandWithDefaults() *MdmCommand {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *MdmCommand) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *MdmCommand) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommand) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -61,7 +64,7 @@ func (o *MdmCommand) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *MdmCommand) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *MdmCommand) SetUuid(v string) {
 
 // GetDateSent returns the DateSent field value if set, zero value otherwise.
 func (o *MdmCommand) GetDateSent() time.Time {
-	if o == nil || o.DateSent == nil {
+	if o == nil || IsNil(o.DateSent) {
 		var ret time.Time
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *MdmCommand) GetDateSent() time.Time {
 // GetDateSentOk returns a tuple with the DateSent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommand) GetDateSentOk() (*time.Time, bool) {
-	if o == nil || o.DateSent == nil {
+	if o == nil || IsNil(o.DateSent) {
 		return nil, false
 	}
 	return o.DateSent, true
@@ -93,7 +96,7 @@ func (o *MdmCommand) GetDateSentOk() (*time.Time, bool) {
 
 // HasDateSent returns a boolean if a field has been set.
 func (o *MdmCommand) HasDateSent() bool {
-	if o != nil && o.DateSent != nil {
+	if o != nil && !IsNil(o.DateSent) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *MdmCommand) SetDateSent(v time.Time) {
 
 // GetClient returns the Client field value if set, zero value otherwise.
 func (o *MdmCommand) GetClient() MdmCommandClient {
-	if o == nil || o.Client == nil {
+	if o == nil || IsNil(o.Client) {
 		var ret MdmCommandClient
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *MdmCommand) GetClient() MdmCommandClient {
 // GetClientOk returns a tuple with the Client field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommand) GetClientOk() (*MdmCommandClient, bool) {
-	if o == nil || o.Client == nil {
+	if o == nil || IsNil(o.Client) {
 		return nil, false
 	}
 	return o.Client, true
@@ -125,7 +128,7 @@ func (o *MdmCommand) GetClientOk() (*MdmCommandClient, bool) {
 
 // HasClient returns a boolean if a field has been set.
 func (o *MdmCommand) HasClient() bool {
-	if o != nil && o.Client != nil {
+	if o != nil && !IsNil(o.Client) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *MdmCommand) SetClient(v MdmCommandClient) {
 
 // GetCommandState returns the CommandState field value if set, zero value otherwise.
 func (o *MdmCommand) GetCommandState() MdmCommandState {
-	if o == nil || o.CommandState == nil {
+	if o == nil || IsNil(o.CommandState) {
 		var ret MdmCommandState
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *MdmCommand) GetCommandState() MdmCommandState {
 // GetCommandStateOk returns a tuple with the CommandState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommand) GetCommandStateOk() (*MdmCommandState, bool) {
-	if o == nil || o.CommandState == nil {
+	if o == nil || IsNil(o.CommandState) {
 		return nil, false
 	}
 	return o.CommandState, true
@@ -157,7 +160,7 @@ func (o *MdmCommand) GetCommandStateOk() (*MdmCommandState, bool) {
 
 // HasCommandState returns a boolean if a field has been set.
 func (o *MdmCommand) HasCommandState() bool {
-	if o != nil && o.CommandState != nil {
+	if o != nil && !IsNil(o.CommandState) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *MdmCommand) SetCommandState(v MdmCommandState) {
 
 // GetCommandType returns the CommandType field value if set, zero value otherwise.
 func (o *MdmCommand) GetCommandType() MdmCommandType {
-	if o == nil || o.CommandType == nil {
+	if o == nil || IsNil(o.CommandType) {
 		var ret MdmCommandType
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *MdmCommand) GetCommandType() MdmCommandType {
 // GetCommandTypeOk returns a tuple with the CommandType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
-	if o == nil || o.CommandType == nil {
+	if o == nil || IsNil(o.CommandType) {
 		return nil, false
 	}
 	return o.CommandType, true
@@ -189,7 +192,7 @@ func (o *MdmCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
 
 // HasCommandType returns a boolean if a field has been set.
 func (o *MdmCommand) HasCommandType() bool {
-	if o != nil && o.CommandType != nil {
+	if o != nil && !IsNil(o.CommandType) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *MdmCommand) SetCommandType(v MdmCommandType) {
 }
 
 func (o MdmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.DateSent != nil {
-		toSerialize["dateSent"] = o.DateSent
-	}
-	if o.Client != nil {
-		toSerialize["client"] = o.Client
-	}
-	if o.CommandState != nil {
-		toSerialize["commandState"] = o.CommandState
-	}
-	if o.CommandType != nil {
-		toSerialize["commandType"] = o.CommandType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MdmCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.DateSent) {
+		toSerialize["dateSent"] = o.DateSent
+	}
+	if !IsNil(o.Client) {
+		toSerialize["client"] = o.Client
+	}
+	if !IsNil(o.CommandState) {
+		toSerialize["commandState"] = o.CommandState
+	}
+	if !IsNil(o.CommandType) {
+		toSerialize["commandType"] = o.CommandType
+	}
+	return toSerialize, nil
 }
 
 type NullableMdmCommand struct {

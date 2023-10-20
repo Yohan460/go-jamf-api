@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
-**SiteId** | Pointer to **string** |  | [optional] 
+**SiteId** | **string** |  | 
 **DisplayName** | **string** |  | 
 **Description** | **string** |  | 
 **EnrollmentCustomizationBrandingSettings** | [**EnrollmentCustomizationBrandingSettings**](EnrollmentCustomizationBrandingSettings.md) |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewEnrollmentCustomizationV2
 
-`func NewEnrollmentCustomizationV2(displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *EnrollmentCustomizationV2`
+`func NewEnrollmentCustomizationV2(siteId string, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *EnrollmentCustomizationV2`
 
 NewEnrollmentCustomizationV2 instantiates a new EnrollmentCustomizationV2 object
 This constructor will assign default values to properties that have it defined,
@@ -73,11 +73,6 @@ and a boolean to check if the value has been set.
 
 SetSiteId sets SiteId field to given value.
 
-### HasSiteId
-
-`func (o *EnrollmentCustomizationV2) HasSiteId() bool`
-
-HasSiteId returns a boolean if a field has been set.
 
 ### GetDisplayName
 

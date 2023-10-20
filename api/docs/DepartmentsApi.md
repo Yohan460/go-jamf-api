@@ -1,17 +1,17 @@
-# \DepartmentsApi
+# \DepartmentsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1DepartmentsDeleteMultiplePost**](DepartmentsApi.md#V1DepartmentsDeleteMultiplePost) | **Post** /v1/departments/delete-multiple | Deletes all departments by ids passed in body 
-[**V1DepartmentsGet**](DepartmentsApi.md#V1DepartmentsGet) | **Get** /v1/departments | Search for Departments 
-[**V1DepartmentsIdDelete**](DepartmentsApi.md#V1DepartmentsIdDelete) | **Delete** /v1/departments/{id} | Remove specified department record 
-[**V1DepartmentsIdGet**](DepartmentsApi.md#V1DepartmentsIdGet) | **Get** /v1/departments/{id} | Get specified Department object 
-[**V1DepartmentsIdHistoryGet**](DepartmentsApi.md#V1DepartmentsIdHistoryGet) | **Get** /v1/departments/{id}/history | Get specified Department history object 
-[**V1DepartmentsIdHistoryPost**](DepartmentsApi.md#V1DepartmentsIdHistoryPost) | **Post** /v1/departments/{id}/history | Add specified Department history object notes 
-[**V1DepartmentsIdPut**](DepartmentsApi.md#V1DepartmentsIdPut) | **Put** /v1/departments/{id} | Update specified department object 
-[**V1DepartmentsPost**](DepartmentsApi.md#V1DepartmentsPost) | **Post** /v1/departments | Create department record 
+[**V1DepartmentsDeleteMultiplePost**](DepartmentsAPI.md#V1DepartmentsDeleteMultiplePost) | **Post** /v1/departments/delete-multiple | Deletes all departments by ids passed in body 
+[**V1DepartmentsGet**](DepartmentsAPI.md#V1DepartmentsGet) | **Get** /v1/departments | Search for Departments 
+[**V1DepartmentsIdDelete**](DepartmentsAPI.md#V1DepartmentsIdDelete) | **Delete** /v1/departments/{id} | Remove specified department record 
+[**V1DepartmentsIdGet**](DepartmentsAPI.md#V1DepartmentsIdGet) | **Get** /v1/departments/{id} | Get specified Department object 
+[**V1DepartmentsIdHistoryGet**](DepartmentsAPI.md#V1DepartmentsIdHistoryGet) | **Get** /v1/departments/{id}/history | Get specified Department history object 
+[**V1DepartmentsIdHistoryPost**](DepartmentsAPI.md#V1DepartmentsIdHistoryPost) | **Post** /v1/departments/{id}/history | Add specified Department history object notes 
+[**V1DepartmentsIdPut**](DepartmentsAPI.md#V1DepartmentsIdPut) | **Put** /v1/departments/{id} | Update specified department object 
+[**V1DepartmentsPost**](DepartmentsAPI.md#V1DepartmentsPost) | **Post** /v1/departments | Create department record 
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -40,9 +40,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+    r, err := apiClient.DepartmentsAPI.V1DepartmentsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsDeleteMultiplePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsDeleteMultiplePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsGet`: DepartmentsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsGet`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -176,9 +176,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.DepartmentsAPI.V1DepartmentsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -236,7 +236,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -244,13 +244,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsIdGet`: Department
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdGet`: %v\n", resp)
 }
 ```
 
@@ -306,7 +306,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -318,13 +318,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -384,7 +384,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -393,13 +393,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -456,7 +456,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -465,13 +465,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsIdPut(context.Background(), id).Department(department).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdPut(context.Background(), id).Department(department).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsIdPut`: Department
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdPut`: %v\n", resp)
 }
 ```
 
@@ -528,7 +528,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -536,13 +536,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsApi.V1DepartmentsPost(context.Background()).Department(department).Execute()
+    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsPost(context.Background()).Department(department).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsApi.V1DepartmentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DepartmentsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsApi.V1DepartmentsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsPost`: %v\n", resp)
 }
 ```
 

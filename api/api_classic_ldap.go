@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type ClassicLdapApi interface {
+type ClassicLdapAPI interface {
 
 	/*
 	V1ClassicLdapIdGet Get mappings for OnPrem Ldap configuration with given id.
@@ -29,25 +29,25 @@ type ClassicLdapApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id OnPrem Ldap identifier
-	@return ApiV1ClassicLdapIdGetRequest
+	@return ClassicLdapAPIV1ClassicLdapIdGetRequest
 	*/
-	V1ClassicLdapIdGet(ctx context.Context, id string) ApiV1ClassicLdapIdGetRequest
+	V1ClassicLdapIdGet(ctx context.Context, id string) ClassicLdapAPIV1ClassicLdapIdGetRequest
 
 	// V1ClassicLdapIdGetExecute executes the request
 	//  @return ClassicLdapMappings
-	V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGetRequest) (*ClassicLdapMappings, *http.Response, error)
+	V1ClassicLdapIdGetExecute(r ClassicLdapAPIV1ClassicLdapIdGetRequest) (*ClassicLdapMappings, *http.Response, error)
 }
 
-// ClassicLdapApiService ClassicLdapApi service
-type ClassicLdapApiService service
+// ClassicLdapAPIService ClassicLdapAPI service
+type ClassicLdapAPIService service
 
-type ApiV1ClassicLdapIdGetRequest struct {
+type ClassicLdapAPIV1ClassicLdapIdGetRequest struct {
 	ctx context.Context
-	ApiService ClassicLdapApi
+	ApiService ClassicLdapAPI
 	id string
 }
 
-func (r ApiV1ClassicLdapIdGetRequest) Execute() (*ClassicLdapMappings, *http.Response, error) {
+func (r ClassicLdapAPIV1ClassicLdapIdGetRequest) Execute() (*ClassicLdapMappings, *http.Response, error) {
 	return r.ApiService.V1ClassicLdapIdGetExecute(r)
 }
 
@@ -58,10 +58,10 @@ Get mappings for OnPrem Ldap configuration with given id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id OnPrem Ldap identifier
- @return ApiV1ClassicLdapIdGetRequest
+ @return ClassicLdapAPIV1ClassicLdapIdGetRequest
 */
-func (a *ClassicLdapApiService) V1ClassicLdapIdGet(ctx context.Context, id string) ApiV1ClassicLdapIdGetRequest {
-	return ApiV1ClassicLdapIdGetRequest{
+func (a *ClassicLdapAPIService) V1ClassicLdapIdGet(ctx context.Context, id string) ClassicLdapAPIV1ClassicLdapIdGetRequest {
+	return ClassicLdapAPIV1ClassicLdapIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -70,7 +70,7 @@ func (a *ClassicLdapApiService) V1ClassicLdapIdGet(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return ClassicLdapMappings
-func (a *ClassicLdapApiService) V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGetRequest) (*ClassicLdapMappings, *http.Response, error) {
+func (a *ClassicLdapAPIService) V1ClassicLdapIdGetExecute(r ClassicLdapAPIV1ClassicLdapIdGetRequest) (*ClassicLdapMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -78,13 +78,13 @@ func (a *ClassicLdapApiService) V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGe
 		localVarReturnValue  *ClassicLdapMappings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassicLdapApiService.V1ClassicLdapIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassicLdapAPIService.V1ClassicLdapIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/classic-ldap/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -117,9 +117,9 @@ func (a *ClassicLdapApiService) V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -136,7 +136,8 @@ func (a *ClassicLdapApiService) V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -146,7 +147,8 @@ func (a *ClassicLdapApiService) V1ClassicLdapIdGetExecute(r ApiV1ClassicLdapIdGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RenewMdmProfileResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RenewMdmProfileResponse{}
+
 // RenewMdmProfileResponse struct for RenewMdmProfileResponse
 type RenewMdmProfileResponse struct {
 	UdidsNotProcessed *Udids `json:"udidsNotProcessed,omitempty"`
@@ -38,7 +41,7 @@ func NewRenewMdmProfileResponseWithDefaults() *RenewMdmProfileResponse {
 
 // GetUdidsNotProcessed returns the UdidsNotProcessed field value if set, zero value otherwise.
 func (o *RenewMdmProfileResponse) GetUdidsNotProcessed() Udids {
-	if o == nil || o.UdidsNotProcessed == nil {
+	if o == nil || IsNil(o.UdidsNotProcessed) {
 		var ret Udids
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *RenewMdmProfileResponse) GetUdidsNotProcessed() Udids {
 // GetUdidsNotProcessedOk returns a tuple with the UdidsNotProcessed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RenewMdmProfileResponse) GetUdidsNotProcessedOk() (*Udids, bool) {
-	if o == nil || o.UdidsNotProcessed == nil {
+	if o == nil || IsNil(o.UdidsNotProcessed) {
 		return nil, false
 	}
 	return o.UdidsNotProcessed, true
@@ -56,7 +59,7 @@ func (o *RenewMdmProfileResponse) GetUdidsNotProcessedOk() (*Udids, bool) {
 
 // HasUdidsNotProcessed returns a boolean if a field has been set.
 func (o *RenewMdmProfileResponse) HasUdidsNotProcessed() bool {
-	if o != nil && o.UdidsNotProcessed != nil {
+	if o != nil && !IsNil(o.UdidsNotProcessed) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *RenewMdmProfileResponse) SetUdidsNotProcessed(v Udids) {
 }
 
 func (o RenewMdmProfileResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.UdidsNotProcessed != nil {
-		toSerialize["udidsNotProcessed"] = o.UdidsNotProcessed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RenewMdmProfileResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.UdidsNotProcessed) {
+		toSerialize["udidsNotProcessed"] = o.UdidsNotProcessed
+	}
+	return toSerialize, nil
 }
 
 type NullableRenewMdmProfileResponse struct {

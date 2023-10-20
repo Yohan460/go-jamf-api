@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **MaxRestrictionLengthSeconds** | Pointer to **int32** |  | [optional] 
 **DisplayNameType** | Pointer to **string** |  | [optional] 
 **Features** | Pointer to [**TeacherFeatures**](TeacherFeatures.md) |  | [optional] 
-**SafelistedApps** | Pointer to [**[]SafelistedAppsInner**](SafelistedAppsInner.md) |  | [optional] 
+**SafelistedApps** | Pointer to [**[]SafelistedApp**](SafelistedApp.md) |  | [optional] 
 
 ## Methods
 
@@ -183,20 +183,20 @@ HasFeatures returns a boolean if a field has been set.
 
 ### GetSafelistedApps
 
-`func (o *TeacherSettingsResponse) GetSafelistedApps() []SafelistedAppsInner`
+`func (o *TeacherSettingsResponse) GetSafelistedApps() []SafelistedApp`
 
 GetSafelistedApps returns the SafelistedApps field if non-nil, zero value otherwise.
 
 ### GetSafelistedAppsOk
 
-`func (o *TeacherSettingsResponse) GetSafelistedAppsOk() (*[]SafelistedAppsInner, bool)`
+`func (o *TeacherSettingsResponse) GetSafelistedAppsOk() (*[]SafelistedApp, bool)`
 
 GetSafelistedAppsOk returns a tuple with the SafelistedApps field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSafelistedApps
 
-`func (o *TeacherSettingsResponse) SetSafelistedApps(v []SafelistedAppsInner)`
+`func (o *TeacherSettingsResponse) SetSafelistedApps(v []SafelistedApp)`
 
 SetSafelistedApps sets SafelistedApps field to given value.
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageSyncStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageSyncStatus{}
+
 // PrestageSyncStatus struct for PrestageSyncStatus
 type PrestageSyncStatus struct {
 	SyncState *string `json:"syncState,omitempty"`
@@ -40,7 +43,7 @@ func NewPrestageSyncStatusWithDefaults() *PrestageSyncStatus {
 
 // GetSyncState returns the SyncState field value if set, zero value otherwise.
 func (o *PrestageSyncStatus) GetSyncState() string {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PrestageSyncStatus) GetSyncState() string {
 // GetSyncStateOk returns a tuple with the SyncState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageSyncStatus) GetSyncStateOk() (*string, bool) {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		return nil, false
 	}
 	return o.SyncState, true
@@ -58,7 +61,7 @@ func (o *PrestageSyncStatus) GetSyncStateOk() (*string, bool) {
 
 // HasSyncState returns a boolean if a field has been set.
 func (o *PrestageSyncStatus) HasSyncState() bool {
-	if o != nil && o.SyncState != nil {
+	if o != nil && !IsNil(o.SyncState) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PrestageSyncStatus) SetSyncState(v string) {
 
 // GetPrestageId returns the PrestageId field value if set, zero value otherwise.
 func (o *PrestageSyncStatus) GetPrestageId() int32 {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		var ret int32
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PrestageSyncStatus) GetPrestageId() int32 {
 // GetPrestageIdOk returns a tuple with the PrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageSyncStatus) GetPrestageIdOk() (*int32, bool) {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		return nil, false
 	}
 	return o.PrestageId, true
@@ -90,7 +93,7 @@ func (o *PrestageSyncStatus) GetPrestageIdOk() (*int32, bool) {
 
 // HasPrestageId returns a boolean if a field has been set.
 func (o *PrestageSyncStatus) HasPrestageId() bool {
-	if o != nil && o.PrestageId != nil {
+	if o != nil && !IsNil(o.PrestageId) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *PrestageSyncStatus) SetPrestageId(v int32) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *PrestageSyncStatus) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *PrestageSyncStatus) GetTimestamp() string {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageSyncStatus) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -122,7 +125,7 @@ func (o *PrestageSyncStatus) GetTimestampOk() (*string, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *PrestageSyncStatus) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *PrestageSyncStatus) SetTimestamp(v string) {
 }
 
 func (o PrestageSyncStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SyncState != nil {
-		toSerialize["syncState"] = o.SyncState
-	}
-	if o.PrestageId != nil {
-		toSerialize["prestageId"] = o.PrestageId
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageSyncStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SyncState) {
+		toSerialize["syncState"] = o.SyncState
+	}
+	if !IsNil(o.PrestageId) {
+		toSerialize["prestageId"] = o.PrestageId
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageSyncStatus struct {

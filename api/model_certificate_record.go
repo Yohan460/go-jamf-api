@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificateRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateRecord{}
+
 // CertificateRecord struct for CertificateRecord
 type CertificateRecord struct {
 	SubjectX500Principal *string `json:"subjectX500Principal,omitempty"`
@@ -48,7 +51,7 @@ func NewCertificateRecordWithDefaults() *CertificateRecord {
 
 // GetSubjectX500Principal returns the SubjectX500Principal field value if set, zero value otherwise.
 func (o *CertificateRecord) GetSubjectX500Principal() string {
-	if o == nil || o.SubjectX500Principal == nil {
+	if o == nil || IsNil(o.SubjectX500Principal) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *CertificateRecord) GetSubjectX500Principal() string {
 // GetSubjectX500PrincipalOk returns a tuple with the SubjectX500Principal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetSubjectX500PrincipalOk() (*string, bool) {
-	if o == nil || o.SubjectX500Principal == nil {
+	if o == nil || IsNil(o.SubjectX500Principal) {
 		return nil, false
 	}
 	return o.SubjectX500Principal, true
@@ -66,7 +69,7 @@ func (o *CertificateRecord) GetSubjectX500PrincipalOk() (*string, bool) {
 
 // HasSubjectX500Principal returns a boolean if a field has been set.
 func (o *CertificateRecord) HasSubjectX500Principal() bool {
-	if o != nil && o.SubjectX500Principal != nil {
+	if o != nil && !IsNil(o.SubjectX500Principal) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *CertificateRecord) SetSubjectX500Principal(v string) {
 
 // GetIssuerX500Principal returns the IssuerX500Principal field value if set, zero value otherwise.
 func (o *CertificateRecord) GetIssuerX500Principal() string {
-	if o == nil || o.IssuerX500Principal == nil {
+	if o == nil || IsNil(o.IssuerX500Principal) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *CertificateRecord) GetIssuerX500Principal() string {
 // GetIssuerX500PrincipalOk returns a tuple with the IssuerX500Principal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetIssuerX500PrincipalOk() (*string, bool) {
-	if o == nil || o.IssuerX500Principal == nil {
+	if o == nil || IsNil(o.IssuerX500Principal) {
 		return nil, false
 	}
 	return o.IssuerX500Principal, true
@@ -98,7 +101,7 @@ func (o *CertificateRecord) GetIssuerX500PrincipalOk() (*string, bool) {
 
 // HasIssuerX500Principal returns a boolean if a field has been set.
 func (o *CertificateRecord) HasIssuerX500Principal() bool {
-	if o != nil && o.IssuerX500Principal != nil {
+	if o != nil && !IsNil(o.IssuerX500Principal) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *CertificateRecord) SetIssuerX500Principal(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *CertificateRecord) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *CertificateRecord) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -130,7 +133,7 @@ func (o *CertificateRecord) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *CertificateRecord) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *CertificateRecord) SetSerialNumber(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CertificateRecord) GetVersion() int32 {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret int32
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *CertificateRecord) GetVersion() int32 {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetVersionOk() (*int32, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -162,7 +165,7 @@ func (o *CertificateRecord) GetVersionOk() (*int32, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *CertificateRecord) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *CertificateRecord) SetVersion(v int32) {
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise.
 func (o *CertificateRecord) GetNotAfter() int32 {
-	if o == nil || o.NotAfter == nil {
+	if o == nil || IsNil(o.NotAfter) {
 		var ret int32
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *CertificateRecord) GetNotAfter() int32 {
 // GetNotAfterOk returns a tuple with the NotAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetNotAfterOk() (*int32, bool) {
-	if o == nil || o.NotAfter == nil {
+	if o == nil || IsNil(o.NotAfter) {
 		return nil, false
 	}
 	return o.NotAfter, true
@@ -194,7 +197,7 @@ func (o *CertificateRecord) GetNotAfterOk() (*int32, bool) {
 
 // HasNotAfter returns a boolean if a field has been set.
 func (o *CertificateRecord) HasNotAfter() bool {
-	if o != nil && o.NotAfter != nil {
+	if o != nil && !IsNil(o.NotAfter) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *CertificateRecord) SetNotAfter(v int32) {
 
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise.
 func (o *CertificateRecord) GetNotBefore() int32 {
-	if o == nil || o.NotBefore == nil {
+	if o == nil || IsNil(o.NotBefore) {
 		var ret int32
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *CertificateRecord) GetNotBefore() int32 {
 // GetNotBeforeOk returns a tuple with the NotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetNotBeforeOk() (*int32, bool) {
-	if o == nil || o.NotBefore == nil {
+	if o == nil || IsNil(o.NotBefore) {
 		return nil, false
 	}
 	return o.NotBefore, true
@@ -226,7 +229,7 @@ func (o *CertificateRecord) GetNotBeforeOk() (*int32, bool) {
 
 // HasNotBefore returns a boolean if a field has been set.
 func (o *CertificateRecord) HasNotBefore() bool {
-	if o != nil && o.NotBefore != nil {
+	if o != nil && !IsNil(o.NotBefore) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *CertificateRecord) SetNotBefore(v int32) {
 
 // GetSignature returns the Signature field value if set, zero value otherwise.
 func (o *CertificateRecord) GetSignature() Signature {
-	if o == nil || o.Signature == nil {
+	if o == nil || IsNil(o.Signature) {
 		var ret Signature
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *CertificateRecord) GetSignature() Signature {
 // GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetSignatureOk() (*Signature, bool) {
-	if o == nil || o.Signature == nil {
+	if o == nil || IsNil(o.Signature) {
 		return nil, false
 	}
 	return o.Signature, true
@@ -258,7 +261,7 @@ func (o *CertificateRecord) GetSignatureOk() (*Signature, bool) {
 
 // HasSignature returns a boolean if a field has been set.
 func (o *CertificateRecord) HasSignature() bool {
-	if o != nil && o.Signature != nil {
+	if o != nil && !IsNil(o.Signature) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *CertificateRecord) SetSignature(v Signature) {
 
 // GetKeyUsage returns the KeyUsage field value if set, zero value otherwise.
 func (o *CertificateRecord) GetKeyUsage() []string {
-	if o == nil || o.KeyUsage == nil {
+	if o == nil || IsNil(o.KeyUsage) {
 		var ret []string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *CertificateRecord) GetKeyUsage() []string {
 // GetKeyUsageOk returns a tuple with the KeyUsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetKeyUsageOk() ([]string, bool) {
-	if o == nil || o.KeyUsage == nil {
+	if o == nil || IsNil(o.KeyUsage) {
 		return nil, false
 	}
 	return o.KeyUsage, true
@@ -290,7 +293,7 @@ func (o *CertificateRecord) GetKeyUsageOk() ([]string, bool) {
 
 // HasKeyUsage returns a boolean if a field has been set.
 func (o *CertificateRecord) HasKeyUsage() bool {
-	if o != nil && o.KeyUsage != nil {
+	if o != nil && !IsNil(o.KeyUsage) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *CertificateRecord) SetKeyUsage(v []string) {
 
 // GetKeyUsageExtended returns the KeyUsageExtended field value if set, zero value otherwise.
 func (o *CertificateRecord) GetKeyUsageExtended() []string {
-	if o == nil || o.KeyUsageExtended == nil {
+	if o == nil || IsNil(o.KeyUsageExtended) {
 		var ret []string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *CertificateRecord) GetKeyUsageExtended() []string {
 // GetKeyUsageExtendedOk returns a tuple with the KeyUsageExtended field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetKeyUsageExtendedOk() ([]string, bool) {
-	if o == nil || o.KeyUsageExtended == nil {
+	if o == nil || IsNil(o.KeyUsageExtended) {
 		return nil, false
 	}
 	return o.KeyUsageExtended, true
@@ -322,7 +325,7 @@ func (o *CertificateRecord) GetKeyUsageExtendedOk() ([]string, bool) {
 
 // HasKeyUsageExtended returns a boolean if a field has been set.
 func (o *CertificateRecord) HasKeyUsageExtended() bool {
-	if o != nil && o.KeyUsageExtended != nil {
+	if o != nil && !IsNil(o.KeyUsageExtended) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *CertificateRecord) SetKeyUsageExtended(v []string) {
 
 // GetSha1Fingerprint returns the Sha1Fingerprint field value if set, zero value otherwise.
 func (o *CertificateRecord) GetSha1Fingerprint() string {
-	if o == nil || o.Sha1Fingerprint == nil {
+	if o == nil || IsNil(o.Sha1Fingerprint) {
 		var ret string
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *CertificateRecord) GetSha1Fingerprint() string {
 // GetSha1FingerprintOk returns a tuple with the Sha1Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetSha1FingerprintOk() (*string, bool) {
-	if o == nil || o.Sha1Fingerprint == nil {
+	if o == nil || IsNil(o.Sha1Fingerprint) {
 		return nil, false
 	}
 	return o.Sha1Fingerprint, true
@@ -354,7 +357,7 @@ func (o *CertificateRecord) GetSha1FingerprintOk() (*string, bool) {
 
 // HasSha1Fingerprint returns a boolean if a field has been set.
 func (o *CertificateRecord) HasSha1Fingerprint() bool {
-	if o != nil && o.Sha1Fingerprint != nil {
+	if o != nil && !IsNil(o.Sha1Fingerprint) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *CertificateRecord) SetSha1Fingerprint(v string) {
 
 // GetSha256Fingerprint returns the Sha256Fingerprint field value if set, zero value otherwise.
 func (o *CertificateRecord) GetSha256Fingerprint() string {
-	if o == nil || o.Sha256Fingerprint == nil {
+	if o == nil || IsNil(o.Sha256Fingerprint) {
 		var ret string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *CertificateRecord) GetSha256Fingerprint() string {
 // GetSha256FingerprintOk returns a tuple with the Sha256Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateRecord) GetSha256FingerprintOk() (*string, bool) {
-	if o == nil || o.Sha256Fingerprint == nil {
+	if o == nil || IsNil(o.Sha256Fingerprint) {
 		return nil, false
 	}
 	return o.Sha256Fingerprint, true
@@ -386,7 +389,7 @@ func (o *CertificateRecord) GetSha256FingerprintOk() (*string, bool) {
 
 // HasSha256Fingerprint returns a boolean if a field has been set.
 func (o *CertificateRecord) HasSha256Fingerprint() bool {
-	if o != nil && o.Sha256Fingerprint != nil {
+	if o != nil && !IsNil(o.Sha256Fingerprint) {
 		return true
 	}
 
@@ -399,41 +402,49 @@ func (o *CertificateRecord) SetSha256Fingerprint(v string) {
 }
 
 func (o CertificateRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SubjectX500Principal != nil {
-		toSerialize["subjectX500Principal"] = o.SubjectX500Principal
-	}
-	if o.IssuerX500Principal != nil {
-		toSerialize["issuerX500Principal"] = o.IssuerX500Principal
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.NotAfter != nil {
-		toSerialize["notAfter"] = o.NotAfter
-	}
-	if o.NotBefore != nil {
-		toSerialize["notBefore"] = o.NotBefore
-	}
-	if o.Signature != nil {
-		toSerialize["signature"] = o.Signature
-	}
-	if o.KeyUsage != nil {
-		toSerialize["keyUsage"] = o.KeyUsage
-	}
-	if o.KeyUsageExtended != nil {
-		toSerialize["keyUsageExtended"] = o.KeyUsageExtended
-	}
-	if o.Sha1Fingerprint != nil {
-		toSerialize["sha1Fingerprint"] = o.Sha1Fingerprint
-	}
-	if o.Sha256Fingerprint != nil {
-		toSerialize["sha256Fingerprint"] = o.Sha256Fingerprint
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SubjectX500Principal) {
+		toSerialize["subjectX500Principal"] = o.SubjectX500Principal
+	}
+	if !IsNil(o.IssuerX500Principal) {
+		toSerialize["issuerX500Principal"] = o.IssuerX500Principal
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.NotAfter) {
+		toSerialize["notAfter"] = o.NotAfter
+	}
+	if !IsNil(o.NotBefore) {
+		toSerialize["notBefore"] = o.NotBefore
+	}
+	if !IsNil(o.Signature) {
+		toSerialize["signature"] = o.Signature
+	}
+	if !IsNil(o.KeyUsage) {
+		toSerialize["keyUsage"] = o.KeyUsage
+	}
+	if !IsNil(o.KeyUsageExtended) {
+		toSerialize["keyUsageExtended"] = o.KeyUsageExtended
+	}
+	if !IsNil(o.Sha1Fingerprint) {
+		toSerialize["sha1Fingerprint"] = o.Sha1Fingerprint
+	}
+	if !IsNil(o.Sha256Fingerprint) {
+		toSerialize["sha256Fingerprint"] = o.Sha256Fingerprint
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateRecord struct {

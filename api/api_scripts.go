@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 )
 
 
-type ScriptsApi interface {
+type ScriptsAPI interface {
 
 	/*
 	V1ScriptsGet Search for sorted and paged Scripts 
@@ -30,13 +30,13 @@ type ScriptsApi interface {
 	Search for sorted and paged scripts
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ScriptsGetRequest
+	@return ScriptsAPIV1ScriptsGetRequest
 	*/
-	V1ScriptsGet(ctx context.Context) ApiV1ScriptsGetRequest
+	V1ScriptsGet(ctx context.Context) ScriptsAPIV1ScriptsGetRequest
 
 	// V1ScriptsGetExecute executes the request
 	//  @return ScriptsSearchResults
-	V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*ScriptsSearchResults, *http.Response, error)
+	V1ScriptsGetExecute(r ScriptsAPIV1ScriptsGetRequest) (*ScriptsSearchResults, *http.Response, error)
 
 	/*
 	V1ScriptsIdDelete Delete a Script at the specified id 
@@ -45,12 +45,12 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Script object identifier
-	@return ApiV1ScriptsIdDeleteRequest
+	@return ScriptsAPIV1ScriptsIdDeleteRequest
 	*/
-	V1ScriptsIdDelete(ctx context.Context, id string) ApiV1ScriptsIdDeleteRequest
+	V1ScriptsIdDelete(ctx context.Context, id string) ScriptsAPIV1ScriptsIdDeleteRequest
 
 	// V1ScriptsIdDeleteExecute executes the request
-	V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteRequest) (*http.Response, error)
+	V1ScriptsIdDeleteExecute(r ScriptsAPIV1ScriptsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1ScriptsIdDownloadGet Download a text file of the Script contents 
@@ -59,13 +59,13 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of the script to be downloaded
-	@return ApiV1ScriptsIdDownloadGetRequest
+	@return ScriptsAPIV1ScriptsIdDownloadGetRequest
 	*/
-	V1ScriptsIdDownloadGet(ctx context.Context, id string) ApiV1ScriptsIdDownloadGetRequest
+	V1ScriptsIdDownloadGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdDownloadGetRequest
 
 	// V1ScriptsIdDownloadGetExecute executes the request
 	//  @return *os.File
-	V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownloadGetRequest) (**os.File, *http.Response, error)
+	V1ScriptsIdDownloadGetExecute(r ScriptsAPIV1ScriptsIdDownloadGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1ScriptsIdGet Retrieve a full script object 
@@ -74,13 +74,13 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Script object identifier
-	@return ApiV1ScriptsIdGetRequest
+	@return ScriptsAPIV1ScriptsIdGetRequest
 	*/
-	V1ScriptsIdGet(ctx context.Context, id string) ApiV1ScriptsIdGetRequest
+	V1ScriptsIdGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdGetRequest
 
 	// V1ScriptsIdGetExecute executes the request
 	//  @return Script
-	V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*Script, *http.Response, error)
+	V1ScriptsIdGetExecute(r ScriptsAPIV1ScriptsIdGetRequest) (*Script, *http.Response, error)
 
 	/*
 	V1ScriptsIdHistoryGet Get specified Script history object 
@@ -90,13 +90,13 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of script history record
-	@return ApiV1ScriptsIdHistoryGetRequest
+	@return ScriptsAPIV1ScriptsIdHistoryGetRequest
 	*/
-	V1ScriptsIdHistoryGet(ctx context.Context, id string) ApiV1ScriptsIdHistoryGetRequest
+	V1ScriptsIdHistoryGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdHistoryGetRequest
 
 	// V1ScriptsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1ScriptsIdHistoryGetExecute(r ScriptsAPIV1ScriptsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1ScriptsIdHistoryPost Add specified Script history object notes 
@@ -106,13 +106,13 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of script history record
-	@return ApiV1ScriptsIdHistoryPostRequest
+	@return ScriptsAPIV1ScriptsIdHistoryPostRequest
 	*/
-	V1ScriptsIdHistoryPost(ctx context.Context, id string) ApiV1ScriptsIdHistoryPostRequest
+	V1ScriptsIdHistoryPost(ctx context.Context, id string) ScriptsAPIV1ScriptsIdHistoryPostRequest
 
 	// V1ScriptsIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1ScriptsIdHistoryPostExecute(r ScriptsAPIV1ScriptsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1ScriptsIdPut Replace the script at the id with the supplied information 
@@ -121,13 +121,13 @@ type ScriptsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Script object identifier
-	@return ApiV1ScriptsIdPutRequest
+	@return ScriptsAPIV1ScriptsIdPutRequest
 	*/
-	V1ScriptsIdPut(ctx context.Context, id string) ApiV1ScriptsIdPutRequest
+	V1ScriptsIdPut(ctx context.Context, id string) ScriptsAPIV1ScriptsIdPutRequest
 
 	// V1ScriptsIdPutExecute executes the request
 	//  @return Script
-	V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*Script, *http.Response, error)
+	V1ScriptsIdPutExecute(r ScriptsAPIV1ScriptsIdPutRequest) (*Script, *http.Response, error)
 
 	/*
 	V1ScriptsPost Create a Script 
@@ -135,50 +135,50 @@ type ScriptsApi interface {
 	Creates a script
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ScriptsPostRequest
+	@return ScriptsAPIV1ScriptsPostRequest
 	*/
-	V1ScriptsPost(ctx context.Context) ApiV1ScriptsPostRequest
+	V1ScriptsPost(ctx context.Context) ScriptsAPIV1ScriptsPostRequest
 
 	// V1ScriptsPostExecute executes the request
 	//  @return HrefResponse
-	V1ScriptsPostExecute(r ApiV1ScriptsPostRequest) (*HrefResponse, *http.Response, error)
+	V1ScriptsPostExecute(r ScriptsAPIV1ScriptsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// ScriptsApiService ScriptsApi service
-type ScriptsApiService service
+// ScriptsAPIService ScriptsAPI service
+type ScriptsAPIService service
 
-type ApiV1ScriptsGetRequest struct {
+type ScriptsAPIV1ScriptsGetRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1ScriptsGetRequest) Page(page int32) ApiV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) Page(page int32) ScriptsAPIV1ScriptsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1ScriptsGetRequest) PageSize(pageSize int32) ApiV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) PageSize(pageSize int32) ScriptsAPIV1ScriptsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;info&#x60;, &#x60;notes&#x60;, &#x60;priority&#x60;, &#x60;categoryId&#x60;, &#x60;categoryName&#x60;, &#x60;parameter4&#x60; up to &#x60;parameter11&#x60;, &#x60;osRequirements&#x60;, &#x60;scriptContents&#x60;. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1ScriptsGetRequest) Sort(sort []string) ApiV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) Sort(sort []string) ScriptsAPIV1ScriptsGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter scripts collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;info&#x60;, &#x60;notes&#x60;, &#x60;priority&#x60;, &#x60;categoryId&#x60;, &#x60;categoryName&#x60;, &#x60;parameter4&#x60; up to &#x60;parameter11&#x60;, &#x60;osRequirements&#x60;, &#x60;scriptContents&#x60;. This param can be combined with paging and sorting. Example: filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot; and name&#x3D;&#x3D;\&quot;*script name*\&quot;
-func (r ApiV1ScriptsGetRequest) Filter(filter string) ApiV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) Filter(filter string) ScriptsAPIV1ScriptsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1ScriptsGetRequest) Execute() (*ScriptsSearchResults, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsGetRequest) Execute() (*ScriptsSearchResults, *http.Response, error) {
 	return r.ApiService.V1ScriptsGetExecute(r)
 }
 
@@ -188,10 +188,10 @@ V1ScriptsGet Search for sorted and paged Scripts
 Search for sorted and paged scripts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ScriptsGetRequest
+ @return ScriptsAPIV1ScriptsGetRequest
 */
-func (a *ScriptsApiService) V1ScriptsGet(ctx context.Context) ApiV1ScriptsGetRequest {
-	return ApiV1ScriptsGetRequest{
+func (a *ScriptsAPIService) V1ScriptsGet(ctx context.Context) ScriptsAPIV1ScriptsGetRequest {
+	return ScriptsAPIV1ScriptsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -199,7 +199,7 @@ func (a *ScriptsApiService) V1ScriptsGet(ctx context.Context) ApiV1ScriptsGetReq
 
 // Execute executes the request
 //  @return ScriptsSearchResults
-func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*ScriptsSearchResults, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsGetExecute(r ScriptsAPIV1ScriptsGetRequest) (*ScriptsSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -207,7 +207,7 @@ func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*Scri
 		localVarReturnValue  *ScriptsSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -219,24 +219,36 @@ func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*Scri
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["name:asc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -265,9 +277,9 @@ func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*Scri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -292,13 +304,13 @@ func (a *ScriptsApiService) V1ScriptsGetExecute(r ApiV1ScriptsGetRequest) (*Scri
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdDeleteRequest struct {
+type ScriptsAPIV1ScriptsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 }
 
-func (r ApiV1ScriptsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1ScriptsIdDeleteExecute(r)
 }
 
@@ -309,10 +321,10 @@ Deletes a script at the specified id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Script object identifier
- @return ApiV1ScriptsIdDeleteRequest
+ @return ScriptsAPIV1ScriptsIdDeleteRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdDelete(ctx context.Context, id string) ApiV1ScriptsIdDeleteRequest {
-	return ApiV1ScriptsIdDeleteRequest{
+func (a *ScriptsAPIService) V1ScriptsIdDelete(ctx context.Context, id string) ScriptsAPIV1ScriptsIdDeleteRequest {
+	return ScriptsAPIV1ScriptsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -320,20 +332,20 @@ func (a *ScriptsApiService) V1ScriptsIdDelete(ctx context.Context, id string) Ap
 }
 
 // Execute executes the request
-func (a *ScriptsApiService) V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteRequest) (*http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdDeleteExecute(r ScriptsAPIV1ScriptsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -366,9 +378,9 @@ func (a *ScriptsApiService) V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteReque
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -384,13 +396,13 @@ func (a *ScriptsApiService) V1ScriptsIdDeleteExecute(r ApiV1ScriptsIdDeleteReque
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdDownloadGetRequest struct {
+type ScriptsAPIV1ScriptsIdDownloadGetRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 }
 
-func (r ApiV1ScriptsIdDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1ScriptsIdDownloadGetExecute(r)
 }
 
@@ -401,10 +413,10 @@ Download a text file of the script contents
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the script to be downloaded
- @return ApiV1ScriptsIdDownloadGetRequest
+ @return ScriptsAPIV1ScriptsIdDownloadGetRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdDownloadGet(ctx context.Context, id string) ApiV1ScriptsIdDownloadGetRequest {
-	return ApiV1ScriptsIdDownloadGetRequest{
+func (a *ScriptsAPIService) V1ScriptsIdDownloadGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdDownloadGetRequest {
+	return ScriptsAPIV1ScriptsIdDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -413,21 +425,21 @@ func (a *ScriptsApiService) V1ScriptsIdDownloadGet(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return *os.File
-func (a *ScriptsApiService) V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownloadGetRequest) (**os.File, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdDownloadGetExecute(r ScriptsAPIV1ScriptsIdDownloadGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdDownloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdDownloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -460,9 +472,9 @@ func (a *ScriptsApiService) V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownlo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -479,7 +491,8 @@ func (a *ScriptsApiService) V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownlo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -496,13 +509,13 @@ func (a *ScriptsApiService) V1ScriptsIdDownloadGetExecute(r ApiV1ScriptsIdDownlo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdGetRequest struct {
+type ScriptsAPIV1ScriptsIdGetRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 }
 
-func (r ApiV1ScriptsIdGetRequest) Execute() (*Script, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdGetRequest) Execute() (*Script, *http.Response, error) {
 	return r.ApiService.V1ScriptsIdGetExecute(r)
 }
 
@@ -513,10 +526,10 @@ Retrieves a full script object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Script object identifier
- @return ApiV1ScriptsIdGetRequest
+ @return ScriptsAPIV1ScriptsIdGetRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdGet(ctx context.Context, id string) ApiV1ScriptsIdGetRequest {
-	return ApiV1ScriptsIdGetRequest{
+func (a *ScriptsAPIService) V1ScriptsIdGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdGetRequest {
+	return ScriptsAPIV1ScriptsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -525,7 +538,7 @@ func (a *ScriptsApiService) V1ScriptsIdGet(ctx context.Context, id string) ApiV1
 
 // Execute executes the request
 //  @return Script
-func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*Script, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdGetExecute(r ScriptsAPIV1ScriptsIdGetRequest) (*Script, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -533,13 +546,13 @@ func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*
 		localVarReturnValue  *Script
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -572,9 +585,9 @@ func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -591,7 +604,8 @@ func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -608,9 +622,9 @@ func (a *ScriptsApiService) V1ScriptsIdGetExecute(r ApiV1ScriptsIdGetRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdHistoryGetRequest struct {
+type ScriptsAPIV1ScriptsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -618,29 +632,29 @@ type ApiV1ScriptsIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1ScriptsIdHistoryGetRequest) Page(page int32) ApiV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Page(page int32) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1ScriptsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) PageSize(pageSize int32) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1ScriptsIdHistoryGetRequest) Sort(sort []string) ApiV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Sort(sort []string) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1ScriptsIdHistoryGetRequest) Filter(filter string) ApiV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Filter(filter string) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1ScriptsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1ScriptsIdHistoryGetExecute(r)
 }
 
@@ -652,10 +666,10 @@ Gets specified Script history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of script history record
- @return ApiV1ScriptsIdHistoryGetRequest
+ @return ScriptsAPIV1ScriptsIdHistoryGetRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdHistoryGet(ctx context.Context, id string) ApiV1ScriptsIdHistoryGetRequest {
-	return ApiV1ScriptsIdHistoryGetRequest{
+func (a *ScriptsAPIService) V1ScriptsIdHistoryGet(ctx context.Context, id string) ScriptsAPIV1ScriptsIdHistoryGetRequest {
+	return ScriptsAPIV1ScriptsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -664,7 +678,7 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGet(ctx context.Context, id string
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdHistoryGetExecute(r ScriptsAPIV1ScriptsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -672,37 +686,49 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistory
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -731,9 +757,9 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistory
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -750,7 +776,8 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistory
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -767,20 +794,20 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryGetExecute(r ApiV1ScriptsIdHistory
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdHistoryPostRequest struct {
+type ScriptsAPIV1ScriptsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1ScriptsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1ScriptsIdHistoryPostRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ScriptsAPIV1ScriptsIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1ScriptsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1ScriptsIdHistoryPostExecute(r)
 }
 
@@ -792,10 +819,10 @@ Adds specified Script history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of script history record
- @return ApiV1ScriptsIdHistoryPostRequest
+ @return ScriptsAPIV1ScriptsIdHistoryPostRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdHistoryPost(ctx context.Context, id string) ApiV1ScriptsIdHistoryPostRequest {
-	return ApiV1ScriptsIdHistoryPostRequest{
+func (a *ScriptsAPIService) V1ScriptsIdHistoryPost(ctx context.Context, id string) ScriptsAPIV1ScriptsIdHistoryPostRequest {
+	return ScriptsAPIV1ScriptsIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -804,7 +831,7 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPost(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdHistoryPostExecute(r ScriptsAPIV1ScriptsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -812,13 +839,13 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -856,9 +883,9 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -875,7 +902,8 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -885,7 +913,8 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -902,20 +931,20 @@ func (a *ScriptsApiService) V1ScriptsIdHistoryPostExecute(r ApiV1ScriptsIdHistor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsIdPutRequest struct {
+type ScriptsAPIV1ScriptsIdPutRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	id string
 	script *Script
 }
 
 // new script to upload to existing id. ids defined in this body will be ignored
-func (r ApiV1ScriptsIdPutRequest) Script(script Script) ApiV1ScriptsIdPutRequest {
+func (r ScriptsAPIV1ScriptsIdPutRequest) Script(script Script) ScriptsAPIV1ScriptsIdPutRequest {
 	r.script = &script
 	return r
 }
 
-func (r ApiV1ScriptsIdPutRequest) Execute() (*Script, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsIdPutRequest) Execute() (*Script, *http.Response, error) {
 	return r.ApiService.V1ScriptsIdPutExecute(r)
 }
 
@@ -926,10 +955,10 @@ Replaces the script at the id with the supplied information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Script object identifier
- @return ApiV1ScriptsIdPutRequest
+ @return ScriptsAPIV1ScriptsIdPutRequest
 */
-func (a *ScriptsApiService) V1ScriptsIdPut(ctx context.Context, id string) ApiV1ScriptsIdPutRequest {
-	return ApiV1ScriptsIdPutRequest{
+func (a *ScriptsAPIService) V1ScriptsIdPut(ctx context.Context, id string) ScriptsAPIV1ScriptsIdPutRequest {
+	return ScriptsAPIV1ScriptsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -938,7 +967,7 @@ func (a *ScriptsApiService) V1ScriptsIdPut(ctx context.Context, id string) ApiV1
 
 // Execute executes the request
 //  @return Script
-func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*Script, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsIdPutExecute(r ScriptsAPIV1ScriptsIdPutRequest) (*Script, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -946,13 +975,13 @@ func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*
 		localVarReturnValue  *Script
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/scripts/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -990,9 +1019,9 @@ func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1009,7 +1038,8 @@ func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1026,19 +1056,19 @@ func (a *ScriptsApiService) V1ScriptsIdPutExecute(r ApiV1ScriptsIdPutRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ScriptsPostRequest struct {
+type ScriptsAPIV1ScriptsPostRequest struct {
 	ctx context.Context
-	ApiService ScriptsApi
+	ApiService ScriptsAPI
 	script *Script
 }
 
 // new script to create. ids defined in this body will be ignored
-func (r ApiV1ScriptsPostRequest) Script(script Script) ApiV1ScriptsPostRequest {
+func (r ScriptsAPIV1ScriptsPostRequest) Script(script Script) ScriptsAPIV1ScriptsPostRequest {
 	r.script = &script
 	return r
 }
 
-func (r ApiV1ScriptsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r ScriptsAPIV1ScriptsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1ScriptsPostExecute(r)
 }
 
@@ -1048,10 +1078,10 @@ V1ScriptsPost Create a Script
 Creates a script
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ScriptsPostRequest
+ @return ScriptsAPIV1ScriptsPostRequest
 */
-func (a *ScriptsApiService) V1ScriptsPost(ctx context.Context) ApiV1ScriptsPostRequest {
-	return ApiV1ScriptsPostRequest{
+func (a *ScriptsAPIService) V1ScriptsPost(ctx context.Context) ScriptsAPIV1ScriptsPostRequest {
+	return ScriptsAPIV1ScriptsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1059,7 +1089,7 @@ func (a *ScriptsApiService) V1ScriptsPost(ctx context.Context) ApiV1ScriptsPostR
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *ScriptsApiService) V1ScriptsPostExecute(r ApiV1ScriptsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *ScriptsAPIService) V1ScriptsPostExecute(r ScriptsAPIV1ScriptsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1067,7 +1097,7 @@ func (a *ScriptsApiService) V1ScriptsPostExecute(r ApiV1ScriptsPostRequest) (*Hr
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsApiService.V1ScriptsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ScriptsAPIService.V1ScriptsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1110,9 +1140,9 @@ func (a *ScriptsApiService) V1ScriptsPostExecute(r ApiV1ScriptsPostRequest) (*Hr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

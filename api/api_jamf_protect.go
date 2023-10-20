@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type JamfProtectApi interface {
+type JamfProtectAPI interface {
 
 	/*
 	V1JamfProtectDelete Delete Jamf Protect API registration.
@@ -29,12 +29,12 @@ type JamfProtectApi interface {
 	Deletes an existing Jamf Protect API registration if present. Jamf Protect API integration will be disabled.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectDeleteRequest
+	@return JamfProtectAPIV1JamfProtectDeleteRequest
 	*/
-	V1JamfProtectDelete(ctx context.Context) ApiV1JamfProtectDeleteRequest
+	V1JamfProtectDelete(ctx context.Context) JamfProtectAPIV1JamfProtectDeleteRequest
 
 	// V1JamfProtectDeleteExecute executes the request
-	V1JamfProtectDeleteExecute(r ApiV1JamfProtectDeleteRequest) (*http.Response, error)
+	V1JamfProtectDeleteExecute(r JamfProtectAPIV1JamfProtectDeleteRequest) (*http.Response, error)
 
 	/*
 	V1JamfProtectDeploymentsIdTasksGet Search for deployment tasks for a config profile linked to Jamf Protect 
@@ -43,13 +43,13 @@ type JamfProtectApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id the UUID of the Jamf Protect deployment
-	@return ApiV1JamfProtectDeploymentsIdTasksGetRequest
+	@return JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest
 	*/
-	V1JamfProtectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksGetRequest
+	V1JamfProtectDeploymentsIdTasksGet(ctx context.Context, id string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest
 
 	// V1JamfProtectDeploymentsIdTasksGetExecute executes the request
 	//  @return DeploymentTaskSearchResults
-	V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV1JamfProtectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
+	V1JamfProtectDeploymentsIdTasksGetExecute(r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
 
 	/*
 	V1JamfProtectDeploymentsIdTasksRetryPost Request a retry of Protect install tasks 
@@ -59,12 +59,12 @@ type JamfProtectApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id the UUID of the deployment associated with the retry
-	@return ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest
+	@return JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest
 	*/
-	V1JamfProtectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest
+	V1JamfProtectDeploymentsIdTasksRetryPost(ctx context.Context, id string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest
 
 	// V1JamfProtectDeploymentsIdTasksRetryPostExecute executes the request
-	V1JamfProtectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
+	V1JamfProtectDeploymentsIdTasksRetryPostExecute(r JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
 
 	/*
 	V1JamfProtectGet Jamf Protect integration settings
@@ -72,13 +72,13 @@ type JamfProtectApi interface {
 	Jamf Protect integration settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectGetRequest
+	@return JamfProtectAPIV1JamfProtectGetRequest
 	*/
-	V1JamfProtectGet(ctx context.Context) ApiV1JamfProtectGetRequest
+	V1JamfProtectGet(ctx context.Context) JamfProtectAPIV1JamfProtectGetRequest
 
 	// V1JamfProtectGetExecute executes the request
 	//  @return ProtectSettingsResponse
-	V1JamfProtectGetExecute(r ApiV1JamfProtectGetRequest) (*ProtectSettingsResponse, *http.Response, error)
+	V1JamfProtectGetExecute(r JamfProtectAPIV1JamfProtectGetRequest) (*ProtectSettingsResponse, *http.Response, error)
 
 	/*
 	V1JamfProtectHistoryGet Get Jamf Protect history 
@@ -87,13 +87,13 @@ type JamfProtectApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectHistoryGetRequest
+	@return JamfProtectAPIV1JamfProtectHistoryGetRequest
 	*/
-	V1JamfProtectHistoryGet(ctx context.Context) ApiV1JamfProtectHistoryGetRequest
+	V1JamfProtectHistoryGet(ctx context.Context) JamfProtectAPIV1JamfProtectHistoryGetRequest
 
 	// V1JamfProtectHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1JamfProtectHistoryGetExecute(r ApiV1JamfProtectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1JamfProtectHistoryGetExecute(r JamfProtectAPIV1JamfProtectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1JamfProtectHistoryPost Add Jamf Protect history notes 
@@ -102,13 +102,13 @@ type JamfProtectApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectHistoryPostRequest
+	@return JamfProtectAPIV1JamfProtectHistoryPostRequest
 	*/
-	V1JamfProtectHistoryPost(ctx context.Context) ApiV1JamfProtectHistoryPostRequest
+	V1JamfProtectHistoryPost(ctx context.Context) JamfProtectAPIV1JamfProtectHistoryPostRequest
 
 	// V1JamfProtectHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1JamfProtectHistoryPostExecute(r ApiV1JamfProtectHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1JamfProtectHistoryPostExecute(r JamfProtectAPIV1JamfProtectHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1JamfProtectPlansGet Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
@@ -116,13 +116,13 @@ type JamfProtectApi interface {
 	Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectPlansGetRequest
+	@return JamfProtectAPIV1JamfProtectPlansGetRequest
 	*/
-	V1JamfProtectPlansGet(ctx context.Context) ApiV1JamfProtectPlansGetRequest
+	V1JamfProtectPlansGet(ctx context.Context) JamfProtectAPIV1JamfProtectPlansGetRequest
 
 	// V1JamfProtectPlansGetExecute executes the request
 	//  @return PlanSearchResults
-	V1JamfProtectPlansGetExecute(r ApiV1JamfProtectPlansGetRequest) (*PlanSearchResults, *http.Response, error)
+	V1JamfProtectPlansGetExecute(r JamfProtectAPIV1JamfProtectPlansGetRequest) (*PlanSearchResults, *http.Response, error)
 
 	/*
 	V1JamfProtectPlansSyncPost Sync Plans with Jamf Protect
@@ -130,12 +130,12 @@ type JamfProtectApi interface {
 	Sync Plans with Jamf Protect. Configuration profiles associated with new plans will be imported to Jamf Pro.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectPlansSyncPostRequest
+	@return JamfProtectAPIV1JamfProtectPlansSyncPostRequest
 	*/
-	V1JamfProtectPlansSyncPost(ctx context.Context) ApiV1JamfProtectPlansSyncPostRequest
+	V1JamfProtectPlansSyncPost(ctx context.Context) JamfProtectAPIV1JamfProtectPlansSyncPostRequest
 
 	// V1JamfProtectPlansSyncPostExecute executes the request
-	V1JamfProtectPlansSyncPostExecute(r ApiV1JamfProtectPlansSyncPostRequest) (*http.Response, error)
+	V1JamfProtectPlansSyncPostExecute(r JamfProtectAPIV1JamfProtectPlansSyncPostRequest) (*http.Response, error)
 
 	/*
 	V1JamfProtectPut Jamf Protect integration settings
@@ -143,13 +143,13 @@ type JamfProtectApi interface {
 	Jamf Protect integration settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectPutRequest
+	@return JamfProtectAPIV1JamfProtectPutRequest
 	*/
-	V1JamfProtectPut(ctx context.Context) ApiV1JamfProtectPutRequest
+	V1JamfProtectPut(ctx context.Context) JamfProtectAPIV1JamfProtectPutRequest
 
 	// V1JamfProtectPutExecute executes the request
 	//  @return ProtectSettingsResponse
-	V1JamfProtectPutExecute(r ApiV1JamfProtectPutRequest) (*ProtectSettingsResponse, *http.Response, error)
+	V1JamfProtectPutExecute(r JamfProtectAPIV1JamfProtectPutRequest) (*ProtectSettingsResponse, *http.Response, error)
 
 	/*
 	V1JamfProtectRegisterPost Register a Jamf Protect API configuration with Jamf Pro
@@ -157,24 +157,24 @@ type JamfProtectApi interface {
 	Register a Jamf Protect API configuration with Jamf Pro
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProtectRegisterPostRequest
+	@return JamfProtectAPIV1JamfProtectRegisterPostRequest
 	*/
-	V1JamfProtectRegisterPost(ctx context.Context) ApiV1JamfProtectRegisterPostRequest
+	V1JamfProtectRegisterPost(ctx context.Context) JamfProtectAPIV1JamfProtectRegisterPostRequest
 
 	// V1JamfProtectRegisterPostExecute executes the request
 	//  @return ProtectSettingsResponse
-	V1JamfProtectRegisterPostExecute(r ApiV1JamfProtectRegisterPostRequest) (*ProtectSettingsResponse, *http.Response, error)
+	V1JamfProtectRegisterPostExecute(r JamfProtectAPIV1JamfProtectRegisterPostRequest) (*ProtectSettingsResponse, *http.Response, error)
 }
 
-// JamfProtectApiService JamfProtectApi service
-type JamfProtectApiService service
+// JamfProtectAPIService JamfProtectAPI service
+type JamfProtectAPIService service
 
-type ApiV1JamfProtectDeleteRequest struct {
+type JamfProtectAPIV1JamfProtectDeleteRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 }
 
-func (r ApiV1JamfProtectDeleteRequest) Execute() (*http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1JamfProtectDeleteExecute(r)
 }
 
@@ -184,24 +184,24 @@ V1JamfProtectDelete Delete Jamf Protect API registration.
 Deletes an existing Jamf Protect API registration if present. Jamf Protect API integration will be disabled.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectDeleteRequest
+ @return JamfProtectAPIV1JamfProtectDeleteRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectDelete(ctx context.Context) ApiV1JamfProtectDeleteRequest {
-	return ApiV1JamfProtectDeleteRequest{
+func (a *JamfProtectAPIService) V1JamfProtectDelete(ctx context.Context) JamfProtectAPIV1JamfProtectDeleteRequest {
+	return JamfProtectAPIV1JamfProtectDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDeleteRequest) (*http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectDeleteExecute(r JamfProtectAPIV1JamfProtectDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -239,9 +239,9 @@ func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDel
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -258,7 +258,8 @@ func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
@@ -268,7 +269,8 @@ func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -276,9 +278,9 @@ func (a *JamfProtectApiService) V1JamfProtectDeleteExecute(r ApiV1JamfProtectDel
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectDeploymentsIdTasksGetRequest struct {
+type JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -286,29 +288,29 @@ type ApiV1JamfProtectDeploymentsIdTasksGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1JamfProtectDeploymentsIdTasksGetRequest) Page(page int32) ApiV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfProtectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) ApiV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfProtectDeploymentsIdTasksGetRequest) Sort(sort []string) ApiV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Sort(sort []string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfProtectDeploymentsIdTasksGetRequest) Filter(filter string) ApiV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Filter(filter string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfProtectDeploymentsIdTasksGetRequest) Execute() (*DeploymentTaskSearchResults, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Execute() (*DeploymentTaskSearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfProtectDeploymentsIdTasksGetExecute(r)
 }
 
@@ -319,10 +321,10 @@ Search for config profiles linked to Jamf Protect
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id the UUID of the Jamf Protect deployment
- @return ApiV1JamfProtectDeploymentsIdTasksGetRequest
+ @return JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksGetRequest {
-	return ApiV1JamfProtectDeploymentsIdTasksGetRequest{
+func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksGet(ctx context.Context, id string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
+	return JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -331,7 +333,7 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGet(ctx context.C
 
 // Execute executes the request
 //  @return DeploymentTaskSearchResults
-func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV1JamfProtectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksGetExecute(r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -339,37 +341,49 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV
 		localVarReturnValue  *DeploymentTaskSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectDeploymentsIdTasksGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectDeploymentsIdTasksGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-protect/deployments/{id}/tasks"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = []
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -398,9 +412,9 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -425,20 +439,20 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksGetExecute(r ApiV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest struct {
+type JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	id string
 	ids *Ids
 }
 
 // task IDs to retry
-func (r ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest) Ids(ids Ids) ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest) Ids(ids Ids) JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest {
 	r.ids = &ids
 	return r
 }
 
-func (r ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest) Execute() (*http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1JamfProtectDeploymentsIdTasksRetryPostExecute(r)
 }
 
@@ -450,10 +464,10 @@ Request a retry of Protect install tasks
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id the UUID of the deployment associated with the retry
- @return ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest
+ @return JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest {
-	return ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest{
+func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksRetryPost(ctx context.Context, id string) JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest {
+	return JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -461,20 +475,20 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPost(ctx con
 }
 
 // Execute executes the request
-func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfProtectDeploymentsIdTasksRetryPostRequest) (*http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(r JamfProtectAPIV1JamfProtectDeploymentsIdTasksRetryPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectDeploymentsIdTasksRetryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectDeploymentsIdTasksRetryPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-protect/deployments/{id}/tasks/retry"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -512,9 +526,9 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -531,7 +545,8 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -541,7 +556,8 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -549,12 +565,12 @@ func (a *JamfProtectApiService) V1JamfProtectDeploymentsIdTasksRetryPostExecute(
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectGetRequest struct {
+type JamfProtectAPIV1JamfProtectGetRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 }
 
-func (r ApiV1JamfProtectGetRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectGetRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
 	return r.ApiService.V1JamfProtectGetExecute(r)
 }
 
@@ -564,10 +580,10 @@ V1JamfProtectGet Jamf Protect integration settings
 Jamf Protect integration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectGetRequest
+ @return JamfProtectAPIV1JamfProtectGetRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectGet(ctx context.Context) ApiV1JamfProtectGetRequest {
-	return ApiV1JamfProtectGetRequest{
+func (a *JamfProtectAPIService) V1JamfProtectGet(ctx context.Context) JamfProtectAPIV1JamfProtectGetRequest {
+	return JamfProtectAPIV1JamfProtectGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -575,7 +591,7 @@ func (a *JamfProtectApiService) V1JamfProtectGet(ctx context.Context) ApiV1JamfP
 
 // Execute executes the request
 //  @return ProtectSettingsResponse
-func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetRequest) (*ProtectSettingsResponse, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectGetExecute(r JamfProtectAPIV1JamfProtectGetRequest) (*ProtectSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -583,7 +599,7 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 		localVarReturnValue  *ProtectSettingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -621,9 +637,9 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -640,7 +656,8 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -650,7 +667,8 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -660,7 +678,8 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -677,38 +696,38 @@ func (a *JamfProtectApiService) V1JamfProtectGetExecute(r ApiV1JamfProtectGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectHistoryGetRequest struct {
+type JamfProtectAPIV1JamfProtectHistoryGetRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1JamfProtectHistoryGetRequest) Page(page int32) ApiV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfProtectHistoryGetRequest) PageSize(pageSize int32) ApiV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfProtectHistoryGetRequest) Sort(sort []string) ApiV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Sort(sort []string) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfProtectHistoryGetRequest) Filter(filter string) ApiV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Filter(filter string) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfProtectHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfProtectHistoryGetExecute(r)
 }
 
@@ -719,10 +738,10 @@ Get Jamf Protect history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectHistoryGetRequest
+ @return JamfProtectAPIV1JamfProtectHistoryGetRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectHistoryGet(ctx context.Context) ApiV1JamfProtectHistoryGetRequest {
-	return ApiV1JamfProtectHistoryGetRequest{
+func (a *JamfProtectAPIService) V1JamfProtectHistoryGet(ctx context.Context) JamfProtectAPIV1JamfProtectHistoryGetRequest {
+	return JamfProtectAPIV1JamfProtectHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -730,7 +749,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGet(ctx context.Context) Api
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtectHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectHistoryGetExecute(r JamfProtectAPIV1JamfProtectHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -738,7 +757,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtec
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -750,24 +769,36 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtec
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = []
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -796,9 +827,9 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -823,19 +854,19 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryGetExecute(r ApiV1JamfProtec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectHistoryPostRequest struct {
+type JamfProtectAPIV1JamfProtectHistoryPostRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1JamfProtectHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1JamfProtectHistoryPostRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) JamfProtectAPIV1JamfProtectHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1JamfProtectHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1JamfProtectHistoryPostExecute(r)
 }
 
@@ -846,10 +877,10 @@ Add Jamf Protect history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectHistoryPostRequest
+ @return JamfProtectAPIV1JamfProtectHistoryPostRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectHistoryPost(ctx context.Context) ApiV1JamfProtectHistoryPostRequest {
-	return ApiV1JamfProtectHistoryPostRequest{
+func (a *JamfProtectAPIService) V1JamfProtectHistoryPost(ctx context.Context) JamfProtectAPIV1JamfProtectHistoryPostRequest {
+	return JamfProtectAPIV1JamfProtectHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -857,7 +888,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPost(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProtectHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectHistoryPostExecute(r JamfProtectAPIV1JamfProtectHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -865,7 +896,7 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProte
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -908,9 +939,9 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProte
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -927,7 +958,8 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProte
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -944,38 +976,38 @@ func (a *JamfProtectApiService) V1JamfProtectHistoryPostExecute(r ApiV1JamfProte
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectPlansGetRequest struct {
+type JamfProtectAPIV1JamfProtectPlansGetRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1JamfProtectPlansGetRequest) Page(page int32) ApiV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfProtectPlansGetRequest) PageSize(pageSize int32) ApiV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfProtectPlansGetRequest) Sort(sort []string) ApiV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Sort(sort []string) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfProtectPlansGetRequest) Filter(filter string) ApiV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Filter(filter string) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfProtectPlansGetRequest) Execute() (*PlanSearchResults, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Execute() (*PlanSearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfProtectPlansGetExecute(r)
 }
 
@@ -985,10 +1017,10 @@ V1JamfProtectPlansGet Get all of the previously synced Jamf Protect Plans with i
 Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectPlansGetRequest
+ @return JamfProtectAPIV1JamfProtectPlansGetRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectPlansGet(ctx context.Context) ApiV1JamfProtectPlansGetRequest {
-	return ApiV1JamfProtectPlansGetRequest{
+func (a *JamfProtectAPIService) V1JamfProtectPlansGet(ctx context.Context) JamfProtectAPIV1JamfProtectPlansGetRequest {
+	return JamfProtectAPIV1JamfProtectPlansGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -996,7 +1028,7 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGet(ctx context.Context) ApiV1
 
 // Execute executes the request
 //  @return PlanSearchResults
-func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectPlansGetRequest) (*PlanSearchResults, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectPlansGetExecute(r JamfProtectAPIV1JamfProtectPlansGetRequest) (*PlanSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1004,7 +1036,7 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectP
 		localVarReturnValue  *PlanSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectPlansGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectPlansGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1016,24 +1048,36 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectP
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = []
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1062,9 +1106,9 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1089,12 +1133,12 @@ func (a *JamfProtectApiService) V1JamfProtectPlansGetExecute(r ApiV1JamfProtectP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectPlansSyncPostRequest struct {
+type JamfProtectAPIV1JamfProtectPlansSyncPostRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 }
 
-func (r ApiV1JamfProtectPlansSyncPostRequest) Execute() (*http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectPlansSyncPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1JamfProtectPlansSyncPostExecute(r)
 }
 
@@ -1104,24 +1148,24 @@ V1JamfProtectPlansSyncPost Sync Plans with Jamf Protect
 Sync Plans with Jamf Protect. Configuration profiles associated with new plans will be imported to Jamf Pro.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectPlansSyncPostRequest
+ @return JamfProtectAPIV1JamfProtectPlansSyncPostRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectPlansSyncPost(ctx context.Context) ApiV1JamfProtectPlansSyncPostRequest {
-	return ApiV1JamfProtectPlansSyncPostRequest{
+func (a *JamfProtectAPIService) V1JamfProtectPlansSyncPost(ctx context.Context) JamfProtectAPIV1JamfProtectPlansSyncPostRequest {
+	return JamfProtectAPIV1JamfProtectPlansSyncPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfProtectPlansSyncPostRequest) (*http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectPlansSyncPostExecute(r JamfProtectAPIV1JamfProtectPlansSyncPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectPlansSyncPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectPlansSyncPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1159,9 +1203,9 @@ func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfPro
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1178,7 +1222,8 @@ func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
@@ -1188,7 +1233,8 @@ func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfPro
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1196,19 +1242,19 @@ func (a *JamfProtectApiService) V1JamfProtectPlansSyncPostExecute(r ApiV1JamfPro
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectPutRequest struct {
+type JamfProtectAPIV1JamfProtectPutRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	protectUpdatableSettingsRequest *ProtectUpdatableSettingsRequest
 }
 
 // Updatable Jamf Protect Settings
-func (r ApiV1JamfProtectPutRequest) ProtectUpdatableSettingsRequest(protectUpdatableSettingsRequest ProtectUpdatableSettingsRequest) ApiV1JamfProtectPutRequest {
+func (r JamfProtectAPIV1JamfProtectPutRequest) ProtectUpdatableSettingsRequest(protectUpdatableSettingsRequest ProtectUpdatableSettingsRequest) JamfProtectAPIV1JamfProtectPutRequest {
 	r.protectUpdatableSettingsRequest = &protectUpdatableSettingsRequest
 	return r
 }
 
-func (r ApiV1JamfProtectPutRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectPutRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
 	return r.ApiService.V1JamfProtectPutExecute(r)
 }
 
@@ -1218,10 +1264,10 @@ V1JamfProtectPut Jamf Protect integration settings
 Jamf Protect integration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectPutRequest
+ @return JamfProtectAPIV1JamfProtectPutRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectPut(ctx context.Context) ApiV1JamfProtectPutRequest {
-	return ApiV1JamfProtectPutRequest{
+func (a *JamfProtectAPIService) V1JamfProtectPut(ctx context.Context) JamfProtectAPIV1JamfProtectPutRequest {
+	return JamfProtectAPIV1JamfProtectPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1229,7 +1275,7 @@ func (a *JamfProtectApiService) V1JamfProtectPut(ctx context.Context) ApiV1JamfP
 
 // Execute executes the request
 //  @return ProtectSettingsResponse
-func (a *JamfProtectApiService) V1JamfProtectPutExecute(r ApiV1JamfProtectPutRequest) (*ProtectSettingsResponse, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectPutExecute(r JamfProtectAPIV1JamfProtectPutRequest) (*ProtectSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1237,7 +1283,7 @@ func (a *JamfProtectApiService) V1JamfProtectPutExecute(r ApiV1JamfProtectPutReq
 		localVarReturnValue  *ProtectSettingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1280,9 +1326,9 @@ func (a *JamfProtectApiService) V1JamfProtectPutExecute(r ApiV1JamfProtectPutReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1307,19 +1353,19 @@ func (a *JamfProtectApiService) V1JamfProtectPutExecute(r ApiV1JamfProtectPutReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProtectRegisterPostRequest struct {
+type JamfProtectAPIV1JamfProtectRegisterPostRequest struct {
 	ctx context.Context
-	ApiService JamfProtectApi
+	ApiService JamfProtectAPI
 	protectRegistrationRequest *ProtectRegistrationRequest
 }
 
 // Jamf Protect API connection information
-func (r ApiV1JamfProtectRegisterPostRequest) ProtectRegistrationRequest(protectRegistrationRequest ProtectRegistrationRequest) ApiV1JamfProtectRegisterPostRequest {
+func (r JamfProtectAPIV1JamfProtectRegisterPostRequest) ProtectRegistrationRequest(protectRegistrationRequest ProtectRegistrationRequest) JamfProtectAPIV1JamfProtectRegisterPostRequest {
 	r.protectRegistrationRequest = &protectRegistrationRequest
 	return r
 }
 
-func (r ApiV1JamfProtectRegisterPostRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
+func (r JamfProtectAPIV1JamfProtectRegisterPostRequest) Execute() (*ProtectSettingsResponse, *http.Response, error) {
 	return r.ApiService.V1JamfProtectRegisterPostExecute(r)
 }
 
@@ -1329,10 +1375,10 @@ V1JamfProtectRegisterPost Register a Jamf Protect API configuration with Jamf Pr
 Register a Jamf Protect API configuration with Jamf Pro
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProtectRegisterPostRequest
+ @return JamfProtectAPIV1JamfProtectRegisterPostRequest
 */
-func (a *JamfProtectApiService) V1JamfProtectRegisterPost(ctx context.Context) ApiV1JamfProtectRegisterPostRequest {
-	return ApiV1JamfProtectRegisterPostRequest{
+func (a *JamfProtectAPIService) V1JamfProtectRegisterPost(ctx context.Context) JamfProtectAPIV1JamfProtectRegisterPostRequest {
+	return JamfProtectAPIV1JamfProtectRegisterPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1340,7 +1386,7 @@ func (a *JamfProtectApiService) V1JamfProtectRegisterPost(ctx context.Context) A
 
 // Execute executes the request
 //  @return ProtectSettingsResponse
-func (a *JamfProtectApiService) V1JamfProtectRegisterPostExecute(r ApiV1JamfProtectRegisterPostRequest) (*ProtectSettingsResponse, *http.Response, error) {
+func (a *JamfProtectAPIService) V1JamfProtectRegisterPostExecute(r JamfProtectAPIV1JamfProtectRegisterPostRequest) (*ProtectSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1348,7 +1394,7 @@ func (a *JamfProtectApiService) V1JamfProtectRegisterPostExecute(r ApiV1JamfProt
 		localVarReturnValue  *ProtectSettingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectApiService.V1JamfProtectRegisterPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProtectAPIService.V1JamfProtectRegisterPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1391,9 +1437,9 @@ func (a *JamfProtectApiService) V1JamfProtectRegisterPostExecute(r ApiV1JamfProt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1410,7 +1456,8 @@ func (a *JamfProtectApiService) V1JamfProtectRegisterPostExecute(r ApiV1JamfProt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

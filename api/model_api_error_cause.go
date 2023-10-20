@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApiErrorCause type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiErrorCause{}
+
 // ApiErrorCause struct for ApiErrorCause
 type ApiErrorCause struct {
 	// Error-specific code that can be used to identify localization string, etc.
@@ -23,7 +26,7 @@ type ApiErrorCause struct {
 	// A general description of error for troubleshooting/debugging. Generally this text should not be displayed to a user; instead refer to errorCode and it's localized text
 	Description *string `json:"description,omitempty"`
 	// id of object with error. Optional.
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 }
 
 // NewApiErrorCause instantiates a new ApiErrorCause object
@@ -46,7 +49,7 @@ func NewApiErrorCauseWithDefaults() *ApiErrorCause {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *ApiErrorCause) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ApiErrorCause) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiErrorCause) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -64,7 +67,7 @@ func (o *ApiErrorCause) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *ApiErrorCause) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -102,7 +105,7 @@ func (o *ApiErrorCause) SetField(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApiErrorCause) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -112,7 +115,7 @@ func (o *ApiErrorCause) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiErrorCause) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -120,7 +123,7 @@ func (o *ApiErrorCause) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApiErrorCause) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -132,53 +135,69 @@ func (o *ApiErrorCause) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApiErrorCause) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApiErrorCause) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *ApiErrorCause) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *ApiErrorCause) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *ApiErrorCause) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *ApiErrorCause) UnsetId() {
+	o.Id.Unset()
 }
 
 func (o ApiErrorCause) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApiErrorCause) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	toSerialize["field"] = o.Field
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
+	}
+	return toSerialize, nil
 }
 
 type NullableApiErrorCause struct {

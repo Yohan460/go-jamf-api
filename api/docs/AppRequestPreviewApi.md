@@ -1,17 +1,17 @@
-# \AppRequestPreviewApi
+# \AppRequestPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1AppRequestFormInputFieldsGet**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsGet) | **Get** /v1/app-request/form-input-fields | Search for Form Input Fields 
-[**V1AppRequestFormInputFieldsIdDelete**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsIdDelete) | **Delete** /v1/app-request/form-input-fields/{id} | Remove specified Form Input Field record 
-[**V1AppRequestFormInputFieldsIdGet**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsIdGet) | **Get** /v1/app-request/form-input-fields/{id} | Get specified Form Input Field object 
-[**V1AppRequestFormInputFieldsIdPut**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsIdPut) | **Put** /v1/app-request/form-input-fields/{id} | Update specified Form Input Field object 
-[**V1AppRequestFormInputFieldsPost**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsPost) | **Post** /v1/app-request/form-input-fields | Create Form Input Field record 
-[**V1AppRequestFormInputFieldsPut**](AppRequestPreviewApi.md#V1AppRequestFormInputFieldsPut) | **Put** /v1/app-request/form-input-fields | Replace all Form Input Fields 
-[**V1AppRequestSettingsGet**](AppRequestPreviewApi.md#V1AppRequestSettingsGet) | **Get** /v1/app-request/settings | Get Applicastion Request Settings 
-[**V1AppRequestSettingsPut**](AppRequestPreviewApi.md#V1AppRequestSettingsPut) | **Put** /v1/app-request/settings | Update Application Request Settings 
+[**V1AppRequestFormInputFieldsGet**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsGet) | **Get** /v1/app-request/form-input-fields | Search for Form Input Fields 
+[**V1AppRequestFormInputFieldsIdDelete**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsIdDelete) | **Delete** /v1/app-request/form-input-fields/{id} | Remove specified Form Input Field record 
+[**V1AppRequestFormInputFieldsIdGet**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsIdGet) | **Get** /v1/app-request/form-input-fields/{id} | Get specified Form Input Field object 
+[**V1AppRequestFormInputFieldsIdPut**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsIdPut) | **Put** /v1/app-request/form-input-fields/{id} | Update specified Form Input Field object 
+[**V1AppRequestFormInputFieldsPost**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsPost) | **Post** /v1/app-request/form-input-fields | Create Form Input Field record 
+[**V1AppRequestFormInputFieldsPut**](AppRequestPreviewAPI.md#V1AppRequestFormInputFieldsPut) | **Put** /v1/app-request/form-input-fields | Replace all Form Input Fields 
+[**V1AppRequestSettingsGet**](AppRequestPreviewAPI.md#V1AppRequestSettingsGet) | **Get** /v1/app-request/settings | Get Applicastion Request Settings 
+[**V1AppRequestSettingsPut**](AppRequestPreviewAPI.md#V1AppRequestSettingsPut) | **Put** /v1/app-request/settings | Update Application Request Settings 
 
 
 
@@ -32,20 +32,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsGet(context.Background()).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestFormInputFieldsGet`: AppRequestFormInputFieldSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestFormInputFieldsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet`: %v\n", resp)
 }
 ```
 
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -101,9 +101,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -161,7 +161,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -169,13 +169,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestFormInputFieldsIdGet`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestFormInputFieldsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet`: %v\n", resp)
 }
 ```
 
@@ -231,7 +231,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -240,13 +240,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsIdPut(context.Background(), id).AppRequestFormInputField(appRequestFormInputField).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut(context.Background(), id).AppRequestFormInputField(appRequestFormInputField).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestFormInputFieldsIdPut`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestFormInputFieldsIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut`: %v\n", resp)
 }
 ```
 
@@ -303,7 +303,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -311,13 +311,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsPost(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestFormInputFieldsPost`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestFormInputFieldsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost`: %v\n", resp)
 }
 ```
 
@@ -369,7 +369,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -377,13 +377,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestFormInputFieldsPut(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestFormInputFieldsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestFormInputFieldsPut`: []AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestFormInputFieldsPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut`: %v\n", resp)
 }
 ```
 
@@ -435,20 +435,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestSettingsGet(context.Background()).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestSettingsGet`: AppRequestSettings
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestSettingsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -496,7 +496,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -504,13 +504,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewApi.V1AppRequestSettingsPut(context.Background()).AppRequestSettings(appRequestSettings).Execute()
+    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsPut(context.Background()).AppRequestSettings(appRequestSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewApi.V1AppRequestSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppRequestSettingsPut`: AppRequestSettings
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewApi.V1AppRequestSettingsPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsPut`: %v\n", resp)
 }
 ```
 

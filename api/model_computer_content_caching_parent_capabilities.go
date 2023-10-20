@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingParentCapabilities type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingParentCapabilities{}
+
 // ComputerContentCachingParentCapabilities struct for ComputerContentCachingParentCapabilities
 type ComputerContentCachingParentCapabilities struct {
 	ContentCachingParentCapabilitiesId *string `json:"contentCachingParentCapabilitiesId,omitempty"`
@@ -44,7 +47,7 @@ func NewComputerContentCachingParentCapabilitiesWithDefaults() *ComputerContentC
 
 // GetContentCachingParentCapabilitiesId returns the ContentCachingParentCapabilitiesId field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetContentCachingParentCapabilitiesId() string {
-	if o == nil || o.ContentCachingParentCapabilitiesId == nil {
+	if o == nil || IsNil(o.ContentCachingParentCapabilitiesId) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ComputerContentCachingParentCapabilities) GetContentCachingParentCapabi
 // GetContentCachingParentCapabilitiesIdOk returns a tuple with the ContentCachingParentCapabilitiesId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetContentCachingParentCapabilitiesIdOk() (*string, bool) {
-	if o == nil || o.ContentCachingParentCapabilitiesId == nil {
+	if o == nil || IsNil(o.ContentCachingParentCapabilitiesId) {
 		return nil, false
 	}
 	return o.ContentCachingParentCapabilitiesId, true
@@ -62,7 +65,7 @@ func (o *ComputerContentCachingParentCapabilities) GetContentCachingParentCapabi
 
 // HasContentCachingParentCapabilitiesId returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasContentCachingParentCapabilitiesId() bool {
-	if o != nil && o.ContentCachingParentCapabilitiesId != nil {
+	if o != nil && !IsNil(o.ContentCachingParentCapabilitiesId) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ComputerContentCachingParentCapabilities) SetContentCachingParentCapabi
 
 // GetImports returns the Imports field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetImports() bool {
-	if o == nil || o.Imports == nil {
+	if o == nil || IsNil(o.Imports) {
 		var ret bool
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ComputerContentCachingParentCapabilities) GetImports() bool {
 // GetImportsOk returns a tuple with the Imports field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetImportsOk() (*bool, bool) {
-	if o == nil || o.Imports == nil {
+	if o == nil || IsNil(o.Imports) {
 		return nil, false
 	}
 	return o.Imports, true
@@ -94,7 +97,7 @@ func (o *ComputerContentCachingParentCapabilities) GetImportsOk() (*bool, bool) 
 
 // HasImports returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasImports() bool {
-	if o != nil && o.Imports != nil {
+	if o != nil && !IsNil(o.Imports) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ComputerContentCachingParentCapabilities) SetImports(v bool) {
 
 // GetNamespaces returns the Namespaces field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetNamespaces() bool {
-	if o == nil || o.Namespaces == nil {
+	if o == nil || IsNil(o.Namespaces) {
 		var ret bool
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ComputerContentCachingParentCapabilities) GetNamespaces() bool {
 // GetNamespacesOk returns a tuple with the Namespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetNamespacesOk() (*bool, bool) {
-	if o == nil || o.Namespaces == nil {
+	if o == nil || IsNil(o.Namespaces) {
 		return nil, false
 	}
 	return o.Namespaces, true
@@ -126,7 +129,7 @@ func (o *ComputerContentCachingParentCapabilities) GetNamespacesOk() (*bool, boo
 
 // HasNamespaces returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasNamespaces() bool {
-	if o != nil && o.Namespaces != nil {
+	if o != nil && !IsNil(o.Namespaces) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ComputerContentCachingParentCapabilities) SetNamespaces(v bool) {
 
 // GetPersonalContent returns the PersonalContent field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetPersonalContent() bool {
-	if o == nil || o.PersonalContent == nil {
+	if o == nil || IsNil(o.PersonalContent) {
 		var ret bool
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ComputerContentCachingParentCapabilities) GetPersonalContent() bool {
 // GetPersonalContentOk returns a tuple with the PersonalContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetPersonalContentOk() (*bool, bool) {
-	if o == nil || o.PersonalContent == nil {
+	if o == nil || IsNil(o.PersonalContent) {
 		return nil, false
 	}
 	return o.PersonalContent, true
@@ -158,7 +161,7 @@ func (o *ComputerContentCachingParentCapabilities) GetPersonalContentOk() (*bool
 
 // HasPersonalContent returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasPersonalContent() bool {
-	if o != nil && o.PersonalContent != nil {
+	if o != nil && !IsNil(o.PersonalContent) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ComputerContentCachingParentCapabilities) SetPersonalContent(v bool) {
 
 // GetQueryParameters returns the QueryParameters field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetQueryParameters() bool {
-	if o == nil || o.QueryParameters == nil {
+	if o == nil || IsNil(o.QueryParameters) {
 		var ret bool
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ComputerContentCachingParentCapabilities) GetQueryParameters() bool {
 // GetQueryParametersOk returns a tuple with the QueryParameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetQueryParametersOk() (*bool, bool) {
-	if o == nil || o.QueryParameters == nil {
+	if o == nil || IsNil(o.QueryParameters) {
 		return nil, false
 	}
 	return o.QueryParameters, true
@@ -190,7 +193,7 @@ func (o *ComputerContentCachingParentCapabilities) GetQueryParametersOk() (*bool
 
 // HasQueryParameters returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasQueryParameters() bool {
-	if o != nil && o.QueryParameters != nil {
+	if o != nil && !IsNil(o.QueryParameters) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ComputerContentCachingParentCapabilities) SetQueryParameters(v bool) {
 
 // GetSharedContent returns the SharedContent field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetSharedContent() bool {
-	if o == nil || o.SharedContent == nil {
+	if o == nil || IsNil(o.SharedContent) {
 		var ret bool
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ComputerContentCachingParentCapabilities) GetSharedContent() bool {
 // GetSharedContentOk returns a tuple with the SharedContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetSharedContentOk() (*bool, bool) {
-	if o == nil || o.SharedContent == nil {
+	if o == nil || IsNil(o.SharedContent) {
 		return nil, false
 	}
 	return o.SharedContent, true
@@ -222,7 +225,7 @@ func (o *ComputerContentCachingParentCapabilities) GetSharedContentOk() (*bool, 
 
 // HasSharedContent returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasSharedContent() bool {
-	if o != nil && o.SharedContent != nil {
+	if o != nil && !IsNil(o.SharedContent) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *ComputerContentCachingParentCapabilities) SetSharedContent(v bool) {
 
 // GetPrioritization returns the Prioritization field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentCapabilities) GetPrioritization() bool {
-	if o == nil || o.Prioritization == nil {
+	if o == nil || IsNil(o.Prioritization) {
 		var ret bool
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *ComputerContentCachingParentCapabilities) GetPrioritization() bool {
 // GetPrioritizationOk returns a tuple with the Prioritization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentCapabilities) GetPrioritizationOk() (*bool, bool) {
-	if o == nil || o.Prioritization == nil {
+	if o == nil || IsNil(o.Prioritization) {
 		return nil, false
 	}
 	return o.Prioritization, true
@@ -254,7 +257,7 @@ func (o *ComputerContentCachingParentCapabilities) GetPrioritizationOk() (*bool,
 
 // HasPrioritization returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentCapabilities) HasPrioritization() bool {
-	if o != nil && o.Prioritization != nil {
+	if o != nil && !IsNil(o.Prioritization) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *ComputerContentCachingParentCapabilities) SetPrioritization(v bool) {
 }
 
 func (o ComputerContentCachingParentCapabilities) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentCachingParentCapabilitiesId != nil {
-		toSerialize["contentCachingParentCapabilitiesId"] = o.ContentCachingParentCapabilitiesId
-	}
-	if o.Imports != nil {
-		toSerialize["imports"] = o.Imports
-	}
-	if o.Namespaces != nil {
-		toSerialize["namespaces"] = o.Namespaces
-	}
-	if o.PersonalContent != nil {
-		toSerialize["personalContent"] = o.PersonalContent
-	}
-	if o.QueryParameters != nil {
-		toSerialize["queryParameters"] = o.QueryParameters
-	}
-	if o.SharedContent != nil {
-		toSerialize["sharedContent"] = o.SharedContent
-	}
-	if o.Prioritization != nil {
-		toSerialize["prioritization"] = o.Prioritization
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingParentCapabilities) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentCachingParentCapabilitiesId) {
+		toSerialize["contentCachingParentCapabilitiesId"] = o.ContentCachingParentCapabilitiesId
+	}
+	if !IsNil(o.Imports) {
+		toSerialize["imports"] = o.Imports
+	}
+	if !IsNil(o.Namespaces) {
+		toSerialize["namespaces"] = o.Namespaces
+	}
+	if !IsNil(o.PersonalContent) {
+		toSerialize["personalContent"] = o.PersonalContent
+	}
+	if !IsNil(o.QueryParameters) {
+		toSerialize["queryParameters"] = o.QueryParameters
+	}
+	if !IsNil(o.SharedContent) {
+		toSerialize["sharedContent"] = o.SharedContent
+	}
+	if !IsNil(o.Prioritization) {
+		toSerialize["prioritization"] = o.Prioritization
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingParentCapabilities struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerExtensionAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerExtensionAttribute{}
+
 // ComputerExtensionAttribute struct for ComputerExtensionAttribute
 type ComputerExtensionAttribute struct {
 	// An identifier of extension attribute definition.
@@ -53,7 +56,7 @@ func NewComputerExtensionAttributeWithDefaults() *ComputerExtensionAttribute {
 
 // GetDefinitionId returns the DefinitionId field value if set, zero value otherwise.
 func (o *ComputerExtensionAttribute) GetDefinitionId() string {
-	if o == nil || o.DefinitionId == nil {
+	if o == nil || IsNil(o.DefinitionId) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *ComputerExtensionAttribute) GetDefinitionId() string {
 // GetDefinitionIdOk returns a tuple with the DefinitionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerExtensionAttribute) GetDefinitionIdOk() (*string, bool) {
-	if o == nil || o.DefinitionId == nil {
+	if o == nil || IsNil(o.DefinitionId) {
 		return nil, false
 	}
 	return o.DefinitionId, true
@@ -71,7 +74,7 @@ func (o *ComputerExtensionAttribute) GetDefinitionIdOk() (*string, bool) {
 
 // HasDefinitionId returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasDefinitionId() bool {
-	if o != nil && o.DefinitionId != nil {
+	if o != nil && !IsNil(o.DefinitionId) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *ComputerExtensionAttribute) SetDefinitionId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerExtensionAttribute) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *ComputerExtensionAttribute) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerExtensionAttribute) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -103,7 +106,7 @@ func (o *ComputerExtensionAttribute) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *ComputerExtensionAttribute) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComputerExtensionAttribute) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -159,7 +162,7 @@ func (o *ComputerExtensionAttribute) UnsetDescription() {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ComputerExtensionAttribute) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -169,7 +172,7 @@ func (o *ComputerExtensionAttribute) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerExtensionAttribute) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -177,7 +180,7 @@ func (o *ComputerExtensionAttribute) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -191,7 +194,7 @@ func (o *ComputerExtensionAttribute) SetEnabled(v bool) {
 
 // GetMultiValue returns the MultiValue field value if set, zero value otherwise.
 func (o *ComputerExtensionAttribute) GetMultiValue() bool {
-	if o == nil || o.MultiValue == nil {
+	if o == nil || IsNil(o.MultiValue) {
 		var ret bool
 		return ret
 	}
@@ -201,7 +204,7 @@ func (o *ComputerExtensionAttribute) GetMultiValue() bool {
 // GetMultiValueOk returns a tuple with the MultiValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerExtensionAttribute) GetMultiValueOk() (*bool, bool) {
-	if o == nil || o.MultiValue == nil {
+	if o == nil || IsNil(o.MultiValue) {
 		return nil, false
 	}
 	return o.MultiValue, true
@@ -209,7 +212,7 @@ func (o *ComputerExtensionAttribute) GetMultiValueOk() (*bool, bool) {
 
 // HasMultiValue returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasMultiValue() bool {
-	if o != nil && o.MultiValue != nil {
+	if o != nil && !IsNil(o.MultiValue) {
 		return true
 	}
 
@@ -234,7 +237,7 @@ func (o *ComputerExtensionAttribute) GetValues() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComputerExtensionAttribute) GetValuesOk() ([]string, bool) {
-	if o == nil || o.Values == nil {
+	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
 	return o.Values, true
@@ -242,7 +245,7 @@ func (o *ComputerExtensionAttribute) GetValuesOk() ([]string, bool) {
 
 // HasValues returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasValues() bool {
-	if o != nil && o.Values != nil {
+	if o != nil && IsNil(o.Values) {
 		return true
 	}
 
@@ -256,7 +259,7 @@ func (o *ComputerExtensionAttribute) SetValues(v []string) {
 
 // GetDataType returns the DataType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComputerExtensionAttribute) GetDataType() string {
-	if o == nil || o.DataType.Get() == nil {
+	if o == nil || IsNil(o.DataType.Get()) {
 		var ret string
 		return ret
 	}
@@ -309,7 +312,7 @@ func (o *ComputerExtensionAttribute) GetOptions() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ComputerExtensionAttribute) GetOptionsOk() ([]string, bool) {
-	if o == nil || o.Options == nil {
+	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
 	return o.Options, true
@@ -317,7 +320,7 @@ func (o *ComputerExtensionAttribute) GetOptionsOk() ([]string, bool) {
 
 // HasOptions returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasOptions() bool {
-	if o != nil && o.Options != nil {
+	if o != nil && IsNil(o.Options) {
 		return true
 	}
 
@@ -331,7 +334,7 @@ func (o *ComputerExtensionAttribute) SetOptions(v []string) {
 
 // GetInputType returns the InputType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComputerExtensionAttribute) GetInputType() string {
-	if o == nil || o.InputType.Get() == nil {
+	if o == nil || IsNil(o.InputType.Get()) {
 		var ret string
 		return ret
 	}
@@ -372,20 +375,28 @@ func (o *ComputerExtensionAttribute) UnsetInputType() {
 }
 
 func (o ComputerExtensionAttribute) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComputerExtensionAttribute) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DefinitionId != nil {
+	if !IsNil(o.DefinitionId) {
 		toSerialize["definitionId"] = o.DefinitionId
 	}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.Enabled != nil {
+	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if o.MultiValue != nil {
+	if !IsNil(o.MultiValue) {
 		toSerialize["multiValue"] = o.MultiValue
 	}
 	if o.Values != nil {
@@ -400,7 +411,7 @@ func (o ComputerExtensionAttribute) MarshalJSON() ([]byte, error) {
 	if o.InputType.IsSet() {
 		toSerialize["inputType"] = o.InputType.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComputerExtensionAttribute struct {

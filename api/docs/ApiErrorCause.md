@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** | Error-specific code that can be used to identify localization string, etc. | [optional] 
 **Field** | **string** | Name of the field that caused the error. | 
 **Description** | Pointer to **string** | A general description of error for troubleshooting/debugging. Generally this text should not be displayed to a user; instead refer to errorCode and it&#39;s localized text | [optional] 
-**Id** | Pointer to **string** | id of object with error. Optional. | [optional] 
+**Id** | Pointer to **NullableString** | id of object with error. Optional. | [optional] 
 
 ## Methods
 
@@ -123,6 +123,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *ApiErrorCause) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *ApiErrorCause) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

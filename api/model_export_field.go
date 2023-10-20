@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExportField type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportField{}
+
 // ExportField Field to be included in the export operation.
 type ExportField struct {
 	// English name of the field to be exported.
@@ -41,7 +44,7 @@ func NewExportFieldWithDefaults() *ExportField {
 
 // GetFieldName returns the FieldName field value if set, zero value otherwise.
 func (o *ExportField) GetFieldName() string {
-	if o == nil || o.FieldName == nil {
+	if o == nil || IsNil(o.FieldName) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ExportField) GetFieldName() string {
 // GetFieldNameOk returns a tuple with the FieldName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExportField) GetFieldNameOk() (*string, bool) {
-	if o == nil || o.FieldName == nil {
+	if o == nil || IsNil(o.FieldName) {
 		return nil, false
 	}
 	return o.FieldName, true
@@ -59,7 +62,7 @@ func (o *ExportField) GetFieldNameOk() (*string, bool) {
 
 // HasFieldName returns a boolean if a field has been set.
 func (o *ExportField) HasFieldName() bool {
-	if o != nil && o.FieldName != nil {
+	if o != nil && !IsNil(o.FieldName) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ExportField) SetFieldName(v string) {
 
 // GetFieldLabelOverride returns the FieldLabelOverride field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportField) GetFieldLabelOverride() string {
-	if o == nil || o.FieldLabelOverride.Get() == nil {
+	if o == nil || IsNil(o.FieldLabelOverride.Get()) {
 		var ret string
 		return ret
 	}
@@ -114,14 +117,22 @@ func (o *ExportField) UnsetFieldLabelOverride() {
 }
 
 func (o ExportField) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExportField) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FieldName != nil {
+	if !IsNil(o.FieldName) {
 		toSerialize["fieldName"] = o.FieldName
 	}
 	if o.FieldLabelOverride.IsSet() {
 		toSerialize["fieldLabelOverride"] = o.FieldLabelOverride.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableExportField struct {

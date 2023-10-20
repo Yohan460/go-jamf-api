@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Signature type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Signature{}
+
 // Signature struct for Signature
 type Signature struct {
 	Algorithm *string `json:"algorithm,omitempty"`
@@ -40,7 +43,7 @@ func NewSignatureWithDefaults() *Signature {
 
 // GetAlgorithm returns the Algorithm field value if set, zero value otherwise.
 func (o *Signature) GetAlgorithm() string {
-	if o == nil || o.Algorithm == nil {
+	if o == nil || IsNil(o.Algorithm) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *Signature) GetAlgorithm() string {
 // GetAlgorithmOk returns a tuple with the Algorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Signature) GetAlgorithmOk() (*string, bool) {
-	if o == nil || o.Algorithm == nil {
+	if o == nil || IsNil(o.Algorithm) {
 		return nil, false
 	}
 	return o.Algorithm, true
@@ -58,7 +61,7 @@ func (o *Signature) GetAlgorithmOk() (*string, bool) {
 
 // HasAlgorithm returns a boolean if a field has been set.
 func (o *Signature) HasAlgorithm() bool {
-	if o != nil && o.Algorithm != nil {
+	if o != nil && !IsNil(o.Algorithm) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *Signature) SetAlgorithm(v string) {
 
 // GetAlgorithmOid returns the AlgorithmOid field value if set, zero value otherwise.
 func (o *Signature) GetAlgorithmOid() string {
-	if o == nil || o.AlgorithmOid == nil {
+	if o == nil || IsNil(o.AlgorithmOid) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *Signature) GetAlgorithmOid() string {
 // GetAlgorithmOidOk returns a tuple with the AlgorithmOid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Signature) GetAlgorithmOidOk() (*string, bool) {
-	if o == nil || o.AlgorithmOid == nil {
+	if o == nil || IsNil(o.AlgorithmOid) {
 		return nil, false
 	}
 	return o.AlgorithmOid, true
@@ -90,7 +93,7 @@ func (o *Signature) GetAlgorithmOidOk() (*string, bool) {
 
 // HasAlgorithmOid returns a boolean if a field has been set.
 func (o *Signature) HasAlgorithmOid() bool {
-	if o != nil && o.AlgorithmOid != nil {
+	if o != nil && !IsNil(o.AlgorithmOid) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *Signature) SetAlgorithmOid(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *Signature) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *Signature) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Signature) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -122,7 +125,7 @@ func (o *Signature) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *Signature) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *Signature) SetValue(v string) {
 }
 
 func (o Signature) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Algorithm != nil {
-		toSerialize["algorithm"] = o.Algorithm
-	}
-	if o.AlgorithmOid != nil {
-		toSerialize["algorithmOid"] = o.AlgorithmOid
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Signature) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Algorithm) {
+		toSerialize["algorithm"] = o.Algorithm
+	}
+	if !IsNil(o.AlgorithmOid) {
+		toSerialize["algorithmOid"] = o.AlgorithmOid
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableSignature struct {

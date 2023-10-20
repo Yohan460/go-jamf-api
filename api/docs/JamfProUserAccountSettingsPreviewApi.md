@@ -1,12 +1,12 @@
-# \JamfProUserAccountSettingsPreviewApi
+# \JamfProUserAccountSettingsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UserObjPreferenceKeyDelete**](JamfProUserAccountSettingsPreviewApi.md#UserObjPreferenceKeyDelete) | **Delete** /user/obj/preference/{key} | Remove specified setting for authenticated user 
-[**UserObjPreferenceKeyGet**](JamfProUserAccountSettingsPreviewApi.md#UserObjPreferenceKeyGet) | **Get** /user/obj/preference/{key} | Get the user setting for the authenticated user and key 
-[**UserObjPreferenceKeyPut**](JamfProUserAccountSettingsPreviewApi.md#UserObjPreferenceKeyPut) | **Put** /user/obj/preference/{key} | Persist the user setting 
+[**UserObjPreferenceKeyDelete**](JamfProUserAccountSettingsPreviewAPI.md#UserObjPreferenceKeyDelete) | **Delete** /user/obj/preference/{key} | Remove specified setting for authenticated user 
+[**UserObjPreferenceKeyGet**](JamfProUserAccountSettingsPreviewAPI.md#UserObjPreferenceKeyGet) | **Get** /user/obj/preference/{key} | Get the user setting for the authenticated user and key 
+[**UserObjPreferenceKeyPut**](JamfProUserAccountSettingsPreviewAPI.md#UserObjPreferenceKeyPut) | **Put** /user/obj/preference/{key} | Persist the user setting 
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -35,9 +35,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyDelete(context.Background(), key).Execute()
+    r, err := apiClient.JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyDelete(context.Background(), key).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -103,13 +103,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyGet(context.Background(), key).Execute()
+    resp, r, err := apiClient.JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyGet(context.Background(), key).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UserObjPreferenceKeyGet`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyGet`: %v\n", resp)
 }
 ```
 
@@ -165,7 +165,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -174,13 +174,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyPut(context.Background(), key).Body(body).Execute()
+    resp, r, err := apiClient.JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyPut(context.Background(), key).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UserObjPreferenceKeyPut`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `JamfProUserAccountSettingsPreviewApi.UserObjPreferenceKeyPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProUserAccountSettingsPreviewAPI.UserObjPreferenceKeyPut`: %v\n", resp)
 }
 ```
 

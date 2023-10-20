@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetComputerPrestageV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetComputerPrestageV2{}
+
 // GetComputerPrestageV2 struct for GetComputerPrestageV2
 type GetComputerPrestageV2 struct {
 	DisplayName string `json:"displayName"`
@@ -454,7 +457,7 @@ func (o *GetComputerPrestageV2) SetDeviceEnrollmentProgramInstanceId(v string) {
 
 // GetSkipSetupItems returns the SkipSetupItems field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetSkipSetupItems() map[string]bool {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		var ret map[string]bool
 		return ret
 	}
@@ -464,7 +467,7 @@ func (o *GetComputerPrestageV2) GetSkipSetupItems() map[string]bool {
 // GetSkipSetupItemsOk returns a tuple with the SkipSetupItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetSkipSetupItemsOk() (*map[string]bool, bool) {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		return nil, false
 	}
 	return o.SkipSetupItems, true
@@ -472,7 +475,7 @@ func (o *GetComputerPrestageV2) GetSkipSetupItemsOk() (*map[string]bool, bool) {
 
 // HasSkipSetupItems returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasSkipSetupItems() bool {
-	if o != nil && o.SkipSetupItems != nil {
+	if o != nil && !IsNil(o.SkipSetupItems) {
 		return true
 	}
 
@@ -534,7 +537,7 @@ func (o *GetComputerPrestageV2) SetPurchasingInformation(v PrestagePurchasingInf
 
 // GetAnchorCertificates returns the AnchorCertificates field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetAnchorCertificates() []string {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		var ret []string
 		return ret
 	}
@@ -544,7 +547,7 @@ func (o *GetComputerPrestageV2) GetAnchorCertificates() []string {
 // GetAnchorCertificatesOk returns a tuple with the AnchorCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetAnchorCertificatesOk() ([]string, bool) {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		return nil, false
 	}
 	return o.AnchorCertificates, true
@@ -552,7 +555,7 @@ func (o *GetComputerPrestageV2) GetAnchorCertificatesOk() ([]string, bool) {
 
 // HasAnchorCertificates returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasAnchorCertificates() bool {
-	if o != nil && o.AnchorCertificates != nil {
+	if o != nil && !IsNil(o.AnchorCertificates) {
 		return true
 	}
 
@@ -566,7 +569,7 @@ func (o *GetComputerPrestageV2) SetAnchorCertificates(v []string) {
 
 // GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetEnrollmentCustomizationId() string {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		var ret string
 		return ret
 	}
@@ -576,7 +579,7 @@ func (o *GetComputerPrestageV2) GetEnrollmentCustomizationId() string {
 // GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetEnrollmentCustomizationIdOk() (*string, bool) {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		return nil, false
 	}
 	return o.EnrollmentCustomizationId, true
@@ -584,7 +587,7 @@ func (o *GetComputerPrestageV2) GetEnrollmentCustomizationIdOk() (*string, bool)
 
 // HasEnrollmentCustomizationId returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasEnrollmentCustomizationId() bool {
-	if o != nil && o.EnrollmentCustomizationId != nil {
+	if o != nil && !IsNil(o.EnrollmentCustomizationId) {
 		return true
 	}
 
@@ -598,7 +601,7 @@ func (o *GetComputerPrestageV2) SetEnrollmentCustomizationId(v string) {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -608,7 +611,7 @@ func (o *GetComputerPrestageV2) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -616,7 +619,7 @@ func (o *GetComputerPrestageV2) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -630,7 +633,7 @@ func (o *GetComputerPrestageV2) SetLanguage(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -640,7 +643,7 @@ func (o *GetComputerPrestageV2) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -648,7 +651,7 @@ func (o *GetComputerPrestageV2) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -782,7 +785,7 @@ func (o *GetComputerPrestageV2) SetCustomPackageDistributionPointId(v string) {
 
 // GetEnableRecoveryLock returns the EnableRecoveryLock field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetEnableRecoveryLock() bool {
-	if o == nil || o.EnableRecoveryLock == nil {
+	if o == nil || IsNil(o.EnableRecoveryLock) {
 		var ret bool
 		return ret
 	}
@@ -792,7 +795,7 @@ func (o *GetComputerPrestageV2) GetEnableRecoveryLock() bool {
 // GetEnableRecoveryLockOk returns a tuple with the EnableRecoveryLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetEnableRecoveryLockOk() (*bool, bool) {
-	if o == nil || o.EnableRecoveryLock == nil {
+	if o == nil || IsNil(o.EnableRecoveryLock) {
 		return nil, false
 	}
 	return o.EnableRecoveryLock, true
@@ -800,7 +803,7 @@ func (o *GetComputerPrestageV2) GetEnableRecoveryLockOk() (*bool, bool) {
 
 // HasEnableRecoveryLock returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasEnableRecoveryLock() bool {
-	if o != nil && o.EnableRecoveryLock != nil {
+	if o != nil && !IsNil(o.EnableRecoveryLock) {
 		return true
 	}
 
@@ -814,7 +817,7 @@ func (o *GetComputerPrestageV2) SetEnableRecoveryLock(v bool) {
 
 // GetRecoveryLockPasswordType returns the RecoveryLockPasswordType field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetRecoveryLockPasswordType() string {
-	if o == nil || o.RecoveryLockPasswordType == nil {
+	if o == nil || IsNil(o.RecoveryLockPasswordType) {
 		var ret string
 		return ret
 	}
@@ -824,7 +827,7 @@ func (o *GetComputerPrestageV2) GetRecoveryLockPasswordType() string {
 // GetRecoveryLockPasswordTypeOk returns a tuple with the RecoveryLockPasswordType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetRecoveryLockPasswordTypeOk() (*string, bool) {
-	if o == nil || o.RecoveryLockPasswordType == nil {
+	if o == nil || IsNil(o.RecoveryLockPasswordType) {
 		return nil, false
 	}
 	return o.RecoveryLockPasswordType, true
@@ -832,7 +835,7 @@ func (o *GetComputerPrestageV2) GetRecoveryLockPasswordTypeOk() (*string, bool) 
 
 // HasRecoveryLockPasswordType returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasRecoveryLockPasswordType() bool {
-	if o != nil && o.RecoveryLockPasswordType != nil {
+	if o != nil && !IsNil(o.RecoveryLockPasswordType) {
 		return true
 	}
 
@@ -846,7 +849,7 @@ func (o *GetComputerPrestageV2) SetRecoveryLockPasswordType(v string) {
 
 // GetRotateRecoveryLockPassword returns the RotateRecoveryLockPassword field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetRotateRecoveryLockPassword() bool {
-	if o == nil || o.RotateRecoveryLockPassword == nil {
+	if o == nil || IsNil(o.RotateRecoveryLockPassword) {
 		var ret bool
 		return ret
 	}
@@ -856,7 +859,7 @@ func (o *GetComputerPrestageV2) GetRotateRecoveryLockPassword() bool {
 // GetRotateRecoveryLockPasswordOk returns a tuple with the RotateRecoveryLockPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetRotateRecoveryLockPasswordOk() (*bool, bool) {
-	if o == nil || o.RotateRecoveryLockPassword == nil {
+	if o == nil || IsNil(o.RotateRecoveryLockPassword) {
 		return nil, false
 	}
 	return o.RotateRecoveryLockPassword, true
@@ -864,7 +867,7 @@ func (o *GetComputerPrestageV2) GetRotateRecoveryLockPasswordOk() (*bool, bool) 
 
 // HasRotateRecoveryLockPassword returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasRotateRecoveryLockPassword() bool {
-	if o != nil && o.RotateRecoveryLockPassword != nil {
+	if o != nil && !IsNil(o.RotateRecoveryLockPassword) {
 		return true
 	}
 
@@ -878,7 +881,7 @@ func (o *GetComputerPrestageV2) SetRotateRecoveryLockPassword(v bool) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -888,7 +891,7 @@ func (o *GetComputerPrestageV2) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -896,7 +899,7 @@ func (o *GetComputerPrestageV2) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -910,7 +913,7 @@ func (o *GetComputerPrestageV2) SetId(v string) {
 
 // GetProfileUuid returns the ProfileUuid field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetProfileUuid() string {
-	if o == nil || o.ProfileUuid == nil {
+	if o == nil || IsNil(o.ProfileUuid) {
 		var ret string
 		return ret
 	}
@@ -920,7 +923,7 @@ func (o *GetComputerPrestageV2) GetProfileUuid() string {
 // GetProfileUuidOk returns a tuple with the ProfileUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetProfileUuidOk() (*string, bool) {
-	if o == nil || o.ProfileUuid == nil {
+	if o == nil || IsNil(o.ProfileUuid) {
 		return nil, false
 	}
 	return o.ProfileUuid, true
@@ -928,7 +931,7 @@ func (o *GetComputerPrestageV2) GetProfileUuidOk() (*string, bool) {
 
 // HasProfileUuid returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasProfileUuid() bool {
-	if o != nil && o.ProfileUuid != nil {
+	if o != nil && !IsNil(o.ProfileUuid) {
 		return true
 	}
 
@@ -942,7 +945,7 @@ func (o *GetComputerPrestageV2) SetProfileUuid(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -952,7 +955,7 @@ func (o *GetComputerPrestageV2) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -960,7 +963,7 @@ func (o *GetComputerPrestageV2) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -974,7 +977,7 @@ func (o *GetComputerPrestageV2) SetSiteId(v string) {
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
 func (o *GetComputerPrestageV2) GetVersionLock() int32 {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		var ret int32
 		return ret
 	}
@@ -984,7 +987,7 @@ func (o *GetComputerPrestageV2) GetVersionLock() int32 {
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetComputerPrestageV2) GetVersionLockOk() (*int32, bool) {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
 	return o.VersionLock, true
@@ -992,7 +995,7 @@ func (o *GetComputerPrestageV2) GetVersionLockOk() (*int32, bool) {
 
 // HasVersionLock returns a boolean if a field has been set.
 func (o *GetComputerPrestageV2) HasVersionLock() bool {
-	if o != nil && o.VersionLock != nil {
+	if o != nil && !IsNil(o.VersionLock) {
 		return true
 	}
 
@@ -1005,110 +1008,74 @@ func (o *GetComputerPrestageV2) SetVersionLock(v int32) {
 }
 
 func (o GetComputerPrestageV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["mandatory"] = o.Mandatory
-	}
-	if true {
-		toSerialize["mdmRemovable"] = o.MdmRemovable
-	}
-	if true {
-		toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
-	}
-	if true {
-		toSerialize["supportEmailAddress"] = o.SupportEmailAddress
-	}
-	if true {
-		toSerialize["department"] = o.Department
-	}
-	if true {
-		toSerialize["defaultPrestage"] = o.DefaultPrestage
-	}
-	if true {
-		toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
-	}
-	if true {
-		toSerialize["keepExistingSiteMembership"] = o.KeepExistingSiteMembership
-	}
-	if true {
-		toSerialize["keepExistingLocationInformation"] = o.KeepExistingLocationInformation
-	}
-	if true {
-		toSerialize["requireAuthentication"] = o.RequireAuthentication
-	}
-	if true {
-		toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
-	}
-	if true {
-		toSerialize["preventActivationLock"] = o.PreventActivationLock
-	}
-	if true {
-		toSerialize["enableDeviceBasedActivationLock"] = o.EnableDeviceBasedActivationLock
-	}
-	if true {
-		toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
-	}
-	if o.SkipSetupItems != nil {
-		toSerialize["skipSetupItems"] = o.SkipSetupItems
-	}
-	if true {
-		toSerialize["locationInformation"] = o.LocationInformation
-	}
-	if true {
-		toSerialize["purchasingInformation"] = o.PurchasingInformation
-	}
-	if o.AnchorCertificates != nil {
-		toSerialize["anchorCertificates"] = o.AnchorCertificates
-	}
-	if o.EnrollmentCustomizationId != nil {
-		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
-	}
-	if o.Language != nil {
-		toSerialize["language"] = o.Language
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if true {
-		toSerialize["autoAdvanceSetup"] = o.AutoAdvanceSetup
-	}
-	if true {
-		toSerialize["installProfilesDuringSetup"] = o.InstallProfilesDuringSetup
-	}
-	if true {
-		toSerialize["prestageInstalledProfileIds"] = o.PrestageInstalledProfileIds
-	}
-	if true {
-		toSerialize["customPackageIds"] = o.CustomPackageIds
-	}
-	if true {
-		toSerialize["customPackageDistributionPointId"] = o.CustomPackageDistributionPointId
-	}
-	if o.EnableRecoveryLock != nil {
-		toSerialize["enableRecoveryLock"] = o.EnableRecoveryLock
-	}
-	if o.RecoveryLockPasswordType != nil {
-		toSerialize["recoveryLockPasswordType"] = o.RecoveryLockPasswordType
-	}
-	if o.RotateRecoveryLockPassword != nil {
-		toSerialize["rotateRecoveryLockPassword"] = o.RotateRecoveryLockPassword
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ProfileUuid != nil {
-		toSerialize["profileUuid"] = o.ProfileUuid
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.VersionLock != nil {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetComputerPrestageV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["mandatory"] = o.Mandatory
+	toSerialize["mdmRemovable"] = o.MdmRemovable
+	toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
+	toSerialize["supportEmailAddress"] = o.SupportEmailAddress
+	toSerialize["department"] = o.Department
+	toSerialize["defaultPrestage"] = o.DefaultPrestage
+	toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
+	toSerialize["keepExistingSiteMembership"] = o.KeepExistingSiteMembership
+	toSerialize["keepExistingLocationInformation"] = o.KeepExistingLocationInformation
+	toSerialize["requireAuthentication"] = o.RequireAuthentication
+	toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
+	toSerialize["preventActivationLock"] = o.PreventActivationLock
+	toSerialize["enableDeviceBasedActivationLock"] = o.EnableDeviceBasedActivationLock
+	toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
+	if !IsNil(o.SkipSetupItems) {
+		toSerialize["skipSetupItems"] = o.SkipSetupItems
+	}
+	toSerialize["locationInformation"] = o.LocationInformation
+	toSerialize["purchasingInformation"] = o.PurchasingInformation
+	if !IsNil(o.AnchorCertificates) {
+		toSerialize["anchorCertificates"] = o.AnchorCertificates
+	}
+	if !IsNil(o.EnrollmentCustomizationId) {
+		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
+	}
+	if !IsNil(o.Language) {
+		toSerialize["language"] = o.Language
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	toSerialize["autoAdvanceSetup"] = o.AutoAdvanceSetup
+	toSerialize["installProfilesDuringSetup"] = o.InstallProfilesDuringSetup
+	toSerialize["prestageInstalledProfileIds"] = o.PrestageInstalledProfileIds
+	toSerialize["customPackageIds"] = o.CustomPackageIds
+	toSerialize["customPackageDistributionPointId"] = o.CustomPackageDistributionPointId
+	if !IsNil(o.EnableRecoveryLock) {
+		toSerialize["enableRecoveryLock"] = o.EnableRecoveryLock
+	}
+	if !IsNil(o.RecoveryLockPasswordType) {
+		toSerialize["recoveryLockPasswordType"] = o.RecoveryLockPasswordType
+	}
+	if !IsNil(o.RotateRecoveryLockPassword) {
+		toSerialize["rotateRecoveryLockPassword"] = o.RotateRecoveryLockPassword
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ProfileUuid) {
+		toSerialize["profileUuid"] = o.ProfileUuid
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.VersionLock) {
+		toSerialize["versionLock"] = o.VersionLock
+	}
+	return toSerialize, nil
 }
 
 type NullableGetComputerPrestageV2 struct {

@@ -18,7 +18,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -33,12 +32,13 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"golang.org/x/oauth2"
 )
 
 var (
 	jsonCheck = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
 	xmlCheck  = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
+	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
 // APIClient manages communication with the Jamf Pro API API vproduction
@@ -49,181 +49,203 @@ type APIClient struct {
 
 	// API Services
 
-	AdvancedMobileDeviceSearchesApi AdvancedMobileDeviceSearchesApi
+	AdvancedMobileDeviceSearchesAPI AdvancedMobileDeviceSearchesAPI
 
-	AdvancedUserContentSearchesApi AdvancedUserContentSearchesApi
+	AdvancedUserContentSearchesAPI AdvancedUserContentSearchesAPI
 
-	ApiAuthenticationApi ApiAuthenticationApi
+	ApiAuthenticationAPI ApiAuthenticationAPI
 
-	AppDynamicsConfigurationPreviewApi AppDynamicsConfigurationPreviewApi
+	ApiIntegrationsAPI ApiIntegrationsAPI
 
-	AppRequestPreviewApi AppRequestPreviewApi
+	ApiRolePrivilegesAPI ApiRolePrivilegesAPI
 
-	AppStoreCountryCodesPreviewApi AppStoreCountryCodesPreviewApi
+	ApiRolesAPI ApiRolesAPI
 
-	BuildingsApi BuildingsApi
+	AppRequestPreviewAPI AppRequestPreviewAPI
 
-	CacheSettingsApi CacheSettingsApi
+	AppStoreCountryCodesPreviewAPI AppStoreCountryCodesPreviewAPI
 
-	CategoriesApi CategoriesApi
+	BrandingAPI BrandingAPI
 
-	CertificateAuthorityApi CertificateAuthorityApi
+	BuildingsAPI BuildingsAPI
 
-	ClassicLdapApi ClassicLdapApi
+	CacheSettingsAPI CacheSettingsAPI
 
-	ClientCheckInApi ClientCheckInApi
+	CategoriesAPI CategoriesAPI
 
-	CloudAzureApi CloudAzureApi
+	CertificateAuthorityAPI CertificateAuthorityAPI
 
-	CloudIdpApi CloudIdpApi
+	ClassicLdapAPI ClassicLdapAPI
 
-	CloudLdapApi CloudLdapApi
+	ClientCheckInAPI ClientCheckInAPI
 
-	ComputerInventoryApi ComputerInventoryApi
+	CloudAzureAPI CloudAzureAPI
 
-	ComputerInventoryCollectionSettingsApi ComputerInventoryCollectionSettingsApi
+	CloudIdpAPI CloudIdpAPI
 
-	ComputerPrestagesApi ComputerPrestagesApi
+	CloudInformationAPI CloudInformationAPI
 
-	ComputersPreviewApi ComputersPreviewApi
+	CloudLdapAPI CloudLdapAPI
 
-	ConditionalAccessApi ConditionalAccessApi
+	ComputerGroupsAPI ComputerGroupsAPI
 
-	CsaApi CsaApi
+	ComputerInventoryAPI ComputerInventoryAPI
 
-	DepartmentsApi DepartmentsApi
+	ComputerInventoryCollectionSettingsAPI ComputerInventoryCollectionSettingsAPI
 
-	DeviceCommunicationSettingsApi DeviceCommunicationSettingsApi
+	ComputerPrestagesAPI ComputerPrestagesAPI
 
-	DeviceEnrollmentsApi DeviceEnrollmentsApi
+	ComputersPreviewAPI ComputersPreviewAPI
 
-	DeviceEnrollmentsDevicesApi DeviceEnrollmentsDevicesApi
+	ConditionalAccessAPI ConditionalAccessAPI
 
-	EbooksApi EbooksApi
+	CsaAPI CsaAPI
 
-	EngageApi EngageApi
+	DashboardAPI DashboardAPI
 
-	EnrollmentApi EnrollmentApi
+	DepartmentsAPI DepartmentsAPI
 
-	EnrollmentCustomizationApi EnrollmentCustomizationApi
+	DeviceCommunicationSettingsAPI DeviceCommunicationSettingsAPI
 
-	EnrollmentCustomizationPreviewApi EnrollmentCustomizationPreviewApi
+	DeviceEnrollmentsAPI DeviceEnrollmentsAPI
 
-	IconApi IconApi
+	DeviceEnrollmentsDevicesAPI DeviceEnrollmentsDevicesAPI
 
-	InventoryInformationApi InventoryInformationApi
+	EbooksAPI EbooksAPI
 
-	InventoryPreloadApi InventoryPreloadApi
+	EngageAPI EngageAPI
 
-	JamfConnectApi JamfConnectApi
+	EnrollmentAPI EnrollmentAPI
 
-	JamfManagementFrameworkApi JamfManagementFrameworkApi
+	EnrollmentCustomizationAPI EnrollmentCustomizationAPI
 
-	JamfPackageApi JamfPackageApi
+	EnrollmentCustomizationPreviewAPI EnrollmentCustomizationPreviewAPI
 
-	JamfProInformationPreviewApi JamfProInformationPreviewApi
+	IconAPI IconAPI
 
-	JamfProInitializationApi JamfProInitializationApi
+	InventoryInformationAPI InventoryInformationAPI
 
-	JamfProInitializationPreviewApi JamfProInitializationPreviewApi
+	InventoryPreloadAPI InventoryPreloadAPI
 
-	JamfProNotificationsApi JamfProNotificationsApi
+	JamfConnectAPI JamfConnectAPI
 
-	JamfProNotificationsPreviewApi JamfProNotificationsPreviewApi
+	JamfManagementFrameworkAPI JamfManagementFrameworkAPI
 
-	JamfProServerUrlPreviewApi JamfProServerUrlPreviewApi
+	JamfPackageAPI JamfPackageAPI
 
-	JamfProUserAccountSettingsApi JamfProUserAccountSettingsApi
+	JamfProInformationAPI JamfProInformationAPI
 
-	JamfProUserAccountSettingsPreviewApi JamfProUserAccountSettingsPreviewApi
+	JamfProInitializationAPI JamfProInitializationAPI
 
-	JamfProVersionApi JamfProVersionApi
+	JamfProInitializationPreviewAPI JamfProInitializationPreviewAPI
 
-	JamfProtectApi JamfProtectApi
+	JamfProNotificationsAPI JamfProNotificationsAPI
 
-	LdapApi LdapApi
+	JamfProNotificationsPreviewAPI JamfProNotificationsPreviewAPI
 
-	LocalesPreviewApi LocalesPreviewApi
+	JamfProServerUrlPreviewAPI JamfProServerUrlPreviewAPI
 
-	MacosManagedSoftwareUpdatesApi MacosManagedSoftwareUpdatesApi
+	JamfProUserAccountSettingsAPI JamfProUserAccountSettingsAPI
 
-	MdmApi MdmApi
+	JamfProUserAccountSettingsPreviewAPI JamfProUserAccountSettingsPreviewAPI
 
-	MobileDeviceEnrollmentProfileApi MobileDeviceEnrollmentProfileApi
+	JamfProVersionAPI JamfProVersionAPI
 
-	MobileDeviceExtensionAttributesPreviewApi MobileDeviceExtensionAttributesPreviewApi
+	JamfProtectAPI JamfProtectAPI
 
-	MobileDeviceGroupsPreviewApi MobileDeviceGroupsPreviewApi
+	LdapAPI LdapAPI
 
-	MobileDevicePrestagesApi MobileDevicePrestagesApi
+	LocalAdminPasswordAPI LocalAdminPasswordAPI
 
-	MobileDevicesApi MobileDevicesApi
+	LocalesPreviewAPI LocalesPreviewAPI
 
-	ParentAppPreviewApi ParentAppPreviewApi
+	MacosManagedSoftwareUpdatesAPI MacosManagedSoftwareUpdatesAPI
 
-	PatchPoliciesPreviewApi PatchPoliciesPreviewApi
+	ManagedSoftwareUpdatesAPI ManagedSoftwareUpdatesAPI
 
-	PatchPolicyLogsPreviewApi PatchPolicyLogsPreviewApi
+	MdmAPI MdmAPI
 
-	PatchesApi PatchesApi
+	MobileDeviceAppsAPI MobileDeviceAppsAPI
 
-	PatchesPreviewApi PatchesPreviewApi
+	MobileDeviceEnrollmentProfileAPI MobileDeviceEnrollmentProfileAPI
 
-	PoliciesPreviewApi PoliciesPreviewApi
+	MobileDeviceExtensionAttributesPreviewAPI MobileDeviceExtensionAttributesPreviewAPI
 
-	ReEnrollmentPreviewApi ReEnrollmentPreviewApi
+	MobileDeviceGroupsAPI MobileDeviceGroupsAPI
 
-	RemoteAdministrationApi RemoteAdministrationApi
+	MobileDevicePrestagesAPI MobileDevicePrestagesAPI
 
-	ScriptsApi ScriptsApi
+	MobileDevicesAPI MobileDevicesAPI
 
-	SelfServiceApi SelfServiceApi
+	ParentAppPreviewAPI ParentAppPreviewAPI
 
-	SelfServiceBrandingIosApi SelfServiceBrandingIosApi
+	PatchManagementAPI PatchManagementAPI
 
-	SelfServiceBrandingMacosApi SelfServiceBrandingMacosApi
+	PatchPoliciesAPI PatchPoliciesAPI
 
-	SelfServiceBrandingPreviewApi SelfServiceBrandingPreviewApi
+	PatchPolicyLogsAPI PatchPolicyLogsAPI
 
-	SitesPreviewApi SitesPreviewApi
+	PatchSoftwareTitleConfigurationsAPI PatchSoftwareTitleConfigurationsAPI
 
-	SmartComputerGroupsPreviewApi SmartComputerGroupsPreviewApi
+	PoliciesPreviewAPI PoliciesPreviewAPI
 
-	SmartMobileDeviceGroupsPreviewApi SmartMobileDeviceGroupsPreviewApi
+	ReEnrollmentPreviewAPI ReEnrollmentPreviewAPI
 
-	SmartUserGroupsPreviewApi SmartUserGroupsPreviewApi
+	RemoteAdministrationAPI RemoteAdministrationAPI
 
-	SsoCertificateApi SsoCertificateApi
+	ScriptsAPI ScriptsAPI
 
-	SsoCertificatePreviewApi SsoCertificatePreviewApi
+	SelfServiceAPI SelfServiceAPI
 
-	SsoSettingsApi SsoSettingsApi
+	SelfServiceBrandingIosAPI SelfServiceBrandingIosAPI
 
-	StartupStatusApi StartupStatusApi
+	SelfServiceBrandingMacosAPI SelfServiceBrandingMacosAPI
 
-	StaticUserGroupsPreviewApi StaticUserGroupsPreviewApi
+	SelfServiceBrandingPreviewAPI SelfServiceBrandingPreviewAPI
 
-	SupervisionIdentitiesPreviewApi SupervisionIdentitiesPreviewApi
+	SitesAPI SitesAPI
 
-	TeacherAppApi TeacherAppApi
+	SitesPreviewAPI SitesPreviewAPI
 
-	TeamViewerRemoteAdministrationApi TeamViewerRemoteAdministrationApi
+	SmartComputerGroupsPreviewAPI SmartComputerGroupsPreviewAPI
 
-	TimeZonesPreviewApi TimeZonesPreviewApi
+	SmartMobileDeviceGroupsPreviewAPI SmartMobileDeviceGroupsPreviewAPI
 
-	TomcatSettingsPreviewApi TomcatSettingsPreviewApi
+	SmartUserGroupsPreviewAPI SmartUserGroupsPreviewAPI
 
-	UserSessionPreviewApi UserSessionPreviewApi
+	SsoCertificateAPI SsoCertificateAPI
 
-	VenafiPreviewApi VenafiPreviewApi
+	SsoCertificatePreviewAPI SsoCertificatePreviewAPI
 
-	VolumePurchasingLocationsApi VolumePurchasingLocationsApi
+	SsoFailoverAPI SsoFailoverAPI
 
-	VolumePurchasingSubscriptionsApi VolumePurchasingSubscriptionsApi
+	SsoSettingsAPI SsoSettingsAPI
 
-	VppAdminAccountsPreviewApi VppAdminAccountsPreviewApi
+	StartupStatusAPI StartupStatusAPI
 
-	VppSubscriptionsPreviewApi VppSubscriptionsPreviewApi
+	StaticUserGroupsPreviewAPI StaticUserGroupsPreviewAPI
+
+	SupervisionIdentitiesPreviewAPI SupervisionIdentitiesPreviewAPI
+
+	TeacherAppAPI TeacherAppAPI
+
+	TeamViewerRemoteAdministrationAPI TeamViewerRemoteAdministrationAPI
+
+	TimeZonesPreviewAPI TimeZonesPreviewAPI
+
+	TomcatSettingsPreviewAPI TomcatSettingsPreviewAPI
+
+	UserSessionPreviewAPI UserSessionPreviewAPI
+
+	VenafiPreviewAPI VenafiPreviewAPI
+
+	VolumePurchasingLocationsAPI VolumePurchasingLocationsAPI
+
+	VolumePurchasingSubscriptionsAPI VolumePurchasingSubscriptionsAPI
+
+	VppAdminAccountsPreviewAPI VppAdminAccountsPreviewAPI
+
+	VppSubscriptionsPreviewAPI VppSubscriptionsPreviewAPI
 }
 
 type service struct {
@@ -242,94 +264,105 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.AdvancedMobileDeviceSearchesApi = (*AdvancedMobileDeviceSearchesApiService)(&c.common)
-	c.AdvancedUserContentSearchesApi = (*AdvancedUserContentSearchesApiService)(&c.common)
-	c.ApiAuthenticationApi = (*ApiAuthenticationApiService)(&c.common)
-	c.AppDynamicsConfigurationPreviewApi = (*AppDynamicsConfigurationPreviewApiService)(&c.common)
-	c.AppRequestPreviewApi = (*AppRequestPreviewApiService)(&c.common)
-	c.AppStoreCountryCodesPreviewApi = (*AppStoreCountryCodesPreviewApiService)(&c.common)
-	c.BuildingsApi = (*BuildingsApiService)(&c.common)
-	c.CacheSettingsApi = (*CacheSettingsApiService)(&c.common)
-	c.CategoriesApi = (*CategoriesApiService)(&c.common)
-	c.CertificateAuthorityApi = (*CertificateAuthorityApiService)(&c.common)
-	c.ClassicLdapApi = (*ClassicLdapApiService)(&c.common)
-	c.ClientCheckInApi = (*ClientCheckInApiService)(&c.common)
-	c.CloudAzureApi = (*CloudAzureApiService)(&c.common)
-	c.CloudIdpApi = (*CloudIdpApiService)(&c.common)
-	c.CloudLdapApi = (*CloudLdapApiService)(&c.common)
-	c.ComputerInventoryApi = (*ComputerInventoryApiService)(&c.common)
-	c.ComputerInventoryCollectionSettingsApi = (*ComputerInventoryCollectionSettingsApiService)(&c.common)
-	c.ComputerPrestagesApi = (*ComputerPrestagesApiService)(&c.common)
-	c.ComputersPreviewApi = (*ComputersPreviewApiService)(&c.common)
-	c.ConditionalAccessApi = (*ConditionalAccessApiService)(&c.common)
-	c.CsaApi = (*CsaApiService)(&c.common)
-	c.DepartmentsApi = (*DepartmentsApiService)(&c.common)
-	c.DeviceCommunicationSettingsApi = (*DeviceCommunicationSettingsApiService)(&c.common)
-	c.DeviceEnrollmentsApi = (*DeviceEnrollmentsApiService)(&c.common)
-	c.DeviceEnrollmentsDevicesApi = (*DeviceEnrollmentsDevicesApiService)(&c.common)
-	c.EbooksApi = (*EbooksApiService)(&c.common)
-	c.EngageApi = (*EngageApiService)(&c.common)
-	c.EnrollmentApi = (*EnrollmentApiService)(&c.common)
-	c.EnrollmentCustomizationApi = (*EnrollmentCustomizationApiService)(&c.common)
-	c.EnrollmentCustomizationPreviewApi = (*EnrollmentCustomizationPreviewApiService)(&c.common)
-	c.IconApi = (*IconApiService)(&c.common)
-	c.InventoryInformationApi = (*InventoryInformationApiService)(&c.common)
-	c.InventoryPreloadApi = (*InventoryPreloadApiService)(&c.common)
-	c.JamfConnectApi = (*JamfConnectApiService)(&c.common)
-	c.JamfManagementFrameworkApi = (*JamfManagementFrameworkApiService)(&c.common)
-	c.JamfPackageApi = (*JamfPackageApiService)(&c.common)
-	c.JamfProInformationPreviewApi = (*JamfProInformationPreviewApiService)(&c.common)
-	c.JamfProInitializationApi = (*JamfProInitializationApiService)(&c.common)
-	c.JamfProInitializationPreviewApi = (*JamfProInitializationPreviewApiService)(&c.common)
-	c.JamfProNotificationsApi = (*JamfProNotificationsApiService)(&c.common)
-	c.JamfProNotificationsPreviewApi = (*JamfProNotificationsPreviewApiService)(&c.common)
-	c.JamfProServerUrlPreviewApi = (*JamfProServerUrlPreviewApiService)(&c.common)
-	c.JamfProUserAccountSettingsApi = (*JamfProUserAccountSettingsApiService)(&c.common)
-	c.JamfProUserAccountSettingsPreviewApi = (*JamfProUserAccountSettingsPreviewApiService)(&c.common)
-	c.JamfProVersionApi = (*JamfProVersionApiService)(&c.common)
-	c.JamfProtectApi = (*JamfProtectApiService)(&c.common)
-	c.LdapApi = (*LdapApiService)(&c.common)
-	c.LocalesPreviewApi = (*LocalesPreviewApiService)(&c.common)
-	c.MacosManagedSoftwareUpdatesApi = (*MacosManagedSoftwareUpdatesApiService)(&c.common)
-	c.MdmApi = (*MdmApiService)(&c.common)
-	c.MobileDeviceEnrollmentProfileApi = (*MobileDeviceEnrollmentProfileApiService)(&c.common)
-	c.MobileDeviceExtensionAttributesPreviewApi = (*MobileDeviceExtensionAttributesPreviewApiService)(&c.common)
-	c.MobileDeviceGroupsPreviewApi = (*MobileDeviceGroupsPreviewApiService)(&c.common)
-	c.MobileDevicePrestagesApi = (*MobileDevicePrestagesApiService)(&c.common)
-	c.MobileDevicesApi = (*MobileDevicesApiService)(&c.common)
-	c.ParentAppPreviewApi = (*ParentAppPreviewApiService)(&c.common)
-	c.PatchPoliciesPreviewApi = (*PatchPoliciesPreviewApiService)(&c.common)
-	c.PatchPolicyLogsPreviewApi = (*PatchPolicyLogsPreviewApiService)(&c.common)
-	c.PatchesApi = (*PatchesApiService)(&c.common)
-	c.PatchesPreviewApi = (*PatchesPreviewApiService)(&c.common)
-	c.PoliciesPreviewApi = (*PoliciesPreviewApiService)(&c.common)
-	c.ReEnrollmentPreviewApi = (*ReEnrollmentPreviewApiService)(&c.common)
-	c.RemoteAdministrationApi = (*RemoteAdministrationApiService)(&c.common)
-	c.ScriptsApi = (*ScriptsApiService)(&c.common)
-	c.SelfServiceApi = (*SelfServiceApiService)(&c.common)
-	c.SelfServiceBrandingIosApi = (*SelfServiceBrandingIosApiService)(&c.common)
-	c.SelfServiceBrandingMacosApi = (*SelfServiceBrandingMacosApiService)(&c.common)
-	c.SelfServiceBrandingPreviewApi = (*SelfServiceBrandingPreviewApiService)(&c.common)
-	c.SitesPreviewApi = (*SitesPreviewApiService)(&c.common)
-	c.SmartComputerGroupsPreviewApi = (*SmartComputerGroupsPreviewApiService)(&c.common)
-	c.SmartMobileDeviceGroupsPreviewApi = (*SmartMobileDeviceGroupsPreviewApiService)(&c.common)
-	c.SmartUserGroupsPreviewApi = (*SmartUserGroupsPreviewApiService)(&c.common)
-	c.SsoCertificateApi = (*SsoCertificateApiService)(&c.common)
-	c.SsoCertificatePreviewApi = (*SsoCertificatePreviewApiService)(&c.common)
-	c.SsoSettingsApi = (*SsoSettingsApiService)(&c.common)
-	c.StartupStatusApi = (*StartupStatusApiService)(&c.common)
-	c.StaticUserGroupsPreviewApi = (*StaticUserGroupsPreviewApiService)(&c.common)
-	c.SupervisionIdentitiesPreviewApi = (*SupervisionIdentitiesPreviewApiService)(&c.common)
-	c.TeacherAppApi = (*TeacherAppApiService)(&c.common)
-	c.TeamViewerRemoteAdministrationApi = (*TeamViewerRemoteAdministrationApiService)(&c.common)
-	c.TimeZonesPreviewApi = (*TimeZonesPreviewApiService)(&c.common)
-	c.TomcatSettingsPreviewApi = (*TomcatSettingsPreviewApiService)(&c.common)
-	c.UserSessionPreviewApi = (*UserSessionPreviewApiService)(&c.common)
-	c.VenafiPreviewApi = (*VenafiPreviewApiService)(&c.common)
-	c.VolumePurchasingLocationsApi = (*VolumePurchasingLocationsApiService)(&c.common)
-	c.VolumePurchasingSubscriptionsApi = (*VolumePurchasingSubscriptionsApiService)(&c.common)
-	c.VppAdminAccountsPreviewApi = (*VppAdminAccountsPreviewApiService)(&c.common)
-	c.VppSubscriptionsPreviewApi = (*VppSubscriptionsPreviewApiService)(&c.common)
+	c.AdvancedMobileDeviceSearchesAPI = (*AdvancedMobileDeviceSearchesAPIService)(&c.common)
+	c.AdvancedUserContentSearchesAPI = (*AdvancedUserContentSearchesAPIService)(&c.common)
+	c.ApiAuthenticationAPI = (*ApiAuthenticationAPIService)(&c.common)
+	c.ApiIntegrationsAPI = (*ApiIntegrationsAPIService)(&c.common)
+	c.ApiRolePrivilegesAPI = (*ApiRolePrivilegesAPIService)(&c.common)
+	c.ApiRolesAPI = (*ApiRolesAPIService)(&c.common)
+	c.AppRequestPreviewAPI = (*AppRequestPreviewAPIService)(&c.common)
+	c.AppStoreCountryCodesPreviewAPI = (*AppStoreCountryCodesPreviewAPIService)(&c.common)
+	c.BrandingAPI = (*BrandingAPIService)(&c.common)
+	c.BuildingsAPI = (*BuildingsAPIService)(&c.common)
+	c.CacheSettingsAPI = (*CacheSettingsAPIService)(&c.common)
+	c.CategoriesAPI = (*CategoriesAPIService)(&c.common)
+	c.CertificateAuthorityAPI = (*CertificateAuthorityAPIService)(&c.common)
+	c.ClassicLdapAPI = (*ClassicLdapAPIService)(&c.common)
+	c.ClientCheckInAPI = (*ClientCheckInAPIService)(&c.common)
+	c.CloudAzureAPI = (*CloudAzureAPIService)(&c.common)
+	c.CloudIdpAPI = (*CloudIdpAPIService)(&c.common)
+	c.CloudInformationAPI = (*CloudInformationAPIService)(&c.common)
+	c.CloudLdapAPI = (*CloudLdapAPIService)(&c.common)
+	c.ComputerGroupsAPI = (*ComputerGroupsAPIService)(&c.common)
+	c.ComputerInventoryAPI = (*ComputerInventoryAPIService)(&c.common)
+	c.ComputerInventoryCollectionSettingsAPI = (*ComputerInventoryCollectionSettingsAPIService)(&c.common)
+	c.ComputerPrestagesAPI = (*ComputerPrestagesAPIService)(&c.common)
+	c.ComputersPreviewAPI = (*ComputersPreviewAPIService)(&c.common)
+	c.ConditionalAccessAPI = (*ConditionalAccessAPIService)(&c.common)
+	c.CsaAPI = (*CsaAPIService)(&c.common)
+	c.DashboardAPI = (*DashboardAPIService)(&c.common)
+	c.DepartmentsAPI = (*DepartmentsAPIService)(&c.common)
+	c.DeviceCommunicationSettingsAPI = (*DeviceCommunicationSettingsAPIService)(&c.common)
+	c.DeviceEnrollmentsAPI = (*DeviceEnrollmentsAPIService)(&c.common)
+	c.DeviceEnrollmentsDevicesAPI = (*DeviceEnrollmentsDevicesAPIService)(&c.common)
+	c.EbooksAPI = (*EbooksAPIService)(&c.common)
+	c.EngageAPI = (*EngageAPIService)(&c.common)
+	c.EnrollmentAPI = (*EnrollmentAPIService)(&c.common)
+	c.EnrollmentCustomizationAPI = (*EnrollmentCustomizationAPIService)(&c.common)
+	c.EnrollmentCustomizationPreviewAPI = (*EnrollmentCustomizationPreviewAPIService)(&c.common)
+	c.IconAPI = (*IconAPIService)(&c.common)
+	c.InventoryInformationAPI = (*InventoryInformationAPIService)(&c.common)
+	c.InventoryPreloadAPI = (*InventoryPreloadAPIService)(&c.common)
+	c.JamfConnectAPI = (*JamfConnectAPIService)(&c.common)
+	c.JamfManagementFrameworkAPI = (*JamfManagementFrameworkAPIService)(&c.common)
+	c.JamfPackageAPI = (*JamfPackageAPIService)(&c.common)
+	c.JamfProInformationAPI = (*JamfProInformationAPIService)(&c.common)
+	c.JamfProInitializationAPI = (*JamfProInitializationAPIService)(&c.common)
+	c.JamfProInitializationPreviewAPI = (*JamfProInitializationPreviewAPIService)(&c.common)
+	c.JamfProNotificationsAPI = (*JamfProNotificationsAPIService)(&c.common)
+	c.JamfProNotificationsPreviewAPI = (*JamfProNotificationsPreviewAPIService)(&c.common)
+	c.JamfProServerUrlPreviewAPI = (*JamfProServerUrlPreviewAPIService)(&c.common)
+	c.JamfProUserAccountSettingsAPI = (*JamfProUserAccountSettingsAPIService)(&c.common)
+	c.JamfProUserAccountSettingsPreviewAPI = (*JamfProUserAccountSettingsPreviewAPIService)(&c.common)
+	c.JamfProVersionAPI = (*JamfProVersionAPIService)(&c.common)
+	c.JamfProtectAPI = (*JamfProtectAPIService)(&c.common)
+	c.LdapAPI = (*LdapAPIService)(&c.common)
+	c.LocalAdminPasswordAPI = (*LocalAdminPasswordAPIService)(&c.common)
+	c.LocalesPreviewAPI = (*LocalesPreviewAPIService)(&c.common)
+	c.MacosManagedSoftwareUpdatesAPI = (*MacosManagedSoftwareUpdatesAPIService)(&c.common)
+	c.ManagedSoftwareUpdatesAPI = (*ManagedSoftwareUpdatesAPIService)(&c.common)
+	c.MdmAPI = (*MdmAPIService)(&c.common)
+	c.MobileDeviceAppsAPI = (*MobileDeviceAppsAPIService)(&c.common)
+	c.MobileDeviceEnrollmentProfileAPI = (*MobileDeviceEnrollmentProfileAPIService)(&c.common)
+	c.MobileDeviceExtensionAttributesPreviewAPI = (*MobileDeviceExtensionAttributesPreviewAPIService)(&c.common)
+	c.MobileDeviceGroupsAPI = (*MobileDeviceGroupsAPIService)(&c.common)
+	c.MobileDevicePrestagesAPI = (*MobileDevicePrestagesAPIService)(&c.common)
+	c.MobileDevicesAPI = (*MobileDevicesAPIService)(&c.common)
+	c.ParentAppPreviewAPI = (*ParentAppPreviewAPIService)(&c.common)
+	c.PatchManagementAPI = (*PatchManagementAPIService)(&c.common)
+	c.PatchPoliciesAPI = (*PatchPoliciesAPIService)(&c.common)
+	c.PatchPolicyLogsAPI = (*PatchPolicyLogsAPIService)(&c.common)
+	c.PatchSoftwareTitleConfigurationsAPI = (*PatchSoftwareTitleConfigurationsAPIService)(&c.common)
+	c.PoliciesPreviewAPI = (*PoliciesPreviewAPIService)(&c.common)
+	c.ReEnrollmentPreviewAPI = (*ReEnrollmentPreviewAPIService)(&c.common)
+	c.RemoteAdministrationAPI = (*RemoteAdministrationAPIService)(&c.common)
+	c.ScriptsAPI = (*ScriptsAPIService)(&c.common)
+	c.SelfServiceAPI = (*SelfServiceAPIService)(&c.common)
+	c.SelfServiceBrandingIosAPI = (*SelfServiceBrandingIosAPIService)(&c.common)
+	c.SelfServiceBrandingMacosAPI = (*SelfServiceBrandingMacosAPIService)(&c.common)
+	c.SelfServiceBrandingPreviewAPI = (*SelfServiceBrandingPreviewAPIService)(&c.common)
+	c.SitesAPI = (*SitesAPIService)(&c.common)
+	c.SitesPreviewAPI = (*SitesPreviewAPIService)(&c.common)
+	c.SmartComputerGroupsPreviewAPI = (*SmartComputerGroupsPreviewAPIService)(&c.common)
+	c.SmartMobileDeviceGroupsPreviewAPI = (*SmartMobileDeviceGroupsPreviewAPIService)(&c.common)
+	c.SmartUserGroupsPreviewAPI = (*SmartUserGroupsPreviewAPIService)(&c.common)
+	c.SsoCertificateAPI = (*SsoCertificateAPIService)(&c.common)
+	c.SsoCertificatePreviewAPI = (*SsoCertificatePreviewAPIService)(&c.common)
+	c.SsoFailoverAPI = (*SsoFailoverAPIService)(&c.common)
+	c.SsoSettingsAPI = (*SsoSettingsAPIService)(&c.common)
+	c.StartupStatusAPI = (*StartupStatusAPIService)(&c.common)
+	c.StaticUserGroupsPreviewAPI = (*StaticUserGroupsPreviewAPIService)(&c.common)
+	c.SupervisionIdentitiesPreviewAPI = (*SupervisionIdentitiesPreviewAPIService)(&c.common)
+	c.TeacherAppAPI = (*TeacherAppAPIService)(&c.common)
+	c.TeamViewerRemoteAdministrationAPI = (*TeamViewerRemoteAdministrationAPIService)(&c.common)
+	c.TimeZonesPreviewAPI = (*TimeZonesPreviewAPIService)(&c.common)
+	c.TomcatSettingsPreviewAPI = (*TomcatSettingsPreviewAPIService)(&c.common)
+	c.UserSessionPreviewAPI = (*UserSessionPreviewAPIService)(&c.common)
+	c.VenafiPreviewAPI = (*VenafiPreviewAPIService)(&c.common)
+	c.VolumePurchasingLocationsAPI = (*VolumePurchasingLocationsAPIService)(&c.common)
+	c.VolumePurchasingSubscriptionsAPI = (*VolumePurchasingSubscriptionsAPIService)(&c.common)
+	c.VppAdminAccountsPreviewAPI = (*VppAdminAccountsPreviewAPIService)(&c.common)
+	c.VppSubscriptionsPreviewAPI = (*VppSubscriptionsPreviewAPIService)(&c.common)
 
 	return c
 }
@@ -365,7 +398,7 @@ func selectHeaderAccept(accepts []string) string {
 // contains is a case insensitive match, finding needle in a haystack
 func contains(haystack []string, needle string) bool {
 	for _, a := range haystack {
-		if strings.ToLower(a) == strings.ToLower(needle) {
+		if strings.EqualFold(a, needle) {
 			return true
 		}
 	}
@@ -381,33 +414,111 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 
 	// Check the type is as expected.
 	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("Expected %s to be of type %s but received %s.", name, expected, reflect.TypeOf(obj).String())
+		return fmt.Errorf("expected %s to be of type %s but received %s", name, expected, reflect.TypeOf(obj).String())
 	}
 	return nil
 }
 
-// parameterToString convert interface{} parameters to string, using a delimiter if format is provided.
-func parameterToString(obj interface{}, collectionFormat string) string {
-	var delimiter string
+func parameterValueToString( obj interface{}, key string ) string {
+	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
+		return fmt.Sprintf("%v", obj)
+	}
+	var param,ok = obj.(MappedNullable)
+	if !ok {
+		return ""
+	}
+	dataMap,err := param.ToMap()
+	if err != nil {
+		return ""
+	}
+	return fmt.Sprintf("%v", dataMap[key])
+}
 
-	switch collectionFormat {
-	case "pipes":
-		delimiter = "|"
-	case "ssv":
-		delimiter = " "
-	case "tsv":
-		delimiter = "\t"
-	case "csv":
-		delimiter = ","
+// parameterAddToHeaderOrQuery adds the provided object to the request header or url query
+// supporting deep object syntax
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+	var v = reflect.ValueOf(obj)
+	var value = ""
+	if v == reflect.ValueOf(nil) {
+		value = "null"
+	} else {
+		switch v.Kind() {
+			case reflect.Invalid:
+				value = "invalid"
+
+			case reflect.Struct:
+				if t,ok := obj.(MappedNullable); ok {
+					dataMap,err := t.ToMap()
+					if err != nil {
+						return
+					}
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
+					return
+				}
+				if t, ok := obj.(time.Time); ok {
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+					return
+				}
+				value = v.Type().String() + " value"
+			case reflect.Slice:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				var lenIndValue = indValue.Len()
+				for i:=0;i<lenIndValue;i++ {
+					var arrayValue = indValue.Index(i)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+				}
+				return
+
+			case reflect.Map:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				iter := indValue.MapRange()
+				for iter.Next() {
+					k,v := iter.Key(), iter.Value()
+					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+				}
+				return
+
+			case reflect.Interface:
+				fallthrough
+			case reflect.Ptr:
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
+				return
+
+			case reflect.Int, reflect.Int8, reflect.Int16,
+				reflect.Int32, reflect.Int64:
+				value = strconv.FormatInt(v.Int(), 10)
+			case reflect.Uint, reflect.Uint8, reflect.Uint16,
+				reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+				value = strconv.FormatUint(v.Uint(), 10)
+			case reflect.Float32, reflect.Float64:
+				value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+			case reflect.Bool:
+				value = strconv.FormatBool(v.Bool())
+			case reflect.String:
+				value = v.String()
+			default:
+				value = v.Type().String() + " value"
+		}
 	}
 
-	if reflect.TypeOf(obj).Kind() == reflect.Slice {
-		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
-	} else if t, ok := obj.(time.Time); ok {
-		return t.Format(time.RFC3339)
+	switch valuesMap := headerOrQueryParams.(type) {
+		case url.Values:
+			if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+				valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix) + "," + value)
+			} else {
+				valuesMap.Add(keyPrefix, value)
+			}
+			break
+		case map[string]string:
+			valuesMap[keyPrefix] = value
+			break
 	}
-
-	return fmt.Sprintf("%v", obj)
 }
 
 // helper for converting interface{} parameters to json strings
@@ -559,7 +670,11 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Encode the parameters.
-	url.RawQuery = query.Encode()
+	url.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
+		pieces := strings.Split(s, "=")
+		pieces[0] = queryDescape.Replace(pieces[0])
+		return strings.Join(pieces, "=")
+	})
 
 	// Generate a new request
 	if body != nil {
@@ -589,17 +704,6 @@ func (c *APIClient) prepareRequest(
 
 		// Walk through any authentication.
 
-		// OAuth2 authentication
-		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
-			// We were able to grab an oauth2 token from the context
-			var latestToken *oauth2.Token
-			if latestToken, err = tok.Token(); err != nil {
-				return nil, err
-			}
-
-			latestToken.SetAuthHeader(localVarRequest)
-		}
-
 		// Basic HTTP Authentication
 		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
@@ -626,8 +730,21 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
+	if f, ok := v.(*os.File); ok {
+		f, err = os.CreateTemp("", "HttpClientFile")
+		if err != nil {
+			return
+		}
+		_, err = f.Write(b)
+		if err != nil {
+			return
+		}
+		_, err = f.Seek(0, io.SeekStart)
+		err = os.Remove(f.Name())
+		return
+	}
 	if f, ok := v.(**os.File); ok {
-		*f, err = ioutil.TempFile("", "HttpClientFile")
+		*f, err = os.CreateTemp("", "HttpClientFile")
 		if err != nil {
 			return
 		}
@@ -636,6 +753,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
+		err = os.Remove((*f).Name())
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
@@ -663,11 +781,14 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 
 // Add a file to the multipart request
 func addFile(w *multipart.Writer, fieldName, path string) error {
-	file, err := os.Open(path)
+	file, err := os.Open(filepath.Clean(path))
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	err = file.Close()
+	if err != nil {
+		return err
+	}
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {
@@ -698,8 +819,8 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
-	} else if fp, ok := body.(**os.File); ok {
-		_, err = bodyBuf.ReadFrom(*fp)
+	} else if fp, ok := body.(*os.File); ok {
+		_, err = bodyBuf.ReadFrom(fp)
 	} else if b, ok := body.([]byte); ok {
 		_, err = bodyBuf.Write(b)
 	} else if s, ok := body.(string); ok {
@@ -709,7 +830,11 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	} else if jsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
 	} else if xmlCheck.MatchString(contentType) {
-		err = xml.NewEncoder(bodyBuf).Encode(body)
+		var bs []byte
+		bs, err = xml.Marshal(body)
+		if err == nil {
+			bodyBuf.Write(bs)
+		}
 	}
 
 	if err != nil {
@@ -717,7 +842,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("Invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type %s\n", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -818,4 +943,24 @@ func (e GenericOpenAPIError) Body() []byte {
 // Model returns the unpacked model of the error
 func (e GenericOpenAPIError) Model() interface{} {
 	return e.model
+}
+
+// format error message using title and detail when model implements rfc7807
+func formatErrorMessage(status string, v interface{}) string {
+	str := ""
+	metaValue := reflect.ValueOf(v).Elem()
+
+	if metaValue.Kind() == reflect.Struct {
+		field := metaValue.FieldByName("Title")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s", field.Interface())
+		}
+
+		field = metaValue.FieldByName("Detail")
+		if field != (reflect.Value{}) {
+			str = fmt.Sprintf("%s (%s)", str, field.Interface())
+		}
+	}
+
+	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
 }

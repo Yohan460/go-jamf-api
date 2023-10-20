@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomization{}
+
 // EnrollmentCustomization struct for EnrollmentCustomization
 type EnrollmentCustomization struct {
 	SiteId int32 `json:"siteId"`
@@ -140,20 +143,20 @@ func (o *EnrollmentCustomization) SetEnrollmentCustomizationBrandingSettings(v E
 }
 
 func (o EnrollmentCustomization) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomization) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["siteId"] = o.SiteId
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["description"] = o.Description
+	toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomization struct {

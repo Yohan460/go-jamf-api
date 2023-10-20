@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **Certificates** | Pointer to [**[]MobileDeviceCertificateV1**](MobileDeviceCertificateV1.md) |  | [optional] 
 **Ebooks** | Pointer to [**[]MobileDeviceEbook**](MobileDeviceEbook.md) |  | [optional] 
 **ConfigurationProfiles** | Pointer to [**[]ConfigurationProfile**](ConfigurationProfile.md) |  | [optional] 
-**ProvisioningProfiles** | Pointer to [**[]ProvisioningProfile**](ProvisioningProfile.md) |  | [optional] 
+**ProvisioningProfiles** | Pointer to [**[]MobileDeviceProvisioningProfiles**](MobileDeviceProvisioningProfiles.md) |  | [optional] 
 **Attachments** | Pointer to [**[]MobileDeviceAttachment**](MobileDeviceAttachment.md) |  | [optional] 
 
 ## Methods
@@ -678,20 +678,20 @@ HasConfigurationProfiles returns a boolean if a field has been set.
 
 ### GetProvisioningProfiles
 
-`func (o *IosDetails) GetProvisioningProfiles() []ProvisioningProfile`
+`func (o *IosDetails) GetProvisioningProfiles() []MobileDeviceProvisioningProfiles`
 
 GetProvisioningProfiles returns the ProvisioningProfiles field if non-nil, zero value otherwise.
 
 ### GetProvisioningProfilesOk
 
-`func (o *IosDetails) GetProvisioningProfilesOk() (*[]ProvisioningProfile, bool)`
+`func (o *IosDetails) GetProvisioningProfilesOk() (*[]MobileDeviceProvisioningProfiles, bool)`
 
 GetProvisioningProfilesOk returns a tuple with the ProvisioningProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvisioningProfiles
 
-`func (o *IosDetails) SetProvisioningProfiles(v []ProvisioningProfile)`
+`func (o *IosDetails) SetProvisioningProfiles(v []MobileDeviceProvisioningProfiles)`
 
 SetProvisioningProfiles sets ProvisioningProfiles field to given value.
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IconResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IconResponse{}
+
 // IconResponse struct for IconResponse
 type IconResponse struct {
 	Url *string `json:"url,omitempty"`
@@ -39,7 +42,7 @@ func NewIconResponseWithDefaults() *IconResponse {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *IconResponse) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *IconResponse) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IconResponse) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -57,7 +60,7 @@ func (o *IconResponse) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *IconResponse) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *IconResponse) SetUrl(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IconResponse) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *IconResponse) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IconResponse) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -89,7 +92,7 @@ func (o *IconResponse) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IconResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *IconResponse) SetId(v int32) {
 }
 
 func (o IconResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IconResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableIconResponse struct {

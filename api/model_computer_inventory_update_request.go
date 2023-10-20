@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerInventoryUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerInventoryUpdateRequest{}
+
 // ComputerInventoryUpdateRequest struct for ComputerInventoryUpdateRequest
 type ComputerInventoryUpdateRequest struct {
 	Udid *string `json:"udid,omitempty"`
@@ -44,7 +47,7 @@ func NewComputerInventoryUpdateRequestWithDefaults() *ComputerInventoryUpdateReq
 
 // GetUdid returns the Udid field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetUdid() string {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ComputerInventoryUpdateRequest) GetUdid() string {
 // GetUdidOk returns a tuple with the Udid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetUdidOk() (*string, bool) {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		return nil, false
 	}
 	return o.Udid, true
@@ -62,7 +65,7 @@ func (o *ComputerInventoryUpdateRequest) GetUdidOk() (*string, bool) {
 
 // HasUdid returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasUdid() bool {
-	if o != nil && o.Udid != nil {
+	if o != nil && !IsNil(o.Udid) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ComputerInventoryUpdateRequest) SetUdid(v string) {
 
 // GetGeneral returns the General field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetGeneral() ComputerGeneralUpdate {
-	if o == nil || o.General == nil {
+	if o == nil || IsNil(o.General) {
 		var ret ComputerGeneralUpdate
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ComputerInventoryUpdateRequest) GetGeneral() ComputerGeneralUpdate {
 // GetGeneralOk returns a tuple with the General field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetGeneralOk() (*ComputerGeneralUpdate, bool) {
-	if o == nil || o.General == nil {
+	if o == nil || IsNil(o.General) {
 		return nil, false
 	}
 	return o.General, true
@@ -94,7 +97,7 @@ func (o *ComputerInventoryUpdateRequest) GetGeneralOk() (*ComputerGeneralUpdate,
 
 // HasGeneral returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasGeneral() bool {
-	if o != nil && o.General != nil {
+	if o != nil && !IsNil(o.General) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ComputerInventoryUpdateRequest) SetGeneral(v ComputerGeneralUpdate) {
 
 // GetPurchasing returns the Purchasing field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetPurchasing() ComputerPurchase {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		var ret ComputerPurchase
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ComputerInventoryUpdateRequest) GetPurchasing() ComputerPurchase {
 // GetPurchasingOk returns a tuple with the Purchasing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetPurchasingOk() (*ComputerPurchase, bool) {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		return nil, false
 	}
 	return o.Purchasing, true
@@ -126,7 +129,7 @@ func (o *ComputerInventoryUpdateRequest) GetPurchasingOk() (*ComputerPurchase, b
 
 // HasPurchasing returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasPurchasing() bool {
-	if o != nil && o.Purchasing != nil {
+	if o != nil && !IsNil(o.Purchasing) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ComputerInventoryUpdateRequest) SetPurchasing(v ComputerPurchase) {
 
 // GetUserAndLocation returns the UserAndLocation field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetUserAndLocation() ComputerUserAndLocation {
-	if o == nil || o.UserAndLocation == nil {
+	if o == nil || IsNil(o.UserAndLocation) {
 		var ret ComputerUserAndLocation
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ComputerInventoryUpdateRequest) GetUserAndLocation() ComputerUserAndLoc
 // GetUserAndLocationOk returns a tuple with the UserAndLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetUserAndLocationOk() (*ComputerUserAndLocation, bool) {
-	if o == nil || o.UserAndLocation == nil {
+	if o == nil || IsNil(o.UserAndLocation) {
 		return nil, false
 	}
 	return o.UserAndLocation, true
@@ -158,7 +161,7 @@ func (o *ComputerInventoryUpdateRequest) GetUserAndLocationOk() (*ComputerUserAn
 
 // HasUserAndLocation returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasUserAndLocation() bool {
-	if o != nil && o.UserAndLocation != nil {
+	if o != nil && !IsNil(o.UserAndLocation) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ComputerInventoryUpdateRequest) SetUserAndLocation(v ComputerUserAndLoc
 
 // GetHardware returns the Hardware field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetHardware() ComputerHardwareUpdate {
-	if o == nil || o.Hardware == nil {
+	if o == nil || IsNil(o.Hardware) {
 		var ret ComputerHardwareUpdate
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ComputerInventoryUpdateRequest) GetHardware() ComputerHardwareUpdate {
 // GetHardwareOk returns a tuple with the Hardware field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetHardwareOk() (*ComputerHardwareUpdate, bool) {
-	if o == nil || o.Hardware == nil {
+	if o == nil || IsNil(o.Hardware) {
 		return nil, false
 	}
 	return o.Hardware, true
@@ -190,7 +193,7 @@ func (o *ComputerInventoryUpdateRequest) GetHardwareOk() (*ComputerHardwareUpdat
 
 // HasHardware returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasHardware() bool {
-	if o != nil && o.Hardware != nil {
+	if o != nil && !IsNil(o.Hardware) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ComputerInventoryUpdateRequest) SetHardware(v ComputerHardwareUpdate) {
 
 // GetOperatingSystem returns the OperatingSystem field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetOperatingSystem() ComputerOperatingSystemUpdate {
-	if o == nil || o.OperatingSystem == nil {
+	if o == nil || IsNil(o.OperatingSystem) {
 		var ret ComputerOperatingSystemUpdate
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ComputerInventoryUpdateRequest) GetOperatingSystem() ComputerOperatingS
 // GetOperatingSystemOk returns a tuple with the OperatingSystem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetOperatingSystemOk() (*ComputerOperatingSystemUpdate, bool) {
-	if o == nil || o.OperatingSystem == nil {
+	if o == nil || IsNil(o.OperatingSystem) {
 		return nil, false
 	}
 	return o.OperatingSystem, true
@@ -222,7 +225,7 @@ func (o *ComputerInventoryUpdateRequest) GetOperatingSystemOk() (*ComputerOperat
 
 // HasOperatingSystem returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasOperatingSystem() bool {
-	if o != nil && o.OperatingSystem != nil {
+	if o != nil && !IsNil(o.OperatingSystem) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *ComputerInventoryUpdateRequest) SetOperatingSystem(v ComputerOperatingS
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerInventoryUpdateRequest) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *ComputerInventoryUpdateRequest) GetExtensionAttributes() []ComputerExte
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryUpdateRequest) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -254,7 +257,7 @@ func (o *ComputerInventoryUpdateRequest) GetExtensionAttributesOk() ([]ComputerE
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerInventoryUpdateRequest) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *ComputerInventoryUpdateRequest) SetExtensionAttributes(v []ComputerExte
 }
 
 func (o ComputerInventoryUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Udid != nil {
-		toSerialize["udid"] = o.Udid
-	}
-	if o.General != nil {
-		toSerialize["general"] = o.General
-	}
-	if o.Purchasing != nil {
-		toSerialize["purchasing"] = o.Purchasing
-	}
-	if o.UserAndLocation != nil {
-		toSerialize["userAndLocation"] = o.UserAndLocation
-	}
-	if o.Hardware != nil {
-		toSerialize["hardware"] = o.Hardware
-	}
-	if o.OperatingSystem != nil {
-		toSerialize["operatingSystem"] = o.OperatingSystem
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerInventoryUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Udid) {
+		toSerialize["udid"] = o.Udid
+	}
+	if !IsNil(o.General) {
+		toSerialize["general"] = o.General
+	}
+	if !IsNil(o.Purchasing) {
+		toSerialize["purchasing"] = o.Purchasing
+	}
+	if !IsNil(o.UserAndLocation) {
+		toSerialize["userAndLocation"] = o.UserAndLocation
+	}
+	if !IsNil(o.Hardware) {
+		toSerialize["hardware"] = o.Hardware
+	}
+	if !IsNil(o.OperatingSystem) {
+		toSerialize["operatingSystem"] = o.OperatingSystem
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerInventoryUpdateRequest struct {

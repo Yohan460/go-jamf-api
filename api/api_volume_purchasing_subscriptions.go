@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type VolumePurchasingSubscriptionsApi interface {
+type VolumePurchasingSubscriptionsAPI interface {
 
 	/*
 	V1VolumePurchasingSubscriptionsGet Retrieve Volume Purchasing Subscriptions
@@ -29,13 +29,13 @@ type VolumePurchasingSubscriptionsApi interface {
 	Retrieves Volume Purchasing Subscriptions
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1VolumePurchasingSubscriptionsGetRequest
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest
 	*/
-	V1VolumePurchasingSubscriptionsGet(ctx context.Context) ApiV1VolumePurchasingSubscriptionsGetRequest
+	V1VolumePurchasingSubscriptionsGet(ctx context.Context) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest
 
 	// V1VolumePurchasingSubscriptionsGetExecute executes the request
 	//  @return VolumePurchasingSubscriptions
-	V1VolumePurchasingSubscriptionsGetExecute(r ApiV1VolumePurchasingSubscriptionsGetRequest) (*VolumePurchasingSubscriptions, *http.Response, error)
+	V1VolumePurchasingSubscriptionsGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) (*VolumePurchasingSubscriptions, *http.Response, error)
 
 	/*
 	V1VolumePurchasingSubscriptionsIdDelete Delete a Volume Purchasing Subscription with the supplied id
@@ -44,12 +44,12 @@ type VolumePurchasingSubscriptionsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Subscription identifier
-	@return ApiV1VolumePurchasingSubscriptionsIdDeleteRequest
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest
 	*/
-	V1VolumePurchasingSubscriptionsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdDeleteRequest
+	V1VolumePurchasingSubscriptionsIdDelete(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest
 
 	// V1VolumePurchasingSubscriptionsIdDeleteExecute executes the request
-	V1VolumePurchasingSubscriptionsIdDeleteExecute(r ApiV1VolumePurchasingSubscriptionsIdDeleteRequest) (*http.Response, error)
+	V1VolumePurchasingSubscriptionsIdDeleteExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1VolumePurchasingSubscriptionsIdGet Retrieve a Volume Purchasing Subscription with the supplied id
@@ -58,13 +58,13 @@ type VolumePurchasingSubscriptionsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Subscription identifier
-	@return ApiV1VolumePurchasingSubscriptionsIdGetRequest
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest
 	*/
-	V1VolumePurchasingSubscriptionsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdGetRequest
+	V1VolumePurchasingSubscriptionsIdGet(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest
 
 	// V1VolumePurchasingSubscriptionsIdGetExecute executes the request
 	//  @return VolumePurchasingSubscription
-	V1VolumePurchasingSubscriptionsIdGetExecute(r ApiV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error)
+	V1VolumePurchasingSubscriptionsIdGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error)
 
 	/*
 	V1VolumePurchasingSubscriptionsIdPut Update a Volume Purchasing Subscription
@@ -73,13 +73,13 @@ type VolumePurchasingSubscriptionsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Subscription identifier
-	@return ApiV1VolumePurchasingSubscriptionsIdPutRequest
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest
 	*/
-	V1VolumePurchasingSubscriptionsIdPut(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdPutRequest
+	V1VolumePurchasingSubscriptionsIdPut(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest
 
 	// V1VolumePurchasingSubscriptionsIdPutExecute executes the request
 	//  @return VolumePurchasingSubscription
-	V1VolumePurchasingSubscriptionsIdPutExecute(r ApiV1VolumePurchasingSubscriptionsIdPutRequest) (*VolumePurchasingSubscription, *http.Response, error)
+	V1VolumePurchasingSubscriptionsIdPutExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest) (*VolumePurchasingSubscription, *http.Response, error)
 
 	/*
 	V1VolumePurchasingSubscriptionsPost Create a Volume Purchasing Subscription
@@ -87,43 +87,43 @@ type VolumePurchasingSubscriptionsApi interface {
 	Creates a Volume Purchasing Subscription
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1VolumePurchasingSubscriptionsPostRequest
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest
 	*/
-	V1VolumePurchasingSubscriptionsPost(ctx context.Context) ApiV1VolumePurchasingSubscriptionsPostRequest
+	V1VolumePurchasingSubscriptionsPost(ctx context.Context) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest
 
 	// V1VolumePurchasingSubscriptionsPostExecute executes the request
 	//  @return HrefResponse
-	V1VolumePurchasingSubscriptionsPostExecute(r ApiV1VolumePurchasingSubscriptionsPostRequest) (*HrefResponse, *http.Response, error)
+	V1VolumePurchasingSubscriptionsPostExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// VolumePurchasingSubscriptionsApiService VolumePurchasingSubscriptionsApi service
-type VolumePurchasingSubscriptionsApiService service
+// VolumePurchasingSubscriptionsAPIService VolumePurchasingSubscriptionsAPI service
+type VolumePurchasingSubscriptionsAPIService service
 
-type ApiV1VolumePurchasingSubscriptionsGetRequest struct {
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingSubscriptionsApi
+	ApiService VolumePurchasingSubscriptionsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsGetRequest) Page(page int32) ApiV1VolumePurchasingSubscriptionsGetRequest {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) Page(page int32) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsGetRequest) PageSize(pageSize int32) ApiV1VolumePurchasingSubscriptionsGetRequest {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) PageSize(pageSize int32) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Allowable properties are id, name, and enabled.
-func (r ApiV1VolumePurchasingSubscriptionsGetRequest) Sort(sort []string) ApiV1VolumePurchasingSubscriptionsGetRequest {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) Sort(sort []string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsGetRequest) Execute() (*VolumePurchasingSubscriptions, *http.Response, error) {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) Execute() (*VolumePurchasingSubscriptions, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingSubscriptionsGetExecute(r)
 }
 
@@ -133,10 +133,10 @@ V1VolumePurchasingSubscriptionsGet Retrieve Volume Purchasing Subscriptions
 Retrieves Volume Purchasing Subscriptions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1VolumePurchasingSubscriptionsGetRequest
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest
 */
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsGet(ctx context.Context) ApiV1VolumePurchasingSubscriptionsGetRequest {
-	return ApiV1VolumePurchasingSubscriptionsGetRequest{
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsGet(ctx context.Context) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -144,7 +144,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 // Execute executes the request
 //  @return VolumePurchasingSubscriptions
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsGetExecute(r ApiV1VolumePurchasingSubscriptionsGetRequest) (*VolumePurchasingSubscriptions, *http.Response, error) {
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsGetRequest) (*VolumePurchasingSubscriptions, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -152,7 +152,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		localVarReturnValue  *VolumePurchasingSubscriptions
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsApiService.V1VolumePurchasingSubscriptionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -164,21 +164,30 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -207,9 +216,9 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -234,13 +243,13 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingSubscriptionsIdDeleteRequest struct {
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingSubscriptionsApi
+	ApiService VolumePurchasingSubscriptionsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1VolumePurchasingSubscriptionsIdDeleteExecute(r)
 }
 
@@ -251,10 +260,10 @@ Deletes a Volume Purchasing Subscription with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Subscription identifier
- @return ApiV1VolumePurchasingSubscriptionsIdDeleteRequest
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest
 */
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdDeleteRequest {
-	return ApiV1VolumePurchasingSubscriptionsIdDeleteRequest{
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdDelete(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -262,20 +271,20 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 }
 
 // Execute executes the request
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdDeleteExecute(r ApiV1VolumePurchasingSubscriptionsIdDeleteRequest) (*http.Response, error) {
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdDeleteExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsApiService.V1VolumePurchasingSubscriptionsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-subscriptions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -308,9 +317,9 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -327,7 +336,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -335,13 +345,13 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingSubscriptionsIdGetRequest struct {
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingSubscriptionsApi
+	ApiService VolumePurchasingSubscriptionsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsIdGetRequest) Execute() (*VolumePurchasingSubscription, *http.Response, error) {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest) Execute() (*VolumePurchasingSubscription, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingSubscriptionsIdGetExecute(r)
 }
 
@@ -352,10 +362,10 @@ Retrieves a Volume Purchasing Subscription with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Subscription identifier
- @return ApiV1VolumePurchasingSubscriptionsIdGetRequest
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest
 */
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdGetRequest {
-	return ApiV1VolumePurchasingSubscriptionsIdGetRequest{
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdGet(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -364,7 +374,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 // Execute executes the request
 //  @return VolumePurchasingSubscription
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdGetExecute(r ApiV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error) {
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -372,13 +382,13 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		localVarReturnValue  *VolumePurchasingSubscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsApiService.V1VolumePurchasingSubscriptionsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-subscriptions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -411,9 +421,9 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -430,7 +440,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -447,20 +458,20 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingSubscriptionsIdPutRequest struct {
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingSubscriptionsApi
+	ApiService VolumePurchasingSubscriptionsAPI
 	id string
 	volumePurchasingSubscriptionBase *VolumePurchasingSubscriptionBase
 }
 
 // Volume Purchasing Subscription to update
-func (r ApiV1VolumePurchasingSubscriptionsIdPutRequest) VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase VolumePurchasingSubscriptionBase) ApiV1VolumePurchasingSubscriptionsIdPutRequest {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest) VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase VolumePurchasingSubscriptionBase) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest {
 	r.volumePurchasingSubscriptionBase = &volumePurchasingSubscriptionBase
 	return r
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsIdPutRequest) Execute() (*VolumePurchasingSubscription, *http.Response, error) {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest) Execute() (*VolumePurchasingSubscription, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingSubscriptionsIdPutExecute(r)
 }
 
@@ -471,10 +482,10 @@ Updates a Volume Purchasing Subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Subscription identifier
- @return ApiV1VolumePurchasingSubscriptionsIdPutRequest
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest
 */
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdPut(ctx context.Context, id string) ApiV1VolumePurchasingSubscriptionsIdPutRequest {
-	return ApiV1VolumePurchasingSubscriptionsIdPutRequest{
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdPut(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -483,7 +494,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 // Execute executes the request
 //  @return VolumePurchasingSubscription
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsIdPutExecute(r ApiV1VolumePurchasingSubscriptionsIdPutRequest) (*VolumePurchasingSubscription, *http.Response, error) {
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdPutExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdPutRequest) (*VolumePurchasingSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -491,13 +502,13 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		localVarReturnValue  *VolumePurchasingSubscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsApiService.V1VolumePurchasingSubscriptionsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-subscriptions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -535,9 +546,9 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -554,7 +565,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -564,7 +576,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -581,19 +594,19 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingSubscriptionsPostRequest struct {
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingSubscriptionsApi
+	ApiService VolumePurchasingSubscriptionsAPI
 	volumePurchasingSubscriptionBase *VolumePurchasingSubscriptionBase
 }
 
 // Volume Purchasing Subscription to create
-func (r ApiV1VolumePurchasingSubscriptionsPostRequest) VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase VolumePurchasingSubscriptionBase) ApiV1VolumePurchasingSubscriptionsPostRequest {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest) VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase VolumePurchasingSubscriptionBase) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest {
 	r.volumePurchasingSubscriptionBase = &volumePurchasingSubscriptionBase
 	return r
 }
 
-func (r ApiV1VolumePurchasingSubscriptionsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingSubscriptionsPostExecute(r)
 }
 
@@ -603,10 +616,10 @@ V1VolumePurchasingSubscriptionsPost Create a Volume Purchasing Subscription
 Creates a Volume Purchasing Subscription
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1VolumePurchasingSubscriptionsPostRequest
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest
 */
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsPost(ctx context.Context) ApiV1VolumePurchasingSubscriptionsPostRequest {
-	return ApiV1VolumePurchasingSubscriptionsPostRequest{
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsPost(ctx context.Context) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -614,7 +627,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscriptionsPostExecute(r ApiV1VolumePurchasingSubscriptionsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsPostExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -622,7 +635,7 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsApiService.V1VolumePurchasingSubscriptionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -665,9 +678,9 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -684,7 +697,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -694,7 +708,8 @@ func (a *VolumePurchasingSubscriptionsApiService) V1VolumePurchasingSubscription
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

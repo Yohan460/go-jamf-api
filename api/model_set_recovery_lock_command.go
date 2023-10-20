@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SetRecoveryLockCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SetRecoveryLockCommand{}
+
 // SetRecoveryLockCommand struct for SetRecoveryLockCommand
 type SetRecoveryLockCommand struct {
 	// The new password for Recovery Lock. Set as an empty string to clear the Recovery Lock password.
@@ -39,7 +42,7 @@ func NewSetRecoveryLockCommandWithDefaults() *SetRecoveryLockCommand {
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *SetRecoveryLockCommand) GetNewPassword() string {
-	if o == nil || o.NewPassword == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *SetRecoveryLockCommand) GetNewPassword() string {
 // GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SetRecoveryLockCommand) GetNewPasswordOk() (*string, bool) {
-	if o == nil || o.NewPassword == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		return nil, false
 	}
 	return o.NewPassword, true
@@ -57,7 +60,7 @@ func (o *SetRecoveryLockCommand) GetNewPasswordOk() (*string, bool) {
 
 // HasNewPassword returns a boolean if a field has been set.
 func (o *SetRecoveryLockCommand) HasNewPassword() bool {
-	if o != nil && o.NewPassword != nil {
+	if o != nil && !IsNil(o.NewPassword) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *SetRecoveryLockCommand) SetNewPassword(v string) {
 }
 
 func (o SetRecoveryLockCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.NewPassword != nil {
-		toSerialize["newPassword"] = o.NewPassword
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SetRecoveryLockCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NewPassword) {
+		toSerialize["newPassword"] = o.NewPassword
+	}
+	return toSerialize, nil
 }
 
 type NullableSetRecoveryLockCommand struct {

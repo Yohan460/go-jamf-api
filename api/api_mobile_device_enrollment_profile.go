@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type MobileDeviceEnrollmentProfileApi interface {
+type MobileDeviceEnrollmentProfileAPI interface {
 
 	/*
 	V1MobileDeviceEnrollmentProfileIdDownloadProfileGet Retrieve the MDM Enrollment Profile 
@@ -30,25 +30,25 @@ type MobileDeviceEnrollmentProfileApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id MDM Enrollment Profile identifier
-	@return ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
+	@return MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
 	*/
-	V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(ctx context.Context, id string) ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
+	V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(ctx context.Context, id string) MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
 
 	// V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute executes the request
 	//  @return *os.File
-	V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) (**os.File, *http.Response, error)
+	V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) (*os.File, *http.Response, error)
 }
 
-// MobileDeviceEnrollmentProfileApiService MobileDeviceEnrollmentProfileApi service
-type MobileDeviceEnrollmentProfileApiService service
+// MobileDeviceEnrollmentProfileAPIService MobileDeviceEnrollmentProfileAPI service
+type MobileDeviceEnrollmentProfileAPIService service
 
-type ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest struct {
+type MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest struct {
 	ctx context.Context
-	ApiService MobileDeviceEnrollmentProfileApi
+	ApiService MobileDeviceEnrollmentProfileAPI
 	id string
 }
 
-func (r ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r)
 }
 
@@ -59,10 +59,10 @@ Retrieve the MDM Enrollment Profile
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id MDM Enrollment Profile identifier
- @return ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
+ @return MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest
 */
-func (a *MobileDeviceEnrollmentProfileApiService) V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(ctx context.Context, id string) ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest {
-	return ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest{
+func (a *MobileDeviceEnrollmentProfileAPIService) V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(ctx context.Context, id string) MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest {
+	return MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -71,21 +71,21 @@ func (a *MobileDeviceEnrollmentProfileApiService) V1MobileDeviceEnrollmentProfil
 
 // Execute executes the request
 //  @return *os.File
-func (a *MobileDeviceEnrollmentProfileApiService) V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r ApiV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) (**os.File, *http.Response, error) {
+func (a *MobileDeviceEnrollmentProfileAPIService) V1MobileDeviceEnrollmentProfileIdDownloadProfileGetExecute(r MobileDeviceEnrollmentProfileAPIV1MobileDeviceEnrollmentProfileIdDownloadProfileGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDeviceEnrollmentProfileApiService.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDeviceEnrollmentProfileAPIService.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-enrollment-profile/{id}/download-profile"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -118,9 +118,9 @@ func (a *MobileDeviceEnrollmentProfileApiService) V1MobileDeviceEnrollmentProfil
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

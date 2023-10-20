@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CertificateIdentityV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CertificateIdentityV2{}
+
 // CertificateIdentityV2 struct for CertificateIdentityV2
 type CertificateIdentityV2 struct {
 	Filename *string `json:"filename,omitempty"`
@@ -51,7 +54,7 @@ func NewCertificateIdentityV2WithDefaults() *CertificateIdentityV2 {
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
 func (o *CertificateIdentityV2) GetFilename() string {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *CertificateIdentityV2) GetFilename() string {
 // GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateIdentityV2) GetFilenameOk() (*string, bool) {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
 	return o.Filename, true
@@ -69,7 +72,7 @@ func (o *CertificateIdentityV2) GetFilenameOk() (*string, bool) {
 
 // HasFilename returns a boolean if a field has been set.
 func (o *CertificateIdentityV2) HasFilename() bool {
-	if o != nil && o.Filename != nil {
+	if o != nil && !IsNil(o.Filename) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *CertificateIdentityV2) SetFilename(v string) {
 
 // GetKeystorePassword returns the KeystorePassword field value if set, zero value otherwise.
 func (o *CertificateIdentityV2) GetKeystorePassword() string {
-	if o == nil || o.KeystorePassword == nil {
+	if o == nil || IsNil(o.KeystorePassword) {
 		var ret string
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *CertificateIdentityV2) GetKeystorePassword() string {
 // GetKeystorePasswordOk returns a tuple with the KeystorePassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateIdentityV2) GetKeystorePasswordOk() (*string, bool) {
-	if o == nil || o.KeystorePassword == nil {
+	if o == nil || IsNil(o.KeystorePassword) {
 		return nil, false
 	}
 	return o.KeystorePassword, true
@@ -101,7 +104,7 @@ func (o *CertificateIdentityV2) GetKeystorePasswordOk() (*string, bool) {
 
 // HasKeystorePassword returns a boolean if a field has been set.
 func (o *CertificateIdentityV2) HasKeystorePassword() bool {
-	if o != nil && o.KeystorePassword != nil {
+	if o != nil && !IsNil(o.KeystorePassword) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *CertificateIdentityV2) SetKeystorePassword(v string) {
 
 // GetIdentityKeystore returns the IdentityKeystore field value if set, zero value otherwise.
 func (o *CertificateIdentityV2) GetIdentityKeystore() string {
-	if o == nil || o.IdentityKeystore == nil {
+	if o == nil || IsNil(o.IdentityKeystore) {
 		var ret string
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *CertificateIdentityV2) GetIdentityKeystore() string {
 // GetIdentityKeystoreOk returns a tuple with the IdentityKeystore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateIdentityV2) GetIdentityKeystoreOk() (*string, bool) {
-	if o == nil || o.IdentityKeystore == nil {
+	if o == nil || IsNil(o.IdentityKeystore) {
 		return nil, false
 	}
 	return o.IdentityKeystore, true
@@ -133,7 +136,7 @@ func (o *CertificateIdentityV2) GetIdentityKeystoreOk() (*string, bool) {
 
 // HasIdentityKeystore returns a boolean if a field has been set.
 func (o *CertificateIdentityV2) HasIdentityKeystore() bool {
-	if o != nil && o.IdentityKeystore != nil {
+	if o != nil && !IsNil(o.IdentityKeystore) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *CertificateIdentityV2) SetIdentityKeystore(v string) {
 
 // GetMd5Sum returns the Md5Sum field value if set, zero value otherwise.
 func (o *CertificateIdentityV2) GetMd5Sum() string {
-	if o == nil || o.Md5Sum == nil {
+	if o == nil || IsNil(o.Md5Sum) {
 		var ret string
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *CertificateIdentityV2) GetMd5Sum() string {
 // GetMd5SumOk returns a tuple with the Md5Sum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CertificateIdentityV2) GetMd5SumOk() (*string, bool) {
-	if o == nil || o.Md5Sum == nil {
+	if o == nil || IsNil(o.Md5Sum) {
 		return nil, false
 	}
 	return o.Md5Sum, true
@@ -165,7 +168,7 @@ func (o *CertificateIdentityV2) GetMd5SumOk() (*string, bool) {
 
 // HasMd5Sum returns a boolean if a field has been set.
 func (o *CertificateIdentityV2) HasMd5Sum() bool {
-	if o != nil && o.Md5Sum != nil {
+	if o != nil && !IsNil(o.Md5Sum) {
 		return true
 	}
 
@@ -178,20 +181,28 @@ func (o *CertificateIdentityV2) SetMd5Sum(v string) {
 }
 
 func (o CertificateIdentityV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Filename != nil {
-		toSerialize["filename"] = o.Filename
-	}
-	if o.KeystorePassword != nil {
-		toSerialize["keystorePassword"] = o.KeystorePassword
-	}
-	if o.IdentityKeystore != nil {
-		toSerialize["identityKeystore"] = o.IdentityKeystore
-	}
-	if o.Md5Sum != nil {
-		toSerialize["md5Sum"] = o.Md5Sum
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CertificateIdentityV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Filename) {
+		toSerialize["filename"] = o.Filename
+	}
+	if !IsNil(o.KeystorePassword) {
+		toSerialize["keystorePassword"] = o.KeystorePassword
+	}
+	if !IsNil(o.IdentityKeystore) {
+		toSerialize["identityKeystore"] = o.IdentityKeystore
+	}
+	if !IsNil(o.Md5Sum) {
+		toSerialize["md5Sum"] = o.Md5Sum
+	}
+	return toSerialize, nil
 }
 
 type NullableCertificateIdentityV2 struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VerbosePackageDeploymentResponseErrorsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerbosePackageDeploymentResponseErrorsInner{}
+
 // VerbosePackageDeploymentResponseErrorsInner The error will contain either the 'device' or 'group' property
 type VerbosePackageDeploymentResponseErrorsInner struct {
 	Device *int32 `json:"device,omitempty"`
@@ -40,7 +43,7 @@ func NewVerbosePackageDeploymentResponseErrorsInnerWithDefaults() *VerbosePackag
 
 // GetDevice returns the Device field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int32 {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int32 {
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int32, bool) {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
 	return o.Device, true
@@ -58,7 +61,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int32, boo
 
 // HasDevice returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) HasDevice() bool {
-	if o != nil && o.Device != nil {
+	if o != nil && !IsNil(o.Device) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) SetDevice(v int32) {
 
 // GetGroup returns the Group field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int32 {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		var ret int32
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int32 {
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int32, bool) {
-	if o == nil || o.Group == nil {
+	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
 	return o.Group, true
@@ -90,7 +93,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int32, bool
 
 // HasGroup returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) HasGroup() bool {
-	if o != nil && o.Group != nil {
+	if o != nil && !IsNil(o.Group) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) SetGroup(v int32) {
 
 // GetReason returns the Reason field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetReason() string {
-	if o == nil || o.Reason == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) GetReasonOk() (*string, bool) {
-	if o == nil || o.Reason == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
 	return o.Reason, true
@@ -122,7 +125,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetReasonOk() (*string, bo
 
 // HasReason returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponseErrorsInner) HasReason() bool {
-	if o != nil && o.Reason != nil {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) SetReason(v string) {
 }
 
 func (o VerbosePackageDeploymentResponseErrorsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Device != nil {
-		toSerialize["device"] = o.Device
-	}
-	if o.Group != nil {
-		toSerialize["group"] = o.Group
-	}
-	if o.Reason != nil {
-		toSerialize["reason"] = o.Reason
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VerbosePackageDeploymentResponseErrorsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Device) {
+		toSerialize["device"] = o.Device
+	}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
+	}
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
+	}
+	return toSerialize, nil
 }
 
 type NullableVerbosePackageDeploymentResponseErrorsInner struct {

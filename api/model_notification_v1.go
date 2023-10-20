@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NotificationV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationV1{}
+
 // NotificationV1 Jamf Pro notification used for important alerts.
 type NotificationV1 struct {
 	Type *NotificationType `json:"type,omitempty"`
@@ -40,7 +43,7 @@ func NewNotificationV1WithDefaults() *NotificationV1 {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *NotificationV1) GetType() NotificationType {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret NotificationType
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *NotificationV1) GetType() NotificationType {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationV1) GetTypeOk() (*NotificationType, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -58,7 +61,7 @@ func (o *NotificationV1) GetTypeOk() (*NotificationType, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *NotificationV1) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *NotificationV1) SetType(v NotificationType) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *NotificationV1) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *NotificationV1) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationV1) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -90,7 +93,7 @@ func (o *NotificationV1) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *NotificationV1) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *NotificationV1) SetId(v string) {
 
 // GetParams returns the Params field value if set, zero value otherwise.
 func (o *NotificationV1) GetParams() map[string]map[string]interface{} {
-	if o == nil || o.Params == nil {
+	if o == nil || IsNil(o.Params) {
 		var ret map[string]map[string]interface{}
 		return ret
 	}
@@ -114,15 +117,15 @@ func (o *NotificationV1) GetParams() map[string]map[string]interface{} {
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NotificationV1) GetParamsOk() (map[string]map[string]interface{}, bool) {
-	if o == nil || o.Params == nil {
-		return nil, false
+	if o == nil || IsNil(o.Params) {
+		return map[string]map[string]interface{}{}, false
 	}
 	return o.Params, true
 }
 
 // HasParams returns a boolean if a field has been set.
 func (o *NotificationV1) HasParams() bool {
-	if o != nil && o.Params != nil {
+	if o != nil && !IsNil(o.Params) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *NotificationV1) SetParams(v map[string]map[string]interface{}) {
 }
 
 func (o NotificationV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Params != nil {
-		toSerialize["params"] = o.Params
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NotificationV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Params) {
+		toSerialize["params"] = o.Params
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationV1 struct {

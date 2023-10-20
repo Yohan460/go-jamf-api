@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VolumePurchasingContent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VolumePurchasingContent{}
+
 // VolumePurchasingContent struct for VolumePurchasingContent
 type VolumePurchasingContent struct {
 	Name *string `json:"name,omitempty"`
@@ -46,7 +49,7 @@ func NewVolumePurchasingContentWithDefaults() *VolumePurchasingContent {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *VolumePurchasingContent) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *VolumePurchasingContent) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *VolumePurchasingContent) SetName(v string) {
 
 // GetLicenseCountTotal returns the LicenseCountTotal field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetLicenseCountTotal() int32 {
-	if o == nil || o.LicenseCountTotal == nil {
+	if o == nil || IsNil(o.LicenseCountTotal) {
 		var ret int32
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *VolumePurchasingContent) GetLicenseCountTotal() int32 {
 // GetLicenseCountTotalOk returns a tuple with the LicenseCountTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int32, bool) {
-	if o == nil || o.LicenseCountTotal == nil {
+	if o == nil || IsNil(o.LicenseCountTotal) {
 		return nil, false
 	}
 	return o.LicenseCountTotal, true
@@ -96,7 +99,7 @@ func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int32, bool) {
 
 // HasLicenseCountTotal returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasLicenseCountTotal() bool {
-	if o != nil && o.LicenseCountTotal != nil {
+	if o != nil && !IsNil(o.LicenseCountTotal) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *VolumePurchasingContent) SetLicenseCountTotal(v int32) {
 
 // GetLicenseCountInUse returns the LicenseCountInUse field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetLicenseCountInUse() int32 {
-	if o == nil || o.LicenseCountInUse == nil {
+	if o == nil || IsNil(o.LicenseCountInUse) {
 		var ret int32
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *VolumePurchasingContent) GetLicenseCountInUse() int32 {
 // GetLicenseCountInUseOk returns a tuple with the LicenseCountInUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int32, bool) {
-	if o == nil || o.LicenseCountInUse == nil {
+	if o == nil || IsNil(o.LicenseCountInUse) {
 		return nil, false
 	}
 	return o.LicenseCountInUse, true
@@ -128,7 +131,7 @@ func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int32, bool) {
 
 // HasLicenseCountInUse returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasLicenseCountInUse() bool {
-	if o != nil && o.LicenseCountInUse != nil {
+	if o != nil && !IsNil(o.LicenseCountInUse) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *VolumePurchasingContent) SetLicenseCountInUse(v int32) {
 
 // GetLicenseCountReported returns the LicenseCountReported field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetLicenseCountReported() int32 {
-	if o == nil || o.LicenseCountReported == nil {
+	if o == nil || IsNil(o.LicenseCountReported) {
 		var ret int32
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *VolumePurchasingContent) GetLicenseCountReported() int32 {
 // GetLicenseCountReportedOk returns a tuple with the LicenseCountReported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int32, bool) {
-	if o == nil || o.LicenseCountReported == nil {
+	if o == nil || IsNil(o.LicenseCountReported) {
 		return nil, false
 	}
 	return o.LicenseCountReported, true
@@ -160,7 +163,7 @@ func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int32, bool) {
 
 // HasLicenseCountReported returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasLicenseCountReported() bool {
-	if o != nil && o.LicenseCountReported != nil {
+	if o != nil && !IsNil(o.LicenseCountReported) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *VolumePurchasingContent) SetLicenseCountReported(v int32) {
 
 // GetIconUrl returns the IconUrl field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetIconUrl() string {
-	if o == nil || o.IconUrl == nil {
+	if o == nil || IsNil(o.IconUrl) {
 		var ret string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *VolumePurchasingContent) GetIconUrl() string {
 // GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetIconUrlOk() (*string, bool) {
-	if o == nil || o.IconUrl == nil {
+	if o == nil || IsNil(o.IconUrl) {
 		return nil, false
 	}
 	return o.IconUrl, true
@@ -192,7 +195,7 @@ func (o *VolumePurchasingContent) GetIconUrlOk() (*string, bool) {
 
 // HasIconUrl returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasIconUrl() bool {
-	if o != nil && o.IconUrl != nil {
+	if o != nil && !IsNil(o.IconUrl) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *VolumePurchasingContent) SetIconUrl(v string) {
 
 // GetDeviceTypes returns the DeviceTypes field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetDeviceTypes() []string {
-	if o == nil || o.DeviceTypes == nil {
+	if o == nil || IsNil(o.DeviceTypes) {
 		var ret []string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *VolumePurchasingContent) GetDeviceTypes() []string {
 // GetDeviceTypesOk returns a tuple with the DeviceTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetDeviceTypesOk() ([]string, bool) {
-	if o == nil || o.DeviceTypes == nil {
+	if o == nil || IsNil(o.DeviceTypes) {
 		return nil, false
 	}
 	return o.DeviceTypes, true
@@ -224,7 +227,7 @@ func (o *VolumePurchasingContent) GetDeviceTypesOk() ([]string, bool) {
 
 // HasDeviceTypes returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasDeviceTypes() bool {
-	if o != nil && o.DeviceTypes != nil {
+	if o != nil && !IsNil(o.DeviceTypes) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *VolumePurchasingContent) SetDeviceTypes(v []string) {
 
 // GetContentType returns the ContentType field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetContentType() string {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *VolumePurchasingContent) GetContentType() string {
 // GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetContentTypeOk() (*string, bool) {
-	if o == nil || o.ContentType == nil {
+	if o == nil || IsNil(o.ContentType) {
 		return nil, false
 	}
 	return o.ContentType, true
@@ -256,7 +259,7 @@ func (o *VolumePurchasingContent) GetContentTypeOk() (*string, bool) {
 
 // HasContentType returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasContentType() bool {
-	if o != nil && o.ContentType != nil {
+	if o != nil && !IsNil(o.ContentType) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *VolumePurchasingContent) SetContentType(v string) {
 
 // GetPricingParam returns the PricingParam field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetPricingParam() string {
-	if o == nil || o.PricingParam == nil {
+	if o == nil || IsNil(o.PricingParam) {
 		var ret string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *VolumePurchasingContent) GetPricingParam() string {
 // GetPricingParamOk returns a tuple with the PricingParam field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetPricingParamOk() (*string, bool) {
-	if o == nil || o.PricingParam == nil {
+	if o == nil || IsNil(o.PricingParam) {
 		return nil, false
 	}
 	return o.PricingParam, true
@@ -288,7 +291,7 @@ func (o *VolumePurchasingContent) GetPricingParamOk() (*string, bool) {
 
 // HasPricingParam returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasPricingParam() bool {
-	if o != nil && o.PricingParam != nil {
+	if o != nil && !IsNil(o.PricingParam) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *VolumePurchasingContent) SetPricingParam(v string) {
 
 // GetAdamId returns the AdamId field value if set, zero value otherwise.
 func (o *VolumePurchasingContent) GetAdamId() string {
-	if o == nil || o.AdamId == nil {
+	if o == nil || IsNil(o.AdamId) {
 		var ret string
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *VolumePurchasingContent) GetAdamId() string {
 // GetAdamIdOk returns a tuple with the AdamId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingContent) GetAdamIdOk() (*string, bool) {
-	if o == nil || o.AdamId == nil {
+	if o == nil || IsNil(o.AdamId) {
 		return nil, false
 	}
 	return o.AdamId, true
@@ -320,7 +323,7 @@ func (o *VolumePurchasingContent) GetAdamIdOk() (*string, bool) {
 
 // HasAdamId returns a boolean if a field has been set.
 func (o *VolumePurchasingContent) HasAdamId() bool {
-	if o != nil && o.AdamId != nil {
+	if o != nil && !IsNil(o.AdamId) {
 		return true
 	}
 
@@ -333,35 +336,43 @@ func (o *VolumePurchasingContent) SetAdamId(v string) {
 }
 
 func (o VolumePurchasingContent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.LicenseCountTotal != nil {
-		toSerialize["licenseCountTotal"] = o.LicenseCountTotal
-	}
-	if o.LicenseCountInUse != nil {
-		toSerialize["licenseCountInUse"] = o.LicenseCountInUse
-	}
-	if o.LicenseCountReported != nil {
-		toSerialize["licenseCountReported"] = o.LicenseCountReported
-	}
-	if o.IconUrl != nil {
-		toSerialize["iconUrl"] = o.IconUrl
-	}
-	if o.DeviceTypes != nil {
-		toSerialize["deviceTypes"] = o.DeviceTypes
-	}
-	if o.ContentType != nil {
-		toSerialize["contentType"] = o.ContentType
-	}
-	if o.PricingParam != nil {
-		toSerialize["pricingParam"] = o.PricingParam
-	}
-	if o.AdamId != nil {
-		toSerialize["adamId"] = o.AdamId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VolumePurchasingContent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LicenseCountTotal) {
+		toSerialize["licenseCountTotal"] = o.LicenseCountTotal
+	}
+	if !IsNil(o.LicenseCountInUse) {
+		toSerialize["licenseCountInUse"] = o.LicenseCountInUse
+	}
+	if !IsNil(o.LicenseCountReported) {
+		toSerialize["licenseCountReported"] = o.LicenseCountReported
+	}
+	if !IsNil(o.IconUrl) {
+		toSerialize["iconUrl"] = o.IconUrl
+	}
+	if !IsNil(o.DeviceTypes) {
+		toSerialize["deviceTypes"] = o.DeviceTypes
+	}
+	if !IsNil(o.ContentType) {
+		toSerialize["contentType"] = o.ContentType
+	}
+	if !IsNil(o.PricingParam) {
+		toSerialize["pricingParam"] = o.PricingParam
+	}
+	if !IsNil(o.AdamId) {
+		toSerialize["adamId"] = o.AdamId
+	}
+	return toSerialize, nil
 }
 
 type NullableVolumePurchasingContent struct {

@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **SiteId** | **string** | An identifier of a site which Team Viewer Remote Administration is configured on | 
 **DisplayName** | **string** | Name for Team Viewer Connection Configuration | 
 **Enabled** | **bool** | Describes if Team Viewer connection is enabled or disabled | 
-**SessionTimeout** | **int32** | Number of minutes before the session expires | 
+**SessionTimeout** | **NullableInt32** | Number of minutes before the session expires | 
 
 ## Methods
 
 ### NewConnectionConfigurationResponse
 
-`func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout int32, ) *ConnectionConfigurationResponse`
+`func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt32, ) *ConnectionConfigurationResponse`
 
 NewConnectionConfigurationResponse instantiates a new ConnectionConfigurationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -129,6 +129,16 @@ and a boolean to check if the value has been set.
 SetSessionTimeout sets SessionTimeout field to given value.
 
 
+### SetSessionTimeoutNil
+
+`func (o *ConnectionConfigurationResponse) SetSessionTimeoutNil(b bool)`
+
+ SetSessionTimeoutNil sets the value for SessionTimeout to be an explicit nil
+
+### UnsetSessionTimeout
+`func (o *ConnectionConfigurationResponse) UnsetSessionTimeout()`
+
+UnsetSessionTimeout ensures that no value is present for SessionTimeout, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

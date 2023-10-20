@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProtectRegistrationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProtectRegistrationRequest{}
+
 // ProtectRegistrationRequest Create an API Client in the Jamf Protect web console to obtain these values.
 type ProtectRegistrationRequest struct {
 	ProtectUrl string `json:"protectUrl"`
@@ -114,17 +117,19 @@ func (o *ProtectRegistrationRequest) SetPassword(v string) {
 }
 
 func (o ProtectRegistrationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["protectUrl"] = o.ProtectUrl
-	}
-	if true {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if true {
-		toSerialize["password"] = o.Password
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProtectRegistrationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["protectUrl"] = o.ProtectUrl
+	toSerialize["clientId"] = o.ClientId
+	toSerialize["password"] = o.Password
+	return toSerialize, nil
 }
 
 type NullableProtectRegistrationRequest struct {

@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type MobileDevicesApi interface {
+type MobileDevicesAPI interface {
 
 	/*
 	V1MobileDevicesGet Get Mobile Device objects 
@@ -30,16 +30,16 @@ type MobileDevicesApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MobileDevicesGetRequest
+	@return MobileDevicesAPIV1MobileDevicesGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicesGet(ctx context.Context) ApiV1MobileDevicesGetRequest
+	V1MobileDevicesGet(ctx context.Context) MobileDevicesAPIV1MobileDevicesGetRequest
 
 	// V1MobileDevicesGetExecute executes the request
 	//  @return []MobileDevice
 	// Deprecated
-	V1MobileDevicesGetExecute(r ApiV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error)
+	V1MobileDevicesGetExecute(r MobileDevicesAPIV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error)
 
 	/*
 	V1MobileDevicesIdDetailGet Get Mobile Device 
@@ -48,16 +48,16 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV1MobileDevicesIdDetailGetRequest
+	@return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicesIdDetailGet(ctx context.Context, id int32) ApiV1MobileDevicesIdDetailGetRequest
+	V1MobileDevicesIdDetailGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
 
 	// V1MobileDevicesIdDetailGetExecute executes the request
 	//  @return MobileDeviceDetails
 	// Deprecated
-	V1MobileDevicesIdDetailGetExecute(r ApiV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error)
+	V1MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error)
 
 	/*
 	V1MobileDevicesIdGet Get Mobile Device 
@@ -66,16 +66,16 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV1MobileDevicesIdGetRequest
+	@return MobileDevicesAPIV1MobileDevicesIdGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicesIdGet(ctx context.Context, id int32) ApiV1MobileDevicesIdGetRequest
+	V1MobileDevicesIdGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdGetRequest
 
 	// V1MobileDevicesIdGetExecute executes the request
 	//  @return MobileDevice
 	// Deprecated
-	V1MobileDevicesIdGetExecute(r ApiV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error)
+	V1MobileDevicesIdGetExecute(r MobileDevicesAPIV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error)
 
 	/*
 	V1MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
@@ -84,16 +84,16 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV1MobileDevicesIdPatchRequest
+	@return MobileDevicesAPIV1MobileDevicesIdPatchRequest
 
 	Deprecated
 	*/
-	V1MobileDevicesIdPatch(ctx context.Context, id int32) ApiV1MobileDevicesIdPatchRequest
+	V1MobileDevicesIdPatch(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdPatchRequest
 
 	// V1MobileDevicesIdPatchExecute executes the request
 	//  @return MobileDeviceDetails
 	// Deprecated
-	V1MobileDevicesIdPatchExecute(r ApiV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error)
+	V1MobileDevicesIdPatchExecute(r MobileDevicesAPIV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error)
 
 	/*
 	V1SearchMobileDevicesPost Search Mobile Devices 
@@ -101,16 +101,30 @@ type MobileDevicesApi interface {
 	Search Mobile Devices
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SearchMobileDevicesPostRequest
+	@return MobileDevicesAPIV1SearchMobileDevicesPostRequest
 
 	Deprecated
 	*/
-	V1SearchMobileDevicesPost(ctx context.Context) ApiV1SearchMobileDevicesPostRequest
+	V1SearchMobileDevicesPost(ctx context.Context) MobileDevicesAPIV1SearchMobileDevicesPostRequest
 
 	// V1SearchMobileDevicesPostExecute executes the request
 	//  @return MobileDeviceSearchResults
 	// Deprecated
-	V1SearchMobileDevicesPostExecute(r ApiV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error)
+	V1SearchMobileDevicesPostExecute(r MobileDevicesAPIV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error)
+
+	/*
+	V2MobileDevicesDetailGet Return paginated Mobile Device Inventory records
+
+	Return paginated Mobile Device Inventory records
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MobileDevicesAPIV2MobileDevicesDetailGetRequest
+	*/
+	V2MobileDevicesDetailGet(ctx context.Context) MobileDevicesAPIV2MobileDevicesDetailGetRequest
+
+	// V2MobileDevicesDetailGetExecute executes the request
+	//  @return MobileDeviceInventorySearchResults
+	V2MobileDevicesDetailGetExecute(r MobileDevicesAPIV2MobileDevicesDetailGetRequest) (*MobileDeviceInventorySearchResults, *http.Response, error)
 
 	/*
 	V2MobileDevicesGet Get Mobile Device objects 
@@ -119,13 +133,13 @@ type MobileDevicesApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2MobileDevicesGetRequest
+	@return MobileDevicesAPIV2MobileDevicesGetRequest
 	*/
-	V2MobileDevicesGet(ctx context.Context) ApiV2MobileDevicesGetRequest
+	V2MobileDevicesGet(ctx context.Context) MobileDevicesAPIV2MobileDevicesGetRequest
 
 	// V2MobileDevicesGetExecute executes the request
 	//  @return MobileDeviceSearchResultsV2
-	V2MobileDevicesGetExecute(r ApiV2MobileDevicesGetRequest) (*MobileDeviceSearchResultsV2, *http.Response, error)
+	V2MobileDevicesGetExecute(r MobileDevicesAPIV2MobileDevicesGetRequest) (*MobileDeviceSearchResultsV2, *http.Response, error)
 
 	/*
 	V2MobileDevicesIdDetailGet Get Mobile Device 
@@ -134,13 +148,13 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV2MobileDevicesIdDetailGetRequest
+	@return MobileDevicesAPIV2MobileDevicesIdDetailGetRequest
 	*/
-	V2MobileDevicesIdDetailGet(ctx context.Context, id string) ApiV2MobileDevicesIdDetailGetRequest
+	V2MobileDevicesIdDetailGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdDetailGetRequest
 
 	// V2MobileDevicesIdDetailGetExecute executes the request
 	//  @return MobileDeviceDetailsGetV2
-	V2MobileDevicesIdDetailGetExecute(r ApiV2MobileDevicesIdDetailGetRequest) (*MobileDeviceDetailsGetV2, *http.Response, error)
+	V2MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV2MobileDevicesIdDetailGetRequest) (*MobileDeviceDetailsGetV2, *http.Response, error)
 
 	/*
 	V2MobileDevicesIdGet Get Mobile Device 
@@ -149,13 +163,13 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV2MobileDevicesIdGetRequest
+	@return MobileDevicesAPIV2MobileDevicesIdGetRequest
 	*/
-	V2MobileDevicesIdGet(ctx context.Context, id string) ApiV2MobileDevicesIdGetRequest
+	V2MobileDevicesIdGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdGetRequest
 
 	// V2MobileDevicesIdGetExecute executes the request
 	//  @return MobileDeviceV2
-	V2MobileDevicesIdGetExecute(r ApiV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error)
+	V2MobileDevicesIdGetExecute(r MobileDevicesAPIV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error)
 
 	/*
 	V2MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
@@ -164,24 +178,24 @@ type MobileDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of mobile device record
-	@return ApiV2MobileDevicesIdPatchRequest
+	@return MobileDevicesAPIV2MobileDevicesIdPatchRequest
 	*/
-	V2MobileDevicesIdPatch(ctx context.Context, id string) ApiV2MobileDevicesIdPatchRequest
+	V2MobileDevicesIdPatch(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdPatchRequest
 
 	// V2MobileDevicesIdPatchExecute executes the request
 	//  @return MobileDeviceDetailsV2
-	V2MobileDevicesIdPatchExecute(r ApiV2MobileDevicesIdPatchRequest) (*MobileDeviceDetailsV2, *http.Response, error)
+	V2MobileDevicesIdPatchExecute(r MobileDevicesAPIV2MobileDevicesIdPatchRequest) (*MobileDeviceDetailsV2, *http.Response, error)
 }
 
-// MobileDevicesApiService MobileDevicesApi service
-type MobileDevicesApiService service
+// MobileDevicesAPIService MobileDevicesAPI service
+type MobileDevicesAPIService service
 
-type ApiV1MobileDevicesGetRequest struct {
+type MobileDevicesAPIV1MobileDevicesGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 }
 
-func (r ApiV1MobileDevicesGetRequest) Execute() ([]MobileDevice, *http.Response, error) {
+func (r MobileDevicesAPIV1MobileDevicesGetRequest) Execute() ([]MobileDevice, *http.Response, error) {
 	return r.ApiService.V1MobileDevicesGetExecute(r)
 }
 
@@ -192,12 +206,12 @@ Gets Mobile Device objects.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MobileDevicesGetRequest
+ @return MobileDevicesAPIV1MobileDevicesGetRequest
 
 Deprecated
 */
-func (a *MobileDevicesApiService) V1MobileDevicesGet(ctx context.Context) ApiV1MobileDevicesGetRequest {
-	return ApiV1MobileDevicesGetRequest{
+func (a *MobileDevicesAPIService) V1MobileDevicesGet(ctx context.Context) MobileDevicesAPIV1MobileDevicesGetRequest {
+	return MobileDevicesAPIV1MobileDevicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -206,7 +220,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesGet(ctx context.Context) ApiV1M
 // Execute executes the request
 //  @return []MobileDevice
 // Deprecated
-func (a *MobileDevicesApiService) V1MobileDevicesGetExecute(r ApiV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error) {
+func (a *MobileDevicesAPIService) V1MobileDevicesGetExecute(r MobileDevicesAPIV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -214,7 +228,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesGetExecute(r ApiV1MobileDevices
 		localVarReturnValue  []MobileDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V1MobileDevicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -252,9 +266,9 @@ func (a *MobileDevicesApiService) V1MobileDevicesGetExecute(r ApiV1MobileDevices
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -279,13 +293,13 @@ func (a *MobileDevicesApiService) V1MobileDevicesGetExecute(r ApiV1MobileDevices
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicesIdDetailGetRequest struct {
+type MobileDevicesAPIV1MobileDevicesIdDetailGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
+func (r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
 	return r.ApiService.V1MobileDevicesIdDetailGetExecute(r)
 }
 
@@ -296,12 +310,12 @@ Get MobileDevice
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV1MobileDevicesIdDetailGetRequest
+ @return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
 
 Deprecated
 */
-func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGet(ctx context.Context, id int32) ApiV1MobileDevicesIdDetailGetRequest {
-	return ApiV1MobileDevicesIdDetailGetRequest{
+func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest {
+	return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -311,7 +325,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGet(ctx context.Context
 // Execute executes the request
 //  @return MobileDeviceDetails
 // Deprecated
-func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGetExecute(r ApiV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error) {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -319,13 +333,13 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGetExecute(r ApiV1Mobil
 		localVarReturnValue  *MobileDeviceDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V1MobileDevicesIdDetailGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdDetailGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-devices/{id}/detail"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -358,9 +372,9 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGetExecute(r ApiV1Mobil
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -385,13 +399,13 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdDetailGetExecute(r ApiV1Mobil
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicesIdGetRequest struct {
+type MobileDevicesAPIV1MobileDevicesIdGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicesIdGetRequest) Execute() (*MobileDevice, *http.Response, error) {
+func (r MobileDevicesAPIV1MobileDevicesIdGetRequest) Execute() (*MobileDevice, *http.Response, error) {
 	return r.ApiService.V1MobileDevicesIdGetExecute(r)
 }
 
@@ -402,12 +416,12 @@ Get MobileDevice
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV1MobileDevicesIdGetRequest
+ @return MobileDevicesAPIV1MobileDevicesIdGetRequest
 
 Deprecated
 */
-func (a *MobileDevicesApiService) V1MobileDevicesIdGet(ctx context.Context, id int32) ApiV1MobileDevicesIdGetRequest {
-	return ApiV1MobileDevicesIdGetRequest{
+func (a *MobileDevicesAPIService) V1MobileDevicesIdGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdGetRequest {
+	return MobileDevicesAPIV1MobileDevicesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -417,7 +431,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdGet(ctx context.Context, id i
 // Execute executes the request
 //  @return MobileDevice
 // Deprecated
-func (a *MobileDevicesApiService) V1MobileDevicesIdGetExecute(r ApiV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error) {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdGetExecute(r MobileDevicesAPIV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -425,13 +439,13 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdGetExecute(r ApiV1MobileDevic
 		localVarReturnValue  *MobileDevice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V1MobileDevicesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -464,9 +478,9 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdGetExecute(r ApiV1MobileDevic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -491,19 +505,19 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdGetExecute(r ApiV1MobileDevic
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicesIdPatchRequest struct {
+type MobileDevicesAPIV1MobileDevicesIdPatchRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id int32
 	updateMobileDevice *UpdateMobileDevice
 }
 
-func (r ApiV1MobileDevicesIdPatchRequest) UpdateMobileDevice(updateMobileDevice UpdateMobileDevice) ApiV1MobileDevicesIdPatchRequest {
+func (r MobileDevicesAPIV1MobileDevicesIdPatchRequest) UpdateMobileDevice(updateMobileDevice UpdateMobileDevice) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
 	r.updateMobileDevice = &updateMobileDevice
 	return r
 }
 
-func (r ApiV1MobileDevicesIdPatchRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
+func (r MobileDevicesAPIV1MobileDevicesIdPatchRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
 	return r.ApiService.V1MobileDevicesIdPatchExecute(r)
 }
 
@@ -514,12 +528,12 @@ Updates fields on a mobile device that are allowed to be modified by users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV1MobileDevicesIdPatchRequest
+ @return MobileDevicesAPIV1MobileDevicesIdPatchRequest
 
 Deprecated
 */
-func (a *MobileDevicesApiService) V1MobileDevicesIdPatch(ctx context.Context, id int32) ApiV1MobileDevicesIdPatchRequest {
-	return ApiV1MobileDevicesIdPatchRequest{
+func (a *MobileDevicesAPIService) V1MobileDevicesIdPatch(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
+	return MobileDevicesAPIV1MobileDevicesIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -529,7 +543,7 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdPatch(ctx context.Context, id
 // Execute executes the request
 //  @return MobileDeviceDetails
 // Deprecated
-func (a *MobileDevicesApiService) V1MobileDevicesIdPatchExecute(r ApiV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error) {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdPatchExecute(r MobileDevicesAPIV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -537,13 +551,13 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdPatchExecute(r ApiV1MobileDev
 		localVarReturnValue  *MobileDeviceDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V1MobileDevicesIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -581,9 +595,9 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdPatchExecute(r ApiV1MobileDev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -608,18 +622,18 @@ func (a *MobileDevicesApiService) V1MobileDevicesIdPatchExecute(r ApiV1MobileDev
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SearchMobileDevicesPostRequest struct {
+type MobileDevicesAPIV1SearchMobileDevicesPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	mobileDeviceSearchParams *MobileDeviceSearchParams
 }
 
-func (r ApiV1SearchMobileDevicesPostRequest) MobileDeviceSearchParams(mobileDeviceSearchParams MobileDeviceSearchParams) ApiV1SearchMobileDevicesPostRequest {
+func (r MobileDevicesAPIV1SearchMobileDevicesPostRequest) MobileDeviceSearchParams(mobileDeviceSearchParams MobileDeviceSearchParams) MobileDevicesAPIV1SearchMobileDevicesPostRequest {
 	r.mobileDeviceSearchParams = &mobileDeviceSearchParams
 	return r
 }
 
-func (r ApiV1SearchMobileDevicesPostRequest) Execute() (*MobileDeviceSearchResults, *http.Response, error) {
+func (r MobileDevicesAPIV1SearchMobileDevicesPostRequest) Execute() (*MobileDeviceSearchResults, *http.Response, error) {
 	return r.ApiService.V1SearchMobileDevicesPostExecute(r)
 }
 
@@ -629,12 +643,12 @@ V1SearchMobileDevicesPost Search Mobile Devices
 Search Mobile Devices
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SearchMobileDevicesPostRequest
+ @return MobileDevicesAPIV1SearchMobileDevicesPostRequest
 
 Deprecated
 */
-func (a *MobileDevicesApiService) V1SearchMobileDevicesPost(ctx context.Context) ApiV1SearchMobileDevicesPostRequest {
-	return ApiV1SearchMobileDevicesPostRequest{
+func (a *MobileDevicesAPIService) V1SearchMobileDevicesPost(ctx context.Context) MobileDevicesAPIV1SearchMobileDevicesPostRequest {
+	return MobileDevicesAPIV1SearchMobileDevicesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -643,7 +657,7 @@ func (a *MobileDevicesApiService) V1SearchMobileDevicesPost(ctx context.Context)
 // Execute executes the request
 //  @return MobileDeviceSearchResults
 // Deprecated
-func (a *MobileDevicesApiService) V1SearchMobileDevicesPostExecute(r ApiV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error) {
+func (a *MobileDevicesAPIService) V1SearchMobileDevicesPostExecute(r MobileDevicesAPIV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -651,7 +665,7 @@ func (a *MobileDevicesApiService) V1SearchMobileDevicesPostExecute(r ApiV1Search
 		localVarReturnValue  *MobileDeviceSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V1SearchMobileDevicesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1SearchMobileDevicesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -691,9 +705,9 @@ func (a *MobileDevicesApiService) V1SearchMobileDevicesPostExecute(r ApiV1Search
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -718,31 +732,209 @@ func (a *MobileDevicesApiService) V1SearchMobileDevicesPostExecute(r ApiV1Search
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicesGetRequest struct {
+type MobileDevicesAPIV2MobileDevicesDetailGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
+	section *[]MobileDeviceSection
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+}
+
+// section of mobile device details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;GENERAL&amp;section&#x3D;HARDWARE
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Section(section []MobileDeviceSection) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	r.section = &section
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Page(page int32) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) PageSize(pageSize int32) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is displayName:asc. Multiple sort criteria are supported and must be separated with a comma.   Fields allowed in the sort: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;lostModeEnabledDate&#x60;, &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;,  &#x60;enrollmentSessionTokenValid&#x60;, &#x60;exchangeDeviceId&#x60;, &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastBackupDate&#x60;, &#x60;lastEnrolledDate&#x60;, &#x60;lastCloudBackupDate&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;mdmProfileExpirationDate&#x60;, &#x60;model&#x60;, &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;, &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;, &#x60;wifiMacAddress&#x60;, &#x60;deviceOwnershipType&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;leaseExpirationDate&#x60;,&#x60;lifeExpectancyYears&#x60;, &#x60;poDate&#x60;, &#x60;poNumber&#x60;, &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;warrantyExpirationDate&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;, &#x60;fileEncryptionCapable&#x60;, &#x60;hardwareEncryptionSupported&#x60;, &#x60;jailbreakStatus&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;cellularTechnology&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;,  &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;,  &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;, &#x60;voiceRoamingEnabled&#x60;, &#x60;roaming&#x60;  Example: &#x60;sort&#x3D;displayName:desc,username:asc&#x60; 
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Sort(sort []string) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;exchangeDeviceId&#x60;,  &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;,  &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;,  &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;,  &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;,  &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;,  &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;,  &#x60;roaming&#x60;  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Filter(filter string) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Execute() (*MobileDeviceInventorySearchResults, *http.Response, error) {
+	return r.ApiService.V2MobileDevicesDetailGetExecute(r)
+}
+
+/*
+V2MobileDevicesDetailGet Return paginated Mobile Device Inventory records
+
+Return paginated Mobile Device Inventory records
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MobileDevicesAPIV2MobileDevicesDetailGetRequest
+*/
+func (a *MobileDevicesAPIService) V2MobileDevicesDetailGet(ctx context.Context) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+	return MobileDevicesAPIV2MobileDevicesDetailGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MobileDeviceInventorySearchResults
+func (a *MobileDevicesAPIService) V2MobileDevicesDetailGetExecute(r MobileDevicesAPIV2MobileDevicesDetailGetRequest) (*MobileDeviceInventorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MobileDeviceInventorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesDetailGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/mobile-devices/detail"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.section != nil {
+		t := *r.section
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
+		}
+	} else {
+		var defaultValue []MobileDeviceSection = ["GENERAL"]
+		r.section = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		var defaultValue []string = ["displayName:asc"]
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicesAPIV2MobileDevicesGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicesAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2MobileDevicesGetRequest) Page(page int32) ApiV2MobileDevicesGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) Page(page int32) MobileDevicesAPIV2MobileDevicesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2MobileDevicesGetRequest) PageSize(pageSize int32) ApiV2MobileDevicesGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) PageSize(pageSize int32) MobileDevicesAPIV2MobileDevicesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV2MobileDevicesGetRequest) Sort(sort []string) ApiV2MobileDevicesGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) Sort(sort []string) MobileDevicesAPIV2MobileDevicesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2MobileDevicesGetRequest) Execute() (*MobileDeviceSearchResultsV2, *http.Response, error) {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) Execute() (*MobileDeviceSearchResultsV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicesGetExecute(r)
 }
 
@@ -753,10 +945,10 @@ Gets Mobile Device objects.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MobileDevicesGetRequest
+ @return MobileDevicesAPIV2MobileDevicesGetRequest
 */
-func (a *MobileDevicesApiService) V2MobileDevicesGet(ctx context.Context) ApiV2MobileDevicesGetRequest {
-	return ApiV2MobileDevicesGetRequest{
+func (a *MobileDevicesAPIService) V2MobileDevicesGet(ctx context.Context) MobileDevicesAPIV2MobileDevicesGetRequest {
+	return MobileDevicesAPIV2MobileDevicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -764,7 +956,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesGet(ctx context.Context) ApiV2M
 
 // Execute executes the request
 //  @return MobileDeviceSearchResultsV2
-func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevicesGetRequest) (*MobileDeviceSearchResultsV2, *http.Response, error) {
+func (a *MobileDevicesAPIService) V2MobileDevicesGetExecute(r MobileDevicesAPIV2MobileDevicesGetRequest) (*MobileDeviceSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -772,7 +964,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevices
 		localVarReturnValue  *MobileDeviceSearchResultsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V2MobileDevicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -784,21 +976,30 @@ func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevices
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -827,9 +1028,9 @@ func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevices
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -854,13 +1055,13 @@ func (a *MobileDevicesApiService) V2MobileDevicesGetExecute(r ApiV2MobileDevices
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicesIdDetailGetRequest struct {
+type MobileDevicesAPIV2MobileDevicesIdDetailGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetailsGetV2, *http.Response, error) {
+func (r MobileDevicesAPIV2MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetailsGetV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicesIdDetailGetExecute(r)
 }
 
@@ -871,10 +1072,10 @@ Get MobileDevice
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV2MobileDevicesIdDetailGetRequest
+ @return MobileDevicesAPIV2MobileDevicesIdDetailGetRequest
 */
-func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGet(ctx context.Context, id string) ApiV2MobileDevicesIdDetailGetRequest {
-	return ApiV2MobileDevicesIdDetailGetRequest{
+func (a *MobileDevicesAPIService) V2MobileDevicesIdDetailGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdDetailGetRequest {
+	return MobileDevicesAPIV2MobileDevicesIdDetailGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -883,7 +1084,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGet(ctx context.Context
 
 // Execute executes the request
 //  @return MobileDeviceDetailsGetV2
-func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2MobileDevicesIdDetailGetRequest) (*MobileDeviceDetailsGetV2, *http.Response, error) {
+func (a *MobileDevicesAPIService) V2MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV2MobileDevicesIdDetailGetRequest) (*MobileDeviceDetailsGetV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -891,13 +1092,13 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2Mobil
 		localVarReturnValue  *MobileDeviceDetailsGetV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V2MobileDevicesIdDetailGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesIdDetailGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-devices/{id}/detail"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -930,9 +1131,9 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2Mobil
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -949,7 +1150,8 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2Mobil
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -966,13 +1168,13 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdDetailGetExecute(r ApiV2Mobil
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicesIdGetRequest struct {
+type MobileDevicesAPIV2MobileDevicesIdGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicesIdGetRequest) Execute() (*MobileDeviceV2, *http.Response, error) {
+func (r MobileDevicesAPIV2MobileDevicesIdGetRequest) Execute() (*MobileDeviceV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicesIdGetExecute(r)
 }
 
@@ -983,10 +1185,10 @@ Get MobileDevice
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV2MobileDevicesIdGetRequest
+ @return MobileDevicesAPIV2MobileDevicesIdGetRequest
 */
-func (a *MobileDevicesApiService) V2MobileDevicesIdGet(ctx context.Context, id string) ApiV2MobileDevicesIdGetRequest {
-	return ApiV2MobileDevicesIdGetRequest{
+func (a *MobileDevicesAPIService) V2MobileDevicesIdGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdGetRequest {
+	return MobileDevicesAPIV2MobileDevicesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -995,7 +1197,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGet(ctx context.Context, id s
 
 // Execute executes the request
 //  @return MobileDeviceV2
-func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error) {
+func (a *MobileDevicesAPIService) V2MobileDevicesIdGetExecute(r MobileDevicesAPIV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1003,13 +1205,13 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevic
 		localVarReturnValue  *MobileDeviceV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V2MobileDevicesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1042,9 +1244,9 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1061,7 +1263,8 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevic
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1078,19 +1281,19 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdGetExecute(r ApiV2MobileDevic
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicesIdPatchRequest struct {
+type MobileDevicesAPIV2MobileDevicesIdPatchRequest struct {
 	ctx context.Context
-	ApiService MobileDevicesApi
+	ApiService MobileDevicesAPI
 	id string
 	updateMobileDeviceV2 *UpdateMobileDeviceV2
 }
 
-func (r ApiV2MobileDevicesIdPatchRequest) UpdateMobileDeviceV2(updateMobileDeviceV2 UpdateMobileDeviceV2) ApiV2MobileDevicesIdPatchRequest {
+func (r MobileDevicesAPIV2MobileDevicesIdPatchRequest) UpdateMobileDeviceV2(updateMobileDeviceV2 UpdateMobileDeviceV2) MobileDevicesAPIV2MobileDevicesIdPatchRequest {
 	r.updateMobileDeviceV2 = &updateMobileDeviceV2
 	return r
 }
 
-func (r ApiV2MobileDevicesIdPatchRequest) Execute() (*MobileDeviceDetailsV2, *http.Response, error) {
+func (r MobileDevicesAPIV2MobileDevicesIdPatchRequest) Execute() (*MobileDeviceDetailsV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicesIdPatchExecute(r)
 }
 
@@ -1101,10 +1304,10 @@ Updates fields on a mobile device that are allowed to be modified by users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of mobile device record
- @return ApiV2MobileDevicesIdPatchRequest
+ @return MobileDevicesAPIV2MobileDevicesIdPatchRequest
 */
-func (a *MobileDevicesApiService) V2MobileDevicesIdPatch(ctx context.Context, id string) ApiV2MobileDevicesIdPatchRequest {
-	return ApiV2MobileDevicesIdPatchRequest{
+func (a *MobileDevicesAPIService) V2MobileDevicesIdPatch(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdPatchRequest {
+	return MobileDevicesAPIV2MobileDevicesIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1113,7 +1316,7 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdPatch(ctx context.Context, id
 
 // Execute executes the request
 //  @return MobileDeviceDetailsV2
-func (a *MobileDevicesApiService) V2MobileDevicesIdPatchExecute(r ApiV2MobileDevicesIdPatchRequest) (*MobileDeviceDetailsV2, *http.Response, error) {
+func (a *MobileDevicesAPIService) V2MobileDevicesIdPatchExecute(r MobileDevicesAPIV2MobileDevicesIdPatchRequest) (*MobileDeviceDetailsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1121,13 +1324,13 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdPatchExecute(r ApiV2MobileDev
 		localVarReturnValue  *MobileDeviceDetailsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesApiService.V2MobileDevicesIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1165,9 +1368,9 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdPatchExecute(r ApiV2MobileDev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1184,7 +1387,8 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdPatchExecute(r ApiV2MobileDev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1194,7 +1398,8 @@ func (a *MobileDevicesApiService) V2MobileDevicesIdPatchExecute(r ApiV2MobileDev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

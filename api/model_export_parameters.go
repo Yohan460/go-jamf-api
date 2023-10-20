@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExportParameters type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExportParameters{}
+
 // ExportParameters struct for ExportParameters
 type ExportParameters struct {
 	Page NullableInt32 `json:"page,omitempty"`
@@ -52,7 +55,7 @@ func NewExportParametersWithDefaults() *ExportParameters {
 
 // GetPage returns the Page field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportParameters) GetPage() int32 {
-	if o == nil || o.Page.Get() == nil {
+	if o == nil || IsNil(o.Page.Get()) {
 		var ret int32
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *ExportParameters) UnsetPage() {
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportParameters) GetPageSize() int32 {
-	if o == nil || o.PageSize.Get() == nil {
+	if o == nil || IsNil(o.PageSize.Get()) {
 		var ret int32
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ExportParameters) GetSort() []string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportParameters) GetSortOk() ([]string, bool) {
-	if o == nil || o.Sort == nil {
+	if o == nil || IsNil(o.Sort) {
 		return nil, false
 	}
 	return o.Sort, true
@@ -155,7 +158,7 @@ func (o *ExportParameters) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *ExportParameters) HasSort() bool {
-	if o != nil && o.Sort != nil {
+	if o != nil && IsNil(o.Sort) {
 		return true
 	}
 
@@ -169,7 +172,7 @@ func (o *ExportParameters) SetSort(v []string) {
 
 // GetFilter returns the Filter field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ExportParameters) GetFilter() string {
-	if o == nil || o.Filter.Get() == nil {
+	if o == nil || IsNil(o.Filter.Get()) {
 		var ret string
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *ExportParameters) GetFields() []ExportField {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExportParameters) GetFieldsOk() ([]ExportField, bool) {
-	if o == nil || o.Fields == nil {
+	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
 	return o.Fields, true
@@ -230,7 +233,7 @@ func (o *ExportParameters) GetFieldsOk() ([]ExportField, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *ExportParameters) HasFields() bool {
-	if o != nil && o.Fields != nil {
+	if o != nil && IsNil(o.Fields) {
 		return true
 	}
 
@@ -243,6 +246,14 @@ func (o *ExportParameters) SetFields(v []ExportField) {
 }
 
 func (o ExportParameters) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ExportParameters) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Page.IsSet() {
 		toSerialize["page"] = o.Page.Get()
@@ -259,7 +270,7 @@ func (o ExportParameters) MarshalJSON() ([]byte, error) {
 	if o.Fields != nil {
 		toSerialize["fields"] = o.Fields
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableExportParameters struct {

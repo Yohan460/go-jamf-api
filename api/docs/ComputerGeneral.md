@@ -27,7 +27,9 @@ Name | Type | Description | Notes
 **ItunesStoreAccountActive** | Pointer to **bool** |  | [optional] 
 **EnrolledViaAutomatedDeviceEnrollment** | Pointer to **bool** |  | [optional] 
 **UserApprovedMdm** | Pointer to **bool** |  | [optional] 
+**DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ComputerExtensionAttribute**](ComputerExtensionAttribute.md) |  | [optional] 
+**ManagementId** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -623,6 +625,31 @@ SetUserApprovedMdm sets UserApprovedMdm field to given value.
 
 HasUserApprovedMdm returns a boolean if a field has been set.
 
+### GetDeclarativeDeviceManagementEnabled
+
+`func (o *ComputerGeneral) GetDeclarativeDeviceManagementEnabled() bool`
+
+GetDeclarativeDeviceManagementEnabled returns the DeclarativeDeviceManagementEnabled field if non-nil, zero value otherwise.
+
+### GetDeclarativeDeviceManagementEnabledOk
+
+`func (o *ComputerGeneral) GetDeclarativeDeviceManagementEnabledOk() (*bool, bool)`
+
+GetDeclarativeDeviceManagementEnabledOk returns a tuple with the DeclarativeDeviceManagementEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeclarativeDeviceManagementEnabled
+
+`func (o *ComputerGeneral) SetDeclarativeDeviceManagementEnabled(v bool)`
+
+SetDeclarativeDeviceManagementEnabled sets DeclarativeDeviceManagementEnabled field to given value.
+
+### HasDeclarativeDeviceManagementEnabled
+
+`func (o *ComputerGeneral) HasDeclarativeDeviceManagementEnabled() bool`
+
+HasDeclarativeDeviceManagementEnabled returns a boolean if a field has been set.
+
 ### GetExtensionAttributes
 
 `func (o *ComputerGeneral) GetExtensionAttributes() []ComputerExtensionAttribute`
@@ -647,6 +674,31 @@ SetExtensionAttributes sets ExtensionAttributes field to given value.
 `func (o *ComputerGeneral) HasExtensionAttributes() bool`
 
 HasExtensionAttributes returns a boolean if a field has been set.
+
+### GetManagementId
+
+`func (o *ComputerGeneral) GetManagementId() string`
+
+GetManagementId returns the ManagementId field if non-nil, zero value otherwise.
+
+### GetManagementIdOk
+
+`func (o *ComputerGeneral) GetManagementIdOk() (*string, bool)`
+
+GetManagementIdOk returns a tuple with the ManagementId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagementId
+
+`func (o *ComputerGeneral) SetManagementId(v string)`
+
+SetManagementId sets ManagementId field to given value.
+
+### HasManagementId
+
+`func (o *ComputerGeneral) HasManagementId() bool`
+
+HasManagementId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

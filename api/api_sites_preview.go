@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type SitesPreviewApi interface {
+type SitesPreviewAPI interface {
 
 	/*
 	SettingsSitesGet Find all sites 
@@ -28,24 +28,27 @@ type SitesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSettingsSitesGetRequest
+	@return SitesPreviewAPISettingsSitesGetRequest
+
+	Deprecated
 	*/
-	SettingsSitesGet(ctx context.Context) ApiSettingsSitesGetRequest
+	SettingsSitesGet(ctx context.Context) SitesPreviewAPISettingsSitesGetRequest
 
 	// SettingsSitesGetExecute executes the request
 	//  @return []Site
-	SettingsSitesGetExecute(r ApiSettingsSitesGetRequest) ([]Site, *http.Response, error)
+	// Deprecated
+	SettingsSitesGetExecute(r SitesPreviewAPISettingsSitesGetRequest) ([]Site, *http.Response, error)
 }
 
-// SitesPreviewApiService SitesPreviewApi service
-type SitesPreviewApiService service
+// SitesPreviewAPIService SitesPreviewAPI service
+type SitesPreviewAPIService service
 
-type ApiSettingsSitesGetRequest struct {
+type SitesPreviewAPISettingsSitesGetRequest struct {
 	ctx context.Context
-	ApiService SitesPreviewApi
+	ApiService SitesPreviewAPI
 }
 
-func (r ApiSettingsSitesGetRequest) Execute() ([]Site, *http.Response, error) {
+func (r SitesPreviewAPISettingsSitesGetRequest) Execute() ([]Site, *http.Response, error) {
 	return r.ApiService.SettingsSitesGetExecute(r)
 }
 
@@ -56,10 +59,12 @@ Found all sites.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSettingsSitesGetRequest
+ @return SitesPreviewAPISettingsSitesGetRequest
+
+Deprecated
 */
-func (a *SitesPreviewApiService) SettingsSitesGet(ctx context.Context) ApiSettingsSitesGetRequest {
-	return ApiSettingsSitesGetRequest{
+func (a *SitesPreviewAPIService) SettingsSitesGet(ctx context.Context) SitesPreviewAPISettingsSitesGetRequest {
+	return SitesPreviewAPISettingsSitesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +72,8 @@ func (a *SitesPreviewApiService) SettingsSitesGet(ctx context.Context) ApiSettin
 
 // Execute executes the request
 //  @return []Site
-func (a *SitesPreviewApiService) SettingsSitesGetExecute(r ApiSettingsSitesGetRequest) ([]Site, *http.Response, error) {
+// Deprecated
+func (a *SitesPreviewAPIService) SettingsSitesGetExecute(r SitesPreviewAPISettingsSitesGetRequest) ([]Site, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +81,7 @@ func (a *SitesPreviewApiService) SettingsSitesGetExecute(r ApiSettingsSitesGetRe
 		localVarReturnValue  []Site
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesPreviewApiService.SettingsSitesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesPreviewAPIService.SettingsSitesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +119,9 @@ func (a *SitesPreviewApiService) SettingsSitesGetExecute(r ApiSettingsSitesGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingParentDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingParentDetails{}
+
 // ComputerContentCachingParentDetails struct for ComputerContentCachingParentDetails
 type ComputerContentCachingParentDetails struct {
 	ContentCachingParentDetailsId *string `json:"contentCachingParentDetailsId,omitempty"`
@@ -43,7 +46,7 @@ func NewComputerContentCachingParentDetailsWithDefaults() *ComputerContentCachin
 
 // GetContentCachingParentDetailsId returns the ContentCachingParentDetailsId field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetContentCachingParentDetailsId() string {
-	if o == nil || o.ContentCachingParentDetailsId == nil {
+	if o == nil || IsNil(o.ContentCachingParentDetailsId) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ComputerContentCachingParentDetails) GetContentCachingParentDetailsId()
 // GetContentCachingParentDetailsIdOk returns a tuple with the ContentCachingParentDetailsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetContentCachingParentDetailsIdOk() (*string, bool) {
-	if o == nil || o.ContentCachingParentDetailsId == nil {
+	if o == nil || IsNil(o.ContentCachingParentDetailsId) {
 		return nil, false
 	}
 	return o.ContentCachingParentDetailsId, true
@@ -61,7 +64,7 @@ func (o *ComputerContentCachingParentDetails) GetContentCachingParentDetailsIdOk
 
 // HasContentCachingParentDetailsId returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasContentCachingParentDetailsId() bool {
-	if o != nil && o.ContentCachingParentDetailsId != nil {
+	if o != nil && !IsNil(o.ContentCachingParentDetailsId) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ComputerContentCachingParentDetails) SetContentCachingParentDetailsId(v
 
 // GetAcPower returns the AcPower field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetAcPower() bool {
-	if o == nil || o.AcPower == nil {
+	if o == nil || IsNil(o.AcPower) {
 		var ret bool
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ComputerContentCachingParentDetails) GetAcPower() bool {
 // GetAcPowerOk returns a tuple with the AcPower field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetAcPowerOk() (*bool, bool) {
-	if o == nil || o.AcPower == nil {
+	if o == nil || IsNil(o.AcPower) {
 		return nil, false
 	}
 	return o.AcPower, true
@@ -93,7 +96,7 @@ func (o *ComputerContentCachingParentDetails) GetAcPowerOk() (*bool, bool) {
 
 // HasAcPower returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasAcPower() bool {
-	if o != nil && o.AcPower != nil {
+	if o != nil && !IsNil(o.AcPower) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ComputerContentCachingParentDetails) SetAcPower(v bool) {
 
 // GetCacheSizeBytes returns the CacheSizeBytes field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetCacheSizeBytes() int64 {
-	if o == nil || o.CacheSizeBytes == nil {
+	if o == nil || IsNil(o.CacheSizeBytes) {
 		var ret int64
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ComputerContentCachingParentDetails) GetCacheSizeBytes() int64 {
 // GetCacheSizeBytesOk returns a tuple with the CacheSizeBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetCacheSizeBytesOk() (*int64, bool) {
-	if o == nil || o.CacheSizeBytes == nil {
+	if o == nil || IsNil(o.CacheSizeBytes) {
 		return nil, false
 	}
 	return o.CacheSizeBytes, true
@@ -125,7 +128,7 @@ func (o *ComputerContentCachingParentDetails) GetCacheSizeBytesOk() (*int64, boo
 
 // HasCacheSizeBytes returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasCacheSizeBytes() bool {
-	if o != nil && o.CacheSizeBytes != nil {
+	if o != nil && !IsNil(o.CacheSizeBytes) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ComputerContentCachingParentDetails) SetCacheSizeBytes(v int64) {
 
 // GetCapabilities returns the Capabilities field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetCapabilities() ComputerContentCachingParentCapabilities {
-	if o == nil || o.Capabilities == nil {
+	if o == nil || IsNil(o.Capabilities) {
 		var ret ComputerContentCachingParentCapabilities
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *ComputerContentCachingParentDetails) GetCapabilities() ComputerContentC
 // GetCapabilitiesOk returns a tuple with the Capabilities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetCapabilitiesOk() (*ComputerContentCachingParentCapabilities, bool) {
-	if o == nil || o.Capabilities == nil {
+	if o == nil || IsNil(o.Capabilities) {
 		return nil, false
 	}
 	return o.Capabilities, true
@@ -157,7 +160,7 @@ func (o *ComputerContentCachingParentDetails) GetCapabilitiesOk() (*ComputerCont
 
 // HasCapabilities returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasCapabilities() bool {
-	if o != nil && o.Capabilities != nil {
+	if o != nil && !IsNil(o.Capabilities) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ComputerContentCachingParentDetails) SetCapabilities(v ComputerContentC
 
 // GetPortable returns the Portable field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetPortable() bool {
-	if o == nil || o.Portable == nil {
+	if o == nil || IsNil(o.Portable) {
 		var ret bool
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *ComputerContentCachingParentDetails) GetPortable() bool {
 // GetPortableOk returns a tuple with the Portable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetPortableOk() (*bool, bool) {
-	if o == nil || o.Portable == nil {
+	if o == nil || IsNil(o.Portable) {
 		return nil, false
 	}
 	return o.Portable, true
@@ -189,7 +192,7 @@ func (o *ComputerContentCachingParentDetails) GetPortableOk() (*bool, bool) {
 
 // HasPortable returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasPortable() bool {
-	if o != nil && o.Portable != nil {
+	if o != nil && !IsNil(o.Portable) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *ComputerContentCachingParentDetails) SetPortable(v bool) {
 
 // GetLocalNetwork returns the LocalNetwork field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentDetails) GetLocalNetwork() []ComputerContentCachingParentLocalNetwork {
-	if o == nil || o.LocalNetwork == nil {
+	if o == nil || IsNil(o.LocalNetwork) {
 		var ret []ComputerContentCachingParentLocalNetwork
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ComputerContentCachingParentDetails) GetLocalNetwork() []ComputerConten
 // GetLocalNetworkOk returns a tuple with the LocalNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentDetails) GetLocalNetworkOk() ([]ComputerContentCachingParentLocalNetwork, bool) {
-	if o == nil || o.LocalNetwork == nil {
+	if o == nil || IsNil(o.LocalNetwork) {
 		return nil, false
 	}
 	return o.LocalNetwork, true
@@ -221,7 +224,7 @@ func (o *ComputerContentCachingParentDetails) GetLocalNetworkOk() ([]ComputerCon
 
 // HasLocalNetwork returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentDetails) HasLocalNetwork() bool {
-	if o != nil && o.LocalNetwork != nil {
+	if o != nil && !IsNil(o.LocalNetwork) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *ComputerContentCachingParentDetails) SetLocalNetwork(v []ComputerConten
 }
 
 func (o ComputerContentCachingParentDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentCachingParentDetailsId != nil {
-		toSerialize["contentCachingParentDetailsId"] = o.ContentCachingParentDetailsId
-	}
-	if o.AcPower != nil {
-		toSerialize["acPower"] = o.AcPower
-	}
-	if o.CacheSizeBytes != nil {
-		toSerialize["cacheSizeBytes"] = o.CacheSizeBytes
-	}
-	if o.Capabilities != nil {
-		toSerialize["capabilities"] = o.Capabilities
-	}
-	if o.Portable != nil {
-		toSerialize["portable"] = o.Portable
-	}
-	if o.LocalNetwork != nil {
-		toSerialize["localNetwork"] = o.LocalNetwork
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingParentDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentCachingParentDetailsId) {
+		toSerialize["contentCachingParentDetailsId"] = o.ContentCachingParentDetailsId
+	}
+	if !IsNil(o.AcPower) {
+		toSerialize["acPower"] = o.AcPower
+	}
+	if !IsNil(o.CacheSizeBytes) {
+		toSerialize["cacheSizeBytes"] = o.CacheSizeBytes
+	}
+	if !IsNil(o.Capabilities) {
+		toSerialize["capabilities"] = o.Capabilities
+	}
+	if !IsNil(o.Portable) {
+		toSerialize["portable"] = o.Portable
+	}
+	if !IsNil(o.LocalNetwork) {
+		toSerialize["localNetwork"] = o.LocalNetwork
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingParentDetails struct {

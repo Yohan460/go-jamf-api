@@ -1,12 +1,12 @@
-# \JamfProNotificationsPreviewApi
+# \JamfProNotificationsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NotificationsAlertsGet**](JamfProNotificationsPreviewApi.md#NotificationsAlertsGet) | **Get** /notifications/alerts | Get Notifications for user and site 
-[**NotificationsAlertsIdDelete**](JamfProNotificationsPreviewApi.md#NotificationsAlertsIdDelete) | **Delete** /notifications/alerts/{id} | DEPRECATED - USE \&quot;alerts/{type}/{id}\&quot; INSTEAD. Deletes only Patch Management notifications. 
-[**NotificationsAlertsTypeIdDelete**](JamfProNotificationsPreviewApi.md#NotificationsAlertsTypeIdDelete) | **Delete** /notifications/alerts/{type}/{id} | Delete Notifications 
+[**NotificationsAlertsGet**](JamfProNotificationsPreviewAPI.md#NotificationsAlertsGet) | **Get** /notifications/alerts | Get Notifications for user and site 
+[**NotificationsAlertsIdDelete**](JamfProNotificationsPreviewAPI.md#NotificationsAlertsIdDelete) | **Delete** /notifications/alerts/{id} | DEPRECATED - USE \&quot;alerts/{type}/{id}\&quot; INSTEAD. Deletes only Patch Management notifications. 
+[**NotificationsAlertsTypeIdDelete**](JamfProNotificationsPreviewAPI.md#NotificationsAlertsTypeIdDelete) | **Delete** /notifications/alerts/{type}/{id} | Delete Notifications 
 
 
 
@@ -27,20 +27,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsPreviewApi.NotificationsAlertsGet(context.Background()).Execute()
+    resp, r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewApi.NotificationsAlertsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `NotificationsAlertsGet`: []Notification
-    fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsPreviewApi.NotificationsAlertsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsPreviewAPI.NotificationsAlertsGet`: %v\n", resp)
 }
 ```
 
@@ -88,7 +88,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -96,9 +96,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsPreviewApi.NotificationsAlertsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewApi.NotificationsAlertsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -156,7 +156,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -165,9 +165,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsPreviewApi.NotificationsAlertsTypeIdDelete(context.Background(), id, type_).Execute()
+    r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete(context.Background(), id, type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewApi.NotificationsAlertsTypeIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

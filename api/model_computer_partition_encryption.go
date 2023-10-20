@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerPartitionEncryption type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerPartitionEncryption{}
+
 // ComputerPartitionEncryption struct for ComputerPartitionEncryption
 type ComputerPartitionEncryption struct {
 	PartitionName *string `json:"partitionName,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerPartitionEncryptionWithDefaults() *ComputerPartitionEncryption {
 
 // GetPartitionName returns the PartitionName field value if set, zero value otherwise.
 func (o *ComputerPartitionEncryption) GetPartitionName() string {
-	if o == nil || o.PartitionName == nil {
+	if o == nil || IsNil(o.PartitionName) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerPartitionEncryption) GetPartitionName() string {
 // GetPartitionNameOk returns a tuple with the PartitionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartitionEncryption) GetPartitionNameOk() (*string, bool) {
-	if o == nil || o.PartitionName == nil {
+	if o == nil || IsNil(o.PartitionName) {
 		return nil, false
 	}
 	return o.PartitionName, true
@@ -58,7 +61,7 @@ func (o *ComputerPartitionEncryption) GetPartitionNameOk() (*string, bool) {
 
 // HasPartitionName returns a boolean if a field has been set.
 func (o *ComputerPartitionEncryption) HasPartitionName() bool {
-	if o != nil && o.PartitionName != nil {
+	if o != nil && !IsNil(o.PartitionName) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerPartitionEncryption) SetPartitionName(v string) {
 
 // GetPartitionFileVault2State returns the PartitionFileVault2State field value if set, zero value otherwise.
 func (o *ComputerPartitionEncryption) GetPartitionFileVault2State() ComputerPartitionFileVault2State {
-	if o == nil || o.PartitionFileVault2State == nil {
+	if o == nil || IsNil(o.PartitionFileVault2State) {
 		var ret ComputerPartitionFileVault2State
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerPartitionEncryption) GetPartitionFileVault2State() ComputerPart
 // GetPartitionFileVault2StateOk returns a tuple with the PartitionFileVault2State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartitionEncryption) GetPartitionFileVault2StateOk() (*ComputerPartitionFileVault2State, bool) {
-	if o == nil || o.PartitionFileVault2State == nil {
+	if o == nil || IsNil(o.PartitionFileVault2State) {
 		return nil, false
 	}
 	return o.PartitionFileVault2State, true
@@ -90,7 +93,7 @@ func (o *ComputerPartitionEncryption) GetPartitionFileVault2StateOk() (*Computer
 
 // HasPartitionFileVault2State returns a boolean if a field has been set.
 func (o *ComputerPartitionEncryption) HasPartitionFileVault2State() bool {
-	if o != nil && o.PartitionFileVault2State != nil {
+	if o != nil && !IsNil(o.PartitionFileVault2State) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerPartitionEncryption) SetPartitionFileVault2State(v ComputerPart
 
 // GetPartitionFileVault2Percent returns the PartitionFileVault2Percent field value if set, zero value otherwise.
 func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int32 {
-	if o == nil || o.PartitionFileVault2Percent == nil {
+	if o == nil || IsNil(o.PartitionFileVault2Percent) {
 		var ret int32
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int32 {
 // GetPartitionFileVault2PercentOk returns a tuple with the PartitionFileVault2Percent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int32, bool) {
-	if o == nil || o.PartitionFileVault2Percent == nil {
+	if o == nil || IsNil(o.PartitionFileVault2Percent) {
 		return nil, false
 	}
 	return o.PartitionFileVault2Percent, true
@@ -122,7 +125,7 @@ func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int32,
 
 // HasPartitionFileVault2Percent returns a boolean if a field has been set.
 func (o *ComputerPartitionEncryption) HasPartitionFileVault2Percent() bool {
-	if o != nil && o.PartitionFileVault2Percent != nil {
+	if o != nil && !IsNil(o.PartitionFileVault2Percent) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerPartitionEncryption) SetPartitionFileVault2Percent(v int32) {
 }
 
 func (o ComputerPartitionEncryption) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.PartitionName != nil {
-		toSerialize["partitionName"] = o.PartitionName
-	}
-	if o.PartitionFileVault2State != nil {
-		toSerialize["partitionFileVault2State"] = o.PartitionFileVault2State
-	}
-	if o.PartitionFileVault2Percent != nil {
-		toSerialize["partitionFileVault2Percent"] = o.PartitionFileVault2Percent
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerPartitionEncryption) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PartitionName) {
+		toSerialize["partitionName"] = o.PartitionName
+	}
+	if !IsNil(o.PartitionFileVault2State) {
+		toSerialize["partitionFileVault2State"] = o.PartitionFileVault2State
+	}
+	if !IsNil(o.PartitionFileVault2Percent) {
+		toSerialize["partitionFileVault2Percent"] = o.PartitionFileVault2Percent
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerPartitionEncryption struct {

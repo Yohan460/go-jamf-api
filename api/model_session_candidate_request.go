@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SessionCandidateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionCandidateRequest{}
+
 // SessionCandidateRequest Request to crate new remote session. Ultimately this allows connection between an admin and an end-user
 type SessionCandidateRequest struct {
 	// Device identifier
@@ -117,17 +120,19 @@ func (o *SessionCandidateRequest) SetDescription(v string) {
 }
 
 func (o SessionCandidateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if true {
-		toSerialize["deviceType"] = o.DeviceType
-	}
-	if true {
-		toSerialize["description"] = o.Description
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SessionCandidateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["deviceId"] = o.DeviceId
+	toSerialize["deviceType"] = o.DeviceType
+	toSerialize["description"] = o.Description
+	return toSerialize, nil
 }
 
 type NullableSessionCandidateRequest struct {

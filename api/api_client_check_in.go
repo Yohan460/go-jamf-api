@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 )
 
 
-type ClientCheckInApi interface {
+type ClientCheckInAPI interface {
 
 	/*
 	V2CheckInGet Get Client Check-In settings 
@@ -29,16 +29,16 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2CheckInGetRequest
+	@return ClientCheckInAPIV2CheckInGetRequest
 
 	Deprecated
 	*/
-	V2CheckInGet(ctx context.Context) ApiV2CheckInGetRequest
+	V2CheckInGet(ctx context.Context) ClientCheckInAPIV2CheckInGetRequest
 
 	// V2CheckInGetExecute executes the request
 	//  @return ClientCheckInV2
 	// Deprecated
-	V2CheckInGetExecute(r ApiV2CheckInGetRequest) (*ClientCheckInV2, *http.Response, error)
+	V2CheckInGetExecute(r ClientCheckInAPIV2CheckInGetRequest) (*ClientCheckInV2, *http.Response, error)
 
 	/*
 	V2CheckInHistoryGet Get Client Check-In history object 
@@ -47,16 +47,16 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2CheckInHistoryGetRequest
+	@return ClientCheckInAPIV2CheckInHistoryGetRequest
 
 	Deprecated
 	*/
-	V2CheckInHistoryGet(ctx context.Context) ApiV2CheckInHistoryGetRequest
+	V2CheckInHistoryGet(ctx context.Context) ClientCheckInAPIV2CheckInHistoryGetRequest
 
 	// V2CheckInHistoryGetExecute executes the request
 	//  @return HistorySearchResultsV1
 	// Deprecated
-	V2CheckInHistoryGetExecute(r ApiV2CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
+	V2CheckInHistoryGetExecute(r ClientCheckInAPIV2CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
 
 	/*
 	V2CheckInHistoryPost Add a Note to Client Check-In History 
@@ -65,16 +65,16 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2CheckInHistoryPostRequest
+	@return ClientCheckInAPIV2CheckInHistoryPostRequest
 
 	Deprecated
 	*/
-	V2CheckInHistoryPost(ctx context.Context) ApiV2CheckInHistoryPostRequest
+	V2CheckInHistoryPost(ctx context.Context) ClientCheckInAPIV2CheckInHistoryPostRequest
 
 	// V2CheckInHistoryPostExecute executes the request
 	//  @return HrefResponse
 	// Deprecated
-	V2CheckInHistoryPostExecute(r ApiV2CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V2CheckInHistoryPostExecute(r ClientCheckInAPIV2CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V2CheckInPut Update Client Check-In object 
@@ -83,16 +83,16 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2CheckInPutRequest
+	@return ClientCheckInAPIV2CheckInPutRequest
 
 	Deprecated
 	*/
-	V2CheckInPut(ctx context.Context) ApiV2CheckInPutRequest
+	V2CheckInPut(ctx context.Context) ClientCheckInAPIV2CheckInPutRequest
 
 	// V2CheckInPutExecute executes the request
 	//  @return ClientCheckInV2
 	// Deprecated
-	V2CheckInPutExecute(r ApiV2CheckInPutRequest) (*ClientCheckInV2, *http.Response, error)
+	V2CheckInPutExecute(r ClientCheckInAPIV2CheckInPutRequest) (*ClientCheckInV2, *http.Response, error)
 
 	/*
 	V3CheckInGet Get Client Check-In settings 
@@ -101,13 +101,13 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV3CheckInGetRequest
+	@return ClientCheckInAPIV3CheckInGetRequest
 	*/
-	V3CheckInGet(ctx context.Context) ApiV3CheckInGetRequest
+	V3CheckInGet(ctx context.Context) ClientCheckInAPIV3CheckInGetRequest
 
 	// V3CheckInGetExecute executes the request
 	//  @return ClientCheckInV3
-	V3CheckInGetExecute(r ApiV3CheckInGetRequest) (*ClientCheckInV3, *http.Response, error)
+	V3CheckInGetExecute(r ClientCheckInAPIV3CheckInGetRequest) (*ClientCheckInV3, *http.Response, error)
 
 	/*
 	V3CheckInHistoryGet Get Client Check-In history object 
@@ -116,13 +116,13 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV3CheckInHistoryGetRequest
+	@return ClientCheckInAPIV3CheckInHistoryGetRequest
 	*/
-	V3CheckInHistoryGet(ctx context.Context) ApiV3CheckInHistoryGetRequest
+	V3CheckInHistoryGet(ctx context.Context) ClientCheckInAPIV3CheckInHistoryGetRequest
 
 	// V3CheckInHistoryGetExecute executes the request
 	//  @return HistorySearchResultsV1
-	V3CheckInHistoryGetExecute(r ApiV3CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
+	V3CheckInHistoryGetExecute(r ClientCheckInAPIV3CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error)
 
 	/*
 	V3CheckInHistoryPost Add a Note to Client Check-In History 
@@ -131,13 +131,13 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV3CheckInHistoryPostRequest
+	@return ClientCheckInAPIV3CheckInHistoryPostRequest
 	*/
-	V3CheckInHistoryPost(ctx context.Context) ApiV3CheckInHistoryPostRequest
+	V3CheckInHistoryPost(ctx context.Context) ClientCheckInAPIV3CheckInHistoryPostRequest
 
 	// V3CheckInHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V3CheckInHistoryPostExecute(r ApiV3CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V3CheckInHistoryPostExecute(r ClientCheckInAPIV3CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V3CheckInPut Update Client Check-In object 
@@ -146,24 +146,24 @@ type ClientCheckInApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV3CheckInPutRequest
+	@return ClientCheckInAPIV3CheckInPutRequest
 	*/
-	V3CheckInPut(ctx context.Context) ApiV3CheckInPutRequest
+	V3CheckInPut(ctx context.Context) ClientCheckInAPIV3CheckInPutRequest
 
 	// V3CheckInPutExecute executes the request
 	//  @return ClientCheckInV3
-	V3CheckInPutExecute(r ApiV3CheckInPutRequest) (*ClientCheckInV3, *http.Response, error)
+	V3CheckInPutExecute(r ClientCheckInAPIV3CheckInPutRequest) (*ClientCheckInV3, *http.Response, error)
 }
 
-// ClientCheckInApiService ClientCheckInApi service
-type ClientCheckInApiService service
+// ClientCheckInAPIService ClientCheckInAPI service
+type ClientCheckInAPIService service
 
-type ApiV2CheckInGetRequest struct {
+type ClientCheckInAPIV2CheckInGetRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 }
 
-func (r ApiV2CheckInGetRequest) Execute() (*ClientCheckInV2, *http.Response, error) {
+func (r ClientCheckInAPIV2CheckInGetRequest) Execute() (*ClientCheckInV2, *http.Response, error) {
 	return r.ApiService.V2CheckInGetExecute(r)
 }
 
@@ -174,12 +174,12 @@ Gets `Client Check-In` object.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CheckInGetRequest
+ @return ClientCheckInAPIV2CheckInGetRequest
 
 Deprecated
 */
-func (a *ClientCheckInApiService) V2CheckInGet(ctx context.Context) ApiV2CheckInGetRequest {
-	return ApiV2CheckInGetRequest{
+func (a *ClientCheckInAPIService) V2CheckInGet(ctx context.Context) ClientCheckInAPIV2CheckInGetRequest {
+	return ClientCheckInAPIV2CheckInGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -188,7 +188,7 @@ func (a *ClientCheckInApiService) V2CheckInGet(ctx context.Context) ApiV2CheckIn
 // Execute executes the request
 //  @return ClientCheckInV2
 // Deprecated
-func (a *ClientCheckInApiService) V2CheckInGetExecute(r ApiV2CheckInGetRequest) (*ClientCheckInV2, *http.Response, error) {
+func (a *ClientCheckInAPIService) V2CheckInGetExecute(r ClientCheckInAPIV2CheckInGetRequest) (*ClientCheckInV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -196,7 +196,7 @@ func (a *ClientCheckInApiService) V2CheckInGetExecute(r ApiV2CheckInGetRequest) 
 		localVarReturnValue  *ClientCheckInV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V2CheckInGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V2CheckInGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -234,9 +234,9 @@ func (a *ClientCheckInApiService) V2CheckInGetExecute(r ApiV2CheckInGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -261,38 +261,38 @@ func (a *ClientCheckInApiService) V2CheckInGetExecute(r ApiV2CheckInGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CheckInHistoryGetRequest struct {
+type ClientCheckInAPIV2CheckInHistoryGetRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV2CheckInHistoryGetRequest) Page(page int32) ApiV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Page(page int32) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2CheckInHistoryGetRequest) PageSize(pageSize int32) ApiV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) PageSize(pageSize int32) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,username:asc 
-func (r ApiV2CheckInHistoryGetRequest) Sort(sort []string) ApiV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Sort(sort []string) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV2CheckInHistoryGetRequest) Filter(filter string) ApiV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Filter(filter string) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV2CheckInHistoryGetRequest) Execute() (*HistorySearchResultsV1, *http.Response, error) {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Execute() (*HistorySearchResultsV1, *http.Response, error) {
 	return r.ApiService.V2CheckInHistoryGetExecute(r)
 }
 
@@ -303,12 +303,12 @@ Gets Client Check-In history object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CheckInHistoryGetRequest
+ @return ClientCheckInAPIV2CheckInHistoryGetRequest
 
 Deprecated
 */
-func (a *ClientCheckInApiService) V2CheckInHistoryGet(ctx context.Context) ApiV2CheckInHistoryGetRequest {
-	return ApiV2CheckInHistoryGetRequest{
+func (a *ClientCheckInAPIService) V2CheckInHistoryGet(ctx context.Context) ClientCheckInAPIV2CheckInHistoryGetRequest {
+	return ClientCheckInAPIV2CheckInHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -317,7 +317,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGet(ctx context.Context) ApiV2
 // Execute executes the request
 //  @return HistorySearchResultsV1
 // Deprecated
-func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error) {
+func (a *ClientCheckInAPIService) V2CheckInHistoryGetExecute(r ClientCheckInAPIV2CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -325,7 +325,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHisto
 		localVarReturnValue  *HistorySearchResultsV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V2CheckInHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V2CheckInHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -337,24 +337,36 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHisto
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -383,9 +395,9 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHisto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -410,19 +422,19 @@ func (a *ClientCheckInApiService) V2CheckInHistoryGetExecute(r ApiV2CheckInHisto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CheckInHistoryPostRequest struct {
+type ClientCheckInAPIV2CheckInHistoryPostRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV2CheckInHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV2CheckInHistoryPostRequest {
+func (r ClientCheckInAPIV2CheckInHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ClientCheckInAPIV2CheckInHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV2CheckInHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r ClientCheckInAPIV2CheckInHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2CheckInHistoryPostExecute(r)
 }
 
@@ -433,12 +445,12 @@ Adds Client Check-In history object notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CheckInHistoryPostRequest
+ @return ClientCheckInAPIV2CheckInHistoryPostRequest
 
 Deprecated
 */
-func (a *ClientCheckInApiService) V2CheckInHistoryPost(ctx context.Context) ApiV2CheckInHistoryPostRequest {
-	return ApiV2CheckInHistoryPostRequest{
+func (a *ClientCheckInAPIService) V2CheckInHistoryPost(ctx context.Context) ClientCheckInAPIV2CheckInHistoryPostRequest {
+	return ClientCheckInAPIV2CheckInHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -447,7 +459,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPost(ctx context.Context) ApiV
 // Execute executes the request
 //  @return HrefResponse
 // Deprecated
-func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *ClientCheckInAPIService) V2CheckInHistoryPostExecute(r ClientCheckInAPIV2CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -455,7 +467,7 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHist
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V2CheckInHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V2CheckInHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -498,9 +510,9 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHist
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -517,7 +529,8 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHist
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -534,19 +547,19 @@ func (a *ClientCheckInApiService) V2CheckInHistoryPostExecute(r ApiV2CheckInHist
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CheckInPutRequest struct {
+type ClientCheckInAPIV2CheckInPutRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	clientCheckInV2 *ClientCheckInV2
 }
 
 // Client Check-In object to update
-func (r ApiV2CheckInPutRequest) ClientCheckInV2(clientCheckInV2 ClientCheckInV2) ApiV2CheckInPutRequest {
+func (r ClientCheckInAPIV2CheckInPutRequest) ClientCheckInV2(clientCheckInV2 ClientCheckInV2) ClientCheckInAPIV2CheckInPutRequest {
 	r.clientCheckInV2 = &clientCheckInV2
 	return r
 }
 
-func (r ApiV2CheckInPutRequest) Execute() (*ClientCheckInV2, *http.Response, error) {
+func (r ClientCheckInAPIV2CheckInPutRequest) Execute() (*ClientCheckInV2, *http.Response, error) {
 	return r.ApiService.V2CheckInPutExecute(r)
 }
 
@@ -557,12 +570,12 @@ Update Client Check-In object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CheckInPutRequest
+ @return ClientCheckInAPIV2CheckInPutRequest
 
 Deprecated
 */
-func (a *ClientCheckInApiService) V2CheckInPut(ctx context.Context) ApiV2CheckInPutRequest {
-	return ApiV2CheckInPutRequest{
+func (a *ClientCheckInAPIService) V2CheckInPut(ctx context.Context) ClientCheckInAPIV2CheckInPutRequest {
+	return ClientCheckInAPIV2CheckInPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -571,7 +584,7 @@ func (a *ClientCheckInApiService) V2CheckInPut(ctx context.Context) ApiV2CheckIn
 // Execute executes the request
 //  @return ClientCheckInV2
 // Deprecated
-func (a *ClientCheckInApiService) V2CheckInPutExecute(r ApiV2CheckInPutRequest) (*ClientCheckInV2, *http.Response, error) {
+func (a *ClientCheckInAPIService) V2CheckInPutExecute(r ClientCheckInAPIV2CheckInPutRequest) (*ClientCheckInV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -579,7 +592,7 @@ func (a *ClientCheckInApiService) V2CheckInPutExecute(r ApiV2CheckInPutRequest) 
 		localVarReturnValue  *ClientCheckInV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V2CheckInPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V2CheckInPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -622,9 +635,9 @@ func (a *ClientCheckInApiService) V2CheckInPutExecute(r ApiV2CheckInPutRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -649,12 +662,12 @@ func (a *ClientCheckInApiService) V2CheckInPutExecute(r ApiV2CheckInPutRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV3CheckInGetRequest struct {
+type ClientCheckInAPIV3CheckInGetRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 }
 
-func (r ApiV3CheckInGetRequest) Execute() (*ClientCheckInV3, *http.Response, error) {
+func (r ClientCheckInAPIV3CheckInGetRequest) Execute() (*ClientCheckInV3, *http.Response, error) {
 	return r.ApiService.V3CheckInGetExecute(r)
 }
 
@@ -665,10 +678,10 @@ Gets `Client Check-In` object.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV3CheckInGetRequest
+ @return ClientCheckInAPIV3CheckInGetRequest
 */
-func (a *ClientCheckInApiService) V3CheckInGet(ctx context.Context) ApiV3CheckInGetRequest {
-	return ApiV3CheckInGetRequest{
+func (a *ClientCheckInAPIService) V3CheckInGet(ctx context.Context) ClientCheckInAPIV3CheckInGetRequest {
+	return ClientCheckInAPIV3CheckInGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -676,7 +689,7 @@ func (a *ClientCheckInApiService) V3CheckInGet(ctx context.Context) ApiV3CheckIn
 
 // Execute executes the request
 //  @return ClientCheckInV3
-func (a *ClientCheckInApiService) V3CheckInGetExecute(r ApiV3CheckInGetRequest) (*ClientCheckInV3, *http.Response, error) {
+func (a *ClientCheckInAPIService) V3CheckInGetExecute(r ClientCheckInAPIV3CheckInGetRequest) (*ClientCheckInV3, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -684,7 +697,7 @@ func (a *ClientCheckInApiService) V3CheckInGetExecute(r ApiV3CheckInGetRequest) 
 		localVarReturnValue  *ClientCheckInV3
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V3CheckInGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V3CheckInGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -722,9 +735,9 @@ func (a *ClientCheckInApiService) V3CheckInGetExecute(r ApiV3CheckInGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -749,38 +762,38 @@ func (a *ClientCheckInApiService) V3CheckInGetExecute(r ApiV3CheckInGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV3CheckInHistoryGetRequest struct {
+type ClientCheckInAPIV3CheckInHistoryGetRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV3CheckInHistoryGetRequest) Page(page int32) ApiV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Page(page int32) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV3CheckInHistoryGetRequest) PageSize(pageSize int32) ApiV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) PageSize(pageSize int32) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,username:asc 
-func (r ApiV3CheckInHistoryGetRequest) Sort(sort []string) ApiV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Sort(sort []string) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV3CheckInHistoryGetRequest) Filter(filter string) ApiV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Filter(filter string) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV3CheckInHistoryGetRequest) Execute() (*HistorySearchResultsV1, *http.Response, error) {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Execute() (*HistorySearchResultsV1, *http.Response, error) {
 	return r.ApiService.V3CheckInHistoryGetExecute(r)
 }
 
@@ -791,10 +804,10 @@ Gets Client Check-In history object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV3CheckInHistoryGetRequest
+ @return ClientCheckInAPIV3CheckInHistoryGetRequest
 */
-func (a *ClientCheckInApiService) V3CheckInHistoryGet(ctx context.Context) ApiV3CheckInHistoryGetRequest {
-	return ApiV3CheckInHistoryGetRequest{
+func (a *ClientCheckInAPIService) V3CheckInHistoryGet(ctx context.Context) ClientCheckInAPIV3CheckInHistoryGetRequest {
+	return ClientCheckInAPIV3CheckInHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -802,7 +815,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGet(ctx context.Context) ApiV3
 
 // Execute executes the request
 //  @return HistorySearchResultsV1
-func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error) {
+func (a *ClientCheckInAPIService) V3CheckInHistoryGetExecute(r ClientCheckInAPIV3CheckInHistoryGetRequest) (*HistorySearchResultsV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -810,7 +823,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHisto
 		localVarReturnValue  *HistorySearchResultsV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V3CheckInHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V3CheckInHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -822,24 +835,36 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHisto
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -868,9 +893,9 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHisto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -895,19 +920,19 @@ func (a *ClientCheckInApiService) V3CheckInHistoryGetExecute(r ApiV3CheckInHisto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV3CheckInHistoryPostRequest struct {
+type ClientCheckInAPIV3CheckInHistoryPostRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV3CheckInHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV3CheckInHistoryPostRequest {
+func (r ClientCheckInAPIV3CheckInHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ClientCheckInAPIV3CheckInHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV3CheckInHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r ClientCheckInAPIV3CheckInHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V3CheckInHistoryPostExecute(r)
 }
 
@@ -918,10 +943,10 @@ Adds Client Check-In history object notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV3CheckInHistoryPostRequest
+ @return ClientCheckInAPIV3CheckInHistoryPostRequest
 */
-func (a *ClientCheckInApiService) V3CheckInHistoryPost(ctx context.Context) ApiV3CheckInHistoryPostRequest {
-	return ApiV3CheckInHistoryPostRequest{
+func (a *ClientCheckInAPIService) V3CheckInHistoryPost(ctx context.Context) ClientCheckInAPIV3CheckInHistoryPostRequest {
+	return ClientCheckInAPIV3CheckInHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -929,7 +954,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPost(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *ClientCheckInAPIService) V3CheckInHistoryPostExecute(r ClientCheckInAPIV3CheckInHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -937,7 +962,7 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHist
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V3CheckInHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V3CheckInHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -980,9 +1005,9 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHist
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -999,7 +1024,8 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHist
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1016,19 +1042,19 @@ func (a *ClientCheckInApiService) V3CheckInHistoryPostExecute(r ApiV3CheckInHist
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV3CheckInPutRequest struct {
+type ClientCheckInAPIV3CheckInPutRequest struct {
 	ctx context.Context
-	ApiService ClientCheckInApi
+	ApiService ClientCheckInAPI
 	clientCheckInV3 *ClientCheckInV3
 }
 
 // Client Check-In object to update
-func (r ApiV3CheckInPutRequest) ClientCheckInV3(clientCheckInV3 ClientCheckInV3) ApiV3CheckInPutRequest {
+func (r ClientCheckInAPIV3CheckInPutRequest) ClientCheckInV3(clientCheckInV3 ClientCheckInV3) ClientCheckInAPIV3CheckInPutRequest {
 	r.clientCheckInV3 = &clientCheckInV3
 	return r
 }
 
-func (r ApiV3CheckInPutRequest) Execute() (*ClientCheckInV3, *http.Response, error) {
+func (r ClientCheckInAPIV3CheckInPutRequest) Execute() (*ClientCheckInV3, *http.Response, error) {
 	return r.ApiService.V3CheckInPutExecute(r)
 }
 
@@ -1039,10 +1065,10 @@ Update Client Check-In object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV3CheckInPutRequest
+ @return ClientCheckInAPIV3CheckInPutRequest
 */
-func (a *ClientCheckInApiService) V3CheckInPut(ctx context.Context) ApiV3CheckInPutRequest {
-	return ApiV3CheckInPutRequest{
+func (a *ClientCheckInAPIService) V3CheckInPut(ctx context.Context) ClientCheckInAPIV3CheckInPutRequest {
+	return ClientCheckInAPIV3CheckInPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1050,7 +1076,7 @@ func (a *ClientCheckInApiService) V3CheckInPut(ctx context.Context) ApiV3CheckIn
 
 // Execute executes the request
 //  @return ClientCheckInV3
-func (a *ClientCheckInApiService) V3CheckInPutExecute(r ApiV3CheckInPutRequest) (*ClientCheckInV3, *http.Response, error) {
+func (a *ClientCheckInAPIService) V3CheckInPutExecute(r ClientCheckInAPIV3CheckInPutRequest) (*ClientCheckInV3, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1058,7 +1084,7 @@ func (a *ClientCheckInApiService) V3CheckInPutExecute(r ApiV3CheckInPutRequest) 
 		localVarReturnValue  *ClientCheckInV3
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInApiService.V3CheckInPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClientCheckInAPIService.V3CheckInPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1101,9 +1127,9 @@ func (a *ClientCheckInApiService) V3CheckInPutExecute(r ApiV3CheckInPutRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerHardware type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerHardware{}
+
 // ComputerHardware struct for ComputerHardware
 type ComputerHardware struct {
 	Make *string `json:"make,omitempty"`
@@ -68,7 +71,7 @@ func NewComputerHardwareWithDefaults() *ComputerHardware {
 
 // GetMake returns the Make field value if set, zero value otherwise.
 func (o *ComputerHardware) GetMake() string {
-	if o == nil || o.Make == nil {
+	if o == nil || IsNil(o.Make) {
 		var ret string
 		return ret
 	}
@@ -78,7 +81,7 @@ func (o *ComputerHardware) GetMake() string {
 // GetMakeOk returns a tuple with the Make field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetMakeOk() (*string, bool) {
-	if o == nil || o.Make == nil {
+	if o == nil || IsNil(o.Make) {
 		return nil, false
 	}
 	return o.Make, true
@@ -86,7 +89,7 @@ func (o *ComputerHardware) GetMakeOk() (*string, bool) {
 
 // HasMake returns a boolean if a field has been set.
 func (o *ComputerHardware) HasMake() bool {
-	if o != nil && o.Make != nil {
+	if o != nil && !IsNil(o.Make) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *ComputerHardware) SetMake(v string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *ComputerHardware) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -110,7 +113,7 @@ func (o *ComputerHardware) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -118,7 +121,7 @@ func (o *ComputerHardware) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *ComputerHardware) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -132,7 +135,7 @@ func (o *ComputerHardware) SetModel(v string) {
 
 // GetModelIdentifier returns the ModelIdentifier field value if set, zero value otherwise.
 func (o *ComputerHardware) GetModelIdentifier() string {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		var ret string
 		return ret
 	}
@@ -142,7 +145,7 @@ func (o *ComputerHardware) GetModelIdentifier() string {
 // GetModelIdentifierOk returns a tuple with the ModelIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetModelIdentifierOk() (*string, bool) {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		return nil, false
 	}
 	return o.ModelIdentifier, true
@@ -150,7 +153,7 @@ func (o *ComputerHardware) GetModelIdentifierOk() (*string, bool) {
 
 // HasModelIdentifier returns a boolean if a field has been set.
 func (o *ComputerHardware) HasModelIdentifier() bool {
-	if o != nil && o.ModelIdentifier != nil {
+	if o != nil && !IsNil(o.ModelIdentifier) {
 		return true
 	}
 
@@ -164,7 +167,7 @@ func (o *ComputerHardware) SetModelIdentifier(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *ComputerHardware) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -174,7 +177,7 @@ func (o *ComputerHardware) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -182,7 +185,7 @@ func (o *ComputerHardware) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *ComputerHardware) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -196,7 +199,7 @@ func (o *ComputerHardware) SetSerialNumber(v string) {
 
 // GetProcessorSpeedMhz returns the ProcessorSpeedMhz field value if set, zero value otherwise.
 func (o *ComputerHardware) GetProcessorSpeedMhz() int64 {
-	if o == nil || o.ProcessorSpeedMhz == nil {
+	if o == nil || IsNil(o.ProcessorSpeedMhz) {
 		var ret int64
 		return ret
 	}
@@ -206,7 +209,7 @@ func (o *ComputerHardware) GetProcessorSpeedMhz() int64 {
 // GetProcessorSpeedMhzOk returns a tuple with the ProcessorSpeedMhz field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetProcessorSpeedMhzOk() (*int64, bool) {
-	if o == nil || o.ProcessorSpeedMhz == nil {
+	if o == nil || IsNil(o.ProcessorSpeedMhz) {
 		return nil, false
 	}
 	return o.ProcessorSpeedMhz, true
@@ -214,7 +217,7 @@ func (o *ComputerHardware) GetProcessorSpeedMhzOk() (*int64, bool) {
 
 // HasProcessorSpeedMhz returns a boolean if a field has been set.
 func (o *ComputerHardware) HasProcessorSpeedMhz() bool {
-	if o != nil && o.ProcessorSpeedMhz != nil {
+	if o != nil && !IsNil(o.ProcessorSpeedMhz) {
 		return true
 	}
 
@@ -228,7 +231,7 @@ func (o *ComputerHardware) SetProcessorSpeedMhz(v int64) {
 
 // GetProcessorCount returns the ProcessorCount field value if set, zero value otherwise.
 func (o *ComputerHardware) GetProcessorCount() int32 {
-	if o == nil || o.ProcessorCount == nil {
+	if o == nil || IsNil(o.ProcessorCount) {
 		var ret int32
 		return ret
 	}
@@ -238,7 +241,7 @@ func (o *ComputerHardware) GetProcessorCount() int32 {
 // GetProcessorCountOk returns a tuple with the ProcessorCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetProcessorCountOk() (*int32, bool) {
-	if o == nil || o.ProcessorCount == nil {
+	if o == nil || IsNil(o.ProcessorCount) {
 		return nil, false
 	}
 	return o.ProcessorCount, true
@@ -246,7 +249,7 @@ func (o *ComputerHardware) GetProcessorCountOk() (*int32, bool) {
 
 // HasProcessorCount returns a boolean if a field has been set.
 func (o *ComputerHardware) HasProcessorCount() bool {
-	if o != nil && o.ProcessorCount != nil {
+	if o != nil && !IsNil(o.ProcessorCount) {
 		return true
 	}
 
@@ -260,7 +263,7 @@ func (o *ComputerHardware) SetProcessorCount(v int32) {
 
 // GetCoreCount returns the CoreCount field value if set, zero value otherwise.
 func (o *ComputerHardware) GetCoreCount() int32 {
-	if o == nil || o.CoreCount == nil {
+	if o == nil || IsNil(o.CoreCount) {
 		var ret int32
 		return ret
 	}
@@ -270,7 +273,7 @@ func (o *ComputerHardware) GetCoreCount() int32 {
 // GetCoreCountOk returns a tuple with the CoreCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetCoreCountOk() (*int32, bool) {
-	if o == nil || o.CoreCount == nil {
+	if o == nil || IsNil(o.CoreCount) {
 		return nil, false
 	}
 	return o.CoreCount, true
@@ -278,7 +281,7 @@ func (o *ComputerHardware) GetCoreCountOk() (*int32, bool) {
 
 // HasCoreCount returns a boolean if a field has been set.
 func (o *ComputerHardware) HasCoreCount() bool {
-	if o != nil && o.CoreCount != nil {
+	if o != nil && !IsNil(o.CoreCount) {
 		return true
 	}
 
@@ -292,7 +295,7 @@ func (o *ComputerHardware) SetCoreCount(v int32) {
 
 // GetProcessorType returns the ProcessorType field value if set, zero value otherwise.
 func (o *ComputerHardware) GetProcessorType() string {
-	if o == nil || o.ProcessorType == nil {
+	if o == nil || IsNil(o.ProcessorType) {
 		var ret string
 		return ret
 	}
@@ -302,7 +305,7 @@ func (o *ComputerHardware) GetProcessorType() string {
 // GetProcessorTypeOk returns a tuple with the ProcessorType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetProcessorTypeOk() (*string, bool) {
-	if o == nil || o.ProcessorType == nil {
+	if o == nil || IsNil(o.ProcessorType) {
 		return nil, false
 	}
 	return o.ProcessorType, true
@@ -310,7 +313,7 @@ func (o *ComputerHardware) GetProcessorTypeOk() (*string, bool) {
 
 // HasProcessorType returns a boolean if a field has been set.
 func (o *ComputerHardware) HasProcessorType() bool {
-	if o != nil && o.ProcessorType != nil {
+	if o != nil && !IsNil(o.ProcessorType) {
 		return true
 	}
 
@@ -324,7 +327,7 @@ func (o *ComputerHardware) SetProcessorType(v string) {
 
 // GetProcessorArchitecture returns the ProcessorArchitecture field value if set, zero value otherwise.
 func (o *ComputerHardware) GetProcessorArchitecture() string {
-	if o == nil || o.ProcessorArchitecture == nil {
+	if o == nil || IsNil(o.ProcessorArchitecture) {
 		var ret string
 		return ret
 	}
@@ -334,7 +337,7 @@ func (o *ComputerHardware) GetProcessorArchitecture() string {
 // GetProcessorArchitectureOk returns a tuple with the ProcessorArchitecture field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetProcessorArchitectureOk() (*string, bool) {
-	if o == nil || o.ProcessorArchitecture == nil {
+	if o == nil || IsNil(o.ProcessorArchitecture) {
 		return nil, false
 	}
 	return o.ProcessorArchitecture, true
@@ -342,7 +345,7 @@ func (o *ComputerHardware) GetProcessorArchitectureOk() (*string, bool) {
 
 // HasProcessorArchitecture returns a boolean if a field has been set.
 func (o *ComputerHardware) HasProcessorArchitecture() bool {
-	if o != nil && o.ProcessorArchitecture != nil {
+	if o != nil && !IsNil(o.ProcessorArchitecture) {
 		return true
 	}
 
@@ -356,7 +359,7 @@ func (o *ComputerHardware) SetProcessorArchitecture(v string) {
 
 // GetBusSpeedMhz returns the BusSpeedMhz field value if set, zero value otherwise.
 func (o *ComputerHardware) GetBusSpeedMhz() int64 {
-	if o == nil || o.BusSpeedMhz == nil {
+	if o == nil || IsNil(o.BusSpeedMhz) {
 		var ret int64
 		return ret
 	}
@@ -366,7 +369,7 @@ func (o *ComputerHardware) GetBusSpeedMhz() int64 {
 // GetBusSpeedMhzOk returns a tuple with the BusSpeedMhz field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetBusSpeedMhzOk() (*int64, bool) {
-	if o == nil || o.BusSpeedMhz == nil {
+	if o == nil || IsNil(o.BusSpeedMhz) {
 		return nil, false
 	}
 	return o.BusSpeedMhz, true
@@ -374,7 +377,7 @@ func (o *ComputerHardware) GetBusSpeedMhzOk() (*int64, bool) {
 
 // HasBusSpeedMhz returns a boolean if a field has been set.
 func (o *ComputerHardware) HasBusSpeedMhz() bool {
-	if o != nil && o.BusSpeedMhz != nil {
+	if o != nil && !IsNil(o.BusSpeedMhz) {
 		return true
 	}
 
@@ -388,7 +391,7 @@ func (o *ComputerHardware) SetBusSpeedMhz(v int64) {
 
 // GetCacheSizeKilobytes returns the CacheSizeKilobytes field value if set, zero value otherwise.
 func (o *ComputerHardware) GetCacheSizeKilobytes() int64 {
-	if o == nil || o.CacheSizeKilobytes == nil {
+	if o == nil || IsNil(o.CacheSizeKilobytes) {
 		var ret int64
 		return ret
 	}
@@ -398,7 +401,7 @@ func (o *ComputerHardware) GetCacheSizeKilobytes() int64 {
 // GetCacheSizeKilobytesOk returns a tuple with the CacheSizeKilobytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetCacheSizeKilobytesOk() (*int64, bool) {
-	if o == nil || o.CacheSizeKilobytes == nil {
+	if o == nil || IsNil(o.CacheSizeKilobytes) {
 		return nil, false
 	}
 	return o.CacheSizeKilobytes, true
@@ -406,7 +409,7 @@ func (o *ComputerHardware) GetCacheSizeKilobytesOk() (*int64, bool) {
 
 // HasCacheSizeKilobytes returns a boolean if a field has been set.
 func (o *ComputerHardware) HasCacheSizeKilobytes() bool {
-	if o != nil && o.CacheSizeKilobytes != nil {
+	if o != nil && !IsNil(o.CacheSizeKilobytes) {
 		return true
 	}
 
@@ -420,7 +423,7 @@ func (o *ComputerHardware) SetCacheSizeKilobytes(v int64) {
 
 // GetNetworkAdapterType returns the NetworkAdapterType field value if set, zero value otherwise.
 func (o *ComputerHardware) GetNetworkAdapterType() string {
-	if o == nil || o.NetworkAdapterType == nil {
+	if o == nil || IsNil(o.NetworkAdapterType) {
 		var ret string
 		return ret
 	}
@@ -430,7 +433,7 @@ func (o *ComputerHardware) GetNetworkAdapterType() string {
 // GetNetworkAdapterTypeOk returns a tuple with the NetworkAdapterType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetNetworkAdapterTypeOk() (*string, bool) {
-	if o == nil || o.NetworkAdapterType == nil {
+	if o == nil || IsNil(o.NetworkAdapterType) {
 		return nil, false
 	}
 	return o.NetworkAdapterType, true
@@ -438,7 +441,7 @@ func (o *ComputerHardware) GetNetworkAdapterTypeOk() (*string, bool) {
 
 // HasNetworkAdapterType returns a boolean if a field has been set.
 func (o *ComputerHardware) HasNetworkAdapterType() bool {
-	if o != nil && o.NetworkAdapterType != nil {
+	if o != nil && !IsNil(o.NetworkAdapterType) {
 		return true
 	}
 
@@ -452,7 +455,7 @@ func (o *ComputerHardware) SetNetworkAdapterType(v string) {
 
 // GetMacAddress returns the MacAddress field value if set, zero value otherwise.
 func (o *ComputerHardware) GetMacAddress() string {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		var ret string
 		return ret
 	}
@@ -462,7 +465,7 @@ func (o *ComputerHardware) GetMacAddress() string {
 // GetMacAddressOk returns a tuple with the MacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetMacAddressOk() (*string, bool) {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		return nil, false
 	}
 	return o.MacAddress, true
@@ -470,7 +473,7 @@ func (o *ComputerHardware) GetMacAddressOk() (*string, bool) {
 
 // HasMacAddress returns a boolean if a field has been set.
 func (o *ComputerHardware) HasMacAddress() bool {
-	if o != nil && o.MacAddress != nil {
+	if o != nil && !IsNil(o.MacAddress) {
 		return true
 	}
 
@@ -484,7 +487,7 @@ func (o *ComputerHardware) SetMacAddress(v string) {
 
 // GetAltNetworkAdapterType returns the AltNetworkAdapterType field value if set, zero value otherwise.
 func (o *ComputerHardware) GetAltNetworkAdapterType() string {
-	if o == nil || o.AltNetworkAdapterType == nil {
+	if o == nil || IsNil(o.AltNetworkAdapterType) {
 		var ret string
 		return ret
 	}
@@ -494,7 +497,7 @@ func (o *ComputerHardware) GetAltNetworkAdapterType() string {
 // GetAltNetworkAdapterTypeOk returns a tuple with the AltNetworkAdapterType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetAltNetworkAdapterTypeOk() (*string, bool) {
-	if o == nil || o.AltNetworkAdapterType == nil {
+	if o == nil || IsNil(o.AltNetworkAdapterType) {
 		return nil, false
 	}
 	return o.AltNetworkAdapterType, true
@@ -502,7 +505,7 @@ func (o *ComputerHardware) GetAltNetworkAdapterTypeOk() (*string, bool) {
 
 // HasAltNetworkAdapterType returns a boolean if a field has been set.
 func (o *ComputerHardware) HasAltNetworkAdapterType() bool {
-	if o != nil && o.AltNetworkAdapterType != nil {
+	if o != nil && !IsNil(o.AltNetworkAdapterType) {
 		return true
 	}
 
@@ -516,7 +519,7 @@ func (o *ComputerHardware) SetAltNetworkAdapterType(v string) {
 
 // GetAltMacAddress returns the AltMacAddress field value if set, zero value otherwise.
 func (o *ComputerHardware) GetAltMacAddress() string {
-	if o == nil || o.AltMacAddress == nil {
+	if o == nil || IsNil(o.AltMacAddress) {
 		var ret string
 		return ret
 	}
@@ -526,7 +529,7 @@ func (o *ComputerHardware) GetAltMacAddress() string {
 // GetAltMacAddressOk returns a tuple with the AltMacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetAltMacAddressOk() (*string, bool) {
-	if o == nil || o.AltMacAddress == nil {
+	if o == nil || IsNil(o.AltMacAddress) {
 		return nil, false
 	}
 	return o.AltMacAddress, true
@@ -534,7 +537,7 @@ func (o *ComputerHardware) GetAltMacAddressOk() (*string, bool) {
 
 // HasAltMacAddress returns a boolean if a field has been set.
 func (o *ComputerHardware) HasAltMacAddress() bool {
-	if o != nil && o.AltMacAddress != nil {
+	if o != nil && !IsNil(o.AltMacAddress) {
 		return true
 	}
 
@@ -548,7 +551,7 @@ func (o *ComputerHardware) SetAltMacAddress(v string) {
 
 // GetTotalRamMegabytes returns the TotalRamMegabytes field value if set, zero value otherwise.
 func (o *ComputerHardware) GetTotalRamMegabytes() int64 {
-	if o == nil || o.TotalRamMegabytes == nil {
+	if o == nil || IsNil(o.TotalRamMegabytes) {
 		var ret int64
 		return ret
 	}
@@ -558,7 +561,7 @@ func (o *ComputerHardware) GetTotalRamMegabytes() int64 {
 // GetTotalRamMegabytesOk returns a tuple with the TotalRamMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetTotalRamMegabytesOk() (*int64, bool) {
-	if o == nil || o.TotalRamMegabytes == nil {
+	if o == nil || IsNil(o.TotalRamMegabytes) {
 		return nil, false
 	}
 	return o.TotalRamMegabytes, true
@@ -566,7 +569,7 @@ func (o *ComputerHardware) GetTotalRamMegabytesOk() (*int64, bool) {
 
 // HasTotalRamMegabytes returns a boolean if a field has been set.
 func (o *ComputerHardware) HasTotalRamMegabytes() bool {
-	if o != nil && o.TotalRamMegabytes != nil {
+	if o != nil && !IsNil(o.TotalRamMegabytes) {
 		return true
 	}
 
@@ -580,7 +583,7 @@ func (o *ComputerHardware) SetTotalRamMegabytes(v int64) {
 
 // GetOpenRamSlots returns the OpenRamSlots field value if set, zero value otherwise.
 func (o *ComputerHardware) GetOpenRamSlots() int32 {
-	if o == nil || o.OpenRamSlots == nil {
+	if o == nil || IsNil(o.OpenRamSlots) {
 		var ret int32
 		return ret
 	}
@@ -590,7 +593,7 @@ func (o *ComputerHardware) GetOpenRamSlots() int32 {
 // GetOpenRamSlotsOk returns a tuple with the OpenRamSlots field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetOpenRamSlotsOk() (*int32, bool) {
-	if o == nil || o.OpenRamSlots == nil {
+	if o == nil || IsNil(o.OpenRamSlots) {
 		return nil, false
 	}
 	return o.OpenRamSlots, true
@@ -598,7 +601,7 @@ func (o *ComputerHardware) GetOpenRamSlotsOk() (*int32, bool) {
 
 // HasOpenRamSlots returns a boolean if a field has been set.
 func (o *ComputerHardware) HasOpenRamSlots() bool {
-	if o != nil && o.OpenRamSlots != nil {
+	if o != nil && !IsNil(o.OpenRamSlots) {
 		return true
 	}
 
@@ -612,7 +615,7 @@ func (o *ComputerHardware) SetOpenRamSlots(v int32) {
 
 // GetBatteryCapacityPercent returns the BatteryCapacityPercent field value if set, zero value otherwise.
 func (o *ComputerHardware) GetBatteryCapacityPercent() int32 {
-	if o == nil || o.BatteryCapacityPercent == nil {
+	if o == nil || IsNil(o.BatteryCapacityPercent) {
 		var ret int32
 		return ret
 	}
@@ -622,7 +625,7 @@ func (o *ComputerHardware) GetBatteryCapacityPercent() int32 {
 // GetBatteryCapacityPercentOk returns a tuple with the BatteryCapacityPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int32, bool) {
-	if o == nil || o.BatteryCapacityPercent == nil {
+	if o == nil || IsNil(o.BatteryCapacityPercent) {
 		return nil, false
 	}
 	return o.BatteryCapacityPercent, true
@@ -630,7 +633,7 @@ func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int32, bool) {
 
 // HasBatteryCapacityPercent returns a boolean if a field has been set.
 func (o *ComputerHardware) HasBatteryCapacityPercent() bool {
-	if o != nil && o.BatteryCapacityPercent != nil {
+	if o != nil && !IsNil(o.BatteryCapacityPercent) {
 		return true
 	}
 
@@ -644,7 +647,7 @@ func (o *ComputerHardware) SetBatteryCapacityPercent(v int32) {
 
 // GetSmcVersion returns the SmcVersion field value if set, zero value otherwise.
 func (o *ComputerHardware) GetSmcVersion() string {
-	if o == nil || o.SmcVersion == nil {
+	if o == nil || IsNil(o.SmcVersion) {
 		var ret string
 		return ret
 	}
@@ -654,7 +657,7 @@ func (o *ComputerHardware) GetSmcVersion() string {
 // GetSmcVersionOk returns a tuple with the SmcVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetSmcVersionOk() (*string, bool) {
-	if o == nil || o.SmcVersion == nil {
+	if o == nil || IsNil(o.SmcVersion) {
 		return nil, false
 	}
 	return o.SmcVersion, true
@@ -662,7 +665,7 @@ func (o *ComputerHardware) GetSmcVersionOk() (*string, bool) {
 
 // HasSmcVersion returns a boolean if a field has been set.
 func (o *ComputerHardware) HasSmcVersion() bool {
-	if o != nil && o.SmcVersion != nil {
+	if o != nil && !IsNil(o.SmcVersion) {
 		return true
 	}
 
@@ -676,7 +679,7 @@ func (o *ComputerHardware) SetSmcVersion(v string) {
 
 // GetNicSpeed returns the NicSpeed field value if set, zero value otherwise.
 func (o *ComputerHardware) GetNicSpeed() string {
-	if o == nil || o.NicSpeed == nil {
+	if o == nil || IsNil(o.NicSpeed) {
 		var ret string
 		return ret
 	}
@@ -686,7 +689,7 @@ func (o *ComputerHardware) GetNicSpeed() string {
 // GetNicSpeedOk returns a tuple with the NicSpeed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetNicSpeedOk() (*string, bool) {
-	if o == nil || o.NicSpeed == nil {
+	if o == nil || IsNil(o.NicSpeed) {
 		return nil, false
 	}
 	return o.NicSpeed, true
@@ -694,7 +697,7 @@ func (o *ComputerHardware) GetNicSpeedOk() (*string, bool) {
 
 // HasNicSpeed returns a boolean if a field has been set.
 func (o *ComputerHardware) HasNicSpeed() bool {
-	if o != nil && o.NicSpeed != nil {
+	if o != nil && !IsNil(o.NicSpeed) {
 		return true
 	}
 
@@ -708,7 +711,7 @@ func (o *ComputerHardware) SetNicSpeed(v string) {
 
 // GetOpticalDrive returns the OpticalDrive field value if set, zero value otherwise.
 func (o *ComputerHardware) GetOpticalDrive() string {
-	if o == nil || o.OpticalDrive == nil {
+	if o == nil || IsNil(o.OpticalDrive) {
 		var ret string
 		return ret
 	}
@@ -718,7 +721,7 @@ func (o *ComputerHardware) GetOpticalDrive() string {
 // GetOpticalDriveOk returns a tuple with the OpticalDrive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetOpticalDriveOk() (*string, bool) {
-	if o == nil || o.OpticalDrive == nil {
+	if o == nil || IsNil(o.OpticalDrive) {
 		return nil, false
 	}
 	return o.OpticalDrive, true
@@ -726,7 +729,7 @@ func (o *ComputerHardware) GetOpticalDriveOk() (*string, bool) {
 
 // HasOpticalDrive returns a boolean if a field has been set.
 func (o *ComputerHardware) HasOpticalDrive() bool {
-	if o != nil && o.OpticalDrive != nil {
+	if o != nil && !IsNil(o.OpticalDrive) {
 		return true
 	}
 
@@ -740,7 +743,7 @@ func (o *ComputerHardware) SetOpticalDrive(v string) {
 
 // GetBootRom returns the BootRom field value if set, zero value otherwise.
 func (o *ComputerHardware) GetBootRom() string {
-	if o == nil || o.BootRom == nil {
+	if o == nil || IsNil(o.BootRom) {
 		var ret string
 		return ret
 	}
@@ -750,7 +753,7 @@ func (o *ComputerHardware) GetBootRom() string {
 // GetBootRomOk returns a tuple with the BootRom field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetBootRomOk() (*string, bool) {
-	if o == nil || o.BootRom == nil {
+	if o == nil || IsNil(o.BootRom) {
 		return nil, false
 	}
 	return o.BootRom, true
@@ -758,7 +761,7 @@ func (o *ComputerHardware) GetBootRomOk() (*string, bool) {
 
 // HasBootRom returns a boolean if a field has been set.
 func (o *ComputerHardware) HasBootRom() bool {
-	if o != nil && o.BootRom != nil {
+	if o != nil && !IsNil(o.BootRom) {
 		return true
 	}
 
@@ -772,7 +775,7 @@ func (o *ComputerHardware) SetBootRom(v string) {
 
 // GetBleCapable returns the BleCapable field value if set, zero value otherwise.
 func (o *ComputerHardware) GetBleCapable() bool {
-	if o == nil || o.BleCapable == nil {
+	if o == nil || IsNil(o.BleCapable) {
 		var ret bool
 		return ret
 	}
@@ -782,7 +785,7 @@ func (o *ComputerHardware) GetBleCapable() bool {
 // GetBleCapableOk returns a tuple with the BleCapable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetBleCapableOk() (*bool, bool) {
-	if o == nil || o.BleCapable == nil {
+	if o == nil || IsNil(o.BleCapable) {
 		return nil, false
 	}
 	return o.BleCapable, true
@@ -790,7 +793,7 @@ func (o *ComputerHardware) GetBleCapableOk() (*bool, bool) {
 
 // HasBleCapable returns a boolean if a field has been set.
 func (o *ComputerHardware) HasBleCapable() bool {
-	if o != nil && o.BleCapable != nil {
+	if o != nil && !IsNil(o.BleCapable) {
 		return true
 	}
 
@@ -804,7 +807,7 @@ func (o *ComputerHardware) SetBleCapable(v bool) {
 
 // GetSupportsIosAppInstalls returns the SupportsIosAppInstalls field value if set, zero value otherwise.
 func (o *ComputerHardware) GetSupportsIosAppInstalls() bool {
-	if o == nil || o.SupportsIosAppInstalls == nil {
+	if o == nil || IsNil(o.SupportsIosAppInstalls) {
 		var ret bool
 		return ret
 	}
@@ -814,7 +817,7 @@ func (o *ComputerHardware) GetSupportsIosAppInstalls() bool {
 // GetSupportsIosAppInstallsOk returns a tuple with the SupportsIosAppInstalls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetSupportsIosAppInstallsOk() (*bool, bool) {
-	if o == nil || o.SupportsIosAppInstalls == nil {
+	if o == nil || IsNil(o.SupportsIosAppInstalls) {
 		return nil, false
 	}
 	return o.SupportsIosAppInstalls, true
@@ -822,7 +825,7 @@ func (o *ComputerHardware) GetSupportsIosAppInstallsOk() (*bool, bool) {
 
 // HasSupportsIosAppInstalls returns a boolean if a field has been set.
 func (o *ComputerHardware) HasSupportsIosAppInstalls() bool {
-	if o != nil && o.SupportsIosAppInstalls != nil {
+	if o != nil && !IsNil(o.SupportsIosAppInstalls) {
 		return true
 	}
 
@@ -836,7 +839,7 @@ func (o *ComputerHardware) SetSupportsIosAppInstalls(v bool) {
 
 // GetAppleSilicon returns the AppleSilicon field value if set, zero value otherwise.
 func (o *ComputerHardware) GetAppleSilicon() bool {
-	if o == nil || o.AppleSilicon == nil {
+	if o == nil || IsNil(o.AppleSilicon) {
 		var ret bool
 		return ret
 	}
@@ -846,7 +849,7 @@ func (o *ComputerHardware) GetAppleSilicon() bool {
 // GetAppleSiliconOk returns a tuple with the AppleSilicon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetAppleSiliconOk() (*bool, bool) {
-	if o == nil || o.AppleSilicon == nil {
+	if o == nil || IsNil(o.AppleSilicon) {
 		return nil, false
 	}
 	return o.AppleSilicon, true
@@ -854,7 +857,7 @@ func (o *ComputerHardware) GetAppleSiliconOk() (*bool, bool) {
 
 // HasAppleSilicon returns a boolean if a field has been set.
 func (o *ComputerHardware) HasAppleSilicon() bool {
-	if o != nil && o.AppleSilicon != nil {
+	if o != nil && !IsNil(o.AppleSilicon) {
 		return true
 	}
 
@@ -868,7 +871,7 @@ func (o *ComputerHardware) SetAppleSilicon(v bool) {
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerHardware) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -878,7 +881,7 @@ func (o *ComputerHardware) GetExtensionAttributes() []ComputerExtensionAttribute
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardware) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -886,7 +889,7 @@ func (o *ComputerHardware) GetExtensionAttributesOk() ([]ComputerExtensionAttrib
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerHardware) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -899,86 +902,94 @@ func (o *ComputerHardware) SetExtensionAttributes(v []ComputerExtensionAttribute
 }
 
 func (o ComputerHardware) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Make != nil {
-		toSerialize["make"] = o.Make
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.ModelIdentifier != nil {
-		toSerialize["modelIdentifier"] = o.ModelIdentifier
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.ProcessorSpeedMhz != nil {
-		toSerialize["processorSpeedMhz"] = o.ProcessorSpeedMhz
-	}
-	if o.ProcessorCount != nil {
-		toSerialize["processorCount"] = o.ProcessorCount
-	}
-	if o.CoreCount != nil {
-		toSerialize["coreCount"] = o.CoreCount
-	}
-	if o.ProcessorType != nil {
-		toSerialize["processorType"] = o.ProcessorType
-	}
-	if o.ProcessorArchitecture != nil {
-		toSerialize["processorArchitecture"] = o.ProcessorArchitecture
-	}
-	if o.BusSpeedMhz != nil {
-		toSerialize["busSpeedMhz"] = o.BusSpeedMhz
-	}
-	if o.CacheSizeKilobytes != nil {
-		toSerialize["cacheSizeKilobytes"] = o.CacheSizeKilobytes
-	}
-	if o.NetworkAdapterType != nil {
-		toSerialize["networkAdapterType"] = o.NetworkAdapterType
-	}
-	if o.MacAddress != nil {
-		toSerialize["macAddress"] = o.MacAddress
-	}
-	if o.AltNetworkAdapterType != nil {
-		toSerialize["altNetworkAdapterType"] = o.AltNetworkAdapterType
-	}
-	if o.AltMacAddress != nil {
-		toSerialize["altMacAddress"] = o.AltMacAddress
-	}
-	if o.TotalRamMegabytes != nil {
-		toSerialize["totalRamMegabytes"] = o.TotalRamMegabytes
-	}
-	if o.OpenRamSlots != nil {
-		toSerialize["openRamSlots"] = o.OpenRamSlots
-	}
-	if o.BatteryCapacityPercent != nil {
-		toSerialize["batteryCapacityPercent"] = o.BatteryCapacityPercent
-	}
-	if o.SmcVersion != nil {
-		toSerialize["smcVersion"] = o.SmcVersion
-	}
-	if o.NicSpeed != nil {
-		toSerialize["nicSpeed"] = o.NicSpeed
-	}
-	if o.OpticalDrive != nil {
-		toSerialize["opticalDrive"] = o.OpticalDrive
-	}
-	if o.BootRom != nil {
-		toSerialize["bootRom"] = o.BootRom
-	}
-	if o.BleCapable != nil {
-		toSerialize["bleCapable"] = o.BleCapable
-	}
-	if o.SupportsIosAppInstalls != nil {
-		toSerialize["supportsIosAppInstalls"] = o.SupportsIosAppInstalls
-	}
-	if o.AppleSilicon != nil {
-		toSerialize["appleSilicon"] = o.AppleSilicon
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerHardware) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Make) {
+		toSerialize["make"] = o.Make
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.ModelIdentifier) {
+		toSerialize["modelIdentifier"] = o.ModelIdentifier
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.ProcessorSpeedMhz) {
+		toSerialize["processorSpeedMhz"] = o.ProcessorSpeedMhz
+	}
+	if !IsNil(o.ProcessorCount) {
+		toSerialize["processorCount"] = o.ProcessorCount
+	}
+	if !IsNil(o.CoreCount) {
+		toSerialize["coreCount"] = o.CoreCount
+	}
+	if !IsNil(o.ProcessorType) {
+		toSerialize["processorType"] = o.ProcessorType
+	}
+	if !IsNil(o.ProcessorArchitecture) {
+		toSerialize["processorArchitecture"] = o.ProcessorArchitecture
+	}
+	if !IsNil(o.BusSpeedMhz) {
+		toSerialize["busSpeedMhz"] = o.BusSpeedMhz
+	}
+	if !IsNil(o.CacheSizeKilobytes) {
+		toSerialize["cacheSizeKilobytes"] = o.CacheSizeKilobytes
+	}
+	if !IsNil(o.NetworkAdapterType) {
+		toSerialize["networkAdapterType"] = o.NetworkAdapterType
+	}
+	if !IsNil(o.MacAddress) {
+		toSerialize["macAddress"] = o.MacAddress
+	}
+	if !IsNil(o.AltNetworkAdapterType) {
+		toSerialize["altNetworkAdapterType"] = o.AltNetworkAdapterType
+	}
+	if !IsNil(o.AltMacAddress) {
+		toSerialize["altMacAddress"] = o.AltMacAddress
+	}
+	if !IsNil(o.TotalRamMegabytes) {
+		toSerialize["totalRamMegabytes"] = o.TotalRamMegabytes
+	}
+	if !IsNil(o.OpenRamSlots) {
+		toSerialize["openRamSlots"] = o.OpenRamSlots
+	}
+	if !IsNil(o.BatteryCapacityPercent) {
+		toSerialize["batteryCapacityPercent"] = o.BatteryCapacityPercent
+	}
+	if !IsNil(o.SmcVersion) {
+		toSerialize["smcVersion"] = o.SmcVersion
+	}
+	if !IsNil(o.NicSpeed) {
+		toSerialize["nicSpeed"] = o.NicSpeed
+	}
+	if !IsNil(o.OpticalDrive) {
+		toSerialize["opticalDrive"] = o.OpticalDrive
+	}
+	if !IsNil(o.BootRom) {
+		toSerialize["bootRom"] = o.BootRom
+	}
+	if !IsNil(o.BleCapable) {
+		toSerialize["bleCapable"] = o.BleCapable
+	}
+	if !IsNil(o.SupportsIosAppInstalls) {
+		toSerialize["supportsIosAppInstalls"] = o.SupportsIosAppInstalls
+	}
+	if !IsNil(o.AppleSilicon) {
+		toSerialize["appleSilicon"] = o.AppleSilicon
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerHardware struct {

@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 )
 
 
-type VenafiPreviewApi interface {
+type VenafiPreviewAPI interface {
 
 	/*
 	V1PkiVenafiIdConnectionStatusGet Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -32,13 +32,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdConnectionStatusGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest
 	*/
-	V1PkiVenafiIdConnectionStatusGet(ctx context.Context, id string) ApiV1PkiVenafiIdConnectionStatusGetRequest
+	V1PkiVenafiIdConnectionStatusGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest
 
 	// V1PkiVenafiIdConnectionStatusGetExecute executes the request
 	//  @return VenafiServiceStatus
-	V1PkiVenafiIdConnectionStatusGetExecute(r ApiV1PkiVenafiIdConnectionStatusGetRequest) (*VenafiServiceStatus, *http.Response, error)
+	V1PkiVenafiIdConnectionStatusGetExecute(r VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest) (*VenafiServiceStatus, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdDelete Delete a Venafi PKI configuration from Jamf Pro 
@@ -48,12 +48,12 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdDeleteRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdDeleteRequest
 	*/
-	V1PkiVenafiIdDelete(ctx context.Context, id string) ApiV1PkiVenafiIdDeleteRequest
+	V1PkiVenafiIdDelete(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdDeleteRequest
 
 	// V1PkiVenafiIdDeleteExecute executes the request
-	V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdDeleteRequest) (*http.Response, error)
+	V1PkiVenafiIdDeleteExecute(r VenafiPreviewAPIV1PkiVenafiIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1PkiVenafiIdDependentProfilesGet Get configuration profile data using specified Venafi CA object 
@@ -63,13 +63,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdDependentProfilesGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest
 	*/
-	V1PkiVenafiIdDependentProfilesGet(ctx context.Context, id string) ApiV1PkiVenafiIdDependentProfilesGetRequest
+	V1PkiVenafiIdDependentProfilesGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest
 
 	// V1PkiVenafiIdDependentProfilesGetExecute executes the request
 	//  @return VenafiPkiPayloadRecordSearchResults
-	V1PkiVenafiIdDependentProfilesGetExecute(r ApiV1PkiVenafiIdDependentProfilesGetRequest) (*VenafiPkiPayloadRecordSearchResults, *http.Response, error)
+	V1PkiVenafiIdDependentProfilesGetExecute(r VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest) (*VenafiPkiPayloadRecordSearchResults, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdGet Retrieve a Venafi PKI configuration from Jamf Pro 
@@ -79,13 +79,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdGetRequest
 	*/
-	V1PkiVenafiIdGet(ctx context.Context, id string) ApiV1PkiVenafiIdGetRequest
+	V1PkiVenafiIdGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdGetRequest
 
 	// V1PkiVenafiIdGetExecute executes the request
 	//  @return VenafiCaRecord
-	V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetRequest) (*VenafiCaRecord, *http.Response, error)
+	V1PkiVenafiIdGetExecute(r VenafiPreviewAPIV1PkiVenafiIdGetRequest) (*VenafiCaRecord, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdHistoryGet Get specified Venafi CA history object 
@@ -95,13 +95,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdHistoryGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest
 	*/
-	V1PkiVenafiIdHistoryGet(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryGetRequest
+	V1PkiVenafiIdHistoryGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest
 
 	// V1PkiVenafiIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenafiIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1PkiVenafiIdHistoryGetExecute(r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdHistoryPost Add specified Venafi CA Object Note 
@@ -110,14 +110,14 @@ type VenafiPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id instance id of department history record
-	@return ApiV1PkiVenafiIdHistoryPostRequest
+	@param id instance id of Venafi CA history record
+	@return VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest
 	*/
-	V1PkiVenafiIdHistoryPost(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryPostRequest
+	V1PkiVenafiIdHistoryPost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest
 
 	// V1PkiVenafiIdHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVenafiIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1PkiVenafiIdHistoryPostExecute(r VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdJamfPublicKeyGet Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -127,13 +127,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdJamfPublicKeyGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest
 	*/
-	V1PkiVenafiIdJamfPublicKeyGet(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyGetRequest
+	V1PkiVenafiIdJamfPublicKeyGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest
 
 	// V1PkiVenafiIdJamfPublicKeyGetExecute executes the request
 	//  @return *os.File
-	V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1PkiVenafiIdJamfPublicKeyGetRequest) (**os.File, *http.Response, error)
+	V1PkiVenafiIdJamfPublicKeyGetExecute(r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdJamfPublicKeyRegeneratePost Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -143,12 +143,12 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
 	*/
-	V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
+	V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
 
 	// V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute executes the request
-	V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) (*http.Response, error)
+	V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) (*http.Response, error)
 
 	/*
 	V1PkiVenafiIdPatch Update a Venafi PKI configuration in Jamf Pro 
@@ -158,13 +158,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdPatchRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdPatchRequest
 	*/
-	V1PkiVenafiIdPatch(ctx context.Context, id string) ApiV1PkiVenafiIdPatchRequest
+	V1PkiVenafiIdPatch(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdPatchRequest
 
 	// V1PkiVenafiIdPatchExecute executes the request
 	//  @return VenafiCaRecord
-	V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPatchRequest) (*VenafiCaRecord, *http.Response, error)
+	V1PkiVenafiIdPatchExecute(r VenafiPreviewAPIV1PkiVenafiIdPatchRequest) (*VenafiCaRecord, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdProxyTrustStoreDelete Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -174,12 +174,12 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest
 	*/
-	V1PkiVenafiIdProxyTrustStoreDelete(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest
+	V1PkiVenafiIdProxyTrustStoreDelete(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest
 
 	// V1PkiVenafiIdProxyTrustStoreDeleteExecute executes the request
-	V1PkiVenafiIdProxyTrustStoreDeleteExecute(r ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest) (*http.Response, error)
+	V1PkiVenafiIdProxyTrustStoreDeleteExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest) (*http.Response, error)
 
 	/*
 	V1PkiVenafiIdProxyTrustStoreGet Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -189,13 +189,13 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdProxyTrustStoreGetRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest
 	*/
-	V1PkiVenafiIdProxyTrustStoreGet(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreGetRequest
+	V1PkiVenafiIdProxyTrustStoreGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest
 
 	// V1PkiVenafiIdProxyTrustStoreGetExecute executes the request
 	//  @return *os.File
-	V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1PkiVenafiIdProxyTrustStoreGetRequest) (**os.File, *http.Response, error)
+	V1PkiVenafiIdProxyTrustStoreGetExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1PkiVenafiIdProxyTrustStorePost Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
@@ -205,12 +205,12 @@ type VenafiPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Venafi configuration
-	@return ApiV1PkiVenafiIdProxyTrustStorePostRequest
+	@return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest
 	*/
-	V1PkiVenafiIdProxyTrustStorePost(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStorePostRequest
+	V1PkiVenafiIdProxyTrustStorePost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest
 
 	// V1PkiVenafiIdProxyTrustStorePostExecute executes the request
-	V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV1PkiVenafiIdProxyTrustStorePostRequest) (*http.Response, error)
+	V1PkiVenafiIdProxyTrustStorePostExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest) (*http.Response, error)
 
 	/*
 	V1PkiVenafiPost Create a PKI configuration in Jamf Pro for Venafi 
@@ -219,25 +219,25 @@ type VenafiPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PkiVenafiPostRequest
+	@return VenafiPreviewAPIV1PkiVenafiPostRequest
 	*/
-	V1PkiVenafiPost(ctx context.Context) ApiV1PkiVenafiPostRequest
+	V1PkiVenafiPost(ctx context.Context) VenafiPreviewAPIV1PkiVenafiPostRequest
 
 	// V1PkiVenafiPostExecute executes the request
 	//  @return HrefResponse
-	V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostRequest) (*HrefResponse, *http.Response, error)
+	V1PkiVenafiPostExecute(r VenafiPreviewAPIV1PkiVenafiPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// VenafiPreviewApiService VenafiPreviewApi service
-type VenafiPreviewApiService service
+// VenafiPreviewAPIService VenafiPreviewAPI service
+type VenafiPreviewAPIService service
 
-type ApiV1PkiVenafiIdConnectionStatusGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdConnectionStatusGetRequest) Execute() (*VenafiServiceStatus, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest) Execute() (*VenafiServiceStatus, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdConnectionStatusGetExecute(r)
 }
 
@@ -249,10 +249,10 @@ Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdConnectionStatusGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGet(ctx context.Context, id string) ApiV1PkiVenafiIdConnectionStatusGetRequest {
-	return ApiV1PkiVenafiIdConnectionStatusGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdConnectionStatusGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -261,7 +261,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGet(ctx context.C
 
 // Execute executes the request
 //  @return VenafiServiceStatus
-func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV1PkiVenafiIdConnectionStatusGetRequest) (*VenafiServiceStatus, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdConnectionStatusGetExecute(r VenafiPreviewAPIV1PkiVenafiIdConnectionStatusGetRequest) (*VenafiServiceStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -269,13 +269,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV
 		localVarReturnValue  *VenafiServiceStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdConnectionStatusGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdConnectionStatusGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/connection-status"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -308,9 +308,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -327,7 +327,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -344,13 +345,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdConnectionStatusGetExecute(r ApiV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdDeleteRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdDeleteRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdDeleteRequest) Execute() (*http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdDeleteExecute(r)
 }
 
@@ -362,10 +363,10 @@ Delete a Venafi PKI configuration from Jamf Pro
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdDeleteRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdDeleteRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdDelete(ctx context.Context, id string) ApiV1PkiVenafiIdDeleteRequest {
-	return ApiV1PkiVenafiIdDeleteRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdDelete(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdDeleteRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -373,20 +374,20 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDelete(ctx context.Context, id st
 }
 
 // Execute executes the request
-func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdDeleteRequest) (*http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdDeleteExecute(r VenafiPreviewAPIV1PkiVenafiIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,9 +420,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -438,7 +439,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -448,7 +450,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -456,13 +459,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDeleteExecute(r ApiV1PkiVenafiIdD
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdDependentProfilesGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdDependentProfilesGetRequest) Execute() (*VenafiPkiPayloadRecordSearchResults, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest) Execute() (*VenafiPkiPayloadRecordSearchResults, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdDependentProfilesGetExecute(r)
 }
 
@@ -474,10 +477,10 @@ Get configuration profile data using specified Venafi CA object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdDependentProfilesGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGet(ctx context.Context, id string) ApiV1PkiVenafiIdDependentProfilesGetRequest {
-	return ApiV1PkiVenafiIdDependentProfilesGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdDependentProfilesGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -486,7 +489,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGet(ctx context.
 
 // Execute executes the request
 //  @return VenafiPkiPayloadRecordSearchResults
-func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGetExecute(r ApiV1PkiVenafiIdDependentProfilesGetRequest) (*VenafiPkiPayloadRecordSearchResults, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdDependentProfilesGetExecute(r VenafiPreviewAPIV1PkiVenafiIdDependentProfilesGetRequest) (*VenafiPkiPayloadRecordSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -494,13 +497,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGetExecute(r Api
 		localVarReturnValue  *VenafiPkiPayloadRecordSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdDependentProfilesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdDependentProfilesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/dependent-profiles"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -533,9 +536,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -560,13 +563,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdDependentProfilesGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdGetRequest) Execute() (*VenafiCaRecord, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdGetRequest) Execute() (*VenafiCaRecord, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdGetExecute(r)
 }
 
@@ -578,10 +581,10 @@ Retrieve a Venafi PKI configuration from Jamf Pro
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdGet(ctx context.Context, id string) ApiV1PkiVenafiIdGetRequest {
-	return ApiV1PkiVenafiIdGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -590,7 +593,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGet(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return VenafiCaRecord
-func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetRequest) (*VenafiCaRecord, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdGetExecute(r VenafiPreviewAPIV1PkiVenafiIdGetRequest) (*VenafiCaRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -598,13 +601,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetR
 		localVarReturnValue  *VenafiCaRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -637,9 +640,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -656,7 +659,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -673,9 +677,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdGetExecute(r ApiV1PkiVenafiIdGetR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdHistoryGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -683,29 +687,29 @@ type ApiV1PkiVenafiIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1PkiVenafiIdHistoryGetRequest) Page(page int32) ApiV1PkiVenafiIdHistoryGetRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) Page(page int32) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1PkiVenafiIdHistoryGetRequest) PageSize(pageSize int32) ApiV1PkiVenafiIdHistoryGetRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) PageSize(pageSize int32) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1PkiVenafiIdHistoryGetRequest) Sort(sort []string) ApiV1PkiVenafiIdHistoryGetRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) Sort(sort []string) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1PkiVenafiIdHistoryGetRequest) Filter(filter string) ApiV1PkiVenafiIdHistoryGetRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) Filter(filter string) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1PkiVenafiIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdHistoryGetExecute(r)
 }
 
@@ -717,10 +721,10 @@ Get specified Venafi CA history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdHistoryGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGet(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryGetRequest {
-	return ApiV1PkiVenafiIdHistoryGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdHistoryGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -729,7 +733,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGet(ctx context.Context, i
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenafiIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdHistoryGetExecute(r VenafiPreviewAPIV1PkiVenafiIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -737,37 +741,49 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenaf
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -796,9 +812,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenaf
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -815,7 +831,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenaf
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -832,20 +849,20 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryGetExecute(r ApiV1PkiVenaf
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdHistoryPostRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // venafi ca history notes to create
-func (r ApiV1PkiVenafiIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1PkiVenafiIdHistoryPostRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1PkiVenafiIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdHistoryPostExecute(r)
 }
 
@@ -856,11 +873,11 @@ Adds specified Venafi CA Object Note
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id instance id of department history record
- @return ApiV1PkiVenafiIdHistoryPostRequest
+ @param id instance id of Venafi CA history record
+ @return VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPost(ctx context.Context, id string) ApiV1PkiVenafiIdHistoryPostRequest {
-	return ApiV1PkiVenafiIdHistoryPostRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdHistoryPost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -869,7 +886,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPost(ctx context.Context, 
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVenafiIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdHistoryPostExecute(r VenafiPreviewAPIV1PkiVenafiIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -877,13 +894,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -921,9 +938,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -940,7 +957,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -950,7 +968,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -967,13 +986,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdHistoryPostExecute(r ApiV1PkiVena
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdJamfPublicKeyGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdJamfPublicKeyGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdJamfPublicKeyGetExecute(r)
 }
 
@@ -985,10 +1004,10 @@ Downloads a certificate for an existing Venafi configuration that can be used to
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdJamfPublicKeyGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGet(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyGetRequest {
-	return ApiV1PkiVenafiIdJamfPublicKeyGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdJamfPublicKeyGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -997,21 +1016,21 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGet(ctx context.Cont
 
 // Execute executes the request
 //  @return *os.File
-func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1PkiVenafiIdJamfPublicKeyGetRequest) (**os.File, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdJamfPublicKeyGetExecute(r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdJamfPublicKeyGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdJamfPublicKeyGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/jamf-public-key"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1044,9 +1063,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1Pk
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1063,7 +1082,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1Pk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1073,7 +1093,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1Pk
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1090,13 +1111,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyGetExecute(r ApiV1Pk
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) Execute() (*http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r)
 }
 
@@ -1108,10 +1129,10 @@ Regenerates a certificate for an existing Venafi configuration that can be used 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx context.Context, id string) ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest {
-	return ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1119,20 +1140,20 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePost(ctx c
 }
 
 // Execute executes the request
-func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r ApiV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) (*http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecute(r VenafiPreviewAPIV1PkiVenafiIdJamfPublicKeyRegeneratePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdJamfPublicKeyRegeneratePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdJamfPublicKeyRegeneratePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/jamf-public-key/regenerate"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1165,9 +1186,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecut
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1184,7 +1205,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecut
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1192,19 +1214,19 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdJamfPublicKeyRegeneratePostExecut
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdPatchRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdPatchRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 	venafiCaRecord *VenafiCaRecord
 }
 
-func (r ApiV1PkiVenafiIdPatchRequest) VenafiCaRecord(venafiCaRecord VenafiCaRecord) ApiV1PkiVenafiIdPatchRequest {
+func (r VenafiPreviewAPIV1PkiVenafiIdPatchRequest) VenafiCaRecord(venafiCaRecord VenafiCaRecord) VenafiPreviewAPIV1PkiVenafiIdPatchRequest {
 	r.venafiCaRecord = &venafiCaRecord
 	return r
 }
 
-func (r ApiV1PkiVenafiIdPatchRequest) Execute() (*VenafiCaRecord, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdPatchRequest) Execute() (*VenafiCaRecord, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdPatchExecute(r)
 }
 
@@ -1216,10 +1238,10 @@ Update a Venafi PKI configuration in Jamf Pro
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdPatchRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdPatchRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdPatch(ctx context.Context, id string) ApiV1PkiVenafiIdPatchRequest {
-	return ApiV1PkiVenafiIdPatchRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdPatch(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdPatchRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1228,7 +1250,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatch(ctx context.Context, id str
 
 // Execute executes the request
 //  @return VenafiCaRecord
-func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPatchRequest) (*VenafiCaRecord, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdPatchExecute(r VenafiPreviewAPIV1PkiVenafiIdPatchRequest) (*VenafiCaRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1236,13 +1258,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 		localVarReturnValue  *VenafiCaRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1280,9 +1302,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1299,7 +1321,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1309,7 +1332,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1326,13 +1350,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdPatchExecute(r ApiV1PkiVenafiIdPa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest) Execute() (*http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdProxyTrustStoreDeleteExecute(r)
 }
 
@@ -1344,10 +1368,10 @@ Removes the uploaded PKI Proxy Server public key to do basic TLS certificate val
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDelete(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest {
-	return ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStoreDelete(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1355,20 +1379,20 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDelete(ctx context
 }
 
 // Execute executes the request
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r ApiV1PkiVenafiIdProxyTrustStoreDeleteRequest) (*http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdProxyTrustStoreDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdProxyTrustStoreDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/proxy-trust-store"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1401,9 +1425,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1420,7 +1444,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r Ap
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1428,13 +1453,13 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreDeleteExecute(r Ap
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdProxyTrustStoreGetRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
 }
 
-func (r ApiV1PkiVenafiIdProxyTrustStoreGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdProxyTrustStoreGetExecute(r)
 }
 
@@ -1446,10 +1471,10 @@ Downloads the uploaded PKI Proxy Server public key to do basic TLS certificate v
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdProxyTrustStoreGetRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGet(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStoreGetRequest {
-	return ApiV1PkiVenafiIdProxyTrustStoreGetRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStoreGet(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1458,21 +1483,21 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGet(ctx context.Co
 
 // Execute executes the request
 //  @return *os.File
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1PkiVenafiIdProxyTrustStoreGetRequest) (**os.File, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStoreGetExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStoreGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdProxyTrustStoreGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdProxyTrustStoreGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/proxy-trust-store"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1505,9 +1530,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1524,7 +1549,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1534,7 +1560,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1551,19 +1578,19 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStoreGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiIdProxyTrustStorePostRequest struct {
+type VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	id string
-	body **os.File
+	body *os.File
 }
 
-func (r ApiV1PkiVenafiIdProxyTrustStorePostRequest) Body(body *os.File) ApiV1PkiVenafiIdProxyTrustStorePostRequest {
-	r.body = &body
+func (r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest) Body(body *os.File) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest {
+	r.body = body
 	return r
 }
 
-func (r ApiV1PkiVenafiIdProxyTrustStorePostRequest) Execute() (*http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1PkiVenafiIdProxyTrustStorePostExecute(r)
 }
 
@@ -1575,10 +1602,10 @@ Uploads the PKI Proxy Server public key to do basic TLS certificate validation b
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Venafi configuration
- @return ApiV1PkiVenafiIdProxyTrustStorePostRequest
+ @return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePost(ctx context.Context, id string) ApiV1PkiVenafiIdProxyTrustStorePostRequest {
-	return ApiV1PkiVenafiIdProxyTrustStorePostRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStorePost(ctx context.Context, id string) VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest {
+	return VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1586,20 +1613,20 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePost(ctx context.C
 }
 
 // Execute executes the request
-func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV1PkiVenafiIdProxyTrustStorePostRequest) (*http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiIdProxyTrustStorePostExecute(r VenafiPreviewAPIV1PkiVenafiIdProxyTrustStorePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiIdProxyTrustStorePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiIdProxyTrustStorePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/venafi/{id}/proxy-trust-store"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1637,9 +1664,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1656,7 +1683,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1666,7 +1694,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1674,18 +1703,18 @@ func (a *VenafiPreviewApiService) V1PkiVenafiIdProxyTrustStorePostExecute(r ApiV
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1PkiVenafiPostRequest struct {
+type VenafiPreviewAPIV1PkiVenafiPostRequest struct {
 	ctx context.Context
-	ApiService VenafiPreviewApi
+	ApiService VenafiPreviewAPI
 	venafiCaRecord *VenafiCaRecord
 }
 
-func (r ApiV1PkiVenafiPostRequest) VenafiCaRecord(venafiCaRecord VenafiCaRecord) ApiV1PkiVenafiPostRequest {
+func (r VenafiPreviewAPIV1PkiVenafiPostRequest) VenafiCaRecord(venafiCaRecord VenafiCaRecord) VenafiPreviewAPIV1PkiVenafiPostRequest {
 	r.venafiCaRecord = &venafiCaRecord
 	return r
 }
 
-func (r ApiV1PkiVenafiPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r VenafiPreviewAPIV1PkiVenafiPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1PkiVenafiPostExecute(r)
 }
 
@@ -1696,10 +1725,10 @@ Creates a Venafi PKI configuration in Jamf Pro, which can be used to issue certi
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PkiVenafiPostRequest
+ @return VenafiPreviewAPIV1PkiVenafiPostRequest
 */
-func (a *VenafiPreviewApiService) V1PkiVenafiPost(ctx context.Context) ApiV1PkiVenafiPostRequest {
-	return ApiV1PkiVenafiPostRequest{
+func (a *VenafiPreviewAPIService) V1PkiVenafiPost(ctx context.Context) VenafiPreviewAPIV1PkiVenafiPostRequest {
+	return VenafiPreviewAPIV1PkiVenafiPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1707,7 +1736,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiPost(ctx context.Context) ApiV1PkiV
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *VenafiPreviewApiService) V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *VenafiPreviewAPIService) V1PkiVenafiPostExecute(r VenafiPreviewAPIV1PkiVenafiPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1715,7 +1744,7 @@ func (a *VenafiPreviewApiService) V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostReq
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewApiService.V1PkiVenafiPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VenafiPreviewAPIService.V1PkiVenafiPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1758,9 +1787,9 @@ func (a *VenafiPreviewApiService) V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1777,7 +1806,8 @@ func (a *VenafiPreviewApiService) V1PkiVenafiPostExecute(r ApiV1PkiVenafiPostReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

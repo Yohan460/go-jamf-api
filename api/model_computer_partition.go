@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerPartition type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerPartition{}
+
 // ComputerPartition struct for ComputerPartition
 type ComputerPartition struct {
 	Name *string `json:"name,omitempty"`
@@ -49,7 +52,7 @@ func NewComputerPartitionWithDefaults() *ComputerPartition {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerPartition) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ComputerPartition) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -67,7 +70,7 @@ func (o *ComputerPartition) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerPartition) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ComputerPartition) SetName(v string) {
 
 // GetSizeMegabytes returns the SizeMegabytes field value if set, zero value otherwise.
 func (o *ComputerPartition) GetSizeMegabytes() int64 {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		var ret int64
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ComputerPartition) GetSizeMegabytes() int64 {
 // GetSizeMegabytesOk returns a tuple with the SizeMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetSizeMegabytesOk() (*int64, bool) {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		return nil, false
 	}
 	return o.SizeMegabytes, true
@@ -99,7 +102,7 @@ func (o *ComputerPartition) GetSizeMegabytesOk() (*int64, bool) {
 
 // HasSizeMegabytes returns a boolean if a field has been set.
 func (o *ComputerPartition) HasSizeMegabytes() bool {
-	if o != nil && o.SizeMegabytes != nil {
+	if o != nil && !IsNil(o.SizeMegabytes) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ComputerPartition) SetSizeMegabytes(v int64) {
 
 // GetAvailableMegabytes returns the AvailableMegabytes field value if set, zero value otherwise.
 func (o *ComputerPartition) GetAvailableMegabytes() int64 {
-	if o == nil || o.AvailableMegabytes == nil {
+	if o == nil || IsNil(o.AvailableMegabytes) {
 		var ret int64
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ComputerPartition) GetAvailableMegabytes() int64 {
 // GetAvailableMegabytesOk returns a tuple with the AvailableMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetAvailableMegabytesOk() (*int64, bool) {
-	if o == nil || o.AvailableMegabytes == nil {
+	if o == nil || IsNil(o.AvailableMegabytes) {
 		return nil, false
 	}
 	return o.AvailableMegabytes, true
@@ -131,7 +134,7 @@ func (o *ComputerPartition) GetAvailableMegabytesOk() (*int64, bool) {
 
 // HasAvailableMegabytes returns a boolean if a field has been set.
 func (o *ComputerPartition) HasAvailableMegabytes() bool {
-	if o != nil && o.AvailableMegabytes != nil {
+	if o != nil && !IsNil(o.AvailableMegabytes) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ComputerPartition) SetAvailableMegabytes(v int64) {
 
 // GetPartitionType returns the PartitionType field value if set, zero value otherwise.
 func (o *ComputerPartition) GetPartitionType() string {
-	if o == nil || o.PartitionType == nil {
+	if o == nil || IsNil(o.PartitionType) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ComputerPartition) GetPartitionType() string {
 // GetPartitionTypeOk returns a tuple with the PartitionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetPartitionTypeOk() (*string, bool) {
-	if o == nil || o.PartitionType == nil {
+	if o == nil || IsNil(o.PartitionType) {
 		return nil, false
 	}
 	return o.PartitionType, true
@@ -163,7 +166,7 @@ func (o *ComputerPartition) GetPartitionTypeOk() (*string, bool) {
 
 // HasPartitionType returns a boolean if a field has been set.
 func (o *ComputerPartition) HasPartitionType() bool {
-	if o != nil && o.PartitionType != nil {
+	if o != nil && !IsNil(o.PartitionType) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ComputerPartition) SetPartitionType(v string) {
 
 // GetPercentUsed returns the PercentUsed field value if set, zero value otherwise.
 func (o *ComputerPartition) GetPercentUsed() int32 {
-	if o == nil || o.PercentUsed == nil {
+	if o == nil || IsNil(o.PercentUsed) {
 		var ret int32
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ComputerPartition) GetPercentUsed() int32 {
 // GetPercentUsedOk returns a tuple with the PercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetPercentUsedOk() (*int32, bool) {
-	if o == nil || o.PercentUsed == nil {
+	if o == nil || IsNil(o.PercentUsed) {
 		return nil, false
 	}
 	return o.PercentUsed, true
@@ -195,7 +198,7 @@ func (o *ComputerPartition) GetPercentUsedOk() (*int32, bool) {
 
 // HasPercentUsed returns a boolean if a field has been set.
 func (o *ComputerPartition) HasPercentUsed() bool {
-	if o != nil && o.PercentUsed != nil {
+	if o != nil && !IsNil(o.PercentUsed) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ComputerPartition) SetPercentUsed(v int32) {
 
 // GetFileVault2State returns the FileVault2State field value if set, zero value otherwise.
 func (o *ComputerPartition) GetFileVault2State() ComputerPartitionFileVault2State {
-	if o == nil || o.FileVault2State == nil {
+	if o == nil || IsNil(o.FileVault2State) {
 		var ret ComputerPartitionFileVault2State
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ComputerPartition) GetFileVault2State() ComputerPartitionFileVault2Stat
 // GetFileVault2StateOk returns a tuple with the FileVault2State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetFileVault2StateOk() (*ComputerPartitionFileVault2State, bool) {
-	if o == nil || o.FileVault2State == nil {
+	if o == nil || IsNil(o.FileVault2State) {
 		return nil, false
 	}
 	return o.FileVault2State, true
@@ -227,7 +230,7 @@ func (o *ComputerPartition) GetFileVault2StateOk() (*ComputerPartitionFileVault2
 
 // HasFileVault2State returns a boolean if a field has been set.
 func (o *ComputerPartition) HasFileVault2State() bool {
-	if o != nil && o.FileVault2State != nil {
+	if o != nil && !IsNil(o.FileVault2State) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ComputerPartition) SetFileVault2State(v ComputerPartitionFileVault2Stat
 
 // GetFileVault2ProgressPercent returns the FileVault2ProgressPercent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ComputerPartition) GetFileVault2ProgressPercent() int32 {
-	if o == nil || o.FileVault2ProgressPercent.Get() == nil {
+	if o == nil || IsNil(o.FileVault2ProgressPercent.Get()) {
 		var ret int32
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *ComputerPartition) UnsetFileVault2ProgressPercent() {
 
 // GetLvmManaged returns the LvmManaged field value if set, zero value otherwise.
 func (o *ComputerPartition) GetLvmManaged() bool {
-	if o == nil || o.LvmManaged == nil {
+	if o == nil || IsNil(o.LvmManaged) {
 		var ret bool
 		return ret
 	}
@@ -293,7 +296,7 @@ func (o *ComputerPartition) GetLvmManaged() bool {
 // GetLvmManagedOk returns a tuple with the LvmManaged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPartition) GetLvmManagedOk() (*bool, bool) {
-	if o == nil || o.LvmManaged == nil {
+	if o == nil || IsNil(o.LvmManaged) {
 		return nil, false
 	}
 	return o.LvmManaged, true
@@ -301,7 +304,7 @@ func (o *ComputerPartition) GetLvmManagedOk() (*bool, bool) {
 
 // HasLvmManaged returns a boolean if a field has been set.
 func (o *ComputerPartition) HasLvmManaged() bool {
-	if o != nil && o.LvmManaged != nil {
+	if o != nil && !IsNil(o.LvmManaged) {
 		return true
 	}
 
@@ -314,32 +317,40 @@ func (o *ComputerPartition) SetLvmManaged(v bool) {
 }
 
 func (o ComputerPartition) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o ComputerPartition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if o.SizeMegabytes != nil {
+	if !IsNil(o.SizeMegabytes) {
 		toSerialize["sizeMegabytes"] = o.SizeMegabytes
 	}
-	if o.AvailableMegabytes != nil {
+	if !IsNil(o.AvailableMegabytes) {
 		toSerialize["availableMegabytes"] = o.AvailableMegabytes
 	}
-	if o.PartitionType != nil {
+	if !IsNil(o.PartitionType) {
 		toSerialize["partitionType"] = o.PartitionType
 	}
-	if o.PercentUsed != nil {
+	if !IsNil(o.PercentUsed) {
 		toSerialize["percentUsed"] = o.PercentUsed
 	}
-	if o.FileVault2State != nil {
+	if !IsNil(o.FileVault2State) {
 		toSerialize["fileVault2State"] = o.FileVault2State
 	}
 	if o.FileVault2ProgressPercent.IsSet() {
 		toSerialize["fileVault2ProgressPercent"] = o.FileVault2ProgressPercent.Get()
 	}
-	if o.LvmManaged != nil {
+	if !IsNil(o.LvmManaged) {
 		toSerialize["lvmManaged"] = o.LvmManaged
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableComputerPartition struct {

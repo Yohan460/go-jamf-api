@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SmartSearchCriterion type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SmartSearchCriterion{}
+
 // SmartSearchCriterion struct for SmartSearchCriterion
 type SmartSearchCriterion struct {
 	Name *string `json:"name,omitempty"`
@@ -44,7 +47,7 @@ func NewSmartSearchCriterionWithDefaults() *SmartSearchCriterion {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *SmartSearchCriterion) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -62,7 +65,7 @@ func (o *SmartSearchCriterion) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *SmartSearchCriterion) SetName(v string) {
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetPriority() int32 {
-	if o == nil || o.Priority == nil {
+	if o == nil || IsNil(o.Priority) {
 		var ret int32
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *SmartSearchCriterion) GetPriority() int32 {
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetPriorityOk() (*int32, bool) {
-	if o == nil || o.Priority == nil {
+	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
 	return o.Priority, true
@@ -94,7 +97,7 @@ func (o *SmartSearchCriterion) GetPriorityOk() (*int32, bool) {
 
 // HasPriority returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasPriority() bool {
-	if o != nil && o.Priority != nil {
+	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *SmartSearchCriterion) SetPriority(v int32) {
 
 // GetAndOr returns the AndOr field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetAndOr() string {
-	if o == nil || o.AndOr == nil {
+	if o == nil || IsNil(o.AndOr) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *SmartSearchCriterion) GetAndOr() string {
 // GetAndOrOk returns a tuple with the AndOr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetAndOrOk() (*string, bool) {
-	if o == nil || o.AndOr == nil {
+	if o == nil || IsNil(o.AndOr) {
 		return nil, false
 	}
 	return o.AndOr, true
@@ -126,7 +129,7 @@ func (o *SmartSearchCriterion) GetAndOrOk() (*string, bool) {
 
 // HasAndOr returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasAndOr() bool {
-	if o != nil && o.AndOr != nil {
+	if o != nil && !IsNil(o.AndOr) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *SmartSearchCriterion) SetAndOr(v string) {
 
 // GetSearchType returns the SearchType field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetSearchType() string {
-	if o == nil || o.SearchType == nil {
+	if o == nil || IsNil(o.SearchType) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *SmartSearchCriterion) GetSearchType() string {
 // GetSearchTypeOk returns a tuple with the SearchType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetSearchTypeOk() (*string, bool) {
-	if o == nil || o.SearchType == nil {
+	if o == nil || IsNil(o.SearchType) {
 		return nil, false
 	}
 	return o.SearchType, true
@@ -158,7 +161,7 @@ func (o *SmartSearchCriterion) GetSearchTypeOk() (*string, bool) {
 
 // HasSearchType returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasSearchType() bool {
-	if o != nil && o.SearchType != nil {
+	if o != nil && !IsNil(o.SearchType) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *SmartSearchCriterion) SetSearchType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *SmartSearchCriterion) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -190,7 +193,7 @@ func (o *SmartSearchCriterion) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *SmartSearchCriterion) SetValue(v string) {
 
 // GetOpeningParen returns the OpeningParen field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetOpeningParen() bool {
-	if o == nil || o.OpeningParen == nil {
+	if o == nil || IsNil(o.OpeningParen) {
 		var ret bool
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *SmartSearchCriterion) GetOpeningParen() bool {
 // GetOpeningParenOk returns a tuple with the OpeningParen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetOpeningParenOk() (*bool, bool) {
-	if o == nil || o.OpeningParen == nil {
+	if o == nil || IsNil(o.OpeningParen) {
 		return nil, false
 	}
 	return o.OpeningParen, true
@@ -222,7 +225,7 @@ func (o *SmartSearchCriterion) GetOpeningParenOk() (*bool, bool) {
 
 // HasOpeningParen returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasOpeningParen() bool {
-	if o != nil && o.OpeningParen != nil {
+	if o != nil && !IsNil(o.OpeningParen) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *SmartSearchCriterion) SetOpeningParen(v bool) {
 
 // GetClosingParen returns the ClosingParen field value if set, zero value otherwise.
 func (o *SmartSearchCriterion) GetClosingParen() bool {
-	if o == nil || o.ClosingParen == nil {
+	if o == nil || IsNil(o.ClosingParen) {
 		var ret bool
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *SmartSearchCriterion) GetClosingParen() bool {
 // GetClosingParenOk returns a tuple with the ClosingParen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetClosingParenOk() (*bool, bool) {
-	if o == nil || o.ClosingParen == nil {
+	if o == nil || IsNil(o.ClosingParen) {
 		return nil, false
 	}
 	return o.ClosingParen, true
@@ -254,7 +257,7 @@ func (o *SmartSearchCriterion) GetClosingParenOk() (*bool, bool) {
 
 // HasClosingParen returns a boolean if a field has been set.
 func (o *SmartSearchCriterion) HasClosingParen() bool {
-	if o != nil && o.ClosingParen != nil {
+	if o != nil && !IsNil(o.ClosingParen) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *SmartSearchCriterion) SetClosingParen(v bool) {
 }
 
 func (o SmartSearchCriterion) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Priority != nil {
-		toSerialize["priority"] = o.Priority
-	}
-	if o.AndOr != nil {
-		toSerialize["andOr"] = o.AndOr
-	}
-	if o.SearchType != nil {
-		toSerialize["searchType"] = o.SearchType
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
-	}
-	if o.OpeningParen != nil {
-		toSerialize["openingParen"] = o.OpeningParen
-	}
-	if o.ClosingParen != nil {
-		toSerialize["closingParen"] = o.ClosingParen
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SmartSearchCriterion) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
+	if !IsNil(o.AndOr) {
+		toSerialize["andOr"] = o.AndOr
+	}
+	if !IsNil(o.SearchType) {
+		toSerialize["searchType"] = o.SearchType
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.OpeningParen) {
+		toSerialize["openingParen"] = o.OpeningParen
+	}
+	if !IsNil(o.ClosingParen) {
+		toSerialize["closingParen"] = o.ClosingParen
+	}
+	return toSerialize, nil
 }
 
 type NullableSmartSearchCriterion struct {

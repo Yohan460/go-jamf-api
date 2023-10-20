@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type VolumePurchasingLocationsApi interface {
+type VolumePurchasingLocationsAPI interface {
 
 	/*
 	V1VolumePurchasingLocationsGet Retrieve Volume Purchasing Locations
@@ -29,13 +29,28 @@ type VolumePurchasingLocationsApi interface {
 	Retrieves Volume Purchasing Locations
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1VolumePurchasingLocationsGetRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest
 	*/
-	V1VolumePurchasingLocationsGet(ctx context.Context) ApiV1VolumePurchasingLocationsGetRequest
+	V1VolumePurchasingLocationsGet(ctx context.Context) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest
 
 	// V1VolumePurchasingLocationsGetExecute executes the request
 	//  @return VolumePurchasingLocations
-	V1VolumePurchasingLocationsGetExecute(r ApiV1VolumePurchasingLocationsGetRequest) (*VolumePurchasingLocations, *http.Response, error)
+	V1VolumePurchasingLocationsGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) (*VolumePurchasingLocations, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdContentGet Retrieve the Volume Purchasing Content for the Volume Purchasing Location with the supplied id
+
+	Retrieves the Volume Purchasing Content for the Volume Purchasing Location with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Location identifier
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest
+	*/
+	V1VolumePurchasingLocationsIdContentGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest
+
+	// V1VolumePurchasingLocationsIdContentGetExecute executes the request
+	//  @return VolumePurchasingContentList
+	V1VolumePurchasingLocationsIdContentGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) (*VolumePurchasingContentList, *http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdDelete Delete a Volume Purchasing Location with the supplied id
@@ -44,12 +59,12 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Location identifier
-	@return ApiV1VolumePurchasingLocationsIdDeleteRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest
 	*/
-	V1VolumePurchasingLocationsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdDeleteRequest
+	V1VolumePurchasingLocationsIdDelete(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest
 
 	// V1VolumePurchasingLocationsIdDeleteExecute executes the request
-	V1VolumePurchasingLocationsIdDeleteExecute(r ApiV1VolumePurchasingLocationsIdDeleteRequest) (*http.Response, error)
+	V1VolumePurchasingLocationsIdDeleteExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdGet Retrieve a Volume Purchasing Location with the supplied id
@@ -58,13 +73,13 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Location identifier
-	@return ApiV1VolumePurchasingLocationsIdGetRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest
 	*/
-	V1VolumePurchasingLocationsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdGetRequest
+	V1VolumePurchasingLocationsIdGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest
 
 	// V1VolumePurchasingLocationsIdGetExecute executes the request
 	//  @return VolumePurchasingLocation
-	V1VolumePurchasingLocationsIdGetExecute(r ApiV1VolumePurchasingLocationsIdGetRequest) (*VolumePurchasingLocation, *http.Response, error)
+	V1VolumePurchasingLocationsIdGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest) (*VolumePurchasingLocation, *http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdHistoryGet Get specified Volume Purchasing Location history object 
@@ -74,13 +89,29 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of Volume Purchasing Location history record
-	@return ApiV1VolumePurchasingLocationsIdHistoryGetRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest
 	*/
-	V1VolumePurchasingLocationsIdHistoryGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdHistoryGetRequest
+	V1VolumePurchasingLocationsIdHistoryGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest
 
 	// V1VolumePurchasingLocationsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1VolumePurchasingLocationsIdHistoryGetExecute(r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1VolumePurchasingLocationsIdHistoryGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1VolumePurchasingLocationsIdHistoryPost Add specified Volume Purchasing Location history object notes 
+
+	Adds specified Volume Purchasing Location history object notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of Volume Purchasing Location history record
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest
+	*/
+	V1VolumePurchasingLocationsIdHistoryPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest
+
+	// V1VolumePurchasingLocationsIdHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1VolumePurchasingLocationsIdHistoryPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdPatch Update a Volume Purchasing Location
@@ -89,13 +120,13 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Location identifier
-	@return ApiV1VolumePurchasingLocationsIdPatchRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest
 	*/
-	V1VolumePurchasingLocationsIdPatch(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdPatchRequest
+	V1VolumePurchasingLocationsIdPatch(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest
 
 	// V1VolumePurchasingLocationsIdPatchExecute executes the request
 	//  @return VolumePurchasingLocation
-	V1VolumePurchasingLocationsIdPatchExecute(r ApiV1VolumePurchasingLocationsIdPatchRequest) (*VolumePurchasingLocation, *http.Response, error)
+	V1VolumePurchasingLocationsIdPatchExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest) (*VolumePurchasingLocation, *http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdReclaimPost Reclaim a Volume Purchasing Location with the supplied id
@@ -104,12 +135,12 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Location identifier
-	@return ApiV1VolumePurchasingLocationsIdReclaimPostRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest
 	*/
-	V1VolumePurchasingLocationsIdReclaimPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdReclaimPostRequest
+	V1VolumePurchasingLocationsIdReclaimPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest
 
 	// V1VolumePurchasingLocationsIdReclaimPostExecute executes the request
-	V1VolumePurchasingLocationsIdReclaimPostExecute(r ApiV1VolumePurchasingLocationsIdReclaimPostRequest) (*http.Response, error)
+	V1VolumePurchasingLocationsIdReclaimPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest) (*http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsIdRevokeLicensesPost Revoke licenses for a Volume Purchasing Location with the supplied id
@@ -118,12 +149,12 @@ type VolumePurchasingLocationsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Volume Purchasing Location identifier
-	@return ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
 	*/
-	V1VolumePurchasingLocationsIdRevokeLicensesPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
+	V1VolumePurchasingLocationsIdRevokeLicensesPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
 
 	// V1VolumePurchasingLocationsIdRevokeLicensesPostExecute executes the request
-	V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) (*http.Response, error)
+	V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) (*http.Response, error)
 
 	/*
 	V1VolumePurchasingLocationsPost Create a Volume Purchasing Location
@@ -131,50 +162,50 @@ type VolumePurchasingLocationsApi interface {
 	Creates a Volume Purchasing Location using an sToken
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1VolumePurchasingLocationsPostRequest
+	@return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest
 	*/
-	V1VolumePurchasingLocationsPost(ctx context.Context) ApiV1VolumePurchasingLocationsPostRequest
+	V1VolumePurchasingLocationsPost(ctx context.Context) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest
 
 	// V1VolumePurchasingLocationsPostExecute executes the request
 	//  @return HrefResponse
-	V1VolumePurchasingLocationsPostExecute(r ApiV1VolumePurchasingLocationsPostRequest) (*HrefResponse, *http.Response, error)
+	V1VolumePurchasingLocationsPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// VolumePurchasingLocationsApiService VolumePurchasingLocationsApi service
-type VolumePurchasingLocationsApiService service
+// VolumePurchasingLocationsAPIService VolumePurchasingLocationsAPI service
+type VolumePurchasingLocationsAPIService service
 
-type ApiV1VolumePurchasingLocationsGetRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1VolumePurchasingLocationsGetRequest) Page(page int32) ApiV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsGetRequest) PageSize(pageSize int32) ApiV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma.
-func (r ApiV1VolumePurchasingLocationsGetRequest) Sort(sort []string) ApiV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Sort(sort []string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, and sendNotificationWhenNoLongerAssigned. This param can be combined with paging and sorting.
-func (r ApiV1VolumePurchasingLocationsGetRequest) Filter(filter string) ApiV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Filter(filter string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsGetRequest) Execute() (*VolumePurchasingLocations, *http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Execute() (*VolumePurchasingLocations, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsGetExecute(r)
 }
 
@@ -184,10 +215,10 @@ V1VolumePurchasingLocationsGet Retrieve Volume Purchasing Locations
 Retrieves Volume Purchasing Locations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1VolumePurchasingLocationsGetRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGet(ctx context.Context) ApiV1VolumePurchasingLocationsGetRequest {
-	return ApiV1VolumePurchasingLocationsGetRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsGet(ctx context.Context) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -195,7 +226,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGet(ctx
 
 // Execute executes the request
 //  @return VolumePurchasingLocations
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExecute(r ApiV1VolumePurchasingLocationsGetRequest) (*VolumePurchasingLocations, *http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) (*VolumePurchasingLocations, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -203,7 +234,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExec
 		localVarReturnValue  *VolumePurchasingLocations
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -215,24 +246,36 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExec
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -261,9 +304,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -288,13 +331,184 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsGetExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdDeleteRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
+	id string
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+}
+
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma.
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Sort(sort []string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter Volume Purchasing Content collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, licenseCountTotal, licenseCountInUse, licenseCountReported, contentType, and pricingParam. This param can be combined with paging and sorting.
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Filter(filter string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Execute() (*VolumePurchasingContentList, *http.Response, error) {
+	return r.ApiService.V1VolumePurchasingLocationsIdContentGetExecute(r)
+}
+
+/*
+V1VolumePurchasingLocationsIdContentGet Retrieve the Volume Purchasing Content for the Volume Purchasing Location with the supplied id
+
+Retrieves the Volume Purchasing Content for the Volume Purchasing Location with the supplied id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Volume Purchasing Location identifier
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest
+*/
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdContentGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return VolumePurchasingContentList
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdContentGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) (*VolumePurchasingContentList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *VolumePurchasingContentList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdContentGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}/content"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest struct {
+	ctx context.Context
+	ApiService VolumePurchasingLocationsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingLocationsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdDeleteExecute(r)
 }
 
@@ -305,10 +519,10 @@ Deletes a Volume Purchasing Location with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Location identifier
- @return ApiV1VolumePurchasingLocationsIdDeleteRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelete(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdDeleteRequest {
-	return ApiV1VolumePurchasingLocationsIdDeleteRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdDelete(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -316,20 +530,20 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelet
 }
 
 // Execute executes the request
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDeleteExecute(r ApiV1VolumePurchasingLocationsIdDeleteRequest) (*http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdDeleteExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -362,9 +576,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -381,7 +595,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelet
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -389,13 +604,13 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdDelet
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdGetRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingLocationsIdGetRequest) Execute() (*VolumePurchasingLocation, *http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest) Execute() (*VolumePurchasingLocation, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdGetExecute(r)
 }
 
@@ -406,10 +621,10 @@ Retrieves a Volume Purchasing Location with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Location identifier
- @return ApiV1VolumePurchasingLocationsIdGetRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdGetRequest {
-	return ApiV1VolumePurchasingLocationsIdGetRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -418,7 +633,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGet(c
 
 // Execute executes the request
 //  @return VolumePurchasingLocation
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetExecute(r ApiV1VolumePurchasingLocationsIdGetRequest) (*VolumePurchasingLocation, *http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdGetRequest) (*VolumePurchasingLocation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -426,13 +641,13 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetEx
 		localVarReturnValue  *VolumePurchasingLocation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -465,9 +680,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -484,7 +699,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -501,9 +717,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdGetEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdHistoryGetRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -511,29 +727,29 @@ type ApiV1VolumePurchasingLocationsIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) Page(page int32) ApiV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. 
-func (r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) Sort(sort []string) ApiV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Sort(sort []string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) Filter(filter string) ApiV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Filter(filter string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdHistoryGetExecute(r)
 }
 
@@ -545,10 +761,10 @@ Gets specified Volume Purchasing Location history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of Volume Purchasing Location history record
- @return ApiV1VolumePurchasingLocationsIdHistoryGetRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHistoryGet(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdHistoryGetRequest {
-	return ApiV1VolumePurchasingLocationsIdHistoryGetRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHistoryGet(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -557,7 +773,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHistoryGetExecute(r ApiV1VolumePurchasingLocationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHistoryGetExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -565,37 +781,49 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -624,9 +852,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -643,7 +871,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -660,20 +889,157 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdHisto
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdPatchRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
+	id string
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// history note to create
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+	return r.ApiService.V1VolumePurchasingLocationsIdHistoryPostExecute(r)
+}
+
+/*
+V1VolumePurchasingLocationsIdHistoryPost Add specified Volume Purchasing Location history object notes 
+
+Adds specified Volume Purchasing Location history object notes
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of Volume Purchasing Location history record
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest
+*/
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHistoryPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ObjectHistory
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHistoryPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ObjectHistory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest struct {
+	ctx context.Context
+	ApiService VolumePurchasingLocationsAPI
 	id string
 	volumePurchasingLocationPatch *VolumePurchasingLocationPatch
 }
 
 // Volume Purchasing Location to update
-func (r ApiV1VolumePurchasingLocationsIdPatchRequest) VolumePurchasingLocationPatch(volumePurchasingLocationPatch VolumePurchasingLocationPatch) ApiV1VolumePurchasingLocationsIdPatchRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest) VolumePurchasingLocationPatch(volumePurchasingLocationPatch VolumePurchasingLocationPatch) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest {
 	r.volumePurchasingLocationPatch = &volumePurchasingLocationPatch
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsIdPatchRequest) Execute() (*VolumePurchasingLocation, *http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest) Execute() (*VolumePurchasingLocation, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdPatchExecute(r)
 }
 
@@ -684,10 +1050,10 @@ Updates a Volume Purchasing Location
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Location identifier
- @return ApiV1VolumePurchasingLocationsIdPatchRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdPatchRequest {
-	return ApiV1VolumePurchasingLocationsIdPatchRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdPatch(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -696,7 +1062,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 
 // Execute executes the request
 //  @return VolumePurchasingLocation
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatchExecute(r ApiV1VolumePurchasingLocationsIdPatchRequest) (*VolumePurchasingLocation, *http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdPatchExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdPatchRequest) (*VolumePurchasingLocation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -704,13 +1070,13 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 		localVarReturnValue  *VolumePurchasingLocation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -748,9 +1114,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -767,7 +1133,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -777,7 +1144,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
@@ -787,7 +1155,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -804,13 +1173,13 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdPatch
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdReclaimPostRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingLocationsIdReclaimPostRequest) Execute() (*http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdReclaimPostExecute(r)
 }
 
@@ -821,10 +1190,10 @@ Reclaims a Volume Purchasing Location with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Location identifier
- @return ApiV1VolumePurchasingLocationsIdReclaimPostRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdReclaimPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdReclaimPostRequest {
-	return ApiV1VolumePurchasingLocationsIdReclaimPostRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdReclaimPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -832,20 +1201,20 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRecla
 }
 
 // Execute executes the request
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdReclaimPostExecute(r ApiV1VolumePurchasingLocationsIdReclaimPostRequest) (*http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdReclaimPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdReclaimPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdReclaimPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdReclaimPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}/reclaim"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -878,9 +1247,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRecla
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -896,13 +1265,13 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRecla
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	id string
 }
 
-func (r ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) Execute() (*http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r)
 }
 
@@ -913,10 +1282,10 @@ Revokes licenses for a Volume Purchasing Location with the supplied id. The lice
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Volume Purchasing Location identifier
- @return ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevokeLicensesPost(ctx context.Context, id string) ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest {
-	return ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdRevokeLicensesPost(ctx context.Context, id string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -924,20 +1293,20 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevok
 }
 
 // Execute executes the request
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r ApiV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) (*http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdRevokeLicensesPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdRevokeLicensesPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsIdRevokeLicensesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsIdRevokeLicensesPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/volume-purchasing-locations/{id}/revoke-licenses"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -970,9 +1339,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevok
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -989,7 +1358,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevok
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -997,19 +1367,19 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsIdRevok
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1VolumePurchasingLocationsPostRequest struct {
+type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest struct {
 	ctx context.Context
-	ApiService VolumePurchasingLocationsApi
+	ApiService VolumePurchasingLocationsAPI
 	volumePurchasingLocationPost *VolumePurchasingLocationPost
 }
 
 // Volume Purchasing Location to create
-func (r ApiV1VolumePurchasingLocationsPostRequest) VolumePurchasingLocationPost(volumePurchasingLocationPost VolumePurchasingLocationPost) ApiV1VolumePurchasingLocationsPostRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest) VolumePurchasingLocationPost(volumePurchasingLocationPost VolumePurchasingLocationPost) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest {
 	r.volumePurchasingLocationPost = &volumePurchasingLocationPost
 	return r
 }
 
-func (r ApiV1VolumePurchasingLocationsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1VolumePurchasingLocationsPostExecute(r)
 }
 
@@ -1019,10 +1389,10 @@ V1VolumePurchasingLocationsPost Create a Volume Purchasing Location
 Creates a Volume Purchasing Location using an sToken
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1VolumePurchasingLocationsPostRequest
+ @return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest
 */
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPost(ctx context.Context) ApiV1VolumePurchasingLocationsPostRequest {
-	return ApiV1VolumePurchasingLocationsPostRequest{
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsPost(ctx context.Context) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest {
+	return VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1030,7 +1400,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPost(ct
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPostExecute(r ApiV1VolumePurchasingLocationsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsPostExecute(r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1038,7 +1408,7 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPostExe
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsApiService.V1VolumePurchasingLocationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingLocationsAPIService.V1VolumePurchasingLocationsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1081,9 +1451,9 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPostExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1100,7 +1470,8 @@ func (a *VolumePurchasingLocationsApiService) V1VolumePurchasingLocationsPostExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

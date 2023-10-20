@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CacheSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CacheSettings{}
+
 // CacheSettings struct for CacheSettings
 type CacheSettings struct {
 	Id *string `json:"id,omitempty"`
@@ -64,7 +67,7 @@ func NewCacheSettingsWithDefaults() *CacheSettings {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CacheSettings) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -74,7 +77,7 @@ func (o *CacheSettings) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -82,7 +85,7 @@ func (o *CacheSettings) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CacheSettings) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *CacheSettings) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CacheSettings) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *CacheSettings) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -114,7 +117,7 @@ func (o *CacheSettings) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *CacheSettings) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *CacheSettings) SetTimeToLiveSeconds(v int32) {
 
 // GetTimeToIdleSeconds returns the TimeToIdleSeconds field value if set, zero value otherwise.
 func (o *CacheSettings) GetTimeToIdleSeconds() int32 {
-	if o == nil || o.TimeToIdleSeconds == nil {
+	if o == nil || IsNil(o.TimeToIdleSeconds) {
 		var ret int32
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *CacheSettings) GetTimeToIdleSeconds() int32 {
 // GetTimeToIdleSecondsOk returns a tuple with the TimeToIdleSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int32, bool) {
-	if o == nil || o.TimeToIdleSeconds == nil {
+	if o == nil || IsNil(o.TimeToIdleSeconds) {
 		return nil, false
 	}
 	return o.TimeToIdleSeconds, true
@@ -194,7 +197,7 @@ func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int32, bool) {
 
 // HasTimeToIdleSeconds returns a boolean if a field has been set.
 func (o *CacheSettings) HasTimeToIdleSeconds() bool {
-	if o != nil && o.TimeToIdleSeconds != nil {
+	if o != nil && !IsNil(o.TimeToIdleSeconds) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *CacheSettings) SetTimeToIdleSeconds(v int32) {
 
 // GetDirectoryTimeToLiveSeconds returns the DirectoryTimeToLiveSeconds field value if set, zero value otherwise.
 func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int32 {
-	if o == nil || o.DirectoryTimeToLiveSeconds == nil {
+	if o == nil || IsNil(o.DirectoryTimeToLiveSeconds) {
 		var ret int32
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int32 {
 // GetDirectoryTimeToLiveSecondsOk returns a tuple with the DirectoryTimeToLiveSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int32, bool) {
-	if o == nil || o.DirectoryTimeToLiveSeconds == nil {
+	if o == nil || IsNil(o.DirectoryTimeToLiveSeconds) {
 		return nil, false
 	}
 	return o.DirectoryTimeToLiveSeconds, true
@@ -226,7 +229,7 @@ func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int32, bool) {
 
 // HasDirectoryTimeToLiveSeconds returns a boolean if a field has been set.
 func (o *CacheSettings) HasDirectoryTimeToLiveSeconds() bool {
-	if o != nil && o.DirectoryTimeToLiveSeconds != nil {
+	if o != nil && !IsNil(o.DirectoryTimeToLiveSeconds) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *CacheSettings) SetDirectoryTimeToLiveSeconds(v int32) {
 
 // GetEhcacheMaxBytesLocalHeap returns the EhcacheMaxBytesLocalHeap field value if set, zero value otherwise.
 func (o *CacheSettings) GetEhcacheMaxBytesLocalHeap() string {
-	if o == nil || o.EhcacheMaxBytesLocalHeap == nil {
+	if o == nil || IsNil(o.EhcacheMaxBytesLocalHeap) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *CacheSettings) GetEhcacheMaxBytesLocalHeap() string {
 // GetEhcacheMaxBytesLocalHeapOk returns a tuple with the EhcacheMaxBytesLocalHeap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetEhcacheMaxBytesLocalHeapOk() (*string, bool) {
-	if o == nil || o.EhcacheMaxBytesLocalHeap == nil {
+	if o == nil || IsNil(o.EhcacheMaxBytesLocalHeap) {
 		return nil, false
 	}
 	return o.EhcacheMaxBytesLocalHeap, true
@@ -258,7 +261,7 @@ func (o *CacheSettings) GetEhcacheMaxBytesLocalHeapOk() (*string, bool) {
 
 // HasEhcacheMaxBytesLocalHeap returns a boolean if a field has been set.
 func (o *CacheSettings) HasEhcacheMaxBytesLocalHeap() bool {
-	if o != nil && o.EhcacheMaxBytesLocalHeap != nil {
+	if o != nil && !IsNil(o.EhcacheMaxBytesLocalHeap) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *CacheSettings) SetCacheUniqueId(v string) {
 
 // GetElasticache returns the Elasticache field value if set, zero value otherwise.
 func (o *CacheSettings) GetElasticache() bool {
-	if o == nil || o.Elasticache == nil {
+	if o == nil || IsNil(o.Elasticache) {
 		var ret bool
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *CacheSettings) GetElasticache() bool {
 // GetElasticacheOk returns a tuple with the Elasticache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CacheSettings) GetElasticacheOk() (*bool, bool) {
-	if o == nil || o.Elasticache == nil {
+	if o == nil || IsNil(o.Elasticache) {
 		return nil, false
 	}
 	return o.Elasticache, true
@@ -314,7 +317,7 @@ func (o *CacheSettings) GetElasticacheOk() (*bool, bool) {
 
 // HasElasticache returns a boolean if a field has been set.
 func (o *CacheSettings) HasElasticache() bool {
-	if o != nil && o.Elasticache != nil {
+	if o != nil && !IsNil(o.Elasticache) {
 		return true
 	}
 
@@ -351,38 +354,38 @@ func (o *CacheSettings) SetMemcachedEndpoints(v []MemcachedEndpoints) {
 }
 
 func (o CacheSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if true {
-		toSerialize["cacheType"] = o.CacheType
-	}
-	if true {
-		toSerialize["timeToLiveSeconds"] = o.TimeToLiveSeconds
-	}
-	if o.TimeToIdleSeconds != nil {
-		toSerialize["timeToIdleSeconds"] = o.TimeToIdleSeconds
-	}
-	if o.DirectoryTimeToLiveSeconds != nil {
-		toSerialize["directoryTimeToLiveSeconds"] = o.DirectoryTimeToLiveSeconds
-	}
-	if o.EhcacheMaxBytesLocalHeap != nil {
-		toSerialize["ehcacheMaxBytesLocalHeap"] = o.EhcacheMaxBytesLocalHeap
-	}
-	if true {
-		toSerialize["cacheUniqueId"] = o.CacheUniqueId
-	}
-	if o.Elasticache != nil {
-		toSerialize["elasticache"] = o.Elasticache
-	}
-	if true {
-		toSerialize["memcachedEndpoints"] = o.MemcachedEndpoints
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CacheSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	toSerialize["cacheType"] = o.CacheType
+	toSerialize["timeToLiveSeconds"] = o.TimeToLiveSeconds
+	if !IsNil(o.TimeToIdleSeconds) {
+		toSerialize["timeToIdleSeconds"] = o.TimeToIdleSeconds
+	}
+	if !IsNil(o.DirectoryTimeToLiveSeconds) {
+		toSerialize["directoryTimeToLiveSeconds"] = o.DirectoryTimeToLiveSeconds
+	}
+	if !IsNil(o.EhcacheMaxBytesLocalHeap) {
+		toSerialize["ehcacheMaxBytesLocalHeap"] = o.EhcacheMaxBytesLocalHeap
+	}
+	toSerialize["cacheUniqueId"] = o.CacheUniqueId
+	if !IsNil(o.Elasticache) {
+		toSerialize["elasticache"] = o.Elasticache
+	}
+	toSerialize["memcachedEndpoints"] = o.MemcachedEndpoints
+	return toSerialize, nil
 }
 
 type NullableCacheSettings struct {

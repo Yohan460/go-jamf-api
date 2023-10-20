@@ -14,12 +14,15 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthorizationV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthorizationV1{}
+
 // AuthorizationV1 struct for AuthorizationV1
 type AuthorizationV1 struct {
 	Account *AuthAccountV1 `json:"account,omitempty"`
 	AccountGroups []AccountGroup `json:"accountGroups,omitempty"`
 	Sites []V1Site `json:"sites,omitempty"`
-	AuthenticationType *string `json:"authenticationType,omitempty"`
+	AuthenticationType *AuthenticationType `json:"authenticationType,omitempty"`
 }
 
 // NewAuthorizationV1 instantiates a new AuthorizationV1 object
@@ -41,7 +44,7 @@ func NewAuthorizationV1WithDefaults() *AuthorizationV1 {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *AuthorizationV1) GetAccount() AuthAccountV1 {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		var ret AuthAccountV1
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *AuthorizationV1) GetAccount() AuthAccountV1 {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationV1) GetAccountOk() (*AuthAccountV1, bool) {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -59,7 +62,7 @@ func (o *AuthorizationV1) GetAccountOk() (*AuthAccountV1, bool) {
 
 // HasAccount returns a boolean if a field has been set.
 func (o *AuthorizationV1) HasAccount() bool {
-	if o != nil && o.Account != nil {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *AuthorizationV1) SetAccount(v AuthAccountV1) {
 
 // GetAccountGroups returns the AccountGroups field value if set, zero value otherwise.
 func (o *AuthorizationV1) GetAccountGroups() []AccountGroup {
-	if o == nil || o.AccountGroups == nil {
+	if o == nil || IsNil(o.AccountGroups) {
 		var ret []AccountGroup
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *AuthorizationV1) GetAccountGroups() []AccountGroup {
 // GetAccountGroupsOk returns a tuple with the AccountGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationV1) GetAccountGroupsOk() ([]AccountGroup, bool) {
-	if o == nil || o.AccountGroups == nil {
+	if o == nil || IsNil(o.AccountGroups) {
 		return nil, false
 	}
 	return o.AccountGroups, true
@@ -91,7 +94,7 @@ func (o *AuthorizationV1) GetAccountGroupsOk() ([]AccountGroup, bool) {
 
 // HasAccountGroups returns a boolean if a field has been set.
 func (o *AuthorizationV1) HasAccountGroups() bool {
-	if o != nil && o.AccountGroups != nil {
+	if o != nil && !IsNil(o.AccountGroups) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *AuthorizationV1) SetAccountGroups(v []AccountGroup) {
 
 // GetSites returns the Sites field value if set, zero value otherwise.
 func (o *AuthorizationV1) GetSites() []V1Site {
-	if o == nil || o.Sites == nil {
+	if o == nil || IsNil(o.Sites) {
 		var ret []V1Site
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *AuthorizationV1) GetSites() []V1Site {
 // GetSitesOk returns a tuple with the Sites field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthorizationV1) GetSitesOk() ([]V1Site, bool) {
-	if o == nil || o.Sites == nil {
+	if o == nil || IsNil(o.Sites) {
 		return nil, false
 	}
 	return o.Sites, true
@@ -123,7 +126,7 @@ func (o *AuthorizationV1) GetSitesOk() ([]V1Site, bool) {
 
 // HasSites returns a boolean if a field has been set.
 func (o *AuthorizationV1) HasSites() bool {
-	if o != nil && o.Sites != nil {
+	if o != nil && !IsNil(o.Sites) {
 		return true
 	}
 
@@ -136,9 +139,9 @@ func (o *AuthorizationV1) SetSites(v []V1Site) {
 }
 
 // GetAuthenticationType returns the AuthenticationType field value if set, zero value otherwise.
-func (o *AuthorizationV1) GetAuthenticationType() string {
-	if o == nil || o.AuthenticationType == nil {
-		var ret string
+func (o *AuthorizationV1) GetAuthenticationType() AuthenticationType {
+	if o == nil || IsNil(o.AuthenticationType) {
+		var ret AuthenticationType
 		return ret
 	}
 	return *o.AuthenticationType
@@ -146,8 +149,8 @@ func (o *AuthorizationV1) GetAuthenticationType() string {
 
 // GetAuthenticationTypeOk returns a tuple with the AuthenticationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizationV1) GetAuthenticationTypeOk() (*string, bool) {
-	if o == nil || o.AuthenticationType == nil {
+func (o *AuthorizationV1) GetAuthenticationTypeOk() (*AuthenticationType, bool) {
+	if o == nil || IsNil(o.AuthenticationType) {
 		return nil, false
 	}
 	return o.AuthenticationType, true
@@ -155,33 +158,41 @@ func (o *AuthorizationV1) GetAuthenticationTypeOk() (*string, bool) {
 
 // HasAuthenticationType returns a boolean if a field has been set.
 func (o *AuthorizationV1) HasAuthenticationType() bool {
-	if o != nil && o.AuthenticationType != nil {
+	if o != nil && !IsNil(o.AuthenticationType) {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthenticationType gets a reference to the given string and assigns it to the AuthenticationType field.
-func (o *AuthorizationV1) SetAuthenticationType(v string) {
+// SetAuthenticationType gets a reference to the given AuthenticationType and assigns it to the AuthenticationType field.
+func (o *AuthorizationV1) SetAuthenticationType(v AuthenticationType) {
 	o.AuthenticationType = &v
 }
 
 func (o AuthorizationV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Account != nil {
-		toSerialize["account"] = o.Account
-	}
-	if o.AccountGroups != nil {
-		toSerialize["accountGroups"] = o.AccountGroups
-	}
-	if o.Sites != nil {
-		toSerialize["sites"] = o.Sites
-	}
-	if o.AuthenticationType != nil {
-		toSerialize["authenticationType"] = o.AuthenticationType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthorizationV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.AccountGroups) {
+		toSerialize["accountGroups"] = o.AccountGroups
+	}
+	if !IsNil(o.Sites) {
+		toSerialize["sites"] = o.Sites
+	}
+	if !IsNil(o.AuthenticationType) {
+		toSerialize["authenticationType"] = o.AuthenticationType
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthorizationV1 struct {

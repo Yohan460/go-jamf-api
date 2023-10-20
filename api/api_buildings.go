@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type BuildingsApi interface {
+type BuildingsAPI interface {
 
 	/*
 	V1BuildingsDeleteMultiplePost Delete multiple Buildings by their ids 
@@ -29,12 +29,27 @@ type BuildingsApi interface {
 	multiple many Buildings by their ids
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1BuildingsDeleteMultiplePostRequest
+	@return BuildingsAPIV1BuildingsDeleteMultiplePostRequest
 	*/
-	V1BuildingsDeleteMultiplePost(ctx context.Context) ApiV1BuildingsDeleteMultiplePostRequest
+	V1BuildingsDeleteMultiplePost(ctx context.Context) BuildingsAPIV1BuildingsDeleteMultiplePostRequest
 
 	// V1BuildingsDeleteMultiplePostExecute executes the request
-	V1BuildingsDeleteMultiplePostExecute(r ApiV1BuildingsDeleteMultiplePostRequest) (*http.Response, error)
+	V1BuildingsDeleteMultiplePostExecute(r BuildingsAPIV1BuildingsDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V1BuildingsExportPost Export Buildings collection 
+
+	Export Buildings collection
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return BuildingsAPIV1BuildingsExportPostRequest
+	*/
+	V1BuildingsExportPost(ctx context.Context) BuildingsAPIV1BuildingsExportPostRequest
+
+	// V1BuildingsExportPostExecute executes the request
+	//  @return interface{}
+	V1BuildingsExportPostExecute(r BuildingsAPIV1BuildingsExportPostRequest) (interface{}, *http.Response, error)
 
 	/*
 	V1BuildingsGet Search for sorted and paged Buildings 
@@ -42,13 +57,13 @@ type BuildingsApi interface {
 	Search for sorted and paged buildings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1BuildingsGetRequest
+	@return BuildingsAPIV1BuildingsGetRequest
 	*/
-	V1BuildingsGet(ctx context.Context) ApiV1BuildingsGetRequest
+	V1BuildingsGet(ctx context.Context) BuildingsAPIV1BuildingsGetRequest
 
 	// V1BuildingsGetExecute executes the request
 	//  @return BuildingSearchResults
-	V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) (*BuildingSearchResults, *http.Response, error)
+	V1BuildingsGetExecute(r BuildingsAPIV1BuildingsGetRequest) (*BuildingSearchResults, *http.Response, error)
 
 	/*
 	V1BuildingsIdDelete Remove specified Building record 
@@ -58,12 +73,12 @@ type BuildingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of building record
-	@return ApiV1BuildingsIdDeleteRequest
+	@return BuildingsAPIV1BuildingsIdDeleteRequest
 	*/
-	V1BuildingsIdDelete(ctx context.Context, id string) ApiV1BuildingsIdDeleteRequest
+	V1BuildingsIdDelete(ctx context.Context, id string) BuildingsAPIV1BuildingsIdDeleteRequest
 
 	// V1BuildingsIdDeleteExecute executes the request
-	V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDeleteRequest) (*http.Response, error)
+	V1BuildingsIdDeleteExecute(r BuildingsAPIV1BuildingsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1BuildingsIdGet Get specified Building object 
@@ -73,13 +88,29 @@ type BuildingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of building record
-	@return ApiV1BuildingsIdGetRequest
+	@return BuildingsAPIV1BuildingsIdGetRequest
 	*/
-	V1BuildingsIdGet(ctx context.Context, id string) ApiV1BuildingsIdGetRequest
+	V1BuildingsIdGet(ctx context.Context, id string) BuildingsAPIV1BuildingsIdGetRequest
 
 	// V1BuildingsIdGetExecute executes the request
 	//  @return Building
-	V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetRequest) (*Building, *http.Response, error)
+	V1BuildingsIdGetExecute(r BuildingsAPIV1BuildingsIdGetRequest) (*Building, *http.Response, error)
+
+	/*
+	V1BuildingsIdHistoryExportPost Export history object collection in specified format for specified Buildings 
+
+	Export history object collection in specified format for specified Buildings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of buildings
+	@return BuildingsAPIV1BuildingsIdHistoryExportPostRequest
+	*/
+	V1BuildingsIdHistoryExportPost(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest
+
+	// V1BuildingsIdHistoryExportPostExecute executes the request
+	//  @return interface{}
+	V1BuildingsIdHistoryExportPostExecute(r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) (interface{}, *http.Response, error)
 
 	/*
 	V1BuildingsIdHistoryGet Get specified Building History object 
@@ -89,13 +120,13 @@ type BuildingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of building history record
-	@return ApiV1BuildingsIdHistoryGetRequest
+	@return BuildingsAPIV1BuildingsIdHistoryGetRequest
 	*/
-	V1BuildingsIdHistoryGet(ctx context.Context, id string) ApiV1BuildingsIdHistoryGetRequest
+	V1BuildingsIdHistoryGet(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryGetRequest
 
 	// V1BuildingsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1BuildingsIdHistoryGetExecute(r BuildingsAPIV1BuildingsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1BuildingsIdHistoryPost Add specified Building history object notes 
@@ -105,13 +136,13 @@ type BuildingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of building history record
-	@return ApiV1BuildingsIdHistoryPostRequest
+	@return BuildingsAPIV1BuildingsIdHistoryPostRequest
 	*/
-	V1BuildingsIdHistoryPost(ctx context.Context, id string) ApiV1BuildingsIdHistoryPostRequest
+	V1BuildingsIdHistoryPost(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryPostRequest
 
 	// V1BuildingsIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1BuildingsIdHistoryPostExecute(r BuildingsAPIV1BuildingsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1BuildingsIdPut Update specified Building object 
@@ -121,13 +152,13 @@ type BuildingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of building record
-	@return ApiV1BuildingsIdPutRequest
+	@return BuildingsAPIV1BuildingsIdPutRequest
 	*/
-	V1BuildingsIdPut(ctx context.Context, id string) ApiV1BuildingsIdPutRequest
+	V1BuildingsIdPut(ctx context.Context, id string) BuildingsAPIV1BuildingsIdPutRequest
 
 	// V1BuildingsIdPutExecute executes the request
 	//  @return Building
-	V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutRequest) (*Building, *http.Response, error)
+	V1BuildingsIdPutExecute(r BuildingsAPIV1BuildingsIdPutRequest) (*Building, *http.Response, error)
 
 	/*
 	V1BuildingsPost Create Building record 
@@ -136,31 +167,31 @@ type BuildingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1BuildingsPostRequest
+	@return BuildingsAPIV1BuildingsPostRequest
 	*/
-	V1BuildingsPost(ctx context.Context) ApiV1BuildingsPostRequest
+	V1BuildingsPost(ctx context.Context) BuildingsAPIV1BuildingsPostRequest
 
 	// V1BuildingsPostExecute executes the request
 	//  @return HrefResponse
-	V1BuildingsPostExecute(r ApiV1BuildingsPostRequest) (*HrefResponse, *http.Response, error)
+	V1BuildingsPostExecute(r BuildingsAPIV1BuildingsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// BuildingsApiService BuildingsApi service
-type BuildingsApiService service
+// BuildingsAPIService BuildingsAPI service
+type BuildingsAPIService service
 
-type ApiV1BuildingsDeleteMultiplePostRequest struct {
+type BuildingsAPIV1BuildingsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	ids *Ids
 }
 
 // ids of the building to be deleted
-func (r ApiV1BuildingsDeleteMultiplePostRequest) Ids(ids Ids) ApiV1BuildingsDeleteMultiplePostRequest {
+func (r BuildingsAPIV1BuildingsDeleteMultiplePostRequest) Ids(ids Ids) BuildingsAPIV1BuildingsDeleteMultiplePostRequest {
 	r.ids = &ids
 	return r
 }
 
-func (r ApiV1BuildingsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
+func (r BuildingsAPIV1BuildingsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1BuildingsDeleteMultiplePostExecute(r)
 }
 
@@ -170,24 +201,24 @@ V1BuildingsDeleteMultiplePost Delete multiple Buildings by their ids
 multiple many Buildings by their ids
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1BuildingsDeleteMultiplePostRequest
+ @return BuildingsAPIV1BuildingsDeleteMultiplePostRequest
 */
-func (a *BuildingsApiService) V1BuildingsDeleteMultiplePost(ctx context.Context) ApiV1BuildingsDeleteMultiplePostRequest {
-	return ApiV1BuildingsDeleteMultiplePostRequest{
+func (a *BuildingsAPIService) V1BuildingsDeleteMultiplePost(ctx context.Context) BuildingsAPIV1BuildingsDeleteMultiplePostRequest {
+	return BuildingsAPIV1BuildingsDeleteMultiplePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *BuildingsApiService) V1BuildingsDeleteMultiplePostExecute(r ApiV1BuildingsDeleteMultiplePostRequest) (*http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsDeleteMultiplePostExecute(r BuildingsAPIV1BuildingsDeleteMultiplePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsDeleteMultiplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsDeleteMultiplePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -230,9 +261,9 @@ func (a *BuildingsApiService) V1BuildingsDeleteMultiplePostExecute(r ApiV1Buildi
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -249,7 +280,8 @@ func (a *BuildingsApiService) V1BuildingsDeleteMultiplePostExecute(r ApiV1Buildi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -257,38 +289,268 @@ func (a *BuildingsApiService) V1BuildingsDeleteMultiplePostExecute(r ApiV1Buildi
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsGetRequest struct {
+type BuildingsAPIV1BuildingsExportPostRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
+	exportFields *[]string
+	exportLabels *[]string
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+	exportParameters *ExportParameters
+}
+
+// Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
+func (r BuildingsAPIV1BuildingsExportPostRequest) ExportFields(exportFields []string) BuildingsAPIV1BuildingsExportPostRequest {
+	r.exportFields = &exportFields
+	return r
+}
+
+// Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
+func (r BuildingsAPIV1BuildingsExportPostRequest) ExportLabels(exportLabels []string) BuildingsAPIV1BuildingsExportPostRequest {
+	r.exportLabels = &exportLabels
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsExportPostRequest) Page(page int32) BuildingsAPIV1BuildingsExportPostRequest {
+	r.page = &page
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsExportPostRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsExportPostRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc 
+func (r BuildingsAPIV1BuildingsExportPostRequest) Sort(sort []string) BuildingsAPIV1BuildingsExportPostRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*buildings*\&quot;
+func (r BuildingsAPIV1BuildingsExportPostRequest) Filter(filter string) BuildingsAPIV1BuildingsExportPostRequest {
+	r.filter = &filter
+	return r
+}
+
+// Optional. Override query parameters since they can make URI exceed 2,000 character limit.
+func (r BuildingsAPIV1BuildingsExportPostRequest) ExportParameters(exportParameters ExportParameters) BuildingsAPIV1BuildingsExportPostRequest {
+	r.exportParameters = &exportParameters
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsExportPostRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.V1BuildingsExportPostExecute(r)
+}
+
+/*
+V1BuildingsExportPost Export Buildings collection 
+
+Export Buildings collection
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return BuildingsAPIV1BuildingsExportPostRequest
+*/
+func (a *BuildingsAPIService) V1BuildingsExportPost(ctx context.Context) BuildingsAPIV1BuildingsExportPostRequest {
+	return BuildingsAPIV1BuildingsExportPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return interface{}
+func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1BuildingsExportPostRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsExportPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/buildings/export"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.exportFields != nil {
+		t := *r.exportFields
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportFields = &defaultValue
+	}
+	if r.exportLabels != nil {
+		t := *r.exportLabels
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportLabels = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.exportParameters
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BuildingsAPIV1BuildingsGetRequest struct {
+	ctx context.Context
+	ApiService BuildingsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1BuildingsGetRequest) Page(page int32) ApiV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) Page(page int32) BuildingsAPIV1BuildingsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1BuildingsGetRequest) PageSize(pageSize int32) ApiV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1BuildingsGetRequest) Sort(sort []string) ApiV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) Sort(sort []string) BuildingsAPIV1BuildingsGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter buildings collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, streetAddress1, streetAddress2, city, stateProvince, zipPostalCode, country. This param can be combined with paging and sorting. Example: filter&#x3D;city&#x3D;&#x3D;\&quot;Chicago\&quot; and name&#x3D;&#x3D;\&quot;*build*\&quot;
-func (r ApiV1BuildingsGetRequest) Filter(filter string) ApiV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) Filter(filter string) BuildingsAPIV1BuildingsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1BuildingsGetRequest) Execute() (*BuildingSearchResults, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsGetRequest) Execute() (*BuildingSearchResults, *http.Response, error) {
 	return r.ApiService.V1BuildingsGetExecute(r)
 }
 
@@ -298,10 +560,10 @@ V1BuildingsGet Search for sorted and paged Buildings
 Search for sorted and paged buildings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1BuildingsGetRequest
+ @return BuildingsAPIV1BuildingsGetRequest
 */
-func (a *BuildingsApiService) V1BuildingsGet(ctx context.Context) ApiV1BuildingsGetRequest {
-	return ApiV1BuildingsGetRequest{
+func (a *BuildingsAPIService) V1BuildingsGet(ctx context.Context) BuildingsAPIV1BuildingsGetRequest {
+	return BuildingsAPIV1BuildingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -309,7 +571,7 @@ func (a *BuildingsApiService) V1BuildingsGet(ctx context.Context) ApiV1Buildings
 
 // Execute executes the request
 //  @return BuildingSearchResults
-func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) (*BuildingSearchResults, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsGetExecute(r BuildingsAPIV1BuildingsGetRequest) (*BuildingSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -317,7 +579,7 @@ func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) 
 		localVarReturnValue  *BuildingSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -329,24 +591,36 @@ func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) 
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -375,9 +649,9 @@ func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -402,13 +676,13 @@ func (a *BuildingsApiService) V1BuildingsGetExecute(r ApiV1BuildingsGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsIdDeleteRequest struct {
+type BuildingsAPIV1BuildingsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	id string
 }
 
-func (r ApiV1BuildingsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r BuildingsAPIV1BuildingsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1BuildingsIdDeleteExecute(r)
 }
 
@@ -420,10 +694,10 @@ Removes specified building record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of building record
- @return ApiV1BuildingsIdDeleteRequest
+ @return BuildingsAPIV1BuildingsIdDeleteRequest
 */
-func (a *BuildingsApiService) V1BuildingsIdDelete(ctx context.Context, id string) ApiV1BuildingsIdDeleteRequest {
-	return ApiV1BuildingsIdDeleteRequest{
+func (a *BuildingsAPIService) V1BuildingsIdDelete(ctx context.Context, id string) BuildingsAPIV1BuildingsIdDeleteRequest {
+	return BuildingsAPIV1BuildingsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -431,20 +705,20 @@ func (a *BuildingsApiService) V1BuildingsIdDelete(ctx context.Context, id string
 }
 
 // Execute executes the request
-func (a *BuildingsApiService) V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDeleteRequest) (*http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsIdDeleteExecute(r BuildingsAPIV1BuildingsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/buildings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -477,9 +751,9 @@ func (a *BuildingsApiService) V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDelet
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -495,13 +769,13 @@ func (a *BuildingsApiService) V1BuildingsIdDeleteExecute(r ApiV1BuildingsIdDelet
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsIdGetRequest struct {
+type BuildingsAPIV1BuildingsIdGetRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	id string
 }
 
-func (r ApiV1BuildingsIdGetRequest) Execute() (*Building, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsIdGetRequest) Execute() (*Building, *http.Response, error) {
 	return r.ApiService.V1BuildingsIdGetExecute(r)
 }
 
@@ -513,10 +787,10 @@ Gets specified Building object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of building record
- @return ApiV1BuildingsIdGetRequest
+ @return BuildingsAPIV1BuildingsIdGetRequest
 */
-func (a *BuildingsApiService) V1BuildingsIdGet(ctx context.Context, id string) ApiV1BuildingsIdGetRequest {
-	return ApiV1BuildingsIdGetRequest{
+func (a *BuildingsAPIService) V1BuildingsIdGet(ctx context.Context, id string) BuildingsAPIV1BuildingsIdGetRequest {
+	return BuildingsAPIV1BuildingsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -525,7 +799,7 @@ func (a *BuildingsApiService) V1BuildingsIdGet(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return Building
-func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetRequest) (*Building, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsIdGetExecute(r BuildingsAPIV1BuildingsIdGetRequest) (*Building, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -533,13 +807,13 @@ func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetReque
 		localVarReturnValue  *Building
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/buildings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -572,9 +846,9 @@ func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -591,7 +865,8 @@ func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -608,9 +883,243 @@ func (a *BuildingsApiService) V1BuildingsIdGetExecute(r ApiV1BuildingsIdGetReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsIdHistoryGetRequest struct {
+type BuildingsAPIV1BuildingsIdHistoryExportPostRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
+	id string
+	exportFields *[]string
+	exportLabels *[]string
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+	exportParameters *ExportParameters
+}
+
+// Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) ExportFields(exportFields []string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.exportFields = &exportFields
+	return r
+}
+
+// Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) ExportLabels(exportLabels []string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.exportLabels = &exportLabels
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Page(page int32) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.page = &page
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Sort(sort []string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Filter(filter string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.filter = &filter
+	return r
+}
+
+// Optional. Override query parameters since they can make URI exceed 2,000 character limit.
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) ExportParameters(exportParameters ExportParameters) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	r.exportParameters = &exportParameters
+	return r
+}
+
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.V1BuildingsIdHistoryExportPostExecute(r)
+}
+
+/*
+V1BuildingsIdHistoryExportPost Export history object collection in specified format for specified Buildings 
+
+Export history object collection in specified format for specified Buildings
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of buildings
+ @return BuildingsAPIV1BuildingsIdHistoryExportPostRequest
+*/
+func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPost(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+	return BuildingsAPIV1BuildingsIdHistoryExportPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return interface{}
+func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPostExecute(r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdHistoryExportPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/buildings/{id}/history/export"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.exportFields != nil {
+		t := *r.exportFields
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportFields = &defaultValue
+	}
+	if r.exportLabels != nil {
+		t := *r.exportLabels
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportLabels = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.exportParameters
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type BuildingsAPIV1BuildingsIdHistoryGetRequest struct {
+	ctx context.Context
+	ApiService BuildingsAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -618,29 +1127,29 @@ type ApiV1BuildingsIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1BuildingsIdHistoryGetRequest) Page(page int32) ApiV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Page(page int32) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1BuildingsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1BuildingsIdHistoryGetRequest) Sort(sort []string) ApiV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Sort(sort []string) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1BuildingsIdHistoryGetRequest) Filter(filter string) ApiV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Filter(filter string) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1BuildingsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1BuildingsIdHistoryGetExecute(r)
 }
 
@@ -652,10 +1161,10 @@ Gets specified Building history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of building history record
- @return ApiV1BuildingsIdHistoryGetRequest
+ @return BuildingsAPIV1BuildingsIdHistoryGetRequest
 */
-func (a *BuildingsApiService) V1BuildingsIdHistoryGet(ctx context.Context, id string) ApiV1BuildingsIdHistoryGetRequest {
-	return ApiV1BuildingsIdHistoryGetRequest{
+func (a *BuildingsAPIService) V1BuildingsIdHistoryGet(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryGetRequest {
+	return BuildingsAPIV1BuildingsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -664,7 +1173,7 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGet(ctx context.Context, id st
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsIdHistoryGetExecute(r BuildingsAPIV1BuildingsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -672,37 +1181,49 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdH
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/buildings/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -731,9 +1252,9 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdH
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -750,7 +1271,8 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdH
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -767,20 +1289,20 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryGetExecute(r ApiV1BuildingsIdH
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsIdHistoryPostRequest struct {
+type BuildingsAPIV1BuildingsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1BuildingsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1BuildingsIdHistoryPostRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) BuildingsAPIV1BuildingsIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1BuildingsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1BuildingsIdHistoryPostExecute(r)
 }
 
@@ -792,10 +1314,10 @@ Adds specified Building history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of building history record
- @return ApiV1BuildingsIdHistoryPostRequest
+ @return BuildingsAPIV1BuildingsIdHistoryPostRequest
 */
-func (a *BuildingsApiService) V1BuildingsIdHistoryPost(ctx context.Context, id string) ApiV1BuildingsIdHistoryPostRequest {
-	return ApiV1BuildingsIdHistoryPostRequest{
+func (a *BuildingsAPIService) V1BuildingsIdHistoryPost(ctx context.Context, id string) BuildingsAPIV1BuildingsIdHistoryPostRequest {
+	return BuildingsAPIV1BuildingsIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -804,7 +1326,7 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPost(ctx context.Context, id s
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsIdHistoryPostExecute(r BuildingsAPIV1BuildingsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -812,13 +1334,13 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/buildings/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -856,9 +1378,9 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -875,7 +1397,8 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -885,7 +1408,8 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -902,20 +1426,20 @@ func (a *BuildingsApiService) V1BuildingsIdHistoryPostExecute(r ApiV1BuildingsId
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsIdPutRequest struct {
+type BuildingsAPIV1BuildingsIdPutRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	id string
 	building *Building
 }
 
 // building object to update. ids defined in this body will be ignored
-func (r ApiV1BuildingsIdPutRequest) Building(building Building) ApiV1BuildingsIdPutRequest {
+func (r BuildingsAPIV1BuildingsIdPutRequest) Building(building Building) BuildingsAPIV1BuildingsIdPutRequest {
 	r.building = &building
 	return r
 }
 
-func (r ApiV1BuildingsIdPutRequest) Execute() (*Building, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsIdPutRequest) Execute() (*Building, *http.Response, error) {
 	return r.ApiService.V1BuildingsIdPutExecute(r)
 }
 
@@ -927,10 +1451,10 @@ Update specified building object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of building record
- @return ApiV1BuildingsIdPutRequest
+ @return BuildingsAPIV1BuildingsIdPutRequest
 */
-func (a *BuildingsApiService) V1BuildingsIdPut(ctx context.Context, id string) ApiV1BuildingsIdPutRequest {
-	return ApiV1BuildingsIdPutRequest{
+func (a *BuildingsAPIService) V1BuildingsIdPut(ctx context.Context, id string) BuildingsAPIV1BuildingsIdPutRequest {
+	return BuildingsAPIV1BuildingsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -939,7 +1463,7 @@ func (a *BuildingsApiService) V1BuildingsIdPut(ctx context.Context, id string) A
 
 // Execute executes the request
 //  @return Building
-func (a *BuildingsApiService) V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutRequest) (*Building, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsIdPutExecute(r BuildingsAPIV1BuildingsIdPutRequest) (*Building, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -947,13 +1471,13 @@ func (a *BuildingsApiService) V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutReque
 		localVarReturnValue  *Building
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/buildings/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -991,9 +1515,9 @@ func (a *BuildingsApiService) V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1018,19 +1542,19 @@ func (a *BuildingsApiService) V1BuildingsIdPutExecute(r ApiV1BuildingsIdPutReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1BuildingsPostRequest struct {
+type BuildingsAPIV1BuildingsPostRequest struct {
 	ctx context.Context
-	ApiService BuildingsApi
+	ApiService BuildingsAPI
 	building *Building
 }
 
 // building object to create. ids defined in this body will be ignored
-func (r ApiV1BuildingsPostRequest) Building(building Building) ApiV1BuildingsPostRequest {
+func (r BuildingsAPIV1BuildingsPostRequest) Building(building Building) BuildingsAPIV1BuildingsPostRequest {
 	r.building = &building
 	return r
 }
 
-func (r ApiV1BuildingsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r BuildingsAPIV1BuildingsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1BuildingsPostExecute(r)
 }
 
@@ -1041,10 +1565,10 @@ Create building record
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1BuildingsPostRequest
+ @return BuildingsAPIV1BuildingsPostRequest
 */
-func (a *BuildingsApiService) V1BuildingsPost(ctx context.Context) ApiV1BuildingsPostRequest {
-	return ApiV1BuildingsPostRequest{
+func (a *BuildingsAPIService) V1BuildingsPost(ctx context.Context) BuildingsAPIV1BuildingsPostRequest {
+	return BuildingsAPIV1BuildingsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1052,7 +1576,7 @@ func (a *BuildingsApiService) V1BuildingsPost(ctx context.Context) ApiV1Building
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *BuildingsApiService) V1BuildingsPostExecute(r ApiV1BuildingsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *BuildingsAPIService) V1BuildingsPostExecute(r BuildingsAPIV1BuildingsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1060,7 +1584,7 @@ func (a *BuildingsApiService) V1BuildingsPostExecute(r ApiV1BuildingsPostRequest
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsApiService.V1BuildingsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BuildingsAPIService.V1BuildingsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1103,9 +1627,9 @@ func (a *BuildingsApiService) V1BuildingsPostExecute(r ApiV1BuildingsPostRequest
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

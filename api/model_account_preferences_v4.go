@@ -14,21 +14,27 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountPreferencesV4 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountPreferencesV4{}
+
 // AccountPreferencesV4 struct for AccountPreferencesV4
 type AccountPreferencesV4 struct {
+	// Language codes supported by Jamf Pro
 	Language string `json:"language"`
 	DateFormat string `json:"dateFormat"`
 	Timezone string `json:"timezone"`
 	DisableRelativeDates bool `json:"disableRelativeDates"`
 	DisablePageLeaveCheck bool `json:"disablePageLeaveCheck"`
 	DisableTablePagination bool `json:"disableTablePagination"`
+	DisableShortcutsTooltips bool `json:"disableShortcutsTooltips"`
+	ConfigProfilesSortingMethod string `json:"configProfilesSortingMethod"`
 }
 
 // NewAccountPreferencesV4 instantiates a new AccountPreferencesV4 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAccountPreferencesV4(language string, dateFormat string, timezone string, disableRelativeDates bool, disablePageLeaveCheck bool, disableTablePagination bool) *AccountPreferencesV4 {
+func NewAccountPreferencesV4(language string, dateFormat string, timezone string, disableRelativeDates bool, disablePageLeaveCheck bool, disableTablePagination bool, disableShortcutsTooltips bool, configProfilesSortingMethod string) *AccountPreferencesV4 {
 	this := AccountPreferencesV4{}
 	this.Language = language
 	this.DateFormat = dateFormat
@@ -36,6 +42,8 @@ func NewAccountPreferencesV4(language string, dateFormat string, timezone string
 	this.DisableRelativeDates = disableRelativeDates
 	this.DisablePageLeaveCheck = disablePageLeaveCheck
 	this.DisableTablePagination = disableTablePagination
+	this.DisableShortcutsTooltips = disableShortcutsTooltips
+	this.ConfigProfilesSortingMethod = configProfilesSortingMethod
 	return &this
 }
 
@@ -44,6 +52,8 @@ func NewAccountPreferencesV4(language string, dateFormat string, timezone string
 // but it doesn't guarantee that properties required by API are set
 func NewAccountPreferencesV4WithDefaults() *AccountPreferencesV4 {
 	this := AccountPreferencesV4{}
+	var language string = "en"
+	this.Language = language
 	return &this
 }
 
@@ -191,27 +201,73 @@ func (o *AccountPreferencesV4) SetDisableTablePagination(v bool) {
 	o.DisableTablePagination = v
 }
 
+// GetDisableShortcutsTooltips returns the DisableShortcutsTooltips field value
+func (o *AccountPreferencesV4) GetDisableShortcutsTooltips() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DisableShortcutsTooltips
+}
+
+// GetDisableShortcutsTooltipsOk returns a tuple with the DisableShortcutsTooltips field value
+// and a boolean to check if the value has been set.
+func (o *AccountPreferencesV4) GetDisableShortcutsTooltipsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableShortcutsTooltips, true
+}
+
+// SetDisableShortcutsTooltips sets field value
+func (o *AccountPreferencesV4) SetDisableShortcutsTooltips(v bool) {
+	o.DisableShortcutsTooltips = v
+}
+
+// GetConfigProfilesSortingMethod returns the ConfigProfilesSortingMethod field value
+func (o *AccountPreferencesV4) GetConfigProfilesSortingMethod() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ConfigProfilesSortingMethod
+}
+
+// GetConfigProfilesSortingMethodOk returns a tuple with the ConfigProfilesSortingMethod field value
+// and a boolean to check if the value has been set.
+func (o *AccountPreferencesV4) GetConfigProfilesSortingMethodOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ConfigProfilesSortingMethod, true
+}
+
+// SetConfigProfilesSortingMethod sets field value
+func (o *AccountPreferencesV4) SetConfigProfilesSortingMethod(v string) {
+	o.ConfigProfilesSortingMethod = v
+}
+
 func (o AccountPreferencesV4) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["language"] = o.Language
-	}
-	if true {
-		toSerialize["dateFormat"] = o.DateFormat
-	}
-	if true {
-		toSerialize["timezone"] = o.Timezone
-	}
-	if true {
-		toSerialize["disableRelativeDates"] = o.DisableRelativeDates
-	}
-	if true {
-		toSerialize["disablePageLeaveCheck"] = o.DisablePageLeaveCheck
-	}
-	if true {
-		toSerialize["disableTablePagination"] = o.DisableTablePagination
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountPreferencesV4) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["language"] = o.Language
+	toSerialize["dateFormat"] = o.DateFormat
+	toSerialize["timezone"] = o.Timezone
+	toSerialize["disableRelativeDates"] = o.DisableRelativeDates
+	toSerialize["disablePageLeaveCheck"] = o.DisablePageLeaveCheck
+	toSerialize["disableTablePagination"] = o.DisableTablePagination
+	toSerialize["disableShortcutsTooltips"] = o.DisableShortcutsTooltips
+	toSerialize["configProfilesSortingMethod"] = o.ConfigProfilesSortingMethod
+	return toSerialize, nil
 }
 
 type NullableAccountPreferencesV4 struct {

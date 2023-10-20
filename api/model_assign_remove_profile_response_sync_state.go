@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AssignRemoveProfileResponseSyncState type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AssignRemoveProfileResponseSyncState{}
+
 // AssignRemoveProfileResponseSyncState struct for AssignRemoveProfileResponseSyncState
 type AssignRemoveProfileResponseSyncState struct {
 	Id *int32 `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewAssignRemoveProfileResponseSyncStateWithDefaults() *AssignRemoveProfileR
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -61,7 +64,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *AssignRemoveProfileResponseSyncState) SetId(v int32) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -93,7 +96,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetSerialNumberOk() (*string, boo
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *AssignRemoveProfileResponseSyncState) SetSerialNumber(v string) {
 
 // GetProfileUUID returns the ProfileUUID field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetProfileUUID() string {
-	if o == nil || o.ProfileUUID == nil {
+	if o == nil || IsNil(o.ProfileUUID) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetProfileUUID() string {
 // GetProfileUUIDOk returns a tuple with the ProfileUUID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetProfileUUIDOk() (*string, bool) {
-	if o == nil || o.ProfileUUID == nil {
+	if o == nil || IsNil(o.ProfileUUID) {
 		return nil, false
 	}
 	return o.ProfileUUID, true
@@ -125,7 +128,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetProfileUUIDOk() (*string, bool
 
 // HasProfileUUID returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasProfileUUID() bool {
-	if o != nil && o.ProfileUUID != nil {
+	if o != nil && !IsNil(o.ProfileUUID) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *AssignRemoveProfileResponseSyncState) SetProfileUUID(v string) {
 
 // GetSyncStatus returns the SyncStatus field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetSyncStatus() string {
-	if o == nil || o.SyncStatus == nil {
+	if o == nil || IsNil(o.SyncStatus) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetSyncStatus() string {
 // GetSyncStatusOk returns a tuple with the SyncStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetSyncStatusOk() (*string, bool) {
-	if o == nil || o.SyncStatus == nil {
+	if o == nil || IsNil(o.SyncStatus) {
 		return nil, false
 	}
 	return o.SyncStatus, true
@@ -157,7 +160,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetSyncStatusOk() (*string, bool)
 
 // HasSyncStatus returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasSyncStatus() bool {
-	if o != nil && o.SyncStatus != nil {
+	if o != nil && !IsNil(o.SyncStatus) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *AssignRemoveProfileResponseSyncState) SetSyncStatus(v string) {
 
 // GetFailureCount returns the FailureCount field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int32 {
-	if o == nil || o.FailureCount == nil {
+	if o == nil || IsNil(o.FailureCount) {
 		var ret int32
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int32 {
 // GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int32, bool) {
-	if o == nil || o.FailureCount == nil {
+	if o == nil || IsNil(o.FailureCount) {
 		return nil, false
 	}
 	return o.FailureCount, true
@@ -189,7 +192,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int32, bool
 
 // HasFailureCount returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasFailureCount() bool {
-	if o != nil && o.FailureCount != nil {
+	if o != nil && !IsNil(o.FailureCount) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *AssignRemoveProfileResponseSyncState) SetFailureCount(v int32) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int32 {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret int32
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int32 {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int32, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -221,7 +224,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int32, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *AssignRemoveProfileResponseSyncState) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *AssignRemoveProfileResponseSyncState) SetTimestamp(v int32) {
 }
 
 func (o AssignRemoveProfileResponseSyncState) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.ProfileUUID != nil {
-		toSerialize["profileUUID"] = o.ProfileUUID
-	}
-	if o.SyncStatus != nil {
-		toSerialize["syncStatus"] = o.SyncStatus
-	}
-	if o.FailureCount != nil {
-		toSerialize["failureCount"] = o.FailureCount
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AssignRemoveProfileResponseSyncState) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.ProfileUUID) {
+		toSerialize["profileUUID"] = o.ProfileUUID
+	}
+	if !IsNil(o.SyncStatus) {
+		toSerialize["syncStatus"] = o.SyncStatus
+	}
+	if !IsNil(o.FailureCount) {
+		toSerialize["failureCount"] = o.FailureCount
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	return toSerialize, nil
 }
 
 type NullableAssignRemoveProfileResponseSyncState struct {

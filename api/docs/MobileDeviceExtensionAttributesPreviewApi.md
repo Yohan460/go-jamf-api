@@ -1,10 +1,10 @@
-# \MobileDeviceExtensionAttributesPreviewApi
+# \MobileDeviceExtensionAttributesPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DevicesExtensionAttributesGet**](MobileDeviceExtensionAttributesPreviewApi.md#DevicesExtensionAttributesGet) | **Get** /devices/extensionAttributes | Get Mobile Device Extension Attribute values placed in select paramter 
+[**DevicesExtensionAttributesGet**](MobileDeviceExtensionAttributesPreviewAPI.md#DevicesExtensionAttributesGet) | **Get** /devices/extensionAttributes | Get Mobile Device Extension Attribute values placed in select paramter 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDeviceExtensionAttributesPreviewApi.DevicesExtensionAttributesGet(context.Background()).Select_(select_).Execute()
+    resp, r, err := apiClient.MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet(context.Background()).Select_(select_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceExtensionAttributesPreviewApi.DevicesExtensionAttributesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `DevicesExtensionAttributesGet`: MobileDeviceExtensionAttributeResults
-    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceExtensionAttributesPreviewApi.DevicesExtensionAttributesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet`: %v\n", resp)
 }
 ```
 

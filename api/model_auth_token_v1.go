@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthTokenV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthTokenV1{}
+
 // AuthTokenV1 struct for AuthTokenV1
 type AuthTokenV1 struct {
 	Token *string `json:"token,omitempty"`
@@ -39,7 +42,7 @@ func NewAuthTokenV1WithDefaults() *AuthTokenV1 {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *AuthTokenV1) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *AuthTokenV1) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthTokenV1) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -57,7 +60,7 @@ func (o *AuthTokenV1) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *AuthTokenV1) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *AuthTokenV1) SetToken(v string) {
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
 func (o *AuthTokenV1) GetExpires() string {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *AuthTokenV1) GetExpires() string {
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthTokenV1) GetExpiresOk() (*string, bool) {
-	if o == nil || o.Expires == nil {
+	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
 	return o.Expires, true
@@ -89,7 +92,7 @@ func (o *AuthTokenV1) GetExpiresOk() (*string, bool) {
 
 // HasExpires returns a boolean if a field has been set.
 func (o *AuthTokenV1) HasExpires() bool {
-	if o != nil && o.Expires != nil {
+	if o != nil && !IsNil(o.Expires) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *AuthTokenV1) SetExpires(v string) {
 }
 
 func (o AuthTokenV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
-	}
-	if o.Expires != nil {
-		toSerialize["expires"] = o.Expires
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthTokenV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	if !IsNil(o.Expires) {
+		toSerialize["expires"] = o.Expires
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthTokenV1 struct {

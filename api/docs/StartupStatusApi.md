@@ -1,10 +1,10 @@
-# \StartupStatusApi
+# \StartupStatusAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**StartupStatusGet**](StartupStatusApi.md#StartupStatusGet) | **Get** /startup-status | Retrieve information about application startup 
+[**StartupStatusGet**](StartupStatusAPI.md#StartupStatusGet) | **Get** /startup-status | Retrieve information about application startup 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StartupStatusApi.StartupStatusGet(context.Background()).Execute()
+    resp, r, err := apiClient.StartupStatusAPI.StartupStatusGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StartupStatusApi.StartupStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `StartupStatusAPI.StartupStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `StartupStatusGet`: StartupStatus
-    fmt.Fprintf(os.Stdout, "Response from `StartupStatusApi.StartupStatusGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StartupStatusAPI.StartupStatusGet`: %v\n", resp)
 }
 ```
 

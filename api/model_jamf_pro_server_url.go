@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfProServerUrl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfProServerUrl{}
+
 // JamfProServerUrl struct for JamfProServerUrl
 type JamfProServerUrl struct {
 	Url string `json:"url"`
@@ -88,14 +91,18 @@ func (o *JamfProServerUrl) SetUnsecuredEnrollmentUrl(v string) {
 }
 
 func (o JamfProServerUrl) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["unsecuredEnrollmentUrl"] = o.UnsecuredEnrollmentUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfProServerUrl) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["url"] = o.Url
+	toSerialize["unsecuredEnrollmentUrl"] = o.UnsecuredEnrollmentUrl
+	return toSerialize, nil
 }
 
 type NullableJamfProServerUrl struct {

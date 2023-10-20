@@ -1,17 +1,17 @@
-# \CloudIdpApi
+# \CloudIdpAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1CloudIdpExportPost**](CloudIdpApi.md#V1CloudIdpExportPost) | **Post** /v1/cloud-idp/export | Export Cloud Identity Providers collection 
-[**V1CloudIdpGet**](CloudIdpApi.md#V1CloudIdpGet) | **Get** /v1/cloud-idp | Get information about all Cloud Identity Providers configurations.
-[**V1CloudIdpIdGet**](CloudIdpApi.md#V1CloudIdpIdGet) | **Get** /v1/cloud-idp/{id} | Get Cloud Identity Provider configuration with given ID.
-[**V1CloudIdpIdHistoryGet**](CloudIdpApi.md#V1CloudIdpIdHistoryGet) | **Get** /v1/cloud-idp/{id}/history | Get Cloud Identity Provider history
-[**V1CloudIdpIdHistoryPost**](CloudIdpApi.md#V1CloudIdpIdHistoryPost) | **Post** /v1/cloud-idp/{id}/history | Add Cloud Identity Provider history note
-[**V1CloudIdpIdTestGroupPost**](CloudIdpApi.md#V1CloudIdpIdTestGroupPost) | **Post** /v1/cloud-idp/{id}/test-group | Get group test search
-[**V1CloudIdpIdTestUserMembershipPost**](CloudIdpApi.md#V1CloudIdpIdTestUserMembershipPost) | **Post** /v1/cloud-idp/{id}/test-user-membership | Get membership test search
-[**V1CloudIdpIdTestUserPost**](CloudIdpApi.md#V1CloudIdpIdTestUserPost) | **Post** /v1/cloud-idp/{id}/test-user | Get user test search
+[**V1CloudIdpExportPost**](CloudIdpAPI.md#V1CloudIdpExportPost) | **Post** /v1/cloud-idp/export | Export Cloud Identity Providers collection 
+[**V1CloudIdpGet**](CloudIdpAPI.md#V1CloudIdpGet) | **Get** /v1/cloud-idp | Get information about all Cloud Identity Providers configurations.
+[**V1CloudIdpIdGet**](CloudIdpAPI.md#V1CloudIdpIdGet) | **Get** /v1/cloud-idp/{id} | Get Cloud Identity Provider configuration with given ID.
+[**V1CloudIdpIdHistoryGet**](CloudIdpAPI.md#V1CloudIdpIdHistoryGet) | **Get** /v1/cloud-idp/{id}/history | Get Cloud Identity Provider history
+[**V1CloudIdpIdHistoryPost**](CloudIdpAPI.md#V1CloudIdpIdHistoryPost) | **Post** /v1/cloud-idp/{id}/history | Add Cloud Identity Provider history note
+[**V1CloudIdpIdTestGroupPost**](CloudIdpAPI.md#V1CloudIdpIdTestGroupPost) | **Post** /v1/cloud-idp/{id}/test-group | Get group test search
+[**V1CloudIdpIdTestUserMembershipPost**](CloudIdpAPI.md#V1CloudIdpIdTestUserMembershipPost) | **Post** /v1/cloud-idp/{id}/test-user-membership | Get membership test search
+[**V1CloudIdpIdTestUserPost**](CloudIdpAPI.md#V1CloudIdpIdTestUserPost) | **Post** /v1/cloud-idp/{id}/test-user | Get user test search
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -46,13 +46,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpExportPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpExportPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpExportPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpExportPost`: %v\n", resp)
 }
 ```
 
@@ -110,7 +110,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -120,13 +120,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpGet`: ConfigurationSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpGet`: %v\n", resp)
 }
 ```
 
@@ -180,7 +180,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -188,13 +188,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdGet`: CloudIdPCommon
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdGet`: %v\n", resp)
 }
 ```
 
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## V1CloudIdpIdHistoryGet
 
-> HistorySearchResults V1CloudIdpIdHistoryGet(ctx, id).Page(page).PageSize(pageSize).Sort(sort).Execute()
+> HistorySearchResults V1CloudIdpIdHistoryGet(ctx, id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
 
 Get Cloud Identity Provider history
 
@@ -250,7 +250,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -258,16 +258,17 @@ func main() {
     page := int32(56) // int32 |  (optional) (default to 0)
     pageSize := int32(56) // int32 |  (optional) (default to 100)
     sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -290,6 +291,7 @@ Name | Type | Description  | Notes
  **page** | **int32** |  | [default to 0]
  **pageSize** | **int32** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
+ **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
 ### Return type
 
@@ -326,7 +328,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -335,13 +337,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -398,7 +400,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -407,13 +409,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdTestGroupPost(context.Background(), id).GroupTestSearchRequest(groupTestSearchRequest).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdTestGroupPost(context.Background(), id).GroupTestSearchRequest(groupTestSearchRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdTestGroupPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdTestGroupPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdTestGroupPost`: GroupTestSearchResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdTestGroupPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdTestGroupPost`: %v\n", resp)
 }
 ```
 
@@ -470,7 +472,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -479,13 +481,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdTestUserMembershipPost(context.Background(), id).MembershipTestSearchRequest(membershipTestSearchRequest).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdTestUserMembershipPost(context.Background(), id).MembershipTestSearchRequest(membershipTestSearchRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdTestUserMembershipPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdTestUserMembershipPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdTestUserMembershipPost`: MembershipTestSearchResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdTestUserMembershipPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdTestUserMembershipPost`: %v\n", resp)
 }
 ```
 
@@ -542,7 +544,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -551,13 +553,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudIdpApi.V1CloudIdpIdTestUserPost(context.Background(), id).UserTestSearchRequest(userTestSearchRequest).Execute()
+    resp, r, err := apiClient.CloudIdpAPI.V1CloudIdpIdTestUserPost(context.Background(), id).UserTestSearchRequest(userTestSearchRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpApi.V1CloudIdpIdTestUserPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudIdpAPI.V1CloudIdpIdTestUserPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CloudIdpIdTestUserPost`: UserTestSearchResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudIdpApi.V1CloudIdpIdTestUserPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CloudIdpAPI.V1CloudIdpIdTestUserPost`: %v\n", resp)
 }
 ```
 

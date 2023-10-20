@@ -13,13 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 )
 
 
-type ReEnrollmentPreviewApi interface {
+type ReEnrollmentPreviewAPI interface {
 
 	/*
 	V1ReenrollmentGet Get Re-enrollment object 
@@ -28,13 +29,28 @@ type ReEnrollmentPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ReenrollmentGetRequest
+	@return ReEnrollmentPreviewAPIV1ReenrollmentGetRequest
 	*/
-	V1ReenrollmentGet(ctx context.Context) ApiV1ReenrollmentGetRequest
+	V1ReenrollmentGet(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentGetRequest
 
 	// V1ReenrollmentGetExecute executes the request
 	//  @return Reenrollment
-	V1ReenrollmentGetExecute(r ApiV1ReenrollmentGetRequest) (*Reenrollment, *http.Response, error)
+	V1ReenrollmentGetExecute(r ReEnrollmentPreviewAPIV1ReenrollmentGetRequest) (*Reenrollment, *http.Response, error)
+
+	/*
+	V1ReenrollmentHistoryExportPost Export reenrollment history collection 
+
+	Export reenrollment history collection
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest
+	*/
+	V1ReenrollmentHistoryExportPost(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest
+
+	// V1ReenrollmentHistoryExportPostExecute executes the request
+	//  @return interface{}
+	V1ReenrollmentHistoryExportPostExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) (interface{}, *http.Response, error)
 
 	/*
 	V1ReenrollmentHistoryGet Get Re-enrollment history object 
@@ -43,13 +59,13 @@ type ReEnrollmentPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ReenrollmentHistoryGetRequest
+	@return ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest
 	*/
-	V1ReenrollmentHistoryGet(ctx context.Context) ApiV1ReenrollmentHistoryGetRequest
+	V1ReenrollmentHistoryGet(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest
 
 	// V1ReenrollmentHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1ReenrollmentHistoryGetExecute(r ApiV1ReenrollmentHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1ReenrollmentHistoryGetExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1ReenrollmentHistoryPost Add specified Re-enrollment history object notes 
@@ -58,13 +74,13 @@ type ReEnrollmentPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ReenrollmentHistoryPostRequest
+	@return ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest
 	*/
-	V1ReenrollmentHistoryPost(ctx context.Context) ApiV1ReenrollmentHistoryPostRequest
+	V1ReenrollmentHistoryPost(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest
 
 	// V1ReenrollmentHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1ReenrollmentHistoryPostExecute(r ApiV1ReenrollmentHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1ReenrollmentHistoryPostExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1ReenrollmentPut Update the Re-enrollment object 
@@ -73,24 +89,24 @@ type ReEnrollmentPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ReenrollmentPutRequest
+	@return ReEnrollmentPreviewAPIV1ReenrollmentPutRequest
 	*/
-	V1ReenrollmentPut(ctx context.Context) ApiV1ReenrollmentPutRequest
+	V1ReenrollmentPut(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentPutRequest
 
 	// V1ReenrollmentPutExecute executes the request
 	//  @return Reenrollment
-	V1ReenrollmentPutExecute(r ApiV1ReenrollmentPutRequest) (*Reenrollment, *http.Response, error)
+	V1ReenrollmentPutExecute(r ReEnrollmentPreviewAPIV1ReenrollmentPutRequest) (*Reenrollment, *http.Response, error)
 }
 
-// ReEnrollmentPreviewApiService ReEnrollmentPreviewApi service
-type ReEnrollmentPreviewApiService service
+// ReEnrollmentPreviewAPIService ReEnrollmentPreviewAPI service
+type ReEnrollmentPreviewAPIService service
 
-type ApiV1ReenrollmentGetRequest struct {
+type ReEnrollmentPreviewAPIV1ReenrollmentGetRequest struct {
 	ctx context.Context
-	ApiService ReEnrollmentPreviewApi
+	ApiService ReEnrollmentPreviewAPI
 }
 
-func (r ApiV1ReenrollmentGetRequest) Execute() (*Reenrollment, *http.Response, error) {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentGetRequest) Execute() (*Reenrollment, *http.Response, error) {
 	return r.ApiService.V1ReenrollmentGetExecute(r)
 }
 
@@ -101,10 +117,10 @@ Gets Re-enrollment object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ReenrollmentGetRequest
+ @return ReEnrollmentPreviewAPIV1ReenrollmentGetRequest
 */
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGet(ctx context.Context) ApiV1ReenrollmentGetRequest {
-	return ApiV1ReenrollmentGetRequest{
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentGet(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentGetRequest {
+	return ReEnrollmentPreviewAPIV1ReenrollmentGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -112,7 +128,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGet(ctx context.Context) A
 
 // Execute executes the request
 //  @return Reenrollment
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1ReenrollmentGetRequest) (*Reenrollment, *http.Response, error) {
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentGetExecute(r ReEnrollmentPreviewAPIV1ReenrollmentGetRequest) (*Reenrollment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -120,7 +136,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1Reenroll
 		localVarReturnValue  *Reenrollment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewApiService.V1ReenrollmentGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewAPIService.V1ReenrollmentGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -158,9 +174,9 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1Reenroll
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -177,7 +193,8 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1Reenroll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -194,9 +211,239 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentGetExecute(r ApiV1Reenroll
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ReenrollmentHistoryGetRequest struct {
+type ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest struct {
 	ctx context.Context
-	ApiService ReEnrollmentPreviewApi
+	ApiService ReEnrollmentPreviewAPI
+	exportFields *[]string
+	exportLabels *[]string
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+	exportParameters *ExportParameters
+}
+
+// Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) ExportFields(exportFields []string) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.exportFields = &exportFields
+	return r
+}
+
+// Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) ExportLabels(exportLabels []string) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.exportLabels = &exportLabels
+	return r
+}
+
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Page(page int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.page = &page
+	return r
+}
+
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) PageSize(pageSize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc 
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Sort(sort []string) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*script*\&quot;
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Filter(filter string) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.filter = &filter
+	return r
+}
+
+// Optional. Override query parameters since they can make URI exceed 2,000 character limit.
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) ExportParameters(exportParameters ExportParameters) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	r.exportParameters = &exportParameters
+	return r
+}
+
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.V1ReenrollmentHistoryExportPostExecute(r)
+}
+
+/*
+V1ReenrollmentHistoryExportPost Export reenrollment history collection 
+
+Export reenrollment history collection
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest
+*/
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPost(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+	return ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return interface{}
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewAPIService.V1ReenrollmentHistoryExportPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/reenrollment/history/export"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.exportFields != nil {
+		t := *r.exportFields
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportFields = &defaultValue
+	}
+	if r.exportLabels != nil {
+		t := *r.exportLabels
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
+		}
+	} else {
+		var defaultValue []string = []
+		r.exportLabels = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv,application/json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.exportParameters
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest struct {
+	ctx context.Context
+	ApiService ReEnrollmentPreviewAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -204,35 +451,35 @@ type ApiV1ReenrollmentHistoryGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1ReenrollmentHistoryGetRequest) Page(page int32) ApiV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Page(page int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1ReenrollmentHistoryGetRequest) Size(size int32) ApiV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Size(size int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1ReenrollmentHistoryGetRequest) Pagesize(pagesize int32) ApiV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Pagesize(pagesize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1ReenrollmentHistoryGetRequest) PageSize(pageSize int32) ApiV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) PageSize(pageSize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1ReenrollmentHistoryGetRequest) Sort(sort string) ApiV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Sort(sort string) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1ReenrollmentHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1ReenrollmentHistoryGetExecute(r)
 }
 
@@ -243,10 +490,10 @@ Gets Re-enrollment history object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ReenrollmentHistoryGetRequest
+ @return ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest
 */
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGet(ctx context.Context) ApiV1ReenrollmentHistoryGetRequest {
-	return ApiV1ReenrollmentHistoryGetRequest{
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryGet(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
+	return ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -254,7 +501,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGet(ctx context.Con
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1ReenrollmentHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryGetExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -262,7 +509,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1R
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewApiService.V1ReenrollmentHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewAPIService.V1ReenrollmentHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -274,19 +521,34 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1R
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -315,9 +577,9 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1R
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -342,19 +604,19 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryGetExecute(r ApiV1R
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ReenrollmentHistoryPostRequest struct {
+type ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest struct {
 	ctx context.Context
-	ApiService ReEnrollmentPreviewApi
+	ApiService ReEnrollmentPreviewAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1ReenrollmentHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1ReenrollmentHistoryPostRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1ReenrollmentHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1ReenrollmentHistoryPostExecute(r)
 }
 
@@ -365,10 +627,10 @@ Adds specified Re-enrollment history object notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ReenrollmentHistoryPostRequest
+ @return ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest
 */
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPost(ctx context.Context) ApiV1ReenrollmentHistoryPostRequest {
-	return ApiV1ReenrollmentHistoryPostRequest{
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryPost(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest {
+	return ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -376,7 +638,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPost(ctx context.Co
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1ReenrollmentHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryPostExecute(r ReEnrollmentPreviewAPIV1ReenrollmentHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -384,7 +646,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewApiService.V1ReenrollmentHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewAPIService.V1ReenrollmentHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -427,9 +689,9 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -446,7 +708,8 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -463,19 +726,19 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentHistoryPostExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ReenrollmentPutRequest struct {
+type ReEnrollmentPreviewAPIV1ReenrollmentPutRequest struct {
 	ctx context.Context
-	ApiService ReEnrollmentPreviewApi
+	ApiService ReEnrollmentPreviewAPI
 	reenrollment *Reenrollment
 }
 
 // Re-enrollment object to update
-func (r ApiV1ReenrollmentPutRequest) Reenrollment(reenrollment Reenrollment) ApiV1ReenrollmentPutRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentPutRequest) Reenrollment(reenrollment Reenrollment) ReEnrollmentPreviewAPIV1ReenrollmentPutRequest {
 	r.reenrollment = &reenrollment
 	return r
 }
 
-func (r ApiV1ReenrollmentPutRequest) Execute() (*Reenrollment, *http.Response, error) {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentPutRequest) Execute() (*Reenrollment, *http.Response, error) {
 	return r.ApiService.V1ReenrollmentPutExecute(r)
 }
 
@@ -486,10 +749,10 @@ Update the Re-enrollment object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ReenrollmentPutRequest
+ @return ReEnrollmentPreviewAPIV1ReenrollmentPutRequest
 */
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentPut(ctx context.Context) ApiV1ReenrollmentPutRequest {
-	return ApiV1ReenrollmentPutRequest{
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentPut(ctx context.Context) ReEnrollmentPreviewAPIV1ReenrollmentPutRequest {
+	return ReEnrollmentPreviewAPIV1ReenrollmentPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -497,7 +760,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentPut(ctx context.Context) A
 
 // Execute executes the request
 //  @return Reenrollment
-func (a *ReEnrollmentPreviewApiService) V1ReenrollmentPutExecute(r ApiV1ReenrollmentPutRequest) (*Reenrollment, *http.Response, error) {
+func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentPutExecute(r ReEnrollmentPreviewAPIV1ReenrollmentPutRequest) (*Reenrollment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -505,7 +768,7 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentPutExecute(r ApiV1Reenroll
 		localVarReturnValue  *Reenrollment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewApiService.V1ReenrollmentPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReEnrollmentPreviewAPIService.V1ReenrollmentPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -548,9 +811,9 @@ func (a *ReEnrollmentPreviewApiService) V1ReenrollmentPutExecute(r ApiV1Reenroll
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

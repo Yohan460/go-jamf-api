@@ -14,10 +14,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the ParentAppRestrictedTimes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ParentAppRestrictedTimes{}
+
 // ParentAppRestrictedTimes struct for ParentAppRestrictedTimes
 type ParentAppRestrictedTimes struct {
 	Key *DayOfWeek `json:"key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ParentAppRestrictedTimes ParentAppRestrictedTimes
 
 // NewParentAppRestrictedTimes instantiates a new ParentAppRestrictedTimes object
 // This constructor will assign default values to properties that have it defined,
@@ -38,7 +44,7 @@ func NewParentAppRestrictedTimesWithDefaults() *ParentAppRestrictedTimes {
 
 // GetKey returns the Key field value if set, zero value otherwise.
 func (o *ParentAppRestrictedTimes) GetKey() DayOfWeek {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		var ret DayOfWeek
 		return ret
 	}
@@ -48,7 +54,7 @@ func (o *ParentAppRestrictedTimes) GetKey() DayOfWeek {
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParentAppRestrictedTimes) GetKeyOk() (*DayOfWeek, bool) {
-	if o == nil || o.Key == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
 	return o.Key, true
@@ -56,7 +62,7 @@ func (o *ParentAppRestrictedTimes) GetKeyOk() (*DayOfWeek, bool) {
 
 // HasKey returns a boolean if a field has been set.
 func (o *ParentAppRestrictedTimes) HasKey() bool {
-	if o != nil && o.Key != nil {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
@@ -69,11 +75,45 @@ func (o *ParentAppRestrictedTimes) SetKey(v DayOfWeek) {
 }
 
 func (o ParentAppRestrictedTimes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Key != nil {
-		toSerialize["key"] = o.Key
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ParentAppRestrictedTimes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
+	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
+	return toSerialize, nil
+}
+
+func (o *ParentAppRestrictedTimes) UnmarshalJSON(bytes []byte) (err error) {
+	varParentAppRestrictedTimes := _ParentAppRestrictedTimes{}
+
+	err = json.Unmarshal(bytes, &varParentAppRestrictedTimes)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ParentAppRestrictedTimes(varParentAppRestrictedTimes)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableParentAppRestrictedTimes struct {

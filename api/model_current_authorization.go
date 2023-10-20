@@ -14,11 +14,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the CurrentAuthorization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CurrentAuthorization{}
+
 // CurrentAuthorization struct for CurrentAuthorization
 type CurrentAuthorization struct {
 	Account *CurrentAccount `json:"account,omitempty"`
 	Sites []Site `json:"sites,omitempty"`
-	AuthenticationType *string `json:"authenticationType,omitempty"`
+	AuthenticationType *AuthenticationType `json:"authenticationType,omitempty"`
 }
 
 // NewCurrentAuthorization instantiates a new CurrentAuthorization object
@@ -40,7 +43,7 @@ func NewCurrentAuthorizationWithDefaults() *CurrentAuthorization {
 
 // GetAccount returns the Account field value if set, zero value otherwise.
 func (o *CurrentAuthorization) GetAccount() CurrentAccount {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		var ret CurrentAccount
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CurrentAuthorization) GetAccount() CurrentAccount {
 // GetAccountOk returns a tuple with the Account field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentAuthorization) GetAccountOk() (*CurrentAccount, bool) {
-	if o == nil || o.Account == nil {
+	if o == nil || IsNil(o.Account) {
 		return nil, false
 	}
 	return o.Account, true
@@ -58,7 +61,7 @@ func (o *CurrentAuthorization) GetAccountOk() (*CurrentAccount, bool) {
 
 // HasAccount returns a boolean if a field has been set.
 func (o *CurrentAuthorization) HasAccount() bool {
-	if o != nil && o.Account != nil {
+	if o != nil && !IsNil(o.Account) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CurrentAuthorization) SetAccount(v CurrentAccount) {
 
 // GetSites returns the Sites field value if set, zero value otherwise.
 func (o *CurrentAuthorization) GetSites() []Site {
-	if o == nil || o.Sites == nil {
+	if o == nil || IsNil(o.Sites) {
 		var ret []Site
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CurrentAuthorization) GetSites() []Site {
 // GetSitesOk returns a tuple with the Sites field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CurrentAuthorization) GetSitesOk() ([]Site, bool) {
-	if o == nil || o.Sites == nil {
+	if o == nil || IsNil(o.Sites) {
 		return nil, false
 	}
 	return o.Sites, true
@@ -90,7 +93,7 @@ func (o *CurrentAuthorization) GetSitesOk() ([]Site, bool) {
 
 // HasSites returns a boolean if a field has been set.
 func (o *CurrentAuthorization) HasSites() bool {
-	if o != nil && o.Sites != nil {
+	if o != nil && !IsNil(o.Sites) {
 		return true
 	}
 
@@ -103,9 +106,9 @@ func (o *CurrentAuthorization) SetSites(v []Site) {
 }
 
 // GetAuthenticationType returns the AuthenticationType field value if set, zero value otherwise.
-func (o *CurrentAuthorization) GetAuthenticationType() string {
-	if o == nil || o.AuthenticationType == nil {
-		var ret string
+func (o *CurrentAuthorization) GetAuthenticationType() AuthenticationType {
+	if o == nil || IsNil(o.AuthenticationType) {
+		var ret AuthenticationType
 		return ret
 	}
 	return *o.AuthenticationType
@@ -113,8 +116,8 @@ func (o *CurrentAuthorization) GetAuthenticationType() string {
 
 // GetAuthenticationTypeOk returns a tuple with the AuthenticationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CurrentAuthorization) GetAuthenticationTypeOk() (*string, bool) {
-	if o == nil || o.AuthenticationType == nil {
+func (o *CurrentAuthorization) GetAuthenticationTypeOk() (*AuthenticationType, bool) {
+	if o == nil || IsNil(o.AuthenticationType) {
 		return nil, false
 	}
 	return o.AuthenticationType, true
@@ -122,30 +125,38 @@ func (o *CurrentAuthorization) GetAuthenticationTypeOk() (*string, bool) {
 
 // HasAuthenticationType returns a boolean if a field has been set.
 func (o *CurrentAuthorization) HasAuthenticationType() bool {
-	if o != nil && o.AuthenticationType != nil {
+	if o != nil && !IsNil(o.AuthenticationType) {
 		return true
 	}
 
 	return false
 }
 
-// SetAuthenticationType gets a reference to the given string and assigns it to the AuthenticationType field.
-func (o *CurrentAuthorization) SetAuthenticationType(v string) {
+// SetAuthenticationType gets a reference to the given AuthenticationType and assigns it to the AuthenticationType field.
+func (o *CurrentAuthorization) SetAuthenticationType(v AuthenticationType) {
 	o.AuthenticationType = &v
 }
 
 func (o CurrentAuthorization) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Account != nil {
-		toSerialize["account"] = o.Account
-	}
-	if o.Sites != nil {
-		toSerialize["sites"] = o.Sites
-	}
-	if o.AuthenticationType != nil {
-		toSerialize["authenticationType"] = o.AuthenticationType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CurrentAuthorization) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Account) {
+		toSerialize["account"] = o.Account
+	}
+	if !IsNil(o.Sites) {
+		toSerialize["sites"] = o.Sites
+	}
+	if !IsNil(o.AuthenticationType) {
+		toSerialize["authenticationType"] = o.AuthenticationType
+	}
+	return toSerialize, nil
 }
 
 type NullableCurrentAuthorization struct {

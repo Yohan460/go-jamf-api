@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AzureServerConfigurationUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureServerConfigurationUpdate{}
+
 // AzureServerConfigurationUpdate Azure Cloud Identity Provider configuration update
 type AzureServerConfigurationUpdate struct {
 	Id string `json:"id"`
@@ -26,6 +29,8 @@ type AzureServerConfigurationUpdate struct {
 	TransitiveMembershipUserField string `json:"transitiveMembershipUserField"`
 	// Use this field to enable transitive membership lookup. This setting would not apply to Single Sign On
 	TransitiveDirectoryMembershipEnabled bool `json:"transitiveDirectoryMembershipEnabled"`
+	// Use this field to enable membership calculation optimization. This setting would not apply to Single Sign On
+	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
 // NewAzureServerConfigurationUpdate instantiates a new AzureServerConfigurationUpdate object
@@ -220,30 +225,59 @@ func (o *AzureServerConfigurationUpdate) SetTransitiveDirectoryMembershipEnabled
 	o.TransitiveDirectoryMembershipEnabled = v
 }
 
+// GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field value if set, zero value otherwise.
+func (o *AzureServerConfigurationUpdate) GetMembershipCalculationOptimizationEnabled() bool {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MembershipCalculationOptimizationEnabled
+}
+
+// GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureServerConfigurationUpdate) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return nil, false
+	}
+	return o.MembershipCalculationOptimizationEnabled, true
+}
+
+// HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+func (o *AzureServerConfigurationUpdate) HasMembershipCalculationOptimizationEnabled() bool {
+	if o != nil && !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembershipCalculationOptimizationEnabled gets a reference to the given bool and assigns it to the MembershipCalculationOptimizationEnabled field.
+func (o *AzureServerConfigurationUpdate) SetMembershipCalculationOptimizationEnabled(v bool) {
+	o.MembershipCalculationOptimizationEnabled = &v
+}
+
 func (o AzureServerConfigurationUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["mappings"] = o.Mappings
-	}
-	if true {
-		toSerialize["searchTimeout"] = o.SearchTimeout
-	}
-	if true {
-		toSerialize["transitiveMembershipEnabled"] = o.TransitiveMembershipEnabled
-	}
-	if true {
-		toSerialize["transitiveMembershipUserField"] = o.TransitiveMembershipUserField
-	}
-	if true {
-		toSerialize["transitiveDirectoryMembershipEnabled"] = o.TransitiveDirectoryMembershipEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AzureServerConfigurationUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["mappings"] = o.Mappings
+	toSerialize["searchTimeout"] = o.SearchTimeout
+	toSerialize["transitiveMembershipEnabled"] = o.TransitiveMembershipEnabled
+	toSerialize["transitiveMembershipUserField"] = o.TransitiveMembershipUserField
+	toSerialize["transitiveDirectoryMembershipEnabled"] = o.TransitiveDirectoryMembershipEnabled
+	if !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableAzureServerConfigurationUpdate struct {

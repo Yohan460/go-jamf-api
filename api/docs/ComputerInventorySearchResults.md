@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalCount** | Pointer to **int32** |  | [optional] 
-**Results** | Pointer to [**[]ComputerInventoryResponse**](ComputerInventoryResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]ComputerInventory**](ComputerInventory.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *ComputerInventorySearchResults) GetResults() []ComputerInventoryResponse`
+`func (o *ComputerInventorySearchResults) GetResults() []ComputerInventory`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ComputerInventorySearchResults) GetResultsOk() (*[]ComputerInventoryResponse, bool)`
+`func (o *ComputerInventorySearchResults) GetResultsOk() (*[]ComputerInventory, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ComputerInventorySearchResults) SetResults(v []ComputerInventoryResponse)`
+`func (o *ComputerInventorySearchResults) SetResults(v []ComputerInventory)`
 
 SetResults sets Results field to given value.
 

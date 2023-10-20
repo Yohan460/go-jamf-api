@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentAccessGroupV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentAccessGroupV2{}
+
 // EnrollmentAccessGroupV2 struct for EnrollmentAccessGroupV2
 type EnrollmentAccessGroupV2 struct {
 	// Group ID.
@@ -46,7 +49,7 @@ func NewEnrollmentAccessGroupV2WithDefaults() *EnrollmentAccessGroupV2 {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *EnrollmentAccessGroupV2) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -64,7 +67,7 @@ func (o *EnrollmentAccessGroupV2) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *EnrollmentAccessGroupV2) SetId(v string) {
 
 // GetLdapServerId returns the LdapServerId field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetLdapServerId() string {
-	if o == nil || o.LdapServerId == nil {
+	if o == nil || IsNil(o.LdapServerId) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *EnrollmentAccessGroupV2) GetLdapServerId() string {
 // GetLdapServerIdOk returns a tuple with the LdapServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetLdapServerIdOk() (*string, bool) {
-	if o == nil || o.LdapServerId == nil {
+	if o == nil || IsNil(o.LdapServerId) {
 		return nil, false
 	}
 	return o.LdapServerId, true
@@ -96,7 +99,7 @@ func (o *EnrollmentAccessGroupV2) GetLdapServerIdOk() (*string, bool) {
 
 // HasLdapServerId returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasLdapServerId() bool {
-	if o != nil && o.LdapServerId != nil {
+	if o != nil && !IsNil(o.LdapServerId) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *EnrollmentAccessGroupV2) SetLdapServerId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *EnrollmentAccessGroupV2) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -128,7 +131,7 @@ func (o *EnrollmentAccessGroupV2) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *EnrollmentAccessGroupV2) SetName(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *EnrollmentAccessGroupV2) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -160,7 +163,7 @@ func (o *EnrollmentAccessGroupV2) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *EnrollmentAccessGroupV2) SetSiteId(v string) {
 
 // GetEnterpriseEnrollmentEnabled returns the EnterpriseEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetEnterpriseEnrollmentEnabled() bool {
-	if o == nil || o.EnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.EnterpriseEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *EnrollmentAccessGroupV2) GetEnterpriseEnrollmentEnabled() bool {
 // GetEnterpriseEnrollmentEnabledOk returns a tuple with the EnterpriseEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetEnterpriseEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.EnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.EnterpriseEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.EnterpriseEnrollmentEnabled, true
@@ -192,7 +195,7 @@ func (o *EnrollmentAccessGroupV2) GetEnterpriseEnrollmentEnabledOk() (*bool, boo
 
 // HasEnterpriseEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasEnterpriseEnrollmentEnabled() bool {
-	if o != nil && o.EnterpriseEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.EnterpriseEnrollmentEnabled) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *EnrollmentAccessGroupV2) SetEnterpriseEnrollmentEnabled(v bool) {
 
 // GetPersonalEnrollmentEnabled returns the PersonalEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetPersonalEnrollmentEnabled() bool {
-	if o == nil || o.PersonalEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.PersonalEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *EnrollmentAccessGroupV2) GetPersonalEnrollmentEnabled() bool {
 // GetPersonalEnrollmentEnabledOk returns a tuple with the PersonalEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetPersonalEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.PersonalEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.PersonalEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.PersonalEnrollmentEnabled, true
@@ -224,7 +227,7 @@ func (o *EnrollmentAccessGroupV2) GetPersonalEnrollmentEnabledOk() (*bool, bool)
 
 // HasPersonalEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasPersonalEnrollmentEnabled() bool {
-	if o != nil && o.PersonalEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.PersonalEnrollmentEnabled) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *EnrollmentAccessGroupV2) SetPersonalEnrollmentEnabled(v bool) {
 
 // GetAccountDrivenUserEnrollmentEnabled returns the AccountDrivenUserEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetAccountDrivenUserEnrollmentEnabled() bool {
-	if o == nil || o.AccountDrivenUserEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *EnrollmentAccessGroupV2) GetAccountDrivenUserEnrollmentEnabled() bool {
 // GetAccountDrivenUserEnrollmentEnabledOk returns a tuple with the AccountDrivenUserEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetAccountDrivenUserEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.AccountDrivenUserEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.AccountDrivenUserEnrollmentEnabled, true
@@ -256,7 +259,7 @@ func (o *EnrollmentAccessGroupV2) GetAccountDrivenUserEnrollmentEnabledOk() (*bo
 
 // HasAccountDrivenUserEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasAccountDrivenUserEnrollmentEnabled() bool {
-	if o != nil && o.AccountDrivenUserEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *EnrollmentAccessGroupV2) SetAccountDrivenUserEnrollmentEnabled(v bool) 
 
 // GetRequireEula returns the RequireEula field value if set, zero value otherwise.
 func (o *EnrollmentAccessGroupV2) GetRequireEula() bool {
-	if o == nil || o.RequireEula == nil {
+	if o == nil || IsNil(o.RequireEula) {
 		var ret bool
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *EnrollmentAccessGroupV2) GetRequireEula() bool {
 // GetRequireEulaOk returns a tuple with the RequireEula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentAccessGroupV2) GetRequireEulaOk() (*bool, bool) {
-	if o == nil || o.RequireEula == nil {
+	if o == nil || IsNil(o.RequireEula) {
 		return nil, false
 	}
 	return o.RequireEula, true
@@ -288,7 +291,7 @@ func (o *EnrollmentAccessGroupV2) GetRequireEulaOk() (*bool, bool) {
 
 // HasRequireEula returns a boolean if a field has been set.
 func (o *EnrollmentAccessGroupV2) HasRequireEula() bool {
-	if o != nil && o.RequireEula != nil {
+	if o != nil && !IsNil(o.RequireEula) {
 		return true
 	}
 
@@ -301,32 +304,40 @@ func (o *EnrollmentAccessGroupV2) SetRequireEula(v bool) {
 }
 
 func (o EnrollmentAccessGroupV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.LdapServerId != nil {
-		toSerialize["ldapServerId"] = o.LdapServerId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.EnterpriseEnrollmentEnabled != nil {
-		toSerialize["enterpriseEnrollmentEnabled"] = o.EnterpriseEnrollmentEnabled
-	}
-	if o.PersonalEnrollmentEnabled != nil {
-		toSerialize["personalEnrollmentEnabled"] = o.PersonalEnrollmentEnabled
-	}
-	if o.AccountDrivenUserEnrollmentEnabled != nil {
-		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
-	}
-	if o.RequireEula != nil {
-		toSerialize["requireEula"] = o.RequireEula
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentAccessGroupV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.LdapServerId) {
+		toSerialize["ldapServerId"] = o.LdapServerId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.EnterpriseEnrollmentEnabled) {
+		toSerialize["enterpriseEnrollmentEnabled"] = o.EnterpriseEnrollmentEnabled
+	}
+	if !IsNil(o.PersonalEnrollmentEnabled) {
+		toSerialize["personalEnrollmentEnabled"] = o.PersonalEnrollmentEnabled
+	}
+	if !IsNil(o.AccountDrivenUserEnrollmentEnabled) {
+		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
+	}
+	if !IsNil(o.RequireEula) {
+		toSerialize["requireEula"] = o.RequireEula
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentAccessGroupV2 struct {

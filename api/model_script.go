@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Script type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Script{}
+
 // Script struct for Script
 type Script struct {
 	Id *string `json:"id,omitempty"`
@@ -55,7 +58,7 @@ func NewScriptWithDefaults() *Script {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Script) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *Script) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -73,7 +76,7 @@ func (o *Script) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Script) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -111,7 +114,7 @@ func (o *Script) SetName(v string) {
 
 // GetInfo returns the Info field value if set, zero value otherwise.
 func (o *Script) GetInfo() string {
-	if o == nil || o.Info == nil {
+	if o == nil || IsNil(o.Info) {
 		var ret string
 		return ret
 	}
@@ -121,7 +124,7 @@ func (o *Script) GetInfo() string {
 // GetInfoOk returns a tuple with the Info field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetInfoOk() (*string, bool) {
-	if o == nil || o.Info == nil {
+	if o == nil || IsNil(o.Info) {
 		return nil, false
 	}
 	return o.Info, true
@@ -129,7 +132,7 @@ func (o *Script) GetInfoOk() (*string, bool) {
 
 // HasInfo returns a boolean if a field has been set.
 func (o *Script) HasInfo() bool {
-	if o != nil && o.Info != nil {
+	if o != nil && !IsNil(o.Info) {
 		return true
 	}
 
@@ -143,7 +146,7 @@ func (o *Script) SetInfo(v string) {
 
 // GetNotes returns the Notes field value if set, zero value otherwise.
 func (o *Script) GetNotes() string {
-	if o == nil || o.Notes == nil {
+	if o == nil || IsNil(o.Notes) {
 		var ret string
 		return ret
 	}
@@ -153,7 +156,7 @@ func (o *Script) GetNotes() string {
 // GetNotesOk returns a tuple with the Notes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetNotesOk() (*string, bool) {
-	if o == nil || o.Notes == nil {
+	if o == nil || IsNil(o.Notes) {
 		return nil, false
 	}
 	return o.Notes, true
@@ -161,7 +164,7 @@ func (o *Script) GetNotesOk() (*string, bool) {
 
 // HasNotes returns a boolean if a field has been set.
 func (o *Script) HasNotes() bool {
-	if o != nil && o.Notes != nil {
+	if o != nil && !IsNil(o.Notes) {
 		return true
 	}
 
@@ -175,7 +178,7 @@ func (o *Script) SetNotes(v string) {
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
 func (o *Script) GetPriority() string {
-	if o == nil || o.Priority == nil {
+	if o == nil || IsNil(o.Priority) {
 		var ret string
 		return ret
 	}
@@ -185,7 +188,7 @@ func (o *Script) GetPriority() string {
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetPriorityOk() (*string, bool) {
-	if o == nil || o.Priority == nil {
+	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
 	return o.Priority, true
@@ -193,7 +196,7 @@ func (o *Script) GetPriorityOk() (*string, bool) {
 
 // HasPriority returns a boolean if a field has been set.
 func (o *Script) HasPriority() bool {
-	if o != nil && o.Priority != nil {
+	if o != nil && !IsNil(o.Priority) {
 		return true
 	}
 
@@ -207,7 +210,7 @@ func (o *Script) SetPriority(v string) {
 
 // GetCategoryId returns the CategoryId field value if set, zero value otherwise.
 func (o *Script) GetCategoryId() string {
-	if o == nil || o.CategoryId == nil {
+	if o == nil || IsNil(o.CategoryId) {
 		var ret string
 		return ret
 	}
@@ -217,7 +220,7 @@ func (o *Script) GetCategoryId() string {
 // GetCategoryIdOk returns a tuple with the CategoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetCategoryIdOk() (*string, bool) {
-	if o == nil || o.CategoryId == nil {
+	if o == nil || IsNil(o.CategoryId) {
 		return nil, false
 	}
 	return o.CategoryId, true
@@ -225,7 +228,7 @@ func (o *Script) GetCategoryIdOk() (*string, bool) {
 
 // HasCategoryId returns a boolean if a field has been set.
 func (o *Script) HasCategoryId() bool {
-	if o != nil && o.CategoryId != nil {
+	if o != nil && !IsNil(o.CategoryId) {
 		return true
 	}
 
@@ -239,7 +242,7 @@ func (o *Script) SetCategoryId(v string) {
 
 // GetCategoryName returns the CategoryName field value if set, zero value otherwise.
 func (o *Script) GetCategoryName() string {
-	if o == nil || o.CategoryName == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		var ret string
 		return ret
 	}
@@ -249,7 +252,7 @@ func (o *Script) GetCategoryName() string {
 // GetCategoryNameOk returns a tuple with the CategoryName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetCategoryNameOk() (*string, bool) {
-	if o == nil || o.CategoryName == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		return nil, false
 	}
 	return o.CategoryName, true
@@ -257,7 +260,7 @@ func (o *Script) GetCategoryNameOk() (*string, bool) {
 
 // HasCategoryName returns a boolean if a field has been set.
 func (o *Script) HasCategoryName() bool {
-	if o != nil && o.CategoryName != nil {
+	if o != nil && !IsNil(o.CategoryName) {
 		return true
 	}
 
@@ -271,7 +274,7 @@ func (o *Script) SetCategoryName(v string) {
 
 // GetParameter4 returns the Parameter4 field value if set, zero value otherwise.
 func (o *Script) GetParameter4() string {
-	if o == nil || o.Parameter4 == nil {
+	if o == nil || IsNil(o.Parameter4) {
 		var ret string
 		return ret
 	}
@@ -281,7 +284,7 @@ func (o *Script) GetParameter4() string {
 // GetParameter4Ok returns a tuple with the Parameter4 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter4Ok() (*string, bool) {
-	if o == nil || o.Parameter4 == nil {
+	if o == nil || IsNil(o.Parameter4) {
 		return nil, false
 	}
 	return o.Parameter4, true
@@ -289,7 +292,7 @@ func (o *Script) GetParameter4Ok() (*string, bool) {
 
 // HasParameter4 returns a boolean if a field has been set.
 func (o *Script) HasParameter4() bool {
-	if o != nil && o.Parameter4 != nil {
+	if o != nil && !IsNil(o.Parameter4) {
 		return true
 	}
 
@@ -303,7 +306,7 @@ func (o *Script) SetParameter4(v string) {
 
 // GetParameter5 returns the Parameter5 field value if set, zero value otherwise.
 func (o *Script) GetParameter5() string {
-	if o == nil || o.Parameter5 == nil {
+	if o == nil || IsNil(o.Parameter5) {
 		var ret string
 		return ret
 	}
@@ -313,7 +316,7 @@ func (o *Script) GetParameter5() string {
 // GetParameter5Ok returns a tuple with the Parameter5 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter5Ok() (*string, bool) {
-	if o == nil || o.Parameter5 == nil {
+	if o == nil || IsNil(o.Parameter5) {
 		return nil, false
 	}
 	return o.Parameter5, true
@@ -321,7 +324,7 @@ func (o *Script) GetParameter5Ok() (*string, bool) {
 
 // HasParameter5 returns a boolean if a field has been set.
 func (o *Script) HasParameter5() bool {
-	if o != nil && o.Parameter5 != nil {
+	if o != nil && !IsNil(o.Parameter5) {
 		return true
 	}
 
@@ -335,7 +338,7 @@ func (o *Script) SetParameter5(v string) {
 
 // GetParameter6 returns the Parameter6 field value if set, zero value otherwise.
 func (o *Script) GetParameter6() string {
-	if o == nil || o.Parameter6 == nil {
+	if o == nil || IsNil(o.Parameter6) {
 		var ret string
 		return ret
 	}
@@ -345,7 +348,7 @@ func (o *Script) GetParameter6() string {
 // GetParameter6Ok returns a tuple with the Parameter6 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter6Ok() (*string, bool) {
-	if o == nil || o.Parameter6 == nil {
+	if o == nil || IsNil(o.Parameter6) {
 		return nil, false
 	}
 	return o.Parameter6, true
@@ -353,7 +356,7 @@ func (o *Script) GetParameter6Ok() (*string, bool) {
 
 // HasParameter6 returns a boolean if a field has been set.
 func (o *Script) HasParameter6() bool {
-	if o != nil && o.Parameter6 != nil {
+	if o != nil && !IsNil(o.Parameter6) {
 		return true
 	}
 
@@ -367,7 +370,7 @@ func (o *Script) SetParameter6(v string) {
 
 // GetParameter7 returns the Parameter7 field value if set, zero value otherwise.
 func (o *Script) GetParameter7() string {
-	if o == nil || o.Parameter7 == nil {
+	if o == nil || IsNil(o.Parameter7) {
 		var ret string
 		return ret
 	}
@@ -377,7 +380,7 @@ func (o *Script) GetParameter7() string {
 // GetParameter7Ok returns a tuple with the Parameter7 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter7Ok() (*string, bool) {
-	if o == nil || o.Parameter7 == nil {
+	if o == nil || IsNil(o.Parameter7) {
 		return nil, false
 	}
 	return o.Parameter7, true
@@ -385,7 +388,7 @@ func (o *Script) GetParameter7Ok() (*string, bool) {
 
 // HasParameter7 returns a boolean if a field has been set.
 func (o *Script) HasParameter7() bool {
-	if o != nil && o.Parameter7 != nil {
+	if o != nil && !IsNil(o.Parameter7) {
 		return true
 	}
 
@@ -399,7 +402,7 @@ func (o *Script) SetParameter7(v string) {
 
 // GetParameter8 returns the Parameter8 field value if set, zero value otherwise.
 func (o *Script) GetParameter8() string {
-	if o == nil || o.Parameter8 == nil {
+	if o == nil || IsNil(o.Parameter8) {
 		var ret string
 		return ret
 	}
@@ -409,7 +412,7 @@ func (o *Script) GetParameter8() string {
 // GetParameter8Ok returns a tuple with the Parameter8 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter8Ok() (*string, bool) {
-	if o == nil || o.Parameter8 == nil {
+	if o == nil || IsNil(o.Parameter8) {
 		return nil, false
 	}
 	return o.Parameter8, true
@@ -417,7 +420,7 @@ func (o *Script) GetParameter8Ok() (*string, bool) {
 
 // HasParameter8 returns a boolean if a field has been set.
 func (o *Script) HasParameter8() bool {
-	if o != nil && o.Parameter8 != nil {
+	if o != nil && !IsNil(o.Parameter8) {
 		return true
 	}
 
@@ -431,7 +434,7 @@ func (o *Script) SetParameter8(v string) {
 
 // GetParameter9 returns the Parameter9 field value if set, zero value otherwise.
 func (o *Script) GetParameter9() string {
-	if o == nil || o.Parameter9 == nil {
+	if o == nil || IsNil(o.Parameter9) {
 		var ret string
 		return ret
 	}
@@ -441,7 +444,7 @@ func (o *Script) GetParameter9() string {
 // GetParameter9Ok returns a tuple with the Parameter9 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter9Ok() (*string, bool) {
-	if o == nil || o.Parameter9 == nil {
+	if o == nil || IsNil(o.Parameter9) {
 		return nil, false
 	}
 	return o.Parameter9, true
@@ -449,7 +452,7 @@ func (o *Script) GetParameter9Ok() (*string, bool) {
 
 // HasParameter9 returns a boolean if a field has been set.
 func (o *Script) HasParameter9() bool {
-	if o != nil && o.Parameter9 != nil {
+	if o != nil && !IsNil(o.Parameter9) {
 		return true
 	}
 
@@ -463,7 +466,7 @@ func (o *Script) SetParameter9(v string) {
 
 // GetParameter10 returns the Parameter10 field value if set, zero value otherwise.
 func (o *Script) GetParameter10() string {
-	if o == nil || o.Parameter10 == nil {
+	if o == nil || IsNil(o.Parameter10) {
 		var ret string
 		return ret
 	}
@@ -473,7 +476,7 @@ func (o *Script) GetParameter10() string {
 // GetParameter10Ok returns a tuple with the Parameter10 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter10Ok() (*string, bool) {
-	if o == nil || o.Parameter10 == nil {
+	if o == nil || IsNil(o.Parameter10) {
 		return nil, false
 	}
 	return o.Parameter10, true
@@ -481,7 +484,7 @@ func (o *Script) GetParameter10Ok() (*string, bool) {
 
 // HasParameter10 returns a boolean if a field has been set.
 func (o *Script) HasParameter10() bool {
-	if o != nil && o.Parameter10 != nil {
+	if o != nil && !IsNil(o.Parameter10) {
 		return true
 	}
 
@@ -495,7 +498,7 @@ func (o *Script) SetParameter10(v string) {
 
 // GetParameter11 returns the Parameter11 field value if set, zero value otherwise.
 func (o *Script) GetParameter11() string {
-	if o == nil || o.Parameter11 == nil {
+	if o == nil || IsNil(o.Parameter11) {
 		var ret string
 		return ret
 	}
@@ -505,7 +508,7 @@ func (o *Script) GetParameter11() string {
 // GetParameter11Ok returns a tuple with the Parameter11 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetParameter11Ok() (*string, bool) {
-	if o == nil || o.Parameter11 == nil {
+	if o == nil || IsNil(o.Parameter11) {
 		return nil, false
 	}
 	return o.Parameter11, true
@@ -513,7 +516,7 @@ func (o *Script) GetParameter11Ok() (*string, bool) {
 
 // HasParameter11 returns a boolean if a field has been set.
 func (o *Script) HasParameter11() bool {
-	if o != nil && o.Parameter11 != nil {
+	if o != nil && !IsNil(o.Parameter11) {
 		return true
 	}
 
@@ -527,7 +530,7 @@ func (o *Script) SetParameter11(v string) {
 
 // GetOsRequirements returns the OsRequirements field value if set, zero value otherwise.
 func (o *Script) GetOsRequirements() string {
-	if o == nil || o.OsRequirements == nil {
+	if o == nil || IsNil(o.OsRequirements) {
 		var ret string
 		return ret
 	}
@@ -537,7 +540,7 @@ func (o *Script) GetOsRequirements() string {
 // GetOsRequirementsOk returns a tuple with the OsRequirements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetOsRequirementsOk() (*string, bool) {
-	if o == nil || o.OsRequirements == nil {
+	if o == nil || IsNil(o.OsRequirements) {
 		return nil, false
 	}
 	return o.OsRequirements, true
@@ -545,7 +548,7 @@ func (o *Script) GetOsRequirementsOk() (*string, bool) {
 
 // HasOsRequirements returns a boolean if a field has been set.
 func (o *Script) HasOsRequirements() bool {
-	if o != nil && o.OsRequirements != nil {
+	if o != nil && !IsNil(o.OsRequirements) {
 		return true
 	}
 
@@ -559,7 +562,7 @@ func (o *Script) SetOsRequirements(v string) {
 
 // GetScriptContents returns the ScriptContents field value if set, zero value otherwise.
 func (o *Script) GetScriptContents() string {
-	if o == nil || o.ScriptContents == nil {
+	if o == nil || IsNil(o.ScriptContents) {
 		var ret string
 		return ret
 	}
@@ -569,7 +572,7 @@ func (o *Script) GetScriptContents() string {
 // GetScriptContentsOk returns a tuple with the ScriptContents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Script) GetScriptContentsOk() (*string, bool) {
-	if o == nil || o.ScriptContents == nil {
+	if o == nil || IsNil(o.ScriptContents) {
 		return nil, false
 	}
 	return o.ScriptContents, true
@@ -577,7 +580,7 @@ func (o *Script) GetScriptContentsOk() (*string, bool) {
 
 // HasScriptContents returns a boolean if a field has been set.
 func (o *Script) HasScriptContents() bool {
-	if o != nil && o.ScriptContents != nil {
+	if o != nil && !IsNil(o.ScriptContents) {
 		return true
 	}
 
@@ -590,59 +593,65 @@ func (o *Script) SetScriptContents(v string) {
 }
 
 func (o Script) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Info != nil {
-		toSerialize["info"] = o.Info
-	}
-	if o.Notes != nil {
-		toSerialize["notes"] = o.Notes
-	}
-	if o.Priority != nil {
-		toSerialize["priority"] = o.Priority
-	}
-	if o.CategoryId != nil {
-		toSerialize["categoryId"] = o.CategoryId
-	}
-	if o.CategoryName != nil {
-		toSerialize["categoryName"] = o.CategoryName
-	}
-	if o.Parameter4 != nil {
-		toSerialize["parameter4"] = o.Parameter4
-	}
-	if o.Parameter5 != nil {
-		toSerialize["parameter5"] = o.Parameter5
-	}
-	if o.Parameter6 != nil {
-		toSerialize["parameter6"] = o.Parameter6
-	}
-	if o.Parameter7 != nil {
-		toSerialize["parameter7"] = o.Parameter7
-	}
-	if o.Parameter8 != nil {
-		toSerialize["parameter8"] = o.Parameter8
-	}
-	if o.Parameter9 != nil {
-		toSerialize["parameter9"] = o.Parameter9
-	}
-	if o.Parameter10 != nil {
-		toSerialize["parameter10"] = o.Parameter10
-	}
-	if o.Parameter11 != nil {
-		toSerialize["parameter11"] = o.Parameter11
-	}
-	if o.OsRequirements != nil {
-		toSerialize["osRequirements"] = o.OsRequirements
-	}
-	if o.ScriptContents != nil {
-		toSerialize["scriptContents"] = o.ScriptContents
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Script) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Info) {
+		toSerialize["info"] = o.Info
+	}
+	if !IsNil(o.Notes) {
+		toSerialize["notes"] = o.Notes
+	}
+	if !IsNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
+	if !IsNil(o.CategoryId) {
+		toSerialize["categoryId"] = o.CategoryId
+	}
+	if !IsNil(o.CategoryName) {
+		toSerialize["categoryName"] = o.CategoryName
+	}
+	if !IsNil(o.Parameter4) {
+		toSerialize["parameter4"] = o.Parameter4
+	}
+	if !IsNil(o.Parameter5) {
+		toSerialize["parameter5"] = o.Parameter5
+	}
+	if !IsNil(o.Parameter6) {
+		toSerialize["parameter6"] = o.Parameter6
+	}
+	if !IsNil(o.Parameter7) {
+		toSerialize["parameter7"] = o.Parameter7
+	}
+	if !IsNil(o.Parameter8) {
+		toSerialize["parameter8"] = o.Parameter8
+	}
+	if !IsNil(o.Parameter9) {
+		toSerialize["parameter9"] = o.Parameter9
+	}
+	if !IsNil(o.Parameter10) {
+		toSerialize["parameter10"] = o.Parameter10
+	}
+	if !IsNil(o.Parameter11) {
+		toSerialize["parameter11"] = o.Parameter11
+	}
+	if !IsNil(o.OsRequirements) {
+		toSerialize["osRequirements"] = o.OsRequirements
+	}
+	if !IsNil(o.ScriptContents) {
+		toSerialize["scriptContents"] = o.ScriptContents
+	}
+	return toSerialize, nil
 }
 
 type NullableScript struct {

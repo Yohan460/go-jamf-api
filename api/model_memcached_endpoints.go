@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MemcachedEndpoints type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MemcachedEndpoints{}
+
 // MemcachedEndpoints struct for MemcachedEndpoints
 type MemcachedEndpoints struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewMemcachedEndpointsWithDefaults() *MemcachedEndpoints {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *MemcachedEndpoints) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -61,7 +64,7 @@ func (o *MemcachedEndpoints) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *MemcachedEndpoints) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *MemcachedEndpoints) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -93,7 +96,7 @@ func (o *MemcachedEndpoints) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *MemcachedEndpoints) SetName(v string) {
 
 // GetHostName returns the HostName field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetHostName() string {
-	if o == nil || o.HostName == nil {
+	if o == nil || IsNil(o.HostName) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *MemcachedEndpoints) GetHostName() string {
 // GetHostNameOk returns a tuple with the HostName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetHostNameOk() (*string, bool) {
-	if o == nil || o.HostName == nil {
+	if o == nil || IsNil(o.HostName) {
 		return nil, false
 	}
 	return o.HostName, true
@@ -125,7 +128,7 @@ func (o *MemcachedEndpoints) GetHostNameOk() (*string, bool) {
 
 // HasHostName returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasHostName() bool {
-	if o != nil && o.HostName != nil {
+	if o != nil && !IsNil(o.HostName) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *MemcachedEndpoints) SetHostName(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *MemcachedEndpoints) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -157,7 +160,7 @@ func (o *MemcachedEndpoints) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *MemcachedEndpoints) SetPort(v int32) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *MemcachedEndpoints) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -189,7 +192,7 @@ func (o *MemcachedEndpoints) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *MemcachedEndpoints) SetEnabled(v bool) {
 
 // GetJssCacheConfigurationId returns the JssCacheConfigurationId field value if set, zero value otherwise.
 func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int32 {
-	if o == nil || o.JssCacheConfigurationId == nil {
+	if o == nil || IsNil(o.JssCacheConfigurationId) {
 		var ret int32
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int32 {
 // GetJssCacheConfigurationIdOk returns a tuple with the JssCacheConfigurationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int32, bool) {
-	if o == nil || o.JssCacheConfigurationId == nil {
+	if o == nil || IsNil(o.JssCacheConfigurationId) {
 		return nil, false
 	}
 	return o.JssCacheConfigurationId, true
@@ -221,7 +224,7 @@ func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int32, bool) {
 
 // HasJssCacheConfigurationId returns a boolean if a field has been set.
 func (o *MemcachedEndpoints) HasJssCacheConfigurationId() bool {
-	if o != nil && o.JssCacheConfigurationId != nil {
+	if o != nil && !IsNil(o.JssCacheConfigurationId) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *MemcachedEndpoints) SetJssCacheConfigurationId(v int32) {
 }
 
 func (o MemcachedEndpoints) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.HostName != nil {
-		toSerialize["hostName"] = o.HostName
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.JssCacheConfigurationId != nil {
-		toSerialize["jssCacheConfigurationId"] = o.JssCacheConfigurationId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MemcachedEndpoints) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.HostName) {
+		toSerialize["hostName"] = o.HostName
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.JssCacheConfigurationId) {
+		toSerialize["jssCacheConfigurationId"] = o.JssCacheConfigurationId
+	}
+	return toSerialize, nil
 }
 
 type NullableMemcachedEndpoints struct {

@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type AppStoreCountryCodesPreviewApi interface {
+type AppStoreCountryCodesPreviewAPI interface {
 
 	/*
 	V1AppStoreCountryCodesGet Return a list of Countries and the associated Codes 
@@ -28,24 +28,24 @@ type AppStoreCountryCodesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppStoreCountryCodesGetRequest
+	@return AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest
 	*/
-	V1AppStoreCountryCodesGet(ctx context.Context) ApiV1AppStoreCountryCodesGetRequest
+	V1AppStoreCountryCodesGet(ctx context.Context) AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest
 
 	// V1AppStoreCountryCodesGetExecute executes the request
 	//  @return CountryCodes
-	V1AppStoreCountryCodesGetExecute(r ApiV1AppStoreCountryCodesGetRequest) (*CountryCodes, *http.Response, error)
+	V1AppStoreCountryCodesGetExecute(r AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest) (*CountryCodes, *http.Response, error)
 }
 
-// AppStoreCountryCodesPreviewApiService AppStoreCountryCodesPreviewApi service
-type AppStoreCountryCodesPreviewApiService service
+// AppStoreCountryCodesPreviewAPIService AppStoreCountryCodesPreviewAPI service
+type AppStoreCountryCodesPreviewAPIService service
 
-type ApiV1AppStoreCountryCodesGetRequest struct {
+type AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest struct {
 	ctx context.Context
-	ApiService AppStoreCountryCodesPreviewApi
+	ApiService AppStoreCountryCodesPreviewAPI
 }
 
-func (r ApiV1AppStoreCountryCodesGetRequest) Execute() (*CountryCodes, *http.Response, error) {
+func (r AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest) Execute() (*CountryCodes, *http.Response, error) {
 	return r.ApiService.V1AppStoreCountryCodesGetExecute(r)
 }
 
@@ -56,10 +56,10 @@ Returns a list of countries and the associated codes that can be use for the App
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppStoreCountryCodesGetRequest
+ @return AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest
 */
-func (a *AppStoreCountryCodesPreviewApiService) V1AppStoreCountryCodesGet(ctx context.Context) ApiV1AppStoreCountryCodesGetRequest {
-	return ApiV1AppStoreCountryCodesGetRequest{
+func (a *AppStoreCountryCodesPreviewAPIService) V1AppStoreCountryCodesGet(ctx context.Context) AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest {
+	return AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +67,7 @@ func (a *AppStoreCountryCodesPreviewApiService) V1AppStoreCountryCodesGet(ctx co
 
 // Execute executes the request
 //  @return CountryCodes
-func (a *AppStoreCountryCodesPreviewApiService) V1AppStoreCountryCodesGetExecute(r ApiV1AppStoreCountryCodesGetRequest) (*CountryCodes, *http.Response, error) {
+func (a *AppStoreCountryCodesPreviewAPIService) V1AppStoreCountryCodesGetExecute(r AppStoreCountryCodesPreviewAPIV1AppStoreCountryCodesGetRequest) (*CountryCodes, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *AppStoreCountryCodesPreviewApiService) V1AppStoreCountryCodesGetExecute
 		localVarReturnValue  *CountryCodes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppStoreCountryCodesPreviewApiService.V1AppStoreCountryCodesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppStoreCountryCodesPreviewAPIService.V1AppStoreCountryCodesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +113,9 @@ func (a *AppStoreCountryCodesPreviewApiService) V1AppStoreCountryCodesGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

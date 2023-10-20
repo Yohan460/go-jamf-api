@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateAppleTv type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateAppleTv{}
+
 // UpdateAppleTv struct for UpdateAppleTv
 type UpdateAppleTv struct {
 	AirplayPassword *string `json:"airplayPassword,omitempty"`
@@ -39,7 +42,7 @@ func NewUpdateAppleTvWithDefaults() *UpdateAppleTv {
 
 // GetAirplayPassword returns the AirplayPassword field value if set, zero value otherwise.
 func (o *UpdateAppleTv) GetAirplayPassword() string {
-	if o == nil || o.AirplayPassword == nil {
+	if o == nil || IsNil(o.AirplayPassword) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *UpdateAppleTv) GetAirplayPassword() string {
 // GetAirplayPasswordOk returns a tuple with the AirplayPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAppleTv) GetAirplayPasswordOk() (*string, bool) {
-	if o == nil || o.AirplayPassword == nil {
+	if o == nil || IsNil(o.AirplayPassword) {
 		return nil, false
 	}
 	return o.AirplayPassword, true
@@ -57,7 +60,7 @@ func (o *UpdateAppleTv) GetAirplayPasswordOk() (*string, bool) {
 
 // HasAirplayPassword returns a boolean if a field has been set.
 func (o *UpdateAppleTv) HasAirplayPassword() bool {
-	if o != nil && o.AirplayPassword != nil {
+	if o != nil && !IsNil(o.AirplayPassword) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *UpdateAppleTv) SetAirplayPassword(v string) {
 
 // GetPurchasing returns the Purchasing field value if set, zero value otherwise.
 func (o *UpdateAppleTv) GetPurchasing() Purchasing {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		var ret Purchasing
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *UpdateAppleTv) GetPurchasing() Purchasing {
 // GetPurchasingOk returns a tuple with the Purchasing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateAppleTv) GetPurchasingOk() (*Purchasing, bool) {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		return nil, false
 	}
 	return o.Purchasing, true
@@ -89,7 +92,7 @@ func (o *UpdateAppleTv) GetPurchasingOk() (*Purchasing, bool) {
 
 // HasPurchasing returns a boolean if a field has been set.
 func (o *UpdateAppleTv) HasPurchasing() bool {
-	if o != nil && o.Purchasing != nil {
+	if o != nil && !IsNil(o.Purchasing) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *UpdateAppleTv) SetPurchasing(v Purchasing) {
 }
 
 func (o UpdateAppleTv) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AirplayPassword != nil {
-		toSerialize["airplayPassword"] = o.AirplayPassword
-	}
-	if o.Purchasing != nil {
-		toSerialize["purchasing"] = o.Purchasing
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateAppleTv) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AirplayPassword) {
+		toSerialize["airplayPassword"] = o.AirplayPassword
+	}
+	if !IsNil(o.Purchasing) {
+		toSerialize["purchasing"] = o.Purchasing
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateAppleTv struct {

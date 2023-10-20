@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerDiskEncryption type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerDiskEncryption{}
+
 // ComputerDiskEncryption struct for ComputerDiskEncryption
 type ComputerDiskEncryption struct {
 	BootPartitionEncryptionDetails *ComputerPartitionEncryption `json:"bootPartitionEncryptionDetails,omitempty"`
@@ -43,7 +46,7 @@ func NewComputerDiskEncryptionWithDefaults() *ComputerDiskEncryption {
 
 // GetBootPartitionEncryptionDetails returns the BootPartitionEncryptionDetails field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetBootPartitionEncryptionDetails() ComputerPartitionEncryption {
-	if o == nil || o.BootPartitionEncryptionDetails == nil {
+	if o == nil || IsNil(o.BootPartitionEncryptionDetails) {
 		var ret ComputerPartitionEncryption
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ComputerDiskEncryption) GetBootPartitionEncryptionDetails() ComputerPar
 // GetBootPartitionEncryptionDetailsOk returns a tuple with the BootPartitionEncryptionDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetBootPartitionEncryptionDetailsOk() (*ComputerPartitionEncryption, bool) {
-	if o == nil || o.BootPartitionEncryptionDetails == nil {
+	if o == nil || IsNil(o.BootPartitionEncryptionDetails) {
 		return nil, false
 	}
 	return o.BootPartitionEncryptionDetails, true
@@ -61,7 +64,7 @@ func (o *ComputerDiskEncryption) GetBootPartitionEncryptionDetailsOk() (*Compute
 
 // HasBootPartitionEncryptionDetails returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasBootPartitionEncryptionDetails() bool {
-	if o != nil && o.BootPartitionEncryptionDetails != nil {
+	if o != nil && !IsNil(o.BootPartitionEncryptionDetails) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ComputerDiskEncryption) SetBootPartitionEncryptionDetails(v ComputerPar
 
 // GetIndividualRecoveryKeyValidityStatus returns the IndividualRecoveryKeyValidityStatus field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetIndividualRecoveryKeyValidityStatus() string {
-	if o == nil || o.IndividualRecoveryKeyValidityStatus == nil {
+	if o == nil || IsNil(o.IndividualRecoveryKeyValidityStatus) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ComputerDiskEncryption) GetIndividualRecoveryKeyValidityStatus() string
 // GetIndividualRecoveryKeyValidityStatusOk returns a tuple with the IndividualRecoveryKeyValidityStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetIndividualRecoveryKeyValidityStatusOk() (*string, bool) {
-	if o == nil || o.IndividualRecoveryKeyValidityStatus == nil {
+	if o == nil || IsNil(o.IndividualRecoveryKeyValidityStatus) {
 		return nil, false
 	}
 	return o.IndividualRecoveryKeyValidityStatus, true
@@ -93,7 +96,7 @@ func (o *ComputerDiskEncryption) GetIndividualRecoveryKeyValidityStatusOk() (*st
 
 // HasIndividualRecoveryKeyValidityStatus returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasIndividualRecoveryKeyValidityStatus() bool {
-	if o != nil && o.IndividualRecoveryKeyValidityStatus != nil {
+	if o != nil && !IsNil(o.IndividualRecoveryKeyValidityStatus) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ComputerDiskEncryption) SetIndividualRecoveryKeyValidityStatus(v string
 
 // GetInstitutionalRecoveryKeyPresent returns the InstitutionalRecoveryKeyPresent field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetInstitutionalRecoveryKeyPresent() bool {
-	if o == nil || o.InstitutionalRecoveryKeyPresent == nil {
+	if o == nil || IsNil(o.InstitutionalRecoveryKeyPresent) {
 		var ret bool
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ComputerDiskEncryption) GetInstitutionalRecoveryKeyPresent() bool {
 // GetInstitutionalRecoveryKeyPresentOk returns a tuple with the InstitutionalRecoveryKeyPresent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetInstitutionalRecoveryKeyPresentOk() (*bool, bool) {
-	if o == nil || o.InstitutionalRecoveryKeyPresent == nil {
+	if o == nil || IsNil(o.InstitutionalRecoveryKeyPresent) {
 		return nil, false
 	}
 	return o.InstitutionalRecoveryKeyPresent, true
@@ -125,7 +128,7 @@ func (o *ComputerDiskEncryption) GetInstitutionalRecoveryKeyPresentOk() (*bool, 
 
 // HasInstitutionalRecoveryKeyPresent returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasInstitutionalRecoveryKeyPresent() bool {
-	if o != nil && o.InstitutionalRecoveryKeyPresent != nil {
+	if o != nil && !IsNil(o.InstitutionalRecoveryKeyPresent) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ComputerDiskEncryption) SetInstitutionalRecoveryKeyPresent(v bool) {
 
 // GetDiskEncryptionConfigurationName returns the DiskEncryptionConfigurationName field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetDiskEncryptionConfigurationName() string {
-	if o == nil || o.DiskEncryptionConfigurationName == nil {
+	if o == nil || IsNil(o.DiskEncryptionConfigurationName) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *ComputerDiskEncryption) GetDiskEncryptionConfigurationName() string {
 // GetDiskEncryptionConfigurationNameOk returns a tuple with the DiskEncryptionConfigurationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetDiskEncryptionConfigurationNameOk() (*string, bool) {
-	if o == nil || o.DiskEncryptionConfigurationName == nil {
+	if o == nil || IsNil(o.DiskEncryptionConfigurationName) {
 		return nil, false
 	}
 	return o.DiskEncryptionConfigurationName, true
@@ -157,7 +160,7 @@ func (o *ComputerDiskEncryption) GetDiskEncryptionConfigurationNameOk() (*string
 
 // HasDiskEncryptionConfigurationName returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasDiskEncryptionConfigurationName() bool {
-	if o != nil && o.DiskEncryptionConfigurationName != nil {
+	if o != nil && !IsNil(o.DiskEncryptionConfigurationName) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ComputerDiskEncryption) SetDiskEncryptionConfigurationName(v string) {
 
 // GetFileVault2EnabledUserNames returns the FileVault2EnabledUserNames field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetFileVault2EnabledUserNames() []string {
-	if o == nil || o.FileVault2EnabledUserNames == nil {
+	if o == nil || IsNil(o.FileVault2EnabledUserNames) {
 		var ret []string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *ComputerDiskEncryption) GetFileVault2EnabledUserNames() []string {
 // GetFileVault2EnabledUserNamesOk returns a tuple with the FileVault2EnabledUserNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetFileVault2EnabledUserNamesOk() ([]string, bool) {
-	if o == nil || o.FileVault2EnabledUserNames == nil {
+	if o == nil || IsNil(o.FileVault2EnabledUserNames) {
 		return nil, false
 	}
 	return o.FileVault2EnabledUserNames, true
@@ -189,7 +192,7 @@ func (o *ComputerDiskEncryption) GetFileVault2EnabledUserNamesOk() ([]string, bo
 
 // HasFileVault2EnabledUserNames returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasFileVault2EnabledUserNames() bool {
-	if o != nil && o.FileVault2EnabledUserNames != nil {
+	if o != nil && !IsNil(o.FileVault2EnabledUserNames) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *ComputerDiskEncryption) SetFileVault2EnabledUserNames(v []string) {
 
 // GetFileVault2EligibilityMessage returns the FileVault2EligibilityMessage field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetFileVault2EligibilityMessage() string {
-	if o == nil || o.FileVault2EligibilityMessage == nil {
+	if o == nil || IsNil(o.FileVault2EligibilityMessage) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ComputerDiskEncryption) GetFileVault2EligibilityMessage() string {
 // GetFileVault2EligibilityMessageOk returns a tuple with the FileVault2EligibilityMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDiskEncryption) GetFileVault2EligibilityMessageOk() (*string, bool) {
-	if o == nil || o.FileVault2EligibilityMessage == nil {
+	if o == nil || IsNil(o.FileVault2EligibilityMessage) {
 		return nil, false
 	}
 	return o.FileVault2EligibilityMessage, true
@@ -221,7 +224,7 @@ func (o *ComputerDiskEncryption) GetFileVault2EligibilityMessageOk() (*string, b
 
 // HasFileVault2EligibilityMessage returns a boolean if a field has been set.
 func (o *ComputerDiskEncryption) HasFileVault2EligibilityMessage() bool {
-	if o != nil && o.FileVault2EligibilityMessage != nil {
+	if o != nil && !IsNil(o.FileVault2EligibilityMessage) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *ComputerDiskEncryption) SetFileVault2EligibilityMessage(v string) {
 }
 
 func (o ComputerDiskEncryption) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BootPartitionEncryptionDetails != nil {
-		toSerialize["bootPartitionEncryptionDetails"] = o.BootPartitionEncryptionDetails
-	}
-	if o.IndividualRecoveryKeyValidityStatus != nil {
-		toSerialize["individualRecoveryKeyValidityStatus"] = o.IndividualRecoveryKeyValidityStatus
-	}
-	if o.InstitutionalRecoveryKeyPresent != nil {
-		toSerialize["institutionalRecoveryKeyPresent"] = o.InstitutionalRecoveryKeyPresent
-	}
-	if o.DiskEncryptionConfigurationName != nil {
-		toSerialize["diskEncryptionConfigurationName"] = o.DiskEncryptionConfigurationName
-	}
-	if o.FileVault2EnabledUserNames != nil {
-		toSerialize["fileVault2EnabledUserNames"] = o.FileVault2EnabledUserNames
-	}
-	if o.FileVault2EligibilityMessage != nil {
-		toSerialize["fileVault2EligibilityMessage"] = o.FileVault2EligibilityMessage
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerDiskEncryption) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BootPartitionEncryptionDetails) {
+		toSerialize["bootPartitionEncryptionDetails"] = o.BootPartitionEncryptionDetails
+	}
+	if !IsNil(o.IndividualRecoveryKeyValidityStatus) {
+		toSerialize["individualRecoveryKeyValidityStatus"] = o.IndividualRecoveryKeyValidityStatus
+	}
+	if !IsNil(o.InstitutionalRecoveryKeyPresent) {
+		toSerialize["institutionalRecoveryKeyPresent"] = o.InstitutionalRecoveryKeyPresent
+	}
+	if !IsNil(o.DiskEncryptionConfigurationName) {
+		toSerialize["diskEncryptionConfigurationName"] = o.DiskEncryptionConfigurationName
+	}
+	if !IsNil(o.FileVault2EnabledUserNames) {
+		toSerialize["fileVault2EnabledUserNames"] = o.FileVault2EnabledUserNames
+	}
+	if !IsNil(o.FileVault2EligibilityMessage) {
+		toSerialize["fileVault2EligibilityMessage"] = o.FileVault2EligibilityMessage
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerDiskEncryption struct {

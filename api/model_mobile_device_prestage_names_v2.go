@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDevicePrestageNamesV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDevicePrestageNamesV2{}
+
 // MobileDevicePrestageNamesV2 struct for MobileDevicePrestageNamesV2
 type MobileDevicePrestageNamesV2 struct {
 	AssignNamesUsing *string `json:"assignNamesUsing,omitempty"`
@@ -44,7 +47,7 @@ func NewMobileDevicePrestageNamesV2WithDefaults() *MobileDevicePrestageNamesV2 {
 
 // GetAssignNamesUsing returns the AssignNamesUsing field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetAssignNamesUsing() string {
-	if o == nil || o.AssignNamesUsing == nil {
+	if o == nil || IsNil(o.AssignNamesUsing) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *MobileDevicePrestageNamesV2) GetAssignNamesUsing() string {
 // GetAssignNamesUsingOk returns a tuple with the AssignNamesUsing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetAssignNamesUsingOk() (*string, bool) {
-	if o == nil || o.AssignNamesUsing == nil {
+	if o == nil || IsNil(o.AssignNamesUsing) {
 		return nil, false
 	}
 	return o.AssignNamesUsing, true
@@ -62,7 +65,7 @@ func (o *MobileDevicePrestageNamesV2) GetAssignNamesUsingOk() (*string, bool) {
 
 // HasAssignNamesUsing returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasAssignNamesUsing() bool {
-	if o != nil && o.AssignNamesUsing != nil {
+	if o != nil && !IsNil(o.AssignNamesUsing) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *MobileDevicePrestageNamesV2) SetAssignNamesUsing(v string) {
 
 // GetPrestageDeviceNames returns the PrestageDeviceNames field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetPrestageDeviceNames() []MobileDevicePrestageNameV2 {
-	if o == nil || o.PrestageDeviceNames == nil {
+	if o == nil || IsNil(o.PrestageDeviceNames) {
 		var ret []MobileDevicePrestageNameV2
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *MobileDevicePrestageNamesV2) GetPrestageDeviceNames() []MobileDevicePre
 // GetPrestageDeviceNamesOk returns a tuple with the PrestageDeviceNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetPrestageDeviceNamesOk() ([]MobileDevicePrestageNameV2, bool) {
-	if o == nil || o.PrestageDeviceNames == nil {
+	if o == nil || IsNil(o.PrestageDeviceNames) {
 		return nil, false
 	}
 	return o.PrestageDeviceNames, true
@@ -94,7 +97,7 @@ func (o *MobileDevicePrestageNamesV2) GetPrestageDeviceNamesOk() ([]MobileDevice
 
 // HasPrestageDeviceNames returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasPrestageDeviceNames() bool {
-	if o != nil && o.PrestageDeviceNames != nil {
+	if o != nil && !IsNil(o.PrestageDeviceNames) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *MobileDevicePrestageNamesV2) SetPrestageDeviceNames(v []MobileDevicePre
 
 // GetDeviceNamePrefix returns the DeviceNamePrefix field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNamePrefix() string {
-	if o == nil || o.DeviceNamePrefix == nil {
+	if o == nil || IsNil(o.DeviceNamePrefix) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNamePrefix() string {
 // GetDeviceNamePrefixOk returns a tuple with the DeviceNamePrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNamePrefixOk() (*string, bool) {
-	if o == nil || o.DeviceNamePrefix == nil {
+	if o == nil || IsNil(o.DeviceNamePrefix) {
 		return nil, false
 	}
 	return o.DeviceNamePrefix, true
@@ -126,7 +129,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNamePrefixOk() (*string, bool) {
 
 // HasDeviceNamePrefix returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasDeviceNamePrefix() bool {
-	if o != nil && o.DeviceNamePrefix != nil {
+	if o != nil && !IsNil(o.DeviceNamePrefix) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *MobileDevicePrestageNamesV2) SetDeviceNamePrefix(v string) {
 
 // GetDeviceNameSuffix returns the DeviceNameSuffix field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNameSuffix() string {
-	if o == nil || o.DeviceNameSuffix == nil {
+	if o == nil || IsNil(o.DeviceNameSuffix) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNameSuffix() string {
 // GetDeviceNameSuffixOk returns a tuple with the DeviceNameSuffix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNameSuffixOk() (*string, bool) {
-	if o == nil || o.DeviceNameSuffix == nil {
+	if o == nil || IsNil(o.DeviceNameSuffix) {
 		return nil, false
 	}
 	return o.DeviceNameSuffix, true
@@ -158,7 +161,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNameSuffixOk() (*string, bool) {
 
 // HasDeviceNameSuffix returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasDeviceNameSuffix() bool {
-	if o != nil && o.DeviceNameSuffix != nil {
+	if o != nil && !IsNil(o.DeviceNameSuffix) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *MobileDevicePrestageNamesV2) SetDeviceNameSuffix(v string) {
 
 // GetSingleDeviceName returns the SingleDeviceName field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetSingleDeviceName() string {
-	if o == nil || o.SingleDeviceName == nil {
+	if o == nil || IsNil(o.SingleDeviceName) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *MobileDevicePrestageNamesV2) GetSingleDeviceName() string {
 // GetSingleDeviceNameOk returns a tuple with the SingleDeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetSingleDeviceNameOk() (*string, bool) {
-	if o == nil || o.SingleDeviceName == nil {
+	if o == nil || IsNil(o.SingleDeviceName) {
 		return nil, false
 	}
 	return o.SingleDeviceName, true
@@ -190,7 +193,7 @@ func (o *MobileDevicePrestageNamesV2) GetSingleDeviceNameOk() (*string, bool) {
 
 // HasSingleDeviceName returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasSingleDeviceName() bool {
-	if o != nil && o.SingleDeviceName != nil {
+	if o != nil && !IsNil(o.SingleDeviceName) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *MobileDevicePrestageNamesV2) SetSingleDeviceName(v string) {
 
 // GetManageNames returns the ManageNames field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetManageNames() bool {
-	if o == nil || o.ManageNames == nil {
+	if o == nil || IsNil(o.ManageNames) {
 		var ret bool
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *MobileDevicePrestageNamesV2) GetManageNames() bool {
 // GetManageNamesOk returns a tuple with the ManageNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetManageNamesOk() (*bool, bool) {
-	if o == nil || o.ManageNames == nil {
+	if o == nil || IsNil(o.ManageNames) {
 		return nil, false
 	}
 	return o.ManageNames, true
@@ -222,7 +225,7 @@ func (o *MobileDevicePrestageNamesV2) GetManageNamesOk() (*bool, bool) {
 
 // HasManageNames returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasManageNames() bool {
-	if o != nil && o.ManageNames != nil {
+	if o != nil && !IsNil(o.ManageNames) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *MobileDevicePrestageNamesV2) SetManageNames(v bool) {
 
 // GetDeviceNamingConfigured returns the DeviceNamingConfigured field value if set, zero value otherwise.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNamingConfigured() bool {
-	if o == nil || o.DeviceNamingConfigured == nil {
+	if o == nil || IsNil(o.DeviceNamingConfigured) {
 		var ret bool
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNamingConfigured() bool {
 // GetDeviceNamingConfiguredOk returns a tuple with the DeviceNamingConfigured field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageNamesV2) GetDeviceNamingConfiguredOk() (*bool, bool) {
-	if o == nil || o.DeviceNamingConfigured == nil {
+	if o == nil || IsNil(o.DeviceNamingConfigured) {
 		return nil, false
 	}
 	return o.DeviceNamingConfigured, true
@@ -254,7 +257,7 @@ func (o *MobileDevicePrestageNamesV2) GetDeviceNamingConfiguredOk() (*bool, bool
 
 // HasDeviceNamingConfigured returns a boolean if a field has been set.
 func (o *MobileDevicePrestageNamesV2) HasDeviceNamingConfigured() bool {
-	if o != nil && o.DeviceNamingConfigured != nil {
+	if o != nil && !IsNil(o.DeviceNamingConfigured) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *MobileDevicePrestageNamesV2) SetDeviceNamingConfigured(v bool) {
 }
 
 func (o MobileDevicePrestageNamesV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AssignNamesUsing != nil {
-		toSerialize["assignNamesUsing"] = o.AssignNamesUsing
-	}
-	if o.PrestageDeviceNames != nil {
-		toSerialize["prestageDeviceNames"] = o.PrestageDeviceNames
-	}
-	if o.DeviceNamePrefix != nil {
-		toSerialize["deviceNamePrefix"] = o.DeviceNamePrefix
-	}
-	if o.DeviceNameSuffix != nil {
-		toSerialize["deviceNameSuffix"] = o.DeviceNameSuffix
-	}
-	if o.SingleDeviceName != nil {
-		toSerialize["singleDeviceName"] = o.SingleDeviceName
-	}
-	if o.ManageNames != nil {
-		toSerialize["manageNames"] = o.ManageNames
-	}
-	if o.DeviceNamingConfigured != nil {
-		toSerialize["deviceNamingConfigured"] = o.DeviceNamingConfigured
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDevicePrestageNamesV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AssignNamesUsing) {
+		toSerialize["assignNamesUsing"] = o.AssignNamesUsing
+	}
+	if !IsNil(o.PrestageDeviceNames) {
+		toSerialize["prestageDeviceNames"] = o.PrestageDeviceNames
+	}
+	if !IsNil(o.DeviceNamePrefix) {
+		toSerialize["deviceNamePrefix"] = o.DeviceNamePrefix
+	}
+	if !IsNil(o.DeviceNameSuffix) {
+		toSerialize["deviceNameSuffix"] = o.DeviceNameSuffix
+	}
+	if !IsNil(o.SingleDeviceName) {
+		toSerialize["singleDeviceName"] = o.SingleDeviceName
+	}
+	if !IsNil(o.ManageNames) {
+		toSerialize["manageNames"] = o.ManageNames
+	}
+	if !IsNil(o.DeviceNamingConfigured) {
+		toSerialize["deviceNamingConfigured"] = o.DeviceNamingConfigured
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDevicePrestageNamesV2 struct {

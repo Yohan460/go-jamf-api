@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RestartDeviceCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RestartDeviceCommand{}
+
 // RestartDeviceCommand struct for RestartDeviceCommand
 type RestartDeviceCommand struct {
 	RebuildKernelCache *bool `json:"rebuildKernelCache,omitempty"`
@@ -41,7 +44,7 @@ func NewRestartDeviceCommandWithDefaults() *RestartDeviceCommand {
 
 // GetRebuildKernelCache returns the RebuildKernelCache field value if set, zero value otherwise.
 func (o *RestartDeviceCommand) GetRebuildKernelCache() bool {
-	if o == nil || o.RebuildKernelCache == nil {
+	if o == nil || IsNil(o.RebuildKernelCache) {
 		var ret bool
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RestartDeviceCommand) GetRebuildKernelCache() bool {
 // GetRebuildKernelCacheOk returns a tuple with the RebuildKernelCache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestartDeviceCommand) GetRebuildKernelCacheOk() (*bool, bool) {
-	if o == nil || o.RebuildKernelCache == nil {
+	if o == nil || IsNil(o.RebuildKernelCache) {
 		return nil, false
 	}
 	return o.RebuildKernelCache, true
@@ -59,7 +62,7 @@ func (o *RestartDeviceCommand) GetRebuildKernelCacheOk() (*bool, bool) {
 
 // HasRebuildKernelCache returns a boolean if a field has been set.
 func (o *RestartDeviceCommand) HasRebuildKernelCache() bool {
-	if o != nil && o.RebuildKernelCache != nil {
+	if o != nil && !IsNil(o.RebuildKernelCache) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RestartDeviceCommand) SetRebuildKernelCache(v bool) {
 
 // GetKextPaths returns the KextPaths field value if set, zero value otherwise.
 func (o *RestartDeviceCommand) GetKextPaths() []string {
-	if o == nil || o.KextPaths == nil {
+	if o == nil || IsNil(o.KextPaths) {
 		var ret []string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RestartDeviceCommand) GetKextPaths() []string {
 // GetKextPathsOk returns a tuple with the KextPaths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestartDeviceCommand) GetKextPathsOk() ([]string, bool) {
-	if o == nil || o.KextPaths == nil {
+	if o == nil || IsNil(o.KextPaths) {
 		return nil, false
 	}
 	return o.KextPaths, true
@@ -91,7 +94,7 @@ func (o *RestartDeviceCommand) GetKextPathsOk() ([]string, bool) {
 
 // HasKextPaths returns a boolean if a field has been set.
 func (o *RestartDeviceCommand) HasKextPaths() bool {
-	if o != nil && o.KextPaths != nil {
+	if o != nil && !IsNil(o.KextPaths) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RestartDeviceCommand) SetKextPaths(v []string) {
 
 // GetNotifyUser returns the NotifyUser field value if set, zero value otherwise.
 func (o *RestartDeviceCommand) GetNotifyUser() bool {
-	if o == nil || o.NotifyUser == nil {
+	if o == nil || IsNil(o.NotifyUser) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RestartDeviceCommand) GetNotifyUser() bool {
 // GetNotifyUserOk returns a tuple with the NotifyUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RestartDeviceCommand) GetNotifyUserOk() (*bool, bool) {
-	if o == nil || o.NotifyUser == nil {
+	if o == nil || IsNil(o.NotifyUser) {
 		return nil, false
 	}
 	return o.NotifyUser, true
@@ -123,7 +126,7 @@ func (o *RestartDeviceCommand) GetNotifyUserOk() (*bool, bool) {
 
 // HasNotifyUser returns a boolean if a field has been set.
 func (o *RestartDeviceCommand) HasNotifyUser() bool {
-	if o != nil && o.NotifyUser != nil {
+	if o != nil && !IsNil(o.NotifyUser) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *RestartDeviceCommand) SetNotifyUser(v bool) {
 }
 
 func (o RestartDeviceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RebuildKernelCache != nil {
-		toSerialize["rebuildKernelCache"] = o.RebuildKernelCache
-	}
-	if o.KextPaths != nil {
-		toSerialize["kextPaths"] = o.KextPaths
-	}
-	if o.NotifyUser != nil {
-		toSerialize["notifyUser"] = o.NotifyUser
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RestartDeviceCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RebuildKernelCache) {
+		toSerialize["rebuildKernelCache"] = o.RebuildKernelCache
+	}
+	if !IsNil(o.KextPaths) {
+		toSerialize["kextPaths"] = o.KextPaths
+	}
+	if !IsNil(o.NotifyUser) {
+		toSerialize["notifyUser"] = o.NotifyUser
+	}
+	return toSerialize, nil
 }
 
 type NullableRestartDeviceCommand struct {

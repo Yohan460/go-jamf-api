@@ -1,13 +1,13 @@
-# \ParentAppPreviewApi
+# \ParentAppPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ParentAppGet**](ParentAppPreviewApi.md#V1ParentAppGet) | **Get** /v1/parent-app | Get the current Jamf Parent app settings 
-[**V1ParentAppHistoryGet**](ParentAppPreviewApi.md#V1ParentAppHistoryGet) | **Get** /v1/parent-app/history | Get Jamf Parent app settings history 
-[**V1ParentAppHistoryPost**](ParentAppPreviewApi.md#V1ParentAppHistoryPost) | **Post** /v1/parent-app/history | Add Jamf Parent app settings history notes 
-[**V1ParentAppPut**](ParentAppPreviewApi.md#V1ParentAppPut) | **Put** /v1/parent-app | Update Jamf Parent app settings 
+[**V1ParentAppGet**](ParentAppPreviewAPI.md#V1ParentAppGet) | **Get** /v1/parent-app | Get the current Jamf Parent app settings 
+[**V1ParentAppHistoryGet**](ParentAppPreviewAPI.md#V1ParentAppHistoryGet) | **Get** /v1/parent-app/history | Get Jamf Parent app settings history 
+[**V1ParentAppHistoryPost**](ParentAppPreviewAPI.md#V1ParentAppHistoryPost) | **Post** /v1/parent-app/history | Add Jamf Parent app settings history notes 
+[**V1ParentAppPut**](ParentAppPreviewAPI.md#V1ParentAppPut) | **Put** /v1/parent-app | Update Jamf Parent app settings 
 
 
 
@@ -28,20 +28,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParentAppPreviewApi.V1ParentAppGet(context.Background()).Execute()
+    resp, r, err := apiClient.ParentAppPreviewAPI.V1ParentAppGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewApi.V1ParentAppGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewAPI.V1ParentAppGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ParentAppGet`: ParentApp
-    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewApi.V1ParentAppGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewAPI.V1ParentAppGet`: %v\n", resp)
 }
 ```
 
@@ -89,7 +89,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParentAppPreviewApi.V1ParentAppHistoryGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).Sort(sort).Execute()
+    resp, r, err := apiClient.ParentAppPreviewAPI.V1ParentAppHistoryGet(context.Background()).Page(page).PageSize(pageSize).Filter(filter).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewApi.V1ParentAppHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewAPI.V1ParentAppHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ParentAppHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewApi.V1ParentAppHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewAPI.V1ParentAppHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -161,7 +161,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -169,13 +169,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParentAppPreviewApi.V1ParentAppHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.ParentAppPreviewAPI.V1ParentAppHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewApi.V1ParentAppHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewAPI.V1ParentAppHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ParentAppHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewApi.V1ParentAppHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewAPI.V1ParentAppHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -227,7 +227,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -235,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ParentAppPreviewApi.V1ParentAppPut(context.Background()).ParentApp(parentApp).Execute()
+    resp, r, err := apiClient.ParentAppPreviewAPI.V1ParentAppPut(context.Background()).ParentApp(parentApp).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewApi.V1ParentAppPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ParentAppPreviewAPI.V1ParentAppPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ParentAppPut`: ParentApp
-    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewApi.V1ParentAppPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ParentAppPreviewAPI.V1ParentAppPut`: %v\n", resp)
 }
 ```
 

@@ -1,16 +1,16 @@
-# \JamfConnectApi
+# \JamfConnectAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfConnectConfigProfilesGet**](JamfConnectApi.md#V1JamfConnectConfigProfilesGet) | **Get** /v1/jamf-connect/config-profiles | Search for config profiles linked to Jamf Connect 
-[**V1JamfConnectConfigProfilesIdPut**](JamfConnectApi.md#V1JamfConnectConfigProfilesIdPut) | **Put** /v1/jamf-connect/config-profiles/{id} | Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
-[**V1JamfConnectDeploymentsIdTasksGet**](JamfConnectApi.md#V1JamfConnectDeploymentsIdTasksGet) | **Get** /v1/jamf-connect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Connect 
-[**V1JamfConnectDeploymentsIdTasksRetryPost**](JamfConnectApi.md#V1JamfConnectDeploymentsIdTasksRetryPost) | **Post** /v1/jamf-connect/deployments/{id}/tasks/retry | Request a retry of Connect install tasks 
-[**V1JamfConnectGet**](JamfConnectApi.md#V1JamfConnectGet) | **Get** /v1/jamf-connect | Get the Jamf Connect settings that you have access to see 
-[**V1JamfConnectHistoryGet**](JamfConnectApi.md#V1JamfConnectHistoryGet) | **Get** /v1/jamf-connect/history | Get Jamf Connect history 
-[**V1JamfConnectHistoryPost**](JamfConnectApi.md#V1JamfConnectHistoryPost) | **Post** /v1/jamf-connect/history | Add Jamf Connect history notes 
+[**V1JamfConnectConfigProfilesGet**](JamfConnectAPI.md#V1JamfConnectConfigProfilesGet) | **Get** /v1/jamf-connect/config-profiles | Search for config profiles linked to Jamf Connect 
+[**V1JamfConnectConfigProfilesIdPut**](JamfConnectAPI.md#V1JamfConnectConfigProfilesIdPut) | **Put** /v1/jamf-connect/config-profiles/{id} | Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
+[**V1JamfConnectDeploymentsIdTasksGet**](JamfConnectAPI.md#V1JamfConnectDeploymentsIdTasksGet) | **Get** /v1/jamf-connect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Connect 
+[**V1JamfConnectDeploymentsIdTasksRetryPost**](JamfConnectAPI.md#V1JamfConnectDeploymentsIdTasksRetryPost) | **Post** /v1/jamf-connect/deployments/{id}/tasks/retry | Request a retry of Connect install tasks 
+[**V1JamfConnectGet**](JamfConnectAPI.md#V1JamfConnectGet) | **Get** /v1/jamf-connect | Get the Jamf Connect settings that you have access to see 
+[**V1JamfConnectHistoryGet**](JamfConnectAPI.md#V1JamfConnectHistoryGet) | **Get** /v1/jamf-connect/history | Get Jamf Connect history 
+[**V1JamfConnectHistoryPost**](JamfConnectAPI.md#V1JamfConnectHistoryPost) | **Post** /v1/jamf-connect/history | Add Jamf Connect history notes 
 
 
 
@@ -31,7 +31,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -42,13 +42,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectConfigProfilesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectConfigProfilesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfConnectConfigProfilesGet`: LinkedConnectProfileSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectApi.V1JamfConnectConfigProfilesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesGet`: %v\n", resp)
 }
 ```
 
@@ -103,7 +103,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -112,13 +112,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectConfigProfilesIdPut(context.Background(), id).LinkedConnectProfile(linkedConnectProfile).Execute()
+    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesIdPut(context.Background(), id).LinkedConnectProfile(linkedConnectProfile).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectConfigProfilesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfConnectConfigProfilesIdPut`: LinkedConnectProfile
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectApi.V1JamfConnectConfigProfilesIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut`: %v\n", resp)
 }
 ```
 
@@ -175,7 +175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -187,13 +187,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectDeploymentsIdTasksGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfConnectDeploymentsIdTasksGet`: DeploymentTaskSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectApi.V1JamfConnectDeploymentsIdTasksGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet`: %v\n", resp)
 }
 ```
 
@@ -253,7 +253,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -262,9 +262,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
+    r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectDeploymentsIdTasksRetryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -323,16 +323,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectGet(context.Background()).Execute()
+    r, err := apiClient.JamfConnectAPI.V1JamfConnectGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -382,7 +382,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -393,13 +393,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfConnectHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectApi.V1JamfConnectHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -454,7 +454,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -462,13 +462,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectApi.V1JamfConnectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectApi.V1JamfConnectHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfConnectHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectApi.V1JamfConnectHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryPost`: %v\n", resp)
 }
 ```
 

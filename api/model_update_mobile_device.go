@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateMobileDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateMobileDevice{}
+
 // UpdateMobileDevice struct for UpdateMobileDevice
 type UpdateMobileDevice struct {
 	Name *string `json:"name,omitempty"`
@@ -44,7 +47,7 @@ func NewUpdateMobileDeviceWithDefaults() *UpdateMobileDevice {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *UpdateMobileDevice) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -62,7 +65,7 @@ func (o *UpdateMobileDevice) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *UpdateMobileDevice) SetName(v string) {
 
 // GetAssetTag returns the AssetTag field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetAssetTag() string {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *UpdateMobileDevice) GetAssetTag() string {
 // GetAssetTagOk returns a tuple with the AssetTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetAssetTagOk() (*string, bool) {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		return nil, false
 	}
 	return o.AssetTag, true
@@ -94,7 +97,7 @@ func (o *UpdateMobileDevice) GetAssetTagOk() (*string, bool) {
 
 // HasAssetTag returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasAssetTag() bool {
-	if o != nil && o.AssetTag != nil {
+	if o != nil && !IsNil(o.AssetTag) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *UpdateMobileDevice) SetAssetTag(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetSiteId() int32 {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret int32
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *UpdateMobileDevice) GetSiteId() int32 {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetSiteIdOk() (*int32, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -126,7 +129,7 @@ func (o *UpdateMobileDevice) GetSiteIdOk() (*int32, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *UpdateMobileDevice) SetSiteId(v int32) {
 
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetLocation() Location {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret Location
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *UpdateMobileDevice) GetLocation() Location {
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetLocationOk() (*Location, bool) {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
 	return o.Location, true
@@ -158,7 +161,7 @@ func (o *UpdateMobileDevice) GetLocationOk() (*Location, bool) {
 
 // HasLocation returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasLocation() bool {
-	if o != nil && o.Location != nil {
+	if o != nil && !IsNil(o.Location) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *UpdateMobileDevice) SetLocation(v Location) {
 
 // GetUpdatedExtensionAttributes returns the UpdatedExtensionAttributes field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetUpdatedExtensionAttributes() []ExtensionAttribute {
-	if o == nil || o.UpdatedExtensionAttributes == nil {
+	if o == nil || IsNil(o.UpdatedExtensionAttributes) {
 		var ret []ExtensionAttribute
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *UpdateMobileDevice) GetUpdatedExtensionAttributes() []ExtensionAttribut
 // GetUpdatedExtensionAttributesOk returns a tuple with the UpdatedExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetUpdatedExtensionAttributesOk() ([]ExtensionAttribute, bool) {
-	if o == nil || o.UpdatedExtensionAttributes == nil {
+	if o == nil || IsNil(o.UpdatedExtensionAttributes) {
 		return nil, false
 	}
 	return o.UpdatedExtensionAttributes, true
@@ -190,7 +193,7 @@ func (o *UpdateMobileDevice) GetUpdatedExtensionAttributesOk() ([]ExtensionAttri
 
 // HasUpdatedExtensionAttributes returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasUpdatedExtensionAttributes() bool {
-	if o != nil && o.UpdatedExtensionAttributes != nil {
+	if o != nil && !IsNil(o.UpdatedExtensionAttributes) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *UpdateMobileDevice) SetUpdatedExtensionAttributes(v []ExtensionAttribut
 
 // GetIos returns the Ios field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetIos() UpdateIos {
-	if o == nil || o.Ios == nil {
+	if o == nil || IsNil(o.Ios) {
 		var ret UpdateIos
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *UpdateMobileDevice) GetIos() UpdateIos {
 // GetIosOk returns a tuple with the Ios field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetIosOk() (*UpdateIos, bool) {
-	if o == nil || o.Ios == nil {
+	if o == nil || IsNil(o.Ios) {
 		return nil, false
 	}
 	return o.Ios, true
@@ -222,7 +225,7 @@ func (o *UpdateMobileDevice) GetIosOk() (*UpdateIos, bool) {
 
 // HasIos returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasIos() bool {
-	if o != nil && o.Ios != nil {
+	if o != nil && !IsNil(o.Ios) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *UpdateMobileDevice) SetIos(v UpdateIos) {
 
 // GetAppleTv returns the AppleTv field value if set, zero value otherwise.
 func (o *UpdateMobileDevice) GetAppleTv() UpdateAppleTv {
-	if o == nil || o.AppleTv == nil {
+	if o == nil || IsNil(o.AppleTv) {
 		var ret UpdateAppleTv
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *UpdateMobileDevice) GetAppleTv() UpdateAppleTv {
 // GetAppleTvOk returns a tuple with the AppleTv field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateMobileDevice) GetAppleTvOk() (*UpdateAppleTv, bool) {
-	if o == nil || o.AppleTv == nil {
+	if o == nil || IsNil(o.AppleTv) {
 		return nil, false
 	}
 	return o.AppleTv, true
@@ -254,7 +257,7 @@ func (o *UpdateMobileDevice) GetAppleTvOk() (*UpdateAppleTv, bool) {
 
 // HasAppleTv returns a boolean if a field has been set.
 func (o *UpdateMobileDevice) HasAppleTv() bool {
-	if o != nil && o.AppleTv != nil {
+	if o != nil && !IsNil(o.AppleTv) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *UpdateMobileDevice) SetAppleTv(v UpdateAppleTv) {
 }
 
 func (o UpdateMobileDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.AssetTag != nil {
-		toSerialize["assetTag"] = o.AssetTag
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
-	}
-	if o.UpdatedExtensionAttributes != nil {
-		toSerialize["updatedExtensionAttributes"] = o.UpdatedExtensionAttributes
-	}
-	if o.Ios != nil {
-		toSerialize["ios"] = o.Ios
-	}
-	if o.AppleTv != nil {
-		toSerialize["appleTv"] = o.AppleTv
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateMobileDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.AssetTag) {
+		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
+	if !IsNil(o.UpdatedExtensionAttributes) {
+		toSerialize["updatedExtensionAttributes"] = o.UpdatedExtensionAttributes
+	}
+	if !IsNil(o.Ios) {
+		toSerialize["ios"] = o.Ios
+	}
+	if !IsNil(o.AppleTv) {
+		toSerialize["appleTv"] = o.AppleTv
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateMobileDevice struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerPrinter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerPrinter{}
+
 // ComputerPrinter struct for ComputerPrinter
 type ComputerPrinter struct {
 	Name *string `json:"name,omitempty"`
@@ -41,7 +44,7 @@ func NewComputerPrinterWithDefaults() *ComputerPrinter {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerPrinter) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ComputerPrinter) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPrinter) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *ComputerPrinter) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerPrinter) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ComputerPrinter) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ComputerPrinter) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ComputerPrinter) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPrinter) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -91,7 +94,7 @@ func (o *ComputerPrinter) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ComputerPrinter) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ComputerPrinter) SetType(v string) {
 
 // GetUri returns the Uri field value if set, zero value otherwise.
 func (o *ComputerPrinter) GetUri() string {
-	if o == nil || o.Uri == nil {
+	if o == nil || IsNil(o.Uri) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ComputerPrinter) GetUri() string {
 // GetUriOk returns a tuple with the Uri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPrinter) GetUriOk() (*string, bool) {
-	if o == nil || o.Uri == nil {
+	if o == nil || IsNil(o.Uri) {
 		return nil, false
 	}
 	return o.Uri, true
@@ -123,7 +126,7 @@ func (o *ComputerPrinter) GetUriOk() (*string, bool) {
 
 // HasUri returns a boolean if a field has been set.
 func (o *ComputerPrinter) HasUri() bool {
-	if o != nil && o.Uri != nil {
+	if o != nil && !IsNil(o.Uri) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ComputerPrinter) SetUri(v string) {
 
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *ComputerPrinter) GetLocation() string {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ComputerPrinter) GetLocation() string {
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPrinter) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
 	return o.Location, true
@@ -155,7 +158,7 @@ func (o *ComputerPrinter) GetLocationOk() (*string, bool) {
 
 // HasLocation returns a boolean if a field has been set.
 func (o *ComputerPrinter) HasLocation() bool {
-	if o != nil && o.Location != nil {
+	if o != nil && !IsNil(o.Location) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ComputerPrinter) SetLocation(v string) {
 }
 
 func (o ComputerPrinter) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Uri != nil {
-		toSerialize["uri"] = o.Uri
-	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerPrinter) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Uri) {
+		toSerialize["uri"] = o.Uri
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerPrinter struct {

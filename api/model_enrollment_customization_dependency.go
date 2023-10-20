@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationDependency type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationDependency{}
+
 // EnrollmentCustomizationDependency struct for EnrollmentCustomizationDependency
 type EnrollmentCustomizationDependency struct {
 	Name *string `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewEnrollmentCustomizationDependencyWithDefaults() *EnrollmentCustomization
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationDependency) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnrollmentCustomizationDependency) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationDependency) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *EnrollmentCustomizationDependency) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationDependency) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnrollmentCustomizationDependency) SetName(v string) {
 
 // GetHumanReadableName returns the HumanReadableName field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationDependency) GetHumanReadableName() string {
-	if o == nil || o.HumanReadableName == nil {
+	if o == nil || IsNil(o.HumanReadableName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnrollmentCustomizationDependency) GetHumanReadableName() string {
 // GetHumanReadableNameOk returns a tuple with the HumanReadableName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationDependency) GetHumanReadableNameOk() (*string, bool) {
-	if o == nil || o.HumanReadableName == nil {
+	if o == nil || IsNil(o.HumanReadableName) {
 		return nil, false
 	}
 	return o.HumanReadableName, true
@@ -90,7 +93,7 @@ func (o *EnrollmentCustomizationDependency) GetHumanReadableNameOk() (*string, b
 
 // HasHumanReadableName returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationDependency) HasHumanReadableName() bool {
-	if o != nil && o.HumanReadableName != nil {
+	if o != nil && !IsNil(o.HumanReadableName) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *EnrollmentCustomizationDependency) SetHumanReadableName(v string) {
 
 // GetHyperlink returns the Hyperlink field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationDependency) GetHyperlink() string {
-	if o == nil || o.Hyperlink == nil {
+	if o == nil || IsNil(o.Hyperlink) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *EnrollmentCustomizationDependency) GetHyperlink() string {
 // GetHyperlinkOk returns a tuple with the Hyperlink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationDependency) GetHyperlinkOk() (*string, bool) {
-	if o == nil || o.Hyperlink == nil {
+	if o == nil || IsNil(o.Hyperlink) {
 		return nil, false
 	}
 	return o.Hyperlink, true
@@ -122,7 +125,7 @@ func (o *EnrollmentCustomizationDependency) GetHyperlinkOk() (*string, bool) {
 
 // HasHyperlink returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationDependency) HasHyperlink() bool {
-	if o != nil && o.Hyperlink != nil {
+	if o != nil && !IsNil(o.Hyperlink) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *EnrollmentCustomizationDependency) SetHyperlink(v string) {
 }
 
 func (o EnrollmentCustomizationDependency) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.HumanReadableName != nil {
-		toSerialize["humanReadableName"] = o.HumanReadableName
-	}
-	if o.Hyperlink != nil {
-		toSerialize["hyperlink"] = o.Hyperlink
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationDependency) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.HumanReadableName) {
+		toSerialize["humanReadableName"] = o.HumanReadableName
+	}
+	if !IsNil(o.Hyperlink) {
+		toSerialize["hyperlink"] = o.Hyperlink
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationDependency struct {

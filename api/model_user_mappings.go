@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserMappings{}
+
 // UserMappings Cloud Identity Provider user mappings configuration
 type UserMappings struct {
 	ObjectClassLimitation string `json:"objectClassLimitation"`
@@ -172,7 +175,7 @@ func (o *UserMappings) SetSearchScope(v string) {
 
 // GetAdditionalSearchBase returns the AdditionalSearchBase field value if set, zero value otherwise.
 func (o *UserMappings) GetAdditionalSearchBase() string {
-	if o == nil || o.AdditionalSearchBase == nil {
+	if o == nil || IsNil(o.AdditionalSearchBase) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *UserMappings) GetAdditionalSearchBase() string {
 // GetAdditionalSearchBaseOk returns a tuple with the AdditionalSearchBase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserMappings) GetAdditionalSearchBaseOk() (*string, bool) {
-	if o == nil || o.AdditionalSearchBase == nil {
+	if o == nil || IsNil(o.AdditionalSearchBase) {
 		return nil, false
 	}
 	return o.AdditionalSearchBase, true
@@ -190,7 +193,7 @@ func (o *UserMappings) GetAdditionalSearchBaseOk() (*string, bool) {
 
 // HasAdditionalSearchBase returns a boolean if a field has been set.
 func (o *UserMappings) HasAdditionalSearchBase() bool {
-	if o != nil && o.AdditionalSearchBase != nil {
+	if o != nil && !IsNil(o.AdditionalSearchBase) {
 		return true
 	}
 
@@ -443,53 +446,33 @@ func (o *UserMappings) SetUserUuid(v string) {
 }
 
 func (o UserMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["objectClassLimitation"] = o.ObjectClassLimitation
-	}
-	if true {
-		toSerialize["objectClasses"] = o.ObjectClasses
-	}
-	if true {
-		toSerialize["searchBase"] = o.SearchBase
-	}
-	if true {
-		toSerialize["searchScope"] = o.SearchScope
-	}
-	if o.AdditionalSearchBase != nil {
-		toSerialize["additionalSearchBase"] = o.AdditionalSearchBase
-	}
-	if true {
-		toSerialize["userID"] = o.UserID
-	}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["realName"] = o.RealName
-	}
-	if true {
-		toSerialize["emailAddress"] = o.EmailAddress
-	}
-	if true {
-		toSerialize["department"] = o.Department
-	}
-	if true {
-		toSerialize["building"] = o.Building
-	}
-	if true {
-		toSerialize["room"] = o.Room
-	}
-	if true {
-		toSerialize["phone"] = o.Phone
-	}
-	if true {
-		toSerialize["position"] = o.Position
-	}
-	if true {
-		toSerialize["userUuid"] = o.UserUuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["objectClassLimitation"] = o.ObjectClassLimitation
+	toSerialize["objectClasses"] = o.ObjectClasses
+	toSerialize["searchBase"] = o.SearchBase
+	toSerialize["searchScope"] = o.SearchScope
+	if !IsNil(o.AdditionalSearchBase) {
+		toSerialize["additionalSearchBase"] = o.AdditionalSearchBase
+	}
+	toSerialize["userID"] = o.UserID
+	toSerialize["username"] = o.Username
+	toSerialize["realName"] = o.RealName
+	toSerialize["emailAddress"] = o.EmailAddress
+	toSerialize["department"] = o.Department
+	toSerialize["building"] = o.Building
+	toSerialize["room"] = o.Room
+	toSerialize["phone"] = o.Phone
+	toSerialize["position"] = o.Position
+	toSerialize["userUuid"] = o.UserUuid
+	return toSerialize, nil
 }
 
 type NullableUserMappings struct {

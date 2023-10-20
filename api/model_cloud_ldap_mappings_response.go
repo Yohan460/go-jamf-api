@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapMappingsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapMappingsResponse{}
+
 // CloudLdapMappingsResponse Mappings configuration response for Ldap Cloud Identity Provider configuration
 type CloudLdapMappingsResponse struct {
 	UserMappings *UserMappings `json:"userMappings,omitempty"`
@@ -40,7 +43,7 @@ func NewCloudLdapMappingsResponseWithDefaults() *CloudLdapMappingsResponse {
 
 // GetUserMappings returns the UserMappings field value if set, zero value otherwise.
 func (o *CloudLdapMappingsResponse) GetUserMappings() UserMappings {
-	if o == nil || o.UserMappings == nil {
+	if o == nil || IsNil(o.UserMappings) {
 		var ret UserMappings
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CloudLdapMappingsResponse) GetUserMappings() UserMappings {
 // GetUserMappingsOk returns a tuple with the UserMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapMappingsResponse) GetUserMappingsOk() (*UserMappings, bool) {
-	if o == nil || o.UserMappings == nil {
+	if o == nil || IsNil(o.UserMappings) {
 		return nil, false
 	}
 	return o.UserMappings, true
@@ -58,7 +61,7 @@ func (o *CloudLdapMappingsResponse) GetUserMappingsOk() (*UserMappings, bool) {
 
 // HasUserMappings returns a boolean if a field has been set.
 func (o *CloudLdapMappingsResponse) HasUserMappings() bool {
-	if o != nil && o.UserMappings != nil {
+	if o != nil && !IsNil(o.UserMappings) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CloudLdapMappingsResponse) SetUserMappings(v UserMappings) {
 
 // GetGroupMappings returns the GroupMappings field value if set, zero value otherwise.
 func (o *CloudLdapMappingsResponse) GetGroupMappings() GroupMappings {
-	if o == nil || o.GroupMappings == nil {
+	if o == nil || IsNil(o.GroupMappings) {
 		var ret GroupMappings
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CloudLdapMappingsResponse) GetGroupMappings() GroupMappings {
 // GetGroupMappingsOk returns a tuple with the GroupMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapMappingsResponse) GetGroupMappingsOk() (*GroupMappings, bool) {
-	if o == nil || o.GroupMappings == nil {
+	if o == nil || IsNil(o.GroupMappings) {
 		return nil, false
 	}
 	return o.GroupMappings, true
@@ -90,7 +93,7 @@ func (o *CloudLdapMappingsResponse) GetGroupMappingsOk() (*GroupMappings, bool) 
 
 // HasGroupMappings returns a boolean if a field has been set.
 func (o *CloudLdapMappingsResponse) HasGroupMappings() bool {
-	if o != nil && o.GroupMappings != nil {
+	if o != nil && !IsNil(o.GroupMappings) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *CloudLdapMappingsResponse) SetGroupMappings(v GroupMappings) {
 
 // GetMembershipMappings returns the MembershipMappings field value if set, zero value otherwise.
 func (o *CloudLdapMappingsResponse) GetMembershipMappings() MembershipMappings {
-	if o == nil || o.MembershipMappings == nil {
+	if o == nil || IsNil(o.MembershipMappings) {
 		var ret MembershipMappings
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *CloudLdapMappingsResponse) GetMembershipMappings() MembershipMappings {
 // GetMembershipMappingsOk returns a tuple with the MembershipMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapMappingsResponse) GetMembershipMappingsOk() (*MembershipMappings, bool) {
-	if o == nil || o.MembershipMappings == nil {
+	if o == nil || IsNil(o.MembershipMappings) {
 		return nil, false
 	}
 	return o.MembershipMappings, true
@@ -122,7 +125,7 @@ func (o *CloudLdapMappingsResponse) GetMembershipMappingsOk() (*MembershipMappin
 
 // HasMembershipMappings returns a boolean if a field has been set.
 func (o *CloudLdapMappingsResponse) HasMembershipMappings() bool {
-	if o != nil && o.MembershipMappings != nil {
+	if o != nil && !IsNil(o.MembershipMappings) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *CloudLdapMappingsResponse) SetMembershipMappings(v MembershipMappings) 
 }
 
 func (o CloudLdapMappingsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.UserMappings != nil {
-		toSerialize["userMappings"] = o.UserMappings
-	}
-	if o.GroupMappings != nil {
-		toSerialize["groupMappings"] = o.GroupMappings
-	}
-	if o.MembershipMappings != nil {
-		toSerialize["membershipMappings"] = o.MembershipMappings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapMappingsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.UserMappings) {
+		toSerialize["userMappings"] = o.UserMappings
+	}
+	if !IsNil(o.GroupMappings) {
+		toSerialize["groupMappings"] = o.GroupMappings
+	}
+	if !IsNil(o.MembershipMappings) {
+		toSerialize["membershipMappings"] = o.MembershipMappings
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapMappingsResponse struct {

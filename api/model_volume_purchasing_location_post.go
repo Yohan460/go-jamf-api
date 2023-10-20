@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VolumePurchasingLocationPost type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VolumePurchasingLocationPost{}
+
 // VolumePurchasingLocationPost struct for VolumePurchasingLocationPost
 type VolumePurchasingLocationPost struct {
 	// If no value is provided when creating a VolumePurchasingLocation object, the 'name' will default to the 'locationName' value
@@ -61,7 +64,7 @@ func NewVolumePurchasingLocationPostWithDefaults() *VolumePurchasingLocationPost
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationPost) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -71,7 +74,7 @@ func (o *VolumePurchasingLocationPost) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationPost) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -79,7 +82,7 @@ func (o *VolumePurchasingLocationPost) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationPost) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -93,7 +96,7 @@ func (o *VolumePurchasingLocationPost) SetName(v string) {
 
 // GetAutomaticallyPopulatePurchasedContent returns the AutomaticallyPopulatePurchasedContent field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationPost) GetAutomaticallyPopulatePurchasedContent() bool {
-	if o == nil || o.AutomaticallyPopulatePurchasedContent == nil {
+	if o == nil || IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		var ret bool
 		return ret
 	}
@@ -103,7 +106,7 @@ func (o *VolumePurchasingLocationPost) GetAutomaticallyPopulatePurchasedContent(
 // GetAutomaticallyPopulatePurchasedContentOk returns a tuple with the AutomaticallyPopulatePurchasedContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationPost) GetAutomaticallyPopulatePurchasedContentOk() (*bool, bool) {
-	if o == nil || o.AutomaticallyPopulatePurchasedContent == nil {
+	if o == nil || IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		return nil, false
 	}
 	return o.AutomaticallyPopulatePurchasedContent, true
@@ -111,7 +114,7 @@ func (o *VolumePurchasingLocationPost) GetAutomaticallyPopulatePurchasedContentO
 
 // HasAutomaticallyPopulatePurchasedContent returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationPost) HasAutomaticallyPopulatePurchasedContent() bool {
-	if o != nil && o.AutomaticallyPopulatePurchasedContent != nil {
+	if o != nil && !IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		return true
 	}
 
@@ -125,7 +128,7 @@ func (o *VolumePurchasingLocationPost) SetAutomaticallyPopulatePurchasedContent(
 
 // GetSendNotificationWhenNoLongerAssigned returns the SendNotificationWhenNoLongerAssigned field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationPost) GetSendNotificationWhenNoLongerAssigned() bool {
-	if o == nil || o.SendNotificationWhenNoLongerAssigned == nil {
+	if o == nil || IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		var ret bool
 		return ret
 	}
@@ -135,7 +138,7 @@ func (o *VolumePurchasingLocationPost) GetSendNotificationWhenNoLongerAssigned()
 // GetSendNotificationWhenNoLongerAssignedOk returns a tuple with the SendNotificationWhenNoLongerAssigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationPost) GetSendNotificationWhenNoLongerAssignedOk() (*bool, bool) {
-	if o == nil || o.SendNotificationWhenNoLongerAssigned == nil {
+	if o == nil || IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		return nil, false
 	}
 	return o.SendNotificationWhenNoLongerAssigned, true
@@ -143,7 +146,7 @@ func (o *VolumePurchasingLocationPost) GetSendNotificationWhenNoLongerAssignedOk
 
 // HasSendNotificationWhenNoLongerAssigned returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationPost) HasSendNotificationWhenNoLongerAssigned() bool {
-	if o != nil && o.SendNotificationWhenNoLongerAssigned != nil {
+	if o != nil && !IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		return true
 	}
 
@@ -157,7 +160,7 @@ func (o *VolumePurchasingLocationPost) SetSendNotificationWhenNoLongerAssigned(v
 
 // GetAutoRegisterManagedUsers returns the AutoRegisterManagedUsers field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationPost) GetAutoRegisterManagedUsers() bool {
-	if o == nil || o.AutoRegisterManagedUsers == nil {
+	if o == nil || IsNil(o.AutoRegisterManagedUsers) {
 		var ret bool
 		return ret
 	}
@@ -167,7 +170,7 @@ func (o *VolumePurchasingLocationPost) GetAutoRegisterManagedUsers() bool {
 // GetAutoRegisterManagedUsersOk returns a tuple with the AutoRegisterManagedUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationPost) GetAutoRegisterManagedUsersOk() (*bool, bool) {
-	if o == nil || o.AutoRegisterManagedUsers == nil {
+	if o == nil || IsNil(o.AutoRegisterManagedUsers) {
 		return nil, false
 	}
 	return o.AutoRegisterManagedUsers, true
@@ -175,7 +178,7 @@ func (o *VolumePurchasingLocationPost) GetAutoRegisterManagedUsersOk() (*bool, b
 
 // HasAutoRegisterManagedUsers returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationPost) HasAutoRegisterManagedUsers() bool {
-	if o != nil && o.AutoRegisterManagedUsers != nil {
+	if o != nil && !IsNil(o.AutoRegisterManagedUsers) {
 		return true
 	}
 
@@ -189,7 +192,7 @@ func (o *VolumePurchasingLocationPost) SetAutoRegisterManagedUsers(v bool) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationPost) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -199,7 +202,7 @@ func (o *VolumePurchasingLocationPost) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationPost) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -207,7 +210,7 @@ func (o *VolumePurchasingLocationPost) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationPost) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -244,26 +247,32 @@ func (o *VolumePurchasingLocationPost) SetServiceToken(v string) {
 }
 
 func (o VolumePurchasingLocationPost) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.AutomaticallyPopulatePurchasedContent != nil {
-		toSerialize["automaticallyPopulatePurchasedContent"] = o.AutomaticallyPopulatePurchasedContent
-	}
-	if o.SendNotificationWhenNoLongerAssigned != nil {
-		toSerialize["sendNotificationWhenNoLongerAssigned"] = o.SendNotificationWhenNoLongerAssigned
-	}
-	if o.AutoRegisterManagedUsers != nil {
-		toSerialize["autoRegisterManagedUsers"] = o.AutoRegisterManagedUsers
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["serviceToken"] = o.ServiceToken
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VolumePurchasingLocationPost) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.AutomaticallyPopulatePurchasedContent) {
+		toSerialize["automaticallyPopulatePurchasedContent"] = o.AutomaticallyPopulatePurchasedContent
+	}
+	if !IsNil(o.SendNotificationWhenNoLongerAssigned) {
+		toSerialize["sendNotificationWhenNoLongerAssigned"] = o.SendNotificationWhenNoLongerAssigned
+	}
+	if !IsNil(o.AutoRegisterManagedUsers) {
+		toSerialize["autoRegisterManagedUsers"] = o.AutoRegisterManagedUsers
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	toSerialize["serviceToken"] = o.ServiceToken
+	return toSerialize, nil
 }
 
 type NullableVolumePurchasingLocationPost struct {

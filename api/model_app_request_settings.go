@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AppRequestSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AppRequestSettings{}
+
 // AppRequestSettings struct for AppRequestSettings
 type AppRequestSettings struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
@@ -42,7 +45,7 @@ func NewAppRequestSettingsWithDefaults() *AppRequestSettings {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *AppRequestSettings) GetIsEnabled() bool {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *AppRequestSettings) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppRequestSettings) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		return nil, false
 	}
 	return o.IsEnabled, true
@@ -60,7 +63,7 @@ func (o *AppRequestSettings) GetIsEnabledOk() (*bool, bool) {
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *AppRequestSettings) HasIsEnabled() bool {
-	if o != nil && o.IsEnabled != nil {
+	if o != nil && !IsNil(o.IsEnabled) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *AppRequestSettings) SetIsEnabled(v bool) {
 
 // GetAppStoreLocale returns the AppStoreLocale field value if set, zero value otherwise.
 func (o *AppRequestSettings) GetAppStoreLocale() string {
-	if o == nil || o.AppStoreLocale == nil {
+	if o == nil || IsNil(o.AppStoreLocale) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *AppRequestSettings) GetAppStoreLocale() string {
 // GetAppStoreLocaleOk returns a tuple with the AppStoreLocale field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppRequestSettings) GetAppStoreLocaleOk() (*string, bool) {
-	if o == nil || o.AppStoreLocale == nil {
+	if o == nil || IsNil(o.AppStoreLocale) {
 		return nil, false
 	}
 	return o.AppStoreLocale, true
@@ -92,7 +95,7 @@ func (o *AppRequestSettings) GetAppStoreLocaleOk() (*string, bool) {
 
 // HasAppStoreLocale returns a boolean if a field has been set.
 func (o *AppRequestSettings) HasAppStoreLocale() bool {
-	if o != nil && o.AppStoreLocale != nil {
+	if o != nil && !IsNil(o.AppStoreLocale) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *AppRequestSettings) SetAppStoreLocale(v string) {
 
 // GetRequesterUserGroupId returns the RequesterUserGroupId field value if set, zero value otherwise.
 func (o *AppRequestSettings) GetRequesterUserGroupId() int32 {
-	if o == nil || o.RequesterUserGroupId == nil {
+	if o == nil || IsNil(o.RequesterUserGroupId) {
 		var ret int32
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *AppRequestSettings) GetRequesterUserGroupId() int32 {
 // GetRequesterUserGroupIdOk returns a tuple with the RequesterUserGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int32, bool) {
-	if o == nil || o.RequesterUserGroupId == nil {
+	if o == nil || IsNil(o.RequesterUserGroupId) {
 		return nil, false
 	}
 	return o.RequesterUserGroupId, true
@@ -124,7 +127,7 @@ func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int32, bool) {
 
 // HasRequesterUserGroupId returns a boolean if a field has been set.
 func (o *AppRequestSettings) HasRequesterUserGroupId() bool {
-	if o != nil && o.RequesterUserGroupId != nil {
+	if o != nil && !IsNil(o.RequesterUserGroupId) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *AppRequestSettings) SetRequesterUserGroupId(v int32) {
 
 // GetApproverEmails returns the ApproverEmails field value if set, zero value otherwise.
 func (o *AppRequestSettings) GetApproverEmails() []string {
-	if o == nil || o.ApproverEmails == nil {
+	if o == nil || IsNil(o.ApproverEmails) {
 		var ret []string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *AppRequestSettings) GetApproverEmails() []string {
 // GetApproverEmailsOk returns a tuple with the ApproverEmails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppRequestSettings) GetApproverEmailsOk() ([]string, bool) {
-	if o == nil || o.ApproverEmails == nil {
+	if o == nil || IsNil(o.ApproverEmails) {
 		return nil, false
 	}
 	return o.ApproverEmails, true
@@ -156,7 +159,7 @@ func (o *AppRequestSettings) GetApproverEmailsOk() ([]string, bool) {
 
 // HasApproverEmails returns a boolean if a field has been set.
 func (o *AppRequestSettings) HasApproverEmails() bool {
-	if o != nil && o.ApproverEmails != nil {
+	if o != nil && !IsNil(o.ApproverEmails) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *AppRequestSettings) SetApproverEmails(v []string) {
 }
 
 func (o AppRequestSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsEnabled != nil {
-		toSerialize["isEnabled"] = o.IsEnabled
-	}
-	if o.AppStoreLocale != nil {
-		toSerialize["appStoreLocale"] = o.AppStoreLocale
-	}
-	if o.RequesterUserGroupId != nil {
-		toSerialize["requesterUserGroupId"] = o.RequesterUserGroupId
-	}
-	if o.ApproverEmails != nil {
-		toSerialize["approverEmails"] = o.ApproverEmails
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AppRequestSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsEnabled) {
+		toSerialize["isEnabled"] = o.IsEnabled
+	}
+	if !IsNil(o.AppStoreLocale) {
+		toSerialize["appStoreLocale"] = o.AppStoreLocale
+	}
+	if !IsNil(o.RequesterUserGroupId) {
+		toSerialize["requesterUserGroupId"] = o.RequesterUserGroupId
+	}
+	if !IsNil(o.ApproverEmails) {
+		toSerialize["approverEmails"] = o.ApproverEmails
+	}
+	return toSerialize, nil
 }
 
 type NullableAppRequestSettings struct {

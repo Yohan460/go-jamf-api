@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VenafiPkiPayloadRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VenafiPkiPayloadRecord{}
+
 // VenafiPkiPayloadRecord struct for VenafiPkiPayloadRecord
 type VenafiPkiPayloadRecord struct {
 	UrlPath *string `json:"urlPath,omitempty"`
@@ -39,7 +42,7 @@ func NewVenafiPkiPayloadRecordWithDefaults() *VenafiPkiPayloadRecord {
 
 // GetUrlPath returns the UrlPath field value if set, zero value otherwise.
 func (o *VenafiPkiPayloadRecord) GetUrlPath() string {
-	if o == nil || o.UrlPath == nil {
+	if o == nil || IsNil(o.UrlPath) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *VenafiPkiPayloadRecord) GetUrlPath() string {
 // GetUrlPathOk returns a tuple with the UrlPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiPkiPayloadRecord) GetUrlPathOk() (*string, bool) {
-	if o == nil || o.UrlPath == nil {
+	if o == nil || IsNil(o.UrlPath) {
 		return nil, false
 	}
 	return o.UrlPath, true
@@ -57,7 +60,7 @@ func (o *VenafiPkiPayloadRecord) GetUrlPathOk() (*string, bool) {
 
 // HasUrlPath returns a boolean if a field has been set.
 func (o *VenafiPkiPayloadRecord) HasUrlPath() bool {
-	if o != nil && o.UrlPath != nil {
+	if o != nil && !IsNil(o.UrlPath) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *VenafiPkiPayloadRecord) SetUrlPath(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VenafiPkiPayloadRecord) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *VenafiPkiPayloadRecord) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiPkiPayloadRecord) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *VenafiPkiPayloadRecord) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VenafiPkiPayloadRecord) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *VenafiPkiPayloadRecord) SetName(v string) {
 }
 
 func (o VenafiPkiPayloadRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.UrlPath != nil {
-		toSerialize["urlPath"] = o.UrlPath
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VenafiPkiPayloadRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.UrlPath) {
+		toSerialize["urlPath"] = o.UrlPath
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableVenafiPkiPayloadRecord struct {

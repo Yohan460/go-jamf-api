@@ -14,13 +14,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeacherSettingsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeacherSettingsRequest{}
+
 // TeacherSettingsRequest struct for TeacherSettingsRequest
 type TeacherSettingsRequest struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
 	TimezoneId *string `json:"timezoneId,omitempty"`
 	AutoClear NullableString `json:"autoClear,omitempty"`
 	MaxRestrictionLengthSeconds *int32 `json:"maxRestrictionLengthSeconds,omitempty"`
-	SafelistedApps []SafelistedAppsInner `json:"safelistedApps,omitempty"`
+	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
 }
 
 // NewTeacherSettingsRequest instantiates a new TeacherSettingsRequest object
@@ -42,7 +45,7 @@ func NewTeacherSettingsRequestWithDefaults() *TeacherSettingsRequest {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *TeacherSettingsRequest) GetIsEnabled() bool {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *TeacherSettingsRequest) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsRequest) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		return nil, false
 	}
 	return o.IsEnabled, true
@@ -60,7 +63,7 @@ func (o *TeacherSettingsRequest) GetIsEnabledOk() (*bool, bool) {
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *TeacherSettingsRequest) HasIsEnabled() bool {
-	if o != nil && o.IsEnabled != nil {
+	if o != nil && !IsNil(o.IsEnabled) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *TeacherSettingsRequest) SetIsEnabled(v bool) {
 
 // GetTimezoneId returns the TimezoneId field value if set, zero value otherwise.
 func (o *TeacherSettingsRequest) GetTimezoneId() string {
-	if o == nil || o.TimezoneId == nil {
+	if o == nil || IsNil(o.TimezoneId) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *TeacherSettingsRequest) GetTimezoneId() string {
 // GetTimezoneIdOk returns a tuple with the TimezoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsRequest) GetTimezoneIdOk() (*string, bool) {
-	if o == nil || o.TimezoneId == nil {
+	if o == nil || IsNil(o.TimezoneId) {
 		return nil, false
 	}
 	return o.TimezoneId, true
@@ -92,7 +95,7 @@ func (o *TeacherSettingsRequest) GetTimezoneIdOk() (*string, bool) {
 
 // HasTimezoneId returns a boolean if a field has been set.
 func (o *TeacherSettingsRequest) HasTimezoneId() bool {
-	if o != nil && o.TimezoneId != nil {
+	if o != nil && !IsNil(o.TimezoneId) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *TeacherSettingsRequest) SetTimezoneId(v string) {
 
 // GetAutoClear returns the AutoClear field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TeacherSettingsRequest) GetAutoClear() string {
-	if o == nil || o.AutoClear.Get() == nil {
+	if o == nil || IsNil(o.AutoClear.Get()) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *TeacherSettingsRequest) UnsetAutoClear() {
 
 // GetMaxRestrictionLengthSeconds returns the MaxRestrictionLengthSeconds field value if set, zero value otherwise.
 func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int32 {
-	if o == nil || o.MaxRestrictionLengthSeconds == nil {
+	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		var ret int32
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int32 {
 // GetMaxRestrictionLengthSecondsOk returns a tuple with the MaxRestrictionLengthSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int32, bool) {
-	if o == nil || o.MaxRestrictionLengthSeconds == nil {
+	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		return nil, false
 	}
 	return o.MaxRestrictionLengthSeconds, true
@@ -166,7 +169,7 @@ func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int32, boo
 
 // HasMaxRestrictionLengthSeconds returns a boolean if a field has been set.
 func (o *TeacherSettingsRequest) HasMaxRestrictionLengthSeconds() bool {
-	if o != nil && o.MaxRestrictionLengthSeconds != nil {
+	if o != nil && !IsNil(o.MaxRestrictionLengthSeconds) {
 		return true
 	}
 
@@ -179,9 +182,9 @@ func (o *TeacherSettingsRequest) SetMaxRestrictionLengthSeconds(v int32) {
 }
 
 // GetSafelistedApps returns the SafelistedApps field value if set, zero value otherwise.
-func (o *TeacherSettingsRequest) GetSafelistedApps() []SafelistedAppsInner {
-	if o == nil || o.SafelistedApps == nil {
-		var ret []SafelistedAppsInner
+func (o *TeacherSettingsRequest) GetSafelistedApps() []SafelistedApp {
+	if o == nil || IsNil(o.SafelistedApps) {
+		var ret []SafelistedApp
 		return ret
 	}
 	return o.SafelistedApps
@@ -189,8 +192,8 @@ func (o *TeacherSettingsRequest) GetSafelistedApps() []SafelistedAppsInner {
 
 // GetSafelistedAppsOk returns a tuple with the SafelistedApps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeacherSettingsRequest) GetSafelistedAppsOk() ([]SafelistedAppsInner, bool) {
-	if o == nil || o.SafelistedApps == nil {
+func (o *TeacherSettingsRequest) GetSafelistedAppsOk() ([]SafelistedApp, bool) {
+	if o == nil || IsNil(o.SafelistedApps) {
 		return nil, false
 	}
 	return o.SafelistedApps, true
@@ -198,36 +201,44 @@ func (o *TeacherSettingsRequest) GetSafelistedAppsOk() ([]SafelistedAppsInner, b
 
 // HasSafelistedApps returns a boolean if a field has been set.
 func (o *TeacherSettingsRequest) HasSafelistedApps() bool {
-	if o != nil && o.SafelistedApps != nil {
+	if o != nil && !IsNil(o.SafelistedApps) {
 		return true
 	}
 
 	return false
 }
 
-// SetSafelistedApps gets a reference to the given []SafelistedAppsInner and assigns it to the SafelistedApps field.
-func (o *TeacherSettingsRequest) SetSafelistedApps(v []SafelistedAppsInner) {
+// SetSafelistedApps gets a reference to the given []SafelistedApp and assigns it to the SafelistedApps field.
+func (o *TeacherSettingsRequest) SetSafelistedApps(v []SafelistedApp) {
 	o.SafelistedApps = v
 }
 
 func (o TeacherSettingsRequest) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TeacherSettingsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IsEnabled != nil {
+	if !IsNil(o.IsEnabled) {
 		toSerialize["isEnabled"] = o.IsEnabled
 	}
-	if o.TimezoneId != nil {
+	if !IsNil(o.TimezoneId) {
 		toSerialize["timezoneId"] = o.TimezoneId
 	}
 	if o.AutoClear.IsSet() {
 		toSerialize["autoClear"] = o.AutoClear.Get()
 	}
-	if o.MaxRestrictionLengthSeconds != nil {
+	if !IsNil(o.MaxRestrictionLengthSeconds) {
 		toSerialize["maxRestrictionLengthSeconds"] = o.MaxRestrictionLengthSeconds
 	}
-	if o.SafelistedApps != nil {
+	if !IsNil(o.SafelistedApps) {
 		toSerialize["safelistedApps"] = o.SafelistedApps
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTeacherSettingsRequest struct {

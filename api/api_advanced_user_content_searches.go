@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type AdvancedUserContentSearchesApi interface {
+type AdvancedUserContentSearchesAPI interface {
 
 	/*
 	V1AdvancedUserContentSearchesGet Get All Advanced User Content Search objects 
@@ -29,13 +29,13 @@ type AdvancedUserContentSearchesApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AdvancedUserContentSearchesGetRequest
+	@return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest
 	*/
-	V1AdvancedUserContentSearchesGet(ctx context.Context) ApiV1AdvancedUserContentSearchesGetRequest
+	V1AdvancedUserContentSearchesGet(ctx context.Context) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest
 
 	// V1AdvancedUserContentSearchesGetExecute executes the request
 	//  @return AdvancedUserContentSearchSearchResults
-	V1AdvancedUserContentSearchesGetExecute(r ApiV1AdvancedUserContentSearchesGetRequest) (*AdvancedUserContentSearchSearchResults, *http.Response, error)
+	V1AdvancedUserContentSearchesGetExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest) (*AdvancedUserContentSearchSearchResults, *http.Response, error)
 
 	/*
 	V1AdvancedUserContentSearchesIdDelete Remove specified Advanced User Content Search object 
@@ -45,12 +45,12 @@ type AdvancedUserContentSearchesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of Advanced User Content Search record
-	@return ApiV1AdvancedUserContentSearchesIdDeleteRequest
+	@return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest
 	*/
-	V1AdvancedUserContentSearchesIdDelete(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdDeleteRequest
+	V1AdvancedUserContentSearchesIdDelete(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest
 
 	// V1AdvancedUserContentSearchesIdDeleteExecute executes the request
-	V1AdvancedUserContentSearchesIdDeleteExecute(r ApiV1AdvancedUserContentSearchesIdDeleteRequest) (*http.Response, error)
+	V1AdvancedUserContentSearchesIdDeleteExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1AdvancedUserContentSearchesIdGet Get Specified Advanced User Content Search object 
@@ -60,13 +60,13 @@ type AdvancedUserContentSearchesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of target Advanced User Content Search
-	@return ApiV1AdvancedUserContentSearchesIdGetRequest
+	@return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest
 	*/
-	V1AdvancedUserContentSearchesIdGet(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdGetRequest
+	V1AdvancedUserContentSearchesIdGet(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest
 
 	// V1AdvancedUserContentSearchesIdGetExecute executes the request
 	//  @return AdvancedUserContentSearch
-	V1AdvancedUserContentSearchesIdGetExecute(r ApiV1AdvancedUserContentSearchesIdGetRequest) (*AdvancedUserContentSearch, *http.Response, error)
+	V1AdvancedUserContentSearchesIdGetExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest) (*AdvancedUserContentSearch, *http.Response, error)
 
 	/*
 	V1AdvancedUserContentSearchesIdPut Get Specified Advanced User Content Search object 
@@ -76,13 +76,13 @@ type AdvancedUserContentSearchesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of target Advanced User Content Search
-	@return ApiV1AdvancedUserContentSearchesIdPutRequest
+	@return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest
 	*/
-	V1AdvancedUserContentSearchesIdPut(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdPutRequest
+	V1AdvancedUserContentSearchesIdPut(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest
 
 	// V1AdvancedUserContentSearchesIdPutExecute executes the request
 	//  @return AdvancedUserContentSearch
-	V1AdvancedUserContentSearchesIdPutExecute(r ApiV1AdvancedUserContentSearchesIdPutRequest) (*AdvancedUserContentSearch, *http.Response, error)
+	V1AdvancedUserContentSearchesIdPutExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest) (*AdvancedUserContentSearch, *http.Response, error)
 
 	/*
 	V1AdvancedUserContentSearchesPost Create Advanced User Content Search object 
@@ -91,24 +91,24 @@ type AdvancedUserContentSearchesApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AdvancedUserContentSearchesPostRequest
+	@return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest
 	*/
-	V1AdvancedUserContentSearchesPost(ctx context.Context) ApiV1AdvancedUserContentSearchesPostRequest
+	V1AdvancedUserContentSearchesPost(ctx context.Context) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest
 
 	// V1AdvancedUserContentSearchesPostExecute executes the request
 	//  @return HrefResponse
-	V1AdvancedUserContentSearchesPostExecute(r ApiV1AdvancedUserContentSearchesPostRequest) (*HrefResponse, *http.Response, error)
+	V1AdvancedUserContentSearchesPostExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// AdvancedUserContentSearchesApiService AdvancedUserContentSearchesApi service
-type AdvancedUserContentSearchesApiService service
+// AdvancedUserContentSearchesAPIService AdvancedUserContentSearchesAPI service
+type AdvancedUserContentSearchesAPIService service
 
-type ApiV1AdvancedUserContentSearchesGetRequest struct {
+type AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest struct {
 	ctx context.Context
-	ApiService AdvancedUserContentSearchesApi
+	ApiService AdvancedUserContentSearchesAPI
 }
 
-func (r ApiV1AdvancedUserContentSearchesGetRequest) Execute() (*AdvancedUserContentSearchSearchResults, *http.Response, error) {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest) Execute() (*AdvancedUserContentSearchSearchResults, *http.Response, error) {
 	return r.ApiService.V1AdvancedUserContentSearchesGetExecute(r)
 }
 
@@ -119,10 +119,10 @@ Get All Advanced User Content Search Objects
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AdvancedUserContentSearchesGetRequest
+ @return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest
 */
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet(ctx context.Context) ApiV1AdvancedUserContentSearchesGetRequest {
-	return ApiV1AdvancedUserContentSearchesGetRequest{
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesGet(ctx context.Context) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest {
+	return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -130,7 +130,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet
 
 // Execute executes the request
 //  @return AdvancedUserContentSearchSearchResults
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGetExecute(r ApiV1AdvancedUserContentSearchesGetRequest) (*AdvancedUserContentSearchSearchResults, *http.Response, error) {
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesGetExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesGetRequest) (*AdvancedUserContentSearchSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -138,7 +138,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet
 		localVarReturnValue  *AdvancedUserContentSearchSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesApiService.V1AdvancedUserContentSearchesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesAPIService.V1AdvancedUserContentSearchesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -176,9 +176,9 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -203,13 +203,13 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AdvancedUserContentSearchesIdDeleteRequest struct {
+type AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService AdvancedUserContentSearchesApi
+	ApiService AdvancedUserContentSearchesAPI
 	id string
 }
 
-func (r ApiV1AdvancedUserContentSearchesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1AdvancedUserContentSearchesIdDeleteExecute(r)
 }
 
@@ -221,10 +221,10 @@ Removes specified Advanced User Content Search Object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of Advanced User Content Search record
- @return ApiV1AdvancedUserContentSearchesIdDeleteRequest
+ @return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest
 */
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdDelete(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdDeleteRequest {
-	return ApiV1AdvancedUserContentSearchesIdDeleteRequest{
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdDelete(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest {
+	return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -232,20 +232,20 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdD
 }
 
 // Execute executes the request
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdDeleteExecute(r ApiV1AdvancedUserContentSearchesIdDeleteRequest) (*http.Response, error) {
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdDeleteExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesApiService.V1AdvancedUserContentSearchesIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesAPIService.V1AdvancedUserContentSearchesIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/advanced-user-content-searches/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -278,9 +278,9 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -297,7 +297,8 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -305,13 +306,13 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdD
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1AdvancedUserContentSearchesIdGetRequest struct {
+type AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest struct {
 	ctx context.Context
-	ApiService AdvancedUserContentSearchesApi
+	ApiService AdvancedUserContentSearchesAPI
 	id string
 }
 
-func (r ApiV1AdvancedUserContentSearchesIdGetRequest) Execute() (*AdvancedUserContentSearch, *http.Response, error) {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest) Execute() (*AdvancedUserContentSearch, *http.Response, error) {
 	return r.ApiService.V1AdvancedUserContentSearchesIdGetExecute(r)
 }
 
@@ -323,10 +324,10 @@ Gets Specified Advanced User Content Search Object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of target Advanced User Content Search
- @return ApiV1AdvancedUserContentSearchesIdGetRequest
+ @return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest
 */
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdGet(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdGetRequest {
-	return ApiV1AdvancedUserContentSearchesIdGetRequest{
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdGet(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest {
+	return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -335,7 +336,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 
 // Execute executes the request
 //  @return AdvancedUserContentSearch
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdGetExecute(r ApiV1AdvancedUserContentSearchesIdGetRequest) (*AdvancedUserContentSearch, *http.Response, error) {
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdGetExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdGetRequest) (*AdvancedUserContentSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -343,13 +344,13 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 		localVarReturnValue  *AdvancedUserContentSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesApiService.V1AdvancedUserContentSearchesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesAPIService.V1AdvancedUserContentSearchesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/advanced-user-content-searches/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -382,9 +383,9 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -401,7 +402,8 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -418,19 +420,19 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AdvancedUserContentSearchesIdPutRequest struct {
+type AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest struct {
 	ctx context.Context
-	ApiService AdvancedUserContentSearchesApi
+	ApiService AdvancedUserContentSearchesAPI
 	id string
 	advancedUserContentSearch *AdvancedUserContentSearch
 }
 
-func (r ApiV1AdvancedUserContentSearchesIdPutRequest) AdvancedUserContentSearch(advancedUserContentSearch AdvancedUserContentSearch) ApiV1AdvancedUserContentSearchesIdPutRequest {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest) AdvancedUserContentSearch(advancedUserContentSearch AdvancedUserContentSearch) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest {
 	r.advancedUserContentSearch = &advancedUserContentSearch
 	return r
 }
 
-func (r ApiV1AdvancedUserContentSearchesIdPutRequest) Execute() (*AdvancedUserContentSearch, *http.Response, error) {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest) Execute() (*AdvancedUserContentSearch, *http.Response, error) {
 	return r.ApiService.V1AdvancedUserContentSearchesIdPutExecute(r)
 }
 
@@ -442,10 +444,10 @@ Gets Specified Advanced User Content Search Object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of target Advanced User Content Search
- @return ApiV1AdvancedUserContentSearchesIdPutRequest
+ @return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest
 */
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdPut(ctx context.Context, id string) ApiV1AdvancedUserContentSearchesIdPutRequest {
-	return ApiV1AdvancedUserContentSearchesIdPutRequest{
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdPut(ctx context.Context, id string) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest {
+	return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -454,7 +456,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 
 // Execute executes the request
 //  @return AdvancedUserContentSearch
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdPutExecute(r ApiV1AdvancedUserContentSearchesIdPutRequest) (*AdvancedUserContentSearch, *http.Response, error) {
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesIdPutExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesIdPutRequest) (*AdvancedUserContentSearch, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -462,13 +464,13 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 		localVarReturnValue  *AdvancedUserContentSearch
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesApiService.V1AdvancedUserContentSearchesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesAPIService.V1AdvancedUserContentSearchesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/advanced-user-content-searches/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -506,9 +508,9 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -525,7 +527,8 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -542,18 +545,18 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesIdP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AdvancedUserContentSearchesPostRequest struct {
+type AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest struct {
 	ctx context.Context
-	ApiService AdvancedUserContentSearchesApi
+	ApiService AdvancedUserContentSearchesAPI
 	advancedUserContentSearch *AdvancedUserContentSearch
 }
 
-func (r ApiV1AdvancedUserContentSearchesPostRequest) AdvancedUserContentSearch(advancedUserContentSearch AdvancedUserContentSearch) ApiV1AdvancedUserContentSearchesPostRequest {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest) AdvancedUserContentSearch(advancedUserContentSearch AdvancedUserContentSearch) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest {
 	r.advancedUserContentSearch = &advancedUserContentSearch
 	return r
 }
 
-func (r ApiV1AdvancedUserContentSearchesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1AdvancedUserContentSearchesPostExecute(r)
 }
 
@@ -564,10 +567,10 @@ Creates Advanced User Content Search Object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AdvancedUserContentSearchesPostRequest
+ @return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest
 */
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesPost(ctx context.Context) ApiV1AdvancedUserContentSearchesPostRequest {
-	return ApiV1AdvancedUserContentSearchesPostRequest{
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesPost(ctx context.Context) AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest {
+	return AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -575,7 +578,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesPos
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesPostExecute(r ApiV1AdvancedUserContentSearchesPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *AdvancedUserContentSearchesAPIService) V1AdvancedUserContentSearchesPostExecute(r AdvancedUserContentSearchesAPIV1AdvancedUserContentSearchesPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -583,7 +586,7 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesPos
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesApiService.V1AdvancedUserContentSearchesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdvancedUserContentSearchesAPIService.V1AdvancedUserContentSearchesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -626,9 +629,9 @@ func (a *AdvancedUserContentSearchesApiService) V1AdvancedUserContentSearchesPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

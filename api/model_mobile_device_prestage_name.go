@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDevicePrestageName type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDevicePrestageName{}
+
 // MobileDevicePrestageName struct for MobileDevicePrestageName
 type MobileDevicePrestageName struct {
 	Id *int32 `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewMobileDevicePrestageNameWithDefaults() *MobileDevicePrestageName {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MobileDevicePrestageName) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *MobileDevicePrestageName) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageName) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *MobileDevicePrestageName) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MobileDevicePrestageName) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *MobileDevicePrestageName) SetId(v int32) {
 
 // GetDeviceName returns the DeviceName field value if set, zero value otherwise.
 func (o *MobileDevicePrestageName) GetDeviceName() string {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *MobileDevicePrestageName) GetDeviceName() string {
 // GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageName) GetDeviceNameOk() (*string, bool) {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		return nil, false
 	}
 	return o.DeviceName, true
@@ -90,7 +93,7 @@ func (o *MobileDevicePrestageName) GetDeviceNameOk() (*string, bool) {
 
 // HasDeviceName returns a boolean if a field has been set.
 func (o *MobileDevicePrestageName) HasDeviceName() bool {
-	if o != nil && o.DeviceName != nil {
+	if o != nil && !IsNil(o.DeviceName) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *MobileDevicePrestageName) SetDeviceName(v string) {
 
 // GetIsUsed returns the IsUsed field value if set, zero value otherwise.
 func (o *MobileDevicePrestageName) GetIsUsed() bool {
-	if o == nil || o.IsUsed == nil {
+	if o == nil || IsNil(o.IsUsed) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *MobileDevicePrestageName) GetIsUsed() bool {
 // GetIsUsedOk returns a tuple with the IsUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevicePrestageName) GetIsUsedOk() (*bool, bool) {
-	if o == nil || o.IsUsed == nil {
+	if o == nil || IsNil(o.IsUsed) {
 		return nil, false
 	}
 	return o.IsUsed, true
@@ -122,7 +125,7 @@ func (o *MobileDevicePrestageName) GetIsUsedOk() (*bool, bool) {
 
 // HasIsUsed returns a boolean if a field has been set.
 func (o *MobileDevicePrestageName) HasIsUsed() bool {
-	if o != nil && o.IsUsed != nil {
+	if o != nil && !IsNil(o.IsUsed) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *MobileDevicePrestageName) SetIsUsed(v bool) {
 }
 
 func (o MobileDevicePrestageName) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.DeviceName != nil {
-		toSerialize["deviceName"] = o.DeviceName
-	}
-	if o.IsUsed != nil {
-		toSerialize["isUsed"] = o.IsUsed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDevicePrestageName) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DeviceName) {
+		toSerialize["deviceName"] = o.DeviceName
+	}
+	if !IsNil(o.IsUsed) {
+		toSerialize["isUsed"] = o.IsUsed
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDevicePrestageName struct {

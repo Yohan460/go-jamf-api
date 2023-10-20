@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 )
 
 
-type EnrollmentCustomizationApi interface {
+type EnrollmentCustomizationAPI interface {
 
 	/*
 	V1EnrollmentCustomizationGet Retrieve sorted and paged Enrollment Customizations 
@@ -30,16 +30,16 @@ type EnrollmentCustomizationApi interface {
 	Retrieves sorted and paged Enrollment Customizations
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EnrollmentCustomizationGetRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationGet(ctx context.Context) ApiV1EnrollmentCustomizationGetRequest
+	V1EnrollmentCustomizationGet(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest
 
 	// V1EnrollmentCustomizationGetExecute executes the request
 	//  @return EnrollmentCustomizationSearchResults
 	// Deprecated
-	V1EnrollmentCustomizationGetExecute(r ApiV1EnrollmentCustomizationGetRequest) (*EnrollmentCustomizationSearchResults, *http.Response, error)
+	V1EnrollmentCustomizationGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) (*EnrollmentCustomizationSearchResults, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdDelete Delete an Enrollment Customization with the supplied id 
@@ -48,15 +48,15 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdDeleteRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdDeleteRequest
+	V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdDeleteExecute executes the request
 	// Deprecated
-	V1EnrollmentCustomizationIdDeleteExecute(r ApiV1EnrollmentCustomizationIdDeleteRequest) (*http.Response, error)
+	V1EnrollmentCustomizationIdDeleteExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdGet Retrieve an Enrollment Customization with the supplied id 
@@ -65,16 +65,16 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdGetRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdGetRequest
+	V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest
 
 	// V1EnrollmentCustomizationIdGetExecute executes the request
 	//  @return GetEnrollmentCustomization
 	// Deprecated
-	V1EnrollmentCustomizationIdGetExecute(r ApiV1EnrollmentCustomizationIdGetRequest) (*GetEnrollmentCustomization, *http.Response, error)
+	V1EnrollmentCustomizationIdGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest) (*GetEnrollmentCustomization, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdHistoryGet Get sorted and paged Enrollment Customization history objects 
@@ -83,16 +83,16 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdHistoryGetRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest
+	V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest
 
 	// V1EnrollmentCustomizationIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
 	// Deprecated
-	V1EnrollmentCustomizationIdHistoryGetExecute(r ApiV1EnrollmentCustomizationIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1EnrollmentCustomizationIdHistoryGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdHistoryPost Add Enrollment Customization history object notes 
@@ -101,16 +101,16 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdHistoryPostRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryPostRequest
+	V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest
 
 	// V1EnrollmentCustomizationIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
 	// Deprecated
-	V1EnrollmentCustomizationIdHistoryPostExecute(r ApiV1EnrollmentCustomizationIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1EnrollmentCustomizationIdHistoryPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdPrestagesGet Retrieve the list of Prestages using this Enrollment Customization 
@@ -119,16 +119,16 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdPrestagesGetRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPrestagesGetRequest
+	V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest
 
 	// V1EnrollmentCustomizationIdPrestagesGetExecute executes the request
 	//  @return PrestageDependencies
 	// Deprecated
-	V1EnrollmentCustomizationIdPrestagesGetExecute(r ApiV1EnrollmentCustomizationIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
+	V1EnrollmentCustomizationIdPrestagesGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdPut Update an Enrollment Customization 
@@ -137,16 +137,16 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdPutRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPutRequest
+	V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest
 
 	// V1EnrollmentCustomizationIdPutExecute executes the request
 	//  @return GetEnrollmentCustomization
 	// Deprecated
-	V1EnrollmentCustomizationIdPutExecute(r ApiV1EnrollmentCustomizationIdPutRequest) (*GetEnrollmentCustomization, *http.Response, error)
+	V1EnrollmentCustomizationIdPutExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest) (*GetEnrollmentCustomization, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationImagesPost Upload an image
@@ -154,16 +154,16 @@ type EnrollmentCustomizationApi interface {
 	Uploads an image
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EnrollmentCustomizationImagesPostRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationImagesPost(ctx context.Context) ApiV1EnrollmentCustomizationImagesPostRequest
+	V1EnrollmentCustomizationImagesPost(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest
 
 	// V1EnrollmentCustomizationImagesPostExecute executes the request
 	//  @return BrandingImageUrl
 	// Deprecated
-	V1EnrollmentCustomizationImagesPostExecute(r ApiV1EnrollmentCustomizationImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+	V1EnrollmentCustomizationImagesPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationPost Create an Enrollment Customization 
@@ -171,16 +171,16 @@ type EnrollmentCustomizationApi interface {
 	Create an enrollment customization
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EnrollmentCustomizationPostRequest
+	@return EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationPost(ctx context.Context) ApiV1EnrollmentCustomizationPostRequest
+	V1EnrollmentCustomizationPost(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest
 
 	// V1EnrollmentCustomizationPostExecute executes the request
 	//  @return GetEnrollmentCustomization
 	// Deprecated
-	V1EnrollmentCustomizationPostExecute(r ApiV1EnrollmentCustomizationPostRequest) (*GetEnrollmentCustomization, *http.Response, error)
+	V1EnrollmentCustomizationPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest) (*GetEnrollmentCustomization, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsGet Retrieve sorted and paged Enrollment Customizations 
@@ -188,13 +188,13 @@ type EnrollmentCustomizationApi interface {
 	Retrieves sorted and paged Enrollment Customizations
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2EnrollmentCustomizationsGetRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest
 	*/
-	V2EnrollmentCustomizationsGet(ctx context.Context) ApiV2EnrollmentCustomizationsGetRequest
+	V2EnrollmentCustomizationsGet(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest
 
 	// V2EnrollmentCustomizationsGetExecute executes the request
 	//  @return EnrollmentCustomizationSearchResultsV2
-	V2EnrollmentCustomizationsGetExecute(r ApiV2EnrollmentCustomizationsGetRequest) (*EnrollmentCustomizationSearchResultsV2, *http.Response, error)
+	V2EnrollmentCustomizationsGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) (*EnrollmentCustomizationSearchResultsV2, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdDelete Delete an Enrollment Customization with the supplied id 
@@ -203,12 +203,12 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdDeleteRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest
 	*/
-	V2EnrollmentCustomizationsIdDelete(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdDeleteRequest
+	V2EnrollmentCustomizationsIdDelete(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest
 
 	// V2EnrollmentCustomizationsIdDeleteExecute executes the request
-	V2EnrollmentCustomizationsIdDeleteExecute(r ApiV2EnrollmentCustomizationsIdDeleteRequest) (*http.Response, error)
+	V2EnrollmentCustomizationsIdDeleteExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdGet Retrieve an Enrollment Customization with the supplied id 
@@ -217,13 +217,13 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdGetRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest
 	*/
-	V2EnrollmentCustomizationsIdGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdGetRequest
+	V2EnrollmentCustomizationsIdGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest
 
 	// V2EnrollmentCustomizationsIdGetExecute executes the request
 	//  @return EnrollmentCustomizationV2
-	V2EnrollmentCustomizationsIdGetExecute(r ApiV2EnrollmentCustomizationsIdGetRequest) (*EnrollmentCustomizationV2, *http.Response, error)
+	V2EnrollmentCustomizationsIdGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest) (*EnrollmentCustomizationV2, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdHistoryGet Get sorted and paged Enrollment Customization history objects 
@@ -232,13 +232,13 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdHistoryGetRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest
 	*/
-	V2EnrollmentCustomizationsIdHistoryGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryGetRequest
+	V2EnrollmentCustomizationsIdHistoryGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest
 
 	// V2EnrollmentCustomizationsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V2EnrollmentCustomizationsIdHistoryGetExecute(r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V2EnrollmentCustomizationsIdHistoryGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdHistoryPost Add Enrollment Customization history object notes 
@@ -247,13 +247,13 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdHistoryPostRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest
 	*/
-	V2EnrollmentCustomizationsIdHistoryPost(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryPostRequest
+	V2EnrollmentCustomizationsIdHistoryPost(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest
 
 	// V2EnrollmentCustomizationsIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V2EnrollmentCustomizationsIdHistoryPostExecute(r ApiV2EnrollmentCustomizationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V2EnrollmentCustomizationsIdHistoryPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdPrestagesGet Retrieve the list of Prestages using this Enrollment Customization 
@@ -262,13 +262,13 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdPrestagesGetRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest
 	*/
-	V2EnrollmentCustomizationsIdPrestagesGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPrestagesGetRequest
+	V2EnrollmentCustomizationsIdPrestagesGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest
 
 	// V2EnrollmentCustomizationsIdPrestagesGetExecute executes the request
 	//  @return PrestageDependencies
-	V2EnrollmentCustomizationsIdPrestagesGetExecute(r ApiV2EnrollmentCustomizationsIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
+	V2EnrollmentCustomizationsIdPrestagesGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsIdPut Update an Enrollment Customization 
@@ -277,13 +277,28 @@ type EnrollmentCustomizationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV2EnrollmentCustomizationsIdPutRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest
 	*/
-	V2EnrollmentCustomizationsIdPut(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPutRequest
+	V2EnrollmentCustomizationsIdPut(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest
 
 	// V2EnrollmentCustomizationsIdPutExecute executes the request
 	//  @return EnrollmentCustomizationV2
-	V2EnrollmentCustomizationsIdPutExecute(r ApiV2EnrollmentCustomizationsIdPutRequest) (*EnrollmentCustomizationV2, *http.Response, error)
+	V2EnrollmentCustomizationsIdPutExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest) (*EnrollmentCustomizationV2, *http.Response, error)
+
+	/*
+	V2EnrollmentCustomizationsImagesIdGet Download an enrollment customization image 
+
+	Download an enrollment customization image
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of the enrollment customization image
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest
+	*/
+	V2EnrollmentCustomizationsImagesIdGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest
+
+	// V2EnrollmentCustomizationsImagesIdGetExecute executes the request
+	//  @return *os.File
+	V2EnrollmentCustomizationsImagesIdGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsImagesPost Upload an image
@@ -291,13 +306,13 @@ type EnrollmentCustomizationApi interface {
 	Uploads an image
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2EnrollmentCustomizationsImagesPostRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest
 	*/
-	V2EnrollmentCustomizationsImagesPost(ctx context.Context) ApiV2EnrollmentCustomizationsImagesPostRequest
+	V2EnrollmentCustomizationsImagesPost(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest
 
 	// V2EnrollmentCustomizationsImagesPostExecute executes the request
 	//  @return BrandingImageUrl
-	V2EnrollmentCustomizationsImagesPostExecute(r ApiV2EnrollmentCustomizationsImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
+	V2EnrollmentCustomizationsImagesPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest) (*BrandingImageUrl, *http.Response, error)
 
 	/*
 	V2EnrollmentCustomizationsPost Create an Enrollment Customization 
@@ -305,21 +320,21 @@ type EnrollmentCustomizationApi interface {
 	Create an enrollment customization
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2EnrollmentCustomizationsPostRequest
+	@return EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest
 	*/
-	V2EnrollmentCustomizationsPost(ctx context.Context) ApiV2EnrollmentCustomizationsPostRequest
+	V2EnrollmentCustomizationsPost(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest
 
 	// V2EnrollmentCustomizationsPostExecute executes the request
 	//  @return HrefResponse
-	V2EnrollmentCustomizationsPostExecute(r ApiV2EnrollmentCustomizationsPostRequest) (*HrefResponse, *http.Response, error)
+	V2EnrollmentCustomizationsPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// EnrollmentCustomizationApiService EnrollmentCustomizationApi service
-type EnrollmentCustomizationApiService service
+// EnrollmentCustomizationAPIService EnrollmentCustomizationAPI service
+type EnrollmentCustomizationAPIService service
 
-type ApiV1EnrollmentCustomizationGetRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -327,35 +342,35 @@ type ApiV1EnrollmentCustomizationGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1EnrollmentCustomizationGetRequest) Page(page int32) ApiV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Page(page int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1EnrollmentCustomizationGetRequest) Size(size int32) ApiV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Size(size int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1EnrollmentCustomizationGetRequest) Pagesize(pagesize int32) ApiV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Pagesize(pagesize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationGetRequest) PageSize(pageSize int32) ApiV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1EnrollmentCustomizationGetRequest) Sort(sort string) ApiV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Sort(sort string) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationGetRequest) Execute() (*EnrollmentCustomizationSearchResults, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Execute() (*EnrollmentCustomizationSearchResults, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationGetExecute(r)
 }
 
@@ -365,12 +380,12 @@ V1EnrollmentCustomizationGet Retrieve sorted and paged Enrollment Customizations
 Retrieves sorted and paged Enrollment Customizations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnrollmentCustomizationGetRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGet(ctx context.Context) ApiV1EnrollmentCustomizationGetRequest {
-	return ApiV1EnrollmentCustomizationGetRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationGet(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -379,7 +394,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGet(ctx con
 // Execute executes the request
 //  @return EnrollmentCustomizationSearchResults
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(r ApiV1EnrollmentCustomizationGetRequest) (*EnrollmentCustomizationSearchResults, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) (*EnrollmentCustomizationSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -387,7 +402,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(
 		localVarReturnValue  *EnrollmentCustomizationSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -399,19 +414,34 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "id:asc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -440,9 +470,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -467,13 +497,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdDeleteRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdDeleteExecute(r)
 }
 
@@ -484,12 +514,12 @@ Deletes an Enrollment Customization with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdDeleteRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdDeleteRequest {
-	return ApiV1EnrollmentCustomizationIdDeleteRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -498,20 +528,20 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDelete(ct
 
 // Execute executes the request
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDeleteExecute(r ApiV1EnrollmentCustomizationIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdDeleteExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -544,9 +574,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDeleteExe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -562,13 +592,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdDeleteExe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdGetRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdGetRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdGetExecute(r)
 }
 
@@ -579,12 +609,12 @@ Retrieves an Enrollment Customization with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdGetRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdGetRequest {
-	return ApiV1EnrollmentCustomizationIdGetRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -594,7 +624,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGet(ctx c
 // Execute executes the request
 //  @return GetEnrollmentCustomization
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecute(r ApiV1EnrollmentCustomizationIdGetRequest) (*GetEnrollmentCustomization, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest) (*GetEnrollmentCustomization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -602,13 +632,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecut
 		localVarReturnValue  *GetEnrollmentCustomization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -641,9 +671,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -660,7 +690,8 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -677,9 +708,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdHistoryGetRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 	page *int32
 	size *int32
@@ -688,35 +719,35 @@ type ApiV1EnrollmentCustomizationIdHistoryGetRequest struct {
 	sort *[]string
 }
 
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) Page(page int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Page(page int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) Size(size int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Size(size int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) Pagesize(pagesize int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Pagesize(pagesize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) PageSize(pageSize int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) Sort(sort []string) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Sort(sort []string) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdHistoryGetExecute(r)
 }
 
@@ -727,12 +758,12 @@ Gets sorted and paged enrollment customization history objects
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdHistoryGetRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryGetRequest {
-	return ApiV1EnrollmentCustomizationIdHistoryGetRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -742,7 +773,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGe
 // Execute executes the request
 //  @return HistorySearchResults
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGetExecute(r ApiV1EnrollmentCustomizationIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -750,40 +781,55 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGe
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -812,9 +858,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -839,20 +885,20 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdHistoryPostRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV1EnrollmentCustomizationIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1EnrollmentCustomizationIdHistoryPostRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdHistoryPostExecute(r)
 }
 
@@ -863,12 +909,12 @@ Adds enrollment customization history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdHistoryPostRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdHistoryPostRequest {
-	return ApiV1EnrollmentCustomizationIdHistoryPostRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -878,7 +924,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 // Execute executes the request
 //  @return ObjectHistory
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPostExecute(r ApiV1EnrollmentCustomizationIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -886,13 +932,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -930,9 +976,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -949,7 +995,8 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -966,13 +1013,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdHistoryPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdPrestagesGetRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdPrestagesGetRequest) Execute() (*PrestageDependencies, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest) Execute() (*PrestageDependencies, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdPrestagesGetExecute(r)
 }
 
@@ -983,12 +1030,12 @@ Retrieves the list of Prestages using this Enrollment Customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdPrestagesGetRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPrestagesGetRequest {
-	return ApiV1EnrollmentCustomizationIdPrestagesGetRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -998,7 +1045,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 // Execute executes the request
 //  @return PrestageDependencies
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestagesGetExecute(r ApiV1EnrollmentCustomizationIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPrestagesGetExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1006,13 +1053,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 		localVarReturnValue  *PrestageDependencies
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdPrestagesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdPrestagesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/prestages"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1045,9 +1092,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1064,7 +1111,8 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1081,20 +1129,20 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPrestages
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdPutRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id int32
 	enrollmentCustomization *EnrollmentCustomization
 }
 
 // Enrollment Customization to update
-func (r ApiV1EnrollmentCustomizationIdPutRequest) EnrollmentCustomization(enrollmentCustomization EnrollmentCustomization) ApiV1EnrollmentCustomizationIdPutRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest) EnrollmentCustomization(enrollmentCustomization EnrollmentCustomization) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest {
 	r.enrollmentCustomization = &enrollmentCustomization
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdPutRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdPutExecute(r)
 }
 
@@ -1105,12 +1153,12 @@ Updates an Enrollment Customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdPutRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdPutRequest {
-	return ApiV1EnrollmentCustomizationIdPutRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1120,7 +1168,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPut(ctx c
 // Execute executes the request
 //  @return GetEnrollmentCustomization
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecute(r ApiV1EnrollmentCustomizationIdPutRequest) (*GetEnrollmentCustomization, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPutExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest) (*GetEnrollmentCustomization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1128,13 +1176,13 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecut
 		localVarReturnValue  *GetEnrollmentCustomization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1172,9 +1220,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1191,7 +1239,8 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1208,19 +1257,19 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationIdPutExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationImagesPostRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
-	file **os.File
+	ApiService EnrollmentCustomizationAPI
+	file *os.File
 }
 
 // The file to upload
-func (r ApiV1EnrollmentCustomizationImagesPostRequest) File(file *os.File) ApiV1EnrollmentCustomizationImagesPostRequest {
-	r.file = &file
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest) File(file *os.File) EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationImagesPostExecute(r)
 }
 
@@ -1230,12 +1279,12 @@ V1EnrollmentCustomizationImagesPost Upload an image
 Uploads an image
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnrollmentCustomizationImagesPostRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPost(ctx context.Context) ApiV1EnrollmentCustomizationImagesPostRequest {
-	return ApiV1EnrollmentCustomizationImagesPostRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationImagesPost(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1244,7 +1293,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPost(
 // Execute executes the request
 //  @return BrandingImageUrl
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostExecute(r ApiV1EnrollmentCustomizationImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationImagesPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1252,7 +1301,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostE
 		localVarReturnValue  *BrandingImageUrl
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationImagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationImagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1289,14 +1338,17 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostE
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1307,9 +1359,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostE
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1334,19 +1386,19 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationImagesPostE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationPostRequest struct {
+type EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	enrollmentCustomization *EnrollmentCustomization
 }
 
 // Enrollment customization to create.
-func (r ApiV1EnrollmentCustomizationPostRequest) EnrollmentCustomization(enrollmentCustomization EnrollmentCustomization) ApiV1EnrollmentCustomizationPostRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest) EnrollmentCustomization(enrollmentCustomization EnrollmentCustomization) EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest {
 	r.enrollmentCustomization = &enrollmentCustomization
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationPostRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationPostExecute(r)
 }
 
@@ -1356,12 +1408,12 @@ V1EnrollmentCustomizationPost Create an Enrollment Customization
 Create an enrollment customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnrollmentCustomizationPostRequest
+ @return EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest
 
 Deprecated
 */
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPost(ctx context.Context) ApiV1EnrollmentCustomizationPostRequest {
-	return ApiV1EnrollmentCustomizationPostRequest{
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationPost(ctx context.Context) EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest {
+	return EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1370,7 +1422,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPost(ctx co
 // Execute executes the request
 //  @return GetEnrollmentCustomization
 // Deprecated
-func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPostExecute(r ApiV1EnrollmentCustomizationPostRequest) (*GetEnrollmentCustomization, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationPostExecute(r EnrollmentCustomizationAPIV1EnrollmentCustomizationPostRequest) (*GetEnrollmentCustomization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1378,7 +1430,7 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPostExecute
 		localVarReturnValue  *GetEnrollmentCustomization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V1EnrollmentCustomizationPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V1EnrollmentCustomizationPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1421,9 +1473,9 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPostExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1448,31 +1500,31 @@ func (a *EnrollmentCustomizationApiService) V1EnrollmentCustomizationPostExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsGetRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2EnrollmentCustomizationsGetRequest) Page(page int32) ApiV2EnrollmentCustomizationsGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) Page(page int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsGetRequest) PageSize(pageSize int32) ApiV2EnrollmentCustomizationsGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV2EnrollmentCustomizationsGetRequest) Sort(sort []string) ApiV2EnrollmentCustomizationsGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) Sort(sort []string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsGetRequest) Execute() (*EnrollmentCustomizationSearchResultsV2, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) Execute() (*EnrollmentCustomizationSearchResultsV2, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsGetExecute(r)
 }
 
@@ -1482,10 +1534,10 @@ V2EnrollmentCustomizationsGet Retrieve sorted and paged Enrollment Customization
 Retrieves sorted and paged Enrollment Customizations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2EnrollmentCustomizationsGetRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGet(ctx context.Context) ApiV2EnrollmentCustomizationsGetRequest {
-	return ApiV2EnrollmentCustomizationsGetRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsGet(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1493,7 +1545,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGet(ctx co
 
 // Execute executes the request
 //  @return EnrollmentCustomizationSearchResultsV2
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute(r ApiV2EnrollmentCustomizationsGetRequest) (*EnrollmentCustomizationSearchResultsV2, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) (*EnrollmentCustomizationSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1501,7 +1553,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute
 		localVarReturnValue  *EnrollmentCustomizationSearchResultsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1513,21 +1565,30 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:asc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1556,9 +1617,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1583,13 +1644,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdDeleteRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 }
 
-func (r ApiV2EnrollmentCustomizationsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdDeleteExecute(r)
 }
 
@@ -1600,10 +1661,10 @@ Deletes an Enrollment Customization with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdDeleteRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDelete(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdDeleteRequest {
-	return ApiV2EnrollmentCustomizationsIdDeleteRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdDelete(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1611,20 +1672,20 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDelete(c
 }
 
 // Execute executes the request
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDeleteExecute(r ApiV2EnrollmentCustomizationsIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdDeleteExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1657,9 +1718,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDeleteEx
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1675,13 +1736,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdDeleteEx
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdGetRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 }
 
-func (r ApiV2EnrollmentCustomizationsIdGetRequest) Execute() (*EnrollmentCustomizationV2, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest) Execute() (*EnrollmentCustomizationV2, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdGetExecute(r)
 }
 
@@ -1692,10 +1753,10 @@ Retrieves an Enrollment Customization with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdGetRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdGetRequest {
-	return ApiV2EnrollmentCustomizationsIdGetRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1704,7 +1765,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGet(ctx 
 
 // Execute executes the request
 //  @return EnrollmentCustomizationV2
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecute(r ApiV2EnrollmentCustomizationsIdGetRequest) (*EnrollmentCustomizationV2, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdGetRequest) (*EnrollmentCustomizationV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1712,13 +1773,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecu
 		localVarReturnValue  *EnrollmentCustomizationV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1751,9 +1812,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1770,7 +1831,8 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1787,32 +1849,32 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdHistoryGetRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) Page(page int32) ApiV2EnrollmentCustomizationsIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) Page(page int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) PageSize(pageSize int32) ApiV2EnrollmentCustomizationsIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) Sort(sort []string) ApiV2EnrollmentCustomizationsIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) Sort(sort []string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdHistoryGetExecute(r)
 }
 
@@ -1823,10 +1885,10 @@ Gets sorted and paged enrollment customization history objects
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdHistoryGetRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryGetRequest {
-	return ApiV2EnrollmentCustomizationsIdHistoryGetRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1835,7 +1897,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryG
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryGetExecute(r ApiV2EnrollmentCustomizationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1843,34 +1905,43 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryG
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1899,9 +1970,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1926,20 +1997,20 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdHistoryPostRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV2EnrollmentCustomizationsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV2EnrollmentCustomizationsIdHistoryPostRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdHistoryPostExecute(r)
 }
 
@@ -1950,10 +2021,10 @@ Adds enrollment customization history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdHistoryPostRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryPost(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdHistoryPostRequest {
-	return ApiV2EnrollmentCustomizationsIdHistoryPostRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryPost(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1962,7 +2033,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryPostExecute(r ApiV2EnrollmentCustomizationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1970,13 +2041,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2014,9 +2085,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2033,7 +2104,8 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2050,13 +2122,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdHistoryP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdPrestagesGetRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 }
 
-func (r ApiV2EnrollmentCustomizationsIdPrestagesGetRequest) Execute() (*PrestageDependencies, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest) Execute() (*PrestageDependencies, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdPrestagesGetExecute(r)
 }
 
@@ -2067,10 +2139,10 @@ Retrieves the list of Prestages using this Enrollment Customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdPrestagesGetRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestagesGet(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPrestagesGetRequest {
-	return ApiV2EnrollmentCustomizationsIdPrestagesGetRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdPrestagesGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2079,7 +2151,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 
 // Execute executes the request
 //  @return PrestageDependencies
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestagesGetExecute(r ApiV2EnrollmentCustomizationsIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdPrestagesGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPrestagesGetRequest) (*PrestageDependencies, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2087,13 +2159,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 		localVarReturnValue  *PrestageDependencies
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdPrestagesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdPrestagesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}/prestages"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2126,9 +2198,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2145,7 +2217,8 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2162,20 +2235,20 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPrestage
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsIdPutRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	id string
 	enrollmentCustomizationV2 *EnrollmentCustomizationV2
 }
 
 // Enrollment Customization to update
-func (r ApiV2EnrollmentCustomizationsIdPutRequest) EnrollmentCustomizationV2(enrollmentCustomizationV2 EnrollmentCustomizationV2) ApiV2EnrollmentCustomizationsIdPutRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest) EnrollmentCustomizationV2(enrollmentCustomizationV2 EnrollmentCustomizationV2) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest {
 	r.enrollmentCustomizationV2 = &enrollmentCustomizationV2
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsIdPutRequest) Execute() (*EnrollmentCustomizationV2, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest) Execute() (*EnrollmentCustomizationV2, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsIdPutExecute(r)
 }
 
@@ -2186,10 +2259,10 @@ Updates an Enrollment Customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV2EnrollmentCustomizationsIdPutRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPut(ctx context.Context, id string) ApiV2EnrollmentCustomizationsIdPutRequest {
-	return ApiV2EnrollmentCustomizationsIdPutRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdPut(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2198,7 +2271,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPut(ctx 
 
 // Execute executes the request
 //  @return EnrollmentCustomizationV2
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecute(r ApiV2EnrollmentCustomizationsIdPutRequest) (*EnrollmentCustomizationV2, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdPutExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdPutRequest) (*EnrollmentCustomizationV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2206,13 +2279,13 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecu
 		localVarReturnValue  *EnrollmentCustomizationV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/enrollment-customizations/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2250,9 +2323,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2269,7 +2342,8 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2286,19 +2360,122 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsIdPutExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsImagesPostRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
-	file **os.File
+	ApiService EnrollmentCustomizationAPI
+	id string
+}
+
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.V2EnrollmentCustomizationsImagesIdGetExecute(r)
+}
+
+/*
+V2EnrollmentCustomizationsImagesIdGet Download an enrollment customization image 
+
+Download an enrollment customization image
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the enrollment customization image
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest
+*/
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsImagesIdGet(ctx context.Context, id string) EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsImagesIdGetExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesIdGetRequest) (*os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsImagesIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/enrollment-customizations/images/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"image/*"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest struct {
+	ctx context.Context
+	ApiService EnrollmentCustomizationAPI
+	file *os.File
 }
 
 // The file to upload
-func (r ApiV2EnrollmentCustomizationsImagesPostRequest) File(file *os.File) ApiV2EnrollmentCustomizationsImagesPostRequest {
-	r.file = &file
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest) File(file *os.File) EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest) Execute() (*BrandingImageUrl, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsImagesPostExecute(r)
 }
 
@@ -2308,10 +2485,10 @@ V2EnrollmentCustomizationsImagesPost Upload an image
 Uploads an image
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2EnrollmentCustomizationsImagesPostRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost(ctx context.Context) ApiV2EnrollmentCustomizationsImagesPostRequest {
-	return ApiV2EnrollmentCustomizationsImagesPostRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsImagesPost(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2319,7 +2496,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 
 // Execute executes the request
 //  @return BrandingImageUrl
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPostExecute(r ApiV2EnrollmentCustomizationsImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsImagesPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsImagesPostRequest) (*BrandingImageUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2327,7 +2504,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 		localVarReturnValue  *BrandingImageUrl
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsImagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsImagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2364,14 +2541,17 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2382,9 +2562,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2409,19 +2589,19 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsImagesPost
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2EnrollmentCustomizationsPostRequest struct {
+type EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationApi
+	ApiService EnrollmentCustomizationAPI
 	enrollmentCustomizationV2 *EnrollmentCustomizationV2
 }
 
 // Enrollment customization to create.
-func (r ApiV2EnrollmentCustomizationsPostRequest) EnrollmentCustomizationV2(enrollmentCustomizationV2 EnrollmentCustomizationV2) ApiV2EnrollmentCustomizationsPostRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest) EnrollmentCustomizationV2(enrollmentCustomizationV2 EnrollmentCustomizationV2) EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest {
 	r.enrollmentCustomizationV2 = &enrollmentCustomizationV2
 	return r
 }
 
-func (r ApiV2EnrollmentCustomizationsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2EnrollmentCustomizationsPostExecute(r)
 }
 
@@ -2431,10 +2611,10 @@ V2EnrollmentCustomizationsPost Create an Enrollment Customization
 Create an enrollment customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2EnrollmentCustomizationsPostRequest
+ @return EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest
 */
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsPost(ctx context.Context) ApiV2EnrollmentCustomizationsPostRequest {
-	return ApiV2EnrollmentCustomizationsPostRequest{
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsPost(ctx context.Context) EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest {
+	return EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2442,7 +2622,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsPost(ctx c
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsPostExecute(r ApiV2EnrollmentCustomizationsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsPostExecute(r EnrollmentCustomizationAPIV2EnrollmentCustomizationsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2450,7 +2630,7 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsPostExecut
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationApiService.V2EnrollmentCustomizationsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationAPIService.V2EnrollmentCustomizationsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2493,9 +2673,9 @@ func (a *EnrollmentCustomizationApiService) V2EnrollmentCustomizationsPostExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

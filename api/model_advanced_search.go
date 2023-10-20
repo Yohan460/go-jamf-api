@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AdvancedSearch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AdvancedSearch{}
+
 // AdvancedSearch struct for AdvancedSearch
 type AdvancedSearch struct {
 	Id *string `json:"id,omitempty"`
@@ -43,7 +46,7 @@ func NewAdvancedSearchWithDefaults() *AdvancedSearch {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AdvancedSearch) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *AdvancedSearch) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdvancedSearch) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -61,7 +64,7 @@ func (o *AdvancedSearch) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AdvancedSearch) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -99,7 +102,7 @@ func (o *AdvancedSearch) SetName(v string) {
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise.
 func (o *AdvancedSearch) GetCriteria() []SmartSearchCriterion {
-	if o == nil || o.Criteria == nil {
+	if o == nil || IsNil(o.Criteria) {
 		var ret []SmartSearchCriterion
 		return ret
 	}
@@ -109,7 +112,7 @@ func (o *AdvancedSearch) GetCriteria() []SmartSearchCriterion {
 // GetCriteriaOk returns a tuple with the Criteria field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdvancedSearch) GetCriteriaOk() ([]SmartSearchCriterion, bool) {
-	if o == nil || o.Criteria == nil {
+	if o == nil || IsNil(o.Criteria) {
 		return nil, false
 	}
 	return o.Criteria, true
@@ -117,7 +120,7 @@ func (o *AdvancedSearch) GetCriteriaOk() ([]SmartSearchCriterion, bool) {
 
 // HasCriteria returns a boolean if a field has been set.
 func (o *AdvancedSearch) HasCriteria() bool {
-	if o != nil && o.Criteria != nil {
+	if o != nil && !IsNil(o.Criteria) {
 		return true
 	}
 
@@ -131,7 +134,7 @@ func (o *AdvancedSearch) SetCriteria(v []SmartSearchCriterion) {
 
 // GetDisplayFields returns the DisplayFields field value if set, zero value otherwise.
 func (o *AdvancedSearch) GetDisplayFields() []string {
-	if o == nil || o.DisplayFields == nil {
+	if o == nil || IsNil(o.DisplayFields) {
 		var ret []string
 		return ret
 	}
@@ -141,7 +144,7 @@ func (o *AdvancedSearch) GetDisplayFields() []string {
 // GetDisplayFieldsOk returns a tuple with the DisplayFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AdvancedSearch) GetDisplayFieldsOk() ([]string, bool) {
-	if o == nil || o.DisplayFields == nil {
+	if o == nil || IsNil(o.DisplayFields) {
 		return nil, false
 	}
 	return o.DisplayFields, true
@@ -149,7 +152,7 @@ func (o *AdvancedSearch) GetDisplayFieldsOk() ([]string, bool) {
 
 // HasDisplayFields returns a boolean if a field has been set.
 func (o *AdvancedSearch) HasDisplayFields() bool {
-	if o != nil && o.DisplayFields != nil {
+	if o != nil && !IsNil(o.DisplayFields) {
 		return true
 	}
 
@@ -163,7 +166,7 @@ func (o *AdvancedSearch) SetDisplayFields(v []string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdvancedSearch) GetSiteId() string {
-	if o == nil || o.SiteId.Get() == nil {
+	if o == nil || IsNil(o.SiteId.Get()) {
 		var ret string
 		return ret
 	}
@@ -204,23 +207,29 @@ func (o *AdvancedSearch) UnsetSiteId() {
 }
 
 func (o AdvancedSearch) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AdvancedSearch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Criteria != nil {
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Criteria) {
 		toSerialize["criteria"] = o.Criteria
 	}
-	if o.DisplayFields != nil {
+	if !IsNil(o.DisplayFields) {
 		toSerialize["displayFields"] = o.DisplayFields
 	}
 	if o.SiteId.IsSet() {
 		toSerialize["siteId"] = o.SiteId.Get()
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableAdvancedSearch struct {

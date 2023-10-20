@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type JamfProInitializationApi interface {
+type JamfProInitializationAPI interface {
 
 	/*
 	V1SystemInitializeDatabaseConnectionPost Provide Database Password during startup 
@@ -27,12 +27,12 @@ type JamfProInitializationApi interface {
 	Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SystemInitializeDatabaseConnectionPostRequest
+	@return JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest
 	*/
-	V1SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiV1SystemInitializeDatabaseConnectionPostRequest
+	V1SystemInitializeDatabaseConnectionPost(ctx context.Context) JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest
 
 	// V1SystemInitializeDatabaseConnectionPostExecute executes the request
-	V1SystemInitializeDatabaseConnectionPostExecute(r ApiV1SystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
+	V1SystemInitializeDatabaseConnectionPostExecute(r JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
 
 	/*
 	V1SystemInitializePost Set up fresh installed Jamf Pro Server 
@@ -41,29 +41,29 @@ type JamfProInitializationApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SystemInitializePostRequest
+	@return JamfProInitializationAPIV1SystemInitializePostRequest
 	*/
-	V1SystemInitializePost(ctx context.Context) ApiV1SystemInitializePostRequest
+	V1SystemInitializePost(ctx context.Context) JamfProInitializationAPIV1SystemInitializePostRequest
 
 	// V1SystemInitializePostExecute executes the request
-	V1SystemInitializePostExecute(r ApiV1SystemInitializePostRequest) (*http.Response, error)
+	V1SystemInitializePostExecute(r JamfProInitializationAPIV1SystemInitializePostRequest) (*http.Response, error)
 }
 
-// JamfProInitializationApiService JamfProInitializationApi service
-type JamfProInitializationApiService service
+// JamfProInitializationAPIService JamfProInitializationAPI service
+type JamfProInitializationAPIService service
 
-type ApiV1SystemInitializeDatabaseConnectionPostRequest struct {
+type JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest struct {
 	ctx context.Context
-	ApiService JamfProInitializationApi
+	ApiService JamfProInitializationAPI
 	databasePassword *DatabasePassword
 }
 
-func (r ApiV1SystemInitializeDatabaseConnectionPostRequest) DatabasePassword(databasePassword DatabasePassword) ApiV1SystemInitializeDatabaseConnectionPostRequest {
+func (r JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest) DatabasePassword(databasePassword DatabasePassword) JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest {
 	r.databasePassword = &databasePassword
 	return r
 }
 
-func (r ApiV1SystemInitializeDatabaseConnectionPostRequest) Execute() (*http.Response, error) {
+func (r JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SystemInitializeDatabaseConnectionPostExecute(r)
 }
 
@@ -73,24 +73,24 @@ V1SystemInitializeDatabaseConnectionPost Provide Database Password during startu
 Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SystemInitializeDatabaseConnectionPostRequest
+ @return JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest
 */
-func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiV1SystemInitializeDatabaseConnectionPostRequest {
-	return ApiV1SystemInitializeDatabaseConnectionPostRequest{
+func (a *JamfProInitializationAPIService) V1SystemInitializeDatabaseConnectionPost(ctx context.Context) JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest {
+	return JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPostExecute(r ApiV1SystemInitializeDatabaseConnectionPostRequest) (*http.Response, error) {
+func (a *JamfProInitializationAPIService) V1SystemInitializeDatabaseConnectionPostExecute(r JamfProInitializationAPIV1SystemInitializeDatabaseConnectionPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationApiService.V1SystemInitializeDatabaseConnectionPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationAPIService.V1SystemInitializeDatabaseConnectionPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -133,9 +133,9 @@ func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -152,7 +152,8 @@ func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -162,7 +163,8 @@ func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -170,18 +172,18 @@ func (a *JamfProInitializationApiService) V1SystemInitializeDatabaseConnectionPo
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SystemInitializePostRequest struct {
+type JamfProInitializationAPIV1SystemInitializePostRequest struct {
 	ctx context.Context
-	ApiService JamfProInitializationApi
+	ApiService JamfProInitializationAPI
 	initializeV1 *InitializeV1
 }
 
-func (r ApiV1SystemInitializePostRequest) InitializeV1(initializeV1 InitializeV1) ApiV1SystemInitializePostRequest {
+func (r JamfProInitializationAPIV1SystemInitializePostRequest) InitializeV1(initializeV1 InitializeV1) JamfProInitializationAPIV1SystemInitializePostRequest {
 	r.initializeV1 = &initializeV1
 	return r
 }
 
-func (r ApiV1SystemInitializePostRequest) Execute() (*http.Response, error) {
+func (r JamfProInitializationAPIV1SystemInitializePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SystemInitializePostExecute(r)
 }
 
@@ -192,24 +194,24 @@ Set up fresh installed Jamf Pro Server
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SystemInitializePostRequest
+ @return JamfProInitializationAPIV1SystemInitializePostRequest
 */
-func (a *JamfProInitializationApiService) V1SystemInitializePost(ctx context.Context) ApiV1SystemInitializePostRequest {
-	return ApiV1SystemInitializePostRequest{
+func (a *JamfProInitializationAPIService) V1SystemInitializePost(ctx context.Context) JamfProInitializationAPIV1SystemInitializePostRequest {
+	return JamfProInitializationAPIV1SystemInitializePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *JamfProInitializationApiService) V1SystemInitializePostExecute(r ApiV1SystemInitializePostRequest) (*http.Response, error) {
+func (a *JamfProInitializationAPIService) V1SystemInitializePostExecute(r JamfProInitializationAPIV1SystemInitializePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationApiService.V1SystemInitializePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationAPIService.V1SystemInitializePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -252,9 +254,9 @@ func (a *JamfProInitializationApiService) V1SystemInitializePostExecute(r ApiV1S
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -271,7 +273,8 @@ func (a *JamfProInitializationApiService) V1SystemInitializePostExecute(r ApiV1S
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

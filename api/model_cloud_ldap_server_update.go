@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapServerUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapServerUpdate{}
+
 // CloudLdapServerUpdate A Cloud Identity Provider LDAP server configuration for updates
 type CloudLdapServerUpdate struct {
 	ServerUrl string `json:"serverUrl"`
@@ -25,6 +28,7 @@ type CloudLdapServerUpdate struct {
 	SearchTimeout int32 `json:"searchTimeout"`
 	UseWildcards bool `json:"useWildcards"`
 	ConnectionType string `json:"connectionType"`
+	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
 // NewCloudLdapServerUpdate instantiates a new CloudLdapServerUpdate object
@@ -150,7 +154,7 @@ func (o *CloudLdapServerUpdate) SetPort(v int32) {
 
 // GetKeystore returns the Keystore field value if set, zero value otherwise.
 func (o *CloudLdapServerUpdate) GetKeystore() CloudLdapKeystoreFile {
-	if o == nil || o.Keystore == nil {
+	if o == nil || IsNil(o.Keystore) {
 		var ret CloudLdapKeystoreFile
 		return ret
 	}
@@ -160,7 +164,7 @@ func (o *CloudLdapServerUpdate) GetKeystore() CloudLdapKeystoreFile {
 // GetKeystoreOk returns a tuple with the Keystore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerUpdate) GetKeystoreOk() (*CloudLdapKeystoreFile, bool) {
-	if o == nil || o.Keystore == nil {
+	if o == nil || IsNil(o.Keystore) {
 		return nil, false
 	}
 	return o.Keystore, true
@@ -168,7 +172,7 @@ func (o *CloudLdapServerUpdate) GetKeystoreOk() (*CloudLdapKeystoreFile, bool) {
 
 // HasKeystore returns a boolean if a field has been set.
 func (o *CloudLdapServerUpdate) HasKeystore() bool {
-	if o != nil && o.Keystore != nil {
+	if o != nil && !IsNil(o.Keystore) {
 		return true
 	}
 
@@ -276,36 +280,63 @@ func (o *CloudLdapServerUpdate) SetConnectionType(v string) {
 	o.ConnectionType = v
 }
 
+// GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field value if set, zero value otherwise.
+func (o *CloudLdapServerUpdate) GetMembershipCalculationOptimizationEnabled() bool {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MembershipCalculationOptimizationEnabled
+}
+
+// GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudLdapServerUpdate) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return nil, false
+	}
+	return o.MembershipCalculationOptimizationEnabled, true
+}
+
+// HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+func (o *CloudLdapServerUpdate) HasMembershipCalculationOptimizationEnabled() bool {
+	if o != nil && !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembershipCalculationOptimizationEnabled gets a reference to the given bool and assigns it to the MembershipCalculationOptimizationEnabled field.
+func (o *CloudLdapServerUpdate) SetMembershipCalculationOptimizationEnabled(v bool) {
+	o.MembershipCalculationOptimizationEnabled = &v
+}
+
 func (o CloudLdapServerUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["serverUrl"] = o.ServerUrl
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["domainName"] = o.DomainName
-	}
-	if true {
-		toSerialize["port"] = o.Port
-	}
-	if o.Keystore != nil {
-		toSerialize["keystore"] = o.Keystore
-	}
-	if true {
-		toSerialize["connectionTimeout"] = o.ConnectionTimeout
-	}
-	if true {
-		toSerialize["searchTimeout"] = o.SearchTimeout
-	}
-	if true {
-		toSerialize["useWildcards"] = o.UseWildcards
-	}
-	if true {
-		toSerialize["connectionType"] = o.ConnectionType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapServerUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["serverUrl"] = o.ServerUrl
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["domainName"] = o.DomainName
+	toSerialize["port"] = o.Port
+	if !IsNil(o.Keystore) {
+		toSerialize["keystore"] = o.Keystore
+	}
+	toSerialize["connectionTimeout"] = o.ConnectionTimeout
+	toSerialize["searchTimeout"] = o.SearchTimeout
+	toSerialize["useWildcards"] = o.UseWildcards
+	toSerialize["connectionType"] = o.ConnectionType
+	if !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapServerUpdate struct {

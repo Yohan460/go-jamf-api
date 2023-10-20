@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CreatePath type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreatePath{}
+
 // CreatePath struct for CreatePath
 type CreatePath struct {
 	Scope string `json:"scope"`
@@ -88,14 +91,18 @@ func (o *CreatePath) SetPath(v string) {
 }
 
 func (o CreatePath) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["scope"] = o.Scope
-	}
-	if true {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CreatePath) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["scope"] = o.Scope
+	toSerialize["path"] = o.Path
+	return toSerialize, nil
 }
 
 type NullableCreatePath struct {

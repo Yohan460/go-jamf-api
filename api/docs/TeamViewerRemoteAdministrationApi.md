@@ -1,20 +1,20 @@
-# \TeamViewerRemoteAdministrationApi
+# \TeamViewerRemoteAdministrationAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Get a paginated list of sessions 
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Create a new session
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/close | Close a session
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId} | Get a session by its ID 
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/resend-notification | Resend nofications for a session
-[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/status | Get a session status by its ID 
-[**PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete) | **Delete** /preview/remote-administration-configurations/team-viewer/{id} | Delete Team Viewer Remote Administration connection configuration
-[**PreviewRemoteAdministrationConfigurationsTeamViewerIdGet**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdGet) | **Get** /preview/remote-administration-configurations/team-viewer/{id} | Get Team Viewer Remote Administration connection configuration
-[**PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch) | **Patch** /preview/remote-administration-configurations/team-viewer/{id} | Update Team Viewer Remote Administration connection configuration
-[**PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet) | **Get** /preview/remote-administration-configurations/team-viewer/{id}/status | Get Team Viewer Remote Administration connection status
-[**PreviewRemoteAdministrationConfigurationsTeamViewerPost**](TeamViewerRemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsTeamViewerPost) | **Post** /preview/remote-administration-configurations/team-viewer | Create Team Viewer Remote Administration connection configuration
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Get a paginated list of sessions 
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Create a new session
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/close | Close a session
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId} | Get a session by its ID 
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/resend-notification | Resend nofications for a session
+[**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/status | Get a session status by its ID 
+[**PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete) | **Delete** /preview/remote-administration-configurations/team-viewer/{id} | Delete Team Viewer Remote Administration connection configuration
+[**PreviewRemoteAdministrationConfigurationsTeamViewerIdGet**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdGet) | **Get** /preview/remote-administration-configurations/team-viewer/{id} | Get Team Viewer Remote Administration connection configuration
+[**PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch) | **Patch** /preview/remote-administration-configurations/team-viewer/{id} | Update Team Viewer Remote Administration connection configuration
+[**PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet) | **Get** /preview/remote-administration-configurations/team-viewer/{id}/status | Get Team Viewer Remote Administration connection status
+[**PreviewRemoteAdministrationConfigurationsTeamViewerPost**](TeamViewerRemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsTeamViewerPost) | **Post** /preview/remote-administration-configurations/team-viewer | Create Team Viewer Remote Administration connection configuration
 
 
 
@@ -35,7 +35,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -46,13 +46,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(context.Background(), configurationId).Page(page).PageSize(pageSize).Filter(filter).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(context.Background(), configurationId).Page(page).PageSize(pageSize).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet`: SessionDetailsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet`: %v\n", resp)
 }
 ```
 
@@ -111,7 +111,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -120,13 +120,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(context.Background(), configurationId).SessionCandidateRequest(sessionCandidateRequest).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(context.Background(), configurationId).SessionCandidateRequest(sessionCandidateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost`: %v\n", resp)
 }
 ```
 
@@ -183,7 +183,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -192,9 +192,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(context.Background(), configurationId, sessionId).Execute()
+    r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(context.Background(), configurationId, sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -254,7 +254,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -263,13 +263,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(context.Background(), configurationId, sessionId).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(context.Background(), configurationId, sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet`: SessionDetails
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet`: %v\n", resp)
 }
 ```
 
@@ -327,7 +327,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -336,9 +336,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(context.Background(), configurationId, sessionId).Execute()
+    r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(context.Background(), configurationId, sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -398,7 +398,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -407,13 +407,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(context.Background(), configurationId, sessionId).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(context.Background(), configurationId, sessionId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet`: SessionStatus
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet`: %v\n", resp)
 }
 ```
 
@@ -471,7 +471,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -479,9 +479,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -539,7 +539,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -547,13 +547,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerIdGet`: ConnectionConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet`: %v\n", resp)
 }
 ```
 
@@ -609,7 +609,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -618,13 +618,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(context.Background(), id).ConnectionConfigurationUpdateRequest(connectionConfigurationUpdateRequest).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(context.Background(), id).ConnectionConfigurationUpdateRequest(connectionConfigurationUpdateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch`: ConnectionConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch`: %v\n", resp)
 }
 ```
 
@@ -681,7 +681,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -689,13 +689,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet`: ConnectionConfigurationStatusResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet`: %v\n", resp)
 }
 ```
 
@@ -751,7 +751,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -759,13 +759,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerPost(context.Background()).ConnectionConfigurationCandidateRequest(connectionConfigurationCandidateRequest).Execute()
+    resp, r, err := apiClient.TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerPost(context.Background()).ConnectionConfigurationCandidateRequest(connectionConfigurationCandidateRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsTeamViewerPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsTeamViewerPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `TeamViewerRemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsTeamViewerPost`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingParent type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingParent{}
+
 // ComputerContentCachingParent struct for ComputerContentCachingParent
 type ComputerContentCachingParent struct {
 	ContentCachingParentId *string `json:"contentCachingParentId,omitempty"`
@@ -45,7 +48,7 @@ func NewComputerContentCachingParentWithDefaults() *ComputerContentCachingParent
 
 // GetContentCachingParentId returns the ContentCachingParentId field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetContentCachingParentId() string {
-	if o == nil || o.ContentCachingParentId == nil {
+	if o == nil || IsNil(o.ContentCachingParentId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ComputerContentCachingParent) GetContentCachingParentId() string {
 // GetContentCachingParentIdOk returns a tuple with the ContentCachingParentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetContentCachingParentIdOk() (*string, bool) {
-	if o == nil || o.ContentCachingParentId == nil {
+	if o == nil || IsNil(o.ContentCachingParentId) {
 		return nil, false
 	}
 	return o.ContentCachingParentId, true
@@ -63,7 +66,7 @@ func (o *ComputerContentCachingParent) GetContentCachingParentIdOk() (*string, b
 
 // HasContentCachingParentId returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasContentCachingParentId() bool {
-	if o != nil && o.ContentCachingParentId != nil {
+	if o != nil && !IsNil(o.ContentCachingParentId) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ComputerContentCachingParent) SetContentCachingParentId(v string) {
 
 // GetAddress returns the Address field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetAddress() string {
-	if o == nil || o.Address == nil {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ComputerContentCachingParent) GetAddress() string {
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
 	return o.Address, true
@@ -95,7 +98,7 @@ func (o *ComputerContentCachingParent) GetAddressOk() (*string, bool) {
 
 // HasAddress returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasAddress() bool {
-	if o != nil && o.Address != nil {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ComputerContentCachingParent) SetAddress(v string) {
 
 // GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetAlerts() ComputerContentCachingParentAlert {
-	if o == nil || o.Alerts == nil {
+	if o == nil || IsNil(o.Alerts) {
 		var ret ComputerContentCachingParentAlert
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ComputerContentCachingParent) GetAlerts() ComputerContentCachingParentA
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetAlertsOk() (*ComputerContentCachingParentAlert, bool) {
-	if o == nil || o.Alerts == nil {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
@@ -127,7 +130,7 @@ func (o *ComputerContentCachingParent) GetAlertsOk() (*ComputerContentCachingPar
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasAlerts() bool {
-	if o != nil && o.Alerts != nil {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ComputerContentCachingParent) SetAlerts(v ComputerContentCachingParentA
 
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetDetails() ComputerContentCachingParentDetails {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		var ret ComputerContentCachingParentDetails
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ComputerContentCachingParent) GetDetails() ComputerContentCachingParent
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetDetailsOk() (*ComputerContentCachingParentDetails, bool) {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details) {
 		return nil, false
 	}
 	return o.Details, true
@@ -159,7 +162,7 @@ func (o *ComputerContentCachingParent) GetDetailsOk() (*ComputerContentCachingPa
 
 // HasDetails returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasDetails() bool {
-	if o != nil && o.Details != nil {
+	if o != nil && !IsNil(o.Details) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *ComputerContentCachingParent) SetDetails(v ComputerContentCachingParent
 
 // GetGuid returns the Guid field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetGuid() string {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		var ret string
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *ComputerContentCachingParent) GetGuid() string {
 // GetGuidOk returns a tuple with the Guid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetGuidOk() (*string, bool) {
-	if o == nil || o.Guid == nil {
+	if o == nil || IsNil(o.Guid) {
 		return nil, false
 	}
 	return o.Guid, true
@@ -191,7 +194,7 @@ func (o *ComputerContentCachingParent) GetGuidOk() (*string, bool) {
 
 // HasGuid returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasGuid() bool {
-	if o != nil && o.Guid != nil {
+	if o != nil && !IsNil(o.Guid) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *ComputerContentCachingParent) SetGuid(v string) {
 
 // GetHealthy returns the Healthy field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetHealthy() bool {
-	if o == nil || o.Healthy == nil {
+	if o == nil || IsNil(o.Healthy) {
 		var ret bool
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *ComputerContentCachingParent) GetHealthy() bool {
 // GetHealthyOk returns a tuple with the Healthy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetHealthyOk() (*bool, bool) {
-	if o == nil || o.Healthy == nil {
+	if o == nil || IsNil(o.Healthy) {
 		return nil, false
 	}
 	return o.Healthy, true
@@ -223,7 +226,7 @@ func (o *ComputerContentCachingParent) GetHealthyOk() (*bool, bool) {
 
 // HasHealthy returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasHealthy() bool {
-	if o != nil && o.Healthy != nil {
+	if o != nil && !IsNil(o.Healthy) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *ComputerContentCachingParent) SetHealthy(v bool) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetPort() int64 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int64
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *ComputerContentCachingParent) GetPort() int64 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetPortOk() (*int64, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -255,7 +258,7 @@ func (o *ComputerContentCachingParent) GetPortOk() (*int64, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *ComputerContentCachingParent) SetPort(v int64) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ComputerContentCachingParent) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *ComputerContentCachingParent) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParent) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -287,7 +290,7 @@ func (o *ComputerContentCachingParent) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ComputerContentCachingParent) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -300,32 +303,40 @@ func (o *ComputerContentCachingParent) SetVersion(v string) {
 }
 
 func (o ComputerContentCachingParent) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentCachingParentId != nil {
-		toSerialize["contentCachingParentId"] = o.ContentCachingParentId
-	}
-	if o.Address != nil {
-		toSerialize["address"] = o.Address
-	}
-	if o.Alerts != nil {
-		toSerialize["alerts"] = o.Alerts
-	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
-	}
-	if o.Guid != nil {
-		toSerialize["guid"] = o.Guid
-	}
-	if o.Healthy != nil {
-		toSerialize["healthy"] = o.Healthy
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingParent) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentCachingParentId) {
+		toSerialize["contentCachingParentId"] = o.ContentCachingParentId
+	}
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
+	}
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
+	}
+	if !IsNil(o.Guid) {
+		toSerialize["guid"] = o.Guid
+	}
+	if !IsNil(o.Healthy) {
+		toSerialize["healthy"] = o.Healthy
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingParent struct {

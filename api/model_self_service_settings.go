@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SelfServiceSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SelfServiceSettings{}
+
 // SelfServiceSettings object representation of Self Service settings 
 type SelfServiceSettings struct {
 	InstallSettings *SelfServiceInstallSettings `json:"installSettings,omitempty"`
@@ -40,7 +43,7 @@ func NewSelfServiceSettingsWithDefaults() *SelfServiceSettings {
 
 // GetInstallSettings returns the InstallSettings field value if set, zero value otherwise.
 func (o *SelfServiceSettings) GetInstallSettings() SelfServiceInstallSettings {
-	if o == nil || o.InstallSettings == nil {
+	if o == nil || IsNil(o.InstallSettings) {
 		var ret SelfServiceInstallSettings
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *SelfServiceSettings) GetInstallSettings() SelfServiceInstallSettings {
 // GetInstallSettingsOk returns a tuple with the InstallSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceSettings) GetInstallSettingsOk() (*SelfServiceInstallSettings, bool) {
-	if o == nil || o.InstallSettings == nil {
+	if o == nil || IsNil(o.InstallSettings) {
 		return nil, false
 	}
 	return o.InstallSettings, true
@@ -58,7 +61,7 @@ func (o *SelfServiceSettings) GetInstallSettingsOk() (*SelfServiceInstallSetting
 
 // HasInstallSettings returns a boolean if a field has been set.
 func (o *SelfServiceSettings) HasInstallSettings() bool {
-	if o != nil && o.InstallSettings != nil {
+	if o != nil && !IsNil(o.InstallSettings) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *SelfServiceSettings) SetInstallSettings(v SelfServiceInstallSettings) {
 
 // GetLoginSettings returns the LoginSettings field value if set, zero value otherwise.
 func (o *SelfServiceSettings) GetLoginSettings() SelfServiceLoginSettings {
-	if o == nil || o.LoginSettings == nil {
+	if o == nil || IsNil(o.LoginSettings) {
 		var ret SelfServiceLoginSettings
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *SelfServiceSettings) GetLoginSettings() SelfServiceLoginSettings {
 // GetLoginSettingsOk returns a tuple with the LoginSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceSettings) GetLoginSettingsOk() (*SelfServiceLoginSettings, bool) {
-	if o == nil || o.LoginSettings == nil {
+	if o == nil || IsNil(o.LoginSettings) {
 		return nil, false
 	}
 	return o.LoginSettings, true
@@ -90,7 +93,7 @@ func (o *SelfServiceSettings) GetLoginSettingsOk() (*SelfServiceLoginSettings, b
 
 // HasLoginSettings returns a boolean if a field has been set.
 func (o *SelfServiceSettings) HasLoginSettings() bool {
-	if o != nil && o.LoginSettings != nil {
+	if o != nil && !IsNil(o.LoginSettings) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *SelfServiceSettings) SetLoginSettings(v SelfServiceLoginSettings) {
 
 // GetConfigurationSettings returns the ConfigurationSettings field value if set, zero value otherwise.
 func (o *SelfServiceSettings) GetConfigurationSettings() SelfServiceInteractionSettings {
-	if o == nil || o.ConfigurationSettings == nil {
+	if o == nil || IsNil(o.ConfigurationSettings) {
 		var ret SelfServiceInteractionSettings
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *SelfServiceSettings) GetConfigurationSettings() SelfServiceInteractionS
 // GetConfigurationSettingsOk returns a tuple with the ConfigurationSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceSettings) GetConfigurationSettingsOk() (*SelfServiceInteractionSettings, bool) {
-	if o == nil || o.ConfigurationSettings == nil {
+	if o == nil || IsNil(o.ConfigurationSettings) {
 		return nil, false
 	}
 	return o.ConfigurationSettings, true
@@ -122,7 +125,7 @@ func (o *SelfServiceSettings) GetConfigurationSettingsOk() (*SelfServiceInteract
 
 // HasConfigurationSettings returns a boolean if a field has been set.
 func (o *SelfServiceSettings) HasConfigurationSettings() bool {
-	if o != nil && o.ConfigurationSettings != nil {
+	if o != nil && !IsNil(o.ConfigurationSettings) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *SelfServiceSettings) SetConfigurationSettings(v SelfServiceInteractionS
 }
 
 func (o SelfServiceSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.InstallSettings != nil {
-		toSerialize["installSettings"] = o.InstallSettings
-	}
-	if o.LoginSettings != nil {
-		toSerialize["loginSettings"] = o.LoginSettings
-	}
-	if o.ConfigurationSettings != nil {
-		toSerialize["configurationSettings"] = o.ConfigurationSettings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SelfServiceSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InstallSettings) {
+		toSerialize["installSettings"] = o.InstallSettings
+	}
+	if !IsNil(o.LoginSettings) {
+		toSerialize["loginSettings"] = o.LoginSettings
+	}
+	if !IsNil(o.ConfigurationSettings) {
+		toSerialize["configurationSettings"] = o.ConfigurationSettings
+	}
+	return toSerialize, nil
 }
 
 type NullableSelfServiceSettings struct {

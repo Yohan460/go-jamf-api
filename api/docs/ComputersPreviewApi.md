@@ -1,10 +1,10 @@
-# \ComputersPreviewApi
+# \ComputersPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PreviewComputersGet**](ComputersPreviewApi.md#PreviewComputersGet) | **Get** /preview/computers | Return a list of Computers 
+[**PreviewComputersGet**](ComputersPreviewAPI.md#PreviewComputersGet) | **Get** /preview/computers | Return a list of Computers 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputersPreviewApi.PreviewComputersGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.ComputersPreviewAPI.PreviewComputersGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputersPreviewApi.PreviewComputersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ComputersPreviewAPI.PreviewComputersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewComputersGet`: ComputersSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ComputersPreviewApi.PreviewComputersGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ComputersPreviewAPI.PreviewComputersGet`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceCommunicationSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceCommunicationSettings{}
+
 // DeviceCommunicationSettings struct for DeviceCommunicationSettings
 type DeviceCommunicationSettings struct {
 	AutoRenewMobileDeviceMdmProfileWhenCaRenewed *bool `json:"autoRenewMobileDeviceMdmProfileWhenCaRenewed,omitempty"`
@@ -51,7 +54,7 @@ func NewDeviceCommunicationSettingsWithDefaults() *DeviceCommunicationSettings {
 
 // GetAutoRenewMobileDeviceMdmProfileWhenCaRenewed returns the AutoRenewMobileDeviceMdmProfileWhenCaRenewed field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenCaRenewed() bool {
-	if o == nil || o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed == nil {
+	if o == nil || IsNil(o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed) {
 		var ret bool
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenCaRe
 // GetAutoRenewMobileDeviceMdmProfileWhenCaRenewedOk returns a tuple with the AutoRenewMobileDeviceMdmProfileWhenCaRenewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenCaRenewedOk() (*bool, bool) {
-	if o == nil || o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed == nil {
+	if o == nil || IsNil(o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed) {
 		return nil, false
 	}
 	return o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed, true
@@ -69,7 +72,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenCaRe
 
 // HasAutoRenewMobileDeviceMdmProfileWhenCaRenewed returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasAutoRenewMobileDeviceMdmProfileWhenCaRenewed() bool {
-	if o != nil && o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed != nil {
+	if o != nil && !IsNil(o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed) {
 		return true
 	}
 
@@ -83,7 +86,7 @@ func (o *DeviceCommunicationSettings) SetAutoRenewMobileDeviceMdmProfileWhenCaRe
 
 // GetAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring returns the AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring() bool {
-	if o == nil || o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring == nil {
+	if o == nil || IsNil(o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring) {
 		var ret bool
 		return ret
 	}
@@ -93,7 +96,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenDevi
 // GetAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiringOk returns a tuple with the AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiringOk() (*bool, bool) {
-	if o == nil || o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring == nil {
+	if o == nil || IsNil(o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring) {
 		return nil, false
 	}
 	return o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring, true
@@ -101,7 +104,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewMobileDeviceMdmProfileWhenDevi
 
 // HasAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasAutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring() bool {
-	if o != nil && o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring != nil {
+	if o != nil && !IsNil(o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring) {
 		return true
 	}
 
@@ -115,7 +118,7 @@ func (o *DeviceCommunicationSettings) SetAutoRenewMobileDeviceMdmProfileWhenDevi
 
 // GetAutoRenewComputerMdmProfileWhenCaRenewed returns the AutoRenewComputerMdmProfileWhenCaRenewed field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenCaRenewed() bool {
-	if o == nil || o.AutoRenewComputerMdmProfileWhenCaRenewed == nil {
+	if o == nil || IsNil(o.AutoRenewComputerMdmProfileWhenCaRenewed) {
 		var ret bool
 		return ret
 	}
@@ -125,7 +128,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenCaRenewe
 // GetAutoRenewComputerMdmProfileWhenCaRenewedOk returns a tuple with the AutoRenewComputerMdmProfileWhenCaRenewed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenCaRenewedOk() (*bool, bool) {
-	if o == nil || o.AutoRenewComputerMdmProfileWhenCaRenewed == nil {
+	if o == nil || IsNil(o.AutoRenewComputerMdmProfileWhenCaRenewed) {
 		return nil, false
 	}
 	return o.AutoRenewComputerMdmProfileWhenCaRenewed, true
@@ -133,7 +136,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenCaRenewe
 
 // HasAutoRenewComputerMdmProfileWhenCaRenewed returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasAutoRenewComputerMdmProfileWhenCaRenewed() bool {
-	if o != nil && o.AutoRenewComputerMdmProfileWhenCaRenewed != nil {
+	if o != nil && !IsNil(o.AutoRenewComputerMdmProfileWhenCaRenewed) {
 		return true
 	}
 
@@ -147,7 +150,7 @@ func (o *DeviceCommunicationSettings) SetAutoRenewComputerMdmProfileWhenCaRenewe
 
 // GetAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring returns the AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring() bool {
-	if o == nil || o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring == nil {
+	if o == nil || IsNil(o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring) {
 		var ret bool
 		return ret
 	}
@@ -157,7 +160,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenDeviceId
 // GetAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiringOk returns a tuple with the AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiringOk() (*bool, bool) {
-	if o == nil || o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring == nil {
+	if o == nil || IsNil(o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring) {
 		return nil, false
 	}
 	return o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring, true
@@ -165,7 +168,7 @@ func (o *DeviceCommunicationSettings) GetAutoRenewComputerMdmProfileWhenDeviceId
 
 // HasAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring() bool {
-	if o != nil && o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring != nil {
+	if o != nil && !IsNil(o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring) {
 		return true
 	}
 
@@ -179,7 +182,7 @@ func (o *DeviceCommunicationSettings) SetAutoRenewComputerMdmProfileWhenDeviceId
 
 // GetMdmProfileMobileDeviceExpirationLimitInDays returns the MdmProfileMobileDeviceExpirationLimitInDays field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDays() int32 {
-	if o == nil || o.MdmProfileMobileDeviceExpirationLimitInDays == nil {
+	if o == nil || IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
 		var ret int32
 		return ret
 	}
@@ -189,7 +192,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitIn
 // GetMdmProfileMobileDeviceExpirationLimitInDaysOk returns a tuple with the MdmProfileMobileDeviceExpirationLimitInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDaysOk() (*int32, bool) {
-	if o == nil || o.MdmProfileMobileDeviceExpirationLimitInDays == nil {
+	if o == nil || IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
 		return nil, false
 	}
 	return o.MdmProfileMobileDeviceExpirationLimitInDays, true
@@ -197,7 +200,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitIn
 
 // HasMdmProfileMobileDeviceExpirationLimitInDays returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasMdmProfileMobileDeviceExpirationLimitInDays() bool {
-	if o != nil && o.MdmProfileMobileDeviceExpirationLimitInDays != nil {
+	if o != nil && !IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
 		return true
 	}
 
@@ -211,7 +214,7 @@ func (o *DeviceCommunicationSettings) SetMdmProfileMobileDeviceExpirationLimitIn
 
 // GetMdmProfileComputerExpirationLimitInDays returns the MdmProfileComputerExpirationLimitInDays field value if set, zero value otherwise.
 func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays() int32 {
-	if o == nil || o.MdmProfileComputerExpirationLimitInDays == nil {
+	if o == nil || IsNil(o.MdmProfileComputerExpirationLimitInDays) {
 		var ret int32
 		return ret
 	}
@@ -221,7 +224,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays
 // GetMdmProfileComputerExpirationLimitInDaysOk returns a tuple with the MdmProfileComputerExpirationLimitInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDaysOk() (*int32, bool) {
-	if o == nil || o.MdmProfileComputerExpirationLimitInDays == nil {
+	if o == nil || IsNil(o.MdmProfileComputerExpirationLimitInDays) {
 		return nil, false
 	}
 	return o.MdmProfileComputerExpirationLimitInDays, true
@@ -229,7 +232,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays
 
 // HasMdmProfileComputerExpirationLimitInDays returns a boolean if a field has been set.
 func (o *DeviceCommunicationSettings) HasMdmProfileComputerExpirationLimitInDays() bool {
-	if o != nil && o.MdmProfileComputerExpirationLimitInDays != nil {
+	if o != nil && !IsNil(o.MdmProfileComputerExpirationLimitInDays) {
 		return true
 	}
 
@@ -242,26 +245,34 @@ func (o *DeviceCommunicationSettings) SetMdmProfileComputerExpirationLimitInDays
 }
 
 func (o DeviceCommunicationSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed != nil {
-		toSerialize["autoRenewMobileDeviceMdmProfileWhenCaRenewed"] = o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed
-	}
-	if o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring != nil {
-		toSerialize["autoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring"] = o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring
-	}
-	if o.AutoRenewComputerMdmProfileWhenCaRenewed != nil {
-		toSerialize["autoRenewComputerMdmProfileWhenCaRenewed"] = o.AutoRenewComputerMdmProfileWhenCaRenewed
-	}
-	if o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring != nil {
-		toSerialize["autoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring"] = o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring
-	}
-	if o.MdmProfileMobileDeviceExpirationLimitInDays != nil {
-		toSerialize["mdmProfileMobileDeviceExpirationLimitInDays"] = o.MdmProfileMobileDeviceExpirationLimitInDays
-	}
-	if o.MdmProfileComputerExpirationLimitInDays != nil {
-		toSerialize["mdmProfileComputerExpirationLimitInDays"] = o.MdmProfileComputerExpirationLimitInDays
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceCommunicationSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed) {
+		toSerialize["autoRenewMobileDeviceMdmProfileWhenCaRenewed"] = o.AutoRenewMobileDeviceMdmProfileWhenCaRenewed
+	}
+	if !IsNil(o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring) {
+		toSerialize["autoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring"] = o.AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring
+	}
+	if !IsNil(o.AutoRenewComputerMdmProfileWhenCaRenewed) {
+		toSerialize["autoRenewComputerMdmProfileWhenCaRenewed"] = o.AutoRenewComputerMdmProfileWhenCaRenewed
+	}
+	if !IsNil(o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring) {
+		toSerialize["autoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring"] = o.AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring
+	}
+	if !IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
+		toSerialize["mdmProfileMobileDeviceExpirationLimitInDays"] = o.MdmProfileMobileDeviceExpirationLimitInDays
+	}
+	if !IsNil(o.MdmProfileComputerExpirationLimitInDays) {
+		toSerialize["mdmProfileComputerExpirationLimitInDays"] = o.MdmProfileComputerExpirationLimitInDays
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceCommunicationSettings struct {

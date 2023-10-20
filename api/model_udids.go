@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Udids type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Udids{}
+
 // Udids struct for Udids
 type Udids struct {
 	Udids []string `json:"udids,omitempty"`
@@ -38,7 +41,7 @@ func NewUdidsWithDefaults() *Udids {
 
 // GetUdids returns the Udids field value if set, zero value otherwise.
 func (o *Udids) GetUdids() []string {
-	if o == nil || o.Udids == nil {
+	if o == nil || IsNil(o.Udids) {
 		var ret []string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *Udids) GetUdids() []string {
 // GetUdidsOk returns a tuple with the Udids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Udids) GetUdidsOk() ([]string, bool) {
-	if o == nil || o.Udids == nil {
+	if o == nil || IsNil(o.Udids) {
 		return nil, false
 	}
 	return o.Udids, true
@@ -56,7 +59,7 @@ func (o *Udids) GetUdidsOk() ([]string, bool) {
 
 // HasUdids returns a boolean if a field has been set.
 func (o *Udids) HasUdids() bool {
-	if o != nil && o.Udids != nil {
+	if o != nil && !IsNil(o.Udids) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *Udids) SetUdids(v []string) {
 }
 
 func (o Udids) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Udids != nil {
-		toSerialize["udids"] = o.Udids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Udids) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Udids) {
+		toSerialize["udids"] = o.Udids
+	}
+	return toSerialize, nil
 }
 
 type NullableUdids struct {

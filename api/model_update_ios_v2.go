@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateIosV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateIosV2{}
+
 // UpdateIosV2 struct for UpdateIosV2
 type UpdateIosV2 struct {
 	Purchasing *PurchasingV2 `json:"purchasing,omitempty"`
@@ -38,7 +41,7 @@ func NewUpdateIosV2WithDefaults() *UpdateIosV2 {
 
 // GetPurchasing returns the Purchasing field value if set, zero value otherwise.
 func (o *UpdateIosV2) GetPurchasing() PurchasingV2 {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		var ret PurchasingV2
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *UpdateIosV2) GetPurchasing() PurchasingV2 {
 // GetPurchasingOk returns a tuple with the Purchasing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateIosV2) GetPurchasingOk() (*PurchasingV2, bool) {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		return nil, false
 	}
 	return o.Purchasing, true
@@ -56,7 +59,7 @@ func (o *UpdateIosV2) GetPurchasingOk() (*PurchasingV2, bool) {
 
 // HasPurchasing returns a boolean if a field has been set.
 func (o *UpdateIosV2) HasPurchasing() bool {
-	if o != nil && o.Purchasing != nil {
+	if o != nil && !IsNil(o.Purchasing) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *UpdateIosV2) SetPurchasing(v PurchasingV2) {
 }
 
 func (o UpdateIosV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Purchasing != nil {
-		toSerialize["purchasing"] = o.Purchasing
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateIosV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Purchasing) {
+		toSerialize["purchasing"] = o.Purchasing
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateIosV2 struct {

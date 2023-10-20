@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type JamfProUserAccountSettingsPreviewApi interface {
+type JamfProUserAccountSettingsPreviewAPI interface {
 
 	/*
 	UserObjPreferenceKeyDelete Remove specified setting for authenticated user 
@@ -30,15 +30,15 @@ type JamfProUserAccountSettingsPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param key key of user setting to be persisted
-	@return ApiUserObjPreferenceKeyDeleteRequest
+	@return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest
 
 	Deprecated
 	*/
-	UserObjPreferenceKeyDelete(ctx context.Context, key string) ApiUserObjPreferenceKeyDeleteRequest
+	UserObjPreferenceKeyDelete(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest
 
 	// UserObjPreferenceKeyDeleteExecute executes the request
 	// Deprecated
-	UserObjPreferenceKeyDeleteExecute(r ApiUserObjPreferenceKeyDeleteRequest) (*http.Response, error)
+	UserObjPreferenceKeyDeleteExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest) (*http.Response, error)
 
 	/*
 	UserObjPreferenceKeyGet Get the user setting for the authenticated user and key 
@@ -48,16 +48,16 @@ type JamfProUserAccountSettingsPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param key user setting to be retrieved
-	@return ApiUserObjPreferenceKeyGetRequest
+	@return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest
 
 	Deprecated
 	*/
-	UserObjPreferenceKeyGet(ctx context.Context, key string) ApiUserObjPreferenceKeyGetRequest
+	UserObjPreferenceKeyGet(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest
 
 	// UserObjPreferenceKeyGetExecute executes the request
 	//  @return map[string]interface{}
 	// Deprecated
-	UserObjPreferenceKeyGetExecute(r ApiUserObjPreferenceKeyGetRequest) (map[string]interface{}, *http.Response, error)
+	UserObjPreferenceKeyGetExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 	UserObjPreferenceKeyPut Persist the user setting 
@@ -67,28 +67,28 @@ type JamfProUserAccountSettingsPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param key key of user setting to be persisted
-	@return ApiUserObjPreferenceKeyPutRequest
+	@return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest
 
 	Deprecated
 	*/
-	UserObjPreferenceKeyPut(ctx context.Context, key string) ApiUserObjPreferenceKeyPutRequest
+	UserObjPreferenceKeyPut(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest
 
 	// UserObjPreferenceKeyPutExecute executes the request
 	//  @return map[string]interface{}
 	// Deprecated
-	UserObjPreferenceKeyPutExecute(r ApiUserObjPreferenceKeyPutRequest) (map[string]interface{}, *http.Response, error)
+	UserObjPreferenceKeyPutExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest) (map[string]interface{}, *http.Response, error)
 }
 
-// JamfProUserAccountSettingsPreviewApiService JamfProUserAccountSettingsPreviewApi service
-type JamfProUserAccountSettingsPreviewApiService service
+// JamfProUserAccountSettingsPreviewAPIService JamfProUserAccountSettingsPreviewAPI service
+type JamfProUserAccountSettingsPreviewAPIService service
 
-type ApiUserObjPreferenceKeyDeleteRequest struct {
+type JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsPreviewApi
+	ApiService JamfProUserAccountSettingsPreviewAPI
 	key string
 }
 
-func (r ApiUserObjPreferenceKeyDeleteRequest) Execute() (*http.Response, error) {
+func (r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UserObjPreferenceKeyDeleteExecute(r)
 }
 
@@ -100,12 +100,12 @@ Remove specified setting for authenticated user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key key of user setting to be persisted
- @return ApiUserObjPreferenceKeyDeleteRequest
+ @return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest
 
 Deprecated
 */
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete(ctx context.Context, key string) ApiUserObjPreferenceKeyDeleteRequest {
-	return ApiUserObjPreferenceKeyDeleteRequest{
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyDelete(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest {
+	return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		key: key,
@@ -114,20 +114,20 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete
 
 // Execute executes the request
 // Deprecated
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDeleteExecute(r ApiUserObjPreferenceKeyDeleteRequest) (*http.Response, error) {
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyDeleteExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewApiService.UserObjPreferenceKeyDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewAPIService.UserObjPreferenceKeyDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/user/obj/preference/{key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterToString(r.key, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -160,9 +160,9 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -179,7 +179,8 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -187,13 +188,13 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyDelete
 	return localVarHTTPResponse, nil
 }
 
-type ApiUserObjPreferenceKeyGetRequest struct {
+type JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsPreviewApi
+	ApiService JamfProUserAccountSettingsPreviewAPI
 	key string
 }
 
-func (r ApiUserObjPreferenceKeyGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.UserObjPreferenceKeyGetExecute(r)
 }
 
@@ -205,12 +206,12 @@ Gets the user setting for the authenticated user and key.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key user setting to be retrieved
- @return ApiUserObjPreferenceKeyGetRequest
+ @return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest
 
 Deprecated
 */
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGet(ctx context.Context, key string) ApiUserObjPreferenceKeyGetRequest {
-	return ApiUserObjPreferenceKeyGetRequest{
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyGet(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest {
+	return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		key: key,
@@ -220,7 +221,7 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGet(ct
 // Execute executes the request
 //  @return map[string]interface{}
 // Deprecated
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExecute(r ApiUserObjPreferenceKeyGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyGetExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -228,13 +229,13 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExe
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewApiService.UserObjPreferenceKeyGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewAPIService.UserObjPreferenceKeyGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/user/obj/preference/{key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterToString(r.key, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -267,9 +268,9 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +287,8 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -303,20 +305,20 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUserObjPreferenceKeyPutRequest struct {
+type JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsPreviewApi
+	ApiService JamfProUserAccountSettingsPreviewAPI
 	key string
 	body *string
 }
 
 // user setting value to be persisted
-func (r ApiUserObjPreferenceKeyPutRequest) Body(body string) ApiUserObjPreferenceKeyPutRequest {
+func (r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest) Body(body string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiUserObjPreferenceKeyPutRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.UserObjPreferenceKeyPutExecute(r)
 }
 
@@ -328,12 +330,12 @@ Persists the user setting
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param key key of user setting to be persisted
- @return ApiUserObjPreferenceKeyPutRequest
+ @return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest
 
 Deprecated
 */
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyPut(ctx context.Context, key string) ApiUserObjPreferenceKeyPutRequest {
-	return ApiUserObjPreferenceKeyPutRequest{
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyPut(ctx context.Context, key string) JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest {
+	return JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		key: key,
@@ -343,7 +345,7 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyPut(ct
 // Execute executes the request
 //  @return map[string]interface{}
 // Deprecated
-func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyPutExecute(r ApiUserObjPreferenceKeyPutRequest) (map[string]interface{}, *http.Response, error) {
+func (a *JamfProUserAccountSettingsPreviewAPIService) UserObjPreferenceKeyPutExecute(r JamfProUserAccountSettingsPreviewAPIUserObjPreferenceKeyPutRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -351,13 +353,13 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyPutExe
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewApiService.UserObjPreferenceKeyPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsPreviewAPIService.UserObjPreferenceKeyPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/user/obj/preference/{key}"
-	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterToString(r.key, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", url.PathEscape(parameterValueToString(r.key, "key")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -392,9 +394,9 @@ func (a *JamfProUserAccountSettingsPreviewApiService) UserObjPreferenceKeyPutExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationPanelSsoAuth type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationPanelSsoAuth{}
+
 // EnrollmentCustomizationPanelSsoAuth struct for EnrollmentCustomizationPanelSsoAuth
 type EnrollmentCustomizationPanelSsoAuth struct {
 	DisplayName string `json:"displayName"`
@@ -220,29 +223,23 @@ func (o *EnrollmentCustomizationPanelSsoAuth) SetGroupEnrollmentAccessName(v str
 }
 
 func (o EnrollmentCustomizationPanelSsoAuth) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["rank"] = o.Rank
-	}
-	if true {
-		toSerialize["isUseJamfConnect"] = o.IsUseJamfConnect
-	}
-	if true {
-		toSerialize["longNameAttribute"] = o.LongNameAttribute
-	}
-	if true {
-		toSerialize["shortNameAttribute"] = o.ShortNameAttribute
-	}
-	if true {
-		toSerialize["isGroupEnrollmentAccessEnabled"] = o.IsGroupEnrollmentAccessEnabled
-	}
-	if true {
-		toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationPanelSsoAuth) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["rank"] = o.Rank
+	toSerialize["isUseJamfConnect"] = o.IsUseJamfConnect
+	toSerialize["longNameAttribute"] = o.LongNameAttribute
+	toSerialize["shortNameAttribute"] = o.ShortNameAttribute
+	toSerialize["isGroupEnrollmentAccessEnabled"] = o.IsGroupEnrollmentAccessEnabled
+	toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationPanelSsoAuth struct {

@@ -1,10 +1,10 @@
-# \AppStoreCountryCodesPreviewApi
+# \AppStoreCountryCodesPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1AppStoreCountryCodesGet**](AppStoreCountryCodesPreviewApi.md#V1AppStoreCountryCodesGet) | **Get** /v1/app-store-country-codes | Return a list of Countries and the associated Codes 
+[**V1AppStoreCountryCodesGet**](AppStoreCountryCodesPreviewAPI.md#V1AppStoreCountryCodesGet) | **Get** /v1/app-store-country-codes | Return a list of Countries and the associated Codes 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppStoreCountryCodesPreviewApi.V1AppStoreCountryCodesGet(context.Background()).Execute()
+    resp, r, err := apiClient.AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreCountryCodesPreviewApi.V1AppStoreCountryCodesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AppStoreCountryCodesGet`: CountryCodes
-    fmt.Fprintf(os.Stdout, "Response from `AppStoreCountryCodesPreviewApi.V1AppStoreCountryCodesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet`: %v\n", resp)
 }
 ```
 

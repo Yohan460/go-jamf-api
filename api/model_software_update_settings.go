@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SoftwareUpdateSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SoftwareUpdateSettings{}
+
 // SoftwareUpdateSettings struct for SoftwareUpdateSettings
 type SoftwareUpdateSettings struct {
 	RecommendationCadence *string `json:"recommendationCadence,omitempty"`
@@ -38,7 +41,7 @@ func NewSoftwareUpdateSettingsWithDefaults() *SoftwareUpdateSettings {
 
 // GetRecommendationCadence returns the RecommendationCadence field value if set, zero value otherwise.
 func (o *SoftwareUpdateSettings) GetRecommendationCadence() string {
-	if o == nil || o.RecommendationCadence == nil {
+	if o == nil || IsNil(o.RecommendationCadence) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *SoftwareUpdateSettings) GetRecommendationCadence() string {
 // GetRecommendationCadenceOk returns a tuple with the RecommendationCadence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SoftwareUpdateSettings) GetRecommendationCadenceOk() (*string, bool) {
-	if o == nil || o.RecommendationCadence == nil {
+	if o == nil || IsNil(o.RecommendationCadence) {
 		return nil, false
 	}
 	return o.RecommendationCadence, true
@@ -56,7 +59,7 @@ func (o *SoftwareUpdateSettings) GetRecommendationCadenceOk() (*string, bool) {
 
 // HasRecommendationCadence returns a boolean if a field has been set.
 func (o *SoftwareUpdateSettings) HasRecommendationCadence() bool {
-	if o != nil && o.RecommendationCadence != nil {
+	if o != nil && !IsNil(o.RecommendationCadence) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *SoftwareUpdateSettings) SetRecommendationCadence(v string) {
 }
 
 func (o SoftwareUpdateSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RecommendationCadence != nil {
-		toSerialize["recommendationCadence"] = o.RecommendationCadence
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SoftwareUpdateSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RecommendationCadence) {
+		toSerialize["recommendationCadence"] = o.RecommendationCadence
+	}
+	return toSerialize, nil
 }
 
 type NullableSoftwareUpdateSettings struct {

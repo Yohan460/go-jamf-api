@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerInventoryCollectionSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerInventoryCollectionSettings{}
+
 // ComputerInventoryCollectionSettings struct for ComputerInventoryCollectionSettings
 type ComputerInventoryCollectionSettings struct {
 	ComputerInventoryCollectionPreferences *ComputerInventoryCollectionPreferences `json:"computerInventoryCollectionPreferences,omitempty"`
@@ -41,7 +44,7 @@ func NewComputerInventoryCollectionSettingsWithDefaults() *ComputerInventoryColl
 
 // GetComputerInventoryCollectionPreferences returns the ComputerInventoryCollectionPreferences field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionSettings) GetComputerInventoryCollectionPreferences() ComputerInventoryCollectionPreferences {
-	if o == nil || o.ComputerInventoryCollectionPreferences == nil {
+	if o == nil || IsNil(o.ComputerInventoryCollectionPreferences) {
 		var ret ComputerInventoryCollectionPreferences
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ComputerInventoryCollectionSettings) GetComputerInventoryCollectionPref
 // GetComputerInventoryCollectionPreferencesOk returns a tuple with the ComputerInventoryCollectionPreferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionSettings) GetComputerInventoryCollectionPreferencesOk() (*ComputerInventoryCollectionPreferences, bool) {
-	if o == nil || o.ComputerInventoryCollectionPreferences == nil {
+	if o == nil || IsNil(o.ComputerInventoryCollectionPreferences) {
 		return nil, false
 	}
 	return o.ComputerInventoryCollectionPreferences, true
@@ -59,7 +62,7 @@ func (o *ComputerInventoryCollectionSettings) GetComputerInventoryCollectionPref
 
 // HasComputerInventoryCollectionPreferences returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionSettings) HasComputerInventoryCollectionPreferences() bool {
-	if o != nil && o.ComputerInventoryCollectionPreferences != nil {
+	if o != nil && !IsNil(o.ComputerInventoryCollectionPreferences) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ComputerInventoryCollectionSettings) SetComputerInventoryCollectionPref
 
 // GetApplicationPaths returns the ApplicationPaths field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionSettings) GetApplicationPaths() []AppPath {
-	if o == nil || o.ApplicationPaths == nil {
+	if o == nil || IsNil(o.ApplicationPaths) {
 		var ret []AppPath
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ComputerInventoryCollectionSettings) GetApplicationPaths() []AppPath {
 // GetApplicationPathsOk returns a tuple with the ApplicationPaths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionSettings) GetApplicationPathsOk() ([]AppPath, bool) {
-	if o == nil || o.ApplicationPaths == nil {
+	if o == nil || IsNil(o.ApplicationPaths) {
 		return nil, false
 	}
 	return o.ApplicationPaths, true
@@ -91,7 +94,7 @@ func (o *ComputerInventoryCollectionSettings) GetApplicationPathsOk() ([]AppPath
 
 // HasApplicationPaths returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionSettings) HasApplicationPaths() bool {
-	if o != nil && o.ApplicationPaths != nil {
+	if o != nil && !IsNil(o.ApplicationPaths) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ComputerInventoryCollectionSettings) SetApplicationPaths(v []AppPath) {
 
 // GetFontPaths returns the FontPaths field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionSettings) GetFontPaths() []FontPath {
-	if o == nil || o.FontPaths == nil {
+	if o == nil || IsNil(o.FontPaths) {
 		var ret []FontPath
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ComputerInventoryCollectionSettings) GetFontPaths() []FontPath {
 // GetFontPathsOk returns a tuple with the FontPaths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionSettings) GetFontPathsOk() ([]FontPath, bool) {
-	if o == nil || o.FontPaths == nil {
+	if o == nil || IsNil(o.FontPaths) {
 		return nil, false
 	}
 	return o.FontPaths, true
@@ -123,7 +126,7 @@ func (o *ComputerInventoryCollectionSettings) GetFontPathsOk() ([]FontPath, bool
 
 // HasFontPaths returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionSettings) HasFontPaths() bool {
-	if o != nil && o.FontPaths != nil {
+	if o != nil && !IsNil(o.FontPaths) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ComputerInventoryCollectionSettings) SetFontPaths(v []FontPath) {
 
 // GetPluginPaths returns the PluginPaths field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionSettings) GetPluginPaths() []PluginPath {
-	if o == nil || o.PluginPaths == nil {
+	if o == nil || IsNil(o.PluginPaths) {
 		var ret []PluginPath
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ComputerInventoryCollectionSettings) GetPluginPaths() []PluginPath {
 // GetPluginPathsOk returns a tuple with the PluginPaths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionSettings) GetPluginPathsOk() ([]PluginPath, bool) {
-	if o == nil || o.PluginPaths == nil {
+	if o == nil || IsNil(o.PluginPaths) {
 		return nil, false
 	}
 	return o.PluginPaths, true
@@ -155,7 +158,7 @@ func (o *ComputerInventoryCollectionSettings) GetPluginPathsOk() ([]PluginPath, 
 
 // HasPluginPaths returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionSettings) HasPluginPaths() bool {
-	if o != nil && o.PluginPaths != nil {
+	if o != nil && !IsNil(o.PluginPaths) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ComputerInventoryCollectionSettings) SetPluginPaths(v []PluginPath) {
 }
 
 func (o ComputerInventoryCollectionSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ComputerInventoryCollectionPreferences != nil {
-		toSerialize["computerInventoryCollectionPreferences"] = o.ComputerInventoryCollectionPreferences
-	}
-	if o.ApplicationPaths != nil {
-		toSerialize["applicationPaths"] = o.ApplicationPaths
-	}
-	if o.FontPaths != nil {
-		toSerialize["fontPaths"] = o.FontPaths
-	}
-	if o.PluginPaths != nil {
-		toSerialize["pluginPaths"] = o.PluginPaths
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerInventoryCollectionSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ComputerInventoryCollectionPreferences) {
+		toSerialize["computerInventoryCollectionPreferences"] = o.ComputerInventoryCollectionPreferences
+	}
+	if !IsNil(o.ApplicationPaths) {
+		toSerialize["applicationPaths"] = o.ApplicationPaths
+	}
+	if !IsNil(o.FontPaths) {
+		toSerialize["fontPaths"] = o.FontPaths
+	}
+	if !IsNil(o.PluginPaths) {
+		toSerialize["pluginPaths"] = o.PluginPaths
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerInventoryCollectionSettings struct {

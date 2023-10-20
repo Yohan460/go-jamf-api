@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudIdPCommon type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudIdPCommon{}
+
 // CloudIdPCommon A Cloud Identity Provider information
 type CloudIdPCommon struct {
 	Id string `json:"id"`
@@ -114,17 +117,19 @@ func (o *CloudIdPCommon) SetProviderName(v string) {
 }
 
 func (o CloudIdPCommon) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["providerName"] = o.ProviderName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudIdPCommon) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["providerName"] = o.ProviderName
+	return toSerialize, nil
 }
 
 type NullableCloudIdPCommon struct {

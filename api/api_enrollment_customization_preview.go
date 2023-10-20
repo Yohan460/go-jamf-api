@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type EnrollmentCustomizationPreviewApi interface {
+type EnrollmentCustomizationPreviewAPI interface {
 
 	/*
 	V1EnrollmentCustomizationIdAllGet Get all Panels for single Enrollment Customization 
@@ -29,13 +29,13 @@ type EnrollmentCustomizationPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdAllGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 	*/
-	V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdAllGetRequest
+	V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 
 	// V1EnrollmentCustomizationIdAllGetExecute executes the request
 	//  @return EnrollmentCustomizationPanelList
-	V1EnrollmentCustomizationIdAllGetExecute(r ApiV1EnrollmentCustomizationIdAllGetRequest) (*EnrollmentCustomizationPanelList, *http.Response, error)
+	V1EnrollmentCustomizationIdAllGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest) (*EnrollmentCustomizationPanelList, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdAllPanelIdDelete Delete a single Panel from an Enrollment Customization 
@@ -45,12 +45,12 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdAllPanelIdDeleteExecute executes the request
-	V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error)
+	V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdAllPanelIdGet Get a single Panel for a single Enrollment Customization 
@@ -60,13 +60,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest
+	V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdAllPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanel
-	V1EnrollmentCustomizationIdAllPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest) (*GetEnrollmentCustomizationPanel, *http.Response, error)
+	V1EnrollmentCustomizationIdAllPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest) (*GetEnrollmentCustomizationPanel, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdLdapPanelIdDelete Delete an LDAP single panel from an Enrollment Customization 
@@ -76,12 +76,12 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute executes the request
-	V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error)
+	V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdLdapPanelIdGet Get a single LDAP panel for a single Enrollment Customization 
@@ -91,13 +91,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+	V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
-	V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdLdapPanelIdPut Update a single LDAP Panel for a single Enrollment Customization 
@@ -107,13 +107,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+	V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
-	V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdLdapPost Create an LDAP Panel for a single Enrollment Customization 
@@ -122,13 +122,13 @@ type EnrollmentCustomizationPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdLdapPostRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdLdapPostRequest
+	V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 
 	// V1EnrollmentCustomizationIdLdapPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
-	V1EnrollmentCustomizationIdLdapPostExecute(r ApiV1EnrollmentCustomizationIdLdapPostRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdLdapPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdSsoPanelIdDelete Delete a single SSO Panel from an Enrollment Customization 
@@ -138,12 +138,12 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute executes the request
-	V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error)
+	V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdSsoPanelIdGet Get a single SSO Panel for a single Enrollment Customization 
@@ -153,13 +153,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+	V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
-	V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdSsoPanelIdPut Update a single SSO Panel for a single Enrollment Customization 
@@ -169,13 +169,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+	V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
-	V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdSsoPost Create an SSO Panel for a single Enrollment Customization 
@@ -184,13 +184,13 @@ type EnrollmentCustomizationPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdSsoPostRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdSsoPostRequest
+	V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 
 	// V1EnrollmentCustomizationIdSsoPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
-	V1EnrollmentCustomizationIdSsoPostExecute(r ApiV1EnrollmentCustomizationIdSsoPostRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
+	V1EnrollmentCustomizationIdSsoPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdTextPanelIdDelete Delete a Text single Panel from an Enrollment Customization 
@@ -200,12 +200,12 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdDeleteExecute executes the request
-	V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error)
+	V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdTextPanelIdGet Get a single Text Panel for a single Enrollment Customization 
@@ -215,13 +215,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest
+	V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
-	V1EnrollmentCustomizationIdTextPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+	V1EnrollmentCustomizationIdTextPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet Get the markdown output of a single Text Panel for a single Enrollment 
@@ -231,13 +231,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute executes the request
 	//  @return Markdown
-	V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) (*Markdown, *http.Response, error)
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) (*Markdown, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdTextPanelIdPut Update a single Text Panel for a single Enrollment Customization 
@@ -247,13 +247,13 @@ type EnrollmentCustomizationPreviewApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
 	@param panelId Panel object identifier
-	@return ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest
+	V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
-	V1EnrollmentCustomizationIdTextPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+	V1EnrollmentCustomizationIdTextPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationIdTextPost Create a Text Panel for a single Enrollment Customization 
@@ -262,13 +262,13 @@ type EnrollmentCustomizationPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Enrollment Customization identifier
-	@return ApiV1EnrollmentCustomizationIdTextPostRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 	*/
-	V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdTextPostRequest
+	V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 
 	// V1EnrollmentCustomizationIdTextPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
-	V1EnrollmentCustomizationIdTextPostExecute(r ApiV1EnrollmentCustomizationIdTextPostRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
+	V1EnrollmentCustomizationIdTextPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error)
 
 	/*
 	V1EnrollmentCustomizationParseMarkdownPost Parse the given string as markdown text and return Html output 
@@ -276,25 +276,25 @@ type EnrollmentCustomizationPreviewApi interface {
 	Parse the given string as markdown text and return Html output
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EnrollmentCustomizationParseMarkdownPostRequest
+	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest
 	*/
-	V1EnrollmentCustomizationParseMarkdownPost(ctx context.Context) ApiV1EnrollmentCustomizationParseMarkdownPostRequest
+	V1EnrollmentCustomizationParseMarkdownPost(ctx context.Context) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest
 
 	// V1EnrollmentCustomizationParseMarkdownPostExecute executes the request
 	//  @return Markdown
-	V1EnrollmentCustomizationParseMarkdownPostExecute(r ApiV1EnrollmentCustomizationParseMarkdownPostRequest) (*Markdown, *http.Response, error)
+	V1EnrollmentCustomizationParseMarkdownPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest) (*Markdown, *http.Response, error)
 }
 
-// EnrollmentCustomizationPreviewApiService EnrollmentCustomizationPreviewApi service
-type EnrollmentCustomizationPreviewApiService service
+// EnrollmentCustomizationPreviewAPIService EnrollmentCustomizationPreviewAPI service
+type EnrollmentCustomizationPreviewAPIService service
 
-type ApiV1EnrollmentCustomizationIdAllGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdAllGetRequest) Execute() (*EnrollmentCustomizationPanelList, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest) Execute() (*EnrollmentCustomizationPanelList, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdAllGetExecute(r)
 }
 
@@ -305,10 +305,10 @@ Get all panels for single enrollment customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdAllGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdAllGetRequest {
-	return ApiV1EnrollmentCustomizationIdAllGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -317,7 +317,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 
 // Execute executes the request
 //  @return EnrollmentCustomizationPanelList
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllGetExecute(r ApiV1EnrollmentCustomizationIdAllGetRequest) (*EnrollmentCustomizationPanelList, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest) (*EnrollmentCustomizationPanelList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -325,13 +325,13 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 		localVarReturnValue  *EnrollmentCustomizationPanelList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdAllGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdAllGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/all"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -364,9 +364,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -383,7 +383,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -400,14 +401,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r)
 }
 
@@ -419,10 +420,10 @@ Delete a single panel from an Enrollment Customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest {
-	return ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -431,21 +432,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 }
 
 // Execute executes the request
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdAllPanelIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdAllPanelIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/all/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -478,9 +479,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -496,14 +497,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanel, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanel, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdAllPanelIdGetExecute(r)
 }
 
@@ -515,10 +516,10 @@ Get a single panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest {
-	return ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -528,7 +529,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanel
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAllPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdAllPanelIdGetRequest) (*GetEnrollmentCustomizationPanel, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest) (*GetEnrollmentCustomizationPanel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -536,14 +537,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 		localVarReturnValue  *GetEnrollmentCustomizationPanel
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdAllPanelIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdAllPanelIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/all/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -576,9 +577,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -595,7 +596,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -612,14 +614,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdAl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r)
 }
 
@@ -631,10 +633,10 @@ Delete an LDAP single Panel from an Enrollment Customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest {
-	return ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -643,21 +645,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 }
 
 // Execute executes the request
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdLdapPanelIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdLdapPanelIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/ldap/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -690,9 +692,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -708,14 +710,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r)
 }
 
@@ -727,10 +729,10 @@ Get a single LDAP panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest {
-	return ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -740,7 +742,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelLdapAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdGetRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -748,14 +750,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		localVarReturnValue  *GetEnrollmentCustomizationPanelLdapAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdLdapPanelIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdLdapPanelIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/ldap/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -788,9 +790,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -807,7 +809,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -824,21 +827,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
 }
 
 // Enrollment Customization Panel to update
-func (r ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest) EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth EnrollmentCustomizationPanelLdapAuth) ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest) EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth EnrollmentCustomizationPanelLdapAuth) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
 	r.enrollmentCustomizationPanelLdapAuth = &enrollmentCustomizationPanelLdapAuth
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r)
 }
 
@@ -850,10 +853,10 @@ Update a single LDAP panel for a single enrollment customization. If multiple LD
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
-	return ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -863,7 +866,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelLdapAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdLdapPanelIdPutRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -871,14 +874,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		localVarReturnValue  *GetEnrollmentCustomizationPanelLdapAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdLdapPanelIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdLdapPanelIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/ldap/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -916,9 +919,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -935,7 +938,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -952,20 +956,20 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdLdapPostRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
 }
 
 // Enrollment Customization Panel to create
-func (r ApiV1EnrollmentCustomizationIdLdapPostRequest) EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth EnrollmentCustomizationPanelLdapAuth) ApiV1EnrollmentCustomizationIdLdapPostRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest) EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth EnrollmentCustomizationPanelLdapAuth) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest {
 	r.enrollmentCustomizationPanelLdapAuth = &enrollmentCustomizationPanelLdapAuth
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdLdapPostRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdLdapPostExecute(r)
 }
 
@@ -976,10 +980,10 @@ Create an LDAP panel for a single enrollment customization. If multiple LDAP acc
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdLdapPostRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdLdapPostRequest {
-	return ApiV1EnrollmentCustomizationIdLdapPostRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -988,7 +992,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelLdapAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLdapPostExecute(r ApiV1EnrollmentCustomizationIdLdapPostRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest) (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -996,13 +1000,13 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		localVarReturnValue  *GetEnrollmentCustomizationPanelLdapAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdLdapPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdLdapPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/ldap"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1040,9 +1044,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1059,7 +1063,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1076,14 +1081,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdLd
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r)
 }
 
@@ -1095,10 +1100,10 @@ Delete a single SSO panel from an Enrollment Customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest {
-	return ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1107,21 +1112,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 }
 
 // Execute executes the request
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdSsoPanelIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdSsoPanelIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/sso/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1154,9 +1159,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1172,14 +1177,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r)
 }
 
@@ -1191,10 +1196,10 @@ Get a single SSO panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest {
-	return ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1204,7 +1209,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelSsoAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdGetRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1212,14 +1217,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		localVarReturnValue  *GetEnrollmentCustomizationPanelSsoAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdSsoPanelIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdSsoPanelIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/sso/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1252,9 +1257,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1271,7 +1276,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1288,21 +1294,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
 }
 
 // Enrollment Customization Panel to update
-func (r ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest) EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth EnrollmentCustomizationPanelSsoAuth) ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest) EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth EnrollmentCustomizationPanelSsoAuth) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
 	r.enrollmentCustomizationPanelSsoAuth = &enrollmentCustomizationPanelSsoAuth
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r)
 }
 
@@ -1314,10 +1320,10 @@ Update a single SSO panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
-	return ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1327,7 +1333,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelSsoAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdSsoPanelIdPutRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1335,14 +1341,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		localVarReturnValue  *GetEnrollmentCustomizationPanelSsoAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdSsoPanelIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdSsoPanelIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/sso/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1380,9 +1386,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1399,7 +1405,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1416,20 +1423,20 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdSsoPostRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
 }
 
 // Enrollment Customization Panel to create
-func (r ApiV1EnrollmentCustomizationIdSsoPostRequest) EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth EnrollmentCustomizationPanelSsoAuth) ApiV1EnrollmentCustomizationIdSsoPostRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest) EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth EnrollmentCustomizationPanelSsoAuth) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest {
 	r.enrollmentCustomizationPanelSsoAuth = &enrollmentCustomizationPanelSsoAuth
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdSsoPostRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdSsoPostExecute(r)
 }
 
@@ -1440,10 +1447,10 @@ Create an SSO panel for a single enrollment customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdSsoPostRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdSsoPostRequest {
-	return ApiV1EnrollmentCustomizationIdSsoPostRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1452,7 +1459,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelSsoAuth
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSsoPostExecute(r ApiV1EnrollmentCustomizationIdSsoPostRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest) (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1460,13 +1467,13 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		localVarReturnValue  *GetEnrollmentCustomizationPanelSsoAuth
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdSsoPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdSsoPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/sso"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1504,9 +1511,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1523,7 +1530,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1540,14 +1548,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdSs
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) Execute() (*http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r)
 }
 
@@ -1559,10 +1567,10 @@ Delete a Text single panel from an Enrollment Customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest {
-	return ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1571,21 +1579,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 }
 
 // Execute executes the request
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdTextPanelIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdTextPanelIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/text/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1618,9 +1626,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1636,14 +1644,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdTextPanelIdGetExecute(r)
 }
 
@@ -1655,10 +1663,10 @@ Get a single Text panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest {
-	return ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1668,7 +1676,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelText
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdGetRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1676,14 +1684,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		localVarReturnValue  *GetEnrollmentCustomizationPanelText
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdTextPanelIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdTextPanelIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/text/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1716,9 +1724,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1735,7 +1743,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1752,14 +1761,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 }
 
-func (r ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) Execute() (*Markdown, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) Execute() (*Markdown, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r)
 }
 
@@ -1771,10 +1780,10 @@ Get the markdown output of a single Text panel for a single enrollment customiza
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest {
-	return ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1784,7 +1793,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 // Execute executes the request
 //  @return Markdown
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) (*Markdown, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) (*Markdown, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1792,14 +1801,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		localVarReturnValue  *Markdown
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/text/{panel-id}/markdown"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1832,9 +1841,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1851,7 +1860,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1868,21 +1878,21 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	panelId int32
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
 }
 
 // Enrollment Customization Panel to update
-func (r ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest) EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText EnrollmentCustomizationPanelText) ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest) EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText EnrollmentCustomizationPanelText) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest {
 	r.enrollmentCustomizationPanelText = &enrollmentCustomizationPanelText
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdTextPanelIdPutExecute(r)
 }
 
@@ -1894,10 +1904,10 @@ Update a single Text panel for a single enrollment customization
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
  @param panelId Panel object identifier
- @return ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest {
-	return ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1907,7 +1917,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelText
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPanelIdPutExecute(r ApiV1EnrollmentCustomizationIdTextPanelIdPutRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdPutExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1915,14 +1925,14 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		localVarReturnValue  *GetEnrollmentCustomizationPanelText
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdTextPanelIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdTextPanelIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/text/{panel-id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterToString(r.panelId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"panel-id"+"}", url.PathEscape(parameterValueToString(r.panelId, "panelId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1960,9 +1970,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1979,7 +1989,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1996,20 +2007,20 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationIdTextPostRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	id int32
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
 }
 
 // Enrollment Customization Panel to create
-func (r ApiV1EnrollmentCustomizationIdTextPostRequest) EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText EnrollmentCustomizationPanelText) ApiV1EnrollmentCustomizationIdTextPostRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest) EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText EnrollmentCustomizationPanelText) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest {
 	r.enrollmentCustomizationPanelText = &enrollmentCustomizationPanelText
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationIdTextPostRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationIdTextPostExecute(r)
 }
 
@@ -2020,10 +2031,10 @@ Create a Text panel for a single enrollment customization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Enrollment Customization identifier
- @return ApiV1EnrollmentCustomizationIdTextPostRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) ApiV1EnrollmentCustomizationIdTextPostRequest {
-	return ApiV1EnrollmentCustomizationIdTextPostRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2032,7 +2043,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 
 // Execute executes the request
 //  @return GetEnrollmentCustomizationPanelText
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTextPostExecute(r ApiV1EnrollmentCustomizationIdTextPostRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest) (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2040,13 +2051,13 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		localVarReturnValue  *GetEnrollmentCustomizationPanelText
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationIdTextPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationIdTextPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/enrollment-customization/{id}/text"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2084,9 +2095,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2103,7 +2114,8 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2120,19 +2132,19 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationIdTe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EnrollmentCustomizationParseMarkdownPostRequest struct {
+type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest struct {
 	ctx context.Context
-	ApiService EnrollmentCustomizationPreviewApi
+	ApiService EnrollmentCustomizationPreviewAPI
 	markdown *Markdown
 }
 
 // Enrollment Customization Panel to create
-func (r ApiV1EnrollmentCustomizationParseMarkdownPostRequest) Markdown(markdown Markdown) ApiV1EnrollmentCustomizationParseMarkdownPostRequest {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest) Markdown(markdown Markdown) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest {
 	r.markdown = &markdown
 	return r
 }
 
-func (r ApiV1EnrollmentCustomizationParseMarkdownPostRequest) Execute() (*Markdown, *http.Response, error) {
+func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest) Execute() (*Markdown, *http.Response, error) {
 	return r.ApiService.V1EnrollmentCustomizationParseMarkdownPostExecute(r)
 }
 
@@ -2142,10 +2154,10 @@ V1EnrollmentCustomizationParseMarkdownPost Parse the given string as markdown te
 Parse the given string as markdown text and return Html output
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EnrollmentCustomizationParseMarkdownPostRequest
+ @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest
 */
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationParseMarkdownPost(ctx context.Context) ApiV1EnrollmentCustomizationParseMarkdownPostRequest {
-	return ApiV1EnrollmentCustomizationParseMarkdownPostRequest{
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationParseMarkdownPost(ctx context.Context) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest {
+	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2153,7 +2165,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationPars
 
 // Execute executes the request
 //  @return Markdown
-func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationParseMarkdownPostExecute(r ApiV1EnrollmentCustomizationParseMarkdownPostRequest) (*Markdown, *http.Response, error) {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationParseMarkdownPostExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationParseMarkdownPostRequest) (*Markdown, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2161,7 +2173,7 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationPars
 		localVarReturnValue  *Markdown
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewApiService.V1EnrollmentCustomizationParseMarkdownPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentCustomizationPreviewAPIService.V1EnrollmentCustomizationParseMarkdownPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2204,9 +2216,9 @@ func (a *EnrollmentCustomizationPreviewApiService) V1EnrollmentCustomizationPars
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

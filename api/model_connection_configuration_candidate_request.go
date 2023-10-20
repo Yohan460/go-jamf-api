@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectionConfigurationCandidateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectionConfigurationCandidateRequest{}
+
 // ConnectionConfigurationCandidateRequest Request that creates configuration and initialize connection between Jamf Pro and Team Viewer
 type ConnectionConfigurationCandidateRequest struct {
 	// An identifier of a site which Team Viewer Remote Administration will be configured on
@@ -171,23 +174,21 @@ func (o *ConnectionConfigurationCandidateRequest) SetSessionTimeout(v int32) {
 }
 
 func (o ConnectionConfigurationCandidateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["scriptToken"] = o.ScriptToken
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["sessionTimeout"] = o.SessionTimeout
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectionConfigurationCandidateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["siteId"] = o.SiteId
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["scriptToken"] = o.ScriptToken
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["sessionTimeout"] = o.SessionTimeout
+	return toSerialize, nil
 }
 
 type NullableConnectionConfigurationCandidateRequest struct {

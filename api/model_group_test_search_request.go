@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupTestSearchRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupTestSearchRequest{}
+
 // GroupTestSearchRequest struct for GroupTestSearchRequest
 type GroupTestSearchRequest struct {
 	Groupname string `json:"groupname"`
@@ -62,11 +65,17 @@ func (o *GroupTestSearchRequest) SetGroupname(v string) {
 }
 
 func (o GroupTestSearchRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["groupname"] = o.Groupname
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupTestSearchRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["groupname"] = o.Groupname
+	return toSerialize, nil
 }
 
 type NullableGroupTestSearchRequest struct {

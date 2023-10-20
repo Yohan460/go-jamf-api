@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type TomcatSettingsPreviewApi interface {
+type TomcatSettingsPreviewAPI interface {
 
 	/*
 	SettingsIssueTomcatSslCertificatePost Generate a SSL Certificate using Jamf Certificate Authority 
@@ -27,23 +27,23 @@ type TomcatSettingsPreviewApi interface {
 	generate a SSL Certificate using Jamf Certificate Authority
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSettingsIssueTomcatSslCertificatePostRequest
+	@return TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest
 	*/
-	SettingsIssueTomcatSslCertificatePost(ctx context.Context) ApiSettingsIssueTomcatSslCertificatePostRequest
+	SettingsIssueTomcatSslCertificatePost(ctx context.Context) TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest
 
 	// SettingsIssueTomcatSslCertificatePostExecute executes the request
-	SettingsIssueTomcatSslCertificatePostExecute(r ApiSettingsIssueTomcatSslCertificatePostRequest) (*http.Response, error)
+	SettingsIssueTomcatSslCertificatePostExecute(r TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest) (*http.Response, error)
 }
 
-// TomcatSettingsPreviewApiService TomcatSettingsPreviewApi service
-type TomcatSettingsPreviewApiService service
+// TomcatSettingsPreviewAPIService TomcatSettingsPreviewAPI service
+type TomcatSettingsPreviewAPIService service
 
-type ApiSettingsIssueTomcatSslCertificatePostRequest struct {
+type TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest struct {
 	ctx context.Context
-	ApiService TomcatSettingsPreviewApi
+	ApiService TomcatSettingsPreviewAPI
 }
 
-func (r ApiSettingsIssueTomcatSslCertificatePostRequest) Execute() (*http.Response, error) {
+func (r TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SettingsIssueTomcatSslCertificatePostExecute(r)
 }
 
@@ -53,24 +53,24 @@ SettingsIssueTomcatSslCertificatePost Generate a SSL Certificate using Jamf Cert
 generate a SSL Certificate using Jamf Certificate Authority
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSettingsIssueTomcatSslCertificatePostRequest
+ @return TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest
 */
-func (a *TomcatSettingsPreviewApiService) SettingsIssueTomcatSslCertificatePost(ctx context.Context) ApiSettingsIssueTomcatSslCertificatePostRequest {
-	return ApiSettingsIssueTomcatSslCertificatePostRequest{
+func (a *TomcatSettingsPreviewAPIService) SettingsIssueTomcatSslCertificatePost(ctx context.Context) TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest {
+	return TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *TomcatSettingsPreviewApiService) SettingsIssueTomcatSslCertificatePostExecute(r ApiSettingsIssueTomcatSslCertificatePostRequest) (*http.Response, error) {
+func (a *TomcatSettingsPreviewAPIService) SettingsIssueTomcatSslCertificatePostExecute(r TomcatSettingsPreviewAPISettingsIssueTomcatSslCertificatePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TomcatSettingsPreviewApiService.SettingsIssueTomcatSslCertificatePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TomcatSettingsPreviewAPIService.SettingsIssueTomcatSslCertificatePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,9 +108,9 @@ func (a *TomcatSettingsPreviewApiService) SettingsIssueTomcatSslCertificatePostE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

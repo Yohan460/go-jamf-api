@@ -1,26 +1,26 @@
-# \EnrollmentCustomizationPreviewApi
+# \EnrollmentCustomizationPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EnrollmentCustomizationIdAllGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdAllGet) | **Get** /v1/enrollment-customization/{id}/all | Get all Panels for single Enrollment Customization 
-[**V1EnrollmentCustomizationIdAllPanelIdDelete**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdAllPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/all/{panel-id} | Delete a single Panel from an Enrollment Customization 
-[**V1EnrollmentCustomizationIdAllPanelIdGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdAllPanelIdGet) | **Get** /v1/enrollment-customization/{id}/all/{panel-id} | Get a single Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdLdapPanelIdDelete**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdLdapPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/ldap/{panel-id} | Delete an LDAP single panel from an Enrollment Customization 
-[**V1EnrollmentCustomizationIdLdapPanelIdGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdLdapPanelIdGet) | **Get** /v1/enrollment-customization/{id}/ldap/{panel-id} | Get a single LDAP panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdLdapPanelIdPut**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdLdapPanelIdPut) | **Put** /v1/enrollment-customization/{id}/ldap/{panel-id} | Update a single LDAP Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdLdapPost**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdLdapPost) | **Post** /v1/enrollment-customization/{id}/ldap | Create an LDAP Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdSsoPanelIdDelete**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdSsoPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/sso/{panel-id} | Delete a single SSO Panel from an Enrollment Customization 
-[**V1EnrollmentCustomizationIdSsoPanelIdGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdSsoPanelIdGet) | **Get** /v1/enrollment-customization/{id}/sso/{panel-id} | Get a single SSO Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdSsoPanelIdPut**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdSsoPanelIdPut) | **Put** /v1/enrollment-customization/{id}/sso/{panel-id} | Update a single SSO Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdSsoPost**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdSsoPost) | **Post** /v1/enrollment-customization/{id}/sso | Create an SSO Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdTextPanelIdDelete**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdTextPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/text/{panel-id} | Delete a Text single Panel from an Enrollment Customization 
-[**V1EnrollmentCustomizationIdTextPanelIdGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdTextPanelIdGet) | **Get** /v1/enrollment-customization/{id}/text/{panel-id} | Get a single Text Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdTextPanelIdMarkdownGet**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdTextPanelIdMarkdownGet) | **Get** /v1/enrollment-customization/{id}/text/{panel-id}/markdown | Get the markdown output of a single Text Panel for a single Enrollment 
-[**V1EnrollmentCustomizationIdTextPanelIdPut**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdTextPanelIdPut) | **Put** /v1/enrollment-customization/{id}/text/{panel-id} | Update a single Text Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationIdTextPost**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationIdTextPost) | **Post** /v1/enrollment-customization/{id}/text | Create a Text Panel for a single Enrollment Customization 
-[**V1EnrollmentCustomizationParseMarkdownPost**](EnrollmentCustomizationPreviewApi.md#V1EnrollmentCustomizationParseMarkdownPost) | **Post** /v1/enrollment-customization/parse-markdown | Parse the given string as markdown text and return Html output 
+[**V1EnrollmentCustomizationIdAllGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdAllGet) | **Get** /v1/enrollment-customization/{id}/all | Get all Panels for single Enrollment Customization 
+[**V1EnrollmentCustomizationIdAllPanelIdDelete**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdAllPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/all/{panel-id} | Delete a single Panel from an Enrollment Customization 
+[**V1EnrollmentCustomizationIdAllPanelIdGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdAllPanelIdGet) | **Get** /v1/enrollment-customization/{id}/all/{panel-id} | Get a single Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdLdapPanelIdDelete**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdLdapPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/ldap/{panel-id} | Delete an LDAP single panel from an Enrollment Customization 
+[**V1EnrollmentCustomizationIdLdapPanelIdGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdLdapPanelIdGet) | **Get** /v1/enrollment-customization/{id}/ldap/{panel-id} | Get a single LDAP panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdLdapPanelIdPut**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdLdapPanelIdPut) | **Put** /v1/enrollment-customization/{id}/ldap/{panel-id} | Update a single LDAP Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdLdapPost**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdLdapPost) | **Post** /v1/enrollment-customization/{id}/ldap | Create an LDAP Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdSsoPanelIdDelete**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdSsoPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/sso/{panel-id} | Delete a single SSO Panel from an Enrollment Customization 
+[**V1EnrollmentCustomizationIdSsoPanelIdGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdSsoPanelIdGet) | **Get** /v1/enrollment-customization/{id}/sso/{panel-id} | Get a single SSO Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdSsoPanelIdPut**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdSsoPanelIdPut) | **Put** /v1/enrollment-customization/{id}/sso/{panel-id} | Update a single SSO Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdSsoPost**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdSsoPost) | **Post** /v1/enrollment-customization/{id}/sso | Create an SSO Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdTextPanelIdDelete**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdTextPanelIdDelete) | **Delete** /v1/enrollment-customization/{id}/text/{panel-id} | Delete a Text single Panel from an Enrollment Customization 
+[**V1EnrollmentCustomizationIdTextPanelIdGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdTextPanelIdGet) | **Get** /v1/enrollment-customization/{id}/text/{panel-id} | Get a single Text Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdTextPanelIdMarkdownGet**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdTextPanelIdMarkdownGet) | **Get** /v1/enrollment-customization/{id}/text/{panel-id}/markdown | Get the markdown output of a single Text Panel for a single Enrollment 
+[**V1EnrollmentCustomizationIdTextPanelIdPut**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdTextPanelIdPut) | **Put** /v1/enrollment-customization/{id}/text/{panel-id} | Update a single Text Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationIdTextPost**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationIdTextPost) | **Post** /v1/enrollment-customization/{id}/text | Create a Text Panel for a single Enrollment Customization 
+[**V1EnrollmentCustomizationParseMarkdownPost**](EnrollmentCustomizationPreviewAPI.md#V1EnrollmentCustomizationParseMarkdownPost) | **Post** /v1/enrollment-customization/parse-markdown | Parse the given string as markdown text and return Html output 
 
 
 
@@ -41,7 +41,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -49,13 +49,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdAllGet`: EnrollmentCustomizationPanelList
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllGet`: %v\n", resp)
 }
 ```
 
@@ -111,7 +111,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -120,9 +120,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllPanelIdDelete(context.Background(), id, panelId).Execute()
+    r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllPanelIdDelete(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllPanelIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllPanelIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -182,7 +182,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -191,13 +191,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllPanelIdGet(context.Background(), id, panelId).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllPanelIdGet(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllPanelIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllPanelIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdAllPanelIdGet`: GetEnrollmentCustomizationPanel
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdAllPanelIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdAllPanelIdGet`: %v\n", resp)
 }
 ```
 
@@ -255,7 +255,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -264,9 +264,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdDelete(context.Background(), id, panelId).Execute()
+    r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdDelete(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -326,7 +326,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -335,13 +335,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdGet(context.Background(), id, panelId).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdGet(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdLdapPanelIdGet`: GetEnrollmentCustomizationPanelLdapAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdGet`: %v\n", resp)
 }
 ```
 
@@ -399,7 +399,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -409,13 +409,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdLdapPanelIdPut`: GetEnrollmentCustomizationPanelLdapAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPanelIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPanelIdPut`: %v\n", resp)
 }
 ```
 
@@ -474,7 +474,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -483,13 +483,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPost(context.Background(), id).EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPost(context.Background(), id).EnrollmentCustomizationPanelLdapAuth(enrollmentCustomizationPanelLdapAuth).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdLdapPost`: GetEnrollmentCustomizationPanelLdapAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdLdapPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdLdapPost`: %v\n", resp)
 }
 ```
 
@@ -546,7 +546,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -555,9 +555,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdDelete(context.Background(), id, panelId).Execute()
+    r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdDelete(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -617,7 +617,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -626,13 +626,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdGet(context.Background(), id, panelId).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdGet(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdSsoPanelIdGet`: GetEnrollmentCustomizationPanelSsoAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdGet`: %v\n", resp)
 }
 ```
 
@@ -690,7 +690,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -700,13 +700,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdSsoPanelIdPut`: GetEnrollmentCustomizationPanelSsoAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPanelIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPanelIdPut`: %v\n", resp)
 }
 ```
 
@@ -765,7 +765,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -774,13 +774,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPost(context.Background(), id).EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPost(context.Background(), id).EnrollmentCustomizationPanelSsoAuth(enrollmentCustomizationPanelSsoAuth).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdSsoPost`: GetEnrollmentCustomizationPanelSsoAuth
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdSsoPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdSsoPost`: %v\n", resp)
 }
 ```
 
@@ -837,7 +837,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -846,9 +846,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdDelete(context.Background(), id, panelId).Execute()
+    r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdDelete(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -908,7 +908,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -917,13 +917,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdGet(context.Background(), id, panelId).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdGet(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdTextPanelIdGet`: GetEnrollmentCustomizationPanelText
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdGet`: %v\n", resp)
 }
 ```
 
@@ -981,7 +981,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -990,13 +990,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(context.Background(), id, panelId).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(context.Background(), id, panelId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdTextPanelIdMarkdownGet`: Markdown
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdMarkdownGet`: %v\n", resp)
 }
 ```
 
@@ -1054,7 +1054,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -1064,13 +1064,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdPut(context.Background(), id, panelId).EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdTextPanelIdPut`: GetEnrollmentCustomizationPanelText
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPanelIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPanelIdPut`: %v\n", resp)
 }
 ```
 
@@ -1129,7 +1129,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -1138,13 +1138,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPost(context.Background(), id).EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPost(context.Background(), id).EnrollmentCustomizationPanelText(enrollmentCustomizationPanelText).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationIdTextPost`: GetEnrollmentCustomizationPanelText
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationIdTextPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationIdTextPost`: %v\n", resp)
 }
 ```
 
@@ -1201,7 +1201,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -1209,13 +1209,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationParseMarkdownPost(context.Background()).Markdown(markdown).Execute()
+    resp, r, err := apiClient.EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationParseMarkdownPost(context.Background()).Markdown(markdown).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationParseMarkdownPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationParseMarkdownPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EnrollmentCustomizationParseMarkdownPost`: Markdown
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewApi.V1EnrollmentCustomizationParseMarkdownPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationPreviewAPI.V1EnrollmentCustomizationParseMarkdownPost`: %v\n", resp)
 }
 ```
 

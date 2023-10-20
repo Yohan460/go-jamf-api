@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type TeamViewerRemoteAdministrationApi interface {
+type TeamViewerRemoteAdministrationAPI interface {
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet Get a paginated list of sessions 
@@ -29,13 +29,13 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(ctx context.Context, configurationId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute executes the request
 	//  @return SessionDetailsSearchResults
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) (*SessionDetailsSearchResults, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) (*SessionDetailsSearchResults, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost Create a new session
@@ -44,13 +44,13 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(ctx context.Context, configurationId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute executes the request
 	//  @return HrefResponse
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) (*HrefResponse, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost Close a session
@@ -60,12 +60,12 @@ type TeamViewerRemoteAdministrationApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
 	@param sessionId ID of the Team Viewer session
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute executes the request
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) (*http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) (*http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet Get a session by its ID 
@@ -75,13 +75,13 @@ type TeamViewerRemoteAdministrationApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
 	@param sessionId ID of the Team Viewer session
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute executes the request
 	//  @return SessionDetails
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) (*SessionDetails, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) (*SessionDetails, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost Resend nofications for a session
@@ -91,12 +91,12 @@ type TeamViewerRemoteAdministrationApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
 	@param sessionId ID of the Team Viewer session
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute executes the request
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) (*http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) (*http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet Get a session status by its ID 
@@ -106,13 +106,13 @@ type TeamViewerRemoteAdministrationApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param configurationId ID of the Team Viewer connection configuration
 	@param sessionId ID of the Team Viewer session
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute executes the request
 	//  @return SessionStatus
-	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) (*SessionStatus, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) (*SessionStatus, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete Delete Team Viewer Remote Administration connection configuration
@@ -121,12 +121,12 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute executes the request
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) (*http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) (*http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerIdGet Get Team Viewer Remote Administration connection configuration
@@ -135,13 +135,13 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute executes the request
 	//  @return ConnectionConfigurationResponse
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) (*ConnectionConfigurationResponse, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) (*ConnectionConfigurationResponse, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch Update Team Viewer Remote Administration connection configuration
@@ -150,13 +150,13 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute executes the request
 	//  @return ConnectionConfigurationResponse
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) (*ConnectionConfigurationResponse, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) (*ConnectionConfigurationResponse, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet Get Team Viewer Remote Administration connection status
@@ -165,13 +165,13 @@ type TeamViewerRemoteAdministrationApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id ID of the Team Viewer connection configuration
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute executes the request
 	//  @return ConnectionConfigurationStatusResponse
-	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) (*ConnectionConfigurationStatusResponse, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) (*ConnectionConfigurationStatusResponse, *http.Response, error)
 
 	/*
 	PreviewRemoteAdministrationConfigurationsTeamViewerPost Create Team Viewer Remote Administration connection configuration
@@ -179,44 +179,44 @@ type TeamViewerRemoteAdministrationApi interface {
 	Creates Team Viewer Remote Administration connection configuration
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
+	@return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsTeamViewerPost(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
+	PreviewRemoteAdministrationConfigurationsTeamViewerPost(ctx context.Context) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
 
 	// PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute executes the request
 	//  @return HrefResponse
-	PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) (*HrefResponse, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// TeamViewerRemoteAdministrationApiService TeamViewerRemoteAdministrationApi service
-type TeamViewerRemoteAdministrationApiService service
+// TeamViewerRemoteAdministrationAPIService TeamViewerRemoteAdministrationAPI service
+type TeamViewerRemoteAdministrationAPIService service
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	page *int32
 	pageSize *int32
 	filter *string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Page(page int32) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Page(page int32) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) PageSize(pageSize int32) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) PageSize(pageSize int32) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Query in the RSQL format, allowing to filter sessions collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;deviceId&#x60;, &#x60;deviceType&#x60;, &#x60;state&#x60;  This param can be combined with paging. 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Filter(filter string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Filter(filter string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Execute() (*SessionDetailsSearchResults, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Execute() (*SessionDetailsSearchResults, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r)
 }
 
@@ -227,10 +227,10 @@ Returns a paginated list of sessions for a given configuration ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet(ctx context.Context, configurationId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -239,7 +239,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return SessionDetailsSearchResults
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) (*SessionDetailsSearchResults, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) (*SessionDetailsSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -247,26 +247,35 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *SessionDetailsSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -295,9 +304,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -314,7 +323,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -331,20 +341,20 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	sessionCandidateRequest *SessionCandidateRequest
 }
 
 // Team Viewer session attributes
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) SessionCandidateRequest(sessionCandidateRequest SessionCandidateRequest) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) SessionCandidateRequest(sessionCandidateRequest SessionCandidateRequest) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest {
 	r.sessionCandidateRequest = &sessionCandidateRequest
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r)
 }
 
@@ -355,10 +365,10 @@ Creates a new Team Viewer session to be used to establish a remote connection
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(ctx context.Context, configurationId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost(ctx context.Context, configurationId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -367,7 +377,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -375,13 +385,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -419,9 +429,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -438,7 +448,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -448,7 +459,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -458,7 +470,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -475,14 +488,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	sessionId string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) Execute() (*http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r)
 }
 
@@ -494,10 +507,10 @@ Changes the session state from open to close. Closing a session means it is not 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
  @param sessionId ID of the Team Viewer session
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -506,21 +519,21 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 }
 
 // Execute executes the request
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) (*http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/close"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -553,9 +566,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -572,7 +585,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -582,7 +596,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -590,14 +605,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	sessionId string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) Execute() (*SessionDetails, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) Execute() (*SessionDetails, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r)
 }
 
@@ -609,10 +624,10 @@ Returns a session details if found.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
  @param sessionId ID of the Team Viewer session
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -622,7 +637,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return SessionDetails
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) (*SessionDetails, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGetRequest) (*SessionDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -630,14 +645,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *SessionDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -670,9 +685,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -689,7 +704,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -706,14 +722,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	sessionId string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) Execute() (*http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r)
 }
 
@@ -725,10 +741,10 @@ Resends configured notifications (e.g. Self Service push notifications).
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
  @param sessionId ID of the Team Viewer session
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -737,21 +753,21 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 }
 
 // Execute executes the request
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) (*http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/resend-notification"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -784,9 +800,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -803,7 +819,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -813,7 +830,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -821,14 +839,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
 	sessionId string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) Execute() (*SessionStatus, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) Execute() (*SessionStatus, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r)
 }
 
@@ -840,10 +858,10 @@ Returns a session status if found.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param configurationId ID of the Team Viewer connection configuration
  @param sessionId ID of the Team Viewer session
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(ctx context.Context, configurationId string, sessionId string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet(ctx context.Context, configurationId string, sessionId string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		configurationId: configurationId,
@@ -853,7 +871,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return SessionStatus
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) (*SessionStatus, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGetRequest) (*SessionStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -861,14 +879,14 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *SessionStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterToString(r.configurationId, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterToString(r.sessionId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"configurationId"+"}", url.PathEscape(parameterValueToString(r.configurationId, "configurationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"sessionId"+"}", url.PathEscape(parameterValueToString(r.sessionId, "sessionId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -901,9 +919,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -920,7 +938,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -930,7 +949,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -947,13 +967,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	id string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) Execute() (*http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r)
 }
 
@@ -964,10 +984,10 @@ Deletes Team Viewer Remote Administration connection configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -975,20 +995,20 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 }
 
 // Execute executes the request
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) (*http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1021,9 +1041,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1039,13 +1059,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	id string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) Execute() (*ConnectionConfigurationResponse, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) Execute() (*ConnectionConfigurationResponse, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r)
 }
 
@@ -1056,10 +1076,10 @@ Returns Team Viewer Remote Administration connection configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdGet(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1068,7 +1088,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return ConnectionConfigurationResponse
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) (*ConnectionConfigurationResponse, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdGetRequest) (*ConnectionConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1076,13 +1096,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *ConnectionConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1115,9 +1135,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1134,7 +1154,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1151,20 +1172,20 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	id string
 	connectionConfigurationUpdateRequest *ConnectionConfigurationUpdateRequest
 }
 
 // Team Viewer connection configuration update request
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) ConnectionConfigurationUpdateRequest(connectionConfigurationUpdateRequest ConnectionConfigurationUpdateRequest) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) ConnectionConfigurationUpdateRequest(connectionConfigurationUpdateRequest ConnectionConfigurationUpdateRequest) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest {
 	r.connectionConfigurationUpdateRequest = &connectionConfigurationUpdateRequest
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) Execute() (*ConnectionConfigurationResponse, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) Execute() (*ConnectionConfigurationResponse, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r)
 }
 
@@ -1175,10 +1196,10 @@ Updates Team Viewer Remote Administration connection configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1187,7 +1208,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return ConnectionConfigurationResponse
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) (*ConnectionConfigurationResponse, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdPatchExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdPatchRequest) (*ConnectionConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -1195,13 +1216,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *ConnectionConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1239,9 +1260,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1258,7 +1279,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1268,7 +1290,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1285,13 +1308,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	id string
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) Execute() (*ConnectionConfigurationStatusResponse, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) Execute() (*ConnectionConfigurationStatusResponse, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r)
 }
 
@@ -1302,10 +1325,10 @@ Returns Team Viewer Remote Administration connection status
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id ID of the Team Viewer connection configuration
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(ctx context.Context, id string) ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet(ctx context.Context, id string) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1314,7 +1337,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return ConnectionConfigurationStatusResponse
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) (*ConnectionConfigurationStatusResponse, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGetRequest) (*ConnectionConfigurationStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1322,13 +1345,13 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *ConnectionConfigurationStatusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/preview/remote-administration-configurations/team-viewer/{id}/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1361,9 +1384,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1388,19 +1411,19 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest struct {
+type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest struct {
 	ctx context.Context
-	ApiService TeamViewerRemoteAdministrationApi
+	ApiService TeamViewerRemoteAdministrationAPI
 	connectionConfigurationCandidateRequest *ConnectionConfigurationCandidateRequest
 }
 
 // Team Viewer connection configuration create definition
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) ConnectionConfigurationCandidateRequest(connectionConfigurationCandidateRequest ConnectionConfigurationCandidateRequest) ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) ConnectionConfigurationCandidateRequest(connectionConfigurationCandidateRequest ConnectionConfigurationCandidateRequest) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest {
 	r.connectionConfigurationCandidateRequest = &connectionConfigurationCandidateRequest
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r)
 }
 
@@ -1410,10 +1433,10 @@ PreviewRemoteAdministrationConfigurationsTeamViewerPost Create Team Viewer Remot
 Creates Team Viewer Remote Administration connection configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
+ @return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest
 */
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerPost(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest{
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerPost(ctx context.Context) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest {
+	return TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1421,7 +1444,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r ApiPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsTeamViewerPostExecute(r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1429,7 +1452,7 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsTeamViewerPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamViewerRemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsTeamViewerPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1472,9 +1495,9 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1491,7 +1514,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1501,7 +1525,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1511,7 +1536,8 @@ func (a *TeamViewerRemoteAdministrationApiService) PreviewRemoteAdministrationCo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

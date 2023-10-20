@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the MdmCommandRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MdmCommandRequest{}
+
 // MdmCommandRequest struct for MdmCommandRequest
 type MdmCommandRequest struct {
-	ClientData []MdmCommandClient `json:"clientData,omitempty"`
+	ClientData []MdmCommandClientRequest `json:"clientData,omitempty"`
 	CommandData *MdmCommandRequestCommandData `json:"commandData,omitempty"`
 }
 
@@ -38,9 +41,9 @@ func NewMdmCommandRequestWithDefaults() *MdmCommandRequest {
 }
 
 // GetClientData returns the ClientData field value if set, zero value otherwise.
-func (o *MdmCommandRequest) GetClientData() []MdmCommandClient {
-	if o == nil || o.ClientData == nil {
-		var ret []MdmCommandClient
+func (o *MdmCommandRequest) GetClientData() []MdmCommandClientRequest {
+	if o == nil || IsNil(o.ClientData) {
+		var ret []MdmCommandClientRequest
 		return ret
 	}
 	return o.ClientData
@@ -48,8 +51,8 @@ func (o *MdmCommandRequest) GetClientData() []MdmCommandClient {
 
 // GetClientDataOk returns a tuple with the ClientData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MdmCommandRequest) GetClientDataOk() ([]MdmCommandClient, bool) {
-	if o == nil || o.ClientData == nil {
+func (o *MdmCommandRequest) GetClientDataOk() ([]MdmCommandClientRequest, bool) {
+	if o == nil || IsNil(o.ClientData) {
 		return nil, false
 	}
 	return o.ClientData, true
@@ -57,21 +60,21 @@ func (o *MdmCommandRequest) GetClientDataOk() ([]MdmCommandClient, bool) {
 
 // HasClientData returns a boolean if a field has been set.
 func (o *MdmCommandRequest) HasClientData() bool {
-	if o != nil && o.ClientData != nil {
+	if o != nil && !IsNil(o.ClientData) {
 		return true
 	}
 
 	return false
 }
 
-// SetClientData gets a reference to the given []MdmCommandClient and assigns it to the ClientData field.
-func (o *MdmCommandRequest) SetClientData(v []MdmCommandClient) {
+// SetClientData gets a reference to the given []MdmCommandClientRequest and assigns it to the ClientData field.
+func (o *MdmCommandRequest) SetClientData(v []MdmCommandClientRequest) {
 	o.ClientData = v
 }
 
 // GetCommandData returns the CommandData field value if set, zero value otherwise.
 func (o *MdmCommandRequest) GetCommandData() MdmCommandRequestCommandData {
-	if o == nil || o.CommandData == nil {
+	if o == nil || IsNil(o.CommandData) {
 		var ret MdmCommandRequestCommandData
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MdmCommandRequest) GetCommandData() MdmCommandRequestCommandData {
 // GetCommandDataOk returns a tuple with the CommandData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommandRequest) GetCommandDataOk() (*MdmCommandRequestCommandData, bool) {
-	if o == nil || o.CommandData == nil {
+	if o == nil || IsNil(o.CommandData) {
 		return nil, false
 	}
 	return o.CommandData, true
@@ -89,7 +92,7 @@ func (o *MdmCommandRequest) GetCommandDataOk() (*MdmCommandRequestCommandData, b
 
 // HasCommandData returns a boolean if a field has been set.
 func (o *MdmCommandRequest) HasCommandData() bool {
-	if o != nil && o.CommandData != nil {
+	if o != nil && !IsNil(o.CommandData) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MdmCommandRequest) SetCommandData(v MdmCommandRequestCommandData) {
 }
 
 func (o MdmCommandRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ClientData != nil {
-		toSerialize["clientData"] = o.ClientData
-	}
-	if o.CommandData != nil {
-		toSerialize["commandData"] = o.CommandData
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MdmCommandRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ClientData) {
+		toSerialize["clientData"] = o.ClientData
+	}
+	if !IsNil(o.CommandData) {
+		toSerialize["commandData"] = o.CommandData
+	}
+	return toSerialize, nil
 }
 
 type NullableMdmCommandRequest struct {

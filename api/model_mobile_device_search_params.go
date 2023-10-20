@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceSearchParams type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceSearchParams{}
+
 // MobileDeviceSearchParams struct for MobileDeviceSearchParams
 type MobileDeviceSearchParams struct {
 	PageNumber *int32 `json:"pageNumber,omitempty"`
@@ -48,7 +51,7 @@ func NewMobileDeviceSearchParamsWithDefaults() *MobileDeviceSearchParams {
 
 // GetPageNumber returns the PageNumber field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetPageNumber() int32 {
-	if o == nil || o.PageNumber == nil {
+	if o == nil || IsNil(o.PageNumber) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *MobileDeviceSearchParams) GetPageNumber() int32 {
 // GetPageNumberOk returns a tuple with the PageNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int32, bool) {
-	if o == nil || o.PageNumber == nil {
+	if o == nil || IsNil(o.PageNumber) {
 		return nil, false
 	}
 	return o.PageNumber, true
@@ -66,7 +69,7 @@ func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int32, bool) {
 
 // HasPageNumber returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasPageNumber() bool {
-	if o != nil && o.PageNumber != nil {
+	if o != nil && !IsNil(o.PageNumber) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *MobileDeviceSearchParams) SetPageNumber(v int32) {
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetPageSize() int32 {
-	if o == nil || o.PageSize == nil {
+	if o == nil || IsNil(o.PageSize) {
 		var ret int32
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *MobileDeviceSearchParams) GetPageSize() int32 {
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int32, bool) {
-	if o == nil || o.PageSize == nil {
+	if o == nil || IsNil(o.PageSize) {
 		return nil, false
 	}
 	return o.PageSize, true
@@ -98,7 +101,7 @@ func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int32, bool) {
 
 // HasPageSize returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasPageSize() bool {
-	if o != nil && o.PageSize != nil {
+	if o != nil && !IsNil(o.PageSize) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *MobileDeviceSearchParams) SetPageSize(v int32) {
 
 // GetIsLoadToEnd returns the IsLoadToEnd field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetIsLoadToEnd() bool {
-	if o == nil || o.IsLoadToEnd == nil {
+	if o == nil || IsNil(o.IsLoadToEnd) {
 		var ret bool
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *MobileDeviceSearchParams) GetIsLoadToEnd() bool {
 // GetIsLoadToEndOk returns a tuple with the IsLoadToEnd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetIsLoadToEndOk() (*bool, bool) {
-	if o == nil || o.IsLoadToEnd == nil {
+	if o == nil || IsNil(o.IsLoadToEnd) {
 		return nil, false
 	}
 	return o.IsLoadToEnd, true
@@ -130,7 +133,7 @@ func (o *MobileDeviceSearchParams) GetIsLoadToEndOk() (*bool, bool) {
 
 // HasIsLoadToEnd returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasIsLoadToEnd() bool {
-	if o != nil && o.IsLoadToEnd != nil {
+	if o != nil && !IsNil(o.IsLoadToEnd) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *MobileDeviceSearchParams) SetIsLoadToEnd(v bool) {
 
 // GetOrderBy returns the OrderBy field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetOrderBy() []OrderBy {
-	if o == nil || o.OrderBy == nil {
+	if o == nil || IsNil(o.OrderBy) {
 		var ret []OrderBy
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *MobileDeviceSearchParams) GetOrderBy() []OrderBy {
 // GetOrderByOk returns a tuple with the OrderBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetOrderByOk() ([]OrderBy, bool) {
-	if o == nil || o.OrderBy == nil {
+	if o == nil || IsNil(o.OrderBy) {
 		return nil, false
 	}
 	return o.OrderBy, true
@@ -162,7 +165,7 @@ func (o *MobileDeviceSearchParams) GetOrderByOk() ([]OrderBy, bool) {
 
 // HasOrderBy returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasOrderBy() bool {
-	if o != nil && o.OrderBy != nil {
+	if o != nil && !IsNil(o.OrderBy) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *MobileDeviceSearchParams) SetOrderBy(v []OrderBy) {
 
 // GetUdid returns the Udid field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetUdid() string {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *MobileDeviceSearchParams) GetUdid() string {
 // GetUdidOk returns a tuple with the Udid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetUdidOk() (*string, bool) {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		return nil, false
 	}
 	return o.Udid, true
@@ -194,7 +197,7 @@ func (o *MobileDeviceSearchParams) GetUdidOk() (*string, bool) {
 
 // HasUdid returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasUdid() bool {
-	if o != nil && o.Udid != nil {
+	if o != nil && !IsNil(o.Udid) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *MobileDeviceSearchParams) SetUdid(v string) {
 
 // GetMacAddress returns the MacAddress field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetMacAddress() string {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *MobileDeviceSearchParams) GetMacAddress() string {
 // GetMacAddressOk returns a tuple with the MacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetMacAddressOk() (*string, bool) {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		return nil, false
 	}
 	return o.MacAddress, true
@@ -226,7 +229,7 @@ func (o *MobileDeviceSearchParams) GetMacAddressOk() (*string, bool) {
 
 // HasMacAddress returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasMacAddress() bool {
-	if o != nil && o.MacAddress != nil {
+	if o != nil && !IsNil(o.MacAddress) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *MobileDeviceSearchParams) SetMacAddress(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *MobileDeviceSearchParams) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -258,7 +261,7 @@ func (o *MobileDeviceSearchParams) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *MobileDeviceSearchParams) SetName(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *MobileDeviceSearchParams) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -290,7 +293,7 @@ func (o *MobileDeviceSearchParams) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *MobileDeviceSearchParams) SetSerialNumber(v string) {
 
 // GetOsType returns the OsType field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetOsType() string {
-	if o == nil || o.OsType == nil {
+	if o == nil || IsNil(o.OsType) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *MobileDeviceSearchParams) GetOsType() string {
 // GetOsTypeOk returns a tuple with the OsType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetOsTypeOk() (*string, bool) {
-	if o == nil || o.OsType == nil {
+	if o == nil || IsNil(o.OsType) {
 		return nil, false
 	}
 	return o.OsType, true
@@ -322,7 +325,7 @@ func (o *MobileDeviceSearchParams) GetOsTypeOk() (*string, bool) {
 
 // HasOsType returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasOsType() bool {
-	if o != nil && o.OsType != nil {
+	if o != nil && !IsNil(o.OsType) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *MobileDeviceSearchParams) SetOsType(v string) {
 
 // GetIsManaged returns the IsManaged field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetIsManaged() bool {
-	if o == nil || o.IsManaged == nil {
+	if o == nil || IsNil(o.IsManaged) {
 		var ret bool
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *MobileDeviceSearchParams) GetIsManaged() bool {
 // GetIsManagedOk returns a tuple with the IsManaged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetIsManagedOk() (*bool, bool) {
-	if o == nil || o.IsManaged == nil {
+	if o == nil || IsNil(o.IsManaged) {
 		return nil, false
 	}
 	return o.IsManaged, true
@@ -354,7 +357,7 @@ func (o *MobileDeviceSearchParams) GetIsManagedOk() (*bool, bool) {
 
 // HasIsManaged returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasIsManaged() bool {
-	if o != nil && o.IsManaged != nil {
+	if o != nil && !IsNil(o.IsManaged) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *MobileDeviceSearchParams) SetIsManaged(v bool) {
 
 // GetExcludedIds returns the ExcludedIds field value if set, zero value otherwise.
 func (o *MobileDeviceSearchParams) GetExcludedIds() []int32 {
-	if o == nil || o.ExcludedIds == nil {
+	if o == nil || IsNil(o.ExcludedIds) {
 		var ret []int32
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *MobileDeviceSearchParams) GetExcludedIds() []int32 {
 // GetExcludedIdsOk returns a tuple with the ExcludedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceSearchParams) GetExcludedIdsOk() ([]int32, bool) {
-	if o == nil || o.ExcludedIds == nil {
+	if o == nil || IsNil(o.ExcludedIds) {
 		return nil, false
 	}
 	return o.ExcludedIds, true
@@ -386,7 +389,7 @@ func (o *MobileDeviceSearchParams) GetExcludedIdsOk() ([]int32, bool) {
 
 // HasExcludedIds returns a boolean if a field has been set.
 func (o *MobileDeviceSearchParams) HasExcludedIds() bool {
-	if o != nil && o.ExcludedIds != nil {
+	if o != nil && !IsNil(o.ExcludedIds) {
 		return true
 	}
 
@@ -399,41 +402,49 @@ func (o *MobileDeviceSearchParams) SetExcludedIds(v []int32) {
 }
 
 func (o MobileDeviceSearchParams) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.PageNumber != nil {
-		toSerialize["pageNumber"] = o.PageNumber
-	}
-	if o.PageSize != nil {
-		toSerialize["pageSize"] = o.PageSize
-	}
-	if o.IsLoadToEnd != nil {
-		toSerialize["isLoadToEnd"] = o.IsLoadToEnd
-	}
-	if o.OrderBy != nil {
-		toSerialize["orderBy"] = o.OrderBy
-	}
-	if o.Udid != nil {
-		toSerialize["udid"] = o.Udid
-	}
-	if o.MacAddress != nil {
-		toSerialize["macAddress"] = o.MacAddress
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.OsType != nil {
-		toSerialize["osType"] = o.OsType
-	}
-	if o.IsManaged != nil {
-		toSerialize["isManaged"] = o.IsManaged
-	}
-	if o.ExcludedIds != nil {
-		toSerialize["excludedIds"] = o.ExcludedIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceSearchParams) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PageNumber) {
+		toSerialize["pageNumber"] = o.PageNumber
+	}
+	if !IsNil(o.PageSize) {
+		toSerialize["pageSize"] = o.PageSize
+	}
+	if !IsNil(o.IsLoadToEnd) {
+		toSerialize["isLoadToEnd"] = o.IsLoadToEnd
+	}
+	if !IsNil(o.OrderBy) {
+		toSerialize["orderBy"] = o.OrderBy
+	}
+	if !IsNil(o.Udid) {
+		toSerialize["udid"] = o.Udid
+	}
+	if !IsNil(o.MacAddress) {
+		toSerialize["macAddress"] = o.MacAddress
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.OsType) {
+		toSerialize["osType"] = o.OsType
+	}
+	if !IsNil(o.IsManaged) {
+		toSerialize["isManaged"] = o.IsManaged
+	}
+	if !IsNil(o.ExcludedIds) {
+		toSerialize["excludedIds"] = o.ExcludedIds
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceSearchParams struct {

@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type SsoSettingsApi interface {
+type SsoSettingsAPI interface {
 
 	/*
 	V1SsoDependenciesGet Retrieve the list of Enrollment Customizations using SSO 
@@ -29,13 +29,13 @@ type SsoSettingsApi interface {
 	Retrieves the list of Enrollment Customizations using SSO
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoDependenciesGetRequest
+	@return SsoSettingsAPIV1SsoDependenciesGetRequest
 	*/
-	V1SsoDependenciesGet(ctx context.Context) ApiV1SsoDependenciesGetRequest
+	V1SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV1SsoDependenciesGetRequest
 
 	// V1SsoDependenciesGetExecute executes the request
 	//  @return EnrollmentCustomizationDependencies
-	V1SsoDependenciesGetExecute(r ApiV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error)
+	V1SsoDependenciesGetExecute(r SsoSettingsAPIV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error)
 
 	/*
 	V1SsoDisablePost Disable SSO 
@@ -43,12 +43,12 @@ type SsoSettingsApi interface {
 	Disable SSO
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoDisablePostRequest
+	@return SsoSettingsAPIV1SsoDisablePostRequest
 	*/
-	V1SsoDisablePost(ctx context.Context) ApiV1SsoDisablePostRequest
+	V1SsoDisablePost(ctx context.Context) SsoSettingsAPIV1SsoDisablePostRequest
 
 	// V1SsoDisablePostExecute executes the request
-	V1SsoDisablePostExecute(r ApiV1SsoDisablePostRequest) (*http.Response, error)
+	V1SsoDisablePostExecute(r SsoSettingsAPIV1SsoDisablePostRequest) (*http.Response, error)
 
 	/*
 	V1SsoGet Retrieve the current Single Sign On configuration settings 
@@ -56,13 +56,13 @@ type SsoSettingsApi interface {
 	Retrieves the current Single Sign On configuration settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoGetRequest
+	@return SsoSettingsAPIV1SsoGetRequest
 	*/
-	V1SsoGet(ctx context.Context) ApiV1SsoGetRequest
+	V1SsoGet(ctx context.Context) SsoSettingsAPIV1SsoGetRequest
 
 	// V1SsoGetExecute executes the request
 	//  @return SsoSettings
-	V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSettings, *http.Response, error)
+	V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettings, *http.Response, error)
 
 	/*
 	V1SsoHistoryGet Get SSO history object 
@@ -71,13 +71,13 @@ type SsoSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoHistoryGetRequest
+	@return SsoSettingsAPIV1SsoHistoryGetRequest
 	*/
-	V1SsoHistoryGet(ctx context.Context) ApiV1SsoHistoryGetRequest
+	V1SsoHistoryGet(ctx context.Context) SsoSettingsAPIV1SsoHistoryGetRequest
 
 	// V1SsoHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1SsoHistoryGetExecute(r SsoSettingsAPIV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1SsoHistoryPost Add SSO history object notes 
@@ -85,13 +85,13 @@ type SsoSettingsApi interface {
 	Adds SSO history object notes
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoHistoryPostRequest
+	@return SsoSettingsAPIV1SsoHistoryPostRequest
 	*/
-	V1SsoHistoryPost(ctx context.Context) ApiV1SsoHistoryPostRequest
+	V1SsoHistoryPost(ctx context.Context) SsoSettingsAPIV1SsoHistoryPostRequest
 
 	// V1SsoHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1SsoHistoryPostExecute(r SsoSettingsAPIV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1SsoMetadataDownloadGet Download the Jamf Pro SAML metadata file 
@@ -99,13 +99,13 @@ type SsoSettingsApi interface {
 	Download the Jamf Pro SAML metadata file
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoMetadataDownloadGetRequest
+	@return SsoSettingsAPIV1SsoMetadataDownloadGetRequest
 	*/
-	V1SsoMetadataDownloadGet(ctx context.Context) ApiV1SsoMetadataDownloadGetRequest
+	V1SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV1SsoMetadataDownloadGetRequest
 
 	// V1SsoMetadataDownloadGetExecute executes the request
 	//  @return *os.File
-	V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetadataDownloadGetRequest) (**os.File, *http.Response, error)
+	V1SsoMetadataDownloadGetExecute(r SsoSettingsAPIV1SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1SsoPut Updates the current Single Sign On configuration settings 
@@ -113,13 +113,13 @@ type SsoSettingsApi interface {
 	Updates the current Single Sign On configuration settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoPutRequest
+	@return SsoSettingsAPIV1SsoPutRequest
 	*/
-	V1SsoPut(ctx context.Context) ApiV1SsoPutRequest
+	V1SsoPut(ctx context.Context) SsoSettingsAPIV1SsoPutRequest
 
 	// V1SsoPutExecute executes the request
 	//  @return SsoSettings
-	V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSettings, *http.Response, error)
+	V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettings, *http.Response, error)
 
 	/*
 	V1SsoValidatePost Endpoint for validation of a saml metadata url 
@@ -127,23 +127,23 @@ type SsoSettingsApi interface {
 	Validation of a content available under provided metadata URL.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoValidatePostRequest
+	@return SsoSettingsAPIV1SsoValidatePostRequest
 	*/
-	V1SsoValidatePost(ctx context.Context) ApiV1SsoValidatePostRequest
+	V1SsoValidatePost(ctx context.Context) SsoSettingsAPIV1SsoValidatePostRequest
 
 	// V1SsoValidatePostExecute executes the request
-	V1SsoValidatePostExecute(r ApiV1SsoValidatePostRequest) (*http.Response, error)
+	V1SsoValidatePostExecute(r SsoSettingsAPIV1SsoValidatePostRequest) (*http.Response, error)
 }
 
-// SsoSettingsApiService SsoSettingsApi service
-type SsoSettingsApiService service
+// SsoSettingsAPIService SsoSettingsAPI service
+type SsoSettingsAPIService service
 
-type ApiV1SsoDependenciesGetRequest struct {
+type SsoSettingsAPIV1SsoDependenciesGetRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 }
 
-func (r ApiV1SsoDependenciesGetRequest) Execute() (*EnrollmentCustomizationDependencies, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoDependenciesGetRequest) Execute() (*EnrollmentCustomizationDependencies, *http.Response, error) {
 	return r.ApiService.V1SsoDependenciesGetExecute(r)
 }
 
@@ -153,10 +153,10 @@ V1SsoDependenciesGet Retrieve the list of Enrollment Customizations using SSO
 Retrieves the list of Enrollment Customizations using SSO
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoDependenciesGetRequest
+ @return SsoSettingsAPIV1SsoDependenciesGetRequest
 */
-func (a *SsoSettingsApiService) V1SsoDependenciesGet(ctx context.Context) ApiV1SsoDependenciesGetRequest {
-	return ApiV1SsoDependenciesGetRequest{
+func (a *SsoSettingsAPIService) V1SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV1SsoDependenciesGetRequest {
+	return SsoSettingsAPIV1SsoDependenciesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -164,7 +164,7 @@ func (a *SsoSettingsApiService) V1SsoDependenciesGet(ctx context.Context) ApiV1S
 
 // Execute executes the request
 //  @return EnrollmentCustomizationDependencies
-func (a *SsoSettingsApiService) V1SsoDependenciesGetExecute(r ApiV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoDependenciesGetExecute(r SsoSettingsAPIV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -172,7 +172,7 @@ func (a *SsoSettingsApiService) V1SsoDependenciesGetExecute(r ApiV1SsoDependenci
 		localVarReturnValue  *EnrollmentCustomizationDependencies
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoDependenciesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoDependenciesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -210,9 +210,9 @@ func (a *SsoSettingsApiService) V1SsoDependenciesGetExecute(r ApiV1SsoDependenci
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -237,12 +237,12 @@ func (a *SsoSettingsApiService) V1SsoDependenciesGetExecute(r ApiV1SsoDependenci
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoDisablePostRequest struct {
+type SsoSettingsAPIV1SsoDisablePostRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 }
 
-func (r ApiV1SsoDisablePostRequest) Execute() (*http.Response, error) {
+func (r SsoSettingsAPIV1SsoDisablePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SsoDisablePostExecute(r)
 }
 
@@ -252,24 +252,24 @@ V1SsoDisablePost Disable SSO
 Disable SSO
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoDisablePostRequest
+ @return SsoSettingsAPIV1SsoDisablePostRequest
 */
-func (a *SsoSettingsApiService) V1SsoDisablePost(ctx context.Context) ApiV1SsoDisablePostRequest {
-	return ApiV1SsoDisablePostRequest{
+func (a *SsoSettingsAPIService) V1SsoDisablePost(ctx context.Context) SsoSettingsAPIV1SsoDisablePostRequest {
+	return SsoSettingsAPIV1SsoDisablePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SsoSettingsApiService) V1SsoDisablePostExecute(r ApiV1SsoDisablePostRequest) (*http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoDisablePostExecute(r SsoSettingsAPIV1SsoDisablePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoDisablePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoDisablePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -307,9 +307,9 @@ func (a *SsoSettingsApiService) V1SsoDisablePostExecute(r ApiV1SsoDisablePostReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -325,12 +325,12 @@ func (a *SsoSettingsApiService) V1SsoDisablePostExecute(r ApiV1SsoDisablePostReq
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SsoGetRequest struct {
+type SsoSettingsAPIV1SsoGetRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 }
 
-func (r ApiV1SsoGetRequest) Execute() (*SsoSettings, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoGetRequest) Execute() (*SsoSettings, *http.Response, error) {
 	return r.ApiService.V1SsoGetExecute(r)
 }
 
@@ -340,10 +340,10 @@ V1SsoGet Retrieve the current Single Sign On configuration settings
 Retrieves the current Single Sign On configuration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoGetRequest
+ @return SsoSettingsAPIV1SsoGetRequest
 */
-func (a *SsoSettingsApiService) V1SsoGet(ctx context.Context) ApiV1SsoGetRequest {
-	return ApiV1SsoGetRequest{
+func (a *SsoSettingsAPIService) V1SsoGet(ctx context.Context) SsoSettingsAPIV1SsoGetRequest {
+	return SsoSettingsAPIV1SsoGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -351,7 +351,7 @@ func (a *SsoSettingsApiService) V1SsoGet(ctx context.Context) ApiV1SsoGetRequest
 
 // Execute executes the request
 //  @return SsoSettings
-func (a *SsoSettingsApiService) V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSettings, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -359,7 +359,7 @@ func (a *SsoSettingsApiService) V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSetti
 		localVarReturnValue  *SsoSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -397,9 +397,9 @@ func (a *SsoSettingsApiService) V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSetti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -424,38 +424,38 @@ func (a *SsoSettingsApiService) V1SsoGetExecute(r ApiV1SsoGetRequest) (*SsoSetti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoHistoryGetRequest struct {
+type SsoSettingsAPIV1SsoHistoryGetRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1SsoHistoryGetRequest) Page(page int32) ApiV1SsoHistoryGetRequest {
+func (r SsoSettingsAPIV1SsoHistoryGetRequest) Page(page int32) SsoSettingsAPIV1SsoHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1SsoHistoryGetRequest) PageSize(pageSize int32) ApiV1SsoHistoryGetRequest {
+func (r SsoSettingsAPIV1SsoHistoryGetRequest) PageSize(pageSize int32) SsoSettingsAPIV1SsoHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1SsoHistoryGetRequest) Sort(sort []string) ApiV1SsoHistoryGetRequest {
+func (r SsoSettingsAPIV1SsoHistoryGetRequest) Sort(sort []string) SsoSettingsAPIV1SsoHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1SsoHistoryGetRequest) Filter(filter string) ApiV1SsoHistoryGetRequest {
+func (r SsoSettingsAPIV1SsoHistoryGetRequest) Filter(filter string) SsoSettingsAPIV1SsoHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1SsoHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1SsoHistoryGetExecute(r)
 }
 
@@ -466,10 +466,10 @@ Gets SSO history object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoHistoryGetRequest
+ @return SsoSettingsAPIV1SsoHistoryGetRequest
 */
-func (a *SsoSettingsApiService) V1SsoHistoryGet(ctx context.Context) ApiV1SsoHistoryGetRequest {
-	return ApiV1SsoHistoryGetRequest{
+func (a *SsoSettingsAPIService) V1SsoHistoryGet(ctx context.Context) SsoSettingsAPIV1SsoHistoryGetRequest {
+	return SsoSettingsAPIV1SsoHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -477,7 +477,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryGet(ctx context.Context) ApiV1SsoHis
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoHistoryGetExecute(r SsoSettingsAPIV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -485,7 +485,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetReque
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -497,24 +497,36 @@ func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetReque
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:desc"]
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -543,9 +555,9 @@ func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -570,19 +582,19 @@ func (a *SsoSettingsApiService) V1SsoHistoryGetExecute(r ApiV1SsoHistoryGetReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoHistoryPostRequest struct {
+type SsoSettingsAPIV1SsoHistoryPostRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1SsoHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1SsoHistoryPostRequest {
+func (r SsoSettingsAPIV1SsoHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) SsoSettingsAPIV1SsoHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1SsoHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1SsoHistoryPostExecute(r)
 }
 
@@ -592,10 +604,10 @@ V1SsoHistoryPost Add SSO history object notes
 Adds SSO history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoHistoryPostRequest
+ @return SsoSettingsAPIV1SsoHistoryPostRequest
 */
-func (a *SsoSettingsApiService) V1SsoHistoryPost(ctx context.Context) ApiV1SsoHistoryPostRequest {
-	return ApiV1SsoHistoryPostRequest{
+func (a *SsoSettingsAPIService) V1SsoHistoryPost(ctx context.Context) SsoSettingsAPIV1SsoHistoryPostRequest {
+	return SsoSettingsAPIV1SsoHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -603,7 +615,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryPost(ctx context.Context) ApiV1SsoHi
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoHistoryPostExecute(r SsoSettingsAPIV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -611,7 +623,7 @@ func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostReq
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -654,9 +666,9 @@ func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -673,7 +685,8 @@ func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -690,12 +703,12 @@ func (a *SsoSettingsApiService) V1SsoHistoryPostExecute(r ApiV1SsoHistoryPostReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoMetadataDownloadGetRequest struct {
+type SsoSettingsAPIV1SsoMetadataDownloadGetRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 }
 
-func (r ApiV1SsoMetadataDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoMetadataDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1SsoMetadataDownloadGetExecute(r)
 }
 
@@ -705,10 +718,10 @@ V1SsoMetadataDownloadGet Download the Jamf Pro SAML metadata file
 Download the Jamf Pro SAML metadata file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoMetadataDownloadGetRequest
+ @return SsoSettingsAPIV1SsoMetadataDownloadGetRequest
 */
-func (a *SsoSettingsApiService) V1SsoMetadataDownloadGet(ctx context.Context) ApiV1SsoMetadataDownloadGetRequest {
-	return ApiV1SsoMetadataDownloadGetRequest{
+func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV1SsoMetadataDownloadGetRequest {
+	return SsoSettingsAPIV1SsoMetadataDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -716,15 +729,15 @@ func (a *SsoSettingsApiService) V1SsoMetadataDownloadGet(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return *os.File
-func (a *SsoSettingsApiService) V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetadataDownloadGetRequest) (**os.File, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGetExecute(r SsoSettingsAPIV1SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoMetadataDownloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoMetadataDownloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -762,9 +775,9 @@ func (a *SsoSettingsApiService) V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetada
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -789,18 +802,18 @@ func (a *SsoSettingsApiService) V1SsoMetadataDownloadGetExecute(r ApiV1SsoMetada
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoPutRequest struct {
+type SsoSettingsAPIV1SsoPutRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 	ssoSettings *SsoSettings
 }
 
-func (r ApiV1SsoPutRequest) SsoSettings(ssoSettings SsoSettings) ApiV1SsoPutRequest {
+func (r SsoSettingsAPIV1SsoPutRequest) SsoSettings(ssoSettings SsoSettings) SsoSettingsAPIV1SsoPutRequest {
 	r.ssoSettings = &ssoSettings
 	return r
 }
 
-func (r ApiV1SsoPutRequest) Execute() (*SsoSettings, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoPutRequest) Execute() (*SsoSettings, *http.Response, error) {
 	return r.ApiService.V1SsoPutExecute(r)
 }
 
@@ -810,10 +823,10 @@ V1SsoPut Updates the current Single Sign On configuration settings
 Updates the current Single Sign On configuration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoPutRequest
+ @return SsoSettingsAPIV1SsoPutRequest
 */
-func (a *SsoSettingsApiService) V1SsoPut(ctx context.Context) ApiV1SsoPutRequest {
-	return ApiV1SsoPutRequest{
+func (a *SsoSettingsAPIService) V1SsoPut(ctx context.Context) SsoSettingsAPIV1SsoPutRequest {
+	return SsoSettingsAPIV1SsoPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -821,7 +834,7 @@ func (a *SsoSettingsApiService) V1SsoPut(ctx context.Context) ApiV1SsoPutRequest
 
 // Execute executes the request
 //  @return SsoSettings
-func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSettings, *http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -829,7 +842,7 @@ func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSetti
 		localVarReturnValue  *SsoSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -872,9 +885,9 @@ func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSetti
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -891,7 +904,8 @@ func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSetti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -908,19 +922,19 @@ func (a *SsoSettingsApiService) V1SsoPutExecute(r ApiV1SsoPutRequest) (*SsoSetti
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoValidatePostRequest struct {
+type SsoSettingsAPIV1SsoValidatePostRequest struct {
 	ctx context.Context
-	ApiService SsoSettingsApi
+	ApiService SsoSettingsAPI
 	ssoMetadataUrl *SsoMetadataUrl
 }
 
 // url to validate
-func (r ApiV1SsoValidatePostRequest) SsoMetadataUrl(ssoMetadataUrl SsoMetadataUrl) ApiV1SsoValidatePostRequest {
+func (r SsoSettingsAPIV1SsoValidatePostRequest) SsoMetadataUrl(ssoMetadataUrl SsoMetadataUrl) SsoSettingsAPIV1SsoValidatePostRequest {
 	r.ssoMetadataUrl = &ssoMetadataUrl
 	return r
 }
 
-func (r ApiV1SsoValidatePostRequest) Execute() (*http.Response, error) {
+func (r SsoSettingsAPIV1SsoValidatePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SsoValidatePostExecute(r)
 }
 
@@ -930,24 +944,24 @@ V1SsoValidatePost Endpoint for validation of a saml metadata url
 Validation of a content available under provided metadata URL.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoValidatePostRequest
+ @return SsoSettingsAPIV1SsoValidatePostRequest
 */
-func (a *SsoSettingsApiService) V1SsoValidatePost(ctx context.Context) ApiV1SsoValidatePostRequest {
-	return ApiV1SsoValidatePostRequest{
+func (a *SsoSettingsAPIService) V1SsoValidatePost(ctx context.Context) SsoSettingsAPIV1SsoValidatePostRequest {
+	return SsoSettingsAPIV1SsoValidatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SsoSettingsApiService) V1SsoValidatePostExecute(r ApiV1SsoValidatePostRequest) (*http.Response, error) {
+func (a *SsoSettingsAPIService) V1SsoValidatePostExecute(r SsoSettingsAPIV1SsoValidatePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsApiService.V1SsoValidatePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoValidatePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -990,9 +1004,9 @@ func (a *SsoSettingsApiService) V1SsoValidatePostExecute(r ApiV1SsoValidatePostR
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

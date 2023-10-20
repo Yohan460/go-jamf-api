@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountPreferences type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountPreferences{}
+
 // AccountPreferences struct for AccountPreferences
 type AccountPreferences struct {
 	Language *string `json:"language,omitempty"`
@@ -42,7 +45,7 @@ func NewAccountPreferencesWithDefaults() *AccountPreferences {
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *AccountPreferences) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *AccountPreferences) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountPreferences) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -60,7 +63,7 @@ func (o *AccountPreferences) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *AccountPreferences) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *AccountPreferences) SetLanguage(v string) {
 
 // GetDateFormat returns the DateFormat field value if set, zero value otherwise.
 func (o *AccountPreferences) GetDateFormat() string {
-	if o == nil || o.DateFormat == nil {
+	if o == nil || IsNil(o.DateFormat) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *AccountPreferences) GetDateFormat() string {
 // GetDateFormatOk returns a tuple with the DateFormat field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountPreferences) GetDateFormatOk() (*string, bool) {
-	if o == nil || o.DateFormat == nil {
+	if o == nil || IsNil(o.DateFormat) {
 		return nil, false
 	}
 	return o.DateFormat, true
@@ -92,7 +95,7 @@ func (o *AccountPreferences) GetDateFormatOk() (*string, bool) {
 
 // HasDateFormat returns a boolean if a field has been set.
 func (o *AccountPreferences) HasDateFormat() bool {
-	if o != nil && o.DateFormat != nil {
+	if o != nil && !IsNil(o.DateFormat) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *AccountPreferences) SetDateFormat(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *AccountPreferences) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *AccountPreferences) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountPreferences) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -124,7 +127,7 @@ func (o *AccountPreferences) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *AccountPreferences) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *AccountPreferences) SetRegion(v string) {
 
 // GetTimezone returns the Timezone field value if set, zero value otherwise.
 func (o *AccountPreferences) GetTimezone() string {
-	if o == nil || o.Timezone == nil {
+	if o == nil || IsNil(o.Timezone) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *AccountPreferences) GetTimezone() string {
 // GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountPreferences) GetTimezoneOk() (*string, bool) {
-	if o == nil || o.Timezone == nil {
+	if o == nil || IsNil(o.Timezone) {
 		return nil, false
 	}
 	return o.Timezone, true
@@ -156,7 +159,7 @@ func (o *AccountPreferences) GetTimezoneOk() (*string, bool) {
 
 // HasTimezone returns a boolean if a field has been set.
 func (o *AccountPreferences) HasTimezone() bool {
-	if o != nil && o.Timezone != nil {
+	if o != nil && !IsNil(o.Timezone) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *AccountPreferences) SetTimezone(v string) {
 
 // GetIsDisableRelativeDates returns the IsDisableRelativeDates field value if set, zero value otherwise.
 func (o *AccountPreferences) GetIsDisableRelativeDates() bool {
-	if o == nil || o.IsDisableRelativeDates == nil {
+	if o == nil || IsNil(o.IsDisableRelativeDates) {
 		var ret bool
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *AccountPreferences) GetIsDisableRelativeDates() bool {
 // GetIsDisableRelativeDatesOk returns a tuple with the IsDisableRelativeDates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountPreferences) GetIsDisableRelativeDatesOk() (*bool, bool) {
-	if o == nil || o.IsDisableRelativeDates == nil {
+	if o == nil || IsNil(o.IsDisableRelativeDates) {
 		return nil, false
 	}
 	return o.IsDisableRelativeDates, true
@@ -188,7 +191,7 @@ func (o *AccountPreferences) GetIsDisableRelativeDatesOk() (*bool, bool) {
 
 // HasIsDisableRelativeDates returns a boolean if a field has been set.
 func (o *AccountPreferences) HasIsDisableRelativeDates() bool {
-	if o != nil && o.IsDisableRelativeDates != nil {
+	if o != nil && !IsNil(o.IsDisableRelativeDates) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *AccountPreferences) SetIsDisableRelativeDates(v bool) {
 }
 
 func (o AccountPreferences) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Language != nil {
-		toSerialize["language"] = o.Language
-	}
-	if o.DateFormat != nil {
-		toSerialize["dateFormat"] = o.DateFormat
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.Timezone != nil {
-		toSerialize["timezone"] = o.Timezone
-	}
-	if o.IsDisableRelativeDates != nil {
-		toSerialize["isDisableRelativeDates"] = o.IsDisableRelativeDates
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountPreferences) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Language) {
+		toSerialize["language"] = o.Language
+	}
+	if !IsNil(o.DateFormat) {
+		toSerialize["dateFormat"] = o.DateFormat
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.Timezone) {
+		toSerialize["timezone"] = o.Timezone
+	}
+	if !IsNil(o.IsDisableRelativeDates) {
+		toSerialize["isDisableRelativeDates"] = o.IsDisableRelativeDates
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountPreferences struct {

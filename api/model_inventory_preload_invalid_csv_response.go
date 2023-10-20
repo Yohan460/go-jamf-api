@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadInvalidCsvResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadInvalidCsvResponse{}
+
 // InventoryPreloadInvalidCsvResponse struct for InventoryPreloadInvalidCsvResponse
 type InventoryPreloadInvalidCsvResponse struct {
 	HttpsStatus *int32 `json:"httpsStatus,omitempty"`
@@ -39,7 +42,7 @@ func NewInventoryPreloadInvalidCsvResponseWithDefaults() *InventoryPreloadInvali
 
 // GetHttpsStatus returns the HttpsStatus field value if set, zero value otherwise.
 func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatus() int32 {
-	if o == nil || o.HttpsStatus == nil {
+	if o == nil || IsNil(o.HttpsStatus) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatus() int32 {
 // GetHttpsStatusOk returns a tuple with the HttpsStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatusOk() (*int32, bool) {
-	if o == nil || o.HttpsStatus == nil {
+	if o == nil || IsNil(o.HttpsStatus) {
 		return nil, false
 	}
 	return o.HttpsStatus, true
@@ -57,7 +60,7 @@ func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatusOk() (*int32, bool) {
 
 // HasHttpsStatus returns a boolean if a field has been set.
 func (o *InventoryPreloadInvalidCsvResponse) HasHttpsStatus() bool {
-	if o != nil && o.HttpsStatus != nil {
+	if o != nil && !IsNil(o.HttpsStatus) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *InventoryPreloadInvalidCsvResponse) SetHttpsStatus(v int32) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *InventoryPreloadInvalidCsvResponse) GetErrors() []InventoryPreloadCsvError {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		var ret []InventoryPreloadCsvError
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *InventoryPreloadInvalidCsvResponse) GetErrors() []InventoryPreloadCsvEr
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadInvalidCsvResponse) GetErrorsOk() ([]InventoryPreloadCsvError, bool) {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -89,7 +92,7 @@ func (o *InventoryPreloadInvalidCsvResponse) GetErrorsOk() ([]InventoryPreloadCs
 
 // HasErrors returns a boolean if a field has been set.
 func (o *InventoryPreloadInvalidCsvResponse) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *InventoryPreloadInvalidCsvResponse) SetErrors(v []InventoryPreloadCsvEr
 }
 
 func (o InventoryPreloadInvalidCsvResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.HttpsStatus != nil {
-		toSerialize["httpsStatus"] = o.HttpsStatus
-	}
-	if o.Errors != nil {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadInvalidCsvResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HttpsStatus) {
+		toSerialize["httpsStatus"] = o.HttpsStatus
+	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadInvalidCsvResponse struct {

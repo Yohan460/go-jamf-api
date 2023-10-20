@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserTestSearchRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserTestSearchRequest{}
+
 // UserTestSearchRequest struct for UserTestSearchRequest
 type UserTestSearchRequest struct {
 	Username string `json:"username"`
@@ -62,11 +65,17 @@ func (o *UserTestSearchRequest) SetUsername(v string) {
 }
 
 func (o UserTestSearchRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["username"] = o.Username
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserTestSearchRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["username"] = o.Username
+	return toSerialize, nil
 }
 
 type NullableUserTestSearchRequest struct {

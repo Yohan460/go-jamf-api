@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeacherSettingsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeacherSettingsResponse{}
+
 // TeacherSettingsResponse struct for TeacherSettingsResponse
 type TeacherSettingsResponse struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
@@ -22,7 +25,7 @@ type TeacherSettingsResponse struct {
 	MaxRestrictionLengthSeconds *int32 `json:"maxRestrictionLengthSeconds,omitempty"`
 	DisplayNameType *string `json:"displayNameType,omitempty"`
 	Features *TeacherFeatures `json:"features,omitempty"`
-	SafelistedApps []SafelistedAppsInner `json:"safelistedApps,omitempty"`
+	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
 }
 
 // NewTeacherSettingsResponse instantiates a new TeacherSettingsResponse object
@@ -44,7 +47,7 @@ func NewTeacherSettingsResponseWithDefaults() *TeacherSettingsResponse {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetIsEnabled() bool {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *TeacherSettingsResponse) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		return nil, false
 	}
 	return o.IsEnabled, true
@@ -62,7 +65,7 @@ func (o *TeacherSettingsResponse) GetIsEnabledOk() (*bool, bool) {
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasIsEnabled() bool {
-	if o != nil && o.IsEnabled != nil {
+	if o != nil && !IsNil(o.IsEnabled) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *TeacherSettingsResponse) SetIsEnabled(v bool) {
 
 // GetTimezoneId returns the TimezoneId field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetTimezoneId() string {
-	if o == nil || o.TimezoneId == nil {
+	if o == nil || IsNil(o.TimezoneId) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *TeacherSettingsResponse) GetTimezoneId() string {
 // GetTimezoneIdOk returns a tuple with the TimezoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetTimezoneIdOk() (*string, bool) {
-	if o == nil || o.TimezoneId == nil {
+	if o == nil || IsNil(o.TimezoneId) {
 		return nil, false
 	}
 	return o.TimezoneId, true
@@ -94,7 +97,7 @@ func (o *TeacherSettingsResponse) GetTimezoneIdOk() (*string, bool) {
 
 // HasTimezoneId returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasTimezoneId() bool {
-	if o != nil && o.TimezoneId != nil {
+	if o != nil && !IsNil(o.TimezoneId) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *TeacherSettingsResponse) SetTimezoneId(v string) {
 
 // GetAutoClear returns the AutoClear field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetAutoClear() string {
-	if o == nil || o.AutoClear == nil {
+	if o == nil || IsNil(o.AutoClear) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *TeacherSettingsResponse) GetAutoClear() string {
 // GetAutoClearOk returns a tuple with the AutoClear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetAutoClearOk() (*string, bool) {
-	if o == nil || o.AutoClear == nil {
+	if o == nil || IsNil(o.AutoClear) {
 		return nil, false
 	}
 	return o.AutoClear, true
@@ -126,7 +129,7 @@ func (o *TeacherSettingsResponse) GetAutoClearOk() (*string, bool) {
 
 // HasAutoClear returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasAutoClear() bool {
-	if o != nil && o.AutoClear != nil {
+	if o != nil && !IsNil(o.AutoClear) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *TeacherSettingsResponse) SetAutoClear(v string) {
 
 // GetMaxRestrictionLengthSeconds returns the MaxRestrictionLengthSeconds field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSeconds() int32 {
-	if o == nil || o.MaxRestrictionLengthSeconds == nil {
+	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		var ret int32
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSeconds() int32 {
 // GetMaxRestrictionLengthSecondsOk returns a tuple with the MaxRestrictionLengthSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSecondsOk() (*int32, bool) {
-	if o == nil || o.MaxRestrictionLengthSeconds == nil {
+	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		return nil, false
 	}
 	return o.MaxRestrictionLengthSeconds, true
@@ -158,7 +161,7 @@ func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSecondsOk() (*int32, bo
 
 // HasMaxRestrictionLengthSeconds returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasMaxRestrictionLengthSeconds() bool {
-	if o != nil && o.MaxRestrictionLengthSeconds != nil {
+	if o != nil && !IsNil(o.MaxRestrictionLengthSeconds) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *TeacherSettingsResponse) SetMaxRestrictionLengthSeconds(v int32) {
 
 // GetDisplayNameType returns the DisplayNameType field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetDisplayNameType() string {
-	if o == nil || o.DisplayNameType == nil {
+	if o == nil || IsNil(o.DisplayNameType) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *TeacherSettingsResponse) GetDisplayNameType() string {
 // GetDisplayNameTypeOk returns a tuple with the DisplayNameType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetDisplayNameTypeOk() (*string, bool) {
-	if o == nil || o.DisplayNameType == nil {
+	if o == nil || IsNil(o.DisplayNameType) {
 		return nil, false
 	}
 	return o.DisplayNameType, true
@@ -190,7 +193,7 @@ func (o *TeacherSettingsResponse) GetDisplayNameTypeOk() (*string, bool) {
 
 // HasDisplayNameType returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasDisplayNameType() bool {
-	if o != nil && o.DisplayNameType != nil {
+	if o != nil && !IsNil(o.DisplayNameType) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *TeacherSettingsResponse) SetDisplayNameType(v string) {
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *TeacherSettingsResponse) GetFeatures() TeacherFeatures {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		var ret TeacherFeatures
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *TeacherSettingsResponse) GetFeatures() TeacherFeatures {
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherSettingsResponse) GetFeaturesOk() (*TeacherFeatures, bool) {
-	if o == nil || o.Features == nil {
+	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
 	return o.Features, true
@@ -222,7 +225,7 @@ func (o *TeacherSettingsResponse) GetFeaturesOk() (*TeacherFeatures, bool) {
 
 // HasFeatures returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasFeatures() bool {
-	if o != nil && o.Features != nil {
+	if o != nil && !IsNil(o.Features) {
 		return true
 	}
 
@@ -235,9 +238,9 @@ func (o *TeacherSettingsResponse) SetFeatures(v TeacherFeatures) {
 }
 
 // GetSafelistedApps returns the SafelistedApps field value if set, zero value otherwise.
-func (o *TeacherSettingsResponse) GetSafelistedApps() []SafelistedAppsInner {
-	if o == nil || o.SafelistedApps == nil {
-		var ret []SafelistedAppsInner
+func (o *TeacherSettingsResponse) GetSafelistedApps() []SafelistedApp {
+	if o == nil || IsNil(o.SafelistedApps) {
+		var ret []SafelistedApp
 		return ret
 	}
 	return o.SafelistedApps
@@ -245,8 +248,8 @@ func (o *TeacherSettingsResponse) GetSafelistedApps() []SafelistedAppsInner {
 
 // GetSafelistedAppsOk returns a tuple with the SafelistedApps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeacherSettingsResponse) GetSafelistedAppsOk() ([]SafelistedAppsInner, bool) {
-	if o == nil || o.SafelistedApps == nil {
+func (o *TeacherSettingsResponse) GetSafelistedAppsOk() ([]SafelistedApp, bool) {
+	if o == nil || IsNil(o.SafelistedApps) {
 		return nil, false
 	}
 	return o.SafelistedApps, true
@@ -254,42 +257,50 @@ func (o *TeacherSettingsResponse) GetSafelistedAppsOk() ([]SafelistedAppsInner, 
 
 // HasSafelistedApps returns a boolean if a field has been set.
 func (o *TeacherSettingsResponse) HasSafelistedApps() bool {
-	if o != nil && o.SafelistedApps != nil {
+	if o != nil && !IsNil(o.SafelistedApps) {
 		return true
 	}
 
 	return false
 }
 
-// SetSafelistedApps gets a reference to the given []SafelistedAppsInner and assigns it to the SafelistedApps field.
-func (o *TeacherSettingsResponse) SetSafelistedApps(v []SafelistedAppsInner) {
+// SetSafelistedApps gets a reference to the given []SafelistedApp and assigns it to the SafelistedApps field.
+func (o *TeacherSettingsResponse) SetSafelistedApps(v []SafelistedApp) {
 	o.SafelistedApps = v
 }
 
 func (o TeacherSettingsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsEnabled != nil {
-		toSerialize["isEnabled"] = o.IsEnabled
-	}
-	if o.TimezoneId != nil {
-		toSerialize["timezoneId"] = o.TimezoneId
-	}
-	if o.AutoClear != nil {
-		toSerialize["autoClear"] = o.AutoClear
-	}
-	if o.MaxRestrictionLengthSeconds != nil {
-		toSerialize["maxRestrictionLengthSeconds"] = o.MaxRestrictionLengthSeconds
-	}
-	if o.DisplayNameType != nil {
-		toSerialize["displayNameType"] = o.DisplayNameType
-	}
-	if o.Features != nil {
-		toSerialize["features"] = o.Features
-	}
-	if o.SafelistedApps != nil {
-		toSerialize["safelistedApps"] = o.SafelistedApps
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TeacherSettingsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsEnabled) {
+		toSerialize["isEnabled"] = o.IsEnabled
+	}
+	if !IsNil(o.TimezoneId) {
+		toSerialize["timezoneId"] = o.TimezoneId
+	}
+	if !IsNil(o.AutoClear) {
+		toSerialize["autoClear"] = o.AutoClear
+	}
+	if !IsNil(o.MaxRestrictionLengthSeconds) {
+		toSerialize["maxRestrictionLengthSeconds"] = o.MaxRestrictionLengthSeconds
+	}
+	if !IsNil(o.DisplayNameType) {
+		toSerialize["displayNameType"] = o.DisplayNameType
+	}
+	if !IsNil(o.Features) {
+		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.SafelistedApps) {
+		toSerialize["safelistedApps"] = o.SafelistedApps
+	}
+	return toSerialize, nil
 }
 
 type NullableTeacherSettingsResponse struct {

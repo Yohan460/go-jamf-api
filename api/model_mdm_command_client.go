@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MdmCommandClient type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MdmCommandClient{}
+
 // MdmCommandClient struct for MdmCommandClient
 type MdmCommandClient struct {
 	ManagementId *string `json:"managementId,omitempty"`
@@ -39,7 +42,7 @@ func NewMdmCommandClientWithDefaults() *MdmCommandClient {
 
 // GetManagementId returns the ManagementId field value if set, zero value otherwise.
 func (o *MdmCommandClient) GetManagementId() string {
-	if o == nil || o.ManagementId == nil {
+	if o == nil || IsNil(o.ManagementId) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MdmCommandClient) GetManagementId() string {
 // GetManagementIdOk returns a tuple with the ManagementId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommandClient) GetManagementIdOk() (*string, bool) {
-	if o == nil || o.ManagementId == nil {
+	if o == nil || IsNil(o.ManagementId) {
 		return nil, false
 	}
 	return o.ManagementId, true
@@ -57,7 +60,7 @@ func (o *MdmCommandClient) GetManagementIdOk() (*string, bool) {
 
 // HasManagementId returns a boolean if a field has been set.
 func (o *MdmCommandClient) HasManagementId() bool {
-	if o != nil && o.ManagementId != nil {
+	if o != nil && !IsNil(o.ManagementId) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MdmCommandClient) SetManagementId(v string) {
 
 // GetClientType returns the ClientType field value if set, zero value otherwise.
 func (o *MdmCommandClient) GetClientType() MdmClientType {
-	if o == nil || o.ClientType == nil {
+	if o == nil || IsNil(o.ClientType) {
 		var ret MdmClientType
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MdmCommandClient) GetClientType() MdmClientType {
 // GetClientTypeOk returns a tuple with the ClientType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MdmCommandClient) GetClientTypeOk() (*MdmClientType, bool) {
-	if o == nil || o.ClientType == nil {
+	if o == nil || IsNil(o.ClientType) {
 		return nil, false
 	}
 	return o.ClientType, true
@@ -89,7 +92,7 @@ func (o *MdmCommandClient) GetClientTypeOk() (*MdmClientType, bool) {
 
 // HasClientType returns a boolean if a field has been set.
 func (o *MdmCommandClient) HasClientType() bool {
-	if o != nil && o.ClientType != nil {
+	if o != nil && !IsNil(o.ClientType) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MdmCommandClient) SetClientType(v MdmClientType) {
 }
 
 func (o MdmCommandClient) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ManagementId != nil {
-		toSerialize["managementId"] = o.ManagementId
-	}
-	if o.ClientType != nil {
-		toSerialize["clientType"] = o.ClientType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MdmCommandClient) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ManagementId) {
+		toSerialize["managementId"] = o.ManagementId
+	}
+	if !IsNil(o.ClientType) {
+		toSerialize["clientType"] = o.ClientType
+	}
+	return toSerialize, nil
 }
 
 type NullableMdmCommandClient struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the WebLink type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WebLink{}
+
 // WebLink struct for WebLink
 type WebLink struct {
 	Name *string `json:"name,omitempty"`
@@ -39,7 +42,7 @@ func NewWebLinkWithDefaults() *WebLink {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *WebLink) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *WebLink) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WebLink) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -57,7 +60,7 @@ func (o *WebLink) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *WebLink) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *WebLink) SetName(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *WebLink) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *WebLink) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WebLink) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -89,7 +92,7 @@ func (o *WebLink) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *WebLink) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *WebLink) SetUrl(v string) {
 }
 
 func (o WebLink) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o WebLink) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	return toSerialize, nil
 }
 
 type NullableWebLink struct {

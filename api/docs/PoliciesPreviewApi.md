@@ -1,13 +1,13 @@
-# \PoliciesPreviewApi
+# \PoliciesPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SettingsObjPolicyPropertiesGet**](PoliciesPreviewApi.md#SettingsObjPolicyPropertiesGet) | **Get** /settings/obj/policyProperties | Get Policy Properties object 
-[**SettingsObjPolicyPropertiesPut**](PoliciesPreviewApi.md#SettingsObjPolicyPropertiesPut) | **Put** /settings/obj/policyProperties | Update Policy Properties object 
-[**V1PolicyPropertiesGet**](PoliciesPreviewApi.md#V1PolicyPropertiesGet) | **Get** /v1/policy-properties | Get Policy Properties object 
-[**V1PolicyPropertiesPut**](PoliciesPreviewApi.md#V1PolicyPropertiesPut) | **Put** /v1/policy-properties | Update Policy Properties object 
+[**SettingsObjPolicyPropertiesGet**](PoliciesPreviewAPI.md#SettingsObjPolicyPropertiesGet) | **Get** /settings/obj/policyProperties | Get Policy Properties object 
+[**SettingsObjPolicyPropertiesPut**](PoliciesPreviewAPI.md#SettingsObjPolicyPropertiesPut) | **Put** /settings/obj/policyProperties | Update Policy Properties object 
+[**V1PolicyPropertiesGet**](PoliciesPreviewAPI.md#V1PolicyPropertiesGet) | **Get** /v1/policy-properties | Get Policy Properties object 
+[**V1PolicyPropertiesPut**](PoliciesPreviewAPI.md#V1PolicyPropertiesPut) | **Put** /v1/policy-properties | Update Policy Properties object 
 
 
 
@@ -28,20 +28,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesPreviewApi.SettingsObjPolicyPropertiesGet(context.Background()).Execute()
+    resp, r, err := apiClient.PoliciesPreviewAPI.SettingsObjPolicyPropertiesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewApi.SettingsObjPolicyPropertiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewAPI.SettingsObjPolicyPropertiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SettingsObjPolicyPropertiesGet`: PolicyProperties
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewApi.SettingsObjPolicyPropertiesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewAPI.SettingsObjPolicyPropertiesGet`: %v\n", resp)
 }
 ```
 
@@ -89,7 +89,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -97,13 +97,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesPreviewApi.SettingsObjPolicyPropertiesPut(context.Background()).PolicyProperties(policyProperties).Execute()
+    resp, r, err := apiClient.PoliciesPreviewAPI.SettingsObjPolicyPropertiesPut(context.Background()).PolicyProperties(policyProperties).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewApi.SettingsObjPolicyPropertiesPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewAPI.SettingsObjPolicyPropertiesPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SettingsObjPolicyPropertiesPut`: PolicyProperties
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewApi.SettingsObjPolicyPropertiesPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewAPI.SettingsObjPolicyPropertiesPut`: %v\n", resp)
 }
 ```
 
@@ -155,20 +155,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesPreviewApi.V1PolicyPropertiesGet(context.Background()).Execute()
+    resp, r, err := apiClient.PoliciesPreviewAPI.V1PolicyPropertiesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewApi.V1PolicyPropertiesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewAPI.V1PolicyPropertiesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PolicyPropertiesGet`: PolicyPropertiesV1
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewApi.V1PolicyPropertiesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewAPI.V1PolicyPropertiesGet`: %v\n", resp)
 }
 ```
 
@@ -216,7 +216,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -224,13 +224,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PoliciesPreviewApi.V1PolicyPropertiesPut(context.Background()).PolicyPropertiesV1(policyPropertiesV1).Execute()
+    resp, r, err := apiClient.PoliciesPreviewAPI.V1PolicyPropertiesPut(context.Background()).PolicyPropertiesV1(policyPropertiesV1).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewApi.V1PolicyPropertiesPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PoliciesPreviewAPI.V1PolicyPropertiesPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PolicyPropertiesPut`: PolicyPropertiesV1
-    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewApi.V1PolicyPropertiesPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `PoliciesPreviewAPI.V1PolicyPropertiesPut`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerSecurity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerSecurity{}
+
 // ComputerSecurity struct for ComputerSecurity
 type ComputerSecurity struct {
 	SipStatus *string `json:"sipStatus,omitempty"`
@@ -53,7 +56,7 @@ func NewComputerSecurityWithDefaults() *ComputerSecurity {
 
 // GetSipStatus returns the SipStatus field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetSipStatus() string {
-	if o == nil || o.SipStatus == nil {
+	if o == nil || IsNil(o.SipStatus) {
 		var ret string
 		return ret
 	}
@@ -63,7 +66,7 @@ func (o *ComputerSecurity) GetSipStatus() string {
 // GetSipStatusOk returns a tuple with the SipStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetSipStatusOk() (*string, bool) {
-	if o == nil || o.SipStatus == nil {
+	if o == nil || IsNil(o.SipStatus) {
 		return nil, false
 	}
 	return o.SipStatus, true
@@ -71,7 +74,7 @@ func (o *ComputerSecurity) GetSipStatusOk() (*string, bool) {
 
 // HasSipStatus returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasSipStatus() bool {
-	if o != nil && o.SipStatus != nil {
+	if o != nil && !IsNil(o.SipStatus) {
 		return true
 	}
 
@@ -85,7 +88,7 @@ func (o *ComputerSecurity) SetSipStatus(v string) {
 
 // GetGatekeeperStatus returns the GatekeeperStatus field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetGatekeeperStatus() string {
-	if o == nil || o.GatekeeperStatus == nil {
+	if o == nil || IsNil(o.GatekeeperStatus) {
 		var ret string
 		return ret
 	}
@@ -95,7 +98,7 @@ func (o *ComputerSecurity) GetGatekeeperStatus() string {
 // GetGatekeeperStatusOk returns a tuple with the GatekeeperStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetGatekeeperStatusOk() (*string, bool) {
-	if o == nil || o.GatekeeperStatus == nil {
+	if o == nil || IsNil(o.GatekeeperStatus) {
 		return nil, false
 	}
 	return o.GatekeeperStatus, true
@@ -103,7 +106,7 @@ func (o *ComputerSecurity) GetGatekeeperStatusOk() (*string, bool) {
 
 // HasGatekeeperStatus returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasGatekeeperStatus() bool {
-	if o != nil && o.GatekeeperStatus != nil {
+	if o != nil && !IsNil(o.GatekeeperStatus) {
 		return true
 	}
 
@@ -117,7 +120,7 @@ func (o *ComputerSecurity) SetGatekeeperStatus(v string) {
 
 // GetXprotectVersion returns the XprotectVersion field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetXprotectVersion() string {
-	if o == nil || o.XprotectVersion == nil {
+	if o == nil || IsNil(o.XprotectVersion) {
 		var ret string
 		return ret
 	}
@@ -127,7 +130,7 @@ func (o *ComputerSecurity) GetXprotectVersion() string {
 // GetXprotectVersionOk returns a tuple with the XprotectVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetXprotectVersionOk() (*string, bool) {
-	if o == nil || o.XprotectVersion == nil {
+	if o == nil || IsNil(o.XprotectVersion) {
 		return nil, false
 	}
 	return o.XprotectVersion, true
@@ -135,7 +138,7 @@ func (o *ComputerSecurity) GetXprotectVersionOk() (*string, bool) {
 
 // HasXprotectVersion returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasXprotectVersion() bool {
-	if o != nil && o.XprotectVersion != nil {
+	if o != nil && !IsNil(o.XprotectVersion) {
 		return true
 	}
 
@@ -149,7 +152,7 @@ func (o *ComputerSecurity) SetXprotectVersion(v string) {
 
 // GetAutoLoginDisabled returns the AutoLoginDisabled field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetAutoLoginDisabled() bool {
-	if o == nil || o.AutoLoginDisabled == nil {
+	if o == nil || IsNil(o.AutoLoginDisabled) {
 		var ret bool
 		return ret
 	}
@@ -159,7 +162,7 @@ func (o *ComputerSecurity) GetAutoLoginDisabled() bool {
 // GetAutoLoginDisabledOk returns a tuple with the AutoLoginDisabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetAutoLoginDisabledOk() (*bool, bool) {
-	if o == nil || o.AutoLoginDisabled == nil {
+	if o == nil || IsNil(o.AutoLoginDisabled) {
 		return nil, false
 	}
 	return o.AutoLoginDisabled, true
@@ -167,7 +170,7 @@ func (o *ComputerSecurity) GetAutoLoginDisabledOk() (*bool, bool) {
 
 // HasAutoLoginDisabled returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasAutoLoginDisabled() bool {
-	if o != nil && o.AutoLoginDisabled != nil {
+	if o != nil && !IsNil(o.AutoLoginDisabled) {
 		return true
 	}
 
@@ -181,7 +184,7 @@ func (o *ComputerSecurity) SetAutoLoginDisabled(v bool) {
 
 // GetRemoteDesktopEnabled returns the RemoteDesktopEnabled field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetRemoteDesktopEnabled() bool {
-	if o == nil || o.RemoteDesktopEnabled == nil {
+	if o == nil || IsNil(o.RemoteDesktopEnabled) {
 		var ret bool
 		return ret
 	}
@@ -191,7 +194,7 @@ func (o *ComputerSecurity) GetRemoteDesktopEnabled() bool {
 // GetRemoteDesktopEnabledOk returns a tuple with the RemoteDesktopEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetRemoteDesktopEnabledOk() (*bool, bool) {
-	if o == nil || o.RemoteDesktopEnabled == nil {
+	if o == nil || IsNil(o.RemoteDesktopEnabled) {
 		return nil, false
 	}
 	return o.RemoteDesktopEnabled, true
@@ -199,7 +202,7 @@ func (o *ComputerSecurity) GetRemoteDesktopEnabledOk() (*bool, bool) {
 
 // HasRemoteDesktopEnabled returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasRemoteDesktopEnabled() bool {
-	if o != nil && o.RemoteDesktopEnabled != nil {
+	if o != nil && !IsNil(o.RemoteDesktopEnabled) {
 		return true
 	}
 
@@ -213,7 +216,7 @@ func (o *ComputerSecurity) SetRemoteDesktopEnabled(v bool) {
 
 // GetActivationLockEnabled returns the ActivationLockEnabled field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetActivationLockEnabled() bool {
-	if o == nil || o.ActivationLockEnabled == nil {
+	if o == nil || IsNil(o.ActivationLockEnabled) {
 		var ret bool
 		return ret
 	}
@@ -223,7 +226,7 @@ func (o *ComputerSecurity) GetActivationLockEnabled() bool {
 // GetActivationLockEnabledOk returns a tuple with the ActivationLockEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetActivationLockEnabledOk() (*bool, bool) {
-	if o == nil || o.ActivationLockEnabled == nil {
+	if o == nil || IsNil(o.ActivationLockEnabled) {
 		return nil, false
 	}
 	return o.ActivationLockEnabled, true
@@ -231,7 +234,7 @@ func (o *ComputerSecurity) GetActivationLockEnabledOk() (*bool, bool) {
 
 // HasActivationLockEnabled returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasActivationLockEnabled() bool {
-	if o != nil && o.ActivationLockEnabled != nil {
+	if o != nil && !IsNil(o.ActivationLockEnabled) {
 		return true
 	}
 
@@ -245,7 +248,7 @@ func (o *ComputerSecurity) SetActivationLockEnabled(v bool) {
 
 // GetRecoveryLockEnabled returns the RecoveryLockEnabled field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetRecoveryLockEnabled() bool {
-	if o == nil || o.RecoveryLockEnabled == nil {
+	if o == nil || IsNil(o.RecoveryLockEnabled) {
 		var ret bool
 		return ret
 	}
@@ -255,7 +258,7 @@ func (o *ComputerSecurity) GetRecoveryLockEnabled() bool {
 // GetRecoveryLockEnabledOk returns a tuple with the RecoveryLockEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetRecoveryLockEnabledOk() (*bool, bool) {
-	if o == nil || o.RecoveryLockEnabled == nil {
+	if o == nil || IsNil(o.RecoveryLockEnabled) {
 		return nil, false
 	}
 	return o.RecoveryLockEnabled, true
@@ -263,7 +266,7 @@ func (o *ComputerSecurity) GetRecoveryLockEnabledOk() (*bool, bool) {
 
 // HasRecoveryLockEnabled returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasRecoveryLockEnabled() bool {
-	if o != nil && o.RecoveryLockEnabled != nil {
+	if o != nil && !IsNil(o.RecoveryLockEnabled) {
 		return true
 	}
 
@@ -277,7 +280,7 @@ func (o *ComputerSecurity) SetRecoveryLockEnabled(v bool) {
 
 // GetFirewallEnabled returns the FirewallEnabled field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetFirewallEnabled() bool {
-	if o == nil || o.FirewallEnabled == nil {
+	if o == nil || IsNil(o.FirewallEnabled) {
 		var ret bool
 		return ret
 	}
@@ -287,7 +290,7 @@ func (o *ComputerSecurity) GetFirewallEnabled() bool {
 // GetFirewallEnabledOk returns a tuple with the FirewallEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetFirewallEnabledOk() (*bool, bool) {
-	if o == nil || o.FirewallEnabled == nil {
+	if o == nil || IsNil(o.FirewallEnabled) {
 		return nil, false
 	}
 	return o.FirewallEnabled, true
@@ -295,7 +298,7 @@ func (o *ComputerSecurity) GetFirewallEnabledOk() (*bool, bool) {
 
 // HasFirewallEnabled returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasFirewallEnabled() bool {
-	if o != nil && o.FirewallEnabled != nil {
+	if o != nil && !IsNil(o.FirewallEnabled) {
 		return true
 	}
 
@@ -309,7 +312,7 @@ func (o *ComputerSecurity) SetFirewallEnabled(v bool) {
 
 // GetSecureBootLevel returns the SecureBootLevel field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetSecureBootLevel() string {
-	if o == nil || o.SecureBootLevel == nil {
+	if o == nil || IsNil(o.SecureBootLevel) {
 		var ret string
 		return ret
 	}
@@ -319,7 +322,7 @@ func (o *ComputerSecurity) GetSecureBootLevel() string {
 // GetSecureBootLevelOk returns a tuple with the SecureBootLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetSecureBootLevelOk() (*string, bool) {
-	if o == nil || o.SecureBootLevel == nil {
+	if o == nil || IsNil(o.SecureBootLevel) {
 		return nil, false
 	}
 	return o.SecureBootLevel, true
@@ -327,7 +330,7 @@ func (o *ComputerSecurity) GetSecureBootLevelOk() (*string, bool) {
 
 // HasSecureBootLevel returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasSecureBootLevel() bool {
-	if o != nil && o.SecureBootLevel != nil {
+	if o != nil && !IsNil(o.SecureBootLevel) {
 		return true
 	}
 
@@ -341,7 +344,7 @@ func (o *ComputerSecurity) SetSecureBootLevel(v string) {
 
 // GetExternalBootLevel returns the ExternalBootLevel field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetExternalBootLevel() string {
-	if o == nil || o.ExternalBootLevel == nil {
+	if o == nil || IsNil(o.ExternalBootLevel) {
 		var ret string
 		return ret
 	}
@@ -351,7 +354,7 @@ func (o *ComputerSecurity) GetExternalBootLevel() string {
 // GetExternalBootLevelOk returns a tuple with the ExternalBootLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetExternalBootLevelOk() (*string, bool) {
-	if o == nil || o.ExternalBootLevel == nil {
+	if o == nil || IsNil(o.ExternalBootLevel) {
 		return nil, false
 	}
 	return o.ExternalBootLevel, true
@@ -359,7 +362,7 @@ func (o *ComputerSecurity) GetExternalBootLevelOk() (*string, bool) {
 
 // HasExternalBootLevel returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasExternalBootLevel() bool {
-	if o != nil && o.ExternalBootLevel != nil {
+	if o != nil && !IsNil(o.ExternalBootLevel) {
 		return true
 	}
 
@@ -373,7 +376,7 @@ func (o *ComputerSecurity) SetExternalBootLevel(v string) {
 
 // GetBootstrapTokenAllowed returns the BootstrapTokenAllowed field value if set, zero value otherwise.
 func (o *ComputerSecurity) GetBootstrapTokenAllowed() bool {
-	if o == nil || o.BootstrapTokenAllowed == nil {
+	if o == nil || IsNil(o.BootstrapTokenAllowed) {
 		var ret bool
 		return ret
 	}
@@ -383,7 +386,7 @@ func (o *ComputerSecurity) GetBootstrapTokenAllowed() bool {
 // GetBootstrapTokenAllowedOk returns a tuple with the BootstrapTokenAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSecurity) GetBootstrapTokenAllowedOk() (*bool, bool) {
-	if o == nil || o.BootstrapTokenAllowed == nil {
+	if o == nil || IsNil(o.BootstrapTokenAllowed) {
 		return nil, false
 	}
 	return o.BootstrapTokenAllowed, true
@@ -391,7 +394,7 @@ func (o *ComputerSecurity) GetBootstrapTokenAllowedOk() (*bool, bool) {
 
 // HasBootstrapTokenAllowed returns a boolean if a field has been set.
 func (o *ComputerSecurity) HasBootstrapTokenAllowed() bool {
-	if o != nil && o.BootstrapTokenAllowed != nil {
+	if o != nil && !IsNil(o.BootstrapTokenAllowed) {
 		return true
 	}
 
@@ -404,41 +407,49 @@ func (o *ComputerSecurity) SetBootstrapTokenAllowed(v bool) {
 }
 
 func (o ComputerSecurity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SipStatus != nil {
-		toSerialize["sipStatus"] = o.SipStatus
-	}
-	if o.GatekeeperStatus != nil {
-		toSerialize["gatekeeperStatus"] = o.GatekeeperStatus
-	}
-	if o.XprotectVersion != nil {
-		toSerialize["xprotectVersion"] = o.XprotectVersion
-	}
-	if o.AutoLoginDisabled != nil {
-		toSerialize["autoLoginDisabled"] = o.AutoLoginDisabled
-	}
-	if o.RemoteDesktopEnabled != nil {
-		toSerialize["remoteDesktopEnabled"] = o.RemoteDesktopEnabled
-	}
-	if o.ActivationLockEnabled != nil {
-		toSerialize["activationLockEnabled"] = o.ActivationLockEnabled
-	}
-	if o.RecoveryLockEnabled != nil {
-		toSerialize["recoveryLockEnabled"] = o.RecoveryLockEnabled
-	}
-	if o.FirewallEnabled != nil {
-		toSerialize["firewallEnabled"] = o.FirewallEnabled
-	}
-	if o.SecureBootLevel != nil {
-		toSerialize["secureBootLevel"] = o.SecureBootLevel
-	}
-	if o.ExternalBootLevel != nil {
-		toSerialize["externalBootLevel"] = o.ExternalBootLevel
-	}
-	if o.BootstrapTokenAllowed != nil {
-		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerSecurity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SipStatus) {
+		toSerialize["sipStatus"] = o.SipStatus
+	}
+	if !IsNil(o.GatekeeperStatus) {
+		toSerialize["gatekeeperStatus"] = o.GatekeeperStatus
+	}
+	if !IsNil(o.XprotectVersion) {
+		toSerialize["xprotectVersion"] = o.XprotectVersion
+	}
+	if !IsNil(o.AutoLoginDisabled) {
+		toSerialize["autoLoginDisabled"] = o.AutoLoginDisabled
+	}
+	if !IsNil(o.RemoteDesktopEnabled) {
+		toSerialize["remoteDesktopEnabled"] = o.RemoteDesktopEnabled
+	}
+	if !IsNil(o.ActivationLockEnabled) {
+		toSerialize["activationLockEnabled"] = o.ActivationLockEnabled
+	}
+	if !IsNil(o.RecoveryLockEnabled) {
+		toSerialize["recoveryLockEnabled"] = o.RecoveryLockEnabled
+	}
+	if !IsNil(o.FirewallEnabled) {
+		toSerialize["firewallEnabled"] = o.FirewallEnabled
+	}
+	if !IsNil(o.SecureBootLevel) {
+		toSerialize["secureBootLevel"] = o.SecureBootLevel
+	}
+	if !IsNil(o.ExternalBootLevel) {
+		toSerialize["externalBootLevel"] = o.ExternalBootLevel
+	}
+	if !IsNil(o.BootstrapTokenAllowed) {
+		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerSecurity struct {

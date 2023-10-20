@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerGeneralUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerGeneralUpdate{}
+
 // ComputerGeneralUpdate struct for ComputerGeneralUpdate
 type ComputerGeneralUpdate struct {
 	Name *string `json:"name,omitempty"`
@@ -43,7 +46,7 @@ func NewComputerGeneralUpdateWithDefaults() *ComputerGeneralUpdate {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *ComputerGeneralUpdate) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -61,7 +64,7 @@ func (o *ComputerGeneralUpdate) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *ComputerGeneralUpdate) SetName(v string) {
 
 // GetLastIpAddress returns the LastIpAddress field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetLastIpAddress() string {
-	if o == nil || o.LastIpAddress == nil {
+	if o == nil || IsNil(o.LastIpAddress) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ComputerGeneralUpdate) GetLastIpAddress() string {
 // GetLastIpAddressOk returns a tuple with the LastIpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetLastIpAddressOk() (*string, bool) {
-	if o == nil || o.LastIpAddress == nil {
+	if o == nil || IsNil(o.LastIpAddress) {
 		return nil, false
 	}
 	return o.LastIpAddress, true
@@ -93,7 +96,7 @@ func (o *ComputerGeneralUpdate) GetLastIpAddressOk() (*string, bool) {
 
 // HasLastIpAddress returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasLastIpAddress() bool {
-	if o != nil && o.LastIpAddress != nil {
+	if o != nil && !IsNil(o.LastIpAddress) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ComputerGeneralUpdate) SetLastIpAddress(v string) {
 
 // GetBarcode1 returns the Barcode1 field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetBarcode1() string {
-	if o == nil || o.Barcode1 == nil {
+	if o == nil || IsNil(o.Barcode1) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ComputerGeneralUpdate) GetBarcode1() string {
 // GetBarcode1Ok returns a tuple with the Barcode1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetBarcode1Ok() (*string, bool) {
-	if o == nil || o.Barcode1 == nil {
+	if o == nil || IsNil(o.Barcode1) {
 		return nil, false
 	}
 	return o.Barcode1, true
@@ -125,7 +128,7 @@ func (o *ComputerGeneralUpdate) GetBarcode1Ok() (*string, bool) {
 
 // HasBarcode1 returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasBarcode1() bool {
-	if o != nil && o.Barcode1 != nil {
+	if o != nil && !IsNil(o.Barcode1) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ComputerGeneralUpdate) SetBarcode1(v string) {
 
 // GetBarcode2 returns the Barcode2 field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetBarcode2() string {
-	if o == nil || o.Barcode2 == nil {
+	if o == nil || IsNil(o.Barcode2) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *ComputerGeneralUpdate) GetBarcode2() string {
 // GetBarcode2Ok returns a tuple with the Barcode2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetBarcode2Ok() (*string, bool) {
-	if o == nil || o.Barcode2 == nil {
+	if o == nil || IsNil(o.Barcode2) {
 		return nil, false
 	}
 	return o.Barcode2, true
@@ -157,7 +160,7 @@ func (o *ComputerGeneralUpdate) GetBarcode2Ok() (*string, bool) {
 
 // HasBarcode2 returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasBarcode2() bool {
-	if o != nil && o.Barcode2 != nil {
+	if o != nil && !IsNil(o.Barcode2) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ComputerGeneralUpdate) SetBarcode2(v string) {
 
 // GetAssetTag returns the AssetTag field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetAssetTag() string {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *ComputerGeneralUpdate) GetAssetTag() string {
 // GetAssetTagOk returns a tuple with the AssetTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetAssetTagOk() (*string, bool) {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		return nil, false
 	}
 	return o.AssetTag, true
@@ -189,7 +192,7 @@ func (o *ComputerGeneralUpdate) GetAssetTagOk() (*string, bool) {
 
 // HasAssetTag returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasAssetTag() bool {
-	if o != nil && o.AssetTag != nil {
+	if o != nil && !IsNil(o.AssetTag) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *ComputerGeneralUpdate) SetAssetTag(v string) {
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ComputerGeneralUpdate) GetExtensionAttributes() []ComputerExtensionAttr
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneralUpdate) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -221,7 +224,7 @@ func (o *ComputerGeneralUpdate) GetExtensionAttributesOk() ([]ComputerExtensionA
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerGeneralUpdate) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *ComputerGeneralUpdate) SetExtensionAttributes(v []ComputerExtensionAttr
 }
 
 func (o ComputerGeneralUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.LastIpAddress != nil {
-		toSerialize["lastIpAddress"] = o.LastIpAddress
-	}
-	if o.Barcode1 != nil {
-		toSerialize["barcode1"] = o.Barcode1
-	}
-	if o.Barcode2 != nil {
-		toSerialize["barcode2"] = o.Barcode2
-	}
-	if o.AssetTag != nil {
-		toSerialize["assetTag"] = o.AssetTag
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerGeneralUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LastIpAddress) {
+		toSerialize["lastIpAddress"] = o.LastIpAddress
+	}
+	if !IsNil(o.Barcode1) {
+		toSerialize["barcode1"] = o.Barcode1
+	}
+	if !IsNil(o.Barcode2) {
+		toSerialize["barcode2"] = o.Barcode2
+	}
+	if !IsNil(o.AssetTag) {
+		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerGeneralUpdate struct {

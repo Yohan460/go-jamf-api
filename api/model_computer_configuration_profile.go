@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerConfigurationProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerConfigurationProfile{}
+
 // ComputerConfigurationProfile struct for ComputerConfigurationProfile
 type ComputerConfigurationProfile struct {
 	Id *string `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewComputerConfigurationProfileWithDefaults() *ComputerConfigurationProfile
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ComputerConfigurationProfile) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *ComputerConfigurationProfile) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ComputerConfigurationProfile) SetId(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ComputerConfigurationProfile) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -94,7 +97,7 @@ func (o *ComputerConfigurationProfile) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ComputerConfigurationProfile) SetUsername(v string) {
 
 // GetLastInstalled returns the LastInstalled field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetLastInstalled() time.Time {
-	if o == nil || o.LastInstalled == nil {
+	if o == nil || IsNil(o.LastInstalled) {
 		var ret time.Time
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ComputerConfigurationProfile) GetLastInstalled() time.Time {
 // GetLastInstalledOk returns a tuple with the LastInstalled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetLastInstalledOk() (*time.Time, bool) {
-	if o == nil || o.LastInstalled == nil {
+	if o == nil || IsNil(o.LastInstalled) {
 		return nil, false
 	}
 	return o.LastInstalled, true
@@ -126,7 +129,7 @@ func (o *ComputerConfigurationProfile) GetLastInstalledOk() (*time.Time, bool) {
 
 // HasLastInstalled returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasLastInstalled() bool {
-	if o != nil && o.LastInstalled != nil {
+	if o != nil && !IsNil(o.LastInstalled) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ComputerConfigurationProfile) SetLastInstalled(v time.Time) {
 
 // GetRemovable returns the Removable field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetRemovable() bool {
-	if o == nil || o.Removable == nil {
+	if o == nil || IsNil(o.Removable) {
 		var ret bool
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ComputerConfigurationProfile) GetRemovable() bool {
 // GetRemovableOk returns a tuple with the Removable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetRemovableOk() (*bool, bool) {
-	if o == nil || o.Removable == nil {
+	if o == nil || IsNil(o.Removable) {
 		return nil, false
 	}
 	return o.Removable, true
@@ -158,7 +161,7 @@ func (o *ComputerConfigurationProfile) GetRemovableOk() (*bool, bool) {
 
 // HasRemovable returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasRemovable() bool {
-	if o != nil && o.Removable != nil {
+	if o != nil && !IsNil(o.Removable) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ComputerConfigurationProfile) SetRemovable(v bool) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ComputerConfigurationProfile) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -190,7 +193,7 @@ func (o *ComputerConfigurationProfile) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ComputerConfigurationProfile) SetDisplayName(v string) {
 
 // GetProfileIdentifier returns the ProfileIdentifier field value if set, zero value otherwise.
 func (o *ComputerConfigurationProfile) GetProfileIdentifier() string {
-	if o == nil || o.ProfileIdentifier == nil {
+	if o == nil || IsNil(o.ProfileIdentifier) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ComputerConfigurationProfile) GetProfileIdentifier() string {
 // GetProfileIdentifierOk returns a tuple with the ProfileIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerConfigurationProfile) GetProfileIdentifierOk() (*string, bool) {
-	if o == nil || o.ProfileIdentifier == nil {
+	if o == nil || IsNil(o.ProfileIdentifier) {
 		return nil, false
 	}
 	return o.ProfileIdentifier, true
@@ -222,7 +225,7 @@ func (o *ComputerConfigurationProfile) GetProfileIdentifierOk() (*string, bool) 
 
 // HasProfileIdentifier returns a boolean if a field has been set.
 func (o *ComputerConfigurationProfile) HasProfileIdentifier() bool {
-	if o != nil && o.ProfileIdentifier != nil {
+	if o != nil && !IsNil(o.ProfileIdentifier) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *ComputerConfigurationProfile) SetProfileIdentifier(v string) {
 }
 
 func (o ComputerConfigurationProfile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.LastInstalled != nil {
-		toSerialize["lastInstalled"] = o.LastInstalled
-	}
-	if o.Removable != nil {
-		toSerialize["removable"] = o.Removable
-	}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.ProfileIdentifier != nil {
-		toSerialize["profileIdentifier"] = o.ProfileIdentifier
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerConfigurationProfile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.LastInstalled) {
+		toSerialize["lastInstalled"] = o.LastInstalled
+	}
+	if !IsNil(o.Removable) {
+		toSerialize["removable"] = o.Removable
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.ProfileIdentifier) {
+		toSerialize["profileIdentifier"] = o.ProfileIdentifier
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerConfigurationProfile struct {

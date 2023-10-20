@@ -1,10 +1,10 @@
-# \VppAdminAccountsPreviewApi
+# \VppAdminAccountsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**VppAdminAccountsGet**](VppAdminAccountsPreviewApi.md#VppAdminAccountsGet) | **Get** /vpp/admin-accounts | Found all VPP Admin Accounts 
+[**VppAdminAccountsGet**](VppAdminAccountsPreviewAPI.md#VppAdminAccountsGet) | **Get** /vpp/admin-accounts | Found all VPP Admin Accounts 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VppAdminAccountsPreviewApi.VppAdminAccountsGet(context.Background()).Execute()
+    resp, r, err := apiClient.VppAdminAccountsPreviewAPI.VppAdminAccountsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VppAdminAccountsPreviewApi.VppAdminAccountsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VppAdminAccountsPreviewAPI.VppAdminAccountsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `VppAdminAccountsGet`: []VppAdminAccount
-    fmt.Fprintf(os.Stdout, "Response from `VppAdminAccountsPreviewApi.VppAdminAccountsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VppAdminAccountsPreviewAPI.VppAdminAccountsGet`: %v\n", resp)
 }
 ```
 

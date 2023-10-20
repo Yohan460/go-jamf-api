@@ -1,11 +1,11 @@
-# \SelfServiceApi
+# \SelfServiceAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SelfServiceSettingsGet**](SelfServiceApi.md#V1SelfServiceSettingsGet) | **Get** /v1/self-service/settings | Get an object representation of Self Service settings 
-[**V1SelfServiceSettingsPut**](SelfServiceApi.md#V1SelfServiceSettingsPut) | **Put** /v1/self-service/settings | Put an object representation of Self Service settings 
+[**V1SelfServiceSettingsGet**](SelfServiceAPI.md#V1SelfServiceSettingsGet) | **Get** /v1/self-service/settings | Get an object representation of Self Service settings 
+[**V1SelfServiceSettingsPut**](SelfServiceAPI.md#V1SelfServiceSettingsPut) | **Put** /v1/self-service/settings | Put an object representation of Self Service settings 
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceApi.V1SelfServiceSettingsGet(context.Background()).Execute()
+    resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceApi.V1SelfServiceSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SelfServiceSettingsGet`: SelfServiceSettings
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceApi.V1SelfServiceSettingsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -95,13 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceApi.V1SelfServiceSettingsPut(context.Background()).SelfServiceSettings(selfServiceSettings).Execute()
+    resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsPut(context.Background()).SelfServiceSettings(selfServiceSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceApi.V1SelfServiceSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SelfServiceSettingsPut`: SelfServiceSettings
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceApi.V1SelfServiceSettingsPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsPut`: %v\n", resp)
 }
 ```
 

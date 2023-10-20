@@ -1,12 +1,12 @@
-# \EbooksApi
+# \EbooksAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1EbooksGet**](EbooksApi.md#V1EbooksGet) | **Get** /v1/ebooks | Get Ebook object 
-[**V1EbooksIdGet**](EbooksApi.md#V1EbooksIdGet) | **Get** /v1/ebooks/{id} | Get specified Ebook object 
-[**V1EbooksIdScopeGet**](EbooksApi.md#V1EbooksIdScopeGet) | **Get** /v1/ebooks/{id}/scope | Get specified scope of Ebook object 
+[**V1EbooksGet**](EbooksAPI.md#V1EbooksGet) | **Get** /v1/ebooks | Get Ebook object 
+[**V1EbooksIdGet**](EbooksAPI.md#V1EbooksIdGet) | **Get** /v1/ebooks/{id} | Get specified Ebook object 
+[**V1EbooksIdScopeGet**](EbooksAPI.md#V1EbooksIdScopeGet) | **Get** /v1/ebooks/{id}/scope | Get specified scope of Ebook object 
 
 
 
@@ -27,7 +27,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksApi.V1EbooksGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.EbooksAPI.V1EbooksGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksApi.V1EbooksGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EbooksGet`: EbookSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EbooksApi.V1EbooksGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksGet`: %v\n", resp)
 }
 ```
 
@@ -97,7 +97,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksApi.V1EbooksIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.EbooksAPI.V1EbooksIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksApi.V1EbooksIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EbooksIdGet`: Ebook
-    fmt.Fprintf(os.Stdout, "Response from `EbooksApi.V1EbooksIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdGet`: %v\n", resp)
 }
 ```
 
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -175,13 +175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksApi.V1EbooksIdScopeGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.EbooksAPI.V1EbooksIdScopeGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksApi.V1EbooksIdScopeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdScopeGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1EbooksIdScopeGet`: EbookScope
-    fmt.Fprintf(os.Stdout, "Response from `EbooksApi.V1EbooksIdScopeGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdScopeGet`: %v\n", resp)
 }
 ```
 

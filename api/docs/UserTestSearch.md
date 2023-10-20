@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Uuid** | Pointer to **string** |  | [optional] 
 **ServerId** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Attributes** | Pointer to [**UserAttributes**](UserAttributes.md) |  | [optional] 
+**Attributes** | Pointer to [**UserTestAttributes**](UserTestAttributes.md) |  | [optional] 
 
 ## Methods
 
@@ -157,20 +157,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetAttributes
 
-`func (o *UserTestSearch) GetAttributes() UserAttributes`
+`func (o *UserTestSearch) GetAttributes() UserTestAttributes`
 
 GetAttributes returns the Attributes field if non-nil, zero value otherwise.
 
 ### GetAttributesOk
 
-`func (o *UserTestSearch) GetAttributesOk() (*UserAttributes, bool)`
+`func (o *UserTestSearch) GetAttributesOk() (*UserTestAttributes, bool)`
 
 GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttributes
 
-`func (o *UserTestSearch) SetAttributes(v UserAttributes)`
+`func (o *UserTestSearch) SetAttributes(v UserTestAttributes)`
 
 SetAttributes sets Attributes field to given value.
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerLocation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerLocation{}
+
 // ComputerLocation struct for ComputerLocation
 type ComputerLocation struct {
 	Username *string `json:"username,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerLocationWithDefaults() *ComputerLocation {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ComputerLocation) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerLocation) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocation) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -58,7 +61,7 @@ func (o *ComputerLocation) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ComputerLocation) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerLocation) SetUsername(v string) {
 
 // GetPosition returns the Position field value if set, zero value otherwise.
 func (o *ComputerLocation) GetPosition() string {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerLocation) GetPosition() string {
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocation) GetPositionOk() (*string, bool) {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		return nil, false
 	}
 	return o.Position, true
@@ -90,7 +93,7 @@ func (o *ComputerLocation) GetPositionOk() (*string, bool) {
 
 // HasPosition returns a boolean if a field has been set.
 func (o *ComputerLocation) HasPosition() bool {
-	if o != nil && o.Position != nil {
+	if o != nil && !IsNil(o.Position) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerLocation) SetPosition(v string) {
 
 // GetRoom returns the Room field value if set, zero value otherwise.
 func (o *ComputerLocation) GetRoom() string {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerLocation) GetRoom() string {
 // GetRoomOk returns a tuple with the Room field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerLocation) GetRoomOk() (*string, bool) {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		return nil, false
 	}
 	return o.Room, true
@@ -122,7 +125,7 @@ func (o *ComputerLocation) GetRoomOk() (*string, bool) {
 
 // HasRoom returns a boolean if a field has been set.
 func (o *ComputerLocation) HasRoom() bool {
-	if o != nil && o.Room != nil {
+	if o != nil && !IsNil(o.Room) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerLocation) SetRoom(v string) {
 }
 
 func (o ComputerLocation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Position != nil {
-		toSerialize["position"] = o.Position
-	}
-	if o.Room != nil {
-		toSerialize["room"] = o.Room
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerLocation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Position) {
+		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.Room) {
+		toSerialize["room"] = o.Room
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerLocation struct {

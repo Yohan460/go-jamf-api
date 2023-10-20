@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Applicable** | Pointer to **bool** | If device is applicable for compliance calculation | [optional] 
 **ComplianceState** | Pointer to **string** | Device compliance state. Possible values are: * &#x60;UNKNOWN&#x60; for unknow compliance state, this usually means that the compliance state is being calculated, * &#x60;NON_COMPLIANT&#x60; for non compliant state, * &#x60;COMPLIANT&#x60; for compliant state  | [optional] 
 **ComplianceVendor** | Pointer to **string** | Name of the compliance vendor | [optional] 
+**ComplianceVendorDeviceInformation** | Pointer to [**ComplianceVendorDeviceInformation**](ComplianceVendorDeviceInformation.md) |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetComplianceVendor sets ComplianceVendor field to given value.
 `func (o *DeviceComplianceInformation) HasComplianceVendor() bool`
 
 HasComplianceVendor returns a boolean if a field has been set.
+
+### GetComplianceVendorDeviceInformation
+
+`func (o *DeviceComplianceInformation) GetComplianceVendorDeviceInformation() ComplianceVendorDeviceInformation`
+
+GetComplianceVendorDeviceInformation returns the ComplianceVendorDeviceInformation field if non-nil, zero value otherwise.
+
+### GetComplianceVendorDeviceInformationOk
+
+`func (o *DeviceComplianceInformation) GetComplianceVendorDeviceInformationOk() (*ComplianceVendorDeviceInformation, bool)`
+
+GetComplianceVendorDeviceInformationOk returns a tuple with the ComplianceVendorDeviceInformation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetComplianceVendorDeviceInformation
+
+`func (o *DeviceComplianceInformation) SetComplianceVendorDeviceInformation(v ComplianceVendorDeviceInformation)`
+
+SetComplianceVendorDeviceInformation sets ComplianceVendorDeviceInformation field to given value.
+
+### HasComplianceVendorDeviceInformation
+
+`func (o *DeviceComplianceInformation) HasComplianceVendorDeviceInformation() bool`
+
+HasComplianceVendorDeviceInformation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

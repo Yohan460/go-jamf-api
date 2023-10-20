@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupMembership type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupMembership{}
+
 // GroupMembership struct for GroupMembership
 type GroupMembership struct {
 	GroupId *string `json:"groupId,omitempty"`
@@ -41,7 +44,7 @@ func NewGroupMembershipWithDefaults() *GroupMembership {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *GroupMembership) GetGroupId() string {
-	if o == nil || o.GroupId == nil {
+	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *GroupMembership) GetGroupId() string {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMembership) GetGroupIdOk() (*string, bool) {
-	if o == nil || o.GroupId == nil {
+	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
 	return o.GroupId, true
@@ -59,7 +62,7 @@ func (o *GroupMembership) GetGroupIdOk() (*string, bool) {
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *GroupMembership) HasGroupId() bool {
-	if o != nil && o.GroupId != nil {
+	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *GroupMembership) SetGroupId(v string) {
 
 // GetGroupName returns the GroupName field value if set, zero value otherwise.
 func (o *GroupMembership) GetGroupName() string {
-	if o == nil || o.GroupName == nil {
+	if o == nil || IsNil(o.GroupName) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *GroupMembership) GetGroupName() string {
 // GetGroupNameOk returns a tuple with the GroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMembership) GetGroupNameOk() (*string, bool) {
-	if o == nil || o.GroupName == nil {
+	if o == nil || IsNil(o.GroupName) {
 		return nil, false
 	}
 	return o.GroupName, true
@@ -91,7 +94,7 @@ func (o *GroupMembership) GetGroupNameOk() (*string, bool) {
 
 // HasGroupName returns a boolean if a field has been set.
 func (o *GroupMembership) HasGroupName() bool {
-	if o != nil && o.GroupName != nil {
+	if o != nil && !IsNil(o.GroupName) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *GroupMembership) SetGroupName(v string) {
 
 // GetSmartGroup returns the SmartGroup field value if set, zero value otherwise.
 func (o *GroupMembership) GetSmartGroup() bool {
-	if o == nil || o.SmartGroup == nil {
+	if o == nil || IsNil(o.SmartGroup) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *GroupMembership) GetSmartGroup() bool {
 // GetSmartGroupOk returns a tuple with the SmartGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMembership) GetSmartGroupOk() (*bool, bool) {
-	if o == nil || o.SmartGroup == nil {
+	if o == nil || IsNil(o.SmartGroup) {
 		return nil, false
 	}
 	return o.SmartGroup, true
@@ -123,7 +126,7 @@ func (o *GroupMembership) GetSmartGroupOk() (*bool, bool) {
 
 // HasSmartGroup returns a boolean if a field has been set.
 func (o *GroupMembership) HasSmartGroup() bool {
-	if o != nil && o.SmartGroup != nil {
+	if o != nil && !IsNil(o.SmartGroup) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *GroupMembership) SetSmartGroup(v bool) {
 }
 
 func (o GroupMembership) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.GroupId != nil {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if o.GroupName != nil {
-		toSerialize["groupName"] = o.GroupName
-	}
-	if o.SmartGroup != nil {
-		toSerialize["smartGroup"] = o.SmartGroup
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupMembership) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	if !IsNil(o.GroupName) {
+		toSerialize["groupName"] = o.GroupName
+	}
+	if !IsNil(o.SmartGroup) {
+		toSerialize["smartGroup"] = o.SmartGroup
+	}
+	return toSerialize, nil
 }
 
 type NullableGroupMembership struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapMappingsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapMappingsRequest{}
+
 // CloudLdapMappingsRequest Mappings configurations request for Ldap Cloud Identity Provider configuration
 type CloudLdapMappingsRequest struct {
 	UserMappings UserMappings `json:"userMappings"`
@@ -114,17 +117,19 @@ func (o *CloudLdapMappingsRequest) SetMembershipMappings(v MembershipMappings) {
 }
 
 func (o CloudLdapMappingsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userMappings"] = o.UserMappings
-	}
-	if true {
-		toSerialize["groupMappings"] = o.GroupMappings
-	}
-	if true {
-		toSerialize["membershipMappings"] = o.MembershipMappings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapMappingsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userMappings"] = o.UserMappings
+	toSerialize["groupMappings"] = o.GroupMappings
+	toSerialize["membershipMappings"] = o.MembershipMappings
+	return toSerialize, nil
 }
 
 type NullableCloudLdapMappingsRequest struct {

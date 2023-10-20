@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type SmartMobileDeviceGroupsPreviewApi interface {
+type SmartMobileDeviceGroupsPreviewAPI interface {
 
 	/*
 	V1MobileDevicesIdRecalculateSmartGroupsPost Recalculate all smart groups for the given device id and then return count of smart groups that device fall into 
@@ -31,13 +31,13 @@ returns the count of smart groups the device falls into
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of mobile device
-	@return ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest
+	@return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 	*/
-	V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest
+	V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 
 	// V1MobileDevicesIdRecalculateSmartGroupsPostExecute executes the request
 	//  @return RecalculationResults
-	V1MobileDevicesIdRecalculateSmartGroupsPostExecute(r ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error)
+	V1MobileDevicesIdRecalculateSmartGroupsPostExecute(r SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error)
 
 	/*
 	V1SmartMobileDeviceGroupsIdRecalculatePost Recalculate a smart group for the given id then return the ids for the devices in the smart group 
@@ -48,25 +48,25 @@ returns the ids for the devices in the smart group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of smart group
-	@return ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest
+	@return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 	*/
-	V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest
+	V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 
 	// V1SmartMobileDeviceGroupsIdRecalculatePostExecute executes the request
 	//  @return RecalculationResults
-	V1SmartMobileDeviceGroupsIdRecalculatePostExecute(r ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error)
+	V1SmartMobileDeviceGroupsIdRecalculatePostExecute(r SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error)
 }
 
-// SmartMobileDeviceGroupsPreviewApiService SmartMobileDeviceGroupsPreviewApi service
-type SmartMobileDeviceGroupsPreviewApiService service
+// SmartMobileDeviceGroupsPreviewAPIService SmartMobileDeviceGroupsPreviewAPI service
+type SmartMobileDeviceGroupsPreviewAPIService service
 
-type ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest struct {
+type SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest struct {
 	ctx context.Context
-	ApiService SmartMobileDeviceGroupsPreviewApi
+	ApiService SmartMobileDeviceGroupsPreviewAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
+func (r SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
 	return r.ApiService.V1MobileDevicesIdRecalculateSmartGroupsPostExecute(r)
 }
 
@@ -79,10 +79,10 @@ returns the count of smart groups the device falls into
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of mobile device
- @return ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest
+ @return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 */
-func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest {
-	return ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest{
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest {
+	return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -91,7 +91,7 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateS
 
 // Execute executes the request
 //  @return RecalculationResults
-func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateSmartGroupsPostExecute(r ApiV1MobileDevicesIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error) {
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1MobileDevicesIdRecalculateSmartGroupsPostExecute(r SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -99,13 +99,13 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateS
 		localVarReturnValue  *RecalculationResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartMobileDeviceGroupsPreviewApiService.V1MobileDevicesIdRecalculateSmartGroupsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartMobileDeviceGroupsPreviewAPIService.V1MobileDevicesIdRecalculateSmartGroupsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-devices/{id}/recalculate-smart-groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -138,9 +138,9 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -157,7 +157,8 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -174,13 +175,13 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1MobileDevicesIdRecalculateS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest struct {
+type SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest struct {
 	ctx context.Context
-	ApiService SmartMobileDeviceGroupsPreviewApi
+	ApiService SmartMobileDeviceGroupsPreviewAPI
 	id int32
 }
 
-func (r ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
+func (r SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
 	return r.ApiService.V1SmartMobileDeviceGroupsIdRecalculatePostExecute(r)
 }
 
@@ -193,10 +194,10 @@ returns the ids for the devices in the smart group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of smart group
- @return ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest
+ @return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 */
-func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest {
-	return ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest{
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest {
+	return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -205,7 +206,7 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRe
 
 // Execute executes the request
 //  @return RecalculationResults
-func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRecalculatePostExecute(r ApiV1SmartMobileDeviceGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error) {
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1SmartMobileDeviceGroupsIdRecalculatePostExecute(r SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -213,13 +214,13 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRe
 		localVarReturnValue  *RecalculationResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartMobileDeviceGroupsPreviewApiService.V1SmartMobileDeviceGroupsIdRecalculatePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartMobileDeviceGroupsPreviewAPIService.V1SmartMobileDeviceGroupsIdRecalculatePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/smart-mobile-device-groups/{id}/recalculate"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -252,9 +253,9 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -271,7 +272,8 @@ func (a *SmartMobileDeviceGroupsPreviewApiService) V1SmartMobileDeviceGroupsIdRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationPanelList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationPanelList{}
+
 // EnrollmentCustomizationPanelList struct for EnrollmentCustomizationPanelList
 type EnrollmentCustomizationPanelList struct {
 	Panels []GetEnrollmentCustomizationPanel `json:"panels,omitempty"`
@@ -38,7 +41,7 @@ func NewEnrollmentCustomizationPanelListWithDefaults() *EnrollmentCustomizationP
 
 // GetPanels returns the Panels field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationPanelList) GetPanels() []GetEnrollmentCustomizationPanel {
-	if o == nil || o.Panels == nil {
+	if o == nil || IsNil(o.Panels) {
 		var ret []GetEnrollmentCustomizationPanel
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *EnrollmentCustomizationPanelList) GetPanels() []GetEnrollmentCustomizat
 // GetPanelsOk returns a tuple with the Panels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationPanelList) GetPanelsOk() ([]GetEnrollmentCustomizationPanel, bool) {
-	if o == nil || o.Panels == nil {
+	if o == nil || IsNil(o.Panels) {
 		return nil, false
 	}
 	return o.Panels, true
@@ -56,7 +59,7 @@ func (o *EnrollmentCustomizationPanelList) GetPanelsOk() ([]GetEnrollmentCustomi
 
 // HasPanels returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationPanelList) HasPanels() bool {
-	if o != nil && o.Panels != nil {
+	if o != nil && !IsNil(o.Panels) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *EnrollmentCustomizationPanelList) SetPanels(v []GetEnrollmentCustomizat
 }
 
 func (o EnrollmentCustomizationPanelList) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Panels != nil {
-		toSerialize["panels"] = o.Panels
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationPanelList) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Panels) {
+		toSerialize["panels"] = o.Panels
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationPanelList struct {

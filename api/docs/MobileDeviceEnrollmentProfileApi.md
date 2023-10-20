@@ -1,10 +1,10 @@
-# \MobileDeviceEnrollmentProfileApi
+# \MobileDeviceEnrollmentProfileAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1MobileDeviceEnrollmentProfileIdDownloadProfileGet**](MobileDeviceEnrollmentProfileApi.md#V1MobileDeviceEnrollmentProfileIdDownloadProfileGet) | **Get** /v1/mobile-device-enrollment-profile/{id}/download-profile | Retrieve the MDM Enrollment Profile 
+[**V1MobileDeviceEnrollmentProfileIdDownloadProfileGet**](MobileDeviceEnrollmentProfileAPI.md#V1MobileDeviceEnrollmentProfileIdDownloadProfileGet) | **Get** /v1/mobile-device-enrollment-profile/{id}/download-profile | Retrieve the MDM Enrollment Profile 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDeviceEnrollmentProfileApi.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceEnrollmentProfileApi.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceEnrollmentProfileApi.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: %v\n", resp)
 }
 ```
 

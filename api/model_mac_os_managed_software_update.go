@@ -14,24 +14,43 @@ import (
 	"encoding/json"
 )
 
+// checks if the MacOsManagedSoftwareUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MacOsManagedSoftwareUpdate{}
+
 // MacOsManagedSoftwareUpdate struct for MacOsManagedSoftwareUpdate
 type MacOsManagedSoftwareUpdate struct {
-	DeviceIds []string `json:"deviceIds"`
+	DeviceIds []string `json:"deviceIds,omitempty"`
+	GroupId *string `json:"groupId,omitempty"`
 	// Allow users to defer the update the provided number of times before macOS forces the update. If a value is provided, the Software Update will use the InstallLater install action.
 	MaxDeferrals *int32 `json:"maxDeferrals,omitempty"`
 	// If no value is provided, the version will default to latest version based on device eligibility.
 	Version *string `json:"version,omitempty"`
+	// If no value is provided, the skipVersionVerification will default to false. If a value is provided, the specified version will be forced to complete DownloadAndInstall install action.
+	SkipVersionVerification *bool `json:"skipVersionVerification,omitempty"`
+	// ApplyMajorUpdate setting is available only when updating to the latest version based on device eligibility. If no value is provided, the calculated latest version will only include minor version updates. If a value is provided, the calculated latest version will include minor and major version updates.
+	ApplyMajorUpdate *bool `json:"applyMajorUpdate,omitempty"`
 	// MaxDeferral is ignored if using the DownloadOnly install action.
 	UpdateAction *string `json:"updateAction,omitempty"`
+	// If not set, forceRestart will default to false. Can only be true if using the DownloadAndInstall install action and the devices the command is sent to are on macOs 11 or higher. If true, the DownloadAndInstall action is performed, a restart will be forced. MaxDeferral will be ignored if defined. 
+	ForceRestart *bool `json:"forceRestart,omitempty"`
+	// Priority can only be configured on macOS 12.3 and above, for minor updates only. Any version below 12.3 is always Low and cannot be changed until prerequisites are met. When qualified, if not explicitly set, priority will default to High
+	Priority *string `json:"priority,omitempty"`
 }
 
 // NewMacOsManagedSoftwareUpdate instantiates a new MacOsManagedSoftwareUpdate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMacOsManagedSoftwareUpdate(deviceIds []string) *MacOsManagedSoftwareUpdate {
+func NewMacOsManagedSoftwareUpdate() *MacOsManagedSoftwareUpdate {
 	this := MacOsManagedSoftwareUpdate{}
-	this.DeviceIds = deviceIds
+	var skipVersionVerification bool = false
+	this.SkipVersionVerification = &skipVersionVerification
+	var applyMajorUpdate bool = false
+	this.ApplyMajorUpdate = &applyMajorUpdate
+	var forceRestart bool = false
+	this.ForceRestart = &forceRestart
+	var priority string = "HIGH"
+	this.Priority = &priority
 	return &this
 }
 
@@ -40,36 +59,84 @@ func NewMacOsManagedSoftwareUpdate(deviceIds []string) *MacOsManagedSoftwareUpda
 // but it doesn't guarantee that properties required by API are set
 func NewMacOsManagedSoftwareUpdateWithDefaults() *MacOsManagedSoftwareUpdate {
 	this := MacOsManagedSoftwareUpdate{}
+	var skipVersionVerification bool = false
+	this.SkipVersionVerification = &skipVersionVerification
+	var applyMajorUpdate bool = false
+	this.ApplyMajorUpdate = &applyMajorUpdate
+	var forceRestart bool = false
+	this.ForceRestart = &forceRestart
+	var priority string = "HIGH"
+	this.Priority = &priority
 	return &this
 }
 
-// GetDeviceIds returns the DeviceIds field value
+// GetDeviceIds returns the DeviceIds field value if set, zero value otherwise.
 func (o *MacOsManagedSoftwareUpdate) GetDeviceIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.DeviceIds) {
 		var ret []string
 		return ret
 	}
-
 	return o.DeviceIds
 }
 
-// GetDeviceIdsOk returns a tuple with the DeviceIds field value
+// GetDeviceIdsOk returns a tuple with the DeviceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsManagedSoftwareUpdate) GetDeviceIdsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeviceIds) {
 		return nil, false
 	}
 	return o.DeviceIds, true
 }
 
-// SetDeviceIds sets field value
+// HasDeviceIds returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasDeviceIds() bool {
+	if o != nil && !IsNil(o.DeviceIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeviceIds gets a reference to the given []string and assigns it to the DeviceIds field.
 func (o *MacOsManagedSoftwareUpdate) SetDeviceIds(v []string) {
 	o.DeviceIds = v
 }
 
+// GetGroupId returns the GroupId field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdate) GetGroupId() string {
+	if o == nil || IsNil(o.GroupId) {
+		var ret string
+		return ret
+	}
+	return *o.GroupId
+}
+
+// GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsManagedSoftwareUpdate) GetGroupIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupId) {
+		return nil, false
+	}
+	return o.GroupId, true
+}
+
+// HasGroupId returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasGroupId() bool {
+	if o != nil && !IsNil(o.GroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupId gets a reference to the given string and assigns it to the GroupId field.
+func (o *MacOsManagedSoftwareUpdate) SetGroupId(v string) {
+	o.GroupId = &v
+}
+
 // GetMaxDeferrals returns the MaxDeferrals field value if set, zero value otherwise.
 func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int32 {
-	if o == nil || o.MaxDeferrals == nil {
+	if o == nil || IsNil(o.MaxDeferrals) {
 		var ret int32
 		return ret
 	}
@@ -79,7 +146,7 @@ func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int32 {
 // GetMaxDeferralsOk returns a tuple with the MaxDeferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int32, bool) {
-	if o == nil || o.MaxDeferrals == nil {
+	if o == nil || IsNil(o.MaxDeferrals) {
 		return nil, false
 	}
 	return o.MaxDeferrals, true
@@ -87,7 +154,7 @@ func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int32, bool) {
 
 // HasMaxDeferrals returns a boolean if a field has been set.
 func (o *MacOsManagedSoftwareUpdate) HasMaxDeferrals() bool {
-	if o != nil && o.MaxDeferrals != nil {
+	if o != nil && !IsNil(o.MaxDeferrals) {
 		return true
 	}
 
@@ -101,7 +168,7 @@ func (o *MacOsManagedSoftwareUpdate) SetMaxDeferrals(v int32) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *MacOsManagedSoftwareUpdate) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -111,7 +178,7 @@ func (o *MacOsManagedSoftwareUpdate) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsManagedSoftwareUpdate) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -119,7 +186,7 @@ func (o *MacOsManagedSoftwareUpdate) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *MacOsManagedSoftwareUpdate) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -131,9 +198,73 @@ func (o *MacOsManagedSoftwareUpdate) SetVersion(v string) {
 	o.Version = &v
 }
 
+// GetSkipVersionVerification returns the SkipVersionVerification field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdate) GetSkipVersionVerification() bool {
+	if o == nil || IsNil(o.SkipVersionVerification) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipVersionVerification
+}
+
+// GetSkipVersionVerificationOk returns a tuple with the SkipVersionVerification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsManagedSoftwareUpdate) GetSkipVersionVerificationOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipVersionVerification) {
+		return nil, false
+	}
+	return o.SkipVersionVerification, true
+}
+
+// HasSkipVersionVerification returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasSkipVersionVerification() bool {
+	if o != nil && !IsNil(o.SkipVersionVerification) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipVersionVerification gets a reference to the given bool and assigns it to the SkipVersionVerification field.
+func (o *MacOsManagedSoftwareUpdate) SetSkipVersionVerification(v bool) {
+	o.SkipVersionVerification = &v
+}
+
+// GetApplyMajorUpdate returns the ApplyMajorUpdate field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdate) GetApplyMajorUpdate() bool {
+	if o == nil || IsNil(o.ApplyMajorUpdate) {
+		var ret bool
+		return ret
+	}
+	return *o.ApplyMajorUpdate
+}
+
+// GetApplyMajorUpdateOk returns a tuple with the ApplyMajorUpdate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsManagedSoftwareUpdate) GetApplyMajorUpdateOk() (*bool, bool) {
+	if o == nil || IsNil(o.ApplyMajorUpdate) {
+		return nil, false
+	}
+	return o.ApplyMajorUpdate, true
+}
+
+// HasApplyMajorUpdate returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasApplyMajorUpdate() bool {
+	if o != nil && !IsNil(o.ApplyMajorUpdate) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplyMajorUpdate gets a reference to the given bool and assigns it to the ApplyMajorUpdate field.
+func (o *MacOsManagedSoftwareUpdate) SetApplyMajorUpdate(v bool) {
+	o.ApplyMajorUpdate = &v
+}
+
 // GetUpdateAction returns the UpdateAction field value if set, zero value otherwise.
 func (o *MacOsManagedSoftwareUpdate) GetUpdateAction() string {
-	if o == nil || o.UpdateAction == nil {
+	if o == nil || IsNil(o.UpdateAction) {
 		var ret string
 		return ret
 	}
@@ -143,7 +274,7 @@ func (o *MacOsManagedSoftwareUpdate) GetUpdateAction() string {
 // GetUpdateActionOk returns a tuple with the UpdateAction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsManagedSoftwareUpdate) GetUpdateActionOk() (*string, bool) {
-	if o == nil || o.UpdateAction == nil {
+	if o == nil || IsNil(o.UpdateAction) {
 		return nil, false
 	}
 	return o.UpdateAction, true
@@ -151,7 +282,7 @@ func (o *MacOsManagedSoftwareUpdate) GetUpdateActionOk() (*string, bool) {
 
 // HasUpdateAction returns a boolean if a field has been set.
 func (o *MacOsManagedSoftwareUpdate) HasUpdateAction() bool {
-	if o != nil && o.UpdateAction != nil {
+	if o != nil && !IsNil(o.UpdateAction) {
 		return true
 	}
 
@@ -163,21 +294,108 @@ func (o *MacOsManagedSoftwareUpdate) SetUpdateAction(v string) {
 	o.UpdateAction = &v
 }
 
+// GetForceRestart returns the ForceRestart field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdate) GetForceRestart() bool {
+	if o == nil || IsNil(o.ForceRestart) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceRestart
+}
+
+// GetForceRestartOk returns a tuple with the ForceRestart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsManagedSoftwareUpdate) GetForceRestartOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForceRestart) {
+		return nil, false
+	}
+	return o.ForceRestart, true
+}
+
+// HasForceRestart returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasForceRestart() bool {
+	if o != nil && !IsNil(o.ForceRestart) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceRestart gets a reference to the given bool and assigns it to the ForceRestart field.
+func (o *MacOsManagedSoftwareUpdate) SetForceRestart(v bool) {
+	o.ForceRestart = &v
+}
+
+// GetPriority returns the Priority field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdate) GetPriority() string {
+	if o == nil || IsNil(o.Priority) {
+		var ret string
+		return ret
+	}
+	return *o.Priority
+}
+
+// GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsManagedSoftwareUpdate) GetPriorityOk() (*string, bool) {
+	if o == nil || IsNil(o.Priority) {
+		return nil, false
+	}
+	return o.Priority, true
+}
+
+// HasPriority returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdate) HasPriority() bool {
+	if o != nil && !IsNil(o.Priority) {
+		return true
+	}
+
+	return false
+}
+
+// SetPriority gets a reference to the given string and assigns it to the Priority field.
+func (o *MacOsManagedSoftwareUpdate) SetPriority(v string) {
+	o.Priority = &v
+}
+
 func (o MacOsManagedSoftwareUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["deviceIds"] = o.DeviceIds
-	}
-	if o.MaxDeferrals != nil {
-		toSerialize["maxDeferrals"] = o.MaxDeferrals
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.UpdateAction != nil {
-		toSerialize["updateAction"] = o.UpdateAction
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MacOsManagedSoftwareUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeviceIds) {
+		toSerialize["deviceIds"] = o.DeviceIds
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	if !IsNil(o.MaxDeferrals) {
+		toSerialize["maxDeferrals"] = o.MaxDeferrals
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.SkipVersionVerification) {
+		toSerialize["skipVersionVerification"] = o.SkipVersionVerification
+	}
+	if !IsNil(o.ApplyMajorUpdate) {
+		toSerialize["applyMajorUpdate"] = o.ApplyMajorUpdate
+	}
+	if !IsNil(o.UpdateAction) {
+		toSerialize["updateAction"] = o.UpdateAction
+	}
+	if !IsNil(o.ForceRestart) {
+		toSerialize["forceRestart"] = o.ForceRestart
+	}
+	if !IsNil(o.Priority) {
+		toSerialize["priority"] = o.Priority
+	}
+	return toSerialize, nil
 }
 
 type NullableMacOsManagedSoftwareUpdate struct {

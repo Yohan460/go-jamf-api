@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageScopeV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageScopeV2{}
+
 // PrestageScopeV2 struct for PrestageScopeV2
 type PrestageScopeV2 struct {
 	SerialsByPrestageId *map[string]string `json:"serialsByPrestageId,omitempty"`
@@ -38,7 +41,7 @@ func NewPrestageScopeV2WithDefaults() *PrestageScopeV2 {
 
 // GetSerialsByPrestageId returns the SerialsByPrestageId field value if set, zero value otherwise.
 func (o *PrestageScopeV2) GetSerialsByPrestageId() map[string]string {
-	if o == nil || o.SerialsByPrestageId == nil {
+	if o == nil || IsNil(o.SerialsByPrestageId) {
 		var ret map[string]string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *PrestageScopeV2) GetSerialsByPrestageId() map[string]string {
 // GetSerialsByPrestageIdOk returns a tuple with the SerialsByPrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeV2) GetSerialsByPrestageIdOk() (*map[string]string, bool) {
-	if o == nil || o.SerialsByPrestageId == nil {
+	if o == nil || IsNil(o.SerialsByPrestageId) {
 		return nil, false
 	}
 	return o.SerialsByPrestageId, true
@@ -56,7 +59,7 @@ func (o *PrestageScopeV2) GetSerialsByPrestageIdOk() (*map[string]string, bool) 
 
 // HasSerialsByPrestageId returns a boolean if a field has been set.
 func (o *PrestageScopeV2) HasSerialsByPrestageId() bool {
-	if o != nil && o.SerialsByPrestageId != nil {
+	if o != nil && !IsNil(o.SerialsByPrestageId) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *PrestageScopeV2) SetSerialsByPrestageId(v map[string]string) {
 }
 
 func (o PrestageScopeV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SerialsByPrestageId != nil {
-		toSerialize["serialsByPrestageId"] = o.SerialsByPrestageId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageScopeV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SerialsByPrestageId) {
+		toSerialize["serialsByPrestageId"] = o.SerialsByPrestageId
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageScopeV2 struct {

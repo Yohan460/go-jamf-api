@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type MacosManagedSoftwareUpdatesApi interface {
+type MacosManagedSoftwareUpdatesAPI interface {
 
 	/*
 	V1MacosManagedSoftwareUpdatesAvailableUpdatesGet Retrieve available MacOs Managed Software Updates
@@ -27,13 +27,16 @@ type MacosManagedSoftwareUpdatesApi interface {
 	Retrieves available MacOs Managed Software Updates
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+	@return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+
+	Deprecated
 	*/
-	V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+	V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(ctx context.Context) MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
 
 	// V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute executes the request
 	//  @return AvailableUpdates
-	V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableUpdates, *http.Response, error)
+	// Deprecated
+	V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableUpdates, *http.Response, error)
 
 	/*
 	V1MacosManagedSoftwareUpdatesSendUpdatesPost Send MacOs Managed Software Updates
@@ -41,24 +44,27 @@ type MacosManagedSoftwareUpdatesApi interface {
 	Sends MacOs Managed Software Updates
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+	@return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+
+	Deprecated
 	*/
-	V1MacosManagedSoftwareUpdatesSendUpdatesPost(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+	V1MacosManagedSoftwareUpdatesSendUpdatesPost(ctx context.Context) MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
 
 	// V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute executes the request
 	//  @return MacOsManagedSoftwareUpdateResponse
-	V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) (*MacOsManagedSoftwareUpdateResponse, *http.Response, error)
+	// Deprecated
+	V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) (*MacOsManagedSoftwareUpdateResponse, *http.Response, error)
 }
 
-// MacosManagedSoftwareUpdatesApiService MacosManagedSoftwareUpdatesApi service
-type MacosManagedSoftwareUpdatesApiService service
+// MacosManagedSoftwareUpdatesAPIService MacosManagedSoftwareUpdatesAPI service
+type MacosManagedSoftwareUpdatesAPIService service
 
-type ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest struct {
+type MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest struct {
 	ctx context.Context
-	ApiService MacosManagedSoftwareUpdatesApi
+	ApiService MacosManagedSoftwareUpdatesAPI
 }
 
-func (r ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) Execute() (*AvailableUpdates, *http.Response, error) {
+func (r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) Execute() (*AvailableUpdates, *http.Response, error) {
 	return r.ApiService.V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r)
 }
 
@@ -68,10 +74,12 @@ V1MacosManagedSoftwareUpdatesAvailableUpdatesGet Retrieve available MacOs Manage
 Retrieves available MacOs Managed Software Updates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+ @return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest
+
+Deprecated
 */
-func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest {
-	return ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest{
+func (a *MacosManagedSoftwareUpdatesAPIService) V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(ctx context.Context) MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest {
+	return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -79,7 +87,8 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAva
 
 // Execute executes the request
 //  @return AvailableUpdates
-func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r ApiV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableUpdates, *http.Response, error) {
+// Deprecated
+func (a *MacosManagedSoftwareUpdatesAPIService) V1MacosManagedSoftwareUpdatesAvailableUpdatesGetExecute(r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableUpdates, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -87,7 +96,7 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAva
 		localVarReturnValue  *AvailableUpdates
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MacosManagedSoftwareUpdatesApiService.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MacosManagedSoftwareUpdatesAPIService.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -125,9 +134,9 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAva
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -152,19 +161,19 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesAva
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest struct {
+type MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest struct {
 	ctx context.Context
-	ApiService MacosManagedSoftwareUpdatesApi
+	ApiService MacosManagedSoftwareUpdatesAPI
 	macOsManagedSoftwareUpdate *MacOsManagedSoftwareUpdate
 }
 
 // MacOs Managed Software Update to send
-func (r ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) MacOsManagedSoftwareUpdate(macOsManagedSoftwareUpdate MacOsManagedSoftwareUpdate) ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest {
+func (r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) MacOsManagedSoftwareUpdate(macOsManagedSoftwareUpdate MacOsManagedSoftwareUpdate) MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest {
 	r.macOsManagedSoftwareUpdate = &macOsManagedSoftwareUpdate
 	return r
 }
 
-func (r ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) Execute() (*MacOsManagedSoftwareUpdateResponse, *http.Response, error) {
+func (r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) Execute() (*MacOsManagedSoftwareUpdateResponse, *http.Response, error) {
 	return r.ApiService.V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r)
 }
 
@@ -174,10 +183,12 @@ V1MacosManagedSoftwareUpdatesSendUpdatesPost Send MacOs Managed Software Updates
 Sends MacOs Managed Software Updates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+ @return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest
+
+Deprecated
 */
-func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSendUpdatesPost(ctx context.Context) ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest {
-	return ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest{
+func (a *MacosManagedSoftwareUpdatesAPIService) V1MacosManagedSoftwareUpdatesSendUpdatesPost(ctx context.Context) MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest {
+	return MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -185,7 +196,8 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSen
 
 // Execute executes the request
 //  @return MacOsManagedSoftwareUpdateResponse
-func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r ApiV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) (*MacOsManagedSoftwareUpdateResponse, *http.Response, error) {
+// Deprecated
+func (a *MacosManagedSoftwareUpdatesAPIService) V1MacosManagedSoftwareUpdatesSendUpdatesPostExecute(r MacosManagedSoftwareUpdatesAPIV1MacosManagedSoftwareUpdatesSendUpdatesPostRequest) (*MacOsManagedSoftwareUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -193,7 +205,7 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSen
 		localVarReturnValue  *MacOsManagedSoftwareUpdateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MacosManagedSoftwareUpdatesApiService.V1MacosManagedSoftwareUpdatesSendUpdatesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MacosManagedSoftwareUpdatesAPIService.V1MacosManagedSoftwareUpdatesSendUpdatesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -236,9 +248,9 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSen
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -255,7 +267,8 @@ func (a *MacosManagedSoftwareUpdatesApiService) V1MacosManagedSoftwareUpdatesSen
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

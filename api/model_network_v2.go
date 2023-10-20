@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the NetworkV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NetworkV2{}
+
 // NetworkV2 struct for NetworkV2
 type NetworkV2 struct {
 	CellularTechnology *string `json:"cellularTechnology,omitempty"`
@@ -55,7 +58,7 @@ func NewNetworkV2WithDefaults() *NetworkV2 {
 
 // GetCellularTechnology returns the CellularTechnology field value if set, zero value otherwise.
 func (o *NetworkV2) GetCellularTechnology() string {
-	if o == nil || o.CellularTechnology == nil {
+	if o == nil || IsNil(o.CellularTechnology) {
 		var ret string
 		return ret
 	}
@@ -65,7 +68,7 @@ func (o *NetworkV2) GetCellularTechnology() string {
 // GetCellularTechnologyOk returns a tuple with the CellularTechnology field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetCellularTechnologyOk() (*string, bool) {
-	if o == nil || o.CellularTechnology == nil {
+	if o == nil || IsNil(o.CellularTechnology) {
 		return nil, false
 	}
 	return o.CellularTechnology, true
@@ -73,7 +76,7 @@ func (o *NetworkV2) GetCellularTechnologyOk() (*string, bool) {
 
 // HasCellularTechnology returns a boolean if a field has been set.
 func (o *NetworkV2) HasCellularTechnology() bool {
-	if o != nil && o.CellularTechnology != nil {
+	if o != nil && !IsNil(o.CellularTechnology) {
 		return true
 	}
 
@@ -87,7 +90,7 @@ func (o *NetworkV2) SetCellularTechnology(v string) {
 
 // GetVoiceRoamingEnabled returns the VoiceRoamingEnabled field value if set, zero value otherwise.
 func (o *NetworkV2) GetVoiceRoamingEnabled() bool {
-	if o == nil || o.VoiceRoamingEnabled == nil {
+	if o == nil || IsNil(o.VoiceRoamingEnabled) {
 		var ret bool
 		return ret
 	}
@@ -97,7 +100,7 @@ func (o *NetworkV2) GetVoiceRoamingEnabled() bool {
 // GetVoiceRoamingEnabledOk returns a tuple with the VoiceRoamingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetVoiceRoamingEnabledOk() (*bool, bool) {
-	if o == nil || o.VoiceRoamingEnabled == nil {
+	if o == nil || IsNil(o.VoiceRoamingEnabled) {
 		return nil, false
 	}
 	return o.VoiceRoamingEnabled, true
@@ -105,7 +108,7 @@ func (o *NetworkV2) GetVoiceRoamingEnabledOk() (*bool, bool) {
 
 // HasVoiceRoamingEnabled returns a boolean if a field has been set.
 func (o *NetworkV2) HasVoiceRoamingEnabled() bool {
-	if o != nil && o.VoiceRoamingEnabled != nil {
+	if o != nil && !IsNil(o.VoiceRoamingEnabled) {
 		return true
 	}
 
@@ -119,7 +122,7 @@ func (o *NetworkV2) SetVoiceRoamingEnabled(v bool) {
 
 // GetImei returns the Imei field value if set, zero value otherwise.
 func (o *NetworkV2) GetImei() string {
-	if o == nil || o.Imei == nil {
+	if o == nil || IsNil(o.Imei) {
 		var ret string
 		return ret
 	}
@@ -129,7 +132,7 @@ func (o *NetworkV2) GetImei() string {
 // GetImeiOk returns a tuple with the Imei field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetImeiOk() (*string, bool) {
-	if o == nil || o.Imei == nil {
+	if o == nil || IsNil(o.Imei) {
 		return nil, false
 	}
 	return o.Imei, true
@@ -137,7 +140,7 @@ func (o *NetworkV2) GetImeiOk() (*string, bool) {
 
 // HasImei returns a boolean if a field has been set.
 func (o *NetworkV2) HasImei() bool {
-	if o != nil && o.Imei != nil {
+	if o != nil && !IsNil(o.Imei) {
 		return true
 	}
 
@@ -151,7 +154,7 @@ func (o *NetworkV2) SetImei(v string) {
 
 // GetIccid returns the Iccid field value if set, zero value otherwise.
 func (o *NetworkV2) GetIccid() string {
-	if o == nil || o.Iccid == nil {
+	if o == nil || IsNil(o.Iccid) {
 		var ret string
 		return ret
 	}
@@ -161,7 +164,7 @@ func (o *NetworkV2) GetIccid() string {
 // GetIccidOk returns a tuple with the Iccid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetIccidOk() (*string, bool) {
-	if o == nil || o.Iccid == nil {
+	if o == nil || IsNil(o.Iccid) {
 		return nil, false
 	}
 	return o.Iccid, true
@@ -169,7 +172,7 @@ func (o *NetworkV2) GetIccidOk() (*string, bool) {
 
 // HasIccid returns a boolean if a field has been set.
 func (o *NetworkV2) HasIccid() bool {
-	if o != nil && o.Iccid != nil {
+	if o != nil && !IsNil(o.Iccid) {
 		return true
 	}
 
@@ -183,7 +186,7 @@ func (o *NetworkV2) SetIccid(v string) {
 
 // GetMeid returns the Meid field value if set, zero value otherwise.
 func (o *NetworkV2) GetMeid() string {
-	if o == nil || o.Meid == nil {
+	if o == nil || IsNil(o.Meid) {
 		var ret string
 		return ret
 	}
@@ -193,7 +196,7 @@ func (o *NetworkV2) GetMeid() string {
 // GetMeidOk returns a tuple with the Meid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetMeidOk() (*string, bool) {
-	if o == nil || o.Meid == nil {
+	if o == nil || IsNil(o.Meid) {
 		return nil, false
 	}
 	return o.Meid, true
@@ -201,7 +204,7 @@ func (o *NetworkV2) GetMeidOk() (*string, bool) {
 
 // HasMeid returns a boolean if a field has been set.
 func (o *NetworkV2) HasMeid() bool {
-	if o != nil && o.Meid != nil {
+	if o != nil && !IsNil(o.Meid) {
 		return true
 	}
 
@@ -215,7 +218,7 @@ func (o *NetworkV2) SetMeid(v string) {
 
 // GetEid returns the Eid field value if set, zero value otherwise.
 func (o *NetworkV2) GetEid() string {
-	if o == nil || o.Eid == nil {
+	if o == nil || IsNil(o.Eid) {
 		var ret string
 		return ret
 	}
@@ -225,7 +228,7 @@ func (o *NetworkV2) GetEid() string {
 // GetEidOk returns a tuple with the Eid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetEidOk() (*string, bool) {
-	if o == nil || o.Eid == nil {
+	if o == nil || IsNil(o.Eid) {
 		return nil, false
 	}
 	return o.Eid, true
@@ -233,7 +236,7 @@ func (o *NetworkV2) GetEidOk() (*string, bool) {
 
 // HasEid returns a boolean if a field has been set.
 func (o *NetworkV2) HasEid() bool {
-	if o != nil && o.Eid != nil {
+	if o != nil && !IsNil(o.Eid) {
 		return true
 	}
 
@@ -247,7 +250,7 @@ func (o *NetworkV2) SetEid(v string) {
 
 // GetCarrierSettingsVersion returns the CarrierSettingsVersion field value if set, zero value otherwise.
 func (o *NetworkV2) GetCarrierSettingsVersion() string {
-	if o == nil || o.CarrierSettingsVersion == nil {
+	if o == nil || IsNil(o.CarrierSettingsVersion) {
 		var ret string
 		return ret
 	}
@@ -257,7 +260,7 @@ func (o *NetworkV2) GetCarrierSettingsVersion() string {
 // GetCarrierSettingsVersionOk returns a tuple with the CarrierSettingsVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetCarrierSettingsVersionOk() (*string, bool) {
-	if o == nil || o.CarrierSettingsVersion == nil {
+	if o == nil || IsNil(o.CarrierSettingsVersion) {
 		return nil, false
 	}
 	return o.CarrierSettingsVersion, true
@@ -265,7 +268,7 @@ func (o *NetworkV2) GetCarrierSettingsVersionOk() (*string, bool) {
 
 // HasCarrierSettingsVersion returns a boolean if a field has been set.
 func (o *NetworkV2) HasCarrierSettingsVersion() bool {
-	if o != nil && o.CarrierSettingsVersion != nil {
+	if o != nil && !IsNil(o.CarrierSettingsVersion) {
 		return true
 	}
 
@@ -279,7 +282,7 @@ func (o *NetworkV2) SetCarrierSettingsVersion(v string) {
 
 // GetCurrentCarrierNetwork returns the CurrentCarrierNetwork field value if set, zero value otherwise.
 func (o *NetworkV2) GetCurrentCarrierNetwork() string {
-	if o == nil || o.CurrentCarrierNetwork == nil {
+	if o == nil || IsNil(o.CurrentCarrierNetwork) {
 		var ret string
 		return ret
 	}
@@ -289,7 +292,7 @@ func (o *NetworkV2) GetCurrentCarrierNetwork() string {
 // GetCurrentCarrierNetworkOk returns a tuple with the CurrentCarrierNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetCurrentCarrierNetworkOk() (*string, bool) {
-	if o == nil || o.CurrentCarrierNetwork == nil {
+	if o == nil || IsNil(o.CurrentCarrierNetwork) {
 		return nil, false
 	}
 	return o.CurrentCarrierNetwork, true
@@ -297,7 +300,7 @@ func (o *NetworkV2) GetCurrentCarrierNetworkOk() (*string, bool) {
 
 // HasCurrentCarrierNetwork returns a boolean if a field has been set.
 func (o *NetworkV2) HasCurrentCarrierNetwork() bool {
-	if o != nil && o.CurrentCarrierNetwork != nil {
+	if o != nil && !IsNil(o.CurrentCarrierNetwork) {
 		return true
 	}
 
@@ -311,7 +314,7 @@ func (o *NetworkV2) SetCurrentCarrierNetwork(v string) {
 
 // GetCurrentMobileCountryCode returns the CurrentMobileCountryCode field value if set, zero value otherwise.
 func (o *NetworkV2) GetCurrentMobileCountryCode() string {
-	if o == nil || o.CurrentMobileCountryCode == nil {
+	if o == nil || IsNil(o.CurrentMobileCountryCode) {
 		var ret string
 		return ret
 	}
@@ -321,7 +324,7 @@ func (o *NetworkV2) GetCurrentMobileCountryCode() string {
 // GetCurrentMobileCountryCodeOk returns a tuple with the CurrentMobileCountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetCurrentMobileCountryCodeOk() (*string, bool) {
-	if o == nil || o.CurrentMobileCountryCode == nil {
+	if o == nil || IsNil(o.CurrentMobileCountryCode) {
 		return nil, false
 	}
 	return o.CurrentMobileCountryCode, true
@@ -329,7 +332,7 @@ func (o *NetworkV2) GetCurrentMobileCountryCodeOk() (*string, bool) {
 
 // HasCurrentMobileCountryCode returns a boolean if a field has been set.
 func (o *NetworkV2) HasCurrentMobileCountryCode() bool {
-	if o != nil && o.CurrentMobileCountryCode != nil {
+	if o != nil && !IsNil(o.CurrentMobileCountryCode) {
 		return true
 	}
 
@@ -343,7 +346,7 @@ func (o *NetworkV2) SetCurrentMobileCountryCode(v string) {
 
 // GetCurrentMobileNetworkCode returns the CurrentMobileNetworkCode field value if set, zero value otherwise.
 func (o *NetworkV2) GetCurrentMobileNetworkCode() string {
-	if o == nil || o.CurrentMobileNetworkCode == nil {
+	if o == nil || IsNil(o.CurrentMobileNetworkCode) {
 		var ret string
 		return ret
 	}
@@ -353,7 +356,7 @@ func (o *NetworkV2) GetCurrentMobileNetworkCode() string {
 // GetCurrentMobileNetworkCodeOk returns a tuple with the CurrentMobileNetworkCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetCurrentMobileNetworkCodeOk() (*string, bool) {
-	if o == nil || o.CurrentMobileNetworkCode == nil {
+	if o == nil || IsNil(o.CurrentMobileNetworkCode) {
 		return nil, false
 	}
 	return o.CurrentMobileNetworkCode, true
@@ -361,7 +364,7 @@ func (o *NetworkV2) GetCurrentMobileNetworkCodeOk() (*string, bool) {
 
 // HasCurrentMobileNetworkCode returns a boolean if a field has been set.
 func (o *NetworkV2) HasCurrentMobileNetworkCode() bool {
-	if o != nil && o.CurrentMobileNetworkCode != nil {
+	if o != nil && !IsNil(o.CurrentMobileNetworkCode) {
 		return true
 	}
 
@@ -375,7 +378,7 @@ func (o *NetworkV2) SetCurrentMobileNetworkCode(v string) {
 
 // GetHomeCarrierNetwork returns the HomeCarrierNetwork field value if set, zero value otherwise.
 func (o *NetworkV2) GetHomeCarrierNetwork() string {
-	if o == nil || o.HomeCarrierNetwork == nil {
+	if o == nil || IsNil(o.HomeCarrierNetwork) {
 		var ret string
 		return ret
 	}
@@ -385,7 +388,7 @@ func (o *NetworkV2) GetHomeCarrierNetwork() string {
 // GetHomeCarrierNetworkOk returns a tuple with the HomeCarrierNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetHomeCarrierNetworkOk() (*string, bool) {
-	if o == nil || o.HomeCarrierNetwork == nil {
+	if o == nil || IsNil(o.HomeCarrierNetwork) {
 		return nil, false
 	}
 	return o.HomeCarrierNetwork, true
@@ -393,7 +396,7 @@ func (o *NetworkV2) GetHomeCarrierNetworkOk() (*string, bool) {
 
 // HasHomeCarrierNetwork returns a boolean if a field has been set.
 func (o *NetworkV2) HasHomeCarrierNetwork() bool {
-	if o != nil && o.HomeCarrierNetwork != nil {
+	if o != nil && !IsNil(o.HomeCarrierNetwork) {
 		return true
 	}
 
@@ -407,7 +410,7 @@ func (o *NetworkV2) SetHomeCarrierNetwork(v string) {
 
 // GetHomeMobileCountryCode returns the HomeMobileCountryCode field value if set, zero value otherwise.
 func (o *NetworkV2) GetHomeMobileCountryCode() string {
-	if o == nil || o.HomeMobileCountryCode == nil {
+	if o == nil || IsNil(o.HomeMobileCountryCode) {
 		var ret string
 		return ret
 	}
@@ -417,7 +420,7 @@ func (o *NetworkV2) GetHomeMobileCountryCode() string {
 // GetHomeMobileCountryCodeOk returns a tuple with the HomeMobileCountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetHomeMobileCountryCodeOk() (*string, bool) {
-	if o == nil || o.HomeMobileCountryCode == nil {
+	if o == nil || IsNil(o.HomeMobileCountryCode) {
 		return nil, false
 	}
 	return o.HomeMobileCountryCode, true
@@ -425,7 +428,7 @@ func (o *NetworkV2) GetHomeMobileCountryCodeOk() (*string, bool) {
 
 // HasHomeMobileCountryCode returns a boolean if a field has been set.
 func (o *NetworkV2) HasHomeMobileCountryCode() bool {
-	if o != nil && o.HomeMobileCountryCode != nil {
+	if o != nil && !IsNil(o.HomeMobileCountryCode) {
 		return true
 	}
 
@@ -439,7 +442,7 @@ func (o *NetworkV2) SetHomeMobileCountryCode(v string) {
 
 // GetHomeMobileNetworkCode returns the HomeMobileNetworkCode field value if set, zero value otherwise.
 func (o *NetworkV2) GetHomeMobileNetworkCode() string {
-	if o == nil || o.HomeMobileNetworkCode == nil {
+	if o == nil || IsNil(o.HomeMobileNetworkCode) {
 		var ret string
 		return ret
 	}
@@ -449,7 +452,7 @@ func (o *NetworkV2) GetHomeMobileNetworkCode() string {
 // GetHomeMobileNetworkCodeOk returns a tuple with the HomeMobileNetworkCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetHomeMobileNetworkCodeOk() (*string, bool) {
-	if o == nil || o.HomeMobileNetworkCode == nil {
+	if o == nil || IsNil(o.HomeMobileNetworkCode) {
 		return nil, false
 	}
 	return o.HomeMobileNetworkCode, true
@@ -457,7 +460,7 @@ func (o *NetworkV2) GetHomeMobileNetworkCodeOk() (*string, bool) {
 
 // HasHomeMobileNetworkCode returns a boolean if a field has been set.
 func (o *NetworkV2) HasHomeMobileNetworkCode() bool {
-	if o != nil && o.HomeMobileNetworkCode != nil {
+	if o != nil && !IsNil(o.HomeMobileNetworkCode) {
 		return true
 	}
 
@@ -471,7 +474,7 @@ func (o *NetworkV2) SetHomeMobileNetworkCode(v string) {
 
 // GetDataRoamingEnabled returns the DataRoamingEnabled field value if set, zero value otherwise.
 func (o *NetworkV2) GetDataRoamingEnabled() bool {
-	if o == nil || o.DataRoamingEnabled == nil {
+	if o == nil || IsNil(o.DataRoamingEnabled) {
 		var ret bool
 		return ret
 	}
@@ -481,7 +484,7 @@ func (o *NetworkV2) GetDataRoamingEnabled() bool {
 // GetDataRoamingEnabledOk returns a tuple with the DataRoamingEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetDataRoamingEnabledOk() (*bool, bool) {
-	if o == nil || o.DataRoamingEnabled == nil {
+	if o == nil || IsNil(o.DataRoamingEnabled) {
 		return nil, false
 	}
 	return o.DataRoamingEnabled, true
@@ -489,7 +492,7 @@ func (o *NetworkV2) GetDataRoamingEnabledOk() (*bool, bool) {
 
 // HasDataRoamingEnabled returns a boolean if a field has been set.
 func (o *NetworkV2) HasDataRoamingEnabled() bool {
-	if o != nil && o.DataRoamingEnabled != nil {
+	if o != nil && !IsNil(o.DataRoamingEnabled) {
 		return true
 	}
 
@@ -503,7 +506,7 @@ func (o *NetworkV2) SetDataRoamingEnabled(v bool) {
 
 // GetRoaming returns the Roaming field value if set, zero value otherwise.
 func (o *NetworkV2) GetRoaming() bool {
-	if o == nil || o.Roaming == nil {
+	if o == nil || IsNil(o.Roaming) {
 		var ret bool
 		return ret
 	}
@@ -513,7 +516,7 @@ func (o *NetworkV2) GetRoaming() bool {
 // GetRoamingOk returns a tuple with the Roaming field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetRoamingOk() (*bool, bool) {
-	if o == nil || o.Roaming == nil {
+	if o == nil || IsNil(o.Roaming) {
 		return nil, false
 	}
 	return o.Roaming, true
@@ -521,7 +524,7 @@ func (o *NetworkV2) GetRoamingOk() (*bool, bool) {
 
 // HasRoaming returns a boolean if a field has been set.
 func (o *NetworkV2) HasRoaming() bool {
-	if o != nil && o.Roaming != nil {
+	if o != nil && !IsNil(o.Roaming) {
 		return true
 	}
 
@@ -535,7 +538,7 @@ func (o *NetworkV2) SetRoaming(v bool) {
 
 // GetPersonalHotspotEnabled returns the PersonalHotspotEnabled field value if set, zero value otherwise.
 func (o *NetworkV2) GetPersonalHotspotEnabled() bool {
-	if o == nil || o.PersonalHotspotEnabled == nil {
+	if o == nil || IsNil(o.PersonalHotspotEnabled) {
 		var ret bool
 		return ret
 	}
@@ -545,7 +548,7 @@ func (o *NetworkV2) GetPersonalHotspotEnabled() bool {
 // GetPersonalHotspotEnabledOk returns a tuple with the PersonalHotspotEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetPersonalHotspotEnabledOk() (*bool, bool) {
-	if o == nil || o.PersonalHotspotEnabled == nil {
+	if o == nil || IsNil(o.PersonalHotspotEnabled) {
 		return nil, false
 	}
 	return o.PersonalHotspotEnabled, true
@@ -553,7 +556,7 @@ func (o *NetworkV2) GetPersonalHotspotEnabledOk() (*bool, bool) {
 
 // HasPersonalHotspotEnabled returns a boolean if a field has been set.
 func (o *NetworkV2) HasPersonalHotspotEnabled() bool {
-	if o != nil && o.PersonalHotspotEnabled != nil {
+	if o != nil && !IsNil(o.PersonalHotspotEnabled) {
 		return true
 	}
 
@@ -567,7 +570,7 @@ func (o *NetworkV2) SetPersonalHotspotEnabled(v bool) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *NetworkV2) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -577,7 +580,7 @@ func (o *NetworkV2) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *NetworkV2) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		return nil, false
 	}
 	return o.PhoneNumber, true
@@ -585,7 +588,7 @@ func (o *NetworkV2) GetPhoneNumberOk() (*string, bool) {
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *NetworkV2) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -598,59 +601,67 @@ func (o *NetworkV2) SetPhoneNumber(v string) {
 }
 
 func (o NetworkV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CellularTechnology != nil {
-		toSerialize["cellularTechnology"] = o.CellularTechnology
-	}
-	if o.VoiceRoamingEnabled != nil {
-		toSerialize["voiceRoamingEnabled"] = o.VoiceRoamingEnabled
-	}
-	if o.Imei != nil {
-		toSerialize["imei"] = o.Imei
-	}
-	if o.Iccid != nil {
-		toSerialize["iccid"] = o.Iccid
-	}
-	if o.Meid != nil {
-		toSerialize["meid"] = o.Meid
-	}
-	if o.Eid != nil {
-		toSerialize["eid"] = o.Eid
-	}
-	if o.CarrierSettingsVersion != nil {
-		toSerialize["carrierSettingsVersion"] = o.CarrierSettingsVersion
-	}
-	if o.CurrentCarrierNetwork != nil {
-		toSerialize["currentCarrierNetwork"] = o.CurrentCarrierNetwork
-	}
-	if o.CurrentMobileCountryCode != nil {
-		toSerialize["currentMobileCountryCode"] = o.CurrentMobileCountryCode
-	}
-	if o.CurrentMobileNetworkCode != nil {
-		toSerialize["currentMobileNetworkCode"] = o.CurrentMobileNetworkCode
-	}
-	if o.HomeCarrierNetwork != nil {
-		toSerialize["homeCarrierNetwork"] = o.HomeCarrierNetwork
-	}
-	if o.HomeMobileCountryCode != nil {
-		toSerialize["homeMobileCountryCode"] = o.HomeMobileCountryCode
-	}
-	if o.HomeMobileNetworkCode != nil {
-		toSerialize["homeMobileNetworkCode"] = o.HomeMobileNetworkCode
-	}
-	if o.DataRoamingEnabled != nil {
-		toSerialize["dataRoamingEnabled"] = o.DataRoamingEnabled
-	}
-	if o.Roaming != nil {
-		toSerialize["roaming"] = o.Roaming
-	}
-	if o.PersonalHotspotEnabled != nil {
-		toSerialize["personalHotspotEnabled"] = o.PersonalHotspotEnabled
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phoneNumber"] = o.PhoneNumber
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o NetworkV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CellularTechnology) {
+		toSerialize["cellularTechnology"] = o.CellularTechnology
+	}
+	if !IsNil(o.VoiceRoamingEnabled) {
+		toSerialize["voiceRoamingEnabled"] = o.VoiceRoamingEnabled
+	}
+	if !IsNil(o.Imei) {
+		toSerialize["imei"] = o.Imei
+	}
+	if !IsNil(o.Iccid) {
+		toSerialize["iccid"] = o.Iccid
+	}
+	if !IsNil(o.Meid) {
+		toSerialize["meid"] = o.Meid
+	}
+	if !IsNil(o.Eid) {
+		toSerialize["eid"] = o.Eid
+	}
+	if !IsNil(o.CarrierSettingsVersion) {
+		toSerialize["carrierSettingsVersion"] = o.CarrierSettingsVersion
+	}
+	if !IsNil(o.CurrentCarrierNetwork) {
+		toSerialize["currentCarrierNetwork"] = o.CurrentCarrierNetwork
+	}
+	if !IsNil(o.CurrentMobileCountryCode) {
+		toSerialize["currentMobileCountryCode"] = o.CurrentMobileCountryCode
+	}
+	if !IsNil(o.CurrentMobileNetworkCode) {
+		toSerialize["currentMobileNetworkCode"] = o.CurrentMobileNetworkCode
+	}
+	if !IsNil(o.HomeCarrierNetwork) {
+		toSerialize["homeCarrierNetwork"] = o.HomeCarrierNetwork
+	}
+	if !IsNil(o.HomeMobileCountryCode) {
+		toSerialize["homeMobileCountryCode"] = o.HomeMobileCountryCode
+	}
+	if !IsNil(o.HomeMobileNetworkCode) {
+		toSerialize["homeMobileNetworkCode"] = o.HomeMobileNetworkCode
+	}
+	if !IsNil(o.DataRoamingEnabled) {
+		toSerialize["dataRoamingEnabled"] = o.DataRoamingEnabled
+	}
+	if !IsNil(o.Roaming) {
+		toSerialize["roaming"] = o.Roaming
+	}
+	if !IsNil(o.PersonalHotspotEnabled) {
+		toSerialize["personalHotspotEnabled"] = o.PersonalHotspotEnabled
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	return toSerialize, nil
 }
 
 type NullableNetworkV2 struct {

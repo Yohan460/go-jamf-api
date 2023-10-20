@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentProcessTextObject type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentProcessTextObject{}
+
 // EnrollmentProcessTextObject struct for EnrollmentProcessTextObject
 type EnrollmentProcessTextObject struct {
 	LanguageCode *string `json:"languageCode,omitempty"`
@@ -101,7 +104,7 @@ func NewEnrollmentProcessTextObjectWithDefaults() *EnrollmentProcessTextObject {
 
 // GetLanguageCode returns the LanguageCode field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetLanguageCode() string {
-	if o == nil || o.LanguageCode == nil {
+	if o == nil || IsNil(o.LanguageCode) {
 		var ret string
 		return ret
 	}
@@ -111,7 +114,7 @@ func (o *EnrollmentProcessTextObject) GetLanguageCode() string {
 // GetLanguageCodeOk returns a tuple with the LanguageCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetLanguageCodeOk() (*string, bool) {
-	if o == nil || o.LanguageCode == nil {
+	if o == nil || IsNil(o.LanguageCode) {
 		return nil, false
 	}
 	return o.LanguageCode, true
@@ -119,7 +122,7 @@ func (o *EnrollmentProcessTextObject) GetLanguageCodeOk() (*string, bool) {
 
 // HasLanguageCode returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasLanguageCode() bool {
-	if o != nil && o.LanguageCode != nil {
+	if o != nil && !IsNil(o.LanguageCode) {
 		return true
 	}
 
@@ -133,7 +136,7 @@ func (o *EnrollmentProcessTextObject) SetLanguageCode(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -143,7 +146,7 @@ func (o *EnrollmentProcessTextObject) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -151,7 +154,7 @@ func (o *EnrollmentProcessTextObject) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -165,7 +168,7 @@ func (o *EnrollmentProcessTextObject) SetName(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -175,7 +178,7 @@ func (o *EnrollmentProcessTextObject) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -183,7 +186,7 @@ func (o *EnrollmentProcessTextObject) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -197,7 +200,7 @@ func (o *EnrollmentProcessTextObject) SetTitle(v string) {
 
 // GetLoginDescription returns the LoginDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetLoginDescription() string {
-	if o == nil || o.LoginDescription == nil {
+	if o == nil || IsNil(o.LoginDescription) {
 		var ret string
 		return ret
 	}
@@ -207,7 +210,7 @@ func (o *EnrollmentProcessTextObject) GetLoginDescription() string {
 // GetLoginDescriptionOk returns a tuple with the LoginDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetLoginDescriptionOk() (*string, bool) {
-	if o == nil || o.LoginDescription == nil {
+	if o == nil || IsNil(o.LoginDescription) {
 		return nil, false
 	}
 	return o.LoginDescription, true
@@ -215,7 +218,7 @@ func (o *EnrollmentProcessTextObject) GetLoginDescriptionOk() (*string, bool) {
 
 // HasLoginDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasLoginDescription() bool {
-	if o != nil && o.LoginDescription != nil {
+	if o != nil && !IsNil(o.LoginDescription) {
 		return true
 	}
 
@@ -229,7 +232,7 @@ func (o *EnrollmentProcessTextObject) SetLoginDescription(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -239,7 +242,7 @@ func (o *EnrollmentProcessTextObject) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -247,7 +250,7 @@ func (o *EnrollmentProcessTextObject) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -261,7 +264,7 @@ func (o *EnrollmentProcessTextObject) SetUsername(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -271,7 +274,7 @@ func (o *EnrollmentProcessTextObject) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -279,7 +282,7 @@ func (o *EnrollmentProcessTextObject) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -293,7 +296,7 @@ func (o *EnrollmentProcessTextObject) SetPassword(v string) {
 
 // GetLoginButton returns the LoginButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetLoginButton() string {
-	if o == nil || o.LoginButton == nil {
+	if o == nil || IsNil(o.LoginButton) {
 		var ret string
 		return ret
 	}
@@ -303,7 +306,7 @@ func (o *EnrollmentProcessTextObject) GetLoginButton() string {
 // GetLoginButtonOk returns a tuple with the LoginButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetLoginButtonOk() (*string, bool) {
-	if o == nil || o.LoginButton == nil {
+	if o == nil || IsNil(o.LoginButton) {
 		return nil, false
 	}
 	return o.LoginButton, true
@@ -311,7 +314,7 @@ func (o *EnrollmentProcessTextObject) GetLoginButtonOk() (*string, bool) {
 
 // HasLoginButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasLoginButton() bool {
-	if o != nil && o.LoginButton != nil {
+	if o != nil && !IsNil(o.LoginButton) {
 		return true
 	}
 
@@ -325,7 +328,7 @@ func (o *EnrollmentProcessTextObject) SetLoginButton(v string) {
 
 // GetDeviceClassDescription returns the DeviceClassDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassDescription() string {
-	if o == nil || o.DeviceClassDescription == nil {
+	if o == nil || IsNil(o.DeviceClassDescription) {
 		var ret string
 		return ret
 	}
@@ -335,7 +338,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassDescription() string {
 // GetDeviceClassDescriptionOk returns a tuple with the DeviceClassDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassDescriptionOk() (*string, bool) {
-	if o == nil || o.DeviceClassDescription == nil {
+	if o == nil || IsNil(o.DeviceClassDescription) {
 		return nil, false
 	}
 	return o.DeviceClassDescription, true
@@ -343,7 +346,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassDescriptionOk() (*string, bo
 
 // HasDeviceClassDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassDescription() bool {
-	if o != nil && o.DeviceClassDescription != nil {
+	if o != nil && !IsNil(o.DeviceClassDescription) {
 		return true
 	}
 
@@ -357,7 +360,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassDescription(v string) {
 
 // GetDeviceClassPersonal returns the DeviceClassPersonal field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassPersonal() string {
-	if o == nil || o.DeviceClassPersonal == nil {
+	if o == nil || IsNil(o.DeviceClassPersonal) {
 		var ret string
 		return ret
 	}
@@ -367,7 +370,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassPersonal() string {
 // GetDeviceClassPersonalOk returns a tuple with the DeviceClassPersonal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalOk() (*string, bool) {
-	if o == nil || o.DeviceClassPersonal == nil {
+	if o == nil || IsNil(o.DeviceClassPersonal) {
 		return nil, false
 	}
 	return o.DeviceClassPersonal, true
@@ -375,7 +378,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalOk() (*string, bool)
 
 // HasDeviceClassPersonal returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassPersonal() bool {
-	if o != nil && o.DeviceClassPersonal != nil {
+	if o != nil && !IsNil(o.DeviceClassPersonal) {
 		return true
 	}
 
@@ -389,7 +392,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassPersonal(v string) {
 
 // GetDeviceClassPersonalDescription returns the DeviceClassPersonalDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalDescription() string {
-	if o == nil || o.DeviceClassPersonalDescription == nil {
+	if o == nil || IsNil(o.DeviceClassPersonalDescription) {
 		var ret string
 		return ret
 	}
@@ -399,7 +402,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalDescription() string
 // GetDeviceClassPersonalDescriptionOk returns a tuple with the DeviceClassPersonalDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalDescriptionOk() (*string, bool) {
-	if o == nil || o.DeviceClassPersonalDescription == nil {
+	if o == nil || IsNil(o.DeviceClassPersonalDescription) {
 		return nil, false
 	}
 	return o.DeviceClassPersonalDescription, true
@@ -407,7 +410,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassPersonalDescriptionOk() (*st
 
 // HasDeviceClassPersonalDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassPersonalDescription() bool {
-	if o != nil && o.DeviceClassPersonalDescription != nil {
+	if o != nil && !IsNil(o.DeviceClassPersonalDescription) {
 		return true
 	}
 
@@ -421,7 +424,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassPersonalDescription(v string
 
 // GetDeviceClassEnterprise returns the DeviceClassEnterprise field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassEnterprise() string {
-	if o == nil || o.DeviceClassEnterprise == nil {
+	if o == nil || IsNil(o.DeviceClassEnterprise) {
 		var ret string
 		return ret
 	}
@@ -431,7 +434,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassEnterprise() string {
 // GetDeviceClassEnterpriseOk returns a tuple with the DeviceClassEnterprise field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseOk() (*string, bool) {
-	if o == nil || o.DeviceClassEnterprise == nil {
+	if o == nil || IsNil(o.DeviceClassEnterprise) {
 		return nil, false
 	}
 	return o.DeviceClassEnterprise, true
@@ -439,7 +442,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseOk() (*string, boo
 
 // HasDeviceClassEnterprise returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassEnterprise() bool {
-	if o != nil && o.DeviceClassEnterprise != nil {
+	if o != nil && !IsNil(o.DeviceClassEnterprise) {
 		return true
 	}
 
@@ -453,7 +456,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassEnterprise(v string) {
 
 // GetDeviceClassEnterpriseDescription returns the DeviceClassEnterpriseDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseDescription() string {
-	if o == nil || o.DeviceClassEnterpriseDescription == nil {
+	if o == nil || IsNil(o.DeviceClassEnterpriseDescription) {
 		var ret string
 		return ret
 	}
@@ -463,7 +466,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseDescription() stri
 // GetDeviceClassEnterpriseDescriptionOk returns a tuple with the DeviceClassEnterpriseDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseDescriptionOk() (*string, bool) {
-	if o == nil || o.DeviceClassEnterpriseDescription == nil {
+	if o == nil || IsNil(o.DeviceClassEnterpriseDescription) {
 		return nil, false
 	}
 	return o.DeviceClassEnterpriseDescription, true
@@ -471,7 +474,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassEnterpriseDescriptionOk() (*
 
 // HasDeviceClassEnterpriseDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassEnterpriseDescription() bool {
-	if o != nil && o.DeviceClassEnterpriseDescription != nil {
+	if o != nil && !IsNil(o.DeviceClassEnterpriseDescription) {
 		return true
 	}
 
@@ -485,7 +488,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassEnterpriseDescription(v stri
 
 // GetDeviceClassButton returns the DeviceClassButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetDeviceClassButton() string {
-	if o == nil || o.DeviceClassButton == nil {
+	if o == nil || IsNil(o.DeviceClassButton) {
 		var ret string
 		return ret
 	}
@@ -495,7 +498,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassButton() string {
 // GetDeviceClassButtonOk returns a tuple with the DeviceClassButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetDeviceClassButtonOk() (*string, bool) {
-	if o == nil || o.DeviceClassButton == nil {
+	if o == nil || IsNil(o.DeviceClassButton) {
 		return nil, false
 	}
 	return o.DeviceClassButton, true
@@ -503,7 +506,7 @@ func (o *EnrollmentProcessTextObject) GetDeviceClassButtonOk() (*string, bool) {
 
 // HasDeviceClassButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasDeviceClassButton() bool {
-	if o != nil && o.DeviceClassButton != nil {
+	if o != nil && !IsNil(o.DeviceClassButton) {
 		return true
 	}
 
@@ -517,7 +520,7 @@ func (o *EnrollmentProcessTextObject) SetDeviceClassButton(v string) {
 
 // GetPersonalEula returns the PersonalEula field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPersonalEula() string {
-	if o == nil || o.PersonalEula == nil {
+	if o == nil || IsNil(o.PersonalEula) {
 		var ret string
 		return ret
 	}
@@ -527,7 +530,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalEula() string {
 // GetPersonalEulaOk returns a tuple with the PersonalEula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPersonalEulaOk() (*string, bool) {
-	if o == nil || o.PersonalEula == nil {
+	if o == nil || IsNil(o.PersonalEula) {
 		return nil, false
 	}
 	return o.PersonalEula, true
@@ -535,7 +538,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalEulaOk() (*string, bool) {
 
 // HasPersonalEula returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPersonalEula() bool {
-	if o != nil && o.PersonalEula != nil {
+	if o != nil && !IsNil(o.PersonalEula) {
 		return true
 	}
 
@@ -549,7 +552,7 @@ func (o *EnrollmentProcessTextObject) SetPersonalEula(v string) {
 
 // GetEnterpriseEula returns the EnterpriseEula field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterpriseEula() string {
-	if o == nil || o.EnterpriseEula == nil {
+	if o == nil || IsNil(o.EnterpriseEula) {
 		var ret string
 		return ret
 	}
@@ -559,7 +562,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseEula() string {
 // GetEnterpriseEulaOk returns a tuple with the EnterpriseEula field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterpriseEulaOk() (*string, bool) {
-	if o == nil || o.EnterpriseEula == nil {
+	if o == nil || IsNil(o.EnterpriseEula) {
 		return nil, false
 	}
 	return o.EnterpriseEula, true
@@ -567,7 +570,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseEulaOk() (*string, bool) {
 
 // HasEnterpriseEula returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterpriseEula() bool {
-	if o != nil && o.EnterpriseEula != nil {
+	if o != nil && !IsNil(o.EnterpriseEula) {
 		return true
 	}
 
@@ -581,7 +584,7 @@ func (o *EnrollmentProcessTextObject) SetEnterpriseEula(v string) {
 
 // GetEulaButton returns the EulaButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEulaButton() string {
-	if o == nil || o.EulaButton == nil {
+	if o == nil || IsNil(o.EulaButton) {
 		var ret string
 		return ret
 	}
@@ -591,7 +594,7 @@ func (o *EnrollmentProcessTextObject) GetEulaButton() string {
 // GetEulaButtonOk returns a tuple with the EulaButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEulaButtonOk() (*string, bool) {
-	if o == nil || o.EulaButton == nil {
+	if o == nil || IsNil(o.EulaButton) {
 		return nil, false
 	}
 	return o.EulaButton, true
@@ -599,7 +602,7 @@ func (o *EnrollmentProcessTextObject) GetEulaButtonOk() (*string, bool) {
 
 // HasEulaButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEulaButton() bool {
-	if o != nil && o.EulaButton != nil {
+	if o != nil && !IsNil(o.EulaButton) {
 		return true
 	}
 
@@ -613,7 +616,7 @@ func (o *EnrollmentProcessTextObject) SetEulaButton(v string) {
 
 // GetSiteDescription returns the SiteDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetSiteDescription() string {
-	if o == nil || o.SiteDescription == nil {
+	if o == nil || IsNil(o.SiteDescription) {
 		var ret string
 		return ret
 	}
@@ -623,7 +626,7 @@ func (o *EnrollmentProcessTextObject) GetSiteDescription() string {
 // GetSiteDescriptionOk returns a tuple with the SiteDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetSiteDescriptionOk() (*string, bool) {
-	if o == nil || o.SiteDescription == nil {
+	if o == nil || IsNil(o.SiteDescription) {
 		return nil, false
 	}
 	return o.SiteDescription, true
@@ -631,7 +634,7 @@ func (o *EnrollmentProcessTextObject) GetSiteDescriptionOk() (*string, bool) {
 
 // HasSiteDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasSiteDescription() bool {
-	if o != nil && o.SiteDescription != nil {
+	if o != nil && !IsNil(o.SiteDescription) {
 		return true
 	}
 
@@ -645,7 +648,7 @@ func (o *EnrollmentProcessTextObject) SetSiteDescription(v string) {
 
 // GetCertificateText returns the CertificateText field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCertificateText() string {
-	if o == nil || o.CertificateText == nil {
+	if o == nil || IsNil(o.CertificateText) {
 		var ret string
 		return ret
 	}
@@ -655,7 +658,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateText() string {
 // GetCertificateTextOk returns a tuple with the CertificateText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCertificateTextOk() (*string, bool) {
-	if o == nil || o.CertificateText == nil {
+	if o == nil || IsNil(o.CertificateText) {
 		return nil, false
 	}
 	return o.CertificateText, true
@@ -663,7 +666,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateTextOk() (*string, bool) {
 
 // HasCertificateText returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCertificateText() bool {
-	if o != nil && o.CertificateText != nil {
+	if o != nil && !IsNil(o.CertificateText) {
 		return true
 	}
 
@@ -677,7 +680,7 @@ func (o *EnrollmentProcessTextObject) SetCertificateText(v string) {
 
 // GetCertificateButton returns the CertificateButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCertificateButton() string {
-	if o == nil || o.CertificateButton == nil {
+	if o == nil || IsNil(o.CertificateButton) {
 		var ret string
 		return ret
 	}
@@ -687,7 +690,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateButton() string {
 // GetCertificateButtonOk returns a tuple with the CertificateButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCertificateButtonOk() (*string, bool) {
-	if o == nil || o.CertificateButton == nil {
+	if o == nil || IsNil(o.CertificateButton) {
 		return nil, false
 	}
 	return o.CertificateButton, true
@@ -695,7 +698,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateButtonOk() (*string, bool) {
 
 // HasCertificateButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCertificateButton() bool {
-	if o != nil && o.CertificateButton != nil {
+	if o != nil && !IsNil(o.CertificateButton) {
 		return true
 	}
 
@@ -709,7 +712,7 @@ func (o *EnrollmentProcessTextObject) SetCertificateButton(v string) {
 
 // GetCertificateProfileName returns the CertificateProfileName field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCertificateProfileName() string {
-	if o == nil || o.CertificateProfileName == nil {
+	if o == nil || IsNil(o.CertificateProfileName) {
 		var ret string
 		return ret
 	}
@@ -719,7 +722,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateProfileName() string {
 // GetCertificateProfileNameOk returns a tuple with the CertificateProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCertificateProfileNameOk() (*string, bool) {
-	if o == nil || o.CertificateProfileName == nil {
+	if o == nil || IsNil(o.CertificateProfileName) {
 		return nil, false
 	}
 	return o.CertificateProfileName, true
@@ -727,7 +730,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateProfileNameOk() (*string, bo
 
 // HasCertificateProfileName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCertificateProfileName() bool {
-	if o != nil && o.CertificateProfileName != nil {
+	if o != nil && !IsNil(o.CertificateProfileName) {
 		return true
 	}
 
@@ -741,7 +744,7 @@ func (o *EnrollmentProcessTextObject) SetCertificateProfileName(v string) {
 
 // GetCertificateProfileDescription returns the CertificateProfileDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCertificateProfileDescription() string {
-	if o == nil || o.CertificateProfileDescription == nil {
+	if o == nil || IsNil(o.CertificateProfileDescription) {
 		var ret string
 		return ret
 	}
@@ -751,7 +754,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateProfileDescription() string 
 // GetCertificateProfileDescriptionOk returns a tuple with the CertificateProfileDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCertificateProfileDescriptionOk() (*string, bool) {
-	if o == nil || o.CertificateProfileDescription == nil {
+	if o == nil || IsNil(o.CertificateProfileDescription) {
 		return nil, false
 	}
 	return o.CertificateProfileDescription, true
@@ -759,7 +762,7 @@ func (o *EnrollmentProcessTextObject) GetCertificateProfileDescriptionOk() (*str
 
 // HasCertificateProfileDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCertificateProfileDescription() bool {
-	if o != nil && o.CertificateProfileDescription != nil {
+	if o != nil && !IsNil(o.CertificateProfileDescription) {
 		return true
 	}
 
@@ -773,7 +776,7 @@ func (o *EnrollmentProcessTextObject) SetCertificateProfileDescription(v string)
 
 // GetPersonalText returns the PersonalText field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPersonalText() string {
-	if o == nil || o.PersonalText == nil {
+	if o == nil || IsNil(o.PersonalText) {
 		var ret string
 		return ret
 	}
@@ -783,7 +786,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalText() string {
 // GetPersonalTextOk returns a tuple with the PersonalText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPersonalTextOk() (*string, bool) {
-	if o == nil || o.PersonalText == nil {
+	if o == nil || IsNil(o.PersonalText) {
 		return nil, false
 	}
 	return o.PersonalText, true
@@ -791,7 +794,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalTextOk() (*string, bool) {
 
 // HasPersonalText returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPersonalText() bool {
-	if o != nil && o.PersonalText != nil {
+	if o != nil && !IsNil(o.PersonalText) {
 		return true
 	}
 
@@ -805,7 +808,7 @@ func (o *EnrollmentProcessTextObject) SetPersonalText(v string) {
 
 // GetPersonalButton returns the PersonalButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPersonalButton() string {
-	if o == nil || o.PersonalButton == nil {
+	if o == nil || IsNil(o.PersonalButton) {
 		var ret string
 		return ret
 	}
@@ -815,7 +818,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalButton() string {
 // GetPersonalButtonOk returns a tuple with the PersonalButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPersonalButtonOk() (*string, bool) {
-	if o == nil || o.PersonalButton == nil {
+	if o == nil || IsNil(o.PersonalButton) {
 		return nil, false
 	}
 	return o.PersonalButton, true
@@ -823,7 +826,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalButtonOk() (*string, bool) {
 
 // HasPersonalButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPersonalButton() bool {
-	if o != nil && o.PersonalButton != nil {
+	if o != nil && !IsNil(o.PersonalButton) {
 		return true
 	}
 
@@ -837,7 +840,7 @@ func (o *EnrollmentProcessTextObject) SetPersonalButton(v string) {
 
 // GetPersonalProfileName returns the PersonalProfileName field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPersonalProfileName() string {
-	if o == nil || o.PersonalProfileName == nil {
+	if o == nil || IsNil(o.PersonalProfileName) {
 		var ret string
 		return ret
 	}
@@ -847,7 +850,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileName() string {
 // GetPersonalProfileNameOk returns a tuple with the PersonalProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPersonalProfileNameOk() (*string, bool) {
-	if o == nil || o.PersonalProfileName == nil {
+	if o == nil || IsNil(o.PersonalProfileName) {
 		return nil, false
 	}
 	return o.PersonalProfileName, true
@@ -855,7 +858,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileNameOk() (*string, bool)
 
 // HasPersonalProfileName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPersonalProfileName() bool {
-	if o != nil && o.PersonalProfileName != nil {
+	if o != nil && !IsNil(o.PersonalProfileName) {
 		return true
 	}
 
@@ -869,7 +872,7 @@ func (o *EnrollmentProcessTextObject) SetPersonalProfileName(v string) {
 
 // GetPersonalProfileDescription returns the PersonalProfileDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetPersonalProfileDescription() string {
-	if o == nil || o.PersonalProfileDescription == nil {
+	if o == nil || IsNil(o.PersonalProfileDescription) {
 		var ret string
 		return ret
 	}
@@ -879,7 +882,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileDescription() string {
 // GetPersonalProfileDescriptionOk returns a tuple with the PersonalProfileDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetPersonalProfileDescriptionOk() (*string, bool) {
-	if o == nil || o.PersonalProfileDescription == nil {
+	if o == nil || IsNil(o.PersonalProfileDescription) {
 		return nil, false
 	}
 	return o.PersonalProfileDescription, true
@@ -887,7 +890,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileDescriptionOk() (*string
 
 // HasPersonalProfileDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasPersonalProfileDescription() bool {
-	if o != nil && o.PersonalProfileDescription != nil {
+	if o != nil && !IsNil(o.PersonalProfileDescription) {
 		return true
 	}
 
@@ -901,7 +904,7 @@ func (o *EnrollmentProcessTextObject) SetPersonalProfileDescription(v string) {
 
 // GetUserEnrollmentText returns the UserEnrollmentText field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentText() string {
-	if o == nil || o.UserEnrollmentText == nil {
+	if o == nil || IsNil(o.UserEnrollmentText) {
 		var ret string
 		return ret
 	}
@@ -911,7 +914,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentText() string {
 // GetUserEnrollmentTextOk returns a tuple with the UserEnrollmentText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentTextOk() (*string, bool) {
-	if o == nil || o.UserEnrollmentText == nil {
+	if o == nil || IsNil(o.UserEnrollmentText) {
 		return nil, false
 	}
 	return o.UserEnrollmentText, true
@@ -919,7 +922,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentTextOk() (*string, bool) 
 
 // HasUserEnrollmentText returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasUserEnrollmentText() bool {
-	if o != nil && o.UserEnrollmentText != nil {
+	if o != nil && !IsNil(o.UserEnrollmentText) {
 		return true
 	}
 
@@ -933,7 +936,7 @@ func (o *EnrollmentProcessTextObject) SetUserEnrollmentText(v string) {
 
 // GetUserEnrollmentButton returns the UserEnrollmentButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentButton() string {
-	if o == nil || o.UserEnrollmentButton == nil {
+	if o == nil || IsNil(o.UserEnrollmentButton) {
 		var ret string
 		return ret
 	}
@@ -943,7 +946,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentButton() string {
 // GetUserEnrollmentButtonOk returns a tuple with the UserEnrollmentButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentButtonOk() (*string, bool) {
-	if o == nil || o.UserEnrollmentButton == nil {
+	if o == nil || IsNil(o.UserEnrollmentButton) {
 		return nil, false
 	}
 	return o.UserEnrollmentButton, true
@@ -951,7 +954,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentButtonOk() (*string, bool
 
 // HasUserEnrollmentButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasUserEnrollmentButton() bool {
-	if o != nil && o.UserEnrollmentButton != nil {
+	if o != nil && !IsNil(o.UserEnrollmentButton) {
 		return true
 	}
 
@@ -965,7 +968,7 @@ func (o *EnrollmentProcessTextObject) SetUserEnrollmentButton(v string) {
 
 // GetUserEnrollmentProfileName returns the UserEnrollmentProfileName field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileName() string {
-	if o == nil || o.UserEnrollmentProfileName == nil {
+	if o == nil || IsNil(o.UserEnrollmentProfileName) {
 		var ret string
 		return ret
 	}
@@ -975,7 +978,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileName() string {
 // GetUserEnrollmentProfileNameOk returns a tuple with the UserEnrollmentProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileNameOk() (*string, bool) {
-	if o == nil || o.UserEnrollmentProfileName == nil {
+	if o == nil || IsNil(o.UserEnrollmentProfileName) {
 		return nil, false
 	}
 	return o.UserEnrollmentProfileName, true
@@ -983,7 +986,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileNameOk() (*string,
 
 // HasUserEnrollmentProfileName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasUserEnrollmentProfileName() bool {
-	if o != nil && o.UserEnrollmentProfileName != nil {
+	if o != nil && !IsNil(o.UserEnrollmentProfileName) {
 		return true
 	}
 
@@ -997,7 +1000,7 @@ func (o *EnrollmentProcessTextObject) SetUserEnrollmentProfileName(v string) {
 
 // GetUserEnrollmentProfileDescription returns the UserEnrollmentProfileDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileDescription() string {
-	if o == nil || o.UserEnrollmentProfileDescription == nil {
+	if o == nil || IsNil(o.UserEnrollmentProfileDescription) {
 		var ret string
 		return ret
 	}
@@ -1007,7 +1010,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileDescription() stri
 // GetUserEnrollmentProfileDescriptionOk returns a tuple with the UserEnrollmentProfileDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileDescriptionOk() (*string, bool) {
-	if o == nil || o.UserEnrollmentProfileDescription == nil {
+	if o == nil || IsNil(o.UserEnrollmentProfileDescription) {
 		return nil, false
 	}
 	return o.UserEnrollmentProfileDescription, true
@@ -1015,7 +1018,7 @@ func (o *EnrollmentProcessTextObject) GetUserEnrollmentProfileDescriptionOk() (*
 
 // HasUserEnrollmentProfileDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasUserEnrollmentProfileDescription() bool {
-	if o != nil && o.UserEnrollmentProfileDescription != nil {
+	if o != nil && !IsNil(o.UserEnrollmentProfileDescription) {
 		return true
 	}
 
@@ -1029,7 +1032,7 @@ func (o *EnrollmentProcessTextObject) SetUserEnrollmentProfileDescription(v stri
 
 // GetEnterpriseText returns the EnterpriseText field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterpriseText() string {
-	if o == nil || o.EnterpriseText == nil {
+	if o == nil || IsNil(o.EnterpriseText) {
 		var ret string
 		return ret
 	}
@@ -1039,7 +1042,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseText() string {
 // GetEnterpriseTextOk returns a tuple with the EnterpriseText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterpriseTextOk() (*string, bool) {
-	if o == nil || o.EnterpriseText == nil {
+	if o == nil || IsNil(o.EnterpriseText) {
 		return nil, false
 	}
 	return o.EnterpriseText, true
@@ -1047,7 +1050,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseTextOk() (*string, bool) {
 
 // HasEnterpriseText returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterpriseText() bool {
-	if o != nil && o.EnterpriseText != nil {
+	if o != nil && !IsNil(o.EnterpriseText) {
 		return true
 	}
 
@@ -1061,7 +1064,7 @@ func (o *EnrollmentProcessTextObject) SetEnterpriseText(v string) {
 
 // GetEnterpriseButton returns the EnterpriseButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterpriseButton() string {
-	if o == nil || o.EnterpriseButton == nil {
+	if o == nil || IsNil(o.EnterpriseButton) {
 		var ret string
 		return ret
 	}
@@ -1071,7 +1074,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseButton() string {
 // GetEnterpriseButtonOk returns a tuple with the EnterpriseButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterpriseButtonOk() (*string, bool) {
-	if o == nil || o.EnterpriseButton == nil {
+	if o == nil || IsNil(o.EnterpriseButton) {
 		return nil, false
 	}
 	return o.EnterpriseButton, true
@@ -1079,7 +1082,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseButtonOk() (*string, bool) {
 
 // HasEnterpriseButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterpriseButton() bool {
-	if o != nil && o.EnterpriseButton != nil {
+	if o != nil && !IsNil(o.EnterpriseButton) {
 		return true
 	}
 
@@ -1093,7 +1096,7 @@ func (o *EnrollmentProcessTextObject) SetEnterpriseButton(v string) {
 
 // GetEnterpriseProfileName returns the EnterpriseProfileName field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterpriseProfileName() string {
-	if o == nil || o.EnterpriseProfileName == nil {
+	if o == nil || IsNil(o.EnterpriseProfileName) {
 		var ret string
 		return ret
 	}
@@ -1103,7 +1106,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseProfileName() string {
 // GetEnterpriseProfileNameOk returns a tuple with the EnterpriseProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterpriseProfileNameOk() (*string, bool) {
-	if o == nil || o.EnterpriseProfileName == nil {
+	if o == nil || IsNil(o.EnterpriseProfileName) {
 		return nil, false
 	}
 	return o.EnterpriseProfileName, true
@@ -1111,7 +1114,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseProfileNameOk() (*string, boo
 
 // HasEnterpriseProfileName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterpriseProfileName() bool {
-	if o != nil && o.EnterpriseProfileName != nil {
+	if o != nil && !IsNil(o.EnterpriseProfileName) {
 		return true
 	}
 
@@ -1125,7 +1128,7 @@ func (o *EnrollmentProcessTextObject) SetEnterpriseProfileName(v string) {
 
 // GetEnterpriseProfileDescription returns the EnterpriseProfileDescription field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterpriseProfileDescription() string {
-	if o == nil || o.EnterpriseProfileDescription == nil {
+	if o == nil || IsNil(o.EnterpriseProfileDescription) {
 		var ret string
 		return ret
 	}
@@ -1135,7 +1138,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseProfileDescription() string {
 // GetEnterpriseProfileDescriptionOk returns a tuple with the EnterpriseProfileDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterpriseProfileDescriptionOk() (*string, bool) {
-	if o == nil || o.EnterpriseProfileDescription == nil {
+	if o == nil || IsNil(o.EnterpriseProfileDescription) {
 		return nil, false
 	}
 	return o.EnterpriseProfileDescription, true
@@ -1143,7 +1146,7 @@ func (o *EnrollmentProcessTextObject) GetEnterpriseProfileDescriptionOk() (*stri
 
 // HasEnterpriseProfileDescription returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterpriseProfileDescription() bool {
-	if o != nil && o.EnterpriseProfileDescription != nil {
+	if o != nil && !IsNil(o.EnterpriseProfileDescription) {
 		return true
 	}
 
@@ -1157,7 +1160,7 @@ func (o *EnrollmentProcessTextObject) SetEnterpriseProfileDescription(v string) 
 
 // GetEnterprisePending returns the EnterprisePending field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetEnterprisePending() string {
-	if o == nil || o.EnterprisePending == nil {
+	if o == nil || IsNil(o.EnterprisePending) {
 		var ret string
 		return ret
 	}
@@ -1167,7 +1170,7 @@ func (o *EnrollmentProcessTextObject) GetEnterprisePending() string {
 // GetEnterprisePendingOk returns a tuple with the EnterprisePending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetEnterprisePendingOk() (*string, bool) {
-	if o == nil || o.EnterprisePending == nil {
+	if o == nil || IsNil(o.EnterprisePending) {
 		return nil, false
 	}
 	return o.EnterprisePending, true
@@ -1175,7 +1178,7 @@ func (o *EnrollmentProcessTextObject) GetEnterprisePendingOk() (*string, bool) {
 
 // HasEnterprisePending returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasEnterprisePending() bool {
-	if o != nil && o.EnterprisePending != nil {
+	if o != nil && !IsNil(o.EnterprisePending) {
 		return true
 	}
 
@@ -1189,7 +1192,7 @@ func (o *EnrollmentProcessTextObject) SetEnterprisePending(v string) {
 
 // GetQuickAddText returns the QuickAddText field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetQuickAddText() string {
-	if o == nil || o.QuickAddText == nil {
+	if o == nil || IsNil(o.QuickAddText) {
 		var ret string
 		return ret
 	}
@@ -1199,7 +1202,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddText() string {
 // GetQuickAddTextOk returns a tuple with the QuickAddText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetQuickAddTextOk() (*string, bool) {
-	if o == nil || o.QuickAddText == nil {
+	if o == nil || IsNil(o.QuickAddText) {
 		return nil, false
 	}
 	return o.QuickAddText, true
@@ -1207,7 +1210,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddTextOk() (*string, bool) {
 
 // HasQuickAddText returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasQuickAddText() bool {
-	if o != nil && o.QuickAddText != nil {
+	if o != nil && !IsNil(o.QuickAddText) {
 		return true
 	}
 
@@ -1221,7 +1224,7 @@ func (o *EnrollmentProcessTextObject) SetQuickAddText(v string) {
 
 // GetQuickAddButton returns the QuickAddButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetQuickAddButton() string {
-	if o == nil || o.QuickAddButton == nil {
+	if o == nil || IsNil(o.QuickAddButton) {
 		var ret string
 		return ret
 	}
@@ -1231,7 +1234,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddButton() string {
 // GetQuickAddButtonOk returns a tuple with the QuickAddButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetQuickAddButtonOk() (*string, bool) {
-	if o == nil || o.QuickAddButton == nil {
+	if o == nil || IsNil(o.QuickAddButton) {
 		return nil, false
 	}
 	return o.QuickAddButton, true
@@ -1239,7 +1242,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddButtonOk() (*string, bool) {
 
 // HasQuickAddButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasQuickAddButton() bool {
-	if o != nil && o.QuickAddButton != nil {
+	if o != nil && !IsNil(o.QuickAddButton) {
 		return true
 	}
 
@@ -1253,7 +1256,7 @@ func (o *EnrollmentProcessTextObject) SetQuickAddButton(v string) {
 
 // GetQuickAddName returns the QuickAddName field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetQuickAddName() string {
-	if o == nil || o.QuickAddName == nil {
+	if o == nil || IsNil(o.QuickAddName) {
 		var ret string
 		return ret
 	}
@@ -1263,7 +1266,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddName() string {
 // GetQuickAddNameOk returns a tuple with the QuickAddName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetQuickAddNameOk() (*string, bool) {
-	if o == nil || o.QuickAddName == nil {
+	if o == nil || IsNil(o.QuickAddName) {
 		return nil, false
 	}
 	return o.QuickAddName, true
@@ -1271,7 +1274,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddNameOk() (*string, bool) {
 
 // HasQuickAddName returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasQuickAddName() bool {
-	if o != nil && o.QuickAddName != nil {
+	if o != nil && !IsNil(o.QuickAddName) {
 		return true
 	}
 
@@ -1285,7 +1288,7 @@ func (o *EnrollmentProcessTextObject) SetQuickAddName(v string) {
 
 // GetQuickAddPending returns the QuickAddPending field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetQuickAddPending() string {
-	if o == nil || o.QuickAddPending == nil {
+	if o == nil || IsNil(o.QuickAddPending) {
 		var ret string
 		return ret
 	}
@@ -1295,7 +1298,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddPending() string {
 // GetQuickAddPendingOk returns a tuple with the QuickAddPending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetQuickAddPendingOk() (*string, bool) {
-	if o == nil || o.QuickAddPending == nil {
+	if o == nil || IsNil(o.QuickAddPending) {
 		return nil, false
 	}
 	return o.QuickAddPending, true
@@ -1303,7 +1306,7 @@ func (o *EnrollmentProcessTextObject) GetQuickAddPendingOk() (*string, bool) {
 
 // HasQuickAddPending returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasQuickAddPending() bool {
-	if o != nil && o.QuickAddPending != nil {
+	if o != nil && !IsNil(o.QuickAddPending) {
 		return true
 	}
 
@@ -1317,7 +1320,7 @@ func (o *EnrollmentProcessTextObject) SetQuickAddPending(v string) {
 
 // GetCompleteMessage returns the CompleteMessage field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCompleteMessage() string {
-	if o == nil || o.CompleteMessage == nil {
+	if o == nil || IsNil(o.CompleteMessage) {
 		var ret string
 		return ret
 	}
@@ -1327,7 +1330,7 @@ func (o *EnrollmentProcessTextObject) GetCompleteMessage() string {
 // GetCompleteMessageOk returns a tuple with the CompleteMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCompleteMessageOk() (*string, bool) {
-	if o == nil || o.CompleteMessage == nil {
+	if o == nil || IsNil(o.CompleteMessage) {
 		return nil, false
 	}
 	return o.CompleteMessage, true
@@ -1335,7 +1338,7 @@ func (o *EnrollmentProcessTextObject) GetCompleteMessageOk() (*string, bool) {
 
 // HasCompleteMessage returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCompleteMessage() bool {
-	if o != nil && o.CompleteMessage != nil {
+	if o != nil && !IsNil(o.CompleteMessage) {
 		return true
 	}
 
@@ -1349,7 +1352,7 @@ func (o *EnrollmentProcessTextObject) SetCompleteMessage(v string) {
 
 // GetFailedMessage returns the FailedMessage field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetFailedMessage() string {
-	if o == nil || o.FailedMessage == nil {
+	if o == nil || IsNil(o.FailedMessage) {
 		var ret string
 		return ret
 	}
@@ -1359,7 +1362,7 @@ func (o *EnrollmentProcessTextObject) GetFailedMessage() string {
 // GetFailedMessageOk returns a tuple with the FailedMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetFailedMessageOk() (*string, bool) {
-	if o == nil || o.FailedMessage == nil {
+	if o == nil || IsNil(o.FailedMessage) {
 		return nil, false
 	}
 	return o.FailedMessage, true
@@ -1367,7 +1370,7 @@ func (o *EnrollmentProcessTextObject) GetFailedMessageOk() (*string, bool) {
 
 // HasFailedMessage returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasFailedMessage() bool {
-	if o != nil && o.FailedMessage != nil {
+	if o != nil && !IsNil(o.FailedMessage) {
 		return true
 	}
 
@@ -1381,7 +1384,7 @@ func (o *EnrollmentProcessTextObject) SetFailedMessage(v string) {
 
 // GetTryAgainButton returns the TryAgainButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetTryAgainButton() string {
-	if o == nil || o.TryAgainButton == nil {
+	if o == nil || IsNil(o.TryAgainButton) {
 		var ret string
 		return ret
 	}
@@ -1391,7 +1394,7 @@ func (o *EnrollmentProcessTextObject) GetTryAgainButton() string {
 // GetTryAgainButtonOk returns a tuple with the TryAgainButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetTryAgainButtonOk() (*string, bool) {
-	if o == nil || o.TryAgainButton == nil {
+	if o == nil || IsNil(o.TryAgainButton) {
 		return nil, false
 	}
 	return o.TryAgainButton, true
@@ -1399,7 +1402,7 @@ func (o *EnrollmentProcessTextObject) GetTryAgainButtonOk() (*string, bool) {
 
 // HasTryAgainButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasTryAgainButton() bool {
-	if o != nil && o.TryAgainButton != nil {
+	if o != nil && !IsNil(o.TryAgainButton) {
 		return true
 	}
 
@@ -1413,7 +1416,7 @@ func (o *EnrollmentProcessTextObject) SetTryAgainButton(v string) {
 
 // GetCheckNowButton returns the CheckNowButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCheckNowButton() string {
-	if o == nil || o.CheckNowButton == nil {
+	if o == nil || IsNil(o.CheckNowButton) {
 		var ret string
 		return ret
 	}
@@ -1423,7 +1426,7 @@ func (o *EnrollmentProcessTextObject) GetCheckNowButton() string {
 // GetCheckNowButtonOk returns a tuple with the CheckNowButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCheckNowButtonOk() (*string, bool) {
-	if o == nil || o.CheckNowButton == nil {
+	if o == nil || IsNil(o.CheckNowButton) {
 		return nil, false
 	}
 	return o.CheckNowButton, true
@@ -1431,7 +1434,7 @@ func (o *EnrollmentProcessTextObject) GetCheckNowButtonOk() (*string, bool) {
 
 // HasCheckNowButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCheckNowButton() bool {
-	if o != nil && o.CheckNowButton != nil {
+	if o != nil && !IsNil(o.CheckNowButton) {
 		return true
 	}
 
@@ -1445,7 +1448,7 @@ func (o *EnrollmentProcessTextObject) SetCheckNowButton(v string) {
 
 // GetCheckEnrollmentMessage returns the CheckEnrollmentMessage field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetCheckEnrollmentMessage() string {
-	if o == nil || o.CheckEnrollmentMessage == nil {
+	if o == nil || IsNil(o.CheckEnrollmentMessage) {
 		var ret string
 		return ret
 	}
@@ -1455,7 +1458,7 @@ func (o *EnrollmentProcessTextObject) GetCheckEnrollmentMessage() string {
 // GetCheckEnrollmentMessageOk returns a tuple with the CheckEnrollmentMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetCheckEnrollmentMessageOk() (*string, bool) {
-	if o == nil || o.CheckEnrollmentMessage == nil {
+	if o == nil || IsNil(o.CheckEnrollmentMessage) {
 		return nil, false
 	}
 	return o.CheckEnrollmentMessage, true
@@ -1463,7 +1466,7 @@ func (o *EnrollmentProcessTextObject) GetCheckEnrollmentMessageOk() (*string, bo
 
 // HasCheckEnrollmentMessage returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasCheckEnrollmentMessage() bool {
-	if o != nil && o.CheckEnrollmentMessage != nil {
+	if o != nil && !IsNil(o.CheckEnrollmentMessage) {
 		return true
 	}
 
@@ -1477,7 +1480,7 @@ func (o *EnrollmentProcessTextObject) SetCheckEnrollmentMessage(v string) {
 
 // GetLogoutButton returns the LogoutButton field value if set, zero value otherwise.
 func (o *EnrollmentProcessTextObject) GetLogoutButton() string {
-	if o == nil || o.LogoutButton == nil {
+	if o == nil || IsNil(o.LogoutButton) {
 		var ret string
 		return ret
 	}
@@ -1487,7 +1490,7 @@ func (o *EnrollmentProcessTextObject) GetLogoutButton() string {
 // GetLogoutButtonOk returns a tuple with the LogoutButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentProcessTextObject) GetLogoutButtonOk() (*string, bool) {
-	if o == nil || o.LogoutButton == nil {
+	if o == nil || IsNil(o.LogoutButton) {
 		return nil, false
 	}
 	return o.LogoutButton, true
@@ -1495,7 +1498,7 @@ func (o *EnrollmentProcessTextObject) GetLogoutButtonOk() (*string, bool) {
 
 // HasLogoutButton returns a boolean if a field has been set.
 func (o *EnrollmentProcessTextObject) HasLogoutButton() bool {
-	if o != nil && o.LogoutButton != nil {
+	if o != nil && !IsNil(o.LogoutButton) {
 		return true
 	}
 
@@ -1508,140 +1511,148 @@ func (o *EnrollmentProcessTextObject) SetLogoutButton(v string) {
 }
 
 func (o EnrollmentProcessTextObject) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.LanguageCode != nil {
-		toSerialize["languageCode"] = o.LanguageCode
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
-	}
-	if o.LoginDescription != nil {
-		toSerialize["loginDescription"] = o.LoginDescription
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.LoginButton != nil {
-		toSerialize["loginButton"] = o.LoginButton
-	}
-	if o.DeviceClassDescription != nil {
-		toSerialize["deviceClassDescription"] = o.DeviceClassDescription
-	}
-	if o.DeviceClassPersonal != nil {
-		toSerialize["deviceClassPersonal"] = o.DeviceClassPersonal
-	}
-	if o.DeviceClassPersonalDescription != nil {
-		toSerialize["deviceClassPersonalDescription"] = o.DeviceClassPersonalDescription
-	}
-	if o.DeviceClassEnterprise != nil {
-		toSerialize["deviceClassEnterprise"] = o.DeviceClassEnterprise
-	}
-	if o.DeviceClassEnterpriseDescription != nil {
-		toSerialize["deviceClassEnterpriseDescription"] = o.DeviceClassEnterpriseDescription
-	}
-	if o.DeviceClassButton != nil {
-		toSerialize["deviceClassButton"] = o.DeviceClassButton
-	}
-	if o.PersonalEula != nil {
-		toSerialize["personalEula"] = o.PersonalEula
-	}
-	if o.EnterpriseEula != nil {
-		toSerialize["enterpriseEula"] = o.EnterpriseEula
-	}
-	if o.EulaButton != nil {
-		toSerialize["eulaButton"] = o.EulaButton
-	}
-	if o.SiteDescription != nil {
-		toSerialize["siteDescription"] = o.SiteDescription
-	}
-	if o.CertificateText != nil {
-		toSerialize["certificateText"] = o.CertificateText
-	}
-	if o.CertificateButton != nil {
-		toSerialize["certificateButton"] = o.CertificateButton
-	}
-	if o.CertificateProfileName != nil {
-		toSerialize["certificateProfileName"] = o.CertificateProfileName
-	}
-	if o.CertificateProfileDescription != nil {
-		toSerialize["certificateProfileDescription"] = o.CertificateProfileDescription
-	}
-	if o.PersonalText != nil {
-		toSerialize["personalText"] = o.PersonalText
-	}
-	if o.PersonalButton != nil {
-		toSerialize["personalButton"] = o.PersonalButton
-	}
-	if o.PersonalProfileName != nil {
-		toSerialize["personalProfileName"] = o.PersonalProfileName
-	}
-	if o.PersonalProfileDescription != nil {
-		toSerialize["personalProfileDescription"] = o.PersonalProfileDescription
-	}
-	if o.UserEnrollmentText != nil {
-		toSerialize["userEnrollmentText"] = o.UserEnrollmentText
-	}
-	if o.UserEnrollmentButton != nil {
-		toSerialize["userEnrollmentButton"] = o.UserEnrollmentButton
-	}
-	if o.UserEnrollmentProfileName != nil {
-		toSerialize["userEnrollmentProfileName"] = o.UserEnrollmentProfileName
-	}
-	if o.UserEnrollmentProfileDescription != nil {
-		toSerialize["userEnrollmentProfileDescription"] = o.UserEnrollmentProfileDescription
-	}
-	if o.EnterpriseText != nil {
-		toSerialize["enterpriseText"] = o.EnterpriseText
-	}
-	if o.EnterpriseButton != nil {
-		toSerialize["enterpriseButton"] = o.EnterpriseButton
-	}
-	if o.EnterpriseProfileName != nil {
-		toSerialize["enterpriseProfileName"] = o.EnterpriseProfileName
-	}
-	if o.EnterpriseProfileDescription != nil {
-		toSerialize["enterpriseProfileDescription"] = o.EnterpriseProfileDescription
-	}
-	if o.EnterprisePending != nil {
-		toSerialize["enterprisePending"] = o.EnterprisePending
-	}
-	if o.QuickAddText != nil {
-		toSerialize["quickAddText"] = o.QuickAddText
-	}
-	if o.QuickAddButton != nil {
-		toSerialize["quickAddButton"] = o.QuickAddButton
-	}
-	if o.QuickAddName != nil {
-		toSerialize["quickAddName"] = o.QuickAddName
-	}
-	if o.QuickAddPending != nil {
-		toSerialize["quickAddPending"] = o.QuickAddPending
-	}
-	if o.CompleteMessage != nil {
-		toSerialize["completeMessage"] = o.CompleteMessage
-	}
-	if o.FailedMessage != nil {
-		toSerialize["failedMessage"] = o.FailedMessage
-	}
-	if o.TryAgainButton != nil {
-		toSerialize["tryAgainButton"] = o.TryAgainButton
-	}
-	if o.CheckNowButton != nil {
-		toSerialize["checkNowButton"] = o.CheckNowButton
-	}
-	if o.CheckEnrollmentMessage != nil {
-		toSerialize["checkEnrollmentMessage"] = o.CheckEnrollmentMessage
-	}
-	if o.LogoutButton != nil {
-		toSerialize["logoutButton"] = o.LogoutButton
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentProcessTextObject) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.LanguageCode) {
+		toSerialize["languageCode"] = o.LanguageCode
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.LoginDescription) {
+		toSerialize["loginDescription"] = o.LoginDescription
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.LoginButton) {
+		toSerialize["loginButton"] = o.LoginButton
+	}
+	if !IsNil(o.DeviceClassDescription) {
+		toSerialize["deviceClassDescription"] = o.DeviceClassDescription
+	}
+	if !IsNil(o.DeviceClassPersonal) {
+		toSerialize["deviceClassPersonal"] = o.DeviceClassPersonal
+	}
+	if !IsNil(o.DeviceClassPersonalDescription) {
+		toSerialize["deviceClassPersonalDescription"] = o.DeviceClassPersonalDescription
+	}
+	if !IsNil(o.DeviceClassEnterprise) {
+		toSerialize["deviceClassEnterprise"] = o.DeviceClassEnterprise
+	}
+	if !IsNil(o.DeviceClassEnterpriseDescription) {
+		toSerialize["deviceClassEnterpriseDescription"] = o.DeviceClassEnterpriseDescription
+	}
+	if !IsNil(o.DeviceClassButton) {
+		toSerialize["deviceClassButton"] = o.DeviceClassButton
+	}
+	if !IsNil(o.PersonalEula) {
+		toSerialize["personalEula"] = o.PersonalEula
+	}
+	if !IsNil(o.EnterpriseEula) {
+		toSerialize["enterpriseEula"] = o.EnterpriseEula
+	}
+	if !IsNil(o.EulaButton) {
+		toSerialize["eulaButton"] = o.EulaButton
+	}
+	if !IsNil(o.SiteDescription) {
+		toSerialize["siteDescription"] = o.SiteDescription
+	}
+	if !IsNil(o.CertificateText) {
+		toSerialize["certificateText"] = o.CertificateText
+	}
+	if !IsNil(o.CertificateButton) {
+		toSerialize["certificateButton"] = o.CertificateButton
+	}
+	if !IsNil(o.CertificateProfileName) {
+		toSerialize["certificateProfileName"] = o.CertificateProfileName
+	}
+	if !IsNil(o.CertificateProfileDescription) {
+		toSerialize["certificateProfileDescription"] = o.CertificateProfileDescription
+	}
+	if !IsNil(o.PersonalText) {
+		toSerialize["personalText"] = o.PersonalText
+	}
+	if !IsNil(o.PersonalButton) {
+		toSerialize["personalButton"] = o.PersonalButton
+	}
+	if !IsNil(o.PersonalProfileName) {
+		toSerialize["personalProfileName"] = o.PersonalProfileName
+	}
+	if !IsNil(o.PersonalProfileDescription) {
+		toSerialize["personalProfileDescription"] = o.PersonalProfileDescription
+	}
+	if !IsNil(o.UserEnrollmentText) {
+		toSerialize["userEnrollmentText"] = o.UserEnrollmentText
+	}
+	if !IsNil(o.UserEnrollmentButton) {
+		toSerialize["userEnrollmentButton"] = o.UserEnrollmentButton
+	}
+	if !IsNil(o.UserEnrollmentProfileName) {
+		toSerialize["userEnrollmentProfileName"] = o.UserEnrollmentProfileName
+	}
+	if !IsNil(o.UserEnrollmentProfileDescription) {
+		toSerialize["userEnrollmentProfileDescription"] = o.UserEnrollmentProfileDescription
+	}
+	if !IsNil(o.EnterpriseText) {
+		toSerialize["enterpriseText"] = o.EnterpriseText
+	}
+	if !IsNil(o.EnterpriseButton) {
+		toSerialize["enterpriseButton"] = o.EnterpriseButton
+	}
+	if !IsNil(o.EnterpriseProfileName) {
+		toSerialize["enterpriseProfileName"] = o.EnterpriseProfileName
+	}
+	if !IsNil(o.EnterpriseProfileDescription) {
+		toSerialize["enterpriseProfileDescription"] = o.EnterpriseProfileDescription
+	}
+	if !IsNil(o.EnterprisePending) {
+		toSerialize["enterprisePending"] = o.EnterprisePending
+	}
+	if !IsNil(o.QuickAddText) {
+		toSerialize["quickAddText"] = o.QuickAddText
+	}
+	if !IsNil(o.QuickAddButton) {
+		toSerialize["quickAddButton"] = o.QuickAddButton
+	}
+	if !IsNil(o.QuickAddName) {
+		toSerialize["quickAddName"] = o.QuickAddName
+	}
+	if !IsNil(o.QuickAddPending) {
+		toSerialize["quickAddPending"] = o.QuickAddPending
+	}
+	if !IsNil(o.CompleteMessage) {
+		toSerialize["completeMessage"] = o.CompleteMessage
+	}
+	if !IsNil(o.FailedMessage) {
+		toSerialize["failedMessage"] = o.FailedMessage
+	}
+	if !IsNil(o.TryAgainButton) {
+		toSerialize["tryAgainButton"] = o.TryAgainButton
+	}
+	if !IsNil(o.CheckNowButton) {
+		toSerialize["checkNowButton"] = o.CheckNowButton
+	}
+	if !IsNil(o.CheckEnrollmentMessage) {
+		toSerialize["checkEnrollmentMessage"] = o.CheckEnrollmentMessage
+	}
+	if !IsNil(o.LogoutButton) {
+		toSerialize["logoutButton"] = o.LogoutButton
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentProcessTextObject struct {

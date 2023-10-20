@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerStorage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerStorage{}
+
 // ComputerStorage struct for ComputerStorage
 type ComputerStorage struct {
 	BootDriveAvailableSpaceMegabytes *int64 `json:"bootDriveAvailableSpaceMegabytes,omitempty"`
@@ -39,7 +42,7 @@ func NewComputerStorageWithDefaults() *ComputerStorage {
 
 // GetBootDriveAvailableSpaceMegabytes returns the BootDriveAvailableSpaceMegabytes field value if set, zero value otherwise.
 func (o *ComputerStorage) GetBootDriveAvailableSpaceMegabytes() int64 {
-	if o == nil || o.BootDriveAvailableSpaceMegabytes == nil {
+	if o == nil || IsNil(o.BootDriveAvailableSpaceMegabytes) {
 		var ret int64
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ComputerStorage) GetBootDriveAvailableSpaceMegabytes() int64 {
 // GetBootDriveAvailableSpaceMegabytesOk returns a tuple with the BootDriveAvailableSpaceMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerStorage) GetBootDriveAvailableSpaceMegabytesOk() (*int64, bool) {
-	if o == nil || o.BootDriveAvailableSpaceMegabytes == nil {
+	if o == nil || IsNil(o.BootDriveAvailableSpaceMegabytes) {
 		return nil, false
 	}
 	return o.BootDriveAvailableSpaceMegabytes, true
@@ -57,7 +60,7 @@ func (o *ComputerStorage) GetBootDriveAvailableSpaceMegabytesOk() (*int64, bool)
 
 // HasBootDriveAvailableSpaceMegabytes returns a boolean if a field has been set.
 func (o *ComputerStorage) HasBootDriveAvailableSpaceMegabytes() bool {
-	if o != nil && o.BootDriveAvailableSpaceMegabytes != nil {
+	if o != nil && !IsNil(o.BootDriveAvailableSpaceMegabytes) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ComputerStorage) SetBootDriveAvailableSpaceMegabytes(v int64) {
 
 // GetDisks returns the Disks field value if set, zero value otherwise.
 func (o *ComputerStorage) GetDisks() []ComputerDisk {
-	if o == nil || o.Disks == nil {
+	if o == nil || IsNil(o.Disks) {
 		var ret []ComputerDisk
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ComputerStorage) GetDisks() []ComputerDisk {
 // GetDisksOk returns a tuple with the Disks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerStorage) GetDisksOk() ([]ComputerDisk, bool) {
-	if o == nil || o.Disks == nil {
+	if o == nil || IsNil(o.Disks) {
 		return nil, false
 	}
 	return o.Disks, true
@@ -89,7 +92,7 @@ func (o *ComputerStorage) GetDisksOk() ([]ComputerDisk, bool) {
 
 // HasDisks returns a boolean if a field has been set.
 func (o *ComputerStorage) HasDisks() bool {
-	if o != nil && o.Disks != nil {
+	if o != nil && !IsNil(o.Disks) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ComputerStorage) SetDisks(v []ComputerDisk) {
 }
 
 func (o ComputerStorage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BootDriveAvailableSpaceMegabytes != nil {
-		toSerialize["bootDriveAvailableSpaceMegabytes"] = o.BootDriveAvailableSpaceMegabytes
-	}
-	if o.Disks != nil {
-		toSerialize["disks"] = o.Disks
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerStorage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BootDriveAvailableSpaceMegabytes) {
+		toSerialize["bootDriveAvailableSpaceMegabytes"] = o.BootDriveAvailableSpaceMegabytes
+	}
+	if !IsNil(o.Disks) {
+		toSerialize["disks"] = o.Disks
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerStorage struct {

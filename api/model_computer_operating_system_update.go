@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerOperatingSystemUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerOperatingSystemUpdate{}
+
 // ComputerOperatingSystemUpdate struct for ComputerOperatingSystemUpdate
 type ComputerOperatingSystemUpdate struct {
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
@@ -38,7 +41,7 @@ func NewComputerOperatingSystemUpdateWithDefaults() *ComputerOperatingSystemUpda
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerOperatingSystemUpdate) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ComputerOperatingSystemUpdate) GetExtensionAttributes() []ComputerExten
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystemUpdate) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -56,7 +59,7 @@ func (o *ComputerOperatingSystemUpdate) GetExtensionAttributesOk() ([]ComputerEx
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerOperatingSystemUpdate) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ComputerOperatingSystemUpdate) SetExtensionAttributes(v []ComputerExten
 }
 
 func (o ComputerOperatingSystemUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerOperatingSystemUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerOperatingSystemUpdate struct {

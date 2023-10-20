@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MembershipMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MembershipMappings{}
+
 // MembershipMappings Cloud Identity Provider user group membership mappings configuration
 type MembershipMappings struct {
 	GroupMembershipMapping string `json:"groupMembershipMapping"`
@@ -62,11 +65,17 @@ func (o *MembershipMappings) SetGroupMembershipMapping(v string) {
 }
 
 func (o MembershipMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["groupMembershipMapping"] = o.GroupMembershipMapping
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MembershipMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["groupMembershipMapping"] = o.GroupMembershipMapping
+	return toSerialize, nil
 }
 
 type NullableMembershipMappings struct {

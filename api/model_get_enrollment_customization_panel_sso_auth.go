@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetEnrollmentCustomizationPanelSsoAuth type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetEnrollmentCustomizationPanelSsoAuth{}
+
 // GetEnrollmentCustomizationPanelSsoAuth struct for GetEnrollmentCustomizationPanelSsoAuth
 type GetEnrollmentCustomizationPanelSsoAuth struct {
 	DisplayName string `json:"displayName"`
@@ -223,7 +226,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) SetGroupEnrollmentAccessName(v 
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -233,7 +236,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -241,7 +244,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -255,7 +258,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) SetId(v int32) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -265,7 +268,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -273,7 +276,7 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanelSsoAuth) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -286,35 +289,29 @@ func (o *GetEnrollmentCustomizationPanelSsoAuth) SetType(v string) {
 }
 
 func (o GetEnrollmentCustomizationPanelSsoAuth) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["rank"] = o.Rank
-	}
-	if true {
-		toSerialize["isUseJamfConnect"] = o.IsUseJamfConnect
-	}
-	if true {
-		toSerialize["longNameAttribute"] = o.LongNameAttribute
-	}
-	if true {
-		toSerialize["shortNameAttribute"] = o.ShortNameAttribute
-	}
-	if true {
-		toSerialize["isGroupEnrollmentAccessEnabled"] = o.IsGroupEnrollmentAccessEnabled
-	}
-	if true {
-		toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetEnrollmentCustomizationPanelSsoAuth) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["rank"] = o.Rank
+	toSerialize["isUseJamfConnect"] = o.IsUseJamfConnect
+	toSerialize["longNameAttribute"] = o.LongNameAttribute
+	toSerialize["shortNameAttribute"] = o.ShortNameAttribute
+	toSerialize["isGroupEnrollmentAccessEnabled"] = o.IsGroupEnrollmentAccessEnabled
+	toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableGetEnrollmentCustomizationPanelSsoAuth struct {

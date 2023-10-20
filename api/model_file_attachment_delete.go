@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the FileAttachmentDelete type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FileAttachmentDelete{}
+
 // FileAttachmentDelete struct for FileAttachmentDelete
 type FileAttachmentDelete struct {
 	Ids []int32 `json:"ids,omitempty"`
@@ -38,7 +41,7 @@ func NewFileAttachmentDeleteWithDefaults() *FileAttachmentDelete {
 
 // GetIds returns the Ids field value if set, zero value otherwise.
 func (o *FileAttachmentDelete) GetIds() []int32 {
-	if o == nil || o.Ids == nil {
+	if o == nil || IsNil(o.Ids) {
 		var ret []int32
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *FileAttachmentDelete) GetIds() []int32 {
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FileAttachmentDelete) GetIdsOk() ([]int32, bool) {
-	if o == nil || o.Ids == nil {
+	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
 	return o.Ids, true
@@ -56,7 +59,7 @@ func (o *FileAttachmentDelete) GetIdsOk() ([]int32, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *FileAttachmentDelete) HasIds() bool {
-	if o != nil && o.Ids != nil {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *FileAttachmentDelete) SetIds(v []int32) {
 }
 
 func (o FileAttachmentDelete) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Ids != nil {
-		toSerialize["ids"] = o.Ids
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o FileAttachmentDelete) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Ids) {
+		toSerialize["ids"] = o.Ids
+	}
+	return toSerialize, nil
 }
 
 type NullableFileAttachmentDelete struct {

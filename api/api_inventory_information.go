@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type InventoryInformationApi interface {
+type InventoryInformationAPI interface {
 
 	/*
 	V1InventoryInformationGet Get statistics about managed/unmanaged devices and computers in the inventory 
@@ -28,24 +28,24 @@ type InventoryInformationApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryInformationGetRequest
+	@return InventoryInformationAPIV1InventoryInformationGetRequest
 	*/
-	V1InventoryInformationGet(ctx context.Context) ApiV1InventoryInformationGetRequest
+	V1InventoryInformationGet(ctx context.Context) InventoryInformationAPIV1InventoryInformationGetRequest
 
 	// V1InventoryInformationGetExecute executes the request
 	//  @return InventoryInformation
-	V1InventoryInformationGetExecute(r ApiV1InventoryInformationGetRequest) (*InventoryInformation, *http.Response, error)
+	V1InventoryInformationGetExecute(r InventoryInformationAPIV1InventoryInformationGetRequest) (*InventoryInformation, *http.Response, error)
 }
 
-// InventoryInformationApiService InventoryInformationApi service
-type InventoryInformationApiService service
+// InventoryInformationAPIService InventoryInformationAPI service
+type InventoryInformationAPIService service
 
-type ApiV1InventoryInformationGetRequest struct {
+type InventoryInformationAPIV1InventoryInformationGetRequest struct {
 	ctx context.Context
-	ApiService InventoryInformationApi
+	ApiService InventoryInformationAPI
 }
 
-func (r ApiV1InventoryInformationGetRequest) Execute() (*InventoryInformation, *http.Response, error) {
+func (r InventoryInformationAPIV1InventoryInformationGetRequest) Execute() (*InventoryInformation, *http.Response, error) {
 	return r.ApiService.V1InventoryInformationGetExecute(r)
 }
 
@@ -56,10 +56,10 @@ Gets statistics about managed/unmanaged devices and computers in the inventory.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryInformationGetRequest
+ @return InventoryInformationAPIV1InventoryInformationGetRequest
 */
-func (a *InventoryInformationApiService) V1InventoryInformationGet(ctx context.Context) ApiV1InventoryInformationGetRequest {
-	return ApiV1InventoryInformationGetRequest{
+func (a *InventoryInformationAPIService) V1InventoryInformationGet(ctx context.Context) InventoryInformationAPIV1InventoryInformationGetRequest {
+	return InventoryInformationAPIV1InventoryInformationGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +67,7 @@ func (a *InventoryInformationApiService) V1InventoryInformationGet(ctx context.C
 
 // Execute executes the request
 //  @return InventoryInformation
-func (a *InventoryInformationApiService) V1InventoryInformationGetExecute(r ApiV1InventoryInformationGetRequest) (*InventoryInformation, *http.Response, error) {
+func (a *InventoryInformationAPIService) V1InventoryInformationGetExecute(r InventoryInformationAPIV1InventoryInformationGetRequest) (*InventoryInformation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *InventoryInformationApiService) V1InventoryInformationGetExecute(r ApiV
 		localVarReturnValue  *InventoryInformation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryInformationApiService.V1InventoryInformationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryInformationAPIService.V1InventoryInformationGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +113,9 @@ func (a *InventoryInformationApiService) V1InventoryInformationGetExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

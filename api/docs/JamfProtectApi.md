@@ -1,19 +1,19 @@
-# \JamfProtectApi
+# \JamfProtectAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfProtectDelete**](JamfProtectApi.md#V1JamfProtectDelete) | **Delete** /v1/jamf-protect | Delete Jamf Protect API registration.
-[**V1JamfProtectDeploymentsIdTasksGet**](JamfProtectApi.md#V1JamfProtectDeploymentsIdTasksGet) | **Get** /v1/jamf-protect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Protect 
-[**V1JamfProtectDeploymentsIdTasksRetryPost**](JamfProtectApi.md#V1JamfProtectDeploymentsIdTasksRetryPost) | **Post** /v1/jamf-protect/deployments/{id}/tasks/retry | Request a retry of Protect install tasks 
-[**V1JamfProtectGet**](JamfProtectApi.md#V1JamfProtectGet) | **Get** /v1/jamf-protect | Jamf Protect integration settings
-[**V1JamfProtectHistoryGet**](JamfProtectApi.md#V1JamfProtectHistoryGet) | **Get** /v1/jamf-protect/history | Get Jamf Protect history 
-[**V1JamfProtectHistoryPost**](JamfProtectApi.md#V1JamfProtectHistoryPost) | **Post** /v1/jamf-protect/history | Add Jamf Protect history notes 
-[**V1JamfProtectPlansGet**](JamfProtectApi.md#V1JamfProtectPlansGet) | **Get** /v1/jamf-protect/plans | Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
-[**V1JamfProtectPlansSyncPost**](JamfProtectApi.md#V1JamfProtectPlansSyncPost) | **Post** /v1/jamf-protect/plans/sync | Sync Plans with Jamf Protect
-[**V1JamfProtectPut**](JamfProtectApi.md#V1JamfProtectPut) | **Put** /v1/jamf-protect | Jamf Protect integration settings
-[**V1JamfProtectRegisterPost**](JamfProtectApi.md#V1JamfProtectRegisterPost) | **Post** /v1/jamf-protect/register | Register a Jamf Protect API configuration with Jamf Pro
+[**V1JamfProtectDelete**](JamfProtectAPI.md#V1JamfProtectDelete) | **Delete** /v1/jamf-protect | Delete Jamf Protect API registration.
+[**V1JamfProtectDeploymentsIdTasksGet**](JamfProtectAPI.md#V1JamfProtectDeploymentsIdTasksGet) | **Get** /v1/jamf-protect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Protect 
+[**V1JamfProtectDeploymentsIdTasksRetryPost**](JamfProtectAPI.md#V1JamfProtectDeploymentsIdTasksRetryPost) | **Post** /v1/jamf-protect/deployments/{id}/tasks/retry | Request a retry of Protect install tasks 
+[**V1JamfProtectGet**](JamfProtectAPI.md#V1JamfProtectGet) | **Get** /v1/jamf-protect | Jamf Protect integration settings
+[**V1JamfProtectHistoryGet**](JamfProtectAPI.md#V1JamfProtectHistoryGet) | **Get** /v1/jamf-protect/history | Get Jamf Protect history 
+[**V1JamfProtectHistoryPost**](JamfProtectAPI.md#V1JamfProtectHistoryPost) | **Post** /v1/jamf-protect/history | Add Jamf Protect history notes 
+[**V1JamfProtectPlansGet**](JamfProtectAPI.md#V1JamfProtectPlansGet) | **Get** /v1/jamf-protect/plans | Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
+[**V1JamfProtectPlansSyncPost**](JamfProtectAPI.md#V1JamfProtectPlansSyncPost) | **Post** /v1/jamf-protect/plans/sync | Sync Plans with Jamf Protect
+[**V1JamfProtectPut**](JamfProtectAPI.md#V1JamfProtectPut) | **Put** /v1/jamf-protect | Jamf Protect integration settings
+[**V1JamfProtectRegisterPost**](JamfProtectAPI.md#V1JamfProtectRegisterPost) | **Post** /v1/jamf-protect/register | Register a Jamf Protect API configuration with Jamf Pro
 
 
 
@@ -34,16 +34,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectDelete(context.Background()).Execute()
+    r, err := apiClient.JamfProtectAPI.V1JamfProtectDelete(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -93,7 +93,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectDeploymentsIdTasksGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectDeploymentsIdTasksGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectDeploymentsIdTasksGet`: DeploymentTaskSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectDeploymentsIdTasksGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectDeploymentsIdTasksGet`: %v\n", resp)
 }
 ```
 
@@ -171,7 +171,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -180,9 +180,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
+    r, err := apiClient.JamfProtectAPI.V1JamfProtectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectDeploymentsIdTasksRetryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectDeploymentsIdTasksRetryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -241,20 +241,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectGet(context.Background()).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectGet`: ProtectSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectGet`: %v\n", resp)
 }
 ```
 
@@ -302,7 +302,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -313,13 +313,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -374,7 +374,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -382,13 +382,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -440,7 +440,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -451,13 +451,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectPlansGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectPlansGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectPlansGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectPlansGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectPlansGet`: PlanSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectPlansGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectPlansGet`: %v\n", resp)
 }
 ```
 
@@ -512,16 +512,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectPlansSyncPost(context.Background()).Execute()
+    r, err := apiClient.JamfProtectAPI.V1JamfProtectPlansSyncPost(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectPlansSyncPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectPlansSyncPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -571,7 +571,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -579,13 +579,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectPut(context.Background()).ProtectUpdatableSettingsRequest(protectUpdatableSettingsRequest).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectPut(context.Background()).ProtectUpdatableSettingsRequest(protectUpdatableSettingsRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectPut`: ProtectSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectPut`: %v\n", resp)
 }
 ```
 
@@ -637,7 +637,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -645,13 +645,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProtectApi.V1JamfProtectRegisterPost(context.Background()).ProtectRegistrationRequest(protectRegistrationRequest).Execute()
+    resp, r, err := apiClient.JamfProtectAPI.V1JamfProtectRegisterPost(context.Background()).ProtectRegistrationRequest(protectRegistrationRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectApi.V1JamfProtectRegisterPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProtectAPI.V1JamfProtectRegisterPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProtectRegisterPost`: ProtectSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfProtectApi.V1JamfProtectRegisterPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProtectAPI.V1JamfProtectRegisterPost`: %v\n", resp)
 }
 ```
 

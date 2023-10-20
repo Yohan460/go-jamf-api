@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InstallSingleProfile** | Pointer to **bool** |  | [optional] [default to false]
 **SigningMdmProfileEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**MdmSigningCertificate** | Pointer to [**CertificateIdentityV2**](CertificateIdentityV2.md) |  | [optional] 
+**MdmSigningCertificate** | Pointer to [**NullableCertificateIdentityV2**](CertificateIdentityV2.md) |  | [optional] 
 **RestrictReenrollment** | Pointer to **bool** |  | [optional] [default to false]
 **FlushLocationInformation** | Pointer to **bool** |  | [optional] [default to false]
 **FlushLocationHistoryInformation** | Pointer to **bool** |  | [optional] [default to false]
@@ -15,17 +15,17 @@ Name | Type | Description | Notes
 **FlushMdmCommandsOnReenroll** | Pointer to **string** |  | [optional] [default to "DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED"]
 **MacOsEnterpriseEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **ManagementUsername** | **string** |  | [default to ""]
-**ManagementPassword** | Pointer to **string** |  | [optional] [default to "null"]
-**ManagementPasswordSet** | Pointer to **bool** |  | [optional] [readonly] 
-**PasswordType** | Pointer to **string** |  | [optional] [default to "STATIC"]
-**RandomPasswordLength** | Pointer to **int32** |  | [optional] [default to 8]
+**ManagementPassword** | Pointer to **string** | managementPassword is no longer in use. Input value for managementPassword will be ignored. | [optional] [default to "null"]
+**ManagementPasswordSet** | Pointer to **bool** | managementPasswordSet is no longer in use. Input value for managementPasswordSet will be ignored. | [optional] [readonly] 
+**PasswordType** | Pointer to **string** | passwordType is no longer in use. Input value for passwordType will be ignored. | [optional] [default to "STATIC"]
+**RandomPasswordLength** | Pointer to **int32** | randomPasswordLength is no longer in use. Input value for randomPasswordLength will be ignored. | [optional] [default to 8]
 **CreateManagementAccount** | Pointer to **bool** |  | [optional] [default to true]
 **HideManagementAccount** | Pointer to **bool** |  | [optional] [default to false]
 **AllowSshOnlyManagementAccount** | Pointer to **bool** |  | [optional] [default to false]
 **EnsureSshRunning** | Pointer to **bool** |  | [optional] [default to true]
 **LaunchSelfService** | Pointer to **bool** |  | [optional] [default to false]
 **SignQuickAdd** | Pointer to **bool** |  | [optional] [default to false]
-**DeveloperCertificateIdentity** | Pointer to [**CertificateIdentityV2**](CertificateIdentityV2.md) |  | [optional] 
+**DeveloperCertificateIdentity** | Pointer to [**NullableCertificateIdentityV2**](CertificateIdentityV2.md) |  | [optional] 
 **DeveloperCertificateIdentityDetails** | Pointer to [**CertificateDetails**](CertificateDetails.md) |  | [optional] 
 **MdmSigningCertificateDetails** | Pointer to [**CertificateDetails**](CertificateDetails.md) |  | [optional] 
 **IosEnterpriseEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to true]
@@ -127,6 +127,16 @@ SetMdmSigningCertificate sets MdmSigningCertificate field to given value.
 
 HasMdmSigningCertificate returns a boolean if a field has been set.
 
+### SetMdmSigningCertificateNil
+
+`func (o *EnrollmentSettingsV2) SetMdmSigningCertificateNil(b bool)`
+
+ SetMdmSigningCertificateNil sets the value for MdmSigningCertificate to be an explicit nil
+
+### UnsetMdmSigningCertificate
+`func (o *EnrollmentSettingsV2) UnsetMdmSigningCertificate()`
+
+UnsetMdmSigningCertificate ensures that no value is present for MdmSigningCertificate, not even an explicit nil
 ### GetRestrictReenrollment
 
 `func (o *EnrollmentSettingsV2) GetRestrictReenrollment() bool`
@@ -597,6 +607,16 @@ SetDeveloperCertificateIdentity sets DeveloperCertificateIdentity field to given
 
 HasDeveloperCertificateIdentity returns a boolean if a field has been set.
 
+### SetDeveloperCertificateIdentityNil
+
+`func (o *EnrollmentSettingsV2) SetDeveloperCertificateIdentityNil(b bool)`
+
+ SetDeveloperCertificateIdentityNil sets the value for DeveloperCertificateIdentity to be an explicit nil
+
+### UnsetDeveloperCertificateIdentity
+`func (o *EnrollmentSettingsV2) UnsetDeveloperCertificateIdentity()`
+
+UnsetDeveloperCertificateIdentity ensures that no value is present for DeveloperCertificateIdentity, not even an explicit nil
 ### GetDeveloperCertificateIdentityDetails
 
 `func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityDetails() CertificateDetails`

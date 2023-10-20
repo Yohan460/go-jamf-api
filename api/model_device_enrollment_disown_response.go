@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentDisownResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentDisownResponse{}
+
 // DeviceEnrollmentDisownResponse struct for DeviceEnrollmentDisownResponse
 type DeviceEnrollmentDisownResponse struct {
 	Devices *map[string]string `json:"devices,omitempty"`
@@ -38,7 +41,7 @@ func NewDeviceEnrollmentDisownResponseWithDefaults() *DeviceEnrollmentDisownResp
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDisownResponse) GetDevices() map[string]string {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		var ret map[string]string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *DeviceEnrollmentDisownResponse) GetDevices() map[string]string {
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDisownResponse) GetDevicesOk() (*map[string]string, bool) {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		return nil, false
 	}
 	return o.Devices, true
@@ -56,7 +59,7 @@ func (o *DeviceEnrollmentDisownResponse) GetDevicesOk() (*map[string]string, boo
 
 // HasDevices returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDisownResponse) HasDevices() bool {
-	if o != nil && o.Devices != nil {
+	if o != nil && !IsNil(o.Devices) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *DeviceEnrollmentDisownResponse) SetDevices(v map[string]string) {
 }
 
 func (o DeviceEnrollmentDisownResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Devices != nil {
-		toSerialize["devices"] = o.Devices
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentDisownResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Devices) {
+		toSerialize["devices"] = o.Devices
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentDisownResponse struct {

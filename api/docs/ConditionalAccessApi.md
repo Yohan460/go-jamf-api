@@ -1,11 +1,11 @@
-# \ConditionalAccessApi
+# \ConditionalAccessAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet**](ConditionalAccessApi.md#V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet) | **Get** /v1/conditional-access/device-compliance-information/computer/{deviceId} | Get compliance information for a single computer device
-[**V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet**](ConditionalAccessApi.md#V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet) | **Get** /v1/conditional-access/device-compliance-information/mobile/{deviceId} | Get compliance information for a single mobile device
+[**V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet**](ConditionalAccessAPI.md#V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet) | **Get** /v1/conditional-access/device-compliance-information/computer/{deviceId} | Get compliance information for a single computer device
+[**V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet**](ConditionalAccessAPI.md#V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet) | **Get** /v1/conditional-access/device-compliance-information/mobile/{deviceId} | Get compliance information for a single mobile device
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(context.Background(), deviceId).Execute()
+    resp, r, err := apiClient.ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(context.Background(), deviceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet`: []DeviceComplianceInformation
-    fmt.Fprintf(os.Stdout, "Response from `ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(context.Background(), deviceId).Execute()
+    resp, r, err := apiClient.ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(context.Background(), deviceId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet`: []DeviceComplianceInformation
-    fmt.Fprintf(os.Stdout, "Response from `ConditionalAccessApi.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ConditionalAccessAPI.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet`: %v\n", resp)
 }
 ```
 

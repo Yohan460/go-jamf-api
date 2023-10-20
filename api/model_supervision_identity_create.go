@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SupervisionIdentityCreate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SupervisionIdentityCreate{}
+
 // SupervisionIdentityCreate struct for SupervisionIdentityCreate
 type SupervisionIdentityCreate struct {
 	DisplayName string `json:"displayName"`
@@ -88,14 +91,18 @@ func (o *SupervisionIdentityCreate) SetPassword(v string) {
 }
 
 func (o SupervisionIdentityCreate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["password"] = o.Password
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SupervisionIdentityCreate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["password"] = o.Password
+	return toSerialize, nil
 }
 
 type NullableSupervisionIdentityCreate struct {

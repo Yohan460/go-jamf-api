@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **LastEnrolledDate** | Pointer to **string** |  | [optional] 
 **OperatingSystemVersion** | Pointer to **string** |  | [optional] 
 **OperatingSystemBuild** | Pointer to **string** |  | [optional] 
+**OperatingSystemSupplementalBuildVersion** | Pointer to **string** | Collected for macOS 13.0 or later | [optional] 
+**OperatingSystemRapidSecurityResponse** | Pointer to **string** | Collected for macOS 13.0 or later | [optional] 
 **IpAddress** | Pointer to **string** |  | [optional] 
 **MacAddress** | Pointer to **string** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
@@ -290,6 +292,56 @@ SetOperatingSystemBuild sets OperatingSystemBuild field to given value.
 `func (o *ComputerOverview) HasOperatingSystemBuild() bool`
 
 HasOperatingSystemBuild returns a boolean if a field has been set.
+
+### GetOperatingSystemSupplementalBuildVersion
+
+`func (o *ComputerOverview) GetOperatingSystemSupplementalBuildVersion() string`
+
+GetOperatingSystemSupplementalBuildVersion returns the OperatingSystemSupplementalBuildVersion field if non-nil, zero value otherwise.
+
+### GetOperatingSystemSupplementalBuildVersionOk
+
+`func (o *ComputerOverview) GetOperatingSystemSupplementalBuildVersionOk() (*string, bool)`
+
+GetOperatingSystemSupplementalBuildVersionOk returns a tuple with the OperatingSystemSupplementalBuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperatingSystemSupplementalBuildVersion
+
+`func (o *ComputerOverview) SetOperatingSystemSupplementalBuildVersion(v string)`
+
+SetOperatingSystemSupplementalBuildVersion sets OperatingSystemSupplementalBuildVersion field to given value.
+
+### HasOperatingSystemSupplementalBuildVersion
+
+`func (o *ComputerOverview) HasOperatingSystemSupplementalBuildVersion() bool`
+
+HasOperatingSystemSupplementalBuildVersion returns a boolean if a field has been set.
+
+### GetOperatingSystemRapidSecurityResponse
+
+`func (o *ComputerOverview) GetOperatingSystemRapidSecurityResponse() string`
+
+GetOperatingSystemRapidSecurityResponse returns the OperatingSystemRapidSecurityResponse field if non-nil, zero value otherwise.
+
+### GetOperatingSystemRapidSecurityResponseOk
+
+`func (o *ComputerOverview) GetOperatingSystemRapidSecurityResponseOk() (*string, bool)`
+
+GetOperatingSystemRapidSecurityResponseOk returns a tuple with the OperatingSystemRapidSecurityResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperatingSystemRapidSecurityResponse
+
+`func (o *ComputerOverview) SetOperatingSystemRapidSecurityResponse(v string)`
+
+SetOperatingSystemRapidSecurityResponse sets OperatingSystemRapidSecurityResponse field to given value.
+
+### HasOperatingSystemRapidSecurityResponse
+
+`func (o *ComputerOverview) HasOperatingSystemRapidSecurityResponse() bool`
+
+HasOperatingSystemRapidSecurityResponse returns a boolean if a field has been set.
 
 ### GetIpAddress
 

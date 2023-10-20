@@ -1,22 +1,22 @@
-# \DeviceEnrollmentsApi
+# \DeviceEnrollmentsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1DeviceEnrollmentsGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsGet) | **Get** /v1/device-enrollments | Read all sorted and paged Device Enrollment instances 
-[**V1DeviceEnrollmentsIdDelete**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdDelete) | **Delete** /v1/device-enrollments/{id} | Delete a Device Enrollment Instance with the supplied id 
-[**V1DeviceEnrollmentsIdDisownPost**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdDisownPost) | **Post** /v1/device-enrollments/{id}/disown | Disown devices from the given Device Enrollment Instance 
-[**V1DeviceEnrollmentsIdGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdGet) | **Get** /v1/device-enrollments/{id} | Retrieve a Device Enrollment Instance with the supplied id 
-[**V1DeviceEnrollmentsIdHistoryGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdHistoryGet) | **Get** /v1/device-enrollments/{id}/history | Get sorted and paged Device Enrollment history objects 
-[**V1DeviceEnrollmentsIdHistoryPost**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdHistoryPost) | **Post** /v1/device-enrollments/{id}/history | Add Device Enrollment history object notes 
-[**V1DeviceEnrollmentsIdPut**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdPut) | **Put** /v1/device-enrollments/{id} | Update a Device Enrollment Instance with the supplied id 
-[**V1DeviceEnrollmentsIdSyncsGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdSyncsGet) | **Get** /v1/device-enrollments/{id}/syncs | Get all instance sync states for a single Device Enrollment Instance 
-[**V1DeviceEnrollmentsIdSyncsLatestGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdSyncsLatestGet) | **Get** /v1/device-enrollments/{id}/syncs/latest | Get the latest sync state for a single Device Enrollment Instance 
-[**V1DeviceEnrollmentsIdUploadTokenPut**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsIdUploadTokenPut) | **Put** /v1/device-enrollments/{id}/upload-token | Update a Device Enrollment Instance with the supplied Token 
-[**V1DeviceEnrollmentsPublicKeyGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsPublicKeyGet) | **Get** /v1/device-enrollments/public-key | Retrieve the Jamf Pro Device Enrollment public key 
-[**V1DeviceEnrollmentsSyncsGet**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsSyncsGet) | **Get** /v1/device-enrollments/syncs | Get all instance sync states for all Device Enrollment Instances 
-[**V1DeviceEnrollmentsUploadTokenPost**](DeviceEnrollmentsApi.md#V1DeviceEnrollmentsUploadTokenPost) | **Post** /v1/device-enrollments/upload-token | Create a Device Enrollment Instance with the supplied Token 
+[**V1DeviceEnrollmentsGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsGet) | **Get** /v1/device-enrollments | Read all sorted and paged Device Enrollment instances 
+[**V1DeviceEnrollmentsIdDelete**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdDelete) | **Delete** /v1/device-enrollments/{id} | Delete a Device Enrollment Instance with the supplied id 
+[**V1DeviceEnrollmentsIdDisownPost**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdDisownPost) | **Post** /v1/device-enrollments/{id}/disown | Disown devices from the given Device Enrollment Instance 
+[**V1DeviceEnrollmentsIdGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdGet) | **Get** /v1/device-enrollments/{id} | Retrieve a Device Enrollment Instance with the supplied id 
+[**V1DeviceEnrollmentsIdHistoryGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdHistoryGet) | **Get** /v1/device-enrollments/{id}/history | Get sorted and paged Device Enrollment history objects 
+[**V1DeviceEnrollmentsIdHistoryPost**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdHistoryPost) | **Post** /v1/device-enrollments/{id}/history | Add Device Enrollment history object notes 
+[**V1DeviceEnrollmentsIdPut**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdPut) | **Put** /v1/device-enrollments/{id} | Update a Device Enrollment Instance with the supplied id 
+[**V1DeviceEnrollmentsIdSyncsGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdSyncsGet) | **Get** /v1/device-enrollments/{id}/syncs | Get all instance sync states for a single Device Enrollment Instance 
+[**V1DeviceEnrollmentsIdSyncsLatestGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdSyncsLatestGet) | **Get** /v1/device-enrollments/{id}/syncs/latest | Get the latest sync state for a single Device Enrollment Instance 
+[**V1DeviceEnrollmentsIdUploadTokenPut**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsIdUploadTokenPut) | **Put** /v1/device-enrollments/{id}/upload-token | Update a Device Enrollment Instance with the supplied Token 
+[**V1DeviceEnrollmentsPublicKeyGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsPublicKeyGet) | **Get** /v1/device-enrollments/public-key | Retrieve the Jamf Pro Device Enrollment public key 
+[**V1DeviceEnrollmentsSyncsGet**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsSyncsGet) | **Get** /v1/device-enrollments/syncs | Get all instance sync states for all Device Enrollment Instances 
+[**V1DeviceEnrollmentsUploadTokenPost**](DeviceEnrollmentsAPI.md#V1DeviceEnrollmentsUploadTokenPost) | **Post** /v1/device-enrollments/upload-token | Create a Device Enrollment Instance with the supplied Token 
 
 
 
@@ -37,7 +37,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -47,13 +47,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsGet`: DeviceEnrollmentInstanceSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsGet`: %v\n", resp)
 }
 ```
 
@@ -107,7 +107,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -115,9 +115,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -175,7 +175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -184,13 +184,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdDisownPost(context.Background(), id).DeviceEnrollmentDisownBody(deviceEnrollmentDisownBody).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdDisownPost(context.Background(), id).DeviceEnrollmentDisownBody(deviceEnrollmentDisownBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdDisownPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdDisownPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdDisownPost`: DeviceEnrollmentDisownResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdDisownPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdDisownPost`: %v\n", resp)
 }
 ```
 
@@ -247,7 +247,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -255,13 +255,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdGet`: DeviceEnrollmentInstance
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdGet`: %v\n", resp)
 }
 ```
 
@@ -317,7 +317,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -329,13 +329,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -395,7 +395,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -404,13 +404,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -467,7 +467,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -476,13 +476,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdPut(context.Background(), id).DeviceEnrollmentInstance(deviceEnrollmentInstance).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdPut(context.Background(), id).DeviceEnrollmentInstance(deviceEnrollmentInstance).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdPut`: DeviceEnrollmentInstance
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdPut`: %v\n", resp)
 }
 ```
 
@@ -539,7 +539,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -547,13 +547,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdSyncsGet`: []DeviceEnrollmentInstanceSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsGet`: %v\n", resp)
 }
 ```
 
@@ -609,7 +609,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -617,13 +617,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsLatestGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsLatestGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsLatestGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsLatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdSyncsLatestGet`: DeviceEnrollmentInstanceSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdSyncsLatestGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdSyncsLatestGet`: %v\n", resp)
 }
 ```
 
@@ -679,7 +679,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -688,13 +688,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsIdUploadTokenPut(context.Background(), id).DeviceEnrollmentToken(deviceEnrollmentToken).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdUploadTokenPut(context.Background(), id).DeviceEnrollmentToken(deviceEnrollmentToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdUploadTokenPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdUploadTokenPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsIdUploadTokenPut`: DeviceEnrollmentInstance
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsIdUploadTokenPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsIdUploadTokenPut`: %v\n", resp)
 }
 ```
 
@@ -751,20 +751,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsPublicKeyGet(context.Background()).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsPublicKeyGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsPublicKeyGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsPublicKeyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsPublicKeyGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsPublicKeyGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsPublicKeyGet`: %v\n", resp)
 }
 ```
 
@@ -812,20 +812,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsSyncsGet(context.Background()).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsSyncsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsSyncsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsSyncsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsSyncsGet`: []DeviceEnrollmentInstanceSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsSyncsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsSyncsGet`: %v\n", resp)
 }
 ```
 
@@ -873,7 +873,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -881,13 +881,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsApi.V1DeviceEnrollmentsUploadTokenPost(context.Background()).DeviceEnrollmentToken(deviceEnrollmentToken).Execute()
+    resp, r, err := apiClient.DeviceEnrollmentsAPI.V1DeviceEnrollmentsUploadTokenPost(context.Background()).DeviceEnrollmentToken(deviceEnrollmentToken).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsApi.V1DeviceEnrollmentsUploadTokenPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsAPI.V1DeviceEnrollmentsUploadTokenPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceEnrollmentsUploadTokenPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsApi.V1DeviceEnrollmentsUploadTokenPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsAPI.V1DeviceEnrollmentsUploadTokenPost`: %v\n", resp)
 }
 ```
 

@@ -1,11 +1,11 @@
-# \JamfPackageApi
+# \JamfPackageAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfPackageGet**](JamfPackageApi.md#V1JamfPackageGet) | **Get** /v1/jamf-package | Get the packages for a given Jamf application 
-[**V2JamfPackageGet**](JamfPackageApi.md#V2JamfPackageGet) | **Get** /v2/jamf-package | Get the packages for a given Jamf application 
+[**V1JamfPackageGet**](JamfPackageAPI.md#V1JamfPackageGet) | **Get** /v1/jamf-package | Get the packages for a given Jamf application 
+[**V2JamfPackageGet**](JamfPackageAPI.md#V2JamfPackageGet) | **Get** /v2/jamf-package | Get the packages for a given Jamf application 
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfPackageApi.V1JamfPackageGet(context.Background()).Application(application).Execute()
+    resp, r, err := apiClient.JamfPackageAPI.V1JamfPackageGet(context.Background()).Application(application).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageApi.V1JamfPackageGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V1JamfPackageGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfPackageGet`: []JamfPackageResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfPackageApi.V1JamfPackageGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V1JamfPackageGet`: %v\n", resp)
 }
 ```
 
@@ -92,7 +92,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfPackageApi.V2JamfPackageGet(context.Background()).Application(application).Execute()
+    resp, r, err := apiClient.JamfPackageAPI.V2JamfPackageGet(context.Background()).Application(application).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageApi.V2JamfPackageGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V2JamfPackageGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2JamfPackageGet`: JamfApplicationResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfPackageApi.V2JamfPackageGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V2JamfPackageGet`: %v\n", resp)
 }
 ```
 

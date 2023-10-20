@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type ComputerInventoryCollectionSettingsApi interface {
+type ComputerInventoryCollectionSettingsAPI interface {
 
 	/*
 	V1ComputerInventoryCollectionSettingsCustomPathIdDelete Delete Custom Path from Computer Inventory Collection Settings
@@ -29,12 +29,12 @@ type ComputerInventoryCollectionSettingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of Custom Path
-	@return ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
 	*/
-	V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+	V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
 
 	// V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute executes the request
-	V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error)
+	V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1ComputerInventoryCollectionSettingsCustomPathPost Create Computer Inventory Collection Settings Custom Path
@@ -42,13 +42,13 @@ type ComputerInventoryCollectionSettingsApi interface {
 	Creates a custom search path to use when collecting applications, fonts, and plug-ins.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
 	*/
-	V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+	V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
 
 	// V1ComputerInventoryCollectionSettingsCustomPathPostExecute executes the request
 	//  @return HrefResponse
-	V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error)
+	V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1ComputerInventoryCollectionSettingsGet Returns computer inventory settings
@@ -56,13 +56,13 @@ type ComputerInventoryCollectionSettingsApi interface {
 	Returns computer inventory settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerInventoryCollectionSettingsGetRequest
+	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
 	*/
-	V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsGetRequest
+	V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
 
 	// V1ComputerInventoryCollectionSettingsGetExecute executes the request
 	//  @return ComputerInventoryCollectionSettings
-	V1ComputerInventoryCollectionSettingsGetExecute(r ApiV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
+	V1ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
 
 	/*
 	V1ComputerInventoryCollectionSettingsPatch Update computer inventory settings
@@ -70,25 +70,25 @@ type ComputerInventoryCollectionSettingsApi interface {
 	Update computer inventory settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerInventoryCollectionSettingsPatchRequest
+	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
 	*/
-	V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsPatchRequest
+	V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
 
 	// V1ComputerInventoryCollectionSettingsPatchExecute executes the request
 	//  @return ComputerInventoryCollectionSettings
-	V1ComputerInventoryCollectionSettingsPatchExecute(r ApiV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
+	V1ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
 }
 
-// ComputerInventoryCollectionSettingsApiService ComputerInventoryCollectionSettingsApi service
-type ComputerInventoryCollectionSettingsApiService service
+// ComputerInventoryCollectionSettingsAPIService ComputerInventoryCollectionSettingsAPI service
+type ComputerInventoryCollectionSettingsAPIService service
 
-type ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest struct {
+type ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest struct {
 	ctx context.Context
-	ApiService ComputerInventoryCollectionSettingsApi
+	ApiService ComputerInventoryCollectionSettingsAPI
 	id string
 }
 
-func (r ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r)
 }
 
@@ -99,10 +99,10 @@ Delete Custom Path from Computer Inventory Collection Settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of Custom Path
- @return ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+ @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
 */
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest {
-	return ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest{
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest {
+	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -110,20 +110,20 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 }
 
 // Execute executes the request
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error) {
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsApiService.V1ComputerInventoryCollectionSettingsCustomPathIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V1ComputerInventoryCollectionSettingsCustomPathIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/computer-inventory-collection-settings/custom-path/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -156,9 +156,9 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -175,7 +175,8 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -183,19 +184,19 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest struct {
+type ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest struct {
 	ctx context.Context
-	ApiService ComputerInventoryCollectionSettingsApi
+	ApiService ComputerInventoryCollectionSettingsAPI
 	createPath *CreatePath
 }
 
 // Computer inventory settings to update
-func (r ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest) CreatePath(createPath CreatePath) ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) CreatePath(createPath CreatePath) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest {
 	r.createPath = &createPath
 	return r
 }
 
-func (r ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r)
 }
 
@@ -205,10 +206,10 @@ V1ComputerInventoryCollectionSettingsCustomPathPost Create Computer Inventory Co
 Creates a custom search path to use when collecting applications, fonts, and plug-ins.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+ @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
 */
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest {
-	return ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest{
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest {
+	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -216,7 +217,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ApiV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -224,7 +225,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsApiService.V1ComputerInventoryCollectionSettingsCustomPathPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V1ComputerInventoryCollectionSettingsCustomPathPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -267,9 +268,9 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -286,7 +287,8 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -303,12 +305,12 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerInventoryCollectionSettingsGetRequest struct {
+type ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest struct {
 	ctx context.Context
-	ApiService ComputerInventoryCollectionSettingsApi
+	ApiService ComputerInventoryCollectionSettingsAPI
 }
 
-func (r ApiV1ComputerInventoryCollectionSettingsGetRequest) Execute() (*ComputerInventoryCollectionSettings, *http.Response, error) {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest) Execute() (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	return r.ApiService.V1ComputerInventoryCollectionSettingsGetExecute(r)
 }
 
@@ -318,10 +320,10 @@ V1ComputerInventoryCollectionSettingsGet Returns computer inventory settings
 Returns computer inventory settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerInventoryCollectionSettingsGetRequest
+ @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
 */
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsGetRequest {
-	return ApiV1ComputerInventoryCollectionSettingsGetRequest{
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest {
+	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -329,7 +331,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return ComputerInventoryCollectionSettings
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsGetExecute(r ApiV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -337,7 +339,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		localVarReturnValue  *ComputerInventoryCollectionSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsApiService.V1ComputerInventoryCollectionSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V1ComputerInventoryCollectionSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -375,9 +377,9 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -402,19 +404,19 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerInventoryCollectionSettingsPatchRequest struct {
+type ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest struct {
 	ctx context.Context
-	ApiService ComputerInventoryCollectionSettingsApi
+	ApiService ComputerInventoryCollectionSettingsAPI
 	computerInventoryCollectionSettings *ComputerInventoryCollectionSettings
 }
 
 // Computer inventory settings to update
-func (r ApiV1ComputerInventoryCollectionSettingsPatchRequest) ComputerInventoryCollectionSettings(computerInventoryCollectionSettings ComputerInventoryCollectionSettings) ApiV1ComputerInventoryCollectionSettingsPatchRequest {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) ComputerInventoryCollectionSettings(computerInventoryCollectionSettings ComputerInventoryCollectionSettings) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest {
 	r.computerInventoryCollectionSettings = &computerInventoryCollectionSettings
 	return r
 }
 
-func (r ApiV1ComputerInventoryCollectionSettingsPatchRequest) Execute() (*ComputerInventoryCollectionSettings, *http.Response, error) {
+func (r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) Execute() (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	return r.ApiService.V1ComputerInventoryCollectionSettingsPatchExecute(r)
 }
 
@@ -424,10 +426,10 @@ V1ComputerInventoryCollectionSettingsPatch Update computer inventory settings
 Update computer inventory settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerInventoryCollectionSettingsPatchRequest
+ @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
 */
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ApiV1ComputerInventoryCollectionSettingsPatchRequest {
-	return ApiV1ComputerInventoryCollectionSettingsPatchRequest{
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest {
+	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -435,7 +437,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return ComputerInventoryCollectionSettings
-func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryCollectionSettingsPatchExecute(r ApiV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
+func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -443,7 +445,7 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		localVarReturnValue  *ComputerInventoryCollectionSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsApiService.V1ComputerInventoryCollectionSettingsPatch")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V1ComputerInventoryCollectionSettingsPatch")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -486,9 +488,9 @@ func (a *ComputerInventoryCollectionSettingsApiService) V1ComputerInventoryColle
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

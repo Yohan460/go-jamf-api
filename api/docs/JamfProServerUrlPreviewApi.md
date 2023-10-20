@@ -1,13 +1,13 @@
-# \JamfProServerUrlPreviewApi
+# \JamfProServerUrlPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfProServerUrlGet**](JamfProServerUrlPreviewApi.md#V1JamfProServerUrlGet) | **Get** /v1/jamf-pro-server-url | Get Jamf Pro Server URL settings 
-[**V1JamfProServerUrlHistoryGet**](JamfProServerUrlPreviewApi.md#V1JamfProServerUrlHistoryGet) | **Get** /v1/jamf-pro-server-url/history | Get Jamf Pro Server URL settings history 
-[**V1JamfProServerUrlHistoryPost**](JamfProServerUrlPreviewApi.md#V1JamfProServerUrlHistoryPost) | **Post** /v1/jamf-pro-server-url/history | Add Jamf Pro Server URL settings history notes 
-[**V1JamfProServerUrlPut**](JamfProServerUrlPreviewApi.md#V1JamfProServerUrlPut) | **Put** /v1/jamf-pro-server-url | Update Jamf Pro Server URL settings 
+[**V1JamfProServerUrlGet**](JamfProServerUrlPreviewAPI.md#V1JamfProServerUrlGet) | **Get** /v1/jamf-pro-server-url | Get Jamf Pro Server URL settings 
+[**V1JamfProServerUrlHistoryGet**](JamfProServerUrlPreviewAPI.md#V1JamfProServerUrlHistoryGet) | **Get** /v1/jamf-pro-server-url/history | Get Jamf Pro Server URL settings history 
+[**V1JamfProServerUrlHistoryPost**](JamfProServerUrlPreviewAPI.md#V1JamfProServerUrlHistoryPost) | **Post** /v1/jamf-pro-server-url/history | Add Jamf Pro Server URL settings history notes 
+[**V1JamfProServerUrlPut**](JamfProServerUrlPreviewAPI.md#V1JamfProServerUrlPut) | **Put** /v1/jamf-pro-server-url | Update Jamf Pro Server URL settings 
 
 
 
@@ -28,20 +28,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProServerUrlPreviewApi.V1JamfProServerUrlGet(context.Background()).Execute()
+    resp, r, err := apiClient.JamfProServerUrlPreviewAPI.V1JamfProServerUrlGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewApi.V1JamfProServerUrlGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewAPI.V1JamfProServerUrlGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProServerUrlGet`: JamfProServerUrl
-    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewApi.V1JamfProServerUrlGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewAPI.V1JamfProServerUrlGet`: %v\n", resp)
 }
 ```
 
@@ -89,7 +89,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -101,13 +101,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProServerUrlHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProServerUrlHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewApi.V1JamfProServerUrlHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewAPI.V1JamfProServerUrlHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -229,7 +229,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api"
 )
 
 func main() {
@@ -237,13 +237,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProServerUrlPreviewApi.V1JamfProServerUrlPut(context.Background()).JamfProServerUrl(jamfProServerUrl).Execute()
+    resp, r, err := apiClient.JamfProServerUrlPreviewAPI.V1JamfProServerUrlPut(context.Background()).JamfProServerUrl(jamfProServerUrl).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewApi.V1JamfProServerUrlPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProServerUrlPreviewAPI.V1JamfProServerUrlPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProServerUrlPut`: JamfProServerUrl
-    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewApi.V1JamfProServerUrlPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProServerUrlPreviewAPI.V1JamfProServerUrlPut`: %v\n", resp)
 }
 ```
 

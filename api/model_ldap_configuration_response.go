@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LdapConfigurationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LdapConfigurationResponse{}
+
 // LdapConfigurationResponse A Cloud Identity Provider LDAP configuration for responses
 type LdapConfigurationResponse struct {
 	CloudIdPCommon CloudIdPCommon `json:"cloudIdPCommon"`
@@ -90,7 +93,7 @@ func (o *LdapConfigurationResponse) SetServer(v CloudLdapServerResponse) {
 
 // GetMappings returns the Mappings field value if set, zero value otherwise.
 func (o *LdapConfigurationResponse) GetMappings() CloudLdapMappingsResponse {
-	if o == nil || o.Mappings == nil {
+	if o == nil || IsNil(o.Mappings) {
 		var ret CloudLdapMappingsResponse
 		return ret
 	}
@@ -100,7 +103,7 @@ func (o *LdapConfigurationResponse) GetMappings() CloudLdapMappingsResponse {
 // GetMappingsOk returns a tuple with the Mappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapConfigurationResponse) GetMappingsOk() (*CloudLdapMappingsResponse, bool) {
-	if o == nil || o.Mappings == nil {
+	if o == nil || IsNil(o.Mappings) {
 		return nil, false
 	}
 	return o.Mappings, true
@@ -108,7 +111,7 @@ func (o *LdapConfigurationResponse) GetMappingsOk() (*CloudLdapMappingsResponse,
 
 // HasMappings returns a boolean if a field has been set.
 func (o *LdapConfigurationResponse) HasMappings() bool {
-	if o != nil && o.Mappings != nil {
+	if o != nil && !IsNil(o.Mappings) {
 		return true
 	}
 
@@ -121,17 +124,21 @@ func (o *LdapConfigurationResponse) SetMappings(v CloudLdapMappingsResponse) {
 }
 
 func (o LdapConfigurationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["cloudIdPCommon"] = o.CloudIdPCommon
-	}
-	if true {
-		toSerialize["server"] = o.Server
-	}
-	if o.Mappings != nil {
-		toSerialize["mappings"] = o.Mappings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LdapConfigurationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["cloudIdPCommon"] = o.CloudIdPCommon
+	toSerialize["server"] = o.Server
+	if !IsNil(o.Mappings) {
+		toSerialize["mappings"] = o.Mappings
+	}
+	return toSerialize, nil
 }
 
 type NullableLdapConfigurationResponse struct {

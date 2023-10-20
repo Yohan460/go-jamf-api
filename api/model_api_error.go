@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApiError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiError{}
+
 // ApiError struct for ApiError
 type ApiError struct {
 	// HTTP status of the response
@@ -40,7 +43,7 @@ func NewApiErrorWithDefaults() *ApiError {
 
 // GetHttpStatus returns the HttpStatus field value if set, zero value otherwise.
 func (o *ApiError) GetHttpStatus() int32 {
-	if o == nil || o.HttpStatus == nil {
+	if o == nil || IsNil(o.HttpStatus) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ApiError) GetHttpStatus() int32 {
 // GetHttpStatusOk returns a tuple with the HttpStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiError) GetHttpStatusOk() (*int32, bool) {
-	if o == nil || o.HttpStatus == nil {
+	if o == nil || IsNil(o.HttpStatus) {
 		return nil, false
 	}
 	return o.HttpStatus, true
@@ -58,7 +61,7 @@ func (o *ApiError) GetHttpStatusOk() (*int32, bool) {
 
 // HasHttpStatus returns a boolean if a field has been set.
 func (o *ApiError) HasHttpStatus() bool {
-	if o != nil && o.HttpStatus != nil {
+	if o != nil && !IsNil(o.HttpStatus) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ApiError) SetHttpStatus(v int32) {
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *ApiError) GetErrors() []ApiErrorCause {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		var ret []ApiErrorCause
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ApiError) GetErrors() []ApiErrorCause {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApiError) GetErrorsOk() ([]ApiErrorCause, bool) {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -90,7 +93,7 @@ func (o *ApiError) GetErrorsOk() ([]ApiErrorCause, bool) {
 
 // HasErrors returns a boolean if a field has been set.
 func (o *ApiError) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *ApiError) SetErrors(v []ApiErrorCause) {
 }
 
 func (o ApiError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.HttpStatus != nil {
-		toSerialize["httpStatus"] = o.HttpStatus
-	}
-	if o.Errors != nil {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApiError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.HttpStatus) {
+		toSerialize["httpStatus"] = o.HttpStatus
+	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableApiError struct {

@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type SmartUserGroupsPreviewApi interface {
+type SmartUserGroupsPreviewAPI interface {
 
 	/*
 	V1SmartUserGroupsIdRecalculatePost Recalculate the smart group for the given id and then return the ids for the users in the smart group 
@@ -31,13 +31,13 @@ returns the ids for the users in the smart group
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of smart group
-	@return ApiV1SmartUserGroupsIdRecalculatePostRequest
+	@return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 	*/
-	V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) ApiV1SmartUserGroupsIdRecalculatePostRequest
+	V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 
 	// V1SmartUserGroupsIdRecalculatePostExecute executes the request
 	//  @return RecalculationResults
-	V1SmartUserGroupsIdRecalculatePostExecute(r ApiV1SmartUserGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error)
+	V1SmartUserGroupsIdRecalculatePostExecute(r SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error)
 
 	/*
 	V1UsersIdRecalculateSmartGroupsPost Recalculate a smart group for the given user id and then return the count of smart groups the user falls into 
@@ -48,25 +48,25 @@ returns the count of smart groups the user falls into
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of user
-	@return ApiV1UsersIdRecalculateSmartGroupsPostRequest
+	@return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 	*/
-	V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) ApiV1UsersIdRecalculateSmartGroupsPostRequest
+	V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 
 	// V1UsersIdRecalculateSmartGroupsPostExecute executes the request
 	//  @return RecalculationResults
-	V1UsersIdRecalculateSmartGroupsPostExecute(r ApiV1UsersIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error)
+	V1UsersIdRecalculateSmartGroupsPostExecute(r SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error)
 }
 
-// SmartUserGroupsPreviewApiService SmartUserGroupsPreviewApi service
-type SmartUserGroupsPreviewApiService service
+// SmartUserGroupsPreviewAPIService SmartUserGroupsPreviewAPI service
+type SmartUserGroupsPreviewAPIService service
 
-type ApiV1SmartUserGroupsIdRecalculatePostRequest struct {
+type SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest struct {
 	ctx context.Context
-	ApiService SmartUserGroupsPreviewApi
+	ApiService SmartUserGroupsPreviewAPI
 	id int32
 }
 
-func (r ApiV1SmartUserGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
+func (r SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
 	return r.ApiService.V1SmartUserGroupsIdRecalculatePostExecute(r)
 }
 
@@ -79,10 +79,10 @@ returns the ids for the users in the smart group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of smart group
- @return ApiV1SmartUserGroupsIdRecalculatePostRequest
+ @return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 */
-func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) ApiV1SmartUserGroupsIdRecalculatePostRequest {
-	return ApiV1SmartUserGroupsIdRecalculatePostRequest{
+func (a *SmartUserGroupsPreviewAPIService) V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest {
+	return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -91,7 +91,7 @@ func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePost(ct
 
 // Execute executes the request
 //  @return RecalculationResults
-func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePostExecute(r ApiV1SmartUserGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error) {
+func (a *SmartUserGroupsPreviewAPIService) V1SmartUserGroupsIdRecalculatePostExecute(r SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest) (*RecalculationResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -99,13 +99,13 @@ func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePostExe
 		localVarReturnValue  *RecalculationResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartUserGroupsPreviewApiService.V1SmartUserGroupsIdRecalculatePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartUserGroupsPreviewAPIService.V1SmartUserGroupsIdRecalculatePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/smart-user-groups/{id}/recalculate"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -138,9 +138,9 @@ func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePostExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -157,7 +157,8 @@ func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePostExe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -174,13 +175,13 @@ func (a *SmartUserGroupsPreviewApiService) V1SmartUserGroupsIdRecalculatePostExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1UsersIdRecalculateSmartGroupsPostRequest struct {
+type SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest struct {
 	ctx context.Context
-	ApiService SmartUserGroupsPreviewApi
+	ApiService SmartUserGroupsPreviewAPI
 	id int32
 }
 
-func (r ApiV1UsersIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
+func (r SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
 	return r.ApiService.V1UsersIdRecalculateSmartGroupsPostExecute(r)
 }
 
@@ -193,10 +194,10 @@ returns the count of smart groups the user falls into
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of user
- @return ApiV1UsersIdRecalculateSmartGroupsPostRequest
+ @return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 */
-func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) ApiV1UsersIdRecalculateSmartGroupsPostRequest {
-	return ApiV1UsersIdRecalculateSmartGroupsPostRequest{
+func (a *SmartUserGroupsPreviewAPIService) V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest {
+	return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -205,7 +206,7 @@ func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPost(c
 
 // Execute executes the request
 //  @return RecalculationResults
-func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPostExecute(r ApiV1UsersIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error) {
+func (a *SmartUserGroupsPreviewAPIService) V1UsersIdRecalculateSmartGroupsPostExecute(r SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest) (*RecalculationResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -213,13 +214,13 @@ func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPostEx
 		localVarReturnValue  *RecalculationResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartUserGroupsPreviewApiService.V1UsersIdRecalculateSmartGroupsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SmartUserGroupsPreviewAPIService.V1UsersIdRecalculateSmartGroupsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/users/{id}/recalculate-smart-groups"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -252,9 +253,9 @@ func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPostEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -271,7 +272,8 @@ func (a *SmartUserGroupsPreviewApiService) V1UsersIdRecalculateSmartGroupsPostEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

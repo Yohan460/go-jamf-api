@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnableLostModeCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnableLostModeCommand{}
+
 // EnableLostModeCommand struct for EnableLostModeCommand
 type EnableLostModeCommand struct {
 	LostModeMessage *string `json:"lostModeMessage,omitempty"`
@@ -40,7 +43,7 @@ func NewEnableLostModeCommandWithDefaults() *EnableLostModeCommand {
 
 // GetLostModeMessage returns the LostModeMessage field value if set, zero value otherwise.
 func (o *EnableLostModeCommand) GetLostModeMessage() string {
-	if o == nil || o.LostModeMessage == nil {
+	if o == nil || IsNil(o.LostModeMessage) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnableLostModeCommand) GetLostModeMessage() string {
 // GetLostModeMessageOk returns a tuple with the LostModeMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnableLostModeCommand) GetLostModeMessageOk() (*string, bool) {
-	if o == nil || o.LostModeMessage == nil {
+	if o == nil || IsNil(o.LostModeMessage) {
 		return nil, false
 	}
 	return o.LostModeMessage, true
@@ -58,7 +61,7 @@ func (o *EnableLostModeCommand) GetLostModeMessageOk() (*string, bool) {
 
 // HasLostModeMessage returns a boolean if a field has been set.
 func (o *EnableLostModeCommand) HasLostModeMessage() bool {
-	if o != nil && o.LostModeMessage != nil {
+	if o != nil && !IsNil(o.LostModeMessage) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnableLostModeCommand) SetLostModeMessage(v string) {
 
 // GetLostModePhone returns the LostModePhone field value if set, zero value otherwise.
 func (o *EnableLostModeCommand) GetLostModePhone() string {
-	if o == nil || o.LostModePhone == nil {
+	if o == nil || IsNil(o.LostModePhone) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnableLostModeCommand) GetLostModePhone() string {
 // GetLostModePhoneOk returns a tuple with the LostModePhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnableLostModeCommand) GetLostModePhoneOk() (*string, bool) {
-	if o == nil || o.LostModePhone == nil {
+	if o == nil || IsNil(o.LostModePhone) {
 		return nil, false
 	}
 	return o.LostModePhone, true
@@ -90,7 +93,7 @@ func (o *EnableLostModeCommand) GetLostModePhoneOk() (*string, bool) {
 
 // HasLostModePhone returns a boolean if a field has been set.
 func (o *EnableLostModeCommand) HasLostModePhone() bool {
-	if o != nil && o.LostModePhone != nil {
+	if o != nil && !IsNil(o.LostModePhone) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *EnableLostModeCommand) SetLostModePhone(v string) {
 
 // GetLostModeFootnote returns the LostModeFootnote field value if set, zero value otherwise.
 func (o *EnableLostModeCommand) GetLostModeFootnote() string {
-	if o == nil || o.LostModeFootnote == nil {
+	if o == nil || IsNil(o.LostModeFootnote) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *EnableLostModeCommand) GetLostModeFootnote() string {
 // GetLostModeFootnoteOk returns a tuple with the LostModeFootnote field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnableLostModeCommand) GetLostModeFootnoteOk() (*string, bool) {
-	if o == nil || o.LostModeFootnote == nil {
+	if o == nil || IsNil(o.LostModeFootnote) {
 		return nil, false
 	}
 	return o.LostModeFootnote, true
@@ -122,7 +125,7 @@ func (o *EnableLostModeCommand) GetLostModeFootnoteOk() (*string, bool) {
 
 // HasLostModeFootnote returns a boolean if a field has been set.
 func (o *EnableLostModeCommand) HasLostModeFootnote() bool {
-	if o != nil && o.LostModeFootnote != nil {
+	if o != nil && !IsNil(o.LostModeFootnote) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *EnableLostModeCommand) SetLostModeFootnote(v string) {
 }
 
 func (o EnableLostModeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.LostModeMessage != nil {
-		toSerialize["lostModeMessage"] = o.LostModeMessage
-	}
-	if o.LostModePhone != nil {
-		toSerialize["lostModePhone"] = o.LostModePhone
-	}
-	if o.LostModeFootnote != nil {
-		toSerialize["lostModeFootnote"] = o.LostModeFootnote
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnableLostModeCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.LostModeMessage) {
+		toSerialize["lostModeMessage"] = o.LostModeMessage
+	}
+	if !IsNil(o.LostModePhone) {
+		toSerialize["lostModePhone"] = o.LostModePhone
+	}
+	if !IsNil(o.LostModeFootnote) {
+		toSerialize["lostModeFootnote"] = o.LostModeFootnote
+	}
+	return toSerialize, nil
 }
 
 type NullableEnableLostModeCommand struct {

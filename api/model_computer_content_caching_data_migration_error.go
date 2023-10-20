@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingDataMigrationError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingDataMigrationError{}
+
 // ComputerContentCachingDataMigrationError struct for ComputerContentCachingDataMigrationError
 type ComputerContentCachingDataMigrationError struct {
 	Code *int64 `json:"code,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerContentCachingDataMigrationErrorWithDefaults() *ComputerContentC
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *ComputerContentCachingDataMigrationError) GetCode() int64 {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret int64
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerContentCachingDataMigrationError) GetCode() int64 {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingDataMigrationError) GetCodeOk() (*int64, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -58,7 +61,7 @@ func (o *ComputerContentCachingDataMigrationError) GetCodeOk() (*int64, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *ComputerContentCachingDataMigrationError) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerContentCachingDataMigrationError) SetCode(v int64) {
 
 // GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *ComputerContentCachingDataMigrationError) GetDomain() string {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerContentCachingDataMigrationError) GetDomain() string {
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingDataMigrationError) GetDomainOk() (*string, bool) {
-	if o == nil || o.Domain == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
 	return o.Domain, true
@@ -90,7 +93,7 @@ func (o *ComputerContentCachingDataMigrationError) GetDomainOk() (*string, bool)
 
 // HasDomain returns a boolean if a field has been set.
 func (o *ComputerContentCachingDataMigrationError) HasDomain() bool {
-	if o != nil && o.Domain != nil {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerContentCachingDataMigrationError) SetDomain(v string) {
 
 // GetUserInfo returns the UserInfo field value if set, zero value otherwise.
 func (o *ComputerContentCachingDataMigrationError) GetUserInfo() []ComputerContentCachingDataMigrationErrorUserInfo {
-	if o == nil || o.UserInfo == nil {
+	if o == nil || IsNil(o.UserInfo) {
 		var ret []ComputerContentCachingDataMigrationErrorUserInfo
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerContentCachingDataMigrationError) GetUserInfo() []ComputerConte
 // GetUserInfoOk returns a tuple with the UserInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingDataMigrationError) GetUserInfoOk() ([]ComputerContentCachingDataMigrationErrorUserInfo, bool) {
-	if o == nil || o.UserInfo == nil {
+	if o == nil || IsNil(o.UserInfo) {
 		return nil, false
 	}
 	return o.UserInfo, true
@@ -122,7 +125,7 @@ func (o *ComputerContentCachingDataMigrationError) GetUserInfoOk() ([]ComputerCo
 
 // HasUserInfo returns a boolean if a field has been set.
 func (o *ComputerContentCachingDataMigrationError) HasUserInfo() bool {
-	if o != nil && o.UserInfo != nil {
+	if o != nil && !IsNil(o.UserInfo) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerContentCachingDataMigrationError) SetUserInfo(v []ComputerConte
 }
 
 func (o ComputerContentCachingDataMigrationError) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Domain != nil {
-		toSerialize["domain"] = o.Domain
-	}
-	if o.UserInfo != nil {
-		toSerialize["userInfo"] = o.UserInfo
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingDataMigrationError) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
+	}
+	if !IsNil(o.UserInfo) {
+		toSerialize["userInfo"] = o.UserInfo
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingDataMigrationError struct {

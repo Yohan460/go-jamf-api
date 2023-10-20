@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClientData** | Pointer to [**[]MdmCommandClient**](MdmCommandClient.md) |  | [optional] 
+**ClientData** | Pointer to [**[]MdmCommandClientRequest**](MdmCommandClientRequest.md) |  | [optional] 
 **CommandData** | Pointer to [**MdmCommandRequestCommandData**](MdmCommandRequestCommandData.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetClientData
 
-`func (o *MdmCommandRequest) GetClientData() []MdmCommandClient`
+`func (o *MdmCommandRequest) GetClientData() []MdmCommandClientRequest`
 
 GetClientData returns the ClientData field if non-nil, zero value otherwise.
 
 ### GetClientDataOk
 
-`func (o *MdmCommandRequest) GetClientDataOk() (*[]MdmCommandClient, bool)`
+`func (o *MdmCommandRequest) GetClientDataOk() (*[]MdmCommandClientRequest, bool)`
 
 GetClientDataOk returns a tuple with the ClientData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClientData
 
-`func (o *MdmCommandRequest) SetClientData(v []MdmCommandClient)`
+`func (o *MdmCommandRequest) SetClientData(v []MdmCommandClientRequest)`
 
 SetClientData sets ClientData field to given value.
 

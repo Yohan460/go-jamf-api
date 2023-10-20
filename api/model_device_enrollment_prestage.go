@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentPrestage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentPrestage{}
+
 // DeviceEnrollmentPrestage struct for DeviceEnrollmentPrestage
 type DeviceEnrollmentPrestage struct {
 	DisplayName string `json:"displayName"`
@@ -435,7 +438,7 @@ func (o *DeviceEnrollmentPrestage) SetDeviceEnrollmentProgramInstanceId(v int32)
 
 // GetSkipSetupItems returns the SkipSetupItems field value if set, zero value otherwise.
 func (o *DeviceEnrollmentPrestage) GetSkipSetupItems() map[string]bool {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		var ret map[string]bool
 		return ret
 	}
@@ -445,7 +448,7 @@ func (o *DeviceEnrollmentPrestage) GetSkipSetupItems() map[string]bool {
 // GetSkipSetupItemsOk returns a tuple with the SkipSetupItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentPrestage) GetSkipSetupItemsOk() (*map[string]bool, bool) {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		return nil, false
 	}
 	return o.SkipSetupItems, true
@@ -453,7 +456,7 @@ func (o *DeviceEnrollmentPrestage) GetSkipSetupItemsOk() (*map[string]bool, bool
 
 // HasSkipSetupItems returns a boolean if a field has been set.
 func (o *DeviceEnrollmentPrestage) HasSkipSetupItems() bool {
-	if o != nil && o.SkipSetupItems != nil {
+	if o != nil && !IsNil(o.SkipSetupItems) {
 		return true
 	}
 
@@ -515,7 +518,7 @@ func (o *DeviceEnrollmentPrestage) SetPurchasingInformation(v PrestagePurchasing
 
 // GetAnchorCertificates returns the AnchorCertificates field value if set, zero value otherwise.
 func (o *DeviceEnrollmentPrestage) GetAnchorCertificates() []string {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		var ret []string
 		return ret
 	}
@@ -525,7 +528,7 @@ func (o *DeviceEnrollmentPrestage) GetAnchorCertificates() []string {
 // GetAnchorCertificatesOk returns a tuple with the AnchorCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentPrestage) GetAnchorCertificatesOk() ([]string, bool) {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		return nil, false
 	}
 	return o.AnchorCertificates, true
@@ -533,7 +536,7 @@ func (o *DeviceEnrollmentPrestage) GetAnchorCertificatesOk() ([]string, bool) {
 
 // HasAnchorCertificates returns a boolean if a field has been set.
 func (o *DeviceEnrollmentPrestage) HasAnchorCertificates() bool {
-	if o != nil && o.AnchorCertificates != nil {
+	if o != nil && !IsNil(o.AnchorCertificates) {
 		return true
 	}
 
@@ -547,7 +550,7 @@ func (o *DeviceEnrollmentPrestage) SetAnchorCertificates(v []string) {
 
 // GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int32 {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		var ret int32
 		return ret
 	}
@@ -557,7 +560,7 @@ func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int32 {
 // GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int32, bool) {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		return nil, false
 	}
 	return o.EnrollmentCustomizationId, true
@@ -565,7 +568,7 @@ func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int32, boo
 
 // HasEnrollmentCustomizationId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentPrestage) HasEnrollmentCustomizationId() bool {
-	if o != nil && o.EnrollmentCustomizationId != nil {
+	if o != nil && !IsNil(o.EnrollmentCustomizationId) {
 		return true
 	}
 
@@ -578,68 +581,42 @@ func (o *DeviceEnrollmentPrestage) SetEnrollmentCustomizationId(v int32) {
 }
 
 func (o DeviceEnrollmentPrestage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["isMandatory"] = o.IsMandatory
-	}
-	if true {
-		toSerialize["isMdmRemovable"] = o.IsMdmRemovable
-	}
-	if true {
-		toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
-	}
-	if true {
-		toSerialize["supportEmailAddress"] = o.SupportEmailAddress
-	}
-	if true {
-		toSerialize["department"] = o.Department
-	}
-	if true {
-		toSerialize["isDefaultPrestage"] = o.IsDefaultPrestage
-	}
-	if true {
-		toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
-	}
-	if true {
-		toSerialize["isKeepExistingSiteMembership"] = o.IsKeepExistingSiteMembership
-	}
-	if true {
-		toSerialize["isKeepExistingLocationInformation"] = o.IsKeepExistingLocationInformation
-	}
-	if true {
-		toSerialize["isRequireAuthentication"] = o.IsRequireAuthentication
-	}
-	if true {
-		toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
-	}
-	if true {
-		toSerialize["isPreventActivationLock"] = o.IsPreventActivationLock
-	}
-	if true {
-		toSerialize["isEnableDeviceBasedActivationLock"] = o.IsEnableDeviceBasedActivationLock
-	}
-	if true {
-		toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
-	}
-	if o.SkipSetupItems != nil {
-		toSerialize["skipSetupItems"] = o.SkipSetupItems
-	}
-	if true {
-		toSerialize["locationInformation"] = o.LocationInformation
-	}
-	if true {
-		toSerialize["purchasingInformation"] = o.PurchasingInformation
-	}
-	if o.AnchorCertificates != nil {
-		toSerialize["anchorCertificates"] = o.AnchorCertificates
-	}
-	if o.EnrollmentCustomizationId != nil {
-		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentPrestage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["isMandatory"] = o.IsMandatory
+	toSerialize["isMdmRemovable"] = o.IsMdmRemovable
+	toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
+	toSerialize["supportEmailAddress"] = o.SupportEmailAddress
+	toSerialize["department"] = o.Department
+	toSerialize["isDefaultPrestage"] = o.IsDefaultPrestage
+	toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
+	toSerialize["isKeepExistingSiteMembership"] = o.IsKeepExistingSiteMembership
+	toSerialize["isKeepExistingLocationInformation"] = o.IsKeepExistingLocationInformation
+	toSerialize["isRequireAuthentication"] = o.IsRequireAuthentication
+	toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
+	toSerialize["isPreventActivationLock"] = o.IsPreventActivationLock
+	toSerialize["isEnableDeviceBasedActivationLock"] = o.IsEnableDeviceBasedActivationLock
+	toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
+	if !IsNil(o.SkipSetupItems) {
+		toSerialize["skipSetupItems"] = o.SkipSetupItems
+	}
+	toSerialize["locationInformation"] = o.LocationInformation
+	toSerialize["purchasingInformation"] = o.PurchasingInformation
+	if !IsNil(o.AnchorCertificates) {
+		toSerialize["anchorCertificates"] = o.AnchorCertificates
+	}
+	if !IsNil(o.EnrollmentCustomizationId) {
+		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentPrestage struct {

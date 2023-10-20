@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapKeystoreFile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapKeystoreFile{}
+
 // CloudLdapKeystoreFile Request with the Base64-encoded keystore file
 type CloudLdapKeystoreFile struct {
 	Password string `json:"password"`
@@ -114,17 +117,19 @@ func (o *CloudLdapKeystoreFile) SetFileName(v string) {
 }
 
 func (o CloudLdapKeystoreFile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["password"] = o.Password
-	}
-	if true {
-		toSerialize["fileBytes"] = o.FileBytes
-	}
-	if true {
-		toSerialize["fileName"] = o.FileName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapKeystoreFile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["password"] = o.Password
+	toSerialize["fileBytes"] = o.FileBytes
+	toSerialize["fileName"] = o.FileName
+	return toSerialize, nil
 }
 
 type NullableCloudLdapKeystoreFile struct {

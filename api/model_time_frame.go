@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TimeFrame type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TimeFrame{}
+
 // TimeFrame struct for TimeFrame
 type TimeFrame struct {
 	BeginTime *string `json:"beginTime,omitempty"`
@@ -39,7 +42,7 @@ func NewTimeFrameWithDefaults() *TimeFrame {
 
 // GetBeginTime returns the BeginTime field value if set, zero value otherwise.
 func (o *TimeFrame) GetBeginTime() string {
-	if o == nil || o.BeginTime == nil {
+	if o == nil || IsNil(o.BeginTime) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *TimeFrame) GetBeginTime() string {
 // GetBeginTimeOk returns a tuple with the BeginTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeFrame) GetBeginTimeOk() (*string, bool) {
-	if o == nil || o.BeginTime == nil {
+	if o == nil || IsNil(o.BeginTime) {
 		return nil, false
 	}
 	return o.BeginTime, true
@@ -57,7 +60,7 @@ func (o *TimeFrame) GetBeginTimeOk() (*string, bool) {
 
 // HasBeginTime returns a boolean if a field has been set.
 func (o *TimeFrame) HasBeginTime() bool {
-	if o != nil && o.BeginTime != nil {
+	if o != nil && !IsNil(o.BeginTime) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *TimeFrame) SetBeginTime(v string) {
 
 // GetEndTime returns the EndTime field value if set, zero value otherwise.
 func (o *TimeFrame) GetEndTime() string {
-	if o == nil || o.EndTime == nil {
+	if o == nil || IsNil(o.EndTime) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *TimeFrame) GetEndTime() string {
 // GetEndTimeOk returns a tuple with the EndTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeFrame) GetEndTimeOk() (*string, bool) {
-	if o == nil || o.EndTime == nil {
+	if o == nil || IsNil(o.EndTime) {
 		return nil, false
 	}
 	return o.EndTime, true
@@ -89,7 +92,7 @@ func (o *TimeFrame) GetEndTimeOk() (*string, bool) {
 
 // HasEndTime returns a boolean if a field has been set.
 func (o *TimeFrame) HasEndTime() bool {
-	if o != nil && o.EndTime != nil {
+	if o != nil && !IsNil(o.EndTime) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *TimeFrame) SetEndTime(v string) {
 }
 
 func (o TimeFrame) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BeginTime != nil {
-		toSerialize["beginTime"] = o.BeginTime
-	}
-	if o.EndTime != nil {
-		toSerialize["endTime"] = o.EndTime
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TimeFrame) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BeginTime) {
+		toSerialize["beginTime"] = o.BeginTime
+	}
+	if !IsNil(o.EndTime) {
+		toSerialize["endTime"] = o.EndTime
+	}
+	return toSerialize, nil
 }
 
 type NullableTimeFrame struct {

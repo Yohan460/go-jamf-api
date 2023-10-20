@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VppTokenSubscription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VppTokenSubscription{}
+
 // VppTokenSubscription struct for VppTokenSubscription
 type VppTokenSubscription struct {
 	Id *int32 `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewVppTokenSubscriptionWithDefaults() *VppTokenSubscription {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *VppTokenSubscription) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *VppTokenSubscription) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *VppTokenSubscription) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *VppTokenSubscription) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -94,7 +97,7 @@ func (o *VppTokenSubscription) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *VppTokenSubscription) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *VppTokenSubscription) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -126,7 +129,7 @@ func (o *VppTokenSubscription) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *VppTokenSubscription) SetEnabled(v bool) {
 
 // GetRecipients returns the Recipients field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetRecipients() Recipients {
-	if o == nil || o.Recipients == nil {
+	if o == nil || IsNil(o.Recipients) {
 		var ret Recipients
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *VppTokenSubscription) GetRecipients() Recipients {
 // GetRecipientsOk returns a tuple with the Recipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetRecipientsOk() (*Recipients, bool) {
-	if o == nil || o.Recipients == nil {
+	if o == nil || IsNil(o.Recipients) {
 		return nil, false
 	}
 	return o.Recipients, true
@@ -158,7 +161,7 @@ func (o *VppTokenSubscription) GetRecipientsOk() (*Recipients, bool) {
 
 // HasRecipients returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasRecipients() bool {
-	if o != nil && o.Recipients != nil {
+	if o != nil && !IsNil(o.Recipients) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *VppTokenSubscription) SetRecipients(v Recipients) {
 
 // GetAdminAccounts returns the AdminAccounts field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetAdminAccounts() []AdminAccount {
-	if o == nil || o.AdminAccounts == nil {
+	if o == nil || IsNil(o.AdminAccounts) {
 		var ret []AdminAccount
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *VppTokenSubscription) GetAdminAccounts() []AdminAccount {
 // GetAdminAccountsOk returns a tuple with the AdminAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetAdminAccountsOk() ([]AdminAccount, bool) {
-	if o == nil || o.AdminAccounts == nil {
+	if o == nil || IsNil(o.AdminAccounts) {
 		return nil, false
 	}
 	return o.AdminAccounts, true
@@ -190,7 +193,7 @@ func (o *VppTokenSubscription) GetAdminAccountsOk() ([]AdminAccount, bool) {
 
 // HasAdminAccounts returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasAdminAccounts() bool {
-	if o != nil && o.AdminAccounts != nil {
+	if o != nil && !IsNil(o.AdminAccounts) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *VppTokenSubscription) SetAdminAccounts(v []AdminAccount) {
 
 // GetSiteID returns the SiteID field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetSiteID() int32 {
-	if o == nil || o.SiteID == nil {
+	if o == nil || IsNil(o.SiteID) {
 		var ret int32
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *VppTokenSubscription) GetSiteID() int32 {
 // GetSiteIDOk returns a tuple with the SiteID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetSiteIDOk() (*int32, bool) {
-	if o == nil || o.SiteID == nil {
+	if o == nil || IsNil(o.SiteID) {
 		return nil, false
 	}
 	return o.SiteID, true
@@ -222,7 +225,7 @@ func (o *VppTokenSubscription) GetSiteIDOk() (*int32, bool) {
 
 // HasSiteID returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasSiteID() bool {
-	if o != nil && o.SiteID != nil {
+	if o != nil && !IsNil(o.SiteID) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *VppTokenSubscription) SetSiteID(v int32) {
 
 // GetSiteName returns the SiteName field value if set, zero value otherwise.
 func (o *VppTokenSubscription) GetSiteName() string {
-	if o == nil || o.SiteName == nil {
+	if o == nil || IsNil(o.SiteName) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *VppTokenSubscription) GetSiteName() string {
 // GetSiteNameOk returns a tuple with the SiteName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppTokenSubscription) GetSiteNameOk() (*string, bool) {
-	if o == nil || o.SiteName == nil {
+	if o == nil || IsNil(o.SiteName) {
 		return nil, false
 	}
 	return o.SiteName, true
@@ -254,7 +257,7 @@ func (o *VppTokenSubscription) GetSiteNameOk() (*string, bool) {
 
 // HasSiteName returns a boolean if a field has been set.
 func (o *VppTokenSubscription) HasSiteName() bool {
-	if o != nil && o.SiteName != nil {
+	if o != nil && !IsNil(o.SiteName) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *VppTokenSubscription) SetSiteName(v string) {
 }
 
 func (o VppTokenSubscription) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Recipients != nil {
-		toSerialize["recipients"] = o.Recipients
-	}
-	if o.AdminAccounts != nil {
-		toSerialize["adminAccounts"] = o.AdminAccounts
-	}
-	if o.SiteID != nil {
-		toSerialize["siteID"] = o.SiteID
-	}
-	if o.SiteName != nil {
-		toSerialize["siteName"] = o.SiteName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VppTokenSubscription) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Recipients) {
+		toSerialize["recipients"] = o.Recipients
+	}
+	if !IsNil(o.AdminAccounts) {
+		toSerialize["adminAccounts"] = o.AdminAccounts
+	}
+	if !IsNil(o.SiteID) {
+		toSerialize["siteID"] = o.SiteID
+	}
+	if !IsNil(o.SiteName) {
+		toSerialize["siteName"] = o.SiteName
+	}
+	return toSerialize, nil
 }
 
 type NullableVppTokenSubscription struct {

@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type JamfProNotificationsApi interface {
+type JamfProNotificationsAPI interface {
 
 	/*
 	V1NotificationsGet Get Notifications for user and site 
@@ -29,13 +29,13 @@ type JamfProNotificationsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1NotificationsGetRequest
+	@return JamfProNotificationsAPIV1NotificationsGetRequest
 	*/
-	V1NotificationsGet(ctx context.Context) ApiV1NotificationsGetRequest
+	V1NotificationsGet(ctx context.Context) JamfProNotificationsAPIV1NotificationsGetRequest
 
 	// V1NotificationsGetExecute executes the request
 	//  @return []NotificationV1
-	V1NotificationsGetExecute(r ApiV1NotificationsGetRequest) ([]NotificationV1, *http.Response, error)
+	V1NotificationsGetExecute(r JamfProNotificationsAPIV1NotificationsGetRequest) ([]NotificationV1, *http.Response, error)
 
 	/*
 	V1NotificationsTypeIdDelete Delete Notifications 
@@ -46,23 +46,23 @@ type JamfProNotificationsApi interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance ID of the notification
 	@param type_ type of the notification
-	@return ApiV1NotificationsTypeIdDeleteRequest
+	@return JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest
 	*/
-	V1NotificationsTypeIdDelete(ctx context.Context, id string, type_ NotificationType) ApiV1NotificationsTypeIdDeleteRequest
+	V1NotificationsTypeIdDelete(ctx context.Context, id string, type_ NotificationType) JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest
 
 	// V1NotificationsTypeIdDeleteExecute executes the request
-	V1NotificationsTypeIdDeleteExecute(r ApiV1NotificationsTypeIdDeleteRequest) (*http.Response, error)
+	V1NotificationsTypeIdDeleteExecute(r JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest) (*http.Response, error)
 }
 
-// JamfProNotificationsApiService JamfProNotificationsApi service
-type JamfProNotificationsApiService service
+// JamfProNotificationsAPIService JamfProNotificationsAPI service
+type JamfProNotificationsAPIService service
 
-type ApiV1NotificationsGetRequest struct {
+type JamfProNotificationsAPIV1NotificationsGetRequest struct {
 	ctx context.Context
-	ApiService JamfProNotificationsApi
+	ApiService JamfProNotificationsAPI
 }
 
-func (r ApiV1NotificationsGetRequest) Execute() ([]NotificationV1, *http.Response, error) {
+func (r JamfProNotificationsAPIV1NotificationsGetRequest) Execute() ([]NotificationV1, *http.Response, error) {
 	return r.ApiService.V1NotificationsGetExecute(r)
 }
 
@@ -73,10 +73,10 @@ Gets notifications for user and site
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1NotificationsGetRequest
+ @return JamfProNotificationsAPIV1NotificationsGetRequest
 */
-func (a *JamfProNotificationsApiService) V1NotificationsGet(ctx context.Context) ApiV1NotificationsGetRequest {
-	return ApiV1NotificationsGetRequest{
+func (a *JamfProNotificationsAPIService) V1NotificationsGet(ctx context.Context) JamfProNotificationsAPIV1NotificationsGetRequest {
+	return JamfProNotificationsAPIV1NotificationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -84,7 +84,7 @@ func (a *JamfProNotificationsApiService) V1NotificationsGet(ctx context.Context)
 
 // Execute executes the request
 //  @return []NotificationV1
-func (a *JamfProNotificationsApiService) V1NotificationsGetExecute(r ApiV1NotificationsGetRequest) ([]NotificationV1, *http.Response, error) {
+func (a *JamfProNotificationsAPIService) V1NotificationsGetExecute(r JamfProNotificationsAPIV1NotificationsGetRequest) ([]NotificationV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -92,7 +92,7 @@ func (a *JamfProNotificationsApiService) V1NotificationsGetExecute(r ApiV1Notifi
 		localVarReturnValue  []NotificationV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProNotificationsApiService.V1NotificationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProNotificationsAPIService.V1NotificationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -130,9 +130,9 @@ func (a *JamfProNotificationsApiService) V1NotificationsGetExecute(r ApiV1Notifi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -157,14 +157,14 @@ func (a *JamfProNotificationsApiService) V1NotificationsGetExecute(r ApiV1Notifi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1NotificationsTypeIdDeleteRequest struct {
+type JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest struct {
 	ctx context.Context
-	ApiService JamfProNotificationsApi
+	ApiService JamfProNotificationsAPI
 	id string
 	type_ NotificationType
 }
 
-func (r ApiV1NotificationsTypeIdDeleteRequest) Execute() (*http.Response, error) {
+func (r JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1NotificationsTypeIdDeleteExecute(r)
 }
 
@@ -177,10 +177,10 @@ Deletes notifications with given type and id.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance ID of the notification
  @param type_ type of the notification
- @return ApiV1NotificationsTypeIdDeleteRequest
+ @return JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest
 */
-func (a *JamfProNotificationsApiService) V1NotificationsTypeIdDelete(ctx context.Context, id string, type_ NotificationType) ApiV1NotificationsTypeIdDeleteRequest {
-	return ApiV1NotificationsTypeIdDeleteRequest{
+func (a *JamfProNotificationsAPIService) V1NotificationsTypeIdDelete(ctx context.Context, id string, type_ NotificationType) JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest {
+	return JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -189,21 +189,21 @@ func (a *JamfProNotificationsApiService) V1NotificationsTypeIdDelete(ctx context
 }
 
 // Execute executes the request
-func (a *JamfProNotificationsApiService) V1NotificationsTypeIdDeleteExecute(r ApiV1NotificationsTypeIdDeleteRequest) (*http.Response, error) {
+func (a *JamfProNotificationsAPIService) V1NotificationsTypeIdDeleteExecute(r JamfProNotificationsAPIV1NotificationsTypeIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProNotificationsApiService.V1NotificationsTypeIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProNotificationsAPIService.V1NotificationsTypeIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/notifications/{type}/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterToString(r.type_, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"type"+"}", url.PathEscape(parameterValueToString(r.type_, "type_")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -236,9 +236,9 @@ func (a *JamfProNotificationsApiService) V1NotificationsTypeIdDeleteExecute(r Ap
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}

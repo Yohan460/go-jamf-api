@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SupervisionIdentityCertificateUpload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SupervisionIdentityCertificateUpload{}
+
 // SupervisionIdentityCertificateUpload struct for SupervisionIdentityCertificateUpload
 type SupervisionIdentityCertificateUpload struct {
 	DisplayName string `json:"displayName"`
@@ -91,7 +94,7 @@ func (o *SupervisionIdentityCertificateUpload) SetPassword(v string) {
 
 // GetCertificateData returns the CertificateData field value if set, zero value otherwise.
 func (o *SupervisionIdentityCertificateUpload) GetCertificateData() string {
-	if o == nil || o.CertificateData == nil {
+	if o == nil || IsNil(o.CertificateData) {
 		var ret string
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *SupervisionIdentityCertificateUpload) GetCertificateData() string {
 // GetCertificateDataOk returns a tuple with the CertificateData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentityCertificateUpload) GetCertificateDataOk() (*string, bool) {
-	if o == nil || o.CertificateData == nil {
+	if o == nil || IsNil(o.CertificateData) {
 		return nil, false
 	}
 	return o.CertificateData, true
@@ -109,7 +112,7 @@ func (o *SupervisionIdentityCertificateUpload) GetCertificateDataOk() (*string, 
 
 // HasCertificateData returns a boolean if a field has been set.
 func (o *SupervisionIdentityCertificateUpload) HasCertificateData() bool {
-	if o != nil && o.CertificateData != nil {
+	if o != nil && !IsNil(o.CertificateData) {
 		return true
 	}
 
@@ -122,17 +125,21 @@ func (o *SupervisionIdentityCertificateUpload) SetCertificateData(v string) {
 }
 
 func (o SupervisionIdentityCertificateUpload) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["password"] = o.Password
-	}
-	if o.CertificateData != nil {
-		toSerialize["certificateData"] = o.CertificateData
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SupervisionIdentityCertificateUpload) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["password"] = o.Password
+	if !IsNil(o.CertificateData) {
+		toSerialize["certificateData"] = o.CertificateData
+	}
+	return toSerialize, nil
 }
 
 type NullableSupervisionIdentityCertificateUpload struct {

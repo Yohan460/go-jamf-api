@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uid** | Pointer to **string** |  | [optional] 
+**UserGuid** | Pointer to **string** |  | [optional] [readonly] 
 **Username** | Pointer to **string** |  | [optional] 
 **FullName** | Pointer to **string** |  | [optional] 
 **Admin** | Pointer to **bool** |  | [optional] 
@@ -64,6 +65,31 @@ SetUid sets Uid field to given value.
 `func (o *ComputerLocalUserAccount) HasUid() bool`
 
 HasUid returns a boolean if a field has been set.
+
+### GetUserGuid
+
+`func (o *ComputerLocalUserAccount) GetUserGuid() string`
+
+GetUserGuid returns the UserGuid field if non-nil, zero value otherwise.
+
+### GetUserGuidOk
+
+`func (o *ComputerLocalUserAccount) GetUserGuidOk() (*string, bool)`
+
+GetUserGuidOk returns a tuple with the UserGuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserGuid
+
+`func (o *ComputerLocalUserAccount) SetUserGuid(v string)`
+
+SetUserGuid sets UserGuid field to given value.
+
+### HasUserGuid
+
+`func (o *ComputerLocalUserAccount) HasUserGuid() bool`
+
+HasUserGuid returns a boolean if a field has been set.
 
 ### GetUsername
 

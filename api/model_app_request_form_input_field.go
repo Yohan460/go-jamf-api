@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AppRequestFormInputField type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AppRequestFormInputField{}
+
 // AppRequestFormInputField struct for AppRequestFormInputField
 type AppRequestFormInputField struct {
 	Id *int32 `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewAppRequestFormInputFieldWithDefaults() *AppRequestFormInputField {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AppRequestFormInputField) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *AppRequestFormInputField) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AppRequestFormInputField) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *AppRequestFormInputField) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AppRequestFormInputField) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -100,7 +103,7 @@ func (o *AppRequestFormInputField) SetTitle(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AppRequestFormInputField) GetDescription() string {
-	if o == nil || o.Description.Get() == nil {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
@@ -165,20 +168,24 @@ func (o *AppRequestFormInputField) SetPriority(v int32) {
 }
 
 func (o AppRequestFormInputField) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o AppRequestFormInputField) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
+	toSerialize["title"] = o.Title
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if true {
-		toSerialize["priority"] = o.Priority
-	}
-	return json.Marshal(toSerialize)
+	toSerialize["priority"] = o.Priority
+	return toSerialize, nil
 }
 
 type NullableAppRequestFormInputField struct {

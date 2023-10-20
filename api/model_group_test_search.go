@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupTestSearch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupTestSearch{}
+
 // GroupTestSearch struct for GroupTestSearch
 type GroupTestSearch struct {
 	DistinguishedName *string `json:"distinguishedName,omitempty"`
@@ -42,7 +45,7 @@ func NewGroupTestSearchWithDefaults() *GroupTestSearch {
 
 // GetDistinguishedName returns the DistinguishedName field value if set, zero value otherwise.
 func (o *GroupTestSearch) GetDistinguishedName() string {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *GroupTestSearch) GetDistinguishedName() string {
 // GetDistinguishedNameOk returns a tuple with the DistinguishedName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTestSearch) GetDistinguishedNameOk() (*string, bool) {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		return nil, false
 	}
 	return o.DistinguishedName, true
@@ -60,7 +63,7 @@ func (o *GroupTestSearch) GetDistinguishedNameOk() (*string, bool) {
 
 // HasDistinguishedName returns a boolean if a field has been set.
 func (o *GroupTestSearch) HasDistinguishedName() bool {
-	if o != nil && o.DistinguishedName != nil {
+	if o != nil && !IsNil(o.DistinguishedName) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *GroupTestSearch) SetDistinguishedName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GroupTestSearch) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *GroupTestSearch) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTestSearch) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -92,7 +95,7 @@ func (o *GroupTestSearch) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GroupTestSearch) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *GroupTestSearch) SetId(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *GroupTestSearch) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *GroupTestSearch) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTestSearch) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -124,7 +127,7 @@ func (o *GroupTestSearch) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *GroupTestSearch) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *GroupTestSearch) SetUuid(v string) {
 
 // GetServerId returns the ServerId field value if set, zero value otherwise.
 func (o *GroupTestSearch) GetServerId() string {
-	if o == nil || o.ServerId == nil {
+	if o == nil || IsNil(o.ServerId) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *GroupTestSearch) GetServerId() string {
 // GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTestSearch) GetServerIdOk() (*string, bool) {
-	if o == nil || o.ServerId == nil {
+	if o == nil || IsNil(o.ServerId) {
 		return nil, false
 	}
 	return o.ServerId, true
@@ -156,7 +159,7 @@ func (o *GroupTestSearch) GetServerIdOk() (*string, bool) {
 
 // HasServerId returns a boolean if a field has been set.
 func (o *GroupTestSearch) HasServerId() bool {
-	if o != nil && o.ServerId != nil {
+	if o != nil && !IsNil(o.ServerId) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *GroupTestSearch) SetServerId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *GroupTestSearch) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *GroupTestSearch) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupTestSearch) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -188,7 +191,7 @@ func (o *GroupTestSearch) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *GroupTestSearch) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *GroupTestSearch) SetName(v string) {
 }
 
 func (o GroupTestSearch) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DistinguishedName != nil {
-		toSerialize["distinguishedName"] = o.DistinguishedName
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.ServerId != nil {
-		toSerialize["serverId"] = o.ServerId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupTestSearch) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DistinguishedName) {
+		toSerialize["distinguishedName"] = o.DistinguishedName
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.ServerId) {
+		toSerialize["serverId"] = o.ServerId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableGroupTestSearch struct {

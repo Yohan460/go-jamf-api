@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] [readonly] 
 **Version** | Pointer to **string** |  | [optional] [readonly] 
 **Build** | Pointer to **string** |  | [optional] [readonly] 
+**SupplementalBuildVersion** | Pointer to **string** | Collected for macOS 13.0 or later | [optional] [readonly] 
+**RapidSecurityResponse** | Pointer to **string** | Collected for macOS 13.0 or later | [optional] [readonly] 
 **ActiveDirectoryStatus** | Pointer to **string** |  | [optional] [readonly] 
 **FileVault2Status** | Pointer to **string** |  | [optional] 
 **SoftwareUpdateDeviceId** | Pointer to **string** |  | [optional] [readonly] 
@@ -105,6 +107,56 @@ SetBuild sets Build field to given value.
 `func (o *ComputerOperatingSystem) HasBuild() bool`
 
 HasBuild returns a boolean if a field has been set.
+
+### GetSupplementalBuildVersion
+
+`func (o *ComputerOperatingSystem) GetSupplementalBuildVersion() string`
+
+GetSupplementalBuildVersion returns the SupplementalBuildVersion field if non-nil, zero value otherwise.
+
+### GetSupplementalBuildVersionOk
+
+`func (o *ComputerOperatingSystem) GetSupplementalBuildVersionOk() (*string, bool)`
+
+GetSupplementalBuildVersionOk returns a tuple with the SupplementalBuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSupplementalBuildVersion
+
+`func (o *ComputerOperatingSystem) SetSupplementalBuildVersion(v string)`
+
+SetSupplementalBuildVersion sets SupplementalBuildVersion field to given value.
+
+### HasSupplementalBuildVersion
+
+`func (o *ComputerOperatingSystem) HasSupplementalBuildVersion() bool`
+
+HasSupplementalBuildVersion returns a boolean if a field has been set.
+
+### GetRapidSecurityResponse
+
+`func (o *ComputerOperatingSystem) GetRapidSecurityResponse() string`
+
+GetRapidSecurityResponse returns the RapidSecurityResponse field if non-nil, zero value otherwise.
+
+### GetRapidSecurityResponseOk
+
+`func (o *ComputerOperatingSystem) GetRapidSecurityResponseOk() (*string, bool)`
+
+GetRapidSecurityResponseOk returns a tuple with the RapidSecurityResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRapidSecurityResponse
+
+`func (o *ComputerOperatingSystem) SetRapidSecurityResponse(v string)`
+
+SetRapidSecurityResponse sets RapidSecurityResponse field to given value.
+
+### HasRapidSecurityResponse
+
+`func (o *ComputerOperatingSystem) HasRapidSecurityResponse() bool`
+
+HasRapidSecurityResponse returns a boolean if a field has been set.
 
 ### GetActiveDirectoryStatus
 

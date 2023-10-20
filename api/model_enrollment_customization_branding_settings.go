@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationBrandingSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationBrandingSettings{}
+
 // EnrollmentCustomizationBrandingSettings struct for EnrollmentCustomizationBrandingSettings
 type EnrollmentCustomizationBrandingSettings struct {
 	TextColor string `json:"textColor"`
@@ -166,23 +169,21 @@ func (o *EnrollmentCustomizationBrandingSettings) SetIconUrl(v string) {
 }
 
 func (o EnrollmentCustomizationBrandingSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["textColor"] = o.TextColor
-	}
-	if true {
-		toSerialize["buttonColor"] = o.ButtonColor
-	}
-	if true {
-		toSerialize["buttonTextColor"] = o.ButtonTextColor
-	}
-	if true {
-		toSerialize["backgroundColor"] = o.BackgroundColor
-	}
-	if true {
-		toSerialize["iconUrl"] = o.IconUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationBrandingSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["textColor"] = o.TextColor
+	toSerialize["buttonColor"] = o.ButtonColor
+	toSerialize["buttonTextColor"] = o.ButtonTextColor
+	toSerialize["backgroundColor"] = o.BackgroundColor
+	toSerialize["iconUrl"] = o.IconUrl
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationBrandingSettings struct {

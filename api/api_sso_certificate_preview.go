@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
 )
 
 
-type SsoCertificatePreviewApi interface {
+type SsoCertificatePreviewAPI interface {
 
 	/*
 	V1SsoCertDelete Delete the currently configured certificate used by SSO 
@@ -28,12 +28,15 @@ type SsoCertificatePreviewApi interface {
 	Deletes the currently configured certificate used by SSO.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertDeleteRequest
+	@return SsoCertificatePreviewAPIV1SsoCertDeleteRequest
+
+	Deprecated
 	*/
-	V1SsoCertDelete(ctx context.Context) ApiV1SsoCertDeleteRequest
+	V1SsoCertDelete(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertDeleteRequest
 
 	// V1SsoCertDeleteExecute executes the request
-	V1SsoCertDeleteExecute(r ApiV1SsoCertDeleteRequest) (*http.Response, error)
+	// Deprecated
+	V1SsoCertDeleteExecute(r SsoCertificatePreviewAPIV1SsoCertDeleteRequest) (*http.Response, error)
 
 	/*
 	V1SsoCertDownloadGet Download the certificate currently configured for use with Jamf Pro's SSO configuration 
@@ -41,13 +44,16 @@ type SsoCertificatePreviewApi interface {
 	Downloads the certificate currently configured for use with Jamf Pro's SSO configuration
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertDownloadGetRequest
+	@return SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest
+
+	Deprecated
 	*/
-	V1SsoCertDownloadGet(ctx context.Context) ApiV1SsoCertDownloadGetRequest
+	V1SsoCertDownloadGet(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest
 
 	// V1SsoCertDownloadGetExecute executes the request
 	//  @return *os.File
-	V1SsoCertDownloadGetExecute(r ApiV1SsoCertDownloadGetRequest) (**os.File, *http.Response, error)
+	// Deprecated
+	V1SsoCertDownloadGetExecute(r SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1SsoCertGet Retrieve the certificate currently configured for use with SSO 
@@ -55,13 +61,16 @@ type SsoCertificatePreviewApi interface {
 	Retrieves the certificate currently configured for use with SSO.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertGetRequest
+	@return SsoCertificatePreviewAPIV1SsoCertGetRequest
+
+	Deprecated
 	*/
-	V1SsoCertGet(ctx context.Context) ApiV1SsoCertGetRequest
+	V1SsoCertGet(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertGetRequest
 
 	// V1SsoCertGetExecute executes the request
 	//  @return SsoKeystoreWithDetails
-	V1SsoCertGetExecute(r ApiV1SsoCertGetRequest) (*SsoKeystoreWithDetails, *http.Response, error)
+	// Deprecated
+	V1SsoCertGetExecute(r SsoCertificatePreviewAPIV1SsoCertGetRequest) (*SsoKeystoreWithDetails, *http.Response, error)
 
 	/*
 	V1SsoCertParsePost Parse the certificate to get details about certificate type and keys needed to upload certificate file 
@@ -69,13 +78,16 @@ type SsoCertificatePreviewApi interface {
 	Parse the certificate to get details about certificate type and keys needed to upload certificate file.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertParsePostRequest
+	@return SsoCertificatePreviewAPIV1SsoCertParsePostRequest
+
+	Deprecated
 	*/
-	V1SsoCertParsePost(ctx context.Context) ApiV1SsoCertParsePostRequest
+	V1SsoCertParsePost(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertParsePostRequest
 
 	// V1SsoCertParsePostExecute executes the request
 	//  @return SsoKeystoreCertParseResponse
-	V1SsoCertParsePostExecute(r ApiV1SsoCertParsePostRequest) (*SsoKeystoreCertParseResponse, *http.Response, error)
+	// Deprecated
+	V1SsoCertParsePostExecute(r SsoCertificatePreviewAPIV1SsoCertParsePostRequest) (*SsoKeystoreCertParseResponse, *http.Response, error)
 
 	/*
 	V1SsoCertPost Jamf Pro will generate a new certificate and use it to sign SSO 
@@ -83,13 +95,16 @@ type SsoCertificatePreviewApi interface {
 	Jamf Pro will generate a new certificate and use it to sign SSO requests to the identity provider.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertPostRequest
+	@return SsoCertificatePreviewAPIV1SsoCertPostRequest
+
+	Deprecated
 	*/
-	V1SsoCertPost(ctx context.Context) ApiV1SsoCertPostRequest
+	V1SsoCertPost(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertPostRequest
 
 	// V1SsoCertPostExecute executes the request
 	//  @return SsoKeystoreWithDetails
-	V1SsoCertPostExecute(r ApiV1SsoCertPostRequest) (*SsoKeystoreWithDetails, *http.Response, error)
+	// Deprecated
+	V1SsoCertPostExecute(r SsoCertificatePreviewAPIV1SsoCertPostRequest) (*SsoKeystoreWithDetails, *http.Response, error)
 
 	/*
 	V1SsoCertPut Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
@@ -97,24 +112,27 @@ type SsoCertificatePreviewApi interface {
 	Update the certificate used by Jamf Pro to sign SSO requests to the identify provider.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SsoCertPutRequest
+	@return SsoCertificatePreviewAPIV1SsoCertPutRequest
+
+	Deprecated
 	*/
-	V1SsoCertPut(ctx context.Context) ApiV1SsoCertPutRequest
+	V1SsoCertPut(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertPutRequest
 
 	// V1SsoCertPutExecute executes the request
 	//  @return SsoKeystoreWithDetails
-	V1SsoCertPutExecute(r ApiV1SsoCertPutRequest) (*SsoKeystoreWithDetails, *http.Response, error)
+	// Deprecated
+	V1SsoCertPutExecute(r SsoCertificatePreviewAPIV1SsoCertPutRequest) (*SsoKeystoreWithDetails, *http.Response, error)
 }
 
-// SsoCertificatePreviewApiService SsoCertificatePreviewApi service
-type SsoCertificatePreviewApiService service
+// SsoCertificatePreviewAPIService SsoCertificatePreviewAPI service
+type SsoCertificatePreviewAPIService service
 
-type ApiV1SsoCertDeleteRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertDeleteRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 }
 
-func (r ApiV1SsoCertDeleteRequest) Execute() (*http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SsoCertDeleteExecute(r)
 }
 
@@ -124,24 +142,27 @@ V1SsoCertDelete Delete the currently configured certificate used by SSO
 Deletes the currently configured certificate used by SSO.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertDeleteRequest
+ @return SsoCertificatePreviewAPIV1SsoCertDeleteRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertDelete(ctx context.Context) ApiV1SsoCertDeleteRequest {
-	return ApiV1SsoCertDeleteRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertDelete(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertDeleteRequest {
+	return SsoCertificatePreviewAPIV1SsoCertDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *SsoCertificatePreviewApiService) V1SsoCertDeleteExecute(r ApiV1SsoCertDeleteRequest) (*http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertDeleteExecute(r SsoCertificatePreviewAPIV1SsoCertDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -179,9 +200,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertDeleteExecute(r ApiV1SsoCertD
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -197,12 +218,12 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertDeleteExecute(r ApiV1SsoCertD
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SsoCertDownloadGetRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 }
 
-func (r ApiV1SsoCertDownloadGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1SsoCertDownloadGetExecute(r)
 }
 
@@ -212,10 +233,12 @@ V1SsoCertDownloadGet Download the certificate currently configured for use with 
 Downloads the certificate currently configured for use with Jamf Pro's SSO configuration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertDownloadGetRequest
+ @return SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertDownloadGet(ctx context.Context) ApiV1SsoCertDownloadGetRequest {
-	return ApiV1SsoCertDownloadGetRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertDownloadGet(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest {
+	return SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -223,15 +246,16 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertDownloadGet(ctx context.Conte
 
 // Execute executes the request
 //  @return *os.File
-func (a *SsoCertificatePreviewApiService) V1SsoCertDownloadGetExecute(r ApiV1SsoCertDownloadGetRequest) (**os.File, *http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertDownloadGetExecute(r SsoCertificatePreviewAPIV1SsoCertDownloadGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertDownloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertDownloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -269,9 +293,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertDownloadGetExecute(r ApiV1Sso
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -296,12 +320,12 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertDownloadGetExecute(r ApiV1Sso
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoCertGetRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertGetRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 }
 
-func (r ApiV1SsoCertGetRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertGetRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
 	return r.ApiService.V1SsoCertGetExecute(r)
 }
 
@@ -311,10 +335,12 @@ V1SsoCertGet Retrieve the certificate currently configured for use with SSO
 Retrieves the certificate currently configured for use with SSO.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertGetRequest
+ @return SsoCertificatePreviewAPIV1SsoCertGetRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertGet(ctx context.Context) ApiV1SsoCertGetRequest {
-	return ApiV1SsoCertGetRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertGet(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertGetRequest {
+	return SsoCertificatePreviewAPIV1SsoCertGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -322,7 +348,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertGet(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return SsoKeystoreWithDetails
-func (a *SsoCertificatePreviewApiService) V1SsoCertGetExecute(r ApiV1SsoCertGetRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertGetExecute(r SsoCertificatePreviewAPIV1SsoCertGetRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -330,7 +357,7 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertGetExecute(r ApiV1SsoCertGetR
 		localVarReturnValue  *SsoKeystoreWithDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -368,9 +395,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertGetExecute(r ApiV1SsoCertGetR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -395,18 +422,18 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertGetExecute(r ApiV1SsoCertGetR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoCertParsePostRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertParsePostRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 	ssoKeystoreParse *SsoKeystoreParse
 }
 
-func (r ApiV1SsoCertParsePostRequest) SsoKeystoreParse(ssoKeystoreParse SsoKeystoreParse) ApiV1SsoCertParsePostRequest {
+func (r SsoCertificatePreviewAPIV1SsoCertParsePostRequest) SsoKeystoreParse(ssoKeystoreParse SsoKeystoreParse) SsoCertificatePreviewAPIV1SsoCertParsePostRequest {
 	r.ssoKeystoreParse = &ssoKeystoreParse
 	return r
 }
 
-func (r ApiV1SsoCertParsePostRequest) Execute() (*SsoKeystoreCertParseResponse, *http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertParsePostRequest) Execute() (*SsoKeystoreCertParseResponse, *http.Response, error) {
 	return r.ApiService.V1SsoCertParsePostExecute(r)
 }
 
@@ -416,10 +443,12 @@ V1SsoCertParsePost Parse the certificate to get details about certificate type a
 Parse the certificate to get details about certificate type and keys needed to upload certificate file.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertParsePostRequest
+ @return SsoCertificatePreviewAPIV1SsoCertParsePostRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertParsePost(ctx context.Context) ApiV1SsoCertParsePostRequest {
-	return ApiV1SsoCertParsePostRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertParsePost(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertParsePostRequest {
+	return SsoCertificatePreviewAPIV1SsoCertParsePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -427,7 +456,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertParsePost(ctx context.Context
 
 // Execute executes the request
 //  @return SsoKeystoreCertParseResponse
-func (a *SsoCertificatePreviewApiService) V1SsoCertParsePostExecute(r ApiV1SsoCertParsePostRequest) (*SsoKeystoreCertParseResponse, *http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertParsePostExecute(r SsoCertificatePreviewAPIV1SsoCertParsePostRequest) (*SsoKeystoreCertParseResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -435,7 +465,7 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertParsePostExecute(r ApiV1SsoCe
 		localVarReturnValue  *SsoKeystoreCertParseResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertParsePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertParsePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -478,9 +508,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertParsePostExecute(r ApiV1SsoCe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -497,7 +527,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertParsePostExecute(r ApiV1SsoCe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -514,12 +545,12 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertParsePostExecute(r ApiV1SsoCe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoCertPostRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertPostRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 }
 
-func (r ApiV1SsoCertPostRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertPostRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
 	return r.ApiService.V1SsoCertPostExecute(r)
 }
 
@@ -529,10 +560,12 @@ V1SsoCertPost Jamf Pro will generate a new certificate and use it to sign SSO
 Jamf Pro will generate a new certificate and use it to sign SSO requests to the identity provider.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertPostRequest
+ @return SsoCertificatePreviewAPIV1SsoCertPostRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertPost(ctx context.Context) ApiV1SsoCertPostRequest {
-	return ApiV1SsoCertPostRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertPost(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertPostRequest {
+	return SsoCertificatePreviewAPIV1SsoCertPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -540,7 +573,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPost(ctx context.Context) Api
 
 // Execute executes the request
 //  @return SsoKeystoreWithDetails
-func (a *SsoCertificatePreviewApiService) V1SsoCertPostExecute(r ApiV1SsoCertPostRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertPostExecute(r SsoCertificatePreviewAPIV1SsoCertPostRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -548,7 +582,7 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPostExecute(r ApiV1SsoCertPos
 		localVarReturnValue  *SsoKeystoreWithDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -586,9 +620,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPostExecute(r ApiV1SsoCertPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -613,18 +647,18 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPostExecute(r ApiV1SsoCertPos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SsoCertPutRequest struct {
+type SsoCertificatePreviewAPIV1SsoCertPutRequest struct {
 	ctx context.Context
-	ApiService SsoCertificatePreviewApi
+	ApiService SsoCertificatePreviewAPI
 	ssoKeystore *SsoKeystore
 }
 
-func (r ApiV1SsoCertPutRequest) SsoKeystore(ssoKeystore SsoKeystore) ApiV1SsoCertPutRequest {
+func (r SsoCertificatePreviewAPIV1SsoCertPutRequest) SsoKeystore(ssoKeystore SsoKeystore) SsoCertificatePreviewAPIV1SsoCertPutRequest {
 	r.ssoKeystore = &ssoKeystore
 	return r
 }
 
-func (r ApiV1SsoCertPutRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
+func (r SsoCertificatePreviewAPIV1SsoCertPutRequest) Execute() (*SsoKeystoreWithDetails, *http.Response, error) {
 	return r.ApiService.V1SsoCertPutExecute(r)
 }
 
@@ -634,10 +668,12 @@ V1SsoCertPut Update the certificate used by Jamf Pro to sign SSO requests to the
 Update the certificate used by Jamf Pro to sign SSO requests to the identify provider.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SsoCertPutRequest
+ @return SsoCertificatePreviewAPIV1SsoCertPutRequest
+
+Deprecated
 */
-func (a *SsoCertificatePreviewApiService) V1SsoCertPut(ctx context.Context) ApiV1SsoCertPutRequest {
-	return ApiV1SsoCertPutRequest{
+func (a *SsoCertificatePreviewAPIService) V1SsoCertPut(ctx context.Context) SsoCertificatePreviewAPIV1SsoCertPutRequest {
+	return SsoCertificatePreviewAPIV1SsoCertPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -645,7 +681,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPut(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return SsoKeystoreWithDetails
-func (a *SsoCertificatePreviewApiService) V1SsoCertPutExecute(r ApiV1SsoCertPutRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
+// Deprecated
+func (a *SsoCertificatePreviewAPIService) V1SsoCertPutExecute(r SsoCertificatePreviewAPIV1SsoCertPutRequest) (*SsoKeystoreWithDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -653,7 +690,7 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPutExecute(r ApiV1SsoCertPutR
 		localVarReturnValue  *SsoKeystoreWithDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewApiService.V1SsoCertPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoCertificatePreviewAPIService.V1SsoCertPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -696,9 +733,9 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPutExecute(r ApiV1SsoCertPutR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -715,7 +752,8 @@ func (a *SsoCertificatePreviewApiService) V1SsoCertPutExecute(r ApiV1SsoCertPutR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

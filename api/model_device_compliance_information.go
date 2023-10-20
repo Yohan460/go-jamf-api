@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceComplianceInformation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceComplianceInformation{}
+
 // DeviceComplianceInformation Device compliance information record
 type DeviceComplianceInformation struct {
 	// ID of the device
@@ -24,6 +27,7 @@ type DeviceComplianceInformation struct {
 	ComplianceState *string `json:"complianceState,omitempty"`
 	// Name of the compliance vendor
 	ComplianceVendor *string `json:"complianceVendor,omitempty"`
+	ComplianceVendorDeviceInformation *ComplianceVendorDeviceInformation `json:"complianceVendorDeviceInformation,omitempty"`
 }
 
 // NewDeviceComplianceInformation instantiates a new DeviceComplianceInformation object
@@ -45,7 +49,7 @@ func NewDeviceComplianceInformationWithDefaults() *DeviceComplianceInformation {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *DeviceComplianceInformation) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -55,7 +59,7 @@ func (o *DeviceComplianceInformation) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceComplianceInformation) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -63,7 +67,7 @@ func (o *DeviceComplianceInformation) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *DeviceComplianceInformation) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -77,7 +81,7 @@ func (o *DeviceComplianceInformation) SetDeviceId(v string) {
 
 // GetApplicable returns the Applicable field value if set, zero value otherwise.
 func (o *DeviceComplianceInformation) GetApplicable() bool {
-	if o == nil || o.Applicable == nil {
+	if o == nil || IsNil(o.Applicable) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +91,7 @@ func (o *DeviceComplianceInformation) GetApplicable() bool {
 // GetApplicableOk returns a tuple with the Applicable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceComplianceInformation) GetApplicableOk() (*bool, bool) {
-	if o == nil || o.Applicable == nil {
+	if o == nil || IsNil(o.Applicable) {
 		return nil, false
 	}
 	return o.Applicable, true
@@ -95,7 +99,7 @@ func (o *DeviceComplianceInformation) GetApplicableOk() (*bool, bool) {
 
 // HasApplicable returns a boolean if a field has been set.
 func (o *DeviceComplianceInformation) HasApplicable() bool {
-	if o != nil && o.Applicable != nil {
+	if o != nil && !IsNil(o.Applicable) {
 		return true
 	}
 
@@ -109,7 +113,7 @@ func (o *DeviceComplianceInformation) SetApplicable(v bool) {
 
 // GetComplianceState returns the ComplianceState field value if set, zero value otherwise.
 func (o *DeviceComplianceInformation) GetComplianceState() string {
-	if o == nil || o.ComplianceState == nil {
+	if o == nil || IsNil(o.ComplianceState) {
 		var ret string
 		return ret
 	}
@@ -119,7 +123,7 @@ func (o *DeviceComplianceInformation) GetComplianceState() string {
 // GetComplianceStateOk returns a tuple with the ComplianceState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceComplianceInformation) GetComplianceStateOk() (*string, bool) {
-	if o == nil || o.ComplianceState == nil {
+	if o == nil || IsNil(o.ComplianceState) {
 		return nil, false
 	}
 	return o.ComplianceState, true
@@ -127,7 +131,7 @@ func (o *DeviceComplianceInformation) GetComplianceStateOk() (*string, bool) {
 
 // HasComplianceState returns a boolean if a field has been set.
 func (o *DeviceComplianceInformation) HasComplianceState() bool {
-	if o != nil && o.ComplianceState != nil {
+	if o != nil && !IsNil(o.ComplianceState) {
 		return true
 	}
 
@@ -141,7 +145,7 @@ func (o *DeviceComplianceInformation) SetComplianceState(v string) {
 
 // GetComplianceVendor returns the ComplianceVendor field value if set, zero value otherwise.
 func (o *DeviceComplianceInformation) GetComplianceVendor() string {
-	if o == nil || o.ComplianceVendor == nil {
+	if o == nil || IsNil(o.ComplianceVendor) {
 		var ret string
 		return ret
 	}
@@ -151,7 +155,7 @@ func (o *DeviceComplianceInformation) GetComplianceVendor() string {
 // GetComplianceVendorOk returns a tuple with the ComplianceVendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceComplianceInformation) GetComplianceVendorOk() (*string, bool) {
-	if o == nil || o.ComplianceVendor == nil {
+	if o == nil || IsNil(o.ComplianceVendor) {
 		return nil, false
 	}
 	return o.ComplianceVendor, true
@@ -159,7 +163,7 @@ func (o *DeviceComplianceInformation) GetComplianceVendorOk() (*string, bool) {
 
 // HasComplianceVendor returns a boolean if a field has been set.
 func (o *DeviceComplianceInformation) HasComplianceVendor() bool {
-	if o != nil && o.ComplianceVendor != nil {
+	if o != nil && !IsNil(o.ComplianceVendor) {
 		return true
 	}
 
@@ -171,21 +175,64 @@ func (o *DeviceComplianceInformation) SetComplianceVendor(v string) {
 	o.ComplianceVendor = &v
 }
 
+// GetComplianceVendorDeviceInformation returns the ComplianceVendorDeviceInformation field value if set, zero value otherwise.
+func (o *DeviceComplianceInformation) GetComplianceVendorDeviceInformation() ComplianceVendorDeviceInformation {
+	if o == nil || IsNil(o.ComplianceVendorDeviceInformation) {
+		var ret ComplianceVendorDeviceInformation
+		return ret
+	}
+	return *o.ComplianceVendorDeviceInformation
+}
+
+// GetComplianceVendorDeviceInformationOk returns a tuple with the ComplianceVendorDeviceInformation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeviceComplianceInformation) GetComplianceVendorDeviceInformationOk() (*ComplianceVendorDeviceInformation, bool) {
+	if o == nil || IsNil(o.ComplianceVendorDeviceInformation) {
+		return nil, false
+	}
+	return o.ComplianceVendorDeviceInformation, true
+}
+
+// HasComplianceVendorDeviceInformation returns a boolean if a field has been set.
+func (o *DeviceComplianceInformation) HasComplianceVendorDeviceInformation() bool {
+	if o != nil && !IsNil(o.ComplianceVendorDeviceInformation) {
+		return true
+	}
+
+	return false
+}
+
+// SetComplianceVendorDeviceInformation gets a reference to the given ComplianceVendorDeviceInformation and assigns it to the ComplianceVendorDeviceInformation field.
+func (o *DeviceComplianceInformation) SetComplianceVendorDeviceInformation(v ComplianceVendorDeviceInformation) {
+	o.ComplianceVendorDeviceInformation = &v
+}
+
 func (o DeviceComplianceInformation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.Applicable != nil {
-		toSerialize["applicable"] = o.Applicable
-	}
-	if o.ComplianceState != nil {
-		toSerialize["complianceState"] = o.ComplianceState
-	}
-	if o.ComplianceVendor != nil {
-		toSerialize["complianceVendor"] = o.ComplianceVendor
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceComplianceInformation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.Applicable) {
+		toSerialize["applicable"] = o.Applicable
+	}
+	if !IsNil(o.ComplianceState) {
+		toSerialize["complianceState"] = o.ComplianceState
+	}
+	if !IsNil(o.ComplianceVendor) {
+		toSerialize["complianceVendor"] = o.ComplianceVendor
+	}
+	if !IsNil(o.ComplianceVendorDeviceInformation) {
+		toSerialize["complianceVendorDeviceInformation"] = o.ComplianceVendorDeviceInformation
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceComplianceInformation struct {

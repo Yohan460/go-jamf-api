@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProtectUpdatableSettingsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProtectUpdatableSettingsRequest{}
+
 // ProtectUpdatableSettingsRequest struct for ProtectUpdatableSettingsRequest
 type ProtectUpdatableSettingsRequest struct {
 	// determines whether the Jamf Protect agent will be automatically installed on client computers
@@ -39,7 +42,7 @@ func NewProtectUpdatableSettingsRequestWithDefaults() *ProtectUpdatableSettingsR
 
 // GetAutoInstall returns the AutoInstall field value if set, zero value otherwise.
 func (o *ProtectUpdatableSettingsRequest) GetAutoInstall() bool {
-	if o == nil || o.AutoInstall == nil {
+	if o == nil || IsNil(o.AutoInstall) {
 		var ret bool
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ProtectUpdatableSettingsRequest) GetAutoInstall() bool {
 // GetAutoInstallOk returns a tuple with the AutoInstall field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectUpdatableSettingsRequest) GetAutoInstallOk() (*bool, bool) {
-	if o == nil || o.AutoInstall == nil {
+	if o == nil || IsNil(o.AutoInstall) {
 		return nil, false
 	}
 	return o.AutoInstall, true
@@ -57,7 +60,7 @@ func (o *ProtectUpdatableSettingsRequest) GetAutoInstallOk() (*bool, bool) {
 
 // HasAutoInstall returns a boolean if a field has been set.
 func (o *ProtectUpdatableSettingsRequest) HasAutoInstall() bool {
-	if o != nil && o.AutoInstall != nil {
+	if o != nil && !IsNil(o.AutoInstall) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *ProtectUpdatableSettingsRequest) SetAutoInstall(v bool) {
 }
 
 func (o ProtectUpdatableSettingsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AutoInstall != nil {
-		toSerialize["autoInstall"] = o.AutoInstall
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProtectUpdatableSettingsRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AutoInstall) {
+		toSerialize["autoInstall"] = o.AutoInstall
+	}
+	return toSerialize, nil
 }
 
 type NullableProtectUpdatableSettingsRequest struct {

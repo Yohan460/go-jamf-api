@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 )
 
 
-type MobileDevicePrestagesApi interface {
+type MobileDevicePrestagesAPI interface {
 
 	/*
 	V1MobileDevicePrestagesGet Search for sorted and paged Mobile Device Prestages 
@@ -30,16 +30,16 @@ type MobileDevicePrestagesApi interface {
 	Search for sorted and paged mobile device prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MobileDevicePrestagesGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesGet(ctx context.Context) ApiV1MobileDevicePrestagesGetRequest
+	V1MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
 
 	// V1MobileDevicePrestagesGetExecute executes the request
 	//  @return MobileDevicePrestageSearchResults
 	// Deprecated
-	V1MobileDevicePrestagesGetExecute(r ApiV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error)
+	V1MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdAttachmentsDelete Remove an attachment for a Mobile Device Prestage 
@@ -48,15 +48,15 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsDeleteExecute executes the request
 	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error)
+	V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
@@ -65,16 +65,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdAttachmentsGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsGetRequest
+	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsGetExecute executes the request
 	//  @return []FileAttachment
 	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error)
+	V1MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
@@ -83,16 +83,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
-	@return ApiV1MobileDevicePrestagesIdAttachmentsPostRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsPostRequest
+	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsPostExecute executes the request
 	//  @return PrestageFileAttachment
 	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error)
+	V1MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
@@ -101,15 +101,15 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdDeleteRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdDeleteRequest
+	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
 
 	// V1MobileDevicePrestagesIdDeleteExecute executes the request
 	// Deprecated
-	V1MobileDevicePrestagesIdDeleteExecute(r ApiV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
+	V1MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
@@ -118,16 +118,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdGetRequest
+	V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
 
 	// V1MobileDevicePrestagesIdGetExecute executes the request
 	//  @return GetMobileDevicePrestage
 	// Deprecated
-	V1MobileDevicePrestagesIdGetExecute(r ApiV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error)
+	V1MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
@@ -136,16 +136,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdHistoryGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest
+	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
 
 	// V1MobileDevicePrestagesIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
 	// Deprecated
-	V1MobileDevicePrestagesIdHistoryGetExecute(r ApiV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
@@ -154,16 +154,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdHistoryPostRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryPostRequest
+	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
 
 	// V1MobileDevicePrestagesIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
 	// Deprecated
-	V1MobileDevicePrestagesIdHistoryPostExecute(r ApiV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
@@ -172,16 +172,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdPutRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdPutRequest
+	V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
 
 	// V1MobileDevicePrestagesIdPutExecute executes the request
 	//  @return GetMobileDevicePrestage
 	// Deprecated
-	V1MobileDevicePrestagesIdPutExecute(r ApiV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error)
+	V1MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdScopeDelete Remove Device Scope for a specific Mobile Device Prestage 
@@ -190,16 +190,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdScopeDeleteRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeDeleteRequest
+	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
 
 	// V1MobileDevicePrestagesIdScopeDeleteExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1MobileDevicePrestagesIdScopeDeleteExecute(r ApiV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1MobileDevicePrestagesIdScopeDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
@@ -208,16 +208,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdScopeGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeGetRequest
+	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
 
 	// V1MobileDevicePrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1MobileDevicePrestagesIdScopeGetExecute(r ApiV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
@@ -226,16 +226,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdScopePostRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePostRequest
+	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
 
 	// V1MobileDevicePrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1MobileDevicePrestagesIdScopePostExecute(r ApiV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
@@ -244,16 +244,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesIdScopePutRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePutRequest
+	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
 
 	// V1MobileDevicePrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1MobileDevicePrestagesIdScopePutExecute(r ApiV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesPost Create a Mobile Device Prestage 
@@ -261,16 +261,16 @@ type MobileDevicePrestagesApi interface {
 	Create a mobile device prestage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MobileDevicePrestagesPostRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesPost(ctx context.Context) ApiV1MobileDevicePrestagesPostRequest
+	V1MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
 
 	// V1MobileDevicePrestagesPostExecute executes the request
 	//  @return GetMobileDevicePrestage
 	// Deprecated
-	V1MobileDevicePrestagesPostExecute(r ApiV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error)
+	V1MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
@@ -278,16 +278,16 @@ type MobileDevicePrestagesApi interface {
 	Get all device scope for all mobile device prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MobileDevicePrestagesScopeGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesScopeGet(ctx context.Context) ApiV1MobileDevicePrestagesScopeGetRequest
+	V1MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
 
 	// V1MobileDevicePrestagesScopeGetExecute executes the request
 	//  @return PrestageScope
 	// Deprecated
-	V1MobileDevicePrestagesScopeGetExecute(r ApiV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
+	V1MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesSyncGet Get all Prestage sync States for all prestages 
@@ -295,16 +295,16 @@ type MobileDevicePrestagesApi interface {
 	Get all prestage sync states for all prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MobileDevicePrestagesSyncGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesSyncGet(ctx context.Context) ApiV1MobileDevicePrestagesSyncGetRequest
+	V1MobileDevicePrestagesSyncGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
 
 	// V1MobileDevicePrestagesSyncGetExecute executes the request
 	//  @return []PrestageSyncStatus
 	// Deprecated
-	V1MobileDevicePrestagesSyncGetExecute(r ApiV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error)
+	V1MobileDevicePrestagesSyncGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesSyncIdGet Get all prestage sync states for a single prestage 
@@ -313,16 +313,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesSyncIdGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdGetRequest
+	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
 
 	// V1MobileDevicePrestagesSyncIdGetExecute executes the request
 	//  @return []PrestageSyncStatus
 	// Deprecated
-	V1MobileDevicePrestagesSyncIdGetExecute(r ApiV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error)
+	V1MobileDevicePrestagesSyncIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error)
 
 	/*
 	V1MobileDevicePrestagesSyncIdLatestGet Get the latest Sync State for a single Prestage 
@@ -331,16 +331,16 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV1MobileDevicePrestagesSyncIdLatestGetRequest
+	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdLatestGetRequest
+	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
 
 	// V1MobileDevicePrestagesSyncIdLatestGetExecute executes the request
 	//  @return PrestageSyncStatus
 	// Deprecated
-	V1MobileDevicePrestagesSyncIdLatestGetExecute(r ApiV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error)
+	V1MobileDevicePrestagesSyncIdLatestGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages 
@@ -348,13 +348,13 @@ type MobileDevicePrestagesApi interface {
 	Gets sorted and paged mobile device prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2MobileDevicePrestagesGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
 	*/
-	V2MobileDevicePrestagesGet(ctx context.Context) ApiV2MobileDevicePrestagesGetRequest
+	V2MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
 
 	// V2MobileDevicePrestagesGetExecute executes the request
 	//  @return MobileDevicePrestageSearchResultsV2
-	V2MobileDevicePrestagesGetExecute(r ApiV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error)
+	V2MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost Remove an attachment for a Mobile Device Prestage 
@@ -363,12 +363,12 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
 	*/
-	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute executes the request
-	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error)
+	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
@@ -377,13 +377,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdAttachmentsGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
 	*/
-	V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsGetRequest
+	V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsGetExecute executes the request
 	//  @return []FileAttachmentV2
-	V2MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error)
+	V2MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
@@ -392,13 +392,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
-	@return ApiV2MobileDevicePrestagesIdAttachmentsPostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
 	*/
-	V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsPostRequest
+	V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsPostExecute executes the request
 	//  @return PrestageFileAttachmentV2
-	V2MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error)
+	V2MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
@@ -407,12 +407,12 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdDeleteRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
 	*/
-	V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdDeleteRequest
+	V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
 
 	// V2MobileDevicePrestagesIdDeleteExecute executes the request
-	V2MobileDevicePrestagesIdDeleteExecute(r ApiV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
+	V2MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
@@ -421,13 +421,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
 	*/
-	V2MobileDevicePrestagesIdGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdGetRequest
+	V2MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
 
 	// V2MobileDevicePrestagesIdGetExecute executes the request
 	//  @return GetMobileDevicePrestageV2
-	V2MobileDevicePrestagesIdGetExecute(r ApiV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
+	V2MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
@@ -436,13 +436,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdHistoryGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
 	*/
-	V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryGetRequest
+	V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
 
 	// V2MobileDevicePrestagesIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V2MobileDevicePrestagesIdHistoryGetExecute(r ApiV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V2MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
@@ -451,13 +451,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdHistoryPostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
 	*/
-	V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryPostRequest
+	V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
 
 	// V2MobileDevicePrestagesIdHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V2MobileDevicePrestagesIdHistoryPostExecute(r ApiV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V2MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
@@ -466,13 +466,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdPutRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
 	*/
-	V2MobileDevicePrestagesIdPut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdPutRequest
+	V2MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
 
 	// V2MobileDevicePrestagesIdPutExecute executes the request
 	//  @return GetMobileDevicePrestageV2
-	V2MobileDevicePrestagesIdPutExecute(r ApiV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
+	V2MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdScopeDeleteMultiplePost Remove Device Scope for a specific Mobile Device Prestage 
@@ -481,13 +481,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
 	*/
-	V2MobileDevicePrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
+	V2MobileDevicePrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
 
 	// V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
@@ -496,13 +496,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdScopeGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest
 	*/
-	V2MobileDevicePrestagesIdScopeGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeGetRequest
+	V2MobileDevicePrestagesIdScopeGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest
 
 	// V2MobileDevicePrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2MobileDevicePrestagesIdScopeGetExecute(r ApiV2MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
@@ -511,13 +511,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdScopePostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest
 	*/
-	V2MobileDevicePrestagesIdScopePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePostRequest
+	V2MobileDevicePrestagesIdScopePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest
 
 	// V2MobileDevicePrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2MobileDevicePrestagesIdScopePostExecute(r ApiV2MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
@@ -526,13 +526,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdScopePutRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest
 	*/
-	V2MobileDevicePrestagesIdScopePut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePutRequest
+	V2MobileDevicePrestagesIdScopePut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest
 
 	// V2MobileDevicePrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2MobileDevicePrestagesIdScopePutExecute(r ApiV2MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdSyncsGet Get all prestage sync states for a single prestage 
@@ -541,13 +541,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdSyncsGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest
 	*/
-	V2MobileDevicePrestagesIdSyncsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsGetRequest
+	V2MobileDevicePrestagesIdSyncsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest
 
 	// V2MobileDevicePrestagesIdSyncsGetExecute executes the request
 	//  @return []PrestageSyncStatusV2
-	V2MobileDevicePrestagesIdSyncsGetExecute(r ApiV2MobileDevicePrestagesIdSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
+	V2MobileDevicePrestagesIdSyncsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesIdSyncsLatestGet Get the latest Sync State for a single Prestage 
@@ -556,13 +556,13 @@ type MobileDevicePrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
-	@return ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest
 	*/
-	V2MobileDevicePrestagesIdSyncsLatestGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest
+	V2MobileDevicePrestagesIdSyncsLatestGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest
 
 	// V2MobileDevicePrestagesIdSyncsLatestGetExecute executes the request
 	//  @return PrestageSyncStatusV2
-	V2MobileDevicePrestagesIdSyncsLatestGetExecute(r ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest) (*PrestageSyncStatusV2, *http.Response, error)
+	V2MobileDevicePrestagesIdSyncsLatestGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest) (*PrestageSyncStatusV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesPost Create a Mobile Device Prestage 
@@ -570,13 +570,13 @@ type MobileDevicePrestagesApi interface {
 	Create a mobile device prestage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2MobileDevicePrestagesPostRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
 	*/
-	V2MobileDevicePrestagesPost(ctx context.Context) ApiV2MobileDevicePrestagesPostRequest
+	V2MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
 
 	// V2MobileDevicePrestagesPostExecute executes the request
 	//  @return HrefResponse
-	V2MobileDevicePrestagesPostExecute(r ApiV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error)
+	V2MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
@@ -584,13 +584,13 @@ type MobileDevicePrestagesApi interface {
 	Get all device scope for all mobile device prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2MobileDevicePrestagesScopeGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest
 	*/
-	V2MobileDevicePrestagesScopeGet(ctx context.Context) ApiV2MobileDevicePrestagesScopeGetRequest
+	V2MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest
 
 	// V2MobileDevicePrestagesScopeGetExecute executes the request
 	//  @return PrestageScopeV2
-	V2MobileDevicePrestagesScopeGetExecute(r ApiV2MobileDevicePrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
+	V2MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesSyncsGet Get all Prestage sync States for all prestages 
@@ -598,21 +598,21 @@ type MobileDevicePrestagesApi interface {
 	Get all prestage sync states for all prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2MobileDevicePrestagesSyncsGetRequest
+	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest
 	*/
-	V2MobileDevicePrestagesSyncsGet(ctx context.Context) ApiV2MobileDevicePrestagesSyncsGetRequest
+	V2MobileDevicePrestagesSyncsGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest
 
 	// V2MobileDevicePrestagesSyncsGetExecute executes the request
 	//  @return []PrestageSyncStatusV2
-	V2MobileDevicePrestagesSyncsGetExecute(r ApiV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
+	V2MobileDevicePrestagesSyncsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
 }
 
-// MobileDevicePrestagesApiService MobileDevicePrestagesApi service
-type MobileDevicePrestagesApiService service
+// MobileDevicePrestagesAPIService MobileDevicePrestagesAPI service
+type MobileDevicePrestagesAPIService service
 
-type ApiV1MobileDevicePrestagesGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -620,35 +620,35 @@ type ApiV1MobileDevicePrestagesGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1MobileDevicePrestagesGetRequest) Page(page int32) ApiV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Page(page int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1MobileDevicePrestagesGetRequest) Size(size int32) ApiV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Size(size int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1MobileDevicePrestagesGetRequest) Pagesize(pagesize int32) ApiV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Pagesize(pagesize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesGetRequest) PageSize(pageSize int32) ApiV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1MobileDevicePrestagesGetRequest) Sort(sort string) ApiV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Sort(sort string) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResults, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResults, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesGetExecute(r)
 }
 
@@ -658,12 +658,12 @@ V1MobileDevicePrestagesGet Search for sorted and paged Mobile Device Prestages
 Search for sorted and paged mobile device prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MobileDevicePrestagesGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGet(ctx context.Context) ApiV1MobileDevicePrestagesGetRequest {
-	return ApiV1MobileDevicePrestagesGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -672,7 +672,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGet(ctx context
 // Execute executes the request
 //  @return MobileDevicePrestageSearchResults
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r ApiV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -680,7 +680,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r Ap
 		localVarReturnValue  *MobileDevicePrestageSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -692,19 +692,34 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "id:asc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -733,9 +748,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -760,19 +775,19 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	fileAttachmentDelete *FileAttachmentDelete
 }
 
-func (r ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest) FileAttachmentDelete(fileAttachmentDelete FileAttachmentDelete) ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) FileAttachmentDelete(fileAttachmentDelete FileAttachmentDelete) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
 	r.fileAttachmentDelete = &fileAttachmentDelete
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest) Execute() (*http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r)
 }
 
@@ -783,12 +798,12 @@ Remove an attachment for a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
-	return ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -797,20 +812,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDe
 
 // Execute executes the request
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r ApiV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdAttachmentsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -848,9 +863,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -866,13 +881,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsDe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdAttachmentsGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachment, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachment, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsGetExecute(r)
 }
 
@@ -883,12 +898,12 @@ Get attachments for a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdAttachmentsGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsGetRequest {
-	return ApiV1MobileDevicePrestagesIdAttachmentsGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -898,7 +913,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 // Execute executes the request
 //  @return []FileAttachment
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -906,13 +921,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 		localVarReturnValue  []FileAttachment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdAttachmentsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -945,9 +960,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -964,7 +979,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -981,20 +997,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdAttachmentsPostRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
-	file **os.File
+	file *os.File
 }
 
 // The file to upload
-func (r ApiV1MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) ApiV1MobileDevicePrestagesIdAttachmentsPostRequest {
-	r.file = &file
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachment, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachment, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsPostExecute(r)
 }
 
@@ -1005,12 +1021,12 @@ Add an attachment to a Mobile Device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Identifier of the Mobile Device Prestage the attachment should be assigned to
- @return ApiV1MobileDevicePrestagesIdAttachmentsPostRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdAttachmentsPostRequest {
-	return ApiV1MobileDevicePrestagesIdAttachmentsPostRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1020,7 +1036,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 // Execute executes the request
 //  @return PrestageFileAttachment
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1028,13 +1044,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 		localVarReturnValue  *PrestageFileAttachment
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdAttachmentsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1066,14 +1082,17 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1084,9 +1103,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1103,7 +1122,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
@@ -1113,7 +1133,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1130,13 +1151,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdAttachmentsPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdDeleteRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdDeleteExecute(r)
 }
 
@@ -1147,12 +1168,12 @@ Deletes a Mobile Device Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdDeleteRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdDeleteRequest {
-	return ApiV1MobileDevicePrestagesIdDeleteRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1161,20 +1182,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDelete(ctx co
 
 // Execute executes the request
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDeleteExecute(r ApiV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1207,9 +1228,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDeleteExecute
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1225,13 +1246,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdDeleteExecute
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdGetExecute(r)
 }
 
@@ -1242,12 +1263,12 @@ Retrieves a Mobile Device Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdGetRequest {
-	return ApiV1MobileDevicePrestagesIdGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1257,7 +1278,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGet(ctx conte
 // Execute executes the request
 //  @return GetMobileDevicePrestage
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r ApiV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1265,13 +1286,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r 
 		localVarReturnValue  *GetMobileDevicePrestage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1304,9 +1325,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1323,7 +1344,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1340,9 +1362,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdHistoryGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	page *int32
 	size *int32
@@ -1351,35 +1373,35 @@ type ApiV1MobileDevicePrestagesIdHistoryGetRequest struct {
 	sort *[]string
 }
 
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) Size(size int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Size(size int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) Pagesize(pagesize int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Pagesize(pagesize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdHistoryGetExecute(r)
 }
 
@@ -1390,12 +1412,12 @@ Gets sorted and paged mobile device prestage history objects
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdHistoryGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryGetRequest {
-	return ApiV1MobileDevicePrestagesIdHistoryGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1405,7 +1427,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGet(ct
 // Execute executes the request
 //  @return HistorySearchResults
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGetExecute(r ApiV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1413,40 +1435,55 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGetExe
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1475,9 +1512,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGetExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1502,20 +1539,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdHistoryPostRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV1MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1MobileDevicePrestagesIdHistoryPostRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdHistoryPostExecute(r)
 }
 
@@ -1526,12 +1563,12 @@ Adds mobile device prestage history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdHistoryPostRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdHistoryPostRequest {
-	return ApiV1MobileDevicePrestagesIdHistoryPostRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1541,7 +1578,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPost(c
 // Execute executes the request
 //  @return ObjectHistory
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostExecute(r ApiV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1549,13 +1586,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostEx
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1593,9 +1630,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1612,7 +1649,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1629,20 +1667,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdHistoryPostEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdPutRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	putMobileDevicePrestage *PutMobileDevicePrestage
 }
 
 // Mobile Device Prestage to update
-func (r ApiV1MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestage(putMobileDevicePrestage PutMobileDevicePrestage) ApiV1MobileDevicePrestagesIdPutRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestage(putMobileDevicePrestage PutMobileDevicePrestage) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
 	r.putMobileDevicePrestage = &putMobileDevicePrestage
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdPutExecute(r)
 }
 
@@ -1653,12 +1691,12 @@ Updates a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdPutRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdPutRequest {
-	return ApiV1MobileDevicePrestagesIdPutRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1668,7 +1706,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPut(ctx conte
 // Execute executes the request
 //  @return GetMobileDevicePrestage
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r ApiV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1676,13 +1714,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 		localVarReturnValue  *GetMobileDevicePrestage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1720,9 +1758,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1739,7 +1777,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1749,7 +1788,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1766,20 +1806,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdPutExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdScopeDeleteRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to remove from scope
-func (r ApiV1MobileDevicePrestagesIdScopeDeleteRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1MobileDevicePrestagesIdScopeDeleteRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdScopeDeleteRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdScopeDeleteExecute(r)
 }
 
@@ -1790,12 +1830,12 @@ Remove device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdScopeDeleteRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeDeleteRequest {
-	return ApiV1MobileDevicePrestagesIdScopeDeleteRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1805,7 +1845,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDelete(c
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteExecute(r ApiV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -1813,13 +1853,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdScopeDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopeDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1857,9 +1897,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1876,7 +1916,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1886,7 +1927,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1896,7 +1938,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1913,13 +1956,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeDeleteEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdScopeGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdScopeGetExecute(r)
 }
 
@@ -1930,12 +1973,12 @@ Get device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdScopeGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopeGetRequest {
-	return ApiV1MobileDevicePrestagesIdScopeGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1945,7 +1988,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGet(ctx 
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecute(r ApiV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1953,13 +1996,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecu
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1992,9 +2035,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2011,7 +2054,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2028,20 +2072,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopeGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdScopePostRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV1MobileDevicePrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1MobileDevicePrestagesIdScopePostRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdScopePostRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdScopePostExecute(r)
 }
 
@@ -2052,12 +2096,12 @@ Add device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdScopePostRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePostRequest {
-	return ApiV1MobileDevicePrestagesIdScopePostRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2067,7 +2111,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePost(ctx
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExecute(r ApiV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2075,13 +2119,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdScopePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2119,9 +2163,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2138,7 +2182,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2148,7 +2193,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2158,7 +2204,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2175,20 +2222,20 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePostExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesIdScopePutRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV1MobileDevicePrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1MobileDevicePrestagesIdScopePutRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesIdScopePutRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesIdScopePutExecute(r)
 }
 
@@ -2199,12 +2246,12 @@ Replace device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesIdScopePutRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) ApiV1MobileDevicePrestagesIdScopePutRequest {
-	return ApiV1MobileDevicePrestagesIdScopePutRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2214,7 +2261,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePut(ctx 
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecute(r ApiV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2222,13 +2269,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesIdScopePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopePut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2266,9 +2313,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2285,7 +2332,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2295,7 +2343,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2305,7 +2354,8 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2322,19 +2372,19 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesIdScopePutExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesPostRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	mobileDevicePrestage *MobileDevicePrestage
 }
 
 // Mobile Device Prestage to create. ids defined in this body will be ignored
-func (r ApiV1MobileDevicePrestagesPostRequest) MobileDevicePrestage(mobileDevicePrestage MobileDevicePrestage) ApiV1MobileDevicePrestagesPostRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) MobileDevicePrestage(mobileDevicePrestage MobileDevicePrestage) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest {
 	r.mobileDevicePrestage = &mobileDevicePrestage
 	return r
 }
 
-func (r ApiV1MobileDevicePrestagesPostRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesPostExecute(r)
 }
 
@@ -2344,12 +2394,12 @@ V1MobileDevicePrestagesPost Create a Mobile Device Prestage
 Create a mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MobileDevicePrestagesPostRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPost(ctx context.Context) ApiV1MobileDevicePrestagesPostRequest {
-	return ApiV1MobileDevicePrestagesPostRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2358,7 +2408,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPost(ctx contex
 // Execute executes the request
 //  @return GetMobileDevicePrestage
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPostExecute(r ApiV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2366,7 +2416,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPostExecute(r A
 		localVarReturnValue  *GetMobileDevicePrestage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2409,9 +2459,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPostExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2436,12 +2486,12 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesScopeGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 }
 
-func (r ApiV1MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesScopeGetExecute(r)
 }
 
@@ -2451,12 +2501,12 @@ V1MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prest
 Get all device scope for all mobile device prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MobileDevicePrestagesScopeGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGet(ctx context.Context) ApiV1MobileDevicePrestagesScopeGetRequest {
-	return ApiV1MobileDevicePrestagesScopeGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2465,7 +2515,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGet(ctx co
 // Execute executes the request
 //  @return PrestageScope
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGetExecute(r ApiV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2473,7 +2523,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGetExecute
 		localVarReturnValue  *PrestageScope
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2511,9 +2561,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2538,12 +2588,12 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesScopeGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesSyncGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 }
 
-func (r ApiV1MobileDevicePrestagesSyncGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesSyncGetExecute(r)
 }
 
@@ -2553,12 +2603,12 @@ V1MobileDevicePrestagesSyncGet Get all Prestage sync States for all prestages
 Get all prestage sync states for all prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MobileDevicePrestagesSyncGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGet(ctx context.Context) ApiV1MobileDevicePrestagesSyncGetRequest {
-	return ApiV1MobileDevicePrestagesSyncGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2567,7 +2617,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGet(ctx con
 // Execute executes the request
 //  @return []PrestageSyncStatus
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGetExecute(r ApiV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2575,7 +2625,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGetExecute(
 		localVarReturnValue  []PrestageSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesSyncGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2613,9 +2663,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2640,13 +2690,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesSyncIdGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesSyncIdGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesSyncIdGetExecute(r)
 }
 
@@ -2657,12 +2707,12 @@ Get all prestage sync states for a single prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesSyncIdGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdGetRequest {
-	return ApiV1MobileDevicePrestagesSyncIdGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2672,7 +2722,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGet(ctx c
 // Execute executes the request
 //  @return []PrestageSyncStatus
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGetExecute(r ApiV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2680,13 +2730,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGetExecut
 		localVarReturnValue  []PrestageSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesSyncIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/sync/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2719,9 +2769,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2746,13 +2796,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MobileDevicePrestagesSyncIdLatestGetRequest struct {
+type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id int32
 }
 
-func (r ApiV1MobileDevicePrestagesSyncIdLatestGetRequest) Execute() (*PrestageSyncStatus, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) Execute() (*PrestageSyncStatus, *http.Response, error) {
 	return r.ApiService.V1MobileDevicePrestagesSyncIdLatestGetExecute(r)
 }
 
@@ -2763,12 +2813,12 @@ Get the latest sync state for a single prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV1MobileDevicePrestagesSyncIdLatestGetRequest
+ @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
 
 Deprecated
 */
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) ApiV1MobileDevicePrestagesSyncIdLatestGetRequest {
-	return ApiV1MobileDevicePrestagesSyncIdLatestGetRequest{
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest {
+	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2778,7 +2828,7 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet
 // Execute executes the request
 //  @return PrestageSyncStatus
 // Deprecated
-func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGetExecute(r ApiV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2786,13 +2836,13 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet
 		localVarReturnValue  *PrestageSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V1MobileDevicePrestagesSyncIdLatestGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncIdLatestGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/mobile-device-prestages/sync/{id}/latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2825,9 +2875,9 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2852,31 +2902,31 @@ func (a *MobileDevicePrestagesApiService) V1MobileDevicePrestagesSyncIdLatestGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2MobileDevicePrestagesGetRequest) Page(page int32) ApiV2MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) Page(page int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesGetRequest) PageSize(pageSize int32) ApiV2MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV2MobileDevicePrestagesGetRequest) Sort(sort []string) ApiV2MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResultsV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResultsV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesGetExecute(r)
 }
 
@@ -2886,10 +2936,10 @@ V2MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages
 Gets sorted and paged mobile device prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MobileDevicePrestagesGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGet(ctx context.Context) ApiV2MobileDevicePrestagesGetRequest {
-	return ApiV2MobileDevicePrestagesGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2897,7 +2947,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGet(ctx context
 
 // Execute executes the request
 //  @return MobileDevicePrestageSearchResultsV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r ApiV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2905,7 +2955,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r Ap
 		localVarReturnValue  *MobileDevicePrestageSearchResultsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2917,21 +2967,30 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r Ap
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["id:desc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2960,9 +3019,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2987,19 +3046,19 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	ids *Ids
 }
 
-func (r ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Ids(ids Ids) ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Ids(ids Ids) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
 	r.ids = &ids
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r)
 }
 
@@ -3010,10 +3069,10 @@ Remove an attachment for a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
-	return ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3021,20 +3080,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDe
 }
 
 // Execute executes the request
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/attachments/delete-multiple"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3072,9 +3131,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3090,13 +3149,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsDe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdAttachmentsGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachmentV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachmentV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdAttachmentsGetExecute(r)
 }
 
@@ -3107,10 +3166,10 @@ Get attachments for a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdAttachmentsGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsGetRequest {
-	return ApiV2MobileDevicePrestagesIdAttachmentsGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3119,7 +3178,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 
 // Execute executes the request
 //  @return []FileAttachmentV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGetExecute(r ApiV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3127,13 +3186,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 		localVarReturnValue  []FileAttachmentV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdAttachmentsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdAttachmentsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3166,9 +3225,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3185,7 +3244,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3202,20 +3262,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdAttachmentsPostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
-	file **os.File
+	file *os.File
 }
 
 // The file to upload
-func (r ApiV2MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) ApiV2MobileDevicePrestagesIdAttachmentsPostRequest {
-	r.file = &file
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachmentV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachmentV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdAttachmentsPostExecute(r)
 }
 
@@ -3226,10 +3286,10 @@ Add an attachment to a Mobile Device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Identifier of the Mobile Device Prestage the attachment should be assigned to
- @return ApiV2MobileDevicePrestagesIdAttachmentsPostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdAttachmentsPostRequest {
-	return ApiV2MobileDevicePrestagesIdAttachmentsPostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3238,7 +3298,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 
 // Execute executes the request
 //  @return PrestageFileAttachmentV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPostExecute(r ApiV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3246,13 +3306,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 		localVarReturnValue  *PrestageFileAttachmentV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdAttachmentsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdAttachmentsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3284,14 +3344,17 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3302,9 +3365,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3321,7 +3384,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 413 {
@@ -3331,7 +3395,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3348,13 +3413,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdAttachmentsPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdDeleteRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdDeleteExecute(r)
 }
 
@@ -3365,10 +3430,10 @@ Deletes a Mobile Device Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdDeleteRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdDeleteRequest {
-	return ApiV2MobileDevicePrestagesIdDeleteRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3376,20 +3441,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDelete(ctx co
 }
 
 // Execute executes the request
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDeleteExecute(r ApiV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3422,9 +3487,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDeleteExecute
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3440,13 +3505,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdDeleteExecute
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestageV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestageV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdGetExecute(r)
 }
 
@@ -3457,10 +3522,10 @@ Retrieves a Mobile Device Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdGetRequest {
-	return ApiV2MobileDevicePrestagesIdGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3469,7 +3534,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGet(ctx conte
 
 // Execute executes the request
 //  @return GetMobileDevicePrestageV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r ApiV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3477,13 +3542,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r 
 		localVarReturnValue  *GetMobileDevicePrestageV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3516,9 +3581,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3535,7 +3600,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3552,32 +3618,32 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdHistoryGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) ApiV2MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) ApiV2MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r ApiV2MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) ApiV2MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdHistoryGetExecute(r)
 }
 
@@ -3588,10 +3654,10 @@ Gets sorted and paged mobile device prestage history objects
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdHistoryGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryGetRequest {
-	return ApiV2MobileDevicePrestagesIdHistoryGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3600,7 +3666,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGet(ct
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGetExecute(r ApiV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3608,34 +3674,43 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGetExe
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		var defaultValue []string = ["date:desc"]
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3664,9 +3739,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGetExe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3691,20 +3766,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryGetExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdHistoryPostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV2MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV2MobileDevicePrestagesIdHistoryPostRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdHistoryPostExecute(r)
 }
 
@@ -3715,10 +3790,10 @@ Adds mobile device prestage history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdHistoryPostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdHistoryPostRequest {
-	return ApiV2MobileDevicePrestagesIdHistoryPostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3727,7 +3802,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPost(c
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostExecute(r ApiV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3735,13 +3810,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostEx
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3779,9 +3854,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3798,7 +3873,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostEx
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3815,20 +3891,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdHistoryPostEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdPutRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	putMobileDevicePrestageV2 *PutMobileDevicePrestageV2
 }
 
 // Mobile Device Prestage to update
-func (r ApiV2MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestageV2(putMobileDevicePrestageV2 PutMobileDevicePrestageV2) ApiV2MobileDevicePrestagesIdPutRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestageV2(putMobileDevicePrestageV2 PutMobileDevicePrestageV2) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest {
 	r.putMobileDevicePrestageV2 = &putMobileDevicePrestageV2
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestageV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestageV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdPutExecute(r)
 }
 
@@ -3839,10 +3915,10 @@ Updates a Mobile Device Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdPutRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdPutRequest {
-	return ApiV2MobileDevicePrestagesIdPutRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3851,7 +3927,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPut(ctx conte
 
 // Execute executes the request
 //  @return GetMobileDevicePrestageV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r ApiV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3859,13 +3935,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 		localVarReturnValue  *GetMobileDevicePrestageV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3903,9 +3979,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3922,7 +3998,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3932,7 +4009,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3949,20 +4027,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdPutExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to remove from scope
-func (r ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r)
 }
 
@@ -3973,10 +4051,10 @@ Remove device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest {
-	return ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3985,7 +4063,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r ApiV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopeDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3993,13 +4071,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdScopeDeleteMultiplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdScopeDeleteMultiplePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/scope/delete-multiple"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4037,9 +4115,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4056,7 +4134,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4066,7 +4145,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4076,7 +4156,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4093,13 +4174,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeDeleteMu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdScopeGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdScopeGetExecute(r)
 }
 
@@ -4110,10 +4191,10 @@ Get device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdScopeGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopeGetRequest {
-	return ApiV2MobileDevicePrestagesIdScopeGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopeGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4122,7 +4203,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGet(ctx 
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecute(r ApiV2MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4130,13 +4211,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecu
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4169,9 +4250,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4188,7 +4269,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4205,20 +4287,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopeGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdScopePostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV2MobileDevicePrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2MobileDevicePrestagesIdScopePostRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdScopePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdScopePostExecute(r)
 }
 
@@ -4229,10 +4311,10 @@ Add device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdScopePostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePost(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePostRequest {
-	return ApiV2MobileDevicePrestagesIdScopePostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4241,7 +4323,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePost(ctx
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExecute(r ApiV2MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4249,13 +4331,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdScopePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdScopePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4293,9 +4375,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4312,7 +4394,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4322,7 +4405,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4332,7 +4416,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4349,20 +4434,20 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePostExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdScopePutRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV2MobileDevicePrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2MobileDevicePrestagesIdScopePutRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesIdScopePutRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdScopePutExecute(r)
 }
 
@@ -4373,10 +4458,10 @@ Replace device scope for a specific mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdScopePutRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePut(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdScopePutRequest {
-	return ApiV2MobileDevicePrestagesIdScopePutRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopePut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4385,7 +4470,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePut(ctx 
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecute(r ApiV2MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4393,13 +4478,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdScopePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdScopePut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4437,9 +4522,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4456,7 +4541,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4466,7 +4552,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4476,7 +4563,8 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4493,13 +4581,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdScopePutExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdSyncsGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdSyncsGetRequest) Execute() ([]PrestageSyncStatusV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest) Execute() ([]PrestageSyncStatusV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdSyncsGetExecute(r)
 }
 
@@ -4510,10 +4598,10 @@ Get all prestage sync states for a single prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdSyncsGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsGetRequest {
-	return ApiV2MobileDevicePrestagesIdSyncsGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdSyncsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4522,7 +4610,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGet(ctx 
 
 // Execute executes the request
 //  @return []PrestageSyncStatusV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGetExecute(r ApiV2MobileDevicePrestagesIdSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdSyncsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4530,13 +4618,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGetExecu
 		localVarReturnValue  []PrestageSyncStatusV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdSyncsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdSyncsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/syncs"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4569,9 +4657,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4596,13 +4684,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	id string
 }
 
-func (r ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest) Execute() (*PrestageSyncStatusV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest) Execute() (*PrestageSyncStatusV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesIdSyncsLatestGetExecute(r)
 }
 
@@ -4613,10 +4701,10 @@ Get the latest sync state for a single prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
- @return ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGet(ctx context.Context, id string) ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest {
-	return ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdSyncsLatestGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4625,7 +4713,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGe
 
 // Execute executes the request
 //  @return PrestageSyncStatusV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGetExecute(r ApiV2MobileDevicePrestagesIdSyncsLatestGetRequest) (*PrestageSyncStatusV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdSyncsLatestGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdSyncsLatestGetRequest) (*PrestageSyncStatusV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4633,13 +4721,13 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGe
 		localVarReturnValue  *PrestageSyncStatusV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesIdSyncsLatestGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesIdSyncsLatestGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/mobile-device-prestages/{id}/syncs/latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4672,9 +4760,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4699,19 +4787,19 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesIdSyncsLatestGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesPostRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 	mobileDevicePrestageV2 *MobileDevicePrestageV2
 }
 
 // Mobile Device Prestage to create. ids defined in this body will be ignored
-func (r ApiV2MobileDevicePrestagesPostRequest) MobileDevicePrestageV2(mobileDevicePrestageV2 MobileDevicePrestageV2) ApiV2MobileDevicePrestagesPostRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) MobileDevicePrestageV2(mobileDevicePrestageV2 MobileDevicePrestageV2) MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest {
 	r.mobileDevicePrestageV2 = &mobileDevicePrestageV2
 	return r
 }
 
-func (r ApiV2MobileDevicePrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesPostExecute(r)
 }
 
@@ -4721,10 +4809,10 @@ V2MobileDevicePrestagesPost Create a Mobile Device Prestage
 Create a mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MobileDevicePrestagesPostRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPost(ctx context.Context) ApiV2MobileDevicePrestagesPostRequest {
-	return ApiV2MobileDevicePrestagesPostRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4732,7 +4820,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPost(ctx contex
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPostExecute(r ApiV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4740,7 +4828,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPostExecute(r A
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4783,9 +4871,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPostExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4810,12 +4898,12 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesScopeGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 }
 
-func (r ApiV2MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesScopeGetExecute(r)
 }
 
@@ -4825,10 +4913,10 @@ V2MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prest
 Get all device scope for all mobile device prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MobileDevicePrestagesScopeGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGet(ctx context.Context) ApiV2MobileDevicePrestagesScopeGetRequest {
-	return ApiV2MobileDevicePrestagesScopeGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4836,7 +4924,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGet(ctx co
 
 // Execute executes the request
 //  @return PrestageScopeV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGetExecute(r ApiV2MobileDevicePrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4844,7 +4932,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGetExecute
 		localVarReturnValue  *PrestageScopeV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4882,9 +4970,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4909,12 +4997,12 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesScopeGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2MobileDevicePrestagesSyncsGetRequest struct {
+type MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest struct {
 	ctx context.Context
-	ApiService MobileDevicePrestagesApi
+	ApiService MobileDevicePrestagesAPI
 }
 
-func (r ApiV2MobileDevicePrestagesSyncsGetRequest) Execute() ([]PrestageSyncStatusV2, *http.Response, error) {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest) Execute() ([]PrestageSyncStatusV2, *http.Response, error) {
 	return r.ApiService.V2MobileDevicePrestagesSyncsGetExecute(r)
 }
 
@@ -4924,10 +5012,10 @@ V2MobileDevicePrestagesSyncsGet Get all Prestage sync States for all prestages
 Get all prestage sync states for all prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2MobileDevicePrestagesSyncsGetRequest
+ @return MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest
 */
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesSyncsGet(ctx context.Context) ApiV2MobileDevicePrestagesSyncsGetRequest {
-	return ApiV2MobileDevicePrestagesSyncsGetRequest{
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesSyncsGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest {
+	return MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4935,7 +5023,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesSyncsGet(ctx co
 
 // Execute executes the request
 //  @return []PrestageSyncStatusV2
-func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesSyncsGetExecute(r ApiV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error) {
+func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesSyncsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4943,7 +5031,7 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesSyncsGetExecute
 		localVarReturnValue  []PrestageSyncStatusV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesApiService.V2MobileDevicePrestagesSyncsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V2MobileDevicePrestagesSyncsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4981,9 +5069,9 @@ func (a *MobileDevicePrestagesApiService) V2MobileDevicePrestagesSyncsGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

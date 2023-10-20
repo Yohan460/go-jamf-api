@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SelfServiceInstallSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SelfServiceInstallSettings{}
+
 // SelfServiceInstallSettings object representation of Self Service settings regarding installation 
 type SelfServiceInstallSettings struct {
 	// true if Self Service is insalled automatically, false if not 
@@ -46,7 +49,7 @@ func NewSelfServiceInstallSettingsWithDefaults() *SelfServiceInstallSettings {
 
 // GetInstallAutomatically returns the InstallAutomatically field value if set, zero value otherwise.
 func (o *SelfServiceInstallSettings) GetInstallAutomatically() bool {
-	if o == nil || o.InstallAutomatically == nil {
+	if o == nil || IsNil(o.InstallAutomatically) {
 		var ret bool
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *SelfServiceInstallSettings) GetInstallAutomatically() bool {
 // GetInstallAutomaticallyOk returns a tuple with the InstallAutomatically field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceInstallSettings) GetInstallAutomaticallyOk() (*bool, bool) {
-	if o == nil || o.InstallAutomatically == nil {
+	if o == nil || IsNil(o.InstallAutomatically) {
 		return nil, false
 	}
 	return o.InstallAutomatically, true
@@ -64,7 +67,7 @@ func (o *SelfServiceInstallSettings) GetInstallAutomaticallyOk() (*bool, bool) {
 
 // HasInstallAutomatically returns a boolean if a field has been set.
 func (o *SelfServiceInstallSettings) HasInstallAutomatically() bool {
-	if o != nil && o.InstallAutomatically != nil {
+	if o != nil && !IsNil(o.InstallAutomatically) {
 		return true
 	}
 
@@ -101,14 +104,20 @@ func (o *SelfServiceInstallSettings) SetInstallLocation(v string) {
 }
 
 func (o SelfServiceInstallSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.InstallAutomatically != nil {
-		toSerialize["installAutomatically"] = o.InstallAutomatically
-	}
-	if true {
-		toSerialize["installLocation"] = o.InstallLocation
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SelfServiceInstallSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InstallAutomatically) {
+		toSerialize["installAutomatically"] = o.InstallAutomatically
+	}
+	toSerialize["installLocation"] = o.InstallLocation
+	return toSerialize, nil
 }
 
 type NullableSelfServiceInstallSettings struct {

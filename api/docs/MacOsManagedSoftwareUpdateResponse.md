@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Responses** | Pointer to [**[]HrefResponse**](HrefResponse.md) |  | [optional] 
+**ProcessManagerUuids** | Pointer to **[]string** |  | [optional] 
 **Errors** | Pointer to [**[]ApiErrorCause**](ApiErrorCause.md) |  | [optional] 
 
 ## Methods
@@ -26,30 +26,30 @@ NewMacOsManagedSoftwareUpdateResponseWithDefaults instantiates a new MacOsManage
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetResponses
+### GetProcessManagerUuids
 
-`func (o *MacOsManagedSoftwareUpdateResponse) GetResponses() []HrefResponse`
+`func (o *MacOsManagedSoftwareUpdateResponse) GetProcessManagerUuids() []string`
 
-GetResponses returns the Responses field if non-nil, zero value otherwise.
+GetProcessManagerUuids returns the ProcessManagerUuids field if non-nil, zero value otherwise.
 
-### GetResponsesOk
+### GetProcessManagerUuidsOk
 
-`func (o *MacOsManagedSoftwareUpdateResponse) GetResponsesOk() (*[]HrefResponse, bool)`
+`func (o *MacOsManagedSoftwareUpdateResponse) GetProcessManagerUuidsOk() (*[]string, bool)`
 
-GetResponsesOk returns a tuple with the Responses field if it's non-nil, zero value otherwise
+GetProcessManagerUuidsOk returns a tuple with the ProcessManagerUuids field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResponses
+### SetProcessManagerUuids
 
-`func (o *MacOsManagedSoftwareUpdateResponse) SetResponses(v []HrefResponse)`
+`func (o *MacOsManagedSoftwareUpdateResponse) SetProcessManagerUuids(v []string)`
 
-SetResponses sets Responses field to given value.
+SetProcessManagerUuids sets ProcessManagerUuids field to given value.
 
-### HasResponses
+### HasProcessManagerUuids
 
-`func (o *MacOsManagedSoftwareUpdateResponse) HasResponses() bool`
+`func (o *MacOsManagedSoftwareUpdateResponse) HasProcessManagerUuids() bool`
 
-HasResponses returns a boolean if a field has been set.
+HasProcessManagerUuids returns a boolean if a field has been set.
 
 ### GetErrors
 

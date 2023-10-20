@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CloudLdapKeystore type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapKeystore{}
+
 // CloudLdapKeystore Response with keystore information
 type CloudLdapKeystore struct {
 	Type *string `json:"type,omitempty"`
@@ -42,7 +45,7 @@ func NewCloudLdapKeystoreWithDefaults() *CloudLdapKeystore {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CloudLdapKeystore) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *CloudLdapKeystore) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapKeystore) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -60,7 +63,7 @@ func (o *CloudLdapKeystore) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CloudLdapKeystore) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *CloudLdapKeystore) SetType(v string) {
 
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
 func (o *CloudLdapKeystore) GetExpirationDate() time.Time {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		var ret time.Time
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *CloudLdapKeystore) GetExpirationDate() time.Time {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapKeystore) GetExpirationDateOk() (*time.Time, bool) {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		return nil, false
 	}
 	return o.ExpirationDate, true
@@ -92,7 +95,7 @@ func (o *CloudLdapKeystore) GetExpirationDateOk() (*time.Time, bool) {
 
 // HasExpirationDate returns a boolean if a field has been set.
 func (o *CloudLdapKeystore) HasExpirationDate() bool {
-	if o != nil && o.ExpirationDate != nil {
+	if o != nil && !IsNil(o.ExpirationDate) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *CloudLdapKeystore) SetExpirationDate(v time.Time) {
 
 // GetSubject returns the Subject field value if set, zero value otherwise.
 func (o *CloudLdapKeystore) GetSubject() string {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *CloudLdapKeystore) GetSubject() string {
 // GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapKeystore) GetSubjectOk() (*string, bool) {
-	if o == nil || o.Subject == nil {
+	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
 	return o.Subject, true
@@ -124,7 +127,7 @@ func (o *CloudLdapKeystore) GetSubjectOk() (*string, bool) {
 
 // HasSubject returns a boolean if a field has been set.
 func (o *CloudLdapKeystore) HasSubject() bool {
-	if o != nil && o.Subject != nil {
+	if o != nil && !IsNil(o.Subject) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *CloudLdapKeystore) SetSubject(v string) {
 
 // GetFileName returns the FileName field value if set, zero value otherwise.
 func (o *CloudLdapKeystore) GetFileName() string {
-	if o == nil || o.FileName == nil {
+	if o == nil || IsNil(o.FileName) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *CloudLdapKeystore) GetFileName() string {
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapKeystore) GetFileNameOk() (*string, bool) {
-	if o == nil || o.FileName == nil {
+	if o == nil || IsNil(o.FileName) {
 		return nil, false
 	}
 	return o.FileName, true
@@ -156,7 +159,7 @@ func (o *CloudLdapKeystore) GetFileNameOk() (*string, bool) {
 
 // HasFileName returns a boolean if a field has been set.
 func (o *CloudLdapKeystore) HasFileName() bool {
-	if o != nil && o.FileName != nil {
+	if o != nil && !IsNil(o.FileName) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *CloudLdapKeystore) SetFileName(v string) {
 }
 
 func (o CloudLdapKeystore) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.ExpirationDate != nil {
-		toSerialize["expirationDate"] = o.ExpirationDate
-	}
-	if o.Subject != nil {
-		toSerialize["subject"] = o.Subject
-	}
-	if o.FileName != nil {
-		toSerialize["fileName"] = o.FileName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapKeystore) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expirationDate"] = o.ExpirationDate
+	}
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
+	if !IsNil(o.FileName) {
+		toSerialize["fileName"] = o.FileName
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapKeystore struct {

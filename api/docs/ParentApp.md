@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **AllowTemplates** | Pointer to **bool** |  | [optional] 
 **DisassociateOnWipeAndReEnroll** | Pointer to **bool** |  | [optional] 
 **AllowClearPasscode** | Pointer to **bool** |  | [optional] 
-**SafelistedApps** | Pointer to [**[]SafelistedAppsInner**](SafelistedAppsInner.md) |  | [optional] 
+**SafelistedApps** | Pointer to [**[]SafelistedApp**](SafelistedApp.md) |  | [optional] 
 
 ## Methods
 
@@ -189,20 +189,20 @@ HasAllowClearPasscode returns a boolean if a field has been set.
 
 ### GetSafelistedApps
 
-`func (o *ParentApp) GetSafelistedApps() []SafelistedAppsInner`
+`func (o *ParentApp) GetSafelistedApps() []SafelistedApp`
 
 GetSafelistedApps returns the SafelistedApps field if non-nil, zero value otherwise.
 
 ### GetSafelistedAppsOk
 
-`func (o *ParentApp) GetSafelistedAppsOk() (*[]SafelistedAppsInner, bool)`
+`func (o *ParentApp) GetSafelistedAppsOk() (*[]SafelistedApp, bool)`
 
 GetSafelistedAppsOk returns a tuple with the SafelistedApps field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSafelistedApps
 
-`func (o *ParentApp) SetSafelistedApps(v []SafelistedAppsInner)`
+`func (o *ParentApp) SetSafelistedApps(v []SafelistedApp)`
 
 SetSafelistedApps sets SafelistedApps field to given value.
 
