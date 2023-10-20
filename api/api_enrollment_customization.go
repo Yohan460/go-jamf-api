@@ -828,7 +828,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGe
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1587,7 +1587,7 @@ func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsGetExecute
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -1940,7 +1940,7 @@ func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryG
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

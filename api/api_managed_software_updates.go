@@ -712,7 +712,7 @@ func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansGetExecu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["planUuid:asc"]
+		defaultValue := []string{"planUuid:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

@@ -268,7 +268,7 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsGetExec
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -429,7 +429,7 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdConte
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -816,7 +816,7 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHisto
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

@@ -888,7 +888,7 @@ func (a *EngageAPIService) V2EngageHistoryGetExecute(r EngageAPIV2EngageHistoryG
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

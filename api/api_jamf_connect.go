@@ -223,7 +223,7 @@ func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesGetExecute(r JamfConn
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -496,7 +496,7 @@ func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksGetExecute(r Jamf
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -878,7 +878,7 @@ func (a *JamfConnectAPIService) V1JamfConnectHistoryGetExecute(r JamfConnectAPIV
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

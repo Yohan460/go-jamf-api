@@ -376,7 +376,7 @@ func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksGetExecute(r Jamf
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -791,7 +791,7 @@ func (a *JamfProtectAPIService) V1JamfProtectHistoryGetExecute(r JamfProtectAPIV
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1070,7 +1070,7 @@ func (a *JamfProtectAPIService) V1JamfProtectPlansGetExecute(r JamfProtectAPIV1J
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

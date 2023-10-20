@@ -281,7 +281,7 @@ func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHis
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

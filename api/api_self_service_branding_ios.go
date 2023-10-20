@@ -186,7 +186,7 @@ func (a *SelfServiceBrandingIosAPIService) V1SelfServiceBrandingIosGetExecute(r 
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

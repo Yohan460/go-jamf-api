@@ -241,7 +241,7 @@ func (a *ScriptsAPIService) V1ScriptsGetExecute(r ScriptsAPIV1ScriptsGetRequest)
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["name:asc"]
+		defaultValue := []string{"name:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -721,7 +721,7 @@ func (a *ScriptsAPIService) V1ScriptsIdHistoryGetExecute(r ScriptsAPIV1ScriptsId
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

@@ -186,7 +186,7 @@ func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosGetExecut
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

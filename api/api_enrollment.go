@@ -882,7 +882,7 @@ func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["name:asc"]
+		defaultValue := []string{"name:asc"}
 		r.sort = &defaultValue
 	}
 	if r.allUsersOptionFirst != nil {
@@ -1737,7 +1737,7 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
@@ -1751,7 +1751,7 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
@@ -1777,7 +1777,7 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1951,7 +1951,7 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryGetExecute(r EnrollmentAPIV2En
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2435,7 +2435,7 @@ func (a *EnrollmentAPIService) V2EnrollmentLanguagesGetExecute(r EnrollmentAPIV2
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["languageCode:asc"]
+		defaultValue := []string{"languageCode:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -3061,7 +3061,7 @@ func (a *EnrollmentAPIService) V3EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["name:asc"]
+		defaultValue := []string{"name:asc"}
 		r.sort = &defaultValue
 	}
 	if r.allUsersOptionFirst != nil {
@@ -4093,7 +4093,7 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesGetExecute(r EnrollmentAPIV3
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["languageCode:asc"]
+		defaultValue := []string{"languageCode:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

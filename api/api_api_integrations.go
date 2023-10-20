@@ -794,7 +794,7 @@ func (a *ApiIntegrationsAPIService) V1ApiIntegrationsGetExecute(r ApiIntegration
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

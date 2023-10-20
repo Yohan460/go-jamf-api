@@ -552,7 +552,7 @@ func (a *PatchPolicyLogsAPIService) V2PatchPoliciesIdLogsGetExecute(r PatchPolic
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["deviceName:asc"]
+		defaultValue := []string{"deviceName:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

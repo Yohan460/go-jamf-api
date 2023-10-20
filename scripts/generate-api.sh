@@ -18,15 +18,14 @@ then
 fi
 
 # Generate UAPI
-cd api
 openapi-generator generate \
     -i $1 \
     -g go \
+    -o ./api \
     --package-name api \
     --git-user-id "yohan460" \
     --git-repo-id "go-jamf-api" \
-    --additional-properties=packageName=uapi,enumClassPrefix=true,generateInterfaces=true,structPrefix=true
-
+    --additional-properties=packageName=uapi,enumClassPrefix=true,structPrefix=true,generateInterfaces=true
 returncode=$?
 echo "Return code: $returncode"
 if [[ "${returncode}" != "0" ]]; then
@@ -34,10 +33,25 @@ if [[ "${returncode}" != "0" ]]; then
     exit 1
 fi
 
+# Perform cleanup
+rm ./api/git_push.sh
+rm ./api/go.mod
+rm ./api/go.sum
+
 # Patch the defaultValue generation
-# find . -type f -print | xargs -0 sed -i 's/var defaultValue \[\](.*) = \[(.*)\]/defaultValue := []$1{$2}/g' {} ';'
+echo "Patching defaultValue generation"
+find ./api -type f -name "*.go" -exec sed -i '' 's/var defaultValue \[\]\(.*\) = \[\(.*\)\]/defaultValue := []\1{\2}/g' {} \;
+returncode=$?
+if [[ "${returncode}" != "0" ]]; then
+    echo "Failed to patch defaultValue generation"
+    exit 1
+fi
+
+# Patch the generic object generation
+# echo "Patching generic object generation"
+# find ./api -type f -name "*.go" -exec sed -i '' 's/MapmapOfStringinterface\{\}/Generic/g' {} \;
 # returncode=$?
 # if [[ "${returncode}" != "0" ]]; then
-#     echo "Failed to patch defaultValue generation"
+#     echo "Failed to patch generic object generation"
 #     exit 1
 # fi

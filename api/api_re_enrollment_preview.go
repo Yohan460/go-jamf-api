@@ -315,7 +315,7 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
@@ -329,7 +329,7 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
@@ -355,7 +355,7 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

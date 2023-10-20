@@ -692,7 +692,7 @@ func (a *MdmAPIService) V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest)
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["dateSent:asc"]
+		defaultValue := []string{"dateSent:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

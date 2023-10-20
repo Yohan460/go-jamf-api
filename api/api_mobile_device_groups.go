@@ -334,7 +334,7 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupMembership
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["displayName:asc"]
+		defaultValue := []string{"displayName:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -502,7 +502,7 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupsGetExecut
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["groupId:asc"]
+		defaultValue := []string{"groupId:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

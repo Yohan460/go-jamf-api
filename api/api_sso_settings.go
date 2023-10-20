@@ -519,7 +519,7 @@ func (a *SsoSettingsAPIService) V1SsoHistoryGetExecute(r SsoSettingsAPIV1SsoHist
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:desc"]
+		defaultValue := []string{"id:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

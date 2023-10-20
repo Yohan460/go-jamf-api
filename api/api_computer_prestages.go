@@ -1107,7 +1107,7 @@ func (a *ComputerPrestagesAPIService) V2ComputerPrestagesGetExecute(r ComputerPr
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:desc"]
+		defaultValue := []string{"id:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2389,7 +2389,7 @@ func (a *ComputerPrestagesAPIService) V3ComputerPrestagesGetExecute(r ComputerPr
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:desc"]
+		defaultValue := []string{"id:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

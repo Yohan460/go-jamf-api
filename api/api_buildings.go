@@ -393,7 +393,7 @@ func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1Build
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
@@ -407,7 +407,7 @@ func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1Build
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
@@ -433,7 +433,7 @@ func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1Build
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -613,7 +613,7 @@ func (a *BuildingsAPIService) V1BuildingsGetExecute(r BuildingsAPIV1BuildingsGet
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -991,7 +991,7 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPostExecute(r BuildingsA
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
@@ -1005,7 +1005,7 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPostExecute(r BuildingsA
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
@@ -1031,7 +1031,7 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPostExecute(r BuildingsA
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1216,7 +1216,7 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryGetExecute(r BuildingsAPIV1Bui
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

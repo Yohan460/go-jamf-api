@@ -192,7 +192,7 @@ func (a *PatchPoliciesAPIService) V2PatchPoliciesGetExecute(r PatchPoliciesAPIV2
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -656,7 +656,7 @@ func (a *PatchPoliciesAPIService) V2PatchPoliciesPolicyDetailsGetExecute(r Patch
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

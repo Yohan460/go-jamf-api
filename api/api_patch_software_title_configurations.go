@@ -772,7 +772,7 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["absoluteOrderId:asc"]
+		defaultValue := []string{"absoluteOrderId:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1166,7 +1166,7 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["computerName:asc"]
+		defaultValue := []string{"computerName:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1611,7 +1611,7 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -2076,7 +2076,7 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["computerName:asc"]
+		defaultValue := []string{"computerName:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

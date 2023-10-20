@@ -640,7 +640,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryGetExecute(r ComputerI
 			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
 		}
 	} else {
-		var defaultValue []ComputerSection = ["GENERAL"]
+		defaultValue := []ComputerSection{"GENERAL"}
 		r.section = &defaultValue
 	}
 	if r.page != nil {
@@ -666,7 +666,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryGetExecute(r ComputerI
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["general.name:asc"]
+		defaultValue := []string{"general.name:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -1374,7 +1374,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdGetExecute(r Compute
 			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
 		}
 	} else {
-		var defaultValue []ComputerSection = ["GENERAL"]
+		defaultValue := []ComputerSection{"GENERAL"}
 		r.section = &defaultValue
 	}
 	// to determine the Content-Type header

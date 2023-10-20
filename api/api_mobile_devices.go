@@ -821,7 +821,7 @@ func (a *MobileDevicesAPIService) V2MobileDevicesDetailGetExecute(r MobileDevice
 			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
 		}
 	} else {
-		var defaultValue []MobileDeviceSection = ["GENERAL"]
+		defaultValue := []MobileDeviceSection{"GENERAL"}
 		r.section = &defaultValue
 	}
 	if r.page != nil {
@@ -847,7 +847,7 @@ func (a *MobileDevicesAPIService) V2MobileDevicesDetailGetExecute(r MobileDevice
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["displayName:asc"]
+		defaultValue := []string{"displayName:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -998,7 +998,7 @@ func (a *MobileDevicesAPIService) V2MobileDevicesGetExecute(r MobileDevicesAPIV2
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

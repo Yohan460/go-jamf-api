@@ -1482,7 +1482,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGetExe
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -2989,7 +2989,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGetExecute(r Mo
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:desc"]
+		defaultValue := []string{"id:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -3709,7 +3709,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGetExe
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

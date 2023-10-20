@@ -278,7 +278,7 @@ func (a *TeacherAppAPIService) V1TeacherAppHistoryGetExecute(r TeacherAppAPIV1Te
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {

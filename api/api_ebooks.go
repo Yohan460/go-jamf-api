@@ -160,7 +160,7 @@ func (a *EbooksAPIService) V1EbooksGetExecute(r EbooksAPIV1EbooksGetRequest) (*E
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["name:asc"]
+		defaultValue := []string{"name:asc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header

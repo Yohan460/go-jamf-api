@@ -251,7 +251,7 @@ func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdp
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
@@ -265,7 +265,7 @@ func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdp
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
 	} else {
-		var defaultValue []string = []
+		defaultValue := []string{}
 		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
@@ -291,7 +291,7 @@ func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdp
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:asc"]
+		defaultValue := []string{"id:asc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
@@ -464,7 +464,7 @@ func (a *CloudIdpAPIService) V1CloudIdpGetExecute(r CloudIdpAPIV1CloudIdpGetRequ
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["id:desc"]
+		defaultValue := []string{"id:desc"}
 		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -743,7 +743,7 @@ func (a *CloudIdpAPIService) V1CloudIdpIdHistoryGetExecute(r CloudIdpAPIV1CloudI
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
 	} else {
-		var defaultValue []string = ["date:desc"]
+		defaultValue := []string{"date:desc"}
 		r.sort = &defaultValue
 	}
 	if r.filter != nil {
