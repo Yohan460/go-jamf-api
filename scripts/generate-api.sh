@@ -25,7 +25,8 @@ openapi-generator generate \
     --package-name api \
     --git-user-id "yohan460" \
     --git-repo-id "go-jamf-api" \
-    --additional-properties=packageName=uapi,enumClassPrefix=true,structPrefix=true,generateInterfaces=true
+    --global-property=apiTests=false \
+    --additional-properties=packageName=api,enumClassPrefix=true,structPrefix=true,generateInterfaces=true,isGoSubmodule=true
 returncode=$?
 echo "Return code: $returncode"
 if [[ "${returncode}" != "0" ]]; then

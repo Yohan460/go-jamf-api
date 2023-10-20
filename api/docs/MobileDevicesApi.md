@@ -34,7 +34,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -95,7 +95,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -165,7 +165,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -235,7 +235,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -307,7 +307,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -373,7 +373,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -447,7 +447,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -517,7 +517,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -587,7 +587,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -657,7 +657,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "github.com/yohan460/go-jamf-api"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
