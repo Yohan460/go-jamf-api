@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InstallPackage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstallPackage{}
+
 // InstallPackage Either devices or groupId must be provided
 type InstallPackage struct {
 	Manifest PackageManifest `json:"manifest"`
@@ -66,7 +69,7 @@ func (o *InstallPackage) SetManifest(v PackageManifest) {
 
 // GetInstallAsManaged returns the InstallAsManaged field value if set, zero value otherwise.
 func (o *InstallPackage) GetInstallAsManaged() bool {
-	if o == nil || o.InstallAsManaged == nil {
+	if o == nil || IsNil(o.InstallAsManaged) {
 		var ret bool
 		return ret
 	}
@@ -76,7 +79,7 @@ func (o *InstallPackage) GetInstallAsManaged() bool {
 // GetInstallAsManagedOk returns a tuple with the InstallAsManaged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstallPackage) GetInstallAsManagedOk() (*bool, bool) {
-	if o == nil || o.InstallAsManaged == nil {
+	if o == nil || IsNil(o.InstallAsManaged) {
 		return nil, false
 	}
 	return o.InstallAsManaged, true
@@ -84,7 +87,7 @@ func (o *InstallPackage) GetInstallAsManagedOk() (*bool, bool) {
 
 // HasInstallAsManaged returns a boolean if a field has been set.
 func (o *InstallPackage) HasInstallAsManaged() bool {
-	if o != nil && o.InstallAsManaged != nil {
+	if o != nil && !IsNil(o.InstallAsManaged) {
 		return true
 	}
 
@@ -98,7 +101,7 @@ func (o *InstallPackage) SetInstallAsManaged(v bool) {
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
 func (o *InstallPackage) GetDevices() []int32 {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		var ret []int32
 		return ret
 	}
@@ -108,7 +111,7 @@ func (o *InstallPackage) GetDevices() []int32 {
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstallPackage) GetDevicesOk() ([]int32, bool) {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		return nil, false
 	}
 	return o.Devices, true
@@ -116,7 +119,7 @@ func (o *InstallPackage) GetDevicesOk() ([]int32, bool) {
 
 // HasDevices returns a boolean if a field has been set.
 func (o *InstallPackage) HasDevices() bool {
-	if o != nil && o.Devices != nil {
+	if o != nil && !IsNil(o.Devices) {
 		return true
 	}
 
@@ -130,7 +133,7 @@ func (o *InstallPackage) SetDevices(v []int32) {
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
 func (o *InstallPackage) GetGroupId() string {
-	if o == nil || o.GroupId == nil {
+	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *InstallPackage) GetGroupId() string {
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstallPackage) GetGroupIdOk() (*string, bool) {
-	if o == nil || o.GroupId == nil {
+	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
 	return o.GroupId, true
@@ -148,7 +151,7 @@ func (o *InstallPackage) GetGroupIdOk() (*string, bool) {
 
 // HasGroupId returns a boolean if a field has been set.
 func (o *InstallPackage) HasGroupId() bool {
-	if o != nil && o.GroupId != nil {
+	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
 
@@ -161,20 +164,26 @@ func (o *InstallPackage) SetGroupId(v string) {
 }
 
 func (o InstallPackage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["manifest"] = o.Manifest
-	}
-	if o.InstallAsManaged != nil {
-		toSerialize["installAsManaged"] = o.InstallAsManaged
-	}
-	if o.Devices != nil {
-		toSerialize["devices"] = o.Devices
-	}
-	if o.GroupId != nil {
-		toSerialize["groupId"] = o.GroupId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InstallPackage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["manifest"] = o.Manifest
+	if !IsNil(o.InstallAsManaged) {
+		toSerialize["installAsManaged"] = o.InstallAsManaged
+	}
+	if !IsNil(o.Devices) {
+		toSerialize["devices"] = o.Devices
+	}
+	if !IsNil(o.GroupId) {
+		toSerialize["groupId"] = o.GroupId
+	}
+	return toSerialize, nil
 }
 
 type NullableInstallPackage struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LanguageCode type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LanguageCode{}
+
 // LanguageCode struct for LanguageCode
 type LanguageCode struct {
 	Value *string `json:"value,omitempty"`
@@ -39,7 +42,7 @@ func NewLanguageCodeWithDefaults() *LanguageCode {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *LanguageCode) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *LanguageCode) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LanguageCode) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -57,7 +60,7 @@ func (o *LanguageCode) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *LanguageCode) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *LanguageCode) SetValue(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *LanguageCode) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *LanguageCode) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LanguageCode) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *LanguageCode) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *LanguageCode) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *LanguageCode) SetName(v string) {
 }
 
 func (o LanguageCode) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LanguageCode) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableLanguageCode struct {

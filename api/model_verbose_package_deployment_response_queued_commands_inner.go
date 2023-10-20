@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VerbosePackageDeploymentResponseQueuedCommandsInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerbosePackageDeploymentResponseQueuedCommandsInner{}
+
 // VerbosePackageDeploymentResponseQueuedCommandsInner struct for VerbosePackageDeploymentResponseQueuedCommandsInner
 type VerbosePackageDeploymentResponseQueuedCommandsInner struct {
 	Device *int32 `json:"device,omitempty"`
@@ -39,7 +42,7 @@ func NewVerbosePackageDeploymentResponseQueuedCommandsInnerWithDefaults() *Verbo
 
 // GetDevice returns the Device field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int32 {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int32 
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*int32, bool) {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
 	return o.Device, true
@@ -57,7 +60,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*in
 
 // HasDevice returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) HasDevice() bool {
-	if o != nil && o.Device != nil {
+	if o != nil && !IsNil(o.Device) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetDevice(v int32)
 
 // GetCommandUuid returns the CommandUuid field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetCommandUuid() string {
-	if o == nil || o.CommandUuid == nil {
+	if o == nil || IsNil(o.CommandUuid) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetCommandUuid() s
 // GetCommandUuidOk returns a tuple with the CommandUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetCommandUuidOk() (*string, bool) {
-	if o == nil || o.CommandUuid == nil {
+	if o == nil || IsNil(o.CommandUuid) {
 		return nil, false
 	}
 	return o.CommandUuid, true
@@ -89,7 +92,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetCommandUuidOk()
 
 // HasCommandUuid returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) HasCommandUuid() bool {
-	if o != nil && o.CommandUuid != nil {
+	if o != nil && !IsNil(o.CommandUuid) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetCommandUuid(v s
 }
 
 func (o VerbosePackageDeploymentResponseQueuedCommandsInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Device != nil {
-		toSerialize["device"] = o.Device
-	}
-	if o.CommandUuid != nil {
-		toSerialize["commandUuid"] = o.CommandUuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VerbosePackageDeploymentResponseQueuedCommandsInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Device) {
+		toSerialize["device"] = o.Device
+	}
+	if !IsNil(o.CommandUuid) {
+		toSerialize["commandUuid"] = o.CommandUuid
+	}
+	return toSerialize, nil
 }
 
 type NullableVerbosePackageDeploymentResponseQueuedCommandsInner struct {

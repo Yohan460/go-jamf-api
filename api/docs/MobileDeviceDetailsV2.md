@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
 **OsVersion** | Pointer to **string** |  | [optional] 
 **OsBuild** | Pointer to **string** |  | [optional] 
+**OsSupplementalBuildVersion** | Pointer to **string** | Collected for iOS 16 and iPadOS 16.1 or later | [optional] 
+**OsRapidSecurityResponse** | Pointer to **string** | Collected for iOS 16 and iPadOS 16.1 or later | [optional] 
 **SoftwareUpdateDeviceId** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **Udid** | Pointer to **string** |  | [optional] 
@@ -24,6 +26,8 @@ Name | Type | Description | Notes
 **MdmProfileExpirationTimestamp** | Pointer to **time.Time** |  | [optional] 
 **DeviceOwnershipLevel** | Pointer to **string** |  | [optional] 
 **EnrollmentMethod** | Pointer to **string** |  | [optional] 
+**EnrollmentSessionTokenValid** | Pointer to **bool** |  | [optional] 
+**DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
 **Site** | Pointer to [**V1Site**](V1Site.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ExtensionAttributeV2**](ExtensionAttributeV2.md) |  | [optional] 
 **Location** | Pointer to [**LocationV2**](LocationV2.md) |  | [optional] 
@@ -224,6 +228,56 @@ SetOsBuild sets OsBuild field to given value.
 `func (o *MobileDeviceDetailsV2) HasOsBuild() bool`
 
 HasOsBuild returns a boolean if a field has been set.
+
+### GetOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetailsV2) GetOsSupplementalBuildVersion() string`
+
+GetOsSupplementalBuildVersion returns the OsSupplementalBuildVersion field if non-nil, zero value otherwise.
+
+### GetOsSupplementalBuildVersionOk
+
+`func (o *MobileDeviceDetailsV2) GetOsSupplementalBuildVersionOk() (*string, bool)`
+
+GetOsSupplementalBuildVersionOk returns a tuple with the OsSupplementalBuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetailsV2) SetOsSupplementalBuildVersion(v string)`
+
+SetOsSupplementalBuildVersion sets OsSupplementalBuildVersion field to given value.
+
+### HasOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetailsV2) HasOsSupplementalBuildVersion() bool`
+
+HasOsSupplementalBuildVersion returns a boolean if a field has been set.
+
+### GetOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetailsV2) GetOsRapidSecurityResponse() string`
+
+GetOsRapidSecurityResponse returns the OsRapidSecurityResponse field if non-nil, zero value otherwise.
+
+### GetOsRapidSecurityResponseOk
+
+`func (o *MobileDeviceDetailsV2) GetOsRapidSecurityResponseOk() (*string, bool)`
+
+GetOsRapidSecurityResponseOk returns a tuple with the OsRapidSecurityResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetailsV2) SetOsRapidSecurityResponse(v string)`
+
+SetOsRapidSecurityResponse sets OsRapidSecurityResponse field to given value.
+
+### HasOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetailsV2) HasOsRapidSecurityResponse() bool`
+
+HasOsRapidSecurityResponse returns a boolean if a field has been set.
 
 ### GetSoftwareUpdateDeviceId
 
@@ -549,6 +603,56 @@ SetEnrollmentMethod sets EnrollmentMethod field to given value.
 `func (o *MobileDeviceDetailsV2) HasEnrollmentMethod() bool`
 
 HasEnrollmentMethod returns a boolean if a field has been set.
+
+### GetEnrollmentSessionTokenValid
+
+`func (o *MobileDeviceDetailsV2) GetEnrollmentSessionTokenValid() bool`
+
+GetEnrollmentSessionTokenValid returns the EnrollmentSessionTokenValid field if non-nil, zero value otherwise.
+
+### GetEnrollmentSessionTokenValidOk
+
+`func (o *MobileDeviceDetailsV2) GetEnrollmentSessionTokenValidOk() (*bool, bool)`
+
+GetEnrollmentSessionTokenValidOk returns a tuple with the EnrollmentSessionTokenValid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnrollmentSessionTokenValid
+
+`func (o *MobileDeviceDetailsV2) SetEnrollmentSessionTokenValid(v bool)`
+
+SetEnrollmentSessionTokenValid sets EnrollmentSessionTokenValid field to given value.
+
+### HasEnrollmentSessionTokenValid
+
+`func (o *MobileDeviceDetailsV2) HasEnrollmentSessionTokenValid() bool`
+
+HasEnrollmentSessionTokenValid returns a boolean if a field has been set.
+
+### GetDeclarativeDeviceManagementEnabled
+
+`func (o *MobileDeviceDetailsV2) GetDeclarativeDeviceManagementEnabled() bool`
+
+GetDeclarativeDeviceManagementEnabled returns the DeclarativeDeviceManagementEnabled field if non-nil, zero value otherwise.
+
+### GetDeclarativeDeviceManagementEnabledOk
+
+`func (o *MobileDeviceDetailsV2) GetDeclarativeDeviceManagementEnabledOk() (*bool, bool)`
+
+GetDeclarativeDeviceManagementEnabledOk returns a tuple with the DeclarativeDeviceManagementEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeclarativeDeviceManagementEnabled
+
+`func (o *MobileDeviceDetailsV2) SetDeclarativeDeviceManagementEnabled(v bool)`
+
+SetDeclarativeDeviceManagementEnabled sets DeclarativeDeviceManagementEnabled field to given value.
+
+### HasDeclarativeDeviceManagementEnabled
+
+`func (o *MobileDeviceDetailsV2) HasDeclarativeDeviceManagementEnabled() bool`
+
+HasDeclarativeDeviceManagementEnabled returns a boolean if a field has been set.
 
 ### GetSite
 

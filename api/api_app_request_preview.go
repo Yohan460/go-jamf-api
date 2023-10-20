@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type AppRequestPreviewApi interface {
+type AppRequestPreviewAPI interface {
 
 	/*
 	V1AppRequestFormInputFieldsGet Search for Form Input Fields 
@@ -28,13 +28,13 @@ type AppRequestPreviewApi interface {
 	Search for form input fields
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppRequestFormInputFieldsGetRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest
 	*/
-	V1AppRequestFormInputFieldsGet(ctx context.Context) ApiV1AppRequestFormInputFieldsGetRequest
+	V1AppRequestFormInputFieldsGet(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest
 
 	// V1AppRequestFormInputFieldsGetExecute executes the request
 	//  @return AppRequestFormInputFieldSearchResults
-	V1AppRequestFormInputFieldsGetExecute(r ApiV1AppRequestFormInputFieldsGetRequest) (*AppRequestFormInputFieldSearchResults, *http.Response, error)
+	V1AppRequestFormInputFieldsGetExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest) (*AppRequestFormInputFieldSearchResults, *http.Response, error)
 
 	/*
 	V1AppRequestFormInputFieldsIdDelete Remove specified Form Input Field record 
@@ -44,12 +44,12 @@ type AppRequestPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Instance id of form input field record
-	@return ApiV1AppRequestFormInputFieldsIdDeleteRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 	*/
-	V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdDeleteRequest
+	V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 
 	// V1AppRequestFormInputFieldsIdDeleteExecute executes the request
-	V1AppRequestFormInputFieldsIdDeleteExecute(r ApiV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error)
+	V1AppRequestFormInputFieldsIdDeleteExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1AppRequestFormInputFieldsIdGet Get specified Form Input Field object 
@@ -59,13 +59,13 @@ type AppRequestPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Instance id of form input field record
-	@return ApiV1AppRequestFormInputFieldsIdGetRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 	*/
-	V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdGetRequest
+	V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 
 	// V1AppRequestFormInputFieldsIdGetExecute executes the request
 	//  @return AppRequestFormInputField
-	V1AppRequestFormInputFieldsIdGetExecute(r ApiV1AppRequestFormInputFieldsIdGetRequest) (*AppRequestFormInputField, *http.Response, error)
+	V1AppRequestFormInputFieldsIdGetExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest) (*AppRequestFormInputField, *http.Response, error)
 
 	/*
 	V1AppRequestFormInputFieldsIdPut Update specified Form Input Field object 
@@ -75,13 +75,13 @@ type AppRequestPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Instance id of form input field record
-	@return ApiV1AppRequestFormInputFieldsIdPutRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 	*/
-	V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdPutRequest
+	V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 
 	// V1AppRequestFormInputFieldsIdPutExecute executes the request
 	//  @return AppRequestFormInputField
-	V1AppRequestFormInputFieldsIdPutExecute(r ApiV1AppRequestFormInputFieldsIdPutRequest) (*AppRequestFormInputField, *http.Response, error)
+	V1AppRequestFormInputFieldsIdPutExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest) (*AppRequestFormInputField, *http.Response, error)
 
 	/*
 	V1AppRequestFormInputFieldsPost Create Form Input Field record 
@@ -90,13 +90,13 @@ type AppRequestPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppRequestFormInputFieldsPostRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest
 	*/
-	V1AppRequestFormInputFieldsPost(ctx context.Context) ApiV1AppRequestFormInputFieldsPostRequest
+	V1AppRequestFormInputFieldsPost(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest
 
 	// V1AppRequestFormInputFieldsPostExecute executes the request
 	//  @return AppRequestFormInputField
-	V1AppRequestFormInputFieldsPostExecute(r ApiV1AppRequestFormInputFieldsPostRequest) (*AppRequestFormInputField, *http.Response, error)
+	V1AppRequestFormInputFieldsPostExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest) (*AppRequestFormInputField, *http.Response, error)
 
 	/*
 	V1AppRequestFormInputFieldsPut Replace all Form Input Fields 
@@ -105,13 +105,13 @@ type AppRequestPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppRequestFormInputFieldsPutRequest
+	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest
 	*/
-	V1AppRequestFormInputFieldsPut(ctx context.Context) ApiV1AppRequestFormInputFieldsPutRequest
+	V1AppRequestFormInputFieldsPut(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest
 
 	// V1AppRequestFormInputFieldsPutExecute executes the request
 	//  @return []AppRequestFormInputField
-	V1AppRequestFormInputFieldsPutExecute(r ApiV1AppRequestFormInputFieldsPutRequest) ([]AppRequestFormInputField, *http.Response, error)
+	V1AppRequestFormInputFieldsPutExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest) ([]AppRequestFormInputField, *http.Response, error)
 
 	/*
 	V1AppRequestSettingsGet Get Applicastion Request Settings 
@@ -120,13 +120,13 @@ type AppRequestPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppRequestSettingsGetRequest
+	@return AppRequestPreviewAPIV1AppRequestSettingsGetRequest
 	*/
-	V1AppRequestSettingsGet(ctx context.Context) ApiV1AppRequestSettingsGetRequest
+	V1AppRequestSettingsGet(ctx context.Context) AppRequestPreviewAPIV1AppRequestSettingsGetRequest
 
 	// V1AppRequestSettingsGetExecute executes the request
 	//  @return AppRequestSettings
-	V1AppRequestSettingsGetExecute(r ApiV1AppRequestSettingsGetRequest) (*AppRequestSettings, *http.Response, error)
+	V1AppRequestSettingsGetExecute(r AppRequestPreviewAPIV1AppRequestSettingsGetRequest) (*AppRequestSettings, *http.Response, error)
 
 	/*
 	V1AppRequestSettingsPut Update Application Request Settings 
@@ -135,24 +135,24 @@ type AppRequestPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AppRequestSettingsPutRequest
+	@return AppRequestPreviewAPIV1AppRequestSettingsPutRequest
 	*/
-	V1AppRequestSettingsPut(ctx context.Context) ApiV1AppRequestSettingsPutRequest
+	V1AppRequestSettingsPut(ctx context.Context) AppRequestPreviewAPIV1AppRequestSettingsPutRequest
 
 	// V1AppRequestSettingsPutExecute executes the request
 	//  @return AppRequestSettings
-	V1AppRequestSettingsPutExecute(r ApiV1AppRequestSettingsPutRequest) (*AppRequestSettings, *http.Response, error)
+	V1AppRequestSettingsPutExecute(r AppRequestPreviewAPIV1AppRequestSettingsPutRequest) (*AppRequestSettings, *http.Response, error)
 }
 
-// AppRequestPreviewApiService AppRequestPreviewApi service
-type AppRequestPreviewApiService service
+// AppRequestPreviewAPIService AppRequestPreviewAPI service
+type AppRequestPreviewAPIService service
 
-type ApiV1AppRequestFormInputFieldsGetRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 }
 
-func (r ApiV1AppRequestFormInputFieldsGetRequest) Execute() (*AppRequestFormInputFieldSearchResults, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest) Execute() (*AppRequestFormInputFieldSearchResults, *http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsGetExecute(r)
 }
 
@@ -162,10 +162,10 @@ V1AppRequestFormInputFieldsGet Search for Form Input Fields
 Search for form input fields
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppRequestFormInputFieldsGetRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGet(ctx context.Context) ApiV1AppRequestFormInputFieldsGetRequest {
-	return ApiV1AppRequestFormInputFieldsGetRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsGet(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -173,7 +173,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGet(ctx context
 
 // Execute executes the request
 //  @return AppRequestFormInputFieldSearchResults
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGetExecute(r ApiV1AppRequestFormInputFieldsGetRequest) (*AppRequestFormInputFieldSearchResults, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsGetExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsGetRequest) (*AppRequestFormInputFieldSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -181,7 +181,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGetExecute(r Ap
 		localVarReturnValue  *AppRequestFormInputFieldSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -219,9 +219,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGetExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -246,13 +246,13 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestFormInputFieldsIdDeleteRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	id int32
 }
 
-func (r ApiV1AppRequestFormInputFieldsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsIdDeleteExecute(r)
 }
 
@@ -264,10 +264,10 @@ Removes specified form input field record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Instance id of form input field record
- @return ApiV1AppRequestFormInputFieldsIdDeleteRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdDeleteRequest {
-	return ApiV1AppRequestFormInputFieldsIdDeleteRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -275,20 +275,20 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDelete(ctx co
 }
 
 // Execute executes the request
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDeleteExecute(r ApiV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdDeleteExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/app-request/form-input-fields/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -321,9 +321,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDeleteExecute
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -340,7 +340,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDeleteExecute
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -348,13 +349,13 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdDeleteExecute
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestFormInputFieldsIdGetRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	id int32
 }
 
-func (r ApiV1AppRequestFormInputFieldsIdGetRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsIdGetExecute(r)
 }
 
@@ -366,10 +367,10 @@ Gets specified form input field object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Instance id of form input field record
- @return ApiV1AppRequestFormInputFieldsIdGetRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdGetRequest {
-	return ApiV1AppRequestFormInputFieldsIdGetRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -378,7 +379,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGet(ctx conte
 
 // Execute executes the request
 //  @return AppRequestFormInputField
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r ApiV1AppRequestFormInputFieldsIdGetRequest) (*AppRequestFormInputField, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdGetExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest) (*AppRequestFormInputField, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -386,13 +387,13 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r 
 		localVarReturnValue  *AppRequestFormInputField
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/app-request/form-input-fields/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -425,9 +426,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -444,7 +445,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -461,20 +463,20 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdGetExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestFormInputFieldsIdPutRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	id int32
 	appRequestFormInputField *AppRequestFormInputField
 }
 
 // form input field object to create. ids defined in this body will be ignored
-func (r ApiV1AppRequestFormInputFieldsIdPutRequest) AppRequestFormInputField(appRequestFormInputField AppRequestFormInputField) ApiV1AppRequestFormInputFieldsIdPutRequest {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest) AppRequestFormInputField(appRequestFormInputField AppRequestFormInputField) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest {
 	r.appRequestFormInputField = &appRequestFormInputField
 	return r
 }
 
-func (r ApiV1AppRequestFormInputFieldsIdPutRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsIdPutExecute(r)
 }
 
@@ -486,10 +488,10 @@ Update specified form input field object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Instance id of form input field record
- @return ApiV1AppRequestFormInputFieldsIdPutRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) ApiV1AppRequestFormInputFieldsIdPutRequest {
-	return ApiV1AppRequestFormInputFieldsIdPutRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -498,7 +500,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPut(ctx conte
 
 // Execute executes the request
 //  @return AppRequestFormInputField
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r ApiV1AppRequestFormInputFieldsIdPutRequest) (*AppRequestFormInputField, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdPutExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest) (*AppRequestFormInputField, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -506,13 +508,13 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 		localVarReturnValue  *AppRequestFormInputField
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/app-request/form-input-fields/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -550,9 +552,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -569,7 +571,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -579,7 +582,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -596,19 +600,19 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsIdPutExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestFormInputFieldsPostRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	appRequestFormInputField *AppRequestFormInputField
 }
 
 // form input field object to create. ids defined in this body will be ignored
-func (r ApiV1AppRequestFormInputFieldsPostRequest) AppRequestFormInputField(appRequestFormInputField AppRequestFormInputField) ApiV1AppRequestFormInputFieldsPostRequest {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest) AppRequestFormInputField(appRequestFormInputField AppRequestFormInputField) AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest {
 	r.appRequestFormInputField = &appRequestFormInputField
 	return r
 }
 
-func (r ApiV1AppRequestFormInputFieldsPostRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsPostExecute(r)
 }
 
@@ -619,10 +623,10 @@ Create form input field record
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppRequestFormInputFieldsPostRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPost(ctx context.Context) ApiV1AppRequestFormInputFieldsPostRequest {
-	return ApiV1AppRequestFormInputFieldsPostRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsPost(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -630,7 +634,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPost(ctx contex
 
 // Execute executes the request
 //  @return AppRequestFormInputField
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r ApiV1AppRequestFormInputFieldsPostRequest) (*AppRequestFormInputField, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsPostExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsPostRequest) (*AppRequestFormInputField, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -638,7 +642,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r A
 		localVarReturnValue  *AppRequestFormInputField
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -681,9 +685,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -700,7 +704,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -717,19 +722,19 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestFormInputFieldsPutRequest struct {
+type AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	appRequestFormInputField *[]AppRequestFormInputField
 }
 
 // list of form input fields to replace all existing fields. Will delete, update, and create all input fields accordingly.
-func (r ApiV1AppRequestFormInputFieldsPutRequest) AppRequestFormInputField(appRequestFormInputField []AppRequestFormInputField) ApiV1AppRequestFormInputFieldsPutRequest {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest) AppRequestFormInputField(appRequestFormInputField []AppRequestFormInputField) AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest {
 	r.appRequestFormInputField = &appRequestFormInputField
 	return r
 }
 
-func (r ApiV1AppRequestFormInputFieldsPutRequest) Execute() ([]AppRequestFormInputField, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest) Execute() ([]AppRequestFormInputField, *http.Response, error) {
 	return r.ApiService.V1AppRequestFormInputFieldsPutExecute(r)
 }
 
@@ -740,10 +745,10 @@ Replace all form input fields. Will delete, update, and create all input fields 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppRequestFormInputFieldsPutRequest
+ @return AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPut(ctx context.Context) ApiV1AppRequestFormInputFieldsPutRequest {
-	return ApiV1AppRequestFormInputFieldsPutRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsPut(ctx context.Context) AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest {
+	return AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -751,7 +756,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPut(ctx context
 
 // Execute executes the request
 //  @return []AppRequestFormInputField
-func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r ApiV1AppRequestFormInputFieldsPutRequest) ([]AppRequestFormInputField, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsPutExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsPutRequest) ([]AppRequestFormInputField, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -759,7 +764,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 		localVarReturnValue  []AppRequestFormInputField
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestFormInputFieldsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestFormInputFieldsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -802,9 +807,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -821,7 +826,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -831,7 +837,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -848,12 +855,12 @@ func (a *AppRequestPreviewApiService) V1AppRequestFormInputFieldsPutExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestSettingsGetRequest struct {
+type AppRequestPreviewAPIV1AppRequestSettingsGetRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 }
 
-func (r ApiV1AppRequestSettingsGetRequest) Execute() (*AppRequestSettings, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestSettingsGetRequest) Execute() (*AppRequestSettings, *http.Response, error) {
 	return r.ApiService.V1AppRequestSettingsGetExecute(r)
 }
 
@@ -864,10 +871,10 @@ Get app request settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppRequestSettingsGetRequest
+ @return AppRequestPreviewAPIV1AppRequestSettingsGetRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestSettingsGet(ctx context.Context) ApiV1AppRequestSettingsGetRequest {
-	return ApiV1AppRequestSettingsGetRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestSettingsGet(ctx context.Context) AppRequestPreviewAPIV1AppRequestSettingsGetRequest {
+	return AppRequestPreviewAPIV1AppRequestSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -875,7 +882,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsGet(ctx context.Contex
 
 // Execute executes the request
 //  @return AppRequestSettings
-func (a *AppRequestPreviewApiService) V1AppRequestSettingsGetExecute(r ApiV1AppRequestSettingsGetRequest) (*AppRequestSettings, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestSettingsGetExecute(r AppRequestPreviewAPIV1AppRequestSettingsGetRequest) (*AppRequestSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -883,7 +890,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsGetExecute(r ApiV1AppR
 		localVarReturnValue  *AppRequestSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -921,9 +928,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsGetExecute(r ApiV1AppR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -948,19 +955,19 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsGetExecute(r ApiV1AppR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AppRequestSettingsPutRequest struct {
+type AppRequestPreviewAPIV1AppRequestSettingsPutRequest struct {
 	ctx context.Context
-	ApiService AppRequestPreviewApi
+	ApiService AppRequestPreviewAPI
 	appRequestSettings *AppRequestSettings
 }
 
 // App request settings object
-func (r ApiV1AppRequestSettingsPutRequest) AppRequestSettings(appRequestSettings AppRequestSettings) ApiV1AppRequestSettingsPutRequest {
+func (r AppRequestPreviewAPIV1AppRequestSettingsPutRequest) AppRequestSettings(appRequestSettings AppRequestSettings) AppRequestPreviewAPIV1AppRequestSettingsPutRequest {
 	r.appRequestSettings = &appRequestSettings
 	return r
 }
 
-func (r ApiV1AppRequestSettingsPutRequest) Execute() (*AppRequestSettings, *http.Response, error) {
+func (r AppRequestPreviewAPIV1AppRequestSettingsPutRequest) Execute() (*AppRequestSettings, *http.Response, error) {
 	return r.ApiService.V1AppRequestSettingsPutExecute(r)
 }
 
@@ -971,10 +978,10 @@ Update app request settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AppRequestSettingsPutRequest
+ @return AppRequestPreviewAPIV1AppRequestSettingsPutRequest
 */
-func (a *AppRequestPreviewApiService) V1AppRequestSettingsPut(ctx context.Context) ApiV1AppRequestSettingsPutRequest {
-	return ApiV1AppRequestSettingsPutRequest{
+func (a *AppRequestPreviewAPIService) V1AppRequestSettingsPut(ctx context.Context) AppRequestPreviewAPIV1AppRequestSettingsPutRequest {
+	return AppRequestPreviewAPIV1AppRequestSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -982,7 +989,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsPut(ctx context.Contex
 
 // Execute executes the request
 //  @return AppRequestSettings
-func (a *AppRequestPreviewApiService) V1AppRequestSettingsPutExecute(r ApiV1AppRequestSettingsPutRequest) (*AppRequestSettings, *http.Response, error) {
+func (a *AppRequestPreviewAPIService) V1AppRequestSettingsPutExecute(r AppRequestPreviewAPIV1AppRequestSettingsPutRequest) (*AppRequestSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -990,7 +997,7 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsPutExecute(r ApiV1AppR
 		localVarReturnValue  *AppRequestSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewApiService.V1AppRequestSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AppRequestPreviewAPIService.V1AppRequestSettingsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1033,9 +1040,9 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsPutExecute(r ApiV1AppR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1052,7 +1059,8 @@ func (a *AppRequestPreviewApiService) V1AppRequestSettingsPutExecute(r ApiV1AppR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

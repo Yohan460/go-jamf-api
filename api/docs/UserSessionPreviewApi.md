@@ -1,11 +1,11 @@
-# \UserSessionPreviewApi
+# \UserSessionPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**UserGet**](UserSessionPreviewApi.md#UserGet) | **Get** /user | Return all Jamf Pro user acounts 
-[**UserUpdateSessionPost**](UserSessionPreviewApi.md#UserUpdateSessionPost) | **Post** /user/updateSession | Update values in the User&#39;s current session 
+[**UserGet**](UserSessionPreviewAPI.md#UserGet) | **Get** /user | Return all Jamf Pro user acounts 
+[**UserUpdateSessionPost**](UserSessionPreviewAPI.md#UserUpdateSessionPost) | **Post** /user/updateSession | Update values in the User&#39;s current session 
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSessionPreviewApi.UserGet(context.Background()).Execute()
+    resp, r, err := apiClient.UserSessionPreviewAPI.UserGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewApi.UserGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UserGet`: []Account
-    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewApi.UserGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserGet`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -95,13 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSessionPreviewApi.UserUpdateSessionPost(context.Background()).Session(session).Execute()
+    resp, r, err := apiClient.UserSessionPreviewAPI.UserUpdateSessionPost(context.Background()).Session(session).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewApi.UserUpdateSessionPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserUpdateSessionPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UserUpdateSessionPost`: Session
-    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewApi.UserUpdateSessionPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserUpdateSessionPost`: %v\n", resp)
 }
 ```
 

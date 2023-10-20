@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SessionStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionStatus{}
+
 // SessionStatus Session status
 type SessionStatus struct {
 	// Session state
@@ -41,7 +44,7 @@ func NewSessionStatusWithDefaults() *SessionStatus {
 
 // GetSessionState returns the SessionState field value if set, zero value otherwise.
 func (o *SessionStatus) GetSessionState() string {
-	if o == nil || o.SessionState == nil {
+	if o == nil || IsNil(o.SessionState) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *SessionStatus) GetSessionState() string {
 // GetSessionStateOk returns a tuple with the SessionState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionStatus) GetSessionStateOk() (*string, bool) {
-	if o == nil || o.SessionState == nil {
+	if o == nil || IsNil(o.SessionState) {
 		return nil, false
 	}
 	return o.SessionState, true
@@ -59,7 +62,7 @@ func (o *SessionStatus) GetSessionStateOk() (*string, bool) {
 
 // HasSessionState returns a boolean if a field has been set.
 func (o *SessionStatus) HasSessionState() bool {
-	if o != nil && o.SessionState != nil {
+	if o != nil && !IsNil(o.SessionState) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *SessionStatus) SetSessionState(v string) {
 
 // GetOnline returns the Online field value if set, zero value otherwise.
 func (o *SessionStatus) GetOnline() bool {
-	if o == nil || o.Online == nil {
+	if o == nil || IsNil(o.Online) {
 		var ret bool
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *SessionStatus) GetOnline() bool {
 // GetOnlineOk returns a tuple with the Online field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionStatus) GetOnlineOk() (*bool, bool) {
-	if o == nil || o.Online == nil {
+	if o == nil || IsNil(o.Online) {
 		return nil, false
 	}
 	return o.Online, true
@@ -91,7 +94,7 @@ func (o *SessionStatus) GetOnlineOk() (*bool, bool) {
 
 // HasOnline returns a boolean if a field has been set.
 func (o *SessionStatus) HasOnline() bool {
-	if o != nil && o.Online != nil {
+	if o != nil && !IsNil(o.Online) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *SessionStatus) SetOnline(v bool) {
 }
 
 func (o SessionStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SessionState != nil {
-		toSerialize["sessionState"] = o.SessionState
-	}
-	if o.Online != nil {
-		toSerialize["online"] = o.Online
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SessionStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SessionState) {
+		toSerialize["sessionState"] = o.SessionState
+	}
+	if !IsNil(o.Online) {
+		toSerialize["online"] = o.Online
+	}
+	return toSerialize, nil
 }
 
 type NullableSessionStatus struct {

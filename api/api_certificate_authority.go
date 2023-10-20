@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type CertificateAuthorityApi interface {
+type CertificateAuthorityAPI interface {
 
 	/*
 	V1PkiCertificateAuthorityActiveDerGet Returns X.509 of active Certificate Authority (CA) in DER format
@@ -29,13 +29,13 @@ type CertificateAuthorityApi interface {
 	Returns X.509 of active Certificate Authority (CA) in DER format
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PkiCertificateAuthorityActiveDerGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest
 	*/
-	V1PkiCertificateAuthorityActiveDerGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveDerGetRequest
+	V1PkiCertificateAuthorityActiveDerGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest
 
 	// V1PkiCertificateAuthorityActiveDerGetExecute executes the request
 	//  @return *os.File
-	V1PkiCertificateAuthorityActiveDerGetExecute(r ApiV1PkiCertificateAuthorityActiveDerGetRequest) (**os.File, *http.Response, error)
+	V1PkiCertificateAuthorityActiveDerGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1PkiCertificateAuthorityActiveGet Returns X.509 details of the active Certificate Authority (CA)
@@ -43,13 +43,13 @@ type CertificateAuthorityApi interface {
 	Returns X.509 details of the active Certificate Authority (CA)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PkiCertificateAuthorityActiveGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest
 	*/
-	V1PkiCertificateAuthorityActiveGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveGetRequest
+	V1PkiCertificateAuthorityActiveGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest
 
 	// V1PkiCertificateAuthorityActiveGetExecute executes the request
 	//  @return CertificateRecord
-	V1PkiCertificateAuthorityActiveGetExecute(r ApiV1PkiCertificateAuthorityActiveGetRequest) (*CertificateRecord, *http.Response, error)
+	V1PkiCertificateAuthorityActiveGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest) (*CertificateRecord, *http.Response, error)
 
 	/*
 	V1PkiCertificateAuthorityActivePemGet Returns active Certificate Authority (CA) in PEM format
@@ -57,13 +57,13 @@ type CertificateAuthorityApi interface {
 	Returns active Certificate Authority (CA) in PEM format
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PkiCertificateAuthorityActivePemGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest
 	*/
-	V1PkiCertificateAuthorityActivePemGet(ctx context.Context) ApiV1PkiCertificateAuthorityActivePemGetRequest
+	V1PkiCertificateAuthorityActivePemGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest
 
 	// V1PkiCertificateAuthorityActivePemGetExecute executes the request
 	//  @return *os.File
-	V1PkiCertificateAuthorityActivePemGetExecute(r ApiV1PkiCertificateAuthorityActivePemGetRequest) (**os.File, *http.Response, error)
+	V1PkiCertificateAuthorityActivePemGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1PkiCertificateAuthorityIdDerGet Returns X.509 current Certificate Authority (CA) with provided ID in DER format
@@ -72,13 +72,13 @@ type CertificateAuthorityApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id UUID of the Certificate Authority (CA)
-	@return ApiV1PkiCertificateAuthorityIdDerGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest
 	*/
-	V1PkiCertificateAuthorityIdDerGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdDerGetRequest
+	V1PkiCertificateAuthorityIdDerGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest
 
 	// V1PkiCertificateAuthorityIdDerGetExecute executes the request
 	//  @return *os.File
-	V1PkiCertificateAuthorityIdDerGetExecute(r ApiV1PkiCertificateAuthorityIdDerGetRequest) (**os.File, *http.Response, error)
+	V1PkiCertificateAuthorityIdDerGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1PkiCertificateAuthorityIdGet Returns X.509 details of Certificate Authority (CA) with provided ID
@@ -87,13 +87,13 @@ type CertificateAuthorityApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id UUID of the Certificate Authority (CA)
-	@return ApiV1PkiCertificateAuthorityIdGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest
 	*/
-	V1PkiCertificateAuthorityIdGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdGetRequest
+	V1PkiCertificateAuthorityIdGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest
 
 	// V1PkiCertificateAuthorityIdGetExecute executes the request
 	//  @return CertificateRecord
-	V1PkiCertificateAuthorityIdGetExecute(r ApiV1PkiCertificateAuthorityIdGetRequest) (*CertificateRecord, *http.Response, error)
+	V1PkiCertificateAuthorityIdGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest) (*CertificateRecord, *http.Response, error)
 
 	/*
 	V1PkiCertificateAuthorityIdPemGet Returns current Certificate Authority (CA) with provided ID in PEM format
@@ -102,24 +102,24 @@ type CertificateAuthorityApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id UUID of the Certificate Authority (CA)
-	@return ApiV1PkiCertificateAuthorityIdPemGetRequest
+	@return CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest
 	*/
-	V1PkiCertificateAuthorityIdPemGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdPemGetRequest
+	V1PkiCertificateAuthorityIdPemGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest
 
 	// V1PkiCertificateAuthorityIdPemGetExecute executes the request
 	//  @return *os.File
-	V1PkiCertificateAuthorityIdPemGetExecute(r ApiV1PkiCertificateAuthorityIdPemGetRequest) (**os.File, *http.Response, error)
+	V1PkiCertificateAuthorityIdPemGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest) (*os.File, *http.Response, error)
 }
 
-// CertificateAuthorityApiService CertificateAuthorityApi service
-type CertificateAuthorityApiService service
+// CertificateAuthorityAPIService CertificateAuthorityAPI service
+type CertificateAuthorityAPIService service
 
-type ApiV1PkiCertificateAuthorityActiveDerGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 }
 
-func (r ApiV1PkiCertificateAuthorityActiveDerGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityActiveDerGetExecute(r)
 }
 
@@ -129,10 +129,10 @@ V1PkiCertificateAuthorityActiveDerGet Returns X.509 of active Certificate Author
 Returns X.509 of active Certificate Authority (CA) in DER format
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PkiCertificateAuthorityActiveDerGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveDerGetRequest {
-	return ApiV1PkiCertificateAuthorityActiveDerGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActiveDerGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -140,15 +140,15 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGet(c
 
 // Execute executes the request
 //  @return *os.File
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGetExecute(r ApiV1PkiCertificateAuthorityActiveDerGetRequest) (**os.File, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActiveDerGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveDerGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityActiveDerGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityActiveDerGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -186,9 +186,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGetEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -213,12 +213,12 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveDerGetEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiCertificateAuthorityActiveGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 }
 
-func (r ApiV1PkiCertificateAuthorityActiveGetRequest) Execute() (*CertificateRecord, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest) Execute() (*CertificateRecord, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityActiveGetExecute(r)
 }
 
@@ -228,10 +228,10 @@ V1PkiCertificateAuthorityActiveGet Returns X.509 details of the active Certifica
 Returns X.509 details of the active Certificate Authority (CA)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PkiCertificateAuthorityActiveGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGet(ctx context.Context) ApiV1PkiCertificateAuthorityActiveGetRequest {
-	return ApiV1PkiCertificateAuthorityActiveGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActiveGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -239,7 +239,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGet(ctx 
 
 // Execute executes the request
 //  @return CertificateRecord
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGetExecute(r ApiV1PkiCertificateAuthorityActiveGetRequest) (*CertificateRecord, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActiveGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActiveGetRequest) (*CertificateRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -247,7 +247,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGetExecu
 		localVarReturnValue  *CertificateRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityActiveGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityActiveGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -285,9 +285,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGetExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -312,12 +312,12 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActiveGetExecu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiCertificateAuthorityActivePemGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 }
 
-func (r ApiV1PkiCertificateAuthorityActivePemGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityActivePemGetExecute(r)
 }
 
@@ -327,10 +327,10 @@ V1PkiCertificateAuthorityActivePemGet Returns active Certificate Authority (CA) 
 Returns active Certificate Authority (CA) in PEM format
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PkiCertificateAuthorityActivePemGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGet(ctx context.Context) ApiV1PkiCertificateAuthorityActivePemGetRequest {
-	return ApiV1PkiCertificateAuthorityActivePemGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActivePemGet(ctx context.Context) CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -338,15 +338,15 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGet(c
 
 // Execute executes the request
 //  @return *os.File
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGetExecute(r ApiV1PkiCertificateAuthorityActivePemGetRequest) (**os.File, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityActivePemGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityActivePemGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityActivePemGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityActivePemGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -384,9 +384,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGetEx
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -411,13 +411,13 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityActivePemGetEx
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiCertificateAuthorityIdDerGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 	id string
 }
 
-func (r ApiV1PkiCertificateAuthorityIdDerGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityIdDerGetExecute(r)
 }
 
@@ -428,10 +428,10 @@ Returns X.509 current Certificate Authority (CA) with provided ID in DER format
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id UUID of the Certificate Authority (CA)
- @return ApiV1PkiCertificateAuthorityIdDerGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdDerGetRequest {
-	return ApiV1PkiCertificateAuthorityIdDerGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdDerGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -440,21 +440,21 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGet(ctx c
 
 // Execute executes the request
 //  @return *os.File
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecute(r ApiV1PkiCertificateAuthorityIdDerGetRequest) (**os.File, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdDerGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdDerGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityIdDerGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityIdDerGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/certificate-authority/{id}/der"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -487,9 +487,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -506,7 +506,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -516,7 +517,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -533,13 +535,13 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdDerGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiCertificateAuthorityIdGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 	id string
 }
 
-func (r ApiV1PkiCertificateAuthorityIdGetRequest) Execute() (*CertificateRecord, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest) Execute() (*CertificateRecord, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityIdGetExecute(r)
 }
 
@@ -550,10 +552,10 @@ Returns X.509 details of Certificate Authority (CA) with provided ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id UUID of the Certificate Authority (CA)
- @return ApiV1PkiCertificateAuthorityIdGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdGetRequest {
-	return ApiV1PkiCertificateAuthorityIdGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -562,7 +564,7 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGet(ctx cont
 
 // Execute executes the request
 //  @return CertificateRecord
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r ApiV1PkiCertificateAuthorityIdGetRequest) (*CertificateRecord, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdGetRequest) (*CertificateRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -570,13 +572,13 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 		localVarReturnValue  *CertificateRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/certificate-authority/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -609,9 +611,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -628,7 +630,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -638,7 +641,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -655,13 +659,13 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdGetExecute(r
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PkiCertificateAuthorityIdPemGetRequest struct {
+type CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest struct {
 	ctx context.Context
-	ApiService CertificateAuthorityApi
+	ApiService CertificateAuthorityAPI
 	id string
 }
 
-func (r ApiV1PkiCertificateAuthorityIdPemGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1PkiCertificateAuthorityIdPemGetExecute(r)
 }
 
@@ -672,10 +676,10 @@ Returns current Certificate Authority (CA) with provided ID in PEM format
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id UUID of the Certificate Authority (CA)
- @return ApiV1PkiCertificateAuthorityIdPemGetRequest
+ @return CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest
 */
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGet(ctx context.Context, id string) ApiV1PkiCertificateAuthorityIdPemGetRequest {
-	return ApiV1PkiCertificateAuthorityIdPemGetRequest{
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdPemGet(ctx context.Context, id string) CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest {
+	return CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -684,21 +688,21 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGet(ctx c
 
 // Execute executes the request
 //  @return *os.File
-func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGetExecute(r ApiV1PkiCertificateAuthorityIdPemGetRequest) (**os.File, *http.Response, error) {
+func (a *CertificateAuthorityAPIService) V1PkiCertificateAuthorityIdPemGetExecute(r CertificateAuthorityAPIV1PkiCertificateAuthorityIdPemGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityApiService.V1PkiCertificateAuthorityIdPemGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CertificateAuthorityAPIService.V1PkiCertificateAuthorityIdPemGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/pki/certificate-authority/{id}/pem"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -731,9 +735,9 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -750,7 +754,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGetExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -760,7 +765,8 @@ func (a *CertificateAuthorityApiService) V1PkiCertificateAuthorityIdPemGetExecut
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

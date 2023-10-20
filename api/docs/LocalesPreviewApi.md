@@ -1,10 +1,10 @@
-# \LocalesPreviewApi
+# \LocalesPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1LocalesGet**](LocalesPreviewApi.md#V1LocalesGet) | **Get** /v1/locales | Return locales that can be used in other features 
+[**V1LocalesGet**](LocalesPreviewAPI.md#V1LocalesGet) | **Get** /v1/locales | Return locales that can be used in other features 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalesPreviewApi.V1LocalesGet(context.Background()).Execute()
+    resp, r, err := apiClient.LocalesPreviewAPI.V1LocalesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalesPreviewApi.V1LocalesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LocalesPreviewAPI.V1LocalesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1LocalesGet`: []Locale
-    fmt.Fprintf(os.Stdout, "Response from `LocalesPreviewApi.V1LocalesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LocalesPreviewAPI.V1LocalesGet`: %v\n", resp)
 }
 ```
 

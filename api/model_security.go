@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Security type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Security{}
+
 // Security struct for Security
 type Security struct {
 	IsDataProtected *bool `json:"isDataProtected,omitempty"`
@@ -46,7 +49,7 @@ func NewSecurityWithDefaults() *Security {
 
 // GetIsDataProtected returns the IsDataProtected field value if set, zero value otherwise.
 func (o *Security) GetIsDataProtected() bool {
-	if o == nil || o.IsDataProtected == nil {
+	if o == nil || IsNil(o.IsDataProtected) {
 		var ret bool
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *Security) GetIsDataProtected() bool {
 // GetIsDataProtectedOk returns a tuple with the IsDataProtected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsDataProtectedOk() (*bool, bool) {
-	if o == nil || o.IsDataProtected == nil {
+	if o == nil || IsNil(o.IsDataProtected) {
 		return nil, false
 	}
 	return o.IsDataProtected, true
@@ -64,7 +67,7 @@ func (o *Security) GetIsDataProtectedOk() (*bool, bool) {
 
 // HasIsDataProtected returns a boolean if a field has been set.
 func (o *Security) HasIsDataProtected() bool {
-	if o != nil && o.IsDataProtected != nil {
+	if o != nil && !IsNil(o.IsDataProtected) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *Security) SetIsDataProtected(v bool) {
 
 // GetIsBlockLevelEncryptionCapable returns the IsBlockLevelEncryptionCapable field value if set, zero value otherwise.
 func (o *Security) GetIsBlockLevelEncryptionCapable() bool {
-	if o == nil || o.IsBlockLevelEncryptionCapable == nil {
+	if o == nil || IsNil(o.IsBlockLevelEncryptionCapable) {
 		var ret bool
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *Security) GetIsBlockLevelEncryptionCapable() bool {
 // GetIsBlockLevelEncryptionCapableOk returns a tuple with the IsBlockLevelEncryptionCapable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsBlockLevelEncryptionCapableOk() (*bool, bool) {
-	if o == nil || o.IsBlockLevelEncryptionCapable == nil {
+	if o == nil || IsNil(o.IsBlockLevelEncryptionCapable) {
 		return nil, false
 	}
 	return o.IsBlockLevelEncryptionCapable, true
@@ -96,7 +99,7 @@ func (o *Security) GetIsBlockLevelEncryptionCapableOk() (*bool, bool) {
 
 // HasIsBlockLevelEncryptionCapable returns a boolean if a field has been set.
 func (o *Security) HasIsBlockLevelEncryptionCapable() bool {
-	if o != nil && o.IsBlockLevelEncryptionCapable != nil {
+	if o != nil && !IsNil(o.IsBlockLevelEncryptionCapable) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *Security) SetIsBlockLevelEncryptionCapable(v bool) {
 
 // GetIsFileLevelEncryptionCapable returns the IsFileLevelEncryptionCapable field value if set, zero value otherwise.
 func (o *Security) GetIsFileLevelEncryptionCapable() bool {
-	if o == nil || o.IsFileLevelEncryptionCapable == nil {
+	if o == nil || IsNil(o.IsFileLevelEncryptionCapable) {
 		var ret bool
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *Security) GetIsFileLevelEncryptionCapable() bool {
 // GetIsFileLevelEncryptionCapableOk returns a tuple with the IsFileLevelEncryptionCapable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsFileLevelEncryptionCapableOk() (*bool, bool) {
-	if o == nil || o.IsFileLevelEncryptionCapable == nil {
+	if o == nil || IsNil(o.IsFileLevelEncryptionCapable) {
 		return nil, false
 	}
 	return o.IsFileLevelEncryptionCapable, true
@@ -128,7 +131,7 @@ func (o *Security) GetIsFileLevelEncryptionCapableOk() (*bool, bool) {
 
 // HasIsFileLevelEncryptionCapable returns a boolean if a field has been set.
 func (o *Security) HasIsFileLevelEncryptionCapable() bool {
-	if o != nil && o.IsFileLevelEncryptionCapable != nil {
+	if o != nil && !IsNil(o.IsFileLevelEncryptionCapable) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *Security) SetIsFileLevelEncryptionCapable(v bool) {
 
 // GetIsPasscodePresent returns the IsPasscodePresent field value if set, zero value otherwise.
 func (o *Security) GetIsPasscodePresent() bool {
-	if o == nil || o.IsPasscodePresent == nil {
+	if o == nil || IsNil(o.IsPasscodePresent) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *Security) GetIsPasscodePresent() bool {
 // GetIsPasscodePresentOk returns a tuple with the IsPasscodePresent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsPasscodePresentOk() (*bool, bool) {
-	if o == nil || o.IsPasscodePresent == nil {
+	if o == nil || IsNil(o.IsPasscodePresent) {
 		return nil, false
 	}
 	return o.IsPasscodePresent, true
@@ -160,7 +163,7 @@ func (o *Security) GetIsPasscodePresentOk() (*bool, bool) {
 
 // HasIsPasscodePresent returns a boolean if a field has been set.
 func (o *Security) HasIsPasscodePresent() bool {
-	if o != nil && o.IsPasscodePresent != nil {
+	if o != nil && !IsNil(o.IsPasscodePresent) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *Security) SetIsPasscodePresent(v bool) {
 
 // GetIsPasscodeCompliant returns the IsPasscodeCompliant field value if set, zero value otherwise.
 func (o *Security) GetIsPasscodeCompliant() bool {
-	if o == nil || o.IsPasscodeCompliant == nil {
+	if o == nil || IsNil(o.IsPasscodeCompliant) {
 		var ret bool
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *Security) GetIsPasscodeCompliant() bool {
 // GetIsPasscodeCompliantOk returns a tuple with the IsPasscodeCompliant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsPasscodeCompliantOk() (*bool, bool) {
-	if o == nil || o.IsPasscodeCompliant == nil {
+	if o == nil || IsNil(o.IsPasscodeCompliant) {
 		return nil, false
 	}
 	return o.IsPasscodeCompliant, true
@@ -192,7 +195,7 @@ func (o *Security) GetIsPasscodeCompliantOk() (*bool, bool) {
 
 // HasIsPasscodeCompliant returns a boolean if a field has been set.
 func (o *Security) HasIsPasscodeCompliant() bool {
-	if o != nil && o.IsPasscodeCompliant != nil {
+	if o != nil && !IsNil(o.IsPasscodeCompliant) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *Security) SetIsPasscodeCompliant(v bool) {
 
 // GetIsPasscodeCompliantWithProfile returns the IsPasscodeCompliantWithProfile field value if set, zero value otherwise.
 func (o *Security) GetIsPasscodeCompliantWithProfile() bool {
-	if o == nil || o.IsPasscodeCompliantWithProfile == nil {
+	if o == nil || IsNil(o.IsPasscodeCompliantWithProfile) {
 		var ret bool
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *Security) GetIsPasscodeCompliantWithProfile() bool {
 // GetIsPasscodeCompliantWithProfileOk returns a tuple with the IsPasscodeCompliantWithProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsPasscodeCompliantWithProfileOk() (*bool, bool) {
-	if o == nil || o.IsPasscodeCompliantWithProfile == nil {
+	if o == nil || IsNil(o.IsPasscodeCompliantWithProfile) {
 		return nil, false
 	}
 	return o.IsPasscodeCompliantWithProfile, true
@@ -224,7 +227,7 @@ func (o *Security) GetIsPasscodeCompliantWithProfileOk() (*bool, bool) {
 
 // HasIsPasscodeCompliantWithProfile returns a boolean if a field has been set.
 func (o *Security) HasIsPasscodeCompliantWithProfile() bool {
-	if o != nil && o.IsPasscodeCompliantWithProfile != nil {
+	if o != nil && !IsNil(o.IsPasscodeCompliantWithProfile) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *Security) SetIsPasscodeCompliantWithProfile(v bool) {
 
 // GetHardwareEncryption returns the HardwareEncryption field value if set, zero value otherwise.
 func (o *Security) GetHardwareEncryption() int32 {
-	if o == nil || o.HardwareEncryption == nil {
+	if o == nil || IsNil(o.HardwareEncryption) {
 		var ret int32
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *Security) GetHardwareEncryption() int32 {
 // GetHardwareEncryptionOk returns a tuple with the HardwareEncryption field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetHardwareEncryptionOk() (*int32, bool) {
-	if o == nil || o.HardwareEncryption == nil {
+	if o == nil || IsNil(o.HardwareEncryption) {
 		return nil, false
 	}
 	return o.HardwareEncryption, true
@@ -256,7 +259,7 @@ func (o *Security) GetHardwareEncryptionOk() (*int32, bool) {
 
 // HasHardwareEncryption returns a boolean if a field has been set.
 func (o *Security) HasHardwareEncryption() bool {
-	if o != nil && o.HardwareEncryption != nil {
+	if o != nil && !IsNil(o.HardwareEncryption) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *Security) SetHardwareEncryption(v int32) {
 
 // GetIsActivationLockEnabled returns the IsActivationLockEnabled field value if set, zero value otherwise.
 func (o *Security) GetIsActivationLockEnabled() bool {
-	if o == nil || o.IsActivationLockEnabled == nil {
+	if o == nil || IsNil(o.IsActivationLockEnabled) {
 		var ret bool
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *Security) GetIsActivationLockEnabled() bool {
 // GetIsActivationLockEnabledOk returns a tuple with the IsActivationLockEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsActivationLockEnabledOk() (*bool, bool) {
-	if o == nil || o.IsActivationLockEnabled == nil {
+	if o == nil || IsNil(o.IsActivationLockEnabled) {
 		return nil, false
 	}
 	return o.IsActivationLockEnabled, true
@@ -288,7 +291,7 @@ func (o *Security) GetIsActivationLockEnabledOk() (*bool, bool) {
 
 // HasIsActivationLockEnabled returns a boolean if a field has been set.
 func (o *Security) HasIsActivationLockEnabled() bool {
-	if o != nil && o.IsActivationLockEnabled != nil {
+	if o != nil && !IsNil(o.IsActivationLockEnabled) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *Security) SetIsActivationLockEnabled(v bool) {
 
 // GetIsJailBreakDetected returns the IsJailBreakDetected field value if set, zero value otherwise.
 func (o *Security) GetIsJailBreakDetected() bool {
-	if o == nil || o.IsJailBreakDetected == nil {
+	if o == nil || IsNil(o.IsJailBreakDetected) {
 		var ret bool
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *Security) GetIsJailBreakDetected() bool {
 // GetIsJailBreakDetectedOk returns a tuple with the IsJailBreakDetected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Security) GetIsJailBreakDetectedOk() (*bool, bool) {
-	if o == nil || o.IsJailBreakDetected == nil {
+	if o == nil || IsNil(o.IsJailBreakDetected) {
 		return nil, false
 	}
 	return o.IsJailBreakDetected, true
@@ -320,7 +323,7 @@ func (o *Security) GetIsJailBreakDetectedOk() (*bool, bool) {
 
 // HasIsJailBreakDetected returns a boolean if a field has been set.
 func (o *Security) HasIsJailBreakDetected() bool {
-	if o != nil && o.IsJailBreakDetected != nil {
+	if o != nil && !IsNil(o.IsJailBreakDetected) {
 		return true
 	}
 
@@ -333,35 +336,43 @@ func (o *Security) SetIsJailBreakDetected(v bool) {
 }
 
 func (o Security) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsDataProtected != nil {
-		toSerialize["isDataProtected"] = o.IsDataProtected
-	}
-	if o.IsBlockLevelEncryptionCapable != nil {
-		toSerialize["isBlockLevelEncryptionCapable"] = o.IsBlockLevelEncryptionCapable
-	}
-	if o.IsFileLevelEncryptionCapable != nil {
-		toSerialize["isFileLevelEncryptionCapable"] = o.IsFileLevelEncryptionCapable
-	}
-	if o.IsPasscodePresent != nil {
-		toSerialize["isPasscodePresent"] = o.IsPasscodePresent
-	}
-	if o.IsPasscodeCompliant != nil {
-		toSerialize["isPasscodeCompliant"] = o.IsPasscodeCompliant
-	}
-	if o.IsPasscodeCompliantWithProfile != nil {
-		toSerialize["isPasscodeCompliantWithProfile"] = o.IsPasscodeCompliantWithProfile
-	}
-	if o.HardwareEncryption != nil {
-		toSerialize["hardwareEncryption"] = o.HardwareEncryption
-	}
-	if o.IsActivationLockEnabled != nil {
-		toSerialize["isActivationLockEnabled"] = o.IsActivationLockEnabled
-	}
-	if o.IsJailBreakDetected != nil {
-		toSerialize["isJailBreakDetected"] = o.IsJailBreakDetected
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Security) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsDataProtected) {
+		toSerialize["isDataProtected"] = o.IsDataProtected
+	}
+	if !IsNil(o.IsBlockLevelEncryptionCapable) {
+		toSerialize["isBlockLevelEncryptionCapable"] = o.IsBlockLevelEncryptionCapable
+	}
+	if !IsNil(o.IsFileLevelEncryptionCapable) {
+		toSerialize["isFileLevelEncryptionCapable"] = o.IsFileLevelEncryptionCapable
+	}
+	if !IsNil(o.IsPasscodePresent) {
+		toSerialize["isPasscodePresent"] = o.IsPasscodePresent
+	}
+	if !IsNil(o.IsPasscodeCompliant) {
+		toSerialize["isPasscodeCompliant"] = o.IsPasscodeCompliant
+	}
+	if !IsNil(o.IsPasscodeCompliantWithProfile) {
+		toSerialize["isPasscodeCompliantWithProfile"] = o.IsPasscodeCompliantWithProfile
+	}
+	if !IsNil(o.HardwareEncryption) {
+		toSerialize["hardwareEncryption"] = o.HardwareEncryption
+	}
+	if !IsNil(o.IsActivationLockEnabled) {
+		toSerialize["isActivationLockEnabled"] = o.IsActivationLockEnabled
+	}
+	if !IsNil(o.IsJailBreakDetected) {
+		toSerialize["isJailBreakDetected"] = o.IsJailBreakDetected
+	}
+	return toSerialize, nil
 }
 
 type NullableSecurity struct {

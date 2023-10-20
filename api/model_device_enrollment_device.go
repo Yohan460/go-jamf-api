@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentDevice{}
+
 // DeviceEnrollmentDevice struct for DeviceEnrollmentDevice
 type DeviceEnrollmentDevice struct {
 	Id *string `json:"id,omitempty"`
@@ -50,7 +53,7 @@ func NewDeviceEnrollmentDeviceWithDefaults() *DeviceEnrollmentDevice {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *DeviceEnrollmentDevice) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +71,7 @@ func (o *DeviceEnrollmentDevice) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *DeviceEnrollmentDevice) SetId(v string) {
 
 // GetDeviceEnrollmentProgramInstanceId returns the DeviceEnrollmentProgramInstanceId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetDeviceEnrollmentProgramInstanceId() string {
-	if o == nil || o.DeviceEnrollmentProgramInstanceId == nil {
+	if o == nil || IsNil(o.DeviceEnrollmentProgramInstanceId) {
 		var ret string
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *DeviceEnrollmentDevice) GetDeviceEnrollmentProgramInstanceId() string {
 // GetDeviceEnrollmentProgramInstanceIdOk returns a tuple with the DeviceEnrollmentProgramInstanceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetDeviceEnrollmentProgramInstanceIdOk() (*string, bool) {
-	if o == nil || o.DeviceEnrollmentProgramInstanceId == nil {
+	if o == nil || IsNil(o.DeviceEnrollmentProgramInstanceId) {
 		return nil, false
 	}
 	return o.DeviceEnrollmentProgramInstanceId, true
@@ -100,7 +103,7 @@ func (o *DeviceEnrollmentDevice) GetDeviceEnrollmentProgramInstanceIdOk() (*stri
 
 // HasDeviceEnrollmentProgramInstanceId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasDeviceEnrollmentProgramInstanceId() bool {
-	if o != nil && o.DeviceEnrollmentProgramInstanceId != nil {
+	if o != nil && !IsNil(o.DeviceEnrollmentProgramInstanceId) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *DeviceEnrollmentDevice) SetDeviceEnrollmentProgramInstanceId(v string) 
 
 // GetPrestageId returns the PrestageId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetPrestageId() string {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *DeviceEnrollmentDevice) GetPrestageId() string {
 // GetPrestageIdOk returns a tuple with the PrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetPrestageIdOk() (*string, bool) {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		return nil, false
 	}
 	return o.PrestageId, true
@@ -132,7 +135,7 @@ func (o *DeviceEnrollmentDevice) GetPrestageIdOk() (*string, bool) {
 
 // HasPrestageId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasPrestageId() bool {
-	if o != nil && o.PrestageId != nil {
+	if o != nil && !IsNil(o.PrestageId) {
 		return true
 	}
 
@@ -146,7 +149,7 @@ func (o *DeviceEnrollmentDevice) SetPrestageId(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *DeviceEnrollmentDevice) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -164,7 +167,7 @@ func (o *DeviceEnrollmentDevice) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *DeviceEnrollmentDevice) SetSerialNumber(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *DeviceEnrollmentDevice) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -196,7 +199,7 @@ func (o *DeviceEnrollmentDevice) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *DeviceEnrollmentDevice) SetDescription(v string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -220,7 +223,7 @@ func (o *DeviceEnrollmentDevice) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -228,7 +231,7 @@ func (o *DeviceEnrollmentDevice) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *DeviceEnrollmentDevice) SetModel(v string) {
 
 // GetColor returns the Color field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetColor() string {
-	if o == nil || o.Color == nil {
+	if o == nil || IsNil(o.Color) {
 		var ret string
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *DeviceEnrollmentDevice) GetColor() string {
 // GetColorOk returns a tuple with the Color field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetColorOk() (*string, bool) {
-	if o == nil || o.Color == nil {
+	if o == nil || IsNil(o.Color) {
 		return nil, false
 	}
 	return o.Color, true
@@ -260,7 +263,7 @@ func (o *DeviceEnrollmentDevice) GetColorOk() (*string, bool) {
 
 // HasColor returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasColor() bool {
-	if o != nil && o.Color != nil {
+	if o != nil && !IsNil(o.Color) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *DeviceEnrollmentDevice) SetColor(v string) {
 
 // GetAssetTag returns the AssetTag field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetAssetTag() string {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		var ret string
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *DeviceEnrollmentDevice) GetAssetTag() string {
 // GetAssetTagOk returns a tuple with the AssetTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetAssetTagOk() (*string, bool) {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		return nil, false
 	}
 	return o.AssetTag, true
@@ -292,7 +295,7 @@ func (o *DeviceEnrollmentDevice) GetAssetTagOk() (*string, bool) {
 
 // HasAssetTag returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasAssetTag() bool {
-	if o != nil && o.AssetTag != nil {
+	if o != nil && !IsNil(o.AssetTag) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *DeviceEnrollmentDevice) SetAssetTag(v string) {
 
 // GetProfileStatus returns the ProfileStatus field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetProfileStatus() string {
-	if o == nil || o.ProfileStatus == nil {
+	if o == nil || IsNil(o.ProfileStatus) {
 		var ret string
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *DeviceEnrollmentDevice) GetProfileStatus() string {
 // GetProfileStatusOk returns a tuple with the ProfileStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetProfileStatusOk() (*string, bool) {
-	if o == nil || o.ProfileStatus == nil {
+	if o == nil || IsNil(o.ProfileStatus) {
 		return nil, false
 	}
 	return o.ProfileStatus, true
@@ -324,7 +327,7 @@ func (o *DeviceEnrollmentDevice) GetProfileStatusOk() (*string, bool) {
 
 // HasProfileStatus returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasProfileStatus() bool {
-	if o != nil && o.ProfileStatus != nil {
+	if o != nil && !IsNil(o.ProfileStatus) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *DeviceEnrollmentDevice) SetProfileStatus(v string) {
 
 // GetSyncState returns the SyncState field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetSyncState() AssignRemoveProfileResponseSyncState {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		var ret AssignRemoveProfileResponseSyncState
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *DeviceEnrollmentDevice) GetSyncState() AssignRemoveProfileResponseSyncS
 // GetSyncStateOk returns a tuple with the SyncState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetSyncStateOk() (*AssignRemoveProfileResponseSyncState, bool) {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		return nil, false
 	}
 	return o.SyncState, true
@@ -356,7 +359,7 @@ func (o *DeviceEnrollmentDevice) GetSyncStateOk() (*AssignRemoveProfileResponseS
 
 // HasSyncState returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasSyncState() bool {
-	if o != nil && o.SyncState != nil {
+	if o != nil && !IsNil(o.SyncState) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *DeviceEnrollmentDevice) SetSyncState(v AssignRemoveProfileResponseSyncS
 
 // GetProfileAssignTime returns the ProfileAssignTime field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetProfileAssignTime() string {
-	if o == nil || o.ProfileAssignTime == nil {
+	if o == nil || IsNil(o.ProfileAssignTime) {
 		var ret string
 		return ret
 	}
@@ -380,7 +383,7 @@ func (o *DeviceEnrollmentDevice) GetProfileAssignTime() string {
 // GetProfileAssignTimeOk returns a tuple with the ProfileAssignTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetProfileAssignTimeOk() (*string, bool) {
-	if o == nil || o.ProfileAssignTime == nil {
+	if o == nil || IsNil(o.ProfileAssignTime) {
 		return nil, false
 	}
 	return o.ProfileAssignTime, true
@@ -388,7 +391,7 @@ func (o *DeviceEnrollmentDevice) GetProfileAssignTimeOk() (*string, bool) {
 
 // HasProfileAssignTime returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasProfileAssignTime() bool {
-	if o != nil && o.ProfileAssignTime != nil {
+	if o != nil && !IsNil(o.ProfileAssignTime) {
 		return true
 	}
 
@@ -402,7 +405,7 @@ func (o *DeviceEnrollmentDevice) SetProfileAssignTime(v string) {
 
 // GetProfilePushTime returns the ProfilePushTime field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetProfilePushTime() string {
-	if o == nil || o.ProfilePushTime == nil {
+	if o == nil || IsNil(o.ProfilePushTime) {
 		var ret string
 		return ret
 	}
@@ -412,7 +415,7 @@ func (o *DeviceEnrollmentDevice) GetProfilePushTime() string {
 // GetProfilePushTimeOk returns a tuple with the ProfilePushTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetProfilePushTimeOk() (*string, bool) {
-	if o == nil || o.ProfilePushTime == nil {
+	if o == nil || IsNil(o.ProfilePushTime) {
 		return nil, false
 	}
 	return o.ProfilePushTime, true
@@ -420,7 +423,7 @@ func (o *DeviceEnrollmentDevice) GetProfilePushTimeOk() (*string, bool) {
 
 // HasProfilePushTime returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasProfilePushTime() bool {
-	if o != nil && o.ProfilePushTime != nil {
+	if o != nil && !IsNil(o.ProfilePushTime) {
 		return true
 	}
 
@@ -434,7 +437,7 @@ func (o *DeviceEnrollmentDevice) SetProfilePushTime(v string) {
 
 // GetDeviceAssignedDate returns the DeviceAssignedDate field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDevice) GetDeviceAssignedDate() string {
-	if o == nil || o.DeviceAssignedDate == nil {
+	if o == nil || IsNil(o.DeviceAssignedDate) {
 		var ret string
 		return ret
 	}
@@ -444,7 +447,7 @@ func (o *DeviceEnrollmentDevice) GetDeviceAssignedDate() string {
 // GetDeviceAssignedDateOk returns a tuple with the DeviceAssignedDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDevice) GetDeviceAssignedDateOk() (*string, bool) {
-	if o == nil || o.DeviceAssignedDate == nil {
+	if o == nil || IsNil(o.DeviceAssignedDate) {
 		return nil, false
 	}
 	return o.DeviceAssignedDate, true
@@ -452,7 +455,7 @@ func (o *DeviceEnrollmentDevice) GetDeviceAssignedDateOk() (*string, bool) {
 
 // HasDeviceAssignedDate returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDevice) HasDeviceAssignedDate() bool {
-	if o != nil && o.DeviceAssignedDate != nil {
+	if o != nil && !IsNil(o.DeviceAssignedDate) {
 		return true
 	}
 
@@ -465,47 +468,55 @@ func (o *DeviceEnrollmentDevice) SetDeviceAssignedDate(v string) {
 }
 
 func (o DeviceEnrollmentDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.DeviceEnrollmentProgramInstanceId != nil {
-		toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
-	}
-	if o.PrestageId != nil {
-		toSerialize["prestageId"] = o.PrestageId
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.Color != nil {
-		toSerialize["color"] = o.Color
-	}
-	if o.AssetTag != nil {
-		toSerialize["assetTag"] = o.AssetTag
-	}
-	if o.ProfileStatus != nil {
-		toSerialize["profileStatus"] = o.ProfileStatus
-	}
-	if o.SyncState != nil {
-		toSerialize["syncState"] = o.SyncState
-	}
-	if o.ProfileAssignTime != nil {
-		toSerialize["profileAssignTime"] = o.ProfileAssignTime
-	}
-	if o.ProfilePushTime != nil {
-		toSerialize["profilePushTime"] = o.ProfilePushTime
-	}
-	if o.DeviceAssignedDate != nil {
-		toSerialize["deviceAssignedDate"] = o.DeviceAssignedDate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DeviceEnrollmentProgramInstanceId) {
+		toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
+	}
+	if !IsNil(o.PrestageId) {
+		toSerialize["prestageId"] = o.PrestageId
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.Color) {
+		toSerialize["color"] = o.Color
+	}
+	if !IsNil(o.AssetTag) {
+		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.ProfileStatus) {
+		toSerialize["profileStatus"] = o.ProfileStatus
+	}
+	if !IsNil(o.SyncState) {
+		toSerialize["syncState"] = o.SyncState
+	}
+	if !IsNil(o.ProfileAssignTime) {
+		toSerialize["profileAssignTime"] = o.ProfileAssignTime
+	}
+	if !IsNil(o.ProfilePushTime) {
+		toSerialize["profilePushTime"] = o.ProfilePushTime
+	}
+	if !IsNil(o.DeviceAssignedDate) {
+		toSerialize["deviceAssignedDate"] = o.DeviceAssignedDate
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentDevice struct {

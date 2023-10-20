@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the AndroidDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AndroidDetails{}
+
 // AndroidDetails will be populated if the type is android.
 type AndroidDetails struct {
 	OsName *string `json:"osName,omitempty"`
@@ -52,7 +55,7 @@ func NewAndroidDetailsWithDefaults() *AndroidDetails {
 
 // GetOsName returns the OsName field value if set, zero value otherwise.
 func (o *AndroidDetails) GetOsName() string {
-	if o == nil || o.OsName == nil {
+	if o == nil || IsNil(o.OsName) {
 		var ret string
 		return ret
 	}
@@ -62,7 +65,7 @@ func (o *AndroidDetails) GetOsName() string {
 // GetOsNameOk returns a tuple with the OsName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetOsNameOk() (*string, bool) {
-	if o == nil || o.OsName == nil {
+	if o == nil || IsNil(o.OsName) {
 		return nil, false
 	}
 	return o.OsName, true
@@ -70,7 +73,7 @@ func (o *AndroidDetails) GetOsNameOk() (*string, bool) {
 
 // HasOsName returns a boolean if a field has been set.
 func (o *AndroidDetails) HasOsName() bool {
-	if o != nil && o.OsName != nil {
+	if o != nil && !IsNil(o.OsName) {
 		return true
 	}
 
@@ -84,7 +87,7 @@ func (o *AndroidDetails) SetOsName(v string) {
 
 // GetManufacturer returns the Manufacturer field value if set, zero value otherwise.
 func (o *AndroidDetails) GetManufacturer() string {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		var ret string
 		return ret
 	}
@@ -94,7 +97,7 @@ func (o *AndroidDetails) GetManufacturer() string {
 // GetManufacturerOk returns a tuple with the Manufacturer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetManufacturerOk() (*string, bool) {
-	if o == nil || o.Manufacturer == nil {
+	if o == nil || IsNil(o.Manufacturer) {
 		return nil, false
 	}
 	return o.Manufacturer, true
@@ -102,7 +105,7 @@ func (o *AndroidDetails) GetManufacturerOk() (*string, bool) {
 
 // HasManufacturer returns a boolean if a field has been set.
 func (o *AndroidDetails) HasManufacturer() bool {
-	if o != nil && o.Manufacturer != nil {
+	if o != nil && !IsNil(o.Manufacturer) {
 		return true
 	}
 
@@ -116,7 +119,7 @@ func (o *AndroidDetails) SetManufacturer(v string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *AndroidDetails) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -126,7 +129,7 @@ func (o *AndroidDetails) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -134,7 +137,7 @@ func (o *AndroidDetails) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *AndroidDetails) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -148,7 +151,7 @@ func (o *AndroidDetails) SetModel(v string) {
 
 // GetInternalCapacityMb returns the InternalCapacityMb field value if set, zero value otherwise.
 func (o *AndroidDetails) GetInternalCapacityMb() int32 {
-	if o == nil || o.InternalCapacityMb == nil {
+	if o == nil || IsNil(o.InternalCapacityMb) {
 		var ret int32
 		return ret
 	}
@@ -158,7 +161,7 @@ func (o *AndroidDetails) GetInternalCapacityMb() int32 {
 // GetInternalCapacityMbOk returns a tuple with the InternalCapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetInternalCapacityMbOk() (*int32, bool) {
-	if o == nil || o.InternalCapacityMb == nil {
+	if o == nil || IsNil(o.InternalCapacityMb) {
 		return nil, false
 	}
 	return o.InternalCapacityMb, true
@@ -166,7 +169,7 @@ func (o *AndroidDetails) GetInternalCapacityMbOk() (*int32, bool) {
 
 // HasInternalCapacityMb returns a boolean if a field has been set.
 func (o *AndroidDetails) HasInternalCapacityMb() bool {
-	if o != nil && o.InternalCapacityMb != nil {
+	if o != nil && !IsNil(o.InternalCapacityMb) {
 		return true
 	}
 
@@ -180,7 +183,7 @@ func (o *AndroidDetails) SetInternalCapacityMb(v int32) {
 
 // GetInternalAvailableMb returns the InternalAvailableMb field value if set, zero value otherwise.
 func (o *AndroidDetails) GetInternalAvailableMb() int32 {
-	if o == nil || o.InternalAvailableMb == nil {
+	if o == nil || IsNil(o.InternalAvailableMb) {
 		var ret int32
 		return ret
 	}
@@ -190,7 +193,7 @@ func (o *AndroidDetails) GetInternalAvailableMb() int32 {
 // GetInternalAvailableMbOk returns a tuple with the InternalAvailableMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetInternalAvailableMbOk() (*int32, bool) {
-	if o == nil || o.InternalAvailableMb == nil {
+	if o == nil || IsNil(o.InternalAvailableMb) {
 		return nil, false
 	}
 	return o.InternalAvailableMb, true
@@ -198,7 +201,7 @@ func (o *AndroidDetails) GetInternalAvailableMbOk() (*int32, bool) {
 
 // HasInternalAvailableMb returns a boolean if a field has been set.
 func (o *AndroidDetails) HasInternalAvailableMb() bool {
-	if o != nil && o.InternalAvailableMb != nil {
+	if o != nil && !IsNil(o.InternalAvailableMb) {
 		return true
 	}
 
@@ -212,7 +215,7 @@ func (o *AndroidDetails) SetInternalAvailableMb(v int32) {
 
 // GetInternalPercentUsed returns the InternalPercentUsed field value if set, zero value otherwise.
 func (o *AndroidDetails) GetInternalPercentUsed() int32 {
-	if o == nil || o.InternalPercentUsed == nil {
+	if o == nil || IsNil(o.InternalPercentUsed) {
 		var ret int32
 		return ret
 	}
@@ -222,7 +225,7 @@ func (o *AndroidDetails) GetInternalPercentUsed() int32 {
 // GetInternalPercentUsedOk returns a tuple with the InternalPercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetInternalPercentUsedOk() (*int32, bool) {
-	if o == nil || o.InternalPercentUsed == nil {
+	if o == nil || IsNil(o.InternalPercentUsed) {
 		return nil, false
 	}
 	return o.InternalPercentUsed, true
@@ -230,7 +233,7 @@ func (o *AndroidDetails) GetInternalPercentUsedOk() (*int32, bool) {
 
 // HasInternalPercentUsed returns a boolean if a field has been set.
 func (o *AndroidDetails) HasInternalPercentUsed() bool {
-	if o != nil && o.InternalPercentUsed != nil {
+	if o != nil && !IsNil(o.InternalPercentUsed) {
 		return true
 	}
 
@@ -244,7 +247,7 @@ func (o *AndroidDetails) SetInternalPercentUsed(v int32) {
 
 // GetExternalCapacityMb returns the ExternalCapacityMb field value if set, zero value otherwise.
 func (o *AndroidDetails) GetExternalCapacityMb() int32 {
-	if o == nil || o.ExternalCapacityMb == nil {
+	if o == nil || IsNil(o.ExternalCapacityMb) {
 		var ret int32
 		return ret
 	}
@@ -254,7 +257,7 @@ func (o *AndroidDetails) GetExternalCapacityMb() int32 {
 // GetExternalCapacityMbOk returns a tuple with the ExternalCapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetExternalCapacityMbOk() (*int32, bool) {
-	if o == nil || o.ExternalCapacityMb == nil {
+	if o == nil || IsNil(o.ExternalCapacityMb) {
 		return nil, false
 	}
 	return o.ExternalCapacityMb, true
@@ -262,7 +265,7 @@ func (o *AndroidDetails) GetExternalCapacityMbOk() (*int32, bool) {
 
 // HasExternalCapacityMb returns a boolean if a field has been set.
 func (o *AndroidDetails) HasExternalCapacityMb() bool {
-	if o != nil && o.ExternalCapacityMb != nil {
+	if o != nil && !IsNil(o.ExternalCapacityMb) {
 		return true
 	}
 
@@ -276,7 +279,7 @@ func (o *AndroidDetails) SetExternalCapacityMb(v int32) {
 
 // GetExternalAvailableMb returns the ExternalAvailableMb field value if set, zero value otherwise.
 func (o *AndroidDetails) GetExternalAvailableMb() int32 {
-	if o == nil || o.ExternalAvailableMb == nil {
+	if o == nil || IsNil(o.ExternalAvailableMb) {
 		var ret int32
 		return ret
 	}
@@ -286,7 +289,7 @@ func (o *AndroidDetails) GetExternalAvailableMb() int32 {
 // GetExternalAvailableMbOk returns a tuple with the ExternalAvailableMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetExternalAvailableMbOk() (*int32, bool) {
-	if o == nil || o.ExternalAvailableMb == nil {
+	if o == nil || IsNil(o.ExternalAvailableMb) {
 		return nil, false
 	}
 	return o.ExternalAvailableMb, true
@@ -294,7 +297,7 @@ func (o *AndroidDetails) GetExternalAvailableMbOk() (*int32, bool) {
 
 // HasExternalAvailableMb returns a boolean if a field has been set.
 func (o *AndroidDetails) HasExternalAvailableMb() bool {
-	if o != nil && o.ExternalAvailableMb != nil {
+	if o != nil && !IsNil(o.ExternalAvailableMb) {
 		return true
 	}
 
@@ -308,7 +311,7 @@ func (o *AndroidDetails) SetExternalAvailableMb(v int32) {
 
 // GetExternalPercentUsed returns the ExternalPercentUsed field value if set, zero value otherwise.
 func (o *AndroidDetails) GetExternalPercentUsed() int32 {
-	if o == nil || o.ExternalPercentUsed == nil {
+	if o == nil || IsNil(o.ExternalPercentUsed) {
 		var ret int32
 		return ret
 	}
@@ -318,7 +321,7 @@ func (o *AndroidDetails) GetExternalPercentUsed() int32 {
 // GetExternalPercentUsedOk returns a tuple with the ExternalPercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetExternalPercentUsedOk() (*int32, bool) {
-	if o == nil || o.ExternalPercentUsed == nil {
+	if o == nil || IsNil(o.ExternalPercentUsed) {
 		return nil, false
 	}
 	return o.ExternalPercentUsed, true
@@ -326,7 +329,7 @@ func (o *AndroidDetails) GetExternalPercentUsedOk() (*int32, bool) {
 
 // HasExternalPercentUsed returns a boolean if a field has been set.
 func (o *AndroidDetails) HasExternalPercentUsed() bool {
-	if o != nil && o.ExternalPercentUsed != nil {
+	if o != nil && !IsNil(o.ExternalPercentUsed) {
 		return true
 	}
 
@@ -340,7 +343,7 @@ func (o *AndroidDetails) SetExternalPercentUsed(v int32) {
 
 // GetBatteryLevel returns the BatteryLevel field value if set, zero value otherwise.
 func (o *AndroidDetails) GetBatteryLevel() int32 {
-	if o == nil || o.BatteryLevel == nil {
+	if o == nil || IsNil(o.BatteryLevel) {
 		var ret int32
 		return ret
 	}
@@ -350,7 +353,7 @@ func (o *AndroidDetails) GetBatteryLevel() int32 {
 // GetBatteryLevelOk returns a tuple with the BatteryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetBatteryLevelOk() (*int32, bool) {
-	if o == nil || o.BatteryLevel == nil {
+	if o == nil || IsNil(o.BatteryLevel) {
 		return nil, false
 	}
 	return o.BatteryLevel, true
@@ -358,7 +361,7 @@ func (o *AndroidDetails) GetBatteryLevelOk() (*int32, bool) {
 
 // HasBatteryLevel returns a boolean if a field has been set.
 func (o *AndroidDetails) HasBatteryLevel() bool {
-	if o != nil && o.BatteryLevel != nil {
+	if o != nil && !IsNil(o.BatteryLevel) {
 		return true
 	}
 
@@ -372,7 +375,7 @@ func (o *AndroidDetails) SetBatteryLevel(v int32) {
 
 // GetLastBackupTimestamp returns the LastBackupTimestamp field value if set, zero value otherwise.
 func (o *AndroidDetails) GetLastBackupTimestamp() time.Time {
-	if o == nil || o.LastBackupTimestamp == nil {
+	if o == nil || IsNil(o.LastBackupTimestamp) {
 		var ret time.Time
 		return ret
 	}
@@ -382,7 +385,7 @@ func (o *AndroidDetails) GetLastBackupTimestamp() time.Time {
 // GetLastBackupTimestampOk returns a tuple with the LastBackupTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetLastBackupTimestampOk() (*time.Time, bool) {
-	if o == nil || o.LastBackupTimestamp == nil {
+	if o == nil || IsNil(o.LastBackupTimestamp) {
 		return nil, false
 	}
 	return o.LastBackupTimestamp, true
@@ -390,7 +393,7 @@ func (o *AndroidDetails) GetLastBackupTimestampOk() (*time.Time, bool) {
 
 // HasLastBackupTimestamp returns a boolean if a field has been set.
 func (o *AndroidDetails) HasLastBackupTimestamp() bool {
-	if o != nil && o.LastBackupTimestamp != nil {
+	if o != nil && !IsNil(o.LastBackupTimestamp) {
 		return true
 	}
 
@@ -404,7 +407,7 @@ func (o *AndroidDetails) SetLastBackupTimestamp(v time.Time) {
 
 // GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
 func (o *AndroidDetails) GetApiVersion() int32 {
-	if o == nil || o.ApiVersion == nil {
+	if o == nil || IsNil(o.ApiVersion) {
 		var ret int32
 		return ret
 	}
@@ -414,7 +417,7 @@ func (o *AndroidDetails) GetApiVersion() int32 {
 // GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetApiVersionOk() (*int32, bool) {
-	if o == nil || o.ApiVersion == nil {
+	if o == nil || IsNil(o.ApiVersion) {
 		return nil, false
 	}
 	return o.ApiVersion, true
@@ -422,7 +425,7 @@ func (o *AndroidDetails) GetApiVersionOk() (*int32, bool) {
 
 // HasApiVersion returns a boolean if a field has been set.
 func (o *AndroidDetails) HasApiVersion() bool {
-	if o != nil && o.ApiVersion != nil {
+	if o != nil && !IsNil(o.ApiVersion) {
 		return true
 	}
 
@@ -436,7 +439,7 @@ func (o *AndroidDetails) SetApiVersion(v int32) {
 
 // GetComputer returns the Computer field value if set, zero value otherwise.
 func (o *AndroidDetails) GetComputer() IdAndName {
-	if o == nil || o.Computer == nil {
+	if o == nil || IsNil(o.Computer) {
 		var ret IdAndName
 		return ret
 	}
@@ -446,7 +449,7 @@ func (o *AndroidDetails) GetComputer() IdAndName {
 // GetComputerOk returns a tuple with the Computer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetComputerOk() (*IdAndName, bool) {
-	if o == nil || o.Computer == nil {
+	if o == nil || IsNil(o.Computer) {
 		return nil, false
 	}
 	return o.Computer, true
@@ -454,7 +457,7 @@ func (o *AndroidDetails) GetComputerOk() (*IdAndName, bool) {
 
 // HasComputer returns a boolean if a field has been set.
 func (o *AndroidDetails) HasComputer() bool {
-	if o != nil && o.Computer != nil {
+	if o != nil && !IsNil(o.Computer) {
 		return true
 	}
 
@@ -468,7 +471,7 @@ func (o *AndroidDetails) SetComputer(v IdAndName) {
 
 // GetSecurity returns the Security field value if set, zero value otherwise.
 func (o *AndroidDetails) GetSecurity() Security {
-	if o == nil || o.Security == nil {
+	if o == nil || IsNil(o.Security) {
 		var ret Security
 		return ret
 	}
@@ -478,7 +481,7 @@ func (o *AndroidDetails) GetSecurity() Security {
 // GetSecurityOk returns a tuple with the Security field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AndroidDetails) GetSecurityOk() (*Security, bool) {
-	if o == nil || o.Security == nil {
+	if o == nil || IsNil(o.Security) {
 		return nil, false
 	}
 	return o.Security, true
@@ -486,7 +489,7 @@ func (o *AndroidDetails) GetSecurityOk() (*Security, bool) {
 
 // HasSecurity returns a boolean if a field has been set.
 func (o *AndroidDetails) HasSecurity() bool {
-	if o != nil && o.Security != nil {
+	if o != nil && !IsNil(o.Security) {
 		return true
 	}
 
@@ -499,50 +502,58 @@ func (o *AndroidDetails) SetSecurity(v Security) {
 }
 
 func (o AndroidDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.OsName != nil {
-		toSerialize["osName"] = o.OsName
-	}
-	if o.Manufacturer != nil {
-		toSerialize["manufacturer"] = o.Manufacturer
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.InternalCapacityMb != nil {
-		toSerialize["internalCapacityMb"] = o.InternalCapacityMb
-	}
-	if o.InternalAvailableMb != nil {
-		toSerialize["internalAvailableMb"] = o.InternalAvailableMb
-	}
-	if o.InternalPercentUsed != nil {
-		toSerialize["internalPercentUsed"] = o.InternalPercentUsed
-	}
-	if o.ExternalCapacityMb != nil {
-		toSerialize["externalCapacityMb"] = o.ExternalCapacityMb
-	}
-	if o.ExternalAvailableMb != nil {
-		toSerialize["externalAvailableMb"] = o.ExternalAvailableMb
-	}
-	if o.ExternalPercentUsed != nil {
-		toSerialize["externalPercentUsed"] = o.ExternalPercentUsed
-	}
-	if o.BatteryLevel != nil {
-		toSerialize["batteryLevel"] = o.BatteryLevel
-	}
-	if o.LastBackupTimestamp != nil {
-		toSerialize["lastBackupTimestamp"] = o.LastBackupTimestamp
-	}
-	if o.ApiVersion != nil {
-		toSerialize["apiVersion"] = o.ApiVersion
-	}
-	if o.Computer != nil {
-		toSerialize["computer"] = o.Computer
-	}
-	if o.Security != nil {
-		toSerialize["security"] = o.Security
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AndroidDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OsName) {
+		toSerialize["osName"] = o.OsName
+	}
+	if !IsNil(o.Manufacturer) {
+		toSerialize["manufacturer"] = o.Manufacturer
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.InternalCapacityMb) {
+		toSerialize["internalCapacityMb"] = o.InternalCapacityMb
+	}
+	if !IsNil(o.InternalAvailableMb) {
+		toSerialize["internalAvailableMb"] = o.InternalAvailableMb
+	}
+	if !IsNil(o.InternalPercentUsed) {
+		toSerialize["internalPercentUsed"] = o.InternalPercentUsed
+	}
+	if !IsNil(o.ExternalCapacityMb) {
+		toSerialize["externalCapacityMb"] = o.ExternalCapacityMb
+	}
+	if !IsNil(o.ExternalAvailableMb) {
+		toSerialize["externalAvailableMb"] = o.ExternalAvailableMb
+	}
+	if !IsNil(o.ExternalPercentUsed) {
+		toSerialize["externalPercentUsed"] = o.ExternalPercentUsed
+	}
+	if !IsNil(o.BatteryLevel) {
+		toSerialize["batteryLevel"] = o.BatteryLevel
+	}
+	if !IsNil(o.LastBackupTimestamp) {
+		toSerialize["lastBackupTimestamp"] = o.LastBackupTimestamp
+	}
+	if !IsNil(o.ApiVersion) {
+		toSerialize["apiVersion"] = o.ApiVersion
+	}
+	if !IsNil(o.Computer) {
+		toSerialize["computer"] = o.Computer
+	}
+	if !IsNil(o.Security) {
+		toSerialize["security"] = o.Security
+	}
+	return toSerialize, nil
 }
 
 type NullableAndroidDetails struct {

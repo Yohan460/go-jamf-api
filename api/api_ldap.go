@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type LdapApi interface {
+type LdapAPI interface {
 
 	/*
 	LdapGroupsGet Retrieve the configured access groups that contain the text in the search param 
@@ -27,13 +27,13 @@ type LdapApi interface {
 	Retrieves the configured access groups that contain the text in the searchParam.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLdapGroupsGetRequest
+	@return LdapAPILdapGroupsGetRequest
 	*/
-	LdapGroupsGet(ctx context.Context) ApiLdapGroupsGetRequest
+	LdapGroupsGet(ctx context.Context) LdapAPILdapGroupsGetRequest
 
 	// LdapGroupsGetExecute executes the request
 	//  @return LdapGroupSearchResults
-	LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
+	LdapGroupsGetExecute(r LdapAPILdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
 
 	/*
 	LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Providers. 
@@ -41,13 +41,13 @@ type LdapApi interface {
 	Retrieve all Servers including LDAP and Cloud Identity Providers.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiLdapServersGetRequest
+	@return LdapAPILdapServersGetRequest
 	*/
-	LdapServersGet(ctx context.Context) ApiLdapServersGetRequest
+	LdapServersGet(ctx context.Context) LdapAPILdapServersGetRequest
 
 	// LdapServersGetExecute executes the request
 	//  @return []LdapServer
-	LdapServersGetExecute(r ApiLdapServersGetRequest) ([]LdapServer, *http.Response, error)
+	LdapServersGetExecute(r LdapAPILdapServersGetRequest) ([]LdapServer, *http.Response, error)
 
 	/*
 	V1LdapGroupsGet Retrieve the configured access groups that contain the text in the search param 
@@ -55,13 +55,13 @@ type LdapApi interface {
 	Retrieves the configured access groups that contain the text in the searchParam.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1LdapGroupsGetRequest
+	@return LdapAPIV1LdapGroupsGetRequest
 	*/
-	V1LdapGroupsGet(ctx context.Context) ApiV1LdapGroupsGetRequest
+	V1LdapGroupsGet(ctx context.Context) LdapAPIV1LdapGroupsGetRequest
 
 	// V1LdapGroupsGetExecute executes the request
 	//  @return LdapGroupSearchResults
-	V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
+	V1LdapGroupsGetExecute(r LdapAPIV1LdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error)
 
 	/*
 	V1LdapLdapServersGet Retrieve all LDAP Servers. 
@@ -69,13 +69,13 @@ type LdapApi interface {
 	Retrieves all not migrated, LDAP Servers.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1LdapLdapServersGetRequest
+	@return LdapAPIV1LdapLdapServersGetRequest
 	*/
-	V1LdapLdapServersGet(ctx context.Context) ApiV1LdapLdapServersGetRequest
+	V1LdapLdapServersGet(ctx context.Context) LdapAPIV1LdapLdapServersGetRequest
 
 	// V1LdapLdapServersGetExecute executes the request
 	//  @return []LdapServer
-	V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRequest) ([]LdapServer, *http.Response, error)
+	V1LdapLdapServersGetExecute(r LdapAPIV1LdapLdapServersGetRequest) ([]LdapServer, *http.Response, error)
 
 	/*
 	V1LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Providers. 
@@ -83,31 +83,31 @@ type LdapApi interface {
 	Retrieve all active Servers including LDAP and Cloud Identity Providers.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1LdapServersGetRequest
+	@return LdapAPIV1LdapServersGetRequest
 	*/
-	V1LdapServersGet(ctx context.Context) ApiV1LdapServersGetRequest
+	V1LdapServersGet(ctx context.Context) LdapAPIV1LdapServersGetRequest
 
 	// V1LdapServersGetExecute executes the request
 	//  @return []LdapServer
-	V1LdapServersGetExecute(r ApiV1LdapServersGetRequest) ([]LdapServer, *http.Response, error)
+	V1LdapServersGetExecute(r LdapAPIV1LdapServersGetRequest) ([]LdapServer, *http.Response, error)
 }
 
-// LdapApiService LdapApi service
-type LdapApiService service
+// LdapAPIService LdapAPI service
+type LdapAPIService service
 
-type ApiLdapGroupsGetRequest struct {
+type LdapAPILdapGroupsGetRequest struct {
 	ctx context.Context
-	ApiService LdapApi
+	ApiService LdapAPI
 	q *string
 }
 
 // Will perform a \&quot;contains\&quot; search on the names of access groups
-func (r ApiLdapGroupsGetRequest) Q(q string) ApiLdapGroupsGetRequest {
+func (r LdapAPILdapGroupsGetRequest) Q(q string) LdapAPILdapGroupsGetRequest {
 	r.q = &q
 	return r
 }
 
-func (r ApiLdapGroupsGetRequest) Execute() (*LdapGroupSearchResults, *http.Response, error) {
+func (r LdapAPILdapGroupsGetRequest) Execute() (*LdapGroupSearchResults, *http.Response, error) {
 	return r.ApiService.LdapGroupsGetExecute(r)
 }
 
@@ -117,10 +117,10 @@ LdapGroupsGet Retrieve the configured access groups that contain the text in the
 Retrieves the configured access groups that contain the text in the searchParam.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLdapGroupsGetRequest
+ @return LdapAPILdapGroupsGetRequest
 */
-func (a *LdapApiService) LdapGroupsGet(ctx context.Context) ApiLdapGroupsGetRequest {
-	return ApiLdapGroupsGetRequest{
+func (a *LdapAPIService) LdapGroupsGet(ctx context.Context) LdapAPILdapGroupsGetRequest {
+	return LdapAPILdapGroupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -128,7 +128,7 @@ func (a *LdapApiService) LdapGroupsGet(ctx context.Context) ApiLdapGroupsGetRequ
 
 // Execute executes the request
 //  @return LdapGroupSearchResults
-func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error) {
+func (a *LdapAPIService) LdapGroupsGetExecute(r LdapAPILdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -136,7 +136,7 @@ func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapG
 		localVarReturnValue  *LdapGroupSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapApiService.LdapGroupsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapAPIService.LdapGroupsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -148,7 +148,10 @@ func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapG
 	localVarFormParams := url.Values{}
 
 	if r.q != nil {
-		localVarQueryParams.Add("q", parameterToString(*r.q, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "")
+	} else {
+		var defaultValue string = "null"
+		r.q = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -177,9 +180,9 @@ func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapG
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -204,12 +207,12 @@ func (a *LdapApiService) LdapGroupsGetExecute(r ApiLdapGroupsGetRequest) (*LdapG
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiLdapServersGetRequest struct {
+type LdapAPILdapServersGetRequest struct {
 	ctx context.Context
-	ApiService LdapApi
+	ApiService LdapAPI
 }
 
-func (r ApiLdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
+func (r LdapAPILdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
 	return r.ApiService.LdapServersGetExecute(r)
 }
 
@@ -219,10 +222,10 @@ LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Providers.
 Retrieve all Servers including LDAP and Cloud Identity Providers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiLdapServersGetRequest
+ @return LdapAPILdapServersGetRequest
 */
-func (a *LdapApiService) LdapServersGet(ctx context.Context) ApiLdapServersGetRequest {
-	return ApiLdapServersGetRequest{
+func (a *LdapAPIService) LdapServersGet(ctx context.Context) LdapAPILdapServersGetRequest {
+	return LdapAPILdapServersGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -230,7 +233,7 @@ func (a *LdapApiService) LdapServersGet(ctx context.Context) ApiLdapServersGetRe
 
 // Execute executes the request
 //  @return []LdapServer
-func (a *LdapApiService) LdapServersGetExecute(r ApiLdapServersGetRequest) ([]LdapServer, *http.Response, error) {
+func (a *LdapAPIService) LdapServersGetExecute(r LdapAPILdapServersGetRequest) ([]LdapServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -238,7 +241,7 @@ func (a *LdapApiService) LdapServersGetExecute(r ApiLdapServersGetRequest) ([]Ld
 		localVarReturnValue  []LdapServer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapApiService.LdapServersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapAPIService.LdapServersGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -276,9 +279,9 @@ func (a *LdapApiService) LdapServersGetExecute(r ApiLdapServersGetRequest) ([]Ld
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -303,19 +306,19 @@ func (a *LdapApiService) LdapServersGetExecute(r ApiLdapServersGetRequest) ([]Ld
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1LdapGroupsGetRequest struct {
+type LdapAPIV1LdapGroupsGetRequest struct {
 	ctx context.Context
-	ApiService LdapApi
+	ApiService LdapAPI
 	q *string
 }
 
 // Will perform a \&quot;contains\&quot; search on the names of access groups
-func (r ApiV1LdapGroupsGetRequest) Q(q string) ApiV1LdapGroupsGetRequest {
+func (r LdapAPIV1LdapGroupsGetRequest) Q(q string) LdapAPIV1LdapGroupsGetRequest {
 	r.q = &q
 	return r
 }
 
-func (r ApiV1LdapGroupsGetRequest) Execute() (*LdapGroupSearchResults, *http.Response, error) {
+func (r LdapAPIV1LdapGroupsGetRequest) Execute() (*LdapGroupSearchResults, *http.Response, error) {
 	return r.ApiService.V1LdapGroupsGetExecute(r)
 }
 
@@ -325,10 +328,10 @@ V1LdapGroupsGet Retrieve the configured access groups that contain the text in t
 Retrieves the configured access groups that contain the text in the searchParam.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1LdapGroupsGetRequest
+ @return LdapAPIV1LdapGroupsGetRequest
 */
-func (a *LdapApiService) V1LdapGroupsGet(ctx context.Context) ApiV1LdapGroupsGetRequest {
-	return ApiV1LdapGroupsGetRequest{
+func (a *LdapAPIService) V1LdapGroupsGet(ctx context.Context) LdapAPIV1LdapGroupsGetRequest {
+	return LdapAPIV1LdapGroupsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -336,7 +339,7 @@ func (a *LdapApiService) V1LdapGroupsGet(ctx context.Context) ApiV1LdapGroupsGet
 
 // Execute executes the request
 //  @return LdapGroupSearchResults
-func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error) {
+func (a *LdapAPIService) V1LdapGroupsGetExecute(r LdapAPIV1LdapGroupsGetRequest) (*LdapGroupSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -344,7 +347,7 @@ func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*L
 		localVarReturnValue  *LdapGroupSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapApiService.V1LdapGroupsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapAPIService.V1LdapGroupsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -356,7 +359,10 @@ func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*L
 	localVarFormParams := url.Values{}
 
 	if r.q != nil {
-		localVarQueryParams.Add("q", parameterToString(*r.q, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "")
+	} else {
+		var defaultValue string = "null"
+		r.q = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -385,9 +391,9 @@ func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*L
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -412,12 +418,12 @@ func (a *LdapApiService) V1LdapGroupsGetExecute(r ApiV1LdapGroupsGetRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1LdapLdapServersGetRequest struct {
+type LdapAPIV1LdapLdapServersGetRequest struct {
 	ctx context.Context
-	ApiService LdapApi
+	ApiService LdapAPI
 }
 
-func (r ApiV1LdapLdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
+func (r LdapAPIV1LdapLdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
 	return r.ApiService.V1LdapLdapServersGetExecute(r)
 }
 
@@ -427,10 +433,10 @@ V1LdapLdapServersGet Retrieve all LDAP Servers.
 Retrieves all not migrated, LDAP Servers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1LdapLdapServersGetRequest
+ @return LdapAPIV1LdapLdapServersGetRequest
 */
-func (a *LdapApiService) V1LdapLdapServersGet(ctx context.Context) ApiV1LdapLdapServersGetRequest {
-	return ApiV1LdapLdapServersGetRequest{
+func (a *LdapAPIService) V1LdapLdapServersGet(ctx context.Context) LdapAPIV1LdapLdapServersGetRequest {
+	return LdapAPIV1LdapLdapServersGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -438,7 +444,7 @@ func (a *LdapApiService) V1LdapLdapServersGet(ctx context.Context) ApiV1LdapLdap
 
 // Execute executes the request
 //  @return []LdapServer
-func (a *LdapApiService) V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRequest) ([]LdapServer, *http.Response, error) {
+func (a *LdapAPIService) V1LdapLdapServersGetExecute(r LdapAPIV1LdapLdapServersGetRequest) ([]LdapServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -446,7 +452,7 @@ func (a *LdapApiService) V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRe
 		localVarReturnValue  []LdapServer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapApiService.V1LdapLdapServersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapAPIService.V1LdapLdapServersGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -484,9 +490,9 @@ func (a *LdapApiService) V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -511,12 +517,12 @@ func (a *LdapApiService) V1LdapLdapServersGetExecute(r ApiV1LdapLdapServersGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1LdapServersGetRequest struct {
+type LdapAPIV1LdapServersGetRequest struct {
 	ctx context.Context
-	ApiService LdapApi
+	ApiService LdapAPI
 }
 
-func (r ApiV1LdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
+func (r LdapAPIV1LdapServersGetRequest) Execute() ([]LdapServer, *http.Response, error) {
 	return r.ApiService.V1LdapServersGetExecute(r)
 }
 
@@ -526,10 +532,10 @@ V1LdapServersGet Retrieve all Servers including LDAP and Cloud Identity Provider
 Retrieve all active Servers including LDAP and Cloud Identity Providers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1LdapServersGetRequest
+ @return LdapAPIV1LdapServersGetRequest
 */
-func (a *LdapApiService) V1LdapServersGet(ctx context.Context) ApiV1LdapServersGetRequest {
-	return ApiV1LdapServersGetRequest{
+func (a *LdapAPIService) V1LdapServersGet(ctx context.Context) LdapAPIV1LdapServersGetRequest {
+	return LdapAPIV1LdapServersGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -537,7 +543,7 @@ func (a *LdapApiService) V1LdapServersGet(ctx context.Context) ApiV1LdapServersG
 
 // Execute executes the request
 //  @return []LdapServer
-func (a *LdapApiService) V1LdapServersGetExecute(r ApiV1LdapServersGetRequest) ([]LdapServer, *http.Response, error) {
+func (a *LdapAPIService) V1LdapServersGetExecute(r LdapAPIV1LdapServersGetRequest) ([]LdapServer, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -545,7 +551,7 @@ func (a *LdapApiService) V1LdapServersGetExecute(r ApiV1LdapServersGetRequest) (
 		localVarReturnValue  []LdapServer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapApiService.V1LdapServersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LdapAPIService.V1LdapServersGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -583,9 +589,9 @@ func (a *LdapApiService) V1LdapServersGetExecute(r ApiV1LdapServersGetRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

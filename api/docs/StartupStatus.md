@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Step** | Pointer to **string** |  | [optional] 
 **StepCode** | Pointer to **string** |  | [optional] 
-**StepParam** | Pointer to **string** |  | [optional] 
+**StepParam** | Pointer to **NullableString** |  | [optional] 
 **Percentage** | Pointer to **int32** |  | [optional] 
-**Warning** | Pointer to **string** |  | [optional] 
-**WarningCode** | Pointer to **string** |  | [optional] 
-**WarningParam** | Pointer to **string** |  | [optional] 
-**Error** | Pointer to **string** |  | [optional] 
-**ErrorCode** | Pointer to **string** |  | [optional] 
+**Warning** | Pointer to **NullableString** |  | [optional] 
+**WarningCode** | Pointer to **NullableString** |  | [optional] 
+**WarningParam** | Pointer to **NullableString** |  | [optional] 
+**Error** | Pointer to **NullableString** |  | [optional] 
+**ErrorCode** | Pointer to **NullableString** |  | [optional] 
+**SetupAssistantNecessary** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -108,6 +109,16 @@ SetStepParam sets StepParam field to given value.
 
 HasStepParam returns a boolean if a field has been set.
 
+### SetStepParamNil
+
+`func (o *StartupStatus) SetStepParamNil(b bool)`
+
+ SetStepParamNil sets the value for StepParam to be an explicit nil
+
+### UnsetStepParam
+`func (o *StartupStatus) UnsetStepParam()`
+
+UnsetStepParam ensures that no value is present for StepParam, not even an explicit nil
 ### GetPercentage
 
 `func (o *StartupStatus) GetPercentage() int32`
@@ -158,6 +169,16 @@ SetWarning sets Warning field to given value.
 
 HasWarning returns a boolean if a field has been set.
 
+### SetWarningNil
+
+`func (o *StartupStatus) SetWarningNil(b bool)`
+
+ SetWarningNil sets the value for Warning to be an explicit nil
+
+### UnsetWarning
+`func (o *StartupStatus) UnsetWarning()`
+
+UnsetWarning ensures that no value is present for Warning, not even an explicit nil
 ### GetWarningCode
 
 `func (o *StartupStatus) GetWarningCode() string`
@@ -183,6 +204,16 @@ SetWarningCode sets WarningCode field to given value.
 
 HasWarningCode returns a boolean if a field has been set.
 
+### SetWarningCodeNil
+
+`func (o *StartupStatus) SetWarningCodeNil(b bool)`
+
+ SetWarningCodeNil sets the value for WarningCode to be an explicit nil
+
+### UnsetWarningCode
+`func (o *StartupStatus) UnsetWarningCode()`
+
+UnsetWarningCode ensures that no value is present for WarningCode, not even an explicit nil
 ### GetWarningParam
 
 `func (o *StartupStatus) GetWarningParam() string`
@@ -208,6 +239,16 @@ SetWarningParam sets WarningParam field to given value.
 
 HasWarningParam returns a boolean if a field has been set.
 
+### SetWarningParamNil
+
+`func (o *StartupStatus) SetWarningParamNil(b bool)`
+
+ SetWarningParamNil sets the value for WarningParam to be an explicit nil
+
+### UnsetWarningParam
+`func (o *StartupStatus) UnsetWarningParam()`
+
+UnsetWarningParam ensures that no value is present for WarningParam, not even an explicit nil
 ### GetError
 
 `func (o *StartupStatus) GetError() string`
@@ -233,6 +274,16 @@ SetError sets Error field to given value.
 
 HasError returns a boolean if a field has been set.
 
+### SetErrorNil
+
+`func (o *StartupStatus) SetErrorNil(b bool)`
+
+ SetErrorNil sets the value for Error to be an explicit nil
+
+### UnsetError
+`func (o *StartupStatus) UnsetError()`
+
+UnsetError ensures that no value is present for Error, not even an explicit nil
 ### GetErrorCode
 
 `func (o *StartupStatus) GetErrorCode() string`
@@ -257,6 +308,41 @@ SetErrorCode sets ErrorCode field to given value.
 `func (o *StartupStatus) HasErrorCode() bool`
 
 HasErrorCode returns a boolean if a field has been set.
+
+### SetErrorCodeNil
+
+`func (o *StartupStatus) SetErrorCodeNil(b bool)`
+
+ SetErrorCodeNil sets the value for ErrorCode to be an explicit nil
+
+### UnsetErrorCode
+`func (o *StartupStatus) UnsetErrorCode()`
+
+UnsetErrorCode ensures that no value is present for ErrorCode, not even an explicit nil
+### GetSetupAssistantNecessary
+
+`func (o *StartupStatus) GetSetupAssistantNecessary() bool`
+
+GetSetupAssistantNecessary returns the SetupAssistantNecessary field if non-nil, zero value otherwise.
+
+### GetSetupAssistantNecessaryOk
+
+`func (o *StartupStatus) GetSetupAssistantNecessaryOk() (*bool, bool)`
+
+GetSetupAssistantNecessaryOk returns a tuple with the SetupAssistantNecessary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSetupAssistantNecessary
+
+`func (o *StartupStatus) SetSetupAssistantNecessary(v bool)`
+
+SetSetupAssistantNecessary sets SetupAssistantNecessary field to given value.
+
+### HasSetupAssistantNecessary
+
+`func (o *StartupStatus) HasSetupAssistantNecessary() bool`
+
+HasSetupAssistantNecessary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

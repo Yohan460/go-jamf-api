@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentMethod type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentMethod{}
+
 // EnrollmentMethod struct for EnrollmentMethod
 type EnrollmentMethod struct {
 	Id *string `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewEnrollmentMethodWithDefaults() *EnrollmentMethod {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnrollmentMethod) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EnrollmentMethod) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentMethod) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *EnrollmentMethod) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnrollmentMethod) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EnrollmentMethod) SetId(v string) {
 
 // GetObjectName returns the ObjectName field value if set, zero value otherwise.
 func (o *EnrollmentMethod) GetObjectName() string {
-	if o == nil || o.ObjectName == nil {
+	if o == nil || IsNil(o.ObjectName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EnrollmentMethod) GetObjectName() string {
 // GetObjectNameOk returns a tuple with the ObjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentMethod) GetObjectNameOk() (*string, bool) {
-	if o == nil || o.ObjectName == nil {
+	if o == nil || IsNil(o.ObjectName) {
 		return nil, false
 	}
 	return o.ObjectName, true
@@ -90,7 +93,7 @@ func (o *EnrollmentMethod) GetObjectNameOk() (*string, bool) {
 
 // HasObjectName returns a boolean if a field has been set.
 func (o *EnrollmentMethod) HasObjectName() bool {
-	if o != nil && o.ObjectName != nil {
+	if o != nil && !IsNil(o.ObjectName) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *EnrollmentMethod) SetObjectName(v string) {
 
 // GetObjectType returns the ObjectType field value if set, zero value otherwise.
 func (o *EnrollmentMethod) GetObjectType() string {
-	if o == nil || o.ObjectType == nil {
+	if o == nil || IsNil(o.ObjectType) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *EnrollmentMethod) GetObjectType() string {
 // GetObjectTypeOk returns a tuple with the ObjectType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentMethod) GetObjectTypeOk() (*string, bool) {
-	if o == nil || o.ObjectType == nil {
+	if o == nil || IsNil(o.ObjectType) {
 		return nil, false
 	}
 	return o.ObjectType, true
@@ -122,7 +125,7 @@ func (o *EnrollmentMethod) GetObjectTypeOk() (*string, bool) {
 
 // HasObjectType returns a boolean if a field has been set.
 func (o *EnrollmentMethod) HasObjectType() bool {
-	if o != nil && o.ObjectType != nil {
+	if o != nil && !IsNil(o.ObjectType) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *EnrollmentMethod) SetObjectType(v string) {
 }
 
 func (o EnrollmentMethod) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ObjectName != nil {
-		toSerialize["objectName"] = o.ObjectName
-	}
-	if o.ObjectType != nil {
-		toSerialize["objectType"] = o.ObjectType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentMethod) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ObjectName) {
+		toSerialize["objectName"] = o.ObjectName
+	}
+	if !IsNil(o.ObjectType) {
+		toSerialize["objectType"] = o.ObjectType
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentMethod struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentDisownBody type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentDisownBody{}
+
 // DeviceEnrollmentDisownBody struct for DeviceEnrollmentDisownBody
 type DeviceEnrollmentDisownBody struct {
 	Devices []string `json:"devices,omitempty"`
@@ -38,7 +41,7 @@ func NewDeviceEnrollmentDisownBodyWithDefaults() *DeviceEnrollmentDisownBody {
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
 func (o *DeviceEnrollmentDisownBody) GetDevices() []string {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		var ret []string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *DeviceEnrollmentDisownBody) GetDevices() []string {
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentDisownBody) GetDevicesOk() ([]string, bool) {
-	if o == nil || o.Devices == nil {
+	if o == nil || IsNil(o.Devices) {
 		return nil, false
 	}
 	return o.Devices, true
@@ -56,7 +59,7 @@ func (o *DeviceEnrollmentDisownBody) GetDevicesOk() ([]string, bool) {
 
 // HasDevices returns a boolean if a field has been set.
 func (o *DeviceEnrollmentDisownBody) HasDevices() bool {
-	if o != nil && o.Devices != nil {
+	if o != nil && !IsNil(o.Devices) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *DeviceEnrollmentDisownBody) SetDevices(v []string) {
 }
 
 func (o DeviceEnrollmentDisownBody) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Devices != nil {
-		toSerialize["devices"] = o.Devices
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentDisownBody) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Devices) {
+		toSerialize["devices"] = o.Devices
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentDisownBody struct {

@@ -1,10 +1,10 @@
-# \RemoteAdministrationApi
+# \RemoteAdministrationAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PreviewRemoteAdministrationConfigurationsGet**](RemoteAdministrationApi.md#PreviewRemoteAdministrationConfigurationsGet) | **Get** /preview/remote-administration-configurations | Get information about all remote administration configurations.
+[**PreviewRemoteAdministrationConfigurationsGet**](RemoteAdministrationAPI.md#PreviewRemoteAdministrationConfigurationsGet) | **Get** /preview/remote-administration-configurations | Get information about all remote administration configurations.
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsGet(context.Background()).Page(page).PageSize(pageSize).Execute()
+    resp, r, err := apiClient.RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet(context.Background()).Page(page).PageSize(pageSize).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `PreviewRemoteAdministrationConfigurationsGet`: RemoteAdministrationSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `RemoteAdministrationApi.PreviewRemoteAdministrationConfigurationsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet`: %v\n", resp)
 }
 ```
 

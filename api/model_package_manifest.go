@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PackageManifest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PackageManifest{}
+
 // PackageManifest struct for PackageManifest
 type PackageManifest struct {
 	Url string `json:"url"`
@@ -126,7 +129,7 @@ func (o *PackageManifest) SetHashType(v string) {
 
 // GetDisplayImageUrl returns the DisplayImageUrl field value if set, zero value otherwise.
 func (o *PackageManifest) GetDisplayImageUrl() string {
-	if o == nil || o.DisplayImageUrl == nil {
+	if o == nil || IsNil(o.DisplayImageUrl) {
 		var ret string
 		return ret
 	}
@@ -136,7 +139,7 @@ func (o *PackageManifest) GetDisplayImageUrl() string {
 // GetDisplayImageUrlOk returns a tuple with the DisplayImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageManifest) GetDisplayImageUrlOk() (*string, bool) {
-	if o == nil || o.DisplayImageUrl == nil {
+	if o == nil || IsNil(o.DisplayImageUrl) {
 		return nil, false
 	}
 	return o.DisplayImageUrl, true
@@ -144,7 +147,7 @@ func (o *PackageManifest) GetDisplayImageUrlOk() (*string, bool) {
 
 // HasDisplayImageUrl returns a boolean if a field has been set.
 func (o *PackageManifest) HasDisplayImageUrl() bool {
-	if o != nil && o.DisplayImageUrl != nil {
+	if o != nil && !IsNil(o.DisplayImageUrl) {
 		return true
 	}
 
@@ -158,7 +161,7 @@ func (o *PackageManifest) SetDisplayImageUrl(v string) {
 
 // GetFullSizeImageUrl returns the FullSizeImageUrl field value if set, zero value otherwise.
 func (o *PackageManifest) GetFullSizeImageUrl() string {
-	if o == nil || o.FullSizeImageUrl == nil {
+	if o == nil || IsNil(o.FullSizeImageUrl) {
 		var ret string
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *PackageManifest) GetFullSizeImageUrl() string {
 // GetFullSizeImageUrlOk returns a tuple with the FullSizeImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageManifest) GetFullSizeImageUrlOk() (*string, bool) {
-	if o == nil || o.FullSizeImageUrl == nil {
+	if o == nil || IsNil(o.FullSizeImageUrl) {
 		return nil, false
 	}
 	return o.FullSizeImageUrl, true
@@ -176,7 +179,7 @@ func (o *PackageManifest) GetFullSizeImageUrlOk() (*string, bool) {
 
 // HasFullSizeImageUrl returns a boolean if a field has been set.
 func (o *PackageManifest) HasFullSizeImageUrl() bool {
-	if o != nil && o.FullSizeImageUrl != nil {
+	if o != nil && !IsNil(o.FullSizeImageUrl) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *PackageManifest) SetBundleVersion(v string) {
 
 // GetSubtitle returns the Subtitle field value if set, zero value otherwise.
 func (o *PackageManifest) GetSubtitle() string {
-	if o == nil || o.Subtitle == nil {
+	if o == nil || IsNil(o.Subtitle) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *PackageManifest) GetSubtitle() string {
 // GetSubtitleOk returns a tuple with the Subtitle field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PackageManifest) GetSubtitleOk() (*string, bool) {
-	if o == nil || o.Subtitle == nil {
+	if o == nil || IsNil(o.Subtitle) {
 		return nil, false
 	}
 	return o.Subtitle, true
@@ -256,7 +259,7 @@ func (o *PackageManifest) GetSubtitleOk() (*string, bool) {
 
 // HasSubtitle returns a boolean if a field has been set.
 func (o *PackageManifest) HasSubtitle() bool {
-	if o != nil && o.Subtitle != nil {
+	if o != nil && !IsNil(o.Subtitle) {
 		return true
 	}
 
@@ -317,38 +320,32 @@ func (o *PackageManifest) SetSizeInBytes(v int32) {
 }
 
 func (o PackageManifest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["url"] = o.Url
-	}
-	if true {
-		toSerialize["hash"] = o.Hash
-	}
-	if true {
-		toSerialize["hashType"] = o.HashType
-	}
-	if o.DisplayImageUrl != nil {
-		toSerialize["displayImageUrl"] = o.DisplayImageUrl
-	}
-	if o.FullSizeImageUrl != nil {
-		toSerialize["fullSizeImageUrl"] = o.FullSizeImageUrl
-	}
-	if true {
-		toSerialize["bundleId"] = o.BundleId
-	}
-	if true {
-		toSerialize["bundleVersion"] = o.BundleVersion
-	}
-	if o.Subtitle != nil {
-		toSerialize["subtitle"] = o.Subtitle
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["sizeInBytes"] = o.SizeInBytes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PackageManifest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["url"] = o.Url
+	toSerialize["hash"] = o.Hash
+	toSerialize["hashType"] = o.HashType
+	if !IsNil(o.DisplayImageUrl) {
+		toSerialize["displayImageUrl"] = o.DisplayImageUrl
+	}
+	if !IsNil(o.FullSizeImageUrl) {
+		toSerialize["fullSizeImageUrl"] = o.FullSizeImageUrl
+	}
+	toSerialize["bundleId"] = o.BundleId
+	toSerialize["bundleVersion"] = o.BundleVersion
+	if !IsNil(o.Subtitle) {
+		toSerialize["subtitle"] = o.Subtitle
+	}
+	toSerialize["title"] = o.Title
+	toSerialize["sizeInBytes"] = o.SizeInBytes
+	return toSerialize, nil
 }
 
 type NullablePackageManifest struct {

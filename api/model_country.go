@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Country type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Country{}
+
 // Country struct for Country
 type Country struct {
 	Code *string `json:"code,omitempty"`
@@ -39,7 +42,7 @@ func NewCountryWithDefaults() *Country {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *Country) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *Country) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Country) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -57,7 +60,7 @@ func (o *Country) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *Country) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *Country) SetCode(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Country) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *Country) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Country) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *Country) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Country) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *Country) SetName(v string) {
 }
 
 func (o Country) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Country) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableCountry struct {

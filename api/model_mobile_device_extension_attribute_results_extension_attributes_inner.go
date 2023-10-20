@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceExtensionAttributeResultsExtensionAttributesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceExtensionAttributeResultsExtensionAttributesInner{}
+
 // MobileDeviceExtensionAttributeResultsExtensionAttributesInner struct for MobileDeviceExtensionAttributeResultsExtensionAttributesInner
 type MobileDeviceExtensionAttributeResultsExtensionAttributesInner struct {
 	Name *string `json:"name,omitempty"`
@@ -38,7 +41,7 @@ func NewMobileDeviceExtensionAttributeResultsExtensionAttributesInnerWithDefault
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) GetName(
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -56,7 +59,7 @@ func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) GetNameO
 
 // HasName returns a boolean if a field has been set.
 func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *MobileDeviceExtensionAttributeResultsExtensionAttributesInner) SetName(
 }
 
 func (o MobileDeviceExtensionAttributeResultsExtensionAttributesInner) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceExtensionAttributeResultsExtensionAttributesInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceExtensionAttributeResultsExtensionAttributesInner struct {

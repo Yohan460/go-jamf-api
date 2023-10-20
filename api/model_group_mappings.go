@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GroupMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupMappings{}
+
 // GroupMappings Cloud Identity Provider user group mappings configuration
 type GroupMappings struct {
 	ObjectClassLimitation string `json:"objectClassLimitation"`
@@ -218,29 +221,23 @@ func (o *GroupMappings) SetGroupUuid(v string) {
 }
 
 func (o GroupMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["objectClassLimitation"] = o.ObjectClassLimitation
-	}
-	if true {
-		toSerialize["objectClasses"] = o.ObjectClasses
-	}
-	if true {
-		toSerialize["searchBase"] = o.SearchBase
-	}
-	if true {
-		toSerialize["searchScope"] = o.SearchScope
-	}
-	if true {
-		toSerialize["groupID"] = o.GroupID
-	}
-	if true {
-		toSerialize["groupName"] = o.GroupName
-	}
-	if true {
-		toSerialize["groupUuid"] = o.GroupUuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GroupMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["objectClassLimitation"] = o.ObjectClassLimitation
+	toSerialize["objectClasses"] = o.ObjectClasses
+	toSerialize["searchBase"] = o.SearchBase
+	toSerialize["searchScope"] = o.SearchScope
+	toSerialize["groupID"] = o.GroupID
+	toSerialize["groupName"] = o.GroupName
+	toSerialize["groupUuid"] = o.GroupUuid
+	return toSerialize, nil
 }
 
 type NullableGroupMappings struct {

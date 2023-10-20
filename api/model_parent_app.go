@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ParentApp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ParentApp{}
+
 // ParentApp struct for ParentApp
 type ParentApp struct {
 	TimezoneId string `json:"timezoneId"`
@@ -23,7 +26,7 @@ type ParentApp struct {
 	AllowTemplates *bool `json:"allowTemplates,omitempty"`
 	DisassociateOnWipeAndReEnroll *bool `json:"disassociateOnWipeAndReEnroll,omitempty"`
 	AllowClearPasscode *bool `json:"allowClearPasscode,omitempty"`
-	SafelistedApps []SafelistedAppsInner `json:"safelistedApps,omitempty"`
+	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
 }
 
 // NewParentApp instantiates a new ParentApp object
@@ -145,7 +148,7 @@ func (o *ParentApp) SetIsEnabled(v bool) {
 
 // GetAllowTemplates returns the AllowTemplates field value if set, zero value otherwise.
 func (o *ParentApp) GetAllowTemplates() bool {
-	if o == nil || o.AllowTemplates == nil {
+	if o == nil || IsNil(o.AllowTemplates) {
 		var ret bool
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ParentApp) GetAllowTemplates() bool {
 // GetAllowTemplatesOk returns a tuple with the AllowTemplates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParentApp) GetAllowTemplatesOk() (*bool, bool) {
-	if o == nil || o.AllowTemplates == nil {
+	if o == nil || IsNil(o.AllowTemplates) {
 		return nil, false
 	}
 	return o.AllowTemplates, true
@@ -163,7 +166,7 @@ func (o *ParentApp) GetAllowTemplatesOk() (*bool, bool) {
 
 // HasAllowTemplates returns a boolean if a field has been set.
 func (o *ParentApp) HasAllowTemplates() bool {
-	if o != nil && o.AllowTemplates != nil {
+	if o != nil && !IsNil(o.AllowTemplates) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ParentApp) SetAllowTemplates(v bool) {
 
 // GetDisassociateOnWipeAndReEnroll returns the DisassociateOnWipeAndReEnroll field value if set, zero value otherwise.
 func (o *ParentApp) GetDisassociateOnWipeAndReEnroll() bool {
-	if o == nil || o.DisassociateOnWipeAndReEnroll == nil {
+	if o == nil || IsNil(o.DisassociateOnWipeAndReEnroll) {
 		var ret bool
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ParentApp) GetDisassociateOnWipeAndReEnroll() bool {
 // GetDisassociateOnWipeAndReEnrollOk returns a tuple with the DisassociateOnWipeAndReEnroll field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParentApp) GetDisassociateOnWipeAndReEnrollOk() (*bool, bool) {
-	if o == nil || o.DisassociateOnWipeAndReEnroll == nil {
+	if o == nil || IsNil(o.DisassociateOnWipeAndReEnroll) {
 		return nil, false
 	}
 	return o.DisassociateOnWipeAndReEnroll, true
@@ -195,7 +198,7 @@ func (o *ParentApp) GetDisassociateOnWipeAndReEnrollOk() (*bool, bool) {
 
 // HasDisassociateOnWipeAndReEnroll returns a boolean if a field has been set.
 func (o *ParentApp) HasDisassociateOnWipeAndReEnroll() bool {
-	if o != nil && o.DisassociateOnWipeAndReEnroll != nil {
+	if o != nil && !IsNil(o.DisassociateOnWipeAndReEnroll) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ParentApp) SetDisassociateOnWipeAndReEnroll(v bool) {
 
 // GetAllowClearPasscode returns the AllowClearPasscode field value if set, zero value otherwise.
 func (o *ParentApp) GetAllowClearPasscode() bool {
-	if o == nil || o.AllowClearPasscode == nil {
+	if o == nil || IsNil(o.AllowClearPasscode) {
 		var ret bool
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ParentApp) GetAllowClearPasscode() bool {
 // GetAllowClearPasscodeOk returns a tuple with the AllowClearPasscode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ParentApp) GetAllowClearPasscodeOk() (*bool, bool) {
-	if o == nil || o.AllowClearPasscode == nil {
+	if o == nil || IsNil(o.AllowClearPasscode) {
 		return nil, false
 	}
 	return o.AllowClearPasscode, true
@@ -227,7 +230,7 @@ func (o *ParentApp) GetAllowClearPasscodeOk() (*bool, bool) {
 
 // HasAllowClearPasscode returns a boolean if a field has been set.
 func (o *ParentApp) HasAllowClearPasscode() bool {
-	if o != nil && o.AllowClearPasscode != nil {
+	if o != nil && !IsNil(o.AllowClearPasscode) {
 		return true
 	}
 
@@ -240,9 +243,9 @@ func (o *ParentApp) SetAllowClearPasscode(v bool) {
 }
 
 // GetSafelistedApps returns the SafelistedApps field value if set, zero value otherwise.
-func (o *ParentApp) GetSafelistedApps() []SafelistedAppsInner {
-	if o == nil || o.SafelistedApps == nil {
-		var ret []SafelistedAppsInner
+func (o *ParentApp) GetSafelistedApps() []SafelistedApp {
+	if o == nil || IsNil(o.SafelistedApps) {
+		var ret []SafelistedApp
 		return ret
 	}
 	return o.SafelistedApps
@@ -250,8 +253,8 @@ func (o *ParentApp) GetSafelistedApps() []SafelistedAppsInner {
 
 // GetSafelistedAppsOk returns a tuple with the SafelistedApps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ParentApp) GetSafelistedAppsOk() ([]SafelistedAppsInner, bool) {
-	if o == nil || o.SafelistedApps == nil {
+func (o *ParentApp) GetSafelistedAppsOk() ([]SafelistedApp, bool) {
+	if o == nil || IsNil(o.SafelistedApps) {
 		return nil, false
 	}
 	return o.SafelistedApps, true
@@ -259,45 +262,45 @@ func (o *ParentApp) GetSafelistedAppsOk() ([]SafelistedAppsInner, bool) {
 
 // HasSafelistedApps returns a boolean if a field has been set.
 func (o *ParentApp) HasSafelistedApps() bool {
-	if o != nil && o.SafelistedApps != nil {
+	if o != nil && !IsNil(o.SafelistedApps) {
 		return true
 	}
 
 	return false
 }
 
-// SetSafelistedApps gets a reference to the given []SafelistedAppsInner and assigns it to the SafelistedApps field.
-func (o *ParentApp) SetSafelistedApps(v []SafelistedAppsInner) {
+// SetSafelistedApps gets a reference to the given []SafelistedApp and assigns it to the SafelistedApps field.
+func (o *ParentApp) SetSafelistedApps(v []SafelistedApp) {
 	o.SafelistedApps = v
 }
 
 func (o ParentApp) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["timezoneId"] = o.TimezoneId
-	}
-	if true {
-		toSerialize["restrictedTimes"] = o.RestrictedTimes
-	}
-	if true {
-		toSerialize["deviceGroupId"] = o.DeviceGroupId
-	}
-	if true {
-		toSerialize["isEnabled"] = o.IsEnabled
-	}
-	if o.AllowTemplates != nil {
-		toSerialize["allowTemplates"] = o.AllowTemplates
-	}
-	if o.DisassociateOnWipeAndReEnroll != nil {
-		toSerialize["disassociateOnWipeAndReEnroll"] = o.DisassociateOnWipeAndReEnroll
-	}
-	if o.AllowClearPasscode != nil {
-		toSerialize["allowClearPasscode"] = o.AllowClearPasscode
-	}
-	if o.SafelistedApps != nil {
-		toSerialize["safelistedApps"] = o.SafelistedApps
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ParentApp) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["timezoneId"] = o.TimezoneId
+	toSerialize["restrictedTimes"] = o.RestrictedTimes
+	toSerialize["deviceGroupId"] = o.DeviceGroupId
+	toSerialize["isEnabled"] = o.IsEnabled
+	if !IsNil(o.AllowTemplates) {
+		toSerialize["allowTemplates"] = o.AllowTemplates
+	}
+	if !IsNil(o.DisassociateOnWipeAndReEnroll) {
+		toSerialize["disassociateOnWipeAndReEnroll"] = o.DisassociateOnWipeAndReEnroll
+	}
+	if !IsNil(o.AllowClearPasscode) {
+		toSerialize["allowClearPasscode"] = o.AllowClearPasscode
+	}
+	if !IsNil(o.SafelistedApps) {
+		toSerialize["safelistedApps"] = o.SafelistedApps
+	}
+	return toSerialize, nil
 }
 
 type NullableParentApp struct {

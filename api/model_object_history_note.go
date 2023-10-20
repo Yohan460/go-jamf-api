@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectHistoryNote type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectHistoryNote{}
+
 // ObjectHistoryNote struct for ObjectHistoryNote
 type ObjectHistoryNote struct {
 	Note string `json:"note"`
@@ -62,11 +65,17 @@ func (o *ObjectHistoryNote) SetNote(v string) {
 }
 
 func (o ObjectHistoryNote) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["note"] = o.Note
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ObjectHistoryNote) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["note"] = o.Note
+	return toSerialize, nil
 }
 
 type NullableObjectHistoryNote struct {

@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 )
 
 
-type DeviceCommunicationSettingsApi interface {
+type DeviceCommunicationSettingsAPI interface {
 
 	/*
 	V1DeviceCommunicationSettingsGet Retrieves all settings for device communication 
@@ -29,13 +29,13 @@ type DeviceCommunicationSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceCommunicationSettingsGetRequest
+	@return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest
 	*/
-	V1DeviceCommunicationSettingsGet(ctx context.Context) ApiV1DeviceCommunicationSettingsGetRequest
+	V1DeviceCommunicationSettingsGet(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest
 
 	// V1DeviceCommunicationSettingsGetExecute executes the request
 	//  @return DeviceCommunicationSettings
-	V1DeviceCommunicationSettingsGetExecute(r ApiV1DeviceCommunicationSettingsGetRequest) (*DeviceCommunicationSettings, *http.Response, error)
+	V1DeviceCommunicationSettingsGetExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest) (*DeviceCommunicationSettings, *http.Response, error)
 
 	/*
 	V1DeviceCommunicationSettingsHistoryGet Get Device Communication settings history 
@@ -44,13 +44,13 @@ type DeviceCommunicationSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceCommunicationSettingsHistoryGetRequest
+	@return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest
 	*/
-	V1DeviceCommunicationSettingsHistoryGet(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryGetRequest
+	V1DeviceCommunicationSettingsHistoryGet(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest
 
 	// V1DeviceCommunicationSettingsHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1DeviceCommunicationSettingsHistoryGetExecute(r ApiV1DeviceCommunicationSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1DeviceCommunicationSettingsHistoryGetExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1DeviceCommunicationSettingsHistoryPost Add Device Communication Settings history notes 
@@ -59,13 +59,13 @@ type DeviceCommunicationSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceCommunicationSettingsHistoryPostRequest
+	@return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest
 	*/
-	V1DeviceCommunicationSettingsHistoryPost(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryPostRequest
+	V1DeviceCommunicationSettingsHistoryPost(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest
 
 	// V1DeviceCommunicationSettingsHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1DeviceCommunicationSettingsHistoryPostExecute(r ApiV1DeviceCommunicationSettingsHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1DeviceCommunicationSettingsHistoryPostExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1DeviceCommunicationSettingsPut Update device communication settings 
@@ -74,24 +74,24 @@ type DeviceCommunicationSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceCommunicationSettingsPutRequest
+	@return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest
 	*/
-	V1DeviceCommunicationSettingsPut(ctx context.Context) ApiV1DeviceCommunicationSettingsPutRequest
+	V1DeviceCommunicationSettingsPut(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest
 
 	// V1DeviceCommunicationSettingsPutExecute executes the request
 	//  @return DeviceCommunicationSettings
-	V1DeviceCommunicationSettingsPutExecute(r ApiV1DeviceCommunicationSettingsPutRequest) (*DeviceCommunicationSettings, *http.Response, error)
+	V1DeviceCommunicationSettingsPutExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest) (*DeviceCommunicationSettings, *http.Response, error)
 }
 
-// DeviceCommunicationSettingsApiService DeviceCommunicationSettingsApi service
-type DeviceCommunicationSettingsApiService service
+// DeviceCommunicationSettingsAPIService DeviceCommunicationSettingsAPI service
+type DeviceCommunicationSettingsAPIService service
 
-type ApiV1DeviceCommunicationSettingsGetRequest struct {
+type DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest struct {
 	ctx context.Context
-	ApiService DeviceCommunicationSettingsApi
+	ApiService DeviceCommunicationSettingsAPI
 }
 
-func (r ApiV1DeviceCommunicationSettingsGetRequest) Execute() (*DeviceCommunicationSettings, *http.Response, error) {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest) Execute() (*DeviceCommunicationSettings, *http.Response, error) {
 	return r.ApiService.V1DeviceCommunicationSettingsGetExecute(r)
 }
 
@@ -102,10 +102,10 @@ Retrieves all device communication settings, including automatic renewal of the 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceCommunicationSettingsGetRequest
+ @return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest
 */
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet(ctx context.Context) ApiV1DeviceCommunicationSettingsGetRequest {
-	return ApiV1DeviceCommunicationSettingsGetRequest{
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsGet(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest {
+	return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -113,7 +113,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet
 
 // Execute executes the request
 //  @return DeviceCommunicationSettings
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGetExecute(r ApiV1DeviceCommunicationSettingsGetRequest) (*DeviceCommunicationSettings, *http.Response, error) {
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsGetExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsGetRequest) (*DeviceCommunicationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -121,7 +121,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet
 		localVarReturnValue  *DeviceCommunicationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsApiService.V1DeviceCommunicationSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsAPIService.V1DeviceCommunicationSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -159,9 +159,9 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -186,38 +186,38 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceCommunicationSettingsHistoryGetRequest struct {
+type DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest struct {
 	ctx context.Context
-	ApiService DeviceCommunicationSettingsApi
+	ApiService DeviceCommunicationSettingsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1DeviceCommunicationSettingsHistoryGetRequest) Page(page int32) ApiV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Page(page int32) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1DeviceCommunicationSettingsHistoryGetRequest) PageSize(pageSize int32) ApiV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) PageSize(pageSize int32) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1DeviceCommunicationSettingsHistoryGetRequest) Sort(sort []string) ApiV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Sort(sort []string) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1DeviceCommunicationSettingsHistoryGetRequest) Filter(filter string) ApiV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Filter(filter string) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1DeviceCommunicationSettingsHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1DeviceCommunicationSettingsHistoryGetExecute(r)
 }
 
@@ -228,10 +228,10 @@ Gets Device Communication settings history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceCommunicationSettingsHistoryGetRequest
+ @return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest
 */
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHistoryGet(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryGetRequest {
-	return ApiV1DeviceCommunicationSettingsHistoryGetRequest{
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHistoryGet(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
+	return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -239,7 +239,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHistoryGetExecute(r ApiV1DeviceCommunicationSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHistoryGetExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -247,7 +247,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsApiService.V1DeviceCommunicationSettingsHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsAPIService.V1DeviceCommunicationSettingsHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -259,24 +259,36 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -305,9 +317,9 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -332,19 +344,19 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceCommunicationSettingsHistoryPostRequest struct {
+type DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest struct {
 	ctx context.Context
-	ApiService DeviceCommunicationSettingsApi
+	ApiService DeviceCommunicationSettingsAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1DeviceCommunicationSettingsHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1DeviceCommunicationSettingsHistoryPostRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1DeviceCommunicationSettingsHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1DeviceCommunicationSettingsHistoryPostExecute(r)
 }
 
@@ -355,10 +367,10 @@ Adds Device Communication Settings history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceCommunicationSettingsHistoryPostRequest
+ @return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest
 */
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHistoryPost(ctx context.Context) ApiV1DeviceCommunicationSettingsHistoryPostRequest {
-	return ApiV1DeviceCommunicationSettingsHistoryPostRequest{
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHistoryPost(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest {
+	return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -366,7 +378,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHistoryPostExecute(r ApiV1DeviceCommunicationSettingsHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHistoryPostExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -374,7 +386,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsApiService.V1DeviceCommunicationSettingsHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsAPIService.V1DeviceCommunicationSettingsHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -417,9 +429,9 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -436,7 +448,8 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -453,18 +466,18 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsHis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceCommunicationSettingsPutRequest struct {
+type DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest struct {
 	ctx context.Context
-	ApiService DeviceCommunicationSettingsApi
+	ApiService DeviceCommunicationSettingsAPI
 	deviceCommunicationSettings *DeviceCommunicationSettings
 }
 
-func (r ApiV1DeviceCommunicationSettingsPutRequest) DeviceCommunicationSettings(deviceCommunicationSettings DeviceCommunicationSettings) ApiV1DeviceCommunicationSettingsPutRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest) DeviceCommunicationSettings(deviceCommunicationSettings DeviceCommunicationSettings) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest {
 	r.deviceCommunicationSettings = &deviceCommunicationSettings
 	return r
 }
 
-func (r ApiV1DeviceCommunicationSettingsPutRequest) Execute() (*DeviceCommunicationSettings, *http.Response, error) {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest) Execute() (*DeviceCommunicationSettings, *http.Response, error) {
 	return r.ApiService.V1DeviceCommunicationSettingsPutExecute(r)
 }
 
@@ -475,10 +488,10 @@ Update device communication settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceCommunicationSettingsPutRequest
+ @return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest
 */
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsPut(ctx context.Context) ApiV1DeviceCommunicationSettingsPutRequest {
-	return ApiV1DeviceCommunicationSettingsPutRequest{
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsPut(ctx context.Context) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest {
+	return DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -486,7 +499,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsPut
 
 // Execute executes the request
 //  @return DeviceCommunicationSettings
-func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsPutExecute(r ApiV1DeviceCommunicationSettingsPutRequest) (*DeviceCommunicationSettings, *http.Response, error) {
+func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsPutExecute(r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsPutRequest) (*DeviceCommunicationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -494,7 +507,7 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsPut
 		localVarReturnValue  *DeviceCommunicationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsApiService.V1DeviceCommunicationSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceCommunicationSettingsAPIService.V1DeviceCommunicationSettingsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -537,9 +550,9 @@ func (a *DeviceCommunicationSettingsApiService) V1DeviceCommunicationSettingsPut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

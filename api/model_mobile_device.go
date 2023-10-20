@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDevice type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDevice{}
+
 // MobileDevice struct for MobileDevice
 type MobileDevice struct {
 	Id *int32 `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewMobileDeviceWithDefaults() *MobileDevice {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MobileDevice) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *MobileDevice) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +69,7 @@ func (o *MobileDevice) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MobileDevice) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *MobileDevice) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MobileDevice) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *MobileDevice) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -98,7 +101,7 @@ func (o *MobileDevice) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MobileDevice) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *MobileDevice) SetName(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *MobileDevice) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *MobileDevice) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -130,7 +133,7 @@ func (o *MobileDevice) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *MobileDevice) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *MobileDevice) SetSerialNumber(v string) {
 
 // GetWifiMacAddress returns the WifiMacAddress field value if set, zero value otherwise.
 func (o *MobileDevice) GetWifiMacAddress() string {
-	if o == nil || o.WifiMacAddress == nil {
+	if o == nil || IsNil(o.WifiMacAddress) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *MobileDevice) GetWifiMacAddress() string {
 // GetWifiMacAddressOk returns a tuple with the WifiMacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetWifiMacAddressOk() (*string, bool) {
-	if o == nil || o.WifiMacAddress == nil {
+	if o == nil || IsNil(o.WifiMacAddress) {
 		return nil, false
 	}
 	return o.WifiMacAddress, true
@@ -162,7 +165,7 @@ func (o *MobileDevice) GetWifiMacAddressOk() (*string, bool) {
 
 // HasWifiMacAddress returns a boolean if a field has been set.
 func (o *MobileDevice) HasWifiMacAddress() bool {
-	if o != nil && o.WifiMacAddress != nil {
+	if o != nil && !IsNil(o.WifiMacAddress) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *MobileDevice) SetWifiMacAddress(v string) {
 
 // GetUdid returns the Udid field value if set, zero value otherwise.
 func (o *MobileDevice) GetUdid() string {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *MobileDevice) GetUdid() string {
 // GetUdidOk returns a tuple with the Udid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetUdidOk() (*string, bool) {
-	if o == nil || o.Udid == nil {
+	if o == nil || IsNil(o.Udid) {
 		return nil, false
 	}
 	return o.Udid, true
@@ -194,7 +197,7 @@ func (o *MobileDevice) GetUdidOk() (*string, bool) {
 
 // HasUdid returns a boolean if a field has been set.
 func (o *MobileDevice) HasUdid() bool {
-	if o != nil && o.Udid != nil {
+	if o != nil && !IsNil(o.Udid) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *MobileDevice) SetUdid(v string) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *MobileDevice) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *MobileDevice) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		return nil, false
 	}
 	return o.PhoneNumber, true
@@ -226,7 +229,7 @@ func (o *MobileDevice) GetPhoneNumberOk() (*string, bool) {
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *MobileDevice) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *MobileDevice) SetPhoneNumber(v string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *MobileDevice) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *MobileDevice) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -258,7 +261,7 @@ func (o *MobileDevice) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *MobileDevice) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *MobileDevice) SetModel(v string) {
 
 // GetModelIdentifier returns the ModelIdentifier field value if set, zero value otherwise.
 func (o *MobileDevice) GetModelIdentifier() string {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *MobileDevice) GetModelIdentifier() string {
 // GetModelIdentifierOk returns a tuple with the ModelIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetModelIdentifierOk() (*string, bool) {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		return nil, false
 	}
 	return o.ModelIdentifier, true
@@ -290,7 +293,7 @@ func (o *MobileDevice) GetModelIdentifierOk() (*string, bool) {
 
 // HasModelIdentifier returns a boolean if a field has been set.
 func (o *MobileDevice) HasModelIdentifier() bool {
-	if o != nil && o.ModelIdentifier != nil {
+	if o != nil && !IsNil(o.ModelIdentifier) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *MobileDevice) SetModelIdentifier(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *MobileDevice) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *MobileDevice) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -322,7 +325,7 @@ func (o *MobileDevice) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *MobileDevice) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *MobileDevice) SetUsername(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *MobileDevice) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *MobileDevice) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -354,7 +357,7 @@ func (o *MobileDevice) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *MobileDevice) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *MobileDevice) SetType(v string) {
 
 // GetSoftwareUpdateDeviceId returns the SoftwareUpdateDeviceId field value if set, zero value otherwise.
 func (o *MobileDevice) GetSoftwareUpdateDeviceId() string {
-	if o == nil || o.SoftwareUpdateDeviceId == nil {
+	if o == nil || IsNil(o.SoftwareUpdateDeviceId) {
 		var ret string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *MobileDevice) GetSoftwareUpdateDeviceId() string {
 // GetSoftwareUpdateDeviceIdOk returns a tuple with the SoftwareUpdateDeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDevice) GetSoftwareUpdateDeviceIdOk() (*string, bool) {
-	if o == nil || o.SoftwareUpdateDeviceId == nil {
+	if o == nil || IsNil(o.SoftwareUpdateDeviceId) {
 		return nil, false
 	}
 	return o.SoftwareUpdateDeviceId, true
@@ -386,7 +389,7 @@ func (o *MobileDevice) GetSoftwareUpdateDeviceIdOk() (*string, bool) {
 
 // HasSoftwareUpdateDeviceId returns a boolean if a field has been set.
 func (o *MobileDevice) HasSoftwareUpdateDeviceId() bool {
-	if o != nil && o.SoftwareUpdateDeviceId != nil {
+	if o != nil && !IsNil(o.SoftwareUpdateDeviceId) {
 		return true
 	}
 
@@ -399,41 +402,49 @@ func (o *MobileDevice) SetSoftwareUpdateDeviceId(v string) {
 }
 
 func (o MobileDevice) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.WifiMacAddress != nil {
-		toSerialize["wifiMacAddress"] = o.WifiMacAddress
-	}
-	if o.Udid != nil {
-		toSerialize["udid"] = o.Udid
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phoneNumber"] = o.PhoneNumber
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.ModelIdentifier != nil {
-		toSerialize["modelIdentifier"] = o.ModelIdentifier
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.SoftwareUpdateDeviceId != nil {
-		toSerialize["softwareUpdateDeviceId"] = o.SoftwareUpdateDeviceId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDevice) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.WifiMacAddress) {
+		toSerialize["wifiMacAddress"] = o.WifiMacAddress
+	}
+	if !IsNil(o.Udid) {
+		toSerialize["udid"] = o.Udid
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.ModelIdentifier) {
+		toSerialize["modelIdentifier"] = o.ModelIdentifier
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.SoftwareUpdateDeviceId) {
+		toSerialize["softwareUpdateDeviceId"] = o.SoftwareUpdateDeviceId
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDevice struct {

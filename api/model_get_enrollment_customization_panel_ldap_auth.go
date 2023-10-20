@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetEnrollmentCustomizationPanelLdapAuth type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetEnrollmentCustomizationPanelLdapAuth{}
+
 // GetEnrollmentCustomizationPanelLdapAuth struct for GetEnrollmentCustomizationPanelLdapAuth
 type GetEnrollmentCustomizationPanelLdapAuth struct {
 	DisplayName string `json:"displayName"`
@@ -222,7 +225,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) SetContinueButtonText(v string
 
 // GetLdapGroupAccess returns the LdapGroupAccess field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetLdapGroupAccess() []EnrollmentCustomizationLdapGroupAccess {
-	if o == nil || o.LdapGroupAccess == nil {
+	if o == nil || IsNil(o.LdapGroupAccess) {
 		var ret []EnrollmentCustomizationLdapGroupAccess
 		return ret
 	}
@@ -232,7 +235,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetLdapGroupAccess() []Enrollm
 // GetLdapGroupAccessOk returns a tuple with the LdapGroupAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetLdapGroupAccessOk() ([]EnrollmentCustomizationLdapGroupAccess, bool) {
-	if o == nil || o.LdapGroupAccess == nil {
+	if o == nil || IsNil(o.LdapGroupAccess) {
 		return nil, false
 	}
 	return o.LdapGroupAccess, true
@@ -240,7 +243,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetLdapGroupAccessOk() ([]Enro
 
 // HasLdapGroupAccess returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) HasLdapGroupAccess() bool {
-	if o != nil && o.LdapGroupAccess != nil {
+	if o != nil && !IsNil(o.LdapGroupAccess) {
 		return true
 	}
 
@@ -254,7 +257,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) SetLdapGroupAccess(v []Enrollm
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -264,7 +267,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -272,7 +275,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -286,7 +289,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) SetId(v int32) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -296,7 +299,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -304,7 +307,7 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanelLdapAuth) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -317,38 +320,32 @@ func (o *GetEnrollmentCustomizationPanelLdapAuth) SetType(v string) {
 }
 
 func (o GetEnrollmentCustomizationPanelLdapAuth) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["rank"] = o.Rank
-	}
-	if true {
-		toSerialize["usernameLabel"] = o.UsernameLabel
-	}
-	if true {
-		toSerialize["passwordLabel"] = o.PasswordLabel
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["backButtonText"] = o.BackButtonText
-	}
-	if true {
-		toSerialize["continueButtonText"] = o.ContinueButtonText
-	}
-	if o.LdapGroupAccess != nil {
-		toSerialize["ldapGroupAccess"] = o.LdapGroupAccess
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetEnrollmentCustomizationPanelLdapAuth) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["rank"] = o.Rank
+	toSerialize["usernameLabel"] = o.UsernameLabel
+	toSerialize["passwordLabel"] = o.PasswordLabel
+	toSerialize["title"] = o.Title
+	toSerialize["backButtonText"] = o.BackButtonText
+	toSerialize["continueButtonText"] = o.ContinueButtonText
+	if !IsNil(o.LdapGroupAccess) {
+		toSerialize["ldapGroupAccess"] = o.LdapGroupAccess
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableGetEnrollmentCustomizationPanelLdapAuth struct {

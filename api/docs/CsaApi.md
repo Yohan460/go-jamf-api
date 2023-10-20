@@ -1,13 +1,13 @@
-# \CsaApi
+# \CsaAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1CsaTokenDelete**](CsaApi.md#V1CsaTokenDelete) | **Delete** /v1/csa/token | Delete the CSA token exchange - This will disable Jamf Pro&#39;s ability to authenticate with cloud-hosted services 
-[**V1CsaTokenGet**](CsaApi.md#V1CsaTokenGet) | **Get** /v1/csa/token | Get details regarding the CSA token exchange 
-[**V1CsaTokenPost**](CsaApi.md#V1CsaTokenPost) | **Post** /v1/csa/token | Initialize the CSA token exchange 
-[**V1CsaTokenPut**](CsaApi.md#V1CsaTokenPut) | **Put** /v1/csa/token | Re-initialize the CSA token exchange with new credentials 
+[**V1CsaTokenDelete**](CsaAPI.md#V1CsaTokenDelete) | **Delete** /v1/csa/token | Delete the CSA token exchange - This will disable Jamf Pro&#39;s ability to authenticate with cloud-hosted services 
+[**V1CsaTokenGet**](CsaAPI.md#V1CsaTokenGet) | **Get** /v1/csa/token | Get details regarding the CSA token exchange 
+[**V1CsaTokenPost**](CsaAPI.md#V1CsaTokenPost) | **Post** /v1/csa/token | Initialize the CSA token exchange 
+[**V1CsaTokenPut**](CsaAPI.md#V1CsaTokenPut) | **Put** /v1/csa/token | Re-initialize the CSA token exchange with new credentials 
 
 
 
@@ -28,16 +28,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaApi.V1CsaTokenDelete(context.Background()).Execute()
+    r, err := apiClient.CsaAPI.V1CsaTokenDelete(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaApi.V1CsaTokenDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -87,20 +87,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaApi.V1CsaTokenGet(context.Background()).Execute()
+    resp, r, err := apiClient.CsaAPI.V1CsaTokenGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaApi.V1CsaTokenGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CsaTokenGet`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaApi.V1CsaTokenGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenGet`: %v\n", resp)
 }
 ```
 
@@ -148,7 +148,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -156,13 +156,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaApi.V1CsaTokenPost(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
+    resp, r, err := apiClient.CsaAPI.V1CsaTokenPost(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaApi.V1CsaTokenPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CsaTokenPost`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaApi.V1CsaTokenPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPost`: %v\n", resp)
 }
 ```
 
@@ -214,7 +214,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -222,13 +222,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaApi.V1CsaTokenPut(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
+    resp, r, err := apiClient.CsaAPI.V1CsaTokenPut(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaApi.V1CsaTokenPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CsaTokenPut`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaApi.V1CsaTokenPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPut`: %v\n", resp)
 }
 ```
 

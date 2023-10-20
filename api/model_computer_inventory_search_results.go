@@ -14,10 +14,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerInventorySearchResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerInventorySearchResults{}
+
 // ComputerInventorySearchResults struct for ComputerInventorySearchResults
 type ComputerInventorySearchResults struct {
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	Results []ComputerInventoryResponse `json:"results,omitempty"`
+	Results []ComputerInventory `json:"results,omitempty"`
 }
 
 // NewComputerInventorySearchResults instantiates a new ComputerInventorySearchResults object
@@ -39,7 +42,7 @@ func NewComputerInventorySearchResultsWithDefaults() *ComputerInventorySearchRes
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *ComputerInventorySearchResults) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ComputerInventorySearchResults) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventorySearchResults) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -57,7 +60,7 @@ func (o *ComputerInventorySearchResults) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *ComputerInventorySearchResults) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
 
@@ -70,9 +73,9 @@ func (o *ComputerInventorySearchResults) SetTotalCount(v int32) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ComputerInventorySearchResults) GetResults() []ComputerInventoryResponse {
-	if o == nil || o.Results == nil {
-		var ret []ComputerInventoryResponse
+func (o *ComputerInventorySearchResults) GetResults() []ComputerInventory {
+	if o == nil || IsNil(o.Results) {
+		var ret []ComputerInventory
 		return ret
 	}
 	return o.Results
@@ -80,8 +83,8 @@ func (o *ComputerInventorySearchResults) GetResults() []ComputerInventoryRespons
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerInventorySearchResults) GetResultsOk() ([]ComputerInventoryResponse, bool) {
-	if o == nil || o.Results == nil {
+func (o *ComputerInventorySearchResults) GetResultsOk() ([]ComputerInventory, bool) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -89,27 +92,35 @@ func (o *ComputerInventorySearchResults) GetResultsOk() ([]ComputerInventoryResp
 
 // HasResults returns a boolean if a field has been set.
 func (o *ComputerInventorySearchResults) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
 	return false
 }
 
-// SetResults gets a reference to the given []ComputerInventoryResponse and assigns it to the Results field.
-func (o *ComputerInventorySearchResults) SetResults(v []ComputerInventoryResponse) {
+// SetResults gets a reference to the given []ComputerInventory and assigns it to the Results field.
+func (o *ComputerInventorySearchResults) SetResults(v []ComputerInventory) {
 	o.Results = v
 }
 
 func (o ComputerInventorySearchResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerInventorySearchResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerInventorySearchResults struct {

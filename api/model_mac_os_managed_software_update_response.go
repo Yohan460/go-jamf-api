@@ -14,9 +14,12 @@ import (
 	"encoding/json"
 )
 
+// checks if the MacOsManagedSoftwareUpdateResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MacOsManagedSoftwareUpdateResponse{}
+
 // MacOsManagedSoftwareUpdateResponse struct for MacOsManagedSoftwareUpdateResponse
 type MacOsManagedSoftwareUpdateResponse struct {
-	Responses []HrefResponse `json:"responses,omitempty"`
+	ProcessManagerUuids []string `json:"processManagerUuids,omitempty"`
 	Errors []ApiErrorCause `json:"errors,omitempty"`
 }
 
@@ -37,41 +40,41 @@ func NewMacOsManagedSoftwareUpdateResponseWithDefaults() *MacOsManagedSoftwareUp
 	return &this
 }
 
-// GetResponses returns the Responses field value if set, zero value otherwise.
-func (o *MacOsManagedSoftwareUpdateResponse) GetResponses() []HrefResponse {
-	if o == nil || o.Responses == nil {
-		var ret []HrefResponse
+// GetProcessManagerUuids returns the ProcessManagerUuids field value if set, zero value otherwise.
+func (o *MacOsManagedSoftwareUpdateResponse) GetProcessManagerUuids() []string {
+	if o == nil || IsNil(o.ProcessManagerUuids) {
+		var ret []string
 		return ret
 	}
-	return o.Responses
+	return o.ProcessManagerUuids
 }
 
-// GetResponsesOk returns a tuple with the Responses field value if set, nil otherwise
+// GetProcessManagerUuidsOk returns a tuple with the ProcessManagerUuids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MacOsManagedSoftwareUpdateResponse) GetResponsesOk() ([]HrefResponse, bool) {
-	if o == nil || o.Responses == nil {
+func (o *MacOsManagedSoftwareUpdateResponse) GetProcessManagerUuidsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ProcessManagerUuids) {
 		return nil, false
 	}
-	return o.Responses, true
+	return o.ProcessManagerUuids, true
 }
 
-// HasResponses returns a boolean if a field has been set.
-func (o *MacOsManagedSoftwareUpdateResponse) HasResponses() bool {
-	if o != nil && o.Responses != nil {
+// HasProcessManagerUuids returns a boolean if a field has been set.
+func (o *MacOsManagedSoftwareUpdateResponse) HasProcessManagerUuids() bool {
+	if o != nil && !IsNil(o.ProcessManagerUuids) {
 		return true
 	}
 
 	return false
 }
 
-// SetResponses gets a reference to the given []HrefResponse and assigns it to the Responses field.
-func (o *MacOsManagedSoftwareUpdateResponse) SetResponses(v []HrefResponse) {
-	o.Responses = v
+// SetProcessManagerUuids gets a reference to the given []string and assigns it to the ProcessManagerUuids field.
+func (o *MacOsManagedSoftwareUpdateResponse) SetProcessManagerUuids(v []string) {
+	o.ProcessManagerUuids = v
 }
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *MacOsManagedSoftwareUpdateResponse) GetErrors() []ApiErrorCause {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		var ret []ApiErrorCause
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MacOsManagedSoftwareUpdateResponse) GetErrors() []ApiErrorCause {
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MacOsManagedSoftwareUpdateResponse) GetErrorsOk() ([]ApiErrorCause, bool) {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -89,7 +92,7 @@ func (o *MacOsManagedSoftwareUpdateResponse) GetErrorsOk() ([]ApiErrorCause, boo
 
 // HasErrors returns a boolean if a field has been set.
 func (o *MacOsManagedSoftwareUpdateResponse) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MacOsManagedSoftwareUpdateResponse) SetErrors(v []ApiErrorCause) {
 }
 
 func (o MacOsManagedSoftwareUpdateResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Responses != nil {
-		toSerialize["responses"] = o.Responses
-	}
-	if o.Errors != nil {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MacOsManagedSoftwareUpdateResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ProcessManagerUuids) {
+		toSerialize["processManagerUuids"] = o.ProcessManagerUuids
+	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableMacOsManagedSoftwareUpdateResponse struct {

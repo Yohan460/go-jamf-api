@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingCacheDetail type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingCacheDetail{}
+
 // ComputerContentCachingCacheDetail struct for ComputerContentCachingCacheDetail
 type ComputerContentCachingCacheDetail struct {
 	ComputerContentCachingCacheDetailsId *string `json:"computerContentCachingCacheDetailsId,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerContentCachingCacheDetailWithDefaults() *ComputerContentCachingC
 
 // GetComputerContentCachingCacheDetailsId returns the ComputerContentCachingCacheDetailsId field value if set, zero value otherwise.
 func (o *ComputerContentCachingCacheDetail) GetComputerContentCachingCacheDetailsId() string {
-	if o == nil || o.ComputerContentCachingCacheDetailsId == nil {
+	if o == nil || IsNil(o.ComputerContentCachingCacheDetailsId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerContentCachingCacheDetail) GetComputerContentCachingCacheDetail
 // GetComputerContentCachingCacheDetailsIdOk returns a tuple with the ComputerContentCachingCacheDetailsId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingCacheDetail) GetComputerContentCachingCacheDetailsIdOk() (*string, bool) {
-	if o == nil || o.ComputerContentCachingCacheDetailsId == nil {
+	if o == nil || IsNil(o.ComputerContentCachingCacheDetailsId) {
 		return nil, false
 	}
 	return o.ComputerContentCachingCacheDetailsId, true
@@ -58,7 +61,7 @@ func (o *ComputerContentCachingCacheDetail) GetComputerContentCachingCacheDetail
 
 // HasComputerContentCachingCacheDetailsId returns a boolean if a field has been set.
 func (o *ComputerContentCachingCacheDetail) HasComputerContentCachingCacheDetailsId() bool {
-	if o != nil && o.ComputerContentCachingCacheDetailsId != nil {
+	if o != nil && !IsNil(o.ComputerContentCachingCacheDetailsId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerContentCachingCacheDetail) SetComputerContentCachingCacheDetail
 
 // GetCategoryName returns the CategoryName field value if set, zero value otherwise.
 func (o *ComputerContentCachingCacheDetail) GetCategoryName() string {
-	if o == nil || o.CategoryName == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerContentCachingCacheDetail) GetCategoryName() string {
 // GetCategoryNameOk returns a tuple with the CategoryName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingCacheDetail) GetCategoryNameOk() (*string, bool) {
-	if o == nil || o.CategoryName == nil {
+	if o == nil || IsNil(o.CategoryName) {
 		return nil, false
 	}
 	return o.CategoryName, true
@@ -90,7 +93,7 @@ func (o *ComputerContentCachingCacheDetail) GetCategoryNameOk() (*string, bool) 
 
 // HasCategoryName returns a boolean if a field has been set.
 func (o *ComputerContentCachingCacheDetail) HasCategoryName() bool {
-	if o != nil && o.CategoryName != nil {
+	if o != nil && !IsNil(o.CategoryName) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerContentCachingCacheDetail) SetCategoryName(v string) {
 
 // GetDiskSpaceBytesUsed returns the DiskSpaceBytesUsed field value if set, zero value otherwise.
 func (o *ComputerContentCachingCacheDetail) GetDiskSpaceBytesUsed() int64 {
-	if o == nil || o.DiskSpaceBytesUsed == nil {
+	if o == nil || IsNil(o.DiskSpaceBytesUsed) {
 		var ret int64
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerContentCachingCacheDetail) GetDiskSpaceBytesUsed() int64 {
 // GetDiskSpaceBytesUsedOk returns a tuple with the DiskSpaceBytesUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingCacheDetail) GetDiskSpaceBytesUsedOk() (*int64, bool) {
-	if o == nil || o.DiskSpaceBytesUsed == nil {
+	if o == nil || IsNil(o.DiskSpaceBytesUsed) {
 		return nil, false
 	}
 	return o.DiskSpaceBytesUsed, true
@@ -122,7 +125,7 @@ func (o *ComputerContentCachingCacheDetail) GetDiskSpaceBytesUsedOk() (*int64, b
 
 // HasDiskSpaceBytesUsed returns a boolean if a field has been set.
 func (o *ComputerContentCachingCacheDetail) HasDiskSpaceBytesUsed() bool {
-	if o != nil && o.DiskSpaceBytesUsed != nil {
+	if o != nil && !IsNil(o.DiskSpaceBytesUsed) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerContentCachingCacheDetail) SetDiskSpaceBytesUsed(v int64) {
 }
 
 func (o ComputerContentCachingCacheDetail) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ComputerContentCachingCacheDetailsId != nil {
-		toSerialize["computerContentCachingCacheDetailsId"] = o.ComputerContentCachingCacheDetailsId
-	}
-	if o.CategoryName != nil {
-		toSerialize["categoryName"] = o.CategoryName
-	}
-	if o.DiskSpaceBytesUsed != nil {
-		toSerialize["diskSpaceBytesUsed"] = o.DiskSpaceBytesUsed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingCacheDetail) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ComputerContentCachingCacheDetailsId) {
+		toSerialize["computerContentCachingCacheDetailsId"] = o.ComputerContentCachingCacheDetailsId
+	}
+	if !IsNil(o.CategoryName) {
+		toSerialize["categoryName"] = o.CategoryName
+	}
+	if !IsNil(o.DiskSpaceBytesUsed) {
+		toSerialize["diskSpaceBytesUsed"] = o.DiskSpaceBytesUsed
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingCacheDetail struct {

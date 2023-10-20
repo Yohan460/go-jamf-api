@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type InventoryPreloadApi interface {
+type InventoryPreloadAPI interface {
 
 	/*
 	InventoryPreloadCsvTemplateGet Get the Inventory Preload CSV template 
@@ -29,16 +29,16 @@ type InventoryPreloadApi interface {
 	Retrieves the Inventory Preload CSV template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadCsvTemplateGetRequest
+	@return InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest
 
 	Deprecated
 	*/
-	InventoryPreloadCsvTemplateGet(ctx context.Context) ApiInventoryPreloadCsvTemplateGetRequest
+	InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest
 
 	// InventoryPreloadCsvTemplateGetExecute executes the request
 	//  @return map[string]interface{}
 	// Deprecated
-	InventoryPreloadCsvTemplateGetExecute(r ApiInventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
+	InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 	InventoryPreloadDelete Delete all Inventory Preload records 
@@ -46,15 +46,15 @@ type InventoryPreloadApi interface {
 	Deletes all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadDeleteRequest
+	@return InventoryPreloadAPIInventoryPreloadDeleteRequest
 
 	Deprecated
 	*/
-	InventoryPreloadDelete(ctx context.Context) ApiInventoryPreloadDeleteRequest
+	InventoryPreloadDelete(ctx context.Context) InventoryPreloadAPIInventoryPreloadDeleteRequest
 
 	// InventoryPreloadDeleteExecute executes the request
 	// Deprecated
-	InventoryPreloadDeleteExecute(r ApiInventoryPreloadDeleteRequest) (*http.Response, error)
+	InventoryPreloadDeleteExecute(r InventoryPreloadAPIInventoryPreloadDeleteRequest) (*http.Response, error)
 
 	/*
 	InventoryPreloadGet Return all Inventory Preload records 
@@ -62,16 +62,16 @@ type InventoryPreloadApi interface {
 	Returns all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadGetRequest
+	@return InventoryPreloadAPIInventoryPreloadGetRequest
 
 	Deprecated
 	*/
-	InventoryPreloadGet(ctx context.Context) ApiInventoryPreloadGetRequest
+	InventoryPreloadGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadGetRequest
 
 	// InventoryPreloadGetExecute executes the request
 	//  @return []InventoryPreloadRecordSearchResults
 	// Deprecated
-	InventoryPreloadGetExecute(r ApiInventoryPreloadGetRequest) ([]InventoryPreloadRecordSearchResults, *http.Response, error)
+	InventoryPreloadGetExecute(r InventoryPreloadAPIInventoryPreloadGetRequest) ([]InventoryPreloadRecordSearchResults, *http.Response, error)
 
 	/*
 	InventoryPreloadHistoryGet Get Inventory Preload history entries 
@@ -79,16 +79,16 @@ type InventoryPreloadApi interface {
 	Gets Inventory Preload history entries.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadHistoryGetRequest
+	@return InventoryPreloadAPIInventoryPreloadHistoryGetRequest
 
 	Deprecated
 	*/
-	InventoryPreloadHistoryGet(ctx context.Context) ApiInventoryPreloadHistoryGetRequest
+	InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadHistoryGetRequest
 
 	// InventoryPreloadHistoryGetExecute executes the request
 	//  @return HistorySearchResults
 	// Deprecated
-	InventoryPreloadHistoryGetExecute(r ApiInventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	InventoryPreloadHistoryNotesPost Add Inventory Preload history object notes 
@@ -96,16 +96,16 @@ type InventoryPreloadApi interface {
 	Adds Inventory Preload history object notes.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadHistoryNotesPostRequest
+	@return InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest
 
 	Deprecated
 	*/
-	InventoryPreloadHistoryNotesPost(ctx context.Context) ApiInventoryPreloadHistoryNotesPostRequest
+	InventoryPreloadHistoryNotesPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest
 
 	// InventoryPreloadHistoryNotesPostExecute executes the request
 	//  @return ObjectHistory
 	// Deprecated
-	InventoryPreloadHistoryNotesPostExecute(r ApiInventoryPreloadHistoryNotesPostRequest) (*ObjectHistory, *http.Response, error)
+	InventoryPreloadHistoryNotesPostExecute(r InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	InventoryPreloadIdDelete Delete an Inventory Preload record 
@@ -114,15 +114,15 @@ type InventoryPreloadApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiInventoryPreloadIdDeleteRequest
+	@return InventoryPreloadAPIInventoryPreloadIdDeleteRequest
 
 	Deprecated
 	*/
-	InventoryPreloadIdDelete(ctx context.Context, id int32) ApiInventoryPreloadIdDeleteRequest
+	InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdDeleteRequest
 
 	// InventoryPreloadIdDeleteExecute executes the request
 	// Deprecated
-	InventoryPreloadIdDeleteExecute(r ApiInventoryPreloadIdDeleteRequest) (*http.Response, error)
+	InventoryPreloadIdDeleteExecute(r InventoryPreloadAPIInventoryPreloadIdDeleteRequest) (*http.Response, error)
 
 	/*
 	InventoryPreloadIdGet Get an Inventory Preload record 
@@ -131,16 +131,16 @@ type InventoryPreloadApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiInventoryPreloadIdGetRequest
+	@return InventoryPreloadAPIInventoryPreloadIdGetRequest
 
 	Deprecated
 	*/
-	InventoryPreloadIdGet(ctx context.Context, id int32) ApiInventoryPreloadIdGetRequest
+	InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdGetRequest
 
 	// InventoryPreloadIdGetExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	InventoryPreloadIdGetExecute(r ApiInventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
+	InventoryPreloadIdGetExecute(r InventoryPreloadAPIInventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	InventoryPreloadIdPut Update an Inventory Preload record 
@@ -149,16 +149,16 @@ type InventoryPreloadApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiInventoryPreloadIdPutRequest
+	@return InventoryPreloadAPIInventoryPreloadIdPutRequest
 
 	Deprecated
 	*/
-	InventoryPreloadIdPut(ctx context.Context, id int32) ApiInventoryPreloadIdPutRequest
+	InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdPutRequest
 
 	// InventoryPreloadIdPutExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	InventoryPreloadIdPutExecute(r ApiInventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
+	InventoryPreloadIdPutExecute(r InventoryPreloadAPIInventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	InventoryPreloadPost Create a new Inventory Preload record using JSON or CSV 
@@ -178,16 +178,16 @@ To do full validation, use the /inventory-preload/validate-csv endpoint first.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadPostRequest
+	@return InventoryPreloadAPIInventoryPreloadPostRequest
 
 	Deprecated
 	*/
-	InventoryPreloadPost(ctx context.Context) ApiInventoryPreloadPostRequest
+	InventoryPreloadPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadPostRequest
 
 	// InventoryPreloadPostExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	InventoryPreloadPostExecute(r ApiInventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
+	InventoryPreloadPostExecute(r InventoryPreloadAPIInventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	InventoryPreloadValidateCsvPost Validate a given CSV file 
@@ -198,16 +198,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiInventoryPreloadValidateCsvPostRequest
+	@return InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest
 
 	Deprecated
 	*/
-	InventoryPreloadValidateCsvPost(ctx context.Context) ApiInventoryPreloadValidateCsvPostRequest
+	InventoryPreloadValidateCsvPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest
 
 	// InventoryPreloadValidateCsvPostExecute executes the request
 	//  @return InventoryPreloadCsvValidationSuccess
 	// Deprecated
-	InventoryPreloadValidateCsvPostExecute(r ApiInventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+	InventoryPreloadValidateCsvPostExecute(r InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
 
 	/*
 	V1InventoryPreloadCsvTemplateGet Retrieve the Inventory Preload CSV template 
@@ -215,16 +215,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Retrieves the Inventory Preload CSV template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadCsvTemplateGetRequest
+	@return InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV1InventoryPreloadCsvTemplateGetRequest
+	V1InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest
 
 	// V1InventoryPreloadCsvTemplateGetExecute executes the request
 	//  @return map[string]interface{}
 	// Deprecated
-	V1InventoryPreloadCsvTemplateGetExecute(r ApiV1InventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
+	V1InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 	V1InventoryPreloadDelete Delete all Inventory Preload records 
@@ -232,15 +232,15 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Deletes all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadDeleteRequest
+	@return InventoryPreloadAPIV1InventoryPreloadDeleteRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadDelete(ctx context.Context) ApiV1InventoryPreloadDeleteRequest
+	V1InventoryPreloadDelete(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadDeleteRequest
 
 	// V1InventoryPreloadDeleteExecute executes the request
 	// Deprecated
-	V1InventoryPreloadDeleteExecute(r ApiV1InventoryPreloadDeleteRequest) (*http.Response, error)
+	V1InventoryPreloadDeleteExecute(r InventoryPreloadAPIV1InventoryPreloadDeleteRequest) (*http.Response, error)
 
 	/*
 	V1InventoryPreloadGet Return all Inventory Preload records 
@@ -248,16 +248,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Returns all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadGetRequest
+	@return InventoryPreloadAPIV1InventoryPreloadGetRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadGet(ctx context.Context) ApiV1InventoryPreloadGetRequest
+	V1InventoryPreloadGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadGetRequest
 
 	// V1InventoryPreloadGetExecute executes the request
 	//  @return InventoryPreloadRecordSearchResults
 	// Deprecated
-	V1InventoryPreloadGetExecute(r ApiV1InventoryPreloadGetRequest) (*InventoryPreloadRecordSearchResults, *http.Response, error)
+	V1InventoryPreloadGetExecute(r InventoryPreloadAPIV1InventoryPreloadGetRequest) (*InventoryPreloadRecordSearchResults, *http.Response, error)
 
 	/*
 	V1InventoryPreloadHistoryGet Get Inventory Preload history entries 
@@ -265,16 +265,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Gets Inventory Preload history entries.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadHistoryGetRequest
+	@return InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadHistoryGet(ctx context.Context) ApiV1InventoryPreloadHistoryGetRequest
+	V1InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest
 
 	// V1InventoryPreloadHistoryGetExecute executes the request
 	//  @return HistorySearchResults
 	// Deprecated
-	V1InventoryPreloadHistoryGetExecute(r ApiV1InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1InventoryPreloadHistoryPost Add Inventory Preload history object notes 
@@ -282,16 +282,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Adds Inventory Preload history object notes.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadHistoryPostRequest
+	@return InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadHistoryPost(ctx context.Context) ApiV1InventoryPreloadHistoryPostRequest
+	V1InventoryPreloadHistoryPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest
 
 	// V1InventoryPreloadHistoryPostExecute executes the request
 	//  @return ObjectHistory
 	// Deprecated
-	V1InventoryPreloadHistoryPostExecute(r ApiV1InventoryPreloadHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1InventoryPreloadHistoryPostExecute(r InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1InventoryPreloadIdDelete Delete an Inventory Preload record 
@@ -300,15 +300,15 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV1InventoryPreloadIdDeleteRequest
+	@return InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdDelete(ctx context.Context, id int32) ApiV1InventoryPreloadIdDeleteRequest
+	V1InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest
 
 	// V1InventoryPreloadIdDeleteExecute executes the request
 	// Deprecated
-	V1InventoryPreloadIdDeleteExecute(r ApiV1InventoryPreloadIdDeleteRequest) (*http.Response, error)
+	V1InventoryPreloadIdDeleteExecute(r InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1InventoryPreloadIdGet Get an Inventory Preload record 
@@ -317,16 +317,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV1InventoryPreloadIdGetRequest
+	@return InventoryPreloadAPIV1InventoryPreloadIdGetRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdGet(ctx context.Context, id int32) ApiV1InventoryPreloadIdGetRequest
+	V1InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdGetRequest
 
 	// V1InventoryPreloadIdGetExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	V1InventoryPreloadIdGetExecute(r ApiV1InventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
+	V1InventoryPreloadIdGetExecute(r InventoryPreloadAPIV1InventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	V1InventoryPreloadIdPut Update an Inventory Preload record 
@@ -335,16 +335,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV1InventoryPreloadIdPutRequest
+	@return InventoryPreloadAPIV1InventoryPreloadIdPutRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdPut(ctx context.Context, id int32) ApiV1InventoryPreloadIdPutRequest
+	V1InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdPutRequest
 
 	// V1InventoryPreloadIdPutExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	V1InventoryPreloadIdPutExecute(r ApiV1InventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
+	V1InventoryPreloadIdPutExecute(r InventoryPreloadAPIV1InventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	V1InventoryPreloadPost Create a new Inventory Preload record using JSON or CSV 
@@ -364,16 +364,16 @@ To do full validation, use the /inventory-preload/validate-csv endpoint first.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadPostRequest
+	@return InventoryPreloadAPIV1InventoryPreloadPostRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadPost(ctx context.Context) ApiV1InventoryPreloadPostRequest
+	V1InventoryPreloadPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadPostRequest
 
 	// V1InventoryPreloadPostExecute executes the request
 	//  @return InventoryPreloadRecord
 	// Deprecated
-	V1InventoryPreloadPostExecute(r ApiV1InventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
+	V1InventoryPreloadPostExecute(r InventoryPreloadAPIV1InventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error)
 
 	/*
 	V1InventoryPreloadValidateCsvPost Validate a given CSV file 
@@ -384,16 +384,16 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1InventoryPreloadValidateCsvPostRequest
+	@return InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest
 
 	Deprecated
 	*/
-	V1InventoryPreloadValidateCsvPost(ctx context.Context) ApiV1InventoryPreloadValidateCsvPostRequest
+	V1InventoryPreloadValidateCsvPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest
 
 	// V1InventoryPreloadValidateCsvPostExecute executes the request
 	//  @return InventoryPreloadCsvValidationSuccess
 	// Deprecated
-	V1InventoryPreloadValidateCsvPostExecute(r ApiV1InventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+	V1InventoryPreloadValidateCsvPostExecute(r InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
 
 	/*
 	V2InventoryPreloadCsvGet Download all Inventory Preload records
@@ -401,13 +401,13 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 	Returns all Inventory Preload records as a CSV file.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadCsvGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadCsvGetRequest
 	*/
-	V2InventoryPreloadCsvGet(ctx context.Context) ApiV2InventoryPreloadCsvGetRequest
+	V2InventoryPreloadCsvGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvGetRequest
 
 	// V2InventoryPreloadCsvGetExecute executes the request
 	//  @return string
-	V2InventoryPreloadCsvGetExecute(r ApiV2InventoryPreloadCsvGetRequest) (string, *http.Response, error)
+	V2InventoryPreloadCsvGetExecute(r InventoryPreloadAPIV2InventoryPreloadCsvGetRequest) (string, *http.Response, error)
 
 	/*
 	V2InventoryPreloadCsvPost Create one or more new Inventory Preload records using CSV 
@@ -427,13 +427,13 @@ To do full validation, use the `/v2/inventory-preload/csv-validate` endpoint fir
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadCsvPostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadCsvPostRequest
 	*/
-	V2InventoryPreloadCsvPost(ctx context.Context) ApiV2InventoryPreloadCsvPostRequest
+	V2InventoryPreloadCsvPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvPostRequest
 
 	// V2InventoryPreloadCsvPostExecute executes the request
 	//  @return []HrefResponse
-	V2InventoryPreloadCsvPostExecute(r ApiV2InventoryPreloadCsvPostRequest) ([]HrefResponse, *http.Response, error)
+	V2InventoryPreloadCsvPostExecute(r InventoryPreloadAPIV2InventoryPreloadCsvPostRequest) ([]HrefResponse, *http.Response, error)
 
 	/*
 	V2InventoryPreloadCsvTemplateGet Download the Inventory Preload CSV template
@@ -441,13 +441,13 @@ To do full validation, use the `/v2/inventory-preload/csv-validate` endpoint fir
 	Retrieves the Inventory Preload CSV file template.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadCsvTemplateGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest
 	*/
-	V2InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV2InventoryPreloadCsvTemplateGetRequest
+	V2InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest
 
 	// V2InventoryPreloadCsvTemplateGetExecute executes the request
 	//  @return string
-	V2InventoryPreloadCsvTemplateGetExecute(r ApiV2InventoryPreloadCsvTemplateGetRequest) (string, *http.Response, error)
+	V2InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest) (string, *http.Response, error)
 
 	/*
 	V2InventoryPreloadCsvValidatePost Validate a given CSV file 
@@ -458,13 +458,13 @@ A CSV template can be downloaded from `/v2/inventory-preload/csv-template`.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadCsvValidatePostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest
 	*/
-	V2InventoryPreloadCsvValidatePost(ctx context.Context) ApiV2InventoryPreloadCsvValidatePostRequest
+	V2InventoryPreloadCsvValidatePost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest
 
 	// V2InventoryPreloadCsvValidatePostExecute executes the request
 	//  @return InventoryPreloadCsvValidationSuccess
-	V2InventoryPreloadCsvValidatePostExecute(r ApiV2InventoryPreloadCsvValidatePostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
+	V2InventoryPreloadCsvValidatePostExecute(r InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error)
 
 	/*
 	V2InventoryPreloadEaColumnsGet Retrieve a list of extension attribute columns 
@@ -474,13 +474,13 @@ with inventory preload records
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadEaColumnsGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest
 	*/
-	V2InventoryPreloadEaColumnsGet(ctx context.Context) ApiV2InventoryPreloadEaColumnsGetRequest
+	V2InventoryPreloadEaColumnsGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest
 
 	// V2InventoryPreloadEaColumnsGetExecute executes the request
 	//  @return InventoryPreloadExtensionAttributeColumnResult
-	V2InventoryPreloadEaColumnsGetExecute(r ApiV2InventoryPreloadEaColumnsGetRequest) (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error)
+	V2InventoryPreloadEaColumnsGetExecute(r InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest) (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error)
 
 	/*
 	V2InventoryPreloadExportPost Export a collection of inventory preload records 
@@ -489,13 +489,13 @@ with inventory preload records
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadExportPostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadExportPostRequest
 	*/
-	V2InventoryPreloadExportPost(ctx context.Context) ApiV2InventoryPreloadExportPostRequest
+	V2InventoryPreloadExportPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadExportPostRequest
 
 	// V2InventoryPreloadExportPostExecute executes the request
 	//  @return interface{}
-	V2InventoryPreloadExportPostExecute(r ApiV2InventoryPreloadExportPostRequest) (interface{}, *http.Response, error)
+	V2InventoryPreloadExportPostExecute(r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) (interface{}, *http.Response, error)
 
 	/*
 	V2InventoryPreloadHistoryGet Get Inventory Preload history entries 
@@ -503,13 +503,13 @@ with inventory preload records
 	Gets Inventory Preload history entries.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadHistoryGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest
 	*/
-	V2InventoryPreloadHistoryGet(ctx context.Context) ApiV2InventoryPreloadHistoryGetRequest
+	V2InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest
 
 	// V2InventoryPreloadHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V2InventoryPreloadHistoryGetExecute(r ApiV2InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V2InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V2InventoryPreloadHistoryPost Add Inventory Preload history object notes
@@ -517,13 +517,13 @@ with inventory preload records
 	Adds Inventory Preload history object notes.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadHistoryPostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest
 	*/
-	V2InventoryPreloadHistoryPost(ctx context.Context) ApiV2InventoryPreloadHistoryPostRequest
+	V2InventoryPreloadHistoryPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest
 
 	// V2InventoryPreloadHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V2InventoryPreloadHistoryPostExecute(r ApiV2InventoryPreloadHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V2InventoryPreloadHistoryPostExecute(r InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsDeleteAllPost Delete all Inventory Preload records 
@@ -531,12 +531,12 @@ with inventory preload records
 	Deletes all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadRecordsDeleteAllPostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest
 	*/
-	V2InventoryPreloadRecordsDeleteAllPost(ctx context.Context) ApiV2InventoryPreloadRecordsDeleteAllPostRequest
+	V2InventoryPreloadRecordsDeleteAllPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest
 
 	// V2InventoryPreloadRecordsDeleteAllPostExecute executes the request
-	V2InventoryPreloadRecordsDeleteAllPostExecute(r ApiV2InventoryPreloadRecordsDeleteAllPostRequest) (*http.Response, error)
+	V2InventoryPreloadRecordsDeleteAllPostExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest) (*http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsGet Return all Inventory Preload records
@@ -544,13 +544,13 @@ with inventory preload records
 	Returns all Inventory Preload records.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadRecordsGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest
 	*/
-	V2InventoryPreloadRecordsGet(ctx context.Context) ApiV2InventoryPreloadRecordsGetRequest
+	V2InventoryPreloadRecordsGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest
 
 	// V2InventoryPreloadRecordsGetExecute executes the request
 	//  @return InventoryPreloadRecordSearchResultsV2
-	V2InventoryPreloadRecordsGetExecute(r ApiV2InventoryPreloadRecordsGetRequest) (*InventoryPreloadRecordSearchResultsV2, *http.Response, error)
+	V2InventoryPreloadRecordsGetExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) (*InventoryPreloadRecordSearchResultsV2, *http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsIdDelete Delete an Inventory Preload record 
@@ -559,12 +559,12 @@ with inventory preload records
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV2InventoryPreloadRecordsIdDeleteRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest
 	*/
-	V2InventoryPreloadRecordsIdDelete(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdDeleteRequest
+	V2InventoryPreloadRecordsIdDelete(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest
 
 	// V2InventoryPreloadRecordsIdDeleteExecute executes the request
-	V2InventoryPreloadRecordsIdDeleteExecute(r ApiV2InventoryPreloadRecordsIdDeleteRequest) (*http.Response, error)
+	V2InventoryPreloadRecordsIdDeleteExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsIdGet Get an Inventory Preload record
@@ -573,13 +573,13 @@ with inventory preload records
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV2InventoryPreloadRecordsIdGetRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest
 	*/
-	V2InventoryPreloadRecordsIdGet(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdGetRequest
+	V2InventoryPreloadRecordsIdGet(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest
 
 	// V2InventoryPreloadRecordsIdGetExecute executes the request
 	//  @return InventoryPreloadRecordV2
-	V2InventoryPreloadRecordsIdGetExecute(r ApiV2InventoryPreloadRecordsIdGetRequest) (*InventoryPreloadRecordV2, *http.Response, error)
+	V2InventoryPreloadRecordsIdGetExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest) (*InventoryPreloadRecordV2, *http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsIdPut Update an Inventory Preload record
@@ -588,13 +588,13 @@ with inventory preload records
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Inventory Preload identifier
-	@return ApiV2InventoryPreloadRecordsIdPutRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest
 	*/
-	V2InventoryPreloadRecordsIdPut(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdPutRequest
+	V2InventoryPreloadRecordsIdPut(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest
 
 	// V2InventoryPreloadRecordsIdPutExecute executes the request
 	//  @return InventoryPreloadRecordV2
-	V2InventoryPreloadRecordsIdPutExecute(r ApiV2InventoryPreloadRecordsIdPutRequest) (*InventoryPreloadRecordV2, *http.Response, error)
+	V2InventoryPreloadRecordsIdPutExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest) (*InventoryPreloadRecordV2, *http.Response, error)
 
 	/*
 	V2InventoryPreloadRecordsPost Create a new Inventory Preload record using JSON
@@ -602,24 +602,24 @@ with inventory preload records
 	Create a new Inventory Preload record using JSON.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2InventoryPreloadRecordsPostRequest
+	@return InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest
 	*/
-	V2InventoryPreloadRecordsPost(ctx context.Context) ApiV2InventoryPreloadRecordsPostRequest
+	V2InventoryPreloadRecordsPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest
 
 	// V2InventoryPreloadRecordsPostExecute executes the request
 	//  @return HrefResponse
-	V2InventoryPreloadRecordsPostExecute(r ApiV2InventoryPreloadRecordsPostRequest) (*HrefResponse, *http.Response, error)
+	V2InventoryPreloadRecordsPostExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// InventoryPreloadApiService InventoryPreloadApi service
-type InventoryPreloadApiService service
+// InventoryPreloadAPIService InventoryPreloadAPI service
+type InventoryPreloadAPIService service
 
-type ApiInventoryPreloadCsvTemplateGetRequest struct {
+type InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiInventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.InventoryPreloadCsvTemplateGetExecute(r)
 }
 
@@ -629,12 +629,12 @@ InventoryPreloadCsvTemplateGet Get the Inventory Preload CSV template
 Retrieves the Inventory Preload CSV template.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadCsvTemplateGetRequest
+ @return InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGet(ctx context.Context) ApiInventoryPreloadCsvTemplateGetRequest {
-	return ApiInventoryPreloadCsvTemplateGetRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest {
+	return InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -643,7 +643,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGet(ctx context.
 // Execute executes the request
 //  @return map[string]interface{}
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGetExecute(r ApiInventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIInventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -651,7 +651,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGetExecute(r Api
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadCsvTemplateGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadCsvTemplateGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -689,9 +689,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -716,12 +716,12 @@ func (a *InventoryPreloadApiService) InventoryPreloadCsvTemplateGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadDeleteRequest struct {
+type InventoryPreloadAPIInventoryPreloadDeleteRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiInventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.InventoryPreloadDeleteExecute(r)
 }
 
@@ -731,12 +731,12 @@ InventoryPreloadDelete Delete all Inventory Preload records
 Deletes all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadDeleteRequest
+ @return InventoryPreloadAPIInventoryPreloadDeleteRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadDelete(ctx context.Context) ApiInventoryPreloadDeleteRequest {
-	return ApiInventoryPreloadDeleteRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadDelete(ctx context.Context) InventoryPreloadAPIInventoryPreloadDeleteRequest {
+	return InventoryPreloadAPIInventoryPreloadDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -744,14 +744,14 @@ func (a *InventoryPreloadApiService) InventoryPreloadDelete(ctx context.Context)
 
 // Execute executes the request
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadDeleteExecute(r ApiInventoryPreloadDeleteRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadDeleteExecute(r InventoryPreloadAPIInventoryPreloadDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -789,9 +789,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadDeleteExecute(r ApiInventor
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -807,37 +807,37 @@ func (a *InventoryPreloadApiService) InventoryPreloadDeleteExecute(r ApiInventor
 	return localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadGetRequest struct {
+type InventoryPreloadAPIInventoryPreloadGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	pagesize *int32
 	sort *string
 	sortBy *string
 }
 
-func (r ApiInventoryPreloadGetRequest) Page(page int32) ApiInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Page(page int32) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiInventoryPreloadGetRequest) Pagesize(pagesize int32) ApiInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiInventoryPreloadGetRequest) Sort(sort string) ApiInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Sort(sort string) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiInventoryPreloadGetRequest) SortBy(sortBy string) ApiInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) SortBy(sortBy string) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-func (r ApiInventoryPreloadGetRequest) Execute() ([]InventoryPreloadRecordSearchResults, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Execute() ([]InventoryPreloadRecordSearchResults, *http.Response, error) {
 	return r.ApiService.InventoryPreloadGetExecute(r)
 }
 
@@ -847,12 +847,12 @@ InventoryPreloadGet Return all Inventory Preload records
 Returns all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadGetRequest
+ @return InventoryPreloadAPIInventoryPreloadGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadGet(ctx context.Context) ApiInventoryPreloadGetRequest {
-	return ApiInventoryPreloadGetRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadGetRequest {
+	return InventoryPreloadAPIInventoryPreloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -861,7 +861,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadGet(ctx context.Context) Ap
 // Execute executes the request
 //  @return []InventoryPreloadRecordSearchResults
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPreloadGetRequest) ([]InventoryPreloadRecordSearchResults, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadGetExecute(r InventoryPreloadAPIInventoryPreloadGetRequest) ([]InventoryPreloadRecordSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -869,7 +869,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPr
 		localVarReturnValue  []InventoryPreloadRecordSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -881,16 +881,28 @@ func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPr
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "ASC"
+		r.sort = &defaultValue
 	}
 	if r.sortBy != nil {
-		localVarQueryParams.Add("sortBy", parameterToString(*r.sortBy, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sortBy", r.sortBy, "")
+	} else {
+		var defaultValue string = "id"
+		r.sortBy = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -919,9 +931,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -946,9 +958,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadGetExecute(r ApiInventoryPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadHistoryGetRequest struct {
+type InventoryPreloadAPIInventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -956,35 +968,35 @@ type ApiInventoryPreloadHistoryGetRequest struct {
 	sort *string
 }
 
-func (r ApiInventoryPreloadHistoryGetRequest) Page(page int32) ApiInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiInventoryPreloadHistoryGetRequest) Size(size int32) ApiInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Size(size int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiInventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) ApiInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiInventoryPreloadHistoryGetRequest) PageSize(pageSize int32) ApiInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiInventoryPreloadHistoryGetRequest) Sort(sort string) ApiInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Sort(sort string) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiInventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.InventoryPreloadHistoryGetExecute(r)
 }
 
@@ -994,12 +1006,12 @@ InventoryPreloadHistoryGet Get Inventory Preload history entries
 Gets Inventory Preload history entries.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadHistoryGetRequest
+ @return InventoryPreloadAPIInventoryPreloadHistoryGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadHistoryGet(ctx context.Context) ApiInventoryPreloadHistoryGetRequest {
-	return ApiInventoryPreloadHistoryGetRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
+	return InventoryPreloadAPIInventoryPreloadHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1008,7 +1020,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGet(ctx context.Cont
 // Execute executes the request
 //  @return HistorySearchResults
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1016,7 +1028,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInve
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1028,19 +1040,34 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInve
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1069,9 +1096,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInve
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1096,19 +1123,19 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryGetExecute(r ApiInve
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadHistoryNotesPostRequest struct {
+type InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiInventoryPreloadHistoryNotesPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiInventoryPreloadHistoryNotesPostRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiInventoryPreloadHistoryNotesPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.InventoryPreloadHistoryNotesPostExecute(r)
 }
 
@@ -1118,12 +1145,12 @@ InventoryPreloadHistoryNotesPost Add Inventory Preload history object notes
 Adds Inventory Preload history object notes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadHistoryNotesPostRequest
+ @return InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPost(ctx context.Context) ApiInventoryPreloadHistoryNotesPostRequest {
-	return ApiInventoryPreloadHistoryNotesPostRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadHistoryNotesPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest {
+	return InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1132,7 +1159,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPost(ctx contex
 // Execute executes the request
 //  @return ObjectHistory
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r ApiInventoryPreloadHistoryNotesPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadHistoryNotesPostExecute(r InventoryPreloadAPIInventoryPreloadHistoryNotesPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1140,7 +1167,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r A
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadHistoryNotesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadHistoryNotesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1183,9 +1210,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1202,7 +1229,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1219,13 +1247,13 @@ func (a *InventoryPreloadApiService) InventoryPreloadHistoryNotesPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadIdDeleteRequest struct {
+type InventoryPreloadAPIInventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 }
 
-func (r ApiInventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.InventoryPreloadIdDeleteExecute(r)
 }
 
@@ -1236,12 +1264,12 @@ Deletes an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiInventoryPreloadIdDeleteRequest
+ @return InventoryPreloadAPIInventoryPreloadIdDeleteRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadIdDelete(ctx context.Context, id int32) ApiInventoryPreloadIdDeleteRequest {
-	return ApiInventoryPreloadIdDeleteRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdDeleteRequest {
+	return InventoryPreloadAPIInventoryPreloadIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1250,20 +1278,20 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdDelete(ctx context.Contex
 
 // Execute executes the request
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadIdDeleteExecute(r ApiInventoryPreloadIdDeleteRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdDeleteExecute(r InventoryPreloadAPIInventoryPreloadIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1296,9 +1324,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdDeleteExecute(r ApiInvent
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1315,7 +1343,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdDeleteExecute(r ApiInvent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1323,13 +1352,13 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdDeleteExecute(r ApiInvent
 	return localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadIdGetRequest struct {
+type InventoryPreloadAPIInventoryPreloadIdGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 }
 
-func (r ApiInventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.InventoryPreloadIdGetExecute(r)
 }
 
@@ -1340,12 +1369,12 @@ Retrieves an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiInventoryPreloadIdGetRequest
+ @return InventoryPreloadAPIInventoryPreloadIdGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadIdGet(ctx context.Context, id int32) ApiInventoryPreloadIdGetRequest {
-	return ApiInventoryPreloadIdGetRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdGetRequest {
+	return InventoryPreloadAPIInventoryPreloadIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1355,7 +1384,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGet(ctx context.Context, 
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdGetExecute(r InventoryPreloadAPIInventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1363,13 +1392,13 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventory
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1402,9 +1431,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventory
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1421,7 +1450,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventory
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1438,20 +1468,20 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdGetExecute(r ApiInventory
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadIdPutRequest struct {
+type InventoryPreloadAPIInventoryPreloadIdPutRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
 // Inventory Preload record to update
-func (r ApiInventoryPreloadIdPutRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) ApiInventoryPreloadIdPutRequest {
+func (r InventoryPreloadAPIInventoryPreloadIdPutRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) InventoryPreloadAPIInventoryPreloadIdPutRequest {
 	r.inventoryPreloadRecord = &inventoryPreloadRecord
 	return r
 }
 
-func (r ApiInventoryPreloadIdPutRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadIdPutRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.InventoryPreloadIdPutExecute(r)
 }
 
@@ -1462,12 +1492,12 @@ Updates an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiInventoryPreloadIdPutRequest
+ @return InventoryPreloadAPIInventoryPreloadIdPutRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadIdPut(ctx context.Context, id int32) ApiInventoryPreloadIdPutRequest {
-	return ApiInventoryPreloadIdPutRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdPutRequest {
+	return InventoryPreloadAPIInventoryPreloadIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1477,7 +1507,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPut(ctx context.Context, 
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdPutExecute(r InventoryPreloadAPIInventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1485,13 +1515,13 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventory
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1529,9 +1559,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventory
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1548,7 +1578,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventory
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1565,19 +1596,19 @@ func (a *InventoryPreloadApiService) InventoryPreloadIdPutExecute(r ApiInventory
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadPostRequest struct {
+type InventoryPreloadAPIInventoryPreloadPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
 // Inventory Preload record or records to be created
-func (r ApiInventoryPreloadPostRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) ApiInventoryPreloadPostRequest {
+func (r InventoryPreloadAPIInventoryPreloadPostRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) InventoryPreloadAPIInventoryPreloadPostRequest {
 	r.inventoryPreloadRecord = &inventoryPreloadRecord
 	return r
 }
 
-func (r ApiInventoryPreloadPostRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadPostRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.InventoryPreloadPostExecute(r)
 }
 
@@ -1599,12 +1630,12 @@ To do full validation, use the /inventory-preload/validate-csv endpoint first.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadPostRequest
+ @return InventoryPreloadAPIInventoryPreloadPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadPost(ctx context.Context) ApiInventoryPreloadPostRequest {
-	return ApiInventoryPreloadPostRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadPostRequest {
+	return InventoryPreloadAPIInventoryPreloadPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1613,7 +1644,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadPost(ctx context.Context) A
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadPostExecute(r InventoryPreloadAPIInventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1621,7 +1652,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryP
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1664,9 +1695,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1683,7 +1714,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1700,19 +1732,19 @@ func (a *InventoryPreloadApiService) InventoryPreloadPostExecute(r ApiInventoryP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiInventoryPreloadValidateCsvPostRequest struct {
+type InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	body *map[string]interface{}
 }
 
 // Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
-func (r ApiInventoryPreloadValidateCsvPostRequest) Body(body map[string]interface{}) ApiInventoryPreloadValidateCsvPostRequest {
+func (r InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest) Body(body map[string]interface{}) InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiInventoryPreloadValidateCsvPostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (r InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	return r.ApiService.InventoryPreloadValidateCsvPostExecute(r)
 }
 
@@ -1725,12 +1757,12 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiInventoryPreloadValidateCsvPostRequest
+ @return InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPost(ctx context.Context) ApiInventoryPreloadValidateCsvPostRequest {
-	return ApiInventoryPreloadValidateCsvPostRequest{
+func (a *InventoryPreloadAPIService) InventoryPreloadValidateCsvPost(ctx context.Context) InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest {
+	return InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1739,7 +1771,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPost(ctx context
 // Execute executes the request
 //  @return InventoryPreloadCsvValidationSuccess
 // Deprecated
-func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r ApiInventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (a *InventoryPreloadAPIService) InventoryPreloadValidateCsvPostExecute(r InventoryPreloadAPIInventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1747,7 +1779,7 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r Ap
 		localVarReturnValue  *InventoryPreloadCsvValidationSuccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.InventoryPreloadValidateCsvPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.InventoryPreloadValidateCsvPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1790,9 +1822,9 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1809,7 +1841,8 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1826,12 +1859,12 @@ func (a *InventoryPreloadApiService) InventoryPreloadValidateCsvPostExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadCsvTemplateGetRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV1InventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadCsvTemplateGetExecute(r)
 }
 
@@ -1841,12 +1874,12 @@ V1InventoryPreloadCsvTemplateGet Retrieve the Inventory Preload CSV template
 Retrieves the Inventory Preload CSV template.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadCsvTemplateGetRequest
+ @return InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV1InventoryPreloadCsvTemplateGetRequest {
-	return ApiV1InventoryPreloadCsvTemplateGetRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest {
+	return InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1855,7 +1888,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGet(ctx contex
 // Execute executes the request
 //  @return map[string]interface{}
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGetExecute(r ApiV1InventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIV1InventoryPreloadCsvTemplateGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1863,7 +1896,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGetExecute(r A
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadCsvTemplateGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadCsvTemplateGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1901,9 +1934,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1928,12 +1961,12 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadCsvTemplateGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadDeleteRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadDeleteRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV1InventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1InventoryPreloadDeleteExecute(r)
 }
 
@@ -1943,12 +1976,12 @@ V1InventoryPreloadDelete Delete all Inventory Preload records
 Deletes all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadDeleteRequest
+ @return InventoryPreloadAPIV1InventoryPreloadDeleteRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadDelete(ctx context.Context) ApiV1InventoryPreloadDeleteRequest {
-	return ApiV1InventoryPreloadDeleteRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadDelete(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadDeleteRequest {
+	return InventoryPreloadAPIV1InventoryPreloadDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1956,14 +1989,14 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadDelete(ctx context.Contex
 
 // Execute executes the request
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadDeleteExecute(r ApiV1InventoryPreloadDeleteRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadDeleteExecute(r InventoryPreloadAPIV1InventoryPreloadDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2001,9 +2034,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadDeleteExecute(r ApiV1Inve
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2019,9 +2052,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadDeleteExecute(r ApiV1Inve
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadGetRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -2029,35 +2062,35 @@ type ApiV1InventoryPreloadGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1InventoryPreloadGetRequest) Page(page int32) ApiV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Page(page int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1InventoryPreloadGetRequest) Size(size int32) ApiV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Size(size int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1InventoryPreloadGetRequest) Pagesize(pagesize int32) ApiV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1InventoryPreloadGetRequest) PageSize(pageSize int32) ApiV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1InventoryPreloadGetRequest) Sort(sort string) ApiV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Sort(sort string) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1InventoryPreloadGetRequest) Execute() (*InventoryPreloadRecordSearchResults, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Execute() (*InventoryPreloadRecordSearchResults, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadGetExecute(r)
 }
 
@@ -2067,12 +2100,12 @@ V1InventoryPreloadGet Return all Inventory Preload records
 Returns all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadGetRequest
+ @return InventoryPreloadAPIV1InventoryPreloadGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadGet(ctx context.Context) ApiV1InventoryPreloadGetRequest {
-	return ApiV1InventoryPreloadGetRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadGetRequest {
+	return InventoryPreloadAPIV1InventoryPreloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2081,7 +2114,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGet(ctx context.Context) 
 // Execute executes the request
 //  @return InventoryPreloadRecordSearchResults
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1InventoryPreloadGetRequest) (*InventoryPreloadRecordSearchResults, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadGetExecute(r InventoryPreloadAPIV1InventoryPreloadGetRequest) (*InventoryPreloadRecordSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2089,7 +2122,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1Invento
 		localVarReturnValue  *InventoryPreloadRecordSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2101,19 +2134,34 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1Invento
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "id:asc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2142,9 +2190,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1Invento
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2169,9 +2217,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadGetExecute(r ApiV1Invento
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadHistoryGetRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -2179,35 +2227,35 @@ type ApiV1InventoryPreloadHistoryGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1InventoryPreloadHistoryGetRequest) Page(page int32) ApiV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1InventoryPreloadHistoryGetRequest) Size(size int32) ApiV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Size(size int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1InventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) ApiV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) ApiV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1InventoryPreloadHistoryGetRequest) Sort(sort string) ApiV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Sort(sort string) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1InventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadHistoryGetExecute(r)
 }
 
@@ -2217,12 +2265,12 @@ V1InventoryPreloadHistoryGet Get Inventory Preload history entries
 Gets Inventory Preload history entries.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadHistoryGetRequest
+ @return InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGet(ctx context.Context) ApiV1InventoryPreloadHistoryGetRequest {
-	return ApiV1InventoryPreloadHistoryGetRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
+	return InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2231,7 +2279,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGet(ctx context.Co
 // Execute executes the request
 //  @return HistorySearchResults
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2239,7 +2287,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2251,19 +2299,34 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2292,9 +2355,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2319,19 +2382,19 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadHistoryPostRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV1InventoryPreloadHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1InventoryPreloadHistoryPostRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1InventoryPreloadHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadHistoryPostExecute(r)
 }
 
@@ -2341,12 +2404,12 @@ V1InventoryPreloadHistoryPost Add Inventory Preload history object notes
 Adds Inventory Preload history object notes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadHistoryPostRequest
+ @return InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPost(ctx context.Context) ApiV1InventoryPreloadHistoryPostRequest {
-	return ApiV1InventoryPreloadHistoryPostRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest {
+	return InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2355,7 +2418,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPost(ctx context.C
 // Execute executes the request
 //  @return ObjectHistory
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV1InventoryPreloadHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryPostExecute(r InventoryPreloadAPIV1InventoryPreloadHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2363,7 +2426,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2406,9 +2469,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2425,7 +2488,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2442,13 +2506,13 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadHistoryPostExecute(r ApiV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadIdDeleteRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 }
 
-func (r ApiV1InventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1InventoryPreloadIdDeleteExecute(r)
 }
 
@@ -2459,12 +2523,12 @@ Deletes an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV1InventoryPreloadIdDeleteRequest
+ @return InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdDelete(ctx context.Context, id int32) ApiV1InventoryPreloadIdDeleteRequest {
-	return ApiV1InventoryPreloadIdDeleteRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest {
+	return InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2473,20 +2537,20 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdDelete(ctx context.Cont
 
 // Execute executes the request
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdDeleteExecute(r ApiV1InventoryPreloadIdDeleteRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdDeleteExecute(r InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2519,9 +2583,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdDeleteExecute(r ApiV1In
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -2538,7 +2602,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdDeleteExecute(r ApiV1In
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2546,13 +2611,13 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdDeleteExecute(r ApiV1In
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadIdGetRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadIdGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 }
 
-func (r ApiV1InventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadIdGetExecute(r)
 }
 
@@ -2563,12 +2628,12 @@ Retrieves an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV1InventoryPreloadIdGetRequest
+ @return InventoryPreloadAPIV1InventoryPreloadIdGetRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdGet(ctx context.Context, id int32) ApiV1InventoryPreloadIdGetRequest {
-	return ApiV1InventoryPreloadIdGetRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdGetRequest {
+	return InventoryPreloadAPIV1InventoryPreloadIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2578,7 +2643,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGet(ctx context.Context
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1InventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdGetExecute(r InventoryPreloadAPIV1InventoryPreloadIdGetRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2586,13 +2651,13 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1Inven
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2625,9 +2690,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1Inven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2644,7 +2709,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1Inven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2661,20 +2727,20 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdGetExecute(r ApiV1Inven
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadIdPutRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadIdPutRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id int32
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
 // Inventory Preload record to update
-func (r ApiV1InventoryPreloadIdPutRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) ApiV1InventoryPreloadIdPutRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadIdPutRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) InventoryPreloadAPIV1InventoryPreloadIdPutRequest {
 	r.inventoryPreloadRecord = &inventoryPreloadRecord
 	return r
 }
 
-func (r ApiV1InventoryPreloadIdPutRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadIdPutRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadIdPutExecute(r)
 }
 
@@ -2685,12 +2751,12 @@ Updates an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV1InventoryPreloadIdPutRequest
+ @return InventoryPreloadAPIV1InventoryPreloadIdPutRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdPut(ctx context.Context, id int32) ApiV1InventoryPreloadIdPutRequest {
-	return ApiV1InventoryPreloadIdPutRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdPutRequest {
+	return InventoryPreloadAPIV1InventoryPreloadIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2700,7 +2766,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPut(ctx context.Context
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1InventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdPutExecute(r InventoryPreloadAPIV1InventoryPreloadIdPutRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2708,13 +2774,13 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1Inven
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/inventory-preload/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2752,9 +2818,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1Inven
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2771,7 +2837,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1Inven
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2788,19 +2855,19 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadIdPutExecute(r ApiV1Inven
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadPostRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
 // Inventory Preload record or records to be created
-func (r ApiV1InventoryPreloadPostRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) ApiV1InventoryPreloadPostRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadPostRequest) InventoryPreloadRecord(inventoryPreloadRecord InventoryPreloadRecord) InventoryPreloadAPIV1InventoryPreloadPostRequest {
 	r.inventoryPreloadRecord = &inventoryPreloadRecord
 	return r
 }
 
-func (r ApiV1InventoryPreloadPostRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadPostRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadPostExecute(r)
 }
 
@@ -2822,12 +2889,12 @@ To do full validation, use the /inventory-preload/validate-csv endpoint first.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadPostRequest
+ @return InventoryPreloadAPIV1InventoryPreloadPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadPost(ctx context.Context) ApiV1InventoryPreloadPostRequest {
-	return ApiV1InventoryPreloadPostRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadPostRequest {
+	return InventoryPreloadAPIV1InventoryPreloadPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2836,7 +2903,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPost(ctx context.Context)
 // Execute executes the request
 //  @return InventoryPreloadRecord
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1InventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadPostExecute(r InventoryPreloadAPIV1InventoryPreloadPostRequest) (*InventoryPreloadRecord, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2844,7 +2911,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1Invent
 		localVarReturnValue  *InventoryPreloadRecord
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2887,9 +2954,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1Invent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2906,7 +2973,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1Invent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2923,19 +2991,19 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadPostExecute(r ApiV1Invent
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1InventoryPreloadValidateCsvPostRequest struct {
+type InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	body *map[string]interface{}
 }
 
 // Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
-func (r ApiV1InventoryPreloadValidateCsvPostRequest) Body(body map[string]interface{}) ApiV1InventoryPreloadValidateCsvPostRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest) Body(body map[string]interface{}) InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1InventoryPreloadValidateCsvPostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (r InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	return r.ApiService.V1InventoryPreloadValidateCsvPostExecute(r)
 }
 
@@ -2948,12 +3016,12 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1InventoryPreloadValidateCsvPostRequest
+ @return InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest
 
 Deprecated
 */
-func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPost(ctx context.Context) ApiV1InventoryPreloadValidateCsvPostRequest {
-	return ApiV1InventoryPreloadValidateCsvPostRequest{
+func (a *InventoryPreloadAPIService) V1InventoryPreloadValidateCsvPost(ctx context.Context) InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest {
+	return InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2962,7 +3030,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPost(ctx conte
 // Execute executes the request
 //  @return InventoryPreloadCsvValidationSuccess
 // Deprecated
-func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r ApiV1InventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadValidateCsvPostExecute(r InventoryPreloadAPIV1InventoryPreloadValidateCsvPostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2970,7 +3038,7 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r 
 		localVarReturnValue  *InventoryPreloadCsvValidationSuccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V1InventoryPreloadValidateCsvPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V1InventoryPreloadValidateCsvPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3013,9 +3081,9 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3032,7 +3100,8 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3049,12 +3118,12 @@ func (a *InventoryPreloadApiService) V1InventoryPreloadValidateCsvPostExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadCsvGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadCsvGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV2InventoryPreloadCsvGetRequest) Execute() (string, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvGetRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadCsvGetExecute(r)
 }
 
@@ -3064,10 +3133,10 @@ V2InventoryPreloadCsvGet Download all Inventory Preload records
 Returns all Inventory Preload records as a CSV file.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadCsvGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadCsvGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGet(ctx context.Context) ApiV2InventoryPreloadCsvGetRequest {
-	return ApiV2InventoryPreloadCsvGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadCsvGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3075,7 +3144,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGet(ctx context.Contex
 
 // Execute executes the request
 //  @return string
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGetExecute(r ApiV2InventoryPreloadCsvGetRequest) (string, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvGetExecute(r InventoryPreloadAPIV2InventoryPreloadCsvGetRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3083,7 +3152,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGetExecute(r ApiV2Inve
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadCsvGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadCsvGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3121,9 +3190,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGetExecute(r ApiV2Inve
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3148,19 +3217,19 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvGetExecute(r ApiV2Inve
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadCsvPostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadCsvPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	file *string
 }
 
 // The CSV file to upload
-func (r ApiV2InventoryPreloadCsvPostRequest) File(file string) ApiV2InventoryPreloadCsvPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvPostRequest) File(file string) InventoryPreloadAPIV2InventoryPreloadCsvPostRequest {
 	r.file = &file
 	return r
 }
 
-func (r ApiV2InventoryPreloadCsvPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadCsvPostExecute(r)
 }
 
@@ -3182,10 +3251,10 @@ To do full validation, use the `/v2/inventory-preload/csv-validate` endpoint fir
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadCsvPostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadCsvPostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPost(ctx context.Context) ApiV2InventoryPreloadCsvPostRequest {
-	return ApiV2InventoryPreloadCsvPostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvPostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadCsvPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3193,7 +3262,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPost(ctx context.Conte
 
 // Execute executes the request
 //  @return []HrefResponse
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2InventoryPreloadCsvPostRequest) ([]HrefResponse, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvPostExecute(r InventoryPreloadAPIV2InventoryPreloadCsvPostRequest) ([]HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3201,7 +3270,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 		localVarReturnValue  []HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadCsvPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadCsvPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3232,7 +3301,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormParams.Add("file", parameterToString(*r.file, ""))
+	parameterAddToHeaderOrQuery(localVarFormParams, "file", r.file, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3243,9 +3312,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3262,7 +3331,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3279,12 +3349,12 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvPostExecute(r ApiV2Inv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadCsvTemplateGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV2InventoryPreloadCsvTemplateGetRequest) Execute() (string, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadCsvTemplateGetExecute(r)
 }
 
@@ -3294,10 +3364,10 @@ V2InventoryPreloadCsvTemplateGet Download the Inventory Preload CSV template
 Retrieves the Inventory Preload CSV file template.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadCsvTemplateGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGet(ctx context.Context) ApiV2InventoryPreloadCsvTemplateGetRequest {
-	return ApiV2InventoryPreloadCsvTemplateGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvTemplateGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3305,7 +3375,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGet(ctx contex
 
 // Execute executes the request
 //  @return string
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGetExecute(r ApiV2InventoryPreloadCsvTemplateGetRequest) (string, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvTemplateGetExecute(r InventoryPreloadAPIV2InventoryPreloadCsvTemplateGetRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3313,7 +3383,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGetExecute(r A
 		localVarReturnValue  string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadCsvTemplateGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadCsvTemplateGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3351,9 +3421,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3378,19 +3448,19 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvTemplateGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadCsvValidatePostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	file *string
 }
 
 // The CSV file to upload
-func (r ApiV2InventoryPreloadCsvValidatePostRequest) File(file string) ApiV2InventoryPreloadCsvValidatePostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest) File(file string) InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest {
 	r.file = &file
 	return r
 }
 
-func (r ApiV2InventoryPreloadCsvValidatePostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest) Execute() (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadCsvValidatePostExecute(r)
 }
 
@@ -3403,10 +3473,10 @@ A CSV template can be downloaded from `/v2/inventory-preload/csv-template`.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadCsvValidatePostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePost(ctx context.Context) ApiV2InventoryPreloadCsvValidatePostRequest {
-	return ApiV2InventoryPreloadCsvValidatePostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvValidatePost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3414,7 +3484,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePost(ctx conte
 
 // Execute executes the request
 //  @return InventoryPreloadCsvValidationSuccess
-func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r ApiV2InventoryPreloadCsvValidatePostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadCsvValidatePostExecute(r InventoryPreloadAPIV2InventoryPreloadCsvValidatePostRequest) (*InventoryPreloadCsvValidationSuccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3422,7 +3492,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 		localVarReturnValue  *InventoryPreloadCsvValidationSuccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadCsvValidatePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadCsvValidatePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3453,7 +3523,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarFormParams.Add("file", parameterToString(*r.file, ""))
+	parameterAddToHeaderOrQuery(localVarFormParams, "file", r.file, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3464,9 +3534,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3483,7 +3553,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3500,12 +3571,12 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadCsvValidatePostExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadEaColumnsGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV2InventoryPreloadEaColumnsGetRequest) Execute() (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest) Execute() (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadEaColumnsGetExecute(r)
 }
 
@@ -3517,10 +3588,10 @@ with inventory preload records
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadEaColumnsGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGet(ctx context.Context) ApiV2InventoryPreloadEaColumnsGetRequest {
-	return ApiV2InventoryPreloadEaColumnsGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadEaColumnsGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3528,7 +3599,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGet(ctx context.
 
 // Execute executes the request
 //  @return InventoryPreloadExtensionAttributeColumnResult
-func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGetExecute(r ApiV2InventoryPreloadEaColumnsGetRequest) (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadEaColumnsGetExecute(r InventoryPreloadAPIV2InventoryPreloadEaColumnsGetRequest) (*InventoryPreloadExtensionAttributeColumnResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3536,7 +3607,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGetExecute(r Api
 		localVarReturnValue  *InventoryPreloadExtensionAttributeColumnResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadEaColumnsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadEaColumnsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3574,9 +3645,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3601,9 +3672,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadEaColumnsGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadExportPostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadExportPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	exportFields *[]string
 	exportLabels *[]string
 	page *int32
@@ -3614,46 +3685,46 @@ type ApiV2InventoryPreloadExportPostRequest struct {
 }
 
 // Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
-func (r ApiV2InventoryPreloadExportPostRequest) ExportFields(exportFields []string) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) ExportFields(exportFields []string) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.exportFields = &exportFields
 	return r
 }
 
 // Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
-func (r ApiV2InventoryPreloadExportPostRequest) ExportLabels(exportLabels []string) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) ExportLabels(exportLabels []string) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.exportLabels = &exportLabels
 	return r
 }
 
-func (r ApiV2InventoryPreloadExportPostRequest) Page(page int32) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2InventoryPreloadExportPostRequest) PageSize(pageSize int32) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;. 
-func (r ApiV2InventoryPreloadExportPostRequest) Sort(sort []string) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Sort(sort []string) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.sort = &sort
 	return r
 }
 
 // Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60; 
-func (r ApiV2InventoryPreloadExportPostRequest) Filter(filter string) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Filter(filter string) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.filter = &filter
 	return r
 }
 
 // Optional. Override query parameters since they can make URI exceed 2,000 character limit.
-func (r ApiV2InventoryPreloadExportPostRequest) ExportParameters(exportParameters ExportParameters) ApiV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) ExportParameters(exportParameters ExportParameters) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.exportParameters = &exportParameters
 	return r
 }
 
-func (r ApiV2InventoryPreloadExportPostRequest) Execute() (interface{}, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadExportPostExecute(r)
 }
 
@@ -3664,10 +3735,10 @@ Export a collection of inventory preload records
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadExportPostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadExportPostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadExportPost(ctx context.Context) ApiV2InventoryPreloadExportPostRequest {
-	return ApiV2InventoryPreloadExportPostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadExportPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadExportPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3675,7 +3746,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPost(ctx context.Co
 
 // Execute executes the request
 //  @return interface{}
-func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2InventoryPreloadExportPostRequest) (interface{}, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadExportPostExecute(r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3683,7 +3754,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 		localVarReturnValue  interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadExportPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadExportPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3699,42 +3770,60 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("export-fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("export-fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
 		t := *r.exportLabels
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("export-labels", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("export-labels", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3765,9 +3854,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3784,7 +3873,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3801,38 +3891,38 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadExportPostExecute(r ApiV2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadHistoryGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV2InventoryPreloadHistoryGetRequest) Page(page int32) ApiV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) ApiV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;date:desc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;. 
-func (r ApiV2InventoryPreloadHistoryGetRequest) Sort(sort []string) ApiV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Sort(sort []string) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;username&#x3D;&#x3D;\&quot;admin\&quot;&#x60; 
-func (r ApiV2InventoryPreloadHistoryGetRequest) Filter(filter string) ApiV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Filter(filter string) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV2InventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadHistoryGetExecute(r)
 }
 
@@ -3842,10 +3932,10 @@ V2InventoryPreloadHistoryGet Get Inventory Preload history entries
 Gets Inventory Preload history entries.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadHistoryGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGet(ctx context.Context) ApiV2InventoryPreloadHistoryGetRequest {
-	return ApiV2InventoryPreloadHistoryGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadHistoryGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3853,7 +3943,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGet(ctx context.Co
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadHistoryGetExecute(r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3861,7 +3951,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3873,24 +3963,36 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3919,9 +4021,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3946,19 +4048,19 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryGetExecute(r ApiV2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadHistoryPostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV2InventoryPreloadHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV2InventoryPreloadHistoryPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV2InventoryPreloadHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadHistoryPostExecute(r)
 }
 
@@ -3968,10 +4070,10 @@ V2InventoryPreloadHistoryPost Add Inventory Preload history object notes
 Adds Inventory Preload history object notes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadHistoryPostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPost(ctx context.Context) ApiV2InventoryPreloadHistoryPostRequest {
-	return ApiV2InventoryPreloadHistoryPostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadHistoryPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -3979,7 +4081,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPost(ctx context.C
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV2InventoryPreloadHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadHistoryPostExecute(r InventoryPreloadAPIV2InventoryPreloadHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -3987,7 +4089,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4030,9 +4132,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4049,7 +4151,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4066,12 +4169,12 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadHistoryPostExecute(r ApiV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsDeleteAllPostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 }
 
-func (r ApiV2InventoryPreloadRecordsDeleteAllPostRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsDeleteAllPostExecute(r)
 }
 
@@ -4081,24 +4184,24 @@ V2InventoryPreloadRecordsDeleteAllPost Delete all Inventory Preload records
 Deletes all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadRecordsDeleteAllPostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsDeleteAllPost(ctx context.Context) ApiV2InventoryPreloadRecordsDeleteAllPostRequest {
-	return ApiV2InventoryPreloadRecordsDeleteAllPostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsDeleteAllPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsDeleteAllPostExecute(r ApiV2InventoryPreloadRecordsDeleteAllPostRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsDeleteAllPostExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsDeleteAllPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsDeleteAllPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsDeleteAllPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4136,9 +4239,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsDeleteAllPostExecu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4154,38 +4257,38 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsDeleteAllPostExecu
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV2InventoryPreloadRecordsGetRequest) Page(page int32) ApiV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2InventoryPreloadRecordsGetRequest) PageSize(pageSize int32) ApiV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;. 
-func (r ApiV2InventoryPreloadRecordsGetRequest) Sort(sort []string) ApiV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Sort(sort []string) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60; 
-func (r ApiV2InventoryPreloadRecordsGetRequest) Filter(filter string) ApiV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Filter(filter string) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV2InventoryPreloadRecordsGetRequest) Execute() (*InventoryPreloadRecordSearchResultsV2, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Execute() (*InventoryPreloadRecordSearchResultsV2, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsGetExecute(r)
 }
 
@@ -4195,10 +4298,10 @@ V2InventoryPreloadRecordsGet Return all Inventory Preload records
 Returns all Inventory Preload records.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadRecordsGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGet(ctx context.Context) ApiV2InventoryPreloadRecordsGetRequest {
-	return ApiV2InventoryPreloadRecordsGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsGet(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4206,7 +4309,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGet(ctx context.Co
 
 // Execute executes the request
 //  @return InventoryPreloadRecordSearchResultsV2
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2InventoryPreloadRecordsGetRequest) (*InventoryPreloadRecordSearchResultsV2, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsGetExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) (*InventoryPreloadRecordSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4214,7 +4317,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2
 		localVarReturnValue  *InventoryPreloadRecordSearchResultsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4226,24 +4329,36 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4272,9 +4387,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4299,13 +4414,13 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsGetExecute(r ApiV2
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsIdDeleteRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id string
 }
 
-func (r ApiV2InventoryPreloadRecordsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsIdDeleteExecute(r)
 }
 
@@ -4316,10 +4431,10 @@ Deletes an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV2InventoryPreloadRecordsIdDeleteRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDelete(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdDeleteRequest {
-	return ApiV2InventoryPreloadRecordsIdDeleteRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdDelete(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4327,20 +4442,20 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDelete(ctx conte
 }
 
 // Execute executes the request
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDeleteExecute(r ApiV2InventoryPreloadRecordsIdDeleteRequest) (*http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdDeleteExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/inventory-preload/records/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4373,9 +4488,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDeleteExecute(r 
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -4392,7 +4507,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDeleteExecute(r 
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -4400,13 +4516,13 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdDeleteExecute(r 
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsIdGetRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id string
 }
 
-func (r ApiV2InventoryPreloadRecordsIdGetRequest) Execute() (*InventoryPreloadRecordV2, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest) Execute() (*InventoryPreloadRecordV2, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsIdGetExecute(r)
 }
 
@@ -4417,10 +4533,10 @@ Retrieves an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV2InventoryPreloadRecordsIdGetRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGet(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdGetRequest {
-	return ApiV2InventoryPreloadRecordsIdGetRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdGet(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4429,7 +4545,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGet(ctx context.
 
 // Execute executes the request
 //  @return InventoryPreloadRecordV2
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r ApiV2InventoryPreloadRecordsIdGetRequest) (*InventoryPreloadRecordV2, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdGetExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdGetRequest) (*InventoryPreloadRecordV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -4437,13 +4553,13 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r Api
 		localVarReturnValue  *InventoryPreloadRecordV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/inventory-preload/records/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4476,9 +4592,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4495,7 +4611,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4512,20 +4629,20 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsIdPutRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	id string
 	inventoryPreloadRecordV2 *InventoryPreloadRecordV2
 }
 
 // Inventory Preload record to update
-func (r ApiV2InventoryPreloadRecordsIdPutRequest) InventoryPreloadRecordV2(inventoryPreloadRecordV2 InventoryPreloadRecordV2) ApiV2InventoryPreloadRecordsIdPutRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest) InventoryPreloadRecordV2(inventoryPreloadRecordV2 InventoryPreloadRecordV2) InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest {
 	r.inventoryPreloadRecordV2 = &inventoryPreloadRecordV2
 	return r
 }
 
-func (r ApiV2InventoryPreloadRecordsIdPutRequest) Execute() (*InventoryPreloadRecordV2, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest) Execute() (*InventoryPreloadRecordV2, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsIdPutExecute(r)
 }
 
@@ -4536,10 +4653,10 @@ Updates an Inventory Preload record.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Inventory Preload identifier
- @return ApiV2InventoryPreloadRecordsIdPutRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPut(ctx context.Context, id string) ApiV2InventoryPreloadRecordsIdPutRequest {
-	return ApiV2InventoryPreloadRecordsIdPutRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdPut(ctx context.Context, id string) InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -4548,7 +4665,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPut(ctx context.
 
 // Execute executes the request
 //  @return InventoryPreloadRecordV2
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r ApiV2InventoryPreloadRecordsIdPutRequest) (*InventoryPreloadRecordV2, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsIdPutExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsIdPutRequest) (*InventoryPreloadRecordV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -4556,13 +4673,13 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r Api
 		localVarReturnValue  *InventoryPreloadRecordV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/inventory-preload/records/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4600,9 +4717,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4619,7 +4736,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4636,19 +4754,19 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsIdPutExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2InventoryPreloadRecordsPostRequest struct {
+type InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest struct {
 	ctx context.Context
-	ApiService InventoryPreloadApi
+	ApiService InventoryPreloadAPI
 	inventoryPreloadRecordV2 *InventoryPreloadRecordV2
 }
 
 // Inventory Preload record to be created.
-func (r ApiV2InventoryPreloadRecordsPostRequest) InventoryPreloadRecordV2(inventoryPreloadRecordV2 InventoryPreloadRecordV2) ApiV2InventoryPreloadRecordsPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest) InventoryPreloadRecordV2(inventoryPreloadRecordV2 InventoryPreloadRecordV2) InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest {
 	r.inventoryPreloadRecordV2 = &inventoryPreloadRecordV2
 	return r
 }
 
-func (r ApiV2InventoryPreloadRecordsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2InventoryPreloadRecordsPostExecute(r)
 }
 
@@ -4658,10 +4776,10 @@ V2InventoryPreloadRecordsPost Create a new Inventory Preload record using JSON
 Create a new Inventory Preload record using JSON.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2InventoryPreloadRecordsPostRequest
+ @return InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest
 */
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPost(ctx context.Context) ApiV2InventoryPreloadRecordsPostRequest {
-	return ApiV2InventoryPreloadRecordsPostRequest{
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsPost(ctx context.Context) InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest {
+	return InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4669,7 +4787,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPost(ctx context.C
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPostExecute(r ApiV2InventoryPreloadRecordsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsPostExecute(r InventoryPreloadAPIV2InventoryPreloadRecordsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4677,7 +4795,7 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPostExecute(r ApiV
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadApiService.V2InventoryPreloadRecordsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryPreloadAPIService.V2InventoryPreloadRecordsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4720,9 +4838,9 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPostExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4739,7 +4857,8 @@ func (a *InventoryPreloadApiService) V2InventoryPreloadRecordsPostExecute(r ApiV
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

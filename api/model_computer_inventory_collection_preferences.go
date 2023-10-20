@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerInventoryCollectionPreferences type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerInventoryCollectionPreferences{}
+
 // ComputerInventoryCollectionPreferences struct for ComputerInventoryCollectionPreferences
 type ComputerInventoryCollectionPreferences struct {
 	MonitorApplicationUsage *bool `json:"monitorApplicationUsage,omitempty"`
@@ -112,7 +115,7 @@ func NewComputerInventoryCollectionPreferencesWithDefaults() *ComputerInventoryC
 
 // GetMonitorApplicationUsage returns the MonitorApplicationUsage field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetMonitorApplicationUsage() bool {
-	if o == nil || o.MonitorApplicationUsage == nil {
+	if o == nil || IsNil(o.MonitorApplicationUsage) {
 		var ret bool
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *ComputerInventoryCollectionPreferences) GetMonitorApplicationUsage() bo
 // GetMonitorApplicationUsageOk returns a tuple with the MonitorApplicationUsage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetMonitorApplicationUsageOk() (*bool, bool) {
-	if o == nil || o.MonitorApplicationUsage == nil {
+	if o == nil || IsNil(o.MonitorApplicationUsage) {
 		return nil, false
 	}
 	return o.MonitorApplicationUsage, true
@@ -130,7 +133,7 @@ func (o *ComputerInventoryCollectionPreferences) GetMonitorApplicationUsageOk() 
 
 // HasMonitorApplicationUsage returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasMonitorApplicationUsage() bool {
-	if o != nil && o.MonitorApplicationUsage != nil {
+	if o != nil && !IsNil(o.MonitorApplicationUsage) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *ComputerInventoryCollectionPreferences) SetMonitorApplicationUsage(v bo
 
 // GetIncludeFonts returns the IncludeFonts field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeFonts() bool {
-	if o == nil || o.IncludeFonts == nil {
+	if o == nil || IsNil(o.IncludeFonts) {
 		var ret bool
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeFonts() bool {
 // GetIncludeFontsOk returns a tuple with the IncludeFonts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeFontsOk() (*bool, bool) {
-	if o == nil || o.IncludeFonts == nil {
+	if o == nil || IsNil(o.IncludeFonts) {
 		return nil, false
 	}
 	return o.IncludeFonts, true
@@ -162,7 +165,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeFontsOk() (*bool, boo
 
 // HasIncludeFonts returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludeFonts() bool {
-	if o != nil && o.IncludeFonts != nil {
+	if o != nil && !IsNil(o.IncludeFonts) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludeFonts(v bool) {
 
 // GetIncludePlugins returns the IncludePlugins field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePlugins() bool {
-	if o == nil || o.IncludePlugins == nil {
+	if o == nil || IsNil(o.IncludePlugins) {
 		var ret bool
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePlugins() bool {
 // GetIncludePluginsOk returns a tuple with the IncludePlugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePluginsOk() (*bool, bool) {
-	if o == nil || o.IncludePlugins == nil {
+	if o == nil || IsNil(o.IncludePlugins) {
 		return nil, false
 	}
 	return o.IncludePlugins, true
@@ -194,7 +197,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePluginsOk() (*bool, b
 
 // HasIncludePlugins returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludePlugins() bool {
-	if o != nil && o.IncludePlugins != nil {
+	if o != nil && !IsNil(o.IncludePlugins) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludePlugins(v bool) {
 
 // GetIncludePackages returns the IncludePackages field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePackages() bool {
-	if o == nil || o.IncludePackages == nil {
+	if o == nil || IsNil(o.IncludePackages) {
 		var ret bool
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePackages() bool {
 // GetIncludePackagesOk returns a tuple with the IncludePackages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePackagesOk() (*bool, bool) {
-	if o == nil || o.IncludePackages == nil {
+	if o == nil || IsNil(o.IncludePackages) {
 		return nil, false
 	}
 	return o.IncludePackages, true
@@ -226,7 +229,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePackagesOk() (*bool, 
 
 // HasIncludePackages returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludePackages() bool {
-	if o != nil && o.IncludePackages != nil {
+	if o != nil && !IsNil(o.IncludePackages) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludePackages(v bool) {
 
 // GetIncludeSoftwareUpdates returns the IncludeSoftwareUpdates field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareUpdates() bool {
-	if o == nil || o.IncludeSoftwareUpdates == nil {
+	if o == nil || IsNil(o.IncludeSoftwareUpdates) {
 		var ret bool
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareUpdates() boo
 // GetIncludeSoftwareUpdatesOk returns a tuple with the IncludeSoftwareUpdates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareUpdatesOk() (*bool, bool) {
-	if o == nil || o.IncludeSoftwareUpdates == nil {
+	if o == nil || IsNil(o.IncludeSoftwareUpdates) {
 		return nil, false
 	}
 	return o.IncludeSoftwareUpdates, true
@@ -258,7 +261,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareUpdatesOk() (
 
 // HasIncludeSoftwareUpdates returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludeSoftwareUpdates() bool {
-	if o != nil && o.IncludeSoftwareUpdates != nil {
+	if o != nil && !IsNil(o.IncludeSoftwareUpdates) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludeSoftwareUpdates(v boo
 
 // GetIncludeAccounts returns the IncludeAccounts field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeAccounts() bool {
-	if o == nil || o.IncludeAccounts == nil {
+	if o == nil || IsNil(o.IncludeAccounts) {
 		var ret bool
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeAccounts() bool {
 // GetIncludeAccountsOk returns a tuple with the IncludeAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeAccountsOk() (*bool, bool) {
-	if o == nil || o.IncludeAccounts == nil {
+	if o == nil || IsNil(o.IncludeAccounts) {
 		return nil, false
 	}
 	return o.IncludeAccounts, true
@@ -290,7 +293,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeAccountsOk() (*bool, 
 
 // HasIncludeAccounts returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludeAccounts() bool {
-	if o != nil && o.IncludeAccounts != nil {
+	if o != nil && !IsNil(o.IncludeAccounts) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludeAccounts(v bool) {
 
 // GetCalculateSizes returns the CalculateSizes field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetCalculateSizes() bool {
-	if o == nil || o.CalculateSizes == nil {
+	if o == nil || IsNil(o.CalculateSizes) {
 		var ret bool
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *ComputerInventoryCollectionPreferences) GetCalculateSizes() bool {
 // GetCalculateSizesOk returns a tuple with the CalculateSizes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetCalculateSizesOk() (*bool, bool) {
-	if o == nil || o.CalculateSizes == nil {
+	if o == nil || IsNil(o.CalculateSizes) {
 		return nil, false
 	}
 	return o.CalculateSizes, true
@@ -322,7 +325,7 @@ func (o *ComputerInventoryCollectionPreferences) GetCalculateSizesOk() (*bool, b
 
 // HasCalculateSizes returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasCalculateSizes() bool {
-	if o != nil && o.CalculateSizes != nil {
+	if o != nil && !IsNil(o.CalculateSizes) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *ComputerInventoryCollectionPreferences) SetCalculateSizes(v bool) {
 
 // GetIncludeHiddenAccounts returns the IncludeHiddenAccounts field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeHiddenAccounts() bool {
-	if o == nil || o.IncludeHiddenAccounts == nil {
+	if o == nil || IsNil(o.IncludeHiddenAccounts) {
 		var ret bool
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeHiddenAccounts() bool
 // GetIncludeHiddenAccountsOk returns a tuple with the IncludeHiddenAccounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeHiddenAccountsOk() (*bool, bool) {
-	if o == nil || o.IncludeHiddenAccounts == nil {
+	if o == nil || IsNil(o.IncludeHiddenAccounts) {
 		return nil, false
 	}
 	return o.IncludeHiddenAccounts, true
@@ -354,7 +357,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeHiddenAccountsOk() (*
 
 // HasIncludeHiddenAccounts returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludeHiddenAccounts() bool {
-	if o != nil && o.IncludeHiddenAccounts != nil {
+	if o != nil && !IsNil(o.IncludeHiddenAccounts) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludeHiddenAccounts(v bool
 
 // GetIncludePrinters returns the IncludePrinters field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePrinters() bool {
-	if o == nil || o.IncludePrinters == nil {
+	if o == nil || IsNil(o.IncludePrinters) {
 		var ret bool
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePrinters() bool {
 // GetIncludePrintersOk returns a tuple with the IncludePrinters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludePrintersOk() (*bool, bool) {
-	if o == nil || o.IncludePrinters == nil {
+	if o == nil || IsNil(o.IncludePrinters) {
 		return nil, false
 	}
 	return o.IncludePrinters, true
@@ -386,7 +389,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludePrintersOk() (*bool, 
 
 // HasIncludePrinters returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludePrinters() bool {
-	if o != nil && o.IncludePrinters != nil {
+	if o != nil && !IsNil(o.IncludePrinters) {
 		return true
 	}
 
@@ -400,7 +403,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludePrinters(v bool) {
 
 // GetIncludeServices returns the IncludeServices field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeServices() bool {
-	if o == nil || o.IncludeServices == nil {
+	if o == nil || IsNil(o.IncludeServices) {
 		var ret bool
 		return ret
 	}
@@ -410,7 +413,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeServices() bool {
 // GetIncludeServicesOk returns a tuple with the IncludeServices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetIncludeServicesOk() (*bool, bool) {
-	if o == nil || o.IncludeServices == nil {
+	if o == nil || IsNil(o.IncludeServices) {
 		return nil, false
 	}
 	return o.IncludeServices, true
@@ -418,7 +421,7 @@ func (o *ComputerInventoryCollectionPreferences) GetIncludeServicesOk() (*bool, 
 
 // HasIncludeServices returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasIncludeServices() bool {
-	if o != nil && o.IncludeServices != nil {
+	if o != nil && !IsNil(o.IncludeServices) {
 		return true
 	}
 
@@ -432,7 +435,7 @@ func (o *ComputerInventoryCollectionPreferences) SetIncludeServices(v bool) {
 
 // GetCollectSyncedMobileDeviceInfo returns the CollectSyncedMobileDeviceInfo field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetCollectSyncedMobileDeviceInfo() bool {
-	if o == nil || o.CollectSyncedMobileDeviceInfo == nil {
+	if o == nil || IsNil(o.CollectSyncedMobileDeviceInfo) {
 		var ret bool
 		return ret
 	}
@@ -442,7 +445,7 @@ func (o *ComputerInventoryCollectionPreferences) GetCollectSyncedMobileDeviceInf
 // GetCollectSyncedMobileDeviceInfoOk returns a tuple with the CollectSyncedMobileDeviceInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetCollectSyncedMobileDeviceInfoOk() (*bool, bool) {
-	if o == nil || o.CollectSyncedMobileDeviceInfo == nil {
+	if o == nil || IsNil(o.CollectSyncedMobileDeviceInfo) {
 		return nil, false
 	}
 	return o.CollectSyncedMobileDeviceInfo, true
@@ -450,7 +453,7 @@ func (o *ComputerInventoryCollectionPreferences) GetCollectSyncedMobileDeviceInf
 
 // HasCollectSyncedMobileDeviceInfo returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasCollectSyncedMobileDeviceInfo() bool {
-	if o != nil && o.CollectSyncedMobileDeviceInfo != nil {
+	if o != nil && !IsNil(o.CollectSyncedMobileDeviceInfo) {
 		return true
 	}
 
@@ -464,7 +467,7 @@ func (o *ComputerInventoryCollectionPreferences) SetCollectSyncedMobileDeviceInf
 
 // GetUpdateLdapInfoOnComputerInventorySubmissions returns the UpdateLdapInfoOnComputerInventorySubmissions field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetUpdateLdapInfoOnComputerInventorySubmissions() bool {
-	if o == nil || o.UpdateLdapInfoOnComputerInventorySubmissions == nil {
+	if o == nil || IsNil(o.UpdateLdapInfoOnComputerInventorySubmissions) {
 		var ret bool
 		return ret
 	}
@@ -474,7 +477,7 @@ func (o *ComputerInventoryCollectionPreferences) GetUpdateLdapInfoOnComputerInve
 // GetUpdateLdapInfoOnComputerInventorySubmissionsOk returns a tuple with the UpdateLdapInfoOnComputerInventorySubmissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetUpdateLdapInfoOnComputerInventorySubmissionsOk() (*bool, bool) {
-	if o == nil || o.UpdateLdapInfoOnComputerInventorySubmissions == nil {
+	if o == nil || IsNil(o.UpdateLdapInfoOnComputerInventorySubmissions) {
 		return nil, false
 	}
 	return o.UpdateLdapInfoOnComputerInventorySubmissions, true
@@ -482,7 +485,7 @@ func (o *ComputerInventoryCollectionPreferences) GetUpdateLdapInfoOnComputerInve
 
 // HasUpdateLdapInfoOnComputerInventorySubmissions returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasUpdateLdapInfoOnComputerInventorySubmissions() bool {
-	if o != nil && o.UpdateLdapInfoOnComputerInventorySubmissions != nil {
+	if o != nil && !IsNil(o.UpdateLdapInfoOnComputerInventorySubmissions) {
 		return true
 	}
 
@@ -496,7 +499,7 @@ func (o *ComputerInventoryCollectionPreferences) SetUpdateLdapInfoOnComputerInve
 
 // GetMonitorBeacons returns the MonitorBeacons field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetMonitorBeacons() bool {
-	if o == nil || o.MonitorBeacons == nil {
+	if o == nil || IsNil(o.MonitorBeacons) {
 		var ret bool
 		return ret
 	}
@@ -506,7 +509,7 @@ func (o *ComputerInventoryCollectionPreferences) GetMonitorBeacons() bool {
 // GetMonitorBeaconsOk returns a tuple with the MonitorBeacons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetMonitorBeaconsOk() (*bool, bool) {
-	if o == nil || o.MonitorBeacons == nil {
+	if o == nil || IsNil(o.MonitorBeacons) {
 		return nil, false
 	}
 	return o.MonitorBeacons, true
@@ -514,7 +517,7 @@ func (o *ComputerInventoryCollectionPreferences) GetMonitorBeaconsOk() (*bool, b
 
 // HasMonitorBeacons returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasMonitorBeacons() bool {
-	if o != nil && o.MonitorBeacons != nil {
+	if o != nil && !IsNil(o.MonitorBeacons) {
 		return true
 	}
 
@@ -528,7 +531,7 @@ func (o *ComputerInventoryCollectionPreferences) SetMonitorBeacons(v bool) {
 
 // GetAllowChangingUserAndLocation returns the AllowChangingUserAndLocation field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetAllowChangingUserAndLocation() bool {
-	if o == nil || o.AllowChangingUserAndLocation == nil {
+	if o == nil || IsNil(o.AllowChangingUserAndLocation) {
 		var ret bool
 		return ret
 	}
@@ -538,7 +541,7 @@ func (o *ComputerInventoryCollectionPreferences) GetAllowChangingUserAndLocation
 // GetAllowChangingUserAndLocationOk returns a tuple with the AllowChangingUserAndLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetAllowChangingUserAndLocationOk() (*bool, bool) {
-	if o == nil || o.AllowChangingUserAndLocation == nil {
+	if o == nil || IsNil(o.AllowChangingUserAndLocation) {
 		return nil, false
 	}
 	return o.AllowChangingUserAndLocation, true
@@ -546,7 +549,7 @@ func (o *ComputerInventoryCollectionPreferences) GetAllowChangingUserAndLocation
 
 // HasAllowChangingUserAndLocation returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasAllowChangingUserAndLocation() bool {
-	if o != nil && o.AllowChangingUserAndLocation != nil {
+	if o != nil && !IsNil(o.AllowChangingUserAndLocation) {
 		return true
 	}
 
@@ -560,7 +563,7 @@ func (o *ComputerInventoryCollectionPreferences) SetAllowChangingUserAndLocation
 
 // GetUseUnixUserPaths returns the UseUnixUserPaths field value if set, zero value otherwise.
 func (o *ComputerInventoryCollectionPreferences) GetUseUnixUserPaths() bool {
-	if o == nil || o.UseUnixUserPaths == nil {
+	if o == nil || IsNil(o.UseUnixUserPaths) {
 		var ret bool
 		return ret
 	}
@@ -570,7 +573,7 @@ func (o *ComputerInventoryCollectionPreferences) GetUseUnixUserPaths() bool {
 // GetUseUnixUserPathsOk returns a tuple with the UseUnixUserPaths field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryCollectionPreferences) GetUseUnixUserPathsOk() (*bool, bool) {
-	if o == nil || o.UseUnixUserPaths == nil {
+	if o == nil || IsNil(o.UseUnixUserPaths) {
 		return nil, false
 	}
 	return o.UseUnixUserPaths, true
@@ -578,7 +581,7 @@ func (o *ComputerInventoryCollectionPreferences) GetUseUnixUserPathsOk() (*bool,
 
 // HasUseUnixUserPaths returns a boolean if a field has been set.
 func (o *ComputerInventoryCollectionPreferences) HasUseUnixUserPaths() bool {
-	if o != nil && o.UseUnixUserPaths != nil {
+	if o != nil && !IsNil(o.UseUnixUserPaths) {
 		return true
 	}
 
@@ -591,53 +594,61 @@ func (o *ComputerInventoryCollectionPreferences) SetUseUnixUserPaths(v bool) {
 }
 
 func (o ComputerInventoryCollectionPreferences) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.MonitorApplicationUsage != nil {
-		toSerialize["monitorApplicationUsage"] = o.MonitorApplicationUsage
-	}
-	if o.IncludeFonts != nil {
-		toSerialize["includeFonts"] = o.IncludeFonts
-	}
-	if o.IncludePlugins != nil {
-		toSerialize["includePlugins"] = o.IncludePlugins
-	}
-	if o.IncludePackages != nil {
-		toSerialize["includePackages"] = o.IncludePackages
-	}
-	if o.IncludeSoftwareUpdates != nil {
-		toSerialize["includeSoftwareUpdates"] = o.IncludeSoftwareUpdates
-	}
-	if o.IncludeAccounts != nil {
-		toSerialize["includeAccounts"] = o.IncludeAccounts
-	}
-	if o.CalculateSizes != nil {
-		toSerialize["calculateSizes"] = o.CalculateSizes
-	}
-	if o.IncludeHiddenAccounts != nil {
-		toSerialize["includeHiddenAccounts"] = o.IncludeHiddenAccounts
-	}
-	if o.IncludePrinters != nil {
-		toSerialize["includePrinters"] = o.IncludePrinters
-	}
-	if o.IncludeServices != nil {
-		toSerialize["includeServices"] = o.IncludeServices
-	}
-	if o.CollectSyncedMobileDeviceInfo != nil {
-		toSerialize["collectSyncedMobileDeviceInfo"] = o.CollectSyncedMobileDeviceInfo
-	}
-	if o.UpdateLdapInfoOnComputerInventorySubmissions != nil {
-		toSerialize["updateLdapInfoOnComputerInventorySubmissions"] = o.UpdateLdapInfoOnComputerInventorySubmissions
-	}
-	if o.MonitorBeacons != nil {
-		toSerialize["monitorBeacons"] = o.MonitorBeacons
-	}
-	if o.AllowChangingUserAndLocation != nil {
-		toSerialize["allowChangingUserAndLocation"] = o.AllowChangingUserAndLocation
-	}
-	if o.UseUnixUserPaths != nil {
-		toSerialize["useUnixUserPaths"] = o.UseUnixUserPaths
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerInventoryCollectionPreferences) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MonitorApplicationUsage) {
+		toSerialize["monitorApplicationUsage"] = o.MonitorApplicationUsage
+	}
+	if !IsNil(o.IncludeFonts) {
+		toSerialize["includeFonts"] = o.IncludeFonts
+	}
+	if !IsNil(o.IncludePlugins) {
+		toSerialize["includePlugins"] = o.IncludePlugins
+	}
+	if !IsNil(o.IncludePackages) {
+		toSerialize["includePackages"] = o.IncludePackages
+	}
+	if !IsNil(o.IncludeSoftwareUpdates) {
+		toSerialize["includeSoftwareUpdates"] = o.IncludeSoftwareUpdates
+	}
+	if !IsNil(o.IncludeAccounts) {
+		toSerialize["includeAccounts"] = o.IncludeAccounts
+	}
+	if !IsNil(o.CalculateSizes) {
+		toSerialize["calculateSizes"] = o.CalculateSizes
+	}
+	if !IsNil(o.IncludeHiddenAccounts) {
+		toSerialize["includeHiddenAccounts"] = o.IncludeHiddenAccounts
+	}
+	if !IsNil(o.IncludePrinters) {
+		toSerialize["includePrinters"] = o.IncludePrinters
+	}
+	if !IsNil(o.IncludeServices) {
+		toSerialize["includeServices"] = o.IncludeServices
+	}
+	if !IsNil(o.CollectSyncedMobileDeviceInfo) {
+		toSerialize["collectSyncedMobileDeviceInfo"] = o.CollectSyncedMobileDeviceInfo
+	}
+	if !IsNil(o.UpdateLdapInfoOnComputerInventorySubmissions) {
+		toSerialize["updateLdapInfoOnComputerInventorySubmissions"] = o.UpdateLdapInfoOnComputerInventorySubmissions
+	}
+	if !IsNil(o.MonitorBeacons) {
+		toSerialize["monitorBeacons"] = o.MonitorBeacons
+	}
+	if !IsNil(o.AllowChangingUserAndLocation) {
+		toSerialize["allowChangingUserAndLocation"] = o.AllowChangingUserAndLocation
+	}
+	if !IsNil(o.UseUnixUserPaths) {
+		toSerialize["useUnixUserPaths"] = o.UseUnixUserPaths
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerInventoryCollectionPreferences struct {

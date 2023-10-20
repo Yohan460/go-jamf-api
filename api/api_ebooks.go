@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type EbooksApi interface {
+type EbooksAPI interface {
 
 	/*
 	V1EbooksGet Get Ebook object 
@@ -29,13 +29,13 @@ type EbooksApi interface {
 	Gets ebook object
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EbooksGetRequest
+	@return EbooksAPIV1EbooksGetRequest
 	*/
-	V1EbooksGet(ctx context.Context) ApiV1EbooksGetRequest
+	V1EbooksGet(ctx context.Context) EbooksAPIV1EbooksGetRequest
 
 	// V1EbooksGetExecute executes the request
 	//  @return EbookSearchResults
-	V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSearchResults, *http.Response, error)
+	V1EbooksGetExecute(r EbooksAPIV1EbooksGetRequest) (*EbookSearchResults, *http.Response, error)
 
 	/*
 	V1EbooksIdGet Get specified Ebook object 
@@ -45,13 +45,13 @@ type EbooksApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of ebook record
-	@return ApiV1EbooksIdGetRequest
+	@return EbooksAPIV1EbooksIdGetRequest
 	*/
-	V1EbooksIdGet(ctx context.Context, id string) ApiV1EbooksIdGetRequest
+	V1EbooksIdGet(ctx context.Context, id string) EbooksAPIV1EbooksIdGetRequest
 
 	// V1EbooksIdGetExecute executes the request
 	//  @return Ebook
-	V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebook, *http.Response, error)
+	V1EbooksIdGetExecute(r EbooksAPIV1EbooksIdGetRequest) (*Ebook, *http.Response, error)
 
 	/*
 	V1EbooksIdScopeGet Get specified scope of Ebook object 
@@ -61,43 +61,43 @@ type EbooksApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of ebook record
-	@return ApiV1EbooksIdScopeGetRequest
+	@return EbooksAPIV1EbooksIdScopeGetRequest
 	*/
-	V1EbooksIdScopeGet(ctx context.Context, id string) ApiV1EbooksIdScopeGetRequest
+	V1EbooksIdScopeGet(ctx context.Context, id string) EbooksAPIV1EbooksIdScopeGetRequest
 
 	// V1EbooksIdScopeGetExecute executes the request
 	//  @return EbookScope
-	V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequest) (*EbookScope, *http.Response, error)
+	V1EbooksIdScopeGetExecute(r EbooksAPIV1EbooksIdScopeGetRequest) (*EbookScope, *http.Response, error)
 }
 
-// EbooksApiService EbooksApi service
-type EbooksApiService service
+// EbooksAPIService EbooksAPI service
+type EbooksAPIService service
 
-type ApiV1EbooksGetRequest struct {
+type EbooksAPIV1EbooksGetRequest struct {
 	ctx context.Context
-	ApiService EbooksApi
+	ApiService EbooksAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV1EbooksGetRequest) Page(page int32) ApiV1EbooksGetRequest {
+func (r EbooksAPIV1EbooksGetRequest) Page(page int32) EbooksAPIV1EbooksGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1EbooksGetRequest) PageSize(pageSize int32) ApiV1EbooksGetRequest {
+func (r EbooksAPIV1EbooksGetRequest) PageSize(pageSize int32) EbooksAPIV1EbooksGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1EbooksGetRequest) Sort(sort []string) ApiV1EbooksGetRequest {
+func (r EbooksAPIV1EbooksGetRequest) Sort(sort []string) EbooksAPIV1EbooksGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1EbooksGetRequest) Execute() (*EbookSearchResults, *http.Response, error) {
+func (r EbooksAPIV1EbooksGetRequest) Execute() (*EbookSearchResults, *http.Response, error) {
 	return r.ApiService.V1EbooksGetExecute(r)
 }
 
@@ -107,10 +107,10 @@ V1EbooksGet Get Ebook object
 Gets ebook object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EbooksGetRequest
+ @return EbooksAPIV1EbooksGetRequest
 */
-func (a *EbooksApiService) V1EbooksGet(ctx context.Context) ApiV1EbooksGetRequest {
-	return ApiV1EbooksGetRequest{
+func (a *EbooksAPIService) V1EbooksGet(ctx context.Context) EbooksAPIV1EbooksGetRequest {
+	return EbooksAPIV1EbooksGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -118,7 +118,7 @@ func (a *EbooksApiService) V1EbooksGet(ctx context.Context) ApiV1EbooksGetReques
 
 // Execute executes the request
 //  @return EbookSearchResults
-func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSearchResults, *http.Response, error) {
+func (a *EbooksAPIService) V1EbooksGetExecute(r EbooksAPIV1EbooksGetRequest) (*EbookSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -126,7 +126,7 @@ func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSe
 		localVarReturnValue  *EbookSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksApiService.V1EbooksGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksAPIService.V1EbooksGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -138,21 +138,30 @@ func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSe
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"name:asc"}
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -181,9 +190,9 @@ func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -208,13 +217,13 @@ func (a *EbooksApiService) V1EbooksGetExecute(r ApiV1EbooksGetRequest) (*EbookSe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EbooksIdGetRequest struct {
+type EbooksAPIV1EbooksIdGetRequest struct {
 	ctx context.Context
-	ApiService EbooksApi
+	ApiService EbooksAPI
 	id string
 }
 
-func (r ApiV1EbooksIdGetRequest) Execute() (*Ebook, *http.Response, error) {
+func (r EbooksAPIV1EbooksIdGetRequest) Execute() (*Ebook, *http.Response, error) {
 	return r.ApiService.V1EbooksIdGetExecute(r)
 }
 
@@ -226,10 +235,10 @@ Gets specified Ebook object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of ebook record
- @return ApiV1EbooksIdGetRequest
+ @return EbooksAPIV1EbooksIdGetRequest
 */
-func (a *EbooksApiService) V1EbooksIdGet(ctx context.Context, id string) ApiV1EbooksIdGetRequest {
-	return ApiV1EbooksIdGetRequest{
+func (a *EbooksAPIService) V1EbooksIdGet(ctx context.Context, id string) EbooksAPIV1EbooksIdGetRequest {
+	return EbooksAPIV1EbooksIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -238,7 +247,7 @@ func (a *EbooksApiService) V1EbooksIdGet(ctx context.Context, id string) ApiV1Eb
 
 // Execute executes the request
 //  @return Ebook
-func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebook, *http.Response, error) {
+func (a *EbooksAPIService) V1EbooksIdGetExecute(r EbooksAPIV1EbooksIdGetRequest) (*Ebook, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -246,13 +255,13 @@ func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebo
 		localVarReturnValue  *Ebook
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksApiService.V1EbooksIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksAPIService.V1EbooksIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/ebooks/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -285,9 +294,9 @@ func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -304,7 +313,8 @@ func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -321,13 +331,13 @@ func (a *EbooksApiService) V1EbooksIdGetExecute(r ApiV1EbooksIdGetRequest) (*Ebo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EbooksIdScopeGetRequest struct {
+type EbooksAPIV1EbooksIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService EbooksApi
+	ApiService EbooksAPI
 	id string
 }
 
-func (r ApiV1EbooksIdScopeGetRequest) Execute() (*EbookScope, *http.Response, error) {
+func (r EbooksAPIV1EbooksIdScopeGetRequest) Execute() (*EbookScope, *http.Response, error) {
 	return r.ApiService.V1EbooksIdScopeGetExecute(r)
 }
 
@@ -339,10 +349,10 @@ Gets specified scope of Ebook object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of ebook record
- @return ApiV1EbooksIdScopeGetRequest
+ @return EbooksAPIV1EbooksIdScopeGetRequest
 */
-func (a *EbooksApiService) V1EbooksIdScopeGet(ctx context.Context, id string) ApiV1EbooksIdScopeGetRequest {
-	return ApiV1EbooksIdScopeGetRequest{
+func (a *EbooksAPIService) V1EbooksIdScopeGet(ctx context.Context, id string) EbooksAPIV1EbooksIdScopeGetRequest {
+	return EbooksAPIV1EbooksIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -351,7 +361,7 @@ func (a *EbooksApiService) V1EbooksIdScopeGet(ctx context.Context, id string) Ap
 
 // Execute executes the request
 //  @return EbookScope
-func (a *EbooksApiService) V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequest) (*EbookScope, *http.Response, error) {
+func (a *EbooksAPIService) V1EbooksIdScopeGetExecute(r EbooksAPIV1EbooksIdScopeGetRequest) (*EbookScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -359,13 +369,13 @@ func (a *EbooksApiService) V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequ
 		localVarReturnValue  *EbookScope
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksApiService.V1EbooksIdScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EbooksAPIService.V1EbooksIdScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/ebooks/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -398,9 +408,9 @@ func (a *EbooksApiService) V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -417,7 +427,8 @@ func (a *EbooksApiService) V1EbooksIdScopeGetExecute(r ApiV1EbooksIdScopeGetRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

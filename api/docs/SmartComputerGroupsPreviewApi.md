@@ -1,11 +1,11 @@
-# \SmartComputerGroupsPreviewApi
+# \SmartComputerGroupsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ComputersIdRecalculateSmartGroupsPost**](SmartComputerGroupsPreviewApi.md#V1ComputersIdRecalculateSmartGroupsPost) | **Post** /v1/computers/{id}/recalculate-smart-groups | Recalculate a smart group for the given id 
-[**V1SmartComputerGroupsIdRecalculatePost**](SmartComputerGroupsPreviewApi.md#V1SmartComputerGroupsIdRecalculatePost) | **Post** /v1/smart-computer-groups/{id}/recalculate | Recalculate the smart group for the given id 
+[**V1ComputersIdRecalculateSmartGroupsPost**](SmartComputerGroupsPreviewAPI.md#V1ComputersIdRecalculateSmartGroupsPost) | **Post** /v1/computers/{id}/recalculate-smart-groups | Recalculate a smart group for the given id 
+[**V1SmartComputerGroupsIdRecalculatePost**](SmartComputerGroupsPreviewAPI.md#V1SmartComputerGroupsIdRecalculatePost) | **Post** /v1/smart-computer-groups/{id}/recalculate | Recalculate the smart group for the given id 
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartComputerGroupsPreviewApi.V1ComputersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
+    resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewApi.V1ComputersIdRecalculateSmartGroupsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ComputersIdRecalculateSmartGroupsPost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewApi.V1ComputersIdRecalculateSmartGroupsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartComputerGroupsPreviewApi.V1SmartComputerGroupsIdRecalculatePost(context.Background(), id).Execute()
+    resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewApi.V1SmartComputerGroupsIdRecalculatePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SmartComputerGroupsIdRecalculatePost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewApi.V1SmartComputerGroupsIdRecalculatePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost`: %v\n", resp)
 }
 ```
 

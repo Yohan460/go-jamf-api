@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
 **TimeZone** | Pointer to **string** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **int32** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
 
 ## Methods
 
@@ -387,6 +388,31 @@ SetSoftwareUpdateSettings sets SoftwareUpdateSettings field to given value.
 `func (o *SettingsCommand) HasSoftwareUpdateSettings() bool`
 
 HasSoftwareUpdateSettings returns a boolean if a field has been set.
+
+### GetPasscodeLockGracePeriod
+
+`func (o *SettingsCommand) GetPasscodeLockGracePeriod() int32`
+
+GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field if non-nil, zero value otherwise.
+
+### GetPasscodeLockGracePeriodOk
+
+`func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int32, bool)`
+
+GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPasscodeLockGracePeriod
+
+`func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int32)`
+
+SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
+
+### HasPasscodeLockGracePeriod
+
+`func (o *SettingsCommand) HasPasscodeLockGracePeriod() bool`
+
+HasPasscodeLockGracePeriod returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

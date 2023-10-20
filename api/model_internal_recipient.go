@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InternalRecipient type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InternalRecipient{}
+
 // InternalRecipient struct for InternalRecipient
 type InternalRecipient struct {
 	AccountId string `json:"accountId"`
@@ -68,7 +71,7 @@ func (o *InternalRecipient) SetAccountId(v string) {
 
 // GetFrequency returns the Frequency field value if set, zero value otherwise.
 func (o *InternalRecipient) GetFrequency() string {
-	if o == nil || o.Frequency == nil {
+	if o == nil || IsNil(o.Frequency) {
 		var ret string
 		return ret
 	}
@@ -78,7 +81,7 @@ func (o *InternalRecipient) GetFrequency() string {
 // GetFrequencyOk returns a tuple with the Frequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InternalRecipient) GetFrequencyOk() (*string, bool) {
-	if o == nil || o.Frequency == nil {
+	if o == nil || IsNil(o.Frequency) {
 		return nil, false
 	}
 	return o.Frequency, true
@@ -86,7 +89,7 @@ func (o *InternalRecipient) GetFrequencyOk() (*string, bool) {
 
 // HasFrequency returns a boolean if a field has been set.
 func (o *InternalRecipient) HasFrequency() bool {
-	if o != nil && o.Frequency != nil {
+	if o != nil && !IsNil(o.Frequency) {
 		return true
 	}
 
@@ -99,14 +102,20 @@ func (o *InternalRecipient) SetFrequency(v string) {
 }
 
 func (o InternalRecipient) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["accountId"] = o.AccountId
-	}
-	if o.Frequency != nil {
-		toSerialize["frequency"] = o.Frequency
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InternalRecipient) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["accountId"] = o.AccountId
+	if !IsNil(o.Frequency) {
+		toSerialize["frequency"] = o.Frequency
+	}
+	return toSerialize, nil
 }
 
 type NullableInternalRecipient struct {

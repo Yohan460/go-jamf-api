@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfNationCredentials type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfNationCredentials{}
+
 // JamfNationCredentials struct for JamfNationCredentials
 type JamfNationCredentials struct {
 	EmailAddress *string `json:"emailAddress,omitempty"`
@@ -39,7 +42,7 @@ func NewJamfNationCredentialsWithDefaults() *JamfNationCredentials {
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
 func (o *JamfNationCredentials) GetEmailAddress() string {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *JamfNationCredentials) GetEmailAddress() string {
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfNationCredentials) GetEmailAddressOk() (*string, bool) {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
 	return o.EmailAddress, true
@@ -57,7 +60,7 @@ func (o *JamfNationCredentials) GetEmailAddressOk() (*string, bool) {
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *JamfNationCredentials) HasEmailAddress() bool {
-	if o != nil && o.EmailAddress != nil {
+	if o != nil && !IsNil(o.EmailAddress) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *JamfNationCredentials) SetEmailAddress(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *JamfNationCredentials) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *JamfNationCredentials) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfNationCredentials) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -89,7 +92,7 @@ func (o *JamfNationCredentials) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *JamfNationCredentials) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *JamfNationCredentials) SetPassword(v string) {
 }
 
 func (o JamfNationCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.EmailAddress != nil {
-		toSerialize["emailAddress"] = o.EmailAddress
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfNationCredentials) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	return toSerialize, nil
 }
 
 type NullableJamfNationCredentials struct {

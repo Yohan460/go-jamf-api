@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
 **OsVersion** | Pointer to **string** |  | [optional] 
 **OsBuild** | Pointer to **string** |  | [optional] 
+**OsSupplementalBuildVersion** | Pointer to **string** | Collected for iOS 16 and iPadOS 16.1 or later | [optional] 
+**OsRapidSecurityResponse** | Pointer to **string** | Collected for iOS 16 and iPadOS 16.1 or later | [optional] 
 **SoftwareUpdateDeviceId** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **Udid** | Pointer to **string** |  | [optional] 
@@ -196,6 +198,56 @@ SetOsBuild sets OsBuild field to given value.
 `func (o *MobileDeviceDetails) HasOsBuild() bool`
 
 HasOsBuild returns a boolean if a field has been set.
+
+### GetOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetails) GetOsSupplementalBuildVersion() string`
+
+GetOsSupplementalBuildVersion returns the OsSupplementalBuildVersion field if non-nil, zero value otherwise.
+
+### GetOsSupplementalBuildVersionOk
+
+`func (o *MobileDeviceDetails) GetOsSupplementalBuildVersionOk() (*string, bool)`
+
+GetOsSupplementalBuildVersionOk returns a tuple with the OsSupplementalBuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetails) SetOsSupplementalBuildVersion(v string)`
+
+SetOsSupplementalBuildVersion sets OsSupplementalBuildVersion field to given value.
+
+### HasOsSupplementalBuildVersion
+
+`func (o *MobileDeviceDetails) HasOsSupplementalBuildVersion() bool`
+
+HasOsSupplementalBuildVersion returns a boolean if a field has been set.
+
+### GetOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetails) GetOsRapidSecurityResponse() string`
+
+GetOsRapidSecurityResponse returns the OsRapidSecurityResponse field if non-nil, zero value otherwise.
+
+### GetOsRapidSecurityResponseOk
+
+`func (o *MobileDeviceDetails) GetOsRapidSecurityResponseOk() (*string, bool)`
+
+GetOsRapidSecurityResponseOk returns a tuple with the OsRapidSecurityResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetails) SetOsRapidSecurityResponse(v string)`
+
+SetOsRapidSecurityResponse sets OsRapidSecurityResponse field to given value.
+
+### HasOsRapidSecurityResponse
+
+`func (o *MobileDeviceDetails) HasOsRapidSecurityResponse() bool`
+
+HasOsRapidSecurityResponse returns a boolean if a field has been set.
 
 ### GetSoftwareUpdateDeviceId
 

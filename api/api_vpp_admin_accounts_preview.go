@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type VppAdminAccountsPreviewApi interface {
+type VppAdminAccountsPreviewAPI interface {
 
 	/*
 	VppAdminAccountsGet Found all VPP Admin Accounts 
@@ -28,24 +28,27 @@ type VppAdminAccountsPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiVppAdminAccountsGetRequest
+	@return VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest
+
+	Deprecated
 	*/
-	VppAdminAccountsGet(ctx context.Context) ApiVppAdminAccountsGetRequest
+	VppAdminAccountsGet(ctx context.Context) VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest
 
 	// VppAdminAccountsGetExecute executes the request
 	//  @return []VppAdminAccount
-	VppAdminAccountsGetExecute(r ApiVppAdminAccountsGetRequest) ([]VppAdminAccount, *http.Response, error)
+	// Deprecated
+	VppAdminAccountsGetExecute(r VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest) ([]VppAdminAccount, *http.Response, error)
 }
 
-// VppAdminAccountsPreviewApiService VppAdminAccountsPreviewApi service
-type VppAdminAccountsPreviewApiService service
+// VppAdminAccountsPreviewAPIService VppAdminAccountsPreviewAPI service
+type VppAdminAccountsPreviewAPIService service
 
-type ApiVppAdminAccountsGetRequest struct {
+type VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest struct {
 	ctx context.Context
-	ApiService VppAdminAccountsPreviewApi
+	ApiService VppAdminAccountsPreviewAPI
 }
 
-func (r ApiVppAdminAccountsGetRequest) Execute() ([]VppAdminAccount, *http.Response, error) {
+func (r VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest) Execute() ([]VppAdminAccount, *http.Response, error) {
 	return r.ApiService.VppAdminAccountsGetExecute(r)
 }
 
@@ -56,10 +59,12 @@ Found all vpp admin accounts.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVppAdminAccountsGetRequest
+ @return VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest
+
+Deprecated
 */
-func (a *VppAdminAccountsPreviewApiService) VppAdminAccountsGet(ctx context.Context) ApiVppAdminAccountsGetRequest {
-	return ApiVppAdminAccountsGetRequest{
+func (a *VppAdminAccountsPreviewAPIService) VppAdminAccountsGet(ctx context.Context) VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest {
+	return VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +72,8 @@ func (a *VppAdminAccountsPreviewApiService) VppAdminAccountsGet(ctx context.Cont
 
 // Execute executes the request
 //  @return []VppAdminAccount
-func (a *VppAdminAccountsPreviewApiService) VppAdminAccountsGetExecute(r ApiVppAdminAccountsGetRequest) ([]VppAdminAccount, *http.Response, error) {
+// Deprecated
+func (a *VppAdminAccountsPreviewAPIService) VppAdminAccountsGetExecute(r VppAdminAccountsPreviewAPIVppAdminAccountsGetRequest) ([]VppAdminAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +81,7 @@ func (a *VppAdminAccountsPreviewApiService) VppAdminAccountsGetExecute(r ApiVppA
 		localVarReturnValue  []VppAdminAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppAdminAccountsPreviewApiService.VppAdminAccountsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppAdminAccountsPreviewAPIService.VppAdminAccountsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +119,9 @@ func (a *VppAdminAccountsPreviewApiService) VppAdminAccountsGetExecute(r ApiVppA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

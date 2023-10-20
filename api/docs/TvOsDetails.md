@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Locales** | Pointer to **string** |  | [optional] 
 **Purchasing** | Pointer to [**PurchasingV2**](PurchasingV2.md) |  | [optional] 
 **ConfigurationProfiles** | Pointer to [**[]ConfigurationProfile**](ConfigurationProfile.md) |  | [optional] 
+**Certificates** | Pointer to [**[]MobileDeviceCertificateV2**](MobileDeviceCertificateV2.md) |  | [optional] 
 
 ## Methods
 
@@ -257,6 +258,31 @@ SetConfigurationProfiles sets ConfigurationProfiles field to given value.
 `func (o *TvOsDetails) HasConfigurationProfiles() bool`
 
 HasConfigurationProfiles returns a boolean if a field has been set.
+
+### GetCertificates
+
+`func (o *TvOsDetails) GetCertificates() []MobileDeviceCertificateV2`
+
+GetCertificates returns the Certificates field if non-nil, zero value otherwise.
+
+### GetCertificatesOk
+
+`func (o *TvOsDetails) GetCertificatesOk() (*[]MobileDeviceCertificateV2, bool)`
+
+GetCertificatesOk returns a tuple with the Certificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificates
+
+`func (o *TvOsDetails) SetCertificates(v []MobileDeviceCertificateV2)`
+
+SetCertificates sets Certificates field to given value.
+
+### HasCertificates
+
+`func (o *TvOsDetails) HasCertificates() bool`
+
+HasCertificates returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

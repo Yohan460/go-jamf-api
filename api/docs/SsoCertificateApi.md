@@ -1,15 +1,15 @@
-# \SsoCertificateApi
+# \SsoCertificateAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V2SsoCertDelete**](SsoCertificateApi.md#V2SsoCertDelete) | **Delete** /v2/sso/cert | Delete the currently configured certificate used by SSO 
-[**V2SsoCertDownloadGet**](SsoCertificateApi.md#V2SsoCertDownloadGet) | **Get** /v2/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
-[**V2SsoCertGet**](SsoCertificateApi.md#V2SsoCertGet) | **Get** /v2/sso/cert | Retrieve the certificate currently configured for use with SSO 
-[**V2SsoCertParsePost**](SsoCertificateApi.md#V2SsoCertParsePost) | **Post** /v2/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
-[**V2SsoCertPost**](SsoCertificateApi.md#V2SsoCertPost) | **Post** /v2/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
-[**V2SsoCertPut**](SsoCertificateApi.md#V2SsoCertPut) | **Put** /v2/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
+[**V2SsoCertDelete**](SsoCertificateAPI.md#V2SsoCertDelete) | **Delete** /v2/sso/cert | Delete the currently configured certificate used by SSO 
+[**V2SsoCertDownloadGet**](SsoCertificateAPI.md#V2SsoCertDownloadGet) | **Get** /v2/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
+[**V2SsoCertGet**](SsoCertificateAPI.md#V2SsoCertGet) | **Get** /v2/sso/cert | Retrieve the certificate currently configured for use with SSO 
+[**V2SsoCertParsePost**](SsoCertificateAPI.md#V2SsoCertParsePost) | **Post** /v2/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
+[**V2SsoCertPost**](SsoCertificateAPI.md#V2SsoCertPost) | **Post** /v2/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
+[**V2SsoCertPut**](SsoCertificateAPI.md#V2SsoCertPut) | **Put** /v2/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
 
 
 
@@ -30,16 +30,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertDelete(context.Background()).Execute()
+    r, err := apiClient.SsoCertificateAPI.V2SsoCertDelete(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -89,20 +89,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertDownloadGet(context.Background()).Execute()
+    resp, r, err := apiClient.SsoCertificateAPI.V2SsoCertDownloadGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertDownloadGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertDownloadGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2SsoCertDownloadGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateApi.V2SsoCertDownloadGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateAPI.V2SsoCertDownloadGet`: %v\n", resp)
 }
 ```
 
@@ -150,20 +150,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertGet(context.Background()).Execute()
+    resp, r, err := apiClient.SsoCertificateAPI.V2SsoCertGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2SsoCertGet`: SsoKeystoreResponseWithDetails
-    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateApi.V2SsoCertGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateAPI.V2SsoCertGet`: %v\n", resp)
 }
 ```
 
@@ -211,21 +211,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string(123), "keystore.p12") // SsoKeystoreParse | 
+    ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string([B@ca66933), "keystore.p12") // SsoKeystoreParse | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertParsePost(context.Background()).SsoKeystoreParse(ssoKeystoreParse).Execute()
+    resp, r, err := apiClient.SsoCertificateAPI.V2SsoCertParsePost(context.Background()).SsoKeystoreParse(ssoKeystoreParse).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertParsePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertParsePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2SsoCertParsePost`: SsoKeystoreCertParseResponse
-    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateApi.V2SsoCertParsePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateAPI.V2SsoCertParsePost`: %v\n", resp)
 }
 ```
 
@@ -277,20 +277,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertPost(context.Background()).Execute()
+    resp, r, err := apiClient.SsoCertificateAPI.V2SsoCertPost(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2SsoCertPost`: SsoKeystoreResponseWithDetails
-    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateApi.V2SsoCertPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateAPI.V2SsoCertPost`: %v\n", resp)
 }
 ```
 
@@ -338,21 +338,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string(123), "keystore.p12") // SsoKeystore | 
+    ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string([B@ca66933), "keystore.p12") // SsoKeystore | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoCertificateApi.V2SsoCertPut(context.Background()).SsoKeystore(ssoKeystore).Execute()
+    resp, r, err := apiClient.SsoCertificateAPI.V2SsoCertPut(context.Background()).SsoKeystore(ssoKeystore).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateApi.V2SsoCertPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoCertificateAPI.V2SsoCertPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2SsoCertPut`: SsoKeystoreResponseWithDetails
-    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateApi.V2SsoCertPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoCertificateAPI.V2SsoCertPut`: %v\n", resp)
 }
 ```
 

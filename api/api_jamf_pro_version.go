@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type JamfProVersionApi interface {
+type JamfProVersionAPI interface {
 
 	/*
 	V1JamfProVersionGet Return information about the Jamf Pro including the current version 
@@ -28,24 +28,24 @@ type JamfProVersionApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProVersionGetRequest
+	@return JamfProVersionAPIV1JamfProVersionGetRequest
 	*/
-	V1JamfProVersionGet(ctx context.Context) ApiV1JamfProVersionGetRequest
+	V1JamfProVersionGet(ctx context.Context) JamfProVersionAPIV1JamfProVersionGetRequest
 
 	// V1JamfProVersionGetExecute executes the request
 	//  @return JamfProVersion
-	V1JamfProVersionGetExecute(r ApiV1JamfProVersionGetRequest) (*JamfProVersion, *http.Response, error)
+	V1JamfProVersionGetExecute(r JamfProVersionAPIV1JamfProVersionGetRequest) (*JamfProVersion, *http.Response, error)
 }
 
-// JamfProVersionApiService JamfProVersionApi service
-type JamfProVersionApiService service
+// JamfProVersionAPIService JamfProVersionAPI service
+type JamfProVersionAPIService service
 
-type ApiV1JamfProVersionGetRequest struct {
+type JamfProVersionAPIV1JamfProVersionGetRequest struct {
 	ctx context.Context
-	ApiService JamfProVersionApi
+	ApiService JamfProVersionAPI
 }
 
-func (r ApiV1JamfProVersionGetRequest) Execute() (*JamfProVersion, *http.Response, error) {
+func (r JamfProVersionAPIV1JamfProVersionGetRequest) Execute() (*JamfProVersion, *http.Response, error) {
 	return r.ApiService.V1JamfProVersionGetExecute(r)
 }
 
@@ -56,10 +56,10 @@ Returns information about the Jamf Pro including the current version.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProVersionGetRequest
+ @return JamfProVersionAPIV1JamfProVersionGetRequest
 */
-func (a *JamfProVersionApiService) V1JamfProVersionGet(ctx context.Context) ApiV1JamfProVersionGetRequest {
-	return ApiV1JamfProVersionGetRequest{
+func (a *JamfProVersionAPIService) V1JamfProVersionGet(ctx context.Context) JamfProVersionAPIV1JamfProVersionGetRequest {
+	return JamfProVersionAPIV1JamfProVersionGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +67,7 @@ func (a *JamfProVersionApiService) V1JamfProVersionGet(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return JamfProVersion
-func (a *JamfProVersionApiService) V1JamfProVersionGetExecute(r ApiV1JamfProVersionGetRequest) (*JamfProVersion, *http.Response, error) {
+func (a *JamfProVersionAPIService) V1JamfProVersionGetExecute(r JamfProVersionAPIV1JamfProVersionGetRequest) (*JamfProVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *JamfProVersionApiService) V1JamfProVersionGetExecute(r ApiV1JamfProVers
 		localVarReturnValue  *JamfProVersion
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProVersionApiService.V1JamfProVersionGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProVersionAPIService.V1JamfProVersionGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +113,9 @@ func (a *JamfProVersionApiService) V1JamfProVersionGetExecute(r ApiV1JamfProVers
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

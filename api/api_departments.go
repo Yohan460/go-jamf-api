@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type DepartmentsApi interface {
+type DepartmentsAPI interface {
 
 	/*
 	V1DepartmentsDeleteMultiplePost Deletes all departments by ids passed in body 
@@ -30,12 +30,12 @@ type DepartmentsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DepartmentsDeleteMultiplePostRequest
+	@return DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest
 	*/
-	V1DepartmentsDeleteMultiplePost(ctx context.Context) ApiV1DepartmentsDeleteMultiplePostRequest
+	V1DepartmentsDeleteMultiplePost(ctx context.Context) DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest
 
 	// V1DepartmentsDeleteMultiplePostExecute executes the request
-	V1DepartmentsDeleteMultiplePostExecute(r ApiV1DepartmentsDeleteMultiplePostRequest) (*http.Response, error)
+	V1DepartmentsDeleteMultiplePostExecute(r DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest) (*http.Response, error)
 
 	/*
 	V1DepartmentsGet Search for Departments 
@@ -44,13 +44,13 @@ type DepartmentsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DepartmentsGetRequest
+	@return DepartmentsAPIV1DepartmentsGetRequest
 	*/
-	V1DepartmentsGet(ctx context.Context) ApiV1DepartmentsGetRequest
+	V1DepartmentsGet(ctx context.Context) DepartmentsAPIV1DepartmentsGetRequest
 
 	// V1DepartmentsGetExecute executes the request
 	//  @return DepartmentsSearchResults
-	V1DepartmentsGetExecute(r ApiV1DepartmentsGetRequest) (*DepartmentsSearchResults, *http.Response, error)
+	V1DepartmentsGetExecute(r DepartmentsAPIV1DepartmentsGetRequest) (*DepartmentsSearchResults, *http.Response, error)
 
 	/*
 	V1DepartmentsIdDelete Remove specified department record 
@@ -60,12 +60,12 @@ type DepartmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of department record
-	@return ApiV1DepartmentsIdDeleteRequest
+	@return DepartmentsAPIV1DepartmentsIdDeleteRequest
 	*/
-	V1DepartmentsIdDelete(ctx context.Context, id string) ApiV1DepartmentsIdDeleteRequest
+	V1DepartmentsIdDelete(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdDeleteRequest
 
 	// V1DepartmentsIdDeleteExecute executes the request
-	V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsIdDeleteRequest) (*http.Response, error)
+	V1DepartmentsIdDeleteExecute(r DepartmentsAPIV1DepartmentsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1DepartmentsIdGet Get specified Department object 
@@ -75,13 +75,13 @@ type DepartmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of department record
-	@return ApiV1DepartmentsIdGetRequest
+	@return DepartmentsAPIV1DepartmentsIdGetRequest
 	*/
-	V1DepartmentsIdGet(ctx context.Context, id string) ApiV1DepartmentsIdGetRequest
+	V1DepartmentsIdGet(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdGetRequest
 
 	// V1DepartmentsIdGetExecute executes the request
 	//  @return Department
-	V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGetRequest) (*Department, *http.Response, error)
+	V1DepartmentsIdGetExecute(r DepartmentsAPIV1DepartmentsIdGetRequest) (*Department, *http.Response, error)
 
 	/*
 	V1DepartmentsIdHistoryGet Get specified Department history object 
@@ -91,13 +91,13 @@ type DepartmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of department history record
-	@return ApiV1DepartmentsIdHistoryGetRequest
+	@return DepartmentsAPIV1DepartmentsIdHistoryGetRequest
 	*/
-	V1DepartmentsIdHistoryGet(ctx context.Context, id string) ApiV1DepartmentsIdHistoryGetRequest
+	V1DepartmentsIdHistoryGet(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdHistoryGetRequest
 
 	// V1DepartmentsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1DepartmentsIdHistoryGetExecute(r ApiV1DepartmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1DepartmentsIdHistoryGetExecute(r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1DepartmentsIdHistoryPost Add specified Department history object notes 
@@ -107,13 +107,13 @@ type DepartmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of department history record
-	@return ApiV1DepartmentsIdHistoryPostRequest
+	@return DepartmentsAPIV1DepartmentsIdHistoryPostRequest
 	*/
-	V1DepartmentsIdHistoryPost(ctx context.Context, id string) ApiV1DepartmentsIdHistoryPostRequest
+	V1DepartmentsIdHistoryPost(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdHistoryPostRequest
 
 	// V1DepartmentsIdHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1DepartmentsIdHistoryPostExecute(r ApiV1DepartmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1DepartmentsIdHistoryPostExecute(r DepartmentsAPIV1DepartmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1DepartmentsIdPut Update specified department object 
@@ -123,13 +123,13 @@ type DepartmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of department record
-	@return ApiV1DepartmentsIdPutRequest
+	@return DepartmentsAPIV1DepartmentsIdPutRequest
 	*/
-	V1DepartmentsIdPut(ctx context.Context, id string) ApiV1DepartmentsIdPutRequest
+	V1DepartmentsIdPut(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdPutRequest
 
 	// V1DepartmentsIdPutExecute executes the request
 	//  @return Department
-	V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPutRequest) (*Department, *http.Response, error)
+	V1DepartmentsIdPutExecute(r DepartmentsAPIV1DepartmentsIdPutRequest) (*Department, *http.Response, error)
 
 	/*
 	V1DepartmentsPost Create department record 
@@ -138,31 +138,31 @@ type DepartmentsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DepartmentsPostRequest
+	@return DepartmentsAPIV1DepartmentsPostRequest
 	*/
-	V1DepartmentsPost(ctx context.Context) ApiV1DepartmentsPostRequest
+	V1DepartmentsPost(ctx context.Context) DepartmentsAPIV1DepartmentsPostRequest
 
 	// V1DepartmentsPostExecute executes the request
 	//  @return HrefResponse
-	V1DepartmentsPostExecute(r ApiV1DepartmentsPostRequest) (*HrefResponse, *http.Response, error)
+	V1DepartmentsPostExecute(r DepartmentsAPIV1DepartmentsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// DepartmentsApiService DepartmentsApi service
-type DepartmentsApiService service
+// DepartmentsAPIService DepartmentsAPI service
+type DepartmentsAPIService service
 
-type ApiV1DepartmentsDeleteMultiplePostRequest struct {
+type DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	ids *Ids
 }
 
 // ids of departments to be deleted. pass in an array of ids
-func (r ApiV1DepartmentsDeleteMultiplePostRequest) Ids(ids Ids) ApiV1DepartmentsDeleteMultiplePostRequest {
+func (r DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest) Ids(ids Ids) DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest {
 	r.ids = &ids
 	return r
 }
 
-func (r ApiV1DepartmentsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1DepartmentsDeleteMultiplePostExecute(r)
 }
 
@@ -173,24 +173,24 @@ Deletes all departments by ids passed in body
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DepartmentsDeleteMultiplePostRequest
+ @return DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePost(ctx context.Context) ApiV1DepartmentsDeleteMultiplePostRequest {
-	return ApiV1DepartmentsDeleteMultiplePostRequest{
+func (a *DepartmentsAPIService) V1DepartmentsDeleteMultiplePost(ctx context.Context) DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest {
+	return DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePostExecute(r ApiV1DepartmentsDeleteMultiplePostRequest) (*http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsDeleteMultiplePostExecute(r DepartmentsAPIV1DepartmentsDeleteMultiplePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsDeleteMultiplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsDeleteMultiplePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -233,9 +233,9 @@ func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePostExecute(r ApiV1De
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -252,7 +252,8 @@ func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePostExecute(r ApiV1De
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -260,38 +261,38 @@ func (a *DepartmentsApiService) V1DepartmentsDeleteMultiplePostExecute(r ApiV1De
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsGetRequest struct {
+type DepartmentsAPIV1DepartmentsGetRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1DepartmentsGetRequest) Page(page int32) ApiV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) Page(page int32) DepartmentsAPIV1DepartmentsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1DepartmentsGetRequest) PageSize(pageSize int32) ApiV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) PageSize(pageSize int32) DepartmentsAPIV1DepartmentsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1DepartmentsGetRequest) Sort(sort []string) ApiV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) Sort(sort []string) DepartmentsAPIV1DepartmentsGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter department collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. Example: name&#x3D;&#x3D;\&quot;*department*\&quot;
-func (r ApiV1DepartmentsGetRequest) Filter(filter string) ApiV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) Filter(filter string) DepartmentsAPIV1DepartmentsGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1DepartmentsGetRequest) Execute() (*DepartmentsSearchResults, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsGetRequest) Execute() (*DepartmentsSearchResults, *http.Response, error) {
 	return r.ApiService.V1DepartmentsGetExecute(r)
 }
 
@@ -302,10 +303,10 @@ Search for Departments
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DepartmentsGetRequest
+ @return DepartmentsAPIV1DepartmentsGetRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsGet(ctx context.Context) ApiV1DepartmentsGetRequest {
-	return ApiV1DepartmentsGetRequest{
+func (a *DepartmentsAPIService) V1DepartmentsGet(ctx context.Context) DepartmentsAPIV1DepartmentsGetRequest {
+	return DepartmentsAPIV1DepartmentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -313,7 +314,7 @@ func (a *DepartmentsApiService) V1DepartmentsGet(ctx context.Context) ApiV1Depar
 
 // Execute executes the request
 //  @return DepartmentsSearchResults
-func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetRequest) (*DepartmentsSearchResults, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsGetExecute(r DepartmentsAPIV1DepartmentsGetRequest) (*DepartmentsSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -321,7 +322,7 @@ func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetReq
 		localVarReturnValue  *DepartmentsSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -333,24 +334,36 @@ func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetReq
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -379,9 +392,9 @@ func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -406,13 +419,13 @@ func (a *DepartmentsApiService) V1DepartmentsGetExecute(r ApiV1DepartmentsGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsIdDeleteRequest struct {
+type DepartmentsAPIV1DepartmentsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	id string
 }
 
-func (r ApiV1DepartmentsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1DepartmentsIdDeleteExecute(r)
 }
 
@@ -424,10 +437,10 @@ Removes specified department record
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of department record
- @return ApiV1DepartmentsIdDeleteRequest
+ @return DepartmentsAPIV1DepartmentsIdDeleteRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsIdDelete(ctx context.Context, id string) ApiV1DepartmentsIdDeleteRequest {
-	return ApiV1DepartmentsIdDeleteRequest{
+func (a *DepartmentsAPIService) V1DepartmentsIdDelete(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdDeleteRequest {
+	return DepartmentsAPIV1DepartmentsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -435,20 +448,20 @@ func (a *DepartmentsApiService) V1DepartmentsIdDelete(ctx context.Context, id st
 }
 
 // Execute executes the request
-func (a *DepartmentsApiService) V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsIdDeleteRequest) (*http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsIdDeleteExecute(r DepartmentsAPIV1DepartmentsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/departments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -481,9 +494,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsI
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -499,13 +512,13 @@ func (a *DepartmentsApiService) V1DepartmentsIdDeleteExecute(r ApiV1DepartmentsI
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsIdGetRequest struct {
+type DepartmentsAPIV1DepartmentsIdGetRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	id string
 }
 
-func (r ApiV1DepartmentsIdGetRequest) Execute() (*Department, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsIdGetRequest) Execute() (*Department, *http.Response, error) {
 	return r.ApiService.V1DepartmentsIdGetExecute(r)
 }
 
@@ -517,10 +530,10 @@ Gets specified Department object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of department record
- @return ApiV1DepartmentsIdGetRequest
+ @return DepartmentsAPIV1DepartmentsIdGetRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsIdGet(ctx context.Context, id string) ApiV1DepartmentsIdGetRequest {
-	return ApiV1DepartmentsIdGetRequest{
+func (a *DepartmentsAPIService) V1DepartmentsIdGet(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdGetRequest {
+	return DepartmentsAPIV1DepartmentsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -529,7 +542,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdGet(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return Department
-func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGetRequest) (*Department, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsIdGetExecute(r DepartmentsAPIV1DepartmentsIdGetRequest) (*Department, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -537,13 +550,13 @@ func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGe
 		localVarReturnValue  *Department
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/departments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -576,9 +589,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -595,7 +608,8 @@ func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -612,9 +626,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdGetExecute(r ApiV1DepartmentsIdGe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsIdHistoryGetRequest struct {
+type DepartmentsAPIV1DepartmentsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -622,29 +636,29 @@ type ApiV1DepartmentsIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1DepartmentsIdHistoryGetRequest) Page(page int32) ApiV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Page(page int32) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1DepartmentsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) PageSize(pageSize int32) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1DepartmentsIdHistoryGetRequest) Sort(sort []string) ApiV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Sort(sort []string) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1DepartmentsIdHistoryGetRequest) Filter(filter string) ApiV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Filter(filter string) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1DepartmentsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1DepartmentsIdHistoryGetExecute(r)
 }
 
@@ -656,10 +670,10 @@ Gets specified Department history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of department history record
- @return ApiV1DepartmentsIdHistoryGetRequest
+ @return DepartmentsAPIV1DepartmentsIdHistoryGetRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsIdHistoryGet(ctx context.Context, id string) ApiV1DepartmentsIdHistoryGetRequest {
-	return ApiV1DepartmentsIdHistoryGetRequest{
+func (a *DepartmentsAPIService) V1DepartmentsIdHistoryGet(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
+	return DepartmentsAPIV1DepartmentsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -668,7 +682,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGet(ctx context.Context, i
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1DepartmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsIdHistoryGetExecute(r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -676,37 +690,49 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1Departme
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/departments/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -735,9 +761,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1Departme
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -754,7 +780,8 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1Departme
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -771,20 +798,20 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryGetExecute(r ApiV1Departme
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsIdHistoryPostRequest struct {
+type DepartmentsAPIV1DepartmentsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1DepartmentsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1DepartmentsIdHistoryPostRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) DepartmentsAPIV1DepartmentsIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1DepartmentsIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1DepartmentsIdHistoryPostExecute(r)
 }
 
@@ -796,10 +823,10 @@ Adds specified Department history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of department history record
- @return ApiV1DepartmentsIdHistoryPostRequest
+ @return DepartmentsAPIV1DepartmentsIdHistoryPostRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsIdHistoryPost(ctx context.Context, id string) ApiV1DepartmentsIdHistoryPostRequest {
-	return ApiV1DepartmentsIdHistoryPostRequest{
+func (a *DepartmentsAPIService) V1DepartmentsIdHistoryPost(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdHistoryPostRequest {
+	return DepartmentsAPIV1DepartmentsIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -808,7 +835,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPost(ctx context.Context, 
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1DepartmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsIdHistoryPostExecute(r DepartmentsAPIV1DepartmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -816,13 +843,13 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/departments/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -860,9 +887,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -879,7 +906,8 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -889,7 +917,8 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -906,20 +935,20 @@ func (a *DepartmentsApiService) V1DepartmentsIdHistoryPostExecute(r ApiV1Departm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsIdPutRequest struct {
+type DepartmentsAPIV1DepartmentsIdPutRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	id string
 	department *Department
 }
 
 // department object to create. ids defined in this body will be ignored
-func (r ApiV1DepartmentsIdPutRequest) Department(department Department) ApiV1DepartmentsIdPutRequest {
+func (r DepartmentsAPIV1DepartmentsIdPutRequest) Department(department Department) DepartmentsAPIV1DepartmentsIdPutRequest {
 	r.department = &department
 	return r
 }
 
-func (r ApiV1DepartmentsIdPutRequest) Execute() (*Department, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsIdPutRequest) Execute() (*Department, *http.Response, error) {
 	return r.ApiService.V1DepartmentsIdPutExecute(r)
 }
 
@@ -931,10 +960,10 @@ Update specified department object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of department record
- @return ApiV1DepartmentsIdPutRequest
+ @return DepartmentsAPIV1DepartmentsIdPutRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsIdPut(ctx context.Context, id string) ApiV1DepartmentsIdPutRequest {
-	return ApiV1DepartmentsIdPutRequest{
+func (a *DepartmentsAPIService) V1DepartmentsIdPut(ctx context.Context, id string) DepartmentsAPIV1DepartmentsIdPutRequest {
+	return DepartmentsAPIV1DepartmentsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -943,7 +972,7 @@ func (a *DepartmentsApiService) V1DepartmentsIdPut(ctx context.Context, id strin
 
 // Execute executes the request
 //  @return Department
-func (a *DepartmentsApiService) V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPutRequest) (*Department, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsIdPutExecute(r DepartmentsAPIV1DepartmentsIdPutRequest) (*Department, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -951,13 +980,13 @@ func (a *DepartmentsApiService) V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPu
 		localVarReturnValue  *Department
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/departments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -995,9 +1024,9 @@ func (a *DepartmentsApiService) V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1022,19 +1051,19 @@ func (a *DepartmentsApiService) V1DepartmentsIdPutExecute(r ApiV1DepartmentsIdPu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DepartmentsPostRequest struct {
+type DepartmentsAPIV1DepartmentsPostRequest struct {
 	ctx context.Context
-	ApiService DepartmentsApi
+	ApiService DepartmentsAPI
 	department *Department
 }
 
 // department object to create. ids defined in this body will be ignored
-func (r ApiV1DepartmentsPostRequest) Department(department Department) ApiV1DepartmentsPostRequest {
+func (r DepartmentsAPIV1DepartmentsPostRequest) Department(department Department) DepartmentsAPIV1DepartmentsPostRequest {
 	r.department = &department
 	return r
 }
 
-func (r ApiV1DepartmentsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r DepartmentsAPIV1DepartmentsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1DepartmentsPostExecute(r)
 }
 
@@ -1045,10 +1074,10 @@ Create department record
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DepartmentsPostRequest
+ @return DepartmentsAPIV1DepartmentsPostRequest
 */
-func (a *DepartmentsApiService) V1DepartmentsPost(ctx context.Context) ApiV1DepartmentsPostRequest {
-	return ApiV1DepartmentsPostRequest{
+func (a *DepartmentsAPIService) V1DepartmentsPost(ctx context.Context) DepartmentsAPIV1DepartmentsPostRequest {
+	return DepartmentsAPIV1DepartmentsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1056,7 +1085,7 @@ func (a *DepartmentsApiService) V1DepartmentsPost(ctx context.Context) ApiV1Depa
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *DepartmentsApiService) V1DepartmentsPostExecute(r ApiV1DepartmentsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *DepartmentsAPIService) V1DepartmentsPostExecute(r DepartmentsAPIV1DepartmentsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1064,7 +1093,7 @@ func (a *DepartmentsApiService) V1DepartmentsPostExecute(r ApiV1DepartmentsPostR
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsApiService.V1DepartmentsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DepartmentsAPIService.V1DepartmentsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1107,9 +1136,9 @@ func (a *DepartmentsApiService) V1DepartmentsPostExecute(r ApiV1DepartmentsPostR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

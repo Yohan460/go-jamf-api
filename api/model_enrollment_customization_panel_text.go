@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationPanelText type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationPanelText{}
+
 // EnrollmentCustomizationPanelText struct for EnrollmentCustomizationPanelText
 type EnrollmentCustomizationPanelText struct {
 	DisplayName string `json:"displayName"`
@@ -122,7 +125,7 @@ func (o *EnrollmentCustomizationPanelText) SetBody(v string) {
 
 // GetSubtext returns the Subtext field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationPanelText) GetSubtext() string {
-	if o == nil || o.Subtext == nil {
+	if o == nil || IsNil(o.Subtext) {
 		var ret string
 		return ret
 	}
@@ -132,7 +135,7 @@ func (o *EnrollmentCustomizationPanelText) GetSubtext() string {
 // GetSubtextOk returns a tuple with the Subtext field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationPanelText) GetSubtextOk() (*string, bool) {
-	if o == nil || o.Subtext == nil {
+	if o == nil || IsNil(o.Subtext) {
 		return nil, false
 	}
 	return o.Subtext, true
@@ -140,7 +143,7 @@ func (o *EnrollmentCustomizationPanelText) GetSubtextOk() (*string, bool) {
 
 // HasSubtext returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationPanelText) HasSubtext() bool {
-	if o != nil && o.Subtext != nil {
+	if o != nil && !IsNil(o.Subtext) {
 		return true
 	}
 
@@ -225,29 +228,25 @@ func (o *EnrollmentCustomizationPanelText) SetContinueButtonText(v string) {
 }
 
 func (o EnrollmentCustomizationPanelText) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["rank"] = o.Rank
-	}
-	if true {
-		toSerialize["body"] = o.Body
-	}
-	if o.Subtext != nil {
-		toSerialize["subtext"] = o.Subtext
-	}
-	if true {
-		toSerialize["title"] = o.Title
-	}
-	if true {
-		toSerialize["backButtonText"] = o.BackButtonText
-	}
-	if true {
-		toSerialize["continueButtonText"] = o.ContinueButtonText
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationPanelText) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["rank"] = o.Rank
+	toSerialize["body"] = o.Body
+	if !IsNil(o.Subtext) {
+		toSerialize["subtext"] = o.Subtext
+	}
+	toSerialize["title"] = o.Title
+	toSerialize["backButtonText"] = o.BackButtonText
+	toSerialize["continueButtonText"] = o.ContinueButtonText
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationPanelText struct {

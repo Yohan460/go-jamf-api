@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VenafiCaRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VenafiCaRecord{}
+
 // VenafiCaRecord struct for VenafiCaRecord
 type VenafiCaRecord struct {
 	Id *int32 `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewVenafiCaRecordWithDefaults() *VenafiCaRecord {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *VenafiCaRecord) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +69,7 @@ func (o *VenafiCaRecord) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *VenafiCaRecord) SetName(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *VenafiCaRecord) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -122,7 +125,7 @@ func (o *VenafiCaRecord) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -136,7 +139,7 @@ func (o *VenafiCaRecord) SetUsername(v string) {
 
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetPassword() string {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
@@ -146,7 +149,7 @@ func (o *VenafiCaRecord) GetPassword() string {
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetPasswordOk() (*string, bool) {
-	if o == nil || o.Password == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
 	return o.Password, true
@@ -154,7 +157,7 @@ func (o *VenafiCaRecord) GetPasswordOk() (*string, bool) {
 
 // HasPassword returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasPassword() bool {
-	if o != nil && o.Password != nil {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
@@ -168,7 +171,7 @@ func (o *VenafiCaRecord) SetPassword(v string) {
 
 // GetPasswordConfigured returns the PasswordConfigured field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetPasswordConfigured() bool {
-	if o == nil || o.PasswordConfigured == nil {
+	if o == nil || IsNil(o.PasswordConfigured) {
 		var ret bool
 		return ret
 	}
@@ -178,7 +181,7 @@ func (o *VenafiCaRecord) GetPasswordConfigured() bool {
 // GetPasswordConfiguredOk returns a tuple with the PasswordConfigured field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetPasswordConfiguredOk() (*bool, bool) {
-	if o == nil || o.PasswordConfigured == nil {
+	if o == nil || IsNil(o.PasswordConfigured) {
 		return nil, false
 	}
 	return o.PasswordConfigured, true
@@ -186,7 +189,7 @@ func (o *VenafiCaRecord) GetPasswordConfiguredOk() (*bool, bool) {
 
 // HasPasswordConfigured returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasPasswordConfigured() bool {
-	if o != nil && o.PasswordConfigured != nil {
+	if o != nil && !IsNil(o.PasswordConfigured) {
 		return true
 	}
 
@@ -200,7 +203,7 @@ func (o *VenafiCaRecord) SetPasswordConfigured(v bool) {
 
 // GetProxyAddress returns the ProxyAddress field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetProxyAddress() string {
-	if o == nil || o.ProxyAddress == nil {
+	if o == nil || IsNil(o.ProxyAddress) {
 		var ret string
 		return ret
 	}
@@ -210,7 +213,7 @@ func (o *VenafiCaRecord) GetProxyAddress() string {
 // GetProxyAddressOk returns a tuple with the ProxyAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetProxyAddressOk() (*string, bool) {
-	if o == nil || o.ProxyAddress == nil {
+	if o == nil || IsNil(o.ProxyAddress) {
 		return nil, false
 	}
 	return o.ProxyAddress, true
@@ -218,7 +221,7 @@ func (o *VenafiCaRecord) GetProxyAddressOk() (*string, bool) {
 
 // HasProxyAddress returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasProxyAddress() bool {
-	if o != nil && o.ProxyAddress != nil {
+	if o != nil && !IsNil(o.ProxyAddress) {
 		return true
 	}
 
@@ -232,7 +235,7 @@ func (o *VenafiCaRecord) SetProxyAddress(v string) {
 
 // GetRevocationEnabled returns the RevocationEnabled field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetRevocationEnabled() bool {
-	if o == nil || o.RevocationEnabled == nil {
+	if o == nil || IsNil(o.RevocationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -242,7 +245,7 @@ func (o *VenafiCaRecord) GetRevocationEnabled() bool {
 // GetRevocationEnabledOk returns a tuple with the RevocationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetRevocationEnabledOk() (*bool, bool) {
-	if o == nil || o.RevocationEnabled == nil {
+	if o == nil || IsNil(o.RevocationEnabled) {
 		return nil, false
 	}
 	return o.RevocationEnabled, true
@@ -250,7 +253,7 @@ func (o *VenafiCaRecord) GetRevocationEnabledOk() (*bool, bool) {
 
 // HasRevocationEnabled returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasRevocationEnabled() bool {
-	if o != nil && o.RevocationEnabled != nil {
+	if o != nil && !IsNil(o.RevocationEnabled) {
 		return true
 	}
 
@@ -264,7 +267,7 @@ func (o *VenafiCaRecord) SetRevocationEnabled(v bool) {
 
 // GetClientId returns the ClientId field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetClientId() string {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
 	}
@@ -274,7 +277,7 @@ func (o *VenafiCaRecord) GetClientId() string {
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetClientIdOk() (*string, bool) {
-	if o == nil || o.ClientId == nil {
+	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
 	return o.ClientId, true
@@ -282,7 +285,7 @@ func (o *VenafiCaRecord) GetClientIdOk() (*string, bool) {
 
 // HasClientId returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasClientId() bool {
-	if o != nil && o.ClientId != nil {
+	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
 
@@ -296,7 +299,7 @@ func (o *VenafiCaRecord) SetClientId(v string) {
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetRefreshToken() string {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
@@ -306,7 +309,7 @@ func (o *VenafiCaRecord) GetRefreshToken() string {
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || o.RefreshToken == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
 	return o.RefreshToken, true
@@ -314,7 +317,7 @@ func (o *VenafiCaRecord) GetRefreshTokenOk() (*string, bool) {
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasRefreshToken() bool {
-	if o != nil && o.RefreshToken != nil {
+	if o != nil && !IsNil(o.RefreshToken) {
 		return true
 	}
 
@@ -328,7 +331,7 @@ func (o *VenafiCaRecord) SetRefreshToken(v string) {
 
 // GetRefreshTokenConfigured returns the RefreshTokenConfigured field value if set, zero value otherwise.
 func (o *VenafiCaRecord) GetRefreshTokenConfigured() bool {
-	if o == nil || o.RefreshTokenConfigured == nil {
+	if o == nil || IsNil(o.RefreshTokenConfigured) {
 		var ret bool
 		return ret
 	}
@@ -338,7 +341,7 @@ func (o *VenafiCaRecord) GetRefreshTokenConfigured() bool {
 // GetRefreshTokenConfiguredOk returns a tuple with the RefreshTokenConfigured field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VenafiCaRecord) GetRefreshTokenConfiguredOk() (*bool, bool) {
-	if o == nil || o.RefreshTokenConfigured == nil {
+	if o == nil || IsNil(o.RefreshTokenConfigured) {
 		return nil, false
 	}
 	return o.RefreshTokenConfigured, true
@@ -346,7 +349,7 @@ func (o *VenafiCaRecord) GetRefreshTokenConfiguredOk() (*bool, bool) {
 
 // HasRefreshTokenConfigured returns a boolean if a field has been set.
 func (o *VenafiCaRecord) HasRefreshTokenConfigured() bool {
-	if o != nil && o.RefreshTokenConfigured != nil {
+	if o != nil && !IsNil(o.RefreshTokenConfigured) {
 		return true
 	}
 
@@ -359,38 +362,44 @@ func (o *VenafiCaRecord) SetRefreshTokenConfigured(v bool) {
 }
 
 func (o VenafiCaRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Password != nil {
-		toSerialize["password"] = o.Password
-	}
-	if o.PasswordConfigured != nil {
-		toSerialize["passwordConfigured"] = o.PasswordConfigured
-	}
-	if o.ProxyAddress != nil {
-		toSerialize["proxyAddress"] = o.ProxyAddress
-	}
-	if o.RevocationEnabled != nil {
-		toSerialize["revocationEnabled"] = o.RevocationEnabled
-	}
-	if o.ClientId != nil {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if o.RefreshToken != nil {
-		toSerialize["refreshToken"] = o.RefreshToken
-	}
-	if o.RefreshTokenConfigured != nil {
-		toSerialize["refreshTokenConfigured"] = o.RefreshTokenConfigured
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VenafiCaRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
+	}
+	if !IsNil(o.PasswordConfigured) {
+		toSerialize["passwordConfigured"] = o.PasswordConfigured
+	}
+	if !IsNil(o.ProxyAddress) {
+		toSerialize["proxyAddress"] = o.ProxyAddress
+	}
+	if !IsNil(o.RevocationEnabled) {
+		toSerialize["revocationEnabled"] = o.RevocationEnabled
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
+	}
+	if !IsNil(o.RefreshTokenConfigured) {
+		toSerialize["refreshTokenConfigured"] = o.RefreshTokenConfigured
+	}
+	return toSerialize, nil
 }
 
 type NullableVenafiCaRecord struct {

@@ -1,11 +1,11 @@
-# \JamfProInitializationApi
+# \JamfProInitializationAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SystemInitializeDatabaseConnectionPost**](JamfProInitializationApi.md#V1SystemInitializeDatabaseConnectionPost) | **Post** /v1/system/initialize-database-connection | Provide Database Password during startup 
-[**V1SystemInitializePost**](JamfProInitializationApi.md#V1SystemInitializePost) | **Post** /v1/system/initialize | Set up fresh installed Jamf Pro Server 
+[**V1SystemInitializeDatabaseConnectionPost**](JamfProInitializationAPI.md#V1SystemInitializeDatabaseConnectionPost) | **Post** /v1/system/initialize-database-connection | Provide Database Password during startup 
+[**V1SystemInitializePost**](JamfProInitializationAPI.md#V1SystemInitializePost) | **Post** /v1/system/initialize | Set up fresh installed Jamf Pro Server 
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -34,9 +34,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProInitializationApi.V1SystemInitializeDatabaseConnectionPost(context.Background()).DatabasePassword(databasePassword).Execute()
+    r, err := apiClient.JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost(context.Background()).DatabasePassword(databasePassword).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationApi.V1SystemInitializeDatabaseConnectionPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -90,7 +90,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -98,9 +98,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProInitializationApi.V1SystemInitializePost(context.Background()).InitializeV1(initializeV1).Execute()
+    r, err := apiClient.JamfProInitializationAPI.V1SystemInitializePost(context.Background()).InitializeV1(initializeV1).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationApi.V1SystemInitializePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

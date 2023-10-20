@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the PrestageScopeAssignmentV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageScopeAssignmentV2{}
+
 // PrestageScopeAssignmentV2 struct for PrestageScopeAssignmentV2
 type PrestageScopeAssignmentV2 struct {
 	SerialNumber *string `json:"serialNumber,omitempty"`
@@ -41,7 +44,7 @@ func NewPrestageScopeAssignmentV2WithDefaults() *PrestageScopeAssignmentV2 {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *PrestageScopeAssignmentV2) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *PrestageScopeAssignmentV2) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeAssignmentV2) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -59,7 +62,7 @@ func (o *PrestageScopeAssignmentV2) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *PrestageScopeAssignmentV2) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *PrestageScopeAssignmentV2) SetSerialNumber(v string) {
 
 // GetAssignmentDate returns the AssignmentDate field value if set, zero value otherwise.
 func (o *PrestageScopeAssignmentV2) GetAssignmentDate() time.Time {
-	if o == nil || o.AssignmentDate == nil {
+	if o == nil || IsNil(o.AssignmentDate) {
 		var ret time.Time
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *PrestageScopeAssignmentV2) GetAssignmentDate() time.Time {
 // GetAssignmentDateOk returns a tuple with the AssignmentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeAssignmentV2) GetAssignmentDateOk() (*time.Time, bool) {
-	if o == nil || o.AssignmentDate == nil {
+	if o == nil || IsNil(o.AssignmentDate) {
 		return nil, false
 	}
 	return o.AssignmentDate, true
@@ -91,7 +94,7 @@ func (o *PrestageScopeAssignmentV2) GetAssignmentDateOk() (*time.Time, bool) {
 
 // HasAssignmentDate returns a boolean if a field has been set.
 func (o *PrestageScopeAssignmentV2) HasAssignmentDate() bool {
-	if o != nil && o.AssignmentDate != nil {
+	if o != nil && !IsNil(o.AssignmentDate) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *PrestageScopeAssignmentV2) SetAssignmentDate(v time.Time) {
 
 // GetUserAssigned returns the UserAssigned field value if set, zero value otherwise.
 func (o *PrestageScopeAssignmentV2) GetUserAssigned() string {
-	if o == nil || o.UserAssigned == nil {
+	if o == nil || IsNil(o.UserAssigned) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *PrestageScopeAssignmentV2) GetUserAssigned() string {
 // GetUserAssignedOk returns a tuple with the UserAssigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeAssignmentV2) GetUserAssignedOk() (*string, bool) {
-	if o == nil || o.UserAssigned == nil {
+	if o == nil || IsNil(o.UserAssigned) {
 		return nil, false
 	}
 	return o.UserAssigned, true
@@ -123,7 +126,7 @@ func (o *PrestageScopeAssignmentV2) GetUserAssignedOk() (*string, bool) {
 
 // HasUserAssigned returns a boolean if a field has been set.
 func (o *PrestageScopeAssignmentV2) HasUserAssigned() bool {
-	if o != nil && o.UserAssigned != nil {
+	if o != nil && !IsNil(o.UserAssigned) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *PrestageScopeAssignmentV2) SetUserAssigned(v string) {
 }
 
 func (o PrestageScopeAssignmentV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.AssignmentDate != nil {
-		toSerialize["assignmentDate"] = o.AssignmentDate
-	}
-	if o.UserAssigned != nil {
-		toSerialize["userAssigned"] = o.UserAssigned
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageScopeAssignmentV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.AssignmentDate) {
+		toSerialize["assignmentDate"] = o.AssignmentDate
+	}
+	if !IsNil(o.UserAssigned) {
+		toSerialize["userAssigned"] = o.UserAssigned
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageScopeAssignmentV2 struct {

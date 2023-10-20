@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,22 @@ import (
 )
 
 
-type IconApi interface {
+type IconAPI interface {
+
+	/*
+	V1IconDownloadIdGet Download a self service icon 
+
+	Download a self service icon
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of the self service icon
+	@return IconAPIV1IconDownloadIdGetRequest
+	*/
+	V1IconDownloadIdGet(ctx context.Context, id string) IconAPIV1IconDownloadIdGetRequest
+
+	// V1IconDownloadIdGetExecute executes the request
+	//  @return *os.File
+	V1IconDownloadIdGetExecute(r IconAPIV1IconDownloadIdGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1IconIdGet Get an icon 
@@ -30,13 +45,13 @@ type IconApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of the icon
-	@return ApiV1IconIdGetRequest
+	@return IconAPIV1IconIdGetRequest
 	*/
-	V1IconIdGet(ctx context.Context, id string) ApiV1IconIdGetRequest
+	V1IconIdGet(ctx context.Context, id string) IconAPIV1IconIdGetRequest
 
 	// V1IconIdGetExecute executes the request
 	//  @return IconResponse
-	V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconResponse, *http.Response, error)
+	V1IconIdGetExecute(r IconAPIV1IconIdGetRequest) (*IconResponse, *http.Response, error)
 
 	/*
 	V1IconPost Upload an icon 
@@ -44,25 +59,154 @@ type IconApi interface {
 	Uploads an icon
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1IconPostRequest
+	@return IconAPIV1IconPostRequest
 	*/
-	V1IconPost(ctx context.Context) ApiV1IconPostRequest
+	V1IconPost(ctx context.Context) IconAPIV1IconPostRequest
 
 	// V1IconPostExecute executes the request
 	//  @return IconResponse
-	V1IconPostExecute(r ApiV1IconPostRequest) (*IconResponse, *http.Response, error)
+	V1IconPostExecute(r IconAPIV1IconPostRequest) (*IconResponse, *http.Response, error)
 }
 
-// IconApiService IconApi service
-type IconApiService service
+// IconAPIService IconAPI service
+type IconAPIService service
 
-type ApiV1IconIdGetRequest struct {
+type IconAPIV1IconDownloadIdGetRequest struct {
 	ctx context.Context
-	ApiService IconApi
+	ApiService IconAPI
+	id string
+	res *string
+	scale *string
+}
+
+// request a specific resolution of original, 300, or 512; invalid options will result in original resolution
+func (r IconAPIV1IconDownloadIdGetRequest) Res(res string) IconAPIV1IconDownloadIdGetRequest {
+	r.res = &res
+	return r
+}
+
+// request a scale; 0 results in original image, non-0 results in scaled to 300
+func (r IconAPIV1IconDownloadIdGetRequest) Scale(scale string) IconAPIV1IconDownloadIdGetRequest {
+	r.scale = &scale
+	return r
+}
+
+func (r IconAPIV1IconDownloadIdGetRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.V1IconDownloadIdGetExecute(r)
+}
+
+/*
+V1IconDownloadIdGet Download a self service icon 
+
+Download a self service icon
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the self service icon
+ @return IconAPIV1IconDownloadIdGetRequest
+*/
+func (a *IconAPIService) V1IconDownloadIdGet(ctx context.Context, id string) IconAPIV1IconDownloadIdGetRequest {
+	return IconAPIV1IconDownloadIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *IconAPIService) V1IconDownloadIdGetExecute(r IconAPIV1IconDownloadIdGetRequest) (*os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IconAPIService.V1IconDownloadIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/icon/download/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.res != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "res", r.res, "")
+	} else {
+		var defaultValue string = "original"
+		r.res = &defaultValue
+	}
+	if r.scale != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scale", r.scale, "")
+	} else {
+		var defaultValue string = "0"
+		r.scale = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"image/*"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type IconAPIV1IconIdGetRequest struct {
+	ctx context.Context
+	ApiService IconAPI
 	id string
 }
 
-func (r ApiV1IconIdGetRequest) Execute() (*IconResponse, *http.Response, error) {
+func (r IconAPIV1IconIdGetRequest) Execute() (*IconResponse, *http.Response, error) {
 	return r.ApiService.V1IconIdGetExecute(r)
 }
 
@@ -73,10 +217,10 @@ Get an icon
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of the icon
- @return ApiV1IconIdGetRequest
+ @return IconAPIV1IconIdGetRequest
 */
-func (a *IconApiService) V1IconIdGet(ctx context.Context, id string) ApiV1IconIdGetRequest {
-	return ApiV1IconIdGetRequest{
+func (a *IconAPIService) V1IconIdGet(ctx context.Context, id string) IconAPIV1IconIdGetRequest {
+	return IconAPIV1IconIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -85,7 +229,7 @@ func (a *IconApiService) V1IconIdGet(ctx context.Context, id string) ApiV1IconId
 
 // Execute executes the request
 //  @return IconResponse
-func (a *IconApiService) V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconResponse, *http.Response, error) {
+func (a *IconAPIService) V1IconIdGetExecute(r IconAPIV1IconIdGetRequest) (*IconResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -93,13 +237,13 @@ func (a *IconApiService) V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconRespo
 		localVarReturnValue  *IconResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IconApiService.V1IconIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IconAPIService.V1IconIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/icon/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -132,9 +276,9 @@ func (a *IconApiService) V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconRespo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -159,19 +303,19 @@ func (a *IconApiService) V1IconIdGetExecute(r ApiV1IconIdGetRequest) (*IconRespo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1IconPostRequest struct {
+type IconAPIV1IconPostRequest struct {
 	ctx context.Context
-	ApiService IconApi
-	file **os.File
+	ApiService IconAPI
+	file *os.File
 }
 
 // The file to upload
-func (r ApiV1IconPostRequest) File(file *os.File) ApiV1IconPostRequest {
-	r.file = &file
+func (r IconAPIV1IconPostRequest) File(file *os.File) IconAPIV1IconPostRequest {
+	r.file = file
 	return r
 }
 
-func (r ApiV1IconPostRequest) Execute() (*IconResponse, *http.Response, error) {
+func (r IconAPIV1IconPostRequest) Execute() (*IconResponse, *http.Response, error) {
 	return r.ApiService.V1IconPostExecute(r)
 }
 
@@ -181,10 +325,10 @@ V1IconPost Upload an icon
 Uploads an icon
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1IconPostRequest
+ @return IconAPIV1IconPostRequest
 */
-func (a *IconApiService) V1IconPost(ctx context.Context) ApiV1IconPostRequest {
-	return ApiV1IconPostRequest{
+func (a *IconAPIService) V1IconPost(ctx context.Context) IconAPIV1IconPostRequest {
+	return IconAPIV1IconPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -192,7 +336,7 @@ func (a *IconApiService) V1IconPost(ctx context.Context) ApiV1IconPostRequest {
 
 // Execute executes the request
 //  @return IconResponse
-func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconResponse, *http.Response, error) {
+func (a *IconAPIService) V1IconPostExecute(r IconAPIV1IconPostRequest) (*IconResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -200,7 +344,7 @@ func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconRespons
 		localVarReturnValue  *IconResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IconApiService.V1IconPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "IconAPIService.V1IconPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -237,14 +381,17 @@ func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconRespons
 
 	fileLocalVarFormFileName = "file"
 
-	fileLocalVarFile := *r.file
+
+	fileLocalVarFile := r.file
+
 	if fileLocalVarFile != nil {
-		fbs, _ := ioutil.ReadAll(fileLocalVarFile)
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
 		fileLocalVarFileBytes = fbs
 		fileLocalVarFileName = fileLocalVarFile.Name()
 		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	}
-	formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -255,9 +402,9 @@ func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconRespons
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -274,7 +421,8 @@ func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconRespons
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -284,7 +432,8 @@ func (a *IconApiService) V1IconPostExecute(r ApiV1IconPostRequest) (*IconRespons
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

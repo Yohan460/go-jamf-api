@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VolumePurchasingSubscription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VolumePurchasingSubscription{}
+
 // VolumePurchasingSubscription struct for VolumePurchasingSubscription
 type VolumePurchasingSubscription struct {
 	Name string `json:"name"`
@@ -78,7 +81,7 @@ func (o *VolumePurchasingSubscription) SetName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *VolumePurchasingSubscription) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -96,7 +99,7 @@ func (o *VolumePurchasingSubscription) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *VolumePurchasingSubscription) SetEnabled(v bool) {
 
 // GetTriggers returns the Triggers field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetTriggers() []string {
-	if o == nil || o.Triggers == nil {
+	if o == nil || IsNil(o.Triggers) {
 		var ret []string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *VolumePurchasingSubscription) GetTriggers() []string {
 // GetTriggersOk returns a tuple with the Triggers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetTriggersOk() ([]string, bool) {
-	if o == nil || o.Triggers == nil {
+	if o == nil || IsNil(o.Triggers) {
 		return nil, false
 	}
 	return o.Triggers, true
@@ -128,7 +131,7 @@ func (o *VolumePurchasingSubscription) GetTriggersOk() ([]string, bool) {
 
 // HasTriggers returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasTriggers() bool {
-	if o != nil && o.Triggers != nil {
+	if o != nil && !IsNil(o.Triggers) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *VolumePurchasingSubscription) SetTriggers(v []string) {
 
 // GetLocationIds returns the LocationIds field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetLocationIds() []string {
-	if o == nil || o.LocationIds == nil {
+	if o == nil || IsNil(o.LocationIds) {
 		var ret []string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *VolumePurchasingSubscription) GetLocationIds() []string {
 // GetLocationIdsOk returns a tuple with the LocationIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetLocationIdsOk() ([]string, bool) {
-	if o == nil || o.LocationIds == nil {
+	if o == nil || IsNil(o.LocationIds) {
 		return nil, false
 	}
 	return o.LocationIds, true
@@ -160,7 +163,7 @@ func (o *VolumePurchasingSubscription) GetLocationIdsOk() ([]string, bool) {
 
 // HasLocationIds returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasLocationIds() bool {
-	if o != nil && o.LocationIds != nil {
+	if o != nil && !IsNil(o.LocationIds) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *VolumePurchasingSubscription) SetLocationIds(v []string) {
 
 // GetInternalRecipients returns the InternalRecipients field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetInternalRecipients() []InternalRecipient {
-	if o == nil || o.InternalRecipients == nil {
+	if o == nil || IsNil(o.InternalRecipients) {
 		var ret []InternalRecipient
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *VolumePurchasingSubscription) GetInternalRecipients() []InternalRecipie
 // GetInternalRecipientsOk returns a tuple with the InternalRecipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetInternalRecipientsOk() ([]InternalRecipient, bool) {
-	if o == nil || o.InternalRecipients == nil {
+	if o == nil || IsNil(o.InternalRecipients) {
 		return nil, false
 	}
 	return o.InternalRecipients, true
@@ -192,7 +195,7 @@ func (o *VolumePurchasingSubscription) GetInternalRecipientsOk() ([]InternalReci
 
 // HasInternalRecipients returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasInternalRecipients() bool {
-	if o != nil && o.InternalRecipients != nil {
+	if o != nil && !IsNil(o.InternalRecipients) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *VolumePurchasingSubscription) SetInternalRecipients(v []InternalRecipie
 
 // GetExternalRecipients returns the ExternalRecipients field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetExternalRecipients() []ExternalRecipient {
-	if o == nil || o.ExternalRecipients == nil {
+	if o == nil || IsNil(o.ExternalRecipients) {
 		var ret []ExternalRecipient
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *VolumePurchasingSubscription) GetExternalRecipients() []ExternalRecipie
 // GetExternalRecipientsOk returns a tuple with the ExternalRecipients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetExternalRecipientsOk() ([]ExternalRecipient, bool) {
-	if o == nil || o.ExternalRecipients == nil {
+	if o == nil || IsNil(o.ExternalRecipients) {
 		return nil, false
 	}
 	return o.ExternalRecipients, true
@@ -224,7 +227,7 @@ func (o *VolumePurchasingSubscription) GetExternalRecipientsOk() ([]ExternalReci
 
 // HasExternalRecipients returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasExternalRecipients() bool {
-	if o != nil && o.ExternalRecipients != nil {
+	if o != nil && !IsNil(o.ExternalRecipients) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *VolumePurchasingSubscription) SetExternalRecipients(v []ExternalRecipie
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *VolumePurchasingSubscription) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -256,7 +259,7 @@ func (o *VolumePurchasingSubscription) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *VolumePurchasingSubscription) SetSiteId(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VolumePurchasingSubscription) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *VolumePurchasingSubscription) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingSubscription) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -288,7 +291,7 @@ func (o *VolumePurchasingSubscription) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VolumePurchasingSubscription) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -301,32 +304,38 @@ func (o *VolumePurchasingSubscription) SetId(v string) {
 }
 
 func (o VolumePurchasingSubscription) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.Triggers != nil {
-		toSerialize["triggers"] = o.Triggers
-	}
-	if o.LocationIds != nil {
-		toSerialize["locationIds"] = o.LocationIds
-	}
-	if o.InternalRecipients != nil {
-		toSerialize["internalRecipients"] = o.InternalRecipients
-	}
-	if o.ExternalRecipients != nil {
-		toSerialize["externalRecipients"] = o.ExternalRecipients
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VolumePurchasingSubscription) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.Triggers) {
+		toSerialize["triggers"] = o.Triggers
+	}
+	if !IsNil(o.LocationIds) {
+		toSerialize["locationIds"] = o.LocationIds
+	}
+	if !IsNil(o.InternalRecipients) {
+		toSerialize["internalRecipients"] = o.InternalRecipients
+	}
+	if !IsNil(o.ExternalRecipients) {
+		toSerialize["externalRecipients"] = o.ExternalRecipients
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableVolumePurchasingSubscription struct {

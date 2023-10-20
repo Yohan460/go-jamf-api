@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type RemoteAdministrationApi interface {
+type RemoteAdministrationAPI interface {
 
 	/*
 	PreviewRemoteAdministrationConfigurationsGet Get information about all remote administration configurations.
@@ -27,36 +27,36 @@ type RemoteAdministrationApi interface {
 	Remote administration feature creates a secure screen-sharing experience between Jamf Pro administrators and their end-users.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPreviewRemoteAdministrationConfigurationsGetRequest
+	@return RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest
 	*/
-	PreviewRemoteAdministrationConfigurationsGet(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsGetRequest
+	PreviewRemoteAdministrationConfigurationsGet(ctx context.Context) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest
 
 	// PreviewRemoteAdministrationConfigurationsGetExecute executes the request
 	//  @return RemoteAdministrationSearchResults
-	PreviewRemoteAdministrationConfigurationsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsGetRequest) (*RemoteAdministrationSearchResults, *http.Response, error)
+	PreviewRemoteAdministrationConfigurationsGetExecute(r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) (*RemoteAdministrationSearchResults, *http.Response, error)
 }
 
-// RemoteAdministrationApiService RemoteAdministrationApi service
-type RemoteAdministrationApiService service
+// RemoteAdministrationAPIService RemoteAdministrationAPI service
+type RemoteAdministrationAPIService service
 
-type ApiPreviewRemoteAdministrationConfigurationsGetRequest struct {
+type RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest struct {
 	ctx context.Context
-	ApiService RemoteAdministrationApi
+	ApiService RemoteAdministrationAPI
 	page *int32
 	pageSize *int32
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsGetRequest) Page(page int32) ApiPreviewRemoteAdministrationConfigurationsGetRequest {
+func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) Page(page int32) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsGetRequest) PageSize(pageSize int32) ApiPreviewRemoteAdministrationConfigurationsGetRequest {
+func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) PageSize(pageSize int32) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
-func (r ApiPreviewRemoteAdministrationConfigurationsGetRequest) Execute() (*RemoteAdministrationSearchResults, *http.Response, error) {
+func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) Execute() (*RemoteAdministrationSearchResults, *http.Response, error) {
 	return r.ApiService.PreviewRemoteAdministrationConfigurationsGetExecute(r)
 }
 
@@ -66,10 +66,10 @@ PreviewRemoteAdministrationConfigurationsGet Get information about all remote ad
 Remote administration feature creates a secure screen-sharing experience between Jamf Pro administrators and their end-users.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPreviewRemoteAdministrationConfigurationsGetRequest
+ @return RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest
 */
-func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsGet(ctx context.Context) ApiPreviewRemoteAdministrationConfigurationsGetRequest {
-	return ApiPreviewRemoteAdministrationConfigurationsGetRequest{
+func (a *RemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsGet(ctx context.Context) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
+	return RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -77,7 +77,7 @@ func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfiguratio
 
 // Execute executes the request
 //  @return RemoteAdministrationSearchResults
-func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfigurationsGetExecute(r ApiPreviewRemoteAdministrationConfigurationsGetRequest) (*RemoteAdministrationSearchResults, *http.Response, error) {
+func (a *RemoteAdministrationAPIService) PreviewRemoteAdministrationConfigurationsGetExecute(r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) (*RemoteAdministrationSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -85,7 +85,7 @@ func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfiguratio
 		localVarReturnValue  *RemoteAdministrationSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RemoteAdministrationApiService.PreviewRemoteAdministrationConfigurationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RemoteAdministrationAPIService.PreviewRemoteAdministrationConfigurationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -97,10 +97,16 @@ func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfiguratio
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -129,9 +135,9 @@ func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfiguratio
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -148,7 +154,8 @@ func (a *RemoteAdministrationApiService) PreviewRemoteAdministrationConfiguratio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the DeploymentTask type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentTask{}
+
 // DeploymentTask struct for DeploymentTask
 type DeploymentTask struct {
 	Id *string `json:"id,omitempty"`
@@ -45,7 +48,7 @@ func NewDeploymentTaskWithDefaults() *DeploymentTask {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DeploymentTask) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *DeploymentTask) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -63,7 +66,7 @@ func (o *DeploymentTask) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DeploymentTask) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *DeploymentTask) SetId(v string) {
 
 // GetComputerId returns the ComputerId field value if set, zero value otherwise.
 func (o *DeploymentTask) GetComputerId() string {
-	if o == nil || o.ComputerId == nil {
+	if o == nil || IsNil(o.ComputerId) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *DeploymentTask) GetComputerId() string {
 // GetComputerIdOk returns a tuple with the ComputerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetComputerIdOk() (*string, bool) {
-	if o == nil || o.ComputerId == nil {
+	if o == nil || IsNil(o.ComputerId) {
 		return nil, false
 	}
 	return o.ComputerId, true
@@ -95,7 +98,7 @@ func (o *DeploymentTask) GetComputerIdOk() (*string, bool) {
 
 // HasComputerId returns a boolean if a field has been set.
 func (o *DeploymentTask) HasComputerId() bool {
-	if o != nil && o.ComputerId != nil {
+	if o != nil && !IsNil(o.ComputerId) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *DeploymentTask) SetComputerId(v string) {
 
 // GetComputerName returns the ComputerName field value if set, zero value otherwise.
 func (o *DeploymentTask) GetComputerName() string {
-	if o == nil || o.ComputerName == nil {
+	if o == nil || IsNil(o.ComputerName) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *DeploymentTask) GetComputerName() string {
 // GetComputerNameOk returns a tuple with the ComputerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetComputerNameOk() (*string, bool) {
-	if o == nil || o.ComputerName == nil {
+	if o == nil || IsNil(o.ComputerName) {
 		return nil, false
 	}
 	return o.ComputerName, true
@@ -127,7 +130,7 @@ func (o *DeploymentTask) GetComputerNameOk() (*string, bool) {
 
 // HasComputerName returns a boolean if a field has been set.
 func (o *DeploymentTask) HasComputerName() bool {
-	if o != nil && o.ComputerName != nil {
+	if o != nil && !IsNil(o.ComputerName) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *DeploymentTask) SetComputerName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *DeploymentTask) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *DeploymentTask) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -159,7 +162,7 @@ func (o *DeploymentTask) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *DeploymentTask) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *DeploymentTask) SetVersion(v string) {
 
 // GetUpdated returns the Updated field value if set, zero value otherwise.
 func (o *DeploymentTask) GetUpdated() time.Time {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		var ret time.Time
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *DeploymentTask) GetUpdated() time.Time {
 // GetUpdatedOk returns a tuple with the Updated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetUpdatedOk() (*time.Time, bool) {
-	if o == nil || o.Updated == nil {
+	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
 	return o.Updated, true
@@ -191,7 +194,7 @@ func (o *DeploymentTask) GetUpdatedOk() (*time.Time, bool) {
 
 // HasUpdated returns a boolean if a field has been set.
 func (o *DeploymentTask) HasUpdated() bool {
-	if o != nil && o.Updated != nil {
+	if o != nil && !IsNil(o.Updated) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *DeploymentTask) SetUpdated(v time.Time) {
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *DeploymentTask) GetStatus() string {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *DeploymentTask) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeploymentTask) GetStatusOk() (*string, bool) {
-	if o == nil || o.Status == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -223,7 +226,7 @@ func (o *DeploymentTask) GetStatusOk() (*string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *DeploymentTask) HasStatus() bool {
-	if o != nil && o.Status != nil {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -236,26 +239,34 @@ func (o *DeploymentTask) SetStatus(v string) {
 }
 
 func (o DeploymentTask) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ComputerId != nil {
-		toSerialize["computerId"] = o.ComputerId
-	}
-	if o.ComputerName != nil {
-		toSerialize["computerName"] = o.ComputerName
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Updated != nil {
-		toSerialize["updated"] = o.Updated
-	}
-	if o.Status != nil {
-		toSerialize["status"] = o.Status
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeploymentTask) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ComputerId) {
+		toSerialize["computerId"] = o.ComputerId
+	}
+	if !IsNil(o.ComputerName) {
+		toSerialize["computerName"] = o.ComputerName
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Updated) {
+		toSerialize["updated"] = o.Updated
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	return toSerialize, nil
 }
 
 type NullableDeploymentTask struct {

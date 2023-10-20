@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type StartupStatusApi interface {
+type StartupStatusAPI interface {
 
 	/*
 	StartupStatusGet Retrieve information about application startup 
@@ -27,24 +27,24 @@ type StartupStatusApi interface {
 	Retrieves information about application startup. Current startup operation taking place (if any) and overall startup completion percentage.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiStartupStatusGetRequest
+	@return StartupStatusAPIStartupStatusGetRequest
 	*/
-	StartupStatusGet(ctx context.Context) ApiStartupStatusGetRequest
+	StartupStatusGet(ctx context.Context) StartupStatusAPIStartupStatusGetRequest
 
 	// StartupStatusGetExecute executes the request
 	//  @return StartupStatus
-	StartupStatusGetExecute(r ApiStartupStatusGetRequest) (*StartupStatus, *http.Response, error)
+	StartupStatusGetExecute(r StartupStatusAPIStartupStatusGetRequest) (*StartupStatus, *http.Response, error)
 }
 
-// StartupStatusApiService StartupStatusApi service
-type StartupStatusApiService service
+// StartupStatusAPIService StartupStatusAPI service
+type StartupStatusAPIService service
 
-type ApiStartupStatusGetRequest struct {
+type StartupStatusAPIStartupStatusGetRequest struct {
 	ctx context.Context
-	ApiService StartupStatusApi
+	ApiService StartupStatusAPI
 }
 
-func (r ApiStartupStatusGetRequest) Execute() (*StartupStatus, *http.Response, error) {
+func (r StartupStatusAPIStartupStatusGetRequest) Execute() (*StartupStatus, *http.Response, error) {
 	return r.ApiService.StartupStatusGetExecute(r)
 }
 
@@ -54,10 +54,10 @@ StartupStatusGet Retrieve information about application startup
 Retrieves information about application startup. Current startup operation taking place (if any) and overall startup completion percentage.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiStartupStatusGetRequest
+ @return StartupStatusAPIStartupStatusGetRequest
 */
-func (a *StartupStatusApiService) StartupStatusGet(ctx context.Context) ApiStartupStatusGetRequest {
-	return ApiStartupStatusGetRequest{
+func (a *StartupStatusAPIService) StartupStatusGet(ctx context.Context) StartupStatusAPIStartupStatusGetRequest {
+	return StartupStatusAPIStartupStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -65,7 +65,7 @@ func (a *StartupStatusApiService) StartupStatusGet(ctx context.Context) ApiStart
 
 // Execute executes the request
 //  @return StartupStatus
-func (a *StartupStatusApiService) StartupStatusGetExecute(r ApiStartupStatusGetRequest) (*StartupStatus, *http.Response, error) {
+func (a *StartupStatusAPIService) StartupStatusGetExecute(r StartupStatusAPIStartupStatusGetRequest) (*StartupStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -73,7 +73,7 @@ func (a *StartupStatusApiService) StartupStatusGetExecute(r ApiStartupStatusGetR
 		localVarReturnValue  *StartupStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StartupStatusApiService.StartupStatusGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StartupStatusAPIService.StartupStatusGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -111,9 +111,9 @@ func (a *StartupStatusApiService) StartupStatusGetExecute(r ApiStartupStatusGetR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

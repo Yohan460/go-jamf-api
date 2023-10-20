@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapServerRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapServerRequest{}
+
 // CloudLdapServerRequest A Cloud Identity Provider LDAP server configuration for requests
 type CloudLdapServerRequest struct {
 	ServerUrl string `json:"serverUrl"`
@@ -25,6 +28,7 @@ type CloudLdapServerRequest struct {
 	SearchTimeout int32 `json:"searchTimeout"`
 	UseWildcards bool `json:"useWildcards"`
 	ConnectionType string `json:"connectionType"`
+	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
 // NewCloudLdapServerRequest instantiates a new CloudLdapServerRequest object
@@ -269,36 +273,61 @@ func (o *CloudLdapServerRequest) SetConnectionType(v string) {
 	o.ConnectionType = v
 }
 
+// GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field value if set, zero value otherwise.
+func (o *CloudLdapServerRequest) GetMembershipCalculationOptimizationEnabled() bool {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MembershipCalculationOptimizationEnabled
+}
+
+// GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudLdapServerRequest) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return nil, false
+	}
+	return o.MembershipCalculationOptimizationEnabled, true
+}
+
+// HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+func (o *CloudLdapServerRequest) HasMembershipCalculationOptimizationEnabled() bool {
+	if o != nil && !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembershipCalculationOptimizationEnabled gets a reference to the given bool and assigns it to the MembershipCalculationOptimizationEnabled field.
+func (o *CloudLdapServerRequest) SetMembershipCalculationOptimizationEnabled(v bool) {
+	o.MembershipCalculationOptimizationEnabled = &v
+}
+
 func (o CloudLdapServerRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["serverUrl"] = o.ServerUrl
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["domainName"] = o.DomainName
-	}
-	if true {
-		toSerialize["port"] = o.Port
-	}
-	if true {
-		toSerialize["keystore"] = o.Keystore
-	}
-	if true {
-		toSerialize["connectionTimeout"] = o.ConnectionTimeout
-	}
-	if true {
-		toSerialize["searchTimeout"] = o.SearchTimeout
-	}
-	if true {
-		toSerialize["useWildcards"] = o.UseWildcards
-	}
-	if true {
-		toSerialize["connectionType"] = o.ConnectionType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapServerRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["serverUrl"] = o.ServerUrl
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["domainName"] = o.DomainName
+	toSerialize["port"] = o.Port
+	toSerialize["keystore"] = o.Keystore
+	toSerialize["connectionTimeout"] = o.ConnectionTimeout
+	toSerialize["searchTimeout"] = o.SearchTimeout
+	toSerialize["useWildcards"] = o.UseWildcards
+	toSerialize["connectionType"] = o.ConnectionType
+	if !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapServerRequest struct {

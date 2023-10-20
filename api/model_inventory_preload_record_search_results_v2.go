@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadRecordSearchResultsV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadRecordSearchResultsV2{}
+
 // InventoryPreloadRecordSearchResultsV2 struct for InventoryPreloadRecordSearchResultsV2
 type InventoryPreloadRecordSearchResultsV2 struct {
 	TotalCount *int32 `json:"totalCount,omitempty"`
@@ -39,7 +42,7 @@ func NewInventoryPreloadRecordSearchResultsV2WithDefaults() *InventoryPreloadRec
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *InventoryPreloadRecordSearchResultsV2) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *InventoryPreloadRecordSearchResultsV2) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecordSearchResultsV2) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -57,7 +60,7 @@ func (o *InventoryPreloadRecordSearchResultsV2) GetTotalCountOk() (*int32, bool)
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *InventoryPreloadRecordSearchResultsV2) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *InventoryPreloadRecordSearchResultsV2) SetTotalCount(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *InventoryPreloadRecordSearchResultsV2) GetResults() []InventoryPreloadRecordV2 {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []InventoryPreloadRecordV2
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *InventoryPreloadRecordSearchResultsV2) GetResults() []InventoryPreloadR
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecordSearchResultsV2) GetResultsOk() ([]InventoryPreloadRecordV2, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -89,7 +92,7 @@ func (o *InventoryPreloadRecordSearchResultsV2) GetResultsOk() ([]InventoryPrelo
 
 // HasResults returns a boolean if a field has been set.
 func (o *InventoryPreloadRecordSearchResultsV2) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *InventoryPreloadRecordSearchResultsV2) SetResults(v []InventoryPreloadR
 }
 
 func (o InventoryPreloadRecordSearchResultsV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadRecordSearchResultsV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadRecordSearchResultsV2 struct {

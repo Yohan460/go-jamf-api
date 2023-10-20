@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type TimeZonesPreviewApi interface {
+type TimeZonesPreviewAPI interface {
 
 	/*
 	V1TimeZonesGet Return information about the currently supported Time Zones 
@@ -28,24 +28,24 @@ type TimeZonesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1TimeZonesGetRequest
+	@return TimeZonesPreviewAPIV1TimeZonesGetRequest
 	*/
-	V1TimeZonesGet(ctx context.Context) ApiV1TimeZonesGetRequest
+	V1TimeZonesGet(ctx context.Context) TimeZonesPreviewAPIV1TimeZonesGetRequest
 
 	// V1TimeZonesGetExecute executes the request
 	//  @return []TimeZone
-	V1TimeZonesGetExecute(r ApiV1TimeZonesGetRequest) ([]TimeZone, *http.Response, error)
+	V1TimeZonesGetExecute(r TimeZonesPreviewAPIV1TimeZonesGetRequest) ([]TimeZone, *http.Response, error)
 }
 
-// TimeZonesPreviewApiService TimeZonesPreviewApi service
-type TimeZonesPreviewApiService service
+// TimeZonesPreviewAPIService TimeZonesPreviewAPI service
+type TimeZonesPreviewAPIService service
 
-type ApiV1TimeZonesGetRequest struct {
+type TimeZonesPreviewAPIV1TimeZonesGetRequest struct {
 	ctx context.Context
-	ApiService TimeZonesPreviewApi
+	ApiService TimeZonesPreviewAPI
 }
 
-func (r ApiV1TimeZonesGetRequest) Execute() ([]TimeZone, *http.Response, error) {
+func (r TimeZonesPreviewAPIV1TimeZonesGetRequest) Execute() ([]TimeZone, *http.Response, error) {
 	return r.ApiService.V1TimeZonesGetExecute(r)
 }
 
@@ -56,10 +56,10 @@ Returns information about the currently supported time zones
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1TimeZonesGetRequest
+ @return TimeZonesPreviewAPIV1TimeZonesGetRequest
 */
-func (a *TimeZonesPreviewApiService) V1TimeZonesGet(ctx context.Context) ApiV1TimeZonesGetRequest {
-	return ApiV1TimeZonesGetRequest{
+func (a *TimeZonesPreviewAPIService) V1TimeZonesGet(ctx context.Context) TimeZonesPreviewAPIV1TimeZonesGetRequest {
+	return TimeZonesPreviewAPIV1TimeZonesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +67,7 @@ func (a *TimeZonesPreviewApiService) V1TimeZonesGet(ctx context.Context) ApiV1Ti
 
 // Execute executes the request
 //  @return []TimeZone
-func (a *TimeZonesPreviewApiService) V1TimeZonesGetExecute(r ApiV1TimeZonesGetRequest) ([]TimeZone, *http.Response, error) {
+func (a *TimeZonesPreviewAPIService) V1TimeZonesGetExecute(r TimeZonesPreviewAPIV1TimeZonesGetRequest) ([]TimeZone, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *TimeZonesPreviewApiService) V1TimeZonesGetExecute(r ApiV1TimeZonesGetRe
 		localVarReturnValue  []TimeZone
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TimeZonesPreviewApiService.V1TimeZonesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TimeZonesPreviewAPIService.V1TimeZonesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +113,9 @@ func (a *TimeZonesPreviewApiService) V1TimeZonesGetExecute(r ApiV1TimeZonesGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

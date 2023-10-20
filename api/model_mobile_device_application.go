@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceApplication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceApplication{}
+
 // MobileDeviceApplication struct for MobileDeviceApplication
 type MobileDeviceApplication struct {
 	Identifier *string `json:"identifier,omitempty"`
@@ -41,7 +44,7 @@ func NewMobileDeviceApplicationWithDefaults() *MobileDeviceApplication {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *MobileDeviceApplication) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *MobileDeviceApplication) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceApplication) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -59,7 +62,7 @@ func (o *MobileDeviceApplication) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *MobileDeviceApplication) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *MobileDeviceApplication) SetIdentifier(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MobileDeviceApplication) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *MobileDeviceApplication) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceApplication) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -91,7 +94,7 @@ func (o *MobileDeviceApplication) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MobileDeviceApplication) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *MobileDeviceApplication) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *MobileDeviceApplication) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *MobileDeviceApplication) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceApplication) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -123,7 +126,7 @@ func (o *MobileDeviceApplication) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *MobileDeviceApplication) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *MobileDeviceApplication) SetVersion(v string) {
 
 // GetShortVersion returns the ShortVersion field value if set, zero value otherwise.
 func (o *MobileDeviceApplication) GetShortVersion() string {
-	if o == nil || o.ShortVersion == nil {
+	if o == nil || IsNil(o.ShortVersion) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *MobileDeviceApplication) GetShortVersion() string {
 // GetShortVersionOk returns a tuple with the ShortVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceApplication) GetShortVersionOk() (*string, bool) {
-	if o == nil || o.ShortVersion == nil {
+	if o == nil || IsNil(o.ShortVersion) {
 		return nil, false
 	}
 	return o.ShortVersion, true
@@ -155,7 +158,7 @@ func (o *MobileDeviceApplication) GetShortVersionOk() (*string, bool) {
 
 // HasShortVersion returns a boolean if a field has been set.
 func (o *MobileDeviceApplication) HasShortVersion() bool {
-	if o != nil && o.ShortVersion != nil {
+	if o != nil && !IsNil(o.ShortVersion) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *MobileDeviceApplication) SetShortVersion(v string) {
 }
 
 func (o MobileDeviceApplication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.ShortVersion != nil {
-		toSerialize["shortVersion"] = o.ShortVersion
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceApplication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.ShortVersion) {
+		toSerialize["shortVersion"] = o.ShortVersion
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceApplication struct {

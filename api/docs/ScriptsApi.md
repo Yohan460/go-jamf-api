@@ -1,17 +1,17 @@
-# \ScriptsApi
+# \ScriptsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1ScriptsGet**](ScriptsApi.md#V1ScriptsGet) | **Get** /v1/scripts | Search for sorted and paged Scripts 
-[**V1ScriptsIdDelete**](ScriptsApi.md#V1ScriptsIdDelete) | **Delete** /v1/scripts/{id} | Delete a Script at the specified id 
-[**V1ScriptsIdDownloadGet**](ScriptsApi.md#V1ScriptsIdDownloadGet) | **Get** /v1/scripts/{id}/download | Download a text file of the Script contents 
-[**V1ScriptsIdGet**](ScriptsApi.md#V1ScriptsIdGet) | **Get** /v1/scripts/{id} | Retrieve a full script object 
-[**V1ScriptsIdHistoryGet**](ScriptsApi.md#V1ScriptsIdHistoryGet) | **Get** /v1/scripts/{id}/history | Get specified Script history object 
-[**V1ScriptsIdHistoryPost**](ScriptsApi.md#V1ScriptsIdHistoryPost) | **Post** /v1/scripts/{id}/history | Add specified Script history object notes 
-[**V1ScriptsIdPut**](ScriptsApi.md#V1ScriptsIdPut) | **Put** /v1/scripts/{id} | Replace the script at the id with the supplied information 
-[**V1ScriptsPost**](ScriptsApi.md#V1ScriptsPost) | **Post** /v1/scripts | Create a Script 
+[**V1ScriptsGet**](ScriptsAPI.md#V1ScriptsGet) | **Get** /v1/scripts | Search for sorted and paged Scripts 
+[**V1ScriptsIdDelete**](ScriptsAPI.md#V1ScriptsIdDelete) | **Delete** /v1/scripts/{id} | Delete a Script at the specified id 
+[**V1ScriptsIdDownloadGet**](ScriptsAPI.md#V1ScriptsIdDownloadGet) | **Get** /v1/scripts/{id}/download | Download a text file of the Script contents 
+[**V1ScriptsIdGet**](ScriptsAPI.md#V1ScriptsIdGet) | **Get** /v1/scripts/{id} | Retrieve a full script object 
+[**V1ScriptsIdHistoryGet**](ScriptsAPI.md#V1ScriptsIdHistoryGet) | **Get** /v1/scripts/{id}/history | Get specified Script history object 
+[**V1ScriptsIdHistoryPost**](ScriptsAPI.md#V1ScriptsIdHistoryPost) | **Post** /v1/scripts/{id}/history | Add specified Script history object notes 
+[**V1ScriptsIdPut**](ScriptsAPI.md#V1ScriptsIdPut) | **Put** /v1/scripts/{id} | Replace the script at the id with the supplied information 
+[**V1ScriptsPost**](ScriptsAPI.md#V1ScriptsPost) | **Post** /v1/scripts | Create a Script 
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -43,13 +43,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsGet`: ScriptsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsGet`: %v\n", resp)
 }
 ```
 
@@ -104,7 +104,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -112,9 +112,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.ScriptsAPI.V1ScriptsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -172,7 +172,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -180,13 +180,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdDownloadGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdDownloadGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdDownloadGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDownloadGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsIdDownloadGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsIdDownloadGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdDownloadGet`: %v\n", resp)
 }
 ```
 
@@ -242,7 +242,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -250,13 +250,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsIdGet`: Script
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdGet`: %v\n", resp)
 }
 ```
 
@@ -312,7 +312,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -324,13 +324,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -390,7 +390,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -399,13 +399,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -462,7 +462,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -471,13 +471,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsIdPut(context.Background(), id).Script(script).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdPut(context.Background(), id).Script(script).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsIdPut`: Script
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdPut`: %v\n", resp)
 }
 ```
 
@@ -534,7 +534,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -542,13 +542,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsApi.V1ScriptsPost(context.Background()).Script(script).Execute()
+    resp, r, err := apiClient.ScriptsAPI.V1ScriptsPost(context.Background()).Script(script).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsApi.V1ScriptsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1ScriptsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsApi.V1ScriptsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsPost`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerInventoryRecoveryLockPasswordResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerInventoryRecoveryLockPasswordResponse{}
+
 // ComputerInventoryRecoveryLockPasswordResponse struct for ComputerInventoryRecoveryLockPasswordResponse
 type ComputerInventoryRecoveryLockPasswordResponse struct {
 	RecoveryLockPassword *string `json:"recoveryLockPassword,omitempty"`
@@ -38,7 +41,7 @@ func NewComputerInventoryRecoveryLockPasswordResponseWithDefaults() *ComputerInv
 
 // GetRecoveryLockPassword returns the RecoveryLockPassword field value if set, zero value otherwise.
 func (o *ComputerInventoryRecoveryLockPasswordResponse) GetRecoveryLockPassword() string {
-	if o == nil || o.RecoveryLockPassword == nil {
+	if o == nil || IsNil(o.RecoveryLockPassword) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *ComputerInventoryRecoveryLockPasswordResponse) GetRecoveryLockPassword(
 // GetRecoveryLockPasswordOk returns a tuple with the RecoveryLockPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerInventoryRecoveryLockPasswordResponse) GetRecoveryLockPasswordOk() (*string, bool) {
-	if o == nil || o.RecoveryLockPassword == nil {
+	if o == nil || IsNil(o.RecoveryLockPassword) {
 		return nil, false
 	}
 	return o.RecoveryLockPassword, true
@@ -56,7 +59,7 @@ func (o *ComputerInventoryRecoveryLockPasswordResponse) GetRecoveryLockPasswordO
 
 // HasRecoveryLockPassword returns a boolean if a field has been set.
 func (o *ComputerInventoryRecoveryLockPasswordResponse) HasRecoveryLockPassword() bool {
-	if o != nil && o.RecoveryLockPassword != nil {
+	if o != nil && !IsNil(o.RecoveryLockPassword) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *ComputerInventoryRecoveryLockPasswordResponse) SetRecoveryLockPassword(
 }
 
 func (o ComputerInventoryRecoveryLockPasswordResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RecoveryLockPassword != nil {
-		toSerialize["recoveryLockPassword"] = o.RecoveryLockPassword
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerInventoryRecoveryLockPasswordResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RecoveryLockPassword) {
+		toSerialize["recoveryLockPassword"] = o.RecoveryLockPassword
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerInventoryRecoveryLockPasswordResponse struct {

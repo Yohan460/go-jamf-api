@@ -1,11 +1,11 @@
-# \SmartMobileDeviceGroupsPreviewApi
+# \SmartMobileDeviceGroupsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1MobileDevicesIdRecalculateSmartGroupsPost**](SmartMobileDeviceGroupsPreviewApi.md#V1MobileDevicesIdRecalculateSmartGroupsPost) | **Post** /v1/mobile-devices/{id}/recalculate-smart-groups | Recalculate all smart groups for the given device id and then return count of smart groups that device fall into 
-[**V1SmartMobileDeviceGroupsIdRecalculatePost**](SmartMobileDeviceGroupsPreviewApi.md#V1SmartMobileDeviceGroupsIdRecalculatePost) | **Post** /v1/smart-mobile-device-groups/{id}/recalculate | Recalculate a smart group for the given id then return the ids for the devices in the smart group 
+[**V1MobileDevicesIdRecalculateSmartGroupsPost**](SmartMobileDeviceGroupsPreviewAPI.md#V1MobileDevicesIdRecalculateSmartGroupsPost) | **Post** /v1/mobile-devices/{id}/recalculate-smart-groups | Recalculate all smart groups for the given device id and then return count of smart groups that device fall into 
+[**V1SmartMobileDeviceGroupsIdRecalculatePost**](SmartMobileDeviceGroupsPreviewAPI.md#V1SmartMobileDeviceGroupsIdRecalculatePost) | **Post** /v1/smart-mobile-device-groups/{id}/recalculate | Recalculate a smart group for the given id then return the ids for the devices in the smart group 
 
 
 
@@ -26,7 +26,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -34,13 +34,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewApi.V1MobileDevicesIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
+    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewApi.V1MobileDevicesIdRecalculateSmartGroupsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicesIdRecalculateSmartGroupsPost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewApi.V1MobileDevicesIdRecalculateSmartGroupsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewApi.V1SmartMobileDeviceGroupsIdRecalculatePost(context.Background(), id).Execute()
+    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewApi.V1SmartMobileDeviceGroupsIdRecalculatePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SmartMobileDeviceGroupsIdRecalculatePost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewApi.V1SmartMobileDeviceGroupsIdRecalculatePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost`: %v\n", resp)
 }
 ```
 

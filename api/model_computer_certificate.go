@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerCertificate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerCertificate{}
+
 // ComputerCertificate struct for ComputerCertificate
 type ComputerCertificate struct {
 	CommonName *string `json:"commonName,omitempty"`
@@ -23,6 +26,10 @@ type ComputerCertificate struct {
 	Username *string `json:"username,omitempty"`
 	LifecycleStatus *string `json:"lifecycleStatus,omitempty"`
 	CertificateStatus *string `json:"certificateStatus,omitempty"`
+	SubjectName *string `json:"subjectName,omitempty"`
+	SerialNumber *string `json:"serialNumber,omitempty"`
+	Sha1Fingerprint *string `json:"sha1Fingerprint,omitempty"`
+	IssuedDate *string `json:"issuedDate,omitempty"`
 }
 
 // NewComputerCertificate instantiates a new ComputerCertificate object
@@ -44,7 +51,7 @@ func NewComputerCertificateWithDefaults() *ComputerCertificate {
 
 // GetCommonName returns the CommonName field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetCommonName() string {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		var ret string
 		return ret
 	}
@@ -54,7 +61,7 @@ func (o *ComputerCertificate) GetCommonName() string {
 // GetCommonNameOk returns a tuple with the CommonName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetCommonNameOk() (*string, bool) {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		return nil, false
 	}
 	return o.CommonName, true
@@ -62,7 +69,7 @@ func (o *ComputerCertificate) GetCommonNameOk() (*string, bool) {
 
 // HasCommonName returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasCommonName() bool {
-	if o != nil && o.CommonName != nil {
+	if o != nil && !IsNil(o.CommonName) {
 		return true
 	}
 
@@ -76,7 +83,7 @@ func (o *ComputerCertificate) SetCommonName(v string) {
 
 // GetIdentity returns the Identity field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetIdentity() bool {
-	if o == nil || o.Identity == nil {
+	if o == nil || IsNil(o.Identity) {
 		var ret bool
 		return ret
 	}
@@ -86,7 +93,7 @@ func (o *ComputerCertificate) GetIdentity() bool {
 // GetIdentityOk returns a tuple with the Identity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetIdentityOk() (*bool, bool) {
-	if o == nil || o.Identity == nil {
+	if o == nil || IsNil(o.Identity) {
 		return nil, false
 	}
 	return o.Identity, true
@@ -94,7 +101,7 @@ func (o *ComputerCertificate) GetIdentityOk() (*bool, bool) {
 
 // HasIdentity returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasIdentity() bool {
-	if o != nil && o.Identity != nil {
+	if o != nil && !IsNil(o.Identity) {
 		return true
 	}
 
@@ -108,7 +115,7 @@ func (o *ComputerCertificate) SetIdentity(v bool) {
 
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetExpirationDate() time.Time {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		var ret time.Time
 		return ret
 	}
@@ -118,7 +125,7 @@ func (o *ComputerCertificate) GetExpirationDate() time.Time {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetExpirationDateOk() (*time.Time, bool) {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		return nil, false
 	}
 	return o.ExpirationDate, true
@@ -126,7 +133,7 @@ func (o *ComputerCertificate) GetExpirationDateOk() (*time.Time, bool) {
 
 // HasExpirationDate returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasExpirationDate() bool {
-	if o != nil && o.ExpirationDate != nil {
+	if o != nil && !IsNil(o.ExpirationDate) {
 		return true
 	}
 
@@ -140,7 +147,7 @@ func (o *ComputerCertificate) SetExpirationDate(v time.Time) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -150,7 +157,7 @@ func (o *ComputerCertificate) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -158,7 +165,7 @@ func (o *ComputerCertificate) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -172,7 +179,7 @@ func (o *ComputerCertificate) SetUsername(v string) {
 
 // GetLifecycleStatus returns the LifecycleStatus field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetLifecycleStatus() string {
-	if o == nil || o.LifecycleStatus == nil {
+	if o == nil || IsNil(o.LifecycleStatus) {
 		var ret string
 		return ret
 	}
@@ -182,7 +189,7 @@ func (o *ComputerCertificate) GetLifecycleStatus() string {
 // GetLifecycleStatusOk returns a tuple with the LifecycleStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetLifecycleStatusOk() (*string, bool) {
-	if o == nil || o.LifecycleStatus == nil {
+	if o == nil || IsNil(o.LifecycleStatus) {
 		return nil, false
 	}
 	return o.LifecycleStatus, true
@@ -190,7 +197,7 @@ func (o *ComputerCertificate) GetLifecycleStatusOk() (*string, bool) {
 
 // HasLifecycleStatus returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasLifecycleStatus() bool {
-	if o != nil && o.LifecycleStatus != nil {
+	if o != nil && !IsNil(o.LifecycleStatus) {
 		return true
 	}
 
@@ -204,7 +211,7 @@ func (o *ComputerCertificate) SetLifecycleStatus(v string) {
 
 // GetCertificateStatus returns the CertificateStatus field value if set, zero value otherwise.
 func (o *ComputerCertificate) GetCertificateStatus() string {
-	if o == nil || o.CertificateStatus == nil {
+	if o == nil || IsNil(o.CertificateStatus) {
 		var ret string
 		return ret
 	}
@@ -214,7 +221,7 @@ func (o *ComputerCertificate) GetCertificateStatus() string {
 // GetCertificateStatusOk returns a tuple with the CertificateStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerCertificate) GetCertificateStatusOk() (*string, bool) {
-	if o == nil || o.CertificateStatus == nil {
+	if o == nil || IsNil(o.CertificateStatus) {
 		return nil, false
 	}
 	return o.CertificateStatus, true
@@ -222,7 +229,7 @@ func (o *ComputerCertificate) GetCertificateStatusOk() (*string, bool) {
 
 // HasCertificateStatus returns a boolean if a field has been set.
 func (o *ComputerCertificate) HasCertificateStatus() bool {
-	if o != nil && o.CertificateStatus != nil {
+	if o != nil && !IsNil(o.CertificateStatus) {
 		return true
 	}
 
@@ -234,27 +241,175 @@ func (o *ComputerCertificate) SetCertificateStatus(v string) {
 	o.CertificateStatus = &v
 }
 
+// GetSubjectName returns the SubjectName field value if set, zero value otherwise.
+func (o *ComputerCertificate) GetSubjectName() string {
+	if o == nil || IsNil(o.SubjectName) {
+		var ret string
+		return ret
+	}
+	return *o.SubjectName
+}
+
+// GetSubjectNameOk returns a tuple with the SubjectName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerCertificate) GetSubjectNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SubjectName) {
+		return nil, false
+	}
+	return o.SubjectName, true
+}
+
+// HasSubjectName returns a boolean if a field has been set.
+func (o *ComputerCertificate) HasSubjectName() bool {
+	if o != nil && !IsNil(o.SubjectName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubjectName gets a reference to the given string and assigns it to the SubjectName field.
+func (o *ComputerCertificate) SetSubjectName(v string) {
+	o.SubjectName = &v
+}
+
+// GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
+func (o *ComputerCertificate) GetSerialNumber() string {
+	if o == nil || IsNil(o.SerialNumber) {
+		var ret string
+		return ret
+	}
+	return *o.SerialNumber
+}
+
+// GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerCertificate) GetSerialNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.SerialNumber) {
+		return nil, false
+	}
+	return o.SerialNumber, true
+}
+
+// HasSerialNumber returns a boolean if a field has been set.
+func (o *ComputerCertificate) HasSerialNumber() bool {
+	if o != nil && !IsNil(o.SerialNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialNumber gets a reference to the given string and assigns it to the SerialNumber field.
+func (o *ComputerCertificate) SetSerialNumber(v string) {
+	o.SerialNumber = &v
+}
+
+// GetSha1Fingerprint returns the Sha1Fingerprint field value if set, zero value otherwise.
+func (o *ComputerCertificate) GetSha1Fingerprint() string {
+	if o == nil || IsNil(o.Sha1Fingerprint) {
+		var ret string
+		return ret
+	}
+	return *o.Sha1Fingerprint
+}
+
+// GetSha1FingerprintOk returns a tuple with the Sha1Fingerprint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerCertificate) GetSha1FingerprintOk() (*string, bool) {
+	if o == nil || IsNil(o.Sha1Fingerprint) {
+		return nil, false
+	}
+	return o.Sha1Fingerprint, true
+}
+
+// HasSha1Fingerprint returns a boolean if a field has been set.
+func (o *ComputerCertificate) HasSha1Fingerprint() bool {
+	if o != nil && !IsNil(o.Sha1Fingerprint) {
+		return true
+	}
+
+	return false
+}
+
+// SetSha1Fingerprint gets a reference to the given string and assigns it to the Sha1Fingerprint field.
+func (o *ComputerCertificate) SetSha1Fingerprint(v string) {
+	o.Sha1Fingerprint = &v
+}
+
+// GetIssuedDate returns the IssuedDate field value if set, zero value otherwise.
+func (o *ComputerCertificate) GetIssuedDate() string {
+	if o == nil || IsNil(o.IssuedDate) {
+		var ret string
+		return ret
+	}
+	return *o.IssuedDate
+}
+
+// GetIssuedDateOk returns a tuple with the IssuedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerCertificate) GetIssuedDateOk() (*string, bool) {
+	if o == nil || IsNil(o.IssuedDate) {
+		return nil, false
+	}
+	return o.IssuedDate, true
+}
+
+// HasIssuedDate returns a boolean if a field has been set.
+func (o *ComputerCertificate) HasIssuedDate() bool {
+	if o != nil && !IsNil(o.IssuedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetIssuedDate gets a reference to the given string and assigns it to the IssuedDate field.
+func (o *ComputerCertificate) SetIssuedDate(v string) {
+	o.IssuedDate = &v
+}
+
 func (o ComputerCertificate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CommonName != nil {
-		toSerialize["commonName"] = o.CommonName
-	}
-	if o.Identity != nil {
-		toSerialize["identity"] = o.Identity
-	}
-	if o.ExpirationDate != nil {
-		toSerialize["expirationDate"] = o.ExpirationDate
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.LifecycleStatus != nil {
-		toSerialize["lifecycleStatus"] = o.LifecycleStatus
-	}
-	if o.CertificateStatus != nil {
-		toSerialize["certificateStatus"] = o.CertificateStatus
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerCertificate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CommonName) {
+		toSerialize["commonName"] = o.CommonName
+	}
+	if !IsNil(o.Identity) {
+		toSerialize["identity"] = o.Identity
+	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expirationDate"] = o.ExpirationDate
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.LifecycleStatus) {
+		toSerialize["lifecycleStatus"] = o.LifecycleStatus
+	}
+	if !IsNil(o.CertificateStatus) {
+		toSerialize["certificateStatus"] = o.CertificateStatus
+	}
+	if !IsNil(o.SubjectName) {
+		toSerialize["subjectName"] = o.SubjectName
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.Sha1Fingerprint) {
+		toSerialize["sha1Fingerprint"] = o.Sha1Fingerprint
+	}
+	if !IsNil(o.IssuedDate) {
+		toSerialize["issuedDate"] = o.IssuedDate
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerCertificate struct {

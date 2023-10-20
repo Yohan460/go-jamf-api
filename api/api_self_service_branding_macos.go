@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type SelfServiceBrandingMacosApi interface {
+type SelfServiceBrandingMacosAPI interface {
 
 	/*
 	V1SelfServiceBrandingMacosGet Search for sorted and paged macOS branding configurations 
@@ -29,13 +29,13 @@ type SelfServiceBrandingMacosApi interface {
 	Search for sorted and paged macOS branding configurations
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SelfServiceBrandingMacosGetRequest
+	@return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest
 	*/
-	V1SelfServiceBrandingMacosGet(ctx context.Context) ApiV1SelfServiceBrandingMacosGetRequest
+	V1SelfServiceBrandingMacosGet(ctx context.Context) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest
 
 	// V1SelfServiceBrandingMacosGetExecute executes the request
 	//  @return MacOsBrandingSearchResults
-	V1SelfServiceBrandingMacosGetExecute(r ApiV1SelfServiceBrandingMacosGetRequest) (*MacOsBrandingSearchResults, *http.Response, error)
+	V1SelfServiceBrandingMacosGetExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) (*MacOsBrandingSearchResults, *http.Response, error)
 
 	/*
 	V1SelfServiceBrandingMacosIdDelete Delete the Self Service macOS branding configuration indicated by the provided id 
@@ -44,12 +44,12 @@ type SelfServiceBrandingMacosApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of macOS branding configuration
-	@return ApiV1SelfServiceBrandingMacosIdDeleteRequest
+	@return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest
 	*/
-	V1SelfServiceBrandingMacosIdDelete(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdDeleteRequest
+	V1SelfServiceBrandingMacosIdDelete(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest
 
 	// V1SelfServiceBrandingMacosIdDeleteExecute executes the request
-	V1SelfServiceBrandingMacosIdDeleteExecute(r ApiV1SelfServiceBrandingMacosIdDeleteRequest) (*http.Response, error)
+	V1SelfServiceBrandingMacosIdDeleteExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1SelfServiceBrandingMacosIdGet Read a single Self Service macOS branding configuration indicated by the provided id 
@@ -58,13 +58,13 @@ type SelfServiceBrandingMacosApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of macOS branding configuration
-	@return ApiV1SelfServiceBrandingMacosIdGetRequest
+	@return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest
 	*/
-	V1SelfServiceBrandingMacosIdGet(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdGetRequest
+	V1SelfServiceBrandingMacosIdGet(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest
 
 	// V1SelfServiceBrandingMacosIdGetExecute executes the request
 	//  @return MacOsBrandingConfiguration
-	V1SelfServiceBrandingMacosIdGetExecute(r ApiV1SelfServiceBrandingMacosIdGetRequest) (*MacOsBrandingConfiguration, *http.Response, error)
+	V1SelfServiceBrandingMacosIdGetExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest) (*MacOsBrandingConfiguration, *http.Response, error)
 
 	/*
 	V1SelfServiceBrandingMacosIdPut Update a Self Service macOS branding configuration with the supplied details 
@@ -73,13 +73,13 @@ type SelfServiceBrandingMacosApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of macOS branding configuration
-	@return ApiV1SelfServiceBrandingMacosIdPutRequest
+	@return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest
 	*/
-	V1SelfServiceBrandingMacosIdPut(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdPutRequest
+	V1SelfServiceBrandingMacosIdPut(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest
 
 	// V1SelfServiceBrandingMacosIdPutExecute executes the request
 	//  @return MacOsBrandingConfiguration
-	V1SelfServiceBrandingMacosIdPutExecute(r ApiV1SelfServiceBrandingMacosIdPutRequest) (*MacOsBrandingConfiguration, *http.Response, error)
+	V1SelfServiceBrandingMacosIdPutExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest) (*MacOsBrandingConfiguration, *http.Response, error)
 
 	/*
 	V1SelfServiceBrandingMacosPost Create a Self Service macOS branding configuration with the supplied 
@@ -87,43 +87,43 @@ type SelfServiceBrandingMacosApi interface {
 	Create a Self Service macOS branding configuration with the supplied details
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SelfServiceBrandingMacosPostRequest
+	@return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest
 	*/
-	V1SelfServiceBrandingMacosPost(ctx context.Context) ApiV1SelfServiceBrandingMacosPostRequest
+	V1SelfServiceBrandingMacosPost(ctx context.Context) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest
 
 	// V1SelfServiceBrandingMacosPostExecute executes the request
 	//  @return HrefResponse
-	V1SelfServiceBrandingMacosPostExecute(r ApiV1SelfServiceBrandingMacosPostRequest) (*HrefResponse, *http.Response, error)
+	V1SelfServiceBrandingMacosPostExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// SelfServiceBrandingMacosApiService SelfServiceBrandingMacosApi service
-type SelfServiceBrandingMacosApiService service
+// SelfServiceBrandingMacosAPIService SelfServiceBrandingMacosAPI service
+type SelfServiceBrandingMacosAPIService service
 
-type ApiV1SelfServiceBrandingMacosGetRequest struct {
+type SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingMacosApi
+	ApiService SelfServiceBrandingMacosAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV1SelfServiceBrandingMacosGetRequest) Page(page int32) ApiV1SelfServiceBrandingMacosGetRequest {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) Page(page int32) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1SelfServiceBrandingMacosGetRequest) PageSize(pageSize int32) ApiV1SelfServiceBrandingMacosGetRequest {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) PageSize(pageSize int32) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,brandingName:asc 
-func (r ApiV1SelfServiceBrandingMacosGetRequest) Sort(sort []string) ApiV1SelfServiceBrandingMacosGetRequest {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) Sort(sort []string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1SelfServiceBrandingMacosGetRequest) Execute() (*MacOsBrandingSearchResults, *http.Response, error) {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) Execute() (*MacOsBrandingSearchResults, *http.Response, error) {
 	return r.ApiService.V1SelfServiceBrandingMacosGetExecute(r)
 }
 
@@ -133,10 +133,10 @@ V1SelfServiceBrandingMacosGet Search for sorted and paged macOS branding configu
 Search for sorted and paged macOS branding configurations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SelfServiceBrandingMacosGetRequest
+ @return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest
 */
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGet(ctx context.Context) ApiV1SelfServiceBrandingMacosGetRequest {
-	return ApiV1SelfServiceBrandingMacosGetRequest{
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosGet(ctx context.Context) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest {
+	return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -144,7 +144,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGet(ctx c
 
 // Execute executes the request
 //  @return MacOsBrandingSearchResults
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecute(r ApiV1SelfServiceBrandingMacosGetRequest) (*MacOsBrandingSearchResults, *http.Response, error) {
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosGetExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosGetRequest) (*MacOsBrandingSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -152,7 +152,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecut
 		localVarReturnValue  *MacOsBrandingSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosApiService.V1SelfServiceBrandingMacosGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosAPIService.V1SelfServiceBrandingMacosGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -164,21 +164,30 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecut
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -207,9 +216,9 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecut
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -234,13 +243,13 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosGetExecut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SelfServiceBrandingMacosIdDeleteRequest struct {
+type SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingMacosApi
+	ApiService SelfServiceBrandingMacosAPI
 	id string
 }
 
-func (r ApiV1SelfServiceBrandingMacosIdDeleteRequest) Execute() (*http.Response, error) {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1SelfServiceBrandingMacosIdDeleteExecute(r)
 }
 
@@ -251,10 +260,10 @@ Delete the Self Service macOS branding configuration indicated by the provided i
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of macOS branding configuration
- @return ApiV1SelfServiceBrandingMacosIdDeleteRequest
+ @return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest
 */
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDelete(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdDeleteRequest {
-	return ApiV1SelfServiceBrandingMacosIdDeleteRequest{
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdDelete(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest {
+	return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -262,20 +271,20 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDelete(
 }
 
 // Execute executes the request
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDeleteExecute(r ApiV1SelfServiceBrandingMacosIdDeleteRequest) (*http.Response, error) {
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdDeleteExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosApiService.V1SelfServiceBrandingMacosIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosAPIService.V1SelfServiceBrandingMacosIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/self-service/branding/macos/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -308,9 +317,9 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDeleteE
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -327,7 +336,8 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDeleteE
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -335,13 +345,13 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdDeleteE
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1SelfServiceBrandingMacosIdGetRequest struct {
+type SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingMacosApi
+	ApiService SelfServiceBrandingMacosAPI
 	id string
 }
 
-func (r ApiV1SelfServiceBrandingMacosIdGetRequest) Execute() (*MacOsBrandingConfiguration, *http.Response, error) {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest) Execute() (*MacOsBrandingConfiguration, *http.Response, error) {
 	return r.ApiService.V1SelfServiceBrandingMacosIdGetExecute(r)
 }
 
@@ -352,10 +362,10 @@ Read a single Self Service macOS branding configuration indicated by the provide
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of macOS branding configuration
- @return ApiV1SelfServiceBrandingMacosIdGetRequest
+ @return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest
 */
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGet(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdGetRequest {
-	return ApiV1SelfServiceBrandingMacosIdGetRequest{
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdGet(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest {
+	return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -364,7 +374,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGet(ctx
 
 // Execute executes the request
 //  @return MacOsBrandingConfiguration
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGetExecute(r ApiV1SelfServiceBrandingMacosIdGetRequest) (*MacOsBrandingConfiguration, *http.Response, error) {
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdGetExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdGetRequest) (*MacOsBrandingConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -372,13 +382,13 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGetExec
 		localVarReturnValue  *MacOsBrandingConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosApiService.V1SelfServiceBrandingMacosIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosAPIService.V1SelfServiceBrandingMacosIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/self-service/branding/macos/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -411,9 +421,9 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGetExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -438,20 +448,20 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdGetExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SelfServiceBrandingMacosIdPutRequest struct {
+type SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingMacosApi
+	ApiService SelfServiceBrandingMacosAPI
 	id string
 	macOsBrandingConfiguration *MacOsBrandingConfiguration
 }
 
 // The macOS branding configuration values to update
-func (r ApiV1SelfServiceBrandingMacosIdPutRequest) MacOsBrandingConfiguration(macOsBrandingConfiguration MacOsBrandingConfiguration) ApiV1SelfServiceBrandingMacosIdPutRequest {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest) MacOsBrandingConfiguration(macOsBrandingConfiguration MacOsBrandingConfiguration) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest {
 	r.macOsBrandingConfiguration = &macOsBrandingConfiguration
 	return r
 }
 
-func (r ApiV1SelfServiceBrandingMacosIdPutRequest) Execute() (*MacOsBrandingConfiguration, *http.Response, error) {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest) Execute() (*MacOsBrandingConfiguration, *http.Response, error) {
 	return r.ApiService.V1SelfServiceBrandingMacosIdPutExecute(r)
 }
 
@@ -462,10 +472,10 @@ Update a Self Service macOS branding configuration with the supplied details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of macOS branding configuration
- @return ApiV1SelfServiceBrandingMacosIdPutRequest
+ @return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest
 */
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPut(ctx context.Context, id string) ApiV1SelfServiceBrandingMacosIdPutRequest {
-	return ApiV1SelfServiceBrandingMacosIdPutRequest{
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdPut(ctx context.Context, id string) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest {
+	return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -474,7 +484,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPut(ctx
 
 // Execute executes the request
 //  @return MacOsBrandingConfiguration
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExecute(r ApiV1SelfServiceBrandingMacosIdPutRequest) (*MacOsBrandingConfiguration, *http.Response, error) {
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosIdPutExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosIdPutRequest) (*MacOsBrandingConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -482,13 +492,13 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExec
 		localVarReturnValue  *MacOsBrandingConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosApiService.V1SelfServiceBrandingMacosIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosAPIService.V1SelfServiceBrandingMacosIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/self-service/branding/macos/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -523,9 +533,9 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -542,7 +552,8 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExec
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -559,19 +570,19 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosIdPutExec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SelfServiceBrandingMacosPostRequest struct {
+type SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest struct {
 	ctx context.Context
-	ApiService SelfServiceBrandingMacosApi
+	ApiService SelfServiceBrandingMacosAPI
 	macOsBrandingConfiguration *MacOsBrandingConfiguration
 }
 
 // The macOS branding configuration to create
-func (r ApiV1SelfServiceBrandingMacosPostRequest) MacOsBrandingConfiguration(macOsBrandingConfiguration MacOsBrandingConfiguration) ApiV1SelfServiceBrandingMacosPostRequest {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest) MacOsBrandingConfiguration(macOsBrandingConfiguration MacOsBrandingConfiguration) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest {
 	r.macOsBrandingConfiguration = &macOsBrandingConfiguration
 	return r
 }
 
-func (r ApiV1SelfServiceBrandingMacosPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1SelfServiceBrandingMacosPostExecute(r)
 }
 
@@ -581,10 +592,10 @@ V1SelfServiceBrandingMacosPost Create a Self Service macOS branding configuratio
 Create a Self Service macOS branding configuration with the supplied details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SelfServiceBrandingMacosPostRequest
+ @return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest
 */
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosPost(ctx context.Context) ApiV1SelfServiceBrandingMacosPostRequest {
-	return ApiV1SelfServiceBrandingMacosPostRequest{
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosPost(ctx context.Context) SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest {
+	return SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -592,7 +603,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosPost(ctx 
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosPostExecute(r ApiV1SelfServiceBrandingMacosPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosPostExecute(r SelfServiceBrandingMacosAPIV1SelfServiceBrandingMacosPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -600,7 +611,7 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosPostExecu
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosApiService.V1SelfServiceBrandingMacosPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceBrandingMacosAPIService.V1SelfServiceBrandingMacosPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -640,9 +651,9 @@ func (a *SelfServiceBrandingMacosApiService) V1SelfServiceBrandingMacosPostExecu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

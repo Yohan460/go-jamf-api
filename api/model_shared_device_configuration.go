@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SharedDeviceConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SharedDeviceConfiguration{}
+
 // SharedDeviceConfiguration struct for SharedDeviceConfiguration
 type SharedDeviceConfiguration struct {
 	QuotaSize *int32 `json:"quotaSize,omitempty"`
@@ -39,7 +42,7 @@ func NewSharedDeviceConfigurationWithDefaults() *SharedDeviceConfiguration {
 
 // GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
 func (o *SharedDeviceConfiguration) GetQuotaSize() int32 {
-	if o == nil || o.QuotaSize == nil {
+	if o == nil || IsNil(o.QuotaSize) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *SharedDeviceConfiguration) GetQuotaSize() int32 {
 // GetQuotaSizeOk returns a tuple with the QuotaSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int32, bool) {
-	if o == nil || o.QuotaSize == nil {
+	if o == nil || IsNil(o.QuotaSize) {
 		return nil, false
 	}
 	return o.QuotaSize, true
@@ -57,7 +60,7 @@ func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int32, bool) {
 
 // HasQuotaSize returns a boolean if a field has been set.
 func (o *SharedDeviceConfiguration) HasQuotaSize() bool {
-	if o != nil && o.QuotaSize != nil {
+	if o != nil && !IsNil(o.QuotaSize) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *SharedDeviceConfiguration) SetQuotaSize(v int32) {
 
 // GetResidentUsers returns the ResidentUsers field value if set, zero value otherwise.
 func (o *SharedDeviceConfiguration) GetResidentUsers() int32 {
-	if o == nil || o.ResidentUsers == nil {
+	if o == nil || IsNil(o.ResidentUsers) {
 		var ret int32
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *SharedDeviceConfiguration) GetResidentUsers() int32 {
 // GetResidentUsersOk returns a tuple with the ResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int32, bool) {
-	if o == nil || o.ResidentUsers == nil {
+	if o == nil || IsNil(o.ResidentUsers) {
 		return nil, false
 	}
 	return o.ResidentUsers, true
@@ -89,7 +92,7 @@ func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int32, bool) {
 
 // HasResidentUsers returns a boolean if a field has been set.
 func (o *SharedDeviceConfiguration) HasResidentUsers() bool {
-	if o != nil && o.ResidentUsers != nil {
+	if o != nil && !IsNil(o.ResidentUsers) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *SharedDeviceConfiguration) SetResidentUsers(v int32) {
 }
 
 func (o SharedDeviceConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.QuotaSize != nil {
-		toSerialize["quotaSize"] = o.QuotaSize
-	}
-	if o.ResidentUsers != nil {
-		toSerialize["residentUsers"] = o.ResidentUsers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SharedDeviceConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.QuotaSize) {
+		toSerialize["quotaSize"] = o.QuotaSize
+	}
+	if !IsNil(o.ResidentUsers) {
+		toSerialize["residentUsers"] = o.ResidentUsers
+	}
+	return toSerialize, nil
 }
 
 type NullableSharedDeviceConfiguration struct {

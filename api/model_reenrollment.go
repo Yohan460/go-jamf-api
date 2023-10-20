@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Reenrollment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Reenrollment{}
+
 // Reenrollment struct for Reenrollment
 type Reenrollment struct {
 	IsFlushPolicyHistoryEnabled *bool `json:"isFlushPolicyHistoryEnabled,omitempty"`
@@ -59,7 +62,7 @@ func NewReenrollmentWithDefaults() *Reenrollment {
 
 // GetIsFlushPolicyHistoryEnabled returns the IsFlushPolicyHistoryEnabled field value if set, zero value otherwise.
 func (o *Reenrollment) GetIsFlushPolicyHistoryEnabled() bool {
-	if o == nil || o.IsFlushPolicyHistoryEnabled == nil {
+	if o == nil || IsNil(o.IsFlushPolicyHistoryEnabled) {
 		var ret bool
 		return ret
 	}
@@ -69,7 +72,7 @@ func (o *Reenrollment) GetIsFlushPolicyHistoryEnabled() bool {
 // GetIsFlushPolicyHistoryEnabledOk returns a tuple with the IsFlushPolicyHistoryEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reenrollment) GetIsFlushPolicyHistoryEnabledOk() (*bool, bool) {
-	if o == nil || o.IsFlushPolicyHistoryEnabled == nil {
+	if o == nil || IsNil(o.IsFlushPolicyHistoryEnabled) {
 		return nil, false
 	}
 	return o.IsFlushPolicyHistoryEnabled, true
@@ -77,7 +80,7 @@ func (o *Reenrollment) GetIsFlushPolicyHistoryEnabledOk() (*bool, bool) {
 
 // HasIsFlushPolicyHistoryEnabled returns a boolean if a field has been set.
 func (o *Reenrollment) HasIsFlushPolicyHistoryEnabled() bool {
-	if o != nil && o.IsFlushPolicyHistoryEnabled != nil {
+	if o != nil && !IsNil(o.IsFlushPolicyHistoryEnabled) {
 		return true
 	}
 
@@ -91,7 +94,7 @@ func (o *Reenrollment) SetIsFlushPolicyHistoryEnabled(v bool) {
 
 // GetIsFlushLocationInformationEnabled returns the IsFlushLocationInformationEnabled field value if set, zero value otherwise.
 func (o *Reenrollment) GetIsFlushLocationInformationEnabled() bool {
-	if o == nil || o.IsFlushLocationInformationEnabled == nil {
+	if o == nil || IsNil(o.IsFlushLocationInformationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *Reenrollment) GetIsFlushLocationInformationEnabled() bool {
 // GetIsFlushLocationInformationEnabledOk returns a tuple with the IsFlushLocationInformationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reenrollment) GetIsFlushLocationInformationEnabledOk() (*bool, bool) {
-	if o == nil || o.IsFlushLocationInformationEnabled == nil {
+	if o == nil || IsNil(o.IsFlushLocationInformationEnabled) {
 		return nil, false
 	}
 	return o.IsFlushLocationInformationEnabled, true
@@ -109,7 +112,7 @@ func (o *Reenrollment) GetIsFlushLocationInformationEnabledOk() (*bool, bool) {
 
 // HasIsFlushLocationInformationEnabled returns a boolean if a field has been set.
 func (o *Reenrollment) HasIsFlushLocationInformationEnabled() bool {
-	if o != nil && o.IsFlushLocationInformationEnabled != nil {
+	if o != nil && !IsNil(o.IsFlushLocationInformationEnabled) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *Reenrollment) SetIsFlushLocationInformationEnabled(v bool) {
 
 // GetIsFlushLocationInformationHistoryEnabled returns the IsFlushLocationInformationHistoryEnabled field value if set, zero value otherwise.
 func (o *Reenrollment) GetIsFlushLocationInformationHistoryEnabled() bool {
-	if o == nil || o.IsFlushLocationInformationHistoryEnabled == nil {
+	if o == nil || IsNil(o.IsFlushLocationInformationHistoryEnabled) {
 		var ret bool
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *Reenrollment) GetIsFlushLocationInformationHistoryEnabled() bool {
 // GetIsFlushLocationInformationHistoryEnabledOk returns a tuple with the IsFlushLocationInformationHistoryEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reenrollment) GetIsFlushLocationInformationHistoryEnabledOk() (*bool, bool) {
-	if o == nil || o.IsFlushLocationInformationHistoryEnabled == nil {
+	if o == nil || IsNil(o.IsFlushLocationInformationHistoryEnabled) {
 		return nil, false
 	}
 	return o.IsFlushLocationInformationHistoryEnabled, true
@@ -141,7 +144,7 @@ func (o *Reenrollment) GetIsFlushLocationInformationHistoryEnabledOk() (*bool, b
 
 // HasIsFlushLocationInformationHistoryEnabled returns a boolean if a field has been set.
 func (o *Reenrollment) HasIsFlushLocationInformationHistoryEnabled() bool {
-	if o != nil && o.IsFlushLocationInformationHistoryEnabled != nil {
+	if o != nil && !IsNil(o.IsFlushLocationInformationHistoryEnabled) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *Reenrollment) SetIsFlushLocationInformationHistoryEnabled(v bool) {
 
 // GetIsFlushExtensionAttributesEnabled returns the IsFlushExtensionAttributesEnabled field value if set, zero value otherwise.
 func (o *Reenrollment) GetIsFlushExtensionAttributesEnabled() bool {
-	if o == nil || o.IsFlushExtensionAttributesEnabled == nil {
+	if o == nil || IsNil(o.IsFlushExtensionAttributesEnabled) {
 		var ret bool
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *Reenrollment) GetIsFlushExtensionAttributesEnabled() bool {
 // GetIsFlushExtensionAttributesEnabledOk returns a tuple with the IsFlushExtensionAttributesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Reenrollment) GetIsFlushExtensionAttributesEnabledOk() (*bool, bool) {
-	if o == nil || o.IsFlushExtensionAttributesEnabled == nil {
+	if o == nil || IsNil(o.IsFlushExtensionAttributesEnabled) {
 		return nil, false
 	}
 	return o.IsFlushExtensionAttributesEnabled, true
@@ -173,7 +176,7 @@ func (o *Reenrollment) GetIsFlushExtensionAttributesEnabledOk() (*bool, bool) {
 
 // HasIsFlushExtensionAttributesEnabled returns a boolean if a field has been set.
 func (o *Reenrollment) HasIsFlushExtensionAttributesEnabled() bool {
-	if o != nil && o.IsFlushExtensionAttributesEnabled != nil {
+	if o != nil && !IsNil(o.IsFlushExtensionAttributesEnabled) {
 		return true
 	}
 
@@ -210,23 +213,29 @@ func (o *Reenrollment) SetFlushMDMQueue(v string) {
 }
 
 func (o Reenrollment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsFlushPolicyHistoryEnabled != nil {
-		toSerialize["isFlushPolicyHistoryEnabled"] = o.IsFlushPolicyHistoryEnabled
-	}
-	if o.IsFlushLocationInformationEnabled != nil {
-		toSerialize["isFlushLocationInformationEnabled"] = o.IsFlushLocationInformationEnabled
-	}
-	if o.IsFlushLocationInformationHistoryEnabled != nil {
-		toSerialize["isFlushLocationInformationHistoryEnabled"] = o.IsFlushLocationInformationHistoryEnabled
-	}
-	if o.IsFlushExtensionAttributesEnabled != nil {
-		toSerialize["isFlushExtensionAttributesEnabled"] = o.IsFlushExtensionAttributesEnabled
-	}
-	if true {
-		toSerialize["flushMDMQueue"] = o.FlushMDMQueue
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Reenrollment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsFlushPolicyHistoryEnabled) {
+		toSerialize["isFlushPolicyHistoryEnabled"] = o.IsFlushPolicyHistoryEnabled
+	}
+	if !IsNil(o.IsFlushLocationInformationEnabled) {
+		toSerialize["isFlushLocationInformationEnabled"] = o.IsFlushLocationInformationEnabled
+	}
+	if !IsNil(o.IsFlushLocationInformationHistoryEnabled) {
+		toSerialize["isFlushLocationInformationHistoryEnabled"] = o.IsFlushLocationInformationHistoryEnabled
+	}
+	if !IsNil(o.IsFlushExtensionAttributesEnabled) {
+		toSerialize["isFlushExtensionAttributesEnabled"] = o.IsFlushExtensionAttributesEnabled
+	}
+	toSerialize["flushMDMQueue"] = o.FlushMDMQueue
+	return toSerialize, nil
 }
 
 type NullableReenrollment struct {

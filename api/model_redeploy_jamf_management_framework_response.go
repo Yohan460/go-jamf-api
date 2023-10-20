@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RedeployJamfManagementFrameworkResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RedeployJamfManagementFrameworkResponse{}
+
 // RedeployJamfManagementFrameworkResponse struct for RedeployJamfManagementFrameworkResponse
 type RedeployJamfManagementFrameworkResponse struct {
 	DeviceId *string `json:"deviceId,omitempty"`
@@ -39,7 +42,7 @@ func NewRedeployJamfManagementFrameworkResponseWithDefaults() *RedeployJamfManag
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *RedeployJamfManagementFrameworkResponse) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *RedeployJamfManagementFrameworkResponse) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RedeployJamfManagementFrameworkResponse) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -57,7 +60,7 @@ func (o *RedeployJamfManagementFrameworkResponse) GetDeviceIdOk() (*string, bool
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *RedeployJamfManagementFrameworkResponse) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *RedeployJamfManagementFrameworkResponse) SetDeviceId(v string) {
 
 // GetCommandUuid returns the CommandUuid field value if set, zero value otherwise.
 func (o *RedeployJamfManagementFrameworkResponse) GetCommandUuid() string {
-	if o == nil || o.CommandUuid == nil {
+	if o == nil || IsNil(o.CommandUuid) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *RedeployJamfManagementFrameworkResponse) GetCommandUuid() string {
 // GetCommandUuidOk returns a tuple with the CommandUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RedeployJamfManagementFrameworkResponse) GetCommandUuidOk() (*string, bool) {
-	if o == nil || o.CommandUuid == nil {
+	if o == nil || IsNil(o.CommandUuid) {
 		return nil, false
 	}
 	return o.CommandUuid, true
@@ -89,7 +92,7 @@ func (o *RedeployJamfManagementFrameworkResponse) GetCommandUuidOk() (*string, b
 
 // HasCommandUuid returns a boolean if a field has been set.
 func (o *RedeployJamfManagementFrameworkResponse) HasCommandUuid() bool {
-	if o != nil && o.CommandUuid != nil {
+	if o != nil && !IsNil(o.CommandUuid) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *RedeployJamfManagementFrameworkResponse) SetCommandUuid(v string) {
 }
 
 func (o RedeployJamfManagementFrameworkResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.CommandUuid != nil {
-		toSerialize["commandUuid"] = o.CommandUuid
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RedeployJamfManagementFrameworkResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.CommandUuid) {
+		toSerialize["commandUuid"] = o.CommandUuid
+	}
+	return toSerialize, nil
 }
 
 type NullableRedeployJamfManagementFrameworkResponse struct {

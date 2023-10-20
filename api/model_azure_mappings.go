@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AzureMappings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureMappings{}
+
 // AzureMappings Azure Cloud Identity Provider mappings
 type AzureMappings struct {
 	UserId string `json:"userId"`
@@ -322,41 +325,27 @@ func (o *AzureMappings) SetGroupName(v string) {
 }
 
 func (o AzureMappings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userId"] = o.UserId
-	}
-	if true {
-		toSerialize["userName"] = o.UserName
-	}
-	if true {
-		toSerialize["realName"] = o.RealName
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["department"] = o.Department
-	}
-	if true {
-		toSerialize["building"] = o.Building
-	}
-	if true {
-		toSerialize["room"] = o.Room
-	}
-	if true {
-		toSerialize["phone"] = o.Phone
-	}
-	if true {
-		toSerialize["position"] = o.Position
-	}
-	if true {
-		toSerialize["groupId"] = o.GroupId
-	}
-	if true {
-		toSerialize["groupName"] = o.GroupName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AzureMappings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userId"] = o.UserId
+	toSerialize["userName"] = o.UserName
+	toSerialize["realName"] = o.RealName
+	toSerialize["email"] = o.Email
+	toSerialize["department"] = o.Department
+	toSerialize["building"] = o.Building
+	toSerialize["room"] = o.Room
+	toSerialize["phone"] = o.Phone
+	toSerialize["position"] = o.Position
+	toSerialize["groupId"] = o.GroupId
+	toSerialize["groupName"] = o.GroupName
+	return toSerialize, nil
 }
 
 type NullableAzureMappings struct {

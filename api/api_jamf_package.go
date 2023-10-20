@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type JamfPackageApi interface {
+type JamfPackageAPI interface {
 
 	/*
 	V1JamfPackageGet Get the packages for a given Jamf application 
@@ -27,13 +27,13 @@ type JamfPackageApi interface {
 	Get the packages for a given Jamf application.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfPackageGetRequest
+	@return JamfPackageAPIV1JamfPackageGetRequest
 	*/
-	V1JamfPackageGet(ctx context.Context) ApiV1JamfPackageGetRequest
+	V1JamfPackageGet(ctx context.Context) JamfPackageAPIV1JamfPackageGetRequest
 
 	// V1JamfPackageGetExecute executes the request
 	//  @return []JamfPackageResponse
-	V1JamfPackageGetExecute(r ApiV1JamfPackageGetRequest) ([]JamfPackageResponse, *http.Response, error)
+	V1JamfPackageGetExecute(r JamfPackageAPIV1JamfPackageGetRequest) ([]JamfPackageResponse, *http.Response, error)
 
 	/*
 	V2JamfPackageGet Get the packages for a given Jamf application 
@@ -41,31 +41,31 @@ type JamfPackageApi interface {
 	Get the packages for a given Jamf application.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2JamfPackageGetRequest
+	@return JamfPackageAPIV2JamfPackageGetRequest
 	*/
-	V2JamfPackageGet(ctx context.Context) ApiV2JamfPackageGetRequest
+	V2JamfPackageGet(ctx context.Context) JamfPackageAPIV2JamfPackageGetRequest
 
 	// V2JamfPackageGetExecute executes the request
 	//  @return JamfApplicationResponse
-	V2JamfPackageGetExecute(r ApiV2JamfPackageGetRequest) (*JamfApplicationResponse, *http.Response, error)
+	V2JamfPackageGetExecute(r JamfPackageAPIV2JamfPackageGetRequest) (*JamfApplicationResponse, *http.Response, error)
 }
 
-// JamfPackageApiService JamfPackageApi service
-type JamfPackageApiService service
+// JamfPackageAPIService JamfPackageAPI service
+type JamfPackageAPIService service
 
-type ApiV1JamfPackageGetRequest struct {
+type JamfPackageAPIV1JamfPackageGetRequest struct {
 	ctx context.Context
-	ApiService JamfPackageApi
+	ApiService JamfPackageAPI
 	application *string
 }
 
 // The Jamf Application key. The only supported values are protect and connect.
-func (r ApiV1JamfPackageGetRequest) Application(application string) ApiV1JamfPackageGetRequest {
+func (r JamfPackageAPIV1JamfPackageGetRequest) Application(application string) JamfPackageAPIV1JamfPackageGetRequest {
 	r.application = &application
 	return r
 }
 
-func (r ApiV1JamfPackageGetRequest) Execute() ([]JamfPackageResponse, *http.Response, error) {
+func (r JamfPackageAPIV1JamfPackageGetRequest) Execute() ([]JamfPackageResponse, *http.Response, error) {
 	return r.ApiService.V1JamfPackageGetExecute(r)
 }
 
@@ -75,10 +75,10 @@ V1JamfPackageGet Get the packages for a given Jamf application
 Get the packages for a given Jamf application.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfPackageGetRequest
+ @return JamfPackageAPIV1JamfPackageGetRequest
 */
-func (a *JamfPackageApiService) V1JamfPackageGet(ctx context.Context) ApiV1JamfPackageGetRequest {
-	return ApiV1JamfPackageGetRequest{
+func (a *JamfPackageAPIService) V1JamfPackageGet(ctx context.Context) JamfPackageAPIV1JamfPackageGetRequest {
+	return JamfPackageAPIV1JamfPackageGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -86,7 +86,7 @@ func (a *JamfPackageApiService) V1JamfPackageGet(ctx context.Context) ApiV1JamfP
 
 // Execute executes the request
 //  @return []JamfPackageResponse
-func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetRequest) ([]JamfPackageResponse, *http.Response, error) {
+func (a *JamfPackageAPIService) V1JamfPackageGetExecute(r JamfPackageAPIV1JamfPackageGetRequest) ([]JamfPackageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -94,7 +94,7 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 		localVarReturnValue  []JamfPackageResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfPackageApiService.V1JamfPackageGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfPackageAPIService.V1JamfPackageGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -108,7 +108,7 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 		return localVarReturnValue, nil, reportError("application is required and must be specified")
 	}
 
-	localVarQueryParams.Add("application", parameterToString(*r.application, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -136,9 +136,9 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -155,7 +155,8 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -172,19 +173,19 @@ func (a *JamfPackageApiService) V1JamfPackageGetExecute(r ApiV1JamfPackageGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2JamfPackageGetRequest struct {
+type JamfPackageAPIV2JamfPackageGetRequest struct {
 	ctx context.Context
-	ApiService JamfPackageApi
+	ApiService JamfPackageAPI
 	application *string
 }
 
 // The Jamf Application key. The only supported values are protect and connect.
-func (r ApiV2JamfPackageGetRequest) Application(application string) ApiV2JamfPackageGetRequest {
+func (r JamfPackageAPIV2JamfPackageGetRequest) Application(application string) JamfPackageAPIV2JamfPackageGetRequest {
 	r.application = &application
 	return r
 }
 
-func (r ApiV2JamfPackageGetRequest) Execute() (*JamfApplicationResponse, *http.Response, error) {
+func (r JamfPackageAPIV2JamfPackageGetRequest) Execute() (*JamfApplicationResponse, *http.Response, error) {
 	return r.ApiService.V2JamfPackageGetExecute(r)
 }
 
@@ -194,10 +195,10 @@ V2JamfPackageGet Get the packages for a given Jamf application
 Get the packages for a given Jamf application.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2JamfPackageGetRequest
+ @return JamfPackageAPIV2JamfPackageGetRequest
 */
-func (a *JamfPackageApiService) V2JamfPackageGet(ctx context.Context) ApiV2JamfPackageGetRequest {
-	return ApiV2JamfPackageGetRequest{
+func (a *JamfPackageAPIService) V2JamfPackageGet(ctx context.Context) JamfPackageAPIV2JamfPackageGetRequest {
+	return JamfPackageAPIV2JamfPackageGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -205,7 +206,7 @@ func (a *JamfPackageApiService) V2JamfPackageGet(ctx context.Context) ApiV2JamfP
 
 // Execute executes the request
 //  @return JamfApplicationResponse
-func (a *JamfPackageApiService) V2JamfPackageGetExecute(r ApiV2JamfPackageGetRequest) (*JamfApplicationResponse, *http.Response, error) {
+func (a *JamfPackageAPIService) V2JamfPackageGetExecute(r JamfPackageAPIV2JamfPackageGetRequest) (*JamfApplicationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -213,7 +214,7 @@ func (a *JamfPackageApiService) V2JamfPackageGetExecute(r ApiV2JamfPackageGetReq
 		localVarReturnValue  *JamfApplicationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfPackageApiService.V2JamfPackageGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfPackageAPIService.V2JamfPackageGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -227,7 +228,7 @@ func (a *JamfPackageApiService) V2JamfPackageGetExecute(r ApiV2JamfPackageGetReq
 		return localVarReturnValue, nil, reportError("application is required and must be specified")
 	}
 
-	localVarQueryParams.Add("application", parameterToString(*r.application, ""))
+	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -255,9 +256,9 @@ func (a *JamfPackageApiService) V2JamfPackageGetExecute(r ApiV2JamfPackageGetReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -274,7 +275,8 @@ func (a *JamfPackageApiService) V2JamfPackageGetExecute(r ApiV2JamfPackageGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

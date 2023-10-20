@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type CloudIdpApi interface {
+type CloudIdpAPI interface {
 
 	/*
 	V1CloudIdpExportPost Export Cloud Identity Providers collection 
@@ -30,13 +30,13 @@ type CloudIdpApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudIdpExportPostRequest
+	@return CloudIdpAPIV1CloudIdpExportPostRequest
 	*/
-	V1CloudIdpExportPost(ctx context.Context) ApiV1CloudIdpExportPostRequest
+	V1CloudIdpExportPost(ctx context.Context) CloudIdpAPIV1CloudIdpExportPostRequest
 
 	// V1CloudIdpExportPostExecute executes the request
 	//  @return interface{}
-	V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPostRequest) (interface{}, *http.Response, error)
+	V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdpExportPostRequest) (interface{}, *http.Response, error)
 
 	/*
 	V1CloudIdpGet Get information about all Cloud Identity Providers configurations.
@@ -44,13 +44,13 @@ type CloudIdpApi interface {
 	Returns basic informations about all configured Cloud Identity Provider.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudIdpGetRequest
+	@return CloudIdpAPIV1CloudIdpGetRequest
 	*/
-	V1CloudIdpGet(ctx context.Context) ApiV1CloudIdpGetRequest
+	V1CloudIdpGet(ctx context.Context) CloudIdpAPIV1CloudIdpGetRequest
 
 	// V1CloudIdpGetExecute executes the request
 	//  @return ConfigurationSearchResults
-	V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*ConfigurationSearchResults, *http.Response, error)
+	V1CloudIdpGetExecute(r CloudIdpAPIV1CloudIdpGetRequest) (*ConfigurationSearchResults, *http.Response, error)
 
 	/*
 	V1CloudIdpIdGet Get Cloud Identity Provider configuration with given ID.
@@ -59,13 +59,13 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdGetRequest
+	@return CloudIdpAPIV1CloudIdpIdGetRequest
 	*/
-	V1CloudIdpIdGet(ctx context.Context, id string) ApiV1CloudIdpIdGetRequest
+	V1CloudIdpIdGet(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdGetRequest
 
 	// V1CloudIdpIdGetExecute executes the request
 	//  @return CloudIdPCommon
-	V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest) (*CloudIdPCommon, *http.Response, error)
+	V1CloudIdpIdGetExecute(r CloudIdpAPIV1CloudIdpIdGetRequest) (*CloudIdPCommon, *http.Response, error)
 
 	/*
 	V1CloudIdpIdHistoryGet Get Cloud Identity Provider history
@@ -74,13 +74,13 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdHistoryGetRequest
+	@return CloudIdpAPIV1CloudIdpIdHistoryGetRequest
 	*/
-	V1CloudIdpIdHistoryGet(ctx context.Context, id string) ApiV1CloudIdpIdHistoryGetRequest
+	V1CloudIdpIdHistoryGet(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdHistoryGetRequest
 
 	// V1CloudIdpIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1CloudIdpIdHistoryGetExecute(r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1CloudIdpIdHistoryPost Add Cloud Identity Provider history note
@@ -90,13 +90,13 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdHistoryPostRequest
+	@return CloudIdpAPIV1CloudIdpIdHistoryPostRequest
 	*/
-	V1CloudIdpIdHistoryPost(ctx context.Context, id string) ApiV1CloudIdpIdHistoryPostRequest
+	V1CloudIdpIdHistoryPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdHistoryPostRequest
 
 	// V1CloudIdpIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1CloudIdpIdHistoryPostExecute(r CloudIdpAPIV1CloudIdpIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1CloudIdpIdTestGroupPost Get group test search
@@ -105,13 +105,13 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdTestGroupPostRequest
+	@return CloudIdpAPIV1CloudIdpIdTestGroupPostRequest
 	*/
-	V1CloudIdpIdTestGroupPost(ctx context.Context, id string) ApiV1CloudIdpIdTestGroupPostRequest
+	V1CloudIdpIdTestGroupPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestGroupPostRequest
 
 	// V1CloudIdpIdTestGroupPostExecute executes the request
 	//  @return GroupTestSearchResponse
-	V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error)
+	V1CloudIdpIdTestGroupPostExecute(r CloudIdpAPIV1CloudIdpIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error)
 
 	/*
 	V1CloudIdpIdTestUserMembershipPost Get membership test search
@@ -120,13 +120,13 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdTestUserMembershipPostRequest
+	@return CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest
 	*/
-	V1CloudIdpIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserMembershipPostRequest
+	V1CloudIdpIdTestUserMembershipPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest
 
 	// V1CloudIdpIdTestUserMembershipPostExecute executes the request
 	//  @return MembershipTestSearchResponse
-	V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1CloudIdpIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error)
+	V1CloudIdpIdTestUserMembershipPostExecute(r CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error)
 
 	/*
 	V1CloudIdpIdTestUserPost Get user test search
@@ -135,21 +135,21 @@ type CloudIdpApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudIdpIdTestUserPostRequest
+	@return CloudIdpAPIV1CloudIdpIdTestUserPostRequest
 	*/
-	V1CloudIdpIdTestUserPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserPostRequest
+	V1CloudIdpIdTestUserPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestUserPostRequest
 
 	// V1CloudIdpIdTestUserPostExecute executes the request
 	//  @return UserTestSearchResponse
-	V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error)
+	V1CloudIdpIdTestUserPostExecute(r CloudIdpAPIV1CloudIdpIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error)
 }
 
-// CloudIdpApiService CloudIdpApi service
-type CloudIdpApiService service
+// CloudIdpAPIService CloudIdpAPI service
+type CloudIdpAPIService service
 
-type ApiV1CloudIdpExportPostRequest struct {
+type CloudIdpAPIV1CloudIdpExportPostRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	exportFields *[]string
 	exportLabels *[]string
 	page *int32
@@ -160,46 +160,46 @@ type ApiV1CloudIdpExportPostRequest struct {
 }
 
 // Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
-func (r ApiV1CloudIdpExportPostRequest) ExportFields(exportFields []string) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) ExportFields(exportFields []string) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.exportFields = &exportFields
 	return r
 }
 
 // Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
-func (r ApiV1CloudIdpExportPostRequest) ExportLabels(exportLabels []string) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) ExportLabels(exportLabels []string) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.exportLabels = &exportLabels
 	return r
 }
 
-func (r ApiV1CloudIdpExportPostRequest) Page(page int32) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) Page(page int32) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1CloudIdpExportPostRequest) PageSize(pageSize int32) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be seperated with a comma. Example: sort&#x3D;id:desc,name:asc
-func (r ApiV1CloudIdpExportPostRequest) Sort(sort []string) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) Sort(sort []string) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*department*\&quot;
-func (r ApiV1CloudIdpExportPostRequest) Filter(filter string) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) Filter(filter string) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.filter = &filter
 	return r
 }
 
 // Optional. Override query parameters since they can make URI exceed 2,000 character limit.
-func (r ApiV1CloudIdpExportPostRequest) ExportParameters(exportParameters ExportParameters) ApiV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) ExportParameters(exportParameters ExportParameters) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.exportParameters = &exportParameters
 	return r
 }
 
-func (r ApiV1CloudIdpExportPostRequest) Execute() (interface{}, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) Execute() (interface{}, *http.Response, error) {
 	return r.ApiService.V1CloudIdpExportPostExecute(r)
 }
 
@@ -210,10 +210,10 @@ Export Cloud Identity Providers collection
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudIdpExportPostRequest
+ @return CloudIdpAPIV1CloudIdpExportPostRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpExportPost(ctx context.Context) ApiV1CloudIdpExportPostRequest {
-	return ApiV1CloudIdpExportPostRequest{
+func (a *CloudIdpAPIService) V1CloudIdpExportPost(ctx context.Context) CloudIdpAPIV1CloudIdpExportPostRequest {
+	return CloudIdpAPIV1CloudIdpExportPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -221,7 +221,7 @@ func (a *CloudIdpApiService) V1CloudIdpExportPost(ctx context.Context) ApiV1Clou
 
 // Execute executes the request
 //  @return interface{}
-func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPostRequest) (interface{}, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdpExportPostRequest) (interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -229,7 +229,7 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 		localVarReturnValue  interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpExportPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpExportPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -245,42 +245,60 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("export-fields", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("export-fields", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
 		t := *r.exportLabels
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("export-labels", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("export-labels", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -311,9 +329,9 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -330,7 +348,8 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -340,7 +359,8 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -357,31 +377,31 @@ func (a *CloudIdpApiService) V1CloudIdpExportPostExecute(r ApiV1CloudIdpExportPo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpGetRequest struct {
+type CloudIdpAPIV1CloudIdpGetRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV1CloudIdpGetRequest) Page(page int32) ApiV1CloudIdpGetRequest {
+func (r CloudIdpAPIV1CloudIdpGetRequest) Page(page int32) CloudIdpAPIV1CloudIdpGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1CloudIdpGetRequest) PageSize(pageSize int32) ApiV1CloudIdpGetRequest {
+func (r CloudIdpAPIV1CloudIdpGetRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1CloudIdpGetRequest) Sort(sort []string) ApiV1CloudIdpGetRequest {
+func (r CloudIdpAPIV1CloudIdpGetRequest) Sort(sort []string) CloudIdpAPIV1CloudIdpGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1CloudIdpGetRequest) Execute() (*ConfigurationSearchResults, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpGetRequest) Execute() (*ConfigurationSearchResults, *http.Response, error) {
 	return r.ApiService.V1CloudIdpGetExecute(r)
 }
 
@@ -391,10 +411,10 @@ V1CloudIdpGet Get information about all Cloud Identity Providers configurations.
 Returns basic informations about all configured Cloud Identity Provider.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudIdpGetRequest
+ @return CloudIdpAPIV1CloudIdpGetRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpGet(ctx context.Context) ApiV1CloudIdpGetRequest {
-	return ApiV1CloudIdpGetRequest{
+func (a *CloudIdpAPIService) V1CloudIdpGet(ctx context.Context) CloudIdpAPIV1CloudIdpGetRequest {
+	return CloudIdpAPIV1CloudIdpGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -402,7 +422,7 @@ func (a *CloudIdpApiService) V1CloudIdpGet(ctx context.Context) ApiV1CloudIdpGet
 
 // Execute executes the request
 //  @return ConfigurationSearchResults
-func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*ConfigurationSearchResults, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpGetExecute(r CloudIdpAPIV1CloudIdpGetRequest) (*ConfigurationSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -410,7 +430,7 @@ func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*C
 		localVarReturnValue  *ConfigurationSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -422,21 +442,30 @@ func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*C
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:desc"}
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -465,9 +494,9 @@ func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*C
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -492,13 +521,13 @@ func (a *CloudIdpApiService) V1CloudIdpGetExecute(r ApiV1CloudIdpGetRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdGetRequest struct {
+type CloudIdpAPIV1CloudIdpIdGetRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 }
 
-func (r ApiV1CloudIdpIdGetRequest) Execute() (*CloudIdPCommon, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpIdGetRequest) Execute() (*CloudIdPCommon, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdGetExecute(r)
 }
 
@@ -509,10 +538,10 @@ Get Cloud Identity Provider configuration with given ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdGetRequest
+ @return CloudIdpAPIV1CloudIdpIdGetRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdGet(ctx context.Context, id string) ApiV1CloudIdpIdGetRequest {
-	return ApiV1CloudIdpIdGetRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdGet(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdGetRequest {
+	return CloudIdpAPIV1CloudIdpIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -521,7 +550,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdGet(ctx context.Context, id string) Api
 
 // Execute executes the request
 //  @return CloudIdPCommon
-func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest) (*CloudIdPCommon, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdGetExecute(r CloudIdpAPIV1CloudIdpIdGetRequest) (*CloudIdPCommon, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -529,13 +558,13 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 		localVarReturnValue  *CloudIdPCommon
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -568,9 +597,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -587,7 +616,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -597,7 +627,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -614,32 +645,39 @@ func (a *CloudIdpApiService) V1CloudIdpIdGetExecute(r ApiV1CloudIdpIdGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdHistoryGetRequest struct {
+type CloudIdpAPIV1CloudIdpIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 	page *int32
 	pageSize *int32
 	sort *[]string
+	filter *string
 }
 
-func (r ApiV1CloudIdpIdHistoryGetRequest) Page(page int32) ApiV1CloudIdpIdHistoryGetRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Page(page int32) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1CloudIdpIdHistoryGetRequest) PageSize(pageSize int32) ApiV1CloudIdpIdHistoryGetRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1CloudIdpIdHistoryGetRequest) Sort(sort []string) ApiV1CloudIdpIdHistoryGetRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Sort(sort []string) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1CloudIdpIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Filter(filter string) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdHistoryGetExecute(r)
 }
 
@@ -650,10 +688,10 @@ Gets specified Cloud Identity Provider object history
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdHistoryGetRequest
+ @return CloudIdpAPIV1CloudIdpIdHistoryGetRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdHistoryGet(ctx context.Context, id string) ApiV1CloudIdpIdHistoryGetRequest {
-	return ApiV1CloudIdpIdHistoryGetRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdHistoryGet(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
+	return CloudIdpAPIV1CloudIdpIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -662,7 +700,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGet(ctx context.Context, id stri
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdHistoryGetExecute(r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -670,34 +708,49 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -726,9 +779,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -745,7 +798,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -755,7 +809,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -772,20 +827,20 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryGetExecute(r ApiV1CloudIdpIdHist
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdHistoryPostRequest struct {
+type CloudIdpAPIV1CloudIdpIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1CloudIdpIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1CloudIdpIdHistoryPostRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) CloudIdpAPIV1CloudIdpIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1CloudIdpIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdHistoryPostExecute(r)
 }
 
@@ -797,10 +852,10 @@ Adds specified Cloud Identity Provider object history notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdHistoryPostRequest
+ @return CloudIdpAPIV1CloudIdpIdHistoryPostRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdHistoryPost(ctx context.Context, id string) ApiV1CloudIdpIdHistoryPostRequest {
-	return ApiV1CloudIdpIdHistoryPostRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdHistoryPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdHistoryPostRequest {
+	return CloudIdpAPIV1CloudIdpIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -809,7 +864,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPost(ctx context.Context, id str
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdHistoryPostExecute(r CloudIdpAPIV1CloudIdpIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -817,13 +872,13 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -861,9 +916,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -880,7 +935,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -890,7 +946,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -907,20 +964,20 @@ func (a *CloudIdpApiService) V1CloudIdpIdHistoryPostExecute(r ApiV1CloudIdpIdHis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdTestGroupPostRequest struct {
+type CloudIdpAPIV1CloudIdpIdTestGroupPostRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 	groupTestSearchRequest *GroupTestSearchRequest
 }
 
 // Search request
-func (r ApiV1CloudIdpIdTestGroupPostRequest) GroupTestSearchRequest(groupTestSearchRequest GroupTestSearchRequest) ApiV1CloudIdpIdTestGroupPostRequest {
+func (r CloudIdpAPIV1CloudIdpIdTestGroupPostRequest) GroupTestSearchRequest(groupTestSearchRequest GroupTestSearchRequest) CloudIdpAPIV1CloudIdpIdTestGroupPostRequest {
 	r.groupTestSearchRequest = &groupTestSearchRequest
 	return r
 }
 
-func (r ApiV1CloudIdpIdTestGroupPostRequest) Execute() (*GroupTestSearchResponse, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpIdTestGroupPostRequest) Execute() (*GroupTestSearchResponse, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdTestGroupPostExecute(r)
 }
 
@@ -931,10 +988,10 @@ Do test search to ensure about configuration and mappings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdTestGroupPostRequest
+ @return CloudIdpAPIV1CloudIdpIdTestGroupPostRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPost(ctx context.Context, id string) ApiV1CloudIdpIdTestGroupPostRequest {
-	return ApiV1CloudIdpIdTestGroupPostRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdTestGroupPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestGroupPostRequest {
+	return CloudIdpAPIV1CloudIdpIdTestGroupPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -943,7 +1000,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPost(ctx context.Context, id s
 
 // Execute executes the request
 //  @return GroupTestSearchResponse
-func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdTestGroupPostExecute(r CloudIdpAPIV1CloudIdpIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -951,13 +1008,13 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdT
 		localVarReturnValue  *GroupTestSearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdTestGroupPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdTestGroupPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}/test-group"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -995,9 +1052,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdT
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1014,7 +1071,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1031,20 +1089,20 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestGroupPostExecute(r ApiV1CloudIdpIdT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdTestUserMembershipPostRequest struct {
+type CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 	membershipTestSearchRequest *MembershipTestSearchRequest
 }
 
 // Search request
-func (r ApiV1CloudIdpIdTestUserMembershipPostRequest) MembershipTestSearchRequest(membershipTestSearchRequest MembershipTestSearchRequest) ApiV1CloudIdpIdTestUserMembershipPostRequest {
+func (r CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest) MembershipTestSearchRequest(membershipTestSearchRequest MembershipTestSearchRequest) CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest {
 	r.membershipTestSearchRequest = &membershipTestSearchRequest
 	return r
 }
 
-func (r ApiV1CloudIdpIdTestUserMembershipPostRequest) Execute() (*MembershipTestSearchResponse, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest) Execute() (*MembershipTestSearchResponse, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdTestUserMembershipPostExecute(r)
 }
 
@@ -1055,10 +1113,10 @@ Do test search to ensure about configuration and mappings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdTestUserMembershipPostRequest
+ @return CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserMembershipPostRequest {
-	return ApiV1CloudIdpIdTestUserMembershipPostRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdTestUserMembershipPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest {
+	return CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1067,7 +1125,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPost(ctx context.Cont
 
 // Execute executes the request
 //  @return MembershipTestSearchResponse
-func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1CloudIdpIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdTestUserMembershipPostExecute(r CloudIdpAPIV1CloudIdpIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1075,13 +1133,13 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1Cl
 		localVarReturnValue  *MembershipTestSearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdTestUserMembershipPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdTestUserMembershipPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}/test-user-membership"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1119,9 +1177,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1Cl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1138,7 +1196,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1Cl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1155,20 +1214,20 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserMembershipPostExecute(r ApiV1Cl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudIdpIdTestUserPostRequest struct {
+type CloudIdpAPIV1CloudIdpIdTestUserPostRequest struct {
 	ctx context.Context
-	ApiService CloudIdpApi
+	ApiService CloudIdpAPI
 	id string
 	userTestSearchRequest *UserTestSearchRequest
 }
 
 // Search request
-func (r ApiV1CloudIdpIdTestUserPostRequest) UserTestSearchRequest(userTestSearchRequest UserTestSearchRequest) ApiV1CloudIdpIdTestUserPostRequest {
+func (r CloudIdpAPIV1CloudIdpIdTestUserPostRequest) UserTestSearchRequest(userTestSearchRequest UserTestSearchRequest) CloudIdpAPIV1CloudIdpIdTestUserPostRequest {
 	r.userTestSearchRequest = &userTestSearchRequest
 	return r
 }
 
-func (r ApiV1CloudIdpIdTestUserPostRequest) Execute() (*UserTestSearchResponse, *http.Response, error) {
+func (r CloudIdpAPIV1CloudIdpIdTestUserPostRequest) Execute() (*UserTestSearchResponse, *http.Response, error) {
 	return r.ApiService.V1CloudIdpIdTestUserPostExecute(r)
 }
 
@@ -1179,10 +1238,10 @@ Do test search to ensure about configuration and mappings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudIdpIdTestUserPostRequest
+ @return CloudIdpAPIV1CloudIdpIdTestUserPostRequest
 */
-func (a *CloudIdpApiService) V1CloudIdpIdTestUserPost(ctx context.Context, id string) ApiV1CloudIdpIdTestUserPostRequest {
-	return ApiV1CloudIdpIdTestUserPostRequest{
+func (a *CloudIdpAPIService) V1CloudIdpIdTestUserPost(ctx context.Context, id string) CloudIdpAPIV1CloudIdpIdTestUserPostRequest {
+	return CloudIdpAPIV1CloudIdpIdTestUserPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1191,7 +1250,7 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserPost(ctx context.Context, id st
 
 // Execute executes the request
 //  @return UserTestSearchResponse
-func (a *CloudIdpApiService) V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error) {
+func (a *CloudIdpAPIService) V1CloudIdpIdTestUserPostExecute(r CloudIdpAPIV1CloudIdpIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1199,13 +1258,13 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTe
 		localVarReturnValue  *UserTestSearchResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpApiService.V1CloudIdpIdTestUserPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudIdpAPIService.V1CloudIdpIdTestUserPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-idp/{id}/test-user"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1243,9 +1302,9 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1262,7 +1321,8 @@ func (a *CloudIdpApiService) V1CloudIdpIdTestUserPostExecute(r ApiV1CloudIdpIdTe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerContentCachingParentLocalNetwork type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingParentLocalNetwork{}
+
 // ComputerContentCachingParentLocalNetwork struct for ComputerContentCachingParentLocalNetwork
 type ComputerContentCachingParentLocalNetwork struct {
 	ContentCachingParentLocalNetworkId *string `json:"contentCachingParentLocalNetworkId,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerContentCachingParentLocalNetworkWithDefaults() *ComputerContentC
 
 // GetContentCachingParentLocalNetworkId returns the ContentCachingParentLocalNetworkId field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentLocalNetwork) GetContentCachingParentLocalNetworkId() string {
-	if o == nil || o.ContentCachingParentLocalNetworkId == nil {
+	if o == nil || IsNil(o.ContentCachingParentLocalNetworkId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetContentCachingParentLocalN
 // GetContentCachingParentLocalNetworkIdOk returns a tuple with the ContentCachingParentLocalNetworkId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentLocalNetwork) GetContentCachingParentLocalNetworkIdOk() (*string, bool) {
-	if o == nil || o.ContentCachingParentLocalNetworkId == nil {
+	if o == nil || IsNil(o.ContentCachingParentLocalNetworkId) {
 		return nil, false
 	}
 	return o.ContentCachingParentLocalNetworkId, true
@@ -58,7 +61,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetContentCachingParentLocalN
 
 // HasContentCachingParentLocalNetworkId returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentLocalNetwork) HasContentCachingParentLocalNetworkId() bool {
-	if o != nil && o.ContentCachingParentLocalNetworkId != nil {
+	if o != nil && !IsNil(o.ContentCachingParentLocalNetworkId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerContentCachingParentLocalNetwork) SetContentCachingParentLocalN
 
 // GetSpeed returns the Speed field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentLocalNetwork) GetSpeed() int64 {
-	if o == nil || o.Speed == nil {
+	if o == nil || IsNil(o.Speed) {
 		var ret int64
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetSpeed() int64 {
 // GetSpeedOk returns a tuple with the Speed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentLocalNetwork) GetSpeedOk() (*int64, bool) {
-	if o == nil || o.Speed == nil {
+	if o == nil || IsNil(o.Speed) {
 		return nil, false
 	}
 	return o.Speed, true
@@ -90,7 +93,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetSpeedOk() (*int64, bool) {
 
 // HasSpeed returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentLocalNetwork) HasSpeed() bool {
-	if o != nil && o.Speed != nil {
+	if o != nil && !IsNil(o.Speed) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerContentCachingParentLocalNetwork) SetSpeed(v int64) {
 
 // GetWired returns the Wired field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentLocalNetwork) GetWired() bool {
-	if o == nil || o.Wired == nil {
+	if o == nil || IsNil(o.Wired) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetWired() bool {
 // GetWiredOk returns a tuple with the Wired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentLocalNetwork) GetWiredOk() (*bool, bool) {
-	if o == nil || o.Wired == nil {
+	if o == nil || IsNil(o.Wired) {
 		return nil, false
 	}
 	return o.Wired, true
@@ -122,7 +125,7 @@ func (o *ComputerContentCachingParentLocalNetwork) GetWiredOk() (*bool, bool) {
 
 // HasWired returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentLocalNetwork) HasWired() bool {
-	if o != nil && o.Wired != nil {
+	if o != nil && !IsNil(o.Wired) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerContentCachingParentLocalNetwork) SetWired(v bool) {
 }
 
 func (o ComputerContentCachingParentLocalNetwork) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentCachingParentLocalNetworkId != nil {
-		toSerialize["contentCachingParentLocalNetworkId"] = o.ContentCachingParentLocalNetworkId
-	}
-	if o.Speed != nil {
-		toSerialize["speed"] = o.Speed
-	}
-	if o.Wired != nil {
-		toSerialize["wired"] = o.Wired
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingParentLocalNetwork) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentCachingParentLocalNetworkId) {
+		toSerialize["contentCachingParentLocalNetworkId"] = o.ContentCachingParentLocalNetworkId
+	}
+	if !IsNil(o.Speed) {
+		toSerialize["speed"] = o.Speed
+	}
+	if !IsNil(o.Wired) {
+		toSerialize["wired"] = o.Wired
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingParentLocalNetwork struct {

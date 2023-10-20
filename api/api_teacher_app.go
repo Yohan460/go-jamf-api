@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 )
 
 
-type TeacherAppApi interface {
+type TeacherAppAPI interface {
 
 	/*
 	V1TeacherAppGet Get the Jamf Teacher settings that you have access to see 
@@ -28,13 +28,13 @@ type TeacherAppApi interface {
 	Get the Jamf Teacher settings that you have access to see.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1TeacherAppGetRequest
+	@return TeacherAppAPIV1TeacherAppGetRequest
 	*/
-	V1TeacherAppGet(ctx context.Context) ApiV1TeacherAppGetRequest
+	V1TeacherAppGet(ctx context.Context) TeacherAppAPIV1TeacherAppGetRequest
 
 	// V1TeacherAppGetExecute executes the request
 	//  @return TeacherSettingsResponse
-	V1TeacherAppGetExecute(r ApiV1TeacherAppGetRequest) (*TeacherSettingsResponse, *http.Response, error)
+	V1TeacherAppGetExecute(r TeacherAppAPIV1TeacherAppGetRequest) (*TeacherSettingsResponse, *http.Response, error)
 
 	/*
 	V1TeacherAppHistoryGet Get Jamf Teacher app settings history 
@@ -43,13 +43,13 @@ type TeacherAppApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1TeacherAppHistoryGetRequest
+	@return TeacherAppAPIV1TeacherAppHistoryGetRequest
 	*/
-	V1TeacherAppHistoryGet(ctx context.Context) ApiV1TeacherAppHistoryGetRequest
+	V1TeacherAppHistoryGet(ctx context.Context) TeacherAppAPIV1TeacherAppHistoryGetRequest
 
 	// V1TeacherAppHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1TeacherAppHistoryGetExecute(r TeacherAppAPIV1TeacherAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1TeacherAppHistoryPost Add Jamf Teacher app settings history notes 
@@ -58,13 +58,13 @@ type TeacherAppApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1TeacherAppHistoryPostRequest
+	@return TeacherAppAPIV1TeacherAppHistoryPostRequest
 	*/
-	V1TeacherAppHistoryPost(ctx context.Context) ApiV1TeacherAppHistoryPostRequest
+	V1TeacherAppHistoryPost(ctx context.Context) TeacherAppAPIV1TeacherAppHistoryPostRequest
 
 	// V1TeacherAppHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1TeacherAppHistoryPostExecute(r TeacherAppAPIV1TeacherAppHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1TeacherAppPut Update a Jamf Teacher settings object 
@@ -72,24 +72,24 @@ type TeacherAppApi interface {
 	Update a Jamf Teacher settings object.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1TeacherAppPutRequest
+	@return TeacherAppAPIV1TeacherAppPutRequest
 	*/
-	V1TeacherAppPut(ctx context.Context) ApiV1TeacherAppPutRequest
+	V1TeacherAppPut(ctx context.Context) TeacherAppAPIV1TeacherAppPutRequest
 
 	// V1TeacherAppPutExecute executes the request
 	//  @return TeacherSettingsResponse
-	V1TeacherAppPutExecute(r ApiV1TeacherAppPutRequest) (*TeacherSettingsResponse, *http.Response, error)
+	V1TeacherAppPutExecute(r TeacherAppAPIV1TeacherAppPutRequest) (*TeacherSettingsResponse, *http.Response, error)
 }
 
-// TeacherAppApiService TeacherAppApi service
-type TeacherAppApiService service
+// TeacherAppAPIService TeacherAppAPI service
+type TeacherAppAPIService service
 
-type ApiV1TeacherAppGetRequest struct {
+type TeacherAppAPIV1TeacherAppGetRequest struct {
 	ctx context.Context
-	ApiService TeacherAppApi
+	ApiService TeacherAppAPI
 }
 
-func (r ApiV1TeacherAppGetRequest) Execute() (*TeacherSettingsResponse, *http.Response, error) {
+func (r TeacherAppAPIV1TeacherAppGetRequest) Execute() (*TeacherSettingsResponse, *http.Response, error) {
 	return r.ApiService.V1TeacherAppGetExecute(r)
 }
 
@@ -99,10 +99,10 @@ V1TeacherAppGet Get the Jamf Teacher settings that you have access to see
 Get the Jamf Teacher settings that you have access to see.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1TeacherAppGetRequest
+ @return TeacherAppAPIV1TeacherAppGetRequest
 */
-func (a *TeacherAppApiService) V1TeacherAppGet(ctx context.Context) ApiV1TeacherAppGetRequest {
-	return ApiV1TeacherAppGetRequest{
+func (a *TeacherAppAPIService) V1TeacherAppGet(ctx context.Context) TeacherAppAPIV1TeacherAppGetRequest {
+	return TeacherAppAPIV1TeacherAppGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -110,7 +110,7 @@ func (a *TeacherAppApiService) V1TeacherAppGet(ctx context.Context) ApiV1Teacher
 
 // Execute executes the request
 //  @return TeacherSettingsResponse
-func (a *TeacherAppApiService) V1TeacherAppGetExecute(r ApiV1TeacherAppGetRequest) (*TeacherSettingsResponse, *http.Response, error) {
+func (a *TeacherAppAPIService) V1TeacherAppGetExecute(r TeacherAppAPIV1TeacherAppGetRequest) (*TeacherSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -118,7 +118,7 @@ func (a *TeacherAppApiService) V1TeacherAppGetExecute(r ApiV1TeacherAppGetReques
 		localVarReturnValue  *TeacherSettingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppApiService.V1TeacherAppGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppAPIService.V1TeacherAppGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -156,9 +156,9 @@ func (a *TeacherAppApiService) V1TeacherAppGetExecute(r ApiV1TeacherAppGetReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,38 +183,38 @@ func (a *TeacherAppApiService) V1TeacherAppGetExecute(r ApiV1TeacherAppGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1TeacherAppHistoryGetRequest struct {
+type TeacherAppAPIV1TeacherAppHistoryGetRequest struct {
 	ctx context.Context
-	ApiService TeacherAppApi
+	ApiService TeacherAppAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1TeacherAppHistoryGetRequest) Page(page int32) ApiV1TeacherAppHistoryGetRequest {
+func (r TeacherAppAPIV1TeacherAppHistoryGetRequest) Page(page int32) TeacherAppAPIV1TeacherAppHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1TeacherAppHistoryGetRequest) PageSize(pageSize int32) ApiV1TeacherAppHistoryGetRequest {
+func (r TeacherAppAPIV1TeacherAppHistoryGetRequest) PageSize(pageSize int32) TeacherAppAPIV1TeacherAppHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1TeacherAppHistoryGetRequest) Sort(sort []string) ApiV1TeacherAppHistoryGetRequest {
+func (r TeacherAppAPIV1TeacherAppHistoryGetRequest) Sort(sort []string) TeacherAppAPIV1TeacherAppHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1TeacherAppHistoryGetRequest) Filter(filter string) ApiV1TeacherAppHistoryGetRequest {
+func (r TeacherAppAPIV1TeacherAppHistoryGetRequest) Filter(filter string) TeacherAppAPIV1TeacherAppHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1TeacherAppHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r TeacherAppAPIV1TeacherAppHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1TeacherAppHistoryGetExecute(r)
 }
 
@@ -225,10 +225,10 @@ Gets Jamf Teacher app settings history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1TeacherAppHistoryGetRequest
+ @return TeacherAppAPIV1TeacherAppHistoryGetRequest
 */
-func (a *TeacherAppApiService) V1TeacherAppHistoryGet(ctx context.Context) ApiV1TeacherAppHistoryGetRequest {
-	return ApiV1TeacherAppHistoryGetRequest{
+func (a *TeacherAppAPIService) V1TeacherAppHistoryGet(ctx context.Context) TeacherAppAPIV1TeacherAppHistoryGetRequest {
+	return TeacherAppAPIV1TeacherAppHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -236,7 +236,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGet(ctx context.Context) ApiV1
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *TeacherAppAPIService) V1TeacherAppHistoryGetExecute(r TeacherAppAPIV1TeacherAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -244,7 +244,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHi
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppApiService.V1TeacherAppHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppAPIService.V1TeacherAppHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -256,24 +256,36 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHi
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -302,9 +314,9 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -329,19 +341,19 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryGetExecute(r ApiV1TeacherAppHi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1TeacherAppHistoryPostRequest struct {
+type TeacherAppAPIV1TeacherAppHistoryPostRequest struct {
 	ctx context.Context
-	ApiService TeacherAppApi
+	ApiService TeacherAppAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1TeacherAppHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1TeacherAppHistoryPostRequest {
+func (r TeacherAppAPIV1TeacherAppHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) TeacherAppAPIV1TeacherAppHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1TeacherAppHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r TeacherAppAPIV1TeacherAppHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1TeacherAppHistoryPostExecute(r)
 }
 
@@ -352,10 +364,10 @@ Adds Jamf Teacher app settings history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1TeacherAppHistoryPostRequest
+ @return TeacherAppAPIV1TeacherAppHistoryPostRequest
 */
-func (a *TeacherAppApiService) V1TeacherAppHistoryPost(ctx context.Context) ApiV1TeacherAppHistoryPostRequest {
-	return ApiV1TeacherAppHistoryPostRequest{
+func (a *TeacherAppAPIService) V1TeacherAppHistoryPost(ctx context.Context) TeacherAppAPIV1TeacherAppHistoryPostRequest {
+	return TeacherAppAPIV1TeacherAppHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -363,7 +375,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPost(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *TeacherAppAPIService) V1TeacherAppHistoryPostExecute(r TeacherAppAPIV1TeacherAppHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -371,7 +383,7 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppH
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppApiService.V1TeacherAppHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppAPIService.V1TeacherAppHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -414,9 +426,9 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppH
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -433,7 +445,8 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppH
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -450,19 +463,19 @@ func (a *TeacherAppApiService) V1TeacherAppHistoryPostExecute(r ApiV1TeacherAppH
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1TeacherAppPutRequest struct {
+type TeacherAppAPIV1TeacherAppPutRequest struct {
 	ctx context.Context
-	ApiService TeacherAppApi
+	ApiService TeacherAppAPI
 	teacherSettingsRequest *TeacherSettingsRequest
 }
 
 // Teacher settings to create.
-func (r ApiV1TeacherAppPutRequest) TeacherSettingsRequest(teacherSettingsRequest TeacherSettingsRequest) ApiV1TeacherAppPutRequest {
+func (r TeacherAppAPIV1TeacherAppPutRequest) TeacherSettingsRequest(teacherSettingsRequest TeacherSettingsRequest) TeacherAppAPIV1TeacherAppPutRequest {
 	r.teacherSettingsRequest = &teacherSettingsRequest
 	return r
 }
 
-func (r ApiV1TeacherAppPutRequest) Execute() (*TeacherSettingsResponse, *http.Response, error) {
+func (r TeacherAppAPIV1TeacherAppPutRequest) Execute() (*TeacherSettingsResponse, *http.Response, error) {
 	return r.ApiService.V1TeacherAppPutExecute(r)
 }
 
@@ -472,10 +485,10 @@ V1TeacherAppPut Update a Jamf Teacher settings object
 Update a Jamf Teacher settings object.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1TeacherAppPutRequest
+ @return TeacherAppAPIV1TeacherAppPutRequest
 */
-func (a *TeacherAppApiService) V1TeacherAppPut(ctx context.Context) ApiV1TeacherAppPutRequest {
-	return ApiV1TeacherAppPutRequest{
+func (a *TeacherAppAPIService) V1TeacherAppPut(ctx context.Context) TeacherAppAPIV1TeacherAppPutRequest {
+	return TeacherAppAPIV1TeacherAppPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -483,7 +496,7 @@ func (a *TeacherAppApiService) V1TeacherAppPut(ctx context.Context) ApiV1Teacher
 
 // Execute executes the request
 //  @return TeacherSettingsResponse
-func (a *TeacherAppApiService) V1TeacherAppPutExecute(r ApiV1TeacherAppPutRequest) (*TeacherSettingsResponse, *http.Response, error) {
+func (a *TeacherAppAPIService) V1TeacherAppPutExecute(r TeacherAppAPIV1TeacherAppPutRequest) (*TeacherSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -491,7 +504,7 @@ func (a *TeacherAppApiService) V1TeacherAppPutExecute(r ApiV1TeacherAppPutReques
 		localVarReturnValue  *TeacherSettingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppApiService.V1TeacherAppPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeacherAppAPIService.V1TeacherAppPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -534,9 +547,9 @@ func (a *TeacherAppApiService) V1TeacherAppPutExecute(r ApiV1TeacherAppPutReques
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -553,7 +566,8 @@ func (a *TeacherAppApiService) V1TeacherAppPutExecute(r ApiV1TeacherAppPutReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

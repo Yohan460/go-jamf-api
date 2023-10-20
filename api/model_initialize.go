@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Initialize type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Initialize{}
+
 // Initialize Initial Jamf Pro setup data
 type Initialize struct {
 	ActivationCode string `json:"activationCode"`
@@ -170,7 +173,7 @@ func (o *Initialize) SetPassword(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *Initialize) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *Initialize) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Initialize) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -188,7 +191,7 @@ func (o *Initialize) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *Initialize) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -225,29 +228,25 @@ func (o *Initialize) SetJssUrl(v string) {
 }
 
 func (o Initialize) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["activationCode"] = o.ActivationCode
-	}
-	if true {
-		toSerialize["institutionName"] = o.InstitutionName
-	}
-	if true {
-		toSerialize["isEulaAccepted"] = o.IsEulaAccepted
-	}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["password"] = o.Password
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["jssUrl"] = o.JssUrl
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Initialize) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["activationCode"] = o.ActivationCode
+	toSerialize["institutionName"] = o.InstitutionName
+	toSerialize["isEulaAccepted"] = o.IsEulaAccepted
+	toSerialize["username"] = o.Username
+	toSerialize["password"] = o.Password
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	toSerialize["jssUrl"] = o.JssUrl
+	return toSerialize, nil
 }
 
 type NullableInitialize struct {

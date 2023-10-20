@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type ApiAuthenticationApi interface {
+type ApiAuthenticationAPI interface {
 
 	/*
 	AuthCurrentPost Get the authorization details associated with the current API token 
@@ -27,16 +27,16 @@ type ApiAuthenticationApi interface {
 	Get the authorization details associated with the current API token for the users current site
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthCurrentPostRequest
+	@return ApiAuthenticationAPIAuthCurrentPostRequest
 
 	Deprecated
 	*/
-	AuthCurrentPost(ctx context.Context) ApiAuthCurrentPostRequest
+	AuthCurrentPost(ctx context.Context) ApiAuthenticationAPIAuthCurrentPostRequest
 
 	// AuthCurrentPostExecute executes the request
 	//  @return CurrentAuthorization
 	// Deprecated
-	AuthCurrentPostExecute(r ApiAuthCurrentPostRequest) (*CurrentAuthorization, *http.Response, error)
+	AuthCurrentPostExecute(r ApiAuthenticationAPIAuthCurrentPostRequest) (*CurrentAuthorization, *http.Response, error)
 
 	/*
 	AuthGet Get all the Authorization details associated with the current api 
@@ -44,16 +44,16 @@ type ApiAuthenticationApi interface {
 	Get all the authorization details associated with the current api token
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthGetRequest
+	@return ApiAuthenticationAPIAuthGetRequest
 
 	Deprecated
 	*/
-	AuthGet(ctx context.Context) ApiAuthGetRequest
+	AuthGet(ctx context.Context) ApiAuthenticationAPIAuthGetRequest
 
 	// AuthGetExecute executes the request
 	//  @return Authorization
 	// Deprecated
-	AuthGetExecute(r ApiAuthGetRequest) (*Authorization, *http.Response, error)
+	AuthGetExecute(r ApiAuthenticationAPIAuthGetRequest) (*Authorization, *http.Response, error)
 
 	/*
 	AuthInvalidateTokenPost Invalidate current token 
@@ -61,15 +61,15 @@ type ApiAuthenticationApi interface {
 	Invalidates current token
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthInvalidateTokenPostRequest
+	@return ApiAuthenticationAPIAuthInvalidateTokenPostRequest
 
 	Deprecated
 	*/
-	AuthInvalidateTokenPost(ctx context.Context) ApiAuthInvalidateTokenPostRequest
+	AuthInvalidateTokenPost(ctx context.Context) ApiAuthenticationAPIAuthInvalidateTokenPostRequest
 
 	// AuthInvalidateTokenPostExecute executes the request
 	// Deprecated
-	AuthInvalidateTokenPostExecute(r ApiAuthInvalidateTokenPostRequest) (*http.Response, error)
+	AuthInvalidateTokenPostExecute(r ApiAuthenticationAPIAuthInvalidateTokenPostRequest) (*http.Response, error)
 
 	/*
 	AuthKeepAlivePost Invalidate existing token and generates new token 
@@ -77,16 +77,16 @@ type ApiAuthenticationApi interface {
 	Invalidates existing token and generates new token with extended expiration based on existing token credentials.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthKeepAlivePostRequest
+	@return ApiAuthenticationAPIAuthKeepAlivePostRequest
 
 	Deprecated
 	*/
-	AuthKeepAlivePost(ctx context.Context) ApiAuthKeepAlivePostRequest
+	AuthKeepAlivePost(ctx context.Context) ApiAuthenticationAPIAuthKeepAlivePostRequest
 
 	// AuthKeepAlivePostExecute executes the request
 	//  @return AuthToken
 	// Deprecated
-	AuthKeepAlivePostExecute(r ApiAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error)
+	AuthKeepAlivePostExecute(r ApiAuthenticationAPIAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error)
 
 	/*
 	AuthTokensPost Create a token based on other authentication details (basic, etc.) 
@@ -95,16 +95,16 @@ type ApiAuthenticationApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTokensPostRequest
+	@return ApiAuthenticationAPIAuthTokensPostRequest
 
 	Deprecated
 	*/
-	AuthTokensPost(ctx context.Context) ApiAuthTokensPostRequest
+	AuthTokensPost(ctx context.Context) ApiAuthenticationAPIAuthTokensPostRequest
 
 	// AuthTokensPostExecute executes the request
 	//  @return AuthToken
 	// Deprecated
-	AuthTokensPostExecute(r ApiAuthTokensPostRequest) (*AuthToken, *http.Response, error)
+	AuthTokensPostExecute(r ApiAuthenticationAPIAuthTokensPostRequest) (*AuthToken, *http.Response, error)
 
 	/*
 	V1AuthGet Get all the Authorization details associated with the current api 
@@ -112,13 +112,13 @@ type ApiAuthenticationApi interface {
 	Get all the authorization details associated with the current api token
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AuthGetRequest
+	@return ApiAuthenticationAPIV1AuthGetRequest
 	*/
-	V1AuthGet(ctx context.Context) ApiV1AuthGetRequest
+	V1AuthGet(ctx context.Context) ApiAuthenticationAPIV1AuthGetRequest
 
 	// V1AuthGetExecute executes the request
 	//  @return AuthorizationV1
-	V1AuthGetExecute(r ApiV1AuthGetRequest) (*AuthorizationV1, *http.Response, error)
+	V1AuthGetExecute(r ApiAuthenticationAPIV1AuthGetRequest) (*AuthorizationV1, *http.Response, error)
 
 	/*
 	V1AuthInvalidateTokenPost Invalidate current token 
@@ -126,12 +126,12 @@ type ApiAuthenticationApi interface {
 	Invalidates current token
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AuthInvalidateTokenPostRequest
+	@return ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest
 	*/
-	V1AuthInvalidateTokenPost(ctx context.Context) ApiV1AuthInvalidateTokenPostRequest
+	V1AuthInvalidateTokenPost(ctx context.Context) ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest
 
 	// V1AuthInvalidateTokenPostExecute executes the request
-	V1AuthInvalidateTokenPostExecute(r ApiV1AuthInvalidateTokenPostRequest) (*http.Response, error)
+	V1AuthInvalidateTokenPostExecute(r ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest) (*http.Response, error)
 
 	/*
 	V1AuthKeepAlivePost Invalidate existing token and generates new token 
@@ -139,13 +139,13 @@ type ApiAuthenticationApi interface {
 	Invalidates existing token and generates new token with extended expiration based on existing token credentials.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AuthKeepAlivePostRequest
+	@return ApiAuthenticationAPIV1AuthKeepAlivePostRequest
 	*/
-	V1AuthKeepAlivePost(ctx context.Context) ApiV1AuthKeepAlivePostRequest
+	V1AuthKeepAlivePost(ctx context.Context) ApiAuthenticationAPIV1AuthKeepAlivePostRequest
 
 	// V1AuthKeepAlivePostExecute executes the request
 	//  @return AuthTokenV1
-	V1AuthKeepAlivePostExecute(r ApiV1AuthKeepAlivePostRequest) (*AuthTokenV1, *http.Response, error)
+	V1AuthKeepAlivePostExecute(r ApiAuthenticationAPIV1AuthKeepAlivePostRequest) (*AuthTokenV1, *http.Response, error)
 
 	/*
 	V1AuthTokenPost Create a token based on other authentication details (basic, etc.) 
@@ -154,24 +154,24 @@ type ApiAuthenticationApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AuthTokenPostRequest
+	@return ApiAuthenticationAPIV1AuthTokenPostRequest
 	*/
-	V1AuthTokenPost(ctx context.Context) ApiV1AuthTokenPostRequest
+	V1AuthTokenPost(ctx context.Context) ApiAuthenticationAPIV1AuthTokenPostRequest
 
 	// V1AuthTokenPostExecute executes the request
 	//  @return AuthTokenV1
-	V1AuthTokenPostExecute(r ApiV1AuthTokenPostRequest) (*AuthTokenV1, *http.Response, error)
+	V1AuthTokenPostExecute(r ApiAuthenticationAPIV1AuthTokenPostRequest) (*AuthTokenV1, *http.Response, error)
 }
 
-// ApiAuthenticationApiService ApiAuthenticationApi service
-type ApiAuthenticationApiService service
+// ApiAuthenticationAPIService ApiAuthenticationAPI service
+type ApiAuthenticationAPIService service
 
-type ApiAuthCurrentPostRequest struct {
+type ApiAuthenticationAPIAuthCurrentPostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiAuthCurrentPostRequest) Execute() (*CurrentAuthorization, *http.Response, error) {
+func (r ApiAuthenticationAPIAuthCurrentPostRequest) Execute() (*CurrentAuthorization, *http.Response, error) {
 	return r.ApiService.AuthCurrentPostExecute(r)
 }
 
@@ -181,12 +181,12 @@ AuthCurrentPost Get the authorization details associated with the current API to
 Get the authorization details associated with the current API token for the users current site
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthCurrentPostRequest
+ @return ApiAuthenticationAPIAuthCurrentPostRequest
 
 Deprecated
 */
-func (a *ApiAuthenticationApiService) AuthCurrentPost(ctx context.Context) ApiAuthCurrentPostRequest {
-	return ApiAuthCurrentPostRequest{
+func (a *ApiAuthenticationAPIService) AuthCurrentPost(ctx context.Context) ApiAuthenticationAPIAuthCurrentPostRequest {
+	return ApiAuthenticationAPIAuthCurrentPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -195,7 +195,7 @@ func (a *ApiAuthenticationApiService) AuthCurrentPost(ctx context.Context) ApiAu
 // Execute executes the request
 //  @return CurrentAuthorization
 // Deprecated
-func (a *ApiAuthenticationApiService) AuthCurrentPostExecute(r ApiAuthCurrentPostRequest) (*CurrentAuthorization, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) AuthCurrentPostExecute(r ApiAuthenticationAPIAuthCurrentPostRequest) (*CurrentAuthorization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -203,7 +203,7 @@ func (a *ApiAuthenticationApiService) AuthCurrentPostExecute(r ApiAuthCurrentPos
 		localVarReturnValue  *CurrentAuthorization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.AuthCurrentPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.AuthCurrentPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -241,9 +241,9 @@ func (a *ApiAuthenticationApiService) AuthCurrentPostExecute(r ApiAuthCurrentPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -268,12 +268,12 @@ func (a *ApiAuthenticationApiService) AuthCurrentPostExecute(r ApiAuthCurrentPos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthGetRequest struct {
+type ApiAuthenticationAPIAuthGetRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiAuthGetRequest) Execute() (*Authorization, *http.Response, error) {
+func (r ApiAuthenticationAPIAuthGetRequest) Execute() (*Authorization, *http.Response, error) {
 	return r.ApiService.AuthGetExecute(r)
 }
 
@@ -283,12 +283,12 @@ AuthGet Get all the Authorization details associated with the current api
 Get all the authorization details associated with the current api token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthGetRequest
+ @return ApiAuthenticationAPIAuthGetRequest
 
 Deprecated
 */
-func (a *ApiAuthenticationApiService) AuthGet(ctx context.Context) ApiAuthGetRequest {
-	return ApiAuthGetRequest{
+func (a *ApiAuthenticationAPIService) AuthGet(ctx context.Context) ApiAuthenticationAPIAuthGetRequest {
+	return ApiAuthenticationAPIAuthGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -297,7 +297,7 @@ func (a *ApiAuthenticationApiService) AuthGet(ctx context.Context) ApiAuthGetReq
 // Execute executes the request
 //  @return Authorization
 // Deprecated
-func (a *ApiAuthenticationApiService) AuthGetExecute(r ApiAuthGetRequest) (*Authorization, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) AuthGetExecute(r ApiAuthenticationAPIAuthGetRequest) (*Authorization, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -305,7 +305,7 @@ func (a *ApiAuthenticationApiService) AuthGetExecute(r ApiAuthGetRequest) (*Auth
 		localVarReturnValue  *Authorization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.AuthGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.AuthGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -343,9 +343,9 @@ func (a *ApiAuthenticationApiService) AuthGetExecute(r ApiAuthGetRequest) (*Auth
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -370,12 +370,12 @@ func (a *ApiAuthenticationApiService) AuthGetExecute(r ApiAuthGetRequest) (*Auth
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthInvalidateTokenPostRequest struct {
+type ApiAuthenticationAPIAuthInvalidateTokenPostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiAuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
+func (r ApiAuthenticationAPIAuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.AuthInvalidateTokenPostExecute(r)
 }
 
@@ -385,12 +385,12 @@ AuthInvalidateTokenPost Invalidate current token
 Invalidates current token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthInvalidateTokenPostRequest
+ @return ApiAuthenticationAPIAuthInvalidateTokenPostRequest
 
 Deprecated
 */
-func (a *ApiAuthenticationApiService) AuthInvalidateTokenPost(ctx context.Context) ApiAuthInvalidateTokenPostRequest {
-	return ApiAuthInvalidateTokenPostRequest{
+func (a *ApiAuthenticationAPIService) AuthInvalidateTokenPost(ctx context.Context) ApiAuthenticationAPIAuthInvalidateTokenPostRequest {
+	return ApiAuthenticationAPIAuthInvalidateTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -398,14 +398,14 @@ func (a *ApiAuthenticationApiService) AuthInvalidateTokenPost(ctx context.Contex
 
 // Execute executes the request
 // Deprecated
-func (a *ApiAuthenticationApiService) AuthInvalidateTokenPostExecute(r ApiAuthInvalidateTokenPostRequest) (*http.Response, error) {
+func (a *ApiAuthenticationAPIService) AuthInvalidateTokenPostExecute(r ApiAuthenticationAPIAuthInvalidateTokenPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.AuthInvalidateTokenPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.AuthInvalidateTokenPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -443,9 +443,9 @@ func (a *ApiAuthenticationApiService) AuthInvalidateTokenPostExecute(r ApiAuthIn
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -461,12 +461,12 @@ func (a *ApiAuthenticationApiService) AuthInvalidateTokenPostExecute(r ApiAuthIn
 	return localVarHTTPResponse, nil
 }
 
-type ApiAuthKeepAlivePostRequest struct {
+type ApiAuthenticationAPIAuthKeepAlivePostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiAuthKeepAlivePostRequest) Execute() (*AuthToken, *http.Response, error) {
+func (r ApiAuthenticationAPIAuthKeepAlivePostRequest) Execute() (*AuthToken, *http.Response, error) {
 	return r.ApiService.AuthKeepAlivePostExecute(r)
 }
 
@@ -476,12 +476,12 @@ AuthKeepAlivePost Invalidate existing token and generates new token
 Invalidates existing token and generates new token with extended expiration based on existing token credentials.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthKeepAlivePostRequest
+ @return ApiAuthenticationAPIAuthKeepAlivePostRequest
 
 Deprecated
 */
-func (a *ApiAuthenticationApiService) AuthKeepAlivePost(ctx context.Context) ApiAuthKeepAlivePostRequest {
-	return ApiAuthKeepAlivePostRequest{
+func (a *ApiAuthenticationAPIService) AuthKeepAlivePost(ctx context.Context) ApiAuthenticationAPIAuthKeepAlivePostRequest {
+	return ApiAuthenticationAPIAuthKeepAlivePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -490,7 +490,7 @@ func (a *ApiAuthenticationApiService) AuthKeepAlivePost(ctx context.Context) Api
 // Execute executes the request
 //  @return AuthToken
 // Deprecated
-func (a *ApiAuthenticationApiService) AuthKeepAlivePostExecute(r ApiAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) AuthKeepAlivePostExecute(r ApiAuthenticationAPIAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -498,7 +498,7 @@ func (a *ApiAuthenticationApiService) AuthKeepAlivePostExecute(r ApiAuthKeepAliv
 		localVarReturnValue  *AuthToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.AuthKeepAlivePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.AuthKeepAlivePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -536,9 +536,9 @@ func (a *ApiAuthenticationApiService) AuthKeepAlivePostExecute(r ApiAuthKeepAliv
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -563,12 +563,12 @@ func (a *ApiAuthenticationApiService) AuthKeepAlivePostExecute(r ApiAuthKeepAliv
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthTokensPostRequest struct {
+type ApiAuthenticationAPIAuthTokensPostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiAuthTokensPostRequest) Execute() (*AuthToken, *http.Response, error) {
+func (r ApiAuthenticationAPIAuthTokensPostRequest) Execute() (*AuthToken, *http.Response, error) {
 	return r.ApiService.AuthTokensPostExecute(r)
 }
 
@@ -579,12 +579,12 @@ Create a token based on other authentication details (basic, etc.)
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokensPostRequest
+ @return ApiAuthenticationAPIAuthTokensPostRequest
 
 Deprecated
 */
-func (a *ApiAuthenticationApiService) AuthTokensPost(ctx context.Context) ApiAuthTokensPostRequest {
-	return ApiAuthTokensPostRequest{
+func (a *ApiAuthenticationAPIService) AuthTokensPost(ctx context.Context) ApiAuthenticationAPIAuthTokensPostRequest {
+	return ApiAuthenticationAPIAuthTokensPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -593,7 +593,7 @@ func (a *ApiAuthenticationApiService) AuthTokensPost(ctx context.Context) ApiAut
 // Execute executes the request
 //  @return AuthToken
 // Deprecated
-func (a *ApiAuthenticationApiService) AuthTokensPostExecute(r ApiAuthTokensPostRequest) (*AuthToken, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) AuthTokensPostExecute(r ApiAuthenticationAPIAuthTokensPostRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -601,7 +601,7 @@ func (a *ApiAuthenticationApiService) AuthTokensPostExecute(r ApiAuthTokensPostR
 		localVarReturnValue  *AuthToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.AuthTokensPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.AuthTokensPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -639,9 +639,9 @@ func (a *ApiAuthenticationApiService) AuthTokensPostExecute(r ApiAuthTokensPostR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -666,12 +666,12 @@ func (a *ApiAuthenticationApiService) AuthTokensPostExecute(r ApiAuthTokensPostR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AuthGetRequest struct {
+type ApiAuthenticationAPIV1AuthGetRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiV1AuthGetRequest) Execute() (*AuthorizationV1, *http.Response, error) {
+func (r ApiAuthenticationAPIV1AuthGetRequest) Execute() (*AuthorizationV1, *http.Response, error) {
 	return r.ApiService.V1AuthGetExecute(r)
 }
 
@@ -681,10 +681,10 @@ V1AuthGet Get all the Authorization details associated with the current api
 Get all the authorization details associated with the current api token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AuthGetRequest
+ @return ApiAuthenticationAPIV1AuthGetRequest
 */
-func (a *ApiAuthenticationApiService) V1AuthGet(ctx context.Context) ApiV1AuthGetRequest {
-	return ApiV1AuthGetRequest{
+func (a *ApiAuthenticationAPIService) V1AuthGet(ctx context.Context) ApiAuthenticationAPIV1AuthGetRequest {
+	return ApiAuthenticationAPIV1AuthGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -692,7 +692,7 @@ func (a *ApiAuthenticationApiService) V1AuthGet(ctx context.Context) ApiV1AuthGe
 
 // Execute executes the request
 //  @return AuthorizationV1
-func (a *ApiAuthenticationApiService) V1AuthGetExecute(r ApiV1AuthGetRequest) (*AuthorizationV1, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) V1AuthGetExecute(r ApiAuthenticationAPIV1AuthGetRequest) (*AuthorizationV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -700,7 +700,7 @@ func (a *ApiAuthenticationApiService) V1AuthGetExecute(r ApiV1AuthGetRequest) (*
 		localVarReturnValue  *AuthorizationV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.V1AuthGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.V1AuthGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -738,9 +738,9 @@ func (a *ApiAuthenticationApiService) V1AuthGetExecute(r ApiV1AuthGetRequest) (*
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -765,12 +765,12 @@ func (a *ApiAuthenticationApiService) V1AuthGetExecute(r ApiV1AuthGetRequest) (*
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AuthInvalidateTokenPostRequest struct {
+type ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiV1AuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
+func (r ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1AuthInvalidateTokenPostExecute(r)
 }
 
@@ -780,24 +780,24 @@ V1AuthInvalidateTokenPost Invalidate current token
 Invalidates current token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AuthInvalidateTokenPostRequest
+ @return ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest
 */
-func (a *ApiAuthenticationApiService) V1AuthInvalidateTokenPost(ctx context.Context) ApiV1AuthInvalidateTokenPostRequest {
-	return ApiV1AuthInvalidateTokenPostRequest{
+func (a *ApiAuthenticationAPIService) V1AuthInvalidateTokenPost(ctx context.Context) ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest {
+	return ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ApiAuthenticationApiService) V1AuthInvalidateTokenPostExecute(r ApiV1AuthInvalidateTokenPostRequest) (*http.Response, error) {
+func (a *ApiAuthenticationAPIService) V1AuthInvalidateTokenPostExecute(r ApiAuthenticationAPIV1AuthInvalidateTokenPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.V1AuthInvalidateTokenPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.V1AuthInvalidateTokenPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -835,9 +835,9 @@ func (a *ApiAuthenticationApiService) V1AuthInvalidateTokenPostExecute(r ApiV1Au
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -853,12 +853,12 @@ func (a *ApiAuthenticationApiService) V1AuthInvalidateTokenPostExecute(r ApiV1Au
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1AuthKeepAlivePostRequest struct {
+type ApiAuthenticationAPIV1AuthKeepAlivePostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiV1AuthKeepAlivePostRequest) Execute() (*AuthTokenV1, *http.Response, error) {
+func (r ApiAuthenticationAPIV1AuthKeepAlivePostRequest) Execute() (*AuthTokenV1, *http.Response, error) {
 	return r.ApiService.V1AuthKeepAlivePostExecute(r)
 }
 
@@ -868,10 +868,10 @@ V1AuthKeepAlivePost Invalidate existing token and generates new token
 Invalidates existing token and generates new token with extended expiration based on existing token credentials.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AuthKeepAlivePostRequest
+ @return ApiAuthenticationAPIV1AuthKeepAlivePostRequest
 */
-func (a *ApiAuthenticationApiService) V1AuthKeepAlivePost(ctx context.Context) ApiV1AuthKeepAlivePostRequest {
-	return ApiV1AuthKeepAlivePostRequest{
+func (a *ApiAuthenticationAPIService) V1AuthKeepAlivePost(ctx context.Context) ApiAuthenticationAPIV1AuthKeepAlivePostRequest {
+	return ApiAuthenticationAPIV1AuthKeepAlivePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -879,7 +879,7 @@ func (a *ApiAuthenticationApiService) V1AuthKeepAlivePost(ctx context.Context) A
 
 // Execute executes the request
 //  @return AuthTokenV1
-func (a *ApiAuthenticationApiService) V1AuthKeepAlivePostExecute(r ApiV1AuthKeepAlivePostRequest) (*AuthTokenV1, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) V1AuthKeepAlivePostExecute(r ApiAuthenticationAPIV1AuthKeepAlivePostRequest) (*AuthTokenV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -887,7 +887,7 @@ func (a *ApiAuthenticationApiService) V1AuthKeepAlivePostExecute(r ApiV1AuthKeep
 		localVarReturnValue  *AuthTokenV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.V1AuthKeepAlivePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.V1AuthKeepAlivePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -925,9 +925,9 @@ func (a *ApiAuthenticationApiService) V1AuthKeepAlivePostExecute(r ApiV1AuthKeep
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -952,12 +952,12 @@ func (a *ApiAuthenticationApiService) V1AuthKeepAlivePostExecute(r ApiV1AuthKeep
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1AuthTokenPostRequest struct {
+type ApiAuthenticationAPIV1AuthTokenPostRequest struct {
 	ctx context.Context
-	ApiService ApiAuthenticationApi
+	ApiService ApiAuthenticationAPI
 }
 
-func (r ApiV1AuthTokenPostRequest) Execute() (*AuthTokenV1, *http.Response, error) {
+func (r ApiAuthenticationAPIV1AuthTokenPostRequest) Execute() (*AuthTokenV1, *http.Response, error) {
 	return r.ApiService.V1AuthTokenPostExecute(r)
 }
 
@@ -968,10 +968,10 @@ Create a token based on other authentication details (basic, etc.)
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AuthTokenPostRequest
+ @return ApiAuthenticationAPIV1AuthTokenPostRequest
 */
-func (a *ApiAuthenticationApiService) V1AuthTokenPost(ctx context.Context) ApiV1AuthTokenPostRequest {
-	return ApiV1AuthTokenPostRequest{
+func (a *ApiAuthenticationAPIService) V1AuthTokenPost(ctx context.Context) ApiAuthenticationAPIV1AuthTokenPostRequest {
+	return ApiAuthenticationAPIV1AuthTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -979,7 +979,7 @@ func (a *ApiAuthenticationApiService) V1AuthTokenPost(ctx context.Context) ApiV1
 
 // Execute executes the request
 //  @return AuthTokenV1
-func (a *ApiAuthenticationApiService) V1AuthTokenPostExecute(r ApiV1AuthTokenPostRequest) (*AuthTokenV1, *http.Response, error) {
+func (a *ApiAuthenticationAPIService) V1AuthTokenPostExecute(r ApiAuthenticationAPIV1AuthTokenPostRequest) (*AuthTokenV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -987,7 +987,7 @@ func (a *ApiAuthenticationApiService) V1AuthTokenPostExecute(r ApiV1AuthTokenPos
 		localVarReturnValue  *AuthTokenV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationApiService.V1AuthTokenPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.V1AuthTokenPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1025,9 +1025,9 @@ func (a *ApiAuthenticationApiService) V1AuthTokenPostExecute(r ApiV1AuthTokenPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

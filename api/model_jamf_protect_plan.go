@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfProtectPlan type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfProtectPlan{}
+
 // JamfProtectPlan struct for JamfProtectPlan
 type JamfProtectPlan struct {
 	Uuid *string `json:"uuid,omitempty"`
@@ -44,7 +47,7 @@ func NewJamfProtectPlanWithDefaults() *JamfProtectPlan {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *JamfProtectPlan) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -62,7 +65,7 @@ func (o *JamfProtectPlan) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *JamfProtectPlan) SetUuid(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *JamfProtectPlan) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -94,7 +97,7 @@ func (o *JamfProtectPlan) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *JamfProtectPlan) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *JamfProtectPlan) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -126,7 +129,7 @@ func (o *JamfProtectPlan) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *JamfProtectPlan) SetName(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *JamfProtectPlan) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -158,7 +161,7 @@ func (o *JamfProtectPlan) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *JamfProtectPlan) SetDescription(v string) {
 
 // GetProfileId returns the ProfileId field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetProfileId() int32 {
-	if o == nil || o.ProfileId == nil {
+	if o == nil || IsNil(o.ProfileId) {
 		var ret int32
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *JamfProtectPlan) GetProfileId() int32 {
 // GetProfileIdOk returns a tuple with the ProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetProfileIdOk() (*int32, bool) {
-	if o == nil || o.ProfileId == nil {
+	if o == nil || IsNil(o.ProfileId) {
 		return nil, false
 	}
 	return o.ProfileId, true
@@ -190,7 +193,7 @@ func (o *JamfProtectPlan) GetProfileIdOk() (*int32, bool) {
 
 // HasProfileId returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasProfileId() bool {
-	if o != nil && o.ProfileId != nil {
+	if o != nil && !IsNil(o.ProfileId) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *JamfProtectPlan) SetProfileId(v int32) {
 
 // GetProfileName returns the ProfileName field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetProfileName() string {
-	if o == nil || o.ProfileName == nil {
+	if o == nil || IsNil(o.ProfileName) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *JamfProtectPlan) GetProfileName() string {
 // GetProfileNameOk returns a tuple with the ProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetProfileNameOk() (*string, bool) {
-	if o == nil || o.ProfileName == nil {
+	if o == nil || IsNil(o.ProfileName) {
 		return nil, false
 	}
 	return o.ProfileName, true
@@ -222,7 +225,7 @@ func (o *JamfProtectPlan) GetProfileNameOk() (*string, bool) {
 
 // HasProfileName returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasProfileName() bool {
-	if o != nil && o.ProfileName != nil {
+	if o != nil && !IsNil(o.ProfileName) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *JamfProtectPlan) SetProfileName(v string) {
 
 // GetScopeDescription returns the ScopeDescription field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetScopeDescription() string {
-	if o == nil || o.ScopeDescription == nil {
+	if o == nil || IsNil(o.ScopeDescription) {
 		var ret string
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *JamfProtectPlan) GetScopeDescription() string {
 // GetScopeDescriptionOk returns a tuple with the ScopeDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProtectPlan) GetScopeDescriptionOk() (*string, bool) {
-	if o == nil || o.ScopeDescription == nil {
+	if o == nil || IsNil(o.ScopeDescription) {
 		return nil, false
 	}
 	return o.ScopeDescription, true
@@ -254,7 +257,7 @@ func (o *JamfProtectPlan) GetScopeDescriptionOk() (*string, bool) {
 
 // HasScopeDescription returns a boolean if a field has been set.
 func (o *JamfProtectPlan) HasScopeDescription() bool {
-	if o != nil && o.ScopeDescription != nil {
+	if o != nil && !IsNil(o.ScopeDescription) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *JamfProtectPlan) SetScopeDescription(v string) {
 }
 
 func (o JamfProtectPlan) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.ProfileId != nil {
-		toSerialize["profileId"] = o.ProfileId
-	}
-	if o.ProfileName != nil {
-		toSerialize["profileName"] = o.ProfileName
-	}
-	if o.ScopeDescription != nil {
-		toSerialize["scopeDescription"] = o.ScopeDescription
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfProtectPlan) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.ProfileId) {
+		toSerialize["profileId"] = o.ProfileId
+	}
+	if !IsNil(o.ProfileName) {
+		toSerialize["profileName"] = o.ProfileName
+	}
+	if !IsNil(o.ScopeDescription) {
+		toSerialize["scopeDescription"] = o.ScopeDescription
+	}
+	return toSerialize, nil
 }
 
 type NullableJamfProtectPlan struct {

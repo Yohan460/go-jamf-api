@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfPackageResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfPackageResponse{}
+
 // JamfPackageResponse struct for JamfPackageResponse
 type JamfPackageResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -42,7 +45,7 @@ func NewJamfPackageResponseWithDefaults() *JamfPackageResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *JamfPackageResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *JamfPackageResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfPackageResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *JamfPackageResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *JamfPackageResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *JamfPackageResponse) SetId(v string) {
 
 // GetFilename returns the Filename field value if set, zero value otherwise.
 func (o *JamfPackageResponse) GetFilename() string {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *JamfPackageResponse) GetFilename() string {
 // GetFilenameOk returns a tuple with the Filename field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfPackageResponse) GetFilenameOk() (*string, bool) {
-	if o == nil || o.Filename == nil {
+	if o == nil || IsNil(o.Filename) {
 		return nil, false
 	}
 	return o.Filename, true
@@ -92,7 +95,7 @@ func (o *JamfPackageResponse) GetFilenameOk() (*string, bool) {
 
 // HasFilename returns a boolean if a field has been set.
 func (o *JamfPackageResponse) HasFilename() bool {
-	if o != nil && o.Filename != nil {
+	if o != nil && !IsNil(o.Filename) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *JamfPackageResponse) SetFilename(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *JamfPackageResponse) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *JamfPackageResponse) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfPackageResponse) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -124,7 +127,7 @@ func (o *JamfPackageResponse) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *JamfPackageResponse) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *JamfPackageResponse) SetVersion(v string) {
 
 // GetCreated returns the Created field value if set, zero value otherwise.
 func (o *JamfPackageResponse) GetCreated() string {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *JamfPackageResponse) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfPackageResponse) GetCreatedOk() (*string, bool) {
-	if o == nil || o.Created == nil {
+	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
 	return o.Created, true
@@ -156,7 +159,7 @@ func (o *JamfPackageResponse) GetCreatedOk() (*string, bool) {
 
 // HasCreated returns a boolean if a field has been set.
 func (o *JamfPackageResponse) HasCreated() bool {
-	if o != nil && o.Created != nil {
+	if o != nil && !IsNil(o.Created) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *JamfPackageResponse) SetCreated(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *JamfPackageResponse) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *JamfPackageResponse) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfPackageResponse) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -188,7 +191,7 @@ func (o *JamfPackageResponse) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *JamfPackageResponse) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *JamfPackageResponse) SetUrl(v string) {
 }
 
 func (o JamfPackageResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Filename != nil {
-		toSerialize["filename"] = o.Filename
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Created != nil {
-		toSerialize["created"] = o.Created
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfPackageResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Filename) {
+		toSerialize["filename"] = o.Filename
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Created) {
+		toSerialize["created"] = o.Created
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	return toSerialize, nil
 }
 
 type NullableJamfPackageResponse struct {

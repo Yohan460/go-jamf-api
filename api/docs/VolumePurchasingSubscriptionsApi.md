@@ -1,14 +1,14 @@
-# \VolumePurchasingSubscriptionsApi
+# \VolumePurchasingSubscriptionsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1VolumePurchasingSubscriptionsGet**](VolumePurchasingSubscriptionsApi.md#V1VolumePurchasingSubscriptionsGet) | **Get** /v1/volume-purchasing-subscriptions | Retrieve Volume Purchasing Subscriptions
-[**V1VolumePurchasingSubscriptionsIdDelete**](VolumePurchasingSubscriptionsApi.md#V1VolumePurchasingSubscriptionsIdDelete) | **Delete** /v1/volume-purchasing-subscriptions/{id} | Delete a Volume Purchasing Subscription with the supplied id
-[**V1VolumePurchasingSubscriptionsIdGet**](VolumePurchasingSubscriptionsApi.md#V1VolumePurchasingSubscriptionsIdGet) | **Get** /v1/volume-purchasing-subscriptions/{id} | Retrieve a Volume Purchasing Subscription with the supplied id
-[**V1VolumePurchasingSubscriptionsIdPut**](VolumePurchasingSubscriptionsApi.md#V1VolumePurchasingSubscriptionsIdPut) | **Put** /v1/volume-purchasing-subscriptions/{id} | Update a Volume Purchasing Subscription
-[**V1VolumePurchasingSubscriptionsPost**](VolumePurchasingSubscriptionsApi.md#V1VolumePurchasingSubscriptionsPost) | **Post** /v1/volume-purchasing-subscriptions | Create a Volume Purchasing Subscription
+[**V1VolumePurchasingSubscriptionsGet**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsGet) | **Get** /v1/volume-purchasing-subscriptions | Retrieve Volume Purchasing Subscriptions
+[**V1VolumePurchasingSubscriptionsIdDelete**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdDelete) | **Delete** /v1/volume-purchasing-subscriptions/{id} | Delete a Volume Purchasing Subscription with the supplied id
+[**V1VolumePurchasingSubscriptionsIdGet**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdGet) | **Get** /v1/volume-purchasing-subscriptions/{id} | Retrieve a Volume Purchasing Subscription with the supplied id
+[**V1VolumePurchasingSubscriptionsIdPut**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdPut) | **Put** /v1/volume-purchasing-subscriptions/{id} | Update a Volume Purchasing Subscription
+[**V1VolumePurchasingSubscriptionsPost**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsPost) | **Post** /v1/volume-purchasing-subscriptions | Create a Volume Purchasing Subscription
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -39,13 +39,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1VolumePurchasingSubscriptionsGet`: VolumePurchasingSubscriptions
-    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsGet`: %v\n", resp)
 }
 ```
 
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -107,9 +107,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -167,7 +167,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -175,13 +175,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1VolumePurchasingSubscriptionsIdGet`: VolumePurchasingSubscription
-    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdGet`: %v\n", resp)
 }
 ```
 
@@ -237,7 +237,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -246,13 +246,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdPut(context.Background(), id).VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase).Execute()
+    resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdPut(context.Background(), id).VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1VolumePurchasingSubscriptionsIdPut`: VolumePurchasingSubscription
-    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdPut`: %v\n", resp)
 }
 ```
 
@@ -309,7 +309,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -317,13 +317,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsPost(context.Background()).VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase).Execute()
+    resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsPost(context.Background()).VolumePurchasingSubscriptionBase(volumePurchasingSubscriptionBase).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1VolumePurchasingSubscriptionsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsApi.V1VolumePurchasingSubscriptionsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsPost`: %v\n", resp)
 }
 ```
 

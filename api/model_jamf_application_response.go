@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfApplicationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfApplicationResponse{}
+
 // JamfApplicationResponse struct for JamfApplicationResponse
 type JamfApplicationResponse struct {
 	DisplayName *string `json:"displayName,omitempty"`
@@ -40,7 +43,7 @@ func NewJamfApplicationResponseWithDefaults() *JamfApplicationResponse {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *JamfApplicationResponse) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *JamfApplicationResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfApplicationResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -58,7 +61,7 @@ func (o *JamfApplicationResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *JamfApplicationResponse) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *JamfApplicationResponse) SetDisplayName(v string) {
 
 // GetReleaseHistoryUrl returns the ReleaseHistoryUrl field value if set, zero value otherwise.
 func (o *JamfApplicationResponse) GetReleaseHistoryUrl() string {
-	if o == nil || o.ReleaseHistoryUrl == nil {
+	if o == nil || IsNil(o.ReleaseHistoryUrl) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *JamfApplicationResponse) GetReleaseHistoryUrl() string {
 // GetReleaseHistoryUrlOk returns a tuple with the ReleaseHistoryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfApplicationResponse) GetReleaseHistoryUrlOk() (*string, bool) {
-	if o == nil || o.ReleaseHistoryUrl == nil {
+	if o == nil || IsNil(o.ReleaseHistoryUrl) {
 		return nil, false
 	}
 	return o.ReleaseHistoryUrl, true
@@ -90,7 +93,7 @@ func (o *JamfApplicationResponse) GetReleaseHistoryUrlOk() (*string, bool) {
 
 // HasReleaseHistoryUrl returns a boolean if a field has been set.
 func (o *JamfApplicationResponse) HasReleaseHistoryUrl() bool {
-	if o != nil && o.ReleaseHistoryUrl != nil {
+	if o != nil && !IsNil(o.ReleaseHistoryUrl) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *JamfApplicationResponse) SetReleaseHistoryUrl(v string) {
 
 // GetArtifacts returns the Artifacts field value if set, zero value otherwise.
 func (o *JamfApplicationResponse) GetArtifacts() []JamfPackageResponse {
-	if o == nil || o.Artifacts == nil {
+	if o == nil || IsNil(o.Artifacts) {
 		var ret []JamfPackageResponse
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *JamfApplicationResponse) GetArtifacts() []JamfPackageResponse {
 // GetArtifactsOk returns a tuple with the Artifacts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfApplicationResponse) GetArtifactsOk() ([]JamfPackageResponse, bool) {
-	if o == nil || o.Artifacts == nil {
+	if o == nil || IsNil(o.Artifacts) {
 		return nil, false
 	}
 	return o.Artifacts, true
@@ -122,7 +125,7 @@ func (o *JamfApplicationResponse) GetArtifactsOk() ([]JamfPackageResponse, bool)
 
 // HasArtifacts returns a boolean if a field has been set.
 func (o *JamfApplicationResponse) HasArtifacts() bool {
-	if o != nil && o.Artifacts != nil {
+	if o != nil && !IsNil(o.Artifacts) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *JamfApplicationResponse) SetArtifacts(v []JamfPackageResponse) {
 }
 
 func (o JamfApplicationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.ReleaseHistoryUrl != nil {
-		toSerialize["releaseHistoryUrl"] = o.ReleaseHistoryUrl
-	}
-	if o.Artifacts != nil {
-		toSerialize["artifacts"] = o.Artifacts
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfApplicationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.ReleaseHistoryUrl) {
+		toSerialize["releaseHistoryUrl"] = o.ReleaseHistoryUrl
+	}
+	if !IsNil(o.Artifacts) {
+		toSerialize["artifacts"] = o.Artifacts
+	}
+	return toSerialize, nil
 }
 
 type NullableJamfApplicationResponse struct {

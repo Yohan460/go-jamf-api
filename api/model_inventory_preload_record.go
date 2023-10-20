@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadRecord type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadRecord{}
+
 // InventoryPreloadRecord struct for InventoryPreloadRecord
 type InventoryPreloadRecord struct {
 	Id *int32 `json:"id,omitempty"`
@@ -64,7 +67,7 @@ func NewInventoryPreloadRecordWithDefaults() *InventoryPreloadRecord {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -74,7 +77,7 @@ func (o *InventoryPreloadRecord) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -82,7 +85,7 @@ func (o *InventoryPreloadRecord) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *InventoryPreloadRecord) SetDeviceType(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *InventoryPreloadRecord) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -162,7 +165,7 @@ func (o *InventoryPreloadRecord) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *InventoryPreloadRecord) SetUsername(v string) {
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetFullName() string {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *InventoryPreloadRecord) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetFullNameOk() (*string, bool) {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
 	return o.FullName, true
@@ -194,7 +197,7 @@ func (o *InventoryPreloadRecord) GetFullNameOk() (*string, bool) {
 
 // HasFullName returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasFullName() bool {
-	if o != nil && o.FullName != nil {
+	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *InventoryPreloadRecord) SetFullName(v string) {
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetEmailAddress() string {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *InventoryPreloadRecord) GetEmailAddress() string {
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetEmailAddressOk() (*string, bool) {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
 	return o.EmailAddress, true
@@ -226,7 +229,7 @@ func (o *InventoryPreloadRecord) GetEmailAddressOk() (*string, bool) {
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasEmailAddress() bool {
-	if o != nil && o.EmailAddress != nil {
+	if o != nil && !IsNil(o.EmailAddress) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *InventoryPreloadRecord) SetEmailAddress(v string) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *InventoryPreloadRecord) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		return nil, false
 	}
 	return o.PhoneNumber, true
@@ -258,7 +261,7 @@ func (o *InventoryPreloadRecord) GetPhoneNumberOk() (*string, bool) {
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *InventoryPreloadRecord) SetPhoneNumber(v string) {
 
 // GetPosition returns the Position field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPosition() string {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *InventoryPreloadRecord) GetPosition() string {
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPositionOk() (*string, bool) {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		return nil, false
 	}
 	return o.Position, true
@@ -290,7 +293,7 @@ func (o *InventoryPreloadRecord) GetPositionOk() (*string, bool) {
 
 // HasPosition returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPosition() bool {
-	if o != nil && o.Position != nil {
+	if o != nil && !IsNil(o.Position) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *InventoryPreloadRecord) SetPosition(v string) {
 
 // GetDepartment returns the Department field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetDepartment() string {
-	if o == nil || o.Department == nil {
+	if o == nil || IsNil(o.Department) {
 		var ret string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *InventoryPreloadRecord) GetDepartment() string {
 // GetDepartmentOk returns a tuple with the Department field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetDepartmentOk() (*string, bool) {
-	if o == nil || o.Department == nil {
+	if o == nil || IsNil(o.Department) {
 		return nil, false
 	}
 	return o.Department, true
@@ -322,7 +325,7 @@ func (o *InventoryPreloadRecord) GetDepartmentOk() (*string, bool) {
 
 // HasDepartment returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasDepartment() bool {
-	if o != nil && o.Department != nil {
+	if o != nil && !IsNil(o.Department) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *InventoryPreloadRecord) SetDepartment(v string) {
 
 // GetBuilding returns the Building field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetBuilding() string {
-	if o == nil || o.Building == nil {
+	if o == nil || IsNil(o.Building) {
 		var ret string
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *InventoryPreloadRecord) GetBuilding() string {
 // GetBuildingOk returns a tuple with the Building field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetBuildingOk() (*string, bool) {
-	if o == nil || o.Building == nil {
+	if o == nil || IsNil(o.Building) {
 		return nil, false
 	}
 	return o.Building, true
@@ -354,7 +357,7 @@ func (o *InventoryPreloadRecord) GetBuildingOk() (*string, bool) {
 
 // HasBuilding returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasBuilding() bool {
-	if o != nil && o.Building != nil {
+	if o != nil && !IsNil(o.Building) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *InventoryPreloadRecord) SetBuilding(v string) {
 
 // GetRoom returns the Room field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetRoom() string {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		var ret string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *InventoryPreloadRecord) GetRoom() string {
 // GetRoomOk returns a tuple with the Room field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetRoomOk() (*string, bool) {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		return nil, false
 	}
 	return o.Room, true
@@ -386,7 +389,7 @@ func (o *InventoryPreloadRecord) GetRoomOk() (*string, bool) {
 
 // HasRoom returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasRoom() bool {
-	if o != nil && o.Room != nil {
+	if o != nil && !IsNil(o.Room) {
 		return true
 	}
 
@@ -400,7 +403,7 @@ func (o *InventoryPreloadRecord) SetRoom(v string) {
 
 // GetPoNumber returns the PoNumber field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPoNumber() string {
-	if o == nil || o.PoNumber == nil {
+	if o == nil || IsNil(o.PoNumber) {
 		var ret string
 		return ret
 	}
@@ -410,7 +413,7 @@ func (o *InventoryPreloadRecord) GetPoNumber() string {
 // GetPoNumberOk returns a tuple with the PoNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPoNumberOk() (*string, bool) {
-	if o == nil || o.PoNumber == nil {
+	if o == nil || IsNil(o.PoNumber) {
 		return nil, false
 	}
 	return o.PoNumber, true
@@ -418,7 +421,7 @@ func (o *InventoryPreloadRecord) GetPoNumberOk() (*string, bool) {
 
 // HasPoNumber returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPoNumber() bool {
-	if o != nil && o.PoNumber != nil {
+	if o != nil && !IsNil(o.PoNumber) {
 		return true
 	}
 
@@ -432,7 +435,7 @@ func (o *InventoryPreloadRecord) SetPoNumber(v string) {
 
 // GetPoDate returns the PoDate field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPoDate() string {
-	if o == nil || o.PoDate == nil {
+	if o == nil || IsNil(o.PoDate) {
 		var ret string
 		return ret
 	}
@@ -442,7 +445,7 @@ func (o *InventoryPreloadRecord) GetPoDate() string {
 // GetPoDateOk returns a tuple with the PoDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPoDateOk() (*string, bool) {
-	if o == nil || o.PoDate == nil {
+	if o == nil || IsNil(o.PoDate) {
 		return nil, false
 	}
 	return o.PoDate, true
@@ -450,7 +453,7 @@ func (o *InventoryPreloadRecord) GetPoDateOk() (*string, bool) {
 
 // HasPoDate returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPoDate() bool {
-	if o != nil && o.PoDate != nil {
+	if o != nil && !IsNil(o.PoDate) {
 		return true
 	}
 
@@ -464,7 +467,7 @@ func (o *InventoryPreloadRecord) SetPoDate(v string) {
 
 // GetWarrantyExpiration returns the WarrantyExpiration field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetWarrantyExpiration() string {
-	if o == nil || o.WarrantyExpiration == nil {
+	if o == nil || IsNil(o.WarrantyExpiration) {
 		var ret string
 		return ret
 	}
@@ -474,7 +477,7 @@ func (o *InventoryPreloadRecord) GetWarrantyExpiration() string {
 // GetWarrantyExpirationOk returns a tuple with the WarrantyExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetWarrantyExpirationOk() (*string, bool) {
-	if o == nil || o.WarrantyExpiration == nil {
+	if o == nil || IsNil(o.WarrantyExpiration) {
 		return nil, false
 	}
 	return o.WarrantyExpiration, true
@@ -482,7 +485,7 @@ func (o *InventoryPreloadRecord) GetWarrantyExpirationOk() (*string, bool) {
 
 // HasWarrantyExpiration returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasWarrantyExpiration() bool {
-	if o != nil && o.WarrantyExpiration != nil {
+	if o != nil && !IsNil(o.WarrantyExpiration) {
 		return true
 	}
 
@@ -496,7 +499,7 @@ func (o *InventoryPreloadRecord) SetWarrantyExpiration(v string) {
 
 // GetAppleCareId returns the AppleCareId field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetAppleCareId() string {
-	if o == nil || o.AppleCareId == nil {
+	if o == nil || IsNil(o.AppleCareId) {
 		var ret string
 		return ret
 	}
@@ -506,7 +509,7 @@ func (o *InventoryPreloadRecord) GetAppleCareId() string {
 // GetAppleCareIdOk returns a tuple with the AppleCareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetAppleCareIdOk() (*string, bool) {
-	if o == nil || o.AppleCareId == nil {
+	if o == nil || IsNil(o.AppleCareId) {
 		return nil, false
 	}
 	return o.AppleCareId, true
@@ -514,7 +517,7 @@ func (o *InventoryPreloadRecord) GetAppleCareIdOk() (*string, bool) {
 
 // HasAppleCareId returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasAppleCareId() bool {
-	if o != nil && o.AppleCareId != nil {
+	if o != nil && !IsNil(o.AppleCareId) {
 		return true
 	}
 
@@ -528,7 +531,7 @@ func (o *InventoryPreloadRecord) SetAppleCareId(v string) {
 
 // GetLifeExpectancy returns the LifeExpectancy field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetLifeExpectancy() string {
-	if o == nil || o.LifeExpectancy == nil {
+	if o == nil || IsNil(o.LifeExpectancy) {
 		var ret string
 		return ret
 	}
@@ -538,7 +541,7 @@ func (o *InventoryPreloadRecord) GetLifeExpectancy() string {
 // GetLifeExpectancyOk returns a tuple with the LifeExpectancy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetLifeExpectancyOk() (*string, bool) {
-	if o == nil || o.LifeExpectancy == nil {
+	if o == nil || IsNil(o.LifeExpectancy) {
 		return nil, false
 	}
 	return o.LifeExpectancy, true
@@ -546,7 +549,7 @@ func (o *InventoryPreloadRecord) GetLifeExpectancyOk() (*string, bool) {
 
 // HasLifeExpectancy returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasLifeExpectancy() bool {
-	if o != nil && o.LifeExpectancy != nil {
+	if o != nil && !IsNil(o.LifeExpectancy) {
 		return true
 	}
 
@@ -560,7 +563,7 @@ func (o *InventoryPreloadRecord) SetLifeExpectancy(v string) {
 
 // GetPurchasePrice returns the PurchasePrice field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPurchasePrice() string {
-	if o == nil || o.PurchasePrice == nil {
+	if o == nil || IsNil(o.PurchasePrice) {
 		var ret string
 		return ret
 	}
@@ -570,7 +573,7 @@ func (o *InventoryPreloadRecord) GetPurchasePrice() string {
 // GetPurchasePriceOk returns a tuple with the PurchasePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPurchasePriceOk() (*string, bool) {
-	if o == nil || o.PurchasePrice == nil {
+	if o == nil || IsNil(o.PurchasePrice) {
 		return nil, false
 	}
 	return o.PurchasePrice, true
@@ -578,7 +581,7 @@ func (o *InventoryPreloadRecord) GetPurchasePriceOk() (*string, bool) {
 
 // HasPurchasePrice returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPurchasePrice() bool {
-	if o != nil && o.PurchasePrice != nil {
+	if o != nil && !IsNil(o.PurchasePrice) {
 		return true
 	}
 
@@ -592,7 +595,7 @@ func (o *InventoryPreloadRecord) SetPurchasePrice(v string) {
 
 // GetPurchasingContact returns the PurchasingContact field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPurchasingContact() string {
-	if o == nil || o.PurchasingContact == nil {
+	if o == nil || IsNil(o.PurchasingContact) {
 		var ret string
 		return ret
 	}
@@ -602,7 +605,7 @@ func (o *InventoryPreloadRecord) GetPurchasingContact() string {
 // GetPurchasingContactOk returns a tuple with the PurchasingContact field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPurchasingContactOk() (*string, bool) {
-	if o == nil || o.PurchasingContact == nil {
+	if o == nil || IsNil(o.PurchasingContact) {
 		return nil, false
 	}
 	return o.PurchasingContact, true
@@ -610,7 +613,7 @@ func (o *InventoryPreloadRecord) GetPurchasingContactOk() (*string, bool) {
 
 // HasPurchasingContact returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPurchasingContact() bool {
-	if o != nil && o.PurchasingContact != nil {
+	if o != nil && !IsNil(o.PurchasingContact) {
 		return true
 	}
 
@@ -624,7 +627,7 @@ func (o *InventoryPreloadRecord) SetPurchasingContact(v string) {
 
 // GetPurchasingAccount returns the PurchasingAccount field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetPurchasingAccount() string {
-	if o == nil || o.PurchasingAccount == nil {
+	if o == nil || IsNil(o.PurchasingAccount) {
 		var ret string
 		return ret
 	}
@@ -634,7 +637,7 @@ func (o *InventoryPreloadRecord) GetPurchasingAccount() string {
 // GetPurchasingAccountOk returns a tuple with the PurchasingAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetPurchasingAccountOk() (*string, bool) {
-	if o == nil || o.PurchasingAccount == nil {
+	if o == nil || IsNil(o.PurchasingAccount) {
 		return nil, false
 	}
 	return o.PurchasingAccount, true
@@ -642,7 +645,7 @@ func (o *InventoryPreloadRecord) GetPurchasingAccountOk() (*string, bool) {
 
 // HasPurchasingAccount returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasPurchasingAccount() bool {
-	if o != nil && o.PurchasingAccount != nil {
+	if o != nil && !IsNil(o.PurchasingAccount) {
 		return true
 	}
 
@@ -656,7 +659,7 @@ func (o *InventoryPreloadRecord) SetPurchasingAccount(v string) {
 
 // GetLeaseExpiration returns the LeaseExpiration field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetLeaseExpiration() string {
-	if o == nil || o.LeaseExpiration == nil {
+	if o == nil || IsNil(o.LeaseExpiration) {
 		var ret string
 		return ret
 	}
@@ -666,7 +669,7 @@ func (o *InventoryPreloadRecord) GetLeaseExpiration() string {
 // GetLeaseExpirationOk returns a tuple with the LeaseExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetLeaseExpirationOk() (*string, bool) {
-	if o == nil || o.LeaseExpiration == nil {
+	if o == nil || IsNil(o.LeaseExpiration) {
 		return nil, false
 	}
 	return o.LeaseExpiration, true
@@ -674,7 +677,7 @@ func (o *InventoryPreloadRecord) GetLeaseExpirationOk() (*string, bool) {
 
 // HasLeaseExpiration returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasLeaseExpiration() bool {
-	if o != nil && o.LeaseExpiration != nil {
+	if o != nil && !IsNil(o.LeaseExpiration) {
 		return true
 	}
 
@@ -688,7 +691,7 @@ func (o *InventoryPreloadRecord) SetLeaseExpiration(v string) {
 
 // GetBarCode1 returns the BarCode1 field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetBarCode1() string {
-	if o == nil || o.BarCode1 == nil {
+	if o == nil || IsNil(o.BarCode1) {
 		var ret string
 		return ret
 	}
@@ -698,7 +701,7 @@ func (o *InventoryPreloadRecord) GetBarCode1() string {
 // GetBarCode1Ok returns a tuple with the BarCode1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetBarCode1Ok() (*string, bool) {
-	if o == nil || o.BarCode1 == nil {
+	if o == nil || IsNil(o.BarCode1) {
 		return nil, false
 	}
 	return o.BarCode1, true
@@ -706,7 +709,7 @@ func (o *InventoryPreloadRecord) GetBarCode1Ok() (*string, bool) {
 
 // HasBarCode1 returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasBarCode1() bool {
-	if o != nil && o.BarCode1 != nil {
+	if o != nil && !IsNil(o.BarCode1) {
 		return true
 	}
 
@@ -720,7 +723,7 @@ func (o *InventoryPreloadRecord) SetBarCode1(v string) {
 
 // GetBarCode2 returns the BarCode2 field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetBarCode2() string {
-	if o == nil || o.BarCode2 == nil {
+	if o == nil || IsNil(o.BarCode2) {
 		var ret string
 		return ret
 	}
@@ -730,7 +733,7 @@ func (o *InventoryPreloadRecord) GetBarCode2() string {
 // GetBarCode2Ok returns a tuple with the BarCode2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetBarCode2Ok() (*string, bool) {
-	if o == nil || o.BarCode2 == nil {
+	if o == nil || IsNil(o.BarCode2) {
 		return nil, false
 	}
 	return o.BarCode2, true
@@ -738,7 +741,7 @@ func (o *InventoryPreloadRecord) GetBarCode2Ok() (*string, bool) {
 
 // HasBarCode2 returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasBarCode2() bool {
-	if o != nil && o.BarCode2 != nil {
+	if o != nil && !IsNil(o.BarCode2) {
 		return true
 	}
 
@@ -752,7 +755,7 @@ func (o *InventoryPreloadRecord) SetBarCode2(v string) {
 
 // GetAssetTag returns the AssetTag field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetAssetTag() string {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		var ret string
 		return ret
 	}
@@ -762,7 +765,7 @@ func (o *InventoryPreloadRecord) GetAssetTag() string {
 // GetAssetTagOk returns a tuple with the AssetTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetAssetTagOk() (*string, bool) {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		return nil, false
 	}
 	return o.AssetTag, true
@@ -770,7 +773,7 @@ func (o *InventoryPreloadRecord) GetAssetTagOk() (*string, bool) {
 
 // HasAssetTag returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasAssetTag() bool {
-	if o != nil && o.AssetTag != nil {
+	if o != nil && !IsNil(o.AssetTag) {
 		return true
 	}
 
@@ -784,7 +787,7 @@ func (o *InventoryPreloadRecord) SetAssetTag(v string) {
 
 // GetVendor returns the Vendor field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetVendor() string {
-	if o == nil || o.Vendor == nil {
+	if o == nil || IsNil(o.Vendor) {
 		var ret string
 		return ret
 	}
@@ -794,7 +797,7 @@ func (o *InventoryPreloadRecord) GetVendor() string {
 // GetVendorOk returns a tuple with the Vendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetVendorOk() (*string, bool) {
-	if o == nil || o.Vendor == nil {
+	if o == nil || IsNil(o.Vendor) {
 		return nil, false
 	}
 	return o.Vendor, true
@@ -802,7 +805,7 @@ func (o *InventoryPreloadRecord) GetVendorOk() (*string, bool) {
 
 // HasVendor returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasVendor() bool {
-	if o != nil && o.Vendor != nil {
+	if o != nil && !IsNil(o.Vendor) {
 		return true
 	}
 
@@ -816,7 +819,7 @@ func (o *InventoryPreloadRecord) SetVendor(v string) {
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *InventoryPreloadRecord) GetExtensionAttributes() []InventoryPreloadExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []InventoryPreloadExtensionAttribute
 		return ret
 	}
@@ -826,7 +829,7 @@ func (o *InventoryPreloadRecord) GetExtensionAttributes() []InventoryPreloadExte
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadRecord) GetExtensionAttributesOk() ([]InventoryPreloadExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -834,7 +837,7 @@ func (o *InventoryPreloadRecord) GetExtensionAttributesOk() ([]InventoryPreloadE
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *InventoryPreloadRecord) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -847,83 +850,87 @@ func (o *InventoryPreloadRecord) SetExtensionAttributes(v []InventoryPreloadExte
 }
 
 func (o InventoryPreloadRecord) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if true {
-		toSerialize["deviceType"] = o.DeviceType
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.FullName != nil {
-		toSerialize["fullName"] = o.FullName
-	}
-	if o.EmailAddress != nil {
-		toSerialize["emailAddress"] = o.EmailAddress
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phoneNumber"] = o.PhoneNumber
-	}
-	if o.Position != nil {
-		toSerialize["position"] = o.Position
-	}
-	if o.Department != nil {
-		toSerialize["department"] = o.Department
-	}
-	if o.Building != nil {
-		toSerialize["building"] = o.Building
-	}
-	if o.Room != nil {
-		toSerialize["room"] = o.Room
-	}
-	if o.PoNumber != nil {
-		toSerialize["poNumber"] = o.PoNumber
-	}
-	if o.PoDate != nil {
-		toSerialize["poDate"] = o.PoDate
-	}
-	if o.WarrantyExpiration != nil {
-		toSerialize["warrantyExpiration"] = o.WarrantyExpiration
-	}
-	if o.AppleCareId != nil {
-		toSerialize["appleCareId"] = o.AppleCareId
-	}
-	if o.LifeExpectancy != nil {
-		toSerialize["lifeExpectancy"] = o.LifeExpectancy
-	}
-	if o.PurchasePrice != nil {
-		toSerialize["purchasePrice"] = o.PurchasePrice
-	}
-	if o.PurchasingContact != nil {
-		toSerialize["purchasingContact"] = o.PurchasingContact
-	}
-	if o.PurchasingAccount != nil {
-		toSerialize["purchasingAccount"] = o.PurchasingAccount
-	}
-	if o.LeaseExpiration != nil {
-		toSerialize["leaseExpiration"] = o.LeaseExpiration
-	}
-	if o.BarCode1 != nil {
-		toSerialize["barCode1"] = o.BarCode1
-	}
-	if o.BarCode2 != nil {
-		toSerialize["barCode2"] = o.BarCode2
-	}
-	if o.AssetTag != nil {
-		toSerialize["assetTag"] = o.AssetTag
-	}
-	if o.Vendor != nil {
-		toSerialize["vendor"] = o.Vendor
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadRecord) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["serialNumber"] = o.SerialNumber
+	toSerialize["deviceType"] = o.DeviceType
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	if !IsNil(o.Position) {
+		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.Department) {
+		toSerialize["department"] = o.Department
+	}
+	if !IsNil(o.Building) {
+		toSerialize["building"] = o.Building
+	}
+	if !IsNil(o.Room) {
+		toSerialize["room"] = o.Room
+	}
+	if !IsNil(o.PoNumber) {
+		toSerialize["poNumber"] = o.PoNumber
+	}
+	if !IsNil(o.PoDate) {
+		toSerialize["poDate"] = o.PoDate
+	}
+	if !IsNil(o.WarrantyExpiration) {
+		toSerialize["warrantyExpiration"] = o.WarrantyExpiration
+	}
+	if !IsNil(o.AppleCareId) {
+		toSerialize["appleCareId"] = o.AppleCareId
+	}
+	if !IsNil(o.LifeExpectancy) {
+		toSerialize["lifeExpectancy"] = o.LifeExpectancy
+	}
+	if !IsNil(o.PurchasePrice) {
+		toSerialize["purchasePrice"] = o.PurchasePrice
+	}
+	if !IsNil(o.PurchasingContact) {
+		toSerialize["purchasingContact"] = o.PurchasingContact
+	}
+	if !IsNil(o.PurchasingAccount) {
+		toSerialize["purchasingAccount"] = o.PurchasingAccount
+	}
+	if !IsNil(o.LeaseExpiration) {
+		toSerialize["leaseExpiration"] = o.LeaseExpiration
+	}
+	if !IsNil(o.BarCode1) {
+		toSerialize["barCode1"] = o.BarCode1
+	}
+	if !IsNil(o.BarCode2) {
+		toSerialize["barCode2"] = o.BarCode2
+	}
+	if !IsNil(o.AssetTag) {
+		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.Vendor) {
+		toSerialize["vendor"] = o.Vendor
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadRecord struct {

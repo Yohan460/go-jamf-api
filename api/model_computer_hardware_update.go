@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerHardwareUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerHardwareUpdate{}
+
 // ComputerHardwareUpdate struct for ComputerHardwareUpdate
 type ComputerHardwareUpdate struct {
 	NetworkAdapterType *string `json:"networkAdapterType,omitempty"`
@@ -42,7 +45,7 @@ func NewComputerHardwareUpdateWithDefaults() *ComputerHardwareUpdate {
 
 // GetNetworkAdapterType returns the NetworkAdapterType field value if set, zero value otherwise.
 func (o *ComputerHardwareUpdate) GetNetworkAdapterType() string {
-	if o == nil || o.NetworkAdapterType == nil {
+	if o == nil || IsNil(o.NetworkAdapterType) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ComputerHardwareUpdate) GetNetworkAdapterType() string {
 // GetNetworkAdapterTypeOk returns a tuple with the NetworkAdapterType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardwareUpdate) GetNetworkAdapterTypeOk() (*string, bool) {
-	if o == nil || o.NetworkAdapterType == nil {
+	if o == nil || IsNil(o.NetworkAdapterType) {
 		return nil, false
 	}
 	return o.NetworkAdapterType, true
@@ -60,7 +63,7 @@ func (o *ComputerHardwareUpdate) GetNetworkAdapterTypeOk() (*string, bool) {
 
 // HasNetworkAdapterType returns a boolean if a field has been set.
 func (o *ComputerHardwareUpdate) HasNetworkAdapterType() bool {
-	if o != nil && o.NetworkAdapterType != nil {
+	if o != nil && !IsNil(o.NetworkAdapterType) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ComputerHardwareUpdate) SetNetworkAdapterType(v string) {
 
 // GetMacAddress returns the MacAddress field value if set, zero value otherwise.
 func (o *ComputerHardwareUpdate) GetMacAddress() string {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ComputerHardwareUpdate) GetMacAddress() string {
 // GetMacAddressOk returns a tuple with the MacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardwareUpdate) GetMacAddressOk() (*string, bool) {
-	if o == nil || o.MacAddress == nil {
+	if o == nil || IsNil(o.MacAddress) {
 		return nil, false
 	}
 	return o.MacAddress, true
@@ -92,7 +95,7 @@ func (o *ComputerHardwareUpdate) GetMacAddressOk() (*string, bool) {
 
 // HasMacAddress returns a boolean if a field has been set.
 func (o *ComputerHardwareUpdate) HasMacAddress() bool {
-	if o != nil && o.MacAddress != nil {
+	if o != nil && !IsNil(o.MacAddress) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ComputerHardwareUpdate) SetMacAddress(v string) {
 
 // GetAltNetworkAdapterType returns the AltNetworkAdapterType field value if set, zero value otherwise.
 func (o *ComputerHardwareUpdate) GetAltNetworkAdapterType() string {
-	if o == nil || o.AltNetworkAdapterType == nil {
+	if o == nil || IsNil(o.AltNetworkAdapterType) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ComputerHardwareUpdate) GetAltNetworkAdapterType() string {
 // GetAltNetworkAdapterTypeOk returns a tuple with the AltNetworkAdapterType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardwareUpdate) GetAltNetworkAdapterTypeOk() (*string, bool) {
-	if o == nil || o.AltNetworkAdapterType == nil {
+	if o == nil || IsNil(o.AltNetworkAdapterType) {
 		return nil, false
 	}
 	return o.AltNetworkAdapterType, true
@@ -124,7 +127,7 @@ func (o *ComputerHardwareUpdate) GetAltNetworkAdapterTypeOk() (*string, bool) {
 
 // HasAltNetworkAdapterType returns a boolean if a field has been set.
 func (o *ComputerHardwareUpdate) HasAltNetworkAdapterType() bool {
-	if o != nil && o.AltNetworkAdapterType != nil {
+	if o != nil && !IsNil(o.AltNetworkAdapterType) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ComputerHardwareUpdate) SetAltNetworkAdapterType(v string) {
 
 // GetAltMacAddress returns the AltMacAddress field value if set, zero value otherwise.
 func (o *ComputerHardwareUpdate) GetAltMacAddress() string {
-	if o == nil || o.AltMacAddress == nil {
+	if o == nil || IsNil(o.AltMacAddress) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ComputerHardwareUpdate) GetAltMacAddress() string {
 // GetAltMacAddressOk returns a tuple with the AltMacAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardwareUpdate) GetAltMacAddressOk() (*string, bool) {
-	if o == nil || o.AltMacAddress == nil {
+	if o == nil || IsNil(o.AltMacAddress) {
 		return nil, false
 	}
 	return o.AltMacAddress, true
@@ -156,7 +159,7 @@ func (o *ComputerHardwareUpdate) GetAltMacAddressOk() (*string, bool) {
 
 // HasAltMacAddress returns a boolean if a field has been set.
 func (o *ComputerHardwareUpdate) HasAltMacAddress() bool {
-	if o != nil && o.AltMacAddress != nil {
+	if o != nil && !IsNil(o.AltMacAddress) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ComputerHardwareUpdate) SetAltMacAddress(v string) {
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerHardwareUpdate) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ComputerHardwareUpdate) GetExtensionAttributes() []ComputerExtensionAtt
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerHardwareUpdate) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -188,7 +191,7 @@ func (o *ComputerHardwareUpdate) GetExtensionAttributesOk() ([]ComputerExtension
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerHardwareUpdate) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ComputerHardwareUpdate) SetExtensionAttributes(v []ComputerExtensionAtt
 }
 
 func (o ComputerHardwareUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.NetworkAdapterType != nil {
-		toSerialize["networkAdapterType"] = o.NetworkAdapterType
-	}
-	if o.MacAddress != nil {
-		toSerialize["macAddress"] = o.MacAddress
-	}
-	if o.AltNetworkAdapterType != nil {
-		toSerialize["altNetworkAdapterType"] = o.AltNetworkAdapterType
-	}
-	if o.AltMacAddress != nil {
-		toSerialize["altMacAddress"] = o.AltMacAddress
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerHardwareUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NetworkAdapterType) {
+		toSerialize["networkAdapterType"] = o.NetworkAdapterType
+	}
+	if !IsNil(o.MacAddress) {
+		toSerialize["macAddress"] = o.MacAddress
+	}
+	if !IsNil(o.AltNetworkAdapterType) {
+		toSerialize["altNetworkAdapterType"] = o.AltNetworkAdapterType
+	}
+	if !IsNil(o.AltMacAddress) {
+		toSerialize["altMacAddress"] = o.AltMacAddress
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerHardwareUpdate struct {

@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,7 +21,7 @@ import (
 )
 
 
-type JamfConnectApi interface {
+type JamfConnectAPI interface {
 
 	/*
 	V1JamfConnectConfigProfilesGet Search for config profiles linked to Jamf Connect 
@@ -29,13 +29,13 @@ type JamfConnectApi interface {
 	Search for config profiles linked to Jamf Connect
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfConnectConfigProfilesGetRequest
+	@return JamfConnectAPIV1JamfConnectConfigProfilesGetRequest
 	*/
-	V1JamfConnectConfigProfilesGet(ctx context.Context) ApiV1JamfConnectConfigProfilesGetRequest
+	V1JamfConnectConfigProfilesGet(ctx context.Context) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest
 
 	// V1JamfConnectConfigProfilesGetExecute executes the request
 	//  @return LinkedConnectProfileSearchResults
-	V1JamfConnectConfigProfilesGetExecute(r ApiV1JamfConnectConfigProfilesGetRequest) (*LinkedConnectProfileSearchResults, *http.Response, error)
+	V1JamfConnectConfigProfilesGetExecute(r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) (*LinkedConnectProfileSearchResults, *http.Response, error)
 
 	/*
 	V1JamfConnectConfigProfilesIdPut Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
@@ -44,13 +44,13 @@ type JamfConnectApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id the UUID of the profile to update
-	@return ApiV1JamfConnectConfigProfilesIdPutRequest
+	@return JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest
 	*/
-	V1JamfConnectConfigProfilesIdPut(ctx context.Context, id string) ApiV1JamfConnectConfigProfilesIdPutRequest
+	V1JamfConnectConfigProfilesIdPut(ctx context.Context, id string) JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest
 
 	// V1JamfConnectConfigProfilesIdPutExecute executes the request
 	//  @return LinkedConnectProfile
-	V1JamfConnectConfigProfilesIdPutExecute(r ApiV1JamfConnectConfigProfilesIdPutRequest) (*LinkedConnectProfile, *http.Response, error)
+	V1JamfConnectConfigProfilesIdPutExecute(r JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest) (*LinkedConnectProfile, *http.Response, error)
 
 	/*
 	V1JamfConnectDeploymentsIdTasksGet Search for deployment tasks for a config profile linked to Jamf Connect 
@@ -59,13 +59,13 @@ type JamfConnectApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id the UUID of the Jamf Connect deployment
-	@return ApiV1JamfConnectDeploymentsIdTasksGetRequest
+	@return JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest
 	*/
-	V1JamfConnectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksGetRequest
+	V1JamfConnectDeploymentsIdTasksGet(ctx context.Context, id string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest
 
 	// V1JamfConnectDeploymentsIdTasksGetExecute executes the request
 	//  @return DeploymentTaskSearchResults
-	V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV1JamfConnectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
+	V1JamfConnectDeploymentsIdTasksGetExecute(r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error)
 
 	/*
 	V1JamfConnectDeploymentsIdTasksRetryPost Request a retry of Connect install tasks 
@@ -75,12 +75,12 @@ type JamfConnectApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id the UUID of the deployment associated with the retry
-	@return ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest
+	@return JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest
 	*/
-	V1JamfConnectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest
+	V1JamfConnectDeploymentsIdTasksRetryPost(ctx context.Context, id string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest
 
 	// V1JamfConnectDeploymentsIdTasksRetryPostExecute executes the request
-	V1JamfConnectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
+	V1JamfConnectDeploymentsIdTasksRetryPostExecute(r JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest) (*http.Response, error)
 
 	/*
 	V1JamfConnectGet Get the Jamf Connect settings that you have access to see 
@@ -88,12 +88,12 @@ type JamfConnectApi interface {
 	Get the Jamf Connect settings that you have access to see.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfConnectGetRequest
+	@return JamfConnectAPIV1JamfConnectGetRequest
 	*/
-	V1JamfConnectGet(ctx context.Context) ApiV1JamfConnectGetRequest
+	V1JamfConnectGet(ctx context.Context) JamfConnectAPIV1JamfConnectGetRequest
 
 	// V1JamfConnectGetExecute executes the request
-	V1JamfConnectGetExecute(r ApiV1JamfConnectGetRequest) (*http.Response, error)
+	V1JamfConnectGetExecute(r JamfConnectAPIV1JamfConnectGetRequest) (*http.Response, error)
 
 	/*
 	V1JamfConnectHistoryGet Get Jamf Connect history 
@@ -102,13 +102,13 @@ type JamfConnectApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfConnectHistoryGetRequest
+	@return JamfConnectAPIV1JamfConnectHistoryGetRequest
 	*/
-	V1JamfConnectHistoryGet(ctx context.Context) ApiV1JamfConnectHistoryGetRequest
+	V1JamfConnectHistoryGet(ctx context.Context) JamfConnectAPIV1JamfConnectHistoryGetRequest
 
 	// V1JamfConnectHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1JamfConnectHistoryGetExecute(r ApiV1JamfConnectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1JamfConnectHistoryGetExecute(r JamfConnectAPIV1JamfConnectHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1JamfConnectHistoryPost Add Jamf Connect history notes 
@@ -117,50 +117,50 @@ type JamfConnectApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfConnectHistoryPostRequest
+	@return JamfConnectAPIV1JamfConnectHistoryPostRequest
 	*/
-	V1JamfConnectHistoryPost(ctx context.Context) ApiV1JamfConnectHistoryPostRequest
+	V1JamfConnectHistoryPost(ctx context.Context) JamfConnectAPIV1JamfConnectHistoryPostRequest
 
 	// V1JamfConnectHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1JamfConnectHistoryPostExecute(r ApiV1JamfConnectHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1JamfConnectHistoryPostExecute(r JamfConnectAPIV1JamfConnectHistoryPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// JamfConnectApiService JamfConnectApi service
-type JamfConnectApiService service
+// JamfConnectAPIService JamfConnectAPI service
+type JamfConnectAPIService service
 
-type ApiV1JamfConnectConfigProfilesGetRequest struct {
+type JamfConnectAPIV1JamfConnectConfigProfilesGetRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1JamfConnectConfigProfilesGetRequest) Page(page int32) ApiV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfConnectConfigProfilesGetRequest) PageSize(pageSize int32) ApiV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfConnectConfigProfilesGetRequest) Sort(sort []string) ApiV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Sort(sort []string) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfConnectConfigProfilesGetRequest) Filter(filter string) ApiV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Filter(filter string) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfConnectConfigProfilesGetRequest) Execute() (*LinkedConnectProfileSearchResults, *http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Execute() (*LinkedConnectProfileSearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfConnectConfigProfilesGetExecute(r)
 }
 
@@ -170,10 +170,10 @@ V1JamfConnectConfigProfilesGet Search for config profiles linked to Jamf Connect
 Search for config profiles linked to Jamf Connect
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfConnectConfigProfilesGetRequest
+ @return JamfConnectAPIV1JamfConnectConfigProfilesGetRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGet(ctx context.Context) ApiV1JamfConnectConfigProfilesGetRequest {
-	return ApiV1JamfConnectConfigProfilesGetRequest{
+func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesGet(ctx context.Context) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
+	return JamfConnectAPIV1JamfConnectConfigProfilesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -181,7 +181,7 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGet(ctx context.Conte
 
 // Execute executes the request
 //  @return LinkedConnectProfileSearchResults
-func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1JamfConnectConfigProfilesGetRequest) (*LinkedConnectProfileSearchResults, *http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesGetExecute(r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) (*LinkedConnectProfileSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -189,7 +189,7 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1Jam
 		localVarReturnValue  *LinkedConnectProfileSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectConfigProfilesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectConfigProfilesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -201,24 +201,36 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1Jam
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -247,9 +259,9 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1Jam
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -274,20 +286,20 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesGetExecute(r ApiV1Jam
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectConfigProfilesIdPutRequest struct {
+type JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	id string
 	linkedConnectProfile *LinkedConnectProfile
 }
 
 // Updatable Jamf Connect Settings
-func (r ApiV1JamfConnectConfigProfilesIdPutRequest) LinkedConnectProfile(linkedConnectProfile LinkedConnectProfile) ApiV1JamfConnectConfigProfilesIdPutRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest) LinkedConnectProfile(linkedConnectProfile LinkedConnectProfile) JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest {
 	r.linkedConnectProfile = &linkedConnectProfile
 	return r
 }
 
-func (r ApiV1JamfConnectConfigProfilesIdPutRequest) Execute() (*LinkedConnectProfile, *http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest) Execute() (*LinkedConnectProfile, *http.Response, error) {
 	return r.ApiService.V1JamfConnectConfigProfilesIdPutExecute(r)
 }
 
@@ -298,10 +310,10 @@ Update the way the Jamf Connect app gets updated on computers within scope of th
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id the UUID of the profile to update
- @return ApiV1JamfConnectConfigProfilesIdPutRequest
+ @return JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPut(ctx context.Context, id string) ApiV1JamfConnectConfigProfilesIdPutRequest {
-	return ApiV1JamfConnectConfigProfilesIdPutRequest{
+func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesIdPut(ctx context.Context, id string) JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest {
+	return JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -310,7 +322,7 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPut(ctx context.Con
 
 // Execute executes the request
 //  @return LinkedConnectProfile
-func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPutExecute(r ApiV1JamfConnectConfigProfilesIdPutRequest) (*LinkedConnectProfile, *http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesIdPutExecute(r JamfConnectAPIV1JamfConnectConfigProfilesIdPutRequest) (*LinkedConnectProfile, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -318,13 +330,13 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPutExecute(r ApiV1J
 		localVarReturnValue  *LinkedConnectProfile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectConfigProfilesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectConfigProfilesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-connect/config-profiles/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -359,9 +371,9 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPutExecute(r ApiV1J
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -386,9 +398,9 @@ func (a *JamfConnectApiService) V1JamfConnectConfigProfilesIdPutExecute(r ApiV1J
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectDeploymentsIdTasksGetRequest struct {
+type JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -396,29 +408,29 @@ type ApiV1JamfConnectDeploymentsIdTasksGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1JamfConnectDeploymentsIdTasksGetRequest) Page(page int32) ApiV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfConnectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) ApiV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfConnectDeploymentsIdTasksGetRequest) Sort(sort []string) ApiV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Sort(sort []string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfConnectDeploymentsIdTasksGetRequest) Filter(filter string) ApiV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Filter(filter string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfConnectDeploymentsIdTasksGetRequest) Execute() (*DeploymentTaskSearchResults, *http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Execute() (*DeploymentTaskSearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfConnectDeploymentsIdTasksGetExecute(r)
 }
 
@@ -429,10 +441,10 @@ Search for config profiles linked to Jamf Connect
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id the UUID of the Jamf Connect deployment
- @return ApiV1JamfConnectDeploymentsIdTasksGetRequest
+ @return JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGet(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksGetRequest {
-	return ApiV1JamfConnectDeploymentsIdTasksGetRequest{
+func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksGet(ctx context.Context, id string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
+	return JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -441,7 +453,7 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGet(ctx context.C
 
 // Execute executes the request
 //  @return DeploymentTaskSearchResults
-func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV1JamfConnectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksGetExecute(r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) (*DeploymentTaskSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -449,37 +461,49 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV
 		localVarReturnValue  *DeploymentTaskSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectDeploymentsIdTasksGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectDeploymentsIdTasksGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-connect/deployments/{id}/tasks"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -508,9 +532,9 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -535,20 +559,20 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksGetExecute(r ApiV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest struct {
+type JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	id string
 	ids *Ids
 }
 
 // task IDs to retry
-func (r ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest) Ids(ids Ids) ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest) Ids(ids Ids) JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest {
 	r.ids = &ids
 	return r
 }
 
-func (r ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest) Execute() (*http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1JamfConnectDeploymentsIdTasksRetryPostExecute(r)
 }
 
@@ -560,10 +584,10 @@ Request a retry of Connect install tasks
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id the UUID of the deployment associated with the retry
- @return ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest
+ @return JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPost(ctx context.Context, id string) ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest {
-	return ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest{
+func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksRetryPost(ctx context.Context, id string) JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest {
+	return JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -571,20 +595,20 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPost(ctx con
 }
 
 // Execute executes the request
-func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(r ApiV1JamfConnectDeploymentsIdTasksRetryPostRequest) (*http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(r JamfConnectAPIV1JamfConnectDeploymentsIdTasksRetryPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectDeploymentsIdTasksRetryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectDeploymentsIdTasksRetryPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-connect/deployments/{id}/tasks/retry"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -622,9 +646,9 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -641,7 +665,8 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -651,7 +676,8 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -659,12 +685,12 @@ func (a *JamfConnectApiService) V1JamfConnectDeploymentsIdTasksRetryPostExecute(
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectGetRequest struct {
+type JamfConnectAPIV1JamfConnectGetRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 }
 
-func (r ApiV1JamfConnectGetRequest) Execute() (*http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1JamfConnectGetExecute(r)
 }
 
@@ -674,24 +700,24 @@ V1JamfConnectGet Get the Jamf Connect settings that you have access to see
 Get the Jamf Connect settings that you have access to see.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfConnectGetRequest
+ @return JamfConnectAPIV1JamfConnectGetRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectGet(ctx context.Context) ApiV1JamfConnectGetRequest {
-	return ApiV1JamfConnectGetRequest{
+func (a *JamfConnectAPIService) V1JamfConnectGet(ctx context.Context) JamfConnectAPIV1JamfConnectGetRequest {
+	return JamfConnectAPIV1JamfConnectGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *JamfConnectApiService) V1JamfConnectGetExecute(r ApiV1JamfConnectGetRequest) (*http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectGetExecute(r JamfConnectAPIV1JamfConnectGetRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -729,9 +755,9 @@ func (a *JamfConnectApiService) V1JamfConnectGetExecute(r ApiV1JamfConnectGetReq
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -748,7 +774,8 @@ func (a *JamfConnectApiService) V1JamfConnectGetExecute(r ApiV1JamfConnectGetReq
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -756,38 +783,38 @@ func (a *JamfConnectApiService) V1JamfConnectGetExecute(r ApiV1JamfConnectGetReq
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectHistoryGetRequest struct {
+type JamfConnectAPIV1JamfConnectHistoryGetRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 	filter *string
 }
 
-func (r ApiV1JamfConnectHistoryGetRequest) Page(page int32) ApiV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1JamfConnectHistoryGetRequest) PageSize(pageSize int32) ApiV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
-func (r ApiV1JamfConnectHistoryGetRequest) Sort(sort []string) ApiV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Sort(sort []string) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1JamfConnectHistoryGetRequest) Filter(filter string) ApiV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Filter(filter string) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1JamfConnectHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfConnectHistoryGetExecute(r)
 }
 
@@ -798,10 +825,10 @@ Get Jamf Connect history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfConnectHistoryGetRequest
+ @return JamfConnectAPIV1JamfConnectHistoryGetRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectHistoryGet(ctx context.Context) ApiV1JamfConnectHistoryGetRequest {
-	return ApiV1JamfConnectHistoryGetRequest{
+func (a *JamfConnectAPIService) V1JamfConnectHistoryGet(ctx context.Context) JamfConnectAPIV1JamfConnectHistoryGetRequest {
+	return JamfConnectAPIV1JamfConnectHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -809,7 +836,7 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGet(ctx context.Context) Api
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnectHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectHistoryGetExecute(r JamfConnectAPIV1JamfConnectHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -817,7 +844,7 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnec
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -829,24 +856,36 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnec
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -875,9 +914,9 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -902,19 +941,19 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryGetExecute(r ApiV1JamfConnec
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfConnectHistoryPostRequest struct {
+type JamfConnectAPIV1JamfConnectHistoryPostRequest struct {
 	ctx context.Context
-	ApiService JamfConnectApi
+	ApiService JamfConnectAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1JamfConnectHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1JamfConnectHistoryPostRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) JamfConnectAPIV1JamfConnectHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1JamfConnectHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r JamfConnectAPIV1JamfConnectHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1JamfConnectHistoryPostExecute(r)
 }
 
@@ -925,10 +964,10 @@ Add Jamf Connect history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfConnectHistoryPostRequest
+ @return JamfConnectAPIV1JamfConnectHistoryPostRequest
 */
-func (a *JamfConnectApiService) V1JamfConnectHistoryPost(ctx context.Context) ApiV1JamfConnectHistoryPostRequest {
-	return ApiV1JamfConnectHistoryPostRequest{
+func (a *JamfConnectAPIService) V1JamfConnectHistoryPost(ctx context.Context) JamfConnectAPIV1JamfConnectHistoryPostRequest {
+	return JamfConnectAPIV1JamfConnectHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -936,7 +975,7 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryPost(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *JamfConnectApiService) V1JamfConnectHistoryPostExecute(r ApiV1JamfConnectHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *JamfConnectAPIService) V1JamfConnectHistoryPostExecute(r JamfConnectAPIV1JamfConnectHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -944,7 +983,7 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryPostExecute(r ApiV1JamfConne
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectApiService.V1JamfConnectHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfConnectAPIService.V1JamfConnectHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -987,9 +1026,9 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryPostExecute(r ApiV1JamfConne
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1006,7 +1045,8 @@ func (a *JamfConnectApiService) V1JamfConnectHistoryPostExecute(r ApiV1JamfConne
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

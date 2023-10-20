@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Locale type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Locale{}
+
 // Locale struct for Locale
 type Locale struct {
 	Description *string `json:"description,omitempty"`
@@ -39,7 +42,7 @@ func NewLocaleWithDefaults() *Locale {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *Locale) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *Locale) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Locale) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -57,7 +60,7 @@ func (o *Locale) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *Locale) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *Locale) SetDescription(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *Locale) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *Locale) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Locale) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -89,7 +92,7 @@ func (o *Locale) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *Locale) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *Locale) SetIdentifier(v string) {
 }
 
 func (o Locale) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Locale) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullableLocale struct {

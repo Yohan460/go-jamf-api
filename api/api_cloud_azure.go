@@ -13,72 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type CloudAzureApi interface {
-
-	/*
-	V1AzureAdMigrationReportsIdDownloadGet Download report of provided report ID
-
-	Returns excel file of generated report
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Existing report ID
-	@return ApiV1AzureAdMigrationReportsIdDownloadGetRequest
-	*/
-	V1AzureAdMigrationReportsIdDownloadGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdDownloadGetRequest
-
-	// V1AzureAdMigrationReportsIdDownloadGetExecute executes the request
-	//  @return interface{}
-	V1AzureAdMigrationReportsIdDownloadGetExecute(r ApiV1AzureAdMigrationReportsIdDownloadGetRequest) (interface{}, *http.Response, error)
-
-	/*
-	V1AzureAdMigrationReportsIdGet Check status of azure ad migration report
-
-	Returns dto with minimal info about running process
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Existing report ID
-	@return ApiV1AzureAdMigrationReportsIdGetRequest
-	*/
-	V1AzureAdMigrationReportsIdGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdGetRequest
-
-	// V1AzureAdMigrationReportsIdGetExecute executes the request
-	//  @return AzureAdMigrationReportProcessStatus
-	V1AzureAdMigrationReportsIdGetExecute(r ApiV1AzureAdMigrationReportsIdGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error)
-
-	/*
-	V1AzureAdMigrationReportsPendingGet Get pending azure migration report
-
-	Returs dto with info about pending report
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AzureAdMigrationReportsPendingGetRequest
-	*/
-	V1AzureAdMigrationReportsPendingGet(ctx context.Context) ApiV1AzureAdMigrationReportsPendingGetRequest
-
-	// V1AzureAdMigrationReportsPendingGetExecute executes the request
-	//  @return AzureAdMigrationReportProcessStatus
-	V1AzureAdMigrationReportsPendingGetExecute(r ApiV1AzureAdMigrationReportsPendingGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error)
-
-	/*
-	V1AzureAdMigrationReportsPost Start Azure Ad Migration report generation
-
-	Starts a new process in background that will generate Excel report
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1AzureAdMigrationReportsPostRequest
-	*/
-	V1AzureAdMigrationReportsPost(ctx context.Context) ApiV1AzureAdMigrationReportsPostRequest
-
-	// V1AzureAdMigrationReportsPostExecute executes the request
-	//  @return HrefResponse
-	V1AzureAdMigrationReportsPostExecute(r ApiV1AzureAdMigrationReportsPostRequest) (*HrefResponse, *http.Response, error)
+type CloudAzureAPI interface {
 
 	/*
 	V1CloudAzureDefaultsMappingsGet Get default mappings
@@ -86,13 +28,13 @@ type CloudAzureApi interface {
 	This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudAzureDefaultsMappingsGetRequest
+	@return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
 	*/
-	V1CloudAzureDefaultsMappingsGet(ctx context.Context) ApiV1CloudAzureDefaultsMappingsGetRequest
+	V1CloudAzureDefaultsMappingsGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
 
 	// V1CloudAzureDefaultsMappingsGetExecute executes the request
 	//  @return AzureMappings
-	V1CloudAzureDefaultsMappingsGetExecute(r ApiV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error)
+	V1CloudAzureDefaultsMappingsGetExecute(r CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error)
 
 	/*
 	V1CloudAzureDefaultsServerConfigurationGet Get default server configuration
@@ -100,13 +42,13 @@ type CloudAzureApi interface {
 	This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudAzureDefaultsServerConfigurationGetRequest
+	@return CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest
 	*/
-	V1CloudAzureDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudAzureDefaultsServerConfigurationGetRequest
+	V1CloudAzureDefaultsServerConfigurationGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest
 
 	// V1CloudAzureDefaultsServerConfigurationGetExecute executes the request
 	//  @return AzureServerConfiguration
-	V1CloudAzureDefaultsServerConfigurationGetExecute(r ApiV1CloudAzureDefaultsServerConfigurationGetRequest) (*AzureServerConfiguration, *http.Response, error)
+	V1CloudAzureDefaultsServerConfigurationGetExecute(r CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest) (*AzureServerConfiguration, *http.Response, error)
 
 	/*
 	V1CloudAzureIdDelete Delete Cloud Identity Provider configuration.
@@ -115,12 +57,12 @@ type CloudAzureApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudAzureIdDeleteRequest
+	@return CloudAzureAPIV1CloudAzureIdDeleteRequest
 	*/
-	V1CloudAzureIdDelete(ctx context.Context, id string) ApiV1CloudAzureIdDeleteRequest
+	V1CloudAzureIdDelete(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdDeleteRequest
 
 	// V1CloudAzureIdDeleteExecute executes the request
-	V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDeleteRequest) (*http.Response, error)
+	V1CloudAzureIdDeleteExecute(r CloudAzureAPIV1CloudAzureIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1CloudAzureIdGet Get Azure Cloud Identity Provider configuration with given ID.
@@ -129,13 +71,13 @@ type CloudAzureApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudAzureIdGetRequest
+	@return CloudAzureAPIV1CloudAzureIdGetRequest
 	*/
-	V1CloudAzureIdGet(ctx context.Context, id string) ApiV1CloudAzureIdGetRequest
+	V1CloudAzureIdGet(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdGetRequest
 
 	// V1CloudAzureIdGetExecute executes the request
 	//  @return AzureConfiguration
-	V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRequest) (*AzureConfiguration, *http.Response, error)
+	V1CloudAzureIdGetExecute(r CloudAzureAPIV1CloudAzureIdGetRequest) (*AzureConfiguration, *http.Response, error)
 
 	/*
 	V1CloudAzureIdPut Update Azure Cloud Identity Provider configuration
@@ -144,13 +86,13 @@ type CloudAzureApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudAzureIdPutRequest
+	@return CloudAzureAPIV1CloudAzureIdPutRequest
 	*/
-	V1CloudAzureIdPut(ctx context.Context, id string) ApiV1CloudAzureIdPutRequest
+	V1CloudAzureIdPut(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdPutRequest
 
 	// V1CloudAzureIdPutExecute executes the request
 	//  @return AzureConfiguration
-	V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRequest) (*AzureConfiguration, *http.Response, error)
+	V1CloudAzureIdPutExecute(r CloudAzureAPIV1CloudAzureIdPutRequest) (*AzureConfiguration, *http.Response, error)
 
 	/*
 	V1CloudAzurePost Create Azure Cloud Identity Provider configuration
@@ -158,476 +100,24 @@ type CloudAzureApi interface {
 	Create new Azure Cloud Identity Provider configuration with unique display name.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudAzurePostRequest
+	@return CloudAzureAPIV1CloudAzurePostRequest
 	*/
-	V1CloudAzurePost(ctx context.Context) ApiV1CloudAzurePostRequest
+	V1CloudAzurePost(ctx context.Context) CloudAzureAPIV1CloudAzurePostRequest
 
 	// V1CloudAzurePostExecute executes the request
 	//  @return HrefResponse
-	V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequest) (*HrefResponse, *http.Response, error)
+	V1CloudAzurePostExecute(r CloudAzureAPIV1CloudAzurePostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// CloudAzureApiService CloudAzureApi service
-type CloudAzureApiService service
+// CloudAzureAPIService CloudAzureAPI service
+type CloudAzureAPIService service
 
-type ApiV1AzureAdMigrationReportsIdDownloadGetRequest struct {
+type CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
-	id string
+	ApiService CloudAzureAPI
 }
 
-func (r ApiV1AzureAdMigrationReportsIdDownloadGetRequest) Execute() (interface{}, *http.Response, error) {
-	return r.ApiService.V1AzureAdMigrationReportsIdDownloadGetExecute(r)
-}
-
-/*
-V1AzureAdMigrationReportsIdDownloadGet Download report of provided report ID
-
-Returns excel file of generated report
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Existing report ID
- @return ApiV1AzureAdMigrationReportsIdDownloadGetRequest
-*/
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdDownloadGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdDownloadGetRequest {
-	return ApiV1AzureAdMigrationReportsIdDownloadGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return interface{}
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdDownloadGetExecute(r ApiV1AzureAdMigrationReportsIdDownloadGetRequest) (interface{}, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1AzureAdMigrationReportsIdDownloadGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/azure-ad-migration/reports/{id}/download"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1AzureAdMigrationReportsIdGetRequest struct {
-	ctx context.Context
-	ApiService CloudAzureApi
-	id string
-}
-
-func (r ApiV1AzureAdMigrationReportsIdGetRequest) Execute() (*AzureAdMigrationReportProcessStatus, *http.Response, error) {
-	return r.ApiService.V1AzureAdMigrationReportsIdGetExecute(r)
-}
-
-/*
-V1AzureAdMigrationReportsIdGet Check status of azure ad migration report
-
-Returns dto with minimal info about running process
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Existing report ID
- @return ApiV1AzureAdMigrationReportsIdGetRequest
-*/
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdGet(ctx context.Context, id string) ApiV1AzureAdMigrationReportsIdGetRequest {
-	return ApiV1AzureAdMigrationReportsIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return AzureAdMigrationReportProcessStatus
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsIdGetExecute(r ApiV1AzureAdMigrationReportsIdGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AzureAdMigrationReportProcessStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1AzureAdMigrationReportsIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/azure-ad-migration/reports/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1AzureAdMigrationReportsPendingGetRequest struct {
-	ctx context.Context
-	ApiService CloudAzureApi
-}
-
-func (r ApiV1AzureAdMigrationReportsPendingGetRequest) Execute() (*AzureAdMigrationReportProcessStatus, *http.Response, error) {
-	return r.ApiService.V1AzureAdMigrationReportsPendingGetExecute(r)
-}
-
-/*
-V1AzureAdMigrationReportsPendingGet Get pending azure migration report
-
-Returs dto with info about pending report
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AzureAdMigrationReportsPendingGetRequest
-*/
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsPendingGet(ctx context.Context) ApiV1AzureAdMigrationReportsPendingGetRequest {
-	return ApiV1AzureAdMigrationReportsPendingGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return AzureAdMigrationReportProcessStatus
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsPendingGetExecute(r ApiV1AzureAdMigrationReportsPendingGetRequest) (*AzureAdMigrationReportProcessStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AzureAdMigrationReportProcessStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1AzureAdMigrationReportsPendingGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/azure-ad-migration/reports/pending"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1AzureAdMigrationReportsPostRequest struct {
-	ctx context.Context
-	ApiService CloudAzureApi
-	azureAdMigrationReportRequest *AzureAdMigrationReportRequest
-}
-
-// Necessary input to create a new migration report
-func (r ApiV1AzureAdMigrationReportsPostRequest) AzureAdMigrationReportRequest(azureAdMigrationReportRequest AzureAdMigrationReportRequest) ApiV1AzureAdMigrationReportsPostRequest {
-	r.azureAdMigrationReportRequest = &azureAdMigrationReportRequest
-	return r
-}
-
-func (r ApiV1AzureAdMigrationReportsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
-	return r.ApiService.V1AzureAdMigrationReportsPostExecute(r)
-}
-
-/*
-V1AzureAdMigrationReportsPost Start Azure Ad Migration report generation
-
-Starts a new process in background that will generate Excel report
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1AzureAdMigrationReportsPostRequest
-*/
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsPost(ctx context.Context) ApiV1AzureAdMigrationReportsPostRequest {
-	return ApiV1AzureAdMigrationReportsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return HrefResponse
-func (a *CloudAzureApiService) V1AzureAdMigrationReportsPostExecute(r ApiV1AzureAdMigrationReportsPostRequest) (*HrefResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HrefResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1AzureAdMigrationReportsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/azure-ad-migration/reports"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.azureAdMigrationReportRequest == nil {
-		return localVarReturnValue, nil, reportError("azureAdMigrationReportRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.azureAdMigrationReportRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudAzureDefaultsMappingsGetRequest struct {
-	ctx context.Context
-	ApiService CloudAzureApi
-}
-
-func (r ApiV1CloudAzureDefaultsMappingsGetRequest) Execute() (*AzureMappings, *http.Response, error) {
+func (r CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest) Execute() (*AzureMappings, *http.Response, error) {
 	return r.ApiService.V1CloudAzureDefaultsMappingsGetExecute(r)
 }
 
@@ -637,10 +127,10 @@ V1CloudAzureDefaultsMappingsGet Get default mappings
 This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudAzureDefaultsMappingsGetRequest
+ @return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
 */
-func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGet(ctx context.Context) ApiV1CloudAzureDefaultsMappingsGetRequest {
-	return ApiV1CloudAzureDefaultsMappingsGetRequest{
+func (a *CloudAzureAPIService) V1CloudAzureDefaultsMappingsGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest {
+	return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -648,7 +138,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGet(ctx context.Conte
 
 // Execute executes the request
 //  @return AzureMappings
-func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzureDefaultsMappingsGetExecute(r CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -656,7 +146,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 		localVarReturnValue  *AzureMappings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzureDefaultsMappingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzureDefaultsMappingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -694,9 +184,9 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -713,7 +203,8 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -723,7 +214,8 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -740,12 +232,12 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsMappingsGetExecute(r ApiV1Clo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudAzureDefaultsServerConfigurationGetRequest struct {
+type CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
+	ApiService CloudAzureAPI
 }
 
-func (r ApiV1CloudAzureDefaultsServerConfigurationGetRequest) Execute() (*AzureServerConfiguration, *http.Response, error) {
+func (r CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest) Execute() (*AzureServerConfiguration, *http.Response, error) {
 	return r.ApiService.V1CloudAzureDefaultsServerConfigurationGetExecute(r)
 }
 
@@ -755,10 +247,10 @@ V1CloudAzureDefaultsServerConfigurationGet Get default server configuration
 This is the default set of attributes that allows you to return the data you need from Azure AD. Some fields may be empty and may be edited when creating a new configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudAzureDefaultsServerConfigurationGetRequest
+ @return CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest
 */
-func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudAzureDefaultsServerConfigurationGetRequest {
-	return ApiV1CloudAzureDefaultsServerConfigurationGetRequest{
+func (a *CloudAzureAPIService) V1CloudAzureDefaultsServerConfigurationGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest {
+	return CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -766,7 +258,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGet(ctx co
 
 // Execute executes the request
 //  @return AzureServerConfiguration
-func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute(r ApiV1CloudAzureDefaultsServerConfigurationGetRequest) (*AzureServerConfiguration, *http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzureDefaultsServerConfigurationGetExecute(r CloudAzureAPIV1CloudAzureDefaultsServerConfigurationGetRequest) (*AzureServerConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -774,7 +266,7 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 		localVarReturnValue  *AzureServerConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzureDefaultsServerConfigurationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzureDefaultsServerConfigurationGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -812,9 +304,9 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -831,7 +323,8 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -841,7 +334,8 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -858,13 +352,13 @@ func (a *CloudAzureApiService) V1CloudAzureDefaultsServerConfigurationGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudAzureIdDeleteRequest struct {
+type CloudAzureAPIV1CloudAzureIdDeleteRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
+	ApiService CloudAzureAPI
 	id string
 }
 
-func (r ApiV1CloudAzureIdDeleteRequest) Execute() (*http.Response, error) {
+func (r CloudAzureAPIV1CloudAzureIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1CloudAzureIdDeleteExecute(r)
 }
 
@@ -875,10 +369,10 @@ Delete Cloud Identity Provider configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudAzureIdDeleteRequest
+ @return CloudAzureAPIV1CloudAzureIdDeleteRequest
 */
-func (a *CloudAzureApiService) V1CloudAzureIdDelete(ctx context.Context, id string) ApiV1CloudAzureIdDeleteRequest {
-	return ApiV1CloudAzureIdDeleteRequest{
+func (a *CloudAzureAPIService) V1CloudAzureIdDelete(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdDeleteRequest {
+	return CloudAzureAPIV1CloudAzureIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -886,20 +380,20 @@ func (a *CloudAzureApiService) V1CloudAzureIdDelete(ctx context.Context, id stri
 }
 
 // Execute executes the request
-func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDeleteRequest) (*http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzureIdDeleteExecute(r CloudAzureAPIV1CloudAzureIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzureIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzureIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-azure/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -932,9 +426,9 @@ func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDe
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -951,7 +445,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -961,7 +456,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -969,13 +465,13 @@ func (a *CloudAzureApiService) V1CloudAzureIdDeleteExecute(r ApiV1CloudAzureIdDe
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1CloudAzureIdGetRequest struct {
+type CloudAzureAPIV1CloudAzureIdGetRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
+	ApiService CloudAzureAPI
 	id string
 }
 
-func (r ApiV1CloudAzureIdGetRequest) Execute() (*AzureConfiguration, *http.Response, error) {
+func (r CloudAzureAPIV1CloudAzureIdGetRequest) Execute() (*AzureConfiguration, *http.Response, error) {
 	return r.ApiService.V1CloudAzureIdGetExecute(r)
 }
 
@@ -986,10 +482,10 @@ Get Azure Cloud Identity Provider configuration with given ID.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudAzureIdGetRequest
+ @return CloudAzureAPIV1CloudAzureIdGetRequest
 */
-func (a *CloudAzureApiService) V1CloudAzureIdGet(ctx context.Context, id string) ApiV1CloudAzureIdGetRequest {
-	return ApiV1CloudAzureIdGetRequest{
+func (a *CloudAzureAPIService) V1CloudAzureIdGet(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdGetRequest {
+	return CloudAzureAPIV1CloudAzureIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -998,7 +494,7 @@ func (a *CloudAzureApiService) V1CloudAzureIdGet(ctx context.Context, id string)
 
 // Execute executes the request
 //  @return AzureConfiguration
-func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRequest) (*AzureConfiguration, *http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzureIdGetExecute(r CloudAzureAPIV1CloudAzureIdGetRequest) (*AzureConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1006,13 +502,13 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 		localVarReturnValue  *AzureConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzureIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzureIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-azure/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1045,9 +541,9 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1064,7 +560,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1074,7 +571,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1091,20 +589,20 @@ func (a *CloudAzureApiService) V1CloudAzureIdGetExecute(r ApiV1CloudAzureIdGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudAzureIdPutRequest struct {
+type CloudAzureAPIV1CloudAzureIdPutRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
+	ApiService CloudAzureAPI
 	id string
 	azureConfigurationUpdate *AzureConfigurationUpdate
 }
 
 // Azure Cloud Identity Provider configuration to update
-func (r ApiV1CloudAzureIdPutRequest) AzureConfigurationUpdate(azureConfigurationUpdate AzureConfigurationUpdate) ApiV1CloudAzureIdPutRequest {
+func (r CloudAzureAPIV1CloudAzureIdPutRequest) AzureConfigurationUpdate(azureConfigurationUpdate AzureConfigurationUpdate) CloudAzureAPIV1CloudAzureIdPutRequest {
 	r.azureConfigurationUpdate = &azureConfigurationUpdate
 	return r
 }
 
-func (r ApiV1CloudAzureIdPutRequest) Execute() (*AzureConfiguration, *http.Response, error) {
+func (r CloudAzureAPIV1CloudAzureIdPutRequest) Execute() (*AzureConfiguration, *http.Response, error) {
 	return r.ApiService.V1CloudAzureIdPutExecute(r)
 }
 
@@ -1115,10 +613,10 @@ Update Azure Cloud Identity Provider configuration. Cannot be used for partial u
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV1CloudAzureIdPutRequest
+ @return CloudAzureAPIV1CloudAzureIdPutRequest
 */
-func (a *CloudAzureApiService) V1CloudAzureIdPut(ctx context.Context, id string) ApiV1CloudAzureIdPutRequest {
-	return ApiV1CloudAzureIdPutRequest{
+func (a *CloudAzureAPIService) V1CloudAzureIdPut(ctx context.Context, id string) CloudAzureAPIV1CloudAzureIdPutRequest {
+	return CloudAzureAPIV1CloudAzureIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1127,7 +625,7 @@ func (a *CloudAzureApiService) V1CloudAzureIdPut(ctx context.Context, id string)
 
 // Execute executes the request
 //  @return AzureConfiguration
-func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRequest) (*AzureConfiguration, *http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzureIdPutExecute(r CloudAzureAPIV1CloudAzureIdPutRequest) (*AzureConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1135,13 +633,13 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 		localVarReturnValue  *AzureConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzureIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzureIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/cloud-azure/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1179,9 +677,9 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1198,7 +696,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1208,7 +707,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1218,7 +718,8 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1235,19 +736,19 @@ func (a *CloudAzureApiService) V1CloudAzureIdPutExecute(r ApiV1CloudAzureIdPutRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CloudAzurePostRequest struct {
+type CloudAzureAPIV1CloudAzurePostRequest struct {
 	ctx context.Context
-	ApiService CloudAzureApi
+	ApiService CloudAzureAPI
 	azureConfigurationRequest *AzureConfigurationRequest
 }
 
 // Azure Cloud Identity Provider configuration to create
-func (r ApiV1CloudAzurePostRequest) AzureConfigurationRequest(azureConfigurationRequest AzureConfigurationRequest) ApiV1CloudAzurePostRequest {
+func (r CloudAzureAPIV1CloudAzurePostRequest) AzureConfigurationRequest(azureConfigurationRequest AzureConfigurationRequest) CloudAzureAPIV1CloudAzurePostRequest {
 	r.azureConfigurationRequest = &azureConfigurationRequest
 	return r
 }
 
-func (r ApiV1CloudAzurePostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r CloudAzureAPIV1CloudAzurePostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1CloudAzurePostExecute(r)
 }
 
@@ -1257,10 +758,10 @@ V1CloudAzurePost Create Azure Cloud Identity Provider configuration
 Create new Azure Cloud Identity Provider configuration with unique display name.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudAzurePostRequest
+ @return CloudAzureAPIV1CloudAzurePostRequest
 */
-func (a *CloudAzureApiService) V1CloudAzurePost(ctx context.Context) ApiV1CloudAzurePostRequest {
-	return ApiV1CloudAzurePostRequest{
+func (a *CloudAzureAPIService) V1CloudAzurePost(ctx context.Context) CloudAzureAPIV1CloudAzurePostRequest {
+	return CloudAzureAPIV1CloudAzurePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1268,7 +769,7 @@ func (a *CloudAzureApiService) V1CloudAzurePost(ctx context.Context) ApiV1CloudA
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *CloudAzureApiService) V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequest) (*HrefResponse, *http.Response, error) {
+func (a *CloudAzureAPIService) V1CloudAzurePostExecute(r CloudAzureAPIV1CloudAzurePostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1276,7 +777,7 @@ func (a *CloudAzureApiService) V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequ
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureApiService.V1CloudAzurePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudAzureAPIService.V1CloudAzurePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1319,9 +820,9 @@ func (a *CloudAzureApiService) V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1338,7 +839,8 @@ func (a *CloudAzureApiService) V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1348,7 +850,8 @@ func (a *CloudAzureApiService) V1CloudAzurePostExecute(r ApiV1CloudAzurePostRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

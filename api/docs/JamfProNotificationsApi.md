@@ -1,11 +1,11 @@
-# \JamfProNotificationsApi
+# \JamfProNotificationsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1NotificationsGet**](JamfProNotificationsApi.md#V1NotificationsGet) | **Get** /v1/notifications | Get Notifications for user and site 
-[**V1NotificationsTypeIdDelete**](JamfProNotificationsApi.md#V1NotificationsTypeIdDelete) | **Delete** /v1/notifications/{type}/{id} | Delete Notifications 
+[**V1NotificationsGet**](JamfProNotificationsAPI.md#V1NotificationsGet) | **Get** /v1/notifications | Get Notifications for user and site 
+[**V1NotificationsTypeIdDelete**](JamfProNotificationsAPI.md#V1NotificationsTypeIdDelete) | **Delete** /v1/notifications/{type}/{id} | Delete Notifications 
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsApi.V1NotificationsGet(context.Background()).Execute()
+    resp, r, err := apiClient.JamfProNotificationsAPI.V1NotificationsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsApi.V1NotificationsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsAPI.V1NotificationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1NotificationsGet`: []NotificationV1
-    fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsApi.V1NotificationsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsAPI.V1NotificationsGet`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -96,9 +96,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsApi.V1NotificationsTypeIdDelete(context.Background(), id, type_).Execute()
+    r, err := apiClient.JamfProNotificationsAPI.V1NotificationsTypeIdDelete(context.Background(), id, type_).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsApi.V1NotificationsTypeIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsAPI.V1NotificationsTypeIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

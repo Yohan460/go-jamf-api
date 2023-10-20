@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PluginPath type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PluginPath{}
+
 // PluginPath struct for PluginPath
 type PluginPath struct {
 	Id string `json:"id"`
@@ -88,14 +91,18 @@ func (o *PluginPath) SetPath(v string) {
 }
 
 func (o PluginPath) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PluginPath) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["path"] = o.Path
+	return toSerialize, nil
 }
 
 type NullablePluginPath struct {

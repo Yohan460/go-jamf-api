@@ -14,13 +14,16 @@ import (
 	"encoding/json"
 )
 
+// checks if the ObjectHistory type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ObjectHistory{}
+
 // ObjectHistory struct for ObjectHistory
 type ObjectHistory struct {
 	Id *int32 `json:"id,omitempty"`
 	Username *string `json:"username,omitempty"`
 	Date *string `json:"date,omitempty"`
 	Note *string `json:"note,omitempty"`
-	Details *string `json:"details,omitempty"`
+	Details NullableString `json:"details,omitempty"`
 }
 
 // NewObjectHistory instantiates a new ObjectHistory object
@@ -42,7 +45,7 @@ func NewObjectHistoryWithDefaults() *ObjectHistory {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ObjectHistory) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ObjectHistory) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectHistory) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *ObjectHistory) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ObjectHistory) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ObjectHistory) SetId(v int32) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ObjectHistory) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ObjectHistory) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectHistory) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -92,7 +95,7 @@ func (o *ObjectHistory) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ObjectHistory) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ObjectHistory) SetUsername(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *ObjectHistory) GetDate() string {
-	if o == nil || o.Date == nil {
+	if o == nil || IsNil(o.Date) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ObjectHistory) GetDate() string {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectHistory) GetDateOk() (*string, bool) {
-	if o == nil || o.Date == nil {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -124,7 +127,7 @@ func (o *ObjectHistory) GetDateOk() (*string, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *ObjectHistory) HasDate() bool {
-	if o != nil && o.Date != nil {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ObjectHistory) SetDate(v string) {
 
 // GetNote returns the Note field value if set, zero value otherwise.
 func (o *ObjectHistory) GetNote() string {
-	if o == nil || o.Note == nil {
+	if o == nil || IsNil(o.Note) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ObjectHistory) GetNote() string {
 // GetNoteOk returns a tuple with the Note field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ObjectHistory) GetNoteOk() (*string, bool) {
-	if o == nil || o.Note == nil {
+	if o == nil || IsNil(o.Note) {
 		return nil, false
 	}
 	return o.Note, true
@@ -156,7 +159,7 @@ func (o *ObjectHistory) GetNoteOk() (*string, bool) {
 
 // HasNote returns a boolean if a field has been set.
 func (o *ObjectHistory) HasNote() bool {
-	if o != nil && o.Note != nil {
+	if o != nil && !IsNil(o.Note) {
 		return true
 	}
 
@@ -168,56 +171,74 @@ func (o *ObjectHistory) SetNote(v string) {
 	o.Note = &v
 }
 
-// GetDetails returns the Details field value if set, zero value otherwise.
+// GetDetails returns the Details field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ObjectHistory) GetDetails() string {
-	if o == nil || o.Details == nil {
+	if o == nil || IsNil(o.Details.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Details
+	return *o.Details.Get()
 }
 
 // GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ObjectHistory) GetDetailsOk() (*string, bool) {
-	if o == nil || o.Details == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Details, true
+	return o.Details.Get(), o.Details.IsSet()
 }
 
 // HasDetails returns a boolean if a field has been set.
 func (o *ObjectHistory) HasDetails() bool {
-	if o != nil && o.Details != nil {
+	if o != nil && o.Details.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDetails gets a reference to the given string and assigns it to the Details field.
+// SetDetails gets a reference to the given NullableString and assigns it to the Details field.
 func (o *ObjectHistory) SetDetails(v string) {
-	o.Details = &v
+	o.Details.Set(&v)
+}
+// SetDetailsNil sets the value for Details to be an explicit nil
+func (o *ObjectHistory) SetDetailsNil() {
+	o.Details.Set(nil)
+}
+
+// UnsetDetails ensures that no value is present for Details, not even an explicit nil
+func (o *ObjectHistory) UnsetDetails() {
+	o.Details.Unset()
 }
 
 func (o ObjectHistory) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.Date != nil {
-		toSerialize["date"] = o.Date
-	}
-	if o.Note != nil {
-		toSerialize["note"] = o.Note
-	}
-	if o.Details != nil {
-		toSerialize["details"] = o.Details
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ObjectHistory) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.Date) {
+		toSerialize["date"] = o.Date
+	}
+	if !IsNil(o.Note) {
+		toSerialize["note"] = o.Note
+	}
+	if o.Details.IsSet() {
+		toSerialize["details"] = o.Details.Get()
+	}
+	return toSerialize, nil
 }
 
 type NullableObjectHistory struct {

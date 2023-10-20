@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the OrderBy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrderBy{}
+
 // OrderBy struct for OrderBy
 type OrderBy struct {
 	Field *string `json:"field,omitempty"`
@@ -39,7 +42,7 @@ func NewOrderByWithDefaults() *OrderBy {
 
 // GetField returns the Field field value if set, zero value otherwise.
 func (o *OrderBy) GetField() string {
-	if o == nil || o.Field == nil {
+	if o == nil || IsNil(o.Field) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *OrderBy) GetField() string {
 // GetFieldOk returns a tuple with the Field field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderBy) GetFieldOk() (*string, bool) {
-	if o == nil || o.Field == nil {
+	if o == nil || IsNil(o.Field) {
 		return nil, false
 	}
 	return o.Field, true
@@ -57,7 +60,7 @@ func (o *OrderBy) GetFieldOk() (*string, bool) {
 
 // HasField returns a boolean if a field has been set.
 func (o *OrderBy) HasField() bool {
-	if o != nil && o.Field != nil {
+	if o != nil && !IsNil(o.Field) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *OrderBy) SetField(v string) {
 
 // GetDirection returns the Direction field value if set, zero value otherwise.
 func (o *OrderBy) GetDirection() string {
-	if o == nil || o.Direction == nil {
+	if o == nil || IsNil(o.Direction) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *OrderBy) GetDirection() string {
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrderBy) GetDirectionOk() (*string, bool) {
-	if o == nil || o.Direction == nil {
+	if o == nil || IsNil(o.Direction) {
 		return nil, false
 	}
 	return o.Direction, true
@@ -89,7 +92,7 @@ func (o *OrderBy) GetDirectionOk() (*string, bool) {
 
 // HasDirection returns a boolean if a field has been set.
 func (o *OrderBy) HasDirection() bool {
-	if o != nil && o.Direction != nil {
+	if o != nil && !IsNil(o.Direction) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *OrderBy) SetDirection(v string) {
 }
 
 func (o OrderBy) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Field != nil {
-		toSerialize["field"] = o.Field
-	}
-	if o.Direction != nil {
-		toSerialize["direction"] = o.Direction
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o OrderBy) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Field) {
+		toSerialize["field"] = o.Field
+	}
+	if !IsNil(o.Direction) {
+		toSerialize["direction"] = o.Direction
+	}
+	return toSerialize, nil
 }
 
 type NullableOrderBy struct {

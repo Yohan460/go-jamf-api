@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Purchasing type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Purchasing{}
+
 // Purchasing struct for Purchasing
 type Purchasing struct {
 	IsPurchased *bool `json:"isPurchased,omitempty"`
@@ -50,7 +53,7 @@ func NewPurchasingWithDefaults() *Purchasing {
 
 // GetIsPurchased returns the IsPurchased field value if set, zero value otherwise.
 func (o *Purchasing) GetIsPurchased() bool {
-	if o == nil || o.IsPurchased == nil {
+	if o == nil || IsNil(o.IsPurchased) {
 		var ret bool
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *Purchasing) GetIsPurchased() bool {
 // GetIsPurchasedOk returns a tuple with the IsPurchased field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetIsPurchasedOk() (*bool, bool) {
-	if o == nil || o.IsPurchased == nil {
+	if o == nil || IsNil(o.IsPurchased) {
 		return nil, false
 	}
 	return o.IsPurchased, true
@@ -68,7 +71,7 @@ func (o *Purchasing) GetIsPurchasedOk() (*bool, bool) {
 
 // HasIsPurchased returns a boolean if a field has been set.
 func (o *Purchasing) HasIsPurchased() bool {
-	if o != nil && o.IsPurchased != nil {
+	if o != nil && !IsNil(o.IsPurchased) {
 		return true
 	}
 
@@ -82,7 +85,7 @@ func (o *Purchasing) SetIsPurchased(v bool) {
 
 // GetIsLeased returns the IsLeased field value if set, zero value otherwise.
 func (o *Purchasing) GetIsLeased() bool {
-	if o == nil || o.IsLeased == nil {
+	if o == nil || IsNil(o.IsLeased) {
 		var ret bool
 		return ret
 	}
@@ -92,7 +95,7 @@ func (o *Purchasing) GetIsLeased() bool {
 // GetIsLeasedOk returns a tuple with the IsLeased field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetIsLeasedOk() (*bool, bool) {
-	if o == nil || o.IsLeased == nil {
+	if o == nil || IsNil(o.IsLeased) {
 		return nil, false
 	}
 	return o.IsLeased, true
@@ -100,7 +103,7 @@ func (o *Purchasing) GetIsLeasedOk() (*bool, bool) {
 
 // HasIsLeased returns a boolean if a field has been set.
 func (o *Purchasing) HasIsLeased() bool {
-	if o != nil && o.IsLeased != nil {
+	if o != nil && !IsNil(o.IsLeased) {
 		return true
 	}
 
@@ -114,7 +117,7 @@ func (o *Purchasing) SetIsLeased(v bool) {
 
 // GetPoNumber returns the PoNumber field value if set, zero value otherwise.
 func (o *Purchasing) GetPoNumber() string {
-	if o == nil || o.PoNumber == nil {
+	if o == nil || IsNil(o.PoNumber) {
 		var ret string
 		return ret
 	}
@@ -124,7 +127,7 @@ func (o *Purchasing) GetPoNumber() string {
 // GetPoNumberOk returns a tuple with the PoNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetPoNumberOk() (*string, bool) {
-	if o == nil || o.PoNumber == nil {
+	if o == nil || IsNil(o.PoNumber) {
 		return nil, false
 	}
 	return o.PoNumber, true
@@ -132,7 +135,7 @@ func (o *Purchasing) GetPoNumberOk() (*string, bool) {
 
 // HasPoNumber returns a boolean if a field has been set.
 func (o *Purchasing) HasPoNumber() bool {
-	if o != nil && o.PoNumber != nil {
+	if o != nil && !IsNil(o.PoNumber) {
 		return true
 	}
 
@@ -146,7 +149,7 @@ func (o *Purchasing) SetPoNumber(v string) {
 
 // GetVendor returns the Vendor field value if set, zero value otherwise.
 func (o *Purchasing) GetVendor() string {
-	if o == nil || o.Vendor == nil {
+	if o == nil || IsNil(o.Vendor) {
 		var ret string
 		return ret
 	}
@@ -156,7 +159,7 @@ func (o *Purchasing) GetVendor() string {
 // GetVendorOk returns a tuple with the Vendor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetVendorOk() (*string, bool) {
-	if o == nil || o.Vendor == nil {
+	if o == nil || IsNil(o.Vendor) {
 		return nil, false
 	}
 	return o.Vendor, true
@@ -164,7 +167,7 @@ func (o *Purchasing) GetVendorOk() (*string, bool) {
 
 // HasVendor returns a boolean if a field has been set.
 func (o *Purchasing) HasVendor() bool {
-	if o != nil && o.Vendor != nil {
+	if o != nil && !IsNil(o.Vendor) {
 		return true
 	}
 
@@ -178,7 +181,7 @@ func (o *Purchasing) SetVendor(v string) {
 
 // GetAppleCareId returns the AppleCareId field value if set, zero value otherwise.
 func (o *Purchasing) GetAppleCareId() string {
-	if o == nil || o.AppleCareId == nil {
+	if o == nil || IsNil(o.AppleCareId) {
 		var ret string
 		return ret
 	}
@@ -188,7 +191,7 @@ func (o *Purchasing) GetAppleCareId() string {
 // GetAppleCareIdOk returns a tuple with the AppleCareId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetAppleCareIdOk() (*string, bool) {
-	if o == nil || o.AppleCareId == nil {
+	if o == nil || IsNil(o.AppleCareId) {
 		return nil, false
 	}
 	return o.AppleCareId, true
@@ -196,7 +199,7 @@ func (o *Purchasing) GetAppleCareIdOk() (*string, bool) {
 
 // HasAppleCareId returns a boolean if a field has been set.
 func (o *Purchasing) HasAppleCareId() bool {
-	if o != nil && o.AppleCareId != nil {
+	if o != nil && !IsNil(o.AppleCareId) {
 		return true
 	}
 
@@ -210,7 +213,7 @@ func (o *Purchasing) SetAppleCareId(v string) {
 
 // GetPurchasePrice returns the PurchasePrice field value if set, zero value otherwise.
 func (o *Purchasing) GetPurchasePrice() string {
-	if o == nil || o.PurchasePrice == nil {
+	if o == nil || IsNil(o.PurchasePrice) {
 		var ret string
 		return ret
 	}
@@ -220,7 +223,7 @@ func (o *Purchasing) GetPurchasePrice() string {
 // GetPurchasePriceOk returns a tuple with the PurchasePrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetPurchasePriceOk() (*string, bool) {
-	if o == nil || o.PurchasePrice == nil {
+	if o == nil || IsNil(o.PurchasePrice) {
 		return nil, false
 	}
 	return o.PurchasePrice, true
@@ -228,7 +231,7 @@ func (o *Purchasing) GetPurchasePriceOk() (*string, bool) {
 
 // HasPurchasePrice returns a boolean if a field has been set.
 func (o *Purchasing) HasPurchasePrice() bool {
-	if o != nil && o.PurchasePrice != nil {
+	if o != nil && !IsNil(o.PurchasePrice) {
 		return true
 	}
 
@@ -242,7 +245,7 @@ func (o *Purchasing) SetPurchasePrice(v string) {
 
 // GetPurchasingAccount returns the PurchasingAccount field value if set, zero value otherwise.
 func (o *Purchasing) GetPurchasingAccount() string {
-	if o == nil || o.PurchasingAccount == nil {
+	if o == nil || IsNil(o.PurchasingAccount) {
 		var ret string
 		return ret
 	}
@@ -252,7 +255,7 @@ func (o *Purchasing) GetPurchasingAccount() string {
 // GetPurchasingAccountOk returns a tuple with the PurchasingAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetPurchasingAccountOk() (*string, bool) {
-	if o == nil || o.PurchasingAccount == nil {
+	if o == nil || IsNil(o.PurchasingAccount) {
 		return nil, false
 	}
 	return o.PurchasingAccount, true
@@ -260,7 +263,7 @@ func (o *Purchasing) GetPurchasingAccountOk() (*string, bool) {
 
 // HasPurchasingAccount returns a boolean if a field has been set.
 func (o *Purchasing) HasPurchasingAccount() bool {
-	if o != nil && o.PurchasingAccount != nil {
+	if o != nil && !IsNil(o.PurchasingAccount) {
 		return true
 	}
 
@@ -274,7 +277,7 @@ func (o *Purchasing) SetPurchasingAccount(v string) {
 
 // GetPoDate returns the PoDate field value if set, zero value otherwise.
 func (o *Purchasing) GetPoDate() time.Time {
-	if o == nil || o.PoDate == nil {
+	if o == nil || IsNil(o.PoDate) {
 		var ret time.Time
 		return ret
 	}
@@ -284,7 +287,7 @@ func (o *Purchasing) GetPoDate() time.Time {
 // GetPoDateOk returns a tuple with the PoDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetPoDateOk() (*time.Time, bool) {
-	if o == nil || o.PoDate == nil {
+	if o == nil || IsNil(o.PoDate) {
 		return nil, false
 	}
 	return o.PoDate, true
@@ -292,7 +295,7 @@ func (o *Purchasing) GetPoDateOk() (*time.Time, bool) {
 
 // HasPoDate returns a boolean if a field has been set.
 func (o *Purchasing) HasPoDate() bool {
-	if o != nil && o.PoDate != nil {
+	if o != nil && !IsNil(o.PoDate) {
 		return true
 	}
 
@@ -306,7 +309,7 @@ func (o *Purchasing) SetPoDate(v time.Time) {
 
 // GetWarrantyExpiresDate returns the WarrantyExpiresDate field value if set, zero value otherwise.
 func (o *Purchasing) GetWarrantyExpiresDate() time.Time {
-	if o == nil || o.WarrantyExpiresDate == nil {
+	if o == nil || IsNil(o.WarrantyExpiresDate) {
 		var ret time.Time
 		return ret
 	}
@@ -316,7 +319,7 @@ func (o *Purchasing) GetWarrantyExpiresDate() time.Time {
 // GetWarrantyExpiresDateOk returns a tuple with the WarrantyExpiresDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetWarrantyExpiresDateOk() (*time.Time, bool) {
-	if o == nil || o.WarrantyExpiresDate == nil {
+	if o == nil || IsNil(o.WarrantyExpiresDate) {
 		return nil, false
 	}
 	return o.WarrantyExpiresDate, true
@@ -324,7 +327,7 @@ func (o *Purchasing) GetWarrantyExpiresDateOk() (*time.Time, bool) {
 
 // HasWarrantyExpiresDate returns a boolean if a field has been set.
 func (o *Purchasing) HasWarrantyExpiresDate() bool {
-	if o != nil && o.WarrantyExpiresDate != nil {
+	if o != nil && !IsNil(o.WarrantyExpiresDate) {
 		return true
 	}
 
@@ -338,7 +341,7 @@ func (o *Purchasing) SetWarrantyExpiresDate(v time.Time) {
 
 // GetLeaseExpiresDate returns the LeaseExpiresDate field value if set, zero value otherwise.
 func (o *Purchasing) GetLeaseExpiresDate() time.Time {
-	if o == nil || o.LeaseExpiresDate == nil {
+	if o == nil || IsNil(o.LeaseExpiresDate) {
 		var ret time.Time
 		return ret
 	}
@@ -348,7 +351,7 @@ func (o *Purchasing) GetLeaseExpiresDate() time.Time {
 // GetLeaseExpiresDateOk returns a tuple with the LeaseExpiresDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetLeaseExpiresDateOk() (*time.Time, bool) {
-	if o == nil || o.LeaseExpiresDate == nil {
+	if o == nil || IsNil(o.LeaseExpiresDate) {
 		return nil, false
 	}
 	return o.LeaseExpiresDate, true
@@ -356,7 +359,7 @@ func (o *Purchasing) GetLeaseExpiresDateOk() (*time.Time, bool) {
 
 // HasLeaseExpiresDate returns a boolean if a field has been set.
 func (o *Purchasing) HasLeaseExpiresDate() bool {
-	if o != nil && o.LeaseExpiresDate != nil {
+	if o != nil && !IsNil(o.LeaseExpiresDate) {
 		return true
 	}
 
@@ -370,7 +373,7 @@ func (o *Purchasing) SetLeaseExpiresDate(v time.Time) {
 
 // GetLifeExpectancy returns the LifeExpectancy field value if set, zero value otherwise.
 func (o *Purchasing) GetLifeExpectancy() int32 {
-	if o == nil || o.LifeExpectancy == nil {
+	if o == nil || IsNil(o.LifeExpectancy) {
 		var ret int32
 		return ret
 	}
@@ -380,7 +383,7 @@ func (o *Purchasing) GetLifeExpectancy() int32 {
 // GetLifeExpectancyOk returns a tuple with the LifeExpectancy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetLifeExpectancyOk() (*int32, bool) {
-	if o == nil || o.LifeExpectancy == nil {
+	if o == nil || IsNil(o.LifeExpectancy) {
 		return nil, false
 	}
 	return o.LifeExpectancy, true
@@ -388,7 +391,7 @@ func (o *Purchasing) GetLifeExpectancyOk() (*int32, bool) {
 
 // HasLifeExpectancy returns a boolean if a field has been set.
 func (o *Purchasing) HasLifeExpectancy() bool {
-	if o != nil && o.LifeExpectancy != nil {
+	if o != nil && !IsNil(o.LifeExpectancy) {
 		return true
 	}
 
@@ -402,7 +405,7 @@ func (o *Purchasing) SetLifeExpectancy(v int32) {
 
 // GetPurchasingContact returns the PurchasingContact field value if set, zero value otherwise.
 func (o *Purchasing) GetPurchasingContact() string {
-	if o == nil || o.PurchasingContact == nil {
+	if o == nil || IsNil(o.PurchasingContact) {
 		var ret string
 		return ret
 	}
@@ -412,7 +415,7 @@ func (o *Purchasing) GetPurchasingContact() string {
 // GetPurchasingContactOk returns a tuple with the PurchasingContact field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Purchasing) GetPurchasingContactOk() (*string, bool) {
-	if o == nil || o.PurchasingContact == nil {
+	if o == nil || IsNil(o.PurchasingContact) {
 		return nil, false
 	}
 	return o.PurchasingContact, true
@@ -420,7 +423,7 @@ func (o *Purchasing) GetPurchasingContactOk() (*string, bool) {
 
 // HasPurchasingContact returns a boolean if a field has been set.
 func (o *Purchasing) HasPurchasingContact() bool {
-	if o != nil && o.PurchasingContact != nil {
+	if o != nil && !IsNil(o.PurchasingContact) {
 		return true
 	}
 
@@ -433,44 +436,52 @@ func (o *Purchasing) SetPurchasingContact(v string) {
 }
 
 func (o Purchasing) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsPurchased != nil {
-		toSerialize["isPurchased"] = o.IsPurchased
-	}
-	if o.IsLeased != nil {
-		toSerialize["isLeased"] = o.IsLeased
-	}
-	if o.PoNumber != nil {
-		toSerialize["poNumber"] = o.PoNumber
-	}
-	if o.Vendor != nil {
-		toSerialize["vendor"] = o.Vendor
-	}
-	if o.AppleCareId != nil {
-		toSerialize["appleCareId"] = o.AppleCareId
-	}
-	if o.PurchasePrice != nil {
-		toSerialize["purchasePrice"] = o.PurchasePrice
-	}
-	if o.PurchasingAccount != nil {
-		toSerialize["purchasingAccount"] = o.PurchasingAccount
-	}
-	if o.PoDate != nil {
-		toSerialize["poDate"] = o.PoDate
-	}
-	if o.WarrantyExpiresDate != nil {
-		toSerialize["warrantyExpiresDate"] = o.WarrantyExpiresDate
-	}
-	if o.LeaseExpiresDate != nil {
-		toSerialize["leaseExpiresDate"] = o.LeaseExpiresDate
-	}
-	if o.LifeExpectancy != nil {
-		toSerialize["lifeExpectancy"] = o.LifeExpectancy
-	}
-	if o.PurchasingContact != nil {
-		toSerialize["purchasingContact"] = o.PurchasingContact
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Purchasing) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsPurchased) {
+		toSerialize["isPurchased"] = o.IsPurchased
+	}
+	if !IsNil(o.IsLeased) {
+		toSerialize["isLeased"] = o.IsLeased
+	}
+	if !IsNil(o.PoNumber) {
+		toSerialize["poNumber"] = o.PoNumber
+	}
+	if !IsNil(o.Vendor) {
+		toSerialize["vendor"] = o.Vendor
+	}
+	if !IsNil(o.AppleCareId) {
+		toSerialize["appleCareId"] = o.AppleCareId
+	}
+	if !IsNil(o.PurchasePrice) {
+		toSerialize["purchasePrice"] = o.PurchasePrice
+	}
+	if !IsNil(o.PurchasingAccount) {
+		toSerialize["purchasingAccount"] = o.PurchasingAccount
+	}
+	if !IsNil(o.PoDate) {
+		toSerialize["poDate"] = o.PoDate
+	}
+	if !IsNil(o.WarrantyExpiresDate) {
+		toSerialize["warrantyExpiresDate"] = o.WarrantyExpiresDate
+	}
+	if !IsNil(o.LeaseExpiresDate) {
+		toSerialize["leaseExpiresDate"] = o.LeaseExpiresDate
+	}
+	if !IsNil(o.LifeExpectancy) {
+		toSerialize["lifeExpectancy"] = o.LifeExpectancy
+	}
+	if !IsNil(o.PurchasingContact) {
+		toSerialize["purchasingContact"] = o.PurchasingContact
+	}
+	return toSerialize, nil
 }
 
 type NullablePurchasing struct {

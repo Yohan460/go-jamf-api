@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UserTestSearch type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UserTestSearch{}
+
 // UserTestSearch struct for UserTestSearch
 type UserTestSearch struct {
 	DistinguishedName *string `json:"distinguishedName,omitempty"`
@@ -21,7 +24,7 @@ type UserTestSearch struct {
 	Uuid *string `json:"uuid,omitempty"`
 	ServerId *string `json:"serverId,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Attributes *UserAttributes `json:"attributes,omitempty"`
+	Attributes *UserTestAttributes `json:"attributes,omitempty"`
 }
 
 // NewUserTestSearch instantiates a new UserTestSearch object
@@ -43,7 +46,7 @@ func NewUserTestSearchWithDefaults() *UserTestSearch {
 
 // GetDistinguishedName returns the DistinguishedName field value if set, zero value otherwise.
 func (o *UserTestSearch) GetDistinguishedName() string {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *UserTestSearch) GetDistinguishedName() string {
 // GetDistinguishedNameOk returns a tuple with the DistinguishedName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTestSearch) GetDistinguishedNameOk() (*string, bool) {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		return nil, false
 	}
 	return o.DistinguishedName, true
@@ -61,7 +64,7 @@ func (o *UserTestSearch) GetDistinguishedNameOk() (*string, bool) {
 
 // HasDistinguishedName returns a boolean if a field has been set.
 func (o *UserTestSearch) HasDistinguishedName() bool {
-	if o != nil && o.DistinguishedName != nil {
+	if o != nil && !IsNil(o.DistinguishedName) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *UserTestSearch) SetDistinguishedName(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *UserTestSearch) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *UserTestSearch) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTestSearch) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -93,7 +96,7 @@ func (o *UserTestSearch) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *UserTestSearch) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *UserTestSearch) SetId(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *UserTestSearch) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *UserTestSearch) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTestSearch) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -125,7 +128,7 @@ func (o *UserTestSearch) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *UserTestSearch) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *UserTestSearch) SetUuid(v string) {
 
 // GetServerId returns the ServerId field value if set, zero value otherwise.
 func (o *UserTestSearch) GetServerId() string {
-	if o == nil || o.ServerId == nil {
+	if o == nil || IsNil(o.ServerId) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *UserTestSearch) GetServerId() string {
 // GetServerIdOk returns a tuple with the ServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTestSearch) GetServerIdOk() (*string, bool) {
-	if o == nil || o.ServerId == nil {
+	if o == nil || IsNil(o.ServerId) {
 		return nil, false
 	}
 	return o.ServerId, true
@@ -157,7 +160,7 @@ func (o *UserTestSearch) GetServerIdOk() (*string, bool) {
 
 // HasServerId returns a boolean if a field has been set.
 func (o *UserTestSearch) HasServerId() bool {
-	if o != nil && o.ServerId != nil {
+	if o != nil && !IsNil(o.ServerId) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *UserTestSearch) SetServerId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *UserTestSearch) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *UserTestSearch) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UserTestSearch) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -189,7 +192,7 @@ func (o *UserTestSearch) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *UserTestSearch) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -202,9 +205,9 @@ func (o *UserTestSearch) SetName(v string) {
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
-func (o *UserTestSearch) GetAttributes() UserAttributes {
-	if o == nil || o.Attributes == nil {
-		var ret UserAttributes
+func (o *UserTestSearch) GetAttributes() UserTestAttributes {
+	if o == nil || IsNil(o.Attributes) {
+		var ret UserTestAttributes
 		return ret
 	}
 	return *o.Attributes
@@ -212,8 +215,8 @@ func (o *UserTestSearch) GetAttributes() UserAttributes {
 
 // GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserTestSearch) GetAttributesOk() (*UserAttributes, bool) {
-	if o == nil || o.Attributes == nil {
+func (o *UserTestSearch) GetAttributesOk() (*UserTestAttributes, bool) {
+	if o == nil || IsNil(o.Attributes) {
 		return nil, false
 	}
 	return o.Attributes, true
@@ -221,39 +224,47 @@ func (o *UserTestSearch) GetAttributesOk() (*UserAttributes, bool) {
 
 // HasAttributes returns a boolean if a field has been set.
 func (o *UserTestSearch) HasAttributes() bool {
-	if o != nil && o.Attributes != nil {
+	if o != nil && !IsNil(o.Attributes) {
 		return true
 	}
 
 	return false
 }
 
-// SetAttributes gets a reference to the given UserAttributes and assigns it to the Attributes field.
-func (o *UserTestSearch) SetAttributes(v UserAttributes) {
+// SetAttributes gets a reference to the given UserTestAttributes and assigns it to the Attributes field.
+func (o *UserTestSearch) SetAttributes(v UserTestAttributes) {
 	o.Attributes = &v
 }
 
 func (o UserTestSearch) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DistinguishedName != nil {
-		toSerialize["distinguishedName"] = o.DistinguishedName
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.ServerId != nil {
-		toSerialize["serverId"] = o.ServerId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Attributes != nil {
-		toSerialize["attributes"] = o.Attributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UserTestSearch) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DistinguishedName) {
+		toSerialize["distinguishedName"] = o.DistinguishedName
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.ServerId) {
+		toSerialize["serverId"] = o.ServerId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
+	}
+	return toSerialize, nil
 }
 
 type NullableUserTestSearch struct {

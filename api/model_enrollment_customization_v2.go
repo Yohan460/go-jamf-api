@@ -14,10 +14,13 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentCustomizationV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentCustomizationV2{}
+
 // EnrollmentCustomizationV2 struct for EnrollmentCustomizationV2
 type EnrollmentCustomizationV2 struct {
 	Id *string `json:"id,omitempty"`
-	SiteId *string `json:"siteId,omitempty"`
+	SiteId string `json:"siteId"`
 	DisplayName string `json:"displayName"`
 	Description string `json:"description"`
 	EnrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings `json:"enrollmentCustomizationBrandingSettings"`
@@ -27,8 +30,9 @@ type EnrollmentCustomizationV2 struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnrollmentCustomizationV2(displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings) *EnrollmentCustomizationV2 {
+func NewEnrollmentCustomizationV2(siteId string, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings) *EnrollmentCustomizationV2 {
 	this := EnrollmentCustomizationV2{}
+	this.SiteId = siteId
 	this.DisplayName = displayName
 	this.Description = description
 	this.EnrollmentCustomizationBrandingSettings = enrollmentCustomizationBrandingSettings
@@ -45,7 +49,7 @@ func NewEnrollmentCustomizationV2WithDefaults() *EnrollmentCustomizationV2 {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *EnrollmentCustomizationV2) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -55,7 +59,7 @@ func (o *EnrollmentCustomizationV2) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationV2) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -63,7 +67,7 @@ func (o *EnrollmentCustomizationV2) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *EnrollmentCustomizationV2) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -75,36 +79,28 @@ func (o *EnrollmentCustomizationV2) SetId(v string) {
 	o.Id = &v
 }
 
-// GetSiteId returns the SiteId field value if set, zero value otherwise.
+// GetSiteId returns the SiteId field value
 func (o *EnrollmentCustomizationV2) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SiteId
+
+	return o.SiteId
 }
 
-// GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
+// GetSiteIdOk returns a tuple with the SiteId field value
 // and a boolean to check if the value has been set.
 func (o *EnrollmentCustomizationV2) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.SiteId, true
+	return &o.SiteId, true
 }
 
-// HasSiteId returns a boolean if a field has been set.
-func (o *EnrollmentCustomizationV2) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSiteId gets a reference to the given string and assigns it to the SiteId field.
+// SetSiteId sets field value
 func (o *EnrollmentCustomizationV2) SetSiteId(v string) {
-	o.SiteId = &v
+	o.SiteId = v
 }
 
 // GetDisplayName returns the DisplayName field value
@@ -180,23 +176,23 @@ func (o *EnrollmentCustomizationV2) SetEnrollmentCustomizationBrandingSettings(v
 }
 
 func (o EnrollmentCustomizationV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentCustomizationV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["siteId"] = o.SiteId
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["description"] = o.Description
+	toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
+	return toSerialize, nil
 }
 
 type NullableEnrollmentCustomizationV2 struct {

@@ -1,16 +1,16 @@
-# \AdvancedMobileDeviceSearchesApi
+# \AdvancedMobileDeviceSearchesAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1AdvancedMobileDeviceSearchesChoicesGet**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesChoicesGet) | **Get** /v1/advanced-mobile-device-searches/choices | Get Mobile Device Advanced Search criteria choices 
-[**V1AdvancedMobileDeviceSearchesDeleteMultiplePost**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesDeleteMultiplePost) | **Post** /v1/advanced-mobile-device-searches/delete-multiple | Remove specified Advanced Search objects 
-[**V1AdvancedMobileDeviceSearchesGet**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesGet) | **Get** /v1/advanced-mobile-device-searches | Get Advanced Search objects 
-[**V1AdvancedMobileDeviceSearchesIdDelete**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesIdDelete) | **Delete** /v1/advanced-mobile-device-searches/{id} | Remove specified Advanced Search object 
-[**V1AdvancedMobileDeviceSearchesIdGet**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesIdGet) | **Get** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
-[**V1AdvancedMobileDeviceSearchesIdPut**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesIdPut) | **Put** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
-[**V1AdvancedMobileDeviceSearchesPost**](AdvancedMobileDeviceSearchesApi.md#V1AdvancedMobileDeviceSearchesPost) | **Post** /v1/advanced-mobile-device-searches | Create Advanced Search object 
+[**V1AdvancedMobileDeviceSearchesChoicesGet**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesChoicesGet) | **Get** /v1/advanced-mobile-device-searches/choices | Get Mobile Device Advanced Search criteria choices 
+[**V1AdvancedMobileDeviceSearchesDeleteMultiplePost**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesDeleteMultiplePost) | **Post** /v1/advanced-mobile-device-searches/delete-multiple | Remove specified Advanced Search objects 
+[**V1AdvancedMobileDeviceSearchesGet**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesGet) | **Get** /v1/advanced-mobile-device-searches | Get Advanced Search objects 
+[**V1AdvancedMobileDeviceSearchesIdDelete**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesIdDelete) | **Delete** /v1/advanced-mobile-device-searches/{id} | Remove specified Advanced Search object 
+[**V1AdvancedMobileDeviceSearchesIdGet**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesIdGet) | **Get** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
+[**V1AdvancedMobileDeviceSearchesIdPut**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesIdPut) | **Put** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
+[**V1AdvancedMobileDeviceSearchesPost**](AdvancedMobileDeviceSearchesAPI.md#V1AdvancedMobileDeviceSearchesPost) | **Post** /v1/advanced-mobile-device-searches | Create Advanced Search object 
 
 
 
@@ -31,7 +31,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -41,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesChoicesGet(context.Background()).Criteria(criteria).Site(site).Contains(contains).Execute()
+    resp, r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesChoicesGet(context.Background()).Criteria(criteria).Site(site).Contains(contains).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesChoicesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesChoicesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AdvancedMobileDeviceSearchesChoicesGet`: AdvancedSearchCriteriaChoices
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesChoicesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesChoicesGet`: %v\n", resp)
 }
 ```
 
@@ -101,7 +101,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -109,9 +109,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+    r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesDeleteMultiplePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesDeleteMultiplePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -165,20 +165,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesGet(context.Background()).Execute()
+    resp, r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AdvancedMobileDeviceSearchesGet`: AdvancedSearchSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesGet`: %v\n", resp)
 }
 ```
 
@@ -226,7 +226,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -234,9 +234,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -294,7 +294,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -302,13 +302,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AdvancedMobileDeviceSearchesIdGet`: AdvancedSearch
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdGet`: %v\n", resp)
 }
 ```
 
@@ -364,7 +364,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -373,13 +373,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdPut(context.Background(), id).AdvancedSearch(advancedSearch).Execute()
+    resp, r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdPut(context.Background(), id).AdvancedSearch(advancedSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AdvancedMobileDeviceSearchesIdPut`: AdvancedSearch
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesIdPut`: %v\n", resp)
 }
 ```
 
@@ -436,7 +436,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -444,13 +444,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesPost(context.Background()).AdvancedSearch(advancedSearch).Execute()
+    resp, r, err := apiClient.AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesPost(context.Background()).AdvancedSearch(advancedSearch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1AdvancedMobileDeviceSearchesPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesApi.V1AdvancedMobileDeviceSearchesPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `AdvancedMobileDeviceSearchesAPI.V1AdvancedMobileDeviceSearchesPost`: %v\n", resp)
 }
 ```
 

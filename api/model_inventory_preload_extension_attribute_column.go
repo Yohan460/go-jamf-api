@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadExtensionAttributeColumn type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadExtensionAttributeColumn{}
+
 // InventoryPreloadExtensionAttributeColumn struct for InventoryPreloadExtensionAttributeColumn
 type InventoryPreloadExtensionAttributeColumn struct {
 	Name *string `json:"name,omitempty"`
@@ -39,7 +42,7 @@ func NewInventoryPreloadExtensionAttributeColumnWithDefaults() *InventoryPreload
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *InventoryPreloadExtensionAttributeColumn) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *InventoryPreloadExtensionAttributeColumn) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadExtensionAttributeColumn) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -57,7 +60,7 @@ func (o *InventoryPreloadExtensionAttributeColumn) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *InventoryPreloadExtensionAttributeColumn) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *InventoryPreloadExtensionAttributeColumn) SetName(v string) {
 
 // GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *InventoryPreloadExtensionAttributeColumn) GetFullName() string {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *InventoryPreloadExtensionAttributeColumn) GetFullName() string {
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadExtensionAttributeColumn) GetFullNameOk() (*string, bool) {
-	if o == nil || o.FullName == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
 	return o.FullName, true
@@ -89,7 +92,7 @@ func (o *InventoryPreloadExtensionAttributeColumn) GetFullNameOk() (*string, boo
 
 // HasFullName returns a boolean if a field has been set.
 func (o *InventoryPreloadExtensionAttributeColumn) HasFullName() bool {
-	if o != nil && o.FullName != nil {
+	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *InventoryPreloadExtensionAttributeColumn) SetFullName(v string) {
 }
 
 func (o InventoryPreloadExtensionAttributeColumn) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FullName != nil {
-		toSerialize["fullName"] = o.FullName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadExtensionAttributeColumn) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadExtensionAttributeColumn struct {

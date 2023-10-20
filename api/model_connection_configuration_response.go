@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectionConfigurationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectionConfigurationResponse{}
+
 // ConnectionConfigurationResponse Response that contains information about connection configuration for Team Viewer
 type ConnectionConfigurationResponse struct {
 	// An identifier of connection configuration for Team Viewer Remote Administration
@@ -25,14 +28,14 @@ type ConnectionConfigurationResponse struct {
 	// Describes if Team Viewer connection is enabled or disabled
 	Enabled bool `json:"enabled"`
 	// Number of minutes before the session expires
-	SessionTimeout int32 `json:"sessionTimeout"`
+	SessionTimeout NullableInt32 `json:"sessionTimeout"`
 }
 
 // NewConnectionConfigurationResponse instantiates a new ConnectionConfigurationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout int32) *ConnectionConfigurationResponse {
+func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt32) *ConnectionConfigurationResponse {
 	this := ConnectionConfigurationResponse{}
 	this.Id = id
 	this.SiteId = siteId
@@ -147,47 +150,47 @@ func (o *ConnectionConfigurationResponse) SetEnabled(v bool) {
 }
 
 // GetSessionTimeout returns the SessionTimeout field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ConnectionConfigurationResponse) GetSessionTimeout() int32 {
-	if o == nil {
+	if o == nil || o.SessionTimeout.Get() == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.SessionTimeout
+	return *o.SessionTimeout.Get()
 }
 
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.SessionTimeout, true
+	return o.SessionTimeout.Get(), o.SessionTimeout.IsSet()
 }
 
 // SetSessionTimeout sets field value
 func (o *ConnectionConfigurationResponse) SetSessionTimeout(v int32) {
-	o.SessionTimeout = v
+	o.SessionTimeout.Set(&v)
 }
 
 func (o ConnectionConfigurationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["sessionTimeout"] = o.SessionTimeout
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectionConfigurationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["siteId"] = o.SiteId
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["sessionTimeout"] = o.SessionTimeout.Get()
+	return toSerialize, nil
 }
 
 type NullableConnectionConfigurationResponse struct {

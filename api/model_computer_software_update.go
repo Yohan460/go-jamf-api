@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerSoftwareUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerSoftwareUpdate{}
+
 // ComputerSoftwareUpdate struct for ComputerSoftwareUpdate
 type ComputerSoftwareUpdate struct {
 	Name *string `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerSoftwareUpdateWithDefaults() *ComputerSoftwareUpdate {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerSoftwareUpdate) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerSoftwareUpdate) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSoftwareUpdate) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *ComputerSoftwareUpdate) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerSoftwareUpdate) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerSoftwareUpdate) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ComputerSoftwareUpdate) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerSoftwareUpdate) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSoftwareUpdate) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -90,7 +93,7 @@ func (o *ComputerSoftwareUpdate) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ComputerSoftwareUpdate) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerSoftwareUpdate) SetVersion(v string) {
 
 // GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *ComputerSoftwareUpdate) GetPackageName() string {
-	if o == nil || o.PackageName == nil {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerSoftwareUpdate) GetPackageName() string {
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerSoftwareUpdate) GetPackageNameOk() (*string, bool) {
-	if o == nil || o.PackageName == nil {
+	if o == nil || IsNil(o.PackageName) {
 		return nil, false
 	}
 	return o.PackageName, true
@@ -122,7 +125,7 @@ func (o *ComputerSoftwareUpdate) GetPackageNameOk() (*string, bool) {
 
 // HasPackageName returns a boolean if a field has been set.
 func (o *ComputerSoftwareUpdate) HasPackageName() bool {
-	if o != nil && o.PackageName != nil {
+	if o != nil && !IsNil(o.PackageName) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerSoftwareUpdate) SetPackageName(v string) {
 }
 
 func (o ComputerSoftwareUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.PackageName != nil {
-		toSerialize["packageName"] = o.PackageName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerSoftwareUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerSoftwareUpdate struct {

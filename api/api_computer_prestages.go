@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -21,77 +21,7 @@ import (
 )
 
 
-type ComputerPrestagesApi interface {
-
-	/*
-	V1ComputerPrestagesGet Search for sorted and paged Computer Prestages 
-
-	Search for sorted and paged computer prestages
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerPrestagesGetRequest
-
-	Deprecated
-	*/
-	V1ComputerPrestagesGet(ctx context.Context) ApiV1ComputerPrestagesGetRequest
-
-	// V1ComputerPrestagesGetExecute executes the request
-	//  @return ComputerPrestageSearchResults
-	// Deprecated
-	V1ComputerPrestagesGetExecute(r ApiV1ComputerPrestagesGetRequest) (*ComputerPrestageSearchResults, *http.Response, error)
-
-	/*
-	V1ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
-
-	Deletes a Computer Prestage with the supplied id
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdDeleteRequest
-
-	Deprecated
-	*/
-	V1ComputerPrestagesIdDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdDeleteRequest
-
-	// V1ComputerPrestagesIdDeleteExecute executes the request
-	// Deprecated
-	V1ComputerPrestagesIdDeleteExecute(r ApiV1ComputerPrestagesIdDeleteRequest) (*http.Response, error)
-
-	/*
-	V1ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
-
-	Retrieves a Computer Prestage with the supplied id
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdGetRequest
-
-	Deprecated
-	*/
-	V1ComputerPrestagesIdGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdGetRequest
-
-	// V1ComputerPrestagesIdGetExecute executes the request
-	//  @return GetComputerPrestage
-	// Deprecated
-	V1ComputerPrestagesIdGetExecute(r ApiV1ComputerPrestagesIdGetRequest) (*GetComputerPrestage, *http.Response, error)
-
-	/*
-	V1ComputerPrestagesIdPut Update a Computer Prestage 
-
-	Updates a Computer Prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdPutRequest
-
-	Deprecated
-	*/
-	V1ComputerPrestagesIdPut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdPutRequest
-
-	// V1ComputerPrestagesIdPutExecute executes the request
-	//  @return GetComputerPrestage
-	// Deprecated
-	V1ComputerPrestagesIdPutExecute(r ApiV1ComputerPrestagesIdPutRequest) (*GetComputerPrestage, *http.Response, error)
+type ComputerPrestagesAPI interface {
 
 	/*
 	V1ComputerPrestagesIdScopeDelete Remove device Scope for a specific Computer Prestage 
@@ -100,16 +30,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdScopeDeleteRequest
+	@return ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeDeleteRequest
+	V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest
 
 	// V1ComputerPrestagesIdScopeDeleteExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1ComputerPrestagesIdScopeDeleteExecute(r ApiV1ComputerPrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1ComputerPrestagesIdScopeDeleteExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1ComputerPrestagesIdScopeGet Get device Scope for a specific Computer Prestage 
@@ -118,16 +48,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdScopeGetRequest
+	@return ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeGetRequest
+	V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest
 
 	// V1ComputerPrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1ComputerPrestagesIdScopeGetExecute(r ApiV1ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1ComputerPrestagesIdScopeGetExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1ComputerPrestagesIdScopePost Add device Scope for a specific Computer Prestage 
@@ -136,16 +66,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdScopePostRequest
+	@return ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePostRequest
+	V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest
 
 	// V1ComputerPrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1ComputerPrestagesIdScopePostExecute(r ApiV1ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
+	V1ComputerPrestagesIdScopePostExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1ComputerPrestagesIdScopePut Replace device Scope for a specific Computer Prestage 
@@ -154,33 +84,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV1ComputerPrestagesIdScopePutRequest
+	@return ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePutRequest
+	V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest
 
 	// V1ComputerPrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponse
 	// Deprecated
-	V1ComputerPrestagesIdScopePutExecute(r ApiV1ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
-
-	/*
-	V1ComputerPrestagesPost Create a Computer Prestage 
-
-	Create a computer prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerPrestagesPostRequest
-
-	Deprecated
-	*/
-	V1ComputerPrestagesPost(ctx context.Context) ApiV1ComputerPrestagesPostRequest
-
-	// V1ComputerPrestagesPostExecute executes the request
-	//  @return GetComputerPrestage
-	// Deprecated
-	V1ComputerPrestagesPostExecute(r ApiV1ComputerPrestagesPostRequest) (*GetComputerPrestage, *http.Response, error)
+	V1ComputerPrestagesIdScopePutExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
 
 	/*
 	V1ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages 
@@ -188,16 +101,16 @@ type ComputerPrestagesApi interface {
 	Get all device scope for all computer prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ComputerPrestagesScopeGetRequest
+	@return ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest
 
 	Deprecated
 	*/
-	V1ComputerPrestagesScopeGet(ctx context.Context) ApiV1ComputerPrestagesScopeGetRequest
+	V1ComputerPrestagesScopeGet(ctx context.Context) ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest
 
 	// V1ComputerPrestagesScopeGetExecute executes the request
 	//  @return PrestageScope
 	// Deprecated
-	V1ComputerPrestagesScopeGetExecute(r ApiV1ComputerPrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
+	V1ComputerPrestagesScopeGetExecute(r ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesGet Get sorted and paged Computer Prestages 
@@ -205,13 +118,16 @@ type ComputerPrestagesApi interface {
 	Gets sorted and paged computer prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2ComputerPrestagesGetRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesGetRequest
+
+	Deprecated
 	*/
-	V2ComputerPrestagesGet(ctx context.Context) ApiV2ComputerPrestagesGetRequest
+	V2ComputerPrestagesGet(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesGetRequest
 
 	// V2ComputerPrestagesGetExecute executes the request
 	//  @return ComputerPrestageSearchResultsV2
-	V2ComputerPrestagesGetExecute(r ApiV2ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV2, *http.Response, error)
+	// Deprecated
+	V2ComputerPrestagesGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
@@ -220,12 +136,15 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdDeleteRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest
+
+	Deprecated
 	*/
-	V2ComputerPrestagesIdDelete(ctx context.Context, id string) ApiV2ComputerPrestagesIdDeleteRequest
+	V2ComputerPrestagesIdDelete(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest
 
 	// V2ComputerPrestagesIdDeleteExecute executes the request
-	V2ComputerPrestagesIdDeleteExecute(r ApiV2ComputerPrestagesIdDeleteRequest) (*http.Response, error)
+	// Deprecated
+	V2ComputerPrestagesIdDeleteExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
@@ -234,13 +153,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdGetRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest
+
+	Deprecated
 	*/
-	V2ComputerPrestagesIdGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdGetRequest
+	V2ComputerPrestagesIdGet(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest
 
 	// V2ComputerPrestagesIdGetExecute executes the request
 	//  @return GetComputerPrestageV2
-	V2ComputerPrestagesIdGetExecute(r ApiV2ComputerPrestagesIdGetRequest) (*GetComputerPrestageV2, *http.Response, error)
+	// Deprecated
+	V2ComputerPrestagesIdGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest) (*GetComputerPrestageV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdPut Update a Computer Prestage 
@@ -249,13 +171,16 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdPutRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest
+
+	Deprecated
 	*/
-	V2ComputerPrestagesIdPut(ctx context.Context, id string) ApiV2ComputerPrestagesIdPutRequest
+	V2ComputerPrestagesIdPut(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest
 
 	// V2ComputerPrestagesIdPutExecute executes the request
 	//  @return GetComputerPrestageV2
-	V2ComputerPrestagesIdPutExecute(r ApiV2ComputerPrestagesIdPutRequest) (*GetComputerPrestageV2, *http.Response, error)
+	// Deprecated
+	V2ComputerPrestagesIdPutExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest) (*GetComputerPrestageV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdScopeDeleteMultiplePost Remove device Scope for a specific Computer Prestage 
@@ -264,13 +189,13 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
 	*/
-	V2ComputerPrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
+	V2ComputerPrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
 
 	// V2ComputerPrestagesIdScopeDeleteMultiplePostExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdScopeGet Get device Scope for a specific Computer Prestage 
@@ -279,13 +204,13 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdScopeGetRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest
 	*/
-	V2ComputerPrestagesIdScopeGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeGetRequest
+	V2ComputerPrestagesIdScopeGet(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest
 
 	// V2ComputerPrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2ComputerPrestagesIdScopeGetExecute(r ApiV2ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2ComputerPrestagesIdScopeGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdScopePost Add device Scope for a specific Computer Prestage 
@@ -294,13 +219,13 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdScopePostRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest
 	*/
-	V2ComputerPrestagesIdScopePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePostRequest
+	V2ComputerPrestagesIdScopePost(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest
 
 	// V2ComputerPrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2ComputerPrestagesIdScopePostExecute(r ApiV2ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2ComputerPrestagesIdScopePostExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesIdScopePut Replace device Scope for a specific Computer Prestage 
@@ -309,13 +234,13 @@ type ComputerPrestagesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Computer Prestage identifier
-	@return ApiV2ComputerPrestagesIdScopePutRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest
 	*/
-	V2ComputerPrestagesIdScopePut(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePutRequest
+	V2ComputerPrestagesIdScopePut(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest
 
 	// V2ComputerPrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponseV2
-	V2ComputerPrestagesIdScopePutExecute(r ApiV2ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
+	V2ComputerPrestagesIdScopePutExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesPost Create a Computer Prestage 
@@ -323,13 +248,16 @@ type ComputerPrestagesApi interface {
 	Create a computer prestage
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2ComputerPrestagesPostRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesPostRequest
+
+	Deprecated
 	*/
-	V2ComputerPrestagesPost(ctx context.Context) ApiV2ComputerPrestagesPostRequest
+	V2ComputerPrestagesPost(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesPostRequest
 
 	// V2ComputerPrestagesPostExecute executes the request
 	//  @return HrefResponse
-	V2ComputerPrestagesPostExecute(r ApiV2ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error)
+	// Deprecated
+	V2ComputerPrestagesPostExecute(r ComputerPrestagesAPIV2ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V2ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages 
@@ -337,539 +265,104 @@ type ComputerPrestagesApi interface {
 	Get all device scope for all computer prestages
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2ComputerPrestagesScopeGetRequest
+	@return ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest
 	*/
-	V2ComputerPrestagesScopeGet(ctx context.Context) ApiV2ComputerPrestagesScopeGetRequest
+	V2ComputerPrestagesScopeGet(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest
 
 	// V2ComputerPrestagesScopeGetExecute executes the request
 	//  @return PrestageScopeV2
-	V2ComputerPrestagesScopeGetExecute(r ApiV2ComputerPrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
+	V2ComputerPrestagesScopeGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error)
+
+	/*
+	V3ComputerPrestagesGet Get sorted and paged Computer Prestages 
+
+	Gets sorted and paged computer prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerPrestagesAPIV3ComputerPrestagesGetRequest
+	*/
+	V3ComputerPrestagesGet(ctx context.Context) ComputerPrestagesAPIV3ComputerPrestagesGetRequest
+
+	// V3ComputerPrestagesGetExecute executes the request
+	//  @return ComputerPrestageSearchResultsV3
+	V3ComputerPrestagesGetExecute(r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV3, *http.Response, error)
+
+	/*
+	V3ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
+
+	Deletes a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest
+	*/
+	V3ComputerPrestagesIdDelete(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest
+
+	// V3ComputerPrestagesIdDeleteExecute executes the request
+	V3ComputerPrestagesIdDeleteExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V3ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
+
+	Retrieves a Computer Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest
+	*/
+	V3ComputerPrestagesIdGet(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest
+
+	// V3ComputerPrestagesIdGetExecute executes the request
+	//  @return GetComputerPrestageV3
+	V3ComputerPrestagesIdGetExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest) (*GetComputerPrestageV3, *http.Response, error)
+
+	/*
+	V3ComputerPrestagesIdPut Update a Computer Prestage 
+
+	Updates a Computer Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Computer Prestage identifier
+	@return ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest
+	*/
+	V3ComputerPrestagesIdPut(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest
+
+	// V3ComputerPrestagesIdPutExecute executes the request
+	//  @return GetComputerPrestageV3
+	V3ComputerPrestagesIdPutExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest) (*GetComputerPrestageV3, *http.Response, error)
+
+	/*
+	V3ComputerPrestagesPost Create a Computer Prestage 
+
+	Create a computer prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerPrestagesAPIV3ComputerPrestagesPostRequest
+	*/
+	V3ComputerPrestagesPost(ctx context.Context) ComputerPrestagesAPIV3ComputerPrestagesPostRequest
+
+	// V3ComputerPrestagesPostExecute executes the request
+	//  @return HrefResponse
+	V3ComputerPrestagesPostExecute(r ComputerPrestagesAPIV3ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// ComputerPrestagesApiService ComputerPrestagesApi service
-type ComputerPrestagesApiService service
+// ComputerPrestagesAPIService ComputerPrestagesAPI service
+type ComputerPrestagesAPIService service
 
-type ApiV1ComputerPrestagesGetRequest struct {
+type ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
-	sort *string
-}
-
-func (r ApiV1ComputerPrestagesGetRequest) Page(page int32) ApiV1ComputerPrestagesGetRequest {
-	r.page = &page
-	return r
-}
-
-// Deprecated
-func (r ApiV1ComputerPrestagesGetRequest) Size(size int32) ApiV1ComputerPrestagesGetRequest {
-	r.size = &size
-	return r
-}
-
-// Deprecated
-func (r ApiV1ComputerPrestagesGetRequest) Pagesize(pagesize int32) ApiV1ComputerPrestagesGetRequest {
-	r.pagesize = &pagesize
-	return r
-}
-
-func (r ApiV1ComputerPrestagesGetRequest) PageSize(pageSize int32) ApiV1ComputerPrestagesGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1ComputerPrestagesGetRequest) Sort(sort string) ApiV1ComputerPrestagesGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r ApiV1ComputerPrestagesGetRequest) Execute() (*ComputerPrestageSearchResults, *http.Response, error) {
-	return r.ApiService.V1ComputerPrestagesGetExecute(r)
-}
-
-/*
-V1ComputerPrestagesGet Search for sorted and paged Computer Prestages 
-
-Search for sorted and paged computer prestages
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerPrestagesGetRequest
-
-Deprecated
-*/
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesGet(ctx context.Context) ApiV1ComputerPrestagesGetRequest {
-	return ApiV1ComputerPrestagesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return ComputerPrestageSearchResults
-// Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesGetExecute(r ApiV1ComputerPrestagesGetRequest) (*ComputerPrestageSearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ComputerPrestageSearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/computer-prestages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
-	}
-	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
-	}
-	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ComputerPrestagesIdDeleteRequest struct {
-	ctx context.Context
-	ApiService ComputerPrestagesApi
-	id int32
-}
-
-func (r ApiV1ComputerPrestagesIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1ComputerPrestagesIdDeleteExecute(r)
-}
-
-/*
-V1ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
-
-Deletes a Computer Prestage with the supplied id
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdDeleteRequest
-
-Deprecated
-*/
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdDeleteRequest {
-	return ApiV1ComputerPrestagesIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdDeleteExecute(r ApiV1ComputerPrestagesIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1ComputerPrestagesIdGetRequest struct {
-	ctx context.Context
-	ApiService ComputerPrestagesApi
-	id int32
-}
-
-func (r ApiV1ComputerPrestagesIdGetRequest) Execute() (*GetComputerPrestage, *http.Response, error) {
-	return r.ApiService.V1ComputerPrestagesIdGetExecute(r)
-}
-
-/*
-V1ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
-
-Retrieves a Computer Prestage with the supplied id
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdGetRequest
-
-Deprecated
-*/
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdGetRequest {
-	return ApiV1ComputerPrestagesIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GetComputerPrestage
-// Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdGetExecute(r ApiV1ComputerPrestagesIdGetRequest) (*GetComputerPrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetComputerPrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ComputerPrestagesIdPutRequest struct {
-	ctx context.Context
-	ApiService ComputerPrestagesApi
-	id int32
-	putComputerPrestage *PutComputerPrestage
-}
-
-// Computer Prestage to update
-func (r ApiV1ComputerPrestagesIdPutRequest) PutComputerPrestage(putComputerPrestage PutComputerPrestage) ApiV1ComputerPrestagesIdPutRequest {
-	r.putComputerPrestage = &putComputerPrestage
-	return r
-}
-
-func (r ApiV1ComputerPrestagesIdPutRequest) Execute() (*GetComputerPrestage, *http.Response, error) {
-	return r.ApiService.V1ComputerPrestagesIdPutExecute(r)
-}
-
-/*
-V1ComputerPrestagesIdPut Update a Computer Prestage 
-
-Updates a Computer Prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdPutRequest
-
-Deprecated
-*/
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdPut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdPutRequest {
-	return ApiV1ComputerPrestagesIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GetComputerPrestage
-// Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdPutExecute(r ApiV1ComputerPrestagesIdPutRequest) (*GetComputerPrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetComputerPrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.putComputerPrestage == nil {
-		return localVarReturnValue, nil, reportError("putComputerPrestage is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.putComputerPrestage
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ComputerPrestagesIdScopeDeleteRequest struct {
-	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to remove from scope
-func (r ApiV1ComputerPrestagesIdScopeDeleteRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1ComputerPrestagesIdScopeDeleteRequest {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1ComputerPrestagesIdScopeDeleteRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1ComputerPrestagesIdScopeDeleteExecute(r)
 }
 
@@ -880,12 +373,12 @@ Remove device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdScopeDeleteRequest
+ @return ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest
 
 Deprecated
 */
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeDeleteRequest {
-	return ApiV1ComputerPrestagesIdScopeDeleteRequest{
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest {
+	return ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -895,7 +388,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDelete(ctx conte
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r ApiV1ComputerPrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeDeleteExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -903,13 +396,13 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdScopeDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V1ComputerPrestagesIdScopeDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -947,9 +440,9 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -966,7 +459,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -976,7 +470,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -986,7 +481,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1003,13 +499,13 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerPrestagesIdScopeGetRequest struct {
+type ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id int32
 }
 
-func (r ApiV1ComputerPrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1ComputerPrestagesIdScopeGetExecute(r)
 }
 
@@ -1020,12 +516,12 @@ Get device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdScopeGetRequest
+ @return ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest
 
 Deprecated
 */
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopeGetRequest {
-	return ApiV1ComputerPrestagesIdScopeGetRequest{
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest {
+	return ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1035,7 +531,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGet(ctx context.
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r ApiV1ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeGetExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1043,13 +539,13 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r Api
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V1ComputerPrestagesIdScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1082,9 +578,9 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1101,7 +597,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1118,20 +615,20 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopeGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerPrestagesIdScopePostRequest struct {
+type ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV1ComputerPrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1ComputerPrestagesIdScopePostRequest {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1ComputerPrestagesIdScopePostRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1ComputerPrestagesIdScopePostExecute(r)
 }
 
@@ -1142,12 +639,12 @@ Add device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdScopePostRequest
+ @return ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest
 
 Deprecated
 */
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePostRequest {
-	return ApiV1ComputerPrestagesIdScopePostRequest{
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest {
+	return ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1157,7 +654,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePost(ctx context
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r ApiV1ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePostExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1165,13 +662,13 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdScopePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V1ComputerPrestagesIdScopePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1209,9 +706,9 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1228,7 +725,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1238,7 +736,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1248,7 +747,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1265,20 +765,20 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePostExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerPrestagesIdScopePutRequest struct {
+type ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id int32
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV1ComputerPrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV1ComputerPrestagesIdScopePutRequest {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV1ComputerPrestagesIdScopePutRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
+func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
 	return r.ApiService.V1ComputerPrestagesIdScopePutExecute(r)
 }
 
@@ -1289,12 +789,12 @@ Replace device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV1ComputerPrestagesIdScopePutRequest
+ @return ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest
 
 Deprecated
 */
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ApiV1ComputerPrestagesIdScopePutRequest {
-	return ApiV1ComputerPrestagesIdScopePutRequest{
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest {
+	return ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1304,7 +804,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePut(ctx context.
 // Execute executes the request
 //  @return PrestageScopeResponse
 // Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r ApiV1ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePutExecute(r ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1312,13 +812,13 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 		localVarReturnValue  *PrestageScopeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesIdScopePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V1ComputerPrestagesIdScopePut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1356,9 +856,9 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1375,7 +875,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1385,7 +886,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -1395,7 +897,8 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1412,135 +915,12 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesIdScopePutExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ComputerPrestagesPostRequest struct {
+type ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
-	computerPrestage *ComputerPrestage
+	ApiService ComputerPrestagesAPI
 }
 
-// Computer Prestage to create. ids defined in this body will be ignored
-func (r ApiV1ComputerPrestagesPostRequest) ComputerPrestage(computerPrestage ComputerPrestage) ApiV1ComputerPrestagesPostRequest {
-	r.computerPrestage = &computerPrestage
-	return r
-}
-
-func (r ApiV1ComputerPrestagesPostRequest) Execute() (*GetComputerPrestage, *http.Response, error) {
-	return r.ApiService.V1ComputerPrestagesPostExecute(r)
-}
-
-/*
-V1ComputerPrestagesPost Create a Computer Prestage 
-
-Create a computer prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerPrestagesPostRequest
-
-Deprecated
-*/
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesPost(ctx context.Context) ApiV1ComputerPrestagesPostRequest {
-	return ApiV1ComputerPrestagesPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return GetComputerPrestage
-// Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesPostExecute(r ApiV1ComputerPrestagesPostRequest) (*GetComputerPrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetComputerPrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/computer-prestages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.computerPrestage == nil {
-		return localVarReturnValue, nil, reportError("computerPrestage is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.computerPrestage
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1ComputerPrestagesScopeGetRequest struct {
-	ctx context.Context
-	ApiService ComputerPrestagesApi
-}
-
-func (r ApiV1ComputerPrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
+func (r ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
 	return r.ApiService.V1ComputerPrestagesScopeGetExecute(r)
 }
 
@@ -1550,12 +930,12 @@ V1ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages
 Get all device scope for all computer prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ComputerPrestagesScopeGetRequest
+ @return ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest
 
 Deprecated
 */
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGet(ctx context.Context) ApiV1ComputerPrestagesScopeGetRequest {
-	return ApiV1ComputerPrestagesScopeGetRequest{
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesScopeGet(ctx context.Context) ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest {
+	return ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1564,7 +944,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGet(ctx context.Co
 // Execute executes the request
 //  @return PrestageScope
 // Deprecated
-func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGetExecute(r ApiV1ComputerPrestagesScopeGetRequest) (*PrestageScope, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesScopeGetExecute(r ComputerPrestagesAPIV1ComputerPrestagesScopeGetRequest) (*PrestageScope, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1572,7 +952,7 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGetExecute(r ApiV1
 		localVarReturnValue  *PrestageScope
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V1ComputerPrestagesScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V1ComputerPrestagesScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1610,9 +990,9 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1637,31 +1017,31 @@ func (a *ComputerPrestagesApiService) V1ComputerPrestagesScopeGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesGetRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV2ComputerPrestagesGetRequest) Page(page int32) ApiV2ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) Page(page int32) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV2ComputerPrestagesGetRequest) PageSize(pageSize int32) ApiV2ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) PageSize(pageSize int32) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV2ComputerPrestagesGetRequest) Sort(sort []string) ApiV2ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) Sort(sort []string) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV2ComputerPrestagesGetRequest) Execute() (*ComputerPrestageSearchResultsV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) Execute() (*ComputerPrestageSearchResultsV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesGetExecute(r)
 }
 
@@ -1671,10 +1051,12 @@ V2ComputerPrestagesGet Get sorted and paged Computer Prestages
 Gets sorted and paged computer prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ComputerPrestagesGetRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesGetRequest
+
+Deprecated
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesGet(ctx context.Context) ApiV2ComputerPrestagesGetRequest {
-	return ApiV2ComputerPrestagesGetRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesGet(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1682,7 +1064,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGet(ctx context.Context
 
 // Execute executes the request
 //  @return ComputerPrestageSearchResultsV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV2, *http.Response, error) {
+// Deprecated
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1690,7 +1073,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2Compu
 		localVarReturnValue  *ComputerPrestageSearchResultsV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1702,21 +1085,30 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2Compu
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:desc"}
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1745,9 +1137,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2Compu
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1772,13 +1164,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesGetExecute(r ApiV2Compu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdDeleteRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 }
 
-func (r ApiV2ComputerPrestagesIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdDeleteExecute(r)
 }
 
@@ -1789,10 +1181,12 @@ Deletes a Computer Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdDeleteRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest
+
+Deprecated
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDelete(ctx context.Context, id string) ApiV2ComputerPrestagesIdDeleteRequest {
-	return ApiV2ComputerPrestagesIdDeleteRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdDelete(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1800,20 +1194,21 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDelete(ctx context.Co
 }
 
 // Execute executes the request
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDeleteExecute(r ApiV2ComputerPrestagesIdDeleteRequest) (*http.Response, error) {
+// Deprecated
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdDeleteExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1846,9 +1241,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDeleteExecute(r ApiV2
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -1864,13 +1259,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdDeleteExecute(r ApiV2
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdGetRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 }
 
-func (r ApiV2ComputerPrestagesIdGetRequest) Execute() (*GetComputerPrestageV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest) Execute() (*GetComputerPrestageV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdGetExecute(r)
 }
 
@@ -1881,10 +1276,12 @@ Retrieves a Computer Prestage with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdGetRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest
+
+Deprecated
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdGetRequest {
-	return ApiV2ComputerPrestagesIdGetRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdGet(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1893,7 +1290,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGet(ctx context.Conte
 
 // Execute executes the request
 //  @return GetComputerPrestageV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2ComputerPrestagesIdGetRequest) (*GetComputerPrestageV2, *http.Response, error) {
+// Deprecated
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdGetRequest) (*GetComputerPrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1901,13 +1299,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2Com
 		localVarReturnValue  *GetComputerPrestageV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1940,9 +1338,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2Com
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1959,7 +1357,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1976,20 +1375,20 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdGetExecute(r ApiV2Com
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdPutRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 	putComputerPrestageV2 *PutComputerPrestageV2
 }
 
 // Computer Prestage to update
-func (r ApiV2ComputerPrestagesIdPutRequest) PutComputerPrestageV2(putComputerPrestageV2 PutComputerPrestageV2) ApiV2ComputerPrestagesIdPutRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest) PutComputerPrestageV2(putComputerPrestageV2 PutComputerPrestageV2) ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest {
 	r.putComputerPrestageV2 = &putComputerPrestageV2
 	return r
 }
 
-func (r ApiV2ComputerPrestagesIdPutRequest) Execute() (*GetComputerPrestageV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest) Execute() (*GetComputerPrestageV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdPutExecute(r)
 }
 
@@ -2000,10 +1399,12 @@ Updates a Computer Prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdPutRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest
+
+Deprecated
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPut(ctx context.Context, id string) ApiV2ComputerPrestagesIdPutRequest {
-	return ApiV2ComputerPrestagesIdPutRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdPut(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2012,7 +1413,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPut(ctx context.Conte
 
 // Execute executes the request
 //  @return GetComputerPrestageV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2ComputerPrestagesIdPutRequest) (*GetComputerPrestageV2, *http.Response, error) {
+// Deprecated
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdPutExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdPutRequest) (*GetComputerPrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2020,13 +1422,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 		localVarReturnValue  *GetComputerPrestageV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2064,9 +1466,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2083,7 +1485,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2093,7 +1496,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2103,7 +1507,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2120,20 +1525,20 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdPutExecute(r ApiV2Com
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to remove from scope
-func (r ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r)
 }
 
@@ -2144,10 +1549,10 @@ Remove device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest {
-	return ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopeDeleteMultiplePost(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2156,7 +1561,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r ApiV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopeDeleteMultiplePostExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopeDeleteMultiplePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2164,13 +1569,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdScopeDeleteMultiplePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdScopeDeleteMultiplePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}/scope/delete-multiple"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2208,9 +1613,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2227,7 +1632,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2237,7 +1643,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2247,7 +1654,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2264,13 +1672,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeDeleteMultiplePo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdScopeGetRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 }
 
-func (r ApiV2ComputerPrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdScopeGetExecute(r)
 }
 
@@ -2281,10 +1689,10 @@ Get device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdScopeGetRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGet(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopeGetRequest {
-	return ApiV2ComputerPrestagesIdScopeGetRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopeGet(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2293,7 +1701,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGet(ctx context.
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r ApiV2ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopeGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopeGetRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2301,13 +1709,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r Api
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2340,9 +1748,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2359,7 +1767,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2376,20 +1785,20 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopeGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdScopePostRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV2ComputerPrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2ComputerPrestagesIdScopePostRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2ComputerPrestagesIdScopePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdScopePostExecute(r)
 }
 
@@ -2400,10 +1809,10 @@ Add device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdScopePostRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePost(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePostRequest {
-	return ApiV2ComputerPrestagesIdScopePostRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopePost(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2412,7 +1821,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePost(ctx context
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r ApiV2ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopePostExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopePostRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2420,13 +1829,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdScopePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdScopePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2464,9 +1873,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2483,7 +1892,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2493,7 +1903,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2503,7 +1914,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2520,20 +1932,20 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePostExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesIdScopePutRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	id string
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
 // Serial Numbers to scope
-func (r ApiV2ComputerPrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ApiV2ComputerPrestagesIdScopePutRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest {
 	r.prestageScopeUpdate = &prestageScopeUpdate
 	return r
 }
 
-func (r ApiV2ComputerPrestagesIdScopePutRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest) Execute() (*PrestageScopeResponseV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesIdScopePutExecute(r)
 }
 
@@ -2544,10 +1956,10 @@ Replace device scope for a specific computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Computer Prestage identifier
- @return ApiV2ComputerPrestagesIdScopePutRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePut(ctx context.Context, id string) ApiV2ComputerPrestagesIdScopePutRequest {
-	return ApiV2ComputerPrestagesIdScopePutRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopePut(ctx context.Context, id string) ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -2556,7 +1968,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePut(ctx context.
 
 // Execute executes the request
 //  @return PrestageScopeResponseV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r ApiV2ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesIdScopePutExecute(r ComputerPrestagesAPIV2ComputerPrestagesIdScopePutRequest) (*PrestageScopeResponseV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -2564,13 +1976,13 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 		localVarReturnValue  *PrestageScopeResponseV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesIdScopePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesIdScopePut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/computer-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2608,9 +2020,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2627,7 +2039,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2637,7 +2050,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -2647,7 +2061,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2664,19 +2079,19 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesIdScopePutExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesPostRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesPostRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 	postComputerPrestageV2 *PostComputerPrestageV2
 }
 
 // Computer Prestage to create. ids defined in this body will be ignored
-func (r ApiV2ComputerPrestagesPostRequest) PostComputerPrestageV2(postComputerPrestageV2 PostComputerPrestageV2) ApiV2ComputerPrestagesPostRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesPostRequest) PostComputerPrestageV2(postComputerPrestageV2 PostComputerPrestageV2) ComputerPrestagesAPIV2ComputerPrestagesPostRequest {
 	r.postComputerPrestageV2 = &postComputerPrestageV2
 	return r
 }
 
-func (r ApiV2ComputerPrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesPostExecute(r)
 }
 
@@ -2686,10 +2101,12 @@ V2ComputerPrestagesPost Create a Computer Prestage
 Create a computer prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ComputerPrestagesPostRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesPostRequest
+
+Deprecated
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesPost(ctx context.Context) ApiV2ComputerPrestagesPostRequest {
-	return ApiV2ComputerPrestagesPostRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesPost(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesPostRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2697,7 +2114,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPost(ctx context.Contex
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error) {
+// Deprecated
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesPostExecute(r ComputerPrestagesAPIV2ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2705,7 +2123,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2Comp
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2748,9 +2166,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2Comp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2767,7 +2185,8 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2Comp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2784,12 +2203,12 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesPostExecute(r ApiV2Comp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2ComputerPrestagesScopeGetRequest struct {
+type ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest struct {
 	ctx context.Context
-	ApiService ComputerPrestagesApi
+	ApiService ComputerPrestagesAPI
 }
 
-func (r ApiV2ComputerPrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {
+func (r ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest) Execute() (*PrestageScopeV2, *http.Response, error) {
 	return r.ApiService.V2ComputerPrestagesScopeGetExecute(r)
 }
 
@@ -2799,10 +2218,10 @@ V2ComputerPrestagesScopeGet Get all device Scope for all Computer Prestages
 Get all device scope for all computer prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2ComputerPrestagesScopeGetRequest
+ @return ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest
 */
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGet(ctx context.Context) ApiV2ComputerPrestagesScopeGetRequest {
-	return ApiV2ComputerPrestagesScopeGetRequest{
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesScopeGet(ctx context.Context) ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest {
+	return ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2810,7 +2229,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGet(ctx context.Co
 
 // Execute executes the request
 //  @return PrestageScopeV2
-func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGetExecute(r ApiV2ComputerPrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error) {
+func (a *ComputerPrestagesAPIService) V2ComputerPrestagesScopeGetExecute(r ComputerPrestagesAPIV2ComputerPrestagesScopeGetRequest) (*PrestageScopeV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2818,7 +2237,7 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGetExecute(r ApiV2
 		localVarReturnValue  *PrestageScopeV2
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesApiService.V2ComputerPrestagesScopeGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V2ComputerPrestagesScopeGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2856,9 +2275,9 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGetExecute(r ApiV2
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2867,6 +2286,623 @@ func (a *ComputerPrestagesApiService) V2ComputerPrestagesScopeGetExecute(r ApiV2
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerPrestagesAPIV3ComputerPrestagesGetRequest struct {
+	ctx context.Context
+	ApiService ComputerPrestagesAPI
+	page *int32
+	pageSize *int32
+	sort *[]string
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) Page(page int32) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) PageSize(pageSize int32) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) Sort(sort []string) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) Execute() (*ComputerPrestageSearchResultsV3, *http.Response, error) {
+	return r.ApiService.V3ComputerPrestagesGetExecute(r)
+}
+
+/*
+V3ComputerPrestagesGet Get sorted and paged Computer Prestages 
+
+Gets sorted and paged computer prestages
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerPrestagesAPIV3ComputerPrestagesGetRequest
+*/
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesGet(ctx context.Context) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+	return ComputerPrestagesAPIV3ComputerPrestagesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerPrestageSearchResultsV3
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesGetExecute(r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) (*ComputerPrestageSearchResultsV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerPrestageSearchResultsV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V3ComputerPrestagesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/computer-prestages"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"id:desc"}
+		r.sort = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerPrestagesAPI
+	id string
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V3ComputerPrestagesIdDeleteExecute(r)
+}
+
+/*
+V3ComputerPrestagesIdDelete Delete a Computer Prestage with the supplied id 
+
+Deletes a Computer Prestage with the supplied id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Computer Prestage identifier
+ @return ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest
+*/
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdDelete(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest {
+	return ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdDeleteExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V3ComputerPrestagesIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/computer-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerPrestagesAPI
+	id string
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest) Execute() (*GetComputerPrestageV3, *http.Response, error) {
+	return r.ApiService.V3ComputerPrestagesIdGetExecute(r)
+}
+
+/*
+V3ComputerPrestagesIdGet Retrieve a Computer Prestage with the supplied id 
+
+Retrieves a Computer Prestage with the supplied id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Computer Prestage identifier
+ @return ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest
+*/
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdGet(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest {
+	return ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return GetComputerPrestageV3
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdGetExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdGetRequest) (*GetComputerPrestageV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetComputerPrestageV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V3ComputerPrestagesIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/computer-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest struct {
+	ctx context.Context
+	ApiService ComputerPrestagesAPI
+	id string
+	putComputerPrestageV3 *PutComputerPrestageV3
+}
+
+// Computer Prestage to update
+func (r ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest) PutComputerPrestageV3(putComputerPrestageV3 PutComputerPrestageV3) ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest {
+	r.putComputerPrestageV3 = &putComputerPrestageV3
+	return r
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest) Execute() (*GetComputerPrestageV3, *http.Response, error) {
+	return r.ApiService.V3ComputerPrestagesIdPutExecute(r)
+}
+
+/*
+V3ComputerPrestagesIdPut Update a Computer Prestage 
+
+Updates a Computer Prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Computer Prestage identifier
+ @return ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest
+*/
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdPut(ctx context.Context, id string) ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest {
+	return ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return GetComputerPrestageV3
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesIdPutExecute(r ComputerPrestagesAPIV3ComputerPrestagesIdPutRequest) (*GetComputerPrestageV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetComputerPrestageV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V3ComputerPrestagesIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/computer-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.putComputerPrestageV3 == nil {
+		return localVarReturnValue, nil, reportError("putComputerPrestageV3 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.putComputerPrestageV3
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerPrestagesAPIV3ComputerPrestagesPostRequest struct {
+	ctx context.Context
+	ApiService ComputerPrestagesAPI
+	postComputerPrestageV3 *PostComputerPrestageV3
+}
+
+// Computer Prestage to create. ids defined in this body will be ignored
+func (r ComputerPrestagesAPIV3ComputerPrestagesPostRequest) PostComputerPrestageV3(postComputerPrestageV3 PostComputerPrestageV3) ComputerPrestagesAPIV3ComputerPrestagesPostRequest {
+	r.postComputerPrestageV3 = &postComputerPrestageV3
+	return r
+}
+
+func (r ComputerPrestagesAPIV3ComputerPrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V3ComputerPrestagesPostExecute(r)
+}
+
+/*
+V3ComputerPrestagesPost Create a Computer Prestage 
+
+Create a computer prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerPrestagesAPIV3ComputerPrestagesPostRequest
+*/
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesPost(ctx context.Context) ComputerPrestagesAPIV3ComputerPrestagesPostRequest {
+	return ComputerPrestagesAPIV3ComputerPrestagesPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerPrestagesAPIService) V3ComputerPrestagesPostExecute(r ComputerPrestagesAPIV3ComputerPrestagesPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerPrestagesAPIService.V3ComputerPrestagesPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/computer-prestages"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.postComputerPrestageV3 == nil {
+		return localVarReturnValue, nil, reportError("postComputerPrestageV3 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.postComputerPrestageV3
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

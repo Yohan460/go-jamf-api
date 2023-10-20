@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerMdmCapability type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerMdmCapability{}
+
 // ComputerMdmCapability struct for ComputerMdmCapability
 type ComputerMdmCapability struct {
 	Capable *bool `json:"capable,omitempty"`
@@ -39,7 +42,7 @@ func NewComputerMdmCapabilityWithDefaults() *ComputerMdmCapability {
 
 // GetCapable returns the Capable field value if set, zero value otherwise.
 func (o *ComputerMdmCapability) GetCapable() bool {
-	if o == nil || o.Capable == nil {
+	if o == nil || IsNil(o.Capable) {
 		var ret bool
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ComputerMdmCapability) GetCapable() bool {
 // GetCapableOk returns a tuple with the Capable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerMdmCapability) GetCapableOk() (*bool, bool) {
-	if o == nil || o.Capable == nil {
+	if o == nil || IsNil(o.Capable) {
 		return nil, false
 	}
 	return o.Capable, true
@@ -57,7 +60,7 @@ func (o *ComputerMdmCapability) GetCapableOk() (*bool, bool) {
 
 // HasCapable returns a boolean if a field has been set.
 func (o *ComputerMdmCapability) HasCapable() bool {
-	if o != nil && o.Capable != nil {
+	if o != nil && !IsNil(o.Capable) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ComputerMdmCapability) SetCapable(v bool) {
 
 // GetCapableUsers returns the CapableUsers field value if set, zero value otherwise.
 func (o *ComputerMdmCapability) GetCapableUsers() []string {
-	if o == nil || o.CapableUsers == nil {
+	if o == nil || IsNil(o.CapableUsers) {
 		var ret []string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ComputerMdmCapability) GetCapableUsers() []string {
 // GetCapableUsersOk returns a tuple with the CapableUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerMdmCapability) GetCapableUsersOk() ([]string, bool) {
-	if o == nil || o.CapableUsers == nil {
+	if o == nil || IsNil(o.CapableUsers) {
 		return nil, false
 	}
 	return o.CapableUsers, true
@@ -89,7 +92,7 @@ func (o *ComputerMdmCapability) GetCapableUsersOk() ([]string, bool) {
 
 // HasCapableUsers returns a boolean if a field has been set.
 func (o *ComputerMdmCapability) HasCapableUsers() bool {
-	if o != nil && o.CapableUsers != nil {
+	if o != nil && !IsNil(o.CapableUsers) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ComputerMdmCapability) SetCapableUsers(v []string) {
 }
 
 func (o ComputerMdmCapability) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Capable != nil {
-		toSerialize["capable"] = o.Capable
-	}
-	if o.CapableUsers != nil {
-		toSerialize["capableUsers"] = o.CapableUsers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerMdmCapability) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Capable) {
+		toSerialize["capable"] = o.Capable
+	}
+	if !IsNil(o.CapableUsers) {
+		toSerialize["capableUsers"] = o.CapableUsers
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerMdmCapability struct {

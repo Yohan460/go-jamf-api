@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the RemoteAdministrationResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RemoteAdministrationResponse{}
+
 // RemoteAdministrationResponse A Remote administration response
 type RemoteAdministrationResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -41,7 +44,7 @@ func NewRemoteAdministrationResponseWithDefaults() *RemoteAdministrationResponse
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *RemoteAdministrationResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *RemoteAdministrationResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemoteAdministrationResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -59,7 +62,7 @@ func (o *RemoteAdministrationResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *RemoteAdministrationResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *RemoteAdministrationResponse) SetId(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *RemoteAdministrationResponse) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *RemoteAdministrationResponse) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemoteAdministrationResponse) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -91,7 +94,7 @@ func (o *RemoteAdministrationResponse) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *RemoteAdministrationResponse) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *RemoteAdministrationResponse) SetSiteId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *RemoteAdministrationResponse) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *RemoteAdministrationResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemoteAdministrationResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -123,7 +126,7 @@ func (o *RemoteAdministrationResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *RemoteAdministrationResponse) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *RemoteAdministrationResponse) SetDisplayName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *RemoteAdministrationResponse) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *RemoteAdministrationResponse) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *RemoteAdministrationResponse) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -155,7 +158,7 @@ func (o *RemoteAdministrationResponse) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *RemoteAdministrationResponse) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *RemoteAdministrationResponse) SetType(v string) {
 }
 
 func (o RemoteAdministrationResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o RemoteAdministrationResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableRemoteAdministrationResponse struct {

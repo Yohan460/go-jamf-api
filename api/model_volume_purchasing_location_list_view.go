@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VolumePurchasingLocationListView type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VolumePurchasingLocationListView{}
+
 // VolumePurchasingLocationListView struct for VolumePurchasingLocationListView
 type VolumePurchasingLocationListView struct {
 	Name *string `json:"name,omitempty"`
@@ -32,6 +35,7 @@ type VolumePurchasingLocationListView struct {
 	SendNotificationWhenNoLongerAssigned *bool `json:"sendNotificationWhenNoLongerAssigned,omitempty"`
 	AutoRegisterManagedUsers *bool `json:"autoRegisterManagedUsers,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`
+	LastSyncTime *string `json:"lastSyncTime,omitempty"`
 }
 
 // NewVolumePurchasingLocationListView instantiates a new VolumePurchasingLocationListView object
@@ -53,7 +57,7 @@ func NewVolumePurchasingLocationListViewWithDefaults() *VolumePurchasingLocation
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -63,7 +67,7 @@ func (o *VolumePurchasingLocationListView) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -71,7 +75,7 @@ func (o *VolumePurchasingLocationListView) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -85,7 +89,7 @@ func (o *VolumePurchasingLocationListView) SetName(v string) {
 
 // GetTotalPurchasedLicenses returns the TotalPurchasedLicenses field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicenses() int32 {
-	if o == nil || o.TotalPurchasedLicenses == nil {
+	if o == nil || IsNil(o.TotalPurchasedLicenses) {
 		var ret int32
 		return ret
 	}
@@ -95,7 +99,7 @@ func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicenses() int32 {
 // GetTotalPurchasedLicensesOk returns a tuple with the TotalPurchasedLicenses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicensesOk() (*int32, bool) {
-	if o == nil || o.TotalPurchasedLicenses == nil {
+	if o == nil || IsNil(o.TotalPurchasedLicenses) {
 		return nil, false
 	}
 	return o.TotalPurchasedLicenses, true
@@ -103,7 +107,7 @@ func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicensesOk() (*int32
 
 // HasTotalPurchasedLicenses returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasTotalPurchasedLicenses() bool {
-	if o != nil && o.TotalPurchasedLicenses != nil {
+	if o != nil && !IsNil(o.TotalPurchasedLicenses) {
 		return true
 	}
 
@@ -117,7 +121,7 @@ func (o *VolumePurchasingLocationListView) SetTotalPurchasedLicenses(v int32) {
 
 // GetTotalUsedLicenses returns the TotalUsedLicenses field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetTotalUsedLicenses() int32 {
-	if o == nil || o.TotalUsedLicenses == nil {
+	if o == nil || IsNil(o.TotalUsedLicenses) {
 		var ret int32
 		return ret
 	}
@@ -127,7 +131,7 @@ func (o *VolumePurchasingLocationListView) GetTotalUsedLicenses() int32 {
 // GetTotalUsedLicensesOk returns a tuple with the TotalUsedLicenses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetTotalUsedLicensesOk() (*int32, bool) {
-	if o == nil || o.TotalUsedLicenses == nil {
+	if o == nil || IsNil(o.TotalUsedLicenses) {
 		return nil, false
 	}
 	return o.TotalUsedLicenses, true
@@ -135,7 +139,7 @@ func (o *VolumePurchasingLocationListView) GetTotalUsedLicensesOk() (*int32, boo
 
 // HasTotalUsedLicenses returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasTotalUsedLicenses() bool {
-	if o != nil && o.TotalUsedLicenses != nil {
+	if o != nil && !IsNil(o.TotalUsedLicenses) {
 		return true
 	}
 
@@ -149,7 +153,7 @@ func (o *VolumePurchasingLocationListView) SetTotalUsedLicenses(v int32) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -159,7 +163,7 @@ func (o *VolumePurchasingLocationListView) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -167,7 +171,7 @@ func (o *VolumePurchasingLocationListView) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -181,7 +185,7 @@ func (o *VolumePurchasingLocationListView) SetId(v string) {
 
 // GetAppleId returns the AppleId field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetAppleId() string {
-	if o == nil || o.AppleId == nil {
+	if o == nil || IsNil(o.AppleId) {
 		var ret string
 		return ret
 	}
@@ -191,7 +195,7 @@ func (o *VolumePurchasingLocationListView) GetAppleId() string {
 // GetAppleIdOk returns a tuple with the AppleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetAppleIdOk() (*string, bool) {
-	if o == nil || o.AppleId == nil {
+	if o == nil || IsNil(o.AppleId) {
 		return nil, false
 	}
 	return o.AppleId, true
@@ -199,7 +203,7 @@ func (o *VolumePurchasingLocationListView) GetAppleIdOk() (*string, bool) {
 
 // HasAppleId returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasAppleId() bool {
-	if o != nil && o.AppleId != nil {
+	if o != nil && !IsNil(o.AppleId) {
 		return true
 	}
 
@@ -213,7 +217,7 @@ func (o *VolumePurchasingLocationListView) SetAppleId(v string) {
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetOrganizationName() string {
-	if o == nil || o.OrganizationName == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
@@ -223,7 +227,7 @@ func (o *VolumePurchasingLocationListView) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || o.OrganizationName == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
 	return o.OrganizationName, true
@@ -231,7 +235,7 @@ func (o *VolumePurchasingLocationListView) GetOrganizationNameOk() (*string, boo
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName != nil {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
@@ -245,7 +249,7 @@ func (o *VolumePurchasingLocationListView) SetOrganizationName(v string) {
 
 // GetTokenExpiration returns the TokenExpiration field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetTokenExpiration() string {
-	if o == nil || o.TokenExpiration == nil {
+	if o == nil || IsNil(o.TokenExpiration) {
 		var ret string
 		return ret
 	}
@@ -255,7 +259,7 @@ func (o *VolumePurchasingLocationListView) GetTokenExpiration() string {
 // GetTokenExpirationOk returns a tuple with the TokenExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetTokenExpirationOk() (*string, bool) {
-	if o == nil || o.TokenExpiration == nil {
+	if o == nil || IsNil(o.TokenExpiration) {
 		return nil, false
 	}
 	return o.TokenExpiration, true
@@ -263,7 +267,7 @@ func (o *VolumePurchasingLocationListView) GetTokenExpirationOk() (*string, bool
 
 // HasTokenExpiration returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasTokenExpiration() bool {
-	if o != nil && o.TokenExpiration != nil {
+	if o != nil && !IsNil(o.TokenExpiration) {
 		return true
 	}
 
@@ -277,7 +281,7 @@ func (o *VolumePurchasingLocationListView) SetTokenExpiration(v string) {
 
 // GetCountryCode returns the CountryCode field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetCountryCode() string {
-	if o == nil || o.CountryCode == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		var ret string
 		return ret
 	}
@@ -287,7 +291,7 @@ func (o *VolumePurchasingLocationListView) GetCountryCode() string {
 // GetCountryCodeOk returns a tuple with the CountryCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetCountryCodeOk() (*string, bool) {
-	if o == nil || o.CountryCode == nil {
+	if o == nil || IsNil(o.CountryCode) {
 		return nil, false
 	}
 	return o.CountryCode, true
@@ -295,7 +299,7 @@ func (o *VolumePurchasingLocationListView) GetCountryCodeOk() (*string, bool) {
 
 // HasCountryCode returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasCountryCode() bool {
-	if o != nil && o.CountryCode != nil {
+	if o != nil && !IsNil(o.CountryCode) {
 		return true
 	}
 
@@ -309,7 +313,7 @@ func (o *VolumePurchasingLocationListView) SetCountryCode(v string) {
 
 // GetLocationName returns the LocationName field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetLocationName() string {
-	if o == nil || o.LocationName == nil {
+	if o == nil || IsNil(o.LocationName) {
 		var ret string
 		return ret
 	}
@@ -319,7 +323,7 @@ func (o *VolumePurchasingLocationListView) GetLocationName() string {
 // GetLocationNameOk returns a tuple with the LocationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetLocationNameOk() (*string, bool) {
-	if o == nil || o.LocationName == nil {
+	if o == nil || IsNil(o.LocationName) {
 		return nil, false
 	}
 	return o.LocationName, true
@@ -327,7 +331,7 @@ func (o *VolumePurchasingLocationListView) GetLocationNameOk() (*string, bool) {
 
 // HasLocationName returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasLocationName() bool {
-	if o != nil && o.LocationName != nil {
+	if o != nil && !IsNil(o.LocationName) {
 		return true
 	}
 
@@ -341,7 +345,7 @@ func (o *VolumePurchasingLocationListView) SetLocationName(v string) {
 
 // GetClientContextMismatch returns the ClientContextMismatch field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetClientContextMismatch() bool {
-	if o == nil || o.ClientContextMismatch == nil {
+	if o == nil || IsNil(o.ClientContextMismatch) {
 		var ret bool
 		return ret
 	}
@@ -351,7 +355,7 @@ func (o *VolumePurchasingLocationListView) GetClientContextMismatch() bool {
 // GetClientContextMismatchOk returns a tuple with the ClientContextMismatch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetClientContextMismatchOk() (*bool, bool) {
-	if o == nil || o.ClientContextMismatch == nil {
+	if o == nil || IsNil(o.ClientContextMismatch) {
 		return nil, false
 	}
 	return o.ClientContextMismatch, true
@@ -359,7 +363,7 @@ func (o *VolumePurchasingLocationListView) GetClientContextMismatchOk() (*bool, 
 
 // HasClientContextMismatch returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasClientContextMismatch() bool {
-	if o != nil && o.ClientContextMismatch != nil {
+	if o != nil && !IsNil(o.ClientContextMismatch) {
 		return true
 	}
 
@@ -373,7 +377,7 @@ func (o *VolumePurchasingLocationListView) SetClientContextMismatch(v bool) {
 
 // GetAutomaticallyPopulatePurchasedContent returns the AutomaticallyPopulatePurchasedContent field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetAutomaticallyPopulatePurchasedContent() bool {
-	if o == nil || o.AutomaticallyPopulatePurchasedContent == nil {
+	if o == nil || IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		var ret bool
 		return ret
 	}
@@ -383,7 +387,7 @@ func (o *VolumePurchasingLocationListView) GetAutomaticallyPopulatePurchasedCont
 // GetAutomaticallyPopulatePurchasedContentOk returns a tuple with the AutomaticallyPopulatePurchasedContent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetAutomaticallyPopulatePurchasedContentOk() (*bool, bool) {
-	if o == nil || o.AutomaticallyPopulatePurchasedContent == nil {
+	if o == nil || IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		return nil, false
 	}
 	return o.AutomaticallyPopulatePurchasedContent, true
@@ -391,7 +395,7 @@ func (o *VolumePurchasingLocationListView) GetAutomaticallyPopulatePurchasedCont
 
 // HasAutomaticallyPopulatePurchasedContent returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasAutomaticallyPopulatePurchasedContent() bool {
-	if o != nil && o.AutomaticallyPopulatePurchasedContent != nil {
+	if o != nil && !IsNil(o.AutomaticallyPopulatePurchasedContent) {
 		return true
 	}
 
@@ -405,7 +409,7 @@ func (o *VolumePurchasingLocationListView) SetAutomaticallyPopulatePurchasedCont
 
 // GetSendNotificationWhenNoLongerAssigned returns the SendNotificationWhenNoLongerAssigned field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetSendNotificationWhenNoLongerAssigned() bool {
-	if o == nil || o.SendNotificationWhenNoLongerAssigned == nil {
+	if o == nil || IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		var ret bool
 		return ret
 	}
@@ -415,7 +419,7 @@ func (o *VolumePurchasingLocationListView) GetSendNotificationWhenNoLongerAssign
 // GetSendNotificationWhenNoLongerAssignedOk returns a tuple with the SendNotificationWhenNoLongerAssigned field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetSendNotificationWhenNoLongerAssignedOk() (*bool, bool) {
-	if o == nil || o.SendNotificationWhenNoLongerAssigned == nil {
+	if o == nil || IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		return nil, false
 	}
 	return o.SendNotificationWhenNoLongerAssigned, true
@@ -423,7 +427,7 @@ func (o *VolumePurchasingLocationListView) GetSendNotificationWhenNoLongerAssign
 
 // HasSendNotificationWhenNoLongerAssigned returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasSendNotificationWhenNoLongerAssigned() bool {
-	if o != nil && o.SendNotificationWhenNoLongerAssigned != nil {
+	if o != nil && !IsNil(o.SendNotificationWhenNoLongerAssigned) {
 		return true
 	}
 
@@ -437,7 +441,7 @@ func (o *VolumePurchasingLocationListView) SetSendNotificationWhenNoLongerAssign
 
 // GetAutoRegisterManagedUsers returns the AutoRegisterManagedUsers field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetAutoRegisterManagedUsers() bool {
-	if o == nil || o.AutoRegisterManagedUsers == nil {
+	if o == nil || IsNil(o.AutoRegisterManagedUsers) {
 		var ret bool
 		return ret
 	}
@@ -447,7 +451,7 @@ func (o *VolumePurchasingLocationListView) GetAutoRegisterManagedUsers() bool {
 // GetAutoRegisterManagedUsersOk returns a tuple with the AutoRegisterManagedUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetAutoRegisterManagedUsersOk() (*bool, bool) {
-	if o == nil || o.AutoRegisterManagedUsers == nil {
+	if o == nil || IsNil(o.AutoRegisterManagedUsers) {
 		return nil, false
 	}
 	return o.AutoRegisterManagedUsers, true
@@ -455,7 +459,7 @@ func (o *VolumePurchasingLocationListView) GetAutoRegisterManagedUsersOk() (*boo
 
 // HasAutoRegisterManagedUsers returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasAutoRegisterManagedUsers() bool {
-	if o != nil && o.AutoRegisterManagedUsers != nil {
+	if o != nil && !IsNil(o.AutoRegisterManagedUsers) {
 		return true
 	}
 
@@ -469,7 +473,7 @@ func (o *VolumePurchasingLocationListView) SetAutoRegisterManagedUsers(v bool) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -479,7 +483,7 @@ func (o *VolumePurchasingLocationListView) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VolumePurchasingLocationListView) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -487,7 +491,7 @@ func (o *VolumePurchasingLocationListView) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *VolumePurchasingLocationListView) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -499,51 +503,94 @@ func (o *VolumePurchasingLocationListView) SetSiteId(v string) {
 	o.SiteId = &v
 }
 
+// GetLastSyncTime returns the LastSyncTime field value if set, zero value otherwise.
+func (o *VolumePurchasingLocationListView) GetLastSyncTime() string {
+	if o == nil || IsNil(o.LastSyncTime) {
+		var ret string
+		return ret
+	}
+	return *o.LastSyncTime
+}
+
+// GetLastSyncTimeOk returns a tuple with the LastSyncTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VolumePurchasingLocationListView) GetLastSyncTimeOk() (*string, bool) {
+	if o == nil || IsNil(o.LastSyncTime) {
+		return nil, false
+	}
+	return o.LastSyncTime, true
+}
+
+// HasLastSyncTime returns a boolean if a field has been set.
+func (o *VolumePurchasingLocationListView) HasLastSyncTime() bool {
+	if o != nil && !IsNil(o.LastSyncTime) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSyncTime gets a reference to the given string and assigns it to the LastSyncTime field.
+func (o *VolumePurchasingLocationListView) SetLastSyncTime(v string) {
+	o.LastSyncTime = &v
+}
+
 func (o VolumePurchasingLocationListView) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.TotalPurchasedLicenses != nil {
-		toSerialize["totalPurchasedLicenses"] = o.TotalPurchasedLicenses
-	}
-	if o.TotalUsedLicenses != nil {
-		toSerialize["totalUsedLicenses"] = o.TotalUsedLicenses
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.AppleId != nil {
-		toSerialize["appleId"] = o.AppleId
-	}
-	if o.OrganizationName != nil {
-		toSerialize["organizationName"] = o.OrganizationName
-	}
-	if o.TokenExpiration != nil {
-		toSerialize["tokenExpiration"] = o.TokenExpiration
-	}
-	if o.CountryCode != nil {
-		toSerialize["countryCode"] = o.CountryCode
-	}
-	if o.LocationName != nil {
-		toSerialize["locationName"] = o.LocationName
-	}
-	if o.ClientContextMismatch != nil {
-		toSerialize["clientContextMismatch"] = o.ClientContextMismatch
-	}
-	if o.AutomaticallyPopulatePurchasedContent != nil {
-		toSerialize["automaticallyPopulatePurchasedContent"] = o.AutomaticallyPopulatePurchasedContent
-	}
-	if o.SendNotificationWhenNoLongerAssigned != nil {
-		toSerialize["sendNotificationWhenNoLongerAssigned"] = o.SendNotificationWhenNoLongerAssigned
-	}
-	if o.AutoRegisterManagedUsers != nil {
-		toSerialize["autoRegisterManagedUsers"] = o.AutoRegisterManagedUsers
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VolumePurchasingLocationListView) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.TotalPurchasedLicenses) {
+		toSerialize["totalPurchasedLicenses"] = o.TotalPurchasedLicenses
+	}
+	if !IsNil(o.TotalUsedLicenses) {
+		toSerialize["totalUsedLicenses"] = o.TotalUsedLicenses
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.AppleId) {
+		toSerialize["appleId"] = o.AppleId
+	}
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
+	}
+	if !IsNil(o.TokenExpiration) {
+		toSerialize["tokenExpiration"] = o.TokenExpiration
+	}
+	if !IsNil(o.CountryCode) {
+		toSerialize["countryCode"] = o.CountryCode
+	}
+	if !IsNil(o.LocationName) {
+		toSerialize["locationName"] = o.LocationName
+	}
+	if !IsNil(o.ClientContextMismatch) {
+		toSerialize["clientContextMismatch"] = o.ClientContextMismatch
+	}
+	if !IsNil(o.AutomaticallyPopulatePurchasedContent) {
+		toSerialize["automaticallyPopulatePurchasedContent"] = o.AutomaticallyPopulatePurchasedContent
+	}
+	if !IsNil(o.SendNotificationWhenNoLongerAssigned) {
+		toSerialize["sendNotificationWhenNoLongerAssigned"] = o.SendNotificationWhenNoLongerAssigned
+	}
+	if !IsNil(o.AutoRegisterManagedUsers) {
+		toSerialize["autoRegisterManagedUsers"] = o.AutoRegisterManagedUsers
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.LastSyncTime) {
+		toSerialize["lastSyncTime"] = o.LastSyncTime
+	}
+	return toSerialize, nil
 }
 
 type NullableVolumePurchasingLocationListView struct {

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **UserAttributeEnabled** | **bool** |  | [default to false]
 **UserAttributeName** | Pointer to **string** |  | [optional] [default to " "]
 **UserMapping** | **string** |  | 
+**EnrollmentSsoForAdueEnabled** | **bool** |  | [default to false]
+**EnrollmentSsoConfig** | Pointer to [**EnrollmentSsoConfig**](EnrollmentSsoConfig.md) |  | [optional] 
 **GroupEnrollmentAccessEnabled** | **bool** |  | [default to false]
 **GroupAttributeName** | **string** |  | [default to "http://schemas.xmlsoap.org/claims/Group"]
 **GroupRdnKey** | **string** |  | [default to " "]
@@ -29,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewSsoSettings
 
-`func NewSsoSettings(ssoForEnrollmentEnabled bool, ssoBypassAllowed bool, ssoEnabled bool, ssoForMacOsSelfServiceEnabled bool, tokenExpirationDisabled bool, userAttributeEnabled bool, userMapping string, groupEnrollmentAccessEnabled bool, groupAttributeName string, groupRdnKey string, idpProviderType string, entityId string, metadataSource string, ) *SsoSettings`
+`func NewSsoSettings(ssoForEnrollmentEnabled bool, ssoBypassAllowed bool, ssoEnabled bool, ssoForMacOsSelfServiceEnabled bool, tokenExpirationDisabled bool, userAttributeEnabled bool, userMapping string, enrollmentSsoForAdueEnabled bool, groupEnrollmentAccessEnabled bool, groupAttributeName string, groupRdnKey string, idpProviderType string, entityId string, metadataSource string, ) *SsoSettings`
 
 NewSsoSettings instantiates a new SsoSettings object
 This constructor will assign default values to properties that have it defined,
@@ -208,6 +210,51 @@ and a boolean to check if the value has been set.
 
 SetUserMapping sets UserMapping field to given value.
 
+
+### GetEnrollmentSsoForAdueEnabled
+
+`func (o *SsoSettings) GetEnrollmentSsoForAdueEnabled() bool`
+
+GetEnrollmentSsoForAdueEnabled returns the EnrollmentSsoForAdueEnabled field if non-nil, zero value otherwise.
+
+### GetEnrollmentSsoForAdueEnabledOk
+
+`func (o *SsoSettings) GetEnrollmentSsoForAdueEnabledOk() (*bool, bool)`
+
+GetEnrollmentSsoForAdueEnabledOk returns a tuple with the EnrollmentSsoForAdueEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnrollmentSsoForAdueEnabled
+
+`func (o *SsoSettings) SetEnrollmentSsoForAdueEnabled(v bool)`
+
+SetEnrollmentSsoForAdueEnabled sets EnrollmentSsoForAdueEnabled field to given value.
+
+
+### GetEnrollmentSsoConfig
+
+`func (o *SsoSettings) GetEnrollmentSsoConfig() EnrollmentSsoConfig`
+
+GetEnrollmentSsoConfig returns the EnrollmentSsoConfig field if non-nil, zero value otherwise.
+
+### GetEnrollmentSsoConfigOk
+
+`func (o *SsoSettings) GetEnrollmentSsoConfigOk() (*EnrollmentSsoConfig, bool)`
+
+GetEnrollmentSsoConfigOk returns a tuple with the EnrollmentSsoConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnrollmentSsoConfig
+
+`func (o *SsoSettings) SetEnrollmentSsoConfig(v EnrollmentSsoConfig)`
+
+SetEnrollmentSsoConfig sets EnrollmentSsoConfig field to given value.
+
+### HasEnrollmentSsoConfig
+
+`func (o *SsoSettings) HasEnrollmentSsoConfig() bool`
+
+HasEnrollmentSsoConfig returns a boolean if a field has been set.
 
 ### GetGroupEnrollmentAccessEnabled
 

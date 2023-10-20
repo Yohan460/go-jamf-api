@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentInstanceSyncStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentInstanceSyncStatus{}
+
 // DeviceEnrollmentInstanceSyncStatus struct for DeviceEnrollmentInstanceSyncStatus
 type DeviceEnrollmentInstanceSyncStatus struct {
 	SyncState *string `json:"syncState,omitempty"`
@@ -40,7 +43,7 @@ func NewDeviceEnrollmentInstanceSyncStatusWithDefaults() *DeviceEnrollmentInstan
 
 // GetSyncState returns the SyncState field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetSyncState() string {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetSyncState() string {
 // GetSyncStateOk returns a tuple with the SyncState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetSyncStateOk() (*string, bool) {
-	if o == nil || o.SyncState == nil {
+	if o == nil || IsNil(o.SyncState) {
 		return nil, false
 	}
 	return o.SyncState, true
@@ -58,7 +61,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetSyncStateOk() (*string, bool) {
 
 // HasSyncState returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) HasSyncState() bool {
-	if o != nil && o.SyncState != nil {
+	if o != nil && !IsNil(o.SyncState) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) SetSyncState(v string) {
 
 // GetInstanceId returns the InstanceId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetInstanceId() string {
-	if o == nil || o.InstanceId == nil {
+	if o == nil || IsNil(o.InstanceId) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetInstanceId() string {
 // GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetInstanceIdOk() (*string, bool) {
-	if o == nil || o.InstanceId == nil {
+	if o == nil || IsNil(o.InstanceId) {
 		return nil, false
 	}
 	return o.InstanceId, true
@@ -90,7 +93,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetInstanceIdOk() (*string, bool) {
 
 // HasInstanceId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) HasInstanceId() bool {
-	if o != nil && o.InstanceId != nil {
+	if o != nil && !IsNil(o.InstanceId) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) SetInstanceId(v string) {
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetTimestamp() string {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetTimestamp() string {
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) GetTimestampOk() (*string, bool) {
-	if o == nil || o.Timestamp == nil {
+	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
 	return o.Timestamp, true
@@ -122,7 +125,7 @@ func (o *DeviceEnrollmentInstanceSyncStatus) GetTimestampOk() (*string, bool) {
 
 // HasTimestamp returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstanceSyncStatus) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *DeviceEnrollmentInstanceSyncStatus) SetTimestamp(v string) {
 }
 
 func (o DeviceEnrollmentInstanceSyncStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.SyncState != nil {
-		toSerialize["syncState"] = o.SyncState
-	}
-	if o.InstanceId != nil {
-		toSerialize["instanceId"] = o.InstanceId
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentInstanceSyncStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.SyncState) {
+		toSerialize["syncState"] = o.SyncState
+	}
+	if !IsNil(o.InstanceId) {
+		toSerialize["instanceId"] = o.InstanceId
+	}
+	if !IsNil(o.Timestamp) {
+		toSerialize["timestamp"] = o.Timestamp
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentInstanceSyncStatus struct {

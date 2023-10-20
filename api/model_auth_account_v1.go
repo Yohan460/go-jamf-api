@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AuthAccountV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AuthAccountV1{}
+
 // AuthAccountV1 struct for AuthAccountV1
 type AuthAccountV1 struct {
 	Id *string `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewAuthAccountV1WithDefaults() *AuthAccountV1 {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *AuthAccountV1) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +69,7 @@ func (o *AuthAccountV1) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *AuthAccountV1) SetId(v string) {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *AuthAccountV1) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -98,7 +101,7 @@ func (o *AuthAccountV1) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *AuthAccountV1) SetUsername(v string) {
 
 // GetRealName returns the RealName field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetRealName() string {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *AuthAccountV1) GetRealName() string {
 // GetRealNameOk returns a tuple with the RealName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetRealNameOk() (*string, bool) {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		return nil, false
 	}
 	return o.RealName, true
@@ -130,7 +133,7 @@ func (o *AuthAccountV1) GetRealNameOk() (*string, bool) {
 
 // HasRealName returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasRealName() bool {
-	if o != nil && o.RealName != nil {
+	if o != nil && !IsNil(o.RealName) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *AuthAccountV1) SetRealName(v string) {
 
 // GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetEmail() string {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *AuthAccountV1) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetEmailOk() (*string, bool) {
-	if o == nil || o.Email == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
 	return o.Email, true
@@ -162,7 +165,7 @@ func (o *AuthAccountV1) GetEmailOk() (*string, bool) {
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasEmail() bool {
-	if o != nil && o.Email != nil {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *AuthAccountV1) SetEmail(v string) {
 
 // GetPreferences returns the Preferences field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetPreferences() AccountPreferencesV1 {
-	if o == nil || o.Preferences == nil {
+	if o == nil || IsNil(o.Preferences) {
 		var ret AccountPreferencesV1
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *AuthAccountV1) GetPreferences() AccountPreferencesV1 {
 // GetPreferencesOk returns a tuple with the Preferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetPreferencesOk() (*AccountPreferencesV1, bool) {
-	if o == nil || o.Preferences == nil {
+	if o == nil || IsNil(o.Preferences) {
 		return nil, false
 	}
 	return o.Preferences, true
@@ -194,7 +197,7 @@ func (o *AuthAccountV1) GetPreferencesOk() (*AccountPreferencesV1, bool) {
 
 // HasPreferences returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasPreferences() bool {
-	if o != nil && o.Preferences != nil {
+	if o != nil && !IsNil(o.Preferences) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *AuthAccountV1) SetPreferences(v AccountPreferencesV1) {
 
 // GetMultiSiteAdmin returns the MultiSiteAdmin field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetMultiSiteAdmin() bool {
-	if o == nil || o.MultiSiteAdmin == nil {
+	if o == nil || IsNil(o.MultiSiteAdmin) {
 		var ret bool
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *AuthAccountV1) GetMultiSiteAdmin() bool {
 // GetMultiSiteAdminOk returns a tuple with the MultiSiteAdmin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetMultiSiteAdminOk() (*bool, bool) {
-	if o == nil || o.MultiSiteAdmin == nil {
+	if o == nil || IsNil(o.MultiSiteAdmin) {
 		return nil, false
 	}
 	return o.MultiSiteAdmin, true
@@ -226,7 +229,7 @@ func (o *AuthAccountV1) GetMultiSiteAdminOk() (*bool, bool) {
 
 // HasMultiSiteAdmin returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasMultiSiteAdmin() bool {
-	if o != nil && o.MultiSiteAdmin != nil {
+	if o != nil && !IsNil(o.MultiSiteAdmin) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *AuthAccountV1) SetMultiSiteAdmin(v bool) {
 
 // GetAccessLevel returns the AccessLevel field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetAccessLevel() string {
-	if o == nil || o.AccessLevel == nil {
+	if o == nil || IsNil(o.AccessLevel) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *AuthAccountV1) GetAccessLevel() string {
 // GetAccessLevelOk returns a tuple with the AccessLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetAccessLevelOk() (*string, bool) {
-	if o == nil || o.AccessLevel == nil {
+	if o == nil || IsNil(o.AccessLevel) {
 		return nil, false
 	}
 	return o.AccessLevel, true
@@ -258,7 +261,7 @@ func (o *AuthAccountV1) GetAccessLevelOk() (*string, bool) {
 
 // HasAccessLevel returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasAccessLevel() bool {
-	if o != nil && o.AccessLevel != nil {
+	if o != nil && !IsNil(o.AccessLevel) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *AuthAccountV1) SetAccessLevel(v string) {
 
 // GetPrivilegeSet returns the PrivilegeSet field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetPrivilegeSet() string {
-	if o == nil || o.PrivilegeSet == nil {
+	if o == nil || IsNil(o.PrivilegeSet) {
 		var ret string
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *AuthAccountV1) GetPrivilegeSet() string {
 // GetPrivilegeSetOk returns a tuple with the PrivilegeSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetPrivilegeSetOk() (*string, bool) {
-	if o == nil || o.PrivilegeSet == nil {
+	if o == nil || IsNil(o.PrivilegeSet) {
 		return nil, false
 	}
 	return o.PrivilegeSet, true
@@ -290,7 +293,7 @@ func (o *AuthAccountV1) GetPrivilegeSetOk() (*string, bool) {
 
 // HasPrivilegeSet returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasPrivilegeSet() bool {
-	if o != nil && o.PrivilegeSet != nil {
+	if o != nil && !IsNil(o.PrivilegeSet) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *AuthAccountV1) SetPrivilegeSet(v string) {
 
 // GetPrivilegesBySite returns the PrivilegesBySite field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetPrivilegesBySite() map[string][]string {
-	if o == nil || o.PrivilegesBySite == nil {
+	if o == nil || IsNil(o.PrivilegesBySite) {
 		var ret map[string][]string
 		return ret
 	}
@@ -314,7 +317,7 @@ func (o *AuthAccountV1) GetPrivilegesBySite() map[string][]string {
 // GetPrivilegesBySiteOk returns a tuple with the PrivilegesBySite field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetPrivilegesBySiteOk() (*map[string][]string, bool) {
-	if o == nil || o.PrivilegesBySite == nil {
+	if o == nil || IsNil(o.PrivilegesBySite) {
 		return nil, false
 	}
 	return o.PrivilegesBySite, true
@@ -322,7 +325,7 @@ func (o *AuthAccountV1) GetPrivilegesBySiteOk() (*map[string][]string, bool) {
 
 // HasPrivilegesBySite returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasPrivilegesBySite() bool {
-	if o != nil && o.PrivilegesBySite != nil {
+	if o != nil && !IsNil(o.PrivilegesBySite) {
 		return true
 	}
 
@@ -336,7 +339,7 @@ func (o *AuthAccountV1) SetPrivilegesBySite(v map[string][]string) {
 
 // GetGroupIds returns the GroupIds field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetGroupIds() []string {
-	if o == nil || o.GroupIds == nil {
+	if o == nil || IsNil(o.GroupIds) {
 		var ret []string
 		return ret
 	}
@@ -346,7 +349,7 @@ func (o *AuthAccountV1) GetGroupIds() []string {
 // GetGroupIdsOk returns a tuple with the GroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetGroupIdsOk() ([]string, bool) {
-	if o == nil || o.GroupIds == nil {
+	if o == nil || IsNil(o.GroupIds) {
 		return nil, false
 	}
 	return o.GroupIds, true
@@ -354,7 +357,7 @@ func (o *AuthAccountV1) GetGroupIdsOk() ([]string, bool) {
 
 // HasGroupIds returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasGroupIds() bool {
-	if o != nil && o.GroupIds != nil {
+	if o != nil && !IsNil(o.GroupIds) {
 		return true
 	}
 
@@ -368,7 +371,7 @@ func (o *AuthAccountV1) SetGroupIds(v []string) {
 
 // GetCurrentSiteId returns the CurrentSiteId field value if set, zero value otherwise.
 func (o *AuthAccountV1) GetCurrentSiteId() string {
-	if o == nil || o.CurrentSiteId == nil {
+	if o == nil || IsNil(o.CurrentSiteId) {
 		var ret string
 		return ret
 	}
@@ -378,7 +381,7 @@ func (o *AuthAccountV1) GetCurrentSiteId() string {
 // GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuthAccountV1) GetCurrentSiteIdOk() (*string, bool) {
-	if o == nil || o.CurrentSiteId == nil {
+	if o == nil || IsNil(o.CurrentSiteId) {
 		return nil, false
 	}
 	return o.CurrentSiteId, true
@@ -386,7 +389,7 @@ func (o *AuthAccountV1) GetCurrentSiteIdOk() (*string, bool) {
 
 // HasCurrentSiteId returns a boolean if a field has been set.
 func (o *AuthAccountV1) HasCurrentSiteId() bool {
-	if o != nil && o.CurrentSiteId != nil {
+	if o != nil && !IsNil(o.CurrentSiteId) {
 		return true
 	}
 
@@ -399,41 +402,49 @@ func (o *AuthAccountV1) SetCurrentSiteId(v string) {
 }
 
 func (o AuthAccountV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.RealName != nil {
-		toSerialize["realName"] = o.RealName
-	}
-	if o.Email != nil {
-		toSerialize["email"] = o.Email
-	}
-	if o.Preferences != nil {
-		toSerialize["preferences"] = o.Preferences
-	}
-	if o.MultiSiteAdmin != nil {
-		toSerialize["multiSiteAdmin"] = o.MultiSiteAdmin
-	}
-	if o.AccessLevel != nil {
-		toSerialize["accessLevel"] = o.AccessLevel
-	}
-	if o.PrivilegeSet != nil {
-		toSerialize["privilegeSet"] = o.PrivilegeSet
-	}
-	if o.PrivilegesBySite != nil {
-		toSerialize["privilegesBySite"] = o.PrivilegesBySite
-	}
-	if o.GroupIds != nil {
-		toSerialize["groupIds"] = o.GroupIds
-	}
-	if o.CurrentSiteId != nil {
-		toSerialize["currentSiteId"] = o.CurrentSiteId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AuthAccountV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.RealName) {
+		toSerialize["realName"] = o.RealName
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
+	}
+	if !IsNil(o.Preferences) {
+		toSerialize["preferences"] = o.Preferences
+	}
+	if !IsNil(o.MultiSiteAdmin) {
+		toSerialize["multiSiteAdmin"] = o.MultiSiteAdmin
+	}
+	if !IsNil(o.AccessLevel) {
+		toSerialize["accessLevel"] = o.AccessLevel
+	}
+	if !IsNil(o.PrivilegeSet) {
+		toSerialize["privilegeSet"] = o.PrivilegeSet
+	}
+	if !IsNil(o.PrivilegesBySite) {
+		toSerialize["privilegesBySite"] = o.PrivilegesBySite
+	}
+	if !IsNil(o.GroupIds) {
+		toSerialize["groupIds"] = o.GroupIds
+	}
+	if !IsNil(o.CurrentSiteId) {
+		toSerialize["currentSiteId"] = o.CurrentSiteId
+	}
+	return toSerialize, nil
 }
 
 type NullableAuthAccountV1 struct {

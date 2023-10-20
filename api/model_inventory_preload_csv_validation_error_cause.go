@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadCsvValidationErrorCause type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadCsvValidationErrorCause{}
+
 // InventoryPreloadCsvValidationErrorCause struct for InventoryPreloadCsvValidationErrorCause
 type InventoryPreloadCsvValidationErrorCause struct {
 	// Error-specific code that can be used to identify localization string, etc.
@@ -23,7 +26,7 @@ type InventoryPreloadCsvValidationErrorCause struct {
 	// A general description of error for troubleshooting/debugging. Generally this text should not be displayed to a user; instead refer to errorCode and it's localized text
 	Description *string `json:"description,omitempty"`
 	// id of object with error. Optional.
-	Id *string `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	Value *string `json:"value,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	Line *int32 `json:"line,omitempty"`
@@ -51,7 +54,7 @@ func NewInventoryPreloadCsvValidationErrorCauseWithDefaults() *InventoryPreloadC
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -69,7 +72,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetField(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -125,7 +128,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetDescriptionOk() (*string, b
 
 // HasDescription returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -137,41 +140,51 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InventoryPreloadCsvValidationErrorCause) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InventoryPreloadCsvValidationErrorCause) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *InventoryPreloadCsvValidationErrorCause) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *InventoryPreloadCsvValidationErrorCause) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *InventoryPreloadCsvValidationErrorCause) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -181,7 +194,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -189,7 +202,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -203,7 +216,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetValue(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -213,7 +226,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -221,7 +234,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetSerialNumberOk() (*string, 
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -235,7 +248,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetSerialNumber(v string) {
 
 // GetLine returns the Line field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int32 {
-	if o == nil || o.Line == nil {
+	if o == nil || IsNil(o.Line) {
 		var ret int32
 		return ret
 	}
@@ -245,7 +258,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int32 {
 // GetLineOk returns a tuple with the Line field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int32, bool) {
-	if o == nil || o.Line == nil {
+	if o == nil || IsNil(o.Line) {
 		return nil, false
 	}
 	return o.Line, true
@@ -253,7 +266,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int32, bool) {
 
 // HasLine returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasLine() bool {
-	if o != nil && o.Line != nil {
+	if o != nil && !IsNil(o.Line) {
 		return true
 	}
 
@@ -267,7 +280,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetLine(v int32) {
 
 // GetFieldSize returns the FieldSize field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int32 {
-	if o == nil || o.FieldSize == nil {
+	if o == nil || IsNil(o.FieldSize) {
 		var ret int32
 		return ret
 	}
@@ -277,7 +290,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int32 {
 // GetFieldSizeOk returns a tuple with the FieldSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int32, bool) {
-	if o == nil || o.FieldSize == nil {
+	if o == nil || IsNil(o.FieldSize) {
 		return nil, false
 	}
 	return o.FieldSize, true
@@ -285,7 +298,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int32, bool
 
 // HasFieldSize returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasFieldSize() bool {
-	if o != nil && o.FieldSize != nil {
+	if o != nil && !IsNil(o.FieldSize) {
 		return true
 	}
 
@@ -299,7 +312,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetFieldSize(v int32) {
 
 // GetDeviceType returns the DeviceType field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationErrorCause) GetDeviceType() string {
-	if o == nil || o.DeviceType == nil {
+	if o == nil || IsNil(o.DeviceType) {
 		var ret string
 		return ret
 	}
@@ -309,7 +322,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetDeviceType() string {
 // GetDeviceTypeOk returns a tuple with the DeviceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) GetDeviceTypeOk() (*string, bool) {
-	if o == nil || o.DeviceType == nil {
+	if o == nil || IsNil(o.DeviceType) {
 		return nil, false
 	}
 	return o.DeviceType, true
@@ -317,7 +330,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetDeviceTypeOk() (*string, bo
 
 // HasDeviceType returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationErrorCause) HasDeviceType() bool {
-	if o != nil && o.DeviceType != nil {
+	if o != nil && !IsNil(o.DeviceType) {
 		return true
 	}
 
@@ -330,35 +343,41 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetDeviceType(v string) {
 }
 
 func (o InventoryPreloadCsvValidationErrorCause) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if true {
-		toSerialize["field"] = o.Field
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.Line != nil {
-		toSerialize["line"] = o.Line
-	}
-	if o.FieldSize != nil {
-		toSerialize["fieldSize"] = o.FieldSize
-	}
-	if o.DeviceType != nil {
-		toSerialize["deviceType"] = o.DeviceType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadCsvValidationErrorCause) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	toSerialize["field"] = o.Field
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.Line) {
+		toSerialize["line"] = o.Line
+	}
+	if !IsNil(o.FieldSize) {
+		toSerialize["fieldSize"] = o.FieldSize
+	}
+	if !IsNil(o.DeviceType) {
+		toSerialize["deviceType"] = o.DeviceType
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadCsvValidationErrorCause struct {

@@ -1,14 +1,14 @@
-# \LdapApi
+# \LdapAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**LdapGroupsGet**](LdapApi.md#LdapGroupsGet) | **Get** /ldap/groups | Retrieve the configured access groups that contain the text in the search param 
-[**LdapServersGet**](LdapApi.md#LdapServersGet) | **Get** /ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
-[**V1LdapGroupsGet**](LdapApi.md#V1LdapGroupsGet) | **Get** /v1/ldap/groups | Retrieve the configured access groups that contain the text in the search param 
-[**V1LdapLdapServersGet**](LdapApi.md#V1LdapLdapServersGet) | **Get** /v1/ldap/ldap-servers | Retrieve all LDAP Servers. 
-[**V1LdapServersGet**](LdapApi.md#V1LdapServersGet) | **Get** /v1/ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
+[**LdapGroupsGet**](LdapAPI.md#LdapGroupsGet) | **Get** /ldap/groups | Retrieve the configured access groups that contain the text in the search param 
+[**LdapServersGet**](LdapAPI.md#LdapServersGet) | **Get** /ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
+[**V1LdapGroupsGet**](LdapAPI.md#V1LdapGroupsGet) | **Get** /v1/ldap/groups | Retrieve the configured access groups that contain the text in the search param 
+[**V1LdapLdapServersGet**](LdapAPI.md#V1LdapLdapServersGet) | **Get** /v1/ldap/ldap-servers | Retrieve all LDAP Servers. 
+[**V1LdapServersGet**](LdapAPI.md#V1LdapServersGet) | **Get** /v1/ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
 
 
 
@@ -29,7 +29,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapApi.LdapGroupsGet(context.Background()).Q(q).Execute()
+    resp, r, err := apiClient.LdapAPI.LdapGroupsGet(context.Background()).Q(q).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapApi.LdapGroupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapGroupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `LdapGroupsGet`: LdapGroupSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `LdapApi.LdapGroupsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -95,20 +95,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapApi.LdapServersGet(context.Background()).Execute()
+    resp, r, err := apiClient.LdapAPI.LdapServersGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapApi.LdapServersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapServersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `LdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapApi.LdapServersGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapServersGet`: %v\n", resp)
 }
 ```
 
@@ -156,7 +156,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -164,13 +164,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapApi.V1LdapGroupsGet(context.Background()).Q(q).Execute()
+    resp, r, err := apiClient.LdapAPI.V1LdapGroupsGet(context.Background()).Q(q).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapApi.V1LdapGroupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapGroupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1LdapGroupsGet`: LdapGroupSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `LdapApi.V1LdapGroupsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -222,20 +222,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapApi.V1LdapLdapServersGet(context.Background()).Execute()
+    resp, r, err := apiClient.LdapAPI.V1LdapLdapServersGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapApi.V1LdapLdapServersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapLdapServersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1LdapLdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapApi.V1LdapLdapServersGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapLdapServersGet`: %v\n", resp)
 }
 ```
 
@@ -283,20 +283,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapApi.V1LdapServersGet(context.Background()).Execute()
+    resp, r, err := apiClient.LdapAPI.V1LdapServersGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapApi.V1LdapServersGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapServersGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1LdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapApi.V1LdapServersGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapServersGet`: %v\n", resp)
 }
 ```
 

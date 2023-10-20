@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** | Error-specific code that can be used to identify localization string, etc. | [optional] 
 **Field** | **string** | Name of the field that caused the error. | 
 **Description** | Pointer to **string** | A general description of error for troubleshooting/debugging. Generally this text should not be displayed to a user; instead refer to errorCode and it&#39;s localized text | [optional] 
-**Id** | Pointer to **string** | id of object with error. Optional. | [optional] 
+**Id** | Pointer to **NullableString** | id of object with error. Optional. | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **Line** | Pointer to **int32** |  | [optional] 
@@ -128,6 +128,16 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### SetIdNil
+
+`func (o *InventoryPreloadCsvValidationErrorCause) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *InventoryPreloadCsvValidationErrorCause) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetValue
 
 `func (o *InventoryPreloadCsvValidationErrorCause) GetValue() string`

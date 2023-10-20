@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetMobileDevicePrestage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetMobileDevicePrestage{}
+
 // GetMobileDevicePrestage struct for GetMobileDevicePrestage
 type GetMobileDevicePrestage struct {
 	DisplayName string `json:"displayName"`
@@ -454,7 +457,7 @@ func (o *GetMobileDevicePrestage) SetDeviceEnrollmentProgramInstanceId(v int32) 
 
 // GetSkipSetupItems returns the SkipSetupItems field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetSkipSetupItems() map[string]bool {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		var ret map[string]bool
 		return ret
 	}
@@ -464,7 +467,7 @@ func (o *GetMobileDevicePrestage) GetSkipSetupItems() map[string]bool {
 // GetSkipSetupItemsOk returns a tuple with the SkipSetupItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetSkipSetupItemsOk() (*map[string]bool, bool) {
-	if o == nil || o.SkipSetupItems == nil {
+	if o == nil || IsNil(o.SkipSetupItems) {
 		return nil, false
 	}
 	return o.SkipSetupItems, true
@@ -472,7 +475,7 @@ func (o *GetMobileDevicePrestage) GetSkipSetupItemsOk() (*map[string]bool, bool)
 
 // HasSkipSetupItems returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasSkipSetupItems() bool {
-	if o != nil && o.SkipSetupItems != nil {
+	if o != nil && !IsNil(o.SkipSetupItems) {
 		return true
 	}
 
@@ -534,7 +537,7 @@ func (o *GetMobileDevicePrestage) SetPurchasingInformation(v PrestagePurchasingI
 
 // GetAnchorCertificates returns the AnchorCertificates field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetAnchorCertificates() []string {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		var ret []string
 		return ret
 	}
@@ -544,7 +547,7 @@ func (o *GetMobileDevicePrestage) GetAnchorCertificates() []string {
 // GetAnchorCertificatesOk returns a tuple with the AnchorCertificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetAnchorCertificatesOk() ([]string, bool) {
-	if o == nil || o.AnchorCertificates == nil {
+	if o == nil || IsNil(o.AnchorCertificates) {
 		return nil, false
 	}
 	return o.AnchorCertificates, true
@@ -552,7 +555,7 @@ func (o *GetMobileDevicePrestage) GetAnchorCertificatesOk() ([]string, bool) {
 
 // HasAnchorCertificates returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasAnchorCertificates() bool {
-	if o != nil && o.AnchorCertificates != nil {
+	if o != nil && !IsNil(o.AnchorCertificates) {
 		return true
 	}
 
@@ -566,7 +569,7 @@ func (o *GetMobileDevicePrestage) SetAnchorCertificates(v []string) {
 
 // GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetEnrollmentCustomizationId() int32 {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		var ret int32
 		return ret
 	}
@@ -576,7 +579,7 @@ func (o *GetMobileDevicePrestage) GetEnrollmentCustomizationId() int32 {
 // GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int32, bool) {
-	if o == nil || o.EnrollmentCustomizationId == nil {
+	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		return nil, false
 	}
 	return o.EnrollmentCustomizationId, true
@@ -584,7 +587,7 @@ func (o *GetMobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int32, bool
 
 // HasEnrollmentCustomizationId returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasEnrollmentCustomizationId() bool {
-	if o != nil && o.EnrollmentCustomizationId != nil {
+	if o != nil && !IsNil(o.EnrollmentCustomizationId) {
 		return true
 	}
 
@@ -742,7 +745,7 @@ func (o *GetMobileDevicePrestage) SetIsConfigureDeviceBeforeSetupAssistant(v boo
 
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetLanguage() string {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		var ret string
 		return ret
 	}
@@ -752,7 +755,7 @@ func (o *GetMobileDevicePrestage) GetLanguage() string {
 // GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetLanguageOk() (*string, bool) {
-	if o == nil || o.Language == nil {
+	if o == nil || IsNil(o.Language) {
 		return nil, false
 	}
 	return o.Language, true
@@ -760,7 +763,7 @@ func (o *GetMobileDevicePrestage) GetLanguageOk() (*string, bool) {
 
 // HasLanguage returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasLanguage() bool {
-	if o != nil && o.Language != nil {
+	if o != nil && !IsNil(o.Language) {
 		return true
 	}
 
@@ -774,7 +777,7 @@ func (o *GetMobileDevicePrestage) SetLanguage(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -784,7 +787,7 @@ func (o *GetMobileDevicePrestage) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -792,7 +795,7 @@ func (o *GetMobileDevicePrestage) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -806,7 +809,7 @@ func (o *GetMobileDevicePrestage) SetRegion(v string) {
 
 // GetNames returns the Names field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetNames() MobileDevicePrestageNames {
-	if o == nil || o.Names == nil {
+	if o == nil || IsNil(o.Names) {
 		var ret MobileDevicePrestageNames
 		return ret
 	}
@@ -816,7 +819,7 @@ func (o *GetMobileDevicePrestage) GetNames() MobileDevicePrestageNames {
 // GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetNamesOk() (*MobileDevicePrestageNames, bool) {
-	if o == nil || o.Names == nil {
+	if o == nil || IsNil(o.Names) {
 		return nil, false
 	}
 	return o.Names, true
@@ -824,7 +827,7 @@ func (o *GetMobileDevicePrestage) GetNamesOk() (*MobileDevicePrestageNames, bool
 
 // HasNames returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasNames() bool {
-	if o != nil && o.Names != nil {
+	if o != nil && !IsNil(o.Names) {
 		return true
 	}
 
@@ -838,7 +841,7 @@ func (o *GetMobileDevicePrestage) SetNames(v MobileDevicePrestageNames) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -848,7 +851,7 @@ func (o *GetMobileDevicePrestage) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -856,7 +859,7 @@ func (o *GetMobileDevicePrestage) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -870,7 +873,7 @@ func (o *GetMobileDevicePrestage) SetId(v int32) {
 
 // GetProfileUUID returns the ProfileUUID field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetProfileUUID() string {
-	if o == nil || o.ProfileUUID == nil {
+	if o == nil || IsNil(o.ProfileUUID) {
 		var ret string
 		return ret
 	}
@@ -880,7 +883,7 @@ func (o *GetMobileDevicePrestage) GetProfileUUID() string {
 // GetProfileUUIDOk returns a tuple with the ProfileUUID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetProfileUUIDOk() (*string, bool) {
-	if o == nil || o.ProfileUUID == nil {
+	if o == nil || IsNil(o.ProfileUUID) {
 		return nil, false
 	}
 	return o.ProfileUUID, true
@@ -888,7 +891,7 @@ func (o *GetMobileDevicePrestage) GetProfileUUIDOk() (*string, bool) {
 
 // HasProfileUUID returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasProfileUUID() bool {
-	if o != nil && o.ProfileUUID != nil {
+	if o != nil && !IsNil(o.ProfileUUID) {
 		return true
 	}
 
@@ -902,7 +905,7 @@ func (o *GetMobileDevicePrestage) SetProfileUUID(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetSiteId() int32 {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret int32
 		return ret
 	}
@@ -912,7 +915,7 @@ func (o *GetMobileDevicePrestage) GetSiteId() int32 {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetSiteIdOk() (*int32, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -920,7 +923,7 @@ func (o *GetMobileDevicePrestage) GetSiteIdOk() (*int32, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -934,7 +937,7 @@ func (o *GetMobileDevicePrestage) SetSiteId(v int32) {
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
 func (o *GetMobileDevicePrestage) GetVersionLock() int32 {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		var ret int32
 		return ret
 	}
@@ -944,7 +947,7 @@ func (o *GetMobileDevicePrestage) GetVersionLock() int32 {
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetMobileDevicePrestage) GetVersionLockOk() (*int32, bool) {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
 	return o.VersionLock, true
@@ -952,7 +955,7 @@ func (o *GetMobileDevicePrestage) GetVersionLockOk() (*int32, bool) {
 
 // HasVersionLock returns a boolean if a field has been set.
 func (o *GetMobileDevicePrestage) HasVersionLock() bool {
-	if o != nil && o.VersionLock != nil {
+	if o != nil && !IsNil(o.VersionLock) {
 		return true
 	}
 
@@ -965,107 +968,69 @@ func (o *GetMobileDevicePrestage) SetVersionLock(v int32) {
 }
 
 func (o GetMobileDevicePrestage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["isMandatory"] = o.IsMandatory
-	}
-	if true {
-		toSerialize["isMdmRemovable"] = o.IsMdmRemovable
-	}
-	if true {
-		toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
-	}
-	if true {
-		toSerialize["supportEmailAddress"] = o.SupportEmailAddress
-	}
-	if true {
-		toSerialize["department"] = o.Department
-	}
-	if true {
-		toSerialize["isDefaultPrestage"] = o.IsDefaultPrestage
-	}
-	if true {
-		toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
-	}
-	if true {
-		toSerialize["isKeepExistingSiteMembership"] = o.IsKeepExistingSiteMembership
-	}
-	if true {
-		toSerialize["isKeepExistingLocationInformation"] = o.IsKeepExistingLocationInformation
-	}
-	if true {
-		toSerialize["isRequireAuthentication"] = o.IsRequireAuthentication
-	}
-	if true {
-		toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
-	}
-	if true {
-		toSerialize["isPreventActivationLock"] = o.IsPreventActivationLock
-	}
-	if true {
-		toSerialize["isEnableDeviceBasedActivationLock"] = o.IsEnableDeviceBasedActivationLock
-	}
-	if true {
-		toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
-	}
-	if o.SkipSetupItems != nil {
-		toSerialize["skipSetupItems"] = o.SkipSetupItems
-	}
-	if true {
-		toSerialize["locationInformation"] = o.LocationInformation
-	}
-	if true {
-		toSerialize["purchasingInformation"] = o.PurchasingInformation
-	}
-	if o.AnchorCertificates != nil {
-		toSerialize["anchorCertificates"] = o.AnchorCertificates
-	}
-	if o.EnrollmentCustomizationId != nil {
-		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
-	}
-	if true {
-		toSerialize["isAllowPairing"] = o.IsAllowPairing
-	}
-	if true {
-		toSerialize["isMultiUser"] = o.IsMultiUser
-	}
-	if true {
-		toSerialize["isSupervised"] = o.IsSupervised
-	}
-	if true {
-		toSerialize["maximumSharedAccounts"] = o.MaximumSharedAccounts
-	}
-	if true {
-		toSerialize["isAutoAdvanceSetup"] = o.IsAutoAdvanceSetup
-	}
-	if true {
-		toSerialize["isConfigureDeviceBeforeSetupAssistant"] = o.IsConfigureDeviceBeforeSetupAssistant
-	}
-	if o.Language != nil {
-		toSerialize["language"] = o.Language
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.Names != nil {
-		toSerialize["names"] = o.Names
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ProfileUUID != nil {
-		toSerialize["profileUUID"] = o.ProfileUUID
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.VersionLock != nil {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetMobileDevicePrestage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["isMandatory"] = o.IsMandatory
+	toSerialize["isMdmRemovable"] = o.IsMdmRemovable
+	toSerialize["supportPhoneNumber"] = o.SupportPhoneNumber
+	toSerialize["supportEmailAddress"] = o.SupportEmailAddress
+	toSerialize["department"] = o.Department
+	toSerialize["isDefaultPrestage"] = o.IsDefaultPrestage
+	toSerialize["enrollmentSiteId"] = o.EnrollmentSiteId
+	toSerialize["isKeepExistingSiteMembership"] = o.IsKeepExistingSiteMembership
+	toSerialize["isKeepExistingLocationInformation"] = o.IsKeepExistingLocationInformation
+	toSerialize["isRequireAuthentication"] = o.IsRequireAuthentication
+	toSerialize["authenticationPrompt"] = o.AuthenticationPrompt
+	toSerialize["isPreventActivationLock"] = o.IsPreventActivationLock
+	toSerialize["isEnableDeviceBasedActivationLock"] = o.IsEnableDeviceBasedActivationLock
+	toSerialize["deviceEnrollmentProgramInstanceId"] = o.DeviceEnrollmentProgramInstanceId
+	if !IsNil(o.SkipSetupItems) {
+		toSerialize["skipSetupItems"] = o.SkipSetupItems
+	}
+	toSerialize["locationInformation"] = o.LocationInformation
+	toSerialize["purchasingInformation"] = o.PurchasingInformation
+	if !IsNil(o.AnchorCertificates) {
+		toSerialize["anchorCertificates"] = o.AnchorCertificates
+	}
+	if !IsNil(o.EnrollmentCustomizationId) {
+		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
+	}
+	toSerialize["isAllowPairing"] = o.IsAllowPairing
+	toSerialize["isMultiUser"] = o.IsMultiUser
+	toSerialize["isSupervised"] = o.IsSupervised
+	toSerialize["maximumSharedAccounts"] = o.MaximumSharedAccounts
+	toSerialize["isAutoAdvanceSetup"] = o.IsAutoAdvanceSetup
+	toSerialize["isConfigureDeviceBeforeSetupAssistant"] = o.IsConfigureDeviceBeforeSetupAssistant
+	if !IsNil(o.Language) {
+		toSerialize["language"] = o.Language
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.Names) {
+		toSerialize["names"] = o.Names
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ProfileUUID) {
+		toSerialize["profileUUID"] = o.ProfileUUID
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.VersionLock) {
+		toSerialize["versionLock"] = o.VersionLock
+	}
+	return toSerialize, nil
 }
 
 type NullableGetMobileDevicePrestage struct {

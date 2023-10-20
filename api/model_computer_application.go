@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerApplication type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerApplication{}
+
 // ComputerApplication struct for ComputerApplication
 type ComputerApplication struct {
 	Name *string `json:"name,omitempty"`
@@ -46,7 +49,7 @@ func NewComputerApplicationWithDefaults() *ComputerApplication {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerApplication) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *ComputerApplication) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -64,7 +67,7 @@ func (o *ComputerApplication) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerApplication) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *ComputerApplication) SetName(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *ComputerApplication) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *ComputerApplication) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -96,7 +99,7 @@ func (o *ComputerApplication) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *ComputerApplication) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *ComputerApplication) SetPath(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ComputerApplication) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *ComputerApplication) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -128,7 +131,7 @@ func (o *ComputerApplication) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ComputerApplication) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *ComputerApplication) SetVersion(v string) {
 
 // GetMacAppStore returns the MacAppStore field value if set, zero value otherwise.
 func (o *ComputerApplication) GetMacAppStore() bool {
-	if o == nil || o.MacAppStore == nil {
+	if o == nil || IsNil(o.MacAppStore) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *ComputerApplication) GetMacAppStore() bool {
 // GetMacAppStoreOk returns a tuple with the MacAppStore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetMacAppStoreOk() (*bool, bool) {
-	if o == nil || o.MacAppStore == nil {
+	if o == nil || IsNil(o.MacAppStore) {
 		return nil, false
 	}
 	return o.MacAppStore, true
@@ -160,7 +163,7 @@ func (o *ComputerApplication) GetMacAppStoreOk() (*bool, bool) {
 
 // HasMacAppStore returns a boolean if a field has been set.
 func (o *ComputerApplication) HasMacAppStore() bool {
-	if o != nil && o.MacAppStore != nil {
+	if o != nil && !IsNil(o.MacAppStore) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *ComputerApplication) SetMacAppStore(v bool) {
 
 // GetSizeMegabytes returns the SizeMegabytes field value if set, zero value otherwise.
 func (o *ComputerApplication) GetSizeMegabytes() int32 {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		var ret int32
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *ComputerApplication) GetSizeMegabytes() int32 {
 // GetSizeMegabytesOk returns a tuple with the SizeMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetSizeMegabytesOk() (*int32, bool) {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		return nil, false
 	}
 	return o.SizeMegabytes, true
@@ -192,7 +195,7 @@ func (o *ComputerApplication) GetSizeMegabytesOk() (*int32, bool) {
 
 // HasSizeMegabytes returns a boolean if a field has been set.
 func (o *ComputerApplication) HasSizeMegabytes() bool {
-	if o != nil && o.SizeMegabytes != nil {
+	if o != nil && !IsNil(o.SizeMegabytes) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *ComputerApplication) SetSizeMegabytes(v int32) {
 
 // GetBundleId returns the BundleId field value if set, zero value otherwise.
 func (o *ComputerApplication) GetBundleId() string {
-	if o == nil || o.BundleId == nil {
+	if o == nil || IsNil(o.BundleId) {
 		var ret string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *ComputerApplication) GetBundleId() string {
 // GetBundleIdOk returns a tuple with the BundleId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetBundleIdOk() (*string, bool) {
-	if o == nil || o.BundleId == nil {
+	if o == nil || IsNil(o.BundleId) {
 		return nil, false
 	}
 	return o.BundleId, true
@@ -224,7 +227,7 @@ func (o *ComputerApplication) GetBundleIdOk() (*string, bool) {
 
 // HasBundleId returns a boolean if a field has been set.
 func (o *ComputerApplication) HasBundleId() bool {
-	if o != nil && o.BundleId != nil {
+	if o != nil && !IsNil(o.BundleId) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *ComputerApplication) SetBundleId(v string) {
 
 // GetUpdateAvailable returns the UpdateAvailable field value if set, zero value otherwise.
 func (o *ComputerApplication) GetUpdateAvailable() bool {
-	if o == nil || o.UpdateAvailable == nil {
+	if o == nil || IsNil(o.UpdateAvailable) {
 		var ret bool
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *ComputerApplication) GetUpdateAvailable() bool {
 // GetUpdateAvailableOk returns a tuple with the UpdateAvailable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetUpdateAvailableOk() (*bool, bool) {
-	if o == nil || o.UpdateAvailable == nil {
+	if o == nil || IsNil(o.UpdateAvailable) {
 		return nil, false
 	}
 	return o.UpdateAvailable, true
@@ -256,7 +259,7 @@ func (o *ComputerApplication) GetUpdateAvailableOk() (*bool, bool) {
 
 // HasUpdateAvailable returns a boolean if a field has been set.
 func (o *ComputerApplication) HasUpdateAvailable() bool {
-	if o != nil && o.UpdateAvailable != nil {
+	if o != nil && !IsNil(o.UpdateAvailable) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *ComputerApplication) SetUpdateAvailable(v bool) {
 
 // GetExternalVersionId returns the ExternalVersionId field value if set, zero value otherwise.
 func (o *ComputerApplication) GetExternalVersionId() string {
-	if o == nil || o.ExternalVersionId == nil {
+	if o == nil || IsNil(o.ExternalVersionId) {
 		var ret string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *ComputerApplication) GetExternalVersionId() string {
 // GetExternalVersionIdOk returns a tuple with the ExternalVersionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerApplication) GetExternalVersionIdOk() (*string, bool) {
-	if o == nil || o.ExternalVersionId == nil {
+	if o == nil || IsNil(o.ExternalVersionId) {
 		return nil, false
 	}
 	return o.ExternalVersionId, true
@@ -288,7 +291,7 @@ func (o *ComputerApplication) GetExternalVersionIdOk() (*string, bool) {
 
 // HasExternalVersionId returns a boolean if a field has been set.
 func (o *ComputerApplication) HasExternalVersionId() bool {
-	if o != nil && o.ExternalVersionId != nil {
+	if o != nil && !IsNil(o.ExternalVersionId) {
 		return true
 	}
 
@@ -301,32 +304,40 @@ func (o *ComputerApplication) SetExternalVersionId(v string) {
 }
 
 func (o ComputerApplication) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.MacAppStore != nil {
-		toSerialize["macAppStore"] = o.MacAppStore
-	}
-	if o.SizeMegabytes != nil {
-		toSerialize["sizeMegabytes"] = o.SizeMegabytes
-	}
-	if o.BundleId != nil {
-		toSerialize["bundleId"] = o.BundleId
-	}
-	if o.UpdateAvailable != nil {
-		toSerialize["updateAvailable"] = o.UpdateAvailable
-	}
-	if o.ExternalVersionId != nil {
-		toSerialize["externalVersionId"] = o.ExternalVersionId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerApplication) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.MacAppStore) {
+		toSerialize["macAppStore"] = o.MacAppStore
+	}
+	if !IsNil(o.SizeMegabytes) {
+		toSerialize["sizeMegabytes"] = o.SizeMegabytes
+	}
+	if !IsNil(o.BundleId) {
+		toSerialize["bundleId"] = o.BundleId
+	}
+	if !IsNil(o.UpdateAvailable) {
+		toSerialize["updateAvailable"] = o.UpdateAvailable
+	}
+	if !IsNil(o.ExternalVersionId) {
+		toSerialize["externalVersionId"] = o.ExternalVersionId
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerApplication struct {

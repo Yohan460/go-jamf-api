@@ -13,13 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 )
 
 
-type EngageApi interface {
+type EngageAPI interface {
 
 	/*
 	V1EngageGet Get Engage settings 
@@ -28,13 +29,16 @@ type EngageApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EngageGetRequest
+	@return EngageAPIV1EngageGetRequest
+
+	Deprecated
 	*/
-	V1EngageGet(ctx context.Context) ApiV1EngageGetRequest
+	V1EngageGet(ctx context.Context) EngageAPIV1EngageGetRequest
 
 	// V1EngageGetExecute executes the request
 	//  @return Engage
-	V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage, *http.Response, error)
+	// Deprecated
+	V1EngageGetExecute(r EngageAPIV1EngageGetRequest) (*Engage, *http.Response, error)
 
 	/*
 	V1EngageHistoryGet Get Engage settings history 
@@ -43,13 +47,16 @@ type EngageApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EngageHistoryGetRequest
+	@return EngageAPIV1EngageHistoryGetRequest
+
+	Deprecated
 	*/
-	V1EngageHistoryGet(ctx context.Context) ApiV1EngageHistoryGetRequest
+	V1EngageHistoryGet(ctx context.Context) EngageAPIV1EngageHistoryGetRequest
 
 	// V1EngageHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	// Deprecated
+	V1EngageHistoryGetExecute(r EngageAPIV1EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1EngageHistoryPost Add Engage settings history notes 
@@ -58,13 +65,16 @@ type EngageApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EngageHistoryPostRequest
+	@return EngageAPIV1EngageHistoryPostRequest
+
+	Deprecated
 	*/
-	V1EngageHistoryPost(ctx context.Context) ApiV1EngageHistoryPostRequest
+	V1EngageHistoryPost(ctx context.Context) EngageAPIV1EngageHistoryPostRequest
 
 	// V1EngageHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	// Deprecated
+	V1EngageHistoryPostExecute(r EngageAPIV1EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1EngagePut Update Engage settings 
@@ -73,24 +83,87 @@ type EngageApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1EngagePutRequest
+	@return EngageAPIV1EngagePutRequest
+
+	Deprecated
 	*/
-	V1EngagePut(ctx context.Context) ApiV1EngagePutRequest
+	V1EngagePut(ctx context.Context) EngageAPIV1EngagePutRequest
 
 	// V1EngagePutExecute executes the request
 	//  @return Engage
-	V1EngagePutExecute(r ApiV1EngagePutRequest) (*Engage, *http.Response, error)
+	// Deprecated
+	V1EngagePutExecute(r EngageAPIV1EngagePutRequest) (*Engage, *http.Response, error)
+
+	/*
+	V2EngageGet Get Engage settings 
+
+	Get Engage settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EngageAPIV2EngageGetRequest
+	*/
+	V2EngageGet(ctx context.Context) EngageAPIV2EngageGetRequest
+
+	// V2EngageGetExecute executes the request
+	//  @return Engage
+	V2EngageGetExecute(r EngageAPIV2EngageGetRequest) (*Engage, *http.Response, error)
+
+	/*
+	V2EngageHistoryGet Get Engage settings history 
+
+	Gets Engage settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EngageAPIV2EngageHistoryGetRequest
+	*/
+	V2EngageHistoryGet(ctx context.Context) EngageAPIV2EngageHistoryGetRequest
+
+	// V2EngageHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V2EngageHistoryGetExecute(r EngageAPIV2EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V2EngageHistoryPost Add Engage settings history notes 
+
+	Adds Engage settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EngageAPIV2EngageHistoryPostRequest
+	*/
+	V2EngageHistoryPost(ctx context.Context) EngageAPIV2EngageHistoryPostRequest
+
+	// V2EngageHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V2EngageHistoryPostExecute(r EngageAPIV2EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V2EngagePut Update Engage settings 
+
+	Update Engage settings
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EngageAPIV2EngagePutRequest
+	*/
+	V2EngagePut(ctx context.Context) EngageAPIV2EngagePutRequest
+
+	// V2EngagePutExecute executes the request
+	//  @return Engage
+	V2EngagePutExecute(r EngageAPIV2EngagePutRequest) (*Engage, *http.Response, error)
 }
 
-// EngageApiService EngageApi service
-type EngageApiService service
+// EngageAPIService EngageAPI service
+type EngageAPIService service
 
-type ApiV1EngageGetRequest struct {
+type EngageAPIV1EngageGetRequest struct {
 	ctx context.Context
-	ApiService EngageApi
+	ApiService EngageAPI
 }
 
-func (r ApiV1EngageGetRequest) Execute() (*Engage, *http.Response, error) {
+func (r EngageAPIV1EngageGetRequest) Execute() (*Engage, *http.Response, error) {
 	return r.ApiService.V1EngageGetExecute(r)
 }
 
@@ -101,10 +174,12 @@ Get Engage settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EngageGetRequest
+ @return EngageAPIV1EngageGetRequest
+
+Deprecated
 */
-func (a *EngageApiService) V1EngageGet(ctx context.Context) ApiV1EngageGetRequest {
-	return ApiV1EngageGetRequest{
+func (a *EngageAPIService) V1EngageGet(ctx context.Context) EngageAPIV1EngageGetRequest {
+	return EngageAPIV1EngageGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -112,7 +187,8 @@ func (a *EngageApiService) V1EngageGet(ctx context.Context) ApiV1EngageGetReques
 
 // Execute executes the request
 //  @return Engage
-func (a *EngageApiService) V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage, *http.Response, error) {
+// Deprecated
+func (a *EngageAPIService) V1EngageGetExecute(r EngageAPIV1EngageGetRequest) (*Engage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -120,7 +196,7 @@ func (a *EngageApiService) V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage,
 		localVarReturnValue  *Engage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageApiService.V1EngageGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V1EngageGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -158,9 +234,9 @@ func (a *EngageApiService) V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage,
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -185,9 +261,9 @@ func (a *EngageApiService) V1EngageGetExecute(r ApiV1EngageGetRequest) (*Engage,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EngageHistoryGetRequest struct {
+type EngageAPIV1EngageHistoryGetRequest struct {
 	ctx context.Context
-	ApiService EngageApi
+	ApiService EngageAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -197,47 +273,47 @@ type ApiV1EngageHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1EngageHistoryGetRequest) Page(page int32) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Page(page int32) EngageAPIV1EngageHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1EngageHistoryGetRequest) Size(size int32) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Size(size int32) EngageAPIV1EngageHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1EngageHistoryGetRequest) Pagesize(pagesize int32) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Pagesize(pagesize int32) EngageAPIV1EngageHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1EngageHistoryGetRequest) PageSize(pageSize int32) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) PageSize(pageSize int32) EngageAPIV1EngageHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1EngageHistoryGetRequest) Sort(sort string) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Sort(sort string) EngageAPIV1EngageHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: search&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1EngageHistoryGetRequest) Search(search string) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Search(search string) EngageAPIV1EngageHistoryGetRequest {
 	r.search = &search
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1EngageHistoryGetRequest) Filter(filter string) ApiV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Filter(filter string) EngageAPIV1EngageHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1EngageHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r EngageAPIV1EngageHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1EngageHistoryGetExecute(r)
 }
 
@@ -248,10 +324,12 @@ Gets Engage settings history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EngageHistoryGetRequest
+ @return EngageAPIV1EngageHistoryGetRequest
+
+Deprecated
 */
-func (a *EngageApiService) V1EngageHistoryGet(ctx context.Context) ApiV1EngageHistoryGetRequest {
-	return ApiV1EngageHistoryGetRequest{
+func (a *EngageAPIService) V1EngageHistoryGet(ctx context.Context) EngageAPIV1EngageHistoryGetRequest {
+	return EngageAPIV1EngageHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -259,7 +337,8 @@ func (a *EngageApiService) V1EngageHistoryGet(ctx context.Context) ApiV1EngageHi
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+// Deprecated
+func (a *EngageAPIService) V1EngageHistoryGetExecute(r EngageAPIV1EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -267,7 +346,7 @@ func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequ
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageApiService.V1EngageHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V1EngageHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -279,25 +358,46 @@ func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequ
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	if r.search != nil {
-		localVarQueryParams.Add("search", parameterToString(*r.search, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+	} else {
+		var defaultValue string = ""
+		r.search = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -326,9 +426,9 @@ func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -353,19 +453,19 @@ func (a *EngageApiService) V1EngageHistoryGetExecute(r ApiV1EngageHistoryGetRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EngageHistoryPostRequest struct {
+type EngageAPIV1EngageHistoryPostRequest struct {
 	ctx context.Context
-	ApiService EngageApi
+	ApiService EngageAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1EngageHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1EngageHistoryPostRequest {
+func (r EngageAPIV1EngageHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) EngageAPIV1EngageHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1EngageHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r EngageAPIV1EngageHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1EngageHistoryPostExecute(r)
 }
 
@@ -376,10 +476,12 @@ Adds Engage settings history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EngageHistoryPostRequest
+ @return EngageAPIV1EngageHistoryPostRequest
+
+Deprecated
 */
-func (a *EngageApiService) V1EngageHistoryPost(ctx context.Context) ApiV1EngageHistoryPostRequest {
-	return ApiV1EngageHistoryPostRequest{
+func (a *EngageAPIService) V1EngageHistoryPost(ctx context.Context) EngageAPIV1EngageHistoryPostRequest {
+	return EngageAPIV1EngageHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -387,7 +489,8 @@ func (a *EngageApiService) V1EngageHistoryPost(ctx context.Context) ApiV1EngageH
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+// Deprecated
+func (a *EngageAPIService) V1EngageHistoryPostExecute(r EngageAPIV1EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -395,7 +498,7 @@ func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRe
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageApiService.V1EngageHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V1EngageHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -438,9 +541,9 @@ func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -457,7 +560,8 @@ func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -474,19 +578,19 @@ func (a *EngageApiService) V1EngageHistoryPostExecute(r ApiV1EngageHistoryPostRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1EngagePutRequest struct {
+type EngageAPIV1EngagePutRequest struct {
 	ctx context.Context
-	ApiService EngageApi
+	ApiService EngageAPI
 	engage *Engage
 }
 
 // Engage settings object
-func (r ApiV1EngagePutRequest) Engage(engage Engage) ApiV1EngagePutRequest {
+func (r EngageAPIV1EngagePutRequest) Engage(engage Engage) EngageAPIV1EngagePutRequest {
 	r.engage = &engage
 	return r
 }
 
-func (r ApiV1EngagePutRequest) Execute() (*Engage, *http.Response, error) {
+func (r EngageAPIV1EngagePutRequest) Execute() (*Engage, *http.Response, error) {
 	return r.ApiService.V1EngagePutExecute(r)
 }
 
@@ -497,10 +601,12 @@ Update Engage settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1EngagePutRequest
+ @return EngageAPIV1EngagePutRequest
+
+Deprecated
 */
-func (a *EngageApiService) V1EngagePut(ctx context.Context) ApiV1EngagePutRequest {
-	return ApiV1EngagePutRequest{
+func (a *EngageAPIService) V1EngagePut(ctx context.Context) EngageAPIV1EngagePutRequest {
+	return EngageAPIV1EngagePutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -508,7 +614,8 @@ func (a *EngageApiService) V1EngagePut(ctx context.Context) ApiV1EngagePutReques
 
 // Execute executes the request
 //  @return Engage
-func (a *EngageApiService) V1EngagePutExecute(r ApiV1EngagePutRequest) (*Engage, *http.Response, error) {
+// Deprecated
+func (a *EngageAPIService) V1EngagePutExecute(r EngageAPIV1EngagePutRequest) (*Engage, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -516,7 +623,7 @@ func (a *EngageApiService) V1EngagePutExecute(r ApiV1EngagePutRequest) (*Engage,
 		localVarReturnValue  *Engage
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageApiService.V1EngagePut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V1EngagePut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -559,9 +666,501 @@ func (a *EngageApiService) V1EngagePutExecute(r ApiV1EngagePutRequest) (*Engage,
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EngageAPIV2EngageGetRequest struct {
+	ctx context.Context
+	ApiService EngageAPI
+}
+
+func (r EngageAPIV2EngageGetRequest) Execute() (*Engage, *http.Response, error) {
+	return r.ApiService.V2EngageGetExecute(r)
+}
+
+/*
+V2EngageGet Get Engage settings 
+
+Get Engage settings
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EngageAPIV2EngageGetRequest
+*/
+func (a *EngageAPIService) V2EngageGet(ctx context.Context) EngageAPIV2EngageGetRequest {
+	return EngageAPIV2EngageGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Engage
+func (a *EngageAPIService) V2EngageGetExecute(r EngageAPIV2EngageGetRequest) (*Engage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Engage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V2EngageGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/engage"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EngageAPIV2EngageHistoryGetRequest struct {
+	ctx context.Context
+	ApiService EngageAPI
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+}
+
+func (r EngageAPIV2EngageHistoryGetRequest) Page(page int32) EngageAPIV2EngageHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r EngageAPIV2EngageHistoryGetRequest) PageSize(pageSize int32) EngageAPIV2EngageHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r EngageAPIV2EngageHistoryGetRequest) Sort(sort []string) EngageAPIV2EngageHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r EngageAPIV2EngageHistoryGetRequest) Filter(filter string) EngageAPIV2EngageHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r EngageAPIV2EngageHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V2EngageHistoryGetExecute(r)
+}
+
+/*
+V2EngageHistoryGet Get Engage settings history 
+
+Gets Engage settings history
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EngageAPIV2EngageHistoryGetRequest
+*/
+func (a *EngageAPIService) V2EngageHistoryGet(ctx context.Context) EngageAPIV2EngageHistoryGetRequest {
+	return EngageAPIV2EngageHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *EngageAPIService) V2EngageHistoryGetExecute(r EngageAPIV2EngageHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V2EngageHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/engage/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EngageAPIV2EngageHistoryPostRequest struct {
+	ctx context.Context
+	ApiService EngageAPI
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// history notes to create
+func (r EngageAPIV2EngageHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) EngageAPIV2EngageHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r EngageAPIV2EngageHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+	return r.ApiService.V2EngageHistoryPostExecute(r)
+}
+
+/*
+V2EngageHistoryPost Add Engage settings history notes 
+
+Adds Engage settings history notes
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EngageAPIV2EngageHistoryPostRequest
+*/
+func (a *EngageAPIService) V2EngageHistoryPost(ctx context.Context) EngageAPIV2EngageHistoryPostRequest {
+	return EngageAPIV2EngageHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ObjectHistory
+func (a *EngageAPIService) V2EngageHistoryPostExecute(r EngageAPIV2EngageHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ObjectHistory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V2EngageHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/engage/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EngageAPIV2EngagePutRequest struct {
+	ctx context.Context
+	ApiService EngageAPI
+	engage *Engage
+}
+
+// Engage settings object
+func (r EngageAPIV2EngagePutRequest) Engage(engage Engage) EngageAPIV2EngagePutRequest {
+	r.engage = &engage
+	return r
+}
+
+func (r EngageAPIV2EngagePutRequest) Execute() (*Engage, *http.Response, error) {
+	return r.ApiService.V2EngagePutExecute(r)
+}
+
+/*
+V2EngagePut Update Engage settings 
+
+Update Engage settings
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EngageAPIV2EngagePutRequest
+*/
+func (a *EngageAPIService) V2EngagePut(ctx context.Context) EngageAPIV2EngagePutRequest {
+	return EngageAPIV2EngagePutRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return Engage
+func (a *EngageAPIService) V2EngagePutExecute(r EngageAPIV2EngagePutRequest) (*Engage, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *Engage
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EngageAPIService.V2EngagePut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/engage"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.engage == nil {
+		return localVarReturnValue, nil, reportError("engage is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.engage
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

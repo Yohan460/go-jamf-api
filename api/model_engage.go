@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Engage type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Engage{}
+
 // Engage struct for Engage
 type Engage struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
@@ -38,7 +41,7 @@ func NewEngageWithDefaults() *Engage {
 
 // GetIsEnabled returns the IsEnabled field value if set, zero value otherwise.
 func (o *Engage) GetIsEnabled() bool {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *Engage) GetIsEnabled() bool {
 // GetIsEnabledOk returns a tuple with the IsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Engage) GetIsEnabledOk() (*bool, bool) {
-	if o == nil || o.IsEnabled == nil {
+	if o == nil || IsNil(o.IsEnabled) {
 		return nil, false
 	}
 	return o.IsEnabled, true
@@ -56,7 +59,7 @@ func (o *Engage) GetIsEnabledOk() (*bool, bool) {
 
 // HasIsEnabled returns a boolean if a field has been set.
 func (o *Engage) HasIsEnabled() bool {
-	if o != nil && o.IsEnabled != nil {
+	if o != nil && !IsNil(o.IsEnabled) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *Engage) SetIsEnabled(v bool) {
 }
 
 func (o Engage) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsEnabled != nil {
-		toSerialize["isEnabled"] = o.IsEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Engage) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsEnabled) {
+		toSerialize["isEnabled"] = o.IsEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableEngage struct {

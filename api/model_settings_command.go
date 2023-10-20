@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SettingsCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SettingsCommand{}
+
 // SettingsCommand struct for SettingsCommand
 type SettingsCommand struct {
 	BootstrapTokenAllowed *bool `json:"bootstrapTokenAllowed,omitempty"`
@@ -30,6 +33,8 @@ type SettingsCommand struct {
 	ApplicationConfiguration *ApplicationConfiguration `json:"applicationConfiguration,omitempty"`
 	TimeZone *string `json:"timeZone,omitempty"`
 	SoftwareUpdateSettings *SoftwareUpdateSettings `json:"softwareUpdateSettings,omitempty"`
+	// The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only)
+	PasscodeLockGracePeriod *int32 `json:"passcodeLockGracePeriod,omitempty"`
 }
 
 // NewSettingsCommand instantiates a new SettingsCommand object
@@ -51,7 +56,7 @@ func NewSettingsCommandWithDefaults() *SettingsCommand {
 
 // GetBootstrapTokenAllowed returns the BootstrapTokenAllowed field value if set, zero value otherwise.
 func (o *SettingsCommand) GetBootstrapTokenAllowed() bool {
-	if o == nil || o.BootstrapTokenAllowed == nil {
+	if o == nil || IsNil(o.BootstrapTokenAllowed) {
 		var ret bool
 		return ret
 	}
@@ -61,7 +66,7 @@ func (o *SettingsCommand) GetBootstrapTokenAllowed() bool {
 // GetBootstrapTokenAllowedOk returns a tuple with the BootstrapTokenAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetBootstrapTokenAllowedOk() (*bool, bool) {
-	if o == nil || o.BootstrapTokenAllowed == nil {
+	if o == nil || IsNil(o.BootstrapTokenAllowed) {
 		return nil, false
 	}
 	return o.BootstrapTokenAllowed, true
@@ -69,7 +74,7 @@ func (o *SettingsCommand) GetBootstrapTokenAllowedOk() (*bool, bool) {
 
 // HasBootstrapTokenAllowed returns a boolean if a field has been set.
 func (o *SettingsCommand) HasBootstrapTokenAllowed() bool {
-	if o != nil && o.BootstrapTokenAllowed != nil {
+	if o != nil && !IsNil(o.BootstrapTokenAllowed) {
 		return true
 	}
 
@@ -83,7 +88,7 @@ func (o *SettingsCommand) SetBootstrapTokenAllowed(v bool) {
 
 // GetBluetooth returns the Bluetooth field value if set, zero value otherwise.
 func (o *SettingsCommand) GetBluetooth() bool {
-	if o == nil || o.Bluetooth == nil {
+	if o == nil || IsNil(o.Bluetooth) {
 		var ret bool
 		return ret
 	}
@@ -93,7 +98,7 @@ func (o *SettingsCommand) GetBluetooth() bool {
 // GetBluetoothOk returns a tuple with the Bluetooth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetBluetoothOk() (*bool, bool) {
-	if o == nil || o.Bluetooth == nil {
+	if o == nil || IsNil(o.Bluetooth) {
 		return nil, false
 	}
 	return o.Bluetooth, true
@@ -101,7 +106,7 @@ func (o *SettingsCommand) GetBluetoothOk() (*bool, bool) {
 
 // HasBluetooth returns a boolean if a field has been set.
 func (o *SettingsCommand) HasBluetooth() bool {
-	if o != nil && o.Bluetooth != nil {
+	if o != nil && !IsNil(o.Bluetooth) {
 		return true
 	}
 
@@ -115,7 +120,7 @@ func (o *SettingsCommand) SetBluetooth(v bool) {
 
 // GetAppAnalytics returns the AppAnalytics field value if set, zero value otherwise.
 func (o *SettingsCommand) GetAppAnalytics() AppAnalyticsSetting {
-	if o == nil || o.AppAnalytics == nil {
+	if o == nil || IsNil(o.AppAnalytics) {
 		var ret AppAnalyticsSetting
 		return ret
 	}
@@ -125,7 +130,7 @@ func (o *SettingsCommand) GetAppAnalytics() AppAnalyticsSetting {
 // GetAppAnalyticsOk returns a tuple with the AppAnalytics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetAppAnalyticsOk() (*AppAnalyticsSetting, bool) {
-	if o == nil || o.AppAnalytics == nil {
+	if o == nil || IsNil(o.AppAnalytics) {
 		return nil, false
 	}
 	return o.AppAnalytics, true
@@ -133,7 +138,7 @@ func (o *SettingsCommand) GetAppAnalyticsOk() (*AppAnalyticsSetting, bool) {
 
 // HasAppAnalytics returns a boolean if a field has been set.
 func (o *SettingsCommand) HasAppAnalytics() bool {
-	if o != nil && o.AppAnalytics != nil {
+	if o != nil && !IsNil(o.AppAnalytics) {
 		return true
 	}
 
@@ -147,7 +152,7 @@ func (o *SettingsCommand) SetAppAnalytics(v AppAnalyticsSetting) {
 
 // GetDiagnosticSubmission returns the DiagnosticSubmission field value if set, zero value otherwise.
 func (o *SettingsCommand) GetDiagnosticSubmission() DiagnosticSubmissionSetting {
-	if o == nil || o.DiagnosticSubmission == nil {
+	if o == nil || IsNil(o.DiagnosticSubmission) {
 		var ret DiagnosticSubmissionSetting
 		return ret
 	}
@@ -157,7 +162,7 @@ func (o *SettingsCommand) GetDiagnosticSubmission() DiagnosticSubmissionSetting 
 // GetDiagnosticSubmissionOk returns a tuple with the DiagnosticSubmission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetDiagnosticSubmissionOk() (*DiagnosticSubmissionSetting, bool) {
-	if o == nil || o.DiagnosticSubmission == nil {
+	if o == nil || IsNil(o.DiagnosticSubmission) {
 		return nil, false
 	}
 	return o.DiagnosticSubmission, true
@@ -165,7 +170,7 @@ func (o *SettingsCommand) GetDiagnosticSubmissionOk() (*DiagnosticSubmissionSett
 
 // HasDiagnosticSubmission returns a boolean if a field has been set.
 func (o *SettingsCommand) HasDiagnosticSubmission() bool {
-	if o != nil && o.DiagnosticSubmission != nil {
+	if o != nil && !IsNil(o.DiagnosticSubmission) {
 		return true
 	}
 
@@ -179,7 +184,7 @@ func (o *SettingsCommand) SetDiagnosticSubmission(v DiagnosticSubmissionSetting)
 
 // GetDataRoaming returns the DataRoaming field value if set, zero value otherwise.
 func (o *SettingsCommand) GetDataRoaming() DataRoamingSetting {
-	if o == nil || o.DataRoaming == nil {
+	if o == nil || IsNil(o.DataRoaming) {
 		var ret DataRoamingSetting
 		return ret
 	}
@@ -189,7 +194,7 @@ func (o *SettingsCommand) GetDataRoaming() DataRoamingSetting {
 // GetDataRoamingOk returns a tuple with the DataRoaming field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetDataRoamingOk() (*DataRoamingSetting, bool) {
-	if o == nil || o.DataRoaming == nil {
+	if o == nil || IsNil(o.DataRoaming) {
 		return nil, false
 	}
 	return o.DataRoaming, true
@@ -197,7 +202,7 @@ func (o *SettingsCommand) GetDataRoamingOk() (*DataRoamingSetting, bool) {
 
 // HasDataRoaming returns a boolean if a field has been set.
 func (o *SettingsCommand) HasDataRoaming() bool {
-	if o != nil && o.DataRoaming != nil {
+	if o != nil && !IsNil(o.DataRoaming) {
 		return true
 	}
 
@@ -211,7 +216,7 @@ func (o *SettingsCommand) SetDataRoaming(v DataRoamingSetting) {
 
 // GetVoiceRoaming returns the VoiceRoaming field value if set, zero value otherwise.
 func (o *SettingsCommand) GetVoiceRoaming() VoiceRoamingSetting {
-	if o == nil || o.VoiceRoaming == nil {
+	if o == nil || IsNil(o.VoiceRoaming) {
 		var ret VoiceRoamingSetting
 		return ret
 	}
@@ -221,7 +226,7 @@ func (o *SettingsCommand) GetVoiceRoaming() VoiceRoamingSetting {
 // GetVoiceRoamingOk returns a tuple with the VoiceRoaming field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetVoiceRoamingOk() (*VoiceRoamingSetting, bool) {
-	if o == nil || o.VoiceRoaming == nil {
+	if o == nil || IsNil(o.VoiceRoaming) {
 		return nil, false
 	}
 	return o.VoiceRoaming, true
@@ -229,7 +234,7 @@ func (o *SettingsCommand) GetVoiceRoamingOk() (*VoiceRoamingSetting, bool) {
 
 // HasVoiceRoaming returns a boolean if a field has been set.
 func (o *SettingsCommand) HasVoiceRoaming() bool {
-	if o != nil && o.VoiceRoaming != nil {
+	if o != nil && !IsNil(o.VoiceRoaming) {
 		return true
 	}
 
@@ -243,7 +248,7 @@ func (o *SettingsCommand) SetVoiceRoaming(v VoiceRoamingSetting) {
 
 // GetPersonalHotspot returns the PersonalHotspot field value if set, zero value otherwise.
 func (o *SettingsCommand) GetPersonalHotspot() PersonalHotspotSetting {
-	if o == nil || o.PersonalHotspot == nil {
+	if o == nil || IsNil(o.PersonalHotspot) {
 		var ret PersonalHotspotSetting
 		return ret
 	}
@@ -253,7 +258,7 @@ func (o *SettingsCommand) GetPersonalHotspot() PersonalHotspotSetting {
 // GetPersonalHotspotOk returns a tuple with the PersonalHotspot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetPersonalHotspotOk() (*PersonalHotspotSetting, bool) {
-	if o == nil || o.PersonalHotspot == nil {
+	if o == nil || IsNil(o.PersonalHotspot) {
 		return nil, false
 	}
 	return o.PersonalHotspot, true
@@ -261,7 +266,7 @@ func (o *SettingsCommand) GetPersonalHotspotOk() (*PersonalHotspotSetting, bool)
 
 // HasPersonalHotspot returns a boolean if a field has been set.
 func (o *SettingsCommand) HasPersonalHotspot() bool {
-	if o != nil && o.PersonalHotspot != nil {
+	if o != nil && !IsNil(o.PersonalHotspot) {
 		return true
 	}
 
@@ -275,7 +280,7 @@ func (o *SettingsCommand) SetPersonalHotspot(v PersonalHotspotSetting) {
 
 // GetMaximumResidentUsers returns the MaximumResidentUsers field value if set, zero value otherwise.
 func (o *SettingsCommand) GetMaximumResidentUsers() int32 {
-	if o == nil || o.MaximumResidentUsers == nil {
+	if o == nil || IsNil(o.MaximumResidentUsers) {
 		var ret int32
 		return ret
 	}
@@ -285,7 +290,7 @@ func (o *SettingsCommand) GetMaximumResidentUsers() int32 {
 // GetMaximumResidentUsersOk returns a tuple with the MaximumResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int32, bool) {
-	if o == nil || o.MaximumResidentUsers == nil {
+	if o == nil || IsNil(o.MaximumResidentUsers) {
 		return nil, false
 	}
 	return o.MaximumResidentUsers, true
@@ -293,7 +298,7 @@ func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int32, bool) {
 
 // HasMaximumResidentUsers returns a boolean if a field has been set.
 func (o *SettingsCommand) HasMaximumResidentUsers() bool {
-	if o != nil && o.MaximumResidentUsers != nil {
+	if o != nil && !IsNil(o.MaximumResidentUsers) {
 		return true
 	}
 
@@ -307,7 +312,7 @@ func (o *SettingsCommand) SetMaximumResidentUsers(v int32) {
 
 // GetDeviceName returns the DeviceName field value if set, zero value otherwise.
 func (o *SettingsCommand) GetDeviceName() string {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		var ret string
 		return ret
 	}
@@ -317,7 +322,7 @@ func (o *SettingsCommand) GetDeviceName() string {
 // GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetDeviceNameOk() (*string, bool) {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		return nil, false
 	}
 	return o.DeviceName, true
@@ -325,7 +330,7 @@ func (o *SettingsCommand) GetDeviceNameOk() (*string, bool) {
 
 // HasDeviceName returns a boolean if a field has been set.
 func (o *SettingsCommand) HasDeviceName() bool {
-	if o != nil && o.DeviceName != nil {
+	if o != nil && !IsNil(o.DeviceName) {
 		return true
 	}
 
@@ -339,7 +344,7 @@ func (o *SettingsCommand) SetDeviceName(v string) {
 
 // GetApplicationAttributes returns the ApplicationAttributes field value if set, zero value otherwise.
 func (o *SettingsCommand) GetApplicationAttributes() ApplicationAttributes {
-	if o == nil || o.ApplicationAttributes == nil {
+	if o == nil || IsNil(o.ApplicationAttributes) {
 		var ret ApplicationAttributes
 		return ret
 	}
@@ -349,7 +354,7 @@ func (o *SettingsCommand) GetApplicationAttributes() ApplicationAttributes {
 // GetApplicationAttributesOk returns a tuple with the ApplicationAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetApplicationAttributesOk() (*ApplicationAttributes, bool) {
-	if o == nil || o.ApplicationAttributes == nil {
+	if o == nil || IsNil(o.ApplicationAttributes) {
 		return nil, false
 	}
 	return o.ApplicationAttributes, true
@@ -357,7 +362,7 @@ func (o *SettingsCommand) GetApplicationAttributesOk() (*ApplicationAttributes, 
 
 // HasApplicationAttributes returns a boolean if a field has been set.
 func (o *SettingsCommand) HasApplicationAttributes() bool {
-	if o != nil && o.ApplicationAttributes != nil {
+	if o != nil && !IsNil(o.ApplicationAttributes) {
 		return true
 	}
 
@@ -371,7 +376,7 @@ func (o *SettingsCommand) SetApplicationAttributes(v ApplicationAttributes) {
 
 // GetSharedDeviceConfiguration returns the SharedDeviceConfiguration field value if set, zero value otherwise.
 func (o *SettingsCommand) GetSharedDeviceConfiguration() SharedDeviceConfiguration {
-	if o == nil || o.SharedDeviceConfiguration == nil {
+	if o == nil || IsNil(o.SharedDeviceConfiguration) {
 		var ret SharedDeviceConfiguration
 		return ret
 	}
@@ -381,7 +386,7 @@ func (o *SettingsCommand) GetSharedDeviceConfiguration() SharedDeviceConfigurati
 // GetSharedDeviceConfigurationOk returns a tuple with the SharedDeviceConfiguration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetSharedDeviceConfigurationOk() (*SharedDeviceConfiguration, bool) {
-	if o == nil || o.SharedDeviceConfiguration == nil {
+	if o == nil || IsNil(o.SharedDeviceConfiguration) {
 		return nil, false
 	}
 	return o.SharedDeviceConfiguration, true
@@ -389,7 +394,7 @@ func (o *SettingsCommand) GetSharedDeviceConfigurationOk() (*SharedDeviceConfigu
 
 // HasSharedDeviceConfiguration returns a boolean if a field has been set.
 func (o *SettingsCommand) HasSharedDeviceConfiguration() bool {
-	if o != nil && o.SharedDeviceConfiguration != nil {
+	if o != nil && !IsNil(o.SharedDeviceConfiguration) {
 		return true
 	}
 
@@ -403,7 +408,7 @@ func (o *SettingsCommand) SetSharedDeviceConfiguration(v SharedDeviceConfigurati
 
 // GetApplicationConfiguration returns the ApplicationConfiguration field value if set, zero value otherwise.
 func (o *SettingsCommand) GetApplicationConfiguration() ApplicationConfiguration {
-	if o == nil || o.ApplicationConfiguration == nil {
+	if o == nil || IsNil(o.ApplicationConfiguration) {
 		var ret ApplicationConfiguration
 		return ret
 	}
@@ -413,7 +418,7 @@ func (o *SettingsCommand) GetApplicationConfiguration() ApplicationConfiguration
 // GetApplicationConfigurationOk returns a tuple with the ApplicationConfiguration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetApplicationConfigurationOk() (*ApplicationConfiguration, bool) {
-	if o == nil || o.ApplicationConfiguration == nil {
+	if o == nil || IsNil(o.ApplicationConfiguration) {
 		return nil, false
 	}
 	return o.ApplicationConfiguration, true
@@ -421,7 +426,7 @@ func (o *SettingsCommand) GetApplicationConfigurationOk() (*ApplicationConfigura
 
 // HasApplicationConfiguration returns a boolean if a field has been set.
 func (o *SettingsCommand) HasApplicationConfiguration() bool {
-	if o != nil && o.ApplicationConfiguration != nil {
+	if o != nil && !IsNil(o.ApplicationConfiguration) {
 		return true
 	}
 
@@ -435,7 +440,7 @@ func (o *SettingsCommand) SetApplicationConfiguration(v ApplicationConfiguration
 
 // GetTimeZone returns the TimeZone field value if set, zero value otherwise.
 func (o *SettingsCommand) GetTimeZone() string {
-	if o == nil || o.TimeZone == nil {
+	if o == nil || IsNil(o.TimeZone) {
 		var ret string
 		return ret
 	}
@@ -445,7 +450,7 @@ func (o *SettingsCommand) GetTimeZone() string {
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetTimeZoneOk() (*string, bool) {
-	if o == nil || o.TimeZone == nil {
+	if o == nil || IsNil(o.TimeZone) {
 		return nil, false
 	}
 	return o.TimeZone, true
@@ -453,7 +458,7 @@ func (o *SettingsCommand) GetTimeZoneOk() (*string, bool) {
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *SettingsCommand) HasTimeZone() bool {
-	if o != nil && o.TimeZone != nil {
+	if o != nil && !IsNil(o.TimeZone) {
 		return true
 	}
 
@@ -467,7 +472,7 @@ func (o *SettingsCommand) SetTimeZone(v string) {
 
 // GetSoftwareUpdateSettings returns the SoftwareUpdateSettings field value if set, zero value otherwise.
 func (o *SettingsCommand) GetSoftwareUpdateSettings() SoftwareUpdateSettings {
-	if o == nil || o.SoftwareUpdateSettings == nil {
+	if o == nil || IsNil(o.SoftwareUpdateSettings) {
 		var ret SoftwareUpdateSettings
 		return ret
 	}
@@ -477,7 +482,7 @@ func (o *SettingsCommand) GetSoftwareUpdateSettings() SoftwareUpdateSettings {
 // GetSoftwareUpdateSettingsOk returns a tuple with the SoftwareUpdateSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SettingsCommand) GetSoftwareUpdateSettingsOk() (*SoftwareUpdateSettings, bool) {
-	if o == nil || o.SoftwareUpdateSettings == nil {
+	if o == nil || IsNil(o.SoftwareUpdateSettings) {
 		return nil, false
 	}
 	return o.SoftwareUpdateSettings, true
@@ -485,7 +490,7 @@ func (o *SettingsCommand) GetSoftwareUpdateSettingsOk() (*SoftwareUpdateSettings
 
 // HasSoftwareUpdateSettings returns a boolean if a field has been set.
 func (o *SettingsCommand) HasSoftwareUpdateSettings() bool {
-	if o != nil && o.SoftwareUpdateSettings != nil {
+	if o != nil && !IsNil(o.SoftwareUpdateSettings) {
 		return true
 	}
 
@@ -497,51 +502,94 @@ func (o *SettingsCommand) SetSoftwareUpdateSettings(v SoftwareUpdateSettings) {
 	o.SoftwareUpdateSettings = &v
 }
 
+// GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field value if set, zero value otherwise.
+func (o *SettingsCommand) GetPasscodeLockGracePeriod() int32 {
+	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
+		var ret int32
+		return ret
+	}
+	return *o.PasscodeLockGracePeriod
+}
+
+// GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int32, bool) {
+	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
+		return nil, false
+	}
+	return o.PasscodeLockGracePeriod, true
+}
+
+// HasPasscodeLockGracePeriod returns a boolean if a field has been set.
+func (o *SettingsCommand) HasPasscodeLockGracePeriod() bool {
+	if o != nil && !IsNil(o.PasscodeLockGracePeriod) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasscodeLockGracePeriod gets a reference to the given int32 and assigns it to the PasscodeLockGracePeriod field.
+func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int32) {
+	o.PasscodeLockGracePeriod = &v
+}
+
 func (o SettingsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.BootstrapTokenAllowed != nil {
-		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
-	}
-	if o.Bluetooth != nil {
-		toSerialize["bluetooth"] = o.Bluetooth
-	}
-	if o.AppAnalytics != nil {
-		toSerialize["appAnalytics"] = o.AppAnalytics
-	}
-	if o.DiagnosticSubmission != nil {
-		toSerialize["diagnosticSubmission"] = o.DiagnosticSubmission
-	}
-	if o.DataRoaming != nil {
-		toSerialize["dataRoaming"] = o.DataRoaming
-	}
-	if o.VoiceRoaming != nil {
-		toSerialize["voiceRoaming"] = o.VoiceRoaming
-	}
-	if o.PersonalHotspot != nil {
-		toSerialize["personalHotspot"] = o.PersonalHotspot
-	}
-	if o.MaximumResidentUsers != nil {
-		toSerialize["maximumResidentUsers"] = o.MaximumResidentUsers
-	}
-	if o.DeviceName != nil {
-		toSerialize["deviceName"] = o.DeviceName
-	}
-	if o.ApplicationAttributes != nil {
-		toSerialize["applicationAttributes"] = o.ApplicationAttributes
-	}
-	if o.SharedDeviceConfiguration != nil {
-		toSerialize["sharedDeviceConfiguration"] = o.SharedDeviceConfiguration
-	}
-	if o.ApplicationConfiguration != nil {
-		toSerialize["applicationConfiguration"] = o.ApplicationConfiguration
-	}
-	if o.TimeZone != nil {
-		toSerialize["timeZone"] = o.TimeZone
-	}
-	if o.SoftwareUpdateSettings != nil {
-		toSerialize["softwareUpdateSettings"] = o.SoftwareUpdateSettings
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SettingsCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.BootstrapTokenAllowed) {
+		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
+	}
+	if !IsNil(o.Bluetooth) {
+		toSerialize["bluetooth"] = o.Bluetooth
+	}
+	if !IsNil(o.AppAnalytics) {
+		toSerialize["appAnalytics"] = o.AppAnalytics
+	}
+	if !IsNil(o.DiagnosticSubmission) {
+		toSerialize["diagnosticSubmission"] = o.DiagnosticSubmission
+	}
+	if !IsNil(o.DataRoaming) {
+		toSerialize["dataRoaming"] = o.DataRoaming
+	}
+	if !IsNil(o.VoiceRoaming) {
+		toSerialize["voiceRoaming"] = o.VoiceRoaming
+	}
+	if !IsNil(o.PersonalHotspot) {
+		toSerialize["personalHotspot"] = o.PersonalHotspot
+	}
+	if !IsNil(o.MaximumResidentUsers) {
+		toSerialize["maximumResidentUsers"] = o.MaximumResidentUsers
+	}
+	if !IsNil(o.DeviceName) {
+		toSerialize["deviceName"] = o.DeviceName
+	}
+	if !IsNil(o.ApplicationAttributes) {
+		toSerialize["applicationAttributes"] = o.ApplicationAttributes
+	}
+	if !IsNil(o.SharedDeviceConfiguration) {
+		toSerialize["sharedDeviceConfiguration"] = o.SharedDeviceConfiguration
+	}
+	if !IsNil(o.ApplicationConfiguration) {
+		toSerialize["applicationConfiguration"] = o.ApplicationConfiguration
+	}
+	if !IsNil(o.TimeZone) {
+		toSerialize["timeZone"] = o.TimeZone
+	}
+	if !IsNil(o.SoftwareUpdateSettings) {
+		toSerialize["softwareUpdateSettings"] = o.SoftwareUpdateSettings
+	}
+	if !IsNil(o.PasscodeLockGracePeriod) {
+		toSerialize["passcodeLockGracePeriod"] = o.PasscodeLockGracePeriod
+	}
+	return toSerialize, nil
 }
 
 type NullableSettingsCommand struct {

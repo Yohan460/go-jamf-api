@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryPreloadCsvValidationSuccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryPreloadCsvValidationSuccess{}
+
 // InventoryPreloadCsvValidationSuccess struct for InventoryPreloadCsvValidationSuccess
 type InventoryPreloadCsvValidationSuccess struct {
 	RecordCount *int32 `json:"recordCount,omitempty"`
@@ -38,7 +41,7 @@ func NewInventoryPreloadCsvValidationSuccessWithDefaults() *InventoryPreloadCsvV
 
 // GetRecordCount returns the RecordCount field value if set, zero value otherwise.
 func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int32 {
-	if o == nil || o.RecordCount == nil {
+	if o == nil || IsNil(o.RecordCount) {
 		var ret int32
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int32 {
 // GetRecordCountOk returns a tuple with the RecordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int32, bool) {
-	if o == nil || o.RecordCount == nil {
+	if o == nil || IsNil(o.RecordCount) {
 		return nil, false
 	}
 	return o.RecordCount, true
@@ -56,7 +59,7 @@ func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int32, bool)
 
 // HasRecordCount returns a boolean if a field has been set.
 func (o *InventoryPreloadCsvValidationSuccess) HasRecordCount() bool {
-	if o != nil && o.RecordCount != nil {
+	if o != nil && !IsNil(o.RecordCount) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *InventoryPreloadCsvValidationSuccess) SetRecordCount(v int32) {
 }
 
 func (o InventoryPreloadCsvValidationSuccess) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.RecordCount != nil {
-		toSerialize["recordCount"] = o.RecordCount
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryPreloadCsvValidationSuccess) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.RecordCount) {
+		toSerialize["recordCount"] = o.RecordCount
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryPreloadCsvValidationSuccess struct {

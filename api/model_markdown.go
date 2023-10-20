@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Markdown type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Markdown{}
+
 // Markdown struct for Markdown
 type Markdown struct {
 	Markdown *string `json:"markdown,omitempty"`
@@ -38,7 +41,7 @@ func NewMarkdownWithDefaults() *Markdown {
 
 // GetMarkdown returns the Markdown field value if set, zero value otherwise.
 func (o *Markdown) GetMarkdown() string {
-	if o == nil || o.Markdown == nil {
+	if o == nil || IsNil(o.Markdown) {
 		var ret string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *Markdown) GetMarkdown() string {
 // GetMarkdownOk returns a tuple with the Markdown field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Markdown) GetMarkdownOk() (*string, bool) {
-	if o == nil || o.Markdown == nil {
+	if o == nil || IsNil(o.Markdown) {
 		return nil, false
 	}
 	return o.Markdown, true
@@ -56,7 +59,7 @@ func (o *Markdown) GetMarkdownOk() (*string, bool) {
 
 // HasMarkdown returns a boolean if a field has been set.
 func (o *Markdown) HasMarkdown() bool {
-	if o != nil && o.Markdown != nil {
+	if o != nil && !IsNil(o.Markdown) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *Markdown) SetMarkdown(v string) {
 }
 
 func (o Markdown) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Markdown != nil {
-		toSerialize["markdown"] = o.Markdown
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Markdown) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Markdown) {
+		toSerialize["markdown"] = o.Markdown
+	}
+	return toSerialize, nil
 }
 
 type NullableMarkdown struct {

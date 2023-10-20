@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the IdAndNameV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IdAndNameV2{}
+
 // IdAndNameV2 struct for IdAndNameV2
 type IdAndNameV2 struct {
 	Id *string `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewIdAndNameV2WithDefaults() *IdAndNameV2 {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *IdAndNameV2) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *IdAndNameV2) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdAndNameV2) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -57,7 +60,7 @@ func (o *IdAndNameV2) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *IdAndNameV2) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *IdAndNameV2) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *IdAndNameV2) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *IdAndNameV2) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdAndNameV2) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *IdAndNameV2) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *IdAndNameV2) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *IdAndNameV2) SetName(v string) {
 }
 
 func (o IdAndNameV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o IdAndNameV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableIdAndNameV2 struct {

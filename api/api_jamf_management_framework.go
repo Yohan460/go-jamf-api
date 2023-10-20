@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type JamfManagementFrameworkApi interface {
+type JamfManagementFrameworkAPI interface {
 
 	/*
 	V1JamfManagementFrameworkRedeployIdPost Redeploy Jamf Management Framework 
@@ -30,25 +30,25 @@ type JamfManagementFrameworkApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer
-	@return ApiV1JamfManagementFrameworkRedeployIdPostRequest
+	@return JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest
 	*/
-	V1JamfManagementFrameworkRedeployIdPost(ctx context.Context, id string) ApiV1JamfManagementFrameworkRedeployIdPostRequest
+	V1JamfManagementFrameworkRedeployIdPost(ctx context.Context, id string) JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest
 
 	// V1JamfManagementFrameworkRedeployIdPostExecute executes the request
 	//  @return RedeployJamfManagementFrameworkResponse
-	V1JamfManagementFrameworkRedeployIdPostExecute(r ApiV1JamfManagementFrameworkRedeployIdPostRequest) (*RedeployJamfManagementFrameworkResponse, *http.Response, error)
+	V1JamfManagementFrameworkRedeployIdPostExecute(r JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest) (*RedeployJamfManagementFrameworkResponse, *http.Response, error)
 }
 
-// JamfManagementFrameworkApiService JamfManagementFrameworkApi service
-type JamfManagementFrameworkApiService service
+// JamfManagementFrameworkAPIService JamfManagementFrameworkAPI service
+type JamfManagementFrameworkAPIService service
 
-type ApiV1JamfManagementFrameworkRedeployIdPostRequest struct {
+type JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest struct {
 	ctx context.Context
-	ApiService JamfManagementFrameworkApi
+	ApiService JamfManagementFrameworkAPI
 	id string
 }
 
-func (r ApiV1JamfManagementFrameworkRedeployIdPostRequest) Execute() (*RedeployJamfManagementFrameworkResponse, *http.Response, error) {
+func (r JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest) Execute() (*RedeployJamfManagementFrameworkResponse, *http.Response, error) {
 	return r.ApiService.V1JamfManagementFrameworkRedeployIdPostExecute(r)
 }
 
@@ -60,10 +60,10 @@ Redeploys the Jamf Management Framework for enrolled device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer
- @return ApiV1JamfManagementFrameworkRedeployIdPostRequest
+ @return JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest
 */
-func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdPost(ctx context.Context, id string) ApiV1JamfManagementFrameworkRedeployIdPostRequest {
-	return ApiV1JamfManagementFrameworkRedeployIdPostRequest{
+func (a *JamfManagementFrameworkAPIService) V1JamfManagementFrameworkRedeployIdPost(ctx context.Context, id string) JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest {
+	return JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -72,7 +72,7 @@ func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdP
 
 // Execute executes the request
 //  @return RedeployJamfManagementFrameworkResponse
-func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdPostExecute(r ApiV1JamfManagementFrameworkRedeployIdPostRequest) (*RedeployJamfManagementFrameworkResponse, *http.Response, error) {
+func (a *JamfManagementFrameworkAPIService) V1JamfManagementFrameworkRedeployIdPostExecute(r JamfManagementFrameworkAPIV1JamfManagementFrameworkRedeployIdPostRequest) (*RedeployJamfManagementFrameworkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -80,13 +80,13 @@ func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdP
 		localVarReturnValue  *RedeployJamfManagementFrameworkResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfManagementFrameworkApiService.V1JamfManagementFrameworkRedeployIdPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfManagementFrameworkAPIService.V1JamfManagementFrameworkRedeployIdPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/jamf-management-framework/redeploy/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -119,9 +119,9 @@ func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdP
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -138,7 +138,8 @@ func (a *JamfManagementFrameworkApiService) V1JamfManagementFrameworkRedeployIdP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

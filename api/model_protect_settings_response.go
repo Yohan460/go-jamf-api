@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProtectSettingsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProtectSettingsResponse{}
+
 // ProtectSettingsResponse struct for ProtectSettingsResponse
 type ProtectSettingsResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -48,7 +51,7 @@ func NewProtectSettingsResponseWithDefaults() *ProtectSettingsResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *ProtectSettingsResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -66,7 +69,7 @@ func (o *ProtectSettingsResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *ProtectSettingsResponse) SetId(v string) {
 
 // GetApiClientId returns the ApiClientId field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetApiClientId() string {
-	if o == nil || o.ApiClientId == nil {
+	if o == nil || IsNil(o.ApiClientId) {
 		var ret string
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *ProtectSettingsResponse) GetApiClientId() string {
 // GetApiClientIdOk returns a tuple with the ApiClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetApiClientIdOk() (*string, bool) {
-	if o == nil || o.ApiClientId == nil {
+	if o == nil || IsNil(o.ApiClientId) {
 		return nil, false
 	}
 	return o.ApiClientId, true
@@ -98,7 +101,7 @@ func (o *ProtectSettingsResponse) GetApiClientIdOk() (*string, bool) {
 
 // HasApiClientId returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasApiClientId() bool {
-	if o != nil && o.ApiClientId != nil {
+	if o != nil && !IsNil(o.ApiClientId) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *ProtectSettingsResponse) SetApiClientId(v string) {
 
 // GetApiClientName returns the ApiClientName field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetApiClientName() string {
-	if o == nil || o.ApiClientName == nil {
+	if o == nil || IsNil(o.ApiClientName) {
 		var ret string
 		return ret
 	}
@@ -122,7 +125,7 @@ func (o *ProtectSettingsResponse) GetApiClientName() string {
 // GetApiClientNameOk returns a tuple with the ApiClientName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetApiClientNameOk() (*string, bool) {
-	if o == nil || o.ApiClientName == nil {
+	if o == nil || IsNil(o.ApiClientName) {
 		return nil, false
 	}
 	return o.ApiClientName, true
@@ -130,7 +133,7 @@ func (o *ProtectSettingsResponse) GetApiClientNameOk() (*string, bool) {
 
 // HasApiClientName returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasApiClientName() bool {
-	if o != nil && o.ApiClientName != nil {
+	if o != nil && !IsNil(o.ApiClientName) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *ProtectSettingsResponse) SetApiClientName(v string) {
 
 // GetRegistrationId returns the RegistrationId field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetRegistrationId() string {
-	if o == nil || o.RegistrationId == nil {
+	if o == nil || IsNil(o.RegistrationId) {
 		var ret string
 		return ret
 	}
@@ -154,7 +157,7 @@ func (o *ProtectSettingsResponse) GetRegistrationId() string {
 // GetRegistrationIdOk returns a tuple with the RegistrationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetRegistrationIdOk() (*string, bool) {
-	if o == nil || o.RegistrationId == nil {
+	if o == nil || IsNil(o.RegistrationId) {
 		return nil, false
 	}
 	return o.RegistrationId, true
@@ -162,7 +165,7 @@ func (o *ProtectSettingsResponse) GetRegistrationIdOk() (*string, bool) {
 
 // HasRegistrationId returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasRegistrationId() bool {
-	if o != nil && o.RegistrationId != nil {
+	if o != nil && !IsNil(o.RegistrationId) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *ProtectSettingsResponse) SetRegistrationId(v string) {
 
 // GetProtectUrl returns the ProtectUrl field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetProtectUrl() string {
-	if o == nil || o.ProtectUrl == nil {
+	if o == nil || IsNil(o.ProtectUrl) {
 		var ret string
 		return ret
 	}
@@ -186,7 +189,7 @@ func (o *ProtectSettingsResponse) GetProtectUrl() string {
 // GetProtectUrlOk returns a tuple with the ProtectUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetProtectUrlOk() (*string, bool) {
-	if o == nil || o.ProtectUrl == nil {
+	if o == nil || IsNil(o.ProtectUrl) {
 		return nil, false
 	}
 	return o.ProtectUrl, true
@@ -194,7 +197,7 @@ func (o *ProtectSettingsResponse) GetProtectUrlOk() (*string, bool) {
 
 // HasProtectUrl returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasProtectUrl() bool {
-	if o != nil && o.ProtectUrl != nil {
+	if o != nil && !IsNil(o.ProtectUrl) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *ProtectSettingsResponse) SetProtectUrl(v string) {
 
 // GetLastSyncTime returns the LastSyncTime field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetLastSyncTime() string {
-	if o == nil || o.LastSyncTime == nil {
+	if o == nil || IsNil(o.LastSyncTime) {
 		var ret string
 		return ret
 	}
@@ -218,7 +221,7 @@ func (o *ProtectSettingsResponse) GetLastSyncTime() string {
 // GetLastSyncTimeOk returns a tuple with the LastSyncTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetLastSyncTimeOk() (*string, bool) {
-	if o == nil || o.LastSyncTime == nil {
+	if o == nil || IsNil(o.LastSyncTime) {
 		return nil, false
 	}
 	return o.LastSyncTime, true
@@ -226,7 +229,7 @@ func (o *ProtectSettingsResponse) GetLastSyncTimeOk() (*string, bool) {
 
 // HasLastSyncTime returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasLastSyncTime() bool {
-	if o != nil && o.LastSyncTime != nil {
+	if o != nil && !IsNil(o.LastSyncTime) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *ProtectSettingsResponse) SetLastSyncTime(v string) {
 
 // GetSyncStatus returns the SyncStatus field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetSyncStatus() string {
-	if o == nil || o.SyncStatus == nil {
+	if o == nil || IsNil(o.SyncStatus) {
 		var ret string
 		return ret
 	}
@@ -250,7 +253,7 @@ func (o *ProtectSettingsResponse) GetSyncStatus() string {
 // GetSyncStatusOk returns a tuple with the SyncStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetSyncStatusOk() (*string, bool) {
-	if o == nil || o.SyncStatus == nil {
+	if o == nil || IsNil(o.SyncStatus) {
 		return nil, false
 	}
 	return o.SyncStatus, true
@@ -258,7 +261,7 @@ func (o *ProtectSettingsResponse) GetSyncStatusOk() (*string, bool) {
 
 // HasSyncStatus returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasSyncStatus() bool {
-	if o != nil && o.SyncStatus != nil {
+	if o != nil && !IsNil(o.SyncStatus) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *ProtectSettingsResponse) SetSyncStatus(v string) {
 
 // GetAutoInstall returns the AutoInstall field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetAutoInstall() bool {
-	if o == nil || o.AutoInstall == nil {
+	if o == nil || IsNil(o.AutoInstall) {
 		var ret bool
 		return ret
 	}
@@ -282,7 +285,7 @@ func (o *ProtectSettingsResponse) GetAutoInstall() bool {
 // GetAutoInstallOk returns a tuple with the AutoInstall field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProtectSettingsResponse) GetAutoInstallOk() (*bool, bool) {
-	if o == nil || o.AutoInstall == nil {
+	if o == nil || IsNil(o.AutoInstall) {
 		return nil, false
 	}
 	return o.AutoInstall, true
@@ -290,7 +293,7 @@ func (o *ProtectSettingsResponse) GetAutoInstallOk() (*bool, bool) {
 
 // HasAutoInstall returns a boolean if a field has been set.
 func (o *ProtectSettingsResponse) HasAutoInstall() bool {
-	if o != nil && o.AutoInstall != nil {
+	if o != nil && !IsNil(o.AutoInstall) {
 		return true
 	}
 
@@ -303,32 +306,40 @@ func (o *ProtectSettingsResponse) SetAutoInstall(v bool) {
 }
 
 func (o ProtectSettingsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.ApiClientId != nil {
-		toSerialize["apiClientId"] = o.ApiClientId
-	}
-	if o.ApiClientName != nil {
-		toSerialize["apiClientName"] = o.ApiClientName
-	}
-	if o.RegistrationId != nil {
-		toSerialize["registrationId"] = o.RegistrationId
-	}
-	if o.ProtectUrl != nil {
-		toSerialize["protectUrl"] = o.ProtectUrl
-	}
-	if o.LastSyncTime != nil {
-		toSerialize["lastSyncTime"] = o.LastSyncTime
-	}
-	if o.SyncStatus != nil {
-		toSerialize["syncStatus"] = o.SyncStatus
-	}
-	if o.AutoInstall != nil {
-		toSerialize["autoInstall"] = o.AutoInstall
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProtectSettingsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.ApiClientId) {
+		toSerialize["apiClientId"] = o.ApiClientId
+	}
+	if !IsNil(o.ApiClientName) {
+		toSerialize["apiClientName"] = o.ApiClientName
+	}
+	if !IsNil(o.RegistrationId) {
+		toSerialize["registrationId"] = o.RegistrationId
+	}
+	if !IsNil(o.ProtectUrl) {
+		toSerialize["protectUrl"] = o.ProtectUrl
+	}
+	if !IsNil(o.LastSyncTime) {
+		toSerialize["lastSyncTime"] = o.LastSyncTime
+	}
+	if !IsNil(o.SyncStatus) {
+		toSerialize["syncStatus"] = o.SyncStatus
+	}
+	if !IsNil(o.AutoInstall) {
+		toSerialize["autoInstall"] = o.AutoInstall
+	}
+	return toSerialize, nil
 }
 
 type NullableProtectSettingsResponse struct {

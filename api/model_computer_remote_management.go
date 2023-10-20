@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerRemoteManagement type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerRemoteManagement{}
+
 // ComputerRemoteManagement struct for ComputerRemoteManagement
 type ComputerRemoteManagement struct {
 	Managed *bool `json:"managed,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerRemoteManagementWithDefaults() *ComputerRemoteManagement {
 
 // GetManaged returns the Managed field value if set, zero value otherwise.
 func (o *ComputerRemoteManagement) GetManaged() bool {
-	if o == nil || o.Managed == nil {
+	if o == nil || IsNil(o.Managed) {
 		var ret bool
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerRemoteManagement) GetManaged() bool {
 // GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerRemoteManagement) GetManagedOk() (*bool, bool) {
-	if o == nil || o.Managed == nil {
+	if o == nil || IsNil(o.Managed) {
 		return nil, false
 	}
 	return o.Managed, true
@@ -58,7 +61,7 @@ func (o *ComputerRemoteManagement) GetManagedOk() (*bool, bool) {
 
 // HasManaged returns a boolean if a field has been set.
 func (o *ComputerRemoteManagement) HasManaged() bool {
-	if o != nil && o.Managed != nil {
+	if o != nil && !IsNil(o.Managed) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerRemoteManagement) SetManaged(v bool) {
 
 // GetManagementUsername returns the ManagementUsername field value if set, zero value otherwise.
 func (o *ComputerRemoteManagement) GetManagementUsername() string {
-	if o == nil || o.ManagementUsername == nil {
+	if o == nil || IsNil(o.ManagementUsername) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerRemoteManagement) GetManagementUsername() string {
 // GetManagementUsernameOk returns a tuple with the ManagementUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerRemoteManagement) GetManagementUsernameOk() (*string, bool) {
-	if o == nil || o.ManagementUsername == nil {
+	if o == nil || IsNil(o.ManagementUsername) {
 		return nil, false
 	}
 	return o.ManagementUsername, true
@@ -90,7 +93,7 @@ func (o *ComputerRemoteManagement) GetManagementUsernameOk() (*string, bool) {
 
 // HasManagementUsername returns a boolean if a field has been set.
 func (o *ComputerRemoteManagement) HasManagementUsername() bool {
-	if o != nil && o.ManagementUsername != nil {
+	if o != nil && !IsNil(o.ManagementUsername) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerRemoteManagement) SetManagementUsername(v string) {
 
 // GetManagementPassword returns the ManagementPassword field value if set, zero value otherwise.
 func (o *ComputerRemoteManagement) GetManagementPassword() string {
-	if o == nil || o.ManagementPassword == nil {
+	if o == nil || IsNil(o.ManagementPassword) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerRemoteManagement) GetManagementPassword() string {
 // GetManagementPasswordOk returns a tuple with the ManagementPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerRemoteManagement) GetManagementPasswordOk() (*string, bool) {
-	if o == nil || o.ManagementPassword == nil {
+	if o == nil || IsNil(o.ManagementPassword) {
 		return nil, false
 	}
 	return o.ManagementPassword, true
@@ -122,7 +125,7 @@ func (o *ComputerRemoteManagement) GetManagementPasswordOk() (*string, bool) {
 
 // HasManagementPassword returns a boolean if a field has been set.
 func (o *ComputerRemoteManagement) HasManagementPassword() bool {
-	if o != nil && o.ManagementPassword != nil {
+	if o != nil && !IsNil(o.ManagementPassword) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerRemoteManagement) SetManagementPassword(v string) {
 }
 
 func (o ComputerRemoteManagement) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Managed != nil {
-		toSerialize["managed"] = o.Managed
-	}
-	if o.ManagementUsername != nil {
-		toSerialize["managementUsername"] = o.ManagementUsername
-	}
-	if o.ManagementPassword != nil {
-		toSerialize["managementPassword"] = o.ManagementPassword
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerRemoteManagement) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Managed) {
+		toSerialize["managed"] = o.Managed
+	}
+	if !IsNil(o.ManagementUsername) {
+		toSerialize["managementUsername"] = o.ManagementUsername
+	}
+	if !IsNil(o.ManagementPassword) {
+		toSerialize["managementPassword"] = o.ManagementPassword
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerRemoteManagement struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceGroup{}
+
 // MobileDeviceGroup struct for MobileDeviceGroup
 type MobileDeviceGroup struct {
 	Id *int32 `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewMobileDeviceGroupWithDefaults() *MobileDeviceGroup {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *MobileDeviceGroup) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *MobileDeviceGroup) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceGroup) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *MobileDeviceGroup) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *MobileDeviceGroup) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *MobileDeviceGroup) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *MobileDeviceGroup) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *MobileDeviceGroup) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceGroup) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *MobileDeviceGroup) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *MobileDeviceGroup) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *MobileDeviceGroup) SetName(v string) {
 
 // GetIsSmartGroup returns the IsSmartGroup field value if set, zero value otherwise.
 func (o *MobileDeviceGroup) GetIsSmartGroup() bool {
-	if o == nil || o.IsSmartGroup == nil {
+	if o == nil || IsNil(o.IsSmartGroup) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *MobileDeviceGroup) GetIsSmartGroup() bool {
 // GetIsSmartGroupOk returns a tuple with the IsSmartGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceGroup) GetIsSmartGroupOk() (*bool, bool) {
-	if o == nil || o.IsSmartGroup == nil {
+	if o == nil || IsNil(o.IsSmartGroup) {
 		return nil, false
 	}
 	return o.IsSmartGroup, true
@@ -122,7 +125,7 @@ func (o *MobileDeviceGroup) GetIsSmartGroupOk() (*bool, bool) {
 
 // HasIsSmartGroup returns a boolean if a field has been set.
 func (o *MobileDeviceGroup) HasIsSmartGroup() bool {
-	if o != nil && o.IsSmartGroup != nil {
+	if o != nil && !IsNil(o.IsSmartGroup) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *MobileDeviceGroup) SetIsSmartGroup(v bool) {
 }
 
 func (o MobileDeviceGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.IsSmartGroup != nil {
-		toSerialize["isSmartGroup"] = o.IsSmartGroup
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.IsSmartGroup) {
+		toSerialize["isSmartGroup"] = o.IsSmartGroup
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceGroup struct {

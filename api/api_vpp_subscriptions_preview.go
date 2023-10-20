@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type VppSubscriptionsPreviewApi interface {
+type VppSubscriptionsPreviewAPI interface {
 
 	/*
 	VppSubscriptionsGet Found all VPP - subscriptions 
@@ -29,16 +29,16 @@ type VppSubscriptionsPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiVppSubscriptionsGetRequest
+	@return VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest
 
 	Deprecated
 	*/
-	VppSubscriptionsGet(ctx context.Context) ApiVppSubscriptionsGetRequest
+	VppSubscriptionsGet(ctx context.Context) VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest
 
 	// VppSubscriptionsGetExecute executes the request
 	//  @return []VppTokenSubscription
 	// Deprecated
-	VppSubscriptionsGetExecute(r ApiVppSubscriptionsGetRequest) ([]VppTokenSubscription, *http.Response, error)
+	VppSubscriptionsGetExecute(r VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest) ([]VppTokenSubscription, *http.Response, error)
 
 	/*
 	VppSubscriptionsIdGet Found VPP subscription by id 
@@ -48,27 +48,27 @@ type VppSubscriptionsPreviewApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of vpp subscription to be retrieved
-	@return ApiVppSubscriptionsIdGetRequest
+	@return VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest
 
 	Deprecated
 	*/
-	VppSubscriptionsIdGet(ctx context.Context, id int32) ApiVppSubscriptionsIdGetRequest
+	VppSubscriptionsIdGet(ctx context.Context, id int32) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest
 
 	// VppSubscriptionsIdGetExecute executes the request
 	//  @return VppTokenSubscription
 	// Deprecated
-	VppSubscriptionsIdGetExecute(r ApiVppSubscriptionsIdGetRequest) (*VppTokenSubscription, *http.Response, error)
+	VppSubscriptionsIdGetExecute(r VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest) (*VppTokenSubscription, *http.Response, error)
 }
 
-// VppSubscriptionsPreviewApiService VppSubscriptionsPreviewApi service
-type VppSubscriptionsPreviewApiService service
+// VppSubscriptionsPreviewAPIService VppSubscriptionsPreviewAPI service
+type VppSubscriptionsPreviewAPIService service
 
-type ApiVppSubscriptionsGetRequest struct {
+type VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest struct {
 	ctx context.Context
-	ApiService VppSubscriptionsPreviewApi
+	ApiService VppSubscriptionsPreviewAPI
 }
 
-func (r ApiVppSubscriptionsGetRequest) Execute() ([]VppTokenSubscription, *http.Response, error) {
+func (r VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest) Execute() ([]VppTokenSubscription, *http.Response, error) {
 	return r.ApiService.VppSubscriptionsGetExecute(r)
 }
 
@@ -79,12 +79,12 @@ Found all vpp - subscriptions.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiVppSubscriptionsGetRequest
+ @return VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest
 
 Deprecated
 */
-func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGet(ctx context.Context) ApiVppSubscriptionsGetRequest {
-	return ApiVppSubscriptionsGetRequest{
+func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsGet(ctx context.Context) VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest {
+	return VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -93,7 +93,7 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGet(ctx context.Cont
 // Execute executes the request
 //  @return []VppTokenSubscription
 // Deprecated
-func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGetExecute(r ApiVppSubscriptionsGetRequest) ([]VppTokenSubscription, *http.Response, error) {
+func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsGetExecute(r VppSubscriptionsPreviewAPIVppSubscriptionsGetRequest) ([]VppTokenSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -101,7 +101,7 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGetExecute(r ApiVppS
 		localVarReturnValue  []VppTokenSubscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppSubscriptionsPreviewApiService.VppSubscriptionsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppSubscriptionsPreviewAPIService.VppSubscriptionsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -139,9 +139,9 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGetExecute(r ApiVppS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -166,13 +166,13 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsGetExecute(r ApiVppS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVppSubscriptionsIdGetRequest struct {
+type VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest struct {
 	ctx context.Context
-	ApiService VppSubscriptionsPreviewApi
+	ApiService VppSubscriptionsPreviewAPI
 	id int32
 }
 
-func (r ApiVppSubscriptionsIdGetRequest) Execute() (*VppTokenSubscription, *http.Response, error) {
+func (r VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest) Execute() (*VppTokenSubscription, *http.Response, error) {
 	return r.ApiService.VppSubscriptionsIdGetExecute(r)
 }
 
@@ -184,12 +184,12 @@ Found vpp subscription by id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of vpp subscription to be retrieved
- @return ApiVppSubscriptionsIdGetRequest
+ @return VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest
 
 Deprecated
 */
-func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsIdGet(ctx context.Context, id int32) ApiVppSubscriptionsIdGetRequest {
-	return ApiVppSubscriptionsIdGetRequest{
+func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsIdGet(ctx context.Context, id int32) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest {
+	return VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -199,7 +199,7 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsIdGet(ctx context.Co
 // Execute executes the request
 //  @return VppTokenSubscription
 // Deprecated
-func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsIdGetExecute(r ApiVppSubscriptionsIdGetRequest) (*VppTokenSubscription, *http.Response, error) {
+func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsIdGetExecute(r VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest) (*VppTokenSubscription, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -207,13 +207,13 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsIdGetExecute(r ApiVp
 		localVarReturnValue  *VppTokenSubscription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppSubscriptionsPreviewApiService.VppSubscriptionsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VppSubscriptionsPreviewAPIService.VppSubscriptionsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/vpp/subscriptions/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -246,9 +246,9 @@ func (a *VppSubscriptionsPreviewApiService) VppSubscriptionsIdGetExecute(r ApiVp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

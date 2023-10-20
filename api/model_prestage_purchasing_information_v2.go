@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestagePurchasingInformationV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestagePurchasingInformationV2{}
+
 // PrestagePurchasingInformationV2 struct for PrestagePurchasingInformationV2
 type PrestagePurchasingInformationV2 struct {
 	Id string `json:"id"`
@@ -400,50 +403,30 @@ func (o *PrestagePurchasingInformationV2) SetVersionLock(v int32) {
 }
 
 func (o PrestagePurchasingInformationV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["leased"] = o.Leased
-	}
-	if true {
-		toSerialize["purchased"] = o.Purchased
-	}
-	if true {
-		toSerialize["appleCareId"] = o.AppleCareId
-	}
-	if true {
-		toSerialize["poNumber"] = o.PoNumber
-	}
-	if true {
-		toSerialize["vendor"] = o.Vendor
-	}
-	if true {
-		toSerialize["purchasePrice"] = o.PurchasePrice
-	}
-	if true {
-		toSerialize["lifeExpectancy"] = o.LifeExpectancy
-	}
-	if true {
-		toSerialize["purchasingAccount"] = o.PurchasingAccount
-	}
-	if true {
-		toSerialize["purchasingContact"] = o.PurchasingContact
-	}
-	if true {
-		toSerialize["leaseDate"] = o.LeaseDate
-	}
-	if true {
-		toSerialize["poDate"] = o.PoDate
-	}
-	if true {
-		toSerialize["warrantyDate"] = o.WarrantyDate
-	}
-	if true {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestagePurchasingInformationV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["id"] = o.Id
+	toSerialize["leased"] = o.Leased
+	toSerialize["purchased"] = o.Purchased
+	toSerialize["appleCareId"] = o.AppleCareId
+	toSerialize["poNumber"] = o.PoNumber
+	toSerialize["vendor"] = o.Vendor
+	toSerialize["purchasePrice"] = o.PurchasePrice
+	toSerialize["lifeExpectancy"] = o.LifeExpectancy
+	toSerialize["purchasingAccount"] = o.PurchasingAccount
+	toSerialize["purchasingContact"] = o.PurchasingContact
+	toSerialize["leaseDate"] = o.LeaseDate
+	toSerialize["poDate"] = o.PoDate
+	toSerialize["warrantyDate"] = o.WarrantyDate
+	toSerialize["versionLock"] = o.VersionLock
+	return toSerialize, nil
 }
 
 type NullablePrestagePurchasingInformationV2 struct {

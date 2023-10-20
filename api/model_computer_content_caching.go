@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerContentCaching type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCaching{}
+
 // ComputerContentCaching struct for ComputerContentCaching
 type ComputerContentCaching struct {
 	ComputerContentCachingInformationId *string `json:"computerContentCachingInformationId,omitempty"`
@@ -75,7 +78,7 @@ func NewComputerContentCachingWithDefaults() *ComputerContentCaching {
 
 // GetComputerContentCachingInformationId returns the ComputerContentCachingInformationId field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetComputerContentCachingInformationId() string {
-	if o == nil || o.ComputerContentCachingInformationId == nil {
+	if o == nil || IsNil(o.ComputerContentCachingInformationId) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *ComputerContentCaching) GetComputerContentCachingInformationId() string
 // GetComputerContentCachingInformationIdOk returns a tuple with the ComputerContentCachingInformationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetComputerContentCachingInformationIdOk() (*string, bool) {
-	if o == nil || o.ComputerContentCachingInformationId == nil {
+	if o == nil || IsNil(o.ComputerContentCachingInformationId) {
 		return nil, false
 	}
 	return o.ComputerContentCachingInformationId, true
@@ -93,7 +96,7 @@ func (o *ComputerContentCaching) GetComputerContentCachingInformationIdOk() (*st
 
 // HasComputerContentCachingInformationId returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasComputerContentCachingInformationId() bool {
-	if o != nil && o.ComputerContentCachingInformationId != nil {
+	if o != nil && !IsNil(o.ComputerContentCachingInformationId) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *ComputerContentCaching) SetComputerContentCachingInformationId(v string
 
 // GetParents returns the Parents field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetParents() []ComputerContentCachingParent {
-	if o == nil || o.Parents == nil {
+	if o == nil || IsNil(o.Parents) {
 		var ret []ComputerContentCachingParent
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *ComputerContentCaching) GetParents() []ComputerContentCachingParent {
 // GetParentsOk returns a tuple with the Parents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetParentsOk() ([]ComputerContentCachingParent, bool) {
-	if o == nil || o.Parents == nil {
+	if o == nil || IsNil(o.Parents) {
 		return nil, false
 	}
 	return o.Parents, true
@@ -125,7 +128,7 @@ func (o *ComputerContentCaching) GetParentsOk() ([]ComputerContentCachingParent,
 
 // HasParents returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasParents() bool {
-	if o != nil && o.Parents != nil {
+	if o != nil && !IsNil(o.Parents) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *ComputerContentCaching) SetParents(v []ComputerContentCachingParent) {
 
 // GetAlerts returns the Alerts field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetAlerts() []ComputerContentCachingAlert {
-	if o == nil || o.Alerts == nil {
+	if o == nil || IsNil(o.Alerts) {
 		var ret []ComputerContentCachingAlert
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *ComputerContentCaching) GetAlerts() []ComputerContentCachingAlert {
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetAlertsOk() ([]ComputerContentCachingAlert, bool) {
-	if o == nil || o.Alerts == nil {
+	if o == nil || IsNil(o.Alerts) {
 		return nil, false
 	}
 	return o.Alerts, true
@@ -157,7 +160,7 @@ func (o *ComputerContentCaching) GetAlertsOk() ([]ComputerContentCachingAlert, b
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasAlerts() bool {
-	if o != nil && o.Alerts != nil {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *ComputerContentCaching) SetAlerts(v []ComputerContentCachingAlert) {
 
 // GetActivated returns the Activated field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetActivated() bool {
-	if o == nil || o.Activated == nil {
+	if o == nil || IsNil(o.Activated) {
 		var ret bool
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *ComputerContentCaching) GetActivated() bool {
 // GetActivatedOk returns a tuple with the Activated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetActivatedOk() (*bool, bool) {
-	if o == nil || o.Activated == nil {
+	if o == nil || IsNil(o.Activated) {
 		return nil, false
 	}
 	return o.Activated, true
@@ -189,7 +192,7 @@ func (o *ComputerContentCaching) GetActivatedOk() (*bool, bool) {
 
 // HasActivated returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasActivated() bool {
-	if o != nil && o.Activated != nil {
+	if o != nil && !IsNil(o.Activated) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *ComputerContentCaching) SetActivated(v bool) {
 
 // GetActive returns the Active field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetActive() bool {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		var ret bool
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *ComputerContentCaching) GetActive() bool {
 // GetActiveOk returns a tuple with the Active field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetActiveOk() (*bool, bool) {
-	if o == nil || o.Active == nil {
+	if o == nil || IsNil(o.Active) {
 		return nil, false
 	}
 	return o.Active, true
@@ -221,7 +224,7 @@ func (o *ComputerContentCaching) GetActiveOk() (*bool, bool) {
 
 // HasActive returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasActive() bool {
-	if o != nil && o.Active != nil {
+	if o != nil && !IsNil(o.Active) {
 		return true
 	}
 
@@ -235,7 +238,7 @@ func (o *ComputerContentCaching) SetActive(v bool) {
 
 // GetActualCacheBytesUsed returns the ActualCacheBytesUsed field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetActualCacheBytesUsed() int64 {
-	if o == nil || o.ActualCacheBytesUsed == nil {
+	if o == nil || IsNil(o.ActualCacheBytesUsed) {
 		var ret int64
 		return ret
 	}
@@ -245,7 +248,7 @@ func (o *ComputerContentCaching) GetActualCacheBytesUsed() int64 {
 // GetActualCacheBytesUsedOk returns a tuple with the ActualCacheBytesUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetActualCacheBytesUsedOk() (*int64, bool) {
-	if o == nil || o.ActualCacheBytesUsed == nil {
+	if o == nil || IsNil(o.ActualCacheBytesUsed) {
 		return nil, false
 	}
 	return o.ActualCacheBytesUsed, true
@@ -253,7 +256,7 @@ func (o *ComputerContentCaching) GetActualCacheBytesUsedOk() (*int64, bool) {
 
 // HasActualCacheBytesUsed returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasActualCacheBytesUsed() bool {
-	if o != nil && o.ActualCacheBytesUsed != nil {
+	if o != nil && !IsNil(o.ActualCacheBytesUsed) {
 		return true
 	}
 
@@ -267,7 +270,7 @@ func (o *ComputerContentCaching) SetActualCacheBytesUsed(v int64) {
 
 // GetCacheDetails returns the CacheDetails field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetCacheDetails() []ComputerContentCachingCacheDetail {
-	if o == nil || o.CacheDetails == nil {
+	if o == nil || IsNil(o.CacheDetails) {
 		var ret []ComputerContentCachingCacheDetail
 		return ret
 	}
@@ -277,7 +280,7 @@ func (o *ComputerContentCaching) GetCacheDetails() []ComputerContentCachingCache
 // GetCacheDetailsOk returns a tuple with the CacheDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetCacheDetailsOk() ([]ComputerContentCachingCacheDetail, bool) {
-	if o == nil || o.CacheDetails == nil {
+	if o == nil || IsNil(o.CacheDetails) {
 		return nil, false
 	}
 	return o.CacheDetails, true
@@ -285,7 +288,7 @@ func (o *ComputerContentCaching) GetCacheDetailsOk() ([]ComputerContentCachingCa
 
 // HasCacheDetails returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasCacheDetails() bool {
-	if o != nil && o.CacheDetails != nil {
+	if o != nil && !IsNil(o.CacheDetails) {
 		return true
 	}
 
@@ -299,7 +302,7 @@ func (o *ComputerContentCaching) SetCacheDetails(v []ComputerContentCachingCache
 
 // GetCacheBytesFree returns the CacheBytesFree field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetCacheBytesFree() int64 {
-	if o == nil || o.CacheBytesFree == nil {
+	if o == nil || IsNil(o.CacheBytesFree) {
 		var ret int64
 		return ret
 	}
@@ -309,7 +312,7 @@ func (o *ComputerContentCaching) GetCacheBytesFree() int64 {
 // GetCacheBytesFreeOk returns a tuple with the CacheBytesFree field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetCacheBytesFreeOk() (*int64, bool) {
-	if o == nil || o.CacheBytesFree == nil {
+	if o == nil || IsNil(o.CacheBytesFree) {
 		return nil, false
 	}
 	return o.CacheBytesFree, true
@@ -317,7 +320,7 @@ func (o *ComputerContentCaching) GetCacheBytesFreeOk() (*int64, bool) {
 
 // HasCacheBytesFree returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasCacheBytesFree() bool {
-	if o != nil && o.CacheBytesFree != nil {
+	if o != nil && !IsNil(o.CacheBytesFree) {
 		return true
 	}
 
@@ -331,7 +334,7 @@ func (o *ComputerContentCaching) SetCacheBytesFree(v int64) {
 
 // GetCacheBytesLimit returns the CacheBytesLimit field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetCacheBytesLimit() int64 {
-	if o == nil || o.CacheBytesLimit == nil {
+	if o == nil || IsNil(o.CacheBytesLimit) {
 		var ret int64
 		return ret
 	}
@@ -341,7 +344,7 @@ func (o *ComputerContentCaching) GetCacheBytesLimit() int64 {
 // GetCacheBytesLimitOk returns a tuple with the CacheBytesLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetCacheBytesLimitOk() (*int64, bool) {
-	if o == nil || o.CacheBytesLimit == nil {
+	if o == nil || IsNil(o.CacheBytesLimit) {
 		return nil, false
 	}
 	return o.CacheBytesLimit, true
@@ -349,7 +352,7 @@ func (o *ComputerContentCaching) GetCacheBytesLimitOk() (*int64, bool) {
 
 // HasCacheBytesLimit returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasCacheBytesLimit() bool {
-	if o != nil && o.CacheBytesLimit != nil {
+	if o != nil && !IsNil(o.CacheBytesLimit) {
 		return true
 	}
 
@@ -363,7 +366,7 @@ func (o *ComputerContentCaching) SetCacheBytesLimit(v int64) {
 
 // GetCacheStatus returns the CacheStatus field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetCacheStatus() string {
-	if o == nil || o.CacheStatus == nil {
+	if o == nil || IsNil(o.CacheStatus) {
 		var ret string
 		return ret
 	}
@@ -373,7 +376,7 @@ func (o *ComputerContentCaching) GetCacheStatus() string {
 // GetCacheStatusOk returns a tuple with the CacheStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetCacheStatusOk() (*string, bool) {
-	if o == nil || o.CacheStatus == nil {
+	if o == nil || IsNil(o.CacheStatus) {
 		return nil, false
 	}
 	return o.CacheStatus, true
@@ -381,7 +384,7 @@ func (o *ComputerContentCaching) GetCacheStatusOk() (*string, bool) {
 
 // HasCacheStatus returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasCacheStatus() bool {
-	if o != nil && o.CacheStatus != nil {
+	if o != nil && !IsNil(o.CacheStatus) {
 		return true
 	}
 
@@ -395,7 +398,7 @@ func (o *ComputerContentCaching) SetCacheStatus(v string) {
 
 // GetCacheBytesUsed returns the CacheBytesUsed field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetCacheBytesUsed() int64 {
-	if o == nil || o.CacheBytesUsed == nil {
+	if o == nil || IsNil(o.CacheBytesUsed) {
 		var ret int64
 		return ret
 	}
@@ -405,7 +408,7 @@ func (o *ComputerContentCaching) GetCacheBytesUsed() int64 {
 // GetCacheBytesUsedOk returns a tuple with the CacheBytesUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetCacheBytesUsedOk() (*int64, bool) {
-	if o == nil || o.CacheBytesUsed == nil {
+	if o == nil || IsNil(o.CacheBytesUsed) {
 		return nil, false
 	}
 	return o.CacheBytesUsed, true
@@ -413,7 +416,7 @@ func (o *ComputerContentCaching) GetCacheBytesUsedOk() (*int64, bool) {
 
 // HasCacheBytesUsed returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasCacheBytesUsed() bool {
-	if o != nil && o.CacheBytesUsed != nil {
+	if o != nil && !IsNil(o.CacheBytesUsed) {
 		return true
 	}
 
@@ -427,7 +430,7 @@ func (o *ComputerContentCaching) SetCacheBytesUsed(v int64) {
 
 // GetDataMigrationCompleted returns the DataMigrationCompleted field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetDataMigrationCompleted() bool {
-	if o == nil || o.DataMigrationCompleted == nil {
+	if o == nil || IsNil(o.DataMigrationCompleted) {
 		var ret bool
 		return ret
 	}
@@ -437,7 +440,7 @@ func (o *ComputerContentCaching) GetDataMigrationCompleted() bool {
 // GetDataMigrationCompletedOk returns a tuple with the DataMigrationCompleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetDataMigrationCompletedOk() (*bool, bool) {
-	if o == nil || o.DataMigrationCompleted == nil {
+	if o == nil || IsNil(o.DataMigrationCompleted) {
 		return nil, false
 	}
 	return o.DataMigrationCompleted, true
@@ -445,7 +448,7 @@ func (o *ComputerContentCaching) GetDataMigrationCompletedOk() (*bool, bool) {
 
 // HasDataMigrationCompleted returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasDataMigrationCompleted() bool {
-	if o != nil && o.DataMigrationCompleted != nil {
+	if o != nil && !IsNil(o.DataMigrationCompleted) {
 		return true
 	}
 
@@ -459,7 +462,7 @@ func (o *ComputerContentCaching) SetDataMigrationCompleted(v bool) {
 
 // GetDataMigrationProgressPercentage returns the DataMigrationProgressPercentage field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int32 {
-	if o == nil || o.DataMigrationProgressPercentage == nil {
+	if o == nil || IsNil(o.DataMigrationProgressPercentage) {
 		var ret int32
 		return ret
 	}
@@ -469,7 +472,7 @@ func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int32 {
 // GetDataMigrationProgressPercentageOk returns a tuple with the DataMigrationProgressPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int32, bool) {
-	if o == nil || o.DataMigrationProgressPercentage == nil {
+	if o == nil || IsNil(o.DataMigrationProgressPercentage) {
 		return nil, false
 	}
 	return o.DataMigrationProgressPercentage, true
@@ -477,7 +480,7 @@ func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int32,
 
 // HasDataMigrationProgressPercentage returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasDataMigrationProgressPercentage() bool {
-	if o != nil && o.DataMigrationProgressPercentage != nil {
+	if o != nil && !IsNil(o.DataMigrationProgressPercentage) {
 		return true
 	}
 
@@ -491,7 +494,7 @@ func (o *ComputerContentCaching) SetDataMigrationProgressPercentage(v int32) {
 
 // GetDataMigrationError returns the DataMigrationError field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetDataMigrationError() ComputerContentCachingDataMigrationError {
-	if o == nil || o.DataMigrationError == nil {
+	if o == nil || IsNil(o.DataMigrationError) {
 		var ret ComputerContentCachingDataMigrationError
 		return ret
 	}
@@ -501,7 +504,7 @@ func (o *ComputerContentCaching) GetDataMigrationError() ComputerContentCachingD
 // GetDataMigrationErrorOk returns a tuple with the DataMigrationError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetDataMigrationErrorOk() (*ComputerContentCachingDataMigrationError, bool) {
-	if o == nil || o.DataMigrationError == nil {
+	if o == nil || IsNil(o.DataMigrationError) {
 		return nil, false
 	}
 	return o.DataMigrationError, true
@@ -509,7 +512,7 @@ func (o *ComputerContentCaching) GetDataMigrationErrorOk() (*ComputerContentCach
 
 // HasDataMigrationError returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasDataMigrationError() bool {
-	if o != nil && o.DataMigrationError != nil {
+	if o != nil && !IsNil(o.DataMigrationError) {
 		return true
 	}
 
@@ -523,7 +526,7 @@ func (o *ComputerContentCaching) SetDataMigrationError(v ComputerContentCachingD
 
 // GetMaxCachePressureLast1HourPercentage returns the MaxCachePressureLast1HourPercentage field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int32 {
-	if o == nil || o.MaxCachePressureLast1HourPercentage == nil {
+	if o == nil || IsNil(o.MaxCachePressureLast1HourPercentage) {
 		var ret int32
 		return ret
 	}
@@ -533,7 +536,7 @@ func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int32 
 // GetMaxCachePressureLast1HourPercentageOk returns a tuple with the MaxCachePressureLast1HourPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*int32, bool) {
-	if o == nil || o.MaxCachePressureLast1HourPercentage == nil {
+	if o == nil || IsNil(o.MaxCachePressureLast1HourPercentage) {
 		return nil, false
 	}
 	return o.MaxCachePressureLast1HourPercentage, true
@@ -541,7 +544,7 @@ func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*in
 
 // HasMaxCachePressureLast1HourPercentage returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasMaxCachePressureLast1HourPercentage() bool {
-	if o != nil && o.MaxCachePressureLast1HourPercentage != nil {
+	if o != nil && !IsNil(o.MaxCachePressureLast1HourPercentage) {
 		return true
 	}
 
@@ -555,7 +558,7 @@ func (o *ComputerContentCaching) SetMaxCachePressureLast1HourPercentage(v int32)
 
 // GetPersonalCacheBytesFree returns the PersonalCacheBytesFree field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetPersonalCacheBytesFree() int64 {
-	if o == nil || o.PersonalCacheBytesFree == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesFree) {
 		var ret int64
 		return ret
 	}
@@ -565,7 +568,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesFree() int64 {
 // GetPersonalCacheBytesFreeOk returns a tuple with the PersonalCacheBytesFree field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetPersonalCacheBytesFreeOk() (*int64, bool) {
-	if o == nil || o.PersonalCacheBytesFree == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesFree) {
 		return nil, false
 	}
 	return o.PersonalCacheBytesFree, true
@@ -573,7 +576,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesFreeOk() (*int64, bool) {
 
 // HasPersonalCacheBytesFree returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasPersonalCacheBytesFree() bool {
-	if o != nil && o.PersonalCacheBytesFree != nil {
+	if o != nil && !IsNil(o.PersonalCacheBytesFree) {
 		return true
 	}
 
@@ -587,7 +590,7 @@ func (o *ComputerContentCaching) SetPersonalCacheBytesFree(v int64) {
 
 // GetPersonalCacheBytesLimit returns the PersonalCacheBytesLimit field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetPersonalCacheBytesLimit() int64 {
-	if o == nil || o.PersonalCacheBytesLimit == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesLimit) {
 		var ret int64
 		return ret
 	}
@@ -597,7 +600,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesLimit() int64 {
 // GetPersonalCacheBytesLimitOk returns a tuple with the PersonalCacheBytesLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetPersonalCacheBytesLimitOk() (*int64, bool) {
-	if o == nil || o.PersonalCacheBytesLimit == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesLimit) {
 		return nil, false
 	}
 	return o.PersonalCacheBytesLimit, true
@@ -605,7 +608,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesLimitOk() (*int64, bool) {
 
 // HasPersonalCacheBytesLimit returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasPersonalCacheBytesLimit() bool {
-	if o != nil && o.PersonalCacheBytesLimit != nil {
+	if o != nil && !IsNil(o.PersonalCacheBytesLimit) {
 		return true
 	}
 
@@ -619,7 +622,7 @@ func (o *ComputerContentCaching) SetPersonalCacheBytesLimit(v int64) {
 
 // GetPersonalCacheBytesUsed returns the PersonalCacheBytesUsed field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetPersonalCacheBytesUsed() int64 {
-	if o == nil || o.PersonalCacheBytesUsed == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesUsed) {
 		var ret int64
 		return ret
 	}
@@ -629,7 +632,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesUsed() int64 {
 // GetPersonalCacheBytesUsedOk returns a tuple with the PersonalCacheBytesUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetPersonalCacheBytesUsedOk() (*int64, bool) {
-	if o == nil || o.PersonalCacheBytesUsed == nil {
+	if o == nil || IsNil(o.PersonalCacheBytesUsed) {
 		return nil, false
 	}
 	return o.PersonalCacheBytesUsed, true
@@ -637,7 +640,7 @@ func (o *ComputerContentCaching) GetPersonalCacheBytesUsedOk() (*int64, bool) {
 
 // HasPersonalCacheBytesUsed returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasPersonalCacheBytesUsed() bool {
-	if o != nil && o.PersonalCacheBytesUsed != nil {
+	if o != nil && !IsNil(o.PersonalCacheBytesUsed) {
 		return true
 	}
 
@@ -651,7 +654,7 @@ func (o *ComputerContentCaching) SetPersonalCacheBytesUsed(v int64) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetPort() int64 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int64
 		return ret
 	}
@@ -661,7 +664,7 @@ func (o *ComputerContentCaching) GetPort() int64 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetPortOk() (*int64, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -669,7 +672,7 @@ func (o *ComputerContentCaching) GetPortOk() (*int64, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -683,7 +686,7 @@ func (o *ComputerContentCaching) SetPort(v int64) {
 
 // GetPublicAddress returns the PublicAddress field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetPublicAddress() string {
-	if o == nil || o.PublicAddress == nil {
+	if o == nil || IsNil(o.PublicAddress) {
 		var ret string
 		return ret
 	}
@@ -693,7 +696,7 @@ func (o *ComputerContentCaching) GetPublicAddress() string {
 // GetPublicAddressOk returns a tuple with the PublicAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetPublicAddressOk() (*string, bool) {
-	if o == nil || o.PublicAddress == nil {
+	if o == nil || IsNil(o.PublicAddress) {
 		return nil, false
 	}
 	return o.PublicAddress, true
@@ -701,7 +704,7 @@ func (o *ComputerContentCaching) GetPublicAddressOk() (*string, bool) {
 
 // HasPublicAddress returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasPublicAddress() bool {
-	if o != nil && o.PublicAddress != nil {
+	if o != nil && !IsNil(o.PublicAddress) {
 		return true
 	}
 
@@ -715,7 +718,7 @@ func (o *ComputerContentCaching) SetPublicAddress(v string) {
 
 // GetRegistrationError returns the RegistrationError field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetRegistrationError() string {
-	if o == nil || o.RegistrationError == nil {
+	if o == nil || IsNil(o.RegistrationError) {
 		var ret string
 		return ret
 	}
@@ -725,7 +728,7 @@ func (o *ComputerContentCaching) GetRegistrationError() string {
 // GetRegistrationErrorOk returns a tuple with the RegistrationError field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetRegistrationErrorOk() (*string, bool) {
-	if o == nil || o.RegistrationError == nil {
+	if o == nil || IsNil(o.RegistrationError) {
 		return nil, false
 	}
 	return o.RegistrationError, true
@@ -733,7 +736,7 @@ func (o *ComputerContentCaching) GetRegistrationErrorOk() (*string, bool) {
 
 // HasRegistrationError returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasRegistrationError() bool {
-	if o != nil && o.RegistrationError != nil {
+	if o != nil && !IsNil(o.RegistrationError) {
 		return true
 	}
 
@@ -747,7 +750,7 @@ func (o *ComputerContentCaching) SetRegistrationError(v string) {
 
 // GetRegistrationResponseCode returns the RegistrationResponseCode field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetRegistrationResponseCode() int64 {
-	if o == nil || o.RegistrationResponseCode == nil {
+	if o == nil || IsNil(o.RegistrationResponseCode) {
 		var ret int64
 		return ret
 	}
@@ -757,7 +760,7 @@ func (o *ComputerContentCaching) GetRegistrationResponseCode() int64 {
 // GetRegistrationResponseCodeOk returns a tuple with the RegistrationResponseCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetRegistrationResponseCodeOk() (*int64, bool) {
-	if o == nil || o.RegistrationResponseCode == nil {
+	if o == nil || IsNil(o.RegistrationResponseCode) {
 		return nil, false
 	}
 	return o.RegistrationResponseCode, true
@@ -765,7 +768,7 @@ func (o *ComputerContentCaching) GetRegistrationResponseCodeOk() (*int64, bool) 
 
 // HasRegistrationResponseCode returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasRegistrationResponseCode() bool {
-	if o != nil && o.RegistrationResponseCode != nil {
+	if o != nil && !IsNil(o.RegistrationResponseCode) {
 		return true
 	}
 
@@ -779,7 +782,7 @@ func (o *ComputerContentCaching) SetRegistrationResponseCode(v int64) {
 
 // GetRegistrationStarted returns the RegistrationStarted field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetRegistrationStarted() time.Time {
-	if o == nil || o.RegistrationStarted == nil {
+	if o == nil || IsNil(o.RegistrationStarted) {
 		var ret time.Time
 		return ret
 	}
@@ -789,7 +792,7 @@ func (o *ComputerContentCaching) GetRegistrationStarted() time.Time {
 // GetRegistrationStartedOk returns a tuple with the RegistrationStarted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetRegistrationStartedOk() (*time.Time, bool) {
-	if o == nil || o.RegistrationStarted == nil {
+	if o == nil || IsNil(o.RegistrationStarted) {
 		return nil, false
 	}
 	return o.RegistrationStarted, true
@@ -797,7 +800,7 @@ func (o *ComputerContentCaching) GetRegistrationStartedOk() (*time.Time, bool) {
 
 // HasRegistrationStarted returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasRegistrationStarted() bool {
-	if o != nil && o.RegistrationStarted != nil {
+	if o != nil && !IsNil(o.RegistrationStarted) {
 		return true
 	}
 
@@ -811,7 +814,7 @@ func (o *ComputerContentCaching) SetRegistrationStarted(v time.Time) {
 
 // GetRegistrationStatus returns the RegistrationStatus field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetRegistrationStatus() string {
-	if o == nil || o.RegistrationStatus == nil {
+	if o == nil || IsNil(o.RegistrationStatus) {
 		var ret string
 		return ret
 	}
@@ -821,7 +824,7 @@ func (o *ComputerContentCaching) GetRegistrationStatus() string {
 // GetRegistrationStatusOk returns a tuple with the RegistrationStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetRegistrationStatusOk() (*string, bool) {
-	if o == nil || o.RegistrationStatus == nil {
+	if o == nil || IsNil(o.RegistrationStatus) {
 		return nil, false
 	}
 	return o.RegistrationStatus, true
@@ -829,7 +832,7 @@ func (o *ComputerContentCaching) GetRegistrationStatusOk() (*string, bool) {
 
 // HasRegistrationStatus returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasRegistrationStatus() bool {
-	if o != nil && o.RegistrationStatus != nil {
+	if o != nil && !IsNil(o.RegistrationStatus) {
 		return true
 	}
 
@@ -843,7 +846,7 @@ func (o *ComputerContentCaching) SetRegistrationStatus(v string) {
 
 // GetRestrictedMedia returns the RestrictedMedia field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetRestrictedMedia() bool {
-	if o == nil || o.RestrictedMedia == nil {
+	if o == nil || IsNil(o.RestrictedMedia) {
 		var ret bool
 		return ret
 	}
@@ -853,7 +856,7 @@ func (o *ComputerContentCaching) GetRestrictedMedia() bool {
 // GetRestrictedMediaOk returns a tuple with the RestrictedMedia field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetRestrictedMediaOk() (*bool, bool) {
-	if o == nil || o.RestrictedMedia == nil {
+	if o == nil || IsNil(o.RestrictedMedia) {
 		return nil, false
 	}
 	return o.RestrictedMedia, true
@@ -861,7 +864,7 @@ func (o *ComputerContentCaching) GetRestrictedMediaOk() (*bool, bool) {
 
 // HasRestrictedMedia returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasRestrictedMedia() bool {
-	if o != nil && o.RestrictedMedia != nil {
+	if o != nil && !IsNil(o.RestrictedMedia) {
 		return true
 	}
 
@@ -875,7 +878,7 @@ func (o *ComputerContentCaching) SetRestrictedMedia(v bool) {
 
 // GetServerGuid returns the ServerGuid field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetServerGuid() string {
-	if o == nil || o.ServerGuid == nil {
+	if o == nil || IsNil(o.ServerGuid) {
 		var ret string
 		return ret
 	}
@@ -885,7 +888,7 @@ func (o *ComputerContentCaching) GetServerGuid() string {
 // GetServerGuidOk returns a tuple with the ServerGuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetServerGuidOk() (*string, bool) {
-	if o == nil || o.ServerGuid == nil {
+	if o == nil || IsNil(o.ServerGuid) {
 		return nil, false
 	}
 	return o.ServerGuid, true
@@ -893,7 +896,7 @@ func (o *ComputerContentCaching) GetServerGuidOk() (*string, bool) {
 
 // HasServerGuid returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasServerGuid() bool {
-	if o != nil && o.ServerGuid != nil {
+	if o != nil && !IsNil(o.ServerGuid) {
 		return true
 	}
 
@@ -907,7 +910,7 @@ func (o *ComputerContentCaching) SetServerGuid(v string) {
 
 // GetStartupStatus returns the StartupStatus field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetStartupStatus() string {
-	if o == nil || o.StartupStatus == nil {
+	if o == nil || IsNil(o.StartupStatus) {
 		var ret string
 		return ret
 	}
@@ -917,7 +920,7 @@ func (o *ComputerContentCaching) GetStartupStatus() string {
 // GetStartupStatusOk returns a tuple with the StartupStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetStartupStatusOk() (*string, bool) {
-	if o == nil || o.StartupStatus == nil {
+	if o == nil || IsNil(o.StartupStatus) {
 		return nil, false
 	}
 	return o.StartupStatus, true
@@ -925,7 +928,7 @@ func (o *ComputerContentCaching) GetStartupStatusOk() (*string, bool) {
 
 // HasStartupStatus returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasStartupStatus() bool {
-	if o != nil && o.StartupStatus != nil {
+	if o != nil && !IsNil(o.StartupStatus) {
 		return true
 	}
 
@@ -939,7 +942,7 @@ func (o *ComputerContentCaching) SetStartupStatus(v string) {
 
 // GetTetheratorStatus returns the TetheratorStatus field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTetheratorStatus() string {
-	if o == nil || o.TetheratorStatus == nil {
+	if o == nil || IsNil(o.TetheratorStatus) {
 		var ret string
 		return ret
 	}
@@ -949,7 +952,7 @@ func (o *ComputerContentCaching) GetTetheratorStatus() string {
 // GetTetheratorStatusOk returns a tuple with the TetheratorStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTetheratorStatusOk() (*string, bool) {
-	if o == nil || o.TetheratorStatus == nil {
+	if o == nil || IsNil(o.TetheratorStatus) {
 		return nil, false
 	}
 	return o.TetheratorStatus, true
@@ -957,7 +960,7 @@ func (o *ComputerContentCaching) GetTetheratorStatusOk() (*string, bool) {
 
 // HasTetheratorStatus returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTetheratorStatus() bool {
-	if o != nil && o.TetheratorStatus != nil {
+	if o != nil && !IsNil(o.TetheratorStatus) {
 		return true
 	}
 
@@ -971,7 +974,7 @@ func (o *ComputerContentCaching) SetTetheratorStatus(v string) {
 
 // GetTotalBytesAreSince returns the TotalBytesAreSince field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesAreSince() time.Time {
-	if o == nil || o.TotalBytesAreSince == nil {
+	if o == nil || IsNil(o.TotalBytesAreSince) {
 		var ret time.Time
 		return ret
 	}
@@ -981,7 +984,7 @@ func (o *ComputerContentCaching) GetTotalBytesAreSince() time.Time {
 // GetTotalBytesAreSinceOk returns a tuple with the TotalBytesAreSince field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesAreSinceOk() (*time.Time, bool) {
-	if o == nil || o.TotalBytesAreSince == nil {
+	if o == nil || IsNil(o.TotalBytesAreSince) {
 		return nil, false
 	}
 	return o.TotalBytesAreSince, true
@@ -989,7 +992,7 @@ func (o *ComputerContentCaching) GetTotalBytesAreSinceOk() (*time.Time, bool) {
 
 // HasTotalBytesAreSince returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesAreSince() bool {
-	if o != nil && o.TotalBytesAreSince != nil {
+	if o != nil && !IsNil(o.TotalBytesAreSince) {
 		return true
 	}
 
@@ -1003,7 +1006,7 @@ func (o *ComputerContentCaching) SetTotalBytesAreSince(v time.Time) {
 
 // GetTotalBytesDropped returns the TotalBytesDropped field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesDropped() int64 {
-	if o == nil || o.TotalBytesDropped == nil {
+	if o == nil || IsNil(o.TotalBytesDropped) {
 		var ret int64
 		return ret
 	}
@@ -1013,7 +1016,7 @@ func (o *ComputerContentCaching) GetTotalBytesDropped() int64 {
 // GetTotalBytesDroppedOk returns a tuple with the TotalBytesDropped field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesDroppedOk() (*int64, bool) {
-	if o == nil || o.TotalBytesDropped == nil {
+	if o == nil || IsNil(o.TotalBytesDropped) {
 		return nil, false
 	}
 	return o.TotalBytesDropped, true
@@ -1021,7 +1024,7 @@ func (o *ComputerContentCaching) GetTotalBytesDroppedOk() (*int64, bool) {
 
 // HasTotalBytesDropped returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesDropped() bool {
-	if o != nil && o.TotalBytesDropped != nil {
+	if o != nil && !IsNil(o.TotalBytesDropped) {
 		return true
 	}
 
@@ -1035,7 +1038,7 @@ func (o *ComputerContentCaching) SetTotalBytesDropped(v int64) {
 
 // GetTotalBytesImported returns the TotalBytesImported field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesImported() int64 {
-	if o == nil || o.TotalBytesImported == nil {
+	if o == nil || IsNil(o.TotalBytesImported) {
 		var ret int64
 		return ret
 	}
@@ -1045,7 +1048,7 @@ func (o *ComputerContentCaching) GetTotalBytesImported() int64 {
 // GetTotalBytesImportedOk returns a tuple with the TotalBytesImported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesImportedOk() (*int64, bool) {
-	if o == nil || o.TotalBytesImported == nil {
+	if o == nil || IsNil(o.TotalBytesImported) {
 		return nil, false
 	}
 	return o.TotalBytesImported, true
@@ -1053,7 +1056,7 @@ func (o *ComputerContentCaching) GetTotalBytesImportedOk() (*int64, bool) {
 
 // HasTotalBytesImported returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesImported() bool {
-	if o != nil && o.TotalBytesImported != nil {
+	if o != nil && !IsNil(o.TotalBytesImported) {
 		return true
 	}
 
@@ -1067,7 +1070,7 @@ func (o *ComputerContentCaching) SetTotalBytesImported(v int64) {
 
 // GetTotalBytesReturnedToChildren returns the TotalBytesReturnedToChildren field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToChildren() int64 {
-	if o == nil || o.TotalBytesReturnedToChildren == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToChildren) {
 		var ret int64
 		return ret
 	}
@@ -1077,7 +1080,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToChildren() int64 {
 // GetTotalBytesReturnedToChildrenOk returns a tuple with the TotalBytesReturnedToChildren field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToChildrenOk() (*int64, bool) {
-	if o == nil || o.TotalBytesReturnedToChildren == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToChildren) {
 		return nil, false
 	}
 	return o.TotalBytesReturnedToChildren, true
@@ -1085,7 +1088,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToChildrenOk() (*int64, bo
 
 // HasTotalBytesReturnedToChildren returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesReturnedToChildren() bool {
-	if o != nil && o.TotalBytesReturnedToChildren != nil {
+	if o != nil && !IsNil(o.TotalBytesReturnedToChildren) {
 		return true
 	}
 
@@ -1099,7 +1102,7 @@ func (o *ComputerContentCaching) SetTotalBytesReturnedToChildren(v int64) {
 
 // GetTotalBytesReturnedToClients returns the TotalBytesReturnedToClients field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToClients() int64 {
-	if o == nil || o.TotalBytesReturnedToClients == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToClients) {
 		var ret int64
 		return ret
 	}
@@ -1109,7 +1112,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToClients() int64 {
 // GetTotalBytesReturnedToClientsOk returns a tuple with the TotalBytesReturnedToClients field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToClientsOk() (*int64, bool) {
-	if o == nil || o.TotalBytesReturnedToClients == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToClients) {
 		return nil, false
 	}
 	return o.TotalBytesReturnedToClients, true
@@ -1117,7 +1120,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToClientsOk() (*int64, boo
 
 // HasTotalBytesReturnedToClients returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesReturnedToClients() bool {
-	if o != nil && o.TotalBytesReturnedToClients != nil {
+	if o != nil && !IsNil(o.TotalBytesReturnedToClients) {
 		return true
 	}
 
@@ -1131,7 +1134,7 @@ func (o *ComputerContentCaching) SetTotalBytesReturnedToClients(v int64) {
 
 // GetTotalBytesReturnedToPeers returns the TotalBytesReturnedToPeers field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToPeers() int64 {
-	if o == nil || o.TotalBytesReturnedToPeers == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToPeers) {
 		var ret int64
 		return ret
 	}
@@ -1141,7 +1144,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToPeers() int64 {
 // GetTotalBytesReturnedToPeersOk returns a tuple with the TotalBytesReturnedToPeers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesReturnedToPeersOk() (*int64, bool) {
-	if o == nil || o.TotalBytesReturnedToPeers == nil {
+	if o == nil || IsNil(o.TotalBytesReturnedToPeers) {
 		return nil, false
 	}
 	return o.TotalBytesReturnedToPeers, true
@@ -1149,7 +1152,7 @@ func (o *ComputerContentCaching) GetTotalBytesReturnedToPeersOk() (*int64, bool)
 
 // HasTotalBytesReturnedToPeers returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesReturnedToPeers() bool {
-	if o != nil && o.TotalBytesReturnedToPeers != nil {
+	if o != nil && !IsNil(o.TotalBytesReturnedToPeers) {
 		return true
 	}
 
@@ -1163,7 +1166,7 @@ func (o *ComputerContentCaching) SetTotalBytesReturnedToPeers(v int64) {
 
 // GetTotalBytesStoredFromOrigin returns the TotalBytesStoredFromOrigin field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromOrigin() int64 {
-	if o == nil || o.TotalBytesStoredFromOrigin == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromOrigin) {
 		var ret int64
 		return ret
 	}
@@ -1173,7 +1176,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromOrigin() int64 {
 // GetTotalBytesStoredFromOriginOk returns a tuple with the TotalBytesStoredFromOrigin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromOriginOk() (*int64, bool) {
-	if o == nil || o.TotalBytesStoredFromOrigin == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromOrigin) {
 		return nil, false
 	}
 	return o.TotalBytesStoredFromOrigin, true
@@ -1181,7 +1184,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromOriginOk() (*int64, bool
 
 // HasTotalBytesStoredFromOrigin returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesStoredFromOrigin() bool {
-	if o != nil && o.TotalBytesStoredFromOrigin != nil {
+	if o != nil && !IsNil(o.TotalBytesStoredFromOrigin) {
 		return true
 	}
 
@@ -1195,7 +1198,7 @@ func (o *ComputerContentCaching) SetTotalBytesStoredFromOrigin(v int64) {
 
 // GetTotalBytesStoredFromParents returns the TotalBytesStoredFromParents field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromParents() int64 {
-	if o == nil || o.TotalBytesStoredFromParents == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromParents) {
 		var ret int64
 		return ret
 	}
@@ -1205,7 +1208,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromParents() int64 {
 // GetTotalBytesStoredFromParentsOk returns a tuple with the TotalBytesStoredFromParents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromParentsOk() (*int64, bool) {
-	if o == nil || o.TotalBytesStoredFromParents == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromParents) {
 		return nil, false
 	}
 	return o.TotalBytesStoredFromParents, true
@@ -1213,7 +1216,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromParentsOk() (*int64, boo
 
 // HasTotalBytesStoredFromParents returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesStoredFromParents() bool {
-	if o != nil && o.TotalBytesStoredFromParents != nil {
+	if o != nil && !IsNil(o.TotalBytesStoredFromParents) {
 		return true
 	}
 
@@ -1227,7 +1230,7 @@ func (o *ComputerContentCaching) SetTotalBytesStoredFromParents(v int64) {
 
 // GetTotalBytesStoredFromPeers returns the TotalBytesStoredFromPeers field value if set, zero value otherwise.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromPeers() int64 {
-	if o == nil || o.TotalBytesStoredFromPeers == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromPeers) {
 		var ret int64
 		return ret
 	}
@@ -1237,7 +1240,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromPeers() int64 {
 // GetTotalBytesStoredFromPeersOk returns a tuple with the TotalBytesStoredFromPeers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCaching) GetTotalBytesStoredFromPeersOk() (*int64, bool) {
-	if o == nil || o.TotalBytesStoredFromPeers == nil {
+	if o == nil || IsNil(o.TotalBytesStoredFromPeers) {
 		return nil, false
 	}
 	return o.TotalBytesStoredFromPeers, true
@@ -1245,7 +1248,7 @@ func (o *ComputerContentCaching) GetTotalBytesStoredFromPeersOk() (*int64, bool)
 
 // HasTotalBytesStoredFromPeers returns a boolean if a field has been set.
 func (o *ComputerContentCaching) HasTotalBytesStoredFromPeers() bool {
-	if o != nil && o.TotalBytesStoredFromPeers != nil {
+	if o != nil && !IsNil(o.TotalBytesStoredFromPeers) {
 		return true
 	}
 
@@ -1258,119 +1261,127 @@ func (o *ComputerContentCaching) SetTotalBytesStoredFromPeers(v int64) {
 }
 
 func (o ComputerContentCaching) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ComputerContentCachingInformationId != nil {
-		toSerialize["computerContentCachingInformationId"] = o.ComputerContentCachingInformationId
-	}
-	if o.Parents != nil {
-		toSerialize["parents"] = o.Parents
-	}
-	if o.Alerts != nil {
-		toSerialize["alerts"] = o.Alerts
-	}
-	if o.Activated != nil {
-		toSerialize["activated"] = o.Activated
-	}
-	if o.Active != nil {
-		toSerialize["active"] = o.Active
-	}
-	if o.ActualCacheBytesUsed != nil {
-		toSerialize["actualCacheBytesUsed"] = o.ActualCacheBytesUsed
-	}
-	if o.CacheDetails != nil {
-		toSerialize["cacheDetails"] = o.CacheDetails
-	}
-	if o.CacheBytesFree != nil {
-		toSerialize["cacheBytesFree"] = o.CacheBytesFree
-	}
-	if o.CacheBytesLimit != nil {
-		toSerialize["cacheBytesLimit"] = o.CacheBytesLimit
-	}
-	if o.CacheStatus != nil {
-		toSerialize["cacheStatus"] = o.CacheStatus
-	}
-	if o.CacheBytesUsed != nil {
-		toSerialize["cacheBytesUsed"] = o.CacheBytesUsed
-	}
-	if o.DataMigrationCompleted != nil {
-		toSerialize["dataMigrationCompleted"] = o.DataMigrationCompleted
-	}
-	if o.DataMigrationProgressPercentage != nil {
-		toSerialize["dataMigrationProgressPercentage"] = o.DataMigrationProgressPercentage
-	}
-	if o.DataMigrationError != nil {
-		toSerialize["dataMigrationError"] = o.DataMigrationError
-	}
-	if o.MaxCachePressureLast1HourPercentage != nil {
-		toSerialize["maxCachePressureLast1HourPercentage"] = o.MaxCachePressureLast1HourPercentage
-	}
-	if o.PersonalCacheBytesFree != nil {
-		toSerialize["personalCacheBytesFree"] = o.PersonalCacheBytesFree
-	}
-	if o.PersonalCacheBytesLimit != nil {
-		toSerialize["personalCacheBytesLimit"] = o.PersonalCacheBytesLimit
-	}
-	if o.PersonalCacheBytesUsed != nil {
-		toSerialize["personalCacheBytesUsed"] = o.PersonalCacheBytesUsed
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.PublicAddress != nil {
-		toSerialize["publicAddress"] = o.PublicAddress
-	}
-	if o.RegistrationError != nil {
-		toSerialize["registrationError"] = o.RegistrationError
-	}
-	if o.RegistrationResponseCode != nil {
-		toSerialize["registrationResponseCode"] = o.RegistrationResponseCode
-	}
-	if o.RegistrationStarted != nil {
-		toSerialize["registrationStarted"] = o.RegistrationStarted
-	}
-	if o.RegistrationStatus != nil {
-		toSerialize["registrationStatus"] = o.RegistrationStatus
-	}
-	if o.RestrictedMedia != nil {
-		toSerialize["restrictedMedia"] = o.RestrictedMedia
-	}
-	if o.ServerGuid != nil {
-		toSerialize["serverGuid"] = o.ServerGuid
-	}
-	if o.StartupStatus != nil {
-		toSerialize["startupStatus"] = o.StartupStatus
-	}
-	if o.TetheratorStatus != nil {
-		toSerialize["tetheratorStatus"] = o.TetheratorStatus
-	}
-	if o.TotalBytesAreSince != nil {
-		toSerialize["totalBytesAreSince"] = o.TotalBytesAreSince
-	}
-	if o.TotalBytesDropped != nil {
-		toSerialize["totalBytesDropped"] = o.TotalBytesDropped
-	}
-	if o.TotalBytesImported != nil {
-		toSerialize["totalBytesImported"] = o.TotalBytesImported
-	}
-	if o.TotalBytesReturnedToChildren != nil {
-		toSerialize["totalBytesReturnedToChildren"] = o.TotalBytesReturnedToChildren
-	}
-	if o.TotalBytesReturnedToClients != nil {
-		toSerialize["totalBytesReturnedToClients"] = o.TotalBytesReturnedToClients
-	}
-	if o.TotalBytesReturnedToPeers != nil {
-		toSerialize["totalBytesReturnedToPeers"] = o.TotalBytesReturnedToPeers
-	}
-	if o.TotalBytesStoredFromOrigin != nil {
-		toSerialize["totalBytesStoredFromOrigin"] = o.TotalBytesStoredFromOrigin
-	}
-	if o.TotalBytesStoredFromParents != nil {
-		toSerialize["totalBytesStoredFromParents"] = o.TotalBytesStoredFromParents
-	}
-	if o.TotalBytesStoredFromPeers != nil {
-		toSerialize["totalBytesStoredFromPeers"] = o.TotalBytesStoredFromPeers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCaching) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ComputerContentCachingInformationId) {
+		toSerialize["computerContentCachingInformationId"] = o.ComputerContentCachingInformationId
+	}
+	if !IsNil(o.Parents) {
+		toSerialize["parents"] = o.Parents
+	}
+	if !IsNil(o.Alerts) {
+		toSerialize["alerts"] = o.Alerts
+	}
+	if !IsNil(o.Activated) {
+		toSerialize["activated"] = o.Activated
+	}
+	if !IsNil(o.Active) {
+		toSerialize["active"] = o.Active
+	}
+	if !IsNil(o.ActualCacheBytesUsed) {
+		toSerialize["actualCacheBytesUsed"] = o.ActualCacheBytesUsed
+	}
+	if !IsNil(o.CacheDetails) {
+		toSerialize["cacheDetails"] = o.CacheDetails
+	}
+	if !IsNil(o.CacheBytesFree) {
+		toSerialize["cacheBytesFree"] = o.CacheBytesFree
+	}
+	if !IsNil(o.CacheBytesLimit) {
+		toSerialize["cacheBytesLimit"] = o.CacheBytesLimit
+	}
+	if !IsNil(o.CacheStatus) {
+		toSerialize["cacheStatus"] = o.CacheStatus
+	}
+	if !IsNil(o.CacheBytesUsed) {
+		toSerialize["cacheBytesUsed"] = o.CacheBytesUsed
+	}
+	if !IsNil(o.DataMigrationCompleted) {
+		toSerialize["dataMigrationCompleted"] = o.DataMigrationCompleted
+	}
+	if !IsNil(o.DataMigrationProgressPercentage) {
+		toSerialize["dataMigrationProgressPercentage"] = o.DataMigrationProgressPercentage
+	}
+	if !IsNil(o.DataMigrationError) {
+		toSerialize["dataMigrationError"] = o.DataMigrationError
+	}
+	if !IsNil(o.MaxCachePressureLast1HourPercentage) {
+		toSerialize["maxCachePressureLast1HourPercentage"] = o.MaxCachePressureLast1HourPercentage
+	}
+	if !IsNil(o.PersonalCacheBytesFree) {
+		toSerialize["personalCacheBytesFree"] = o.PersonalCacheBytesFree
+	}
+	if !IsNil(o.PersonalCacheBytesLimit) {
+		toSerialize["personalCacheBytesLimit"] = o.PersonalCacheBytesLimit
+	}
+	if !IsNil(o.PersonalCacheBytesUsed) {
+		toSerialize["personalCacheBytesUsed"] = o.PersonalCacheBytesUsed
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.PublicAddress) {
+		toSerialize["publicAddress"] = o.PublicAddress
+	}
+	if !IsNil(o.RegistrationError) {
+		toSerialize["registrationError"] = o.RegistrationError
+	}
+	if !IsNil(o.RegistrationResponseCode) {
+		toSerialize["registrationResponseCode"] = o.RegistrationResponseCode
+	}
+	if !IsNil(o.RegistrationStarted) {
+		toSerialize["registrationStarted"] = o.RegistrationStarted
+	}
+	if !IsNil(o.RegistrationStatus) {
+		toSerialize["registrationStatus"] = o.RegistrationStatus
+	}
+	if !IsNil(o.RestrictedMedia) {
+		toSerialize["restrictedMedia"] = o.RestrictedMedia
+	}
+	if !IsNil(o.ServerGuid) {
+		toSerialize["serverGuid"] = o.ServerGuid
+	}
+	if !IsNil(o.StartupStatus) {
+		toSerialize["startupStatus"] = o.StartupStatus
+	}
+	if !IsNil(o.TetheratorStatus) {
+		toSerialize["tetheratorStatus"] = o.TetheratorStatus
+	}
+	if !IsNil(o.TotalBytesAreSince) {
+		toSerialize["totalBytesAreSince"] = o.TotalBytesAreSince
+	}
+	if !IsNil(o.TotalBytesDropped) {
+		toSerialize["totalBytesDropped"] = o.TotalBytesDropped
+	}
+	if !IsNil(o.TotalBytesImported) {
+		toSerialize["totalBytesImported"] = o.TotalBytesImported
+	}
+	if !IsNil(o.TotalBytesReturnedToChildren) {
+		toSerialize["totalBytesReturnedToChildren"] = o.TotalBytesReturnedToChildren
+	}
+	if !IsNil(o.TotalBytesReturnedToClients) {
+		toSerialize["totalBytesReturnedToClients"] = o.TotalBytesReturnedToClients
+	}
+	if !IsNil(o.TotalBytesReturnedToPeers) {
+		toSerialize["totalBytesReturnedToPeers"] = o.TotalBytesReturnedToPeers
+	}
+	if !IsNil(o.TotalBytesStoredFromOrigin) {
+		toSerialize["totalBytesStoredFromOrigin"] = o.TotalBytesStoredFromOrigin
+	}
+	if !IsNil(o.TotalBytesStoredFromParents) {
+		toSerialize["totalBytesStoredFromParents"] = o.TotalBytesStoredFromParents
+	}
+	if !IsNil(o.TotalBytesStoredFromPeers) {
+		toSerialize["totalBytesStoredFromPeers"] = o.TotalBytesStoredFromPeers
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCaching struct {

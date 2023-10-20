@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LocationInformation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LocationInformation{}
+
 // LocationInformation struct for LocationInformation
 type LocationInformation struct {
 	Username string `json:"username"`
@@ -296,38 +299,26 @@ func (o *LocationInformation) SetVersionLock(v int32) {
 }
 
 func (o LocationInformation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["username"] = o.Username
-	}
-	if true {
-		toSerialize["realname"] = o.Realname
-	}
-	if true {
-		toSerialize["phone"] = o.Phone
-	}
-	if true {
-		toSerialize["email"] = o.Email
-	}
-	if true {
-		toSerialize["room"] = o.Room
-	}
-	if true {
-		toSerialize["position"] = o.Position
-	}
-	if true {
-		toSerialize["departmentId"] = o.DepartmentId
-	}
-	if true {
-		toSerialize["buildingId"] = o.BuildingId
-	}
-	if true {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LocationInformation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["username"] = o.Username
+	toSerialize["realname"] = o.Realname
+	toSerialize["phone"] = o.Phone
+	toSerialize["email"] = o.Email
+	toSerialize["room"] = o.Room
+	toSerialize["position"] = o.Position
+	toSerialize["departmentId"] = o.DepartmentId
+	toSerialize["buildingId"] = o.BuildingId
+	toSerialize["id"] = o.Id
+	toSerialize["versionLock"] = o.VersionLock
+	return toSerialize, nil
 }
 
 type NullableLocationInformation struct {

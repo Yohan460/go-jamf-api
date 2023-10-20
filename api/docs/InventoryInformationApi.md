@@ -1,10 +1,10 @@
-# \InventoryInformationApi
+# \InventoryInformationAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1InventoryInformationGet**](InventoryInformationApi.md#V1InventoryInformationGet) | **Get** /v1/inventory-information | Get statistics about managed/unmanaged devices and computers in the inventory 
+[**V1InventoryInformationGet**](InventoryInformationAPI.md#V1InventoryInformationGet) | **Get** /v1/inventory-information | Get statistics about managed/unmanaged devices and computers in the inventory 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryInformationApi.V1InventoryInformationGet(context.Background()).Execute()
+    resp, r, err := apiClient.InventoryInformationAPI.V1InventoryInformationGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryInformationApi.V1InventoryInformationGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryInformationAPI.V1InventoryInformationGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1InventoryInformationGet`: InventoryInformation
-    fmt.Fprintf(os.Stdout, "Response from `InventoryInformationApi.V1InventoryInformationGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryInformationAPI.V1InventoryInformationGet`: %v\n", resp)
 }
 ```
 

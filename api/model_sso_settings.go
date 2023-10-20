@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SsoSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SsoSettings{}
+
 // SsoSettings struct for SsoSettings
 type SsoSettings struct {
 	SsoForEnrollmentEnabled bool `json:"ssoForEnrollmentEnabled"`
@@ -24,6 +27,8 @@ type SsoSettings struct {
 	UserAttributeEnabled bool `json:"userAttributeEnabled"`
 	UserAttributeName *string `json:"userAttributeName,omitempty"`
 	UserMapping string `json:"userMapping"`
+	EnrollmentSsoForAdueEnabled bool `json:"enrollmentSsoForAdueEnabled"`
+	EnrollmentSsoConfig *EnrollmentSsoConfig `json:"enrollmentSsoConfig,omitempty"`
 	GroupEnrollmentAccessEnabled bool `json:"groupEnrollmentAccessEnabled"`
 	GroupAttributeName string `json:"groupAttributeName"`
 	GroupRdnKey string `json:"groupRdnKey"`
@@ -42,7 +47,7 @@ type SsoSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSsoSettings(ssoForEnrollmentEnabled bool, ssoBypassAllowed bool, ssoEnabled bool, ssoForMacOsSelfServiceEnabled bool, tokenExpirationDisabled bool, userAttributeEnabled bool, userMapping string, groupEnrollmentAccessEnabled bool, groupAttributeName string, groupRdnKey string, idpProviderType string, entityId string, metadataSource string) *SsoSettings {
+func NewSsoSettings(ssoForEnrollmentEnabled bool, ssoBypassAllowed bool, ssoEnabled bool, ssoForMacOsSelfServiceEnabled bool, tokenExpirationDisabled bool, userAttributeEnabled bool, userMapping string, enrollmentSsoForAdueEnabled bool, groupEnrollmentAccessEnabled bool, groupAttributeName string, groupRdnKey string, idpProviderType string, entityId string, metadataSource string) *SsoSettings {
 	this := SsoSettings{}
 	this.SsoForEnrollmentEnabled = ssoForEnrollmentEnabled
 	this.SsoBypassAllowed = ssoBypassAllowed
@@ -53,6 +58,7 @@ func NewSsoSettings(ssoForEnrollmentEnabled bool, ssoBypassAllowed bool, ssoEnab
 	var userAttributeName string = " "
 	this.UserAttributeName = &userAttributeName
 	this.UserMapping = userMapping
+	this.EnrollmentSsoForAdueEnabled = enrollmentSsoForAdueEnabled
 	this.GroupEnrollmentAccessEnabled = groupEnrollmentAccessEnabled
 	this.GroupAttributeName = groupAttributeName
 	this.GroupRdnKey = groupRdnKey
@@ -87,6 +93,8 @@ func NewSsoSettingsWithDefaults() *SsoSettings {
 	this.UserAttributeEnabled = userAttributeEnabled
 	var userAttributeName string = " "
 	this.UserAttributeName = &userAttributeName
+	var enrollmentSsoForAdueEnabled bool = false
+	this.EnrollmentSsoForAdueEnabled = enrollmentSsoForAdueEnabled
 	var groupEnrollmentAccessEnabled bool = false
 	this.GroupEnrollmentAccessEnabled = groupEnrollmentAccessEnabled
 	var groupAttributeName string = "http://schemas.xmlsoap.org/claims/Group"
@@ -248,7 +256,7 @@ func (o *SsoSettings) SetUserAttributeEnabled(v bool) {
 
 // GetUserAttributeName returns the UserAttributeName field value if set, zero value otherwise.
 func (o *SsoSettings) GetUserAttributeName() string {
-	if o == nil || o.UserAttributeName == nil {
+	if o == nil || IsNil(o.UserAttributeName) {
 		var ret string
 		return ret
 	}
@@ -258,7 +266,7 @@ func (o *SsoSettings) GetUserAttributeName() string {
 // GetUserAttributeNameOk returns a tuple with the UserAttributeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetUserAttributeNameOk() (*string, bool) {
-	if o == nil || o.UserAttributeName == nil {
+	if o == nil || IsNil(o.UserAttributeName) {
 		return nil, false
 	}
 	return o.UserAttributeName, true
@@ -266,7 +274,7 @@ func (o *SsoSettings) GetUserAttributeNameOk() (*string, bool) {
 
 // HasUserAttributeName returns a boolean if a field has been set.
 func (o *SsoSettings) HasUserAttributeName() bool {
-	if o != nil && o.UserAttributeName != nil {
+	if o != nil && !IsNil(o.UserAttributeName) {
 		return true
 	}
 
@@ -300,6 +308,62 @@ func (o *SsoSettings) GetUserMappingOk() (*string, bool) {
 // SetUserMapping sets field value
 func (o *SsoSettings) SetUserMapping(v string) {
 	o.UserMapping = v
+}
+
+// GetEnrollmentSsoForAdueEnabled returns the EnrollmentSsoForAdueEnabled field value
+func (o *SsoSettings) GetEnrollmentSsoForAdueEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.EnrollmentSsoForAdueEnabled
+}
+
+// GetEnrollmentSsoForAdueEnabledOk returns a tuple with the EnrollmentSsoForAdueEnabled field value
+// and a boolean to check if the value has been set.
+func (o *SsoSettings) GetEnrollmentSsoForAdueEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnrollmentSsoForAdueEnabled, true
+}
+
+// SetEnrollmentSsoForAdueEnabled sets field value
+func (o *SsoSettings) SetEnrollmentSsoForAdueEnabled(v bool) {
+	o.EnrollmentSsoForAdueEnabled = v
+}
+
+// GetEnrollmentSsoConfig returns the EnrollmentSsoConfig field value if set, zero value otherwise.
+func (o *SsoSettings) GetEnrollmentSsoConfig() EnrollmentSsoConfig {
+	if o == nil || IsNil(o.EnrollmentSsoConfig) {
+		var ret EnrollmentSsoConfig
+		return ret
+	}
+	return *o.EnrollmentSsoConfig
+}
+
+// GetEnrollmentSsoConfigOk returns a tuple with the EnrollmentSsoConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SsoSettings) GetEnrollmentSsoConfigOk() (*EnrollmentSsoConfig, bool) {
+	if o == nil || IsNil(o.EnrollmentSsoConfig) {
+		return nil, false
+	}
+	return o.EnrollmentSsoConfig, true
+}
+
+// HasEnrollmentSsoConfig returns a boolean if a field has been set.
+func (o *SsoSettings) HasEnrollmentSsoConfig() bool {
+	if o != nil && !IsNil(o.EnrollmentSsoConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnrollmentSsoConfig gets a reference to the given EnrollmentSsoConfig and assigns it to the EnrollmentSsoConfig field.
+func (o *SsoSettings) SetEnrollmentSsoConfig(v EnrollmentSsoConfig) {
+	o.EnrollmentSsoConfig = &v
 }
 
 // GetGroupEnrollmentAccessEnabled returns the GroupEnrollmentAccessEnabled field value
@@ -376,7 +440,7 @@ func (o *SsoSettings) SetGroupRdnKey(v string) {
 
 // GetGroupEnrollmentAccessName returns the GroupEnrollmentAccessName field value if set, zero value otherwise.
 func (o *SsoSettings) GetGroupEnrollmentAccessName() string {
-	if o == nil || o.GroupEnrollmentAccessName == nil {
+	if o == nil || IsNil(o.GroupEnrollmentAccessName) {
 		var ret string
 		return ret
 	}
@@ -386,7 +450,7 @@ func (o *SsoSettings) GetGroupEnrollmentAccessName() string {
 // GetGroupEnrollmentAccessNameOk returns a tuple with the GroupEnrollmentAccessName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetGroupEnrollmentAccessNameOk() (*string, bool) {
-	if o == nil || o.GroupEnrollmentAccessName == nil {
+	if o == nil || IsNil(o.GroupEnrollmentAccessName) {
 		return nil, false
 	}
 	return o.GroupEnrollmentAccessName, true
@@ -394,7 +458,7 @@ func (o *SsoSettings) GetGroupEnrollmentAccessNameOk() (*string, bool) {
 
 // HasGroupEnrollmentAccessName returns a boolean if a field has been set.
 func (o *SsoSettings) HasGroupEnrollmentAccessName() bool {
-	if o != nil && o.GroupEnrollmentAccessName != nil {
+	if o != nil && !IsNil(o.GroupEnrollmentAccessName) {
 		return true
 	}
 
@@ -432,7 +496,7 @@ func (o *SsoSettings) SetIdpProviderType(v string) {
 
 // GetIdpUrl returns the IdpUrl field value if set, zero value otherwise.
 func (o *SsoSettings) GetIdpUrl() string {
-	if o == nil || o.IdpUrl == nil {
+	if o == nil || IsNil(o.IdpUrl) {
 		var ret string
 		return ret
 	}
@@ -442,7 +506,7 @@ func (o *SsoSettings) GetIdpUrl() string {
 // GetIdpUrlOk returns a tuple with the IdpUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetIdpUrlOk() (*string, bool) {
-	if o == nil || o.IdpUrl == nil {
+	if o == nil || IsNil(o.IdpUrl) {
 		return nil, false
 	}
 	return o.IdpUrl, true
@@ -450,7 +514,7 @@ func (o *SsoSettings) GetIdpUrlOk() (*string, bool) {
 
 // HasIdpUrl returns a boolean if a field has been set.
 func (o *SsoSettings) HasIdpUrl() bool {
-	if o != nil && o.IdpUrl != nil {
+	if o != nil && !IsNil(o.IdpUrl) {
 		return true
 	}
 
@@ -488,7 +552,7 @@ func (o *SsoSettings) SetEntityId(v string) {
 
 // GetMetadataFileName returns the MetadataFileName field value if set, zero value otherwise.
 func (o *SsoSettings) GetMetadataFileName() string {
-	if o == nil || o.MetadataFileName == nil {
+	if o == nil || IsNil(o.MetadataFileName) {
 		var ret string
 		return ret
 	}
@@ -498,7 +562,7 @@ func (o *SsoSettings) GetMetadataFileName() string {
 // GetMetadataFileNameOk returns a tuple with the MetadataFileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetMetadataFileNameOk() (*string, bool) {
-	if o == nil || o.MetadataFileName == nil {
+	if o == nil || IsNil(o.MetadataFileName) {
 		return nil, false
 	}
 	return o.MetadataFileName, true
@@ -506,7 +570,7 @@ func (o *SsoSettings) GetMetadataFileNameOk() (*string, bool) {
 
 // HasMetadataFileName returns a boolean if a field has been set.
 func (o *SsoSettings) HasMetadataFileName() bool {
-	if o != nil && o.MetadataFileName != nil {
+	if o != nil && !IsNil(o.MetadataFileName) {
 		return true
 	}
 
@@ -520,7 +584,7 @@ func (o *SsoSettings) SetMetadataFileName(v string) {
 
 // GetOtherProviderTypeName returns the OtherProviderTypeName field value if set, zero value otherwise.
 func (o *SsoSettings) GetOtherProviderTypeName() string {
-	if o == nil || o.OtherProviderTypeName == nil {
+	if o == nil || IsNil(o.OtherProviderTypeName) {
 		var ret string
 		return ret
 	}
@@ -530,7 +594,7 @@ func (o *SsoSettings) GetOtherProviderTypeName() string {
 // GetOtherProviderTypeNameOk returns a tuple with the OtherProviderTypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetOtherProviderTypeNameOk() (*string, bool) {
-	if o == nil || o.OtherProviderTypeName == nil {
+	if o == nil || IsNil(o.OtherProviderTypeName) {
 		return nil, false
 	}
 	return o.OtherProviderTypeName, true
@@ -538,7 +602,7 @@ func (o *SsoSettings) GetOtherProviderTypeNameOk() (*string, bool) {
 
 // HasOtherProviderTypeName returns a boolean if a field has been set.
 func (o *SsoSettings) HasOtherProviderTypeName() bool {
-	if o != nil && o.OtherProviderTypeName != nil {
+	if o != nil && !IsNil(o.OtherProviderTypeName) {
 		return true
 	}
 
@@ -552,7 +616,7 @@ func (o *SsoSettings) SetOtherProviderTypeName(v string) {
 
 // GetFederationMetadataFile returns the FederationMetadataFile field value if set, zero value otherwise.
 func (o *SsoSettings) GetFederationMetadataFile() string {
-	if o == nil || o.FederationMetadataFile == nil {
+	if o == nil || IsNil(o.FederationMetadataFile) {
 		var ret string
 		return ret
 	}
@@ -562,7 +626,7 @@ func (o *SsoSettings) GetFederationMetadataFile() string {
 // GetFederationMetadataFileOk returns a tuple with the FederationMetadataFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetFederationMetadataFileOk() (*string, bool) {
-	if o == nil || o.FederationMetadataFile == nil {
+	if o == nil || IsNil(o.FederationMetadataFile) {
 		return nil, false
 	}
 	return o.FederationMetadataFile, true
@@ -570,7 +634,7 @@ func (o *SsoSettings) GetFederationMetadataFileOk() (*string, bool) {
 
 // HasFederationMetadataFile returns a boolean if a field has been set.
 func (o *SsoSettings) HasFederationMetadataFile() bool {
-	if o != nil && o.FederationMetadataFile != nil {
+	if o != nil && !IsNil(o.FederationMetadataFile) {
 		return true
 	}
 
@@ -608,7 +672,7 @@ func (o *SsoSettings) SetMetadataSource(v string) {
 
 // GetSessionTimeout returns the SessionTimeout field value if set, zero value otherwise.
 func (o *SsoSettings) GetSessionTimeout() int32 {
-	if o == nil || o.SessionTimeout == nil {
+	if o == nil || IsNil(o.SessionTimeout) {
 		var ret int32
 		return ret
 	}
@@ -618,7 +682,7 @@ func (o *SsoSettings) GetSessionTimeout() int32 {
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoSettings) GetSessionTimeoutOk() (*int32, bool) {
-	if o == nil || o.SessionTimeout == nil {
+	if o == nil || IsNil(o.SessionTimeout) {
 		return nil, false
 	}
 	return o.SessionTimeout, true
@@ -626,7 +690,7 @@ func (o *SsoSettings) GetSessionTimeoutOk() (*int32, bool) {
 
 // HasSessionTimeout returns a boolean if a field has been set.
 func (o *SsoSettings) HasSessionTimeout() bool {
-	if o != nil && o.SessionTimeout != nil {
+	if o != nil && !IsNil(o.SessionTimeout) {
 		return true
 	}
 
@@ -639,68 +703,54 @@ func (o *SsoSettings) SetSessionTimeout(v int32) {
 }
 
 func (o SsoSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ssoForEnrollmentEnabled"] = o.SsoForEnrollmentEnabled
-	}
-	if true {
-		toSerialize["ssoBypassAllowed"] = o.SsoBypassAllowed
-	}
-	if true {
-		toSerialize["ssoEnabled"] = o.SsoEnabled
-	}
-	if true {
-		toSerialize["ssoForMacOsSelfServiceEnabled"] = o.SsoForMacOsSelfServiceEnabled
-	}
-	if true {
-		toSerialize["tokenExpirationDisabled"] = o.TokenExpirationDisabled
-	}
-	if true {
-		toSerialize["userAttributeEnabled"] = o.UserAttributeEnabled
-	}
-	if o.UserAttributeName != nil {
-		toSerialize["userAttributeName"] = o.UserAttributeName
-	}
-	if true {
-		toSerialize["userMapping"] = o.UserMapping
-	}
-	if true {
-		toSerialize["groupEnrollmentAccessEnabled"] = o.GroupEnrollmentAccessEnabled
-	}
-	if true {
-		toSerialize["groupAttributeName"] = o.GroupAttributeName
-	}
-	if true {
-		toSerialize["groupRdnKey"] = o.GroupRdnKey
-	}
-	if o.GroupEnrollmentAccessName != nil {
-		toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
-	}
-	if true {
-		toSerialize["idpProviderType"] = o.IdpProviderType
-	}
-	if o.IdpUrl != nil {
-		toSerialize["idpUrl"] = o.IdpUrl
-	}
-	if true {
-		toSerialize["entityId"] = o.EntityId
-	}
-	if o.MetadataFileName != nil {
-		toSerialize["metadataFileName"] = o.MetadataFileName
-	}
-	if o.OtherProviderTypeName != nil {
-		toSerialize["otherProviderTypeName"] = o.OtherProviderTypeName
-	}
-	if o.FederationMetadataFile != nil {
-		toSerialize["federationMetadataFile"] = o.FederationMetadataFile
-	}
-	if true {
-		toSerialize["metadataSource"] = o.MetadataSource
-	}
-	if o.SessionTimeout != nil {
-		toSerialize["sessionTimeout"] = o.SessionTimeout
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SsoSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ssoForEnrollmentEnabled"] = o.SsoForEnrollmentEnabled
+	toSerialize["ssoBypassAllowed"] = o.SsoBypassAllowed
+	toSerialize["ssoEnabled"] = o.SsoEnabled
+	toSerialize["ssoForMacOsSelfServiceEnabled"] = o.SsoForMacOsSelfServiceEnabled
+	toSerialize["tokenExpirationDisabled"] = o.TokenExpirationDisabled
+	toSerialize["userAttributeEnabled"] = o.UserAttributeEnabled
+	if !IsNil(o.UserAttributeName) {
+		toSerialize["userAttributeName"] = o.UserAttributeName
+	}
+	toSerialize["userMapping"] = o.UserMapping
+	toSerialize["enrollmentSsoForAdueEnabled"] = o.EnrollmentSsoForAdueEnabled
+	if !IsNil(o.EnrollmentSsoConfig) {
+		toSerialize["enrollmentSsoConfig"] = o.EnrollmentSsoConfig
+	}
+	toSerialize["groupEnrollmentAccessEnabled"] = o.GroupEnrollmentAccessEnabled
+	toSerialize["groupAttributeName"] = o.GroupAttributeName
+	toSerialize["groupRdnKey"] = o.GroupRdnKey
+	if !IsNil(o.GroupEnrollmentAccessName) {
+		toSerialize["groupEnrollmentAccessName"] = o.GroupEnrollmentAccessName
+	}
+	toSerialize["idpProviderType"] = o.IdpProviderType
+	if !IsNil(o.IdpUrl) {
+		toSerialize["idpUrl"] = o.IdpUrl
+	}
+	toSerialize["entityId"] = o.EntityId
+	if !IsNil(o.MetadataFileName) {
+		toSerialize["metadataFileName"] = o.MetadataFileName
+	}
+	if !IsNil(o.OtherProviderTypeName) {
+		toSerialize["otherProviderTypeName"] = o.OtherProviderTypeName
+	}
+	if !IsNil(o.FederationMetadataFile) {
+		toSerialize["federationMetadataFile"] = o.FederationMetadataFile
+	}
+	toSerialize["metadataSource"] = o.MetadataSource
+	if !IsNil(o.SessionTimeout) {
+		toSerialize["sessionTimeout"] = o.SessionTimeout
+	}
+	return toSerialize, nil
 }
 
 type NullableSsoSettings struct {

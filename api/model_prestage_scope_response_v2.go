@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageScopeResponseV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageScopeResponseV2{}
+
 // PrestageScopeResponseV2 struct for PrestageScopeResponseV2
 type PrestageScopeResponseV2 struct {
 	PrestageId *string `json:"prestageId,omitempty"`
@@ -40,7 +43,7 @@ func NewPrestageScopeResponseV2WithDefaults() *PrestageScopeResponseV2 {
 
 // GetPrestageId returns the PrestageId field value if set, zero value otherwise.
 func (o *PrestageScopeResponseV2) GetPrestageId() string {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PrestageScopeResponseV2) GetPrestageId() string {
 // GetPrestageIdOk returns a tuple with the PrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeResponseV2) GetPrestageIdOk() (*string, bool) {
-	if o == nil || o.PrestageId == nil {
+	if o == nil || IsNil(o.PrestageId) {
 		return nil, false
 	}
 	return o.PrestageId, true
@@ -58,7 +61,7 @@ func (o *PrestageScopeResponseV2) GetPrestageIdOk() (*string, bool) {
 
 // HasPrestageId returns a boolean if a field has been set.
 func (o *PrestageScopeResponseV2) HasPrestageId() bool {
-	if o != nil && o.PrestageId != nil {
+	if o != nil && !IsNil(o.PrestageId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PrestageScopeResponseV2) SetPrestageId(v string) {
 
 // GetAssignments returns the Assignments field value if set, zero value otherwise.
 func (o *PrestageScopeResponseV2) GetAssignments() []PrestageScopeAssignmentV2 {
-	if o == nil || o.Assignments == nil {
+	if o == nil || IsNil(o.Assignments) {
 		var ret []PrestageScopeAssignmentV2
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PrestageScopeResponseV2) GetAssignments() []PrestageScopeAssignmentV2 {
 // GetAssignmentsOk returns a tuple with the Assignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeResponseV2) GetAssignmentsOk() ([]PrestageScopeAssignmentV2, bool) {
-	if o == nil || o.Assignments == nil {
+	if o == nil || IsNil(o.Assignments) {
 		return nil, false
 	}
 	return o.Assignments, true
@@ -90,7 +93,7 @@ func (o *PrestageScopeResponseV2) GetAssignmentsOk() ([]PrestageScopeAssignmentV
 
 // HasAssignments returns a boolean if a field has been set.
 func (o *PrestageScopeResponseV2) HasAssignments() bool {
-	if o != nil && o.Assignments != nil {
+	if o != nil && !IsNil(o.Assignments) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *PrestageScopeResponseV2) SetAssignments(v []PrestageScopeAssignmentV2) 
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
 func (o *PrestageScopeResponseV2) GetVersionLock() int32 {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		var ret int32
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *PrestageScopeResponseV2) GetVersionLock() int32 {
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int32, bool) {
-	if o == nil || o.VersionLock == nil {
+	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
 	return o.VersionLock, true
@@ -122,7 +125,7 @@ func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int32, bool) {
 
 // HasVersionLock returns a boolean if a field has been set.
 func (o *PrestageScopeResponseV2) HasVersionLock() bool {
-	if o != nil && o.VersionLock != nil {
+	if o != nil && !IsNil(o.VersionLock) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *PrestageScopeResponseV2) SetVersionLock(v int32) {
 }
 
 func (o PrestageScopeResponseV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.PrestageId != nil {
-		toSerialize["prestageId"] = o.PrestageId
-	}
-	if o.Assignments != nil {
-		toSerialize["assignments"] = o.Assignments
-	}
-	if o.VersionLock != nil {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageScopeResponseV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PrestageId) {
+		toSerialize["prestageId"] = o.PrestageId
+	}
+	if !IsNil(o.Assignments) {
+		toSerialize["assignments"] = o.Assignments
+	}
+	if !IsNil(o.VersionLock) {
+		toSerialize["versionLock"] = o.VersionLock
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageScopeResponseV2 struct {

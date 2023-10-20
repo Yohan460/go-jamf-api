@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerPlugin type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerPlugin{}
+
 // ComputerPlugin struct for ComputerPlugin
 type ComputerPlugin struct {
 	Name *string `json:"name,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerPluginWithDefaults() *ComputerPlugin {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerPlugin) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerPlugin) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPlugin) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -58,7 +61,7 @@ func (o *ComputerPlugin) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerPlugin) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerPlugin) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ComputerPlugin) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerPlugin) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPlugin) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -90,7 +93,7 @@ func (o *ComputerPlugin) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ComputerPlugin) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerPlugin) SetVersion(v string) {
 
 // GetPath returns the Path field value if set, zero value otherwise.
 func (o *ComputerPlugin) GetPath() string {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerPlugin) GetPath() string {
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPlugin) GetPathOk() (*string, bool) {
-	if o == nil || o.Path == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
 	return o.Path, true
@@ -122,7 +125,7 @@ func (o *ComputerPlugin) GetPathOk() (*string, bool) {
 
 // HasPath returns a boolean if a field has been set.
 func (o *ComputerPlugin) HasPath() bool {
-	if o != nil && o.Path != nil {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerPlugin) SetPath(v string) {
 }
 
 func (o ComputerPlugin) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Path != nil {
-		toSerialize["path"] = o.Path
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerPlugin) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerPlugin struct {

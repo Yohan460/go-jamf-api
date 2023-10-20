@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerContentCachingParentAlert type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingParentAlert{}
+
 // ComputerContentCachingParentAlert struct for ComputerContentCachingParentAlert
 type ComputerContentCachingParentAlert struct {
 	ContentCachingParentAlertId *string `json:"contentCachingParentAlertId,omitempty"`
@@ -42,7 +45,7 @@ func NewComputerContentCachingParentAlertWithDefaults() *ComputerContentCachingP
 
 // GetContentCachingParentAlertId returns the ContentCachingParentAlertId field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentAlert) GetContentCachingParentAlertId() string {
-	if o == nil || o.ContentCachingParentAlertId == nil {
+	if o == nil || IsNil(o.ContentCachingParentAlertId) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ComputerContentCachingParentAlert) GetContentCachingParentAlertId() str
 // GetContentCachingParentAlertIdOk returns a tuple with the ContentCachingParentAlertId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentAlert) GetContentCachingParentAlertIdOk() (*string, bool) {
-	if o == nil || o.ContentCachingParentAlertId == nil {
+	if o == nil || IsNil(o.ContentCachingParentAlertId) {
 		return nil, false
 	}
 	return o.ContentCachingParentAlertId, true
@@ -60,7 +63,7 @@ func (o *ComputerContentCachingParentAlert) GetContentCachingParentAlertIdOk() (
 
 // HasContentCachingParentAlertId returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentAlert) HasContentCachingParentAlertId() bool {
-	if o != nil && o.ContentCachingParentAlertId != nil {
+	if o != nil && !IsNil(o.ContentCachingParentAlertId) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ComputerContentCachingParentAlert) SetContentCachingParentAlertId(v str
 
 // GetAddresses returns the Addresses field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentAlert) GetAddresses() []string {
-	if o == nil || o.Addresses == nil {
+	if o == nil || IsNil(o.Addresses) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ComputerContentCachingParentAlert) GetAddresses() []string {
 // GetAddressesOk returns a tuple with the Addresses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentAlert) GetAddressesOk() ([]string, bool) {
-	if o == nil || o.Addresses == nil {
+	if o == nil || IsNil(o.Addresses) {
 		return nil, false
 	}
 	return o.Addresses, true
@@ -92,7 +95,7 @@ func (o *ComputerContentCachingParentAlert) GetAddressesOk() ([]string, bool) {
 
 // HasAddresses returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentAlert) HasAddresses() bool {
-	if o != nil && o.Addresses != nil {
+	if o != nil && !IsNil(o.Addresses) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ComputerContentCachingParentAlert) SetAddresses(v []string) {
 
 // GetClassName returns the ClassName field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentAlert) GetClassName() string {
-	if o == nil || o.ClassName == nil {
+	if o == nil || IsNil(o.ClassName) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ComputerContentCachingParentAlert) GetClassName() string {
 // GetClassNameOk returns a tuple with the ClassName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentAlert) GetClassNameOk() (*string, bool) {
-	if o == nil || o.ClassName == nil {
+	if o == nil || IsNil(o.ClassName) {
 		return nil, false
 	}
 	return o.ClassName, true
@@ -124,7 +127,7 @@ func (o *ComputerContentCachingParentAlert) GetClassNameOk() (*string, bool) {
 
 // HasClassName returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentAlert) HasClassName() bool {
-	if o != nil && o.ClassName != nil {
+	if o != nil && !IsNil(o.ClassName) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ComputerContentCachingParentAlert) SetClassName(v string) {
 
 // GetPostDate returns the PostDate field value if set, zero value otherwise.
 func (o *ComputerContentCachingParentAlert) GetPostDate() time.Time {
-	if o == nil || o.PostDate == nil {
+	if o == nil || IsNil(o.PostDate) {
 		var ret time.Time
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ComputerContentCachingParentAlert) GetPostDate() time.Time {
 // GetPostDateOk returns a tuple with the PostDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingParentAlert) GetPostDateOk() (*time.Time, bool) {
-	if o == nil || o.PostDate == nil {
+	if o == nil || IsNil(o.PostDate) {
 		return nil, false
 	}
 	return o.PostDate, true
@@ -156,7 +159,7 @@ func (o *ComputerContentCachingParentAlert) GetPostDateOk() (*time.Time, bool) {
 
 // HasPostDate returns a boolean if a field has been set.
 func (o *ComputerContentCachingParentAlert) HasPostDate() bool {
-	if o != nil && o.PostDate != nil {
+	if o != nil && !IsNil(o.PostDate) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *ComputerContentCachingParentAlert) SetPostDate(v time.Time) {
 }
 
 func (o ComputerContentCachingParentAlert) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ContentCachingParentAlertId != nil {
-		toSerialize["contentCachingParentAlertId"] = o.ContentCachingParentAlertId
-	}
-	if o.Addresses != nil {
-		toSerialize["addresses"] = o.Addresses
-	}
-	if o.ClassName != nil {
-		toSerialize["className"] = o.ClassName
-	}
-	if o.PostDate != nil {
-		toSerialize["postDate"] = o.PostDate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingParentAlert) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ContentCachingParentAlertId) {
+		toSerialize["contentCachingParentAlertId"] = o.ContentCachingParentAlertId
+	}
+	if !IsNil(o.Addresses) {
+		toSerialize["addresses"] = o.Addresses
+	}
+	if !IsNil(o.ClassName) {
+		toSerialize["className"] = o.ClassName
+	}
+	if !IsNil(o.PostDate) {
+		toSerialize["postDate"] = o.PostDate
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingParentAlert struct {

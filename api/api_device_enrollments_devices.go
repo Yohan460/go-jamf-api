@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type DeviceEnrollmentsDevicesApi interface {
+type DeviceEnrollmentsDevicesAPI interface {
 
 	/*
 	V1DeviceEnrollmentsIdDevicesGet Retrieve a list of Devices assigned to the supplied id 
@@ -29,25 +29,25 @@ type DeviceEnrollmentsDevicesApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdDevicesGetRequest
+	@return DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest
 	*/
-	V1DeviceEnrollmentsIdDevicesGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDevicesGetRequest
+	V1DeviceEnrollmentsIdDevicesGet(ctx context.Context, id string) DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest
 
 	// V1DeviceEnrollmentsIdDevicesGetExecute executes the request
 	//  @return DeviceEnrollmentDeviceSearchResults
-	V1DeviceEnrollmentsIdDevicesGetExecute(r ApiV1DeviceEnrollmentsIdDevicesGetRequest) (*DeviceEnrollmentDeviceSearchResults, *http.Response, error)
+	V1DeviceEnrollmentsIdDevicesGetExecute(r DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest) (*DeviceEnrollmentDeviceSearchResults, *http.Response, error)
 }
 
-// DeviceEnrollmentsDevicesApiService DeviceEnrollmentsDevicesApi service
-type DeviceEnrollmentsDevicesApiService service
+// DeviceEnrollmentsDevicesAPIService DeviceEnrollmentsDevicesAPI service
+type DeviceEnrollmentsDevicesAPIService service
 
-type ApiV1DeviceEnrollmentsIdDevicesGetRequest struct {
+type DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsDevicesApi
+	ApiService DeviceEnrollmentsDevicesAPI
 	id string
 }
 
-func (r ApiV1DeviceEnrollmentsIdDevicesGetRequest) Execute() (*DeviceEnrollmentDeviceSearchResults, *http.Response, error) {
+func (r DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest) Execute() (*DeviceEnrollmentDeviceSearchResults, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdDevicesGetExecute(r)
 }
 
@@ -58,10 +58,10 @@ Retrieves a list of devices assigned to the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdDevicesGetRequest
+ @return DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest
 */
-func (a *DeviceEnrollmentsDevicesApiService) V1DeviceEnrollmentsIdDevicesGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDevicesGetRequest {
-	return ApiV1DeviceEnrollmentsIdDevicesGetRequest{
+func (a *DeviceEnrollmentsDevicesAPIService) V1DeviceEnrollmentsIdDevicesGet(ctx context.Context, id string) DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest {
+	return DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -70,7 +70,7 @@ func (a *DeviceEnrollmentsDevicesApiService) V1DeviceEnrollmentsIdDevicesGet(ctx
 
 // Execute executes the request
 //  @return DeviceEnrollmentDeviceSearchResults
-func (a *DeviceEnrollmentsDevicesApiService) V1DeviceEnrollmentsIdDevicesGetExecute(r ApiV1DeviceEnrollmentsIdDevicesGetRequest) (*DeviceEnrollmentDeviceSearchResults, *http.Response, error) {
+func (a *DeviceEnrollmentsDevicesAPIService) V1DeviceEnrollmentsIdDevicesGetExecute(r DeviceEnrollmentsDevicesAPIV1DeviceEnrollmentsIdDevicesGetRequest) (*DeviceEnrollmentDeviceSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -78,13 +78,13 @@ func (a *DeviceEnrollmentsDevicesApiService) V1DeviceEnrollmentsIdDevicesGetExec
 		localVarReturnValue  *DeviceEnrollmentDeviceSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsDevicesApiService.V1DeviceEnrollmentsIdDevicesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsDevicesAPIService.V1DeviceEnrollmentsIdDevicesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/devices"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -117,9 +117,9 @@ func (a *DeviceEnrollmentsDevicesApiService) V1DeviceEnrollmentsIdDevicesGetExec
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

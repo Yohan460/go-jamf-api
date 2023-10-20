@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the V1Site type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &V1Site{}
+
 // V1Site struct for V1Site
 type V1Site struct {
 	Id *string `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewV1SiteWithDefaults() *V1Site {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *V1Site) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *V1Site) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1Site) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -57,7 +60,7 @@ func (o *V1Site) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *V1Site) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *V1Site) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *V1Site) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *V1Site) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *V1Site) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -89,7 +92,7 @@ func (o *V1Site) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *V1Site) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *V1Site) SetName(v string) {
 }
 
 func (o V1Site) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o V1Site) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	return toSerialize, nil
 }
 
 type NullableV1Site struct {

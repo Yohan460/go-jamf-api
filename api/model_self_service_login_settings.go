@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SelfServiceLoginSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SelfServiceLoginSettings{}
+
 // SelfServiceLoginSettings object representation of Self Service settings regarding login 
 type SelfServiceLoginSettings struct {
 	// login setting to tell clients how to let users log in 
@@ -73,7 +76,7 @@ func (o *SelfServiceLoginSettings) SetUserLoginLevel(v string) {
 
 // GetAllowRememberMe returns the AllowRememberMe field value if set, zero value otherwise.
 func (o *SelfServiceLoginSettings) GetAllowRememberMe() bool {
-	if o == nil || o.AllowRememberMe == nil {
+	if o == nil || IsNil(o.AllowRememberMe) {
 		var ret bool
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *SelfServiceLoginSettings) GetAllowRememberMe() bool {
 // GetAllowRememberMeOk returns a tuple with the AllowRememberMe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceLoginSettings) GetAllowRememberMeOk() (*bool, bool) {
-	if o == nil || o.AllowRememberMe == nil {
+	if o == nil || IsNil(o.AllowRememberMe) {
 		return nil, false
 	}
 	return o.AllowRememberMe, true
@@ -91,7 +94,7 @@ func (o *SelfServiceLoginSettings) GetAllowRememberMeOk() (*bool, bool) {
 
 // HasAllowRememberMe returns a boolean if a field has been set.
 func (o *SelfServiceLoginSettings) HasAllowRememberMe() bool {
-	if o != nil && o.AllowRememberMe != nil {
+	if o != nil && !IsNil(o.AllowRememberMe) {
 		return true
 	}
 
@@ -128,17 +131,21 @@ func (o *SelfServiceLoginSettings) SetAuthType(v string) {
 }
 
 func (o SelfServiceLoginSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["userLoginLevel"] = o.UserLoginLevel
-	}
-	if o.AllowRememberMe != nil {
-		toSerialize["allowRememberMe"] = o.AllowRememberMe
-	}
-	if true {
-		toSerialize["authType"] = o.AuthType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SelfServiceLoginSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["userLoginLevel"] = o.UserLoginLevel
+	if !IsNil(o.AllowRememberMe) {
+		toSerialize["allowRememberMe"] = o.AllowRememberMe
+	}
+	toSerialize["authType"] = o.AuthType
+	return toSerialize, nil
 }
 
 type NullableSelfServiceLoginSettings struct {

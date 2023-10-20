@@ -13,7 +13,7 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
@@ -22,7 +22,7 @@ import (
 )
 
 
-type DeviceEnrollmentsApi interface {
+type DeviceEnrollmentsAPI interface {
 
 	/*
 	V1DeviceEnrollmentsGet Read all sorted and paged Device Enrollment instances 
@@ -30,13 +30,13 @@ type DeviceEnrollmentsApi interface {
 	Search for sorted and paged device enrollment instances
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceEnrollmentsGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest
 	*/
-	V1DeviceEnrollmentsGet(ctx context.Context) ApiV1DeviceEnrollmentsGetRequest
+	V1DeviceEnrollmentsGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest
 
 	// V1DeviceEnrollmentsGetExecute executes the request
 	//  @return DeviceEnrollmentInstanceSearchResults
-	V1DeviceEnrollmentsGetExecute(r ApiV1DeviceEnrollmentsGetRequest) (*DeviceEnrollmentInstanceSearchResults, *http.Response, error)
+	V1DeviceEnrollmentsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) (*DeviceEnrollmentInstanceSearchResults, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdDelete Delete a Device Enrollment Instance with the supplied id 
@@ -45,12 +45,12 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdDeleteRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest
 	*/
-	V1DeviceEnrollmentsIdDelete(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDeleteRequest
+	V1DeviceEnrollmentsIdDelete(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest
 
 	// V1DeviceEnrollmentsIdDeleteExecute executes the request
-	V1DeviceEnrollmentsIdDeleteExecute(r ApiV1DeviceEnrollmentsIdDeleteRequest) (*http.Response, error)
+	V1DeviceEnrollmentsIdDeleteExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdDisownPost Disown devices from the given Device Enrollment Instance 
@@ -59,13 +59,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdDisownPostRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest
 	*/
-	V1DeviceEnrollmentsIdDisownPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDisownPostRequest
+	V1DeviceEnrollmentsIdDisownPost(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest
 
 	// V1DeviceEnrollmentsIdDisownPostExecute executes the request
 	//  @return DeviceEnrollmentDisownResponse
-	V1DeviceEnrollmentsIdDisownPostExecute(r ApiV1DeviceEnrollmentsIdDisownPostRequest) (*DeviceEnrollmentDisownResponse, *http.Response, error)
+	V1DeviceEnrollmentsIdDisownPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest) (*DeviceEnrollmentDisownResponse, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdGet Retrieve a Device Enrollment Instance with the supplied id 
@@ -74,13 +74,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest
 	*/
-	V1DeviceEnrollmentsIdGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdGetRequest
+	V1DeviceEnrollmentsIdGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest
 
 	// V1DeviceEnrollmentsIdGetExecute executes the request
 	//  @return DeviceEnrollmentInstance
-	V1DeviceEnrollmentsIdGetExecute(r ApiV1DeviceEnrollmentsIdGetRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+	V1DeviceEnrollmentsIdGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest) (*DeviceEnrollmentInstance, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdHistoryGet Get sorted and paged Device Enrollment history objects 
@@ -89,13 +89,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdHistoryGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest
 	*/
-	V1DeviceEnrollmentsIdHistoryGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryGetRequest
+	V1DeviceEnrollmentsIdHistoryGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest
 
 	// V1DeviceEnrollmentsIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1DeviceEnrollmentsIdHistoryGetExecute(r ApiV1DeviceEnrollmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1DeviceEnrollmentsIdHistoryGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdHistoryPost Add Device Enrollment history object notes 
@@ -104,13 +104,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdHistoryPostRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest
 	*/
-	V1DeviceEnrollmentsIdHistoryPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryPostRequest
+	V1DeviceEnrollmentsIdHistoryPost(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest
 
 	// V1DeviceEnrollmentsIdHistoryPostExecute executes the request
 	//  @return HrefResponse
-	V1DeviceEnrollmentsIdHistoryPostExecute(r ApiV1DeviceEnrollmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+	V1DeviceEnrollmentsIdHistoryPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdPut Update a Device Enrollment Instance with the supplied id 
@@ -119,13 +119,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdPutRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest
 	*/
-	V1DeviceEnrollmentsIdPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdPutRequest
+	V1DeviceEnrollmentsIdPut(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest
 
 	// V1DeviceEnrollmentsIdPutExecute executes the request
 	//  @return DeviceEnrollmentInstance
-	V1DeviceEnrollmentsIdPutExecute(r ApiV1DeviceEnrollmentsIdPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+	V1DeviceEnrollmentsIdPutExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdSyncsGet Get all instance sync states for a single Device Enrollment Instance 
@@ -134,13 +134,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdSyncsGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest
 	*/
-	V1DeviceEnrollmentsIdSyncsGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsGetRequest
+	V1DeviceEnrollmentsIdSyncsGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest
 
 	// V1DeviceEnrollmentsIdSyncsGetExecute executes the request
 	//  @return []DeviceEnrollmentInstanceSyncStatus
-	V1DeviceEnrollmentsIdSyncsGetExecute(r ApiV1DeviceEnrollmentsIdSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+	V1DeviceEnrollmentsIdSyncsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdSyncsLatestGet Get the latest sync state for a single Device Enrollment Instance 
@@ -149,13 +149,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest
 	*/
-	V1DeviceEnrollmentsIdSyncsLatestGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest
+	V1DeviceEnrollmentsIdSyncsLatestGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest
 
 	// V1DeviceEnrollmentsIdSyncsLatestGetExecute executes the request
 	//  @return DeviceEnrollmentInstanceSyncStatus
-	V1DeviceEnrollmentsIdSyncsLatestGetExecute(r ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest) (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+	V1DeviceEnrollmentsIdSyncsLatestGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest) (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsIdUploadTokenPut Update a Device Enrollment Instance with the supplied Token 
@@ -164,13 +164,13 @@ type DeviceEnrollmentsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Device Enrollment Instance identifier
-	@return ApiV1DeviceEnrollmentsIdUploadTokenPutRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest
 	*/
-	V1DeviceEnrollmentsIdUploadTokenPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdUploadTokenPutRequest
+	V1DeviceEnrollmentsIdUploadTokenPut(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest
 
 	// V1DeviceEnrollmentsIdUploadTokenPutExecute executes the request
 	//  @return DeviceEnrollmentInstance
-	V1DeviceEnrollmentsIdUploadTokenPutExecute(r ApiV1DeviceEnrollmentsIdUploadTokenPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
+	V1DeviceEnrollmentsIdUploadTokenPutExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest) (*DeviceEnrollmentInstance, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsPublicKeyGet Retrieve the Jamf Pro Device Enrollment public key 
@@ -178,13 +178,13 @@ type DeviceEnrollmentsApi interface {
 	Retrieve the Jamf Pro device enrollment public key
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceEnrollmentsPublicKeyGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest
 	*/
-	V1DeviceEnrollmentsPublicKeyGet(ctx context.Context) ApiV1DeviceEnrollmentsPublicKeyGetRequest
+	V1DeviceEnrollmentsPublicKeyGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest
 
 	// V1DeviceEnrollmentsPublicKeyGetExecute executes the request
 	//  @return *os.File
-	V1DeviceEnrollmentsPublicKeyGetExecute(r ApiV1DeviceEnrollmentsPublicKeyGetRequest) (**os.File, *http.Response, error)
+	V1DeviceEnrollmentsPublicKeyGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest) (*os.File, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsSyncsGet Get all instance sync states for all Device Enrollment Instances 
@@ -192,13 +192,13 @@ type DeviceEnrollmentsApi interface {
 	Get all instance sync states for all instances
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceEnrollmentsSyncsGetRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest
 	*/
-	V1DeviceEnrollmentsSyncsGet(ctx context.Context) ApiV1DeviceEnrollmentsSyncsGetRequest
+	V1DeviceEnrollmentsSyncsGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest
 
 	// V1DeviceEnrollmentsSyncsGetExecute executes the request
 	//  @return []DeviceEnrollmentInstanceSyncStatus
-	V1DeviceEnrollmentsSyncsGetExecute(r ApiV1DeviceEnrollmentsSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
+	V1DeviceEnrollmentsSyncsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error)
 
 	/*
 	V1DeviceEnrollmentsUploadTokenPost Create a Device Enrollment Instance with the supplied Token 
@@ -206,43 +206,43 @@ type DeviceEnrollmentsApi interface {
 	Creates a device enrollment instance with the supplied token.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeviceEnrollmentsUploadTokenPostRequest
+	@return DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest
 	*/
-	V1DeviceEnrollmentsUploadTokenPost(ctx context.Context) ApiV1DeviceEnrollmentsUploadTokenPostRequest
+	V1DeviceEnrollmentsUploadTokenPost(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest
 
 	// V1DeviceEnrollmentsUploadTokenPostExecute executes the request
 	//  @return HrefResponse
-	V1DeviceEnrollmentsUploadTokenPostExecute(r ApiV1DeviceEnrollmentsUploadTokenPostRequest) (*HrefResponse, *http.Response, error)
+	V1DeviceEnrollmentsUploadTokenPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// DeviceEnrollmentsApiService DeviceEnrollmentsApi service
-type DeviceEnrollmentsApiService service
+// DeviceEnrollmentsAPIService DeviceEnrollmentsAPI service
+type DeviceEnrollmentsAPIService service
 
-type ApiV1DeviceEnrollmentsGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	page *int32
 	pageSize *int32
 	sort *[]string
 }
 
-func (r ApiV1DeviceEnrollmentsGetRequest) Page(page int32) ApiV1DeviceEnrollmentsGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) Page(page int32) DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsGetRequest) PageSize(pageSize int32) ApiV1DeviceEnrollmentsGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) PageSize(pageSize int32) DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1DeviceEnrollmentsGetRequest) Sort(sort []string) ApiV1DeviceEnrollmentsGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) Sort(sort []string) DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsGetRequest) Execute() (*DeviceEnrollmentInstanceSearchResults, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) Execute() (*DeviceEnrollmentInstanceSearchResults, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsGetExecute(r)
 }
 
@@ -252,10 +252,10 @@ V1DeviceEnrollmentsGet Read all sorted and paged Device Enrollment instances
 Search for sorted and paged device enrollment instances
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceEnrollmentsGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGet(ctx context.Context) ApiV1DeviceEnrollmentsGetRequest {
-	return ApiV1DeviceEnrollmentsGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -263,7 +263,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGet(ctx context.Context
 
 // Execute executes the request
 //  @return DeviceEnrollmentInstanceSearchResults
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1DeviceEnrollmentsGetRequest) (*DeviceEnrollmentInstanceSearchResults, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsGetRequest) (*DeviceEnrollmentInstanceSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -271,7 +271,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1Devic
 		localVarReturnValue  *DeviceEnrollmentInstanceSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -283,21 +283,30 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1Devic
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"id:asc"}
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -326,9 +335,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1Devic
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -353,13 +362,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsGetExecute(r ApiV1Devic
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdDeleteRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 }
 
-func (r ApiV1DeviceEnrollmentsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdDeleteExecute(r)
 }
 
@@ -370,10 +379,10 @@ Deletes a Device Enrollment Instance with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdDeleteRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDelete(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDeleteRequest {
-	return ApiV1DeviceEnrollmentsIdDeleteRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdDelete(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -381,20 +390,20 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDelete(ctx context.Co
 }
 
 // Execute executes the request
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDeleteExecute(r ApiV1DeviceEnrollmentsIdDeleteRequest) (*http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdDeleteExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -427,9 +436,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDeleteExecute(r ApiV1
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -446,7 +455,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDeleteExecute(r ApiV1
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -454,20 +464,20 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDeleteExecute(r ApiV1
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdDisownPostRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 	deviceEnrollmentDisownBody *DeviceEnrollmentDisownBody
 }
 
 // List of device serial numbers to disown
-func (r ApiV1DeviceEnrollmentsIdDisownPostRequest) DeviceEnrollmentDisownBody(deviceEnrollmentDisownBody DeviceEnrollmentDisownBody) ApiV1DeviceEnrollmentsIdDisownPostRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest) DeviceEnrollmentDisownBody(deviceEnrollmentDisownBody DeviceEnrollmentDisownBody) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest {
 	r.deviceEnrollmentDisownBody = &deviceEnrollmentDisownBody
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdDisownPostRequest) Execute() (*DeviceEnrollmentDisownResponse, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest) Execute() (*DeviceEnrollmentDisownResponse, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdDisownPostExecute(r)
 }
 
@@ -478,10 +488,10 @@ Disowns devices from the given device enrollment instance
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdDisownPostRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdDisownPostRequest {
-	return ApiV1DeviceEnrollmentsIdDisownPostRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdDisownPost(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -490,7 +500,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPost(ctx contex
 
 // Execute executes the request
 //  @return DeviceEnrollmentDisownResponse
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPostExecute(r ApiV1DeviceEnrollmentsIdDisownPostRequest) (*DeviceEnrollmentDisownResponse, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdDisownPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdDisownPostRequest) (*DeviceEnrollmentDisownResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -498,13 +508,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPostExecute(r A
 		localVarReturnValue  *DeviceEnrollmentDisownResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdDisownPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdDisownPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/disown"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -539,9 +549,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPostExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -566,13 +576,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdDisownPostExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 }
 
-func (r ApiV1DeviceEnrollmentsIdGetRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdGetExecute(r)
 }
 
@@ -583,10 +593,10 @@ Retrieves a Device Enrollment Instance with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdGetRequest {
-	return ApiV1DeviceEnrollmentsIdGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -595,7 +605,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGet(ctx context.Conte
 
 // Execute executes the request
 //  @return DeviceEnrollmentInstance
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1DeviceEnrollmentsIdGetRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdGetRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -603,13 +613,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1Dev
 		localVarReturnValue  *DeviceEnrollmentInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -642,9 +652,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1Dev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -661,7 +671,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1Dev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -678,9 +689,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdGetExecute(r ApiV1Dev
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdHistoryGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 	page *int32
 	pageSize *int32
@@ -688,29 +699,29 @@ type ApiV1DeviceEnrollmentsIdHistoryGetRequest struct {
 	filter *string
 }
 
-func (r ApiV1DeviceEnrollmentsIdHistoryGetRequest) Page(page int32) ApiV1DeviceEnrollmentsIdHistoryGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) Page(page int32) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1DeviceEnrollmentsIdHistoryGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) PageSize(pageSize int32) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r ApiV1DeviceEnrollmentsIdHistoryGetRequest) Sort(sort []string) ApiV1DeviceEnrollmentsIdHistoryGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) Sort(sort []string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
 // Query in the RSQL format, allowing to filter history notes collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: search&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1DeviceEnrollmentsIdHistoryGetRequest) Filter(filter string) ApiV1DeviceEnrollmentsIdHistoryGetRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) Filter(filter string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdHistoryGetExecute(r)
 }
 
@@ -721,10 +732,10 @@ Gets sorted and paged device enrollment history objects
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdHistoryGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryGetRequest {
-	return ApiV1DeviceEnrollmentsIdHistoryGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdHistoryGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -733,7 +744,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGet(ctx contex
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGetExecute(r ApiV1DeviceEnrollmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdHistoryGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -741,37 +752,49 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGetExecute(r A
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
 		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -800,9 +823,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -827,20 +850,20 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdHistoryPostRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV1DeviceEnrollmentsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1DeviceEnrollmentsIdHistoryPostRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdHistoryPostExecute(r)
 }
 
@@ -851,10 +874,10 @@ Adds device enrollment history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdHistoryPostRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPost(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdHistoryPostRequest {
-	return ApiV1DeviceEnrollmentsIdHistoryPostRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdHistoryPost(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -863,7 +886,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPost(ctx conte
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r ApiV1DeviceEnrollmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdHistoryPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -871,13 +894,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r 
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -915,9 +938,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r 
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -934,7 +957,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -951,19 +975,19 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdHistoryPostExecute(r 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdPutRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 	deviceEnrollmentInstance *DeviceEnrollmentInstance
 }
 
-func (r ApiV1DeviceEnrollmentsIdPutRequest) DeviceEnrollmentInstance(deviceEnrollmentInstance DeviceEnrollmentInstance) ApiV1DeviceEnrollmentsIdPutRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest) DeviceEnrollmentInstance(deviceEnrollmentInstance DeviceEnrollmentInstance) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest {
 	r.deviceEnrollmentInstance = &deviceEnrollmentInstance
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdPutRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdPutExecute(r)
 }
 
@@ -974,10 +998,10 @@ Updates a Device Enrollment Instance with the supplied id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdPutRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdPutRequest {
-	return ApiV1DeviceEnrollmentsIdPutRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdPut(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -986,7 +1010,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPut(ctx context.Conte
 
 // Execute executes the request
 //  @return DeviceEnrollmentInstance
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1DeviceEnrollmentsIdPutRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdPutExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdPutRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -994,13 +1018,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1Dev
 		localVarReturnValue  *DeviceEnrollmentInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1038,9 +1062,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1Dev
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1057,7 +1081,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1Dev
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1074,13 +1099,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdPutExecute(r ApiV1Dev
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdSyncsGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 }
 
-func (r ApiV1DeviceEnrollmentsIdSyncsGetRequest) Execute() ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest) Execute() ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdSyncsGetExecute(r)
 }
 
@@ -1091,10 +1116,10 @@ Get all instance sync states for a single instance
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdSyncsGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsGetRequest {
-	return ApiV1DeviceEnrollmentsIdSyncsGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdSyncsGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1103,7 +1128,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGet(ctx context.
 
 // Execute executes the request
 //  @return []DeviceEnrollmentInstanceSyncStatus
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGetExecute(r ApiV1DeviceEnrollmentsIdSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdSyncsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1111,13 +1136,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGetExecute(r Api
 		localVarReturnValue  []DeviceEnrollmentInstanceSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdSyncsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdSyncsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/syncs"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1150,9 +1175,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGetExecute(r Api
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1177,13 +1202,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsGetExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 }
 
-func (r ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest) Execute() (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest) Execute() (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdSyncsLatestGetExecute(r)
 }
 
@@ -1194,10 +1219,10 @@ Get the latest sync state for a single instance
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGet(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest {
-	return ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdSyncsLatestGet(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1206,7 +1231,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGet(ctx co
 
 // Execute executes the request
 //  @return DeviceEnrollmentInstanceSyncStatus
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGetExecute(r ApiV1DeviceEnrollmentsIdSyncsLatestGetRequest) (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdSyncsLatestGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdSyncsLatestGetRequest) (*DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1214,13 +1239,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGetExecute
 		localVarReturnValue  *DeviceEnrollmentInstanceSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdSyncsLatestGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdSyncsLatestGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/syncs/latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1253,9 +1278,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGetExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1280,20 +1305,20 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdSyncsLatestGetExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsIdUploadTokenPutRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	id string
 	deviceEnrollmentToken *DeviceEnrollmentToken
 }
 
 // The downloaded token base 64 encoded from the MDM server to be used to create a new Device Enrollment Instance.
-func (r ApiV1DeviceEnrollmentsIdUploadTokenPutRequest) DeviceEnrollmentToken(deviceEnrollmentToken DeviceEnrollmentToken) ApiV1DeviceEnrollmentsIdUploadTokenPutRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest) DeviceEnrollmentToken(deviceEnrollmentToken DeviceEnrollmentToken) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest {
 	r.deviceEnrollmentToken = &deviceEnrollmentToken
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsIdUploadTokenPutRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest) Execute() (*DeviceEnrollmentInstance, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsIdUploadTokenPutExecute(r)
 }
 
@@ -1304,10 +1329,10 @@ Updates a device enrollment instance with the supplied token.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Device Enrollment Instance identifier
- @return ApiV1DeviceEnrollmentsIdUploadTokenPutRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPut(ctx context.Context, id string) ApiV1DeviceEnrollmentsIdUploadTokenPutRequest {
-	return ApiV1DeviceEnrollmentsIdUploadTokenPutRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdUploadTokenPut(ctx context.Context, id string) DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -1316,7 +1341,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPut(ctx co
 
 // Execute executes the request
 //  @return DeviceEnrollmentInstance
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute(r ApiV1DeviceEnrollmentsIdUploadTokenPutRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsIdUploadTokenPutExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsIdUploadTokenPutRequest) (*DeviceEnrollmentInstance, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1324,13 +1349,13 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 		localVarReturnValue  *DeviceEnrollmentInstance
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsIdUploadTokenPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsIdUploadTokenPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/device-enrollments/{id}/upload-token"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1368,9 +1393,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1387,7 +1412,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1397,7 +1423,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1414,12 +1441,12 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsIdUploadTokenPutExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsPublicKeyGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 }
 
-func (r ApiV1DeviceEnrollmentsPublicKeyGetRequest) Execute() (**os.File, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest) Execute() (*os.File, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsPublicKeyGetExecute(r)
 }
 
@@ -1429,10 +1456,10 @@ V1DeviceEnrollmentsPublicKeyGet Retrieve the Jamf Pro Device Enrollment public k
 Retrieve the Jamf Pro device enrollment public key
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceEnrollmentsPublicKeyGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGet(ctx context.Context) ApiV1DeviceEnrollmentsPublicKeyGetRequest {
-	return ApiV1DeviceEnrollmentsPublicKeyGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsPublicKeyGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1440,15 +1467,15 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGet(ctx contex
 
 // Execute executes the request
 //  @return *os.File
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGetExecute(r ApiV1DeviceEnrollmentsPublicKeyGetRequest) (**os.File, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsPublicKeyGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsPublicKeyGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  **os.File
+		localVarReturnValue  *os.File
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsPublicKeyGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsPublicKeyGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1486,9 +1513,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1513,12 +1540,12 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsPublicKeyGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsSyncsGetRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 }
 
-func (r ApiV1DeviceEnrollmentsSyncsGetRequest) Execute() ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest) Execute() ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsSyncsGetExecute(r)
 }
 
@@ -1528,10 +1555,10 @@ V1DeviceEnrollmentsSyncsGet Get all instance sync states for all Device Enrollme
 Get all instance sync states for all instances
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceEnrollmentsSyncsGetRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGet(ctx context.Context) ApiV1DeviceEnrollmentsSyncsGetRequest {
-	return ApiV1DeviceEnrollmentsSyncsGetRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsSyncsGet(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1539,7 +1566,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGet(ctx context.Co
 
 // Execute executes the request
 //  @return []DeviceEnrollmentInstanceSyncStatus
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGetExecute(r ApiV1DeviceEnrollmentsSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsSyncsGetExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsSyncsGetRequest) ([]DeviceEnrollmentInstanceSyncStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -1547,7 +1574,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGetExecute(r ApiV1
 		localVarReturnValue  []DeviceEnrollmentInstanceSyncStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsSyncsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsSyncsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1585,9 +1612,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1612,19 +1639,19 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsSyncsGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeviceEnrollmentsUploadTokenPostRequest struct {
+type DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest struct {
 	ctx context.Context
-	ApiService DeviceEnrollmentsApi
+	ApiService DeviceEnrollmentsAPI
 	deviceEnrollmentToken *DeviceEnrollmentToken
 }
 
 // The downloaded token base 64 encoded from the MDM server to be used to create a new Device Enrollment Instance.
-func (r ApiV1DeviceEnrollmentsUploadTokenPostRequest) DeviceEnrollmentToken(deviceEnrollmentToken DeviceEnrollmentToken) ApiV1DeviceEnrollmentsUploadTokenPostRequest {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest) DeviceEnrollmentToken(deviceEnrollmentToken DeviceEnrollmentToken) DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest {
 	r.deviceEnrollmentToken = &deviceEnrollmentToken
 	return r
 }
 
-func (r ApiV1DeviceEnrollmentsUploadTokenPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V1DeviceEnrollmentsUploadTokenPostExecute(r)
 }
 
@@ -1634,10 +1661,10 @@ V1DeviceEnrollmentsUploadTokenPost Create a Device Enrollment Instance with the 
 Creates a device enrollment instance with the supplied token.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeviceEnrollmentsUploadTokenPostRequest
+ @return DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest
 */
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPost(ctx context.Context) ApiV1DeviceEnrollmentsUploadTokenPostRequest {
-	return ApiV1DeviceEnrollmentsUploadTokenPostRequest{
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsUploadTokenPost(ctx context.Context) DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest {
+	return DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1645,7 +1672,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPost(ctx con
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPostExecute(r ApiV1DeviceEnrollmentsUploadTokenPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *DeviceEnrollmentsAPIService) V1DeviceEnrollmentsUploadTokenPostExecute(r DeviceEnrollmentsAPIV1DeviceEnrollmentsUploadTokenPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1653,7 +1680,7 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPostExecute(
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsApiService.V1DeviceEnrollmentsUploadTokenPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DeviceEnrollmentsAPIService.V1DeviceEnrollmentsUploadTokenPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1696,9 +1723,9 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPostExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1715,7 +1742,8 @@ func (a *DeviceEnrollmentsApiService) V1DeviceEnrollmentsUploadTokenPostExecute(
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

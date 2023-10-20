@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerDisk type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerDisk{}
+
 // ComputerDisk struct for ComputerDisk
 type ComputerDisk struct {
 	Id *string `json:"id,omitempty"`
@@ -49,7 +52,7 @@ func NewComputerDiskWithDefaults() *ComputerDisk {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ComputerDisk) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *ComputerDisk) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +70,7 @@ func (o *ComputerDisk) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ComputerDisk) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *ComputerDisk) SetId(v string) {
 
 // GetDevice returns the Device field value if set, zero value otherwise.
 func (o *ComputerDisk) GetDevice() string {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *ComputerDisk) GetDevice() string {
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetDeviceOk() (*string, bool) {
-	if o == nil || o.Device == nil {
+	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
 	return o.Device, true
@@ -99,7 +102,7 @@ func (o *ComputerDisk) GetDeviceOk() (*string, bool) {
 
 // HasDevice returns a boolean if a field has been set.
 func (o *ComputerDisk) HasDevice() bool {
-	if o != nil && o.Device != nil {
+	if o != nil && !IsNil(o.Device) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *ComputerDisk) SetDevice(v string) {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *ComputerDisk) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *ComputerDisk) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -131,7 +134,7 @@ func (o *ComputerDisk) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *ComputerDisk) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *ComputerDisk) SetModel(v string) {
 
 // GetRevision returns the Revision field value if set, zero value otherwise.
 func (o *ComputerDisk) GetRevision() string {
-	if o == nil || o.Revision == nil {
+	if o == nil || IsNil(o.Revision) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *ComputerDisk) GetRevision() string {
 // GetRevisionOk returns a tuple with the Revision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetRevisionOk() (*string, bool) {
-	if o == nil || o.Revision == nil {
+	if o == nil || IsNil(o.Revision) {
 		return nil, false
 	}
 	return o.Revision, true
@@ -163,7 +166,7 @@ func (o *ComputerDisk) GetRevisionOk() (*string, bool) {
 
 // HasRevision returns a boolean if a field has been set.
 func (o *ComputerDisk) HasRevision() bool {
-	if o != nil && o.Revision != nil {
+	if o != nil && !IsNil(o.Revision) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *ComputerDisk) SetRevision(v string) {
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
 func (o *ComputerDisk) GetSerialNumber() string {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *ComputerDisk) GetSerialNumber() string {
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetSerialNumberOk() (*string, bool) {
-	if o == nil || o.SerialNumber == nil {
+	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
 	return o.SerialNumber, true
@@ -195,7 +198,7 @@ func (o *ComputerDisk) GetSerialNumberOk() (*string, bool) {
 
 // HasSerialNumber returns a boolean if a field has been set.
 func (o *ComputerDisk) HasSerialNumber() bool {
-	if o != nil && o.SerialNumber != nil {
+	if o != nil && !IsNil(o.SerialNumber) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *ComputerDisk) SetSerialNumber(v string) {
 
 // GetSizeMegabytes returns the SizeMegabytes field value if set, zero value otherwise.
 func (o *ComputerDisk) GetSizeMegabytes() int64 {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		var ret int64
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *ComputerDisk) GetSizeMegabytes() int64 {
 // GetSizeMegabytesOk returns a tuple with the SizeMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetSizeMegabytesOk() (*int64, bool) {
-	if o == nil || o.SizeMegabytes == nil {
+	if o == nil || IsNil(o.SizeMegabytes) {
 		return nil, false
 	}
 	return o.SizeMegabytes, true
@@ -227,7 +230,7 @@ func (o *ComputerDisk) GetSizeMegabytesOk() (*int64, bool) {
 
 // HasSizeMegabytes returns a boolean if a field has been set.
 func (o *ComputerDisk) HasSizeMegabytes() bool {
-	if o != nil && o.SizeMegabytes != nil {
+	if o != nil && !IsNil(o.SizeMegabytes) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *ComputerDisk) SetSizeMegabytes(v int64) {
 
 // GetSmartStatus returns the SmartStatus field value if set, zero value otherwise.
 func (o *ComputerDisk) GetSmartStatus() string {
-	if o == nil || o.SmartStatus == nil {
+	if o == nil || IsNil(o.SmartStatus) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *ComputerDisk) GetSmartStatus() string {
 // GetSmartStatusOk returns a tuple with the SmartStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetSmartStatusOk() (*string, bool) {
-	if o == nil || o.SmartStatus == nil {
+	if o == nil || IsNil(o.SmartStatus) {
 		return nil, false
 	}
 	return o.SmartStatus, true
@@ -259,7 +262,7 @@ func (o *ComputerDisk) GetSmartStatusOk() (*string, bool) {
 
 // HasSmartStatus returns a boolean if a field has been set.
 func (o *ComputerDisk) HasSmartStatus() bool {
-	if o != nil && o.SmartStatus != nil {
+	if o != nil && !IsNil(o.SmartStatus) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *ComputerDisk) SetSmartStatus(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ComputerDisk) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *ComputerDisk) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -291,7 +294,7 @@ func (o *ComputerDisk) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ComputerDisk) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *ComputerDisk) SetType(v string) {
 
 // GetPartitions returns the Partitions field value if set, zero value otherwise.
 func (o *ComputerDisk) GetPartitions() []ComputerPartition {
-	if o == nil || o.Partitions == nil {
+	if o == nil || IsNil(o.Partitions) {
 		var ret []ComputerPartition
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *ComputerDisk) GetPartitions() []ComputerPartition {
 // GetPartitionsOk returns a tuple with the Partitions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerDisk) GetPartitionsOk() ([]ComputerPartition, bool) {
-	if o == nil || o.Partitions == nil {
+	if o == nil || IsNil(o.Partitions) {
 		return nil, false
 	}
 	return o.Partitions, true
@@ -323,7 +326,7 @@ func (o *ComputerDisk) GetPartitionsOk() ([]ComputerPartition, bool) {
 
 // HasPartitions returns a boolean if a field has been set.
 func (o *ComputerDisk) HasPartitions() bool {
-	if o != nil && o.Partitions != nil {
+	if o != nil && !IsNil(o.Partitions) {
 		return true
 	}
 
@@ -336,35 +339,43 @@ func (o *ComputerDisk) SetPartitions(v []ComputerPartition) {
 }
 
 func (o ComputerDisk) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Device != nil {
-		toSerialize["device"] = o.Device
-	}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.Revision != nil {
-		toSerialize["revision"] = o.Revision
-	}
-	if o.SerialNumber != nil {
-		toSerialize["serialNumber"] = o.SerialNumber
-	}
-	if o.SizeMegabytes != nil {
-		toSerialize["sizeMegabytes"] = o.SizeMegabytes
-	}
-	if o.SmartStatus != nil {
-		toSerialize["smartStatus"] = o.SmartStatus
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Partitions != nil {
-		toSerialize["partitions"] = o.Partitions
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerDisk) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Device) {
+		toSerialize["device"] = o.Device
+	}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.Revision) {
+		toSerialize["revision"] = o.Revision
+	}
+	if !IsNil(o.SerialNumber) {
+		toSerialize["serialNumber"] = o.SerialNumber
+	}
+	if !IsNil(o.SizeMegabytes) {
+		toSerialize["sizeMegabytes"] = o.SizeMegabytes
+	}
+	if !IsNil(o.SmartStatus) {
+		toSerialize["smartStatus"] = o.SmartStatus
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Partitions) {
+		toSerialize["partitions"] = o.Partitions
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerDisk struct {

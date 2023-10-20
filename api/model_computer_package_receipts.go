@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerPackageReceipts type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerPackageReceipts{}
+
 // ComputerPackageReceipts All package receipts are listed by their package name
 type ComputerPackageReceipts struct {
 	InstalledByJamfPro []string `json:"installedByJamfPro,omitempty"`
@@ -40,7 +43,7 @@ func NewComputerPackageReceiptsWithDefaults() *ComputerPackageReceipts {
 
 // GetInstalledByJamfPro returns the InstalledByJamfPro field value if set, zero value otherwise.
 func (o *ComputerPackageReceipts) GetInstalledByJamfPro() []string {
-	if o == nil || o.InstalledByJamfPro == nil {
+	if o == nil || IsNil(o.InstalledByJamfPro) {
 		var ret []string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *ComputerPackageReceipts) GetInstalledByJamfPro() []string {
 // GetInstalledByJamfProOk returns a tuple with the InstalledByJamfPro field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPackageReceipts) GetInstalledByJamfProOk() ([]string, bool) {
-	if o == nil || o.InstalledByJamfPro == nil {
+	if o == nil || IsNil(o.InstalledByJamfPro) {
 		return nil, false
 	}
 	return o.InstalledByJamfPro, true
@@ -58,7 +61,7 @@ func (o *ComputerPackageReceipts) GetInstalledByJamfProOk() ([]string, bool) {
 
 // HasInstalledByJamfPro returns a boolean if a field has been set.
 func (o *ComputerPackageReceipts) HasInstalledByJamfPro() bool {
-	if o != nil && o.InstalledByJamfPro != nil {
+	if o != nil && !IsNil(o.InstalledByJamfPro) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *ComputerPackageReceipts) SetInstalledByJamfPro(v []string) {
 
 // GetInstalledByInstallerSwu returns the InstalledByInstallerSwu field value if set, zero value otherwise.
 func (o *ComputerPackageReceipts) GetInstalledByInstallerSwu() []string {
-	if o == nil || o.InstalledByInstallerSwu == nil {
+	if o == nil || IsNil(o.InstalledByInstallerSwu) {
 		var ret []string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *ComputerPackageReceipts) GetInstalledByInstallerSwu() []string {
 // GetInstalledByInstallerSwuOk returns a tuple with the InstalledByInstallerSwu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPackageReceipts) GetInstalledByInstallerSwuOk() ([]string, bool) {
-	if o == nil || o.InstalledByInstallerSwu == nil {
+	if o == nil || IsNil(o.InstalledByInstallerSwu) {
 		return nil, false
 	}
 	return o.InstalledByInstallerSwu, true
@@ -90,7 +93,7 @@ func (o *ComputerPackageReceipts) GetInstalledByInstallerSwuOk() ([]string, bool
 
 // HasInstalledByInstallerSwu returns a boolean if a field has been set.
 func (o *ComputerPackageReceipts) HasInstalledByInstallerSwu() bool {
-	if o != nil && o.InstalledByInstallerSwu != nil {
+	if o != nil && !IsNil(o.InstalledByInstallerSwu) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *ComputerPackageReceipts) SetInstalledByInstallerSwu(v []string) {
 
 // GetCached returns the Cached field value if set, zero value otherwise.
 func (o *ComputerPackageReceipts) GetCached() []string {
-	if o == nil || o.Cached == nil {
+	if o == nil || IsNil(o.Cached) {
 		var ret []string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *ComputerPackageReceipts) GetCached() []string {
 // GetCachedOk returns a tuple with the Cached field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerPackageReceipts) GetCachedOk() ([]string, bool) {
-	if o == nil || o.Cached == nil {
+	if o == nil || IsNil(o.Cached) {
 		return nil, false
 	}
 	return o.Cached, true
@@ -122,7 +125,7 @@ func (o *ComputerPackageReceipts) GetCachedOk() ([]string, bool) {
 
 // HasCached returns a boolean if a field has been set.
 func (o *ComputerPackageReceipts) HasCached() bool {
-	if o != nil && o.Cached != nil {
+	if o != nil && !IsNil(o.Cached) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *ComputerPackageReceipts) SetCached(v []string) {
 }
 
 func (o ComputerPackageReceipts) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.InstalledByJamfPro != nil {
-		toSerialize["installedByJamfPro"] = o.InstalledByJamfPro
-	}
-	if o.InstalledByInstallerSwu != nil {
-		toSerialize["installedByInstallerSwu"] = o.InstalledByInstallerSwu
-	}
-	if o.Cached != nil {
-		toSerialize["cached"] = o.Cached
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerPackageReceipts) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InstalledByJamfPro) {
+		toSerialize["installedByJamfPro"] = o.InstalledByJamfPro
+	}
+	if !IsNil(o.InstalledByInstallerSwu) {
+		toSerialize["installedByInstallerSwu"] = o.InstalledByInstallerSwu
+	}
+	if !IsNil(o.Cached) {
+		toSerialize["cached"] = o.Cached
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerPackageReceipts struct {

@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type ConditionalAccessApi interface {
+type ConditionalAccessAPI interface {
 
 	/*
 	V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet Get compliance information for a single computer device
@@ -29,13 +29,13 @@ type ConditionalAccessApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param deviceId ID of the device the query pertains
-	@return ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
+	@return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
 	*/
-	V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(ctx context.Context, deviceId string) ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
+	V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(ctx context.Context, deviceId string) ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
 
 	// V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute executes the request
 	//  @return []DeviceComplianceInformation
-	V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute(r ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error)
+	V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute(r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error)
 
 	/*
 	V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet Get compliance information for a single mobile device
@@ -44,25 +44,25 @@ type ConditionalAccessApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param deviceId ID of the device the query pertains
-	@return ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
+	@return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
 	*/
-	V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(ctx context.Context, deviceId string) ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
+	V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(ctx context.Context, deviceId string) ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
 
 	// V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute executes the request
 	//  @return []DeviceComplianceInformation
-	V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute(r ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error)
+	V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute(r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error)
 }
 
-// ConditionalAccessApiService ConditionalAccessApi service
-type ConditionalAccessApiService service
+// ConditionalAccessAPIService ConditionalAccessAPI service
+type ConditionalAccessAPIService service
 
-type ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest struct {
+type ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest struct {
 	ctx context.Context
-	ApiService ConditionalAccessApi
+	ApiService ConditionalAccessAPI
 	deviceId string
 }
 
-func (r ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) Execute() ([]DeviceComplianceInformation, *http.Response, error) {
+func (r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) Execute() ([]DeviceComplianceInformation, *http.Response, error) {
 	return r.ApiService.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute(r)
 }
 
@@ -73,10 +73,10 @@ Return basic compliance information for the given computer device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param deviceId ID of the device the query pertains
- @return ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
+ @return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest
 */
-func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(ctx context.Context, deviceId string) ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest {
-	return ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest{
+func (a *ConditionalAccessAPIService) V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet(ctx context.Context, deviceId string) ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest {
+	return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		deviceId: deviceId,
@@ -85,7 +85,7 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 
 // Execute executes the request
 //  @return []DeviceComplianceInformation
-func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute(r ApiV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error) {
+func (a *ConditionalAccessAPIService) V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetExecute(r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -93,13 +93,13 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 		localVarReturnValue  []DeviceComplianceInformation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConditionalAccessApiService.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConditionalAccessAPIService.V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/conditional-access/device-compliance-information/computer/{deviceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterToString(r.deviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterValueToString(r.deviceId, "deviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -132,9 +132,9 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -159,13 +159,13 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest struct {
+type ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest struct {
 	ctx context.Context
-	ApiService ConditionalAccessApi
+	ApiService ConditionalAccessAPI
 	deviceId string
 }
 
-func (r ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) Execute() ([]DeviceComplianceInformation, *http.Response, error) {
+func (r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) Execute() ([]DeviceComplianceInformation, *http.Response, error) {
 	return r.ApiService.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute(r)
 }
 
@@ -176,10 +176,10 @@ Return basic compliance information for the given mobile device
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param deviceId ID of the device the query pertains
- @return ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
+ @return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest
 */
-func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(ctx context.Context, deviceId string) ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest {
-	return ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest{
+func (a *ConditionalAccessAPIService) V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet(ctx context.Context, deviceId string) ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest {
+	return ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		deviceId: deviceId,
@@ -188,7 +188,7 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 
 // Execute executes the request
 //  @return []DeviceComplianceInformation
-func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute(r ApiV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error) {
+func (a *ConditionalAccessAPIService) V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetExecute(r ConditionalAccessAPIV1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGetRequest) ([]DeviceComplianceInformation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -196,13 +196,13 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 		localVarReturnValue  []DeviceComplianceInformation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConditionalAccessApiService.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConditionalAccessAPIService.V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/conditional-access/device-compliance-information/mobile/{deviceId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterToString(r.deviceId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"deviceId"+"}", url.PathEscape(parameterValueToString(r.deviceId, "deviceId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -235,9 +235,9 @@ func (a *ConditionalAccessApiService) V1ConditionalAccessDeviceComplianceInforma
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

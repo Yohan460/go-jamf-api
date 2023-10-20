@@ -14,11 +14,18 @@ import (
 	"encoding/json"
 )
 
+// checks if the ComputerOperatingSystem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerOperatingSystem{}
+
 // ComputerOperatingSystem struct for ComputerOperatingSystem
 type ComputerOperatingSystem struct {
 	Name *string `json:"name,omitempty"`
 	Version *string `json:"version,omitempty"`
 	Build *string `json:"build,omitempty"`
+	// Collected for macOS 13.0 or later
+	SupplementalBuildVersion *string `json:"supplementalBuildVersion,omitempty"`
+	// Collected for macOS 13.0 or later
+	RapidSecurityResponse *string `json:"rapidSecurityResponse,omitempty"`
 	ActiveDirectoryStatus *string `json:"activeDirectoryStatus,omitempty"`
 	FileVault2Status *string `json:"fileVault2Status,omitempty"`
 	SoftwareUpdateDeviceId *string `json:"softwareUpdateDeviceId,omitempty"`
@@ -44,7 +51,7 @@ func NewComputerOperatingSystemWithDefaults() *ComputerOperatingSystem {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -54,7 +61,7 @@ func (o *ComputerOperatingSystem) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -62,7 +69,7 @@ func (o *ComputerOperatingSystem) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -76,7 +83,7 @@ func (o *ComputerOperatingSystem) SetName(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -86,7 +93,7 @@ func (o *ComputerOperatingSystem) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -94,7 +101,7 @@ func (o *ComputerOperatingSystem) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -108,7 +115,7 @@ func (o *ComputerOperatingSystem) SetVersion(v string) {
 
 // GetBuild returns the Build field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetBuild() string {
-	if o == nil || o.Build == nil {
+	if o == nil || IsNil(o.Build) {
 		var ret string
 		return ret
 	}
@@ -118,7 +125,7 @@ func (o *ComputerOperatingSystem) GetBuild() string {
 // GetBuildOk returns a tuple with the Build field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetBuildOk() (*string, bool) {
-	if o == nil || o.Build == nil {
+	if o == nil || IsNil(o.Build) {
 		return nil, false
 	}
 	return o.Build, true
@@ -126,7 +133,7 @@ func (o *ComputerOperatingSystem) GetBuildOk() (*string, bool) {
 
 // HasBuild returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasBuild() bool {
-	if o != nil && o.Build != nil {
+	if o != nil && !IsNil(o.Build) {
 		return true
 	}
 
@@ -138,9 +145,73 @@ func (o *ComputerOperatingSystem) SetBuild(v string) {
 	o.Build = &v
 }
 
+// GetSupplementalBuildVersion returns the SupplementalBuildVersion field value if set, zero value otherwise.
+func (o *ComputerOperatingSystem) GetSupplementalBuildVersion() string {
+	if o == nil || IsNil(o.SupplementalBuildVersion) {
+		var ret string
+		return ret
+	}
+	return *o.SupplementalBuildVersion
+}
+
+// GetSupplementalBuildVersionOk returns a tuple with the SupplementalBuildVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerOperatingSystem) GetSupplementalBuildVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.SupplementalBuildVersion) {
+		return nil, false
+	}
+	return o.SupplementalBuildVersion, true
+}
+
+// HasSupplementalBuildVersion returns a boolean if a field has been set.
+func (o *ComputerOperatingSystem) HasSupplementalBuildVersion() bool {
+	if o != nil && !IsNil(o.SupplementalBuildVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetSupplementalBuildVersion gets a reference to the given string and assigns it to the SupplementalBuildVersion field.
+func (o *ComputerOperatingSystem) SetSupplementalBuildVersion(v string) {
+	o.SupplementalBuildVersion = &v
+}
+
+// GetRapidSecurityResponse returns the RapidSecurityResponse field value if set, zero value otherwise.
+func (o *ComputerOperatingSystem) GetRapidSecurityResponse() string {
+	if o == nil || IsNil(o.RapidSecurityResponse) {
+		var ret string
+		return ret
+	}
+	return *o.RapidSecurityResponse
+}
+
+// GetRapidSecurityResponseOk returns a tuple with the RapidSecurityResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerOperatingSystem) GetRapidSecurityResponseOk() (*string, bool) {
+	if o == nil || IsNil(o.RapidSecurityResponse) {
+		return nil, false
+	}
+	return o.RapidSecurityResponse, true
+}
+
+// HasRapidSecurityResponse returns a boolean if a field has been set.
+func (o *ComputerOperatingSystem) HasRapidSecurityResponse() bool {
+	if o != nil && !IsNil(o.RapidSecurityResponse) {
+		return true
+	}
+
+	return false
+}
+
+// SetRapidSecurityResponse gets a reference to the given string and assigns it to the RapidSecurityResponse field.
+func (o *ComputerOperatingSystem) SetRapidSecurityResponse(v string) {
+	o.RapidSecurityResponse = &v
+}
+
 // GetActiveDirectoryStatus returns the ActiveDirectoryStatus field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetActiveDirectoryStatus() string {
-	if o == nil || o.ActiveDirectoryStatus == nil {
+	if o == nil || IsNil(o.ActiveDirectoryStatus) {
 		var ret string
 		return ret
 	}
@@ -150,7 +221,7 @@ func (o *ComputerOperatingSystem) GetActiveDirectoryStatus() string {
 // GetActiveDirectoryStatusOk returns a tuple with the ActiveDirectoryStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetActiveDirectoryStatusOk() (*string, bool) {
-	if o == nil || o.ActiveDirectoryStatus == nil {
+	if o == nil || IsNil(o.ActiveDirectoryStatus) {
 		return nil, false
 	}
 	return o.ActiveDirectoryStatus, true
@@ -158,7 +229,7 @@ func (o *ComputerOperatingSystem) GetActiveDirectoryStatusOk() (*string, bool) {
 
 // HasActiveDirectoryStatus returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasActiveDirectoryStatus() bool {
-	if o != nil && o.ActiveDirectoryStatus != nil {
+	if o != nil && !IsNil(o.ActiveDirectoryStatus) {
 		return true
 	}
 
@@ -172,7 +243,7 @@ func (o *ComputerOperatingSystem) SetActiveDirectoryStatus(v string) {
 
 // GetFileVault2Status returns the FileVault2Status field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetFileVault2Status() string {
-	if o == nil || o.FileVault2Status == nil {
+	if o == nil || IsNil(o.FileVault2Status) {
 		var ret string
 		return ret
 	}
@@ -182,7 +253,7 @@ func (o *ComputerOperatingSystem) GetFileVault2Status() string {
 // GetFileVault2StatusOk returns a tuple with the FileVault2Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetFileVault2StatusOk() (*string, bool) {
-	if o == nil || o.FileVault2Status == nil {
+	if o == nil || IsNil(o.FileVault2Status) {
 		return nil, false
 	}
 	return o.FileVault2Status, true
@@ -190,7 +261,7 @@ func (o *ComputerOperatingSystem) GetFileVault2StatusOk() (*string, bool) {
 
 // HasFileVault2Status returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasFileVault2Status() bool {
-	if o != nil && o.FileVault2Status != nil {
+	if o != nil && !IsNil(o.FileVault2Status) {
 		return true
 	}
 
@@ -204,7 +275,7 @@ func (o *ComputerOperatingSystem) SetFileVault2Status(v string) {
 
 // GetSoftwareUpdateDeviceId returns the SoftwareUpdateDeviceId field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetSoftwareUpdateDeviceId() string {
-	if o == nil || o.SoftwareUpdateDeviceId == nil {
+	if o == nil || IsNil(o.SoftwareUpdateDeviceId) {
 		var ret string
 		return ret
 	}
@@ -214,7 +285,7 @@ func (o *ComputerOperatingSystem) GetSoftwareUpdateDeviceId() string {
 // GetSoftwareUpdateDeviceIdOk returns a tuple with the SoftwareUpdateDeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetSoftwareUpdateDeviceIdOk() (*string, bool) {
-	if o == nil || o.SoftwareUpdateDeviceId == nil {
+	if o == nil || IsNil(o.SoftwareUpdateDeviceId) {
 		return nil, false
 	}
 	return o.SoftwareUpdateDeviceId, true
@@ -222,7 +293,7 @@ func (o *ComputerOperatingSystem) GetSoftwareUpdateDeviceIdOk() (*string, bool) 
 
 // HasSoftwareUpdateDeviceId returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasSoftwareUpdateDeviceId() bool {
-	if o != nil && o.SoftwareUpdateDeviceId != nil {
+	if o != nil && !IsNil(o.SoftwareUpdateDeviceId) {
 		return true
 	}
 
@@ -236,7 +307,7 @@ func (o *ComputerOperatingSystem) SetSoftwareUpdateDeviceId(v string) {
 
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerOperatingSystem) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -246,7 +317,7 @@ func (o *ComputerOperatingSystem) GetExtensionAttributes() []ComputerExtensionAt
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerOperatingSystem) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -254,7 +325,7 @@ func (o *ComputerOperatingSystem) GetExtensionAttributesOk() ([]ComputerExtensio
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerOperatingSystem) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -267,29 +338,43 @@ func (o *ComputerOperatingSystem) SetExtensionAttributes(v []ComputerExtensionAt
 }
 
 func (o ComputerOperatingSystem) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Build != nil {
-		toSerialize["build"] = o.Build
-	}
-	if o.ActiveDirectoryStatus != nil {
-		toSerialize["activeDirectoryStatus"] = o.ActiveDirectoryStatus
-	}
-	if o.FileVault2Status != nil {
-		toSerialize["fileVault2Status"] = o.FileVault2Status
-	}
-	if o.SoftwareUpdateDeviceId != nil {
-		toSerialize["softwareUpdateDeviceId"] = o.SoftwareUpdateDeviceId
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerOperatingSystem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Build) {
+		toSerialize["build"] = o.Build
+	}
+	if !IsNil(o.SupplementalBuildVersion) {
+		toSerialize["supplementalBuildVersion"] = o.SupplementalBuildVersion
+	}
+	if !IsNil(o.RapidSecurityResponse) {
+		toSerialize["rapidSecurityResponse"] = o.RapidSecurityResponse
+	}
+	if !IsNil(o.ActiveDirectoryStatus) {
+		toSerialize["activeDirectoryStatus"] = o.ActiveDirectoryStatus
+	}
+	if !IsNil(o.FileVault2Status) {
+		toSerialize["fileVault2Status"] = o.FileVault2Status
+	}
+	if !IsNil(o.SoftwareUpdateDeviceId) {
+		toSerialize["softwareUpdateDeviceId"] = o.SoftwareUpdateDeviceId
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerOperatingSystem struct {

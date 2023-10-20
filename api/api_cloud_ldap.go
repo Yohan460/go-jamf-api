@@ -13,327 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
-	"reflect"
 )
 
 
-type CloudLdapApi interface {
-
-	/*
-	V1CloudLdapsDefaultsMappingsGet Get default mappings
-
-	Get default mappings which will work with Google Cloud Identity Provider.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudLdapsDefaultsMappingsGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsDefaultsMappingsGet(ctx context.Context) ApiV1CloudLdapsDefaultsMappingsGetRequest
-
-	// V1CloudLdapsDefaultsMappingsGetExecute executes the request
-	//  @return CloudLdapMappingsResponse
-	// Deprecated
-	V1CloudLdapsDefaultsMappingsGetExecute(r ApiV1CloudLdapsDefaultsMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsDefaultsServerConfigurationGet Get default server configuration
-
-	Get default server configuration which will work with Google Cloud Identity Provider.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudLdapsDefaultsServerConfigurationGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudLdapsDefaultsServerConfigurationGetRequest
-
-	// V1CloudLdapsDefaultsServerConfigurationGetExecute executes the request
-	//  @return DeprecatedServerResponse
-	// Deprecated
-	V1CloudLdapsDefaultsServerConfigurationGetExecute(r ApiV1CloudLdapsDefaultsServerConfigurationGetRequest) (*DeprecatedServerResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsGet Get all Cloud Identity Providers configurations.
-
-	Returns all configured Cloud Identity Provider instances without keystore data.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudLdapsGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsGet(ctx context.Context) ApiV1CloudLdapsGetRequest
-
-	// V1CloudLdapsGetExecute executes the request
-	//  @return DeprecatedConfigurationSearchResults
-	// Deprecated
-	V1CloudLdapsGetExecute(r ApiV1CloudLdapsGetRequest) (*DeprecatedConfigurationSearchResults, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdConnectionBindGet Get bind connection pool statistics
-
-	Get all search connection pool for chosen Cloud Identity Provider.
-numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
-numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
-numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
-numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
-numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
-numReleasedValid - The number of valid connections released back to the pool.
-numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
-numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
-numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
-maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
-numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
-numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
-numAvailableConnections - The number of connections currently available for use in the pool.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdConnectionBindGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionBindGetRequest
-
-	// V1CloudLdapsIdConnectionBindGetExecute executes the request
-	//  @return CloudLdapConnectionPoolStatistics
-	// Deprecated
-	V1CloudLdapsIdConnectionBindGetExecute(r ApiV1CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdConnectionSearchGet Get search connection pool statistics
-
-	Get all search connection pool for chosen Cloud Identity Provider.
-numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
-numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
-numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
-numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
-numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
-numReleasedValid - The number of valid connections released back to the pool.
-numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
-numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
-numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
-maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
-numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
-numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
-numAvailableConnections - The number of connections currently available for use in the pool.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdConnectionSearchGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionSearchGetRequest
-
-	// V1CloudLdapsIdConnectionSearchGetExecute executes the request
-	//  @return CloudLdapConnectionPoolStatistics
-	// Deprecated
-	V1CloudLdapsIdConnectionSearchGetExecute(r ApiV1CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdDelete Delete Cloud Identity Provider configuration.
-
-	Delete Cloud Identity Provider configuration.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdDeleteRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdDelete(ctx context.Context, id string) ApiV1CloudLdapsIdDeleteRequest
-
-	// V1CloudLdapsIdDeleteExecute executes the request
-	// Deprecated
-	V1CloudLdapsIdDeleteExecute(r ApiV1CloudLdapsIdDeleteRequest) (*http.Response, error)
-
-	/*
-	V1CloudLdapsIdGet Get Cloud Identity Provider configuration with given id.
-
-	Get Cloud Identity Provider configuration with given id.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdGet(ctx context.Context, id string) ApiV1CloudLdapsIdGetRequest
-
-	// V1CloudLdapsIdGetExecute executes the request
-	//  @return DeprecatedConfigurationResponse
-	// Deprecated
-	V1CloudLdapsIdGetExecute(r ApiV1CloudLdapsIdGetRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdHistoryGet Get Cloud Identity Provider history
-
-	Gets specified Cloud Identity Provider object history
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdHistoryGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdHistoryGet(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryGetRequest
-
-	// V1CloudLdapsIdHistoryGetExecute executes the request
-	//  @return HistorySearchResults
-	// Deprecated
-	V1CloudLdapsIdHistoryGetExecute(r ApiV1CloudLdapsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdHistoryPost Add Cloud Identity Provider history note
-
-	Adds specified Cloud Identity Provider object history notes
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdHistoryPostRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdHistoryPost(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryPostRequest
-
-	// V1CloudLdapsIdHistoryPostExecute executes the request
-	//  @return ObjectHistory
-	// Deprecated
-	V1CloudLdapsIdHistoryPostExecute(r ApiV1CloudLdapsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdMappingsGet Get mappings configurations for Cloud Identity Providers server configuration.
-
-	Get all mappings configurations for Cloud Identity Providers server configuration.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdMappingsGetRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsGetRequest
-
-	// V1CloudLdapsIdMappingsGetExecute executes the request
-	//  @return CloudLdapMappingsResponse
-	// Deprecated
-	V1CloudLdapsIdMappingsGetExecute(r ApiV1CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdMappingsPut Update Cloud Identity Provider mappings configuration.
-
-	Update Cloud Identity Provider mappings configuration. Cannot be used for partial updates, all content body must be sent.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdMappingsPutRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsPutRequest
-
-	// V1CloudLdapsIdMappingsPutExecute executes the request
-	//  @return CloudLdapMappingsResponse
-	// Deprecated
-	V1CloudLdapsIdMappingsPutExecute(r ApiV1CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdPut Old update Cloud Identity Provider configuration
-
-	Update Cloud Identity Provider configuration. Cannot be used for partial updates, all content body must be sent.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdPutRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdPut(ctx context.Context, id string) ApiV1CloudLdapsIdPutRequest
-
-	// V1CloudLdapsIdPutExecute executes the request
-	//  @return DeprecatedConfigurationResponse
-	// Deprecated
-	V1CloudLdapsIdPutExecute(r ApiV1CloudLdapsIdPutRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdTestGroupPost Get group test search
-
-	Do test search to ensure about configuration and mappings
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdTestGroupPostRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdTestGroupPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestGroupPostRequest
-
-	// V1CloudLdapsIdTestGroupPostExecute executes the request
-	//  @return GroupTestSearchResponse
-	// Deprecated
-	V1CloudLdapsIdTestGroupPostExecute(r ApiV1CloudLdapsIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdTestUserMembershipPost Get membership test search
-
-	Do test search to ensure about configuration and mappings
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdTestUserMembershipPostRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserMembershipPostRequest
-
-	// V1CloudLdapsIdTestUserMembershipPostExecute executes the request
-	//  @return MembershipTestSearchResponse
-	// Deprecated
-	V1CloudLdapsIdTestUserMembershipPostExecute(r ApiV1CloudLdapsIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsIdTestUserPost Get user test search
-
-	Do test search to ensure about configuration and mappings
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Cloud Identity Provider identifier
-	@return ApiV1CloudLdapsIdTestUserPostRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsIdTestUserPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserPostRequest
-
-	// V1CloudLdapsIdTestUserPostExecute executes the request
-	//  @return UserTestSearchResponse
-	// Deprecated
-	V1CloudLdapsIdTestUserPostExecute(r ApiV1CloudLdapsIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error)
-
-	/*
-	V1CloudLdapsPost Create Cloud Identity Provider configuration
-
-	Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CloudLdapsPostRequest
-
-	Deprecated
-	*/
-	V1CloudLdapsPost(ctx context.Context) ApiV1CloudLdapsPostRequest
-
-	// V1CloudLdapsPostExecute executes the request
-	//  @return DeprecatedConfigurationResponse
-	// Deprecated
-	V1CloudLdapsPostExecute(r ApiV1CloudLdapsPostRequest) (*DeprecatedConfigurationResponse, *http.Response, error)
+type CloudLdapAPI interface {
 
 	/*
 	V1LdapKeystoreVerifyPost Validate keystore for Cloud Identity Provider secure connection
@@ -341,13 +28,13 @@ numAvailableConnections - The number of connections currently available for use 
 	Validate keystore for Cloud Identity Provider secure connection
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1LdapKeystoreVerifyPostRequest
+	@return CloudLdapAPIV1LdapKeystoreVerifyPostRequest
 	*/
-	V1LdapKeystoreVerifyPost(ctx context.Context) ApiV1LdapKeystoreVerifyPostRequest
+	V1LdapKeystoreVerifyPost(ctx context.Context) CloudLdapAPIV1LdapKeystoreVerifyPostRequest
 
 	// V1LdapKeystoreVerifyPostExecute executes the request
 	//  @return CloudLdapKeystore
-	V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystoreVerifyPostRequest) (*CloudLdapKeystore, *http.Response, error)
+	V1LdapKeystoreVerifyPostExecute(r CloudLdapAPIV1LdapKeystoreVerifyPostRequest) (*CloudLdapKeystore, *http.Response, error)
 
 	/*
 	V2CloudLdapsDefaultsProviderMappingsGet Get default mappings
@@ -356,13 +43,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param provider Cloud Identity Provider name
-	@return ApiV2CloudLdapsDefaultsProviderMappingsGetRequest
+	@return CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest
 	*/
-	V2CloudLdapsDefaultsProviderMappingsGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderMappingsGetRequest
+	V2CloudLdapsDefaultsProviderMappingsGet(ctx context.Context, provider string) CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest
 
 	// V2CloudLdapsDefaultsProviderMappingsGetExecute executes the request
 	//  @return CloudLdapMappingsResponse
-	V2CloudLdapsDefaultsProviderMappingsGetExecute(r ApiV2CloudLdapsDefaultsProviderMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+	V2CloudLdapsDefaultsProviderMappingsGetExecute(r CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsDefaultsProviderServerConfigurationGet Get default server configuration
@@ -371,13 +58,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param provider Cloud Identity Provider name
-	@return ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
+	@return CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
 	*/
-	V2CloudLdapsDefaultsProviderServerConfigurationGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
+	V2CloudLdapsDefaultsProviderServerConfigurationGet(ctx context.Context, provider string) CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
 
 	// V2CloudLdapsDefaultsProviderServerConfigurationGetExecute executes the request
 	//  @return CloudLdapServerResponse
-	V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) (*CloudLdapServerResponse, *http.Response, error)
+	V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) (*CloudLdapServerResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdConnectionBindGet Get bind connection pool statistics
@@ -400,13 +87,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdConnectionBindGetRequest
+	@return CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest
 	*/
-	V2CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionBindGetRequest
+	V2CloudLdapsIdConnectionBindGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest
 
 	// V2CloudLdapsIdConnectionBindGetExecute executes the request
 	//  @return CloudLdapConnectionPoolStatistics
-	V2CloudLdapsIdConnectionBindGetExecute(r ApiV2CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+	V2CloudLdapsIdConnectionBindGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdConnectionSearchGet Get search connection pool statistics
@@ -429,13 +116,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdConnectionSearchGetRequest
+	@return CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest
 	*/
-	V2CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionSearchGetRequest
+	V2CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest
 
 	// V2CloudLdapsIdConnectionSearchGetExecute executes the request
 	//  @return CloudLdapConnectionPoolStatistics
-	V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
+	V2CloudLdapsIdConnectionSearchGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdConnectionStatusGet Tests the communication with the specified cloud connection 
@@ -445,13 +132,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdConnectionStatusGetRequest
+	@return CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest
 	*/
-	V2CloudLdapsIdConnectionStatusGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionStatusGetRequest
+	V2CloudLdapsIdConnectionStatusGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest
 
 	// V2CloudLdapsIdConnectionStatusGetExecute executes the request
 	//  @return CloudLdapConnectionStatus
-	V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2CloudLdapsIdConnectionStatusGetRequest) (*CloudLdapConnectionStatus, *http.Response, error)
+	V2CloudLdapsIdConnectionStatusGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest) (*CloudLdapConnectionStatus, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdDelete Delete Cloud Identity Provider configuration.
@@ -460,12 +147,12 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdDeleteRequest
+	@return CloudLdapAPIV2CloudLdapsIdDeleteRequest
 	*/
-	V2CloudLdapsIdDelete(ctx context.Context, id string) ApiV2CloudLdapsIdDeleteRequest
+	V2CloudLdapsIdDelete(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdDeleteRequest
 
 	// V2CloudLdapsIdDeleteExecute executes the request
-	V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDeleteRequest) (*http.Response, error)
+	V2CloudLdapsIdDeleteExecute(r CloudLdapAPIV2CloudLdapsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V2CloudLdapsIdGet Get Cloud Identity Provider configuration with given id.
@@ -474,13 +161,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdGetRequest
+	@return CloudLdapAPIV2CloudLdapsIdGetRequest
 	*/
-	V2CloudLdapsIdGet(ctx context.Context, id string) ApiV2CloudLdapsIdGetRequest
+	V2CloudLdapsIdGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdGetRequest
 
 	// V2CloudLdapsIdGetExecute executes the request
 	//  @return LdapConfigurationResponse
-	V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetRequest) (*LdapConfigurationResponse, *http.Response, error)
+	V2CloudLdapsIdGetExecute(r CloudLdapAPIV2CloudLdapsIdGetRequest) (*LdapConfigurationResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdMappingsGet Get mappings configurations for Cloud Identity Providers server configuration.
@@ -489,13 +176,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdMappingsGetRequest
+	@return CloudLdapAPIV2CloudLdapsIdMappingsGetRequest
 	*/
-	V2CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsGetRequest
+	V2CloudLdapsIdMappingsGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdMappingsGetRequest
 
 	// V2CloudLdapsIdMappingsGetExecute executes the request
 	//  @return CloudLdapMappingsResponse
-	V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+	V2CloudLdapsIdMappingsGetExecute(r CloudLdapAPIV2CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdMappingsPut Update Cloud Identity Provider mappings configuration.
@@ -504,13 +191,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdMappingsPutRequest
+	@return CloudLdapAPIV2CloudLdapsIdMappingsPutRequest
 	*/
-	V2CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsPutRequest
+	V2CloudLdapsIdMappingsPut(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdMappingsPutRequest
 
 	// V2CloudLdapsIdMappingsPutExecute executes the request
 	//  @return CloudLdapMappingsResponse
-	V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error)
+	V2CloudLdapsIdMappingsPutExecute(r CloudLdapAPIV2CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsIdPut Update Cloud Identity Provider configuration
@@ -519,13 +206,13 @@ numAvailableConnections - The number of connections currently available for use 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Cloud Identity Provider identifier
-	@return ApiV2CloudLdapsIdPutRequest
+	@return CloudLdapAPIV2CloudLdapsIdPutRequest
 	*/
-	V2CloudLdapsIdPut(ctx context.Context, id string) ApiV2CloudLdapsIdPutRequest
+	V2CloudLdapsIdPut(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdPutRequest
 
 	// V2CloudLdapsIdPutExecute executes the request
 	//  @return LdapConfigurationResponse
-	V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutRequest) (*LdapConfigurationResponse, *http.Response, error)
+	V2CloudLdapsIdPutExecute(r CloudLdapAPIV2CloudLdapsIdPutRequest) (*LdapConfigurationResponse, *http.Response, error)
 
 	/*
 	V2CloudLdapsPost Create Cloud Identity Provider configuration
@@ -533,2159 +220,30 @@ numAvailableConnections - The number of connections currently available for use 
 	Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV2CloudLdapsPostRequest
+	@return CloudLdapAPIV2CloudLdapsPostRequest
 	*/
-	V2CloudLdapsPost(ctx context.Context) ApiV2CloudLdapsPostRequest
+	V2CloudLdapsPost(ctx context.Context) CloudLdapAPIV2CloudLdapsPostRequest
 
 	// V2CloudLdapsPostExecute executes the request
 	//  @return HrefResponse
-	V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostRequest) (*HrefResponse, *http.Response, error)
+	V2CloudLdapsPostExecute(r CloudLdapAPIV2CloudLdapsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
-// CloudLdapApiService CloudLdapApi service
-type CloudLdapApiService service
+// CloudLdapAPIService CloudLdapAPI service
+type CloudLdapAPIService service
 
-type ApiV1CloudLdapsDefaultsMappingsGetRequest struct {
+type CloudLdapAPIV1LdapKeystoreVerifyPostRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
-}
-
-func (r ApiV1CloudLdapsDefaultsMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsDefaultsMappingsGetExecute(r)
-}
-
-/*
-V1CloudLdapsDefaultsMappingsGet Get default mappings
-
-Get default mappings which will work with Google Cloud Identity Provider.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudLdapsDefaultsMappingsGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsDefaultsMappingsGet(ctx context.Context) ApiV1CloudLdapsDefaultsMappingsGetRequest {
-	return ApiV1CloudLdapsDefaultsMappingsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return CloudLdapMappingsResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsDefaultsMappingsGetExecute(r ApiV1CloudLdapsDefaultsMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudLdapMappingsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsDefaultsMappingsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/defaults/mappings"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsDefaultsServerConfigurationGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-}
-
-func (r ApiV1CloudLdapsDefaultsServerConfigurationGetRequest) Execute() (*DeprecatedServerResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsDefaultsServerConfigurationGetExecute(r)
-}
-
-/*
-V1CloudLdapsDefaultsServerConfigurationGet Get default server configuration
-
-Get default server configuration which will work with Google Cloud Identity Provider.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudLdapsDefaultsServerConfigurationGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsDefaultsServerConfigurationGet(ctx context.Context) ApiV1CloudLdapsDefaultsServerConfigurationGetRequest {
-	return ApiV1CloudLdapsDefaultsServerConfigurationGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return DeprecatedServerResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsDefaultsServerConfigurationGetExecute(r ApiV1CloudLdapsDefaultsServerConfigurationGetRequest) (*DeprecatedServerResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeprecatedServerResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsDefaultsServerConfigurationGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/defaults/server-configuration"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
-	sort *[]string
-}
-
-func (r ApiV1CloudLdapsGetRequest) Page(page int32) ApiV1CloudLdapsGetRequest {
-	r.page = &page
-	return r
-}
-
-// Deprecated
-func (r ApiV1CloudLdapsGetRequest) Size(size int32) ApiV1CloudLdapsGetRequest {
-	r.size = &size
-	return r
-}
-
-// Deprecated
-func (r ApiV1CloudLdapsGetRequest) Pagesize(pagesize int32) ApiV1CloudLdapsGetRequest {
-	r.pagesize = &pagesize
-	return r
-}
-
-func (r ApiV1CloudLdapsGetRequest) PageSize(pageSize int32) ApiV1CloudLdapsGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1CloudLdapsGetRequest) Sort(sort []string) ApiV1CloudLdapsGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r ApiV1CloudLdapsGetRequest) Execute() (*DeprecatedConfigurationSearchResults, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsGetExecute(r)
-}
-
-/*
-V1CloudLdapsGet Get all Cloud Identity Providers configurations.
-
-Returns all configured Cloud Identity Provider instances without keystore data.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudLdapsGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsGet(ctx context.Context) ApiV1CloudLdapsGetRequest {
-	return ApiV1CloudLdapsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return DeprecatedConfigurationSearchResults
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsGetExecute(r ApiV1CloudLdapsGetRequest) (*DeprecatedConfigurationSearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeprecatedConfigurationSearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
-	}
-	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
-		}
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdConnectionBindGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-}
-
-func (r ApiV1CloudLdapsIdConnectionBindGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdConnectionBindGetExecute(r)
-}
-
-/*
-V1CloudLdapsIdConnectionBindGet Get bind connection pool statistics
-
-Get all search connection pool for chosen Cloud Identity Provider.
-numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
-numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
-numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
-numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
-numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
-numReleasedValid - The number of valid connections released back to the pool.
-numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
-numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
-numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
-maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
-numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
-numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
-numAvailableConnections - The number of connections currently available for use in the pool.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdConnectionBindGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionBindGetRequest {
-	return ApiV1CloudLdapsIdConnectionBindGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return CloudLdapConnectionPoolStatistics
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdConnectionBindGetExecute(r ApiV1CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudLdapConnectionPoolStatistics
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdConnectionBindGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/connection/bind"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdConnectionSearchGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-}
-
-func (r ApiV1CloudLdapsIdConnectionSearchGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdConnectionSearchGetExecute(r)
-}
-
-/*
-V1CloudLdapsIdConnectionSearchGet Get search connection pool statistics
-
-Get all search connection pool for chosen Cloud Identity Provider.
-numConnectionsClosedDefunct - The number of connections that have been closed as defunct.
-numConnectionsClosedExpired - The number of connections that have been closed because they were expired.
-numConnectionsClosedUnneeded - The number of connections that have been closed because they were no longer needed.
-numFailedCheckouts - The number of failed attempts to check out a connection from the pool.
-numFailedConnectionAttempts - The number of failed attempts to create a connection for use in the pool.
-numReleasedValid - The number of valid connections released back to the pool.
-numSuccessfulCheckouts - The number of successful attempts to check out a connection from the pool.
-numSuccessfulCheckoutsNewConnection - The number of successful checkout attempts that had to create a new connection because none were available.
-numSuccessfulConnectionAttempts - The number successful attempts to create a connection for use in the pool.
-maximumAvailableConnections - The maximum number of connections that may be available in the pool at any time.
-numSuccessfulCheckoutsWithoutWait - The number of successful checkout attempts that were able to take an existing connection without waiting.
-numSuccessfulCheckoutsAfterWait - The number of successful checkout attempts that retrieved a connection from the pool after waiting for it to become available.
-numAvailableConnections - The number of connections currently available for use in the pool.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdConnectionSearchGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV1CloudLdapsIdConnectionSearchGetRequest {
-	return ApiV1CloudLdapsIdConnectionSearchGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return CloudLdapConnectionPoolStatistics
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdConnectionSearchGetExecute(r ApiV1CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudLdapConnectionPoolStatistics
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdConnectionSearchGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/connection/search"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdDeleteRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-}
-
-func (r ApiV1CloudLdapsIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdDeleteExecute(r)
-}
-
-/*
-V1CloudLdapsIdDelete Delete Cloud Identity Provider configuration.
-
-Delete Cloud Identity Provider configuration.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdDeleteRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdDelete(ctx context.Context, id string) ApiV1CloudLdapsIdDeleteRequest {
-	return ApiV1CloudLdapsIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdDeleteExecute(r ApiV1CloudLdapsIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-}
-
-func (r ApiV1CloudLdapsIdGetRequest) Execute() (*DeprecatedConfigurationResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdGetExecute(r)
-}
-
-/*
-V1CloudLdapsIdGet Get Cloud Identity Provider configuration with given id.
-
-Get Cloud Identity Provider configuration with given id.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdGet(ctx context.Context, id string) ApiV1CloudLdapsIdGetRequest {
-	return ApiV1CloudLdapsIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return DeprecatedConfigurationResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdGetExecute(r ApiV1CloudLdapsIdGetRequest) (*DeprecatedConfigurationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeprecatedConfigurationResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdHistoryGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
-	sort *[]string
-}
-
-func (r ApiV1CloudLdapsIdHistoryGetRequest) Page(page int32) ApiV1CloudLdapsIdHistoryGetRequest {
-	r.page = &page
-	return r
-}
-
-// Deprecated
-func (r ApiV1CloudLdapsIdHistoryGetRequest) Size(size int32) ApiV1CloudLdapsIdHistoryGetRequest {
-	r.size = &size
-	return r
-}
-
-// Deprecated
-func (r ApiV1CloudLdapsIdHistoryGetRequest) Pagesize(pagesize int32) ApiV1CloudLdapsIdHistoryGetRequest {
-	r.pagesize = &pagesize
-	return r
-}
-
-func (r ApiV1CloudLdapsIdHistoryGetRequest) PageSize(pageSize int32) ApiV1CloudLdapsIdHistoryGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1CloudLdapsIdHistoryGetRequest) Sort(sort []string) ApiV1CloudLdapsIdHistoryGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r ApiV1CloudLdapsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdHistoryGetExecute(r)
-}
-
-/*
-V1CloudLdapsIdHistoryGet Get Cloud Identity Provider history
-
-Gets specified Cloud Identity Provider object history
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdHistoryGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdHistoryGet(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryGetRequest {
-	return ApiV1CloudLdapsIdHistoryGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return HistorySearchResults
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdHistoryGetExecute(r ApiV1CloudLdapsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HistorySearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdHistoryGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
-	}
-	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
-	}
-	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
-	}
-	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("sort", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("sort", parameterToString(t, "multi"))
-		}
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdHistoryPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	objectHistoryNote *ObjectHistoryNote
-}
-
-// history notes to create
-func (r ApiV1CloudLdapsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1CloudLdapsIdHistoryPostRequest {
-	r.objectHistoryNote = &objectHistoryNote
-	return r
-}
-
-func (r ApiV1CloudLdapsIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdHistoryPostExecute(r)
-}
-
-/*
-V1CloudLdapsIdHistoryPost Add Cloud Identity Provider history note
-
-Adds specified Cloud Identity Provider object history notes
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdHistoryPostRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdHistoryPost(ctx context.Context, id string) ApiV1CloudLdapsIdHistoryPostRequest {
-	return ApiV1CloudLdapsIdHistoryPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return ObjectHistory
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdHistoryPostExecute(r ApiV1CloudLdapsIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ObjectHistory
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdHistoryPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.objectHistoryNote == nil {
-		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.objectHistoryNote
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdMappingsGetRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-}
-
-func (r ApiV1CloudLdapsIdMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdMappingsGetExecute(r)
-}
-
-/*
-V1CloudLdapsIdMappingsGet Get mappings configurations for Cloud Identity Providers server configuration.
-
-Get all mappings configurations for Cloud Identity Providers server configuration.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdMappingsGetRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsGetRequest {
-	return ApiV1CloudLdapsIdMappingsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return CloudLdapMappingsResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdMappingsGetExecute(r ApiV1CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudLdapMappingsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdMappingsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/mappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdMappingsPutRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	cloudLdapMappingsRequest *CloudLdapMappingsRequest
-}
-
-// Cloud Identity Provider mappings to update.
-func (r ApiV1CloudLdapsIdMappingsPutRequest) CloudLdapMappingsRequest(cloudLdapMappingsRequest CloudLdapMappingsRequest) ApiV1CloudLdapsIdMappingsPutRequest {
-	r.cloudLdapMappingsRequest = &cloudLdapMappingsRequest
-	return r
-}
-
-func (r ApiV1CloudLdapsIdMappingsPutRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdMappingsPutExecute(r)
-}
-
-/*
-V1CloudLdapsIdMappingsPut Update Cloud Identity Provider mappings configuration.
-
-Update Cloud Identity Provider mappings configuration. Cannot be used for partial updates, all content body must be sent.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdMappingsPutRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV1CloudLdapsIdMappingsPutRequest {
-	return ApiV1CloudLdapsIdMappingsPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return CloudLdapMappingsResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdMappingsPutExecute(r ApiV1CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudLdapMappingsResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdMappingsPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/mappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.cloudLdapMappingsRequest == nil {
-		return localVarReturnValue, nil, reportError("cloudLdapMappingsRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.cloudLdapMappingsRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdPutRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	deprecatedConfigurationUpdate *DeprecatedConfigurationUpdate
-}
-
-// Cloud Identity Provider configuration to update
-func (r ApiV1CloudLdapsIdPutRequest) DeprecatedConfigurationUpdate(deprecatedConfigurationUpdate DeprecatedConfigurationUpdate) ApiV1CloudLdapsIdPutRequest {
-	r.deprecatedConfigurationUpdate = &deprecatedConfigurationUpdate
-	return r
-}
-
-func (r ApiV1CloudLdapsIdPutRequest) Execute() (*DeprecatedConfigurationResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdPutExecute(r)
-}
-
-/*
-V1CloudLdapsIdPut Old update Cloud Identity Provider configuration
-
-Update Cloud Identity Provider configuration. Cannot be used for partial updates, all content body must be sent.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdPutRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdPut(ctx context.Context, id string) ApiV1CloudLdapsIdPutRequest {
-	return ApiV1CloudLdapsIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return DeprecatedConfigurationResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdPutExecute(r ApiV1CloudLdapsIdPutRequest) (*DeprecatedConfigurationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeprecatedConfigurationResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.deprecatedConfigurationUpdate == nil {
-		return localVarReturnValue, nil, reportError("deprecatedConfigurationUpdate is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.deprecatedConfigurationUpdate
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdTestGroupPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	groupTestSearchRequest *GroupTestSearchRequest
-}
-
-// Search request
-func (r ApiV1CloudLdapsIdTestGroupPostRequest) GroupTestSearchRequest(groupTestSearchRequest GroupTestSearchRequest) ApiV1CloudLdapsIdTestGroupPostRequest {
-	r.groupTestSearchRequest = &groupTestSearchRequest
-	return r
-}
-
-func (r ApiV1CloudLdapsIdTestGroupPostRequest) Execute() (*GroupTestSearchResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdTestGroupPostExecute(r)
-}
-
-/*
-V1CloudLdapsIdTestGroupPost Get group test search
-
-Do test search to ensure about configuration and mappings
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdTestGroupPostRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdTestGroupPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestGroupPostRequest {
-	return ApiV1CloudLdapsIdTestGroupPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GroupTestSearchResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdTestGroupPostExecute(r ApiV1CloudLdapsIdTestGroupPostRequest) (*GroupTestSearchResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupTestSearchResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdTestGroupPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/test-group"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.groupTestSearchRequest == nil {
-		return localVarReturnValue, nil, reportError("groupTestSearchRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.groupTestSearchRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdTestUserMembershipPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	membershipTestSearchRequest *MembershipTestSearchRequest
-}
-
-// Search request
-func (r ApiV1CloudLdapsIdTestUserMembershipPostRequest) MembershipTestSearchRequest(membershipTestSearchRequest MembershipTestSearchRequest) ApiV1CloudLdapsIdTestUserMembershipPostRequest {
-	r.membershipTestSearchRequest = &membershipTestSearchRequest
-	return r
-}
-
-func (r ApiV1CloudLdapsIdTestUserMembershipPostRequest) Execute() (*MembershipTestSearchResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdTestUserMembershipPostExecute(r)
-}
-
-/*
-V1CloudLdapsIdTestUserMembershipPost Get membership test search
-
-Do test search to ensure about configuration and mappings
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdTestUserMembershipPostRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdTestUserMembershipPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserMembershipPostRequest {
-	return ApiV1CloudLdapsIdTestUserMembershipPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return MembershipTestSearchResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdTestUserMembershipPostExecute(r ApiV1CloudLdapsIdTestUserMembershipPostRequest) (*MembershipTestSearchResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MembershipTestSearchResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdTestUserMembershipPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/test-user-membership"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.membershipTestSearchRequest == nil {
-		return localVarReturnValue, nil, reportError("membershipTestSearchRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.membershipTestSearchRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsIdTestUserPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	id string
-	userTestSearchRequest *UserTestSearchRequest
-}
-
-// Search request
-func (r ApiV1CloudLdapsIdTestUserPostRequest) UserTestSearchRequest(userTestSearchRequest UserTestSearchRequest) ApiV1CloudLdapsIdTestUserPostRequest {
-	r.userTestSearchRequest = &userTestSearchRequest
-	return r
-}
-
-func (r ApiV1CloudLdapsIdTestUserPostRequest) Execute() (*UserTestSearchResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsIdTestUserPostExecute(r)
-}
-
-/*
-V1CloudLdapsIdTestUserPost Get user test search
-
-Do test search to ensure about configuration and mappings
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Cloud Identity Provider identifier
- @return ApiV1CloudLdapsIdTestUserPostRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsIdTestUserPost(ctx context.Context, id string) ApiV1CloudLdapsIdTestUserPostRequest {
-	return ApiV1CloudLdapsIdTestUserPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return UserTestSearchResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsIdTestUserPostExecute(r ApiV1CloudLdapsIdTestUserPostRequest) (*UserTestSearchResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *UserTestSearchResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsIdTestUserPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps/{id}/test-user"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.userTestSearchRequest == nil {
-		return localVarReturnValue, nil, reportError("userTestSearchRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.userTestSearchRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1CloudLdapsPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
-	deprecatedConfigurationRequest *DeprecatedConfigurationRequest
-}
-
-// Cloud Identity Provider configuration to create
-func (r ApiV1CloudLdapsPostRequest) DeprecatedConfigurationRequest(deprecatedConfigurationRequest DeprecatedConfigurationRequest) ApiV1CloudLdapsPostRequest {
-	r.deprecatedConfigurationRequest = &deprecatedConfigurationRequest
-	return r
-}
-
-func (r ApiV1CloudLdapsPostRequest) Execute() (*DeprecatedConfigurationResponse, *http.Response, error) {
-	return r.ApiService.V1CloudLdapsPostExecute(r)
-}
-
-/*
-V1CloudLdapsPost Create Cloud Identity Provider configuration
-
-Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CloudLdapsPostRequest
-
-Deprecated
-*/
-func (a *CloudLdapApiService) V1CloudLdapsPost(ctx context.Context) ApiV1CloudLdapsPostRequest {
-	return ApiV1CloudLdapsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return DeprecatedConfigurationResponse
-// Deprecated
-func (a *CloudLdapApiService) V1CloudLdapsPostExecute(r ApiV1CloudLdapsPostRequest) (*DeprecatedConfigurationResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DeprecatedConfigurationResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1CloudLdapsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/cloud-ldaps"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.deprecatedConfigurationRequest == nil {
-		return localVarReturnValue, nil, reportError("deprecatedConfigurationRequest is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.deprecatedConfigurationRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiV1LdapKeystoreVerifyPostRequest struct {
-	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	cloudLdapKeystoreFile *CloudLdapKeystoreFile
 }
 
-func (r ApiV1LdapKeystoreVerifyPostRequest) CloudLdapKeystoreFile(cloudLdapKeystoreFile CloudLdapKeystoreFile) ApiV1LdapKeystoreVerifyPostRequest {
+func (r CloudLdapAPIV1LdapKeystoreVerifyPostRequest) CloudLdapKeystoreFile(cloudLdapKeystoreFile CloudLdapKeystoreFile) CloudLdapAPIV1LdapKeystoreVerifyPostRequest {
 	r.cloudLdapKeystoreFile = &cloudLdapKeystoreFile
 	return r
 }
 
-func (r ApiV1LdapKeystoreVerifyPostRequest) Execute() (*CloudLdapKeystore, *http.Response, error) {
+func (r CloudLdapAPIV1LdapKeystoreVerifyPostRequest) Execute() (*CloudLdapKeystore, *http.Response, error) {
 	return r.ApiService.V1LdapKeystoreVerifyPostExecute(r)
 }
 
@@ -2695,10 +253,10 @@ V1LdapKeystoreVerifyPost Validate keystore for Cloud Identity Provider secure co
 Validate keystore for Cloud Identity Provider secure connection
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1LdapKeystoreVerifyPostRequest
+ @return CloudLdapAPIV1LdapKeystoreVerifyPostRequest
 */
-func (a *CloudLdapApiService) V1LdapKeystoreVerifyPost(ctx context.Context) ApiV1LdapKeystoreVerifyPostRequest {
-	return ApiV1LdapKeystoreVerifyPostRequest{
+func (a *CloudLdapAPIService) V1LdapKeystoreVerifyPost(ctx context.Context) CloudLdapAPIV1LdapKeystoreVerifyPostRequest {
+	return CloudLdapAPIV1LdapKeystoreVerifyPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -2706,7 +264,7 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPost(ctx context.Context) ApiV
 
 // Execute executes the request
 //  @return CloudLdapKeystore
-func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystoreVerifyPostRequest) (*CloudLdapKeystore, *http.Response, error) {
+func (a *CloudLdapAPIService) V1LdapKeystoreVerifyPostExecute(r CloudLdapAPIV1LdapKeystoreVerifyPostRequest) (*CloudLdapKeystore, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -2714,7 +272,7 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystor
 		localVarReturnValue  *CloudLdapKeystore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V1LdapKeystoreVerifyPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V1LdapKeystoreVerifyPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2757,9 +315,9 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystor
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2776,7 +334,8 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystor
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2793,13 +352,13 @@ func (a *CloudLdapApiService) V1LdapKeystoreVerifyPostExecute(r ApiV1LdapKeystor
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsDefaultsProviderMappingsGetRequest struct {
+type CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	provider string
 }
 
-func (r ApiV2CloudLdapsDefaultsProviderMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsDefaultsProviderMappingsGetExecute(r)
 }
 
@@ -2810,10 +369,10 @@ Get default mappings for Cloud Identity Provider Provider.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param provider Cloud Identity Provider name
- @return ApiV2CloudLdapsDefaultsProviderMappingsGetRequest
+ @return CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderMappingsGetRequest {
-	return ApiV2CloudLdapsDefaultsProviderMappingsGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsDefaultsProviderMappingsGet(ctx context.Context, provider string) CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest {
+	return CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		provider: provider,
@@ -2822,7 +381,7 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGet(ctx contex
 
 // Execute executes the request
 //  @return CloudLdapMappingsResponse
-func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r ApiV2CloudLdapsDefaultsProviderMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r CloudLdapAPIV2CloudLdapsDefaultsProviderMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2830,13 +389,13 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 		localVarReturnValue  *CloudLdapMappingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsDefaultsProviderMappingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsDefaultsProviderMappingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/defaults/{provider}/mappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"provider"+"}", url.PathEscape(parameterToString(r.provider, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"provider"+"}", url.PathEscape(parameterValueToString(r.provider, "provider")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2869,9 +428,9 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -2888,7 +447,8 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2898,7 +458,8 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2915,13 +476,13 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderMappingsGetExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest struct {
+type CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	provider string
 }
 
-func (r ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) Execute() (*CloudLdapServerResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) Execute() (*CloudLdapServerResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r)
 }
 
@@ -2932,10 +493,10 @@ Get default server configuration for Cloud Identity Provider Identity Provider.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param provider Cloud Identity Provider name
- @return ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
+ @return CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet(ctx context.Context, provider string) ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest {
-	return ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsDefaultsProviderServerConfigurationGet(ctx context.Context, provider string) CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest {
+	return CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		provider: provider,
@@ -2944,7 +505,7 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 
 // Execute executes the request
 //  @return CloudLdapServerResponse
-func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r ApiV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) (*CloudLdapServerResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsDefaultsProviderServerConfigurationGetExecute(r CloudLdapAPIV2CloudLdapsDefaultsProviderServerConfigurationGetRequest) (*CloudLdapServerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -2952,13 +513,13 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 		localVarReturnValue  *CloudLdapServerResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsDefaultsProviderServerConfigurationGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsDefaultsProviderServerConfigurationGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/defaults/{provider}/server-configuration"
-	localVarPath = strings.Replace(localVarPath, "{"+"provider"+"}", url.PathEscape(parameterToString(r.provider, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"provider"+"}", url.PathEscape(parameterValueToString(r.provider, "provider")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -2991,9 +552,9 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3010,7 +571,8 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3020,7 +582,8 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3037,13 +600,13 @@ func (a *CloudLdapApiService) V2CloudLdapsDefaultsProviderServerConfigurationGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdConnectionBindGetRequest struct {
+type CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdConnectionBindGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdConnectionBindGetExecute(r)
 }
 
@@ -3068,10 +631,10 @@ numAvailableConnections - The number of connections currently available for use 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdConnectionBindGetRequest
+ @return CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionBindGetRequest {
-	return ApiV2CloudLdapsIdConnectionBindGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionBindGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest {
+	return CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3080,7 +643,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGet(ctx context.Contex
 
 // Execute executes the request
 //  @return CloudLdapConnectionPoolStatistics
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionBindGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionBindGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3088,13 +651,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 		localVarReturnValue  *CloudLdapConnectionPoolStatistics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdConnectionBindGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdConnectionBindGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}/connection/bind"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3127,9 +690,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3146,7 +709,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3156,7 +720,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3173,13 +738,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionBindGetExecute(r ApiV2Clou
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdConnectionSearchGetRequest struct {
+type CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdConnectionSearchGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest) Execute() (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdConnectionSearchGetExecute(r)
 }
 
@@ -3204,10 +769,10 @@ numAvailableConnections - The number of connections currently available for use 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdConnectionSearchGetRequest
+ @return CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionSearchGetRequest {
-	return ApiV2CloudLdapsIdConnectionSearchGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionSearchGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest {
+	return CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3216,7 +781,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGet(ctx context.Cont
 
 // Execute executes the request
 //  @return CloudLdapConnectionPoolStatistics
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionSearchGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionSearchGetRequest) (*CloudLdapConnectionPoolStatistics, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3224,13 +789,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 		localVarReturnValue  *CloudLdapConnectionPoolStatistics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdConnectionSearchGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdConnectionSearchGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}/connection/search"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3263,9 +828,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3282,7 +847,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3292,7 +858,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3309,13 +876,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionSearchGetExecute(r ApiV2Cl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdConnectionStatusGetRequest struct {
+type CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdConnectionStatusGetRequest) Execute() (*CloudLdapConnectionStatus, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest) Execute() (*CloudLdapConnectionStatus, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdConnectionStatusGetExecute(r)
 }
 
@@ -3327,10 +894,10 @@ Tests the communication with the specified cloud connection
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdConnectionStatusGetRequest
+ @return CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGet(ctx context.Context, id string) ApiV2CloudLdapsIdConnectionStatusGetRequest {
-	return ApiV2CloudLdapsIdConnectionStatusGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionStatusGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest {
+	return CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3339,7 +906,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGet(ctx context.Cont
 
 // Execute executes the request
 //  @return CloudLdapConnectionStatus
-func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2CloudLdapsIdConnectionStatusGetRequest) (*CloudLdapConnectionStatus, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdConnectionStatusGetExecute(r CloudLdapAPIV2CloudLdapsIdConnectionStatusGetRequest) (*CloudLdapConnectionStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3347,13 +914,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 		localVarReturnValue  *CloudLdapConnectionStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdConnectionStatusGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdConnectionStatusGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}/connection/status"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3386,9 +953,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3405,7 +972,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3415,7 +983,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3432,13 +1001,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdConnectionStatusGetExecute(r ApiV2Cl
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdDeleteRequest struct {
+type CloudLdapAPIV2CloudLdapsIdDeleteRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdDeleteRequest) Execute() (*http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdDeleteExecute(r)
 }
 
@@ -3449,10 +1018,10 @@ Delete Cloud Identity Provider configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdDeleteRequest
+ @return CloudLdapAPIV2CloudLdapsIdDeleteRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdDelete(ctx context.Context, id string) ApiV2CloudLdapsIdDeleteRequest {
-	return ApiV2CloudLdapsIdDeleteRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdDelete(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdDeleteRequest {
+	return CloudLdapAPIV2CloudLdapsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3460,20 +1029,20 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDelete(ctx context.Context, id strin
 }
 
 // Execute executes the request
-func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDeleteRequest) (*http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdDeleteExecute(r CloudLdapAPIV2CloudLdapsIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3506,9 +1075,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDel
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -3525,7 +1094,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3535,7 +1105,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -3543,13 +1114,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdDeleteExecute(r ApiV2CloudLdapsIdDel
 	return localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdGetRequest struct {
+type CloudLdapAPIV2CloudLdapsIdGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdGetRequest) Execute() (*LdapConfigurationResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdGetRequest) Execute() (*LdapConfigurationResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdGetExecute(r)
 }
 
@@ -3560,10 +1131,10 @@ Get Cloud Identity Provider configuration with given id.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdGetRequest
+ @return CloudLdapAPIV2CloudLdapsIdGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdGet(ctx context.Context, id string) ApiV2CloudLdapsIdGetRequest {
-	return ApiV2CloudLdapsIdGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdGetRequest {
+	return CloudLdapAPIV2CloudLdapsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3572,7 +1143,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGet(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return LdapConfigurationResponse
-func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetRequest) (*LdapConfigurationResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdGetExecute(r CloudLdapAPIV2CloudLdapsIdGetRequest) (*LdapConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3580,13 +1151,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 		localVarReturnValue  *LdapConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3619,9 +1190,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3638,7 +1209,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3648,7 +1220,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3665,13 +1238,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdGetExecute(r ApiV2CloudLdapsIdGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdMappingsGetRequest struct {
+type CloudLdapAPIV2CloudLdapsIdMappingsGetRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 }
 
-func (r ApiV2CloudLdapsIdMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdMappingsGetRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdMappingsGetExecute(r)
 }
 
@@ -3682,10 +1255,10 @@ Get all mappings configurations for Cloud Identity Providers server configuratio
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdMappingsGetRequest
+ @return CloudLdapAPIV2CloudLdapsIdMappingsGetRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGet(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsGetRequest {
-	return ApiV2CloudLdapsIdMappingsGetRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdMappingsGet(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdMappingsGetRequest {
+	return CloudLdapAPIV2CloudLdapsIdMappingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3694,7 +1267,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGet(ctx context.Context, id 
 
 // Execute executes the request
 //  @return CloudLdapMappingsResponse
-func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdMappingsGetExecute(r CloudLdapAPIV2CloudLdapsIdMappingsGetRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -3702,13 +1275,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 		localVarReturnValue  *CloudLdapMappingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdMappingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdMappingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}/mappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3741,9 +1314,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3760,7 +1333,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3770,7 +1344,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3787,20 +1362,20 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsGetExecute(r ApiV2CloudLdaps
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdMappingsPutRequest struct {
+type CloudLdapAPIV2CloudLdapsIdMappingsPutRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 	cloudLdapMappingsRequest *CloudLdapMappingsRequest
 }
 
 // Cloud Identity Provider mappings to update.
-func (r ApiV2CloudLdapsIdMappingsPutRequest) CloudLdapMappingsRequest(cloudLdapMappingsRequest CloudLdapMappingsRequest) ApiV2CloudLdapsIdMappingsPutRequest {
+func (r CloudLdapAPIV2CloudLdapsIdMappingsPutRequest) CloudLdapMappingsRequest(cloudLdapMappingsRequest CloudLdapMappingsRequest) CloudLdapAPIV2CloudLdapsIdMappingsPutRequest {
 	r.cloudLdapMappingsRequest = &cloudLdapMappingsRequest
 	return r
 }
 
-func (r ApiV2CloudLdapsIdMappingsPutRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdMappingsPutRequest) Execute() (*CloudLdapMappingsResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdMappingsPutExecute(r)
 }
 
@@ -3811,10 +1386,10 @@ Update Cloud Identity Provider mappings configuration. Cannot be used for partia
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdMappingsPutRequest
+ @return CloudLdapAPIV2CloudLdapsIdMappingsPutRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPut(ctx context.Context, id string) ApiV2CloudLdapsIdMappingsPutRequest {
-	return ApiV2CloudLdapsIdMappingsPutRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdMappingsPut(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdMappingsPutRequest {
+	return CloudLdapAPIV2CloudLdapsIdMappingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3823,7 +1398,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPut(ctx context.Context, id 
 
 // Execute executes the request
 //  @return CloudLdapMappingsResponse
-func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdMappingsPutExecute(r CloudLdapAPIV2CloudLdapsIdMappingsPutRequest) (*CloudLdapMappingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3831,13 +1406,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 		localVarReturnValue  *CloudLdapMappingsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdMappingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdMappingsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}/mappings"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -3875,9 +1450,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -3894,7 +1469,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3904,7 +1480,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -3914,7 +1491,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3931,20 +1509,20 @@ func (a *CloudLdapApiService) V2CloudLdapsIdMappingsPutExecute(r ApiV2CloudLdaps
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsIdPutRequest struct {
+type CloudLdapAPIV2CloudLdapsIdPutRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	id string
 	ldapConfigurationUpdate *LdapConfigurationUpdate
 }
 
 // Cloud Identity Provider configuration to update
-func (r ApiV2CloudLdapsIdPutRequest) LdapConfigurationUpdate(ldapConfigurationUpdate LdapConfigurationUpdate) ApiV2CloudLdapsIdPutRequest {
+func (r CloudLdapAPIV2CloudLdapsIdPutRequest) LdapConfigurationUpdate(ldapConfigurationUpdate LdapConfigurationUpdate) CloudLdapAPIV2CloudLdapsIdPutRequest {
 	r.ldapConfigurationUpdate = &ldapConfigurationUpdate
 	return r
 }
 
-func (r ApiV2CloudLdapsIdPutRequest) Execute() (*LdapConfigurationResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsIdPutRequest) Execute() (*LdapConfigurationResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsIdPutExecute(r)
 }
 
@@ -3955,10 +1533,10 @@ Update Cloud Identity Provider configuration. Cannot be used for partial updates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Cloud Identity Provider identifier
- @return ApiV2CloudLdapsIdPutRequest
+ @return CloudLdapAPIV2CloudLdapsIdPutRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsIdPut(ctx context.Context, id string) ApiV2CloudLdapsIdPutRequest {
-	return ApiV2CloudLdapsIdPutRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsIdPut(ctx context.Context, id string) CloudLdapAPIV2CloudLdapsIdPutRequest {
+	return CloudLdapAPIV2CloudLdapsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -3967,7 +1545,7 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPut(ctx context.Context, id string) 
 
 // Execute executes the request
 //  @return LdapConfigurationResponse
-func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutRequest) (*LdapConfigurationResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsIdPutExecute(r CloudLdapAPIV2CloudLdapsIdPutRequest) (*LdapConfigurationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -3975,13 +1553,13 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 		localVarReturnValue  *LdapConfigurationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v2/cloud-ldaps/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterToString(r.id, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -4019,9 +1597,9 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4038,7 +1616,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -4048,7 +1627,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -4058,7 +1638,8 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -4075,19 +1656,19 @@ func (a *CloudLdapApiService) V2CloudLdapsIdPutExecute(r ApiV2CloudLdapsIdPutReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV2CloudLdapsPostRequest struct {
+type CloudLdapAPIV2CloudLdapsPostRequest struct {
 	ctx context.Context
-	ApiService CloudLdapApi
+	ApiService CloudLdapAPI
 	ldapConfigurationRequest *LdapConfigurationRequest
 }
 
 // Cloud Identity Provider configuration to create
-func (r ApiV2CloudLdapsPostRequest) LdapConfigurationRequest(ldapConfigurationRequest LdapConfigurationRequest) ApiV2CloudLdapsPostRequest {
+func (r CloudLdapAPIV2CloudLdapsPostRequest) LdapConfigurationRequest(ldapConfigurationRequest LdapConfigurationRequest) CloudLdapAPIV2CloudLdapsPostRequest {
 	r.ldapConfigurationRequest = &ldapConfigurationRequest
 	return r
 }
 
-func (r ApiV2CloudLdapsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+func (r CloudLdapAPIV2CloudLdapsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
 	return r.ApiService.V2CloudLdapsPostExecute(r)
 }
 
@@ -4097,10 +1678,10 @@ V2CloudLdapsPost Create Cloud Identity Provider configuration
 Create new Cloud Identity Provider configuration with unique display name. If mappings not provided, then defaults will be generated instead.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV2CloudLdapsPostRequest
+ @return CloudLdapAPIV2CloudLdapsPostRequest
 */
-func (a *CloudLdapApiService) V2CloudLdapsPost(ctx context.Context) ApiV2CloudLdapsPostRequest {
-	return ApiV2CloudLdapsPostRequest{
+func (a *CloudLdapAPIService) V2CloudLdapsPost(ctx context.Context) CloudLdapAPIV2CloudLdapsPostRequest {
+	return CloudLdapAPIV2CloudLdapsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -4108,7 +1689,7 @@ func (a *CloudLdapApiService) V2CloudLdapsPost(ctx context.Context) ApiV2CloudLd
 
 // Execute executes the request
 //  @return HrefResponse
-func (a *CloudLdapApiService) V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostRequest) (*HrefResponse, *http.Response, error) {
+func (a *CloudLdapAPIService) V2CloudLdapsPostExecute(r CloudLdapAPIV2CloudLdapsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -4116,7 +1697,7 @@ func (a *CloudLdapApiService) V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostReque
 		localVarReturnValue  *HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapApiService.V2CloudLdapsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudLdapAPIService.V2CloudLdapsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4159,9 +1740,9 @@ func (a *CloudLdapApiService) V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -4178,7 +1759,8 @@ func (a *CloudLdapApiService) V2CloudLdapsPostExecute(r ApiV2CloudLdapsPostReque
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

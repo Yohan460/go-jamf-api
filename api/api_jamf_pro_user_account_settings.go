@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"strings"
 )
 
 
-type JamfProUserAccountSettingsApi interface {
+type JamfProUserAccountSettingsAPI interface {
 
 	/*
 	V1UserPreferencesKeyIdDelete Remove specified setting for authenticated user 
@@ -30,12 +30,12 @@ type JamfProUserAccountSettingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param keyId unique key of user setting to be persisted
-	@return ApiV1UserPreferencesKeyIdDeleteRequest
+	@return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest
 	*/
-	V1UserPreferencesKeyIdDelete(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdDeleteRequest
+	V1UserPreferencesKeyIdDelete(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest
 
 	// V1UserPreferencesKeyIdDeleteExecute executes the request
-	V1UserPreferencesKeyIdDeleteExecute(r ApiV1UserPreferencesKeyIdDeleteRequest) (*http.Response, error)
+	V1UserPreferencesKeyIdDeleteExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1UserPreferencesKeyIdGet Get the user setting for the authenticated user and key 
@@ -45,13 +45,13 @@ type JamfProUserAccountSettingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param keyId user setting to be retrieved
-	@return ApiV1UserPreferencesKeyIdGetRequest
+	@return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest
 	*/
-	V1UserPreferencesKeyIdGet(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdGetRequest
+	V1UserPreferencesKeyIdGet(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest
 
 	// V1UserPreferencesKeyIdGetExecute executes the request
 	//  @return map[string]interface{}
-	V1UserPreferencesKeyIdGetExecute(r ApiV1UserPreferencesKeyIdGetRequest) (map[string]interface{}, *http.Response, error)
+	V1UserPreferencesKeyIdGetExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 	V1UserPreferencesKeyIdPut Persist the user setting 
@@ -61,25 +61,41 @@ type JamfProUserAccountSettingsApi interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param keyId unique key of user setting to be persisted
-	@return ApiV1UserPreferencesKeyIdPutRequest
+	@return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest
 	*/
-	V1UserPreferencesKeyIdPut(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdPutRequest
+	V1UserPreferencesKeyIdPut(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest
 
 	// V1UserPreferencesKeyIdPutExecute executes the request
 	//  @return map[string]interface{}
-	V1UserPreferencesKeyIdPutExecute(r ApiV1UserPreferencesKeyIdPutRequest) (map[string]interface{}, *http.Response, error)
+	V1UserPreferencesKeyIdPutExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+	V1UserPreferencesSettingsKeyIdGet Get the user preferences for the authenticated user and key. 
+
+	Gets the user preferences for the authenticated user and key.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param keyId user setting to be retrieved
+	@return JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest
+	*/
+	V1UserPreferencesSettingsKeyIdGet(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest
+
+	// V1UserPreferencesSettingsKeyIdGetExecute executes the request
+	//  @return UserPreferencesSettings
+	V1UserPreferencesSettingsKeyIdGetExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest) (*UserPreferencesSettings, *http.Response, error)
 }
 
-// JamfProUserAccountSettingsApiService JamfProUserAccountSettingsApi service
-type JamfProUserAccountSettingsApiService service
+// JamfProUserAccountSettingsAPIService JamfProUserAccountSettingsAPI service
+type JamfProUserAccountSettingsAPIService service
 
-type ApiV1UserPreferencesKeyIdDeleteRequest struct {
+type JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsApi
+	ApiService JamfProUserAccountSettingsAPI
 	keyId string
 }
 
-func (r ApiV1UserPreferencesKeyIdDeleteRequest) Execute() (*http.Response, error) {
+func (r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1UserPreferencesKeyIdDeleteExecute(r)
 }
 
@@ -91,10 +107,10 @@ Remove specified setting for authenticated user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param keyId unique key of user setting to be persisted
- @return ApiV1UserPreferencesKeyIdDeleteRequest
+ @return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest
 */
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDelete(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdDeleteRequest {
-	return ApiV1UserPreferencesKeyIdDeleteRequest{
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdDelete(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest {
+	return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		keyId: keyId,
@@ -102,20 +118,20 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDelete(ctx 
 }
 
 // Execute executes the request
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDeleteExecute(r ApiV1UserPreferencesKeyIdDeleteRequest) (*http.Response, error) {
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdDeleteExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsApiService.V1UserPreferencesKeyIdDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsAPIService.V1UserPreferencesKeyIdDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/user/preferences/{keyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterToString(r.keyId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterValueToString(r.keyId, "keyId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -148,9 +164,9 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDeleteExecu
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -166,13 +182,13 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdDeleteExecu
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1UserPreferencesKeyIdGetRequest struct {
+type JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsApi
+	ApiService JamfProUserAccountSettingsAPI
 	keyId string
 }
 
-func (r ApiV1UserPreferencesKeyIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.V1UserPreferencesKeyIdGetExecute(r)
 }
 
@@ -184,10 +200,10 @@ Gets the user setting for the authenticated user and key.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param keyId user setting to be retrieved
- @return ApiV1UserPreferencesKeyIdGetRequest
+ @return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest
 */
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGet(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdGetRequest {
-	return ApiV1UserPreferencesKeyIdGetRequest{
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdGet(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest {
+	return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		keyId: keyId,
@@ -196,7 +212,7 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGet(ctx con
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGetExecute(r ApiV1UserPreferencesKeyIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdGetExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -204,13 +220,13 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGetExecute(
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsApiService.V1UserPreferencesKeyIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsAPIService.V1UserPreferencesKeyIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/user/preferences/{keyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterToString(r.keyId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterValueToString(r.keyId, "keyId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -243,9 +259,9 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -270,20 +286,20 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1UserPreferencesKeyIdPutRequest struct {
+type JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest struct {
 	ctx context.Context
-	ApiService JamfProUserAccountSettingsApi
+	ApiService JamfProUserAccountSettingsAPI
 	keyId string
 	body *map[string]interface{}
 }
 
 // user setting value to be persisted
-func (r ApiV1UserPreferencesKeyIdPutRequest) Body(body map[string]interface{}) ApiV1UserPreferencesKeyIdPutRequest {
+func (r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest) Body(body map[string]interface{}) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiV1UserPreferencesKeyIdPutRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.V1UserPreferencesKeyIdPutExecute(r)
 }
 
@@ -295,10 +311,10 @@ Persists the user setting
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param keyId unique key of user setting to be persisted
- @return ApiV1UserPreferencesKeyIdPutRequest
+ @return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest
 */
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdPut(ctx context.Context, keyId string) ApiV1UserPreferencesKeyIdPutRequest {
-	return ApiV1UserPreferencesKeyIdPutRequest{
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdPut(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest {
+	return JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
 		keyId: keyId,
@@ -307,7 +323,7 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdPut(ctx con
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdPutExecute(r ApiV1UserPreferencesKeyIdPutRequest) (map[string]interface{}, *http.Response, error) {
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesKeyIdPutExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesKeyIdPutRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -315,13 +331,13 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdPutExecute(
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsApiService.V1UserPreferencesKeyIdPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsAPIService.V1UserPreferencesKeyIdPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/user/preferences/{keyId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterToString(r.keyId, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterValueToString(r.keyId, "keyId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -356,9 +372,113 @@ func (a *JamfProUserAccountSettingsApiService) V1UserPreferencesKeyIdPutExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest struct {
+	ctx context.Context
+	ApiService JamfProUserAccountSettingsAPI
+	keyId string
+}
+
+func (r JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest) Execute() (*UserPreferencesSettings, *http.Response, error) {
+	return r.ApiService.V1UserPreferencesSettingsKeyIdGetExecute(r)
+}
+
+/*
+V1UserPreferencesSettingsKeyIdGet Get the user preferences for the authenticated user and key. 
+
+Gets the user preferences for the authenticated user and key.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param keyId user setting to be retrieved
+ @return JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest
+*/
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesSettingsKeyIdGet(ctx context.Context, keyId string) JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest {
+	return JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		keyId: keyId,
+	}
+}
+
+// Execute executes the request
+//  @return UserPreferencesSettings
+func (a *JamfProUserAccountSettingsAPIService) V1UserPreferencesSettingsKeyIdGetExecute(r JamfProUserAccountSettingsAPIV1UserPreferencesSettingsKeyIdGetRequest) (*UserPreferencesSettings, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserPreferencesSettings
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProUserAccountSettingsAPIService.V1UserPreferencesSettingsKeyIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/user/preferences/settings/{keyId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"keyId"+"}", url.PathEscape(parameterValueToString(r.keyId, "keyId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

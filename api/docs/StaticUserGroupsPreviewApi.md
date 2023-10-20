@@ -1,11 +1,11 @@
-# \StaticUserGroupsPreviewApi
+# \StaticUserGroupsPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1StaticUserGroupsGet**](StaticUserGroupsPreviewApi.md#V1StaticUserGroupsGet) | **Get** /v1/static-user-groups | Return a list of all Static User Groups 
-[**V1StaticUserGroupsIdGet**](StaticUserGroupsPreviewApi.md#V1StaticUserGroupsIdGet) | **Get** /v1/static-user-groups/{id} | Return a specific Static User Group by id 
+[**V1StaticUserGroupsGet**](StaticUserGroupsPreviewAPI.md#V1StaticUserGroupsGet) | **Get** /v1/static-user-groups | Return a list of all Static User Groups 
+[**V1StaticUserGroupsIdGet**](StaticUserGroupsPreviewAPI.md#V1StaticUserGroupsIdGet) | **Get** /v1/static-user-groups/{id} | Return a specific Static User Group by id 
 
 
 
@@ -26,20 +26,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StaticUserGroupsPreviewApi.V1StaticUserGroupsGet(context.Background()).Execute()
+    resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewApi.V1StaticUserGroupsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1StaticUserGroupsGet`: []StaticUserGroup
-    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewApi.V1StaticUserGroupsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -87,7 +87,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -95,13 +95,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StaticUserGroupsPreviewApi.V1StaticUserGroupsIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewApi.V1StaticUserGroupsIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1StaticUserGroupsIdGet`: StaticUserGroup
-    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewApi.V1StaticUserGroupsIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet`: %v\n", resp)
 }
 ```
 

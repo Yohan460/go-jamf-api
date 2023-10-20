@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type JamfProInitializationPreviewApi interface {
+type JamfProInitializationPreviewAPI interface {
 
 	/*
 	SystemInitializeDatabaseConnectionPost Provide Database Password during startup 
@@ -27,15 +27,15 @@ type JamfProInitializationPreviewApi interface {
 	Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSystemInitializeDatabaseConnectionPostRequest
+	@return JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest
 
 	Deprecated
 	*/
-	SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiSystemInitializeDatabaseConnectionPostRequest
+	SystemInitializeDatabaseConnectionPost(ctx context.Context) JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest
 
 	// SystemInitializeDatabaseConnectionPostExecute executes the request
 	// Deprecated
-	SystemInitializeDatabaseConnectionPostExecute(r ApiSystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
+	SystemInitializeDatabaseConnectionPostExecute(r JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest) (*http.Response, error)
 
 	/*
 	SystemInitializePost Set up fresh installed Jamf Pro Server 
@@ -44,32 +44,32 @@ type JamfProInitializationPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSystemInitializePostRequest
+	@return JamfProInitializationPreviewAPISystemInitializePostRequest
 
 	Deprecated
 	*/
-	SystemInitializePost(ctx context.Context) ApiSystemInitializePostRequest
+	SystemInitializePost(ctx context.Context) JamfProInitializationPreviewAPISystemInitializePostRequest
 
 	// SystemInitializePostExecute executes the request
 	// Deprecated
-	SystemInitializePostExecute(r ApiSystemInitializePostRequest) (*http.Response, error)
+	SystemInitializePostExecute(r JamfProInitializationPreviewAPISystemInitializePostRequest) (*http.Response, error)
 }
 
-// JamfProInitializationPreviewApiService JamfProInitializationPreviewApi service
-type JamfProInitializationPreviewApiService service
+// JamfProInitializationPreviewAPIService JamfProInitializationPreviewAPI service
+type JamfProInitializationPreviewAPIService service
 
-type ApiSystemInitializeDatabaseConnectionPostRequest struct {
+type JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest struct {
 	ctx context.Context
-	ApiService JamfProInitializationPreviewApi
+	ApiService JamfProInitializationPreviewAPI
 	databasePassword *DatabasePassword
 }
 
-func (r ApiSystemInitializeDatabaseConnectionPostRequest) DatabasePassword(databasePassword DatabasePassword) ApiSystemInitializeDatabaseConnectionPostRequest {
+func (r JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest) DatabasePassword(databasePassword DatabasePassword) JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest {
 	r.databasePassword = &databasePassword
 	return r
 }
 
-func (r ApiSystemInitializeDatabaseConnectionPostRequest) Execute() (*http.Response, error) {
+func (r JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SystemInitializeDatabaseConnectionPostExecute(r)
 }
 
@@ -79,12 +79,12 @@ SystemInitializeDatabaseConnectionPost Provide Database Password during startup
 Provide database password during startup. Endpoint is accessible when database password was not configured and Jamf Pro server has not been initialized yet.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSystemInitializeDatabaseConnectionPostRequest
+ @return JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest
 
 Deprecated
 */
-func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnectionPost(ctx context.Context) ApiSystemInitializeDatabaseConnectionPostRequest {
-	return ApiSystemInitializeDatabaseConnectionPostRequest{
+func (a *JamfProInitializationPreviewAPIService) SystemInitializeDatabaseConnectionPost(ctx context.Context) JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest {
+	return JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -92,14 +92,14 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 
 // Execute executes the request
 // Deprecated
-func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnectionPostExecute(r ApiSystemInitializeDatabaseConnectionPostRequest) (*http.Response, error) {
+func (a *JamfProInitializationPreviewAPIService) SystemInitializeDatabaseConnectionPostExecute(r JamfProInitializationPreviewAPISystemInitializeDatabaseConnectionPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationPreviewApiService.SystemInitializeDatabaseConnectionPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationPreviewAPIService.SystemInitializeDatabaseConnectionPost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,9 +142,9 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -161,7 +161,8 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
@@ -171,7 +172,8 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -179,18 +181,18 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializeDatabaseConnect
 	return localVarHTTPResponse, nil
 }
 
-type ApiSystemInitializePostRequest struct {
+type JamfProInitializationPreviewAPISystemInitializePostRequest struct {
 	ctx context.Context
-	ApiService JamfProInitializationPreviewApi
+	ApiService JamfProInitializationPreviewAPI
 	initialize *Initialize
 }
 
-func (r ApiSystemInitializePostRequest) Initialize(initialize Initialize) ApiSystemInitializePostRequest {
+func (r JamfProInitializationPreviewAPISystemInitializePostRequest) Initialize(initialize Initialize) JamfProInitializationPreviewAPISystemInitializePostRequest {
 	r.initialize = &initialize
 	return r
 }
 
-func (r ApiSystemInitializePostRequest) Execute() (*http.Response, error) {
+func (r JamfProInitializationPreviewAPISystemInitializePostRequest) Execute() (*http.Response, error) {
 	return r.ApiService.SystemInitializePostExecute(r)
 }
 
@@ -201,12 +203,12 @@ Set up fresh installed Jamf Pro Server
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSystemInitializePostRequest
+ @return JamfProInitializationPreviewAPISystemInitializePostRequest
 
 Deprecated
 */
-func (a *JamfProInitializationPreviewApiService) SystemInitializePost(ctx context.Context) ApiSystemInitializePostRequest {
-	return ApiSystemInitializePostRequest{
+func (a *JamfProInitializationPreviewAPIService) SystemInitializePost(ctx context.Context) JamfProInitializationPreviewAPISystemInitializePostRequest {
+	return JamfProInitializationPreviewAPISystemInitializePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -214,14 +216,14 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializePost(ctx contex
 
 // Execute executes the request
 // Deprecated
-func (a *JamfProInitializationPreviewApiService) SystemInitializePostExecute(r ApiSystemInitializePostRequest) (*http.Response, error) {
+func (a *JamfProInitializationPreviewAPIService) SystemInitializePostExecute(r JamfProInitializationPreviewAPISystemInitializePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationPreviewApiService.SystemInitializePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationPreviewAPIService.SystemInitializePost")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -264,9 +266,9 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializePostExecute(r A
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -283,7 +285,8 @@ func (a *JamfProInitializationPreviewApiService) SystemInitializePostExecute(r A
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

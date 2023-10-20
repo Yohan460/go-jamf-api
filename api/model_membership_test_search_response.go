@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MembershipTestSearchResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MembershipTestSearchResponse{}
+
 // MembershipTestSearchResponse struct for MembershipTestSearchResponse
 type MembershipTestSearchResponse struct {
 	Username *string `json:"username,omitempty"`
@@ -39,7 +42,7 @@ func NewMembershipTestSearchResponseWithDefaults() *MembershipTestSearchResponse
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *MembershipTestSearchResponse) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MembershipTestSearchResponse) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MembershipTestSearchResponse) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -57,7 +60,7 @@ func (o *MembershipTestSearchResponse) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *MembershipTestSearchResponse) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MembershipTestSearchResponse) SetUsername(v string) {
 
 // GetIsMember returns the IsMember field value if set, zero value otherwise.
 func (o *MembershipTestSearchResponse) GetIsMember() bool {
-	if o == nil || o.IsMember == nil {
+	if o == nil || IsNil(o.IsMember) {
 		var ret bool
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MembershipTestSearchResponse) GetIsMember() bool {
 // GetIsMemberOk returns a tuple with the IsMember field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MembershipTestSearchResponse) GetIsMemberOk() (*bool, bool) {
-	if o == nil || o.IsMember == nil {
+	if o == nil || IsNil(o.IsMember) {
 		return nil, false
 	}
 	return o.IsMember, true
@@ -89,7 +92,7 @@ func (o *MembershipTestSearchResponse) GetIsMemberOk() (*bool, bool) {
 
 // HasIsMember returns a boolean if a field has been set.
 func (o *MembershipTestSearchResponse) HasIsMember() bool {
-	if o != nil && o.IsMember != nil {
+	if o != nil && !IsNil(o.IsMember) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MembershipTestSearchResponse) SetIsMember(v bool) {
 }
 
 func (o MembershipTestSearchResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.IsMember != nil {
-		toSerialize["isMember"] = o.IsMember
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MembershipTestSearchResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.IsMember) {
+		toSerialize["isMember"] = o.IsMember
+	}
+	return toSerialize, nil
 }
 
 type NullableMembershipTestSearchResponse struct {

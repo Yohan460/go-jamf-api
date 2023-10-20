@@ -1,17 +1,17 @@
-# \SsoSettingsApi
+# \SsoSettingsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SsoDependenciesGet**](SsoSettingsApi.md#V1SsoDependenciesGet) | **Get** /v1/sso/dependencies | Retrieve the list of Enrollment Customizations using SSO 
-[**V1SsoDisablePost**](SsoSettingsApi.md#V1SsoDisablePost) | **Post** /v1/sso/disable | Disable SSO 
-[**V1SsoGet**](SsoSettingsApi.md#V1SsoGet) | **Get** /v1/sso | Retrieve the current Single Sign On configuration settings 
-[**V1SsoHistoryGet**](SsoSettingsApi.md#V1SsoHistoryGet) | **Get** /v1/sso/history | Get SSO history object 
-[**V1SsoHistoryPost**](SsoSettingsApi.md#V1SsoHistoryPost) | **Post** /v1/sso/history | Add SSO history object notes 
-[**V1SsoMetadataDownloadGet**](SsoSettingsApi.md#V1SsoMetadataDownloadGet) | **Get** /v1/sso/metadata/download | Download the Jamf Pro SAML metadata file 
-[**V1SsoPut**](SsoSettingsApi.md#V1SsoPut) | **Put** /v1/sso | Updates the current Single Sign On configuration settings 
-[**V1SsoValidatePost**](SsoSettingsApi.md#V1SsoValidatePost) | **Post** /v1/sso/validate | Endpoint for validation of a saml metadata url 
+[**V1SsoDependenciesGet**](SsoSettingsAPI.md#V1SsoDependenciesGet) | **Get** /v1/sso/dependencies | Retrieve the list of Enrollment Customizations using SSO 
+[**V1SsoDisablePost**](SsoSettingsAPI.md#V1SsoDisablePost) | **Post** /v1/sso/disable | Disable SSO 
+[**V1SsoGet**](SsoSettingsAPI.md#V1SsoGet) | **Get** /v1/sso | Retrieve the current Single Sign On configuration settings 
+[**V1SsoHistoryGet**](SsoSettingsAPI.md#V1SsoHistoryGet) | **Get** /v1/sso/history | Get SSO history object 
+[**V1SsoHistoryPost**](SsoSettingsAPI.md#V1SsoHistoryPost) | **Post** /v1/sso/history | Add SSO history object notes 
+[**V1SsoMetadataDownloadGet**](SsoSettingsAPI.md#V1SsoMetadataDownloadGet) | **Get** /v1/sso/metadata/download | Download the Jamf Pro SAML metadata file 
+[**V1SsoPut**](SsoSettingsAPI.md#V1SsoPut) | **Put** /v1/sso | Updates the current Single Sign On configuration settings 
+[**V1SsoValidatePost**](SsoSettingsAPI.md#V1SsoValidatePost) | **Post** /v1/sso/validate | Endpoint for validation of a saml metadata url 
 
 
 
@@ -32,20 +32,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoDependenciesGet(context.Background()).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoDependenciesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoDependenciesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoDependenciesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoDependenciesGet`: EnrollmentCustomizationDependencies
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoDependenciesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoDependenciesGet`: %v\n", resp)
 }
 ```
 
@@ -93,16 +93,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoDisablePost(context.Background()).Execute()
+    r, err := apiClient.SsoSettingsAPI.V1SsoDisablePost(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoDisablePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoDisablePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -152,20 +152,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoGet(context.Background()).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoGet`: SsoSettings
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoGet`: %v\n", resp)
 }
 ```
 
@@ -213,7 +213,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -224,13 +224,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -285,7 +285,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -293,13 +293,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -351,20 +351,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoMetadataDownloadGet(context.Background()).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoMetadataDownloadGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoMetadataDownloadGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoMetadataDownloadGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoMetadataDownloadGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoMetadataDownloadGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoMetadataDownloadGet`: %v\n", resp)
 }
 ```
 
@@ -412,21 +412,21 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ssoSettings := *openapiclient.NewSsoSettings(false, false, false, false, false, false, "USERNAME", false, "GroupAttributeName_example", "GroupRdnKey_example", "ADFS", "saml/metadata", "URL") // SsoSettings | 
+    ssoSettings := *openapiclient.NewSsoSettings(false, false, false, false, false, false, "USERNAME", false, false, "GroupAttributeName_example", "GroupRdnKey_example", "ADFS", "saml/metadata", "URL") // SsoSettings | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoPut(context.Background()).SsoSettings(ssoSettings).Execute()
+    resp, r, err := apiClient.SsoSettingsAPI.V1SsoPut(context.Background()).SsoSettings(ssoSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1SsoPut`: SsoSettings
-    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsApi.V1SsoPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SsoSettingsAPI.V1SsoPut`: %v\n", resp)
 }
 ```
 
@@ -478,7 +478,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -486,9 +486,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoSettingsApi.V1SsoValidatePost(context.Background()).SsoMetadataUrl(ssoMetadataUrl).Execute()
+    r, err := apiClient.SsoSettingsAPI.V1SsoValidatePost(context.Background()).SsoMetadataUrl(ssoMetadataUrl).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsApi.V1SsoValidatePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SsoSettingsAPI.V1SsoValidatePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

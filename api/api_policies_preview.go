@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type PoliciesPreviewApi interface {
+type PoliciesPreviewAPI interface {
 
 	/*
 	SettingsObjPolicyPropertiesGet Get Policy Properties object 
@@ -28,16 +28,16 @@ type PoliciesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSettingsObjPolicyPropertiesGetRequest
+	@return PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest
 
 	Deprecated
 	*/
-	SettingsObjPolicyPropertiesGet(ctx context.Context) ApiSettingsObjPolicyPropertiesGetRequest
+	SettingsObjPolicyPropertiesGet(ctx context.Context) PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest
 
 	// SettingsObjPolicyPropertiesGetExecute executes the request
 	//  @return PolicyProperties
 	// Deprecated
-	SettingsObjPolicyPropertiesGetExecute(r ApiSettingsObjPolicyPropertiesGetRequest) (*PolicyProperties, *http.Response, error)
+	SettingsObjPolicyPropertiesGetExecute(r PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest) (*PolicyProperties, *http.Response, error)
 
 	/*
 	SettingsObjPolicyPropertiesPut Update Policy Properties object 
@@ -46,16 +46,16 @@ type PoliciesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSettingsObjPolicyPropertiesPutRequest
+	@return PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest
 
 	Deprecated
 	*/
-	SettingsObjPolicyPropertiesPut(ctx context.Context) ApiSettingsObjPolicyPropertiesPutRequest
+	SettingsObjPolicyPropertiesPut(ctx context.Context) PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest
 
 	// SettingsObjPolicyPropertiesPutExecute executes the request
 	//  @return PolicyProperties
 	// Deprecated
-	SettingsObjPolicyPropertiesPutExecute(r ApiSettingsObjPolicyPropertiesPutRequest) (*PolicyProperties, *http.Response, error)
+	SettingsObjPolicyPropertiesPutExecute(r PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest) (*PolicyProperties, *http.Response, error)
 
 	/*
 	V1PolicyPropertiesGet Get Policy Properties object 
@@ -64,13 +64,13 @@ type PoliciesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PolicyPropertiesGetRequest
+	@return PoliciesPreviewAPIV1PolicyPropertiesGetRequest
 	*/
-	V1PolicyPropertiesGet(ctx context.Context) ApiV1PolicyPropertiesGetRequest
+	V1PolicyPropertiesGet(ctx context.Context) PoliciesPreviewAPIV1PolicyPropertiesGetRequest
 
 	// V1PolicyPropertiesGetExecute executes the request
 	//  @return PolicyPropertiesV1
-	V1PolicyPropertiesGetExecute(r ApiV1PolicyPropertiesGetRequest) (*PolicyPropertiesV1, *http.Response, error)
+	V1PolicyPropertiesGetExecute(r PoliciesPreviewAPIV1PolicyPropertiesGetRequest) (*PolicyPropertiesV1, *http.Response, error)
 
 	/*
 	V1PolicyPropertiesPut Update Policy Properties object 
@@ -79,24 +79,24 @@ type PoliciesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1PolicyPropertiesPutRequest
+	@return PoliciesPreviewAPIV1PolicyPropertiesPutRequest
 	*/
-	V1PolicyPropertiesPut(ctx context.Context) ApiV1PolicyPropertiesPutRequest
+	V1PolicyPropertiesPut(ctx context.Context) PoliciesPreviewAPIV1PolicyPropertiesPutRequest
 
 	// V1PolicyPropertiesPutExecute executes the request
 	//  @return PolicyPropertiesV1
-	V1PolicyPropertiesPutExecute(r ApiV1PolicyPropertiesPutRequest) (*PolicyPropertiesV1, *http.Response, error)
+	V1PolicyPropertiesPutExecute(r PoliciesPreviewAPIV1PolicyPropertiesPutRequest) (*PolicyPropertiesV1, *http.Response, error)
 }
 
-// PoliciesPreviewApiService PoliciesPreviewApi service
-type PoliciesPreviewApiService service
+// PoliciesPreviewAPIService PoliciesPreviewAPI service
+type PoliciesPreviewAPIService service
 
-type ApiSettingsObjPolicyPropertiesGetRequest struct {
+type PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest struct {
 	ctx context.Context
-	ApiService PoliciesPreviewApi
+	ApiService PoliciesPreviewAPI
 }
 
-func (r ApiSettingsObjPolicyPropertiesGetRequest) Execute() (*PolicyProperties, *http.Response, error) {
+func (r PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest) Execute() (*PolicyProperties, *http.Response, error) {
 	return r.ApiService.SettingsObjPolicyPropertiesGetExecute(r)
 }
 
@@ -107,12 +107,12 @@ Gets `Policy Properties` object.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSettingsObjPolicyPropertiesGetRequest
+ @return PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest
 
 Deprecated
 */
-func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGet(ctx context.Context) ApiSettingsObjPolicyPropertiesGetRequest {
-	return ApiSettingsObjPolicyPropertiesGetRequest{
+func (a *PoliciesPreviewAPIService) SettingsObjPolicyPropertiesGet(ctx context.Context) PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest {
+	return PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -121,7 +121,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGet(ctx context.C
 // Execute executes the request
 //  @return PolicyProperties
 // Deprecated
-func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGetExecute(r ApiSettingsObjPolicyPropertiesGetRequest) (*PolicyProperties, *http.Response, error) {
+func (a *PoliciesPreviewAPIService) SettingsObjPolicyPropertiesGetExecute(r PoliciesPreviewAPISettingsObjPolicyPropertiesGetRequest) (*PolicyProperties, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -129,7 +129,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGetExecute(r ApiS
 		localVarReturnValue  *PolicyProperties
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewApiService.SettingsObjPolicyPropertiesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewAPIService.SettingsObjPolicyPropertiesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -167,9 +167,9 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGetExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -194,19 +194,19 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesGetExecute(r ApiS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSettingsObjPolicyPropertiesPutRequest struct {
+type PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest struct {
 	ctx context.Context
-	ApiService PoliciesPreviewApi
+	ApiService PoliciesPreviewAPI
 	policyProperties *PolicyProperties
 }
 
 // Policy Properties object to update
-func (r ApiSettingsObjPolicyPropertiesPutRequest) PolicyProperties(policyProperties PolicyProperties) ApiSettingsObjPolicyPropertiesPutRequest {
+func (r PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest) PolicyProperties(policyProperties PolicyProperties) PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest {
 	r.policyProperties = &policyProperties
 	return r
 }
 
-func (r ApiSettingsObjPolicyPropertiesPutRequest) Execute() (*PolicyProperties, *http.Response, error) {
+func (r PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest) Execute() (*PolicyProperties, *http.Response, error) {
 	return r.ApiService.SettingsObjPolicyPropertiesPutExecute(r)
 }
 
@@ -217,12 +217,12 @@ Update Policy Properties object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSettingsObjPolicyPropertiesPutRequest
+ @return PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest
 
 Deprecated
 */
-func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPut(ctx context.Context) ApiSettingsObjPolicyPropertiesPutRequest {
-	return ApiSettingsObjPolicyPropertiesPutRequest{
+func (a *PoliciesPreviewAPIService) SettingsObjPolicyPropertiesPut(ctx context.Context) PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest {
+	return PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -231,7 +231,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPut(ctx context.C
 // Execute executes the request
 //  @return PolicyProperties
 // Deprecated
-func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPutExecute(r ApiSettingsObjPolicyPropertiesPutRequest) (*PolicyProperties, *http.Response, error) {
+func (a *PoliciesPreviewAPIService) SettingsObjPolicyPropertiesPutExecute(r PoliciesPreviewAPISettingsObjPolicyPropertiesPutRequest) (*PolicyProperties, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -239,7 +239,7 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPutExecute(r ApiS
 		localVarReturnValue  *PolicyProperties
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewApiService.SettingsObjPolicyPropertiesPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewAPIService.SettingsObjPolicyPropertiesPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -282,9 +282,9 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPutExecute(r ApiS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -309,12 +309,12 @@ func (a *PoliciesPreviewApiService) SettingsObjPolicyPropertiesPutExecute(r ApiS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PolicyPropertiesGetRequest struct {
+type PoliciesPreviewAPIV1PolicyPropertiesGetRequest struct {
 	ctx context.Context
-	ApiService PoliciesPreviewApi
+	ApiService PoliciesPreviewAPI
 }
 
-func (r ApiV1PolicyPropertiesGetRequest) Execute() (*PolicyPropertiesV1, *http.Response, error) {
+func (r PoliciesPreviewAPIV1PolicyPropertiesGetRequest) Execute() (*PolicyPropertiesV1, *http.Response, error) {
 	return r.ApiService.V1PolicyPropertiesGetExecute(r)
 }
 
@@ -325,10 +325,10 @@ Gets `Policy Properties` object.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PolicyPropertiesGetRequest
+ @return PoliciesPreviewAPIV1PolicyPropertiesGetRequest
 */
-func (a *PoliciesPreviewApiService) V1PolicyPropertiesGet(ctx context.Context) ApiV1PolicyPropertiesGetRequest {
-	return ApiV1PolicyPropertiesGetRequest{
+func (a *PoliciesPreviewAPIService) V1PolicyPropertiesGet(ctx context.Context) PoliciesPreviewAPIV1PolicyPropertiesGetRequest {
+	return PoliciesPreviewAPIV1PolicyPropertiesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -336,7 +336,7 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesGet(ctx context.Context) A
 
 // Execute executes the request
 //  @return PolicyPropertiesV1
-func (a *PoliciesPreviewApiService) V1PolicyPropertiesGetExecute(r ApiV1PolicyPropertiesGetRequest) (*PolicyPropertiesV1, *http.Response, error) {
+func (a *PoliciesPreviewAPIService) V1PolicyPropertiesGetExecute(r PoliciesPreviewAPIV1PolicyPropertiesGetRequest) (*PolicyPropertiesV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -344,7 +344,7 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesGetExecute(r ApiV1PolicyPr
 		localVarReturnValue  *PolicyPropertiesV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewApiService.V1PolicyPropertiesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewAPIService.V1PolicyPropertiesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -382,9 +382,9 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesGetExecute(r ApiV1PolicyPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -409,19 +409,19 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesGetExecute(r ApiV1PolicyPr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1PolicyPropertiesPutRequest struct {
+type PoliciesPreviewAPIV1PolicyPropertiesPutRequest struct {
 	ctx context.Context
-	ApiService PoliciesPreviewApi
+	ApiService PoliciesPreviewAPI
 	policyPropertiesV1 *PolicyPropertiesV1
 }
 
 // Policy Properties object to update
-func (r ApiV1PolicyPropertiesPutRequest) PolicyPropertiesV1(policyPropertiesV1 PolicyPropertiesV1) ApiV1PolicyPropertiesPutRequest {
+func (r PoliciesPreviewAPIV1PolicyPropertiesPutRequest) PolicyPropertiesV1(policyPropertiesV1 PolicyPropertiesV1) PoliciesPreviewAPIV1PolicyPropertiesPutRequest {
 	r.policyPropertiesV1 = &policyPropertiesV1
 	return r
 }
 
-func (r ApiV1PolicyPropertiesPutRequest) Execute() (*PolicyPropertiesV1, *http.Response, error) {
+func (r PoliciesPreviewAPIV1PolicyPropertiesPutRequest) Execute() (*PolicyPropertiesV1, *http.Response, error) {
 	return r.ApiService.V1PolicyPropertiesPutExecute(r)
 }
 
@@ -432,10 +432,10 @@ Update Policy Properties object
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1PolicyPropertiesPutRequest
+ @return PoliciesPreviewAPIV1PolicyPropertiesPutRequest
 */
-func (a *PoliciesPreviewApiService) V1PolicyPropertiesPut(ctx context.Context) ApiV1PolicyPropertiesPutRequest {
-	return ApiV1PolicyPropertiesPutRequest{
+func (a *PoliciesPreviewAPIService) V1PolicyPropertiesPut(ctx context.Context) PoliciesPreviewAPIV1PolicyPropertiesPutRequest {
+	return PoliciesPreviewAPIV1PolicyPropertiesPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -443,7 +443,7 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesPut(ctx context.Context) A
 
 // Execute executes the request
 //  @return PolicyPropertiesV1
-func (a *PoliciesPreviewApiService) V1PolicyPropertiesPutExecute(r ApiV1PolicyPropertiesPutRequest) (*PolicyPropertiesV1, *http.Response, error) {
+func (a *PoliciesPreviewAPIService) V1PolicyPropertiesPutExecute(r PoliciesPreviewAPIV1PolicyPropertiesPutRequest) (*PolicyPropertiesV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -451,7 +451,7 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesPutExecute(r ApiV1PolicyPr
 		localVarReturnValue  *PolicyPropertiesV1
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewApiService.V1PolicyPropertiesPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PoliciesPreviewAPIService.V1PolicyPropertiesPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -494,9 +494,9 @@ func (a *PoliciesPreviewApiService) V1PolicyPropertiesPutExecute(r ApiV1PolicyPr
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

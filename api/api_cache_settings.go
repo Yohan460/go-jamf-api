@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type CacheSettingsApi interface {
+type CacheSettingsAPI interface {
 
 	/*
 	V1CacheSettingsGet Get Cache Settings 
@@ -27,13 +27,13 @@ type CacheSettingsApi interface {
 	gets cache settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CacheSettingsGetRequest
+	@return CacheSettingsAPIV1CacheSettingsGetRequest
 	*/
-	V1CacheSettingsGet(ctx context.Context) ApiV1CacheSettingsGetRequest
+	V1CacheSettingsGet(ctx context.Context) CacheSettingsAPIV1CacheSettingsGetRequest
 
 	// V1CacheSettingsGetExecute executes the request
 	//  @return CacheSettings
-	V1CacheSettingsGetExecute(r ApiV1CacheSettingsGetRequest) (*CacheSettings, *http.Response, error)
+	V1CacheSettingsGetExecute(r CacheSettingsAPIV1CacheSettingsGetRequest) (*CacheSettings, *http.Response, error)
 
 	/*
 	V1CacheSettingsPut Update Cache Settings 
@@ -42,24 +42,24 @@ type CacheSettingsApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CacheSettingsPutRequest
+	@return CacheSettingsAPIV1CacheSettingsPutRequest
 	*/
-	V1CacheSettingsPut(ctx context.Context) ApiV1CacheSettingsPutRequest
+	V1CacheSettingsPut(ctx context.Context) CacheSettingsAPIV1CacheSettingsPutRequest
 
 	// V1CacheSettingsPutExecute executes the request
 	//  @return CacheSettings
-	V1CacheSettingsPutExecute(r ApiV1CacheSettingsPutRequest) (*CacheSettings, *http.Response, error)
+	V1CacheSettingsPutExecute(r CacheSettingsAPIV1CacheSettingsPutRequest) (*CacheSettings, *http.Response, error)
 }
 
-// CacheSettingsApiService CacheSettingsApi service
-type CacheSettingsApiService service
+// CacheSettingsAPIService CacheSettingsAPI service
+type CacheSettingsAPIService service
 
-type ApiV1CacheSettingsGetRequest struct {
+type CacheSettingsAPIV1CacheSettingsGetRequest struct {
 	ctx context.Context
-	ApiService CacheSettingsApi
+	ApiService CacheSettingsAPI
 }
 
-func (r ApiV1CacheSettingsGetRequest) Execute() (*CacheSettings, *http.Response, error) {
+func (r CacheSettingsAPIV1CacheSettingsGetRequest) Execute() (*CacheSettings, *http.Response, error) {
 	return r.ApiService.V1CacheSettingsGetExecute(r)
 }
 
@@ -69,10 +69,10 @@ V1CacheSettingsGet Get Cache Settings
 gets cache settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CacheSettingsGetRequest
+ @return CacheSettingsAPIV1CacheSettingsGetRequest
 */
-func (a *CacheSettingsApiService) V1CacheSettingsGet(ctx context.Context) ApiV1CacheSettingsGetRequest {
-	return ApiV1CacheSettingsGetRequest{
+func (a *CacheSettingsAPIService) V1CacheSettingsGet(ctx context.Context) CacheSettingsAPIV1CacheSettingsGetRequest {
+	return CacheSettingsAPIV1CacheSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -80,7 +80,7 @@ func (a *CacheSettingsApiService) V1CacheSettingsGet(ctx context.Context) ApiV1C
 
 // Execute executes the request
 //  @return CacheSettings
-func (a *CacheSettingsApiService) V1CacheSettingsGetExecute(r ApiV1CacheSettingsGetRequest) (*CacheSettings, *http.Response, error) {
+func (a *CacheSettingsAPIService) V1CacheSettingsGetExecute(r CacheSettingsAPIV1CacheSettingsGetRequest) (*CacheSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -88,7 +88,7 @@ func (a *CacheSettingsApiService) V1CacheSettingsGetExecute(r ApiV1CacheSettings
 		localVarReturnValue  *CacheSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CacheSettingsApiService.V1CacheSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CacheSettingsAPIService.V1CacheSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -126,9 +126,9 @@ func (a *CacheSettingsApiService) V1CacheSettingsGetExecute(r ApiV1CacheSettings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -153,18 +153,18 @@ func (a *CacheSettingsApiService) V1CacheSettingsGetExecute(r ApiV1CacheSettings
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CacheSettingsPutRequest struct {
+type CacheSettingsAPIV1CacheSettingsPutRequest struct {
 	ctx context.Context
-	ApiService CacheSettingsApi
+	ApiService CacheSettingsAPI
 	cacheSettings *CacheSettings
 }
 
-func (r ApiV1CacheSettingsPutRequest) CacheSettings(cacheSettings CacheSettings) ApiV1CacheSettingsPutRequest {
+func (r CacheSettingsAPIV1CacheSettingsPutRequest) CacheSettings(cacheSettings CacheSettings) CacheSettingsAPIV1CacheSettingsPutRequest {
 	r.cacheSettings = &cacheSettings
 	return r
 }
 
-func (r ApiV1CacheSettingsPutRequest) Execute() (*CacheSettings, *http.Response, error) {
+func (r CacheSettingsAPIV1CacheSettingsPutRequest) Execute() (*CacheSettings, *http.Response, error) {
 	return r.ApiService.V1CacheSettingsPutExecute(r)
 }
 
@@ -175,10 +175,10 @@ updates cache settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CacheSettingsPutRequest
+ @return CacheSettingsAPIV1CacheSettingsPutRequest
 */
-func (a *CacheSettingsApiService) V1CacheSettingsPut(ctx context.Context) ApiV1CacheSettingsPutRequest {
-	return ApiV1CacheSettingsPutRequest{
+func (a *CacheSettingsAPIService) V1CacheSettingsPut(ctx context.Context) CacheSettingsAPIV1CacheSettingsPutRequest {
+	return CacheSettingsAPIV1CacheSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -186,7 +186,7 @@ func (a *CacheSettingsApiService) V1CacheSettingsPut(ctx context.Context) ApiV1C
 
 // Execute executes the request
 //  @return CacheSettings
-func (a *CacheSettingsApiService) V1CacheSettingsPutExecute(r ApiV1CacheSettingsPutRequest) (*CacheSettings, *http.Response, error) {
+func (a *CacheSettingsAPIService) V1CacheSettingsPutExecute(r CacheSettingsAPIV1CacheSettingsPutRequest) (*CacheSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -194,7 +194,7 @@ func (a *CacheSettingsApiService) V1CacheSettingsPutExecute(r ApiV1CacheSettings
 		localVarReturnValue  *CacheSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CacheSettingsApiService.V1CacheSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CacheSettingsAPIService.V1CacheSettingsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -237,9 +237,9 @@ func (a *CacheSettingsApiService) V1CacheSettingsPutExecute(r ApiV1CacheSettings
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -256,7 +256,8 @@ func (a *CacheSettingsApiService) V1CacheSettingsPutExecute(r ApiV1CacheSettings
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

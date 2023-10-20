@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type CsaApi interface {
+type CsaAPI interface {
 
 	/*
 	V1CsaTokenDelete Delete the CSA token exchange - This will disable Jamf Pro's ability to authenticate with cloud-hosted services 
@@ -28,12 +28,12 @@ type CsaApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CsaTokenDeleteRequest
+	@return CsaAPIV1CsaTokenDeleteRequest
 	*/
-	V1CsaTokenDelete(ctx context.Context) ApiV1CsaTokenDeleteRequest
+	V1CsaTokenDelete(ctx context.Context) CsaAPIV1CsaTokenDeleteRequest
 
 	// V1CsaTokenDeleteExecute executes the request
-	V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*http.Response, error)
+	V1CsaTokenDeleteExecute(r CsaAPIV1CsaTokenDeleteRequest) (*http.Response, error)
 
 	/*
 	V1CsaTokenGet Get details regarding the CSA token exchange 
@@ -42,13 +42,13 @@ type CsaApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CsaTokenGetRequest
+	@return CsaAPIV1CsaTokenGetRequest
 	*/
-	V1CsaTokenGet(ctx context.Context) ApiV1CsaTokenGetRequest
+	V1CsaTokenGet(ctx context.Context) CsaAPIV1CsaTokenGetRequest
 
 	// V1CsaTokenGetExecute executes the request
 	//  @return CsaToken
-	V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaToken, *http.Response, error)
+	V1CsaTokenGetExecute(r CsaAPIV1CsaTokenGetRequest) (*CsaToken, *http.Response, error)
 
 	/*
 	V1CsaTokenPost Initialize the CSA token exchange 
@@ -57,13 +57,13 @@ type CsaApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CsaTokenPostRequest
+	@return CsaAPIV1CsaTokenPostRequest
 	*/
-	V1CsaTokenPost(ctx context.Context) ApiV1CsaTokenPostRequest
+	V1CsaTokenPost(ctx context.Context) CsaAPIV1CsaTokenPostRequest
 
 	// V1CsaTokenPostExecute executes the request
 	//  @return CsaToken
-	V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaToken, *http.Response, error)
+	V1CsaTokenPostExecute(r CsaAPIV1CsaTokenPostRequest) (*CsaToken, *http.Response, error)
 
 	/*
 	V1CsaTokenPut Re-initialize the CSA token exchange with new credentials 
@@ -72,24 +72,24 @@ type CsaApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1CsaTokenPutRequest
+	@return CsaAPIV1CsaTokenPutRequest
 	*/
-	V1CsaTokenPut(ctx context.Context) ApiV1CsaTokenPutRequest
+	V1CsaTokenPut(ctx context.Context) CsaAPIV1CsaTokenPutRequest
 
 	// V1CsaTokenPutExecute executes the request
 	//  @return CsaToken
-	V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaToken, *http.Response, error)
+	V1CsaTokenPutExecute(r CsaAPIV1CsaTokenPutRequest) (*CsaToken, *http.Response, error)
 }
 
-// CsaApiService CsaApi service
-type CsaApiService service
+// CsaAPIService CsaAPI service
+type CsaAPIService service
 
-type ApiV1CsaTokenDeleteRequest struct {
+type CsaAPIV1CsaTokenDeleteRequest struct {
 	ctx context.Context
-	ApiService CsaApi
+	ApiService CsaAPI
 }
 
-func (r ApiV1CsaTokenDeleteRequest) Execute() (*http.Response, error) {
+func (r CsaAPIV1CsaTokenDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.V1CsaTokenDeleteExecute(r)
 }
 
@@ -100,24 +100,24 @@ Delete the CSA token exchange - This will disable Jamf Pro's ability to authenti
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CsaTokenDeleteRequest
+ @return CsaAPIV1CsaTokenDeleteRequest
 */
-func (a *CsaApiService) V1CsaTokenDelete(ctx context.Context) ApiV1CsaTokenDeleteRequest {
-	return ApiV1CsaTokenDeleteRequest{
+func (a *CsaAPIService) V1CsaTokenDelete(ctx context.Context) CsaAPIV1CsaTokenDeleteRequest {
+	return CsaAPIV1CsaTokenDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CsaApiService) V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*http.Response, error) {
+func (a *CsaAPIService) V1CsaTokenDeleteExecute(r CsaAPIV1CsaTokenDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaApiService.V1CsaTokenDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -155,9 +155,9 @@ func (a *CsaApiService) V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*
 		return localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarHTTPResponse, err
 	}
@@ -174,7 +174,8 @@ func (a *CsaApiService) V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -182,12 +183,12 @@ func (a *CsaApiService) V1CsaTokenDeleteExecute(r ApiV1CsaTokenDeleteRequest) (*
 	return localVarHTTPResponse, nil
 }
 
-type ApiV1CsaTokenGetRequest struct {
+type CsaAPIV1CsaTokenGetRequest struct {
 	ctx context.Context
-	ApiService CsaApi
+	ApiService CsaAPI
 }
 
-func (r ApiV1CsaTokenGetRequest) Execute() (*CsaToken, *http.Response, error) {
+func (r CsaAPIV1CsaTokenGetRequest) Execute() (*CsaToken, *http.Response, error) {
 	return r.ApiService.V1CsaTokenGetExecute(r)
 }
 
@@ -198,10 +199,10 @@ Get details regarding the CSA token exchange
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CsaTokenGetRequest
+ @return CsaAPIV1CsaTokenGetRequest
 */
-func (a *CsaApiService) V1CsaTokenGet(ctx context.Context) ApiV1CsaTokenGetRequest {
-	return ApiV1CsaTokenGetRequest{
+func (a *CsaAPIService) V1CsaTokenGet(ctx context.Context) CsaAPIV1CsaTokenGetRequest {
+	return CsaAPIV1CsaTokenGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -209,7 +210,7 @@ func (a *CsaApiService) V1CsaTokenGet(ctx context.Context) ApiV1CsaTokenGetReque
 
 // Execute executes the request
 //  @return CsaToken
-func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaToken, *http.Response, error) {
+func (a *CsaAPIService) V1CsaTokenGetExecute(r CsaAPIV1CsaTokenGetRequest) (*CsaToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -217,7 +218,7 @@ func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaTok
 		localVarReturnValue  *CsaToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaApiService.V1CsaTokenGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -255,9 +256,9 @@ func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaTok
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -274,7 +275,8 @@ func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaTok
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -291,19 +293,19 @@ func (a *CsaApiService) V1CsaTokenGetExecute(r ApiV1CsaTokenGetRequest) (*CsaTok
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CsaTokenPostRequest struct {
+type CsaAPIV1CsaTokenPostRequest struct {
 	ctx context.Context
-	ApiService CsaApi
+	ApiService CsaAPI
 	jamfNationCredentials *JamfNationCredentials
 }
 
 // Jamf Nation username and password 
-func (r ApiV1CsaTokenPostRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) ApiV1CsaTokenPostRequest {
+func (r CsaAPIV1CsaTokenPostRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) CsaAPIV1CsaTokenPostRequest {
 	r.jamfNationCredentials = &jamfNationCredentials
 	return r
 }
 
-func (r ApiV1CsaTokenPostRequest) Execute() (*CsaToken, *http.Response, error) {
+func (r CsaAPIV1CsaTokenPostRequest) Execute() (*CsaToken, *http.Response, error) {
 	return r.ApiService.V1CsaTokenPostExecute(r)
 }
 
@@ -314,10 +316,10 @@ Initializes the CSA token exchange - This will allow Jamf Pro to authenticate wi
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CsaTokenPostRequest
+ @return CsaAPIV1CsaTokenPostRequest
 */
-func (a *CsaApiService) V1CsaTokenPost(ctx context.Context) ApiV1CsaTokenPostRequest {
-	return ApiV1CsaTokenPostRequest{
+func (a *CsaAPIService) V1CsaTokenPost(ctx context.Context) CsaAPIV1CsaTokenPostRequest {
+	return CsaAPIV1CsaTokenPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -325,7 +327,7 @@ func (a *CsaApiService) V1CsaTokenPost(ctx context.Context) ApiV1CsaTokenPostReq
 
 // Execute executes the request
 //  @return CsaToken
-func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaToken, *http.Response, error) {
+func (a *CsaAPIService) V1CsaTokenPostExecute(r CsaAPIV1CsaTokenPostRequest) (*CsaToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -333,7 +335,7 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 		localVarReturnValue  *CsaToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaApiService.V1CsaTokenPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -373,9 +375,9 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -392,7 +394,8 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -402,7 +405,8 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -419,19 +423,19 @@ func (a *CsaApiService) V1CsaTokenPostExecute(r ApiV1CsaTokenPostRequest) (*CsaT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1CsaTokenPutRequest struct {
+type CsaAPIV1CsaTokenPutRequest struct {
 	ctx context.Context
-	ApiService CsaApi
+	ApiService CsaAPI
 	jamfNationCredentials *JamfNationCredentials
 }
 
 // Jamf Nation username and password 
-func (r ApiV1CsaTokenPutRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) ApiV1CsaTokenPutRequest {
+func (r CsaAPIV1CsaTokenPutRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) CsaAPIV1CsaTokenPutRequest {
 	r.jamfNationCredentials = &jamfNationCredentials
 	return r
 }
 
-func (r ApiV1CsaTokenPutRequest) Execute() (*CsaToken, *http.Response, error) {
+func (r CsaAPIV1CsaTokenPutRequest) Execute() (*CsaToken, *http.Response, error) {
 	return r.ApiService.V1CsaTokenPutExecute(r)
 }
 
@@ -442,10 +446,10 @@ Re-initialize the CSA token exchange with new credentials
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1CsaTokenPutRequest
+ @return CsaAPIV1CsaTokenPutRequest
 */
-func (a *CsaApiService) V1CsaTokenPut(ctx context.Context) ApiV1CsaTokenPutRequest {
-	return ApiV1CsaTokenPutRequest{
+func (a *CsaAPIService) V1CsaTokenPut(ctx context.Context) CsaAPIV1CsaTokenPutRequest {
+	return CsaAPIV1CsaTokenPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -453,7 +457,7 @@ func (a *CsaApiService) V1CsaTokenPut(ctx context.Context) ApiV1CsaTokenPutReque
 
 // Execute executes the request
 //  @return CsaToken
-func (a *CsaApiService) V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaToken, *http.Response, error) {
+func (a *CsaAPIService) V1CsaTokenPutExecute(r CsaAPIV1CsaTokenPutRequest) (*CsaToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -461,7 +465,7 @@ func (a *CsaApiService) V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaTok
 		localVarReturnValue  *CsaToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaApiService.V1CsaTokenPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -501,9 +505,9 @@ func (a *CsaApiService) V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaTok
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -520,7 +524,8 @@ func (a *CsaApiService) V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaTok
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -530,7 +535,8 @@ func (a *CsaApiService) V1CsaTokenPutExecute(r ApiV1CsaTokenPutRequest) (*CsaTok
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EbookLimitations type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EbookLimitations{}
+
 // EbookLimitations struct for EbookLimitations
 type EbookLimitations struct {
 	NetworkSegments []string `json:"networkSegments,omitempty"`
@@ -40,7 +43,7 @@ func NewEbookLimitationsWithDefaults() *EbookLimitations {
 
 // GetNetworkSegments returns the NetworkSegments field value if set, zero value otherwise.
 func (o *EbookLimitations) GetNetworkSegments() []string {
-	if o == nil || o.NetworkSegments == nil {
+	if o == nil || IsNil(o.NetworkSegments) {
 		var ret []string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *EbookLimitations) GetNetworkSegments() []string {
 // GetNetworkSegmentsOk returns a tuple with the NetworkSegments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookLimitations) GetNetworkSegmentsOk() ([]string, bool) {
-	if o == nil || o.NetworkSegments == nil {
+	if o == nil || IsNil(o.NetworkSegments) {
 		return nil, false
 	}
 	return o.NetworkSegments, true
@@ -58,7 +61,7 @@ func (o *EbookLimitations) GetNetworkSegmentsOk() ([]string, bool) {
 
 // HasNetworkSegments returns a boolean if a field has been set.
 func (o *EbookLimitations) HasNetworkSegments() bool {
-	if o != nil && o.NetworkSegments != nil {
+	if o != nil && !IsNil(o.NetworkSegments) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *EbookLimitations) SetNetworkSegments(v []string) {
 
 // GetUsers returns the Users field value if set, zero value otherwise.
 func (o *EbookLimitations) GetUsers() []EbookLimitationsUsersInner {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		var ret []EbookLimitationsUsersInner
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *EbookLimitations) GetUsers() []EbookLimitationsUsersInner {
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookLimitations) GetUsersOk() ([]EbookLimitationsUsersInner, bool) {
-	if o == nil || o.Users == nil {
+	if o == nil || IsNil(o.Users) {
 		return nil, false
 	}
 	return o.Users, true
@@ -90,7 +93,7 @@ func (o *EbookLimitations) GetUsersOk() ([]EbookLimitationsUsersInner, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *EbookLimitations) HasUsers() bool {
-	if o != nil && o.Users != nil {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *EbookLimitations) SetUsers(v []EbookLimitationsUsersInner) {
 
 // GetUserGroups returns the UserGroups field value if set, zero value otherwise.
 func (o *EbookLimitations) GetUserGroups() []string {
-	if o == nil || o.UserGroups == nil {
+	if o == nil || IsNil(o.UserGroups) {
 		var ret []string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *EbookLimitations) GetUserGroups() []string {
 // GetUserGroupsOk returns a tuple with the UserGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookLimitations) GetUserGroupsOk() ([]string, bool) {
-	if o == nil || o.UserGroups == nil {
+	if o == nil || IsNil(o.UserGroups) {
 		return nil, false
 	}
 	return o.UserGroups, true
@@ -122,7 +125,7 @@ func (o *EbookLimitations) GetUserGroupsOk() ([]string, bool) {
 
 // HasUserGroups returns a boolean if a field has been set.
 func (o *EbookLimitations) HasUserGroups() bool {
-	if o != nil && o.UserGroups != nil {
+	if o != nil && !IsNil(o.UserGroups) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *EbookLimitations) SetUserGroups(v []string) {
 }
 
 func (o EbookLimitations) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.NetworkSegments != nil {
-		toSerialize["networkSegments"] = o.NetworkSegments
-	}
-	if o.Users != nil {
-		toSerialize["users"] = o.Users
-	}
-	if o.UserGroups != nil {
-		toSerialize["userGroups"] = o.UserGroups
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EbookLimitations) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NetworkSegments) {
+		toSerialize["networkSegments"] = o.NetworkSegments
+	}
+	if !IsNil(o.Users) {
+		toSerialize["users"] = o.Users
+	}
+	if !IsNil(o.UserGroups) {
+		toSerialize["userGroups"] = o.UserGroups
+	}
+	return toSerialize, nil
 }
 
 type NullableEbookLimitations struct {

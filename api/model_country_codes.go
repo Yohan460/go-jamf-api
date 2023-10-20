@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CountryCodes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CountryCodes{}
+
 // CountryCodes struct for CountryCodes
 type CountryCodes struct {
 	CountryCodes []Country `json:"countryCodes,omitempty"`
@@ -38,7 +41,7 @@ func NewCountryCodesWithDefaults() *CountryCodes {
 
 // GetCountryCodes returns the CountryCodes field value if set, zero value otherwise.
 func (o *CountryCodes) GetCountryCodes() []Country {
-	if o == nil || o.CountryCodes == nil {
+	if o == nil || IsNil(o.CountryCodes) {
 		var ret []Country
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *CountryCodes) GetCountryCodes() []Country {
 // GetCountryCodesOk returns a tuple with the CountryCodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CountryCodes) GetCountryCodesOk() ([]Country, bool) {
-	if o == nil || o.CountryCodes == nil {
+	if o == nil || IsNil(o.CountryCodes) {
 		return nil, false
 	}
 	return o.CountryCodes, true
@@ -56,7 +59,7 @@ func (o *CountryCodes) GetCountryCodesOk() ([]Country, bool) {
 
 // HasCountryCodes returns a boolean if a field has been set.
 func (o *CountryCodes) HasCountryCodes() bool {
-	if o != nil && o.CountryCodes != nil {
+	if o != nil && !IsNil(o.CountryCodes) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *CountryCodes) SetCountryCodes(v []Country) {
 }
 
 func (o CountryCodes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CountryCodes != nil {
-		toSerialize["countryCodes"] = o.CountryCodes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CountryCodes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CountryCodes) {
+		toSerialize["countryCodes"] = o.CountryCodes
+	}
+	return toSerialize, nil
 }
 
 type NullableCountryCodes struct {

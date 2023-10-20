@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TvOsDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TvOsDetails{}
+
 // TvOsDetails will be populated if the type is appleTv.
 type TvOsDetails struct {
 	Model *string `json:"model,omitempty"`
@@ -25,6 +28,7 @@ type TvOsDetails struct {
 	Locales *string `json:"locales,omitempty"`
 	Purchasing *PurchasingV2 `json:"purchasing,omitempty"`
 	ConfigurationProfiles []ConfigurationProfile `json:"configurationProfiles,omitempty"`
+	Certificates []MobileDeviceCertificateV2 `json:"certificates,omitempty"`
 }
 
 // NewTvOsDetails instantiates a new TvOsDetails object
@@ -46,7 +50,7 @@ func NewTvOsDetailsWithDefaults() *TvOsDetails {
 
 // GetModel returns the Model field value if set, zero value otherwise.
 func (o *TvOsDetails) GetModel() string {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		var ret string
 		return ret
 	}
@@ -56,7 +60,7 @@ func (o *TvOsDetails) GetModel() string {
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetModelOk() (*string, bool) {
-	if o == nil || o.Model == nil {
+	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
 	return o.Model, true
@@ -64,7 +68,7 @@ func (o *TvOsDetails) GetModelOk() (*string, bool) {
 
 // HasModel returns a boolean if a field has been set.
 func (o *TvOsDetails) HasModel() bool {
-	if o != nil && o.Model != nil {
+	if o != nil && !IsNil(o.Model) {
 		return true
 	}
 
@@ -78,7 +82,7 @@ func (o *TvOsDetails) SetModel(v string) {
 
 // GetModelIdentifier returns the ModelIdentifier field value if set, zero value otherwise.
 func (o *TvOsDetails) GetModelIdentifier() string {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		var ret string
 		return ret
 	}
@@ -88,7 +92,7 @@ func (o *TvOsDetails) GetModelIdentifier() string {
 // GetModelIdentifierOk returns a tuple with the ModelIdentifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetModelIdentifierOk() (*string, bool) {
-	if o == nil || o.ModelIdentifier == nil {
+	if o == nil || IsNil(o.ModelIdentifier) {
 		return nil, false
 	}
 	return o.ModelIdentifier, true
@@ -96,7 +100,7 @@ func (o *TvOsDetails) GetModelIdentifierOk() (*string, bool) {
 
 // HasModelIdentifier returns a boolean if a field has been set.
 func (o *TvOsDetails) HasModelIdentifier() bool {
-	if o != nil && o.ModelIdentifier != nil {
+	if o != nil && !IsNil(o.ModelIdentifier) {
 		return true
 	}
 
@@ -110,7 +114,7 @@ func (o *TvOsDetails) SetModelIdentifier(v string) {
 
 // GetModelNumber returns the ModelNumber field value if set, zero value otherwise.
 func (o *TvOsDetails) GetModelNumber() string {
-	if o == nil || o.ModelNumber == nil {
+	if o == nil || IsNil(o.ModelNumber) {
 		var ret string
 		return ret
 	}
@@ -120,7 +124,7 @@ func (o *TvOsDetails) GetModelNumber() string {
 // GetModelNumberOk returns a tuple with the ModelNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetModelNumberOk() (*string, bool) {
-	if o == nil || o.ModelNumber == nil {
+	if o == nil || IsNil(o.ModelNumber) {
 		return nil, false
 	}
 	return o.ModelNumber, true
@@ -128,7 +132,7 @@ func (o *TvOsDetails) GetModelNumberOk() (*string, bool) {
 
 // HasModelNumber returns a boolean if a field has been set.
 func (o *TvOsDetails) HasModelNumber() bool {
-	if o != nil && o.ModelNumber != nil {
+	if o != nil && !IsNil(o.ModelNumber) {
 		return true
 	}
 
@@ -142,7 +146,7 @@ func (o *TvOsDetails) SetModelNumber(v string) {
 
 // GetSupervised returns the Supervised field value if set, zero value otherwise.
 func (o *TvOsDetails) GetSupervised() bool {
-	if o == nil || o.Supervised == nil {
+	if o == nil || IsNil(o.Supervised) {
 		var ret bool
 		return ret
 	}
@@ -152,7 +156,7 @@ func (o *TvOsDetails) GetSupervised() bool {
 // GetSupervisedOk returns a tuple with the Supervised field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetSupervisedOk() (*bool, bool) {
-	if o == nil || o.Supervised == nil {
+	if o == nil || IsNil(o.Supervised) {
 		return nil, false
 	}
 	return o.Supervised, true
@@ -160,7 +164,7 @@ func (o *TvOsDetails) GetSupervisedOk() (*bool, bool) {
 
 // HasSupervised returns a boolean if a field has been set.
 func (o *TvOsDetails) HasSupervised() bool {
-	if o != nil && o.Supervised != nil {
+	if o != nil && !IsNil(o.Supervised) {
 		return true
 	}
 
@@ -174,7 +178,7 @@ func (o *TvOsDetails) SetSupervised(v bool) {
 
 // GetAirplayPassword returns the AirplayPassword field value if set, zero value otherwise.
 func (o *TvOsDetails) GetAirplayPassword() string {
-	if o == nil || o.AirplayPassword == nil {
+	if o == nil || IsNil(o.AirplayPassword) {
 		var ret string
 		return ret
 	}
@@ -184,7 +188,7 @@ func (o *TvOsDetails) GetAirplayPassword() string {
 // GetAirplayPasswordOk returns a tuple with the AirplayPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetAirplayPasswordOk() (*string, bool) {
-	if o == nil || o.AirplayPassword == nil {
+	if o == nil || IsNil(o.AirplayPassword) {
 		return nil, false
 	}
 	return o.AirplayPassword, true
@@ -192,7 +196,7 @@ func (o *TvOsDetails) GetAirplayPasswordOk() (*string, bool) {
 
 // HasAirplayPassword returns a boolean if a field has been set.
 func (o *TvOsDetails) HasAirplayPassword() bool {
-	if o != nil && o.AirplayPassword != nil {
+	if o != nil && !IsNil(o.AirplayPassword) {
 		return true
 	}
 
@@ -206,7 +210,7 @@ func (o *TvOsDetails) SetAirplayPassword(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *TvOsDetails) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -216,7 +220,7 @@ func (o *TvOsDetails) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -224,7 +228,7 @@ func (o *TvOsDetails) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *TvOsDetails) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -238,7 +242,7 @@ func (o *TvOsDetails) SetDeviceId(v string) {
 
 // GetLocales returns the Locales field value if set, zero value otherwise.
 func (o *TvOsDetails) GetLocales() string {
-	if o == nil || o.Locales == nil {
+	if o == nil || IsNil(o.Locales) {
 		var ret string
 		return ret
 	}
@@ -248,7 +252,7 @@ func (o *TvOsDetails) GetLocales() string {
 // GetLocalesOk returns a tuple with the Locales field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetLocalesOk() (*string, bool) {
-	if o == nil || o.Locales == nil {
+	if o == nil || IsNil(o.Locales) {
 		return nil, false
 	}
 	return o.Locales, true
@@ -256,7 +260,7 @@ func (o *TvOsDetails) GetLocalesOk() (*string, bool) {
 
 // HasLocales returns a boolean if a field has been set.
 func (o *TvOsDetails) HasLocales() bool {
-	if o != nil && o.Locales != nil {
+	if o != nil && !IsNil(o.Locales) {
 		return true
 	}
 
@@ -270,7 +274,7 @@ func (o *TvOsDetails) SetLocales(v string) {
 
 // GetPurchasing returns the Purchasing field value if set, zero value otherwise.
 func (o *TvOsDetails) GetPurchasing() PurchasingV2 {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		var ret PurchasingV2
 		return ret
 	}
@@ -280,7 +284,7 @@ func (o *TvOsDetails) GetPurchasing() PurchasingV2 {
 // GetPurchasingOk returns a tuple with the Purchasing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetPurchasingOk() (*PurchasingV2, bool) {
-	if o == nil || o.Purchasing == nil {
+	if o == nil || IsNil(o.Purchasing) {
 		return nil, false
 	}
 	return o.Purchasing, true
@@ -288,7 +292,7 @@ func (o *TvOsDetails) GetPurchasingOk() (*PurchasingV2, bool) {
 
 // HasPurchasing returns a boolean if a field has been set.
 func (o *TvOsDetails) HasPurchasing() bool {
-	if o != nil && o.Purchasing != nil {
+	if o != nil && !IsNil(o.Purchasing) {
 		return true
 	}
 
@@ -302,7 +306,7 @@ func (o *TvOsDetails) SetPurchasing(v PurchasingV2) {
 
 // GetConfigurationProfiles returns the ConfigurationProfiles field value if set, zero value otherwise.
 func (o *TvOsDetails) GetConfigurationProfiles() []ConfigurationProfile {
-	if o == nil || o.ConfigurationProfiles == nil {
+	if o == nil || IsNil(o.ConfigurationProfiles) {
 		var ret []ConfigurationProfile
 		return ret
 	}
@@ -312,7 +316,7 @@ func (o *TvOsDetails) GetConfigurationProfiles() []ConfigurationProfile {
 // GetConfigurationProfilesOk returns a tuple with the ConfigurationProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TvOsDetails) GetConfigurationProfilesOk() ([]ConfigurationProfile, bool) {
-	if o == nil || o.ConfigurationProfiles == nil {
+	if o == nil || IsNil(o.ConfigurationProfiles) {
 		return nil, false
 	}
 	return o.ConfigurationProfiles, true
@@ -320,7 +324,7 @@ func (o *TvOsDetails) GetConfigurationProfilesOk() ([]ConfigurationProfile, bool
 
 // HasConfigurationProfiles returns a boolean if a field has been set.
 func (o *TvOsDetails) HasConfigurationProfiles() bool {
-	if o != nil && o.ConfigurationProfiles != nil {
+	if o != nil && !IsNil(o.ConfigurationProfiles) {
 		return true
 	}
 
@@ -332,36 +336,79 @@ func (o *TvOsDetails) SetConfigurationProfiles(v []ConfigurationProfile) {
 	o.ConfigurationProfiles = v
 }
 
+// GetCertificates returns the Certificates field value if set, zero value otherwise.
+func (o *TvOsDetails) GetCertificates() []MobileDeviceCertificateV2 {
+	if o == nil || IsNil(o.Certificates) {
+		var ret []MobileDeviceCertificateV2
+		return ret
+	}
+	return o.Certificates
+}
+
+// GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TvOsDetails) GetCertificatesOk() ([]MobileDeviceCertificateV2, bool) {
+	if o == nil || IsNil(o.Certificates) {
+		return nil, false
+	}
+	return o.Certificates, true
+}
+
+// HasCertificates returns a boolean if a field has been set.
+func (o *TvOsDetails) HasCertificates() bool {
+	if o != nil && !IsNil(o.Certificates) {
+		return true
+	}
+
+	return false
+}
+
+// SetCertificates gets a reference to the given []MobileDeviceCertificateV2 and assigns it to the Certificates field.
+func (o *TvOsDetails) SetCertificates(v []MobileDeviceCertificateV2) {
+	o.Certificates = v
+}
+
 func (o TvOsDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Model != nil {
-		toSerialize["model"] = o.Model
-	}
-	if o.ModelIdentifier != nil {
-		toSerialize["modelIdentifier"] = o.ModelIdentifier
-	}
-	if o.ModelNumber != nil {
-		toSerialize["modelNumber"] = o.ModelNumber
-	}
-	if o.Supervised != nil {
-		toSerialize["supervised"] = o.Supervised
-	}
-	if o.AirplayPassword != nil {
-		toSerialize["airplayPassword"] = o.AirplayPassword
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.Locales != nil {
-		toSerialize["locales"] = o.Locales
-	}
-	if o.Purchasing != nil {
-		toSerialize["purchasing"] = o.Purchasing
-	}
-	if o.ConfigurationProfiles != nil {
-		toSerialize["configurationProfiles"] = o.ConfigurationProfiles
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TvOsDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Model) {
+		toSerialize["model"] = o.Model
+	}
+	if !IsNil(o.ModelIdentifier) {
+		toSerialize["modelIdentifier"] = o.ModelIdentifier
+	}
+	if !IsNil(o.ModelNumber) {
+		toSerialize["modelNumber"] = o.ModelNumber
+	}
+	if !IsNil(o.Supervised) {
+		toSerialize["supervised"] = o.Supervised
+	}
+	if !IsNil(o.AirplayPassword) {
+		toSerialize["airplayPassword"] = o.AirplayPassword
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.Locales) {
+		toSerialize["locales"] = o.Locales
+	}
+	if !IsNil(o.Purchasing) {
+		toSerialize["purchasing"] = o.Purchasing
+	}
+	if !IsNil(o.ConfigurationProfiles) {
+		toSerialize["configurationProfiles"] = o.ConfigurationProfiles
+	}
+	if !IsNil(o.Certificates) {
+		toSerialize["certificates"] = o.Certificates
+	}
+	return toSerialize, nil
 }
 
 type NullableTvOsDetails struct {

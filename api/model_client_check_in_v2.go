@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ClientCheckInV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClientCheckInV2{}
+
 // ClientCheckInV2 struct for ClientCheckInV2
 type ClientCheckInV2 struct {
 	// Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60.
@@ -108,7 +111,7 @@ func NewClientCheckInV2WithDefaults() *ClientCheckInV2 {
 
 // GetCheckInFrequency returns the CheckInFrequency field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetCheckInFrequency() int32 {
-	if o == nil || o.CheckInFrequency == nil {
+	if o == nil || IsNil(o.CheckInFrequency) {
 		var ret int32
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ClientCheckInV2) GetCheckInFrequency() int32 {
 // GetCheckInFrequencyOk returns a tuple with the CheckInFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetCheckInFrequencyOk() (*int32, bool) {
-	if o == nil || o.CheckInFrequency == nil {
+	if o == nil || IsNil(o.CheckInFrequency) {
 		return nil, false
 	}
 	return o.CheckInFrequency, true
@@ -126,7 +129,7 @@ func (o *ClientCheckInV2) GetCheckInFrequencyOk() (*int32, bool) {
 
 // HasCheckInFrequency returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasCheckInFrequency() bool {
-	if o != nil && o.CheckInFrequency != nil {
+	if o != nil && !IsNil(o.CheckInFrequency) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ClientCheckInV2) SetCheckInFrequency(v int32) {
 
 // GetCreateHooks returns the CreateHooks field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetCreateHooks() bool {
-	if o == nil || o.CreateHooks == nil {
+	if o == nil || IsNil(o.CreateHooks) {
 		var ret bool
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ClientCheckInV2) GetCreateHooks() bool {
 // GetCreateHooksOk returns a tuple with the CreateHooks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetCreateHooksOk() (*bool, bool) {
-	if o == nil || o.CreateHooks == nil {
+	if o == nil || IsNil(o.CreateHooks) {
 		return nil, false
 	}
 	return o.CreateHooks, true
@@ -158,7 +161,7 @@ func (o *ClientCheckInV2) GetCreateHooksOk() (*bool, bool) {
 
 // HasCreateHooks returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasCreateHooks() bool {
-	if o != nil && o.CreateHooks != nil {
+	if o != nil && !IsNil(o.CreateHooks) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ClientCheckInV2) SetCreateHooks(v bool) {
 
 // GetHookLog returns the HookLog field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetHookLog() bool {
-	if o == nil || o.HookLog == nil {
+	if o == nil || IsNil(o.HookLog) {
 		var ret bool
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ClientCheckInV2) GetHookLog() bool {
 // GetHookLogOk returns a tuple with the HookLog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetHookLogOk() (*bool, bool) {
-	if o == nil || o.HookLog == nil {
+	if o == nil || IsNil(o.HookLog) {
 		return nil, false
 	}
 	return o.HookLog, true
@@ -190,7 +193,7 @@ func (o *ClientCheckInV2) GetHookLogOk() (*bool, bool) {
 
 // HasHookLog returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasHookLog() bool {
-	if o != nil && o.HookLog != nil {
+	if o != nil && !IsNil(o.HookLog) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ClientCheckInV2) SetHookLog(v bool) {
 
 // GetHookPolicies returns the HookPolicies field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetHookPolicies() bool {
-	if o == nil || o.HookPolicies == nil {
+	if o == nil || IsNil(o.HookPolicies) {
 		var ret bool
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ClientCheckInV2) GetHookPolicies() bool {
 // GetHookPoliciesOk returns a tuple with the HookPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetHookPoliciesOk() (*bool, bool) {
-	if o == nil || o.HookPolicies == nil {
+	if o == nil || IsNil(o.HookPolicies) {
 		return nil, false
 	}
 	return o.HookPolicies, true
@@ -222,7 +225,7 @@ func (o *ClientCheckInV2) GetHookPoliciesOk() (*bool, bool) {
 
 // HasHookPolicies returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasHookPolicies() bool {
-	if o != nil && o.HookPolicies != nil {
+	if o != nil && !IsNil(o.HookPolicies) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *ClientCheckInV2) SetHookPolicies(v bool) {
 
 // GetHookHideRestore returns the HookHideRestore field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetHookHideRestore() bool {
-	if o == nil || o.HookHideRestore == nil {
+	if o == nil || IsNil(o.HookHideRestore) {
 		var ret bool
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *ClientCheckInV2) GetHookHideRestore() bool {
 // GetHookHideRestoreOk returns a tuple with the HookHideRestore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetHookHideRestoreOk() (*bool, bool) {
-	if o == nil || o.HookHideRestore == nil {
+	if o == nil || IsNil(o.HookHideRestore) {
 		return nil, false
 	}
 	return o.HookHideRestore, true
@@ -254,7 +257,7 @@ func (o *ClientCheckInV2) GetHookHideRestoreOk() (*bool, bool) {
 
 // HasHookHideRestore returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasHookHideRestore() bool {
-	if o != nil && o.HookHideRestore != nil {
+	if o != nil && !IsNil(o.HookHideRestore) {
 		return true
 	}
 
@@ -268,7 +271,7 @@ func (o *ClientCheckInV2) SetHookHideRestore(v bool) {
 
 // GetHookMcx returns the HookMcx field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetHookMcx() bool {
-	if o == nil || o.HookMcx == nil {
+	if o == nil || IsNil(o.HookMcx) {
 		var ret bool
 		return ret
 	}
@@ -278,7 +281,7 @@ func (o *ClientCheckInV2) GetHookMcx() bool {
 // GetHookMcxOk returns a tuple with the HookMcx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetHookMcxOk() (*bool, bool) {
-	if o == nil || o.HookMcx == nil {
+	if o == nil || IsNil(o.HookMcx) {
 		return nil, false
 	}
 	return o.HookMcx, true
@@ -286,7 +289,7 @@ func (o *ClientCheckInV2) GetHookMcxOk() (*bool, bool) {
 
 // HasHookMcx returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasHookMcx() bool {
-	if o != nil && o.HookMcx != nil {
+	if o != nil && !IsNil(o.HookMcx) {
 		return true
 	}
 
@@ -300,7 +303,7 @@ func (o *ClientCheckInV2) SetHookMcx(v bool) {
 
 // GetBackgroundHooks returns the BackgroundHooks field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetBackgroundHooks() bool {
-	if o == nil || o.BackgroundHooks == nil {
+	if o == nil || IsNil(o.BackgroundHooks) {
 		var ret bool
 		return ret
 	}
@@ -310,7 +313,7 @@ func (o *ClientCheckInV2) GetBackgroundHooks() bool {
 // GetBackgroundHooksOk returns a tuple with the BackgroundHooks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetBackgroundHooksOk() (*bool, bool) {
-	if o == nil || o.BackgroundHooks == nil {
+	if o == nil || IsNil(o.BackgroundHooks) {
 		return nil, false
 	}
 	return o.BackgroundHooks, true
@@ -318,7 +321,7 @@ func (o *ClientCheckInV2) GetBackgroundHooksOk() (*bool, bool) {
 
 // HasBackgroundHooks returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasBackgroundHooks() bool {
-	if o != nil && o.BackgroundHooks != nil {
+	if o != nil && !IsNil(o.BackgroundHooks) {
 		return true
 	}
 
@@ -332,7 +335,7 @@ func (o *ClientCheckInV2) SetBackgroundHooks(v bool) {
 
 // GetHookDisplayStatus returns the HookDisplayStatus field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetHookDisplayStatus() bool {
-	if o == nil || o.HookDisplayStatus == nil {
+	if o == nil || IsNil(o.HookDisplayStatus) {
 		var ret bool
 		return ret
 	}
@@ -342,7 +345,7 @@ func (o *ClientCheckInV2) GetHookDisplayStatus() bool {
 // GetHookDisplayStatusOk returns a tuple with the HookDisplayStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetHookDisplayStatusOk() (*bool, bool) {
-	if o == nil || o.HookDisplayStatus == nil {
+	if o == nil || IsNil(o.HookDisplayStatus) {
 		return nil, false
 	}
 	return o.HookDisplayStatus, true
@@ -350,7 +353,7 @@ func (o *ClientCheckInV2) GetHookDisplayStatusOk() (*bool, bool) {
 
 // HasHookDisplayStatus returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasHookDisplayStatus() bool {
-	if o != nil && o.HookDisplayStatus != nil {
+	if o != nil && !IsNil(o.HookDisplayStatus) {
 		return true
 	}
 
@@ -364,7 +367,7 @@ func (o *ClientCheckInV2) SetHookDisplayStatus(v bool) {
 
 // GetCreateStartupScript returns the CreateStartupScript field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetCreateStartupScript() bool {
-	if o == nil || o.CreateStartupScript == nil {
+	if o == nil || IsNil(o.CreateStartupScript) {
 		var ret bool
 		return ret
 	}
@@ -374,7 +377,7 @@ func (o *ClientCheckInV2) GetCreateStartupScript() bool {
 // GetCreateStartupScriptOk returns a tuple with the CreateStartupScript field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetCreateStartupScriptOk() (*bool, bool) {
-	if o == nil || o.CreateStartupScript == nil {
+	if o == nil || IsNil(o.CreateStartupScript) {
 		return nil, false
 	}
 	return o.CreateStartupScript, true
@@ -382,7 +385,7 @@ func (o *ClientCheckInV2) GetCreateStartupScriptOk() (*bool, bool) {
 
 // HasCreateStartupScript returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasCreateStartupScript() bool {
-	if o != nil && o.CreateStartupScript != nil {
+	if o != nil && !IsNil(o.CreateStartupScript) {
 		return true
 	}
 
@@ -396,7 +399,7 @@ func (o *ClientCheckInV2) SetCreateStartupScript(v bool) {
 
 // GetStartupLog returns the StartupLog field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetStartupLog() bool {
-	if o == nil || o.StartupLog == nil {
+	if o == nil || IsNil(o.StartupLog) {
 		var ret bool
 		return ret
 	}
@@ -406,7 +409,7 @@ func (o *ClientCheckInV2) GetStartupLog() bool {
 // GetStartupLogOk returns a tuple with the StartupLog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetStartupLogOk() (*bool, bool) {
-	if o == nil || o.StartupLog == nil {
+	if o == nil || IsNil(o.StartupLog) {
 		return nil, false
 	}
 	return o.StartupLog, true
@@ -414,7 +417,7 @@ func (o *ClientCheckInV2) GetStartupLogOk() (*bool, bool) {
 
 // HasStartupLog returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasStartupLog() bool {
-	if o != nil && o.StartupLog != nil {
+	if o != nil && !IsNil(o.StartupLog) {
 		return true
 	}
 
@@ -428,7 +431,7 @@ func (o *ClientCheckInV2) SetStartupLog(v bool) {
 
 // GetStartupPolicies returns the StartupPolicies field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetStartupPolicies() bool {
-	if o == nil || o.StartupPolicies == nil {
+	if o == nil || IsNil(o.StartupPolicies) {
 		var ret bool
 		return ret
 	}
@@ -438,7 +441,7 @@ func (o *ClientCheckInV2) GetStartupPolicies() bool {
 // GetStartupPoliciesOk returns a tuple with the StartupPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetStartupPoliciesOk() (*bool, bool) {
-	if o == nil || o.StartupPolicies == nil {
+	if o == nil || IsNil(o.StartupPolicies) {
 		return nil, false
 	}
 	return o.StartupPolicies, true
@@ -446,7 +449,7 @@ func (o *ClientCheckInV2) GetStartupPoliciesOk() (*bool, bool) {
 
 // HasStartupPolicies returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasStartupPolicies() bool {
-	if o != nil && o.StartupPolicies != nil {
+	if o != nil && !IsNil(o.StartupPolicies) {
 		return true
 	}
 
@@ -460,7 +463,7 @@ func (o *ClientCheckInV2) SetStartupPolicies(v bool) {
 
 // GetStartupSsh returns the StartupSsh field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetStartupSsh() bool {
-	if o == nil || o.StartupSsh == nil {
+	if o == nil || IsNil(o.StartupSsh) {
 		var ret bool
 		return ret
 	}
@@ -470,7 +473,7 @@ func (o *ClientCheckInV2) GetStartupSsh() bool {
 // GetStartupSshOk returns a tuple with the StartupSsh field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetStartupSshOk() (*bool, bool) {
-	if o == nil || o.StartupSsh == nil {
+	if o == nil || IsNil(o.StartupSsh) {
 		return nil, false
 	}
 	return o.StartupSsh, true
@@ -478,7 +481,7 @@ func (o *ClientCheckInV2) GetStartupSshOk() (*bool, bool) {
 
 // HasStartupSsh returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasStartupSsh() bool {
-	if o != nil && o.StartupSsh != nil {
+	if o != nil && !IsNil(o.StartupSsh) {
 		return true
 	}
 
@@ -492,7 +495,7 @@ func (o *ClientCheckInV2) SetStartupSsh(v bool) {
 
 // GetStartupMcx returns the StartupMcx field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetStartupMcx() bool {
-	if o == nil || o.StartupMcx == nil {
+	if o == nil || IsNil(o.StartupMcx) {
 		var ret bool
 		return ret
 	}
@@ -502,7 +505,7 @@ func (o *ClientCheckInV2) GetStartupMcx() bool {
 // GetStartupMcxOk returns a tuple with the StartupMcx field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetStartupMcxOk() (*bool, bool) {
-	if o == nil || o.StartupMcx == nil {
+	if o == nil || IsNil(o.StartupMcx) {
 		return nil, false
 	}
 	return o.StartupMcx, true
@@ -510,7 +513,7 @@ func (o *ClientCheckInV2) GetStartupMcxOk() (*bool, bool) {
 
 // HasStartupMcx returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasStartupMcx() bool {
-	if o != nil && o.StartupMcx != nil {
+	if o != nil && !IsNil(o.StartupMcx) {
 		return true
 	}
 
@@ -524,7 +527,7 @@ func (o *ClientCheckInV2) SetStartupMcx(v bool) {
 
 // GetEnableLocalConfigurationProfiles returns the EnableLocalConfigurationProfiles field value if set, zero value otherwise.
 func (o *ClientCheckInV2) GetEnableLocalConfigurationProfiles() bool {
-	if o == nil || o.EnableLocalConfigurationProfiles == nil {
+	if o == nil || IsNil(o.EnableLocalConfigurationProfiles) {
 		var ret bool
 		return ret
 	}
@@ -534,7 +537,7 @@ func (o *ClientCheckInV2) GetEnableLocalConfigurationProfiles() bool {
 // GetEnableLocalConfigurationProfilesOk returns a tuple with the EnableLocalConfigurationProfiles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClientCheckInV2) GetEnableLocalConfigurationProfilesOk() (*bool, bool) {
-	if o == nil || o.EnableLocalConfigurationProfiles == nil {
+	if o == nil || IsNil(o.EnableLocalConfigurationProfiles) {
 		return nil, false
 	}
 	return o.EnableLocalConfigurationProfiles, true
@@ -542,7 +545,7 @@ func (o *ClientCheckInV2) GetEnableLocalConfigurationProfilesOk() (*bool, bool) 
 
 // HasEnableLocalConfigurationProfiles returns a boolean if a field has been set.
 func (o *ClientCheckInV2) HasEnableLocalConfigurationProfiles() bool {
-	if o != nil && o.EnableLocalConfigurationProfiles != nil {
+	if o != nil && !IsNil(o.EnableLocalConfigurationProfiles) {
 		return true
 	}
 
@@ -555,50 +558,58 @@ func (o *ClientCheckInV2) SetEnableLocalConfigurationProfiles(v bool) {
 }
 
 func (o ClientCheckInV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CheckInFrequency != nil {
-		toSerialize["checkInFrequency"] = o.CheckInFrequency
-	}
-	if o.CreateHooks != nil {
-		toSerialize["createHooks"] = o.CreateHooks
-	}
-	if o.HookLog != nil {
-		toSerialize["hookLog"] = o.HookLog
-	}
-	if o.HookPolicies != nil {
-		toSerialize["hookPolicies"] = o.HookPolicies
-	}
-	if o.HookHideRestore != nil {
-		toSerialize["hookHideRestore"] = o.HookHideRestore
-	}
-	if o.HookMcx != nil {
-		toSerialize["hookMcx"] = o.HookMcx
-	}
-	if o.BackgroundHooks != nil {
-		toSerialize["backgroundHooks"] = o.BackgroundHooks
-	}
-	if o.HookDisplayStatus != nil {
-		toSerialize["hookDisplayStatus"] = o.HookDisplayStatus
-	}
-	if o.CreateStartupScript != nil {
-		toSerialize["createStartupScript"] = o.CreateStartupScript
-	}
-	if o.StartupLog != nil {
-		toSerialize["startupLog"] = o.StartupLog
-	}
-	if o.StartupPolicies != nil {
-		toSerialize["startupPolicies"] = o.StartupPolicies
-	}
-	if o.StartupSsh != nil {
-		toSerialize["startupSsh"] = o.StartupSsh
-	}
-	if o.StartupMcx != nil {
-		toSerialize["startupMcx"] = o.StartupMcx
-	}
-	if o.EnableLocalConfigurationProfiles != nil {
-		toSerialize["enableLocalConfigurationProfiles"] = o.EnableLocalConfigurationProfiles
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ClientCheckInV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CheckInFrequency) {
+		toSerialize["checkInFrequency"] = o.CheckInFrequency
+	}
+	if !IsNil(o.CreateHooks) {
+		toSerialize["createHooks"] = o.CreateHooks
+	}
+	if !IsNil(o.HookLog) {
+		toSerialize["hookLog"] = o.HookLog
+	}
+	if !IsNil(o.HookPolicies) {
+		toSerialize["hookPolicies"] = o.HookPolicies
+	}
+	if !IsNil(o.HookHideRestore) {
+		toSerialize["hookHideRestore"] = o.HookHideRestore
+	}
+	if !IsNil(o.HookMcx) {
+		toSerialize["hookMcx"] = o.HookMcx
+	}
+	if !IsNil(o.BackgroundHooks) {
+		toSerialize["backgroundHooks"] = o.BackgroundHooks
+	}
+	if !IsNil(o.HookDisplayStatus) {
+		toSerialize["hookDisplayStatus"] = o.HookDisplayStatus
+	}
+	if !IsNil(o.CreateStartupScript) {
+		toSerialize["createStartupScript"] = o.CreateStartupScript
+	}
+	if !IsNil(o.StartupLog) {
+		toSerialize["startupLog"] = o.StartupLog
+	}
+	if !IsNil(o.StartupPolicies) {
+		toSerialize["startupPolicies"] = o.StartupPolicies
+	}
+	if !IsNil(o.StartupSsh) {
+		toSerialize["startupSsh"] = o.StartupSsh
+	}
+	if !IsNil(o.StartupMcx) {
+		toSerialize["startupMcx"] = o.StartupMcx
+	}
+	if !IsNil(o.EnableLocalConfigurationProfiles) {
+		toSerialize["enableLocalConfigurationProfiles"] = o.EnableLocalConfigurationProfiles
+	}
+	return toSerialize, nil
 }
 
 type NullableClientCheckInV2 struct {

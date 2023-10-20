@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the SessionDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SessionDetails{}
+
 // SessionDetails Session details
 type SessionDetails struct {
 	// Session identifier
@@ -62,7 +65,7 @@ func NewSessionDetailsWithDefaults() *SessionDetails {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SessionDetails) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -72,7 +75,7 @@ func (o *SessionDetails) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -80,7 +83,7 @@ func (o *SessionDetails) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SessionDetails) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -94,7 +97,7 @@ func (o *SessionDetails) SetId(v string) {
 
 // GetCode returns the Code field value if set, zero value otherwise.
 func (o *SessionDetails) GetCode() string {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		var ret string
 		return ret
 	}
@@ -104,7 +107,7 @@ func (o *SessionDetails) GetCode() string {
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetCodeOk() (*string, bool) {
-	if o == nil || o.Code == nil {
+	if o == nil || IsNil(o.Code) {
 		return nil, false
 	}
 	return o.Code, true
@@ -112,7 +115,7 @@ func (o *SessionDetails) GetCodeOk() (*string, bool) {
 
 // HasCode returns a boolean if a field has been set.
 func (o *SessionDetails) HasCode() bool {
-	if o != nil && o.Code != nil {
+	if o != nil && !IsNil(o.Code) {
 		return true
 	}
 
@@ -126,7 +129,7 @@ func (o *SessionDetails) SetCode(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *SessionDetails) GetDescription() string {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
@@ -136,7 +139,7 @@ func (o *SessionDetails) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetDescriptionOk() (*string, bool) {
-	if o == nil || o.Description == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -144,7 +147,7 @@ func (o *SessionDetails) GetDescriptionOk() (*string, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *SessionDetails) HasDescription() bool {
-	if o != nil && o.Description != nil {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -158,7 +161,7 @@ func (o *SessionDetails) SetDescription(v string) {
 
 // GetSupporterLink returns the SupporterLink field value if set, zero value otherwise.
 func (o *SessionDetails) GetSupporterLink() string {
-	if o == nil || o.SupporterLink == nil {
+	if o == nil || IsNil(o.SupporterLink) {
 		var ret string
 		return ret
 	}
@@ -168,7 +171,7 @@ func (o *SessionDetails) GetSupporterLink() string {
 // GetSupporterLinkOk returns a tuple with the SupporterLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetSupporterLinkOk() (*string, bool) {
-	if o == nil || o.SupporterLink == nil {
+	if o == nil || IsNil(o.SupporterLink) {
 		return nil, false
 	}
 	return o.SupporterLink, true
@@ -176,7 +179,7 @@ func (o *SessionDetails) GetSupporterLinkOk() (*string, bool) {
 
 // HasSupporterLink returns a boolean if a field has been set.
 func (o *SessionDetails) HasSupporterLink() bool {
-	if o != nil && o.SupporterLink != nil {
+	if o != nil && !IsNil(o.SupporterLink) {
 		return true
 	}
 
@@ -190,7 +193,7 @@ func (o *SessionDetails) SetSupporterLink(v string) {
 
 // GetEndUserLink returns the EndUserLink field value if set, zero value otherwise.
 func (o *SessionDetails) GetEndUserLink() string {
-	if o == nil || o.EndUserLink == nil {
+	if o == nil || IsNil(o.EndUserLink) {
 		var ret string
 		return ret
 	}
@@ -200,7 +203,7 @@ func (o *SessionDetails) GetEndUserLink() string {
 // GetEndUserLinkOk returns a tuple with the EndUserLink field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetEndUserLinkOk() (*string, bool) {
-	if o == nil || o.EndUserLink == nil {
+	if o == nil || IsNil(o.EndUserLink) {
 		return nil, false
 	}
 	return o.EndUserLink, true
@@ -208,7 +211,7 @@ func (o *SessionDetails) GetEndUserLinkOk() (*string, bool) {
 
 // HasEndUserLink returns a boolean if a field has been set.
 func (o *SessionDetails) HasEndUserLink() bool {
-	if o != nil && o.EndUserLink != nil {
+	if o != nil && !IsNil(o.EndUserLink) {
 		return true
 	}
 
@@ -222,7 +225,7 @@ func (o *SessionDetails) SetEndUserLink(v string) {
 
 // GetDeviceId returns the DeviceId field value if set, zero value otherwise.
 func (o *SessionDetails) GetDeviceId() string {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		var ret string
 		return ret
 	}
@@ -232,7 +235,7 @@ func (o *SessionDetails) GetDeviceId() string {
 // GetDeviceIdOk returns a tuple with the DeviceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetDeviceIdOk() (*string, bool) {
-	if o == nil || o.DeviceId == nil {
+	if o == nil || IsNil(o.DeviceId) {
 		return nil, false
 	}
 	return o.DeviceId, true
@@ -240,7 +243,7 @@ func (o *SessionDetails) GetDeviceIdOk() (*string, bool) {
 
 // HasDeviceId returns a boolean if a field has been set.
 func (o *SessionDetails) HasDeviceId() bool {
-	if o != nil && o.DeviceId != nil {
+	if o != nil && !IsNil(o.DeviceId) {
 		return true
 	}
 
@@ -254,7 +257,7 @@ func (o *SessionDetails) SetDeviceId(v string) {
 
 // GetDeviceName returns the DeviceName field value if set, zero value otherwise.
 func (o *SessionDetails) GetDeviceName() string {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		var ret string
 		return ret
 	}
@@ -264,7 +267,7 @@ func (o *SessionDetails) GetDeviceName() string {
 // GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetDeviceNameOk() (*string, bool) {
-	if o == nil || o.DeviceName == nil {
+	if o == nil || IsNil(o.DeviceName) {
 		return nil, false
 	}
 	return o.DeviceName, true
@@ -272,7 +275,7 @@ func (o *SessionDetails) GetDeviceNameOk() (*string, bool) {
 
 // HasDeviceName returns a boolean if a field has been set.
 func (o *SessionDetails) HasDeviceName() bool {
-	if o != nil && o.DeviceName != nil {
+	if o != nil && !IsNil(o.DeviceName) {
 		return true
 	}
 
@@ -286,7 +289,7 @@ func (o *SessionDetails) SetDeviceName(v string) {
 
 // GetDeviceType returns the DeviceType field value if set, zero value otherwise.
 func (o *SessionDetails) GetDeviceType() string {
-	if o == nil || o.DeviceType == nil {
+	if o == nil || IsNil(o.DeviceType) {
 		var ret string
 		return ret
 	}
@@ -296,7 +299,7 @@ func (o *SessionDetails) GetDeviceType() string {
 // GetDeviceTypeOk returns a tuple with the DeviceType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetDeviceTypeOk() (*string, bool) {
-	if o == nil || o.DeviceType == nil {
+	if o == nil || IsNil(o.DeviceType) {
 		return nil, false
 	}
 	return o.DeviceType, true
@@ -304,7 +307,7 @@ func (o *SessionDetails) GetDeviceTypeOk() (*string, bool) {
 
 // HasDeviceType returns a boolean if a field has been set.
 func (o *SessionDetails) HasDeviceType() bool {
-	if o != nil && o.DeviceType != nil {
+	if o != nil && !IsNil(o.DeviceType) {
 		return true
 	}
 
@@ -318,7 +321,7 @@ func (o *SessionDetails) SetDeviceType(v string) {
 
 // GetState returns the State field value if set, zero value otherwise.
 func (o *SessionDetails) GetState() string {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
@@ -328,7 +331,7 @@ func (o *SessionDetails) GetState() string {
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
 	return o.State, true
@@ -336,7 +339,7 @@ func (o *SessionDetails) GetStateOk() (*string, bool) {
 
 // HasState returns a boolean if a field has been set.
 func (o *SessionDetails) HasState() bool {
-	if o != nil && o.State != nil {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
@@ -350,7 +353,7 @@ func (o *SessionDetails) SetState(v string) {
 
 // GetCreatorId returns the CreatorId field value if set, zero value otherwise.
 func (o *SessionDetails) GetCreatorId() string {
-	if o == nil || o.CreatorId == nil {
+	if o == nil || IsNil(o.CreatorId) {
 		var ret string
 		return ret
 	}
@@ -360,7 +363,7 @@ func (o *SessionDetails) GetCreatorId() string {
 // GetCreatorIdOk returns a tuple with the CreatorId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetCreatorIdOk() (*string, bool) {
-	if o == nil || o.CreatorId == nil {
+	if o == nil || IsNil(o.CreatorId) {
 		return nil, false
 	}
 	return o.CreatorId, true
@@ -368,7 +371,7 @@ func (o *SessionDetails) GetCreatorIdOk() (*string, bool) {
 
 // HasCreatorId returns a boolean if a field has been set.
 func (o *SessionDetails) HasCreatorId() bool {
-	if o != nil && o.CreatorId != nil {
+	if o != nil && !IsNil(o.CreatorId) {
 		return true
 	}
 
@@ -382,7 +385,7 @@ func (o *SessionDetails) SetCreatorId(v string) {
 
 // GetCreatorName returns the CreatorName field value if set, zero value otherwise.
 func (o *SessionDetails) GetCreatorName() string {
-	if o == nil || o.CreatorName == nil {
+	if o == nil || IsNil(o.CreatorName) {
 		var ret string
 		return ret
 	}
@@ -392,7 +395,7 @@ func (o *SessionDetails) GetCreatorName() string {
 // GetCreatorNameOk returns a tuple with the CreatorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetCreatorNameOk() (*string, bool) {
-	if o == nil || o.CreatorName == nil {
+	if o == nil || IsNil(o.CreatorName) {
 		return nil, false
 	}
 	return o.CreatorName, true
@@ -400,7 +403,7 @@ func (o *SessionDetails) GetCreatorNameOk() (*string, bool) {
 
 // HasCreatorName returns a boolean if a field has been set.
 func (o *SessionDetails) HasCreatorName() bool {
-	if o != nil && o.CreatorName != nil {
+	if o != nil && !IsNil(o.CreatorName) {
 		return true
 	}
 
@@ -414,7 +417,7 @@ func (o *SessionDetails) SetCreatorName(v string) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *SessionDetails) GetCreatedAt() time.Time {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -424,7 +427,7 @@ func (o *SessionDetails) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SessionDetails) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || o.CreatedAt == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
 	return o.CreatedAt, true
@@ -432,7 +435,7 @@ func (o *SessionDetails) GetCreatedAtOk() (*time.Time, bool) {
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *SessionDetails) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt != nil {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -445,44 +448,52 @@ func (o *SessionDetails) SetCreatedAt(v time.Time) {
 }
 
 func (o SessionDetails) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Code != nil {
-		toSerialize["code"] = o.Code
-	}
-	if o.Description != nil {
-		toSerialize["description"] = o.Description
-	}
-	if o.SupporterLink != nil {
-		toSerialize["supporterLink"] = o.SupporterLink
-	}
-	if o.EndUserLink != nil {
-		toSerialize["endUserLink"] = o.EndUserLink
-	}
-	if o.DeviceId != nil {
-		toSerialize["deviceId"] = o.DeviceId
-	}
-	if o.DeviceName != nil {
-		toSerialize["deviceName"] = o.DeviceName
-	}
-	if o.DeviceType != nil {
-		toSerialize["deviceType"] = o.DeviceType
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
-	if o.CreatorId != nil {
-		toSerialize["creatorId"] = o.CreatorId
-	}
-	if o.CreatorName != nil {
-		toSerialize["creatorName"] = o.CreatorName
-	}
-	if o.CreatedAt != nil {
-		toSerialize["createdAt"] = o.CreatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SessionDetails) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Code) {
+		toSerialize["code"] = o.Code
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.SupporterLink) {
+		toSerialize["supporterLink"] = o.SupporterLink
+	}
+	if !IsNil(o.EndUserLink) {
+		toSerialize["endUserLink"] = o.EndUserLink
+	}
+	if !IsNil(o.DeviceId) {
+		toSerialize["deviceId"] = o.DeviceId
+	}
+	if !IsNil(o.DeviceName) {
+		toSerialize["deviceName"] = o.DeviceName
+	}
+	if !IsNil(o.DeviceType) {
+		toSerialize["deviceType"] = o.DeviceType
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
+	}
+	if !IsNil(o.CreatorId) {
+		toSerialize["creatorId"] = o.CreatorId
+	}
+	if !IsNil(o.CreatorName) {
+		toSerialize["creatorName"] = o.CreatorName
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableSessionDetails struct {

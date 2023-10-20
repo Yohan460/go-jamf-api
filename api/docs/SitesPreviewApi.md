@@ -1,10 +1,10 @@
-# \SitesPreviewApi
+# \SitesPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SettingsSitesGet**](SitesPreviewApi.md#SettingsSitesGet) | **Get** /settings/sites | Find all sites 
+[**SettingsSitesGet**](SitesPreviewAPI.md#SettingsSitesGet) | **Get** /settings/sites | Find all sites 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SitesPreviewApi.SettingsSitesGet(context.Background()).Execute()
+    resp, r, err := apiClient.SitesPreviewAPI.SettingsSitesGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SitesPreviewApi.SettingsSitesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SitesPreviewAPI.SettingsSitesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SettingsSitesGet`: []Site
-    fmt.Fprintf(os.Stdout, "Response from `SitesPreviewApi.SettingsSitesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SitesPreviewAPI.SettingsSitesGet`: %v\n", resp)
 }
 ```
 

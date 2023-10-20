@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Ebook type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Ebook{}
+
 // Ebook struct for Ebook
 type Ebook struct {
 	Id *string `json:"id,omitempty"`
@@ -49,7 +52,7 @@ func NewEbookWithDefaults() *Ebook {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *Ebook) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *Ebook) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -67,7 +70,7 @@ func (o *Ebook) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *Ebook) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *Ebook) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *Ebook) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *Ebook) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -99,7 +102,7 @@ func (o *Ebook) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *Ebook) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *Ebook) SetName(v string) {
 
 // GetKind returns the Kind field value if set, zero value otherwise.
 func (o *Ebook) GetKind() string {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *Ebook) GetKind() string {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetKindOk() (*string, bool) {
-	if o == nil || o.Kind == nil {
+	if o == nil || IsNil(o.Kind) {
 		return nil, false
 	}
 	return o.Kind, true
@@ -131,7 +134,7 @@ func (o *Ebook) GetKindOk() (*string, bool) {
 
 // HasKind returns a boolean if a field has been set.
 func (o *Ebook) HasKind() bool {
-	if o != nil && o.Kind != nil {
+	if o != nil && !IsNil(o.Kind) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *Ebook) SetKind(v string) {
 
 // GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Ebook) GetUrl() string {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *Ebook) GetUrl() string {
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetUrlOk() (*string, bool) {
-	if o == nil || o.Url == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
 	return o.Url, true
@@ -163,7 +166,7 @@ func (o *Ebook) GetUrlOk() (*string, bool) {
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Ebook) HasUrl() bool {
-	if o != nil && o.Url != nil {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *Ebook) SetUrl(v string) {
 
 // GetFree returns the Free field value if set, zero value otherwise.
 func (o *Ebook) GetFree() bool {
-	if o == nil || o.Free == nil {
+	if o == nil || IsNil(o.Free) {
 		var ret bool
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *Ebook) GetFree() bool {
 // GetFreeOk returns a tuple with the Free field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetFreeOk() (*bool, bool) {
-	if o == nil || o.Free == nil {
+	if o == nil || IsNil(o.Free) {
 		return nil, false
 	}
 	return o.Free, true
@@ -195,7 +198,7 @@ func (o *Ebook) GetFreeOk() (*bool, bool) {
 
 // HasFree returns a boolean if a field has been set.
 func (o *Ebook) HasFree() bool {
-	if o != nil && o.Free != nil {
+	if o != nil && !IsNil(o.Free) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *Ebook) SetFree(v bool) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *Ebook) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *Ebook) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -227,7 +230,7 @@ func (o *Ebook) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *Ebook) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -241,7 +244,7 @@ func (o *Ebook) SetVersion(v string) {
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
 func (o *Ebook) GetAuthor() string {
-	if o == nil || o.Author == nil {
+	if o == nil || IsNil(o.Author) {
 		var ret string
 		return ret
 	}
@@ -251,7 +254,7 @@ func (o *Ebook) GetAuthor() string {
 // GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetAuthorOk() (*string, bool) {
-	if o == nil || o.Author == nil {
+	if o == nil || IsNil(o.Author) {
 		return nil, false
 	}
 	return o.Author, true
@@ -259,7 +262,7 @@ func (o *Ebook) GetAuthorOk() (*string, bool) {
 
 // HasAuthor returns a boolean if a field has been set.
 func (o *Ebook) HasAuthor() bool {
-	if o != nil && o.Author != nil {
+	if o != nil && !IsNil(o.Author) {
 		return true
 	}
 
@@ -273,7 +276,7 @@ func (o *Ebook) SetAuthor(v string) {
 
 // GetDeployAsManaged returns the DeployAsManaged field value if set, zero value otherwise.
 func (o *Ebook) GetDeployAsManaged() bool {
-	if o == nil || o.DeployAsManaged == nil {
+	if o == nil || IsNil(o.DeployAsManaged) {
 		var ret bool
 		return ret
 	}
@@ -283,7 +286,7 @@ func (o *Ebook) GetDeployAsManaged() bool {
 // GetDeployAsManagedOk returns a tuple with the DeployAsManaged field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetDeployAsManagedOk() (*bool, bool) {
-	if o == nil || o.DeployAsManaged == nil {
+	if o == nil || IsNil(o.DeployAsManaged) {
 		return nil, false
 	}
 	return o.DeployAsManaged, true
@@ -291,7 +294,7 @@ func (o *Ebook) GetDeployAsManagedOk() (*bool, bool) {
 
 // HasDeployAsManaged returns a boolean if a field has been set.
 func (o *Ebook) HasDeployAsManaged() bool {
-	if o != nil && o.DeployAsManaged != nil {
+	if o != nil && !IsNil(o.DeployAsManaged) {
 		return true
 	}
 
@@ -305,7 +308,7 @@ func (o *Ebook) SetDeployAsManaged(v bool) {
 
 // GetInstallAutomatically returns the InstallAutomatically field value if set, zero value otherwise.
 func (o *Ebook) GetInstallAutomatically() bool {
-	if o == nil || o.InstallAutomatically == nil {
+	if o == nil || IsNil(o.InstallAutomatically) {
 		var ret bool
 		return ret
 	}
@@ -315,7 +318,7 @@ func (o *Ebook) GetInstallAutomatically() bool {
 // GetInstallAutomaticallyOk returns a tuple with the InstallAutomatically field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetInstallAutomaticallyOk() (*bool, bool) {
-	if o == nil || o.InstallAutomatically == nil {
+	if o == nil || IsNil(o.InstallAutomatically) {
 		return nil, false
 	}
 	return o.InstallAutomatically, true
@@ -323,7 +326,7 @@ func (o *Ebook) GetInstallAutomaticallyOk() (*bool, bool) {
 
 // HasInstallAutomatically returns a boolean if a field has been set.
 func (o *Ebook) HasInstallAutomatically() bool {
-	if o != nil && o.InstallAutomatically != nil {
+	if o != nil && !IsNil(o.InstallAutomatically) {
 		return true
 	}
 
@@ -337,7 +340,7 @@ func (o *Ebook) SetInstallAutomatically(v bool) {
 
 // GetCategoryId returns the CategoryId field value if set, zero value otherwise.
 func (o *Ebook) GetCategoryId() string {
-	if o == nil || o.CategoryId == nil {
+	if o == nil || IsNil(o.CategoryId) {
 		var ret string
 		return ret
 	}
@@ -347,7 +350,7 @@ func (o *Ebook) GetCategoryId() string {
 // GetCategoryIdOk returns a tuple with the CategoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetCategoryIdOk() (*string, bool) {
-	if o == nil || o.CategoryId == nil {
+	if o == nil || IsNil(o.CategoryId) {
 		return nil, false
 	}
 	return o.CategoryId, true
@@ -355,7 +358,7 @@ func (o *Ebook) GetCategoryIdOk() (*string, bool) {
 
 // HasCategoryId returns a boolean if a field has been set.
 func (o *Ebook) HasCategoryId() bool {
-	if o != nil && o.CategoryId != nil {
+	if o != nil && !IsNil(o.CategoryId) {
 		return true
 	}
 
@@ -369,7 +372,7 @@ func (o *Ebook) SetCategoryId(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *Ebook) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -379,7 +382,7 @@ func (o *Ebook) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Ebook) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -387,7 +390,7 @@ func (o *Ebook) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *Ebook) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -400,41 +403,49 @@ func (o *Ebook) SetSiteId(v string) {
 }
 
 func (o Ebook) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Kind != nil {
-		toSerialize["kind"] = o.Kind
-	}
-	if o.Url != nil {
-		toSerialize["url"] = o.Url
-	}
-	if o.Free != nil {
-		toSerialize["free"] = o.Free
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.Author != nil {
-		toSerialize["author"] = o.Author
-	}
-	if o.DeployAsManaged != nil {
-		toSerialize["deployAsManaged"] = o.DeployAsManaged
-	}
-	if o.InstallAutomatically != nil {
-		toSerialize["installAutomatically"] = o.InstallAutomatically
-	}
-	if o.CategoryId != nil {
-		toSerialize["categoryId"] = o.CategoryId
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Ebook) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	if !IsNil(o.Free) {
+		toSerialize["free"] = o.Free
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.Author) {
+		toSerialize["author"] = o.Author
+	}
+	if !IsNil(o.DeployAsManaged) {
+		toSerialize["deployAsManaged"] = o.DeployAsManaged
+	}
+	if !IsNil(o.InstallAutomatically) {
+		toSerialize["installAutomatically"] = o.InstallAutomatically
+	}
+	if !IsNil(o.CategoryId) {
+		toSerialize["categoryId"] = o.CategoryId
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	return toSerialize, nil
 }
 
 type NullableEbook struct {

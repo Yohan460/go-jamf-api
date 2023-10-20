@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LinkedConnectProfile type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LinkedConnectProfile{}
+
 // LinkedConnectProfile struct for LinkedConnectProfile
 type LinkedConnectProfile struct {
 	Uuid *string `json:"uuid,omitempty"`
@@ -49,7 +52,7 @@ func NewLinkedConnectProfileWithDefaults() *LinkedConnectProfile {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -59,7 +62,7 @@ func (o *LinkedConnectProfile) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -67,7 +70,7 @@ func (o *LinkedConnectProfile) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -81,7 +84,7 @@ func (o *LinkedConnectProfile) SetUuid(v string) {
 
 // GetProfileId returns the ProfileId field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetProfileId() string {
-	if o == nil || o.ProfileId == nil {
+	if o == nil || IsNil(o.ProfileId) {
 		var ret string
 		return ret
 	}
@@ -91,7 +94,7 @@ func (o *LinkedConnectProfile) GetProfileId() string {
 // GetProfileIdOk returns a tuple with the ProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetProfileIdOk() (*string, bool) {
-	if o == nil || o.ProfileId == nil {
+	if o == nil || IsNil(o.ProfileId) {
 		return nil, false
 	}
 	return o.ProfileId, true
@@ -99,7 +102,7 @@ func (o *LinkedConnectProfile) GetProfileIdOk() (*string, bool) {
 
 // HasProfileId returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasProfileId() bool {
-	if o != nil && o.ProfileId != nil {
+	if o != nil && !IsNil(o.ProfileId) {
 		return true
 	}
 
@@ -113,7 +116,7 @@ func (o *LinkedConnectProfile) SetProfileId(v string) {
 
 // GetProfileName returns the ProfileName field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetProfileName() string {
-	if o == nil || o.ProfileName == nil {
+	if o == nil || IsNil(o.ProfileName) {
 		var ret string
 		return ret
 	}
@@ -123,7 +126,7 @@ func (o *LinkedConnectProfile) GetProfileName() string {
 // GetProfileNameOk returns a tuple with the ProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetProfileNameOk() (*string, bool) {
-	if o == nil || o.ProfileName == nil {
+	if o == nil || IsNil(o.ProfileName) {
 		return nil, false
 	}
 	return o.ProfileName, true
@@ -131,7 +134,7 @@ func (o *LinkedConnectProfile) GetProfileNameOk() (*string, bool) {
 
 // HasProfileName returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasProfileName() bool {
-	if o != nil && o.ProfileName != nil {
+	if o != nil && !IsNil(o.ProfileName) {
 		return true
 	}
 
@@ -145,7 +148,7 @@ func (o *LinkedConnectProfile) SetProfileName(v string) {
 
 // GetProfileScopeDescription returns the ProfileScopeDescription field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetProfileScopeDescription() string {
-	if o == nil || o.ProfileScopeDescription == nil {
+	if o == nil || IsNil(o.ProfileScopeDescription) {
 		var ret string
 		return ret
 	}
@@ -155,7 +158,7 @@ func (o *LinkedConnectProfile) GetProfileScopeDescription() string {
 // GetProfileScopeDescriptionOk returns a tuple with the ProfileScopeDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetProfileScopeDescriptionOk() (*string, bool) {
-	if o == nil || o.ProfileScopeDescription == nil {
+	if o == nil || IsNil(o.ProfileScopeDescription) {
 		return nil, false
 	}
 	return o.ProfileScopeDescription, true
@@ -163,7 +166,7 @@ func (o *LinkedConnectProfile) GetProfileScopeDescriptionOk() (*string, bool) {
 
 // HasProfileScopeDescription returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasProfileScopeDescription() bool {
-	if o != nil && o.ProfileScopeDescription != nil {
+	if o != nil && !IsNil(o.ProfileScopeDescription) {
 		return true
 	}
 
@@ -177,7 +180,7 @@ func (o *LinkedConnectProfile) SetProfileScopeDescription(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -187,7 +190,7 @@ func (o *LinkedConnectProfile) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -195,7 +198,7 @@ func (o *LinkedConnectProfile) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -209,7 +212,7 @@ func (o *LinkedConnectProfile) SetVersion(v string) {
 
 // GetAutoDeploymentType returns the AutoDeploymentType field value if set, zero value otherwise.
 func (o *LinkedConnectProfile) GetAutoDeploymentType() string {
-	if o == nil || o.AutoDeploymentType == nil {
+	if o == nil || IsNil(o.AutoDeploymentType) {
 		var ret string
 		return ret
 	}
@@ -219,7 +222,7 @@ func (o *LinkedConnectProfile) GetAutoDeploymentType() string {
 // GetAutoDeploymentTypeOk returns a tuple with the AutoDeploymentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LinkedConnectProfile) GetAutoDeploymentTypeOk() (*string, bool) {
-	if o == nil || o.AutoDeploymentType == nil {
+	if o == nil || IsNil(o.AutoDeploymentType) {
 		return nil, false
 	}
 	return o.AutoDeploymentType, true
@@ -227,7 +230,7 @@ func (o *LinkedConnectProfile) GetAutoDeploymentTypeOk() (*string, bool) {
 
 // HasAutoDeploymentType returns a boolean if a field has been set.
 func (o *LinkedConnectProfile) HasAutoDeploymentType() bool {
-	if o != nil && o.AutoDeploymentType != nil {
+	if o != nil && !IsNil(o.AutoDeploymentType) {
 		return true
 	}
 
@@ -240,26 +243,34 @@ func (o *LinkedConnectProfile) SetAutoDeploymentType(v string) {
 }
 
 func (o LinkedConnectProfile) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.ProfileId != nil {
-		toSerialize["profileId"] = o.ProfileId
-	}
-	if o.ProfileName != nil {
-		toSerialize["profileName"] = o.ProfileName
-	}
-	if o.ProfileScopeDescription != nil {
-		toSerialize["profileScopeDescription"] = o.ProfileScopeDescription
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
-	}
-	if o.AutoDeploymentType != nil {
-		toSerialize["autoDeploymentType"] = o.AutoDeploymentType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LinkedConnectProfile) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.ProfileId) {
+		toSerialize["profileId"] = o.ProfileId
+	}
+	if !IsNil(o.ProfileName) {
+		toSerialize["profileName"] = o.ProfileName
+	}
+	if !IsNil(o.ProfileScopeDescription) {
+		toSerialize["profileScopeDescription"] = o.ProfileScopeDescription
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	if !IsNil(o.AutoDeploymentType) {
+		toSerialize["autoDeploymentType"] = o.AutoDeploymentType
+	}
+	return toSerialize, nil
 }
 
 type NullableLinkedConnectProfile struct {

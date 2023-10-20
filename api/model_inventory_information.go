@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryInformation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryInformation{}
+
 // InventoryInformation Jamf Pro Inventory statistics object. Aggregates managed/unmanaged devices and computers counters
 type InventoryInformation struct {
 	// Number of managed computers in inventory.
@@ -45,7 +48,7 @@ func NewInventoryInformationWithDefaults() *InventoryInformation {
 
 // GetManagedComputers returns the ManagedComputers field value if set, zero value otherwise.
 func (o *InventoryInformation) GetManagedComputers() int32 {
-	if o == nil || o.ManagedComputers == nil {
+	if o == nil || IsNil(o.ManagedComputers) {
 		var ret int32
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *InventoryInformation) GetManagedComputers() int32 {
 // GetManagedComputersOk returns a tuple with the ManagedComputers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryInformation) GetManagedComputersOk() (*int32, bool) {
-	if o == nil || o.ManagedComputers == nil {
+	if o == nil || IsNil(o.ManagedComputers) {
 		return nil, false
 	}
 	return o.ManagedComputers, true
@@ -63,7 +66,7 @@ func (o *InventoryInformation) GetManagedComputersOk() (*int32, bool) {
 
 // HasManagedComputers returns a boolean if a field has been set.
 func (o *InventoryInformation) HasManagedComputers() bool {
-	if o != nil && o.ManagedComputers != nil {
+	if o != nil && !IsNil(o.ManagedComputers) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *InventoryInformation) SetManagedComputers(v int32) {
 
 // GetUnmanagedComputers returns the UnmanagedComputers field value if set, zero value otherwise.
 func (o *InventoryInformation) GetUnmanagedComputers() int32 {
-	if o == nil || o.UnmanagedComputers == nil {
+	if o == nil || IsNil(o.UnmanagedComputers) {
 		var ret int32
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *InventoryInformation) GetUnmanagedComputers() int32 {
 // GetUnmanagedComputersOk returns a tuple with the UnmanagedComputers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryInformation) GetUnmanagedComputersOk() (*int32, bool) {
-	if o == nil || o.UnmanagedComputers == nil {
+	if o == nil || IsNil(o.UnmanagedComputers) {
 		return nil, false
 	}
 	return o.UnmanagedComputers, true
@@ -95,7 +98,7 @@ func (o *InventoryInformation) GetUnmanagedComputersOk() (*int32, bool) {
 
 // HasUnmanagedComputers returns a boolean if a field has been set.
 func (o *InventoryInformation) HasUnmanagedComputers() bool {
-	if o != nil && o.UnmanagedComputers != nil {
+	if o != nil && !IsNil(o.UnmanagedComputers) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *InventoryInformation) SetUnmanagedComputers(v int32) {
 
 // GetManagedDevices returns the ManagedDevices field value if set, zero value otherwise.
 func (o *InventoryInformation) GetManagedDevices() int32 {
-	if o == nil || o.ManagedDevices == nil {
+	if o == nil || IsNil(o.ManagedDevices) {
 		var ret int32
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *InventoryInformation) GetManagedDevices() int32 {
 // GetManagedDevicesOk returns a tuple with the ManagedDevices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryInformation) GetManagedDevicesOk() (*int32, bool) {
-	if o == nil || o.ManagedDevices == nil {
+	if o == nil || IsNil(o.ManagedDevices) {
 		return nil, false
 	}
 	return o.ManagedDevices, true
@@ -127,7 +130,7 @@ func (o *InventoryInformation) GetManagedDevicesOk() (*int32, bool) {
 
 // HasManagedDevices returns a boolean if a field has been set.
 func (o *InventoryInformation) HasManagedDevices() bool {
-	if o != nil && o.ManagedDevices != nil {
+	if o != nil && !IsNil(o.ManagedDevices) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *InventoryInformation) SetManagedDevices(v int32) {
 
 // GetUnmanagedDevices returns the UnmanagedDevices field value if set, zero value otherwise.
 func (o *InventoryInformation) GetUnmanagedDevices() int32 {
-	if o == nil || o.UnmanagedDevices == nil {
+	if o == nil || IsNil(o.UnmanagedDevices) {
 		var ret int32
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *InventoryInformation) GetUnmanagedDevices() int32 {
 // GetUnmanagedDevicesOk returns a tuple with the UnmanagedDevices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryInformation) GetUnmanagedDevicesOk() (*int32, bool) {
-	if o == nil || o.UnmanagedDevices == nil {
+	if o == nil || IsNil(o.UnmanagedDevices) {
 		return nil, false
 	}
 	return o.UnmanagedDevices, true
@@ -159,7 +162,7 @@ func (o *InventoryInformation) GetUnmanagedDevicesOk() (*int32, bool) {
 
 // HasUnmanagedDevices returns a boolean if a field has been set.
 func (o *InventoryInformation) HasUnmanagedDevices() bool {
-	if o != nil && o.UnmanagedDevices != nil {
+	if o != nil && !IsNil(o.UnmanagedDevices) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *InventoryInformation) SetUnmanagedDevices(v int32) {
 }
 
 func (o InventoryInformation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ManagedComputers != nil {
-		toSerialize["managedComputers"] = o.ManagedComputers
-	}
-	if o.UnmanagedComputers != nil {
-		toSerialize["unmanagedComputers"] = o.UnmanagedComputers
-	}
-	if o.ManagedDevices != nil {
-		toSerialize["managedDevices"] = o.ManagedDevices
-	}
-	if o.UnmanagedDevices != nil {
-		toSerialize["unmanagedDevices"] = o.UnmanagedDevices
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryInformation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ManagedComputers) {
+		toSerialize["managedComputers"] = o.ManagedComputers
+	}
+	if !IsNil(o.UnmanagedComputers) {
+		toSerialize["unmanagedComputers"] = o.UnmanagedComputers
+	}
+	if !IsNil(o.ManagedDevices) {
+		toSerialize["managedDevices"] = o.ManagedDevices
+	}
+	if !IsNil(o.UnmanagedDevices) {
+		toSerialize["unmanagedDevices"] = o.UnmanagedDevices
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryInformation struct {

@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type MobileDeviceExtensionAttributesPreviewApi interface {
+type MobileDeviceExtensionAttributesPreviewAPI interface {
 
 	/*
 	DevicesExtensionAttributesGet Get Mobile Device Extension Attribute values placed in select paramter 
@@ -27,31 +27,31 @@ type MobileDeviceExtensionAttributesPreviewApi interface {
 	Gets Mobile Device Extension Attribute values placed in select parameter.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiDevicesExtensionAttributesGetRequest
+	@return MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest
 	*/
-	DevicesExtensionAttributesGet(ctx context.Context) ApiDevicesExtensionAttributesGetRequest
+	DevicesExtensionAttributesGet(ctx context.Context) MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest
 
 	// DevicesExtensionAttributesGetExecute executes the request
 	//  @return MobileDeviceExtensionAttributeResults
-	DevicesExtensionAttributesGetExecute(r ApiDevicesExtensionAttributesGetRequest) (*MobileDeviceExtensionAttributeResults, *http.Response, error)
+	DevicesExtensionAttributesGetExecute(r MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest) (*MobileDeviceExtensionAttributeResults, *http.Response, error)
 }
 
-// MobileDeviceExtensionAttributesPreviewApiService MobileDeviceExtensionAttributesPreviewApi service
-type MobileDeviceExtensionAttributesPreviewApiService service
+// MobileDeviceExtensionAttributesPreviewAPIService MobileDeviceExtensionAttributesPreviewAPI service
+type MobileDeviceExtensionAttributesPreviewAPIService service
 
-type ApiDevicesExtensionAttributesGetRequest struct {
+type MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest struct {
 	ctx context.Context
-	ApiService MobileDeviceExtensionAttributesPreviewApi
+	ApiService MobileDeviceExtensionAttributesPreviewAPI
 	select_ *string
 }
 
 // Acceptable values currently include: * name 
-func (r ApiDevicesExtensionAttributesGetRequest) Select_(select_ string) ApiDevicesExtensionAttributesGetRequest {
+func (r MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest) Select_(select_ string) MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest {
 	r.select_ = &select_
 	return r
 }
 
-func (r ApiDevicesExtensionAttributesGetRequest) Execute() (*MobileDeviceExtensionAttributeResults, *http.Response, error) {
+func (r MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest) Execute() (*MobileDeviceExtensionAttributeResults, *http.Response, error) {
 	return r.ApiService.DevicesExtensionAttributesGetExecute(r)
 }
 
@@ -61,10 +61,10 @@ DevicesExtensionAttributesGet Get Mobile Device Extension Attribute values place
 Gets Mobile Device Extension Attribute values placed in select parameter.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiDevicesExtensionAttributesGetRequest
+ @return MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest
 */
-func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttributesGet(ctx context.Context) ApiDevicesExtensionAttributesGetRequest {
-	return ApiDevicesExtensionAttributesGetRequest{
+func (a *MobileDeviceExtensionAttributesPreviewAPIService) DevicesExtensionAttributesGet(ctx context.Context) MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest {
+	return MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -72,7 +72,7 @@ func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttri
 
 // Execute executes the request
 //  @return MobileDeviceExtensionAttributeResults
-func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttributesGetExecute(r ApiDevicesExtensionAttributesGetRequest) (*MobileDeviceExtensionAttributeResults, *http.Response, error) {
+func (a *MobileDeviceExtensionAttributesPreviewAPIService) DevicesExtensionAttributesGetExecute(r MobileDeviceExtensionAttributesPreviewAPIDevicesExtensionAttributesGetRequest) (*MobileDeviceExtensionAttributeResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -80,7 +80,7 @@ func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttri
 		localVarReturnValue  *MobileDeviceExtensionAttributeResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDeviceExtensionAttributesPreviewApiService.DevicesExtensionAttributesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDeviceExtensionAttributesPreviewAPIService.DevicesExtensionAttributesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -92,7 +92,10 @@ func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttri
 	localVarFormParams := url.Values{}
 
 	if r.select_ != nil {
-		localVarQueryParams.Add("select", parameterToString(*r.select_, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "select", r.select_, "")
+	} else {
+		var defaultValue string = "name"
+		r.select_ = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -121,9 +124,9 @@ func (a *MobileDeviceExtensionAttributesPreviewApiService) DevicesExtensionAttri
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

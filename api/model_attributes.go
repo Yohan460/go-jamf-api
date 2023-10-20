@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Attributes type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Attributes{}
+
 // Attributes struct for Attributes
 type Attributes struct {
 	VpnUuid *string `json:"vpnUuid,omitempty"`
@@ -41,7 +44,7 @@ func NewAttributesWithDefaults() *Attributes {
 
 // GetVpnUuid returns the VpnUuid field value if set, zero value otherwise.
 func (o *Attributes) GetVpnUuid() string {
-	if o == nil || o.VpnUuid == nil {
+	if o == nil || IsNil(o.VpnUuid) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *Attributes) GetVpnUuid() string {
 // GetVpnUuidOk returns a tuple with the VpnUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Attributes) GetVpnUuidOk() (*string, bool) {
-	if o == nil || o.VpnUuid == nil {
+	if o == nil || IsNil(o.VpnUuid) {
 		return nil, false
 	}
 	return o.VpnUuid, true
@@ -59,7 +62,7 @@ func (o *Attributes) GetVpnUuidOk() (*string, bool) {
 
 // HasVpnUuid returns a boolean if a field has been set.
 func (o *Attributes) HasVpnUuid() bool {
-	if o != nil && o.VpnUuid != nil {
+	if o != nil && !IsNil(o.VpnUuid) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *Attributes) SetVpnUuid(v string) {
 
 // GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise.
 func (o *Attributes) GetAssociatedDomains() []string {
-	if o == nil || o.AssociatedDomains == nil {
+	if o == nil || IsNil(o.AssociatedDomains) {
 		var ret []string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *Attributes) GetAssociatedDomains() []string {
 // GetAssociatedDomainsOk returns a tuple with the AssociatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Attributes) GetAssociatedDomainsOk() ([]string, bool) {
-	if o == nil || o.AssociatedDomains == nil {
+	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
 	return o.AssociatedDomains, true
@@ -91,7 +94,7 @@ func (o *Attributes) GetAssociatedDomainsOk() ([]string, bool) {
 
 // HasAssociatedDomains returns a boolean if a field has been set.
 func (o *Attributes) HasAssociatedDomains() bool {
-	if o != nil && o.AssociatedDomains != nil {
+	if o != nil && !IsNil(o.AssociatedDomains) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *Attributes) SetAssociatedDomains(v []string) {
 
 // GetRemovable returns the Removable field value if set, zero value otherwise.
 func (o *Attributes) GetRemovable() bool {
-	if o == nil || o.Removable == nil {
+	if o == nil || IsNil(o.Removable) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *Attributes) GetRemovable() bool {
 // GetRemovableOk returns a tuple with the Removable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Attributes) GetRemovableOk() (*bool, bool) {
-	if o == nil || o.Removable == nil {
+	if o == nil || IsNil(o.Removable) {
 		return nil, false
 	}
 	return o.Removable, true
@@ -123,7 +126,7 @@ func (o *Attributes) GetRemovableOk() (*bool, bool) {
 
 // HasRemovable returns a boolean if a field has been set.
 func (o *Attributes) HasRemovable() bool {
-	if o != nil && o.Removable != nil {
+	if o != nil && !IsNil(o.Removable) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *Attributes) SetRemovable(v bool) {
 
 // GetEnableDirectDownloads returns the EnableDirectDownloads field value if set, zero value otherwise.
 func (o *Attributes) GetEnableDirectDownloads() bool {
-	if o == nil || o.EnableDirectDownloads == nil {
+	if o == nil || IsNil(o.EnableDirectDownloads) {
 		var ret bool
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *Attributes) GetEnableDirectDownloads() bool {
 // GetEnableDirectDownloadsOk returns a tuple with the EnableDirectDownloads field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Attributes) GetEnableDirectDownloadsOk() (*bool, bool) {
-	if o == nil || o.EnableDirectDownloads == nil {
+	if o == nil || IsNil(o.EnableDirectDownloads) {
 		return nil, false
 	}
 	return o.EnableDirectDownloads, true
@@ -155,7 +158,7 @@ func (o *Attributes) GetEnableDirectDownloadsOk() (*bool, bool) {
 
 // HasEnableDirectDownloads returns a boolean if a field has been set.
 func (o *Attributes) HasEnableDirectDownloads() bool {
-	if o != nil && o.EnableDirectDownloads != nil {
+	if o != nil && !IsNil(o.EnableDirectDownloads) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *Attributes) SetEnableDirectDownloads(v bool) {
 }
 
 func (o Attributes) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.VpnUuid != nil {
-		toSerialize["vpnUuid"] = o.VpnUuid
-	}
-	if o.AssociatedDomains != nil {
-		toSerialize["associatedDomains"] = o.AssociatedDomains
-	}
-	if o.Removable != nil {
-		toSerialize["removable"] = o.Removable
-	}
-	if o.EnableDirectDownloads != nil {
-		toSerialize["enableDirectDownloads"] = o.EnableDirectDownloads
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Attributes) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.VpnUuid) {
+		toSerialize["vpnUuid"] = o.VpnUuid
+	}
+	if !IsNil(o.AssociatedDomains) {
+		toSerialize["associatedDomains"] = o.AssociatedDomains
+	}
+	if !IsNil(o.Removable) {
+		toSerialize["removable"] = o.Removable
+	}
+	if !IsNil(o.EnableDirectDownloads) {
+		toSerialize["enableDirectDownloads"] = o.EnableDirectDownloads
+	}
+	return toSerialize, nil
 }
 
 type NullableAttributes struct {

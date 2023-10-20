@@ -1,45 +1,45 @@
-# \MobileDevicePrestagesApi
+# \MobileDevicePrestagesAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1MobileDevicePrestagesGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesGet) | **Get** /v1/mobile-device-prestages | Search for sorted and paged Mobile Device Prestages 
-[**V1MobileDevicePrestagesIdAttachmentsDelete**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdAttachmentsDelete) | **Delete** /v1/mobile-device-prestages/{id}/attachments | Remove an attachment for a Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdAttachmentsGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdAttachmentsGet) | **Get** /v1/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdAttachmentsPost**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdAttachmentsPost) | **Post** /v1/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdDelete**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdDelete) | **Delete** /v1/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
-[**V1MobileDevicePrestagesIdGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdGet) | **Get** /v1/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
-[**V1MobileDevicePrestagesIdHistoryGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdHistoryGet) | **Get** /v1/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
-[**V1MobileDevicePrestagesIdHistoryPost**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdHistoryPost) | **Post** /v1/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
-[**V1MobileDevicePrestagesIdPut**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdPut) | **Put** /v1/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdScopeDelete**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdScopeDelete) | **Delete** /v1/mobile-device-prestages/{id}/scope | Remove Device Scope for a specific Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdScopeGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdScopeGet) | **Get** /v1/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdScopePost**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdScopePost) | **Post** /v1/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
-[**V1MobileDevicePrestagesIdScopePut**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesIdScopePut) | **Put** /v1/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
-[**V1MobileDevicePrestagesPost**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesPost) | **Post** /v1/mobile-device-prestages | Create a Mobile Device Prestage 
-[**V1MobileDevicePrestagesScopeGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesScopeGet) | **Get** /v1/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
-[**V1MobileDevicePrestagesSyncGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesSyncGet) | **Get** /v1/mobile-device-prestages/sync | Get all Prestage sync States for all prestages 
-[**V1MobileDevicePrestagesSyncIdGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesSyncIdGet) | **Get** /v1/mobile-device-prestages/sync/{id} | Get all prestage sync states for a single prestage 
-[**V1MobileDevicePrestagesSyncIdLatestGet**](MobileDevicePrestagesApi.md#V1MobileDevicePrestagesSyncIdLatestGet) | **Get** /v1/mobile-device-prestages/sync/{id}/latest | Get the latest Sync State for a single Prestage 
-[**V2MobileDevicePrestagesGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesGet) | **Get** /v2/mobile-device-prestages | Get sorted and paged Mobile Device Prestages 
-[**V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost) | **Post** /v2/mobile-device-prestages/{id}/attachments/delete-multiple | Remove an attachment for a Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdAttachmentsGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdAttachmentsGet) | **Get** /v2/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdAttachmentsPost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdAttachmentsPost) | **Post** /v2/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdDelete**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdDelete) | **Delete** /v2/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
-[**V2MobileDevicePrestagesIdGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdGet) | **Get** /v2/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
-[**V2MobileDevicePrestagesIdHistoryGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdHistoryGet) | **Get** /v2/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
-[**V2MobileDevicePrestagesIdHistoryPost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdHistoryPost) | **Post** /v2/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
-[**V2MobileDevicePrestagesIdPut**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdPut) | **Put** /v2/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdScopeDeleteMultiplePost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdScopeDeleteMultiplePost) | **Post** /v2/mobile-device-prestages/{id}/scope/delete-multiple | Remove Device Scope for a specific Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdScopeGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdScopeGet) | **Get** /v2/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdScopePost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdScopePost) | **Post** /v2/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdScopePut**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdScopePut) | **Put** /v2/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
-[**V2MobileDevicePrestagesIdSyncsGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdSyncsGet) | **Get** /v2/mobile-device-prestages/{id}/syncs | Get all prestage sync states for a single prestage 
-[**V2MobileDevicePrestagesIdSyncsLatestGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesIdSyncsLatestGet) | **Get** /v2/mobile-device-prestages/{id}/syncs/latest | Get the latest Sync State for a single Prestage 
-[**V2MobileDevicePrestagesPost**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesPost) | **Post** /v2/mobile-device-prestages | Create a Mobile Device Prestage 
-[**V2MobileDevicePrestagesScopeGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesScopeGet) | **Get** /v2/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
-[**V2MobileDevicePrestagesSyncsGet**](MobileDevicePrestagesApi.md#V2MobileDevicePrestagesSyncsGet) | **Get** /v2/mobile-device-prestages/syncs | Get all Prestage sync States for all prestages 
+[**V1MobileDevicePrestagesGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesGet) | **Get** /v1/mobile-device-prestages | Search for sorted and paged Mobile Device Prestages 
+[**V1MobileDevicePrestagesIdAttachmentsDelete**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdAttachmentsDelete) | **Delete** /v1/mobile-device-prestages/{id}/attachments | Remove an attachment for a Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdAttachmentsGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdAttachmentsGet) | **Get** /v1/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdAttachmentsPost**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdAttachmentsPost) | **Post** /v1/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdDelete**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdDelete) | **Delete** /v1/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
+[**V1MobileDevicePrestagesIdGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdGet) | **Get** /v1/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
+[**V1MobileDevicePrestagesIdHistoryGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdHistoryGet) | **Get** /v1/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
+[**V1MobileDevicePrestagesIdHistoryPost**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdHistoryPost) | **Post** /v1/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
+[**V1MobileDevicePrestagesIdPut**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdPut) | **Put** /v1/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdScopeDelete**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdScopeDelete) | **Delete** /v1/mobile-device-prestages/{id}/scope | Remove Device Scope for a specific Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdScopeGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdScopeGet) | **Get** /v1/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdScopePost**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdScopePost) | **Post** /v1/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
+[**V1MobileDevicePrestagesIdScopePut**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesIdScopePut) | **Put** /v1/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
+[**V1MobileDevicePrestagesPost**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesPost) | **Post** /v1/mobile-device-prestages | Create a Mobile Device Prestage 
+[**V1MobileDevicePrestagesScopeGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesScopeGet) | **Get** /v1/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
+[**V1MobileDevicePrestagesSyncGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesSyncGet) | **Get** /v1/mobile-device-prestages/sync | Get all Prestage sync States for all prestages 
+[**V1MobileDevicePrestagesSyncIdGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesSyncIdGet) | **Get** /v1/mobile-device-prestages/sync/{id} | Get all prestage sync states for a single prestage 
+[**V1MobileDevicePrestagesSyncIdLatestGet**](MobileDevicePrestagesAPI.md#V1MobileDevicePrestagesSyncIdLatestGet) | **Get** /v1/mobile-device-prestages/sync/{id}/latest | Get the latest Sync State for a single Prestage 
+[**V2MobileDevicePrestagesGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesGet) | **Get** /v2/mobile-device-prestages | Get sorted and paged Mobile Device Prestages 
+[**V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost) | **Post** /v2/mobile-device-prestages/{id}/attachments/delete-multiple | Remove an attachment for a Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdAttachmentsGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdAttachmentsGet) | **Get** /v2/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdAttachmentsPost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdAttachmentsPost) | **Post** /v2/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdDelete**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdDelete) | **Delete** /v2/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
+[**V2MobileDevicePrestagesIdGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdGet) | **Get** /v2/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
+[**V2MobileDevicePrestagesIdHistoryGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdHistoryGet) | **Get** /v2/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
+[**V2MobileDevicePrestagesIdHistoryPost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdHistoryPost) | **Post** /v2/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
+[**V2MobileDevicePrestagesIdPut**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdPut) | **Put** /v2/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdScopeDeleteMultiplePost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdScopeDeleteMultiplePost) | **Post** /v2/mobile-device-prestages/{id}/scope/delete-multiple | Remove Device Scope for a specific Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdScopeGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdScopeGet) | **Get** /v2/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdScopePost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdScopePost) | **Post** /v2/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdScopePut**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdScopePut) | **Put** /v2/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
+[**V2MobileDevicePrestagesIdSyncsGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdSyncsGet) | **Get** /v2/mobile-device-prestages/{id}/syncs | Get all prestage sync states for a single prestage 
+[**V2MobileDevicePrestagesIdSyncsLatestGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesIdSyncsLatestGet) | **Get** /v2/mobile-device-prestages/{id}/syncs/latest | Get the latest Sync State for a single Prestage 
+[**V2MobileDevicePrestagesPost**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesPost) | **Post** /v2/mobile-device-prestages | Create a Mobile Device Prestage 
+[**V2MobileDevicePrestagesScopeGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesScopeGet) | **Get** /v2/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
+[**V2MobileDevicePrestagesSyncsGet**](MobileDevicePrestagesAPI.md#V2MobileDevicePrestagesSyncsGet) | **Get** /v2/mobile-device-prestages/syncs | Get all Prestage sync States for all prestages 
 
 
 
@@ -60,7 +60,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -72,13 +72,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesGet`: MobileDevicePrestageSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesGet`: %v\n", resp)
 }
 ```
 
@@ -134,7 +134,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -143,9 +143,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsDelete(context.Background(), id).FileAttachmentDelete(fileAttachmentDelete).Execute()
+    r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsDelete(context.Background(), id).FileAttachmentDelete(fileAttachmentDelete).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -204,7 +204,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -212,13 +212,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdAttachmentsGet`: []FileAttachment
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsGet`: %v\n", resp)
 }
 ```
 
@@ -274,7 +274,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -283,13 +283,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsPost(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsPost(context.Background(), id).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdAttachmentsPost`: PrestageFileAttachment
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdAttachmentsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdAttachmentsPost`: %v\n", resp)
 }
 ```
 
@@ -346,7 +346,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -354,9 +354,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -414,7 +414,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -422,13 +422,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdGet`: GetMobileDevicePrestage
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdGet`: %v\n", resp)
 }
 ```
 
@@ -484,7 +484,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -497,13 +497,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryGet(context.Background(), id).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryGet(context.Background(), id).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -564,7 +564,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -573,13 +573,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -636,7 +636,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -645,13 +645,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdPut(context.Background(), id).PutMobileDevicePrestage(putMobileDevicePrestage).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdPut(context.Background(), id).PutMobileDevicePrestage(putMobileDevicePrestage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdPut`: GetMobileDevicePrestage
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdPut`: %v\n", resp)
 }
 ```
 
@@ -708,7 +708,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -717,13 +717,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeDelete(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeDelete(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdScopeDelete`: PrestageScopeResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeDelete`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeDelete`: %v\n", resp)
 }
 ```
 
@@ -780,7 +780,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -788,13 +788,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdScopeGet`: PrestageScopeResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopeGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopeGet`: %v\n", resp)
 }
 ```
 
@@ -850,7 +850,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -859,13 +859,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdScopePost`: PrestageScopeResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePost`: %v\n", resp)
 }
 ```
 
@@ -922,7 +922,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -931,13 +931,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePut(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePut(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesIdScopePut`: PrestageScopeResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesIdScopePut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesIdScopePut`: %v\n", resp)
 }
 ```
 
@@ -994,7 +994,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1002,13 +1002,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesPost(context.Background()).MobileDevicePrestage(mobileDevicePrestage).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesPost(context.Background()).MobileDevicePrestage(mobileDevicePrestage).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesPost`: GetMobileDevicePrestage
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesPost`: %v\n", resp)
 }
 ```
 
@@ -1060,20 +1060,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesScopeGet(context.Background()).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesScopeGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesScopeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesScopeGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesScopeGet`: PrestageScope
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesScopeGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesScopeGet`: %v\n", resp)
 }
 ```
 
@@ -1121,20 +1121,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncGet(context.Background()).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesSyncGet`: []PrestageSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncGet`: %v\n", resp)
 }
 ```
 
@@ -1182,7 +1182,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1190,13 +1190,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesSyncIdGet`: []PrestageSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdGet`: %v\n", resp)
 }
 ```
 
@@ -1252,7 +1252,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1260,13 +1260,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdLatestGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdLatestGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdLatestGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdLatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1MobileDevicePrestagesSyncIdLatestGet`: PrestageSyncStatus
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V1MobileDevicePrestagesSyncIdLatestGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V1MobileDevicePrestagesSyncIdLatestGet`: %v\n", resp)
 }
 ```
 
@@ -1322,7 +1322,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1332,13 +1332,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesGet`: MobileDevicePrestageSearchResultsV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesGet`: %v\n", resp)
 }
 ```
 
@@ -1392,7 +1392,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1401,9 +1401,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(context.Background(), id).Ids(ids).Execute()
+    r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(context.Background(), id).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1462,7 +1462,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1470,13 +1470,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdAttachmentsGet`: []FileAttachmentV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsGet`: %v\n", resp)
 }
 ```
 
@@ -1532,7 +1532,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1541,13 +1541,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsPost(context.Background(), id).File(file).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsPost(context.Background(), id).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdAttachmentsPost`: PrestageFileAttachmentV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdAttachmentsPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdAttachmentsPost`: %v\n", resp)
 }
 ```
 
@@ -1604,7 +1604,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1612,9 +1612,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1672,7 +1672,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1680,13 +1680,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdGet`: GetMobileDevicePrestageV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdGet`: %v\n", resp)
 }
 ```
 
@@ -1742,7 +1742,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1753,13 +1753,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -1818,7 +1818,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1827,13 +1827,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -1890,7 +1890,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1899,13 +1899,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdPut(context.Background(), id).PutMobileDevicePrestageV2(putMobileDevicePrestageV2).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdPut(context.Background(), id).PutMobileDevicePrestageV2(putMobileDevicePrestageV2).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdPut`: GetMobileDevicePrestageV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdPut`: %v\n", resp)
 }
 ```
 
@@ -1962,7 +1962,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -1971,13 +1971,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeDeleteMultiplePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeDeleteMultiplePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeDeleteMultiplePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeDeleteMultiplePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdScopeDeleteMultiplePost`: PrestageScopeResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeDeleteMultiplePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeDeleteMultiplePost`: %v\n", resp)
 }
 ```
 
@@ -2034,7 +2034,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2042,13 +2042,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdScopeGet`: PrestageScopeResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopeGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopeGet`: %v\n", resp)
 }
 ```
 
@@ -2104,7 +2104,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2113,13 +2113,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePost(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdScopePost`: PrestageScopeResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePost`: %v\n", resp)
 }
 ```
 
@@ -2176,7 +2176,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2185,13 +2185,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePut(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePut(context.Background(), id).PrestageScopeUpdate(prestageScopeUpdate).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdScopePut`: PrestageScopeResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdScopePut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdScopePut`: %v\n", resp)
 }
 ```
 
@@ -2248,7 +2248,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2256,13 +2256,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdSyncsGet`: []PrestageSyncStatusV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsGet`: %v\n", resp)
 }
 ```
 
@@ -2318,7 +2318,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2326,13 +2326,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsLatestGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsLatestGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsLatestGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsLatestGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesIdSyncsLatestGet`: PrestageSyncStatusV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesIdSyncsLatestGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesIdSyncsLatestGet`: %v\n", resp)
 }
 ```
 
@@ -2388,7 +2388,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -2396,13 +2396,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesPost(context.Background()).MobileDevicePrestageV2(mobileDevicePrestageV2).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesPost(context.Background()).MobileDevicePrestageV2(mobileDevicePrestageV2).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesPost`: %v\n", resp)
 }
 ```
 
@@ -2454,20 +2454,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesScopeGet(context.Background()).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesScopeGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesScopeGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesScopeGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesScopeGet`: PrestageScopeV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesScopeGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesScopeGet`: %v\n", resp)
 }
 ```
 
@@ -2515,20 +2515,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDevicePrestagesApi.V2MobileDevicePrestagesSyncsGet(context.Background()).Execute()
+    resp, r, err := apiClient.MobileDevicePrestagesAPI.V2MobileDevicePrestagesSyncsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesApi.V2MobileDevicePrestagesSyncsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `MobileDevicePrestagesAPI.V2MobileDevicePrestagesSyncsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V2MobileDevicePrestagesSyncsGet`: []PrestageSyncStatusV2
-    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesApi.V2MobileDevicePrestagesSyncsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `MobileDevicePrestagesAPI.V2MobileDevicePrestagesSyncsGet`: %v\n", resp)
 }
 ```
 

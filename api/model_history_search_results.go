@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HistorySearchResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HistorySearchResults{}
+
 // HistorySearchResults struct for HistorySearchResults
 type HistorySearchResults struct {
 	TotalCount *int32 `json:"totalCount,omitempty"`
@@ -39,7 +42,7 @@ func NewHistorySearchResultsWithDefaults() *HistorySearchResults {
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *HistorySearchResults) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *HistorySearchResults) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HistorySearchResults) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -57,7 +60,7 @@ func (o *HistorySearchResults) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *HistorySearchResults) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *HistorySearchResults) SetTotalCount(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *HistorySearchResults) GetResults() []ObjectHistory {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []ObjectHistory
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *HistorySearchResults) GetResults() []ObjectHistory {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HistorySearchResults) GetResultsOk() ([]ObjectHistory, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -89,7 +92,7 @@ func (o *HistorySearchResults) GetResultsOk() ([]ObjectHistory, bool) {
 
 // HasResults returns a boolean if a field has been set.
 func (o *HistorySearchResults) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *HistorySearchResults) SetResults(v []ObjectHistory) {
 }
 
 func (o HistorySearchResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HistorySearchResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableHistorySearchResults struct {

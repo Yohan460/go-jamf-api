@@ -1,10 +1,10 @@
-# \JamfProVersionApi
+# \JamfProVersionAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfProVersionGet**](JamfProVersionApi.md#V1JamfProVersionGet) | **Get** /v1/jamf-pro-version | Return information about the Jamf Pro including the current version 
+[**V1JamfProVersionGet**](JamfProVersionAPI.md#V1JamfProVersionGet) | **Get** /v1/jamf-pro-version | Return information about the Jamf Pro including the current version 
 
 
 
@@ -25,20 +25,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProVersionApi.V1JamfProVersionGet(context.Background()).Execute()
+    resp, r, err := apiClient.JamfProVersionAPI.V1JamfProVersionGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProVersionApi.V1JamfProVersionGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfProVersionAPI.V1JamfProVersionGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfProVersionGet`: JamfProVersion
-    fmt.Fprintf(os.Stdout, "Response from `JamfProVersionApi.V1JamfProVersionGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfProVersionAPI.V1JamfProVersionGet`: %v\n", resp)
 }
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetEnrollmentCustomization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetEnrollmentCustomization{}
+
 // GetEnrollmentCustomization struct for GetEnrollmentCustomization
 type GetEnrollmentCustomization struct {
 	SiteId int32 `json:"siteId"`
@@ -142,7 +145,7 @@ func (o *GetEnrollmentCustomization) SetEnrollmentCustomizationBrandingSettings(
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomization) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *GetEnrollmentCustomization) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomization) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -160,7 +163,7 @@ func (o *GetEnrollmentCustomization) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomization) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -173,23 +176,23 @@ func (o *GetEnrollmentCustomization) SetId(v int32) {
 }
 
 func (o GetEnrollmentCustomization) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["description"] = o.Description
-	}
-	if true {
-		toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetEnrollmentCustomization) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["siteId"] = o.SiteId
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["description"] = o.Description
+	toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	return toSerialize, nil
 }
 
 type NullableGetEnrollmentCustomization struct {

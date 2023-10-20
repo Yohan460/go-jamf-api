@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AccountGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AccountGroup{}
+
 // AccountGroup struct for AccountGroup
 type AccountGroup struct {
 	AccessLevel *string `json:"accessLevel,omitempty"`
@@ -42,7 +45,7 @@ func NewAccountGroupWithDefaults() *AccountGroup {
 
 // GetAccessLevel returns the AccessLevel field value if set, zero value otherwise.
 func (o *AccountGroup) GetAccessLevel() string {
-	if o == nil || o.AccessLevel == nil {
+	if o == nil || IsNil(o.AccessLevel) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *AccountGroup) GetAccessLevel() string {
 // GetAccessLevelOk returns a tuple with the AccessLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetAccessLevelOk() (*string, bool) {
-	if o == nil || o.AccessLevel == nil {
+	if o == nil || IsNil(o.AccessLevel) {
 		return nil, false
 	}
 	return o.AccessLevel, true
@@ -60,7 +63,7 @@ func (o *AccountGroup) GetAccessLevelOk() (*string, bool) {
 
 // HasAccessLevel returns a boolean if a field has been set.
 func (o *AccountGroup) HasAccessLevel() bool {
-	if o != nil && o.AccessLevel != nil {
+	if o != nil && !IsNil(o.AccessLevel) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *AccountGroup) SetAccessLevel(v string) {
 
 // GetPrivilegeSet returns the PrivilegeSet field value if set, zero value otherwise.
 func (o *AccountGroup) GetPrivilegeSet() string {
-	if o == nil || o.PrivilegeSet == nil {
+	if o == nil || IsNil(o.PrivilegeSet) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *AccountGroup) GetPrivilegeSet() string {
 // GetPrivilegeSetOk returns a tuple with the PrivilegeSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetPrivilegeSetOk() (*string, bool) {
-	if o == nil || o.PrivilegeSet == nil {
+	if o == nil || IsNil(o.PrivilegeSet) {
 		return nil, false
 	}
 	return o.PrivilegeSet, true
@@ -92,7 +95,7 @@ func (o *AccountGroup) GetPrivilegeSetOk() (*string, bool) {
 
 // HasPrivilegeSet returns a boolean if a field has been set.
 func (o *AccountGroup) HasPrivilegeSet() bool {
-	if o != nil && o.PrivilegeSet != nil {
+	if o != nil && !IsNil(o.PrivilegeSet) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *AccountGroup) SetPrivilegeSet(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *AccountGroup) GetSiteId() int32 {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret int32
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *AccountGroup) GetSiteId() int32 {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetSiteIdOk() (*int32, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -124,7 +127,7 @@ func (o *AccountGroup) GetSiteIdOk() (*int32, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *AccountGroup) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *AccountGroup) SetSiteId(v int32) {
 
 // GetPrivileges returns the Privileges field value if set, zero value otherwise.
 func (o *AccountGroup) GetPrivileges() []string {
-	if o == nil || o.Privileges == nil {
+	if o == nil || IsNil(o.Privileges) {
 		var ret []string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *AccountGroup) GetPrivileges() []string {
 // GetPrivilegesOk returns a tuple with the Privileges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetPrivilegesOk() ([]string, bool) {
-	if o == nil || o.Privileges == nil {
+	if o == nil || IsNil(o.Privileges) {
 		return nil, false
 	}
 	return o.Privileges, true
@@ -156,7 +159,7 @@ func (o *AccountGroup) GetPrivilegesOk() ([]string, bool) {
 
 // HasPrivileges returns a boolean if a field has been set.
 func (o *AccountGroup) HasPrivileges() bool {
-	if o != nil && o.Privileges != nil {
+	if o != nil && !IsNil(o.Privileges) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *AccountGroup) SetPrivileges(v []string) {
 
 // GetMemberUserIds returns the MemberUserIds field value if set, zero value otherwise.
 func (o *AccountGroup) GetMemberUserIds() []int32 {
-	if o == nil || o.MemberUserIds == nil {
+	if o == nil || IsNil(o.MemberUserIds) {
 		var ret []int32
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *AccountGroup) GetMemberUserIds() []int32 {
 // GetMemberUserIdsOk returns a tuple with the MemberUserIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AccountGroup) GetMemberUserIdsOk() ([]int32, bool) {
-	if o == nil || o.MemberUserIds == nil {
+	if o == nil || IsNil(o.MemberUserIds) {
 		return nil, false
 	}
 	return o.MemberUserIds, true
@@ -188,7 +191,7 @@ func (o *AccountGroup) GetMemberUserIdsOk() ([]int32, bool) {
 
 // HasMemberUserIds returns a boolean if a field has been set.
 func (o *AccountGroup) HasMemberUserIds() bool {
-	if o != nil && o.MemberUserIds != nil {
+	if o != nil && !IsNil(o.MemberUserIds) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *AccountGroup) SetMemberUserIds(v []int32) {
 }
 
 func (o AccountGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AccessLevel != nil {
-		toSerialize["accessLevel"] = o.AccessLevel
-	}
-	if o.PrivilegeSet != nil {
-		toSerialize["privilegeSet"] = o.PrivilegeSet
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.Privileges != nil {
-		toSerialize["privileges"] = o.Privileges
-	}
-	if o.MemberUserIds != nil {
-		toSerialize["memberUserIds"] = o.MemberUserIds
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AccountGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AccessLevel) {
+		toSerialize["accessLevel"] = o.AccessLevel
+	}
+	if !IsNil(o.PrivilegeSet) {
+		toSerialize["privilegeSet"] = o.PrivilegeSet
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.Privileges) {
+		toSerialize["privileges"] = o.Privileges
+	}
+	if !IsNil(o.MemberUserIds) {
+		toSerialize["memberUserIds"] = o.MemberUserIds
+	}
+	return toSerialize, nil
 }
 
 type NullableAccountGroup struct {

@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type JamfProServerUrlPreviewApi interface {
+type JamfProServerUrlPreviewAPI interface {
 
 	/*
 	V1JamfProServerUrlGet Get Jamf Pro Server URL settings 
@@ -27,13 +27,13 @@ type JamfProServerUrlPreviewApi interface {
 	Get Jamf Pro Server URL settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProServerUrlGetRequest
+	@return JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest
 	*/
-	V1JamfProServerUrlGet(ctx context.Context) ApiV1JamfProServerUrlGetRequest
+	V1JamfProServerUrlGet(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest
 
 	// V1JamfProServerUrlGetExecute executes the request
 	//  @return JamfProServerUrl
-	V1JamfProServerUrlGetExecute(r ApiV1JamfProServerUrlGetRequest) (*JamfProServerUrl, *http.Response, error)
+	V1JamfProServerUrlGetExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest) (*JamfProServerUrl, *http.Response, error)
 
 	/*
 	V1JamfProServerUrlHistoryGet Get Jamf Pro Server URL settings history 
@@ -41,13 +41,13 @@ type JamfProServerUrlPreviewApi interface {
 	Gets Jamf Pro Server URL settings history
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProServerUrlHistoryGetRequest
+	@return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest
 	*/
-	V1JamfProServerUrlHistoryGet(ctx context.Context) ApiV1JamfProServerUrlHistoryGetRequest
+	V1JamfProServerUrlHistoryGet(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest
 
 	// V1JamfProServerUrlHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1JamfProServerUrlHistoryGetExecute(r ApiV1JamfProServerUrlHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1JamfProServerUrlHistoryGetExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1JamfProServerUrlHistoryPost Add Jamf Pro Server URL settings history notes 
@@ -55,13 +55,13 @@ type JamfProServerUrlPreviewApi interface {
 	Adds Jamf Pro Server URL settings history notes
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProServerUrlHistoryPostRequest
+	@return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest
 	*/
-	V1JamfProServerUrlHistoryPost(ctx context.Context) ApiV1JamfProServerUrlHistoryPostRequest
+	V1JamfProServerUrlHistoryPost(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest
 
 	// V1JamfProServerUrlHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1JamfProServerUrlHistoryPostExecute(r ApiV1JamfProServerUrlHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1JamfProServerUrlHistoryPostExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1JamfProServerUrlPut Update Jamf Pro Server URL settings 
@@ -69,24 +69,24 @@ type JamfProServerUrlPreviewApi interface {
 	Update Jamf Pro Server URL settings
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1JamfProServerUrlPutRequest
+	@return JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest
 	*/
-	V1JamfProServerUrlPut(ctx context.Context) ApiV1JamfProServerUrlPutRequest
+	V1JamfProServerUrlPut(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest
 
 	// V1JamfProServerUrlPutExecute executes the request
 	//  @return JamfProServerUrl
-	V1JamfProServerUrlPutExecute(r ApiV1JamfProServerUrlPutRequest) (*JamfProServerUrl, *http.Response, error)
+	V1JamfProServerUrlPutExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest) (*JamfProServerUrl, *http.Response, error)
 }
 
-// JamfProServerUrlPreviewApiService JamfProServerUrlPreviewApi service
-type JamfProServerUrlPreviewApiService service
+// JamfProServerUrlPreviewAPIService JamfProServerUrlPreviewAPI service
+type JamfProServerUrlPreviewAPIService service
 
-type ApiV1JamfProServerUrlGetRequest struct {
+type JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest struct {
 	ctx context.Context
-	ApiService JamfProServerUrlPreviewApi
+	ApiService JamfProServerUrlPreviewAPI
 }
 
-func (r ApiV1JamfProServerUrlGetRequest) Execute() (*JamfProServerUrl, *http.Response, error) {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest) Execute() (*JamfProServerUrl, *http.Response, error) {
 	return r.ApiService.V1JamfProServerUrlGetExecute(r)
 }
 
@@ -96,10 +96,10 @@ V1JamfProServerUrlGet Get Jamf Pro Server URL settings
 Get Jamf Pro Server URL settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProServerUrlGetRequest
+ @return JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest
 */
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGet(ctx context.Context) ApiV1JamfProServerUrlGetRequest {
-	return ApiV1JamfProServerUrlGetRequest{
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlGet(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest {
+	return JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -107,7 +107,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGet(ctx context.Co
 
 // Execute executes the request
 //  @return JamfProServerUrl
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGetExecute(r ApiV1JamfProServerUrlGetRequest) (*JamfProServerUrl, *http.Response, error) {
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlGetExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlGetRequest) (*JamfProServerUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -115,7 +115,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGetExecute(r ApiV1
 		localVarReturnValue  *JamfProServerUrl
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewApiService.V1JamfProServerUrlGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewAPIService.V1JamfProServerUrlGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -153,9 +153,9 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGetExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -180,9 +180,9 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlGetExecute(r ApiV1
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProServerUrlHistoryGetRequest struct {
+type JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest struct {
 	ctx context.Context
-	ApiService JamfProServerUrlPreviewApi
+	ApiService JamfProServerUrlPreviewAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -190,35 +190,35 @@ type ApiV1JamfProServerUrlHistoryGetRequest struct {
 	sort *string
 }
 
-func (r ApiV1JamfProServerUrlHistoryGetRequest) Page(page int32) ApiV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Page(page int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiV1JamfProServerUrlHistoryGetRequest) Size(size int32) ApiV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Size(size int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiV1JamfProServerUrlHistoryGetRequest) Pagesize(pagesize int32) ApiV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Pagesize(pagesize int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiV1JamfProServerUrlHistoryGetRequest) PageSize(pageSize int32) ApiV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) PageSize(pageSize int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1JamfProServerUrlHistoryGetRequest) Sort(sort string) ApiV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Sort(sort string) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1JamfProServerUrlHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1JamfProServerUrlHistoryGetExecute(r)
 }
 
@@ -228,10 +228,10 @@ V1JamfProServerUrlHistoryGet Get Jamf Pro Server URL settings history
 Gets Jamf Pro Server URL settings history
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProServerUrlHistoryGetRequest
+ @return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest
 */
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGet(ctx context.Context) ApiV1JamfProServerUrlHistoryGetRequest {
-	return ApiV1JamfProServerUrlHistoryGetRequest{
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlHistoryGet(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
+	return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -239,7 +239,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGet(ctx con
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(r ApiV1JamfProServerUrlHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlHistoryGetExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -247,7 +247,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewApiService.V1JamfProServerUrlHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewAPIService.V1JamfProServerUrlHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -259,19 +259,34 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -300,9 +315,9 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -327,19 +342,19 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryGetExecute(
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProServerUrlHistoryPostRequest struct {
+type JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest struct {
 	ctx context.Context
-	ApiService JamfProServerUrlPreviewApi
+	ApiService JamfProServerUrlPreviewAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // History notes to create
-func (r ApiV1JamfProServerUrlHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1JamfProServerUrlHistoryPostRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1JamfProServerUrlHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1JamfProServerUrlHistoryPostExecute(r)
 }
 
@@ -349,10 +364,10 @@ V1JamfProServerUrlHistoryPost Add Jamf Pro Server URL settings history notes
 Adds Jamf Pro Server URL settings history notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProServerUrlHistoryPostRequest
+ @return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest
 */
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPost(ctx context.Context) ApiV1JamfProServerUrlHistoryPostRequest {
-	return ApiV1JamfProServerUrlHistoryPostRequest{
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlHistoryPost(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest {
+	return JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -360,7 +375,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPost(ctx co
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute(r ApiV1JamfProServerUrlHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlHistoryPostExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -368,7 +383,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewApiService.V1JamfProServerUrlHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewAPIService.V1JamfProServerUrlHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -411,9 +426,9 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -430,7 +445,8 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 503 {
@@ -440,7 +456,8 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -457,19 +474,19 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlHistoryPostExecute
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1JamfProServerUrlPutRequest struct {
+type JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest struct {
 	ctx context.Context
-	ApiService JamfProServerUrlPreviewApi
+	ApiService JamfProServerUrlPreviewAPI
 	jamfProServerUrl *JamfProServerUrl
 }
 
 // Jamf Pro Server URL settings object
-func (r ApiV1JamfProServerUrlPutRequest) JamfProServerUrl(jamfProServerUrl JamfProServerUrl) ApiV1JamfProServerUrlPutRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest) JamfProServerUrl(jamfProServerUrl JamfProServerUrl) JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest {
 	r.jamfProServerUrl = &jamfProServerUrl
 	return r
 }
 
-func (r ApiV1JamfProServerUrlPutRequest) Execute() (*JamfProServerUrl, *http.Response, error) {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest) Execute() (*JamfProServerUrl, *http.Response, error) {
 	return r.ApiService.V1JamfProServerUrlPutExecute(r)
 }
 
@@ -479,10 +496,10 @@ V1JamfProServerUrlPut Update Jamf Pro Server URL settings
 Update Jamf Pro Server URL settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1JamfProServerUrlPutRequest
+ @return JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest
 */
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPut(ctx context.Context) ApiV1JamfProServerUrlPutRequest {
-	return ApiV1JamfProServerUrlPutRequest{
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlPut(ctx context.Context) JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest {
+	return JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -490,7 +507,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPut(ctx context.Co
 
 // Execute executes the request
 //  @return JamfProServerUrl
-func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPutExecute(r ApiV1JamfProServerUrlPutRequest) (*JamfProServerUrl, *http.Response, error) {
+func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlPutExecute(r JamfProServerUrlPreviewAPIV1JamfProServerUrlPutRequest) (*JamfProServerUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -498,7 +515,7 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPutExecute(r ApiV1
 		localVarReturnValue  *JamfProServerUrl
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewApiService.V1JamfProServerUrlPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProServerUrlPreviewAPIService.V1JamfProServerUrlPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -541,9 +558,9 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPutExecute(r ApiV1
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -560,7 +577,8 @@ func (a *JamfProServerUrlPreviewApiService) V1JamfProServerUrlPutExecute(r ApiV1
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

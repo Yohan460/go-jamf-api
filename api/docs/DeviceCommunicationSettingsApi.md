@@ -1,13 +1,13 @@
-# \DeviceCommunicationSettingsApi
+# \DeviceCommunicationSettingsAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1DeviceCommunicationSettingsGet**](DeviceCommunicationSettingsApi.md#V1DeviceCommunicationSettingsGet) | **Get** /v1/device-communication-settings | Retrieves all settings for device communication 
-[**V1DeviceCommunicationSettingsHistoryGet**](DeviceCommunicationSettingsApi.md#V1DeviceCommunicationSettingsHistoryGet) | **Get** /v1/device-communication-settings/history | Get Device Communication settings history 
-[**V1DeviceCommunicationSettingsHistoryPost**](DeviceCommunicationSettingsApi.md#V1DeviceCommunicationSettingsHistoryPost) | **Post** /v1/device-communication-settings/history | Add Device Communication Settings history notes 
-[**V1DeviceCommunicationSettingsPut**](DeviceCommunicationSettingsApi.md#V1DeviceCommunicationSettingsPut) | **Put** /v1/device-communication-settings | Update device communication settings 
+[**V1DeviceCommunicationSettingsGet**](DeviceCommunicationSettingsAPI.md#V1DeviceCommunicationSettingsGet) | **Get** /v1/device-communication-settings | Retrieves all settings for device communication 
+[**V1DeviceCommunicationSettingsHistoryGet**](DeviceCommunicationSettingsAPI.md#V1DeviceCommunicationSettingsHistoryGet) | **Get** /v1/device-communication-settings/history | Get Device Communication settings history 
+[**V1DeviceCommunicationSettingsHistoryPost**](DeviceCommunicationSettingsAPI.md#V1DeviceCommunicationSettingsHistoryPost) | **Post** /v1/device-communication-settings/history | Add Device Communication Settings history notes 
+[**V1DeviceCommunicationSettingsPut**](DeviceCommunicationSettingsAPI.md#V1DeviceCommunicationSettingsPut) | **Put** /v1/device-communication-settings | Update device communication settings 
 
 
 
@@ -28,20 +28,20 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsGet(context.Background()).Execute()
+    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceCommunicationSettingsGet`: DeviceCommunicationSettings
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -89,7 +89,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -100,13 +100,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceCommunicationSettingsHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -161,7 +161,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -169,13 +169,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceCommunicationSettingsHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -227,7 +227,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -235,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsPut(context.Background()).DeviceCommunicationSettings(deviceCommunicationSettings).Execute()
+    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut(context.Background()).DeviceCommunicationSettings(deviceCommunicationSettings).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1DeviceCommunicationSettingsPut`: DeviceCommunicationSettings
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsApi.V1DeviceCommunicationSettingsPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut`: %v\n", resp)
 }
 ```
 

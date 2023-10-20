@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudIdPCommonResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudIdPCommonResponse{}
+
 // CloudIdPCommonResponse A Cloud Identity Provider information for responses
 type CloudIdPCommonResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -41,7 +44,7 @@ func NewCloudIdPCommonResponseWithDefaults() *CloudIdPCommonResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CloudIdPCommonResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CloudIdPCommonResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudIdPCommonResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -59,7 +62,7 @@ func (o *CloudIdPCommonResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CloudIdPCommonResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CloudIdPCommonResponse) SetId(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *CloudIdPCommonResponse) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CloudIdPCommonResponse) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudIdPCommonResponse) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -91,7 +94,7 @@ func (o *CloudIdPCommonResponse) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *CloudIdPCommonResponse) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CloudIdPCommonResponse) SetDisplayName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CloudIdPCommonResponse) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *CloudIdPCommonResponse) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudIdPCommonResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -123,7 +126,7 @@ func (o *CloudIdPCommonResponse) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CloudIdPCommonResponse) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *CloudIdPCommonResponse) SetEnabled(v bool) {
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise.
 func (o *CloudIdPCommonResponse) GetProviderName() string {
-	if o == nil || o.ProviderName == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *CloudIdPCommonResponse) GetProviderName() string {
 // GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudIdPCommonResponse) GetProviderNameOk() (*string, bool) {
-	if o == nil || o.ProviderName == nil {
+	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
 	return o.ProviderName, true
@@ -155,7 +158,7 @@ func (o *CloudIdPCommonResponse) GetProviderNameOk() (*string, bool) {
 
 // HasProviderName returns a boolean if a field has been set.
 func (o *CloudIdPCommonResponse) HasProviderName() bool {
-	if o != nil && o.ProviderName != nil {
+	if o != nil && !IsNil(o.ProviderName) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *CloudIdPCommonResponse) SetProviderName(v string) {
 }
 
 func (o CloudIdPCommonResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.ProviderName != nil {
-		toSerialize["providerName"] = o.ProviderName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudIdPCommonResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.ProviderName) {
+		toSerialize["providerName"] = o.ProviderName
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudIdPCommonResponse struct {

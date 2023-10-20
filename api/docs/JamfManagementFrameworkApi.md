@@ -1,10 +1,10 @@
-# \JamfManagementFrameworkApi
+# \JamfManagementFrameworkAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1JamfManagementFrameworkRedeployIdPost**](JamfManagementFrameworkApi.md#V1JamfManagementFrameworkRedeployIdPost) | **Post** /v1/jamf-management-framework/redeploy/{id} | Redeploy Jamf Management Framework 
+[**V1JamfManagementFrameworkRedeployIdPost**](JamfManagementFrameworkAPI.md#V1JamfManagementFrameworkRedeployIdPost) | **Post** /v1/jamf-management-framework/redeploy/{id} | Redeploy Jamf Management Framework 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfManagementFrameworkApi.V1JamfManagementFrameworkRedeployIdPost(context.Background(), id).Execute()
+    resp, r, err := apiClient.JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfManagementFrameworkApi.V1JamfManagementFrameworkRedeployIdPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1JamfManagementFrameworkRedeployIdPost`: RedeployJamfManagementFrameworkResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfManagementFrameworkApi.V1JamfManagementFrameworkRedeployIdPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost`: %v\n", resp)
 }
 ```
 

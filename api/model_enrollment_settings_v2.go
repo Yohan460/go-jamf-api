@@ -14,11 +14,14 @@ import (
 	"encoding/json"
 )
 
+// checks if the EnrollmentSettingsV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EnrollmentSettingsV2{}
+
 // EnrollmentSettingsV2 struct for EnrollmentSettingsV2
 type EnrollmentSettingsV2 struct {
 	InstallSingleProfile *bool `json:"installSingleProfile,omitempty"`
 	SigningMdmProfileEnabled *bool `json:"signingMdmProfileEnabled,omitempty"`
-	MdmSigningCertificate *CertificateIdentityV2 `json:"mdmSigningCertificate,omitempty"`
+	MdmSigningCertificate NullableCertificateIdentityV2 `json:"mdmSigningCertificate,omitempty"`
 	RestrictReenrollment *bool `json:"restrictReenrollment,omitempty"`
 	FlushLocationInformation *bool `json:"flushLocationInformation,omitempty"`
 	FlushLocationHistoryInformation *bool `json:"flushLocationHistoryInformation,omitempty"`
@@ -27,9 +30,17 @@ type EnrollmentSettingsV2 struct {
 	FlushMdmCommandsOnReenroll *string `json:"flushMdmCommandsOnReenroll,omitempty"`
 	MacOsEnterpriseEnrollmentEnabled *bool `json:"macOsEnterpriseEnrollmentEnabled,omitempty"`
 	ManagementUsername string `json:"managementUsername"`
+	// managementPassword is no longer in use. Input value for managementPassword will be ignored.
+	// Deprecated
 	ManagementPassword *string `json:"managementPassword,omitempty"`
+	// managementPasswordSet is no longer in use. Input value for managementPasswordSet will be ignored.
+	// Deprecated
 	ManagementPasswordSet *bool `json:"managementPasswordSet,omitempty"`
+	// passwordType is no longer in use. Input value for passwordType will be ignored.
+	// Deprecated
 	PasswordType *string `json:"passwordType,omitempty"`
+	// randomPasswordLength is no longer in use. Input value for randomPasswordLength will be ignored.
+	// Deprecated
 	RandomPasswordLength *int32 `json:"randomPasswordLength,omitempty"`
 	CreateManagementAccount *bool `json:"createManagementAccount,omitempty"`
 	HideManagementAccount *bool `json:"hideManagementAccount,omitempty"`
@@ -37,7 +48,7 @@ type EnrollmentSettingsV2 struct {
 	EnsureSshRunning *bool `json:"ensureSshRunning,omitempty"`
 	LaunchSelfService *bool `json:"launchSelfService,omitempty"`
 	SignQuickAdd *bool `json:"signQuickAdd,omitempty"`
-	DeveloperCertificateIdentity *CertificateIdentityV2 `json:"developerCertificateIdentity,omitempty"`
+	DeveloperCertificateIdentity NullableCertificateIdentityV2 `json:"developerCertificateIdentity,omitempty"`
 	DeveloperCertificateIdentityDetails *CertificateDetails `json:"developerCertificateIdentityDetails,omitempty"`
 	MdmSigningCertificateDetails *CertificateDetails `json:"mdmSigningCertificateDetails,omitempty"`
 	IosEnterpriseEnrollmentEnabled *bool `json:"iosEnterpriseEnrollmentEnabled,omitempty"`
@@ -156,7 +167,7 @@ func NewEnrollmentSettingsV2WithDefaults() *EnrollmentSettingsV2 {
 
 // GetInstallSingleProfile returns the InstallSingleProfile field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetInstallSingleProfile() bool {
-	if o == nil || o.InstallSingleProfile == nil {
+	if o == nil || IsNil(o.InstallSingleProfile) {
 		var ret bool
 		return ret
 	}
@@ -166,7 +177,7 @@ func (o *EnrollmentSettingsV2) GetInstallSingleProfile() bool {
 // GetInstallSingleProfileOk returns a tuple with the InstallSingleProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetInstallSingleProfileOk() (*bool, bool) {
-	if o == nil || o.InstallSingleProfile == nil {
+	if o == nil || IsNil(o.InstallSingleProfile) {
 		return nil, false
 	}
 	return o.InstallSingleProfile, true
@@ -174,7 +185,7 @@ func (o *EnrollmentSettingsV2) GetInstallSingleProfileOk() (*bool, bool) {
 
 // HasInstallSingleProfile returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasInstallSingleProfile() bool {
-	if o != nil && o.InstallSingleProfile != nil {
+	if o != nil && !IsNil(o.InstallSingleProfile) {
 		return true
 	}
 
@@ -188,7 +199,7 @@ func (o *EnrollmentSettingsV2) SetInstallSingleProfile(v bool) {
 
 // GetSigningMdmProfileEnabled returns the SigningMdmProfileEnabled field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetSigningMdmProfileEnabled() bool {
-	if o == nil || o.SigningMdmProfileEnabled == nil {
+	if o == nil || IsNil(o.SigningMdmProfileEnabled) {
 		var ret bool
 		return ret
 	}
@@ -198,7 +209,7 @@ func (o *EnrollmentSettingsV2) GetSigningMdmProfileEnabled() bool {
 // GetSigningMdmProfileEnabledOk returns a tuple with the SigningMdmProfileEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetSigningMdmProfileEnabledOk() (*bool, bool) {
-	if o == nil || o.SigningMdmProfileEnabled == nil {
+	if o == nil || IsNil(o.SigningMdmProfileEnabled) {
 		return nil, false
 	}
 	return o.SigningMdmProfileEnabled, true
@@ -206,7 +217,7 @@ func (o *EnrollmentSettingsV2) GetSigningMdmProfileEnabledOk() (*bool, bool) {
 
 // HasSigningMdmProfileEnabled returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasSigningMdmProfileEnabled() bool {
-	if o != nil && o.SigningMdmProfileEnabled != nil {
+	if o != nil && !IsNil(o.SigningMdmProfileEnabled) {
 		return true
 	}
 
@@ -218,41 +229,51 @@ func (o *EnrollmentSettingsV2) SetSigningMdmProfileEnabled(v bool) {
 	o.SigningMdmProfileEnabled = &v
 }
 
-// GetMdmSigningCertificate returns the MdmSigningCertificate field value if set, zero value otherwise.
+// GetMdmSigningCertificate returns the MdmSigningCertificate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnrollmentSettingsV2) GetMdmSigningCertificate() CertificateIdentityV2 {
-	if o == nil || o.MdmSigningCertificate == nil {
+	if o == nil || IsNil(o.MdmSigningCertificate.Get()) {
 		var ret CertificateIdentityV2
 		return ret
 	}
-	return *o.MdmSigningCertificate
+	return *o.MdmSigningCertificate.Get()
 }
 
 // GetMdmSigningCertificateOk returns a tuple with the MdmSigningCertificate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnrollmentSettingsV2) GetMdmSigningCertificateOk() (*CertificateIdentityV2, bool) {
-	if o == nil || o.MdmSigningCertificate == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.MdmSigningCertificate, true
+	return o.MdmSigningCertificate.Get(), o.MdmSigningCertificate.IsSet()
 }
 
 // HasMdmSigningCertificate returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasMdmSigningCertificate() bool {
-	if o != nil && o.MdmSigningCertificate != nil {
+	if o != nil && o.MdmSigningCertificate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMdmSigningCertificate gets a reference to the given CertificateIdentityV2 and assigns it to the MdmSigningCertificate field.
+// SetMdmSigningCertificate gets a reference to the given NullableCertificateIdentityV2 and assigns it to the MdmSigningCertificate field.
 func (o *EnrollmentSettingsV2) SetMdmSigningCertificate(v CertificateIdentityV2) {
-	o.MdmSigningCertificate = &v
+	o.MdmSigningCertificate.Set(&v)
+}
+// SetMdmSigningCertificateNil sets the value for MdmSigningCertificate to be an explicit nil
+func (o *EnrollmentSettingsV2) SetMdmSigningCertificateNil() {
+	o.MdmSigningCertificate.Set(nil)
+}
+
+// UnsetMdmSigningCertificate ensures that no value is present for MdmSigningCertificate, not even an explicit nil
+func (o *EnrollmentSettingsV2) UnsetMdmSigningCertificate() {
+	o.MdmSigningCertificate.Unset()
 }
 
 // GetRestrictReenrollment returns the RestrictReenrollment field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetRestrictReenrollment() bool {
-	if o == nil || o.RestrictReenrollment == nil {
+	if o == nil || IsNil(o.RestrictReenrollment) {
 		var ret bool
 		return ret
 	}
@@ -262,7 +283,7 @@ func (o *EnrollmentSettingsV2) GetRestrictReenrollment() bool {
 // GetRestrictReenrollmentOk returns a tuple with the RestrictReenrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetRestrictReenrollmentOk() (*bool, bool) {
-	if o == nil || o.RestrictReenrollment == nil {
+	if o == nil || IsNil(o.RestrictReenrollment) {
 		return nil, false
 	}
 	return o.RestrictReenrollment, true
@@ -270,7 +291,7 @@ func (o *EnrollmentSettingsV2) GetRestrictReenrollmentOk() (*bool, bool) {
 
 // HasRestrictReenrollment returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasRestrictReenrollment() bool {
-	if o != nil && o.RestrictReenrollment != nil {
+	if o != nil && !IsNil(o.RestrictReenrollment) {
 		return true
 	}
 
@@ -284,7 +305,7 @@ func (o *EnrollmentSettingsV2) SetRestrictReenrollment(v bool) {
 
 // GetFlushLocationInformation returns the FlushLocationInformation field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetFlushLocationInformation() bool {
-	if o == nil || o.FlushLocationInformation == nil {
+	if o == nil || IsNil(o.FlushLocationInformation) {
 		var ret bool
 		return ret
 	}
@@ -294,7 +315,7 @@ func (o *EnrollmentSettingsV2) GetFlushLocationInformation() bool {
 // GetFlushLocationInformationOk returns a tuple with the FlushLocationInformation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetFlushLocationInformationOk() (*bool, bool) {
-	if o == nil || o.FlushLocationInformation == nil {
+	if o == nil || IsNil(o.FlushLocationInformation) {
 		return nil, false
 	}
 	return o.FlushLocationInformation, true
@@ -302,7 +323,7 @@ func (o *EnrollmentSettingsV2) GetFlushLocationInformationOk() (*bool, bool) {
 
 // HasFlushLocationInformation returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasFlushLocationInformation() bool {
-	if o != nil && o.FlushLocationInformation != nil {
+	if o != nil && !IsNil(o.FlushLocationInformation) {
 		return true
 	}
 
@@ -316,7 +337,7 @@ func (o *EnrollmentSettingsV2) SetFlushLocationInformation(v bool) {
 
 // GetFlushLocationHistoryInformation returns the FlushLocationHistoryInformation field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetFlushLocationHistoryInformation() bool {
-	if o == nil || o.FlushLocationHistoryInformation == nil {
+	if o == nil || IsNil(o.FlushLocationHistoryInformation) {
 		var ret bool
 		return ret
 	}
@@ -326,7 +347,7 @@ func (o *EnrollmentSettingsV2) GetFlushLocationHistoryInformation() bool {
 // GetFlushLocationHistoryInformationOk returns a tuple with the FlushLocationHistoryInformation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetFlushLocationHistoryInformationOk() (*bool, bool) {
-	if o == nil || o.FlushLocationHistoryInformation == nil {
+	if o == nil || IsNil(o.FlushLocationHistoryInformation) {
 		return nil, false
 	}
 	return o.FlushLocationHistoryInformation, true
@@ -334,7 +355,7 @@ func (o *EnrollmentSettingsV2) GetFlushLocationHistoryInformationOk() (*bool, bo
 
 // HasFlushLocationHistoryInformation returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasFlushLocationHistoryInformation() bool {
-	if o != nil && o.FlushLocationHistoryInformation != nil {
+	if o != nil && !IsNil(o.FlushLocationHistoryInformation) {
 		return true
 	}
 
@@ -348,7 +369,7 @@ func (o *EnrollmentSettingsV2) SetFlushLocationHistoryInformation(v bool) {
 
 // GetFlushPolicyHistory returns the FlushPolicyHistory field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetFlushPolicyHistory() bool {
-	if o == nil || o.FlushPolicyHistory == nil {
+	if o == nil || IsNil(o.FlushPolicyHistory) {
 		var ret bool
 		return ret
 	}
@@ -358,7 +379,7 @@ func (o *EnrollmentSettingsV2) GetFlushPolicyHistory() bool {
 // GetFlushPolicyHistoryOk returns a tuple with the FlushPolicyHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetFlushPolicyHistoryOk() (*bool, bool) {
-	if o == nil || o.FlushPolicyHistory == nil {
+	if o == nil || IsNil(o.FlushPolicyHistory) {
 		return nil, false
 	}
 	return o.FlushPolicyHistory, true
@@ -366,7 +387,7 @@ func (o *EnrollmentSettingsV2) GetFlushPolicyHistoryOk() (*bool, bool) {
 
 // HasFlushPolicyHistory returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasFlushPolicyHistory() bool {
-	if o != nil && o.FlushPolicyHistory != nil {
+	if o != nil && !IsNil(o.FlushPolicyHistory) {
 		return true
 	}
 
@@ -380,7 +401,7 @@ func (o *EnrollmentSettingsV2) SetFlushPolicyHistory(v bool) {
 
 // GetFlushExtensionAttributes returns the FlushExtensionAttributes field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetFlushExtensionAttributes() bool {
-	if o == nil || o.FlushExtensionAttributes == nil {
+	if o == nil || IsNil(o.FlushExtensionAttributes) {
 		var ret bool
 		return ret
 	}
@@ -390,7 +411,7 @@ func (o *EnrollmentSettingsV2) GetFlushExtensionAttributes() bool {
 // GetFlushExtensionAttributesOk returns a tuple with the FlushExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetFlushExtensionAttributesOk() (*bool, bool) {
-	if o == nil || o.FlushExtensionAttributes == nil {
+	if o == nil || IsNil(o.FlushExtensionAttributes) {
 		return nil, false
 	}
 	return o.FlushExtensionAttributes, true
@@ -398,7 +419,7 @@ func (o *EnrollmentSettingsV2) GetFlushExtensionAttributesOk() (*bool, bool) {
 
 // HasFlushExtensionAttributes returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasFlushExtensionAttributes() bool {
-	if o != nil && o.FlushExtensionAttributes != nil {
+	if o != nil && !IsNil(o.FlushExtensionAttributes) {
 		return true
 	}
 
@@ -412,7 +433,7 @@ func (o *EnrollmentSettingsV2) SetFlushExtensionAttributes(v bool) {
 
 // GetFlushMdmCommandsOnReenroll returns the FlushMdmCommandsOnReenroll field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetFlushMdmCommandsOnReenroll() string {
-	if o == nil || o.FlushMdmCommandsOnReenroll == nil {
+	if o == nil || IsNil(o.FlushMdmCommandsOnReenroll) {
 		var ret string
 		return ret
 	}
@@ -422,7 +443,7 @@ func (o *EnrollmentSettingsV2) GetFlushMdmCommandsOnReenroll() string {
 // GetFlushMdmCommandsOnReenrollOk returns a tuple with the FlushMdmCommandsOnReenroll field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetFlushMdmCommandsOnReenrollOk() (*string, bool) {
-	if o == nil || o.FlushMdmCommandsOnReenroll == nil {
+	if o == nil || IsNil(o.FlushMdmCommandsOnReenroll) {
 		return nil, false
 	}
 	return o.FlushMdmCommandsOnReenroll, true
@@ -430,7 +451,7 @@ func (o *EnrollmentSettingsV2) GetFlushMdmCommandsOnReenrollOk() (*string, bool)
 
 // HasFlushMdmCommandsOnReenroll returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasFlushMdmCommandsOnReenroll() bool {
-	if o != nil && o.FlushMdmCommandsOnReenroll != nil {
+	if o != nil && !IsNil(o.FlushMdmCommandsOnReenroll) {
 		return true
 	}
 
@@ -444,7 +465,7 @@ func (o *EnrollmentSettingsV2) SetFlushMdmCommandsOnReenroll(v string) {
 
 // GetMacOsEnterpriseEnrollmentEnabled returns the MacOsEnterpriseEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetMacOsEnterpriseEnrollmentEnabled() bool {
-	if o == nil || o.MacOsEnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.MacOsEnterpriseEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -454,7 +475,7 @@ func (o *EnrollmentSettingsV2) GetMacOsEnterpriseEnrollmentEnabled() bool {
 // GetMacOsEnterpriseEnrollmentEnabledOk returns a tuple with the MacOsEnterpriseEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetMacOsEnterpriseEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.MacOsEnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.MacOsEnterpriseEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.MacOsEnterpriseEnrollmentEnabled, true
@@ -462,7 +483,7 @@ func (o *EnrollmentSettingsV2) GetMacOsEnterpriseEnrollmentEnabledOk() (*bool, b
 
 // HasMacOsEnterpriseEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasMacOsEnterpriseEnrollmentEnabled() bool {
-	if o != nil && o.MacOsEnterpriseEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.MacOsEnterpriseEnrollmentEnabled) {
 		return true
 	}
 
@@ -499,8 +520,9 @@ func (o *EnrollmentSettingsV2) SetManagementUsername(v string) {
 }
 
 // GetManagementPassword returns the ManagementPassword field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetManagementPassword() string {
-	if o == nil || o.ManagementPassword == nil {
+	if o == nil || IsNil(o.ManagementPassword) {
 		var ret string
 		return ret
 	}
@@ -509,8 +531,9 @@ func (o *EnrollmentSettingsV2) GetManagementPassword() string {
 
 // GetManagementPasswordOk returns a tuple with the ManagementPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetManagementPasswordOk() (*string, bool) {
-	if o == nil || o.ManagementPassword == nil {
+	if o == nil || IsNil(o.ManagementPassword) {
 		return nil, false
 	}
 	return o.ManagementPassword, true
@@ -518,7 +541,7 @@ func (o *EnrollmentSettingsV2) GetManagementPasswordOk() (*string, bool) {
 
 // HasManagementPassword returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasManagementPassword() bool {
-	if o != nil && o.ManagementPassword != nil {
+	if o != nil && !IsNil(o.ManagementPassword) {
 		return true
 	}
 
@@ -526,13 +549,15 @@ func (o *EnrollmentSettingsV2) HasManagementPassword() bool {
 }
 
 // SetManagementPassword gets a reference to the given string and assigns it to the ManagementPassword field.
+// Deprecated
 func (o *EnrollmentSettingsV2) SetManagementPassword(v string) {
 	o.ManagementPassword = &v
 }
 
 // GetManagementPasswordSet returns the ManagementPasswordSet field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetManagementPasswordSet() bool {
-	if o == nil || o.ManagementPasswordSet == nil {
+	if o == nil || IsNil(o.ManagementPasswordSet) {
 		var ret bool
 		return ret
 	}
@@ -541,8 +566,9 @@ func (o *EnrollmentSettingsV2) GetManagementPasswordSet() bool {
 
 // GetManagementPasswordSetOk returns a tuple with the ManagementPasswordSet field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetManagementPasswordSetOk() (*bool, bool) {
-	if o == nil || o.ManagementPasswordSet == nil {
+	if o == nil || IsNil(o.ManagementPasswordSet) {
 		return nil, false
 	}
 	return o.ManagementPasswordSet, true
@@ -550,7 +576,7 @@ func (o *EnrollmentSettingsV2) GetManagementPasswordSetOk() (*bool, bool) {
 
 // HasManagementPasswordSet returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasManagementPasswordSet() bool {
-	if o != nil && o.ManagementPasswordSet != nil {
+	if o != nil && !IsNil(o.ManagementPasswordSet) {
 		return true
 	}
 
@@ -558,13 +584,15 @@ func (o *EnrollmentSettingsV2) HasManagementPasswordSet() bool {
 }
 
 // SetManagementPasswordSet gets a reference to the given bool and assigns it to the ManagementPasswordSet field.
+// Deprecated
 func (o *EnrollmentSettingsV2) SetManagementPasswordSet(v bool) {
 	o.ManagementPasswordSet = &v
 }
 
 // GetPasswordType returns the PasswordType field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetPasswordType() string {
-	if o == nil || o.PasswordType == nil {
+	if o == nil || IsNil(o.PasswordType) {
 		var ret string
 		return ret
 	}
@@ -573,8 +601,9 @@ func (o *EnrollmentSettingsV2) GetPasswordType() string {
 
 // GetPasswordTypeOk returns a tuple with the PasswordType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetPasswordTypeOk() (*string, bool) {
-	if o == nil || o.PasswordType == nil {
+	if o == nil || IsNil(o.PasswordType) {
 		return nil, false
 	}
 	return o.PasswordType, true
@@ -582,7 +611,7 @@ func (o *EnrollmentSettingsV2) GetPasswordTypeOk() (*string, bool) {
 
 // HasPasswordType returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasPasswordType() bool {
-	if o != nil && o.PasswordType != nil {
+	if o != nil && !IsNil(o.PasswordType) {
 		return true
 	}
 
@@ -590,13 +619,15 @@ func (o *EnrollmentSettingsV2) HasPasswordType() bool {
 }
 
 // SetPasswordType gets a reference to the given string and assigns it to the PasswordType field.
+// Deprecated
 func (o *EnrollmentSettingsV2) SetPasswordType(v string) {
 	o.PasswordType = &v
 }
 
 // GetRandomPasswordLength returns the RandomPasswordLength field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int32 {
-	if o == nil || o.RandomPasswordLength == nil {
+	if o == nil || IsNil(o.RandomPasswordLength) {
 		var ret int32
 		return ret
 	}
@@ -605,8 +636,9 @@ func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int32 {
 
 // GetRandomPasswordLengthOk returns a tuple with the RandomPasswordLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int32, bool) {
-	if o == nil || o.RandomPasswordLength == nil {
+	if o == nil || IsNil(o.RandomPasswordLength) {
 		return nil, false
 	}
 	return o.RandomPasswordLength, true
@@ -614,7 +646,7 @@ func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int32, bool) {
 
 // HasRandomPasswordLength returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasRandomPasswordLength() bool {
-	if o != nil && o.RandomPasswordLength != nil {
+	if o != nil && !IsNil(o.RandomPasswordLength) {
 		return true
 	}
 
@@ -622,13 +654,14 @@ func (o *EnrollmentSettingsV2) HasRandomPasswordLength() bool {
 }
 
 // SetRandomPasswordLength gets a reference to the given int32 and assigns it to the RandomPasswordLength field.
+// Deprecated
 func (o *EnrollmentSettingsV2) SetRandomPasswordLength(v int32) {
 	o.RandomPasswordLength = &v
 }
 
 // GetCreateManagementAccount returns the CreateManagementAccount field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetCreateManagementAccount() bool {
-	if o == nil || o.CreateManagementAccount == nil {
+	if o == nil || IsNil(o.CreateManagementAccount) {
 		var ret bool
 		return ret
 	}
@@ -638,7 +671,7 @@ func (o *EnrollmentSettingsV2) GetCreateManagementAccount() bool {
 // GetCreateManagementAccountOk returns a tuple with the CreateManagementAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetCreateManagementAccountOk() (*bool, bool) {
-	if o == nil || o.CreateManagementAccount == nil {
+	if o == nil || IsNil(o.CreateManagementAccount) {
 		return nil, false
 	}
 	return o.CreateManagementAccount, true
@@ -646,7 +679,7 @@ func (o *EnrollmentSettingsV2) GetCreateManagementAccountOk() (*bool, bool) {
 
 // HasCreateManagementAccount returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasCreateManagementAccount() bool {
-	if o != nil && o.CreateManagementAccount != nil {
+	if o != nil && !IsNil(o.CreateManagementAccount) {
 		return true
 	}
 
@@ -660,7 +693,7 @@ func (o *EnrollmentSettingsV2) SetCreateManagementAccount(v bool) {
 
 // GetHideManagementAccount returns the HideManagementAccount field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetHideManagementAccount() bool {
-	if o == nil || o.HideManagementAccount == nil {
+	if o == nil || IsNil(o.HideManagementAccount) {
 		var ret bool
 		return ret
 	}
@@ -670,7 +703,7 @@ func (o *EnrollmentSettingsV2) GetHideManagementAccount() bool {
 // GetHideManagementAccountOk returns a tuple with the HideManagementAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetHideManagementAccountOk() (*bool, bool) {
-	if o == nil || o.HideManagementAccount == nil {
+	if o == nil || IsNil(o.HideManagementAccount) {
 		return nil, false
 	}
 	return o.HideManagementAccount, true
@@ -678,7 +711,7 @@ func (o *EnrollmentSettingsV2) GetHideManagementAccountOk() (*bool, bool) {
 
 // HasHideManagementAccount returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasHideManagementAccount() bool {
-	if o != nil && o.HideManagementAccount != nil {
+	if o != nil && !IsNil(o.HideManagementAccount) {
 		return true
 	}
 
@@ -692,7 +725,7 @@ func (o *EnrollmentSettingsV2) SetHideManagementAccount(v bool) {
 
 // GetAllowSshOnlyManagementAccount returns the AllowSshOnlyManagementAccount field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetAllowSshOnlyManagementAccount() bool {
-	if o == nil || o.AllowSshOnlyManagementAccount == nil {
+	if o == nil || IsNil(o.AllowSshOnlyManagementAccount) {
 		var ret bool
 		return ret
 	}
@@ -702,7 +735,7 @@ func (o *EnrollmentSettingsV2) GetAllowSshOnlyManagementAccount() bool {
 // GetAllowSshOnlyManagementAccountOk returns a tuple with the AllowSshOnlyManagementAccount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetAllowSshOnlyManagementAccountOk() (*bool, bool) {
-	if o == nil || o.AllowSshOnlyManagementAccount == nil {
+	if o == nil || IsNil(o.AllowSshOnlyManagementAccount) {
 		return nil, false
 	}
 	return o.AllowSshOnlyManagementAccount, true
@@ -710,7 +743,7 @@ func (o *EnrollmentSettingsV2) GetAllowSshOnlyManagementAccountOk() (*bool, bool
 
 // HasAllowSshOnlyManagementAccount returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasAllowSshOnlyManagementAccount() bool {
-	if o != nil && o.AllowSshOnlyManagementAccount != nil {
+	if o != nil && !IsNil(o.AllowSshOnlyManagementAccount) {
 		return true
 	}
 
@@ -724,7 +757,7 @@ func (o *EnrollmentSettingsV2) SetAllowSshOnlyManagementAccount(v bool) {
 
 // GetEnsureSshRunning returns the EnsureSshRunning field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetEnsureSshRunning() bool {
-	if o == nil || o.EnsureSshRunning == nil {
+	if o == nil || IsNil(o.EnsureSshRunning) {
 		var ret bool
 		return ret
 	}
@@ -734,7 +767,7 @@ func (o *EnrollmentSettingsV2) GetEnsureSshRunning() bool {
 // GetEnsureSshRunningOk returns a tuple with the EnsureSshRunning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetEnsureSshRunningOk() (*bool, bool) {
-	if o == nil || o.EnsureSshRunning == nil {
+	if o == nil || IsNil(o.EnsureSshRunning) {
 		return nil, false
 	}
 	return o.EnsureSshRunning, true
@@ -742,7 +775,7 @@ func (o *EnrollmentSettingsV2) GetEnsureSshRunningOk() (*bool, bool) {
 
 // HasEnsureSshRunning returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasEnsureSshRunning() bool {
-	if o != nil && o.EnsureSshRunning != nil {
+	if o != nil && !IsNil(o.EnsureSshRunning) {
 		return true
 	}
 
@@ -756,7 +789,7 @@ func (o *EnrollmentSettingsV2) SetEnsureSshRunning(v bool) {
 
 // GetLaunchSelfService returns the LaunchSelfService field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetLaunchSelfService() bool {
-	if o == nil || o.LaunchSelfService == nil {
+	if o == nil || IsNil(o.LaunchSelfService) {
 		var ret bool
 		return ret
 	}
@@ -766,7 +799,7 @@ func (o *EnrollmentSettingsV2) GetLaunchSelfService() bool {
 // GetLaunchSelfServiceOk returns a tuple with the LaunchSelfService field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetLaunchSelfServiceOk() (*bool, bool) {
-	if o == nil || o.LaunchSelfService == nil {
+	if o == nil || IsNil(o.LaunchSelfService) {
 		return nil, false
 	}
 	return o.LaunchSelfService, true
@@ -774,7 +807,7 @@ func (o *EnrollmentSettingsV2) GetLaunchSelfServiceOk() (*bool, bool) {
 
 // HasLaunchSelfService returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasLaunchSelfService() bool {
-	if o != nil && o.LaunchSelfService != nil {
+	if o != nil && !IsNil(o.LaunchSelfService) {
 		return true
 	}
 
@@ -788,7 +821,7 @@ func (o *EnrollmentSettingsV2) SetLaunchSelfService(v bool) {
 
 // GetSignQuickAdd returns the SignQuickAdd field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetSignQuickAdd() bool {
-	if o == nil || o.SignQuickAdd == nil {
+	if o == nil || IsNil(o.SignQuickAdd) {
 		var ret bool
 		return ret
 	}
@@ -798,7 +831,7 @@ func (o *EnrollmentSettingsV2) GetSignQuickAdd() bool {
 // GetSignQuickAddOk returns a tuple with the SignQuickAdd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetSignQuickAddOk() (*bool, bool) {
-	if o == nil || o.SignQuickAdd == nil {
+	if o == nil || IsNil(o.SignQuickAdd) {
 		return nil, false
 	}
 	return o.SignQuickAdd, true
@@ -806,7 +839,7 @@ func (o *EnrollmentSettingsV2) GetSignQuickAddOk() (*bool, bool) {
 
 // HasSignQuickAdd returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasSignQuickAdd() bool {
-	if o != nil && o.SignQuickAdd != nil {
+	if o != nil && !IsNil(o.SignQuickAdd) {
 		return true
 	}
 
@@ -818,41 +851,51 @@ func (o *EnrollmentSettingsV2) SetSignQuickAdd(v bool) {
 	o.SignQuickAdd = &v
 }
 
-// GetDeveloperCertificateIdentity returns the DeveloperCertificateIdentity field value if set, zero value otherwise.
+// GetDeveloperCertificateIdentity returns the DeveloperCertificateIdentity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentity() CertificateIdentityV2 {
-	if o == nil || o.DeveloperCertificateIdentity == nil {
+	if o == nil || IsNil(o.DeveloperCertificateIdentity.Get()) {
 		var ret CertificateIdentityV2
 		return ret
 	}
-	return *o.DeveloperCertificateIdentity
+	return *o.DeveloperCertificateIdentity.Get()
 }
 
 // GetDeveloperCertificateIdentityOk returns a tuple with the DeveloperCertificateIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityOk() (*CertificateIdentityV2, bool) {
-	if o == nil || o.DeveloperCertificateIdentity == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeveloperCertificateIdentity, true
+	return o.DeveloperCertificateIdentity.Get(), o.DeveloperCertificateIdentity.IsSet()
 }
 
 // HasDeveloperCertificateIdentity returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasDeveloperCertificateIdentity() bool {
-	if o != nil && o.DeveloperCertificateIdentity != nil {
+	if o != nil && o.DeveloperCertificateIdentity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeveloperCertificateIdentity gets a reference to the given CertificateIdentityV2 and assigns it to the DeveloperCertificateIdentity field.
+// SetDeveloperCertificateIdentity gets a reference to the given NullableCertificateIdentityV2 and assigns it to the DeveloperCertificateIdentity field.
 func (o *EnrollmentSettingsV2) SetDeveloperCertificateIdentity(v CertificateIdentityV2) {
-	o.DeveloperCertificateIdentity = &v
+	o.DeveloperCertificateIdentity.Set(&v)
+}
+// SetDeveloperCertificateIdentityNil sets the value for DeveloperCertificateIdentity to be an explicit nil
+func (o *EnrollmentSettingsV2) SetDeveloperCertificateIdentityNil() {
+	o.DeveloperCertificateIdentity.Set(nil)
+}
+
+// UnsetDeveloperCertificateIdentity ensures that no value is present for DeveloperCertificateIdentity, not even an explicit nil
+func (o *EnrollmentSettingsV2) UnsetDeveloperCertificateIdentity() {
+	o.DeveloperCertificateIdentity.Unset()
 }
 
 // GetDeveloperCertificateIdentityDetails returns the DeveloperCertificateIdentityDetails field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityDetails() CertificateDetails {
-	if o == nil || o.DeveloperCertificateIdentityDetails == nil {
+	if o == nil || IsNil(o.DeveloperCertificateIdentityDetails) {
 		var ret CertificateDetails
 		return ret
 	}
@@ -862,7 +905,7 @@ func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityDetails() Certific
 // GetDeveloperCertificateIdentityDetailsOk returns a tuple with the DeveloperCertificateIdentityDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityDetailsOk() (*CertificateDetails, bool) {
-	if o == nil || o.DeveloperCertificateIdentityDetails == nil {
+	if o == nil || IsNil(o.DeveloperCertificateIdentityDetails) {
 		return nil, false
 	}
 	return o.DeveloperCertificateIdentityDetails, true
@@ -870,7 +913,7 @@ func (o *EnrollmentSettingsV2) GetDeveloperCertificateIdentityDetailsOk() (*Cert
 
 // HasDeveloperCertificateIdentityDetails returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasDeveloperCertificateIdentityDetails() bool {
-	if o != nil && o.DeveloperCertificateIdentityDetails != nil {
+	if o != nil && !IsNil(o.DeveloperCertificateIdentityDetails) {
 		return true
 	}
 
@@ -884,7 +927,7 @@ func (o *EnrollmentSettingsV2) SetDeveloperCertificateIdentityDetails(v Certific
 
 // GetMdmSigningCertificateDetails returns the MdmSigningCertificateDetails field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetMdmSigningCertificateDetails() CertificateDetails {
-	if o == nil || o.MdmSigningCertificateDetails == nil {
+	if o == nil || IsNil(o.MdmSigningCertificateDetails) {
 		var ret CertificateDetails
 		return ret
 	}
@@ -894,7 +937,7 @@ func (o *EnrollmentSettingsV2) GetMdmSigningCertificateDetails() CertificateDeta
 // GetMdmSigningCertificateDetailsOk returns a tuple with the MdmSigningCertificateDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetMdmSigningCertificateDetailsOk() (*CertificateDetails, bool) {
-	if o == nil || o.MdmSigningCertificateDetails == nil {
+	if o == nil || IsNil(o.MdmSigningCertificateDetails) {
 		return nil, false
 	}
 	return o.MdmSigningCertificateDetails, true
@@ -902,7 +945,7 @@ func (o *EnrollmentSettingsV2) GetMdmSigningCertificateDetailsOk() (*Certificate
 
 // HasMdmSigningCertificateDetails returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasMdmSigningCertificateDetails() bool {
-	if o != nil && o.MdmSigningCertificateDetails != nil {
+	if o != nil && !IsNil(o.MdmSigningCertificateDetails) {
 		return true
 	}
 
@@ -916,7 +959,7 @@ func (o *EnrollmentSettingsV2) SetMdmSigningCertificateDetails(v CertificateDeta
 
 // GetIosEnterpriseEnrollmentEnabled returns the IosEnterpriseEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetIosEnterpriseEnrollmentEnabled() bool {
-	if o == nil || o.IosEnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.IosEnterpriseEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -926,7 +969,7 @@ func (o *EnrollmentSettingsV2) GetIosEnterpriseEnrollmentEnabled() bool {
 // GetIosEnterpriseEnrollmentEnabledOk returns a tuple with the IosEnterpriseEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetIosEnterpriseEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.IosEnterpriseEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.IosEnterpriseEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.IosEnterpriseEnrollmentEnabled, true
@@ -934,7 +977,7 @@ func (o *EnrollmentSettingsV2) GetIosEnterpriseEnrollmentEnabledOk() (*bool, boo
 
 // HasIosEnterpriseEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasIosEnterpriseEnrollmentEnabled() bool {
-	if o != nil && o.IosEnterpriseEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.IosEnterpriseEnrollmentEnabled) {
 		return true
 	}
 
@@ -948,7 +991,7 @@ func (o *EnrollmentSettingsV2) SetIosEnterpriseEnrollmentEnabled(v bool) {
 
 // GetIosPersonalEnrollmentEnabled returns the IosPersonalEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetIosPersonalEnrollmentEnabled() bool {
-	if o == nil || o.IosPersonalEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.IosPersonalEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -958,7 +1001,7 @@ func (o *EnrollmentSettingsV2) GetIosPersonalEnrollmentEnabled() bool {
 // GetIosPersonalEnrollmentEnabledOk returns a tuple with the IosPersonalEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetIosPersonalEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.IosPersonalEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.IosPersonalEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.IosPersonalEnrollmentEnabled, true
@@ -966,7 +1009,7 @@ func (o *EnrollmentSettingsV2) GetIosPersonalEnrollmentEnabledOk() (*bool, bool)
 
 // HasIosPersonalEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasIosPersonalEnrollmentEnabled() bool {
-	if o != nil && o.IosPersonalEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.IosPersonalEnrollmentEnabled) {
 		return true
 	}
 
@@ -980,7 +1023,7 @@ func (o *EnrollmentSettingsV2) SetIosPersonalEnrollmentEnabled(v bool) {
 
 // GetPersonalDeviceEnrollmentType returns the PersonalDeviceEnrollmentType field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetPersonalDeviceEnrollmentType() string {
-	if o == nil || o.PersonalDeviceEnrollmentType == nil {
+	if o == nil || IsNil(o.PersonalDeviceEnrollmentType) {
 		var ret string
 		return ret
 	}
@@ -990,7 +1033,7 @@ func (o *EnrollmentSettingsV2) GetPersonalDeviceEnrollmentType() string {
 // GetPersonalDeviceEnrollmentTypeOk returns a tuple with the PersonalDeviceEnrollmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetPersonalDeviceEnrollmentTypeOk() (*string, bool) {
-	if o == nil || o.PersonalDeviceEnrollmentType == nil {
+	if o == nil || IsNil(o.PersonalDeviceEnrollmentType) {
 		return nil, false
 	}
 	return o.PersonalDeviceEnrollmentType, true
@@ -998,7 +1041,7 @@ func (o *EnrollmentSettingsV2) GetPersonalDeviceEnrollmentTypeOk() (*string, boo
 
 // HasPersonalDeviceEnrollmentType returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasPersonalDeviceEnrollmentType() bool {
-	if o != nil && o.PersonalDeviceEnrollmentType != nil {
+	if o != nil && !IsNil(o.PersonalDeviceEnrollmentType) {
 		return true
 	}
 
@@ -1012,7 +1055,7 @@ func (o *EnrollmentSettingsV2) SetPersonalDeviceEnrollmentType(v string) {
 
 // GetAccountDrivenUserEnrollmentEnabled returns the AccountDrivenUserEnrollmentEnabled field value if set, zero value otherwise.
 func (o *EnrollmentSettingsV2) GetAccountDrivenUserEnrollmentEnabled() bool {
-	if o == nil || o.AccountDrivenUserEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		var ret bool
 		return ret
 	}
@@ -1022,7 +1065,7 @@ func (o *EnrollmentSettingsV2) GetAccountDrivenUserEnrollmentEnabled() bool {
 // GetAccountDrivenUserEnrollmentEnabledOk returns a tuple with the AccountDrivenUserEnrollmentEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSettingsV2) GetAccountDrivenUserEnrollmentEnabledOk() (*bool, bool) {
-	if o == nil || o.AccountDrivenUserEnrollmentEnabled == nil {
+	if o == nil || IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		return nil, false
 	}
 	return o.AccountDrivenUserEnrollmentEnabled, true
@@ -1030,7 +1073,7 @@ func (o *EnrollmentSettingsV2) GetAccountDrivenUserEnrollmentEnabledOk() (*bool,
 
 // HasAccountDrivenUserEnrollmentEnabled returns a boolean if a field has been set.
 func (o *EnrollmentSettingsV2) HasAccountDrivenUserEnrollmentEnabled() bool {
-	if o != nil && o.AccountDrivenUserEnrollmentEnabled != nil {
+	if o != nil && !IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		return true
 	}
 
@@ -1043,92 +1086,98 @@ func (o *EnrollmentSettingsV2) SetAccountDrivenUserEnrollmentEnabled(v bool) {
 }
 
 func (o EnrollmentSettingsV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.InstallSingleProfile != nil {
-		toSerialize["installSingleProfile"] = o.InstallSingleProfile
-	}
-	if o.SigningMdmProfileEnabled != nil {
-		toSerialize["signingMdmProfileEnabled"] = o.SigningMdmProfileEnabled
-	}
-	if o.MdmSigningCertificate != nil {
-		toSerialize["mdmSigningCertificate"] = o.MdmSigningCertificate
-	}
-	if o.RestrictReenrollment != nil {
-		toSerialize["restrictReenrollment"] = o.RestrictReenrollment
-	}
-	if o.FlushLocationInformation != nil {
-		toSerialize["flushLocationInformation"] = o.FlushLocationInformation
-	}
-	if o.FlushLocationHistoryInformation != nil {
-		toSerialize["flushLocationHistoryInformation"] = o.FlushLocationHistoryInformation
-	}
-	if o.FlushPolicyHistory != nil {
-		toSerialize["flushPolicyHistory"] = o.FlushPolicyHistory
-	}
-	if o.FlushExtensionAttributes != nil {
-		toSerialize["flushExtensionAttributes"] = o.FlushExtensionAttributes
-	}
-	if o.FlushMdmCommandsOnReenroll != nil {
-		toSerialize["flushMdmCommandsOnReenroll"] = o.FlushMdmCommandsOnReenroll
-	}
-	if o.MacOsEnterpriseEnrollmentEnabled != nil {
-		toSerialize["macOsEnterpriseEnrollmentEnabled"] = o.MacOsEnterpriseEnrollmentEnabled
-	}
-	if true {
-		toSerialize["managementUsername"] = o.ManagementUsername
-	}
-	if o.ManagementPassword != nil {
-		toSerialize["managementPassword"] = o.ManagementPassword
-	}
-	if o.ManagementPasswordSet != nil {
-		toSerialize["managementPasswordSet"] = o.ManagementPasswordSet
-	}
-	if o.PasswordType != nil {
-		toSerialize["passwordType"] = o.PasswordType
-	}
-	if o.RandomPasswordLength != nil {
-		toSerialize["randomPasswordLength"] = o.RandomPasswordLength
-	}
-	if o.CreateManagementAccount != nil {
-		toSerialize["createManagementAccount"] = o.CreateManagementAccount
-	}
-	if o.HideManagementAccount != nil {
-		toSerialize["hideManagementAccount"] = o.HideManagementAccount
-	}
-	if o.AllowSshOnlyManagementAccount != nil {
-		toSerialize["allowSshOnlyManagementAccount"] = o.AllowSshOnlyManagementAccount
-	}
-	if o.EnsureSshRunning != nil {
-		toSerialize["ensureSshRunning"] = o.EnsureSshRunning
-	}
-	if o.LaunchSelfService != nil {
-		toSerialize["launchSelfService"] = o.LaunchSelfService
-	}
-	if o.SignQuickAdd != nil {
-		toSerialize["signQuickAdd"] = o.SignQuickAdd
-	}
-	if o.DeveloperCertificateIdentity != nil {
-		toSerialize["developerCertificateIdentity"] = o.DeveloperCertificateIdentity
-	}
-	if o.DeveloperCertificateIdentityDetails != nil {
-		toSerialize["developerCertificateIdentityDetails"] = o.DeveloperCertificateIdentityDetails
-	}
-	if o.MdmSigningCertificateDetails != nil {
-		toSerialize["mdmSigningCertificateDetails"] = o.MdmSigningCertificateDetails
-	}
-	if o.IosEnterpriseEnrollmentEnabled != nil {
-		toSerialize["iosEnterpriseEnrollmentEnabled"] = o.IosEnterpriseEnrollmentEnabled
-	}
-	if o.IosPersonalEnrollmentEnabled != nil {
-		toSerialize["iosPersonalEnrollmentEnabled"] = o.IosPersonalEnrollmentEnabled
-	}
-	if o.PersonalDeviceEnrollmentType != nil {
-		toSerialize["personalDeviceEnrollmentType"] = o.PersonalDeviceEnrollmentType
-	}
-	if o.AccountDrivenUserEnrollmentEnabled != nil {
-		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EnrollmentSettingsV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.InstallSingleProfile) {
+		toSerialize["installSingleProfile"] = o.InstallSingleProfile
+	}
+	if !IsNil(o.SigningMdmProfileEnabled) {
+		toSerialize["signingMdmProfileEnabled"] = o.SigningMdmProfileEnabled
+	}
+	if o.MdmSigningCertificate.IsSet() {
+		toSerialize["mdmSigningCertificate"] = o.MdmSigningCertificate.Get()
+	}
+	if !IsNil(o.RestrictReenrollment) {
+		toSerialize["restrictReenrollment"] = o.RestrictReenrollment
+	}
+	if !IsNil(o.FlushLocationInformation) {
+		toSerialize["flushLocationInformation"] = o.FlushLocationInformation
+	}
+	if !IsNil(o.FlushLocationHistoryInformation) {
+		toSerialize["flushLocationHistoryInformation"] = o.FlushLocationHistoryInformation
+	}
+	if !IsNil(o.FlushPolicyHistory) {
+		toSerialize["flushPolicyHistory"] = o.FlushPolicyHistory
+	}
+	if !IsNil(o.FlushExtensionAttributes) {
+		toSerialize["flushExtensionAttributes"] = o.FlushExtensionAttributes
+	}
+	if !IsNil(o.FlushMdmCommandsOnReenroll) {
+		toSerialize["flushMdmCommandsOnReenroll"] = o.FlushMdmCommandsOnReenroll
+	}
+	if !IsNil(o.MacOsEnterpriseEnrollmentEnabled) {
+		toSerialize["macOsEnterpriseEnrollmentEnabled"] = o.MacOsEnterpriseEnrollmentEnabled
+	}
+	toSerialize["managementUsername"] = o.ManagementUsername
+	if !IsNil(o.ManagementPassword) {
+		toSerialize["managementPassword"] = o.ManagementPassword
+	}
+	if !IsNil(o.ManagementPasswordSet) {
+		toSerialize["managementPasswordSet"] = o.ManagementPasswordSet
+	}
+	if !IsNil(o.PasswordType) {
+		toSerialize["passwordType"] = o.PasswordType
+	}
+	if !IsNil(o.RandomPasswordLength) {
+		toSerialize["randomPasswordLength"] = o.RandomPasswordLength
+	}
+	if !IsNil(o.CreateManagementAccount) {
+		toSerialize["createManagementAccount"] = o.CreateManagementAccount
+	}
+	if !IsNil(o.HideManagementAccount) {
+		toSerialize["hideManagementAccount"] = o.HideManagementAccount
+	}
+	if !IsNil(o.AllowSshOnlyManagementAccount) {
+		toSerialize["allowSshOnlyManagementAccount"] = o.AllowSshOnlyManagementAccount
+	}
+	if !IsNil(o.EnsureSshRunning) {
+		toSerialize["ensureSshRunning"] = o.EnsureSshRunning
+	}
+	if !IsNil(o.LaunchSelfService) {
+		toSerialize["launchSelfService"] = o.LaunchSelfService
+	}
+	if !IsNil(o.SignQuickAdd) {
+		toSerialize["signQuickAdd"] = o.SignQuickAdd
+	}
+	if o.DeveloperCertificateIdentity.IsSet() {
+		toSerialize["developerCertificateIdentity"] = o.DeveloperCertificateIdentity.Get()
+	}
+	if !IsNil(o.DeveloperCertificateIdentityDetails) {
+		toSerialize["developerCertificateIdentityDetails"] = o.DeveloperCertificateIdentityDetails
+	}
+	if !IsNil(o.MdmSigningCertificateDetails) {
+		toSerialize["mdmSigningCertificateDetails"] = o.MdmSigningCertificateDetails
+	}
+	if !IsNil(o.IosEnterpriseEnrollmentEnabled) {
+		toSerialize["iosEnterpriseEnrollmentEnabled"] = o.IosEnterpriseEnrollmentEnabled
+	}
+	if !IsNil(o.IosPersonalEnrollmentEnabled) {
+		toSerialize["iosPersonalEnrollmentEnabled"] = o.IosPersonalEnrollmentEnabled
+	}
+	if !IsNil(o.PersonalDeviceEnrollmentType) {
+		toSerialize["personalDeviceEnrollmentType"] = o.PersonalDeviceEnrollmentType
+	}
+	if !IsNil(o.AccountDrivenUserEnrollmentEnabled) {
+		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableEnrollmentSettingsV2 struct {

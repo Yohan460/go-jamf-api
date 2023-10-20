@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VerbosePackageDeploymentResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VerbosePackageDeploymentResponse{}
+
 // VerbosePackageDeploymentResponse struct for VerbosePackageDeploymentResponse
 type VerbosePackageDeploymentResponse struct {
 	QueuedCommands []VerbosePackageDeploymentResponseQueuedCommandsInner `json:"queuedCommands,omitempty"`
@@ -39,7 +42,7 @@ func NewVerbosePackageDeploymentResponseWithDefaults() *VerbosePackageDeployment
 
 // GetQueuedCommands returns the QueuedCommands field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponse) GetQueuedCommands() []VerbosePackageDeploymentResponseQueuedCommandsInner {
-	if o == nil || o.QueuedCommands == nil {
+	if o == nil || IsNil(o.QueuedCommands) {
 		var ret []VerbosePackageDeploymentResponseQueuedCommandsInner
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *VerbosePackageDeploymentResponse) GetQueuedCommands() []VerbosePackageD
 // GetQueuedCommandsOk returns a tuple with the QueuedCommands field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponse) GetQueuedCommandsOk() ([]VerbosePackageDeploymentResponseQueuedCommandsInner, bool) {
-	if o == nil || o.QueuedCommands == nil {
+	if o == nil || IsNil(o.QueuedCommands) {
 		return nil, false
 	}
 	return o.QueuedCommands, true
@@ -57,7 +60,7 @@ func (o *VerbosePackageDeploymentResponse) GetQueuedCommandsOk() ([]VerbosePacka
 
 // HasQueuedCommands returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponse) HasQueuedCommands() bool {
-	if o != nil && o.QueuedCommands != nil {
+	if o != nil && !IsNil(o.QueuedCommands) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *VerbosePackageDeploymentResponse) SetQueuedCommands(v []VerbosePackageD
 
 // GetErrors returns the Errors field value if set, zero value otherwise.
 func (o *VerbosePackageDeploymentResponse) GetErrors() []VerbosePackageDeploymentResponseErrorsInner {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		var ret []VerbosePackageDeploymentResponseErrorsInner
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *VerbosePackageDeploymentResponse) GetErrors() []VerbosePackageDeploymen
 // GetErrorsOk returns a tuple with the Errors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VerbosePackageDeploymentResponse) GetErrorsOk() ([]VerbosePackageDeploymentResponseErrorsInner, bool) {
-	if o == nil || o.Errors == nil {
+	if o == nil || IsNil(o.Errors) {
 		return nil, false
 	}
 	return o.Errors, true
@@ -89,7 +92,7 @@ func (o *VerbosePackageDeploymentResponse) GetErrorsOk() ([]VerbosePackageDeploy
 
 // HasErrors returns a boolean if a field has been set.
 func (o *VerbosePackageDeploymentResponse) HasErrors() bool {
-	if o != nil && o.Errors != nil {
+	if o != nil && !IsNil(o.Errors) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *VerbosePackageDeploymentResponse) SetErrors(v []VerbosePackageDeploymen
 }
 
 func (o VerbosePackageDeploymentResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.QueuedCommands != nil {
-		toSerialize["queuedCommands"] = o.QueuedCommands
-	}
-	if o.Errors != nil {
-		toSerialize["errors"] = o.Errors
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VerbosePackageDeploymentResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.QueuedCommands) {
+		toSerialize["queuedCommands"] = o.QueuedCommands
+	}
+	if !IsNil(o.Errors) {
+		toSerialize["errors"] = o.Errors
+	}
+	return toSerialize, nil
 }
 
 type NullableVerbosePackageDeploymentResponse struct {

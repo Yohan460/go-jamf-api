@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageFileAttachment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageFileAttachment{}
+
 // PrestageFileAttachment struct for PrestageFileAttachment
 type PrestageFileAttachment struct {
 	Id *int32 `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewPrestageFileAttachmentWithDefaults() *PrestageFileAttachment {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PrestageFileAttachment) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PrestageFileAttachment) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachment) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *PrestageFileAttachment) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PrestageFileAttachment) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PrestageFileAttachment) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PrestageFileAttachment) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PrestageFileAttachment) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachment) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *PrestageFileAttachment) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PrestageFileAttachment) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *PrestageFileAttachment) SetName(v string) {
 
 // GetFileType returns the FileType field value if set, zero value otherwise.
 func (o *PrestageFileAttachment) GetFileType() string {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *PrestageFileAttachment) GetFileType() string {
 // GetFileTypeOk returns a tuple with the FileType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachment) GetFileTypeOk() (*string, bool) {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		return nil, false
 	}
 	return o.FileType, true
@@ -122,7 +125,7 @@ func (o *PrestageFileAttachment) GetFileTypeOk() (*string, bool) {
 
 // HasFileType returns a boolean if a field has been set.
 func (o *PrestageFileAttachment) HasFileType() bool {
-	if o != nil && o.FileType != nil {
+	if o != nil && !IsNil(o.FileType) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *PrestageFileAttachment) SetFileType(v string) {
 }
 
 func (o PrestageFileAttachment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FileType != nil {
-		toSerialize["fileType"] = o.FileType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageFileAttachment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FileType) {
+		toSerialize["fileType"] = o.FileType
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageFileAttachment struct {

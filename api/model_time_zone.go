@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TimeZone type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TimeZone{}
+
 // TimeZone struct for TimeZone
 type TimeZone struct {
 	ZoneId *string `json:"zoneId,omitempty"`
@@ -40,7 +43,7 @@ func NewTimeZoneWithDefaults() *TimeZone {
 
 // GetZoneId returns the ZoneId field value if set, zero value otherwise.
 func (o *TimeZone) GetZoneId() string {
-	if o == nil || o.ZoneId == nil {
+	if o == nil || IsNil(o.ZoneId) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *TimeZone) GetZoneId() string {
 // GetZoneIdOk returns a tuple with the ZoneId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeZone) GetZoneIdOk() (*string, bool) {
-	if o == nil || o.ZoneId == nil {
+	if o == nil || IsNil(o.ZoneId) {
 		return nil, false
 	}
 	return o.ZoneId, true
@@ -58,7 +61,7 @@ func (o *TimeZone) GetZoneIdOk() (*string, bool) {
 
 // HasZoneId returns a boolean if a field has been set.
 func (o *TimeZone) HasZoneId() bool {
-	if o != nil && o.ZoneId != nil {
+	if o != nil && !IsNil(o.ZoneId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *TimeZone) SetZoneId(v string) {
 
 // GetRegion returns the Region field value if set, zero value otherwise.
 func (o *TimeZone) GetRegion() string {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *TimeZone) GetRegion() string {
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeZone) GetRegionOk() (*string, bool) {
-	if o == nil || o.Region == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
 	return o.Region, true
@@ -90,7 +93,7 @@ func (o *TimeZone) GetRegionOk() (*string, bool) {
 
 // HasRegion returns a boolean if a field has been set.
 func (o *TimeZone) HasRegion() bool {
-	if o != nil && o.Region != nil {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *TimeZone) SetRegion(v string) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *TimeZone) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *TimeZone) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TimeZone) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -122,7 +125,7 @@ func (o *TimeZone) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *TimeZone) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *TimeZone) SetDisplayName(v string) {
 }
 
 func (o TimeZone) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ZoneId != nil {
-		toSerialize["zoneId"] = o.ZoneId
-	}
-	if o.Region != nil {
-		toSerialize["region"] = o.Region
-	}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TimeZone) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ZoneId) {
+		toSerialize["zoneId"] = o.ZoneId
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	return toSerialize, nil
 }
 
 type NullableTimeZone struct {

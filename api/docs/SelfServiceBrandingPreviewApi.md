@@ -1,10 +1,10 @@
-# \SelfServiceBrandingPreviewApi
+# \SelfServiceBrandingPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**SelfServiceBrandingImagesPost**](SelfServiceBrandingPreviewApi.md#SelfServiceBrandingImagesPost) | **Post** /self-service/branding/images | Upload an image 
+[**SelfServiceBrandingImagesPost**](SelfServiceBrandingPreviewAPI.md#SelfServiceBrandingImagesPost) | **Post** /self-service/branding/images | Upload an image 
 
 
 
@@ -25,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -33,13 +33,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceBrandingPreviewApi.SelfServiceBrandingImagesPost(context.Background()).File(file).Execute()
+    resp, r, err := apiClient.SelfServiceBrandingPreviewAPI.SelfServiceBrandingImagesPost(context.Background()).File(file).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingPreviewApi.SelfServiceBrandingImagesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingPreviewAPI.SelfServiceBrandingImagesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `SelfServiceBrandingImagesPost`: BrandingImageUrl
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingPreviewApi.SelfServiceBrandingImagesPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingPreviewAPI.SelfServiceBrandingImagesPost`: %v\n", resp)
 }
 ```
 

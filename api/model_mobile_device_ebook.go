@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceEbook type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceEbook{}
+
 // MobileDeviceEbook struct for MobileDeviceEbook
 type MobileDeviceEbook struct {
 	Author *string `json:"author,omitempty"`
@@ -40,7 +43,7 @@ func NewMobileDeviceEbookWithDefaults() *MobileDeviceEbook {
 
 // GetAuthor returns the Author field value if set, zero value otherwise.
 func (o *MobileDeviceEbook) GetAuthor() string {
-	if o == nil || o.Author == nil {
+	if o == nil || IsNil(o.Author) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *MobileDeviceEbook) GetAuthor() string {
 // GetAuthorOk returns a tuple with the Author field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceEbook) GetAuthorOk() (*string, bool) {
-	if o == nil || o.Author == nil {
+	if o == nil || IsNil(o.Author) {
 		return nil, false
 	}
 	return o.Author, true
@@ -58,7 +61,7 @@ func (o *MobileDeviceEbook) GetAuthorOk() (*string, bool) {
 
 // HasAuthor returns a boolean if a field has been set.
 func (o *MobileDeviceEbook) HasAuthor() bool {
-	if o != nil && o.Author != nil {
+	if o != nil && !IsNil(o.Author) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *MobileDeviceEbook) SetAuthor(v string) {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *MobileDeviceEbook) GetTitle() string {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *MobileDeviceEbook) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceEbook) GetTitleOk() (*string, bool) {
-	if o == nil || o.Title == nil {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -90,7 +93,7 @@ func (o *MobileDeviceEbook) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *MobileDeviceEbook) HasTitle() bool {
-	if o != nil && o.Title != nil {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *MobileDeviceEbook) SetTitle(v string) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *MobileDeviceEbook) GetVersion() string {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *MobileDeviceEbook) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceEbook) GetVersionOk() (*string, bool) {
-	if o == nil || o.Version == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -122,7 +125,7 @@ func (o *MobileDeviceEbook) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *MobileDeviceEbook) HasVersion() bool {
-	if o != nil && o.Version != nil {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *MobileDeviceEbook) SetVersion(v string) {
 }
 
 func (o MobileDeviceEbook) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Author != nil {
-		toSerialize["author"] = o.Author
-	}
-	if o.Title != nil {
-		toSerialize["title"] = o.Title
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceEbook) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Author) {
+		toSerialize["author"] = o.Author
+	}
+	if !IsNil(o.Title) {
+		toSerialize["title"] = o.Title
+	}
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceEbook struct {

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Account** | Pointer to [**AuthAccountV1**](AuthAccountV1.md) |  | [optional] 
 **AccountGroups** | Pointer to [**[]AccountGroup**](AccountGroup.md) |  | [optional] 
 **Sites** | Pointer to [**[]V1Site**](V1Site.md) |  | [optional] 
-**AuthenticationType** | Pointer to **string** |  | [optional] 
+**AuthenticationType** | Pointer to [**AuthenticationType**](AuthenticationType.md) |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasSites returns a boolean if a field has been set.
 
 ### GetAuthenticationType
 
-`func (o *AuthorizationV1) GetAuthenticationType() string`
+`func (o *AuthorizationV1) GetAuthenticationType() AuthenticationType`
 
 GetAuthenticationType returns the AuthenticationType field if non-nil, zero value otherwise.
 
 ### GetAuthenticationTypeOk
 
-`func (o *AuthorizationV1) GetAuthenticationTypeOk() (*string, bool)`
+`func (o *AuthorizationV1) GetAuthenticationTypeOk() (*AuthenticationType, bool)`
 
 GetAuthenticationTypeOk returns a tuple with the AuthenticationType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthenticationType
 
-`func (o *AuthorizationV1) SetAuthenticationType(v string)`
+`func (o *AuthorizationV1) SetAuthenticationType(v AuthenticationType)`
 
 SetAuthenticationType sets AuthenticationType field to given value.
 

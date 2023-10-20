@@ -18,7 +18,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -64,7 +63,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), api.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -81,555 +80,607 @@ All URIs are relative to */api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesChoicesGet**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearcheschoicesget) | **Get** /v1/advanced-mobile-device-searches/choices | Get Mobile Device Advanced Search criteria choices 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesDeleteMultiplePost**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchesdeletemultiplepost) | **Post** /v1/advanced-mobile-device-searches/delete-multiple | Remove specified Advanced Search objects 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesGet**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchesget) | **Get** /v1/advanced-mobile-device-searches | Get Advanced Search objects 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesIdDelete**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchesiddelete) | **Delete** /v1/advanced-mobile-device-searches/{id} | Remove specified Advanced Search object 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesIdGet**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchesidget) | **Get** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesIdPut**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchesidput) | **Put** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
-*AdvancedMobileDeviceSearchesApi* | [**V1AdvancedMobileDeviceSearchesPost**](docs/AdvancedMobileDeviceSearchesApi.md#v1advancedmobiledevicesearchespost) | **Post** /v1/advanced-mobile-device-searches | Create Advanced Search object 
-*AdvancedUserContentSearchesApi* | [**V1AdvancedUserContentSearchesGet**](docs/AdvancedUserContentSearchesApi.md#v1advancedusercontentsearchesget) | **Get** /v1/advanced-user-content-searches | Get All Advanced User Content Search objects 
-*AdvancedUserContentSearchesApi* | [**V1AdvancedUserContentSearchesIdDelete**](docs/AdvancedUserContentSearchesApi.md#v1advancedusercontentsearchesiddelete) | **Delete** /v1/advanced-user-content-searches/{id} | Remove specified Advanced User Content Search object 
-*AdvancedUserContentSearchesApi* | [**V1AdvancedUserContentSearchesIdGet**](docs/AdvancedUserContentSearchesApi.md#v1advancedusercontentsearchesidget) | **Get** /v1/advanced-user-content-searches/{id} | Get Specified Advanced User Content Search object 
-*AdvancedUserContentSearchesApi* | [**V1AdvancedUserContentSearchesIdPut**](docs/AdvancedUserContentSearchesApi.md#v1advancedusercontentsearchesidput) | **Put** /v1/advanced-user-content-searches/{id} | Get Specified Advanced User Content Search object 
-*AdvancedUserContentSearchesApi* | [**V1AdvancedUserContentSearchesPost**](docs/AdvancedUserContentSearchesApi.md#v1advancedusercontentsearchespost) | **Post** /v1/advanced-user-content-searches | Create Advanced User Content Search object 
-*ApiAuthenticationApi* | [**AuthCurrentPost**](docs/ApiAuthenticationApi.md#authcurrentpost) | **Post** /auth/current | Get the authorization details associated with the current API token 
-*ApiAuthenticationApi* | [**AuthGet**](docs/ApiAuthenticationApi.md#authget) | **Get** /auth | Get all the Authorization details associated with the current api 
-*ApiAuthenticationApi* | [**AuthInvalidateTokenPost**](docs/ApiAuthenticationApi.md#authinvalidatetokenpost) | **Post** /auth/invalidateToken | Invalidate current token 
-*ApiAuthenticationApi* | [**AuthKeepAlivePost**](docs/ApiAuthenticationApi.md#authkeepalivepost) | **Post** /auth/keepAlive | Invalidate existing token and generates new token 
-*ApiAuthenticationApi* | [**AuthTokensPost**](docs/ApiAuthenticationApi.md#authtokenspost) | **Post** /auth/tokens | Create a token based on other authentication details (basic, etc.) 
-*ApiAuthenticationApi* | [**V1AuthGet**](docs/ApiAuthenticationApi.md#v1authget) | **Get** /v1/auth | Get all the Authorization details associated with the current api 
-*ApiAuthenticationApi* | [**V1AuthInvalidateTokenPost**](docs/ApiAuthenticationApi.md#v1authinvalidatetokenpost) | **Post** /v1/auth/invalidate-token | Invalidate current token 
-*ApiAuthenticationApi* | [**V1AuthKeepAlivePost**](docs/ApiAuthenticationApi.md#v1authkeepalivepost) | **Post** /v1/auth/keep-alive | Invalidate existing token and generates new token 
-*ApiAuthenticationApi* | [**V1AuthTokenPost**](docs/ApiAuthenticationApi.md#v1authtokenpost) | **Post** /v1/auth/token | Create a token based on other authentication details (basic, etc.) 
-*AppDynamicsConfigurationPreviewApi* | [**V1AppDynamicsScriptConfigurationGet**](docs/AppDynamicsConfigurationPreviewApi.md#v1appdynamicsscriptconfigurationget) | **Get** /v1/app-dynamics/script-configuration | Get Application Dynamics Config object 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsGet**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldsget) | **Get** /v1/app-request/form-input-fields | Search for Form Input Fields 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsIdDelete**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldsiddelete) | **Delete** /v1/app-request/form-input-fields/{id} | Remove specified Form Input Field record 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsIdGet**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldsidget) | **Get** /v1/app-request/form-input-fields/{id} | Get specified Form Input Field object 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsIdPut**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldsidput) | **Put** /v1/app-request/form-input-fields/{id} | Update specified Form Input Field object 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsPost**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldspost) | **Post** /v1/app-request/form-input-fields | Create Form Input Field record 
-*AppRequestPreviewApi* | [**V1AppRequestFormInputFieldsPut**](docs/AppRequestPreviewApi.md#v1apprequestforminputfieldsput) | **Put** /v1/app-request/form-input-fields | Replace all Form Input Fields 
-*AppRequestPreviewApi* | [**V1AppRequestSettingsGet**](docs/AppRequestPreviewApi.md#v1apprequestsettingsget) | **Get** /v1/app-request/settings | Get Applicastion Request Settings 
-*AppRequestPreviewApi* | [**V1AppRequestSettingsPut**](docs/AppRequestPreviewApi.md#v1apprequestsettingsput) | **Put** /v1/app-request/settings | Update Application Request Settings 
-*AppStoreCountryCodesPreviewApi* | [**V1AppStoreCountryCodesGet**](docs/AppStoreCountryCodesPreviewApi.md#v1appstorecountrycodesget) | **Get** /v1/app-store-country-codes | Return a list of Countries and the associated Codes 
-*BuildingsApi* | [**V1BuildingsDeleteMultiplePost**](docs/BuildingsApi.md#v1buildingsdeletemultiplepost) | **Post** /v1/buildings/delete-multiple | Delete multiple Buildings by their ids 
-*BuildingsApi* | [**V1BuildingsGet**](docs/BuildingsApi.md#v1buildingsget) | **Get** /v1/buildings | Search for sorted and paged Buildings 
-*BuildingsApi* | [**V1BuildingsIdDelete**](docs/BuildingsApi.md#v1buildingsiddelete) | **Delete** /v1/buildings/{id} | Remove specified Building record 
-*BuildingsApi* | [**V1BuildingsIdGet**](docs/BuildingsApi.md#v1buildingsidget) | **Get** /v1/buildings/{id} | Get specified Building object 
-*BuildingsApi* | [**V1BuildingsIdHistoryGet**](docs/BuildingsApi.md#v1buildingsidhistoryget) | **Get** /v1/buildings/{id}/history | Get specified Building History object 
-*BuildingsApi* | [**V1BuildingsIdHistoryPost**](docs/BuildingsApi.md#v1buildingsidhistorypost) | **Post** /v1/buildings/{id}/history | Add specified Building history object notes 
-*BuildingsApi* | [**V1BuildingsIdPut**](docs/BuildingsApi.md#v1buildingsidput) | **Put** /v1/buildings/{id} | Update specified Building object 
-*BuildingsApi* | [**V1BuildingsPost**](docs/BuildingsApi.md#v1buildingspost) | **Post** /v1/buildings | Create Building record 
-*CacheSettingsApi* | [**V1CacheSettingsGet**](docs/CacheSettingsApi.md#v1cachesettingsget) | **Get** /v1/cache-settings | Get Cache Settings 
-*CacheSettingsApi* | [**V1CacheSettingsPut**](docs/CacheSettingsApi.md#v1cachesettingsput) | **Put** /v1/cache-settings | Update Cache Settings 
-*CategoriesApi* | [**V1CategoriesDeleteMultiplePost**](docs/CategoriesApi.md#v1categoriesdeletemultiplepost) | **Post** /v1/categories/delete-multiple | Delete multiple Categories by their IDs 
-*CategoriesApi* | [**V1CategoriesGet**](docs/CategoriesApi.md#v1categoriesget) | **Get** /v1/categories | Get Category objects 
-*CategoriesApi* | [**V1CategoriesIdDelete**](docs/CategoriesApi.md#v1categoriesiddelete) | **Delete** /v1/categories/{id} | Remove specified Category record 
-*CategoriesApi* | [**V1CategoriesIdGet**](docs/CategoriesApi.md#v1categoriesidget) | **Get** /v1/categories/{id} | Get specified Category object 
-*CategoriesApi* | [**V1CategoriesIdHistoryGet**](docs/CategoriesApi.md#v1categoriesidhistoryget) | **Get** /v1/categories/{id}/history | Get specified Category history object 
-*CategoriesApi* | [**V1CategoriesIdHistoryPost**](docs/CategoriesApi.md#v1categoriesidhistorypost) | **Post** /v1/categories/{id}/history | Add specified Category history object notes 
-*CategoriesApi* | [**V1CategoriesIdPut**](docs/CategoriesApi.md#v1categoriesidput) | **Put** /v1/categories/{id} | Update specified Category object 
-*CategoriesApi* | [**V1CategoriesPost**](docs/CategoriesApi.md#v1categoriespost) | **Post** /v1/categories | Create Category record 
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityActiveDerGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityactivederget) | **Get** /v1/pki/certificate-authority/active/der | Returns X.509 of active Certificate Authority (CA) in DER format
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityActiveGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityactiveget) | **Get** /v1/pki/certificate-authority/active | Returns X.509 details of the active Certificate Authority (CA)
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityActivePemGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityactivepemget) | **Get** /v1/pki/certificate-authority/active/pem | Returns active Certificate Authority (CA) in PEM format
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityIdDerGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityidderget) | **Get** /v1/pki/certificate-authority/{id}/der | Returns X.509 current Certificate Authority (CA) with provided ID in DER format
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityIdGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityidget) | **Get** /v1/pki/certificate-authority/{id} | Returns X.509 details of Certificate Authority (CA) with provided ID
-*CertificateAuthorityApi* | [**V1PkiCertificateAuthorityIdPemGet**](docs/CertificateAuthorityApi.md#v1pkicertificateauthorityidpemget) | **Get** /v1/pki/certificate-authority/{id}/pem | Returns current Certificate Authority (CA) with provided ID in PEM format
-*ClassicLdapApi* | [**V1ClassicLdapIdGet**](docs/ClassicLdapApi.md#v1classicldapidget) | **Get** /v1/classic-ldap/{id} | Get mappings for OnPrem Ldap configuration with given id.
-*ClientCheckInApi* | [**V2CheckInGet**](docs/ClientCheckInApi.md#v2checkinget) | **Get** /v2/check-in | Get Client Check-In settings 
-*ClientCheckInApi* | [**V2CheckInHistoryGet**](docs/ClientCheckInApi.md#v2checkinhistoryget) | **Get** /v2/check-in/history | Get Client Check-In history object 
-*ClientCheckInApi* | [**V2CheckInHistoryPost**](docs/ClientCheckInApi.md#v2checkinhistorypost) | **Post** /v2/check-in/history | Add a Note to Client Check-In History 
-*ClientCheckInApi* | [**V2CheckInPut**](docs/ClientCheckInApi.md#v2checkinput) | **Put** /v2/check-in | Update Client Check-In object 
-*ClientCheckInApi* | [**V3CheckInGet**](docs/ClientCheckInApi.md#v3checkinget) | **Get** /v3/check-in | Get Client Check-In settings 
-*ClientCheckInApi* | [**V3CheckInHistoryGet**](docs/ClientCheckInApi.md#v3checkinhistoryget) | **Get** /v3/check-in/history | Get Client Check-In history object 
-*ClientCheckInApi* | [**V3CheckInHistoryPost**](docs/ClientCheckInApi.md#v3checkinhistorypost) | **Post** /v3/check-in/history | Add a Note to Client Check-In History 
-*ClientCheckInApi* | [**V3CheckInPut**](docs/ClientCheckInApi.md#v3checkinput) | **Put** /v3/check-in | Update Client Check-In object 
-*CloudAzureApi* | [**V1AzureAdMigrationReportsIdDownloadGet**](docs/CloudAzureApi.md#v1azureadmigrationreportsiddownloadget) | **Get** /v1/azure-ad-migration/reports/{id}/download | Download report of provided report ID
-*CloudAzureApi* | [**V1AzureAdMigrationReportsIdGet**](docs/CloudAzureApi.md#v1azureadmigrationreportsidget) | **Get** /v1/azure-ad-migration/reports/{id} | Check status of azure ad migration report
-*CloudAzureApi* | [**V1AzureAdMigrationReportsPendingGet**](docs/CloudAzureApi.md#v1azureadmigrationreportspendingget) | **Get** /v1/azure-ad-migration/reports/pending | Get pending azure migration report
-*CloudAzureApi* | [**V1AzureAdMigrationReportsPost**](docs/CloudAzureApi.md#v1azureadmigrationreportspost) | **Post** /v1/azure-ad-migration/reports | Start Azure Ad Migration report generation
-*CloudAzureApi* | [**V1CloudAzureDefaultsMappingsGet**](docs/CloudAzureApi.md#v1cloudazuredefaultsmappingsget) | **Get** /v1/cloud-azure/defaults/mappings | Get default mappings
-*CloudAzureApi* | [**V1CloudAzureDefaultsServerConfigurationGet**](docs/CloudAzureApi.md#v1cloudazuredefaultsserverconfigurationget) | **Get** /v1/cloud-azure/defaults/server-configuration | Get default server configuration
-*CloudAzureApi* | [**V1CloudAzureIdDelete**](docs/CloudAzureApi.md#v1cloudazureiddelete) | **Delete** /v1/cloud-azure/{id} | Delete Cloud Identity Provider configuration.
-*CloudAzureApi* | [**V1CloudAzureIdGet**](docs/CloudAzureApi.md#v1cloudazureidget) | **Get** /v1/cloud-azure/{id} | Get Azure Cloud Identity Provider configuration with given ID.
-*CloudAzureApi* | [**V1CloudAzureIdPut**](docs/CloudAzureApi.md#v1cloudazureidput) | **Put** /v1/cloud-azure/{id} | Update Azure Cloud Identity Provider configuration
-*CloudAzureApi* | [**V1CloudAzurePost**](docs/CloudAzureApi.md#v1cloudazurepost) | **Post** /v1/cloud-azure | Create Azure Cloud Identity Provider configuration
-*CloudIdpApi* | [**V1CloudIdpExportPost**](docs/CloudIdpApi.md#v1cloudidpexportpost) | **Post** /v1/cloud-idp/export | Export Cloud Identity Providers collection 
-*CloudIdpApi* | [**V1CloudIdpGet**](docs/CloudIdpApi.md#v1cloudidpget) | **Get** /v1/cloud-idp | Get information about all Cloud Identity Providers configurations.
-*CloudIdpApi* | [**V1CloudIdpIdGet**](docs/CloudIdpApi.md#v1cloudidpidget) | **Get** /v1/cloud-idp/{id} | Get Cloud Identity Provider configuration with given ID.
-*CloudIdpApi* | [**V1CloudIdpIdHistoryGet**](docs/CloudIdpApi.md#v1cloudidpidhistoryget) | **Get** /v1/cloud-idp/{id}/history | Get Cloud Identity Provider history
-*CloudIdpApi* | [**V1CloudIdpIdHistoryPost**](docs/CloudIdpApi.md#v1cloudidpidhistorypost) | **Post** /v1/cloud-idp/{id}/history | Add Cloud Identity Provider history note
-*CloudIdpApi* | [**V1CloudIdpIdTestGroupPost**](docs/CloudIdpApi.md#v1cloudidpidtestgrouppost) | **Post** /v1/cloud-idp/{id}/test-group | Get group test search
-*CloudIdpApi* | [**V1CloudIdpIdTestUserMembershipPost**](docs/CloudIdpApi.md#v1cloudidpidtestusermembershippost) | **Post** /v1/cloud-idp/{id}/test-user-membership | Get membership test search
-*CloudIdpApi* | [**V1CloudIdpIdTestUserPost**](docs/CloudIdpApi.md#v1cloudidpidtestuserpost) | **Post** /v1/cloud-idp/{id}/test-user | Get user test search
-*CloudLdapApi* | [**V1CloudLdapsDefaultsMappingsGet**](docs/CloudLdapApi.md#v1cloudldapsdefaultsmappingsget) | **Get** /v1/cloud-ldaps/defaults/mappings | Get default mappings
-*CloudLdapApi* | [**V1CloudLdapsDefaultsServerConfigurationGet**](docs/CloudLdapApi.md#v1cloudldapsdefaultsserverconfigurationget) | **Get** /v1/cloud-ldaps/defaults/server-configuration | Get default server configuration
-*CloudLdapApi* | [**V1CloudLdapsGet**](docs/CloudLdapApi.md#v1cloudldapsget) | **Get** /v1/cloud-ldaps | Get all Cloud Identity Providers configurations.
-*CloudLdapApi* | [**V1CloudLdapsIdConnectionBindGet**](docs/CloudLdapApi.md#v1cloudldapsidconnectionbindget) | **Get** /v1/cloud-ldaps/{id}/connection/bind | Get bind connection pool statistics
-*CloudLdapApi* | [**V1CloudLdapsIdConnectionSearchGet**](docs/CloudLdapApi.md#v1cloudldapsidconnectionsearchget) | **Get** /v1/cloud-ldaps/{id}/connection/search | Get search connection pool statistics
-*CloudLdapApi* | [**V1CloudLdapsIdDelete**](docs/CloudLdapApi.md#v1cloudldapsiddelete) | **Delete** /v1/cloud-ldaps/{id} | Delete Cloud Identity Provider configuration.
-*CloudLdapApi* | [**V1CloudLdapsIdGet**](docs/CloudLdapApi.md#v1cloudldapsidget) | **Get** /v1/cloud-ldaps/{id} | Get Cloud Identity Provider configuration with given id.
-*CloudLdapApi* | [**V1CloudLdapsIdHistoryGet**](docs/CloudLdapApi.md#v1cloudldapsidhistoryget) | **Get** /v1/cloud-ldaps/{id}/history | Get Cloud Identity Provider history
-*CloudLdapApi* | [**V1CloudLdapsIdHistoryPost**](docs/CloudLdapApi.md#v1cloudldapsidhistorypost) | **Post** /v1/cloud-ldaps/{id}/history | Add Cloud Identity Provider history note
-*CloudLdapApi* | [**V1CloudLdapsIdMappingsGet**](docs/CloudLdapApi.md#v1cloudldapsidmappingsget) | **Get** /v1/cloud-ldaps/{id}/mappings | Get mappings configurations for Cloud Identity Providers server configuration.
-*CloudLdapApi* | [**V1CloudLdapsIdMappingsPut**](docs/CloudLdapApi.md#v1cloudldapsidmappingsput) | **Put** /v1/cloud-ldaps/{id}/mappings | Update Cloud Identity Provider mappings configuration.
-*CloudLdapApi* | [**V1CloudLdapsIdPut**](docs/CloudLdapApi.md#v1cloudldapsidput) | **Put** /v1/cloud-ldaps/{id} | Old update Cloud Identity Provider configuration
-*CloudLdapApi* | [**V1CloudLdapsIdTestGroupPost**](docs/CloudLdapApi.md#v1cloudldapsidtestgrouppost) | **Post** /v1/cloud-ldaps/{id}/test-group | Get group test search
-*CloudLdapApi* | [**V1CloudLdapsIdTestUserMembershipPost**](docs/CloudLdapApi.md#v1cloudldapsidtestusermembershippost) | **Post** /v1/cloud-ldaps/{id}/test-user-membership | Get membership test search
-*CloudLdapApi* | [**V1CloudLdapsIdTestUserPost**](docs/CloudLdapApi.md#v1cloudldapsidtestuserpost) | **Post** /v1/cloud-ldaps/{id}/test-user | Get user test search
-*CloudLdapApi* | [**V1CloudLdapsPost**](docs/CloudLdapApi.md#v1cloudldapspost) | **Post** /v1/cloud-ldaps | Create Cloud Identity Provider configuration
-*CloudLdapApi* | [**V1LdapKeystoreVerifyPost**](docs/CloudLdapApi.md#v1ldapkeystoreverifypost) | **Post** /v1/ldap-keystore/verify | Validate keystore for Cloud Identity Provider secure connection
-*CloudLdapApi* | [**V2CloudLdapsDefaultsProviderMappingsGet**](docs/CloudLdapApi.md#v2cloudldapsdefaultsprovidermappingsget) | **Get** /v2/cloud-ldaps/defaults/{provider}/mappings | Get default mappings
-*CloudLdapApi* | [**V2CloudLdapsDefaultsProviderServerConfigurationGet**](docs/CloudLdapApi.md#v2cloudldapsdefaultsproviderserverconfigurationget) | **Get** /v2/cloud-ldaps/defaults/{provider}/server-configuration | Get default server configuration
-*CloudLdapApi* | [**V2CloudLdapsIdConnectionBindGet**](docs/CloudLdapApi.md#v2cloudldapsidconnectionbindget) | **Get** /v2/cloud-ldaps/{id}/connection/bind | Get bind connection pool statistics
-*CloudLdapApi* | [**V2CloudLdapsIdConnectionSearchGet**](docs/CloudLdapApi.md#v2cloudldapsidconnectionsearchget) | **Get** /v2/cloud-ldaps/{id}/connection/search | Get search connection pool statistics
-*CloudLdapApi* | [**V2CloudLdapsIdConnectionStatusGet**](docs/CloudLdapApi.md#v2cloudldapsidconnectionstatusget) | **Get** /v2/cloud-ldaps/{id}/connection/status | Tests the communication with the specified cloud connection 
-*CloudLdapApi* | [**V2CloudLdapsIdDelete**](docs/CloudLdapApi.md#v2cloudldapsiddelete) | **Delete** /v2/cloud-ldaps/{id} | Delete Cloud Identity Provider configuration.
-*CloudLdapApi* | [**V2CloudLdapsIdGet**](docs/CloudLdapApi.md#v2cloudldapsidget) | **Get** /v2/cloud-ldaps/{id} | Get Cloud Identity Provider configuration with given id.
-*CloudLdapApi* | [**V2CloudLdapsIdMappingsGet**](docs/CloudLdapApi.md#v2cloudldapsidmappingsget) | **Get** /v2/cloud-ldaps/{id}/mappings | Get mappings configurations for Cloud Identity Providers server configuration.
-*CloudLdapApi* | [**V2CloudLdapsIdMappingsPut**](docs/CloudLdapApi.md#v2cloudldapsidmappingsput) | **Put** /v2/cloud-ldaps/{id}/mappings | Update Cloud Identity Provider mappings configuration.
-*CloudLdapApi* | [**V2CloudLdapsIdPut**](docs/CloudLdapApi.md#v2cloudldapsidput) | **Put** /v2/cloud-ldaps/{id} | Update Cloud Identity Provider configuration
-*CloudLdapApi* | [**V2CloudLdapsPost**](docs/CloudLdapApi.md#v2cloudldapspost) | **Post** /v2/cloud-ldaps | Create Cloud Identity Provider configuration
-*ComputerInventoryApi* | [**V1ComputersInventoryDetailIdGet**](docs/ComputerInventoryApi.md#v1computersinventorydetailidget) | **Get** /v1/computers-inventory-detail/{id} | Return a Computer details with all sections 
-*ComputerInventoryApi* | [**V1ComputersInventoryDetailIdPatch**](docs/ComputerInventoryApi.md#v1computersinventorydetailidpatch) | **Patch** /v1/computers-inventory-detail/{id} | Return a updated computer instance 
-*ComputerInventoryApi* | [**V1ComputersInventoryGet**](docs/ComputerInventoryApi.md#v1computersinventoryget) | **Get** /v1/computers-inventory | Return a Computer Inventory for paginated list of computers 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdAttachmentsAttachmentIdDelete**](docs/ComputerInventoryApi.md#v1computersinventoryidattachmentsattachmentiddelete) | **Delete** /v1/computers-inventory/{id}/attachments/{attachmentId} | Remove attachment 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdAttachmentsAttachmentIdGet**](docs/ComputerInventoryApi.md#v1computersinventoryidattachmentsattachmentidget) | **Get** /v1/computers-inventory/{id}/attachments/{attachmentId} | Download attachment file 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdAttachmentsPost**](docs/ComputerInventoryApi.md#v1computersinventoryidattachmentspost) | **Post** /v1/computers-inventory/{id}/attachments | Upload attachment and assign to computer 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdDelete**](docs/ComputerInventoryApi.md#v1computersinventoryiddelete) | **Delete** /v1/computers-inventory/{id} | Remove specified Computer record 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdGet**](docs/ComputerInventoryApi.md#v1computersinventoryidget) | **Get** /v1/computers-inventory/{id} | Return a Computer General details 
-*ComputerInventoryApi* | [**V1ComputersInventoryIdViewRecoveryLockPasswordGet**](docs/ComputerInventoryApi.md#v1computersinventoryidviewrecoverylockpasswordget) | **Get** /v1/computers-inventory/{id}/view-recovery-lock-password | Return a Computers Recovery Lock Password 
-*ComputerInventoryCollectionSettingsApi* | [**V1ComputerInventoryCollectionSettingsCustomPathIdDelete**](docs/ComputerInventoryCollectionSettingsApi.md#v1computerinventorycollectionsettingscustompathiddelete) | **Delete** /v1/computer-inventory-collection-settings/custom-path/{id} | Delete Custom Path from Computer Inventory Collection Settings
-*ComputerInventoryCollectionSettingsApi* | [**V1ComputerInventoryCollectionSettingsCustomPathPost**](docs/ComputerInventoryCollectionSettingsApi.md#v1computerinventorycollectionsettingscustompathpost) | **Post** /v1/computer-inventory-collection-settings/custom-path | Create Computer Inventory Collection Settings Custom Path
-*ComputerInventoryCollectionSettingsApi* | [**V1ComputerInventoryCollectionSettingsGet**](docs/ComputerInventoryCollectionSettingsApi.md#v1computerinventorycollectionsettingsget) | **Get** /v1/computer-inventory-collection-settings | Returns computer inventory settings
-*ComputerInventoryCollectionSettingsApi* | [**V1ComputerInventoryCollectionSettingsPatch**](docs/ComputerInventoryCollectionSettingsApi.md#v1computerinventorycollectionsettingspatch) | **Patch** /v1/computer-inventory-collection-settings | Update computer inventory settings
-*ComputerPrestagesApi* | [**V1ComputerPrestagesGet**](docs/ComputerPrestagesApi.md#v1computerprestagesget) | **Get** /v1/computer-prestages | Search for sorted and paged Computer Prestages 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdDelete**](docs/ComputerPrestagesApi.md#v1computerprestagesiddelete) | **Delete** /v1/computer-prestages/{id} | Delete a Computer Prestage with the supplied id 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdGet**](docs/ComputerPrestagesApi.md#v1computerprestagesidget) | **Get** /v1/computer-prestages/{id} | Retrieve a Computer Prestage with the supplied id 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdPut**](docs/ComputerPrestagesApi.md#v1computerprestagesidput) | **Put** /v1/computer-prestages/{id} | Update a Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdScopeDelete**](docs/ComputerPrestagesApi.md#v1computerprestagesidscopedelete) | **Delete** /v1/computer-prestages/{id}/scope | Remove device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdScopeGet**](docs/ComputerPrestagesApi.md#v1computerprestagesidscopeget) | **Get** /v1/computer-prestages/{id}/scope | Get device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdScopePost**](docs/ComputerPrestagesApi.md#v1computerprestagesidscopepost) | **Post** /v1/computer-prestages/{id}/scope | Add device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesIdScopePut**](docs/ComputerPrestagesApi.md#v1computerprestagesidscopeput) | **Put** /v1/computer-prestages/{id}/scope | Replace device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesPost**](docs/ComputerPrestagesApi.md#v1computerprestagespost) | **Post** /v1/computer-prestages | Create a Computer Prestage 
-*ComputerPrestagesApi* | [**V1ComputerPrestagesScopeGet**](docs/ComputerPrestagesApi.md#v1computerprestagesscopeget) | **Get** /v1/computer-prestages/scope | Get all device Scope for all Computer Prestages 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesGet**](docs/ComputerPrestagesApi.md#v2computerprestagesget) | **Get** /v2/computer-prestages | Get sorted and paged Computer Prestages 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdDelete**](docs/ComputerPrestagesApi.md#v2computerprestagesiddelete) | **Delete** /v2/computer-prestages/{id} | Delete a Computer Prestage with the supplied id 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdGet**](docs/ComputerPrestagesApi.md#v2computerprestagesidget) | **Get** /v2/computer-prestages/{id} | Retrieve a Computer Prestage with the supplied id 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdPut**](docs/ComputerPrestagesApi.md#v2computerprestagesidput) | **Put** /v2/computer-prestages/{id} | Update a Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdScopeDeleteMultiplePost**](docs/ComputerPrestagesApi.md#v2computerprestagesidscopedeletemultiplepost) | **Post** /v2/computer-prestages/{id}/scope/delete-multiple | Remove device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdScopeGet**](docs/ComputerPrestagesApi.md#v2computerprestagesidscopeget) | **Get** /v2/computer-prestages/{id}/scope | Get device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdScopePost**](docs/ComputerPrestagesApi.md#v2computerprestagesidscopepost) | **Post** /v2/computer-prestages/{id}/scope | Add device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesIdScopePut**](docs/ComputerPrestagesApi.md#v2computerprestagesidscopeput) | **Put** /v2/computer-prestages/{id}/scope | Replace device Scope for a specific Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesPost**](docs/ComputerPrestagesApi.md#v2computerprestagespost) | **Post** /v2/computer-prestages | Create a Computer Prestage 
-*ComputerPrestagesApi* | [**V2ComputerPrestagesScopeGet**](docs/ComputerPrestagesApi.md#v2computerprestagesscopeget) | **Get** /v2/computer-prestages/scope | Get all device Scope for all Computer Prestages 
-*ComputersPreviewApi* | [**PreviewComputersGet**](docs/ComputersPreviewApi.md#previewcomputersget) | **Get** /preview/computers | Return a list of Computers 
-*ConditionalAccessApi* | [**V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet**](docs/ConditionalAccessApi.md#v1conditionalaccessdevicecomplianceinformationcomputerdeviceidget) | **Get** /v1/conditional-access/device-compliance-information/computer/{deviceId} | Get compliance information for a single computer device
-*ConditionalAccessApi* | [**V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet**](docs/ConditionalAccessApi.md#v1conditionalaccessdevicecomplianceinformationmobiledeviceidget) | **Get** /v1/conditional-access/device-compliance-information/mobile/{deviceId} | Get compliance information for a single mobile device
-*CsaApi* | [**V1CsaTokenDelete**](docs/CsaApi.md#v1csatokendelete) | **Delete** /v1/csa/token | Delete the CSA token exchange - This will disable Jamf Pro&#39;s ability to authenticate with cloud-hosted services 
-*CsaApi* | [**V1CsaTokenGet**](docs/CsaApi.md#v1csatokenget) | **Get** /v1/csa/token | Get details regarding the CSA token exchange 
-*CsaApi* | [**V1CsaTokenPost**](docs/CsaApi.md#v1csatokenpost) | **Post** /v1/csa/token | Initialize the CSA token exchange 
-*CsaApi* | [**V1CsaTokenPut**](docs/CsaApi.md#v1csatokenput) | **Put** /v1/csa/token | Re-initialize the CSA token exchange with new credentials 
-*DepartmentsApi* | [**V1DepartmentsDeleteMultiplePost**](docs/DepartmentsApi.md#v1departmentsdeletemultiplepost) | **Post** /v1/departments/delete-multiple | Deletes all departments by ids passed in body 
-*DepartmentsApi* | [**V1DepartmentsGet**](docs/DepartmentsApi.md#v1departmentsget) | **Get** /v1/departments | Search for Departments 
-*DepartmentsApi* | [**V1DepartmentsIdDelete**](docs/DepartmentsApi.md#v1departmentsiddelete) | **Delete** /v1/departments/{id} | Remove specified department record 
-*DepartmentsApi* | [**V1DepartmentsIdGet**](docs/DepartmentsApi.md#v1departmentsidget) | **Get** /v1/departments/{id} | Get specified Department object 
-*DepartmentsApi* | [**V1DepartmentsIdHistoryGet**](docs/DepartmentsApi.md#v1departmentsidhistoryget) | **Get** /v1/departments/{id}/history | Get specified Department history object 
-*DepartmentsApi* | [**V1DepartmentsIdHistoryPost**](docs/DepartmentsApi.md#v1departmentsidhistorypost) | **Post** /v1/departments/{id}/history | Add specified Department history object notes 
-*DepartmentsApi* | [**V1DepartmentsIdPut**](docs/DepartmentsApi.md#v1departmentsidput) | **Put** /v1/departments/{id} | Update specified department object 
-*DepartmentsApi* | [**V1DepartmentsPost**](docs/DepartmentsApi.md#v1departmentspost) | **Post** /v1/departments | Create department record 
-*DeviceCommunicationSettingsApi* | [**V1DeviceCommunicationSettingsGet**](docs/DeviceCommunicationSettingsApi.md#v1devicecommunicationsettingsget) | **Get** /v1/device-communication-settings | Retrieves all settings for device communication 
-*DeviceCommunicationSettingsApi* | [**V1DeviceCommunicationSettingsHistoryGet**](docs/DeviceCommunicationSettingsApi.md#v1devicecommunicationsettingshistoryget) | **Get** /v1/device-communication-settings/history | Get Device Communication settings history 
-*DeviceCommunicationSettingsApi* | [**V1DeviceCommunicationSettingsHistoryPost**](docs/DeviceCommunicationSettingsApi.md#v1devicecommunicationsettingshistorypost) | **Post** /v1/device-communication-settings/history | Add Device Communication Settings history notes 
-*DeviceCommunicationSettingsApi* | [**V1DeviceCommunicationSettingsPut**](docs/DeviceCommunicationSettingsApi.md#v1devicecommunicationsettingsput) | **Put** /v1/device-communication-settings | Update device communication settings 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsget) | **Get** /v1/device-enrollments | Read all sorted and paged Device Enrollment instances 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdDelete**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsiddelete) | **Delete** /v1/device-enrollments/{id} | Delete a Device Enrollment Instance with the supplied id 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdDisownPost**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsiddisownpost) | **Post** /v1/device-enrollments/{id}/disown | Disown devices from the given Device Enrollment Instance 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidget) | **Get** /v1/device-enrollments/{id} | Retrieve a Device Enrollment Instance with the supplied id 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdHistoryGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidhistoryget) | **Get** /v1/device-enrollments/{id}/history | Get sorted and paged Device Enrollment history objects 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdHistoryPost**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidhistorypost) | **Post** /v1/device-enrollments/{id}/history | Add Device Enrollment history object notes 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdPut**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidput) | **Put** /v1/device-enrollments/{id} | Update a Device Enrollment Instance with the supplied id 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdSyncsGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidsyncsget) | **Get** /v1/device-enrollments/{id}/syncs | Get all instance sync states for a single Device Enrollment Instance 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdSyncsLatestGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsidsyncslatestget) | **Get** /v1/device-enrollments/{id}/syncs/latest | Get the latest sync state for a single Device Enrollment Instance 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsIdUploadTokenPut**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsiduploadtokenput) | **Put** /v1/device-enrollments/{id}/upload-token | Update a Device Enrollment Instance with the supplied Token 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsPublicKeyGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentspublickeyget) | **Get** /v1/device-enrollments/public-key | Retrieve the Jamf Pro Device Enrollment public key 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsSyncsGet**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentssyncsget) | **Get** /v1/device-enrollments/syncs | Get all instance sync states for all Device Enrollment Instances 
-*DeviceEnrollmentsApi* | [**V1DeviceEnrollmentsUploadTokenPost**](docs/DeviceEnrollmentsApi.md#v1deviceenrollmentsuploadtokenpost) | **Post** /v1/device-enrollments/upload-token | Create a Device Enrollment Instance with the supplied Token 
-*DeviceEnrollmentsDevicesApi* | [**V1DeviceEnrollmentsIdDevicesGet**](docs/DeviceEnrollmentsDevicesApi.md#v1deviceenrollmentsiddevicesget) | **Get** /v1/device-enrollments/{id}/devices | Retrieve a list of Devices assigned to the supplied id 
-*EbooksApi* | [**V1EbooksGet**](docs/EbooksApi.md#v1ebooksget) | **Get** /v1/ebooks | Get Ebook object 
-*EbooksApi* | [**V1EbooksIdGet**](docs/EbooksApi.md#v1ebooksidget) | **Get** /v1/ebooks/{id} | Get specified Ebook object 
-*EbooksApi* | [**V1EbooksIdScopeGet**](docs/EbooksApi.md#v1ebooksidscopeget) | **Get** /v1/ebooks/{id}/scope | Get specified scope of Ebook object 
-*EngageApi* | [**V1EngageGet**](docs/EngageApi.md#v1engageget) | **Get** /v1/engage | Get Engage settings 
-*EngageApi* | [**V1EngageHistoryGet**](docs/EngageApi.md#v1engagehistoryget) | **Get** /v1/engage/history | Get Engage settings history 
-*EngageApi* | [**V1EngageHistoryPost**](docs/EngageApi.md#v1engagehistorypost) | **Post** /v1/engage/history | Add Engage settings history notes 
-*EngageApi* | [**V1EngagePut**](docs/EngageApi.md#v1engageput) | **Put** /v1/engage | Update Engage settings 
-*EnrollmentApi* | [**PreviewEnrollmentAccessGroupsGet**](docs/EnrollmentApi.md#previewenrollmentaccessgroupsget) | **Get** /preview/enrollment/access-groups | Retrieve the configured LDAP groups configured for User-Initiated Enrollment. 
-*EnrollmentApi* | [**PreviewEnrollmentAccessGroupsIdDelete**](docs/EnrollmentApi.md#previewenrollmentaccessgroupsiddelete) | **Delete** /preview/enrollment/access-groups/{id} | Delete an LDAP group&#39;s access to user initiated Enrollment. 
-*EnrollmentApi* | [**PreviewEnrollmentAccessGroupsIdGet**](docs/EnrollmentApi.md#previewenrollmentaccessgroupsidget) | **Get** /preview/enrollment/access-groups/{id} | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**PreviewEnrollmentAccessGroupsIdPut**](docs/EnrollmentApi.md#previewenrollmentaccessgroupsidput) | **Put** /preview/enrollment/access-groups/{id} | Modify the configured LDAP groups configured for User-Initiated Enrollment. Only exiting Access Groups can be updated. 
-*EnrollmentApi* | [**PreviewEnrollmentAccessGroupsPost**](docs/EnrollmentApi.md#previewenrollmentaccessgroupspost) | **Post** /preview/enrollment/access-groups | Add the configured LDAP group for User-Initiated Enrollment. 
-*EnrollmentApi* | [**V1EnrollmentAccessGroupsGet**](docs/EnrollmentApi.md#v1enrollmentaccessgroupsget) | **Get** /v1/enrollment/access-groups | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V1EnrollmentAccessGroupsGroupKeyDelete**](docs/EnrollmentApi.md#v1enrollmentaccessgroupsgroupkeydelete) | **Delete** /v1/enrollment/access-groups/{group-key} | Delete an LDAP group&#39;s access to user initiated Enrollment 
-*EnrollmentApi* | [**V1EnrollmentAccessGroupsGroupKeyGet**](docs/EnrollmentApi.md#v1enrollmentaccessgroupsgroupkeyget) | **Get** /v1/enrollment/access-groups/{group-key} | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V1EnrollmentAccessGroupsGroupKeyPut**](docs/EnrollmentApi.md#v1enrollmentaccessgroupsgroupkeyput) | **Put** /v1/enrollment/access-groups/{group-key} | Modify the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V1EnrollmentFilteredLanguageCodesGet**](docs/EnrollmentApi.md#v1enrollmentfilteredlanguagecodesget) | **Get** /v1/enrollment/filtered-language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
-*EnrollmentApi* | [**V1EnrollmentGet**](docs/EnrollmentApi.md#v1enrollmentget) | **Get** /v1/enrollment | Get Enrollment object and Re-enrollment settings 
-*EnrollmentApi* | [**V1EnrollmentHistoryGet**](docs/EnrollmentApi.md#v1enrollmenthistoryget) | **Get** /v1/enrollment/history | Get sorted and paged Enrollment history object 
-*EnrollmentApi* | [**V1EnrollmentHistoryPost**](docs/EnrollmentApi.md#v1enrollmenthistorypost) | **Post** /v1/enrollment/history | Add Enrollment history object notes 
-*EnrollmentApi* | [**V1EnrollmentLanguageCodesGet**](docs/EnrollmentApi.md#v1enrollmentlanguagecodesget) | **Get** /v1/enrollment/language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes 
-*EnrollmentApi* | [**V1EnrollmentLanguagesGet**](docs/EnrollmentApi.md#v1enrollmentlanguagesget) | **Get** /v1/enrollment/languages | Get an array of the language codes that have Enrollment messaging 
-*EnrollmentApi* | [**V1EnrollmentLanguagesLanguageDelete**](docs/EnrollmentApi.md#v1enrollmentlanguageslanguagedelete) | **Delete** /v1/enrollment/languages/{language} | Delete the Enrollment messaging for a language 
-*EnrollmentApi* | [**V1EnrollmentLanguagesLanguageGet**](docs/EnrollmentApi.md#v1enrollmentlanguageslanguageget) | **Get** /v1/enrollment/languages/{language} | Retrieve the Enrollment messaging for a language 
-*EnrollmentApi* | [**V1EnrollmentLanguagesLanguagePut**](docs/EnrollmentApi.md#v1enrollmentlanguageslanguageput) | **Put** /v1/enrollment/languages/{language} | Edit Enrollment messaging for a language 
-*EnrollmentApi* | [**V1EnrollmentPut**](docs/EnrollmentApi.md#v1enrollmentput) | **Put** /v1/enrollment | Update Enrollment object 
-*EnrollmentApi* | [**V2EnrollmentAccessGroupsGet**](docs/EnrollmentApi.md#v2enrollmentaccessgroupsget) | **Get** /v2/enrollment/access-groups | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V2EnrollmentAccessGroupsPost**](docs/EnrollmentApi.md#v2enrollmentaccessgroupspost) | **Post** /v2/enrollment/access-groups | Add the configured LDAP group for User-Initiated Enrollment. 
-*EnrollmentApi* | [**V2EnrollmentAccessGroupsServerIdGroupIdDelete**](docs/EnrollmentApi.md#v2enrollmentaccessgroupsserveridgroupiddelete) | **Delete** /v2/enrollment/access-groups/{serverId}/{groupId} | Delete an LDAP group&#39;s access to user initiated Enrollment 
-*EnrollmentApi* | [**V2EnrollmentAccessGroupsServerIdGroupIdGet**](docs/EnrollmentApi.md#v2enrollmentaccessgroupsserveridgroupidget) | **Get** /v2/enrollment/access-groups/{serverId}/{groupId} | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V2EnrollmentAccessGroupsServerIdGroupIdPut**](docs/EnrollmentApi.md#v2enrollmentaccessgroupsserveridgroupidput) | **Put** /v2/enrollment/access-groups/{serverId}/{groupId} | Modify the configured LDAP groups configured for User-Initiated Enrollment 
-*EnrollmentApi* | [**V2EnrollmentFilteredLanguageCodesGet**](docs/EnrollmentApi.md#v2enrollmentfilteredlanguagecodesget) | **Get** /v2/enrollment/filtered-language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
-*EnrollmentApi* | [**V2EnrollmentGet**](docs/EnrollmentApi.md#v2enrollmentget) | **Get** /v2/enrollment | Get Enrollment object and Re-enrollment settings 
-*EnrollmentApi* | [**V2EnrollmentHistoryExportPost**](docs/EnrollmentApi.md#v2enrollmenthistoryexportpost) | **Post** /v2/enrollment/history/export | Export enrollment history collection 
-*EnrollmentApi* | [**V2EnrollmentHistoryGet**](docs/EnrollmentApi.md#v2enrollmenthistoryget) | **Get** /v2/enrollment/history | Get sorted and paged Enrollment history object 
-*EnrollmentApi* | [**V2EnrollmentHistoryPost**](docs/EnrollmentApi.md#v2enrollmenthistorypost) | **Post** /v2/enrollment/history | Add Enrollment history object notes 
-*EnrollmentApi* | [**V2EnrollmentLanguageCodesGet**](docs/EnrollmentApi.md#v2enrollmentlanguagecodesget) | **Get** /v2/enrollment/language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes 
-*EnrollmentApi* | [**V2EnrollmentLanguagesGet**](docs/EnrollmentApi.md#v2enrollmentlanguagesget) | **Get** /v2/enrollment/languages | Get an array of the language codes that have Enrollment messaging 
-*EnrollmentApi* | [**V2EnrollmentLanguagesLanguageIdDelete**](docs/EnrollmentApi.md#v2enrollmentlanguageslanguageiddelete) | **Delete** /v2/enrollment/languages/{languageId} | Delete the Enrollment messaging for a language 
-*EnrollmentApi* | [**V2EnrollmentLanguagesLanguageIdGet**](docs/EnrollmentApi.md#v2enrollmentlanguageslanguageidget) | **Get** /v2/enrollment/languages/{languageId} | Retrieve the Enrollment messaging for a language 
-*EnrollmentApi* | [**V2EnrollmentLanguagesLanguageIdPut**](docs/EnrollmentApi.md#v2enrollmentlanguageslanguageidput) | **Put** /v2/enrollment/languages/{languageId} | Edit Enrollment messaging for a language 
-*EnrollmentApi* | [**V2EnrollmentPut**](docs/EnrollmentApi.md#v2enrollmentput) | **Put** /v2/enrollment | Update Enrollment object 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationGet**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationget) | **Get** /v1/enrollment-customization | Retrieve sorted and paged Enrollment Customizations 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdDelete**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationiddelete) | **Delete** /v1/enrollment-customization/{id} | Delete an Enrollment Customization with the supplied id 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdGet**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationidget) | **Get** /v1/enrollment-customization/{id} | Retrieve an Enrollment Customization with the supplied id 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdHistoryGet**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationidhistoryget) | **Get** /v1/enrollment-customization/{id}/history | Get sorted and paged Enrollment Customization history objects 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdHistoryPost**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationidhistorypost) | **Post** /v1/enrollment-customization/{id}/history | Add Enrollment Customization history object notes 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdPrestagesGet**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationidprestagesget) | **Get** /v1/enrollment-customization/{id}/prestages | Retrieve the list of Prestages using this Enrollment Customization 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationIdPut**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationidput) | **Put** /v1/enrollment-customization/{id} | Update an Enrollment Customization 
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationImagesPost**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationimagespost) | **Post** /v1/enrollment-customization/images | Upload an image
-*EnrollmentCustomizationApi* | [**V1EnrollmentCustomizationPost**](docs/EnrollmentCustomizationApi.md#v1enrollmentcustomizationpost) | **Post** /v1/enrollment-customization | Create an Enrollment Customization 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsGet**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsget) | **Get** /v2/enrollment-customizations | Retrieve sorted and paged Enrollment Customizations 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdDelete**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsiddelete) | **Delete** /v2/enrollment-customizations/{id} | Delete an Enrollment Customization with the supplied id 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdGet**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsidget) | **Get** /v2/enrollment-customizations/{id} | Retrieve an Enrollment Customization with the supplied id 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdHistoryGet**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsidhistoryget) | **Get** /v2/enrollment-customizations/{id}/history | Get sorted and paged Enrollment Customization history objects 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdHistoryPost**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsidhistorypost) | **Post** /v2/enrollment-customizations/{id}/history | Add Enrollment Customization history object notes 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdPrestagesGet**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsidprestagesget) | **Get** /v2/enrollment-customizations/{id}/prestages | Retrieve the list of Prestages using this Enrollment Customization 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsIdPut**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsidput) | **Put** /v2/enrollment-customizations/{id} | Update an Enrollment Customization 
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsImagesPost**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationsimagespost) | **Post** /v2/enrollment-customizations/images | Upload an image
-*EnrollmentCustomizationApi* | [**V2EnrollmentCustomizationsPost**](docs/EnrollmentCustomizationApi.md#v2enrollmentcustomizationspost) | **Post** /v2/enrollment-customizations | Create an Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdAllGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidallget) | **Get** /v1/enrollment-customization/{id}/all | Get all Panels for single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdAllPanelIdDelete**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidallpaneliddelete) | **Delete** /v1/enrollment-customization/{id}/all/{panel-id} | Delete a single Panel from an Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdAllPanelIdGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidallpanelidget) | **Get** /v1/enrollment-customization/{id}/all/{panel-id} | Get a single Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdLdapPanelIdDelete**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidldappaneliddelete) | **Delete** /v1/enrollment-customization/{id}/ldap/{panel-id} | Delete an LDAP single panel from an Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdLdapPanelIdGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidldappanelidget) | **Get** /v1/enrollment-customization/{id}/ldap/{panel-id} | Get a single LDAP panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdLdapPanelIdPut**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidldappanelidput) | **Put** /v1/enrollment-customization/{id}/ldap/{panel-id} | Update a single LDAP Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdLdapPost**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidldappost) | **Post** /v1/enrollment-customization/{id}/ldap | Create an LDAP Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdSsoPanelIdDelete**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidssopaneliddelete) | **Delete** /v1/enrollment-customization/{id}/sso/{panel-id} | Delete a single SSO Panel from an Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdSsoPanelIdGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidssopanelidget) | **Get** /v1/enrollment-customization/{id}/sso/{panel-id} | Get a single SSO Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdSsoPanelIdPut**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidssopanelidput) | **Put** /v1/enrollment-customization/{id}/sso/{panel-id} | Update a single SSO Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdSsoPost**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidssopost) | **Post** /v1/enrollment-customization/{id}/sso | Create an SSO Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdTextPanelIdDelete**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidtextpaneliddelete) | **Delete** /v1/enrollment-customization/{id}/text/{panel-id} | Delete a Text single Panel from an Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdTextPanelIdGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidtextpanelidget) | **Get** /v1/enrollment-customization/{id}/text/{panel-id} | Get a single Text Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdTextPanelIdMarkdownGet**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidtextpanelidmarkdownget) | **Get** /v1/enrollment-customization/{id}/text/{panel-id}/markdown | Get the markdown output of a single Text Panel for a single Enrollment 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdTextPanelIdPut**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidtextpanelidput) | **Put** /v1/enrollment-customization/{id}/text/{panel-id} | Update a single Text Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationIdTextPost**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationidtextpost) | **Post** /v1/enrollment-customization/{id}/text | Create a Text Panel for a single Enrollment Customization 
-*EnrollmentCustomizationPreviewApi* | [**V1EnrollmentCustomizationParseMarkdownPost**](docs/EnrollmentCustomizationPreviewApi.md#v1enrollmentcustomizationparsemarkdownpost) | **Post** /v1/enrollment-customization/parse-markdown | Parse the given string as markdown text and return Html output 
-*IconApi* | [**V1IconIdGet**](docs/IconApi.md#v1iconidget) | **Get** /v1/icon/{id} | Get an icon 
-*IconApi* | [**V1IconPost**](docs/IconApi.md#v1iconpost) | **Post** /v1/icon | Upload an icon 
-*InventoryInformationApi* | [**V1InventoryInformationGet**](docs/InventoryInformationApi.md#v1inventoryinformationget) | **Get** /v1/inventory-information | Get statistics about managed/unmanaged devices and computers in the inventory 
-*InventoryPreloadApi* | [**InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadApi.md#inventorypreloadcsvtemplateget) | **Get** /inventory-preload/csv-template | Get the Inventory Preload CSV template 
-*InventoryPreloadApi* | [**InventoryPreloadDelete**](docs/InventoryPreloadApi.md#inventorypreloaddelete) | **Delete** /inventory-preload | Delete all Inventory Preload records 
-*InventoryPreloadApi* | [**InventoryPreloadGet**](docs/InventoryPreloadApi.md#inventorypreloadget) | **Get** /inventory-preload | Return all Inventory Preload records 
-*InventoryPreloadApi* | [**InventoryPreloadHistoryGet**](docs/InventoryPreloadApi.md#inventorypreloadhistoryget) | **Get** /inventory-preload/history | Get Inventory Preload history entries 
-*InventoryPreloadApi* | [**InventoryPreloadHistoryNotesPost**](docs/InventoryPreloadApi.md#inventorypreloadhistorynotespost) | **Post** /inventory-preload/history/notes | Add Inventory Preload history object notes 
-*InventoryPreloadApi* | [**InventoryPreloadIdDelete**](docs/InventoryPreloadApi.md#inventorypreloadiddelete) | **Delete** /inventory-preload/{id} | Delete an Inventory Preload record 
-*InventoryPreloadApi* | [**InventoryPreloadIdGet**](docs/InventoryPreloadApi.md#inventorypreloadidget) | **Get** /inventory-preload/{id} | Get an Inventory Preload record 
-*InventoryPreloadApi* | [**InventoryPreloadIdPut**](docs/InventoryPreloadApi.md#inventorypreloadidput) | **Put** /inventory-preload/{id} | Update an Inventory Preload record 
-*InventoryPreloadApi* | [**InventoryPreloadPost**](docs/InventoryPreloadApi.md#inventorypreloadpost) | **Post** /inventory-preload | Create a new Inventory Preload record using JSON or CSV 
-*InventoryPreloadApi* | [**InventoryPreloadValidateCsvPost**](docs/InventoryPreloadApi.md#inventorypreloadvalidatecsvpost) | **Post** /inventory-preload/validate-csv | Validate a given CSV file 
-*InventoryPreloadApi* | [**V1InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadApi.md#v1inventorypreloadcsvtemplateget) | **Get** /v1/inventory-preload/csv-template | Retrieve the Inventory Preload CSV template 
-*InventoryPreloadApi* | [**V1InventoryPreloadDelete**](docs/InventoryPreloadApi.md#v1inventorypreloaddelete) | **Delete** /v1/inventory-preload | Delete all Inventory Preload records 
-*InventoryPreloadApi* | [**V1InventoryPreloadGet**](docs/InventoryPreloadApi.md#v1inventorypreloadget) | **Get** /v1/inventory-preload | Return all Inventory Preload records 
-*InventoryPreloadApi* | [**V1InventoryPreloadHistoryGet**](docs/InventoryPreloadApi.md#v1inventorypreloadhistoryget) | **Get** /v1/inventory-preload/history | Get Inventory Preload history entries 
-*InventoryPreloadApi* | [**V1InventoryPreloadHistoryPost**](docs/InventoryPreloadApi.md#v1inventorypreloadhistorypost) | **Post** /v1/inventory-preload/history | Add Inventory Preload history object notes 
-*InventoryPreloadApi* | [**V1InventoryPreloadIdDelete**](docs/InventoryPreloadApi.md#v1inventorypreloadiddelete) | **Delete** /v1/inventory-preload/{id} | Delete an Inventory Preload record 
-*InventoryPreloadApi* | [**V1InventoryPreloadIdGet**](docs/InventoryPreloadApi.md#v1inventorypreloadidget) | **Get** /v1/inventory-preload/{id} | Get an Inventory Preload record 
-*InventoryPreloadApi* | [**V1InventoryPreloadIdPut**](docs/InventoryPreloadApi.md#v1inventorypreloadidput) | **Put** /v1/inventory-preload/{id} | Update an Inventory Preload record 
-*InventoryPreloadApi* | [**V1InventoryPreloadPost**](docs/InventoryPreloadApi.md#v1inventorypreloadpost) | **Post** /v1/inventory-preload | Create a new Inventory Preload record using JSON or CSV 
-*InventoryPreloadApi* | [**V1InventoryPreloadValidateCsvPost**](docs/InventoryPreloadApi.md#v1inventorypreloadvalidatecsvpost) | **Post** /v1/inventory-preload/validate-csv | Validate a given CSV file 
-*InventoryPreloadApi* | [**V2InventoryPreloadCsvGet**](docs/InventoryPreloadApi.md#v2inventorypreloadcsvget) | **Get** /v2/inventory-preload/csv | Download all Inventory Preload records
-*InventoryPreloadApi* | [**V2InventoryPreloadCsvPost**](docs/InventoryPreloadApi.md#v2inventorypreloadcsvpost) | **Post** /v2/inventory-preload/csv | Create one or more new Inventory Preload records using CSV 
-*InventoryPreloadApi* | [**V2InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadApi.md#v2inventorypreloadcsvtemplateget) | **Get** /v2/inventory-preload/csv-template | Download the Inventory Preload CSV template
-*InventoryPreloadApi* | [**V2InventoryPreloadCsvValidatePost**](docs/InventoryPreloadApi.md#v2inventorypreloadcsvvalidatepost) | **Post** /v2/inventory-preload/csv-validate | Validate a given CSV file 
-*InventoryPreloadApi* | [**V2InventoryPreloadEaColumnsGet**](docs/InventoryPreloadApi.md#v2inventorypreloadeacolumnsget) | **Get** /v2/inventory-preload/ea-columns | Retrieve a list of extension attribute columns 
-*InventoryPreloadApi* | [**V2InventoryPreloadExportPost**](docs/InventoryPreloadApi.md#v2inventorypreloadexportpost) | **Post** /v2/inventory-preload/export | Export a collection of inventory preload records 
-*InventoryPreloadApi* | [**V2InventoryPreloadHistoryGet**](docs/InventoryPreloadApi.md#v2inventorypreloadhistoryget) | **Get** /v2/inventory-preload/history | Get Inventory Preload history entries 
-*InventoryPreloadApi* | [**V2InventoryPreloadHistoryPost**](docs/InventoryPreloadApi.md#v2inventorypreloadhistorypost) | **Post** /v2/inventory-preload/history | Add Inventory Preload history object notes
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsDeleteAllPost**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordsdeleteallpost) | **Post** /v2/inventory-preload/records/delete-all | Delete all Inventory Preload records 
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsGet**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordsget) | **Get** /v2/inventory-preload/records | Return all Inventory Preload records
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsIdDelete**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordsiddelete) | **Delete** /v2/inventory-preload/records/{id} | Delete an Inventory Preload record 
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsIdGet**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordsidget) | **Get** /v2/inventory-preload/records/{id} | Get an Inventory Preload record
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsIdPut**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordsidput) | **Put** /v2/inventory-preload/records/{id} | Update an Inventory Preload record
-*InventoryPreloadApi* | [**V2InventoryPreloadRecordsPost**](docs/InventoryPreloadApi.md#v2inventorypreloadrecordspost) | **Post** /v2/inventory-preload/records | Create a new Inventory Preload record using JSON
-*JamfConnectApi* | [**V1JamfConnectConfigProfilesGet**](docs/JamfConnectApi.md#v1jamfconnectconfigprofilesget) | **Get** /v1/jamf-connect/config-profiles | Search for config profiles linked to Jamf Connect 
-*JamfConnectApi* | [**V1JamfConnectConfigProfilesIdPut**](docs/JamfConnectApi.md#v1jamfconnectconfigprofilesidput) | **Put** /v1/jamf-connect/config-profiles/{id} | Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
-*JamfConnectApi* | [**V1JamfConnectDeploymentsIdTasksGet**](docs/JamfConnectApi.md#v1jamfconnectdeploymentsidtasksget) | **Get** /v1/jamf-connect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Connect 
-*JamfConnectApi* | [**V1JamfConnectDeploymentsIdTasksRetryPost**](docs/JamfConnectApi.md#v1jamfconnectdeploymentsidtasksretrypost) | **Post** /v1/jamf-connect/deployments/{id}/tasks/retry | Request a retry of Connect install tasks 
-*JamfConnectApi* | [**V1JamfConnectGet**](docs/JamfConnectApi.md#v1jamfconnectget) | **Get** /v1/jamf-connect | Get the Jamf Connect settings that you have access to see 
-*JamfConnectApi* | [**V1JamfConnectHistoryGet**](docs/JamfConnectApi.md#v1jamfconnecthistoryget) | **Get** /v1/jamf-connect/history | Get Jamf Connect history 
-*JamfConnectApi* | [**V1JamfConnectHistoryPost**](docs/JamfConnectApi.md#v1jamfconnecthistorypost) | **Post** /v1/jamf-connect/history | Add Jamf Connect history notes 
-*JamfManagementFrameworkApi* | [**V1JamfManagementFrameworkRedeployIdPost**](docs/JamfManagementFrameworkApi.md#v1jamfmanagementframeworkredeployidpost) | **Post** /v1/jamf-management-framework/redeploy/{id} | Redeploy Jamf Management Framework 
-*JamfPackageApi* | [**V1JamfPackageGet**](docs/JamfPackageApi.md#v1jamfpackageget) | **Get** /v1/jamf-package | Get the packages for a given Jamf application 
-*JamfPackageApi* | [**V2JamfPackageGet**](docs/JamfPackageApi.md#v2jamfpackageget) | **Get** /v2/jamf-package | Get the packages for a given Jamf application 
-*JamfProInformationPreviewApi* | [**V1JamfProInformationGet**](docs/JamfProInformationPreviewApi.md#v1jamfproinformationget) | **Get** /v1/jamf-pro-information | Get basic information about the Jamf Pro Server 
-*JamfProInitializationApi* | [**V1SystemInitializeDatabaseConnectionPost**](docs/JamfProInitializationApi.md#v1systeminitializedatabaseconnectionpost) | **Post** /v1/system/initialize-database-connection | Provide Database Password during startup 
-*JamfProInitializationApi* | [**V1SystemInitializePost**](docs/JamfProInitializationApi.md#v1systeminitializepost) | **Post** /v1/system/initialize | Set up fresh installed Jamf Pro Server 
-*JamfProInitializationPreviewApi* | [**SystemInitializeDatabaseConnectionPost**](docs/JamfProInitializationPreviewApi.md#systeminitializedatabaseconnectionpost) | **Post** /system/initialize-database-connection | Provide Database Password during startup 
-*JamfProInitializationPreviewApi* | [**SystemInitializePost**](docs/JamfProInitializationPreviewApi.md#systeminitializepost) | **Post** /system/initialize | Set up fresh installed Jamf Pro Server 
-*JamfProNotificationsApi* | [**V1NotificationsGet**](docs/JamfProNotificationsApi.md#v1notificationsget) | **Get** /v1/notifications | Get Notifications for user and site 
-*JamfProNotificationsApi* | [**V1NotificationsTypeIdDelete**](docs/JamfProNotificationsApi.md#v1notificationstypeiddelete) | **Delete** /v1/notifications/{type}/{id} | Delete Notifications 
-*JamfProNotificationsPreviewApi* | [**NotificationsAlertsGet**](docs/JamfProNotificationsPreviewApi.md#notificationsalertsget) | **Get** /notifications/alerts | Get Notifications for user and site 
-*JamfProNotificationsPreviewApi* | [**NotificationsAlertsIdDelete**](docs/JamfProNotificationsPreviewApi.md#notificationsalertsiddelete) | **Delete** /notifications/alerts/{id} | DEPRECATED - USE \&quot;alerts/{type}/{id}\&quot; INSTEAD. Deletes only Patch Management notifications. 
-*JamfProNotificationsPreviewApi* | [**NotificationsAlertsTypeIdDelete**](docs/JamfProNotificationsPreviewApi.md#notificationsalertstypeiddelete) | **Delete** /notifications/alerts/{type}/{id} | Delete Notifications 
-*JamfProServerUrlPreviewApi* | [**V1JamfProServerUrlGet**](docs/JamfProServerUrlPreviewApi.md#v1jamfproserverurlget) | **Get** /v1/jamf-pro-server-url | Get Jamf Pro Server URL settings 
-*JamfProServerUrlPreviewApi* | [**V1JamfProServerUrlHistoryGet**](docs/JamfProServerUrlPreviewApi.md#v1jamfproserverurlhistoryget) | **Get** /v1/jamf-pro-server-url/history | Get Jamf Pro Server URL settings history 
-*JamfProServerUrlPreviewApi* | [**V1JamfProServerUrlHistoryPost**](docs/JamfProServerUrlPreviewApi.md#v1jamfproserverurlhistorypost) | **Post** /v1/jamf-pro-server-url/history | Add Jamf Pro Server URL settings history notes 
-*JamfProServerUrlPreviewApi* | [**V1JamfProServerUrlPut**](docs/JamfProServerUrlPreviewApi.md#v1jamfproserverurlput) | **Put** /v1/jamf-pro-server-url | Update Jamf Pro Server URL settings 
-*JamfProUserAccountSettingsApi* | [**V1UserPreferencesKeyIdDelete**](docs/JamfProUserAccountSettingsApi.md#v1userpreferenceskeyiddelete) | **Delete** /v1/user/preferences/{keyId} | Remove specified setting for authenticated user 
-*JamfProUserAccountSettingsApi* | [**V1UserPreferencesKeyIdGet**](docs/JamfProUserAccountSettingsApi.md#v1userpreferenceskeyidget) | **Get** /v1/user/preferences/{keyId} | Get the user setting for the authenticated user and key 
-*JamfProUserAccountSettingsApi* | [**V1UserPreferencesKeyIdPut**](docs/JamfProUserAccountSettingsApi.md#v1userpreferenceskeyidput) | **Put** /v1/user/preferences/{keyId} | Persist the user setting 
-*JamfProUserAccountSettingsPreviewApi* | [**UserObjPreferenceKeyDelete**](docs/JamfProUserAccountSettingsPreviewApi.md#userobjpreferencekeydelete) | **Delete** /user/obj/preference/{key} | Remove specified setting for authenticated user 
-*JamfProUserAccountSettingsPreviewApi* | [**UserObjPreferenceKeyGet**](docs/JamfProUserAccountSettingsPreviewApi.md#userobjpreferencekeyget) | **Get** /user/obj/preference/{key} | Get the user setting for the authenticated user and key 
-*JamfProUserAccountSettingsPreviewApi* | [**UserObjPreferenceKeyPut**](docs/JamfProUserAccountSettingsPreviewApi.md#userobjpreferencekeyput) | **Put** /user/obj/preference/{key} | Persist the user setting 
-*JamfProVersionApi* | [**V1JamfProVersionGet**](docs/JamfProVersionApi.md#v1jamfproversionget) | **Get** /v1/jamf-pro-version | Return information about the Jamf Pro including the current version 
-*JamfProtectApi* | [**V1JamfProtectDelete**](docs/JamfProtectApi.md#v1jamfprotectdelete) | **Delete** /v1/jamf-protect | Delete Jamf Protect API registration.
-*JamfProtectApi* | [**V1JamfProtectDeploymentsIdTasksGet**](docs/JamfProtectApi.md#v1jamfprotectdeploymentsidtasksget) | **Get** /v1/jamf-protect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Protect 
-*JamfProtectApi* | [**V1JamfProtectDeploymentsIdTasksRetryPost**](docs/JamfProtectApi.md#v1jamfprotectdeploymentsidtasksretrypost) | **Post** /v1/jamf-protect/deployments/{id}/tasks/retry | Request a retry of Protect install tasks 
-*JamfProtectApi* | [**V1JamfProtectGet**](docs/JamfProtectApi.md#v1jamfprotectget) | **Get** /v1/jamf-protect | Jamf Protect integration settings
-*JamfProtectApi* | [**V1JamfProtectHistoryGet**](docs/JamfProtectApi.md#v1jamfprotecthistoryget) | **Get** /v1/jamf-protect/history | Get Jamf Protect history 
-*JamfProtectApi* | [**V1JamfProtectHistoryPost**](docs/JamfProtectApi.md#v1jamfprotecthistorypost) | **Post** /v1/jamf-protect/history | Add Jamf Protect history notes 
-*JamfProtectApi* | [**V1JamfProtectPlansGet**](docs/JamfProtectApi.md#v1jamfprotectplansget) | **Get** /v1/jamf-protect/plans | Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
-*JamfProtectApi* | [**V1JamfProtectPlansSyncPost**](docs/JamfProtectApi.md#v1jamfprotectplanssyncpost) | **Post** /v1/jamf-protect/plans/sync | Sync Plans with Jamf Protect
-*JamfProtectApi* | [**V1JamfProtectPut**](docs/JamfProtectApi.md#v1jamfprotectput) | **Put** /v1/jamf-protect | Jamf Protect integration settings
-*JamfProtectApi* | [**V1JamfProtectRegisterPost**](docs/JamfProtectApi.md#v1jamfprotectregisterpost) | **Post** /v1/jamf-protect/register | Register a Jamf Protect API configuration with Jamf Pro
-*LdapApi* | [**LdapGroupsGet**](docs/LdapApi.md#ldapgroupsget) | **Get** /ldap/groups | Retrieve the configured access groups that contain the text in the search param 
-*LdapApi* | [**LdapServersGet**](docs/LdapApi.md#ldapserversget) | **Get** /ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
-*LdapApi* | [**V1LdapGroupsGet**](docs/LdapApi.md#v1ldapgroupsget) | **Get** /v1/ldap/groups | Retrieve the configured access groups that contain the text in the search param 
-*LdapApi* | [**V1LdapLdapServersGet**](docs/LdapApi.md#v1ldapldapserversget) | **Get** /v1/ldap/ldap-servers | Retrieve all LDAP Servers. 
-*LdapApi* | [**V1LdapServersGet**](docs/LdapApi.md#v1ldapserversget) | **Get** /v1/ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
-*LocalesPreviewApi* | [**V1LocalesGet**](docs/LocalesPreviewApi.md#v1localesget) | **Get** /v1/locales | Return locales that can be used in other features 
-*MacosManagedSoftwareUpdatesApi* | [**V1MacosManagedSoftwareUpdatesAvailableUpdatesGet**](docs/MacosManagedSoftwareUpdatesApi.md#v1macosmanagedsoftwareupdatesavailableupdatesget) | **Get** /v1/macos-managed-software-updates/available-updates | Retrieve available MacOs Managed Software Updates
-*MacosManagedSoftwareUpdatesApi* | [**V1MacosManagedSoftwareUpdatesSendUpdatesPost**](docs/MacosManagedSoftwareUpdatesApi.md#v1macosmanagedsoftwareupdatessendupdatespost) | **Post** /v1/macos-managed-software-updates/send-updates | Send MacOs Managed Software Updates
-*MdmApi* | [**PreviewMdmCommandsPost**](docs/MdmApi.md#previewmdmcommandspost) | **Post** /preview/mdm/commands | Post a command for creation and queuing 
-*MdmApi* | [**V1DeployPackagePost**](docs/MdmApi.md#v1deploypackagepost) | **Post** /v1/deploy-package | Deploy packages using MDM
-*MdmApi* | [**V1MdmCommandsGet**](docs/MdmApi.md#v1mdmcommandsget) | **Get** /v1/mdm/commands | Get information about mdm commands made by Jamf Pro. 
-*MdmApi* | [**V1MdmRenewProfilePost**](docs/MdmApi.md#v1mdmrenewprofilepost) | **Post** /v1/mdm/renew-profile | Renew MDM Profile 
-*MobileDeviceEnrollmentProfileApi* | [**V1MobileDeviceEnrollmentProfileIdDownloadProfileGet**](docs/MobileDeviceEnrollmentProfileApi.md#v1mobiledeviceenrollmentprofileiddownloadprofileget) | **Get** /v1/mobile-device-enrollment-profile/{id}/download-profile | Retrieve the MDM Enrollment Profile 
-*MobileDeviceExtensionAttributesPreviewApi* | [**DevicesExtensionAttributesGet**](docs/MobileDeviceExtensionAttributesPreviewApi.md#devicesextensionattributesget) | **Get** /devices/extensionAttributes | Get Mobile Device Extension Attribute values placed in select paramter 
-*MobileDeviceGroupsPreviewApi* | [**V1MobileDeviceGroupsGet**](docs/MobileDeviceGroupsPreviewApi.md#v1mobiledevicegroupsget) | **Get** /v1/mobile-device-groups | Return the list of all Mobile Device Groups 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesget) | **Get** /v1/mobile-device-prestages | Search for sorted and paged Mobile Device Prestages 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdAttachmentsDelete**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidattachmentsdelete) | **Delete** /v1/mobile-device-prestages/{id}/attachments | Remove an attachment for a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdAttachmentsGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidattachmentsget) | **Get** /v1/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdAttachmentsPost**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidattachmentspost) | **Post** /v1/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdDelete**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesiddelete) | **Delete** /v1/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidget) | **Get** /v1/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdHistoryGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidhistoryget) | **Get** /v1/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdHistoryPost**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidhistorypost) | **Post** /v1/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdPut**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidput) | **Put** /v1/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdScopeDelete**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidscopedelete) | **Delete** /v1/mobile-device-prestages/{id}/scope | Remove Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdScopeGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidscopeget) | **Get** /v1/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdScopePost**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidscopepost) | **Post** /v1/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesIdScopePut**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesidscopeput) | **Put** /v1/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesPost**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagespost) | **Post** /v1/mobile-device-prestages | Create a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesScopeGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagesscopeget) | **Get** /v1/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesSyncGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagessyncget) | **Get** /v1/mobile-device-prestages/sync | Get all Prestage sync States for all prestages 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesSyncIdGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagessyncidget) | **Get** /v1/mobile-device-prestages/sync/{id} | Get all prestage sync states for a single prestage 
-*MobileDevicePrestagesApi* | [**V1MobileDevicePrestagesSyncIdLatestGet**](docs/MobileDevicePrestagesApi.md#v1mobiledeviceprestagessyncidlatestget) | **Get** /v1/mobile-device-prestages/sync/{id}/latest | Get the latest Sync State for a single Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesget) | **Get** /v2/mobile-device-prestages | Get sorted and paged Mobile Device Prestages 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidattachmentsdeletemultiplepost) | **Post** /v2/mobile-device-prestages/{id}/attachments/delete-multiple | Remove an attachment for a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdAttachmentsGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidattachmentsget) | **Get** /v2/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdAttachmentsPost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidattachmentspost) | **Post** /v2/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdDelete**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesiddelete) | **Delete** /v2/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidget) | **Get** /v2/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdHistoryGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidhistoryget) | **Get** /v2/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdHistoryPost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidhistorypost) | **Post** /v2/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdPut**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidput) | **Put** /v2/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdScopeDeleteMultiplePost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidscopedeletemultiplepost) | **Post** /v2/mobile-device-prestages/{id}/scope/delete-multiple | Remove Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdScopeGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidscopeget) | **Get** /v2/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdScopePost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidscopepost) | **Post** /v2/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdScopePut**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidscopeput) | **Put** /v2/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdSyncsGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidsyncsget) | **Get** /v2/mobile-device-prestages/{id}/syncs | Get all prestage sync states for a single prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesIdSyncsLatestGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesidsyncslatestget) | **Get** /v2/mobile-device-prestages/{id}/syncs/latest | Get the latest Sync State for a single Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesPost**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagespost) | **Post** /v2/mobile-device-prestages | Create a Mobile Device Prestage 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesScopeGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagesscopeget) | **Get** /v2/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
-*MobileDevicePrestagesApi* | [**V2MobileDevicePrestagesSyncsGet**](docs/MobileDevicePrestagesApi.md#v2mobiledeviceprestagessyncsget) | **Get** /v2/mobile-device-prestages/syncs | Get all Prestage sync States for all prestages 
-*MobileDevicesApi* | [**V1MobileDevicesGet**](docs/MobileDevicesApi.md#v1mobiledevicesget) | **Get** /v1/mobile-devices | Get Mobile Device objects 
-*MobileDevicesApi* | [**V1MobileDevicesIdDetailGet**](docs/MobileDevicesApi.md#v1mobiledevicesiddetailget) | **Get** /v1/mobile-devices/{id}/detail | Get Mobile Device 
-*MobileDevicesApi* | [**V1MobileDevicesIdGet**](docs/MobileDevicesApi.md#v1mobiledevicesidget) | **Get** /v1/mobile-devices/{id} | Get Mobile Device 
-*MobileDevicesApi* | [**V1MobileDevicesIdPatch**](docs/MobileDevicesApi.md#v1mobiledevicesidpatch) | **Patch** /v1/mobile-devices/{id} | Update fields on a mobile device that are allowed to be modified by users 
-*MobileDevicesApi* | [**V1SearchMobileDevicesPost**](docs/MobileDevicesApi.md#v1searchmobiledevicespost) | **Post** /v1/search-mobile-devices | Search Mobile Devices 
-*MobileDevicesApi* | [**V2MobileDevicesGet**](docs/MobileDevicesApi.md#v2mobiledevicesget) | **Get** /v2/mobile-devices | Get Mobile Device objects 
-*MobileDevicesApi* | [**V2MobileDevicesIdDetailGet**](docs/MobileDevicesApi.md#v2mobiledevicesiddetailget) | **Get** /v2/mobile-devices/{id}/detail | Get Mobile Device 
-*MobileDevicesApi* | [**V2MobileDevicesIdGet**](docs/MobileDevicesApi.md#v2mobiledevicesidget) | **Get** /v2/mobile-devices/{id} | Get Mobile Device 
-*MobileDevicesApi* | [**V2MobileDevicesIdPatch**](docs/MobileDevicesApi.md#v2mobiledevicesidpatch) | **Patch** /v2/mobile-devices/{id} | Update fields on a mobile device that are allowed to be modified by users 
-*ParentAppPreviewApi* | [**V1ParentAppGet**](docs/ParentAppPreviewApi.md#v1parentappget) | **Get** /v1/parent-app | Get the current Jamf Parent app settings 
-*ParentAppPreviewApi* | [**V1ParentAppHistoryGet**](docs/ParentAppPreviewApi.md#v1parentapphistoryget) | **Get** /v1/parent-app/history | Get Jamf Parent app settings history 
-*ParentAppPreviewApi* | [**V1ParentAppHistoryPost**](docs/ParentAppPreviewApi.md#v1parentapphistorypost) | **Post** /v1/parent-app/history | Add Jamf Parent app settings history notes 
-*ParentAppPreviewApi* | [**V1ParentAppPut**](docs/ParentAppPreviewApi.md#v1parentappput) | **Put** /v1/parent-app | Update Jamf Parent app settings 
-*PatchPoliciesPreviewApi* | [**PatchPatchPoliciesGet**](docs/PatchPoliciesPreviewApi.md#patchpatchpoliciesget) | **Get** /patch/patch-policies | Return a list of patch policies 
-*PatchPoliciesPreviewApi* | [**PatchPatchPoliciesIdDashboardDelete**](docs/PatchPoliciesPreviewApi.md#patchpatchpoliciesiddashboarddelete) | **Delete** /patch/patch-policies/{id}/dashboard | Remove a patch policy from the dashboard 
-*PatchPoliciesPreviewApi* | [**PatchPatchPoliciesIdDashboardGet**](docs/PatchPoliciesPreviewApi.md#patchpatchpoliciesiddashboardget) | **Get** /patch/patch-policies/{id}/dashboard | Return whether or not the requested patch policy is on the dashboard 
-*PatchPoliciesPreviewApi* | [**PatchPatchPoliciesIdDashboardPost**](docs/PatchPoliciesPreviewApi.md#patchpatchpoliciesiddashboardpost) | **Post** /patch/patch-policies/{id}/dashboard | Add a patch policy to the dashboard 
-*PatchPolicyLogsPreviewApi* | [**PatchPatchPoliciesIdLogsGet**](docs/PatchPolicyLogsPreviewApi.md#patchpatchpoliciesidlogsget) | **Get** /patch/patch-policies/{id}/logs | Return the Patch Policy Attempt details 
-*PatchesApi* | [**PatchIdGet**](docs/PatchesApi.md#patchidget) | **Get** /patch/{id} | Return Active Patch Summary 
-*PatchesApi* | [**PatchIdPut**](docs/PatchesApi.md#patchidput) | **Put** /patch/{id} | Update patch report 
-*PatchesApi* | [**PatchIdVersionsGet**](docs/PatchesApi.md#patchidversionsget) | **Get** /patch/{id}/versions | Return patch versions 
-*PatchesApi* | [**PatchObjPolicyIdGet**](docs/PatchesApi.md#patchobjpolicyidget) | **Get** /patch/obj/policy/{id} | Return Patch Policy Summary 
-*PatchesApi* | [**PatchSvcDisclaimerAgreePost**](docs/PatchesApi.md#patchsvcdisclaimeragreepost) | **Post** /patch/svc/disclaimerAgree | Accept Patch reporting disclaimer 
-*PatchesPreviewApi* | [**PatchDisclaimerAgreePost**](docs/PatchesPreviewApi.md#patchdisclaimeragreepost) | **Post** /patch/disclaimerAgree | Accept Patch reporting disclaimer 
-*PatchesPreviewApi* | [**PatchObjIdGet**](docs/PatchesPreviewApi.md#patchobjidget) | **Get** /patch/obj/{id} | Return Active Patch Summary 
-*PatchesPreviewApi* | [**PatchObjIdPut**](docs/PatchesPreviewApi.md#patchobjidput) | **Put** /patch/obj/{id} | Update patch report 
-*PatchesPreviewApi* | [**PatchObjIdVersionsGet**](docs/PatchesPreviewApi.md#patchobjidversionsget) | **Get** /patch/obj/{id}/versions | Return patch versions 
-*PatchesPreviewApi* | [**PatchObjPolicyIdLogsEligibleRetryCountGet**](docs/PatchesPreviewApi.md#patchobjpolicyidlogseligibleretrycountget) | **Get** /patch/obj/policy/{id}/logs/eligibleRetryCount | Return the count of the Patch Policy Logs for the policy is that are eligible for a retry attempt 
-*PatchesPreviewApi* | [**PatchObjPolicyIdSoftwareTitleConfigurationIdGet**](docs/PatchesPreviewApi.md#patchobjpolicyidsoftwaretitleconfigurationidget) | **Get** /patch/obj/policy/{id}/softwareTitleConfigurationId | Return the Software Title Configuration Id for the given patch 
-*PatchesPreviewApi* | [**PatchObjSoftwareTitleConfigurationIdGet**](docs/PatchesPreviewApi.md#patchobjsoftwaretitleconfigurationidget) | **Get** /patch/obj/softwareTitleConfiguration/{id} | Return the Software Title Configuration 
-*PatchesPreviewApi* | [**PatchObjSoftwareTitleIdPoliciesGet**](docs/PatchesPreviewApi.md#patchobjsoftwaretitleidpoliciesget) | **Get** /patch/obj/softwareTitle/{id}/policies | Return the Summaries of the Patch Policies for the software title 
-*PatchesPreviewApi* | [**PatchObjsPolicyIdGet**](docs/PatchesPreviewApi.md#patchobjspolicyidget) | **Get** /patch/objs/policy/{id} | Return Patch Policy Summary 
-*PatchesPreviewApi* | [**PatchOnDashboardGet**](docs/PatchesPreviewApi.md#patchondashboardget) | **Get** /patch/onDashboard | Return list of Patch ids on dashboard 
-*PatchesPreviewApi* | [**PatchRetryPolicyPost**](docs/PatchesPreviewApi.md#patchretrypolicypost) | **Post** /patch/retryPolicy | Retry policy 
-*PatchesPreviewApi* | [**PatchSearchActivePatchHistoryPost**](docs/PatchesPreviewApi.md#patchsearchactivepatchhistorypost) | **Post** /patch/searchActivePatchHistory | Search the history for a Specific Active Patch 
-*PatchesPreviewApi* | [**PatchSearchPatchPolicyLogsPost**](docs/PatchesPreviewApi.md#patchsearchpatchpolicylogspost) | **Post** /patch/searchPatchPolicyLogs | Return Patch Policy Logs 
-*PatchesPreviewApi* | [**PatchSvcRetryPolicyPost**](docs/PatchesPreviewApi.md#patchsvcretrypolicypost) | **Post** /patch/svc/retryPolicy | Retry policy 
-*PoliciesPreviewApi* | [**SettingsObjPolicyPropertiesGet**](docs/PoliciesPreviewApi.md#settingsobjpolicypropertiesget) | **Get** /settings/obj/policyProperties | Get Policy Properties object 
-*PoliciesPreviewApi* | [**SettingsObjPolicyPropertiesPut**](docs/PoliciesPreviewApi.md#settingsobjpolicypropertiesput) | **Put** /settings/obj/policyProperties | Update Policy Properties object 
-*PoliciesPreviewApi* | [**V1PolicyPropertiesGet**](docs/PoliciesPreviewApi.md#v1policypropertiesget) | **Get** /v1/policy-properties | Get Policy Properties object 
-*PoliciesPreviewApi* | [**V1PolicyPropertiesPut**](docs/PoliciesPreviewApi.md#v1policypropertiesput) | **Put** /v1/policy-properties | Update Policy Properties object 
-*ReEnrollmentPreviewApi* | [**V1ReenrollmentGet**](docs/ReEnrollmentPreviewApi.md#v1reenrollmentget) | **Get** /v1/reenrollment | Get Re-enrollment object 
-*ReEnrollmentPreviewApi* | [**V1ReenrollmentHistoryGet**](docs/ReEnrollmentPreviewApi.md#v1reenrollmenthistoryget) | **Get** /v1/reenrollment/history | Get Re-enrollment history object 
-*ReEnrollmentPreviewApi* | [**V1ReenrollmentHistoryPost**](docs/ReEnrollmentPreviewApi.md#v1reenrollmenthistorypost) | **Post** /v1/reenrollment/history | Add specified Re-enrollment history object notes 
-*ReEnrollmentPreviewApi* | [**V1ReenrollmentPut**](docs/ReEnrollmentPreviewApi.md#v1reenrollmentput) | **Put** /v1/reenrollment | Update the Re-enrollment object 
-*RemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsGet**](docs/RemoteAdministrationApi.md#previewremoteadministrationconfigurationsget) | **Get** /preview/remote-administration-configurations | Get information about all remote administration configurations.
-*ScriptsApi* | [**V1ScriptsGet**](docs/ScriptsApi.md#v1scriptsget) | **Get** /v1/scripts | Search for sorted and paged Scripts 
-*ScriptsApi* | [**V1ScriptsIdDelete**](docs/ScriptsApi.md#v1scriptsiddelete) | **Delete** /v1/scripts/{id} | Delete a Script at the specified id 
-*ScriptsApi* | [**V1ScriptsIdDownloadGet**](docs/ScriptsApi.md#v1scriptsiddownloadget) | **Get** /v1/scripts/{id}/download | Download a text file of the Script contents 
-*ScriptsApi* | [**V1ScriptsIdGet**](docs/ScriptsApi.md#v1scriptsidget) | **Get** /v1/scripts/{id} | Retrieve a full script object 
-*ScriptsApi* | [**V1ScriptsIdHistoryGet**](docs/ScriptsApi.md#v1scriptsidhistoryget) | **Get** /v1/scripts/{id}/history | Get specified Script history object 
-*ScriptsApi* | [**V1ScriptsIdHistoryPost**](docs/ScriptsApi.md#v1scriptsidhistorypost) | **Post** /v1/scripts/{id}/history | Add specified Script history object notes 
-*ScriptsApi* | [**V1ScriptsIdPut**](docs/ScriptsApi.md#v1scriptsidput) | **Put** /v1/scripts/{id} | Replace the script at the id with the supplied information 
-*ScriptsApi* | [**V1ScriptsPost**](docs/ScriptsApi.md#v1scriptspost) | **Post** /v1/scripts | Create a Script 
-*SelfServiceApi* | [**V1SelfServiceSettingsGet**](docs/SelfServiceApi.md#v1selfservicesettingsget) | **Get** /v1/self-service/settings | Get an object representation of Self Service settings 
-*SelfServiceApi* | [**V1SelfServiceSettingsPut**](docs/SelfServiceApi.md#v1selfservicesettingsput) | **Put** /v1/self-service/settings | Put an object representation of Self Service settings 
-*SelfServiceBrandingIosApi* | [**V1SelfServiceBrandingIosGet**](docs/SelfServiceBrandingIosApi.md#v1selfservicebrandingiosget) | **Get** /v1/self-service/branding/ios | Search for sorted and paged iOS branding configurations 
-*SelfServiceBrandingIosApi* | [**V1SelfServiceBrandingIosIdDelete**](docs/SelfServiceBrandingIosApi.md#v1selfservicebrandingiosiddelete) | **Delete** /v1/self-service/branding/ios/{id} | Delete the Self Service iOS branding configuration indicated by the provided id 
-*SelfServiceBrandingIosApi* | [**V1SelfServiceBrandingIosIdGet**](docs/SelfServiceBrandingIosApi.md#v1selfservicebrandingiosidget) | **Get** /v1/self-service/branding/ios/{id} | Read a single Self Service iOS branding configuration indicated by the provided id 
-*SelfServiceBrandingIosApi* | [**V1SelfServiceBrandingIosIdPut**](docs/SelfServiceBrandingIosApi.md#v1selfservicebrandingiosidput) | **Put** /v1/self-service/branding/ios/{id} | Update a Self Service iOS branding configuration with the supplied details 
-*SelfServiceBrandingIosApi* | [**V1SelfServiceBrandingIosPost**](docs/SelfServiceBrandingIosApi.md#v1selfservicebrandingiospost) | **Post** /v1/self-service/branding/ios | Create a Self Service iOS branding configuration with the supplied 
-*SelfServiceBrandingMacosApi* | [**V1SelfServiceBrandingMacosGet**](docs/SelfServiceBrandingMacosApi.md#v1selfservicebrandingmacosget) | **Get** /v1/self-service/branding/macos | Search for sorted and paged macOS branding configurations 
-*SelfServiceBrandingMacosApi* | [**V1SelfServiceBrandingMacosIdDelete**](docs/SelfServiceBrandingMacosApi.md#v1selfservicebrandingmacosiddelete) | **Delete** /v1/self-service/branding/macos/{id} | Delete the Self Service macOS branding configuration indicated by the provided id 
-*SelfServiceBrandingMacosApi* | [**V1SelfServiceBrandingMacosIdGet**](docs/SelfServiceBrandingMacosApi.md#v1selfservicebrandingmacosidget) | **Get** /v1/self-service/branding/macos/{id} | Read a single Self Service macOS branding configuration indicated by the provided id 
-*SelfServiceBrandingMacosApi* | [**V1SelfServiceBrandingMacosIdPut**](docs/SelfServiceBrandingMacosApi.md#v1selfservicebrandingmacosidput) | **Put** /v1/self-service/branding/macos/{id} | Update a Self Service macOS branding configuration with the supplied details 
-*SelfServiceBrandingMacosApi* | [**V1SelfServiceBrandingMacosPost**](docs/SelfServiceBrandingMacosApi.md#v1selfservicebrandingmacospost) | **Post** /v1/self-service/branding/macos | Create a Self Service macOS branding configuration with the supplied 
-*SelfServiceBrandingPreviewApi* | [**SelfServiceBrandingImagesPost**](docs/SelfServiceBrandingPreviewApi.md#selfservicebrandingimagespost) | **Post** /self-service/branding/images | Upload an image 
-*SitesPreviewApi* | [**SettingsSitesGet**](docs/SitesPreviewApi.md#settingssitesget) | **Get** /settings/sites | Find all sites 
-*SmartComputerGroupsPreviewApi* | [**V1ComputersIdRecalculateSmartGroupsPost**](docs/SmartComputerGroupsPreviewApi.md#v1computersidrecalculatesmartgroupspost) | **Post** /v1/computers/{id}/recalculate-smart-groups | Recalculate a smart group for the given id 
-*SmartComputerGroupsPreviewApi* | [**V1SmartComputerGroupsIdRecalculatePost**](docs/SmartComputerGroupsPreviewApi.md#v1smartcomputergroupsidrecalculatepost) | **Post** /v1/smart-computer-groups/{id}/recalculate | Recalculate the smart group for the given id 
-*SmartMobileDeviceGroupsPreviewApi* | [**V1MobileDevicesIdRecalculateSmartGroupsPost**](docs/SmartMobileDeviceGroupsPreviewApi.md#v1mobiledevicesidrecalculatesmartgroupspost) | **Post** /v1/mobile-devices/{id}/recalculate-smart-groups | Recalculate all smart groups for the given device id and then return count of smart groups that device fall into 
-*SmartMobileDeviceGroupsPreviewApi* | [**V1SmartMobileDeviceGroupsIdRecalculatePost**](docs/SmartMobileDeviceGroupsPreviewApi.md#v1smartmobiledevicegroupsidrecalculatepost) | **Post** /v1/smart-mobile-device-groups/{id}/recalculate | Recalculate a smart group for the given id then return the ids for the devices in the smart group 
-*SmartUserGroupsPreviewApi* | [**V1SmartUserGroupsIdRecalculatePost**](docs/SmartUserGroupsPreviewApi.md#v1smartusergroupsidrecalculatepost) | **Post** /v1/smart-user-groups/{id}/recalculate | Recalculate the smart group for the given id and then return the ids for the users in the smart group 
-*SmartUserGroupsPreviewApi* | [**V1UsersIdRecalculateSmartGroupsPost**](docs/SmartUserGroupsPreviewApi.md#v1usersidrecalculatesmartgroupspost) | **Post** /v1/users/{id}/recalculate-smart-groups | Recalculate a smart group for the given user id and then return the count of smart groups the user falls into 
-*SsoCertificateApi* | [**V2SsoCertDelete**](docs/SsoCertificateApi.md#v2ssocertdelete) | **Delete** /v2/sso/cert | Delete the currently configured certificate used by SSO 
-*SsoCertificateApi* | [**V2SsoCertDownloadGet**](docs/SsoCertificateApi.md#v2ssocertdownloadget) | **Get** /v2/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
-*SsoCertificateApi* | [**V2SsoCertGet**](docs/SsoCertificateApi.md#v2ssocertget) | **Get** /v2/sso/cert | Retrieve the certificate currently configured for use with SSO 
-*SsoCertificateApi* | [**V2SsoCertParsePost**](docs/SsoCertificateApi.md#v2ssocertparsepost) | **Post** /v2/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
-*SsoCertificateApi* | [**V2SsoCertPost**](docs/SsoCertificateApi.md#v2ssocertpost) | **Post** /v2/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
-*SsoCertificateApi* | [**V2SsoCertPut**](docs/SsoCertificateApi.md#v2ssocertput) | **Put** /v2/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
-*SsoCertificatePreviewApi* | [**V1SsoCertDelete**](docs/SsoCertificatePreviewApi.md#v1ssocertdelete) | **Delete** /v1/sso/cert | Delete the currently configured certificate used by SSO 
-*SsoCertificatePreviewApi* | [**V1SsoCertDownloadGet**](docs/SsoCertificatePreviewApi.md#v1ssocertdownloadget) | **Get** /v1/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
-*SsoCertificatePreviewApi* | [**V1SsoCertGet**](docs/SsoCertificatePreviewApi.md#v1ssocertget) | **Get** /v1/sso/cert | Retrieve the certificate currently configured for use with SSO 
-*SsoCertificatePreviewApi* | [**V1SsoCertParsePost**](docs/SsoCertificatePreviewApi.md#v1ssocertparsepost) | **Post** /v1/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
-*SsoCertificatePreviewApi* | [**V1SsoCertPost**](docs/SsoCertificatePreviewApi.md#v1ssocertpost) | **Post** /v1/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
-*SsoCertificatePreviewApi* | [**V1SsoCertPut**](docs/SsoCertificatePreviewApi.md#v1ssocertput) | **Put** /v1/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
-*SsoSettingsApi* | [**V1SsoDependenciesGet**](docs/SsoSettingsApi.md#v1ssodependenciesget) | **Get** /v1/sso/dependencies | Retrieve the list of Enrollment Customizations using SSO 
-*SsoSettingsApi* | [**V1SsoDisablePost**](docs/SsoSettingsApi.md#v1ssodisablepost) | **Post** /v1/sso/disable | Disable SSO 
-*SsoSettingsApi* | [**V1SsoGet**](docs/SsoSettingsApi.md#v1ssoget) | **Get** /v1/sso | Retrieve the current Single Sign On configuration settings 
-*SsoSettingsApi* | [**V1SsoHistoryGet**](docs/SsoSettingsApi.md#v1ssohistoryget) | **Get** /v1/sso/history | Get SSO history object 
-*SsoSettingsApi* | [**V1SsoHistoryPost**](docs/SsoSettingsApi.md#v1ssohistorypost) | **Post** /v1/sso/history | Add SSO history object notes 
-*SsoSettingsApi* | [**V1SsoMetadataDownloadGet**](docs/SsoSettingsApi.md#v1ssometadatadownloadget) | **Get** /v1/sso/metadata/download | Download the Jamf Pro SAML metadata file 
-*SsoSettingsApi* | [**V1SsoPut**](docs/SsoSettingsApi.md#v1ssoput) | **Put** /v1/sso | Updates the current Single Sign On configuration settings 
-*SsoSettingsApi* | [**V1SsoValidatePost**](docs/SsoSettingsApi.md#v1ssovalidatepost) | **Post** /v1/sso/validate | Endpoint for validation of a saml metadata url 
-*StartupStatusApi* | [**StartupStatusGet**](docs/StartupStatusApi.md#startupstatusget) | **Get** /startup-status | Retrieve information about application startup 
-*StaticUserGroupsPreviewApi* | [**V1StaticUserGroupsGet**](docs/StaticUserGroupsPreviewApi.md#v1staticusergroupsget) | **Get** /v1/static-user-groups | Return a list of all Static User Groups 
-*StaticUserGroupsPreviewApi* | [**V1StaticUserGroupsIdGet**](docs/StaticUserGroupsPreviewApi.md#v1staticusergroupsidget) | **Get** /v1/static-user-groups/{id} | Return a specific Static User Group by id 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesGet**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesget) | **Get** /v1/supervision-identities | Search for sorted and paged Supervision Identities 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesIdDelete**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesiddelete) | **Delete** /v1/supervision-identities/{id} | Delete a Supervision Identity with the supplied id 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesIdDownloadGet**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesiddownloadget) | **Get** /v1/supervision-identities/{id}/download | Download the Supervision Identity .p12 file 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesIdGet**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesidget) | **Get** /v1/supervision-identities/{id} | Retrieve a Supervision Identity with the supplied id 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesIdPut**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesidput) | **Put** /v1/supervision-identities/{id} | Update a Supervision Identity with the supplied information 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesPost**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiespost) | **Post** /v1/supervision-identities | Create a Supervision Identity for the supplied information 
-*SupervisionIdentitiesPreviewApi* | [**V1SupervisionIdentitiesUploadPost**](docs/SupervisionIdentitiesPreviewApi.md#v1supervisionidentitiesuploadpost) | **Post** /v1/supervision-identities/upload | Upload the Supervision Identity .p12 file 
-*TeacherAppApi* | [**V1TeacherAppGet**](docs/TeacherAppApi.md#v1teacherappget) | **Get** /v1/teacher-app | Get the Jamf Teacher settings that you have access to see 
-*TeacherAppApi* | [**V1TeacherAppHistoryGet**](docs/TeacherAppApi.md#v1teacherapphistoryget) | **Get** /v1/teacher-app/history | Get Jamf Teacher app settings history 
-*TeacherAppApi* | [**V1TeacherAppHistoryPost**](docs/TeacherAppApi.md#v1teacherapphistorypost) | **Post** /v1/teacher-app/history | Add Jamf Teacher app settings history notes 
-*TeacherAppApi* | [**V1TeacherAppPut**](docs/TeacherAppApi.md#v1teacherappput) | **Put** /v1/teacher-app | Update a Jamf Teacher settings object 
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionsget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Get a paginated list of sessions 
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionspost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Create a new session
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidclosepost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/close | Close a session
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId} | Get a session by its ID 
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidresendnotificationpost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/resend-notification | Resend nofications for a session
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidstatusget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/status | Get a session status by its ID 
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamvieweriddelete) | **Delete** /preview/remote-administration-configurations/team-viewer/{id} | Delete Team Viewer Remote Administration connection configuration
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdGet**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamvieweridget) | **Get** /preview/remote-administration-configurations/team-viewer/{id} | Get Team Viewer Remote Administration connection configuration
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamvieweridpatch) | **Patch** /preview/remote-administration-configurations/team-viewer/{id} | Update Team Viewer Remote Administration connection configuration
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamvieweridstatusget) | **Get** /preview/remote-administration-configurations/team-viewer/{id}/status | Get Team Viewer Remote Administration connection status
-*TeamViewerRemoteAdministrationApi* | [**PreviewRemoteAdministrationConfigurationsTeamViewerPost**](docs/TeamViewerRemoteAdministrationApi.md#previewremoteadministrationconfigurationsteamviewerpost) | **Post** /preview/remote-administration-configurations/team-viewer | Create Team Viewer Remote Administration connection configuration
-*TimeZonesPreviewApi* | [**V1TimeZonesGet**](docs/TimeZonesPreviewApi.md#v1timezonesget) | **Get** /v1/time-zones | Return information about the currently supported Time Zones 
-*TomcatSettingsPreviewApi* | [**SettingsIssueTomcatSslCertificatePost**](docs/TomcatSettingsPreviewApi.md#settingsissuetomcatsslcertificatepost) | **Post** /settings/issueTomcatSslCertificate | Generate a SSL Certificate using Jamf Certificate Authority 
-*UserSessionPreviewApi* | [**UserGet**](docs/UserSessionPreviewApi.md#userget) | **Get** /user | Return all Jamf Pro user acounts 
-*UserSessionPreviewApi* | [**UserUpdateSessionPost**](docs/UserSessionPreviewApi.md#userupdatesessionpost) | **Post** /user/updateSession | Update values in the User&#39;s current session 
-*VenafiPreviewApi* | [**V1PkiVenafiIdConnectionStatusGet**](docs/VenafiPreviewApi.md#v1pkivenafiidconnectionstatusget) | **Get** /v1/pki/venafi/{id}/connection-status | Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiIdDelete**](docs/VenafiPreviewApi.md#v1pkivenafiiddelete) | **Delete** /v1/pki/venafi/{id} | Delete a Venafi PKI configuration from Jamf Pro 
-*VenafiPreviewApi* | [**V1PkiVenafiIdDependentProfilesGet**](docs/VenafiPreviewApi.md#v1pkivenafiiddependentprofilesget) | **Get** /v1/pki/venafi/{id}/dependent-profiles | Get configuration profile data using specified Venafi CA object 
-*VenafiPreviewApi* | [**V1PkiVenafiIdGet**](docs/VenafiPreviewApi.md#v1pkivenafiidget) | **Get** /v1/pki/venafi/{id} | Retrieve a Venafi PKI configuration from Jamf Pro 
-*VenafiPreviewApi* | [**V1PkiVenafiIdHistoryGet**](docs/VenafiPreviewApi.md#v1pkivenafiidhistoryget) | **Get** /v1/pki/venafi/{id}/history | Get specified Venafi CA history object 
-*VenafiPreviewApi* | [**V1PkiVenafiIdHistoryPost**](docs/VenafiPreviewApi.md#v1pkivenafiidhistorypost) | **Post** /v1/pki/venafi/{id}/history | Add specified Venafi CA Object Note 
-*VenafiPreviewApi* | [**V1PkiVenafiIdJamfPublicKeyGet**](docs/VenafiPreviewApi.md#v1pkivenafiidjamfpublickeyget) | **Get** /v1/pki/venafi/{id}/jamf-public-key | Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiIdJamfPublicKeyRegeneratePost**](docs/VenafiPreviewApi.md#v1pkivenafiidjamfpublickeyregeneratepost) | **Post** /v1/pki/venafi/{id}/jamf-public-key/regenerate | Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiIdPatch**](docs/VenafiPreviewApi.md#v1pkivenafiidpatch) | **Patch** /v1/pki/venafi/{id} | Update a Venafi PKI configuration in Jamf Pro 
-*VenafiPreviewApi* | [**V1PkiVenafiIdProxyTrustStoreDelete**](docs/VenafiPreviewApi.md#v1pkivenafiidproxytruststoredelete) | **Delete** /v1/pki/venafi/{id}/proxy-trust-store | Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiIdProxyTrustStoreGet**](docs/VenafiPreviewApi.md#v1pkivenafiidproxytruststoreget) | **Get** /v1/pki/venafi/{id}/proxy-trust-store | Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiIdProxyTrustStorePost**](docs/VenafiPreviewApi.md#v1pkivenafiidproxytruststorepost) | **Post** /v1/pki/venafi/{id}/proxy-trust-store | Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-*VenafiPreviewApi* | [**V1PkiVenafiPost**](docs/VenafiPreviewApi.md#v1pkivenafipost) | **Post** /v1/pki/venafi | Create a PKI configuration in Jamf Pro for Venafi 
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsGet**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsget) | **Get** /v1/volume-purchasing-locations | Retrieve Volume Purchasing Locations
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdDelete**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsiddelete) | **Delete** /v1/volume-purchasing-locations/{id} | Delete a Volume Purchasing Location with the supplied id
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdGet**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsidget) | **Get** /v1/volume-purchasing-locations/{id} | Retrieve a Volume Purchasing Location with the supplied id
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdHistoryGet**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsidhistoryget) | **Get** /v1/volume-purchasing-locations/{id}/history | Get specified Volume Purchasing Location history object 
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdPatch**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsidpatch) | **Patch** /v1/volume-purchasing-locations/{id} | Update a Volume Purchasing Location
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdReclaimPost**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsidreclaimpost) | **Post** /v1/volume-purchasing-locations/{id}/reclaim | Reclaim a Volume Purchasing Location with the supplied id
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsIdRevokeLicensesPost**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationsidrevokelicensespost) | **Post** /v1/volume-purchasing-locations/{id}/revoke-licenses | Revoke licenses for a Volume Purchasing Location with the supplied id
-*VolumePurchasingLocationsApi* | [**V1VolumePurchasingLocationsPost**](docs/VolumePurchasingLocationsApi.md#v1volumepurchasinglocationspost) | **Post** /v1/volume-purchasing-locations | Create a Volume Purchasing Location
-*VolumePurchasingSubscriptionsApi* | [**V1VolumePurchasingSubscriptionsGet**](docs/VolumePurchasingSubscriptionsApi.md#v1volumepurchasingsubscriptionsget) | **Get** /v1/volume-purchasing-subscriptions | Retrieve Volume Purchasing Subscriptions
-*VolumePurchasingSubscriptionsApi* | [**V1VolumePurchasingSubscriptionsIdDelete**](docs/VolumePurchasingSubscriptionsApi.md#v1volumepurchasingsubscriptionsiddelete) | **Delete** /v1/volume-purchasing-subscriptions/{id} | Delete a Volume Purchasing Subscription with the supplied id
-*VolumePurchasingSubscriptionsApi* | [**V1VolumePurchasingSubscriptionsIdGet**](docs/VolumePurchasingSubscriptionsApi.md#v1volumepurchasingsubscriptionsidget) | **Get** /v1/volume-purchasing-subscriptions/{id} | Retrieve a Volume Purchasing Subscription with the supplied id
-*VolumePurchasingSubscriptionsApi* | [**V1VolumePurchasingSubscriptionsIdPut**](docs/VolumePurchasingSubscriptionsApi.md#v1volumepurchasingsubscriptionsidput) | **Put** /v1/volume-purchasing-subscriptions/{id} | Update a Volume Purchasing Subscription
-*VolumePurchasingSubscriptionsApi* | [**V1VolumePurchasingSubscriptionsPost**](docs/VolumePurchasingSubscriptionsApi.md#v1volumepurchasingsubscriptionspost) | **Post** /v1/volume-purchasing-subscriptions | Create a Volume Purchasing Subscription
-*VppAdminAccountsPreviewApi* | [**VppAdminAccountsGet**](docs/VppAdminAccountsPreviewApi.md#vppadminaccountsget) | **Get** /vpp/admin-accounts | Found all VPP Admin Accounts 
-*VppSubscriptionsPreviewApi* | [**VppSubscriptionsGet**](docs/VppSubscriptionsPreviewApi.md#vppsubscriptionsget) | **Get** /vpp/subscriptions | Found all VPP - subscriptions 
-*VppSubscriptionsPreviewApi* | [**VppSubscriptionsIdGet**](docs/VppSubscriptionsPreviewApi.md#vppsubscriptionsidget) | **Get** /vpp/subscriptions/{id} | Found VPP subscription by id 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesChoicesGet**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearcheschoicesget) | **Get** /v1/advanced-mobile-device-searches/choices | Get Mobile Device Advanced Search criteria choices 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesDeleteMultiplePost**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchesdeletemultiplepost) | **Post** /v1/advanced-mobile-device-searches/delete-multiple | Remove specified Advanced Search objects 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesGet**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchesget) | **Get** /v1/advanced-mobile-device-searches | Get Advanced Search objects 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesIdDelete**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchesiddelete) | **Delete** /v1/advanced-mobile-device-searches/{id} | Remove specified Advanced Search object 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesIdGet**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchesidget) | **Get** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesIdPut**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchesidput) | **Put** /v1/advanced-mobile-device-searches/{id} | Get specified Advanced Search object 
+*AdvancedMobileDeviceSearchesAPI* | [**V1AdvancedMobileDeviceSearchesPost**](docs/AdvancedMobileDeviceSearchesAPI.md#v1advancedmobiledevicesearchespost) | **Post** /v1/advanced-mobile-device-searches | Create Advanced Search object 
+*AdvancedUserContentSearchesAPI* | [**V1AdvancedUserContentSearchesGet**](docs/AdvancedUserContentSearchesAPI.md#v1advancedusercontentsearchesget) | **Get** /v1/advanced-user-content-searches | Get All Advanced User Content Search objects 
+*AdvancedUserContentSearchesAPI* | [**V1AdvancedUserContentSearchesIdDelete**](docs/AdvancedUserContentSearchesAPI.md#v1advancedusercontentsearchesiddelete) | **Delete** /v1/advanced-user-content-searches/{id} | Remove specified Advanced User Content Search object 
+*AdvancedUserContentSearchesAPI* | [**V1AdvancedUserContentSearchesIdGet**](docs/AdvancedUserContentSearchesAPI.md#v1advancedusercontentsearchesidget) | **Get** /v1/advanced-user-content-searches/{id} | Get Specified Advanced User Content Search object 
+*AdvancedUserContentSearchesAPI* | [**V1AdvancedUserContentSearchesIdPut**](docs/AdvancedUserContentSearchesAPI.md#v1advancedusercontentsearchesidput) | **Put** /v1/advanced-user-content-searches/{id} | Get Specified Advanced User Content Search object 
+*AdvancedUserContentSearchesAPI* | [**V1AdvancedUserContentSearchesPost**](docs/AdvancedUserContentSearchesAPI.md#v1advancedusercontentsearchespost) | **Post** /v1/advanced-user-content-searches | Create Advanced User Content Search object 
+*ApiAuthenticationAPI* | [**AuthCurrentPost**](docs/ApiAuthenticationAPI.md#authcurrentpost) | **Post** /auth/current | Get the authorization details associated with the current API token 
+*ApiAuthenticationAPI* | [**AuthGet**](docs/ApiAuthenticationAPI.md#authget) | **Get** /auth | Get all the Authorization details associated with the current api 
+*ApiAuthenticationAPI* | [**AuthInvalidateTokenPost**](docs/ApiAuthenticationAPI.md#authinvalidatetokenpost) | **Post** /auth/invalidateToken | Invalidate current token 
+*ApiAuthenticationAPI* | [**AuthKeepAlivePost**](docs/ApiAuthenticationAPI.md#authkeepalivepost) | **Post** /auth/keepAlive | Invalidate existing token and generates new token 
+*ApiAuthenticationAPI* | [**AuthTokensPost**](docs/ApiAuthenticationAPI.md#authtokenspost) | **Post** /auth/tokens | Create a token based on other authentication details (basic, etc.) 
+*ApiAuthenticationAPI* | [**V1AuthGet**](docs/ApiAuthenticationAPI.md#v1authget) | **Get** /v1/auth | Get all the Authorization details associated with the current api 
+*ApiAuthenticationAPI* | [**V1AuthInvalidateTokenPost**](docs/ApiAuthenticationAPI.md#v1authinvalidatetokenpost) | **Post** /v1/auth/invalidate-token | Invalidate current token 
+*ApiAuthenticationAPI* | [**V1AuthKeepAlivePost**](docs/ApiAuthenticationAPI.md#v1authkeepalivepost) | **Post** /v1/auth/keep-alive | Invalidate existing token and generates new token 
+*ApiAuthenticationAPI* | [**V1AuthTokenPost**](docs/ApiAuthenticationAPI.md#v1authtokenpost) | **Post** /v1/auth/token | Create a token based on other authentication details (basic, etc.) 
+*ApiIntegrationsAPI* | [**DeleteApiIntegration**](docs/ApiIntegrationsAPI.md#deleteapiintegration) | **Delete** /v1/api-integrations/{id} | Remove specified API integration
+*ApiIntegrationsAPI* | [**GetOneApiIntegration**](docs/ApiIntegrationsAPI.md#getoneapiintegration) | **Get** /v1/api-integrations/{id} | Get specified API integration object
+*ApiIntegrationsAPI* | [**PostCreateApiIntegration**](docs/ApiIntegrationsAPI.md#postcreateapiintegration) | **Post** /v1/api-integrations | Create API integration object
+*ApiIntegrationsAPI* | [**PostCreateClientCredentials**](docs/ApiIntegrationsAPI.md#postcreateclientcredentials) | **Post** /v1/api-integrations/{id}/client-credentials | Create client credentials for specified API integration
+*ApiIntegrationsAPI* | [**PutUpdateApiIntegration**](docs/ApiIntegrationsAPI.md#putupdateapiintegration) | **Put** /v1/api-integrations/{id} | Update specified API integration object
+*ApiIntegrationsAPI* | [**V1ApiIntegrationsGet**](docs/ApiIntegrationsAPI.md#v1apiintegrationsget) | **Get** /v1/api-integrations | Get the current API Integrations
+*ApiRolePrivilegesAPI* | [**V1ApiRolePrivilegesGet**](docs/ApiRolePrivilegesAPI.md#v1apiroleprivilegesget) | **Get** /v1/api-role-privileges | Get the current Jamf API Role Privileges
+*ApiRolePrivilegesAPI* | [**V1ApiRolePrivilegesSearchGet**](docs/ApiRolePrivilegesAPI.md#v1apiroleprivilegessearchget) | **Get** /v1/api-role-privileges/search | Search the current Jamf API Role Privileges
+*ApiRolesAPI* | [**DeleteApiRole**](docs/ApiRolesAPI.md#deleteapirole) | **Delete** /v1/api-roles/{id} | Delete API Integrations Role
+*ApiRolesAPI* | [**GetAllApiRoles**](docs/ApiRolesAPI.md#getallapiroles) | **Get** /v1/api-roles | Get the current Jamf API Roles
+*ApiRolesAPI* | [**GetOneApiRole**](docs/ApiRolesAPI.md#getoneapirole) | **Get** /v1/api-roles/{id} | Get the specific Jamf API Role
+*ApiRolesAPI* | [**PostCreateApiRole**](docs/ApiRolesAPI.md#postcreateapirole) | **Post** /v1/api-roles | Create a new API role
+*ApiRolesAPI* | [**PutUpdateApiRole**](docs/ApiRolesAPI.md#putupdateapirole) | **Put** /v1/api-roles/{id} | Update API Integrations Role
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsGet**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldsget) | **Get** /v1/app-request/form-input-fields | Search for Form Input Fields 
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsIdDelete**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldsiddelete) | **Delete** /v1/app-request/form-input-fields/{id} | Remove specified Form Input Field record 
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsIdGet**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldsidget) | **Get** /v1/app-request/form-input-fields/{id} | Get specified Form Input Field object 
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsIdPut**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldsidput) | **Put** /v1/app-request/form-input-fields/{id} | Update specified Form Input Field object 
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsPost**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldspost) | **Post** /v1/app-request/form-input-fields | Create Form Input Field record 
+*AppRequestPreviewAPI* | [**V1AppRequestFormInputFieldsPut**](docs/AppRequestPreviewAPI.md#v1apprequestforminputfieldsput) | **Put** /v1/app-request/form-input-fields | Replace all Form Input Fields 
+*AppRequestPreviewAPI* | [**V1AppRequestSettingsGet**](docs/AppRequestPreviewAPI.md#v1apprequestsettingsget) | **Get** /v1/app-request/settings | Get Applicastion Request Settings 
+*AppRequestPreviewAPI* | [**V1AppRequestSettingsPut**](docs/AppRequestPreviewAPI.md#v1apprequestsettingsput) | **Put** /v1/app-request/settings | Update Application Request Settings 
+*AppStoreCountryCodesPreviewAPI* | [**V1AppStoreCountryCodesGet**](docs/AppStoreCountryCodesPreviewAPI.md#v1appstorecountrycodesget) | **Get** /v1/app-store-country-codes | Return a list of Countries and the associated Codes 
+*BrandingAPI* | [**V1BrandingImagesDownloadIdGet**](docs/BrandingAPI.md#v1brandingimagesdownloadidget) | **Get** /v1/branding-images/download/{id} | Download a self service branding image 
+*BuildingsAPI* | [**V1BuildingsDeleteMultiplePost**](docs/BuildingsAPI.md#v1buildingsdeletemultiplepost) | **Post** /v1/buildings/delete-multiple | Delete multiple Buildings by their ids 
+*BuildingsAPI* | [**V1BuildingsExportPost**](docs/BuildingsAPI.md#v1buildingsexportpost) | **Post** /v1/buildings/export | Export Buildings collection 
+*BuildingsAPI* | [**V1BuildingsGet**](docs/BuildingsAPI.md#v1buildingsget) | **Get** /v1/buildings | Search for sorted and paged Buildings 
+*BuildingsAPI* | [**V1BuildingsIdDelete**](docs/BuildingsAPI.md#v1buildingsiddelete) | **Delete** /v1/buildings/{id} | Remove specified Building record 
+*BuildingsAPI* | [**V1BuildingsIdGet**](docs/BuildingsAPI.md#v1buildingsidget) | **Get** /v1/buildings/{id} | Get specified Building object 
+*BuildingsAPI* | [**V1BuildingsIdHistoryExportPost**](docs/BuildingsAPI.md#v1buildingsidhistoryexportpost) | **Post** /v1/buildings/{id}/history/export | Export history object collection in specified format for specified Buildings 
+*BuildingsAPI* | [**V1BuildingsIdHistoryGet**](docs/BuildingsAPI.md#v1buildingsidhistoryget) | **Get** /v1/buildings/{id}/history | Get specified Building History object 
+*BuildingsAPI* | [**V1BuildingsIdHistoryPost**](docs/BuildingsAPI.md#v1buildingsidhistorypost) | **Post** /v1/buildings/{id}/history | Add specified Building history object notes 
+*BuildingsAPI* | [**V1BuildingsIdPut**](docs/BuildingsAPI.md#v1buildingsidput) | **Put** /v1/buildings/{id} | Update specified Building object 
+*BuildingsAPI* | [**V1BuildingsPost**](docs/BuildingsAPI.md#v1buildingspost) | **Post** /v1/buildings | Create Building record 
+*CacheSettingsAPI* | [**V1CacheSettingsGet**](docs/CacheSettingsAPI.md#v1cachesettingsget) | **Get** /v1/cache-settings | Get Cache Settings 
+*CacheSettingsAPI* | [**V1CacheSettingsPut**](docs/CacheSettingsAPI.md#v1cachesettingsput) | **Put** /v1/cache-settings | Update Cache Settings 
+*CategoriesAPI* | [**V1CategoriesDeleteMultiplePost**](docs/CategoriesAPI.md#v1categoriesdeletemultiplepost) | **Post** /v1/categories/delete-multiple | Delete multiple Categories by their IDs 
+*CategoriesAPI* | [**V1CategoriesGet**](docs/CategoriesAPI.md#v1categoriesget) | **Get** /v1/categories | Get Category objects 
+*CategoriesAPI* | [**V1CategoriesIdDelete**](docs/CategoriesAPI.md#v1categoriesiddelete) | **Delete** /v1/categories/{id} | Remove specified Category record 
+*CategoriesAPI* | [**V1CategoriesIdGet**](docs/CategoriesAPI.md#v1categoriesidget) | **Get** /v1/categories/{id} | Get specified Category object 
+*CategoriesAPI* | [**V1CategoriesIdHistoryGet**](docs/CategoriesAPI.md#v1categoriesidhistoryget) | **Get** /v1/categories/{id}/history | Get specified Category history object 
+*CategoriesAPI* | [**V1CategoriesIdHistoryPost**](docs/CategoriesAPI.md#v1categoriesidhistorypost) | **Post** /v1/categories/{id}/history | Add specified Category history object notes 
+*CategoriesAPI* | [**V1CategoriesIdPut**](docs/CategoriesAPI.md#v1categoriesidput) | **Put** /v1/categories/{id} | Update specified Category object 
+*CategoriesAPI* | [**V1CategoriesPost**](docs/CategoriesAPI.md#v1categoriespost) | **Post** /v1/categories | Create Category record 
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityActiveDerGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityactivederget) | **Get** /v1/pki/certificate-authority/active/der | Returns X.509 of active Certificate Authority (CA) in DER format
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityActiveGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityactiveget) | **Get** /v1/pki/certificate-authority/active | Returns X.509 details of the active Certificate Authority (CA)
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityActivePemGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityactivepemget) | **Get** /v1/pki/certificate-authority/active/pem | Returns active Certificate Authority (CA) in PEM format
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityIdDerGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityidderget) | **Get** /v1/pki/certificate-authority/{id}/der | Returns X.509 current Certificate Authority (CA) with provided ID in DER format
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityIdGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityidget) | **Get** /v1/pki/certificate-authority/{id} | Returns X.509 details of Certificate Authority (CA) with provided ID
+*CertificateAuthorityAPI* | [**V1PkiCertificateAuthorityIdPemGet**](docs/CertificateAuthorityAPI.md#v1pkicertificateauthorityidpemget) | **Get** /v1/pki/certificate-authority/{id}/pem | Returns current Certificate Authority (CA) with provided ID in PEM format
+*ClassicLdapAPI* | [**V1ClassicLdapIdGet**](docs/ClassicLdapAPI.md#v1classicldapidget) | **Get** /v1/classic-ldap/{id} | Get mappings for OnPrem Ldap configuration with given id.
+*ClientCheckInAPI* | [**V2CheckInGet**](docs/ClientCheckInAPI.md#v2checkinget) | **Get** /v2/check-in | Get Client Check-In settings 
+*ClientCheckInAPI* | [**V2CheckInHistoryGet**](docs/ClientCheckInAPI.md#v2checkinhistoryget) | **Get** /v2/check-in/history | Get Client Check-In history object 
+*ClientCheckInAPI* | [**V2CheckInHistoryPost**](docs/ClientCheckInAPI.md#v2checkinhistorypost) | **Post** /v2/check-in/history | Add a Note to Client Check-In History 
+*ClientCheckInAPI* | [**V2CheckInPut**](docs/ClientCheckInAPI.md#v2checkinput) | **Put** /v2/check-in | Update Client Check-In object 
+*ClientCheckInAPI* | [**V3CheckInGet**](docs/ClientCheckInAPI.md#v3checkinget) | **Get** /v3/check-in | Get Client Check-In settings 
+*ClientCheckInAPI* | [**V3CheckInHistoryGet**](docs/ClientCheckInAPI.md#v3checkinhistoryget) | **Get** /v3/check-in/history | Get Client Check-In history object 
+*ClientCheckInAPI* | [**V3CheckInHistoryPost**](docs/ClientCheckInAPI.md#v3checkinhistorypost) | **Post** /v3/check-in/history | Add a Note to Client Check-In History 
+*ClientCheckInAPI* | [**V3CheckInPut**](docs/ClientCheckInAPI.md#v3checkinput) | **Put** /v3/check-in | Update Client Check-In object 
+*CloudAzureAPI* | [**V1CloudAzureDefaultsMappingsGet**](docs/CloudAzureAPI.md#v1cloudazuredefaultsmappingsget) | **Get** /v1/cloud-azure/defaults/mappings | Get default mappings
+*CloudAzureAPI* | [**V1CloudAzureDefaultsServerConfigurationGet**](docs/CloudAzureAPI.md#v1cloudazuredefaultsserverconfigurationget) | **Get** /v1/cloud-azure/defaults/server-configuration | Get default server configuration
+*CloudAzureAPI* | [**V1CloudAzureIdDelete**](docs/CloudAzureAPI.md#v1cloudazureiddelete) | **Delete** /v1/cloud-azure/{id} | Delete Cloud Identity Provider configuration.
+*CloudAzureAPI* | [**V1CloudAzureIdGet**](docs/CloudAzureAPI.md#v1cloudazureidget) | **Get** /v1/cloud-azure/{id} | Get Azure Cloud Identity Provider configuration with given ID.
+*CloudAzureAPI* | [**V1CloudAzureIdPut**](docs/CloudAzureAPI.md#v1cloudazureidput) | **Put** /v1/cloud-azure/{id} | Update Azure Cloud Identity Provider configuration
+*CloudAzureAPI* | [**V1CloudAzurePost**](docs/CloudAzureAPI.md#v1cloudazurepost) | **Post** /v1/cloud-azure | Create Azure Cloud Identity Provider configuration
+*CloudIdpAPI* | [**V1CloudIdpExportPost**](docs/CloudIdpAPI.md#v1cloudidpexportpost) | **Post** /v1/cloud-idp/export | Export Cloud Identity Providers collection 
+*CloudIdpAPI* | [**V1CloudIdpGet**](docs/CloudIdpAPI.md#v1cloudidpget) | **Get** /v1/cloud-idp | Get information about all Cloud Identity Providers configurations.
+*CloudIdpAPI* | [**V1CloudIdpIdGet**](docs/CloudIdpAPI.md#v1cloudidpidget) | **Get** /v1/cloud-idp/{id} | Get Cloud Identity Provider configuration with given ID.
+*CloudIdpAPI* | [**V1CloudIdpIdHistoryGet**](docs/CloudIdpAPI.md#v1cloudidpidhistoryget) | **Get** /v1/cloud-idp/{id}/history | Get Cloud Identity Provider history
+*CloudIdpAPI* | [**V1CloudIdpIdHistoryPost**](docs/CloudIdpAPI.md#v1cloudidpidhistorypost) | **Post** /v1/cloud-idp/{id}/history | Add Cloud Identity Provider history note
+*CloudIdpAPI* | [**V1CloudIdpIdTestGroupPost**](docs/CloudIdpAPI.md#v1cloudidpidtestgrouppost) | **Post** /v1/cloud-idp/{id}/test-group | Get group test search
+*CloudIdpAPI* | [**V1CloudIdpIdTestUserMembershipPost**](docs/CloudIdpAPI.md#v1cloudidpidtestusermembershippost) | **Post** /v1/cloud-idp/{id}/test-user-membership | Get membership test search
+*CloudIdpAPI* | [**V1CloudIdpIdTestUserPost**](docs/CloudIdpAPI.md#v1cloudidpidtestuserpost) | **Post** /v1/cloud-idp/{id}/test-user | Get user test search
+*CloudInformationAPI* | [**V1CloudInformationGet**](docs/CloudInformationAPI.md#v1cloudinformationget) | **Get** /v1/cloud-information | Retrieve information related to cloud setup. 
+*CloudLdapAPI* | [**V1LdapKeystoreVerifyPost**](docs/CloudLdapAPI.md#v1ldapkeystoreverifypost) | **Post** /v1/ldap-keystore/verify | Validate keystore for Cloud Identity Provider secure connection
+*CloudLdapAPI* | [**V2CloudLdapsDefaultsProviderMappingsGet**](docs/CloudLdapAPI.md#v2cloudldapsdefaultsprovidermappingsget) | **Get** /v2/cloud-ldaps/defaults/{provider}/mappings | Get default mappings
+*CloudLdapAPI* | [**V2CloudLdapsDefaultsProviderServerConfigurationGet**](docs/CloudLdapAPI.md#v2cloudldapsdefaultsproviderserverconfigurationget) | **Get** /v2/cloud-ldaps/defaults/{provider}/server-configuration | Get default server configuration
+*CloudLdapAPI* | [**V2CloudLdapsIdConnectionBindGet**](docs/CloudLdapAPI.md#v2cloudldapsidconnectionbindget) | **Get** /v2/cloud-ldaps/{id}/connection/bind | Get bind connection pool statistics
+*CloudLdapAPI* | [**V2CloudLdapsIdConnectionSearchGet**](docs/CloudLdapAPI.md#v2cloudldapsidconnectionsearchget) | **Get** /v2/cloud-ldaps/{id}/connection/search | Get search connection pool statistics
+*CloudLdapAPI* | [**V2CloudLdapsIdConnectionStatusGet**](docs/CloudLdapAPI.md#v2cloudldapsidconnectionstatusget) | **Get** /v2/cloud-ldaps/{id}/connection/status | Tests the communication with the specified cloud connection 
+*CloudLdapAPI* | [**V2CloudLdapsIdDelete**](docs/CloudLdapAPI.md#v2cloudldapsiddelete) | **Delete** /v2/cloud-ldaps/{id} | Delete Cloud Identity Provider configuration.
+*CloudLdapAPI* | [**V2CloudLdapsIdGet**](docs/CloudLdapAPI.md#v2cloudldapsidget) | **Get** /v2/cloud-ldaps/{id} | Get Cloud Identity Provider configuration with given id.
+*CloudLdapAPI* | [**V2CloudLdapsIdMappingsGet**](docs/CloudLdapAPI.md#v2cloudldapsidmappingsget) | **Get** /v2/cloud-ldaps/{id}/mappings | Get mappings configurations for Cloud Identity Providers server configuration.
+*CloudLdapAPI* | [**V2CloudLdapsIdMappingsPut**](docs/CloudLdapAPI.md#v2cloudldapsidmappingsput) | **Put** /v2/cloud-ldaps/{id}/mappings | Update Cloud Identity Provider mappings configuration.
+*CloudLdapAPI* | [**V2CloudLdapsIdPut**](docs/CloudLdapAPI.md#v2cloudldapsidput) | **Put** /v2/cloud-ldaps/{id} | Update Cloud Identity Provider configuration
+*CloudLdapAPI* | [**V2CloudLdapsPost**](docs/CloudLdapAPI.md#v2cloudldapspost) | **Post** /v2/cloud-ldaps | Create Cloud Identity Provider configuration
+*ComputerGroupsAPI* | [**V1ComputerGroupsGet**](docs/ComputerGroupsAPI.md#v1computergroupsget) | **Get** /v1/computer-groups | Returns the list of all computer groups 
+*ComputerInventoryAPI* | [**V1ComputersInventoryDetailIdGet**](docs/ComputerInventoryAPI.md#v1computersinventorydetailidget) | **Get** /v1/computers-inventory-detail/{id} | Return all sections of a computer
+*ComputerInventoryAPI* | [**V1ComputersInventoryDetailIdPatch**](docs/ComputerInventoryAPI.md#v1computersinventorydetailidpatch) | **Patch** /v1/computers-inventory-detail/{id} | Update specific fields on a computer
+*ComputerInventoryAPI* | [**V1ComputersInventoryFilevaultGet**](docs/ComputerInventoryAPI.md#v1computersinventoryfilevaultget) | **Get** /v1/computers-inventory/filevault | Return paginated FileVault information for all computers
+*ComputerInventoryAPI* | [**V1ComputersInventoryGet**](docs/ComputerInventoryAPI.md#v1computersinventoryget) | **Get** /v1/computers-inventory | Return paginated Computer Inventory records
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdAttachmentsAttachmentIdDelete**](docs/ComputerInventoryAPI.md#v1computersinventoryidattachmentsattachmentiddelete) | **Delete** /v1/computers-inventory/{id}/attachments/{attachmentId} | Remove attachment
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdAttachmentsAttachmentIdGet**](docs/ComputerInventoryAPI.md#v1computersinventoryidattachmentsattachmentidget) | **Get** /v1/computers-inventory/{id}/attachments/{attachmentId} | Download attachment file
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdAttachmentsPost**](docs/ComputerInventoryAPI.md#v1computersinventoryidattachmentspost) | **Post** /v1/computers-inventory/{id}/attachments | Upload attachment and assign to computer
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdDelete**](docs/ComputerInventoryAPI.md#v1computersinventoryiddelete) | **Delete** /v1/computers-inventory/{id} | Remove specified Computer record
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdFilevaultGet**](docs/ComputerInventoryAPI.md#v1computersinventoryidfilevaultget) | **Get** /v1/computers-inventory/{id}/filevault | Return FileVault information for a specific computer
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdGet**](docs/ComputerInventoryAPI.md#v1computersinventoryidget) | **Get** /v1/computers-inventory/{id} | Return General section of a Computer
+*ComputerInventoryAPI* | [**V1ComputersInventoryIdViewRecoveryLockPasswordGet**](docs/ComputerInventoryAPI.md#v1computersinventoryidviewrecoverylockpasswordget) | **Get** /v1/computers-inventory/{id}/view-recovery-lock-password | Return a Computers Recovery Lock Password
+*ComputerInventoryCollectionSettingsAPI* | [**V1ComputerInventoryCollectionSettingsCustomPathIdDelete**](docs/ComputerInventoryCollectionSettingsAPI.md#v1computerinventorycollectionsettingscustompathiddelete) | **Delete** /v1/computer-inventory-collection-settings/custom-path/{id} | Delete Custom Path from Computer Inventory Collection Settings
+*ComputerInventoryCollectionSettingsAPI* | [**V1ComputerInventoryCollectionSettingsCustomPathPost**](docs/ComputerInventoryCollectionSettingsAPI.md#v1computerinventorycollectionsettingscustompathpost) | **Post** /v1/computer-inventory-collection-settings/custom-path | Create Computer Inventory Collection Settings Custom Path
+*ComputerInventoryCollectionSettingsAPI* | [**V1ComputerInventoryCollectionSettingsGet**](docs/ComputerInventoryCollectionSettingsAPI.md#v1computerinventorycollectionsettingsget) | **Get** /v1/computer-inventory-collection-settings | Returns computer inventory settings
+*ComputerInventoryCollectionSettingsAPI* | [**V1ComputerInventoryCollectionSettingsPatch**](docs/ComputerInventoryCollectionSettingsAPI.md#v1computerinventorycollectionsettingspatch) | **Patch** /v1/computer-inventory-collection-settings | Update computer inventory settings
+*ComputerPrestagesAPI* | [**V1ComputerPrestagesIdScopeDelete**](docs/ComputerPrestagesAPI.md#v1computerprestagesidscopedelete) | **Delete** /v1/computer-prestages/{id}/scope | Remove device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V1ComputerPrestagesIdScopeGet**](docs/ComputerPrestagesAPI.md#v1computerprestagesidscopeget) | **Get** /v1/computer-prestages/{id}/scope | Get device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V1ComputerPrestagesIdScopePost**](docs/ComputerPrestagesAPI.md#v1computerprestagesidscopepost) | **Post** /v1/computer-prestages/{id}/scope | Add device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V1ComputerPrestagesIdScopePut**](docs/ComputerPrestagesAPI.md#v1computerprestagesidscopeput) | **Put** /v1/computer-prestages/{id}/scope | Replace device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V1ComputerPrestagesScopeGet**](docs/ComputerPrestagesAPI.md#v1computerprestagesscopeget) | **Get** /v1/computer-prestages/scope | Get all device Scope for all Computer Prestages 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesGet**](docs/ComputerPrestagesAPI.md#v2computerprestagesget) | **Get** /v2/computer-prestages | Get sorted and paged Computer Prestages 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdDelete**](docs/ComputerPrestagesAPI.md#v2computerprestagesiddelete) | **Delete** /v2/computer-prestages/{id} | Delete a Computer Prestage with the supplied id 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdGet**](docs/ComputerPrestagesAPI.md#v2computerprestagesidget) | **Get** /v2/computer-prestages/{id} | Retrieve a Computer Prestage with the supplied id 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdPut**](docs/ComputerPrestagesAPI.md#v2computerprestagesidput) | **Put** /v2/computer-prestages/{id} | Update a Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdScopeDeleteMultiplePost**](docs/ComputerPrestagesAPI.md#v2computerprestagesidscopedeletemultiplepost) | **Post** /v2/computer-prestages/{id}/scope/delete-multiple | Remove device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdScopeGet**](docs/ComputerPrestagesAPI.md#v2computerprestagesidscopeget) | **Get** /v2/computer-prestages/{id}/scope | Get device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdScopePost**](docs/ComputerPrestagesAPI.md#v2computerprestagesidscopepost) | **Post** /v2/computer-prestages/{id}/scope | Add device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesIdScopePut**](docs/ComputerPrestagesAPI.md#v2computerprestagesidscopeput) | **Put** /v2/computer-prestages/{id}/scope | Replace device Scope for a specific Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesPost**](docs/ComputerPrestagesAPI.md#v2computerprestagespost) | **Post** /v2/computer-prestages | Create a Computer Prestage 
+*ComputerPrestagesAPI* | [**V2ComputerPrestagesScopeGet**](docs/ComputerPrestagesAPI.md#v2computerprestagesscopeget) | **Get** /v2/computer-prestages/scope | Get all device Scope for all Computer Prestages 
+*ComputerPrestagesAPI* | [**V3ComputerPrestagesGet**](docs/ComputerPrestagesAPI.md#v3computerprestagesget) | **Get** /v3/computer-prestages | Get sorted and paged Computer Prestages 
+*ComputerPrestagesAPI* | [**V3ComputerPrestagesIdDelete**](docs/ComputerPrestagesAPI.md#v3computerprestagesiddelete) | **Delete** /v3/computer-prestages/{id} | Delete a Computer Prestage with the supplied id 
+*ComputerPrestagesAPI* | [**V3ComputerPrestagesIdGet**](docs/ComputerPrestagesAPI.md#v3computerprestagesidget) | **Get** /v3/computer-prestages/{id} | Retrieve a Computer Prestage with the supplied id 
+*ComputerPrestagesAPI* | [**V3ComputerPrestagesIdPut**](docs/ComputerPrestagesAPI.md#v3computerprestagesidput) | **Put** /v3/computer-prestages/{id} | Update a Computer Prestage 
+*ComputerPrestagesAPI* | [**V3ComputerPrestagesPost**](docs/ComputerPrestagesAPI.md#v3computerprestagespost) | **Post** /v3/computer-prestages | Create a Computer Prestage 
+*ComputersPreviewAPI* | [**PreviewComputersGet**](docs/ComputersPreviewAPI.md#previewcomputersget) | **Get** /preview/computers | Return a list of Computers 
+*ConditionalAccessAPI* | [**V1ConditionalAccessDeviceComplianceInformationComputerDeviceIdGet**](docs/ConditionalAccessAPI.md#v1conditionalaccessdevicecomplianceinformationcomputerdeviceidget) | **Get** /v1/conditional-access/device-compliance-information/computer/{deviceId} | Get compliance information for a single computer device
+*ConditionalAccessAPI* | [**V1ConditionalAccessDeviceComplianceInformationMobileDeviceIdGet**](docs/ConditionalAccessAPI.md#v1conditionalaccessdevicecomplianceinformationmobiledeviceidget) | **Get** /v1/conditional-access/device-compliance-information/mobile/{deviceId} | Get compliance information for a single mobile device
+*CsaAPI* | [**V1CsaTokenDelete**](docs/CsaAPI.md#v1csatokendelete) | **Delete** /v1/csa/token | Delete the CSA token exchange - This will disable Jamf Pro&#39;s ability to authenticate with cloud-hosted services 
+*CsaAPI* | [**V1CsaTokenGet**](docs/CsaAPI.md#v1csatokenget) | **Get** /v1/csa/token | Get details regarding the CSA token exchange 
+*CsaAPI* | [**V1CsaTokenPost**](docs/CsaAPI.md#v1csatokenpost) | **Post** /v1/csa/token | Initialize the CSA token exchange 
+*CsaAPI* | [**V1CsaTokenPut**](docs/CsaAPI.md#v1csatokenput) | **Put** /v1/csa/token | Re-initialize the CSA token exchange with new credentials 
+*DashboardAPI* | [**V1DashboardGet**](docs/DashboardAPI.md#v1dashboardget) | **Get** /v1/dashboard | Get all the dashboard setup information 
+*DepartmentsAPI* | [**V1DepartmentsDeleteMultiplePost**](docs/DepartmentsAPI.md#v1departmentsdeletemultiplepost) | **Post** /v1/departments/delete-multiple | Deletes all departments by ids passed in body 
+*DepartmentsAPI* | [**V1DepartmentsGet**](docs/DepartmentsAPI.md#v1departmentsget) | **Get** /v1/departments | Search for Departments 
+*DepartmentsAPI* | [**V1DepartmentsIdDelete**](docs/DepartmentsAPI.md#v1departmentsiddelete) | **Delete** /v1/departments/{id} | Remove specified department record 
+*DepartmentsAPI* | [**V1DepartmentsIdGet**](docs/DepartmentsAPI.md#v1departmentsidget) | **Get** /v1/departments/{id} | Get specified Department object 
+*DepartmentsAPI* | [**V1DepartmentsIdHistoryGet**](docs/DepartmentsAPI.md#v1departmentsidhistoryget) | **Get** /v1/departments/{id}/history | Get specified Department history object 
+*DepartmentsAPI* | [**V1DepartmentsIdHistoryPost**](docs/DepartmentsAPI.md#v1departmentsidhistorypost) | **Post** /v1/departments/{id}/history | Add specified Department history object notes 
+*DepartmentsAPI* | [**V1DepartmentsIdPut**](docs/DepartmentsAPI.md#v1departmentsidput) | **Put** /v1/departments/{id} | Update specified department object 
+*DepartmentsAPI* | [**V1DepartmentsPost**](docs/DepartmentsAPI.md#v1departmentspost) | **Post** /v1/departments | Create department record 
+*DeviceCommunicationSettingsAPI* | [**V1DeviceCommunicationSettingsGet**](docs/DeviceCommunicationSettingsAPI.md#v1devicecommunicationsettingsget) | **Get** /v1/device-communication-settings | Retrieves all settings for device communication 
+*DeviceCommunicationSettingsAPI* | [**V1DeviceCommunicationSettingsHistoryGet**](docs/DeviceCommunicationSettingsAPI.md#v1devicecommunicationsettingshistoryget) | **Get** /v1/device-communication-settings/history | Get Device Communication settings history 
+*DeviceCommunicationSettingsAPI* | [**V1DeviceCommunicationSettingsHistoryPost**](docs/DeviceCommunicationSettingsAPI.md#v1devicecommunicationsettingshistorypost) | **Post** /v1/device-communication-settings/history | Add Device Communication Settings history notes 
+*DeviceCommunicationSettingsAPI* | [**V1DeviceCommunicationSettingsPut**](docs/DeviceCommunicationSettingsAPI.md#v1devicecommunicationsettingsput) | **Put** /v1/device-communication-settings | Update device communication settings 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsget) | **Get** /v1/device-enrollments | Read all sorted and paged Device Enrollment instances 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdDelete**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsiddelete) | **Delete** /v1/device-enrollments/{id} | Delete a Device Enrollment Instance with the supplied id 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdDisownPost**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsiddisownpost) | **Post** /v1/device-enrollments/{id}/disown | Disown devices from the given Device Enrollment Instance 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidget) | **Get** /v1/device-enrollments/{id} | Retrieve a Device Enrollment Instance with the supplied id 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdHistoryGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidhistoryget) | **Get** /v1/device-enrollments/{id}/history | Get sorted and paged Device Enrollment history objects 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdHistoryPost**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidhistorypost) | **Post** /v1/device-enrollments/{id}/history | Add Device Enrollment history object notes 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdPut**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidput) | **Put** /v1/device-enrollments/{id} | Update a Device Enrollment Instance with the supplied id 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdSyncsGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidsyncsget) | **Get** /v1/device-enrollments/{id}/syncs | Get all instance sync states for a single Device Enrollment Instance 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdSyncsLatestGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsidsyncslatestget) | **Get** /v1/device-enrollments/{id}/syncs/latest | Get the latest sync state for a single Device Enrollment Instance 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsIdUploadTokenPut**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsiduploadtokenput) | **Put** /v1/device-enrollments/{id}/upload-token | Update a Device Enrollment Instance with the supplied Token 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsPublicKeyGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentspublickeyget) | **Get** /v1/device-enrollments/public-key | Retrieve the Jamf Pro Device Enrollment public key 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsSyncsGet**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentssyncsget) | **Get** /v1/device-enrollments/syncs | Get all instance sync states for all Device Enrollment Instances 
+*DeviceEnrollmentsAPI* | [**V1DeviceEnrollmentsUploadTokenPost**](docs/DeviceEnrollmentsAPI.md#v1deviceenrollmentsuploadtokenpost) | **Post** /v1/device-enrollments/upload-token | Create a Device Enrollment Instance with the supplied Token 
+*DeviceEnrollmentsDevicesAPI* | [**V1DeviceEnrollmentsIdDevicesGet**](docs/DeviceEnrollmentsDevicesAPI.md#v1deviceenrollmentsiddevicesget) | **Get** /v1/device-enrollments/{id}/devices | Retrieve a list of Devices assigned to the supplied id 
+*EbooksAPI* | [**V1EbooksGet**](docs/EbooksAPI.md#v1ebooksget) | **Get** /v1/ebooks | Get Ebook object 
+*EbooksAPI* | [**V1EbooksIdGet**](docs/EbooksAPI.md#v1ebooksidget) | **Get** /v1/ebooks/{id} | Get specified Ebook object 
+*EbooksAPI* | [**V1EbooksIdScopeGet**](docs/EbooksAPI.md#v1ebooksidscopeget) | **Get** /v1/ebooks/{id}/scope | Get specified scope of Ebook object 
+*EngageAPI* | [**V1EngageGet**](docs/EngageAPI.md#v1engageget) | **Get** /v1/engage | Get Engage settings 
+*EngageAPI* | [**V1EngageHistoryGet**](docs/EngageAPI.md#v1engagehistoryget) | **Get** /v1/engage/history | Get Engage settings history 
+*EngageAPI* | [**V1EngageHistoryPost**](docs/EngageAPI.md#v1engagehistorypost) | **Post** /v1/engage/history | Add Engage settings history notes 
+*EngageAPI* | [**V1EngagePut**](docs/EngageAPI.md#v1engageput) | **Put** /v1/engage | Update Engage settings 
+*EngageAPI* | [**V2EngageGet**](docs/EngageAPI.md#v2engageget) | **Get** /v2/engage | Get Engage settings 
+*EngageAPI* | [**V2EngageHistoryGet**](docs/EngageAPI.md#v2engagehistoryget) | **Get** /v2/engage/history | Get Engage settings history 
+*EngageAPI* | [**V2EngageHistoryPost**](docs/EngageAPI.md#v2engagehistorypost) | **Post** /v2/engage/history | Add Engage settings history notes 
+*EngageAPI* | [**V2EngagePut**](docs/EngageAPI.md#v2engageput) | **Put** /v2/engage | Update Engage settings 
+*EnrollmentAPI* | [**V1AdueSessionTokenSettingsGet**](docs/EnrollmentAPI.md#v1aduesessiontokensettingsget) | **Get** /v1/adue-session-token-settings | Retrieve the Account Driven User Enrollment Session Token Settings 
+*EnrollmentAPI* | [**V1AdueSessionTokenSettingsPut**](docs/EnrollmentAPI.md#v1aduesessiontokensettingsput) | **Put** /v1/adue-session-token-settings | Update Account Driven User Enrollment Session Token Settings. 
+*EnrollmentAPI* | [**V2EnrollmentAccessGroupsGet**](docs/EnrollmentAPI.md#v2enrollmentaccessgroupsget) | **Get** /v2/enrollment/access-groups | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
+*EnrollmentAPI* | [**V2EnrollmentAccessGroupsPost**](docs/EnrollmentAPI.md#v2enrollmentaccessgroupspost) | **Post** /v2/enrollment/access-groups | Add the configured LDAP group for User-Initiated Enrollment. 
+*EnrollmentAPI* | [**V2EnrollmentAccessGroupsServerIdGroupIdDelete**](docs/EnrollmentAPI.md#v2enrollmentaccessgroupsserveridgroupiddelete) | **Delete** /v2/enrollment/access-groups/{serverId}/{groupId} | Delete an LDAP group&#39;s access to user initiated Enrollment 
+*EnrollmentAPI* | [**V2EnrollmentAccessGroupsServerIdGroupIdGet**](docs/EnrollmentAPI.md#v2enrollmentaccessgroupsserveridgroupidget) | **Get** /v2/enrollment/access-groups/{serverId}/{groupId} | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
+*EnrollmentAPI* | [**V2EnrollmentAccessGroupsServerIdGroupIdPut**](docs/EnrollmentAPI.md#v2enrollmentaccessgroupsserveridgroupidput) | **Put** /v2/enrollment/access-groups/{serverId}/{groupId} | Modify the configured LDAP groups configured for User-Initiated Enrollment 
+*EnrollmentAPI* | [**V2EnrollmentFilteredLanguageCodesGet**](docs/EnrollmentAPI.md#v2enrollmentfilteredlanguagecodesget) | **Get** /v2/enrollment/filtered-language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
+*EnrollmentAPI* | [**V2EnrollmentGet**](docs/EnrollmentAPI.md#v2enrollmentget) | **Get** /v2/enrollment | Get Enrollment object and Re-enrollment settings 
+*EnrollmentAPI* | [**V2EnrollmentHistoryExportPost**](docs/EnrollmentAPI.md#v2enrollmenthistoryexportpost) | **Post** /v2/enrollment/history/export | Export enrollment history collection 
+*EnrollmentAPI* | [**V2EnrollmentHistoryGet**](docs/EnrollmentAPI.md#v2enrollmenthistoryget) | **Get** /v2/enrollment/history | Get sorted and paged Enrollment history object 
+*EnrollmentAPI* | [**V2EnrollmentHistoryPost**](docs/EnrollmentAPI.md#v2enrollmenthistorypost) | **Post** /v2/enrollment/history | Add Enrollment history object notes 
+*EnrollmentAPI* | [**V2EnrollmentLanguageCodesGet**](docs/EnrollmentAPI.md#v2enrollmentlanguagecodesget) | **Get** /v2/enrollment/language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes 
+*EnrollmentAPI* | [**V2EnrollmentLanguagesDeleteMultiplePost**](docs/EnrollmentAPI.md#v2enrollmentlanguagesdeletemultiplepost) | **Post** /v2/enrollment/languages/delete-multiple | Delete multiple configured languages from User-Initiated Enrollment settings 
+*EnrollmentAPI* | [**V2EnrollmentLanguagesGet**](docs/EnrollmentAPI.md#v2enrollmentlanguagesget) | **Get** /v2/enrollment/languages | Get an array of the language codes that have Enrollment messaging 
+*EnrollmentAPI* | [**V2EnrollmentLanguagesLanguageIdDelete**](docs/EnrollmentAPI.md#v2enrollmentlanguageslanguageiddelete) | **Delete** /v2/enrollment/languages/{languageId} | Delete the Enrollment messaging for a language 
+*EnrollmentAPI* | [**V2EnrollmentLanguagesLanguageIdGet**](docs/EnrollmentAPI.md#v2enrollmentlanguageslanguageidget) | **Get** /v2/enrollment/languages/{languageId} | Retrieve the Enrollment messaging for a language 
+*EnrollmentAPI* | [**V2EnrollmentLanguagesLanguageIdPut**](docs/EnrollmentAPI.md#v2enrollmentlanguageslanguageidput) | **Put** /v2/enrollment/languages/{languageId} | Edit Enrollment messaging for a language 
+*EnrollmentAPI* | [**V2EnrollmentPut**](docs/EnrollmentAPI.md#v2enrollmentput) | **Put** /v2/enrollment | Update Enrollment object 
+*EnrollmentAPI* | [**V3EnrollmentAccessGroupsGet**](docs/EnrollmentAPI.md#v3enrollmentaccessgroupsget) | **Get** /v3/enrollment/access-groups | Retrieve the configured LDAP groups configured for User-Initiated Enrollment. 
+*EnrollmentAPI* | [**V3EnrollmentAccessGroupsIdDelete**](docs/EnrollmentAPI.md#v3enrollmentaccessgroupsiddelete) | **Delete** /v3/enrollment/access-groups/{id} | Delete an LDAP group&#39;s access to user initiated Enrollment. 
+*EnrollmentAPI* | [**V3EnrollmentAccessGroupsIdGet**](docs/EnrollmentAPI.md#v3enrollmentaccessgroupsidget) | **Get** /v3/enrollment/access-groups/{id} | Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
+*EnrollmentAPI* | [**V3EnrollmentAccessGroupsIdPut**](docs/EnrollmentAPI.md#v3enrollmentaccessgroupsidput) | **Put** /v3/enrollment/access-groups/{id} | Modify the configured LDAP groups configured for User-Initiated Enrollment. Only exiting Access Groups can be updated. 
+*EnrollmentAPI* | [**V3EnrollmentAccessGroupsPost**](docs/EnrollmentAPI.md#v3enrollmentaccessgroupspost) | **Post** /v3/enrollment/access-groups | Add the configured LDAP group for User-Initiated Enrollment. 
+*EnrollmentAPI* | [**V3EnrollmentFilteredLanguageCodesGet**](docs/EnrollmentAPI.md#v3enrollmentfilteredlanguagecodesget) | **Get** /v3/enrollment/filtered-language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
+*EnrollmentAPI* | [**V3EnrollmentGet**](docs/EnrollmentAPI.md#v3enrollmentget) | **Get** /v3/enrollment | Get Enrollment object and Re-enrollment settings 
+*EnrollmentAPI* | [**V3EnrollmentLanguageCodesGet**](docs/EnrollmentAPI.md#v3enrollmentlanguagecodesget) | **Get** /v3/enrollment/language-codes | Retrieve the list of languages and corresponding ISO 639-1 Codes 
+*EnrollmentAPI* | [**V3EnrollmentLanguagesDeleteMultiplePost**](docs/EnrollmentAPI.md#v3enrollmentlanguagesdeletemultiplepost) | **Post** /v3/enrollment/languages/delete-multiple | Delete multiple configured languages from User-Initiated Enrollment settings 
+*EnrollmentAPI* | [**V3EnrollmentLanguagesGet**](docs/EnrollmentAPI.md#v3enrollmentlanguagesget) | **Get** /v3/enrollment/languages | Get an array of the language codes that have Enrollment messaging 
+*EnrollmentAPI* | [**V3EnrollmentLanguagesLanguageIdDelete**](docs/EnrollmentAPI.md#v3enrollmentlanguageslanguageiddelete) | **Delete** /v3/enrollment/languages/{languageId} | Delete the Enrollment messaging for a language 
+*EnrollmentAPI* | [**V3EnrollmentLanguagesLanguageIdGet**](docs/EnrollmentAPI.md#v3enrollmentlanguageslanguageidget) | **Get** /v3/enrollment/languages/{languageId} | Retrieve the Enrollment messaging for a language 
+*EnrollmentAPI* | [**V3EnrollmentLanguagesLanguageIdPut**](docs/EnrollmentAPI.md#v3enrollmentlanguageslanguageidput) | **Put** /v3/enrollment/languages/{languageId} | Edit Enrollment messaging for a language 
+*EnrollmentAPI* | [**V3EnrollmentPut**](docs/EnrollmentAPI.md#v3enrollmentput) | **Put** /v3/enrollment | Update Enrollment object 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationGet**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationget) | **Get** /v1/enrollment-customization | Retrieve sorted and paged Enrollment Customizations 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdDelete**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationiddelete) | **Delete** /v1/enrollment-customization/{id} | Delete an Enrollment Customization with the supplied id 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdGet**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationidget) | **Get** /v1/enrollment-customization/{id} | Retrieve an Enrollment Customization with the supplied id 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdHistoryGet**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationidhistoryget) | **Get** /v1/enrollment-customization/{id}/history | Get sorted and paged Enrollment Customization history objects 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdHistoryPost**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationidhistorypost) | **Post** /v1/enrollment-customization/{id}/history | Add Enrollment Customization history object notes 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdPrestagesGet**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationidprestagesget) | **Get** /v1/enrollment-customization/{id}/prestages | Retrieve the list of Prestages using this Enrollment Customization 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationIdPut**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationidput) | **Put** /v1/enrollment-customization/{id} | Update an Enrollment Customization 
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationImagesPost**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationimagespost) | **Post** /v1/enrollment-customization/images | Upload an image
+*EnrollmentCustomizationAPI* | [**V1EnrollmentCustomizationPost**](docs/EnrollmentCustomizationAPI.md#v1enrollmentcustomizationpost) | **Post** /v1/enrollment-customization | Create an Enrollment Customization 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsGet**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsget) | **Get** /v2/enrollment-customizations | Retrieve sorted and paged Enrollment Customizations 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdDelete**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsiddelete) | **Delete** /v2/enrollment-customizations/{id} | Delete an Enrollment Customization with the supplied id 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdGet**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsidget) | **Get** /v2/enrollment-customizations/{id} | Retrieve an Enrollment Customization with the supplied id 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdHistoryGet**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsidhistoryget) | **Get** /v2/enrollment-customizations/{id}/history | Get sorted and paged Enrollment Customization history objects 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdHistoryPost**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsidhistorypost) | **Post** /v2/enrollment-customizations/{id}/history | Add Enrollment Customization history object notes 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdPrestagesGet**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsidprestagesget) | **Get** /v2/enrollment-customizations/{id}/prestages | Retrieve the list of Prestages using this Enrollment Customization 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsIdPut**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsidput) | **Put** /v2/enrollment-customizations/{id} | Update an Enrollment Customization 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsImagesIdGet**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsimagesidget) | **Get** /v2/enrollment-customizations/images/{id} | Download an enrollment customization image 
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsImagesPost**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationsimagespost) | **Post** /v2/enrollment-customizations/images | Upload an image
+*EnrollmentCustomizationAPI* | [**V2EnrollmentCustomizationsPost**](docs/EnrollmentCustomizationAPI.md#v2enrollmentcustomizationspost) | **Post** /v2/enrollment-customizations | Create an Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdAllGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidallget) | **Get** /v1/enrollment-customization/{id}/all | Get all Panels for single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdAllPanelIdDelete**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidallpaneliddelete) | **Delete** /v1/enrollment-customization/{id}/all/{panel-id} | Delete a single Panel from an Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdAllPanelIdGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidallpanelidget) | **Get** /v1/enrollment-customization/{id}/all/{panel-id} | Get a single Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdLdapPanelIdDelete**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidldappaneliddelete) | **Delete** /v1/enrollment-customization/{id}/ldap/{panel-id} | Delete an LDAP single panel from an Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdLdapPanelIdGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidldappanelidget) | **Get** /v1/enrollment-customization/{id}/ldap/{panel-id} | Get a single LDAP panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdLdapPanelIdPut**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidldappanelidput) | **Put** /v1/enrollment-customization/{id}/ldap/{panel-id} | Update a single LDAP Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdLdapPost**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidldappost) | **Post** /v1/enrollment-customization/{id}/ldap | Create an LDAP Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdSsoPanelIdDelete**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidssopaneliddelete) | **Delete** /v1/enrollment-customization/{id}/sso/{panel-id} | Delete a single SSO Panel from an Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdSsoPanelIdGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidssopanelidget) | **Get** /v1/enrollment-customization/{id}/sso/{panel-id} | Get a single SSO Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdSsoPanelIdPut**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidssopanelidput) | **Put** /v1/enrollment-customization/{id}/sso/{panel-id} | Update a single SSO Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdSsoPost**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidssopost) | **Post** /v1/enrollment-customization/{id}/sso | Create an SSO Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdTextPanelIdDelete**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidtextpaneliddelete) | **Delete** /v1/enrollment-customization/{id}/text/{panel-id} | Delete a Text single Panel from an Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdTextPanelIdGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidtextpanelidget) | **Get** /v1/enrollment-customization/{id}/text/{panel-id} | Get a single Text Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdTextPanelIdMarkdownGet**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidtextpanelidmarkdownget) | **Get** /v1/enrollment-customization/{id}/text/{panel-id}/markdown | Get the markdown output of a single Text Panel for a single Enrollment 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdTextPanelIdPut**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidtextpanelidput) | **Put** /v1/enrollment-customization/{id}/text/{panel-id} | Update a single Text Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationIdTextPost**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationidtextpost) | **Post** /v1/enrollment-customization/{id}/text | Create a Text Panel for a single Enrollment Customization 
+*EnrollmentCustomizationPreviewAPI* | [**V1EnrollmentCustomizationParseMarkdownPost**](docs/EnrollmentCustomizationPreviewAPI.md#v1enrollmentcustomizationparsemarkdownpost) | **Post** /v1/enrollment-customization/parse-markdown | Parse the given string as markdown text and return Html output 
+*IconAPI* | [**V1IconDownloadIdGet**](docs/IconAPI.md#v1icondownloadidget) | **Get** /v1/icon/download/{id} | Download a self service icon 
+*IconAPI* | [**V1IconIdGet**](docs/IconAPI.md#v1iconidget) | **Get** /v1/icon/{id} | Get an icon 
+*IconAPI* | [**V1IconPost**](docs/IconAPI.md#v1iconpost) | **Post** /v1/icon | Upload an icon 
+*InventoryInformationAPI* | [**V1InventoryInformationGet**](docs/InventoryInformationAPI.md#v1inventoryinformationget) | **Get** /v1/inventory-information | Get statistics about managed/unmanaged devices and computers in the inventory 
+*InventoryPreloadAPI* | [**InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadAPI.md#inventorypreloadcsvtemplateget) | **Get** /inventory-preload/csv-template | Get the Inventory Preload CSV template 
+*InventoryPreloadAPI* | [**InventoryPreloadDelete**](docs/InventoryPreloadAPI.md#inventorypreloaddelete) | **Delete** /inventory-preload | Delete all Inventory Preload records 
+*InventoryPreloadAPI* | [**InventoryPreloadGet**](docs/InventoryPreloadAPI.md#inventorypreloadget) | **Get** /inventory-preload | Return all Inventory Preload records 
+*InventoryPreloadAPI* | [**InventoryPreloadHistoryGet**](docs/InventoryPreloadAPI.md#inventorypreloadhistoryget) | **Get** /inventory-preload/history | Get Inventory Preload history entries 
+*InventoryPreloadAPI* | [**InventoryPreloadHistoryNotesPost**](docs/InventoryPreloadAPI.md#inventorypreloadhistorynotespost) | **Post** /inventory-preload/history/notes | Add Inventory Preload history object notes 
+*InventoryPreloadAPI* | [**InventoryPreloadIdDelete**](docs/InventoryPreloadAPI.md#inventorypreloadiddelete) | **Delete** /inventory-preload/{id} | Delete an Inventory Preload record 
+*InventoryPreloadAPI* | [**InventoryPreloadIdGet**](docs/InventoryPreloadAPI.md#inventorypreloadidget) | **Get** /inventory-preload/{id} | Get an Inventory Preload record 
+*InventoryPreloadAPI* | [**InventoryPreloadIdPut**](docs/InventoryPreloadAPI.md#inventorypreloadidput) | **Put** /inventory-preload/{id} | Update an Inventory Preload record 
+*InventoryPreloadAPI* | [**InventoryPreloadPost**](docs/InventoryPreloadAPI.md#inventorypreloadpost) | **Post** /inventory-preload | Create a new Inventory Preload record using JSON or CSV 
+*InventoryPreloadAPI* | [**InventoryPreloadValidateCsvPost**](docs/InventoryPreloadAPI.md#inventorypreloadvalidatecsvpost) | **Post** /inventory-preload/validate-csv | Validate a given CSV file 
+*InventoryPreloadAPI* | [**V1InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadAPI.md#v1inventorypreloadcsvtemplateget) | **Get** /v1/inventory-preload/csv-template | Retrieve the Inventory Preload CSV template 
+*InventoryPreloadAPI* | [**V1InventoryPreloadDelete**](docs/InventoryPreloadAPI.md#v1inventorypreloaddelete) | **Delete** /v1/inventory-preload | Delete all Inventory Preload records 
+*InventoryPreloadAPI* | [**V1InventoryPreloadGet**](docs/InventoryPreloadAPI.md#v1inventorypreloadget) | **Get** /v1/inventory-preload | Return all Inventory Preload records 
+*InventoryPreloadAPI* | [**V1InventoryPreloadHistoryGet**](docs/InventoryPreloadAPI.md#v1inventorypreloadhistoryget) | **Get** /v1/inventory-preload/history | Get Inventory Preload history entries 
+*InventoryPreloadAPI* | [**V1InventoryPreloadHistoryPost**](docs/InventoryPreloadAPI.md#v1inventorypreloadhistorypost) | **Post** /v1/inventory-preload/history | Add Inventory Preload history object notes 
+*InventoryPreloadAPI* | [**V1InventoryPreloadIdDelete**](docs/InventoryPreloadAPI.md#v1inventorypreloadiddelete) | **Delete** /v1/inventory-preload/{id} | Delete an Inventory Preload record 
+*InventoryPreloadAPI* | [**V1InventoryPreloadIdGet**](docs/InventoryPreloadAPI.md#v1inventorypreloadidget) | **Get** /v1/inventory-preload/{id} | Get an Inventory Preload record 
+*InventoryPreloadAPI* | [**V1InventoryPreloadIdPut**](docs/InventoryPreloadAPI.md#v1inventorypreloadidput) | **Put** /v1/inventory-preload/{id} | Update an Inventory Preload record 
+*InventoryPreloadAPI* | [**V1InventoryPreloadPost**](docs/InventoryPreloadAPI.md#v1inventorypreloadpost) | **Post** /v1/inventory-preload | Create a new Inventory Preload record using JSON or CSV 
+*InventoryPreloadAPI* | [**V1InventoryPreloadValidateCsvPost**](docs/InventoryPreloadAPI.md#v1inventorypreloadvalidatecsvpost) | **Post** /v1/inventory-preload/validate-csv | Validate a given CSV file 
+*InventoryPreloadAPI* | [**V2InventoryPreloadCsvGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadcsvget) | **Get** /v2/inventory-preload/csv | Download all Inventory Preload records
+*InventoryPreloadAPI* | [**V2InventoryPreloadCsvPost**](docs/InventoryPreloadAPI.md#v2inventorypreloadcsvpost) | **Post** /v2/inventory-preload/csv | Create one or more new Inventory Preload records using CSV 
+*InventoryPreloadAPI* | [**V2InventoryPreloadCsvTemplateGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadcsvtemplateget) | **Get** /v2/inventory-preload/csv-template | Download the Inventory Preload CSV template
+*InventoryPreloadAPI* | [**V2InventoryPreloadCsvValidatePost**](docs/InventoryPreloadAPI.md#v2inventorypreloadcsvvalidatepost) | **Post** /v2/inventory-preload/csv-validate | Validate a given CSV file 
+*InventoryPreloadAPI* | [**V2InventoryPreloadEaColumnsGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadeacolumnsget) | **Get** /v2/inventory-preload/ea-columns | Retrieve a list of extension attribute columns 
+*InventoryPreloadAPI* | [**V2InventoryPreloadExportPost**](docs/InventoryPreloadAPI.md#v2inventorypreloadexportpost) | **Post** /v2/inventory-preload/export | Export a collection of inventory preload records 
+*InventoryPreloadAPI* | [**V2InventoryPreloadHistoryGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadhistoryget) | **Get** /v2/inventory-preload/history | Get Inventory Preload history entries 
+*InventoryPreloadAPI* | [**V2InventoryPreloadHistoryPost**](docs/InventoryPreloadAPI.md#v2inventorypreloadhistorypost) | **Post** /v2/inventory-preload/history | Add Inventory Preload history object notes
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsDeleteAllPost**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordsdeleteallpost) | **Post** /v2/inventory-preload/records/delete-all | Delete all Inventory Preload records 
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordsget) | **Get** /v2/inventory-preload/records | Return all Inventory Preload records
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsIdDelete**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordsiddelete) | **Delete** /v2/inventory-preload/records/{id} | Delete an Inventory Preload record 
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsIdGet**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordsidget) | **Get** /v2/inventory-preload/records/{id} | Get an Inventory Preload record
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsIdPut**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordsidput) | **Put** /v2/inventory-preload/records/{id} | Update an Inventory Preload record
+*InventoryPreloadAPI* | [**V2InventoryPreloadRecordsPost**](docs/InventoryPreloadAPI.md#v2inventorypreloadrecordspost) | **Post** /v2/inventory-preload/records | Create a new Inventory Preload record using JSON
+*JamfConnectAPI* | [**V1JamfConnectConfigProfilesGet**](docs/JamfConnectAPI.md#v1jamfconnectconfigprofilesget) | **Get** /v1/jamf-connect/config-profiles | Search for config profiles linked to Jamf Connect 
+*JamfConnectAPI* | [**V1JamfConnectConfigProfilesIdPut**](docs/JamfConnectAPI.md#v1jamfconnectconfigprofilesidput) | **Put** /v1/jamf-connect/config-profiles/{id} | Update the way the Jamf Connect app gets updated on computers within scope of the associated configuration profile. 
+*JamfConnectAPI* | [**V1JamfConnectDeploymentsIdTasksGet**](docs/JamfConnectAPI.md#v1jamfconnectdeploymentsidtasksget) | **Get** /v1/jamf-connect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Connect 
+*JamfConnectAPI* | [**V1JamfConnectDeploymentsIdTasksRetryPost**](docs/JamfConnectAPI.md#v1jamfconnectdeploymentsidtasksretrypost) | **Post** /v1/jamf-connect/deployments/{id}/tasks/retry | Request a retry of Connect install tasks 
+*JamfConnectAPI* | [**V1JamfConnectGet**](docs/JamfConnectAPI.md#v1jamfconnectget) | **Get** /v1/jamf-connect | Get the Jamf Connect settings that you have access to see 
+*JamfConnectAPI* | [**V1JamfConnectHistoryGet**](docs/JamfConnectAPI.md#v1jamfconnecthistoryget) | **Get** /v1/jamf-connect/history | Get Jamf Connect history 
+*JamfConnectAPI* | [**V1JamfConnectHistoryPost**](docs/JamfConnectAPI.md#v1jamfconnecthistorypost) | **Post** /v1/jamf-connect/history | Add Jamf Connect history notes 
+*JamfManagementFrameworkAPI* | [**V1JamfManagementFrameworkRedeployIdPost**](docs/JamfManagementFrameworkAPI.md#v1jamfmanagementframeworkredeployidpost) | **Post** /v1/jamf-management-framework/redeploy/{id} | Redeploy Jamf Management Framework 
+*JamfPackageAPI* | [**V1JamfPackageGet**](docs/JamfPackageAPI.md#v1jamfpackageget) | **Get** /v1/jamf-package | Get the packages for a given Jamf application 
+*JamfPackageAPI* | [**V2JamfPackageGet**](docs/JamfPackageAPI.md#v2jamfpackageget) | **Get** /v2/jamf-package | Get the packages for a given Jamf application 
+*JamfProInformationAPI* | [**V1JamfProInformationGet**](docs/JamfProInformationAPI.md#v1jamfproinformationget) | **Get** /v1/jamf-pro-information | Get basic information about the Jamf Pro Server 
+*JamfProInformationAPI* | [**V2JamfProInformationGet**](docs/JamfProInformationAPI.md#v2jamfproinformationget) | **Get** /v2/jamf-pro-information | Get basic information about the Jamf Pro Server 
+*JamfProInitializationAPI* | [**V1SystemInitializeDatabaseConnectionPost**](docs/JamfProInitializationAPI.md#v1systeminitializedatabaseconnectionpost) | **Post** /v1/system/initialize-database-connection | Provide Database Password during startup 
+*JamfProInitializationAPI* | [**V1SystemInitializePost**](docs/JamfProInitializationAPI.md#v1systeminitializepost) | **Post** /v1/system/initialize | Set up fresh installed Jamf Pro Server 
+*JamfProInitializationPreviewAPI* | [**SystemInitializeDatabaseConnectionPost**](docs/JamfProInitializationPreviewAPI.md#systeminitializedatabaseconnectionpost) | **Post** /system/initialize-database-connection | Provide Database Password during startup 
+*JamfProInitializationPreviewAPI* | [**SystemInitializePost**](docs/JamfProInitializationPreviewAPI.md#systeminitializepost) | **Post** /system/initialize | Set up fresh installed Jamf Pro Server 
+*JamfProNotificationsAPI* | [**V1NotificationsGet**](docs/JamfProNotificationsAPI.md#v1notificationsget) | **Get** /v1/notifications | Get Notifications for user and site 
+*JamfProNotificationsAPI* | [**V1NotificationsTypeIdDelete**](docs/JamfProNotificationsAPI.md#v1notificationstypeiddelete) | **Delete** /v1/notifications/{type}/{id} | Delete Notifications 
+*JamfProNotificationsPreviewAPI* | [**NotificationsAlertsGet**](docs/JamfProNotificationsPreviewAPI.md#notificationsalertsget) | **Get** /notifications/alerts | Get Notifications for user and site 
+*JamfProNotificationsPreviewAPI* | [**NotificationsAlertsIdDelete**](docs/JamfProNotificationsPreviewAPI.md#notificationsalertsiddelete) | **Delete** /notifications/alerts/{id} | DEPRECATED - USE \&quot;alerts/{type}/{id}\&quot; INSTEAD. Deletes only Patch Management notifications. 
+*JamfProNotificationsPreviewAPI* | [**NotificationsAlertsTypeIdDelete**](docs/JamfProNotificationsPreviewAPI.md#notificationsalertstypeiddelete) | **Delete** /notifications/alerts/{type}/{id} | Delete Notifications 
+*JamfProServerUrlPreviewAPI* | [**V1JamfProServerUrlGet**](docs/JamfProServerUrlPreviewAPI.md#v1jamfproserverurlget) | **Get** /v1/jamf-pro-server-url | Get Jamf Pro Server URL settings 
+*JamfProServerUrlPreviewAPI* | [**V1JamfProServerUrlHistoryGet**](docs/JamfProServerUrlPreviewAPI.md#v1jamfproserverurlhistoryget) | **Get** /v1/jamf-pro-server-url/history | Get Jamf Pro Server URL settings history 
+*JamfProServerUrlPreviewAPI* | [**V1JamfProServerUrlHistoryPost**](docs/JamfProServerUrlPreviewAPI.md#v1jamfproserverurlhistorypost) | **Post** /v1/jamf-pro-server-url/history | Add Jamf Pro Server URL settings history notes 
+*JamfProServerUrlPreviewAPI* | [**V1JamfProServerUrlPut**](docs/JamfProServerUrlPreviewAPI.md#v1jamfproserverurlput) | **Put** /v1/jamf-pro-server-url | Update Jamf Pro Server URL settings 
+*JamfProUserAccountSettingsAPI* | [**V1UserPreferencesKeyIdDelete**](docs/JamfProUserAccountSettingsAPI.md#v1userpreferenceskeyiddelete) | **Delete** /v1/user/preferences/{keyId} | Remove specified setting for authenticated user 
+*JamfProUserAccountSettingsAPI* | [**V1UserPreferencesKeyIdGet**](docs/JamfProUserAccountSettingsAPI.md#v1userpreferenceskeyidget) | **Get** /v1/user/preferences/{keyId} | Get the user setting for the authenticated user and key 
+*JamfProUserAccountSettingsAPI* | [**V1UserPreferencesKeyIdPut**](docs/JamfProUserAccountSettingsAPI.md#v1userpreferenceskeyidput) | **Put** /v1/user/preferences/{keyId} | Persist the user setting 
+*JamfProUserAccountSettingsAPI* | [**V1UserPreferencesSettingsKeyIdGet**](docs/JamfProUserAccountSettingsAPI.md#v1userpreferencessettingskeyidget) | **Get** /v1/user/preferences/settings/{keyId} | Get the user preferences for the authenticated user and key. 
+*JamfProUserAccountSettingsPreviewAPI* | [**UserObjPreferenceKeyDelete**](docs/JamfProUserAccountSettingsPreviewAPI.md#userobjpreferencekeydelete) | **Delete** /user/obj/preference/{key} | Remove specified setting for authenticated user 
+*JamfProUserAccountSettingsPreviewAPI* | [**UserObjPreferenceKeyGet**](docs/JamfProUserAccountSettingsPreviewAPI.md#userobjpreferencekeyget) | **Get** /user/obj/preference/{key} | Get the user setting for the authenticated user and key 
+*JamfProUserAccountSettingsPreviewAPI* | [**UserObjPreferenceKeyPut**](docs/JamfProUserAccountSettingsPreviewAPI.md#userobjpreferencekeyput) | **Put** /user/obj/preference/{key} | Persist the user setting 
+*JamfProVersionAPI* | [**V1JamfProVersionGet**](docs/JamfProVersionAPI.md#v1jamfproversionget) | **Get** /v1/jamf-pro-version | Return information about the Jamf Pro including the current version 
+*JamfProtectAPI* | [**V1JamfProtectDelete**](docs/JamfProtectAPI.md#v1jamfprotectdelete) | **Delete** /v1/jamf-protect | Delete Jamf Protect API registration.
+*JamfProtectAPI* | [**V1JamfProtectDeploymentsIdTasksGet**](docs/JamfProtectAPI.md#v1jamfprotectdeploymentsidtasksget) | **Get** /v1/jamf-protect/deployments/{id}/tasks | Search for deployment tasks for a config profile linked to Jamf Protect 
+*JamfProtectAPI* | [**V1JamfProtectDeploymentsIdTasksRetryPost**](docs/JamfProtectAPI.md#v1jamfprotectdeploymentsidtasksretrypost) | **Post** /v1/jamf-protect/deployments/{id}/tasks/retry | Request a retry of Protect install tasks 
+*JamfProtectAPI* | [**V1JamfProtectGet**](docs/JamfProtectAPI.md#v1jamfprotectget) | **Get** /v1/jamf-protect | Jamf Protect integration settings
+*JamfProtectAPI* | [**V1JamfProtectHistoryGet**](docs/JamfProtectAPI.md#v1jamfprotecthistoryget) | **Get** /v1/jamf-protect/history | Get Jamf Protect history 
+*JamfProtectAPI* | [**V1JamfProtectHistoryPost**](docs/JamfProtectAPI.md#v1jamfprotecthistorypost) | **Post** /v1/jamf-protect/history | Add Jamf Protect history notes 
+*JamfProtectAPI* | [**V1JamfProtectPlansGet**](docs/JamfProtectAPI.md#v1jamfprotectplansget) | **Get** /v1/jamf-protect/plans | Get all of the previously synced Jamf Protect Plans with information about their associated configuration profile
+*JamfProtectAPI* | [**V1JamfProtectPlansSyncPost**](docs/JamfProtectAPI.md#v1jamfprotectplanssyncpost) | **Post** /v1/jamf-protect/plans/sync | Sync Plans with Jamf Protect
+*JamfProtectAPI* | [**V1JamfProtectPut**](docs/JamfProtectAPI.md#v1jamfprotectput) | **Put** /v1/jamf-protect | Jamf Protect integration settings
+*JamfProtectAPI* | [**V1JamfProtectRegisterPost**](docs/JamfProtectAPI.md#v1jamfprotectregisterpost) | **Post** /v1/jamf-protect/register | Register a Jamf Protect API configuration with Jamf Pro
+*LdapAPI* | [**LdapGroupsGet**](docs/LdapAPI.md#ldapgroupsget) | **Get** /ldap/groups | Retrieve the configured access groups that contain the text in the search param 
+*LdapAPI* | [**LdapServersGet**](docs/LdapAPI.md#ldapserversget) | **Get** /ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
+*LdapAPI* | [**V1LdapGroupsGet**](docs/LdapAPI.md#v1ldapgroupsget) | **Get** /v1/ldap/groups | Retrieve the configured access groups that contain the text in the search param 
+*LdapAPI* | [**V1LdapLdapServersGet**](docs/LdapAPI.md#v1ldapldapserversget) | **Get** /v1/ldap/ldap-servers | Retrieve all LDAP Servers. 
+*LdapAPI* | [**V1LdapServersGet**](docs/LdapAPI.md#v1ldapserversget) | **Get** /v1/ldap/servers | Retrieve all Servers including LDAP and Cloud Identity Providers. 
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordclientmanagementidaccountusernameauditget) | **Get** /v1/local-admin-password/{clientManagementId}/account/{username}/audit | Get LAPS password viewed history.
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordclientmanagementidaccountusernamepasswordget) | **Get** /v1/local-admin-password/{clientManagementId}/account/{username}/password | Get current LAPS password for specified username on a client.
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordClientManagementIdAccountsGet**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordclientmanagementidaccountsget) | **Get** /v1/local-admin-password/{clientManagementId}/accounts | Get the LAPS capable admin accounts for a device.
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordClientManagementIdSetPasswordPut**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordclientmanagementidsetpasswordput) | **Put** /v1/local-admin-password/{clientManagementId}/set-password | Set the LAPS password for a device.
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordSettingsGet**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordsettingsget) | **Get** /v1/local-admin-password/settings | Get the current LAPS settings.
+*LocalAdminPasswordAPI* | [**V1LocalAdminPasswordSettingsPut**](docs/LocalAdminPasswordAPI.md#v1localadminpasswordsettingsput) | **Put** /v1/local-admin-password/settings | Update settings for LAPS.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordclientmanagementidaccountusernameauditget) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/audit | Get LAPS password viewed history.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordclientmanagementidaccountusernamehistoryget) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/history | Get LAPS historical records for target device and username.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordclientmanagementidaccountusernamepasswordget) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/password | Get current LAPS password for specified username on a client.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordClientManagementIdAccountsGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordclientmanagementidaccountsget) | **Get** /v2/local-admin-password/{clientManagementId}/accounts | Get the LAPS capable admin accounts for a device.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordClientManagementIdSetPasswordPut**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordclientmanagementidsetpasswordput) | **Put** /v2/local-admin-password/{clientManagementId}/set-password | Set the LAPS password for a device.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordPendingRotationsGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordpendingrotationsget) | **Get** /v2/local-admin-password/pending-rotations | Get a list of the current devices and usernames with pending LAPS rotations
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordSettingsGet**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordsettingsget) | **Get** /v2/local-admin-password/settings | Get the current LAPS settings.
+*LocalAdminPasswordAPI* | [**V2LocalAdminPasswordSettingsPut**](docs/LocalAdminPasswordAPI.md#v2localadminpasswordsettingsput) | **Put** /v2/local-admin-password/settings | Update settings for LAPS.
+*LocalesPreviewAPI* | [**V1LocalesGet**](docs/LocalesPreviewAPI.md#v1localesget) | **Get** /v1/locales | Return locales that can be used in other features 
+*MacosManagedSoftwareUpdatesAPI* | [**V1MacosManagedSoftwareUpdatesAvailableUpdatesGet**](docs/MacosManagedSoftwareUpdatesAPI.md#v1macosmanagedsoftwareupdatesavailableupdatesget) | **Get** /v1/macos-managed-software-updates/available-updates | Retrieve available MacOs Managed Software Updates
+*MacosManagedSoftwareUpdatesAPI* | [**V1MacosManagedSoftwareUpdatesSendUpdatesPost**](docs/MacosManagedSoftwareUpdatesAPI.md#v1macosmanagedsoftwareupdatessendupdatespost) | **Post** /v1/macos-managed-software-updates/send-updates | Send MacOs Managed Software Updates
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesAvailableUpdatesGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesavailableupdatesget) | **Get** /v1/managed-software-updates/available-updates | Retrieve available macOS and iOS Managed Software Updates
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansFeatureToggleGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansfeaturetoggleget) | **Get** /v1/managed-software-updates/plans/feature-toggle | Retrieve Status of the Feature Toggle
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansFeatureTogglePut**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansfeaturetoggleput) | **Put** /v1/managed-software-updates/plans/feature-toggle | Updates Feature Toggle Value
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansget) | **Get** /v1/managed-software-updates/plans | Retrieve Managed Software Update Plans
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansGroupIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansgroupidget) | **Get** /v1/managed-software-updates/plans/group/{id} | Retrieve Managed Software Update Plans for a Group
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansGroupPost**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansgrouppost) | **Post** /v1/managed-software-updates/plans/group | Create Managed Software Update Plans for a Group
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplansidget) | **Get** /v1/managed-software-updates/plans/{id} | Retrieve a Managed Software Update Plan
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesPlansPost**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesplanspost) | **Post** /v1/managed-software-updates/plans | Create a Managed Software Update Plan
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesupdatestatusescomputergroupsidget) | **Get** /v1/managed-software-updates/update-statuses/computer-groups/{id} | Retrieve Managed Software Update Statuses for Computer Groups
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesupdatestatusescomputersidget) | **Get** /v1/managed-software-updates/update-statuses/computers/{id} | Retrieve Managed Software Update Statuses for Computers
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesUpdateStatusesGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesupdatestatusesget) | **Get** /v1/managed-software-updates/update-statuses | Retrieve Managed Software Update Statuses
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesupdatestatusesmobiledevicegroupsidget) | **Get** /v1/managed-software-updates/update-statuses/mobile-device-groups/{id} | Retrieve Managed Software Update Statuses for Mobile Device Groups
+*ManagedSoftwareUpdatesAPI* | [**V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet**](docs/ManagedSoftwareUpdatesAPI.md#v1managedsoftwareupdatesupdatestatusesmobiledevicesidget) | **Get** /v1/managed-software-updates/update-statuses/mobile-devices/{id} | Retrieve Managed Software Update Statuses for Mobile Devices
+*MdmAPI* | [**PreviewMdmCommandsPost**](docs/MdmAPI.md#previewmdmcommandspost) | **Post** /preview/mdm/commands | Post a command for creation and queuing 
+*MdmAPI* | [**V1DeployPackagePost**](docs/MdmAPI.md#v1deploypackagepost) | **Post** /v1/deploy-package | Deploy packages using MDM
+*MdmAPI* | [**V1MdmCommandsGet**](docs/MdmAPI.md#v1mdmcommandsget) | **Get** /v1/mdm/commands | Get information about mdm commands made by Jamf Pro.
+*MdmAPI* | [**V1MdmRenewProfilePost**](docs/MdmAPI.md#v1mdmrenewprofilepost) | **Post** /v1/mdm/renew-profile | Renew MDM Profile 
+*MdmAPI* | [**V2MdmCommandsGet**](docs/MdmAPI.md#v2mdmcommandsget) | **Get** /v2/mdm/commands | Get information about mdm commands made by Jamf Pro. 
+*MobileDeviceAppsAPI* | [**V1MobileDeviceAppsReinstallAppConfigPost**](docs/MobileDeviceAppsAPI.md#v1mobiledeviceappsreinstallappconfigpost) | **Post** /v1/mobile-device-apps/reinstall-app-config | Reinstall App Config for Managed iOS Apps 
+*MobileDeviceEnrollmentProfileAPI* | [**V1MobileDeviceEnrollmentProfileIdDownloadProfileGet**](docs/MobileDeviceEnrollmentProfileAPI.md#v1mobiledeviceenrollmentprofileiddownloadprofileget) | **Get** /v1/mobile-device-enrollment-profile/{id}/download-profile | Retrieve the MDM Enrollment Profile 
+*MobileDeviceExtensionAttributesPreviewAPI* | [**DevicesExtensionAttributesGet**](docs/MobileDeviceExtensionAttributesPreviewAPI.md#devicesextensionattributesget) | **Get** /devices/extensionAttributes | Get Mobile Device Extension Attribute values placed in select paramter 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsGet**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsget) | **Get** /v1/mobile-device-groups | Return the list of all Mobile Device Groups 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupMembershipIdGet**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupmembershipidget) | **Get** /v1/mobile-device-groups/static-group-membership/{id} | Get Static Group Membership by Id 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupsGet**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupsget) | **Get** /v1/mobile-device-groups/static-groups | Get Static Groups 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupsIdDelete**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupsiddelete) | **Delete** /v1/mobile-device-groups/static-groups/{id} | Remove Static Group by Id 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupsIdGet**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupsidget) | **Get** /v1/mobile-device-groups/static-groups/{id} | Get Static Group by Id 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupsIdPatch**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupsidpatch) | **Patch** /v1/mobile-device-groups/static-groups/{id} | Update membership of a static group. 
+*MobileDeviceGroupsAPI* | [**V1MobileDeviceGroupsStaticGroupsPost**](docs/MobileDeviceGroupsAPI.md#v1mobiledevicegroupsstaticgroupspost) | **Post** /v1/mobile-device-groups/static-groups | Create membership of a static group. 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesget) | **Get** /v1/mobile-device-prestages | Search for sorted and paged Mobile Device Prestages 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdAttachmentsDelete**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidattachmentsdelete) | **Delete** /v1/mobile-device-prestages/{id}/attachments | Remove an attachment for a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdAttachmentsGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidattachmentsget) | **Get** /v1/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdAttachmentsPost**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidattachmentspost) | **Post** /v1/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdDelete**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesiddelete) | **Delete** /v1/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidget) | **Get** /v1/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdHistoryGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidhistoryget) | **Get** /v1/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdHistoryPost**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidhistorypost) | **Post** /v1/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdPut**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidput) | **Put** /v1/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdScopeDelete**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidscopedelete) | **Delete** /v1/mobile-device-prestages/{id}/scope | Remove Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdScopeGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidscopeget) | **Get** /v1/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdScopePost**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidscopepost) | **Post** /v1/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesIdScopePut**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesidscopeput) | **Put** /v1/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesPost**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagespost) | **Post** /v1/mobile-device-prestages | Create a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesScopeGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagesscopeget) | **Get** /v1/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesSyncGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagessyncget) | **Get** /v1/mobile-device-prestages/sync | Get all Prestage sync States for all prestages 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesSyncIdGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagessyncidget) | **Get** /v1/mobile-device-prestages/sync/{id} | Get all prestage sync states for a single prestage 
+*MobileDevicePrestagesAPI* | [**V1MobileDevicePrestagesSyncIdLatestGet**](docs/MobileDevicePrestagesAPI.md#v1mobiledeviceprestagessyncidlatestget) | **Get** /v1/mobile-device-prestages/sync/{id}/latest | Get the latest Sync State for a single Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesget) | **Get** /v2/mobile-device-prestages | Get sorted and paged Mobile Device Prestages 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidattachmentsdeletemultiplepost) | **Post** /v2/mobile-device-prestages/{id}/attachments/delete-multiple | Remove an attachment for a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdAttachmentsGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidattachmentsget) | **Get** /v2/mobile-device-prestages/{id}/attachments | Get attachments for a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdAttachmentsPost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidattachmentspost) | **Post** /v2/mobile-device-prestages/{id}/attachments | Add an attachment to a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdDelete**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesiddelete) | **Delete** /v2/mobile-device-prestages/{id} | Delete a Mobile Device Prestage with the supplied id 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidget) | **Get** /v2/mobile-device-prestages/{id} | Retrieve a Mobile Device Prestage with the supplied id 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdHistoryGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidhistoryget) | **Get** /v2/mobile-device-prestages/{id}/history | Get sorted and paged Mobile Device Prestage history objects 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdHistoryPost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidhistorypost) | **Post** /v2/mobile-device-prestages/{id}/history | Add Mobile Device Prestage history object notes 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdPut**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidput) | **Put** /v2/mobile-device-prestages/{id} | Update a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdScopeDeleteMultiplePost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidscopedeletemultiplepost) | **Post** /v2/mobile-device-prestages/{id}/scope/delete-multiple | Remove Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdScopeGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidscopeget) | **Get** /v2/mobile-device-prestages/{id}/scope | Get Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdScopePost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidscopepost) | **Post** /v2/mobile-device-prestages/{id}/scope | Add Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdScopePut**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidscopeput) | **Put** /v2/mobile-device-prestages/{id}/scope | Replace Device Scope for a specific Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdSyncsGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidsyncsget) | **Get** /v2/mobile-device-prestages/{id}/syncs | Get all prestage sync states for a single prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesIdSyncsLatestGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesidsyncslatestget) | **Get** /v2/mobile-device-prestages/{id}/syncs/latest | Get the latest Sync State for a single Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesPost**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagespost) | **Post** /v2/mobile-device-prestages | Create a Mobile Device Prestage 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesScopeGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagesscopeget) | **Get** /v2/mobile-device-prestages/scope | Get all Device Scope for all Mobile Device Prestages 
+*MobileDevicePrestagesAPI* | [**V2MobileDevicePrestagesSyncsGet**](docs/MobileDevicePrestagesAPI.md#v2mobiledeviceprestagessyncsget) | **Get** /v2/mobile-device-prestages/syncs | Get all Prestage sync States for all prestages 
+*MobileDevicesAPI* | [**V1MobileDevicesGet**](docs/MobileDevicesAPI.md#v1mobiledevicesget) | **Get** /v1/mobile-devices | Get Mobile Device objects 
+*MobileDevicesAPI* | [**V1MobileDevicesIdDetailGet**](docs/MobileDevicesAPI.md#v1mobiledevicesiddetailget) | **Get** /v1/mobile-devices/{id}/detail | Get Mobile Device 
+*MobileDevicesAPI* | [**V1MobileDevicesIdGet**](docs/MobileDevicesAPI.md#v1mobiledevicesidget) | **Get** /v1/mobile-devices/{id} | Get Mobile Device 
+*MobileDevicesAPI* | [**V1MobileDevicesIdPatch**](docs/MobileDevicesAPI.md#v1mobiledevicesidpatch) | **Patch** /v1/mobile-devices/{id} | Update fields on a mobile device that are allowed to be modified by users 
+*MobileDevicesAPI* | [**V1SearchMobileDevicesPost**](docs/MobileDevicesAPI.md#v1searchmobiledevicespost) | **Post** /v1/search-mobile-devices | Search Mobile Devices 
+*MobileDevicesAPI* | [**V2MobileDevicesDetailGet**](docs/MobileDevicesAPI.md#v2mobiledevicesdetailget) | **Get** /v2/mobile-devices/detail | Return paginated Mobile Device Inventory records
+*MobileDevicesAPI* | [**V2MobileDevicesGet**](docs/MobileDevicesAPI.md#v2mobiledevicesget) | **Get** /v2/mobile-devices | Get Mobile Device objects 
+*MobileDevicesAPI* | [**V2MobileDevicesIdDetailGet**](docs/MobileDevicesAPI.md#v2mobiledevicesiddetailget) | **Get** /v2/mobile-devices/{id}/detail | Get Mobile Device 
+*MobileDevicesAPI* | [**V2MobileDevicesIdGet**](docs/MobileDevicesAPI.md#v2mobiledevicesidget) | **Get** /v2/mobile-devices/{id} | Get Mobile Device 
+*MobileDevicesAPI* | [**V2MobileDevicesIdPatch**](docs/MobileDevicesAPI.md#v2mobiledevicesidpatch) | **Patch** /v2/mobile-devices/{id} | Update fields on a mobile device that are allowed to be modified by users 
+*ParentAppPreviewAPI* | [**V1ParentAppGet**](docs/ParentAppPreviewAPI.md#v1parentappget) | **Get** /v1/parent-app | Get the current Jamf Parent app settings 
+*ParentAppPreviewAPI* | [**V1ParentAppHistoryGet**](docs/ParentAppPreviewAPI.md#v1parentapphistoryget) | **Get** /v1/parent-app/history | Get Jamf Parent app settings history 
+*ParentAppPreviewAPI* | [**V1ParentAppHistoryPost**](docs/ParentAppPreviewAPI.md#v1parentapphistorypost) | **Post** /v1/parent-app/history | Add Jamf Parent app settings history notes 
+*ParentAppPreviewAPI* | [**V1ParentAppPut**](docs/ParentAppPreviewAPI.md#v1parentappput) | **Put** /v1/parent-app | Update Jamf Parent app settings 
+*PatchManagementAPI* | [**V2PatchManagementAcceptDisclaimerPost**](docs/PatchManagementAPI.md#v2patchmanagementacceptdisclaimerpost) | **Post** /v2/patch-management-accept-disclaimer | Accept Patch Management disclaimer 
+*PatchPoliciesAPI* | [**V2PatchPoliciesGet**](docs/PatchPoliciesAPI.md#v2patchpoliciesget) | **Get** /v2/patch-policies | Retrieve Patch Policies
+*PatchPoliciesAPI* | [**V2PatchPoliciesIdDashboardDelete**](docs/PatchPoliciesAPI.md#v2patchpoliciesiddashboarddelete) | **Delete** /v2/patch-policies/{id}/dashboard | Remove a patch policy from the dashboard 
+*PatchPoliciesAPI* | [**V2PatchPoliciesIdDashboardGet**](docs/PatchPoliciesAPI.md#v2patchpoliciesiddashboardget) | **Get** /v2/patch-policies/{id}/dashboard | Return whether or not the requested patch policy is on the dashboard 
+*PatchPoliciesAPI* | [**V2PatchPoliciesIdDashboardPost**](docs/PatchPoliciesAPI.md#v2patchpoliciesiddashboardpost) | **Post** /v2/patch-policies/{id}/dashboard | Add a patch policy to the dashboard 
+*PatchPoliciesAPI* | [**V2PatchPoliciesPolicyDetailsGet**](docs/PatchPoliciesAPI.md#v2patchpoliciespolicydetailsget) | **Get** /v2/patch-policies/policy-details | Retrieve Patch Policies
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsDeviceIdDetailsGet**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogsdeviceiddetailsget) | **Get** /v2/patch-policies/{id}/logs/{deviceId}/details | Return attempt details for a specific log
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsDeviceIdGet**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogsdeviceidget) | **Get** /v2/patch-policies/{id}/logs/{deviceId} | Retrieves a single Patch Policy Log 
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsEligibleRetryCountGet**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogseligibleretrycountget) | **Get** /v2/patch-policies/{id}/logs/eligible-retry-count | Return the count of the Patch Policy Logs for the patch policy id that are eligible for a retry attempt 
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsGet**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogsget) | **Get** /v2/patch-policies/{id}/logs | Retrieve Patch Policy Logs 
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsRetryAllPost**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogsretryallpost) | **Post** /v2/patch-policies/{id}/logs/retry-all | Send retry attempts for all devices
+*PatchPolicyLogsAPI* | [**V2PatchPoliciesIdLogsRetryPost**](docs/PatchPolicyLogsAPI.md#v2patchpoliciesidlogsretrypost) | **Post** /v2/patch-policies/{id}/logs/retry | Send retry attempts for specific devices
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsget) | **Get** /v2/patch-software-title-configurations | Retrieve Patch Software Title Configurations
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDashboardDelete**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddashboarddelete) | **Delete** /v2/patch-software-title-configurations/{id}/dashboard | Remove a software title configuration from the dashboard 
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDashboardGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddashboardget) | **Get** /v2/patch-software-title-configurations/{id}/dashboard | Return whether or not the requested software title configuration is on the dashboard 
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDashboardPost**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddashboardpost) | **Post** /v2/patch-software-title-configurations/{id}/dashboard | Add a software title configuration to the dashboard 
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDefinitionsGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddefinitionsget) | **Get** /v2/patch-software-title-configurations/{id}/definitions | Retrieve Patch Software Title Definitions with the supplied id
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDelete**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddelete) | **Delete** /v2/patch-software-title-configurations/{id} | Delete Patch Software Title Configurations with the supplied id
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdDependenciesGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsiddependenciesget) | **Get** /v2/patch-software-title-configurations/{id}/dependencies | Retrieve list of Patch Software Title Configuration Dependencies
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdExportReportGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidexportreportget) | **Get** /v2/patch-software-title-configurations/{id}/export-report | Export Patch Reporting Data
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidextensionattributesget) | **Get** /v2/patch-software-title-configurations/{id}/extension-attributes | Retrieve Software Title Extension Attributes with the supplied id
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidget) | **Get** /v2/patch-software-title-configurations/{id} | Retrieve Patch Software Title Configurations with the supplied id
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdHistoryGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidhistoryget) | **Get** /v2/patch-software-title-configurations/{id}/history | Get specified Patch Software Title Configuration history object 
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdHistoryPost**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidhistorypost) | **Post** /v2/patch-software-title-configurations/{id}/history | Add Patch Software Title Configuration history object notes 
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdPatch**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidpatch) | **Patch** /v2/patch-software-title-configurations/{id} | Update Patch Software Title Configurations
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdPatchReportGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidpatchreportget) | **Get** /v2/patch-software-title-configurations/{id}/patch-report | Retrieve Patch Software Title Configuration Patch Report
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidpatchsummaryget) | **Get** /v2/patch-software-title-configurations/{id}/patch-summary | Return Active Patch Summary
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationsidpatchsummaryversionsget) | **Get** /v2/patch-software-title-configurations/{id}/patch-summary/versions | Returns patch versions
+*PatchSoftwareTitleConfigurationsAPI* | [**V2PatchSoftwareTitleConfigurationsPost**](docs/PatchSoftwareTitleConfigurationsAPI.md#v2patchsoftwaretitleconfigurationspost) | **Post** /v2/patch-software-title-configurations | Create Patch Software Title Configurations
+*PoliciesPreviewAPI* | [**SettingsObjPolicyPropertiesGet**](docs/PoliciesPreviewAPI.md#settingsobjpolicypropertiesget) | **Get** /settings/obj/policyProperties | Get Policy Properties object 
+*PoliciesPreviewAPI* | [**SettingsObjPolicyPropertiesPut**](docs/PoliciesPreviewAPI.md#settingsobjpolicypropertiesput) | **Put** /settings/obj/policyProperties | Update Policy Properties object 
+*PoliciesPreviewAPI* | [**V1PolicyPropertiesGet**](docs/PoliciesPreviewAPI.md#v1policypropertiesget) | **Get** /v1/policy-properties | Get Policy Properties object 
+*PoliciesPreviewAPI* | [**V1PolicyPropertiesPut**](docs/PoliciesPreviewAPI.md#v1policypropertiesput) | **Put** /v1/policy-properties | Update Policy Properties object 
+*ReEnrollmentPreviewAPI* | [**V1ReenrollmentGet**](docs/ReEnrollmentPreviewAPI.md#v1reenrollmentget) | **Get** /v1/reenrollment | Get Re-enrollment object 
+*ReEnrollmentPreviewAPI* | [**V1ReenrollmentHistoryExportPost**](docs/ReEnrollmentPreviewAPI.md#v1reenrollmenthistoryexportpost) | **Post** /v1/reenrollment/history/export | Export reenrollment history collection 
+*ReEnrollmentPreviewAPI* | [**V1ReenrollmentHistoryGet**](docs/ReEnrollmentPreviewAPI.md#v1reenrollmenthistoryget) | **Get** /v1/reenrollment/history | Get Re-enrollment history object 
+*ReEnrollmentPreviewAPI* | [**V1ReenrollmentHistoryPost**](docs/ReEnrollmentPreviewAPI.md#v1reenrollmenthistorypost) | **Post** /v1/reenrollment/history | Add specified Re-enrollment history object notes 
+*ReEnrollmentPreviewAPI* | [**V1ReenrollmentPut**](docs/ReEnrollmentPreviewAPI.md#v1reenrollmentput) | **Put** /v1/reenrollment | Update the Re-enrollment object 
+*RemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsGet**](docs/RemoteAdministrationAPI.md#previewremoteadministrationconfigurationsget) | **Get** /preview/remote-administration-configurations | Get information about all remote administration configurations.
+*ScriptsAPI* | [**V1ScriptsGet**](docs/ScriptsAPI.md#v1scriptsget) | **Get** /v1/scripts | Search for sorted and paged Scripts 
+*ScriptsAPI* | [**V1ScriptsIdDelete**](docs/ScriptsAPI.md#v1scriptsiddelete) | **Delete** /v1/scripts/{id} | Delete a Script at the specified id 
+*ScriptsAPI* | [**V1ScriptsIdDownloadGet**](docs/ScriptsAPI.md#v1scriptsiddownloadget) | **Get** /v1/scripts/{id}/download | Download a text file of the Script contents 
+*ScriptsAPI* | [**V1ScriptsIdGet**](docs/ScriptsAPI.md#v1scriptsidget) | **Get** /v1/scripts/{id} | Retrieve a full script object 
+*ScriptsAPI* | [**V1ScriptsIdHistoryGet**](docs/ScriptsAPI.md#v1scriptsidhistoryget) | **Get** /v1/scripts/{id}/history | Get specified Script history object 
+*ScriptsAPI* | [**V1ScriptsIdHistoryPost**](docs/ScriptsAPI.md#v1scriptsidhistorypost) | **Post** /v1/scripts/{id}/history | Add specified Script history object notes 
+*ScriptsAPI* | [**V1ScriptsIdPut**](docs/ScriptsAPI.md#v1scriptsidput) | **Put** /v1/scripts/{id} | Replace the script at the id with the supplied information 
+*ScriptsAPI* | [**V1ScriptsPost**](docs/ScriptsAPI.md#v1scriptspost) | **Post** /v1/scripts | Create a Script 
+*SelfServiceAPI* | [**V1SelfServiceSettingsGet**](docs/SelfServiceAPI.md#v1selfservicesettingsget) | **Get** /v1/self-service/settings | Get an object representation of Self Service settings 
+*SelfServiceAPI* | [**V1SelfServiceSettingsPut**](docs/SelfServiceAPI.md#v1selfservicesettingsput) | **Put** /v1/self-service/settings | Put an object representation of Self Service settings 
+*SelfServiceBrandingIosAPI* | [**V1SelfServiceBrandingIosGet**](docs/SelfServiceBrandingIosAPI.md#v1selfservicebrandingiosget) | **Get** /v1/self-service/branding/ios | Search for sorted and paged iOS branding configurations 
+*SelfServiceBrandingIosAPI* | [**V1SelfServiceBrandingIosIdDelete**](docs/SelfServiceBrandingIosAPI.md#v1selfservicebrandingiosiddelete) | **Delete** /v1/self-service/branding/ios/{id} | Delete the Self Service iOS branding configuration indicated by the provided id 
+*SelfServiceBrandingIosAPI* | [**V1SelfServiceBrandingIosIdGet**](docs/SelfServiceBrandingIosAPI.md#v1selfservicebrandingiosidget) | **Get** /v1/self-service/branding/ios/{id} | Read a single Self Service iOS branding configuration indicated by the provided id 
+*SelfServiceBrandingIosAPI* | [**V1SelfServiceBrandingIosIdPut**](docs/SelfServiceBrandingIosAPI.md#v1selfservicebrandingiosidput) | **Put** /v1/self-service/branding/ios/{id} | Update a Self Service iOS branding configuration with the supplied details 
+*SelfServiceBrandingIosAPI* | [**V1SelfServiceBrandingIosPost**](docs/SelfServiceBrandingIosAPI.md#v1selfservicebrandingiospost) | **Post** /v1/self-service/branding/ios | Create a Self Service iOS branding configuration with the supplied 
+*SelfServiceBrandingMacosAPI* | [**V1SelfServiceBrandingMacosGet**](docs/SelfServiceBrandingMacosAPI.md#v1selfservicebrandingmacosget) | **Get** /v1/self-service/branding/macos | Search for sorted and paged macOS branding configurations 
+*SelfServiceBrandingMacosAPI* | [**V1SelfServiceBrandingMacosIdDelete**](docs/SelfServiceBrandingMacosAPI.md#v1selfservicebrandingmacosiddelete) | **Delete** /v1/self-service/branding/macos/{id} | Delete the Self Service macOS branding configuration indicated by the provided id 
+*SelfServiceBrandingMacosAPI* | [**V1SelfServiceBrandingMacosIdGet**](docs/SelfServiceBrandingMacosAPI.md#v1selfservicebrandingmacosidget) | **Get** /v1/self-service/branding/macos/{id} | Read a single Self Service macOS branding configuration indicated by the provided id 
+*SelfServiceBrandingMacosAPI* | [**V1SelfServiceBrandingMacosIdPut**](docs/SelfServiceBrandingMacosAPI.md#v1selfservicebrandingmacosidput) | **Put** /v1/self-service/branding/macos/{id} | Update a Self Service macOS branding configuration with the supplied details 
+*SelfServiceBrandingMacosAPI* | [**V1SelfServiceBrandingMacosPost**](docs/SelfServiceBrandingMacosAPI.md#v1selfservicebrandingmacospost) | **Post** /v1/self-service/branding/macos | Create a Self Service macOS branding configuration with the supplied 
+*SelfServiceBrandingPreviewAPI* | [**SelfServiceBrandingImagesPost**](docs/SelfServiceBrandingPreviewAPI.md#selfservicebrandingimagespost) | **Post** /self-service/branding/images | Upload an image 
+*SitesAPI* | [**V1SitesGet**](docs/SitesAPI.md#v1sitesget) | **Get** /v1/sites | Find all sites 
+*SitesPreviewAPI* | [**SettingsSitesGet**](docs/SitesPreviewAPI.md#settingssitesget) | **Get** /settings/sites | Find all sites 
+*SmartComputerGroupsPreviewAPI* | [**V1ComputersIdRecalculateSmartGroupsPost**](docs/SmartComputerGroupsPreviewAPI.md#v1computersidrecalculatesmartgroupspost) | **Post** /v1/computers/{id}/recalculate-smart-groups | Recalculate a smart group for the given id 
+*SmartComputerGroupsPreviewAPI* | [**V1SmartComputerGroupsIdRecalculatePost**](docs/SmartComputerGroupsPreviewAPI.md#v1smartcomputergroupsidrecalculatepost) | **Post** /v1/smart-computer-groups/{id}/recalculate | Recalculate the smart group for the given id 
+*SmartMobileDeviceGroupsPreviewAPI* | [**V1MobileDevicesIdRecalculateSmartGroupsPost**](docs/SmartMobileDeviceGroupsPreviewAPI.md#v1mobiledevicesidrecalculatesmartgroupspost) | **Post** /v1/mobile-devices/{id}/recalculate-smart-groups | Recalculate all smart groups for the given device id and then return count of smart groups that device fall into 
+*SmartMobileDeviceGroupsPreviewAPI* | [**V1SmartMobileDeviceGroupsIdRecalculatePost**](docs/SmartMobileDeviceGroupsPreviewAPI.md#v1smartmobiledevicegroupsidrecalculatepost) | **Post** /v1/smart-mobile-device-groups/{id}/recalculate | Recalculate a smart group for the given id then return the ids for the devices in the smart group 
+*SmartUserGroupsPreviewAPI* | [**V1SmartUserGroupsIdRecalculatePost**](docs/SmartUserGroupsPreviewAPI.md#v1smartusergroupsidrecalculatepost) | **Post** /v1/smart-user-groups/{id}/recalculate | Recalculate the smart group for the given id and then return the ids for the users in the smart group 
+*SmartUserGroupsPreviewAPI* | [**V1UsersIdRecalculateSmartGroupsPost**](docs/SmartUserGroupsPreviewAPI.md#v1usersidrecalculatesmartgroupspost) | **Post** /v1/users/{id}/recalculate-smart-groups | Recalculate a smart group for the given user id and then return the count of smart groups the user falls into 
+*SsoCertificateAPI* | [**V2SsoCertDelete**](docs/SsoCertificateAPI.md#v2ssocertdelete) | **Delete** /v2/sso/cert | Delete the currently configured certificate used by SSO 
+*SsoCertificateAPI* | [**V2SsoCertDownloadGet**](docs/SsoCertificateAPI.md#v2ssocertdownloadget) | **Get** /v2/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
+*SsoCertificateAPI* | [**V2SsoCertGet**](docs/SsoCertificateAPI.md#v2ssocertget) | **Get** /v2/sso/cert | Retrieve the certificate currently configured for use with SSO 
+*SsoCertificateAPI* | [**V2SsoCertParsePost**](docs/SsoCertificateAPI.md#v2ssocertparsepost) | **Post** /v2/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
+*SsoCertificateAPI* | [**V2SsoCertPost**](docs/SsoCertificateAPI.md#v2ssocertpost) | **Post** /v2/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
+*SsoCertificateAPI* | [**V2SsoCertPut**](docs/SsoCertificateAPI.md#v2ssocertput) | **Put** /v2/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
+*SsoCertificatePreviewAPI* | [**V1SsoCertDelete**](docs/SsoCertificatePreviewAPI.md#v1ssocertdelete) | **Delete** /v1/sso/cert | Delete the currently configured certificate used by SSO 
+*SsoCertificatePreviewAPI* | [**V1SsoCertDownloadGet**](docs/SsoCertificatePreviewAPI.md#v1ssocertdownloadget) | **Get** /v1/sso/cert/download | Download the certificate currently configured for use with Jamf Pro&#39;s SSO configuration 
+*SsoCertificatePreviewAPI* | [**V1SsoCertGet**](docs/SsoCertificatePreviewAPI.md#v1ssocertget) | **Get** /v1/sso/cert | Retrieve the certificate currently configured for use with SSO 
+*SsoCertificatePreviewAPI* | [**V1SsoCertParsePost**](docs/SsoCertificatePreviewAPI.md#v1ssocertparsepost) | **Post** /v1/sso/cert/parse | Parse the certificate to get details about certificate type and keys needed to upload certificate file 
+*SsoCertificatePreviewAPI* | [**V1SsoCertPost**](docs/SsoCertificatePreviewAPI.md#v1ssocertpost) | **Post** /v1/sso/cert | Jamf Pro will generate a new certificate and use it to sign SSO 
+*SsoCertificatePreviewAPI* | [**V1SsoCertPut**](docs/SsoCertificatePreviewAPI.md#v1ssocertput) | **Put** /v1/sso/cert | Update the certificate used by Jamf Pro to sign SSO requests to the identify provider 
+*SsoFailoverAPI* | [**V1SsoFailoverGeneratePost**](docs/SsoFailoverAPI.md#v1ssofailovergeneratepost) | **Post** /v1/sso/failover/generate | Regenerates failover url
+*SsoFailoverAPI* | [**V1SsoFailoverGet**](docs/SsoFailoverAPI.md#v1ssofailoverget) | **Get** /v1/sso/failover | Retrieve the current failover settings
+*SsoSettingsAPI* | [**V1SsoDependenciesGet**](docs/SsoSettingsAPI.md#v1ssodependenciesget) | **Get** /v1/sso/dependencies | Retrieve the list of Enrollment Customizations using SSO 
+*SsoSettingsAPI* | [**V1SsoDisablePost**](docs/SsoSettingsAPI.md#v1ssodisablepost) | **Post** /v1/sso/disable | Disable SSO 
+*SsoSettingsAPI* | [**V1SsoGet**](docs/SsoSettingsAPI.md#v1ssoget) | **Get** /v1/sso | Retrieve the current Single Sign On configuration settings 
+*SsoSettingsAPI* | [**V1SsoHistoryGet**](docs/SsoSettingsAPI.md#v1ssohistoryget) | **Get** /v1/sso/history | Get SSO history object 
+*SsoSettingsAPI* | [**V1SsoHistoryPost**](docs/SsoSettingsAPI.md#v1ssohistorypost) | **Post** /v1/sso/history | Add SSO history object notes 
+*SsoSettingsAPI* | [**V1SsoMetadataDownloadGet**](docs/SsoSettingsAPI.md#v1ssometadatadownloadget) | **Get** /v1/sso/metadata/download | Download the Jamf Pro SAML metadata file 
+*SsoSettingsAPI* | [**V1SsoPut**](docs/SsoSettingsAPI.md#v1ssoput) | **Put** /v1/sso | Updates the current Single Sign On configuration settings 
+*SsoSettingsAPI* | [**V1SsoValidatePost**](docs/SsoSettingsAPI.md#v1ssovalidatepost) | **Post** /v1/sso/validate | Endpoint for validation of a saml metadata url 
+*StartupStatusAPI* | [**StartupStatusGet**](docs/StartupStatusAPI.md#startupstatusget) | **Get** /startup-status | Retrieve information about application startup 
+*StaticUserGroupsPreviewAPI* | [**V1StaticUserGroupsGet**](docs/StaticUserGroupsPreviewAPI.md#v1staticusergroupsget) | **Get** /v1/static-user-groups | Return a list of all Static User Groups 
+*StaticUserGroupsPreviewAPI* | [**V1StaticUserGroupsIdGet**](docs/StaticUserGroupsPreviewAPI.md#v1staticusergroupsidget) | **Get** /v1/static-user-groups/{id} | Return a specific Static User Group by id 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesGet**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesget) | **Get** /v1/supervision-identities | Search for sorted and paged Supervision Identities 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesIdDelete**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesiddelete) | **Delete** /v1/supervision-identities/{id} | Delete a Supervision Identity with the supplied id 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesIdDownloadGet**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesiddownloadget) | **Get** /v1/supervision-identities/{id}/download | Download the Supervision Identity .p12 file 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesIdGet**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesidget) | **Get** /v1/supervision-identities/{id} | Retrieve a Supervision Identity with the supplied id 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesIdPut**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesidput) | **Put** /v1/supervision-identities/{id} | Update a Supervision Identity with the supplied information 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesPost**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiespost) | **Post** /v1/supervision-identities | Create a Supervision Identity for the supplied information 
+*SupervisionIdentitiesPreviewAPI* | [**V1SupervisionIdentitiesUploadPost**](docs/SupervisionIdentitiesPreviewAPI.md#v1supervisionidentitiesuploadpost) | **Post** /v1/supervision-identities/upload | Upload the Supervision Identity .p12 file 
+*TeacherAppAPI* | [**V1TeacherAppGet**](docs/TeacherAppAPI.md#v1teacherappget) | **Get** /v1/teacher-app | Get the Jamf Teacher settings that you have access to see 
+*TeacherAppAPI* | [**V1TeacherAppHistoryGet**](docs/TeacherAppAPI.md#v1teacherapphistoryget) | **Get** /v1/teacher-app/history | Get Jamf Teacher app settings history 
+*TeacherAppAPI* | [**V1TeacherAppHistoryPost**](docs/TeacherAppAPI.md#v1teacherapphistorypost) | **Post** /v1/teacher-app/history | Add Jamf Teacher app settings history notes 
+*TeacherAppAPI* | [**V1TeacherAppPut**](docs/TeacherAppAPI.md#v1teacherappput) | **Put** /v1/teacher-app | Update a Jamf Teacher settings object 
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGet**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionsget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Get a paginated list of sessions 
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsPost**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionspost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions | Create a new session
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdClosePost**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidclosepost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/close | Close a session
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdGet**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId} | Get a session by its ID 
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdResendNotificationPost**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidresendnotificationpost) | **Post** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/resend-notification | Resend nofications for a session
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsSessionIdStatusGet**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerconfigurationidsessionssessionidstatusget) | **Get** /preview/remote-administration-configurations/team-viewer/{configurationId}/sessions/{sessionId}/status | Get a session status by its ID 
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdDelete**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamvieweriddelete) | **Delete** /preview/remote-administration-configurations/team-viewer/{id} | Delete Team Viewer Remote Administration connection configuration
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdGet**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamvieweridget) | **Get** /preview/remote-administration-configurations/team-viewer/{id} | Get Team Viewer Remote Administration connection configuration
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdPatch**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamvieweridpatch) | **Patch** /preview/remote-administration-configurations/team-viewer/{id} | Update Team Viewer Remote Administration connection configuration
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerIdStatusGet**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamvieweridstatusget) | **Get** /preview/remote-administration-configurations/team-viewer/{id}/status | Get Team Viewer Remote Administration connection status
+*TeamViewerRemoteAdministrationAPI* | [**PreviewRemoteAdministrationConfigurationsTeamViewerPost**](docs/TeamViewerRemoteAdministrationAPI.md#previewremoteadministrationconfigurationsteamviewerpost) | **Post** /preview/remote-administration-configurations/team-viewer | Create Team Viewer Remote Administration connection configuration
+*TimeZonesPreviewAPI* | [**V1TimeZonesGet**](docs/TimeZonesPreviewAPI.md#v1timezonesget) | **Get** /v1/time-zones | Return information about the currently supported Time Zones 
+*TomcatSettingsPreviewAPI* | [**SettingsIssueTomcatSslCertificatePost**](docs/TomcatSettingsPreviewAPI.md#settingsissuetomcatsslcertificatepost) | **Post** /settings/issueTomcatSslCertificate | Generate a SSL Certificate using Jamf Certificate Authority 
+*UserSessionPreviewAPI* | [**UserGet**](docs/UserSessionPreviewAPI.md#userget) | **Get** /user | Return all Jamf Pro user acounts 
+*UserSessionPreviewAPI* | [**UserUpdateSessionPost**](docs/UserSessionPreviewAPI.md#userupdatesessionpost) | **Post** /user/updateSession | Update values in the User&#39;s current session 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdConnectionStatusGet**](docs/VenafiPreviewAPI.md#v1pkivenafiidconnectionstatusget) | **Get** /v1/pki/venafi/{id}/connection-status | Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdDelete**](docs/VenafiPreviewAPI.md#v1pkivenafiiddelete) | **Delete** /v1/pki/venafi/{id} | Delete a Venafi PKI configuration from Jamf Pro 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdDependentProfilesGet**](docs/VenafiPreviewAPI.md#v1pkivenafiiddependentprofilesget) | **Get** /v1/pki/venafi/{id}/dependent-profiles | Get configuration profile data using specified Venafi CA object 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdGet**](docs/VenafiPreviewAPI.md#v1pkivenafiidget) | **Get** /v1/pki/venafi/{id} | Retrieve a Venafi PKI configuration from Jamf Pro 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdHistoryGet**](docs/VenafiPreviewAPI.md#v1pkivenafiidhistoryget) | **Get** /v1/pki/venafi/{id}/history | Get specified Venafi CA history object 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdHistoryPost**](docs/VenafiPreviewAPI.md#v1pkivenafiidhistorypost) | **Post** /v1/pki/venafi/{id}/history | Add specified Venafi CA Object Note 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdJamfPublicKeyGet**](docs/VenafiPreviewAPI.md#v1pkivenafiidjamfpublickeyget) | **Get** /v1/pki/venafi/{id}/jamf-public-key | Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdJamfPublicKeyRegeneratePost**](docs/VenafiPreviewAPI.md#v1pkivenafiidjamfpublickeyregeneratepost) | **Post** /v1/pki/venafi/{id}/jamf-public-key/regenerate | Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdPatch**](docs/VenafiPreviewAPI.md#v1pkivenafiidpatch) | **Patch** /v1/pki/venafi/{id} | Update a Venafi PKI configuration in Jamf Pro 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdProxyTrustStoreDelete**](docs/VenafiPreviewAPI.md#v1pkivenafiidproxytruststoredelete) | **Delete** /v1/pki/venafi/{id}/proxy-trust-store | Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdProxyTrustStoreGet**](docs/VenafiPreviewAPI.md#v1pkivenafiidproxytruststoreget) | **Get** /v1/pki/venafi/{id}/proxy-trust-store | Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiIdProxyTrustStorePost**](docs/VenafiPreviewAPI.md#v1pkivenafiidproxytruststorepost) | **Post** /v1/pki/venafi/{id}/proxy-trust-store | Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+*VenafiPreviewAPI* | [**V1PkiVenafiPost**](docs/VenafiPreviewAPI.md#v1pkivenafipost) | **Post** /v1/pki/venafi | Create a PKI configuration in Jamf Pro for Venafi 
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsGet**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsget) | **Get** /v1/volume-purchasing-locations | Retrieve Volume Purchasing Locations
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdContentGet**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidcontentget) | **Get** /v1/volume-purchasing-locations/{id}/content | Retrieve the Volume Purchasing Content for the Volume Purchasing Location with the supplied id
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdDelete**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsiddelete) | **Delete** /v1/volume-purchasing-locations/{id} | Delete a Volume Purchasing Location with the supplied id
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdGet**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidget) | **Get** /v1/volume-purchasing-locations/{id} | Retrieve a Volume Purchasing Location with the supplied id
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdHistoryGet**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidhistoryget) | **Get** /v1/volume-purchasing-locations/{id}/history | Get specified Volume Purchasing Location history object 
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdHistoryPost**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidhistorypost) | **Post** /v1/volume-purchasing-locations/{id}/history | Add specified Volume Purchasing Location history object notes 
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdPatch**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidpatch) | **Patch** /v1/volume-purchasing-locations/{id} | Update a Volume Purchasing Location
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdReclaimPost**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidreclaimpost) | **Post** /v1/volume-purchasing-locations/{id}/reclaim | Reclaim a Volume Purchasing Location with the supplied id
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsIdRevokeLicensesPost**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationsidrevokelicensespost) | **Post** /v1/volume-purchasing-locations/{id}/revoke-licenses | Revoke licenses for a Volume Purchasing Location with the supplied id
+*VolumePurchasingLocationsAPI* | [**V1VolumePurchasingLocationsPost**](docs/VolumePurchasingLocationsAPI.md#v1volumepurchasinglocationspost) | **Post** /v1/volume-purchasing-locations | Create a Volume Purchasing Location
+*VolumePurchasingSubscriptionsAPI* | [**V1VolumePurchasingSubscriptionsGet**](docs/VolumePurchasingSubscriptionsAPI.md#v1volumepurchasingsubscriptionsget) | **Get** /v1/volume-purchasing-subscriptions | Retrieve Volume Purchasing Subscriptions
+*VolumePurchasingSubscriptionsAPI* | [**V1VolumePurchasingSubscriptionsIdDelete**](docs/VolumePurchasingSubscriptionsAPI.md#v1volumepurchasingsubscriptionsiddelete) | **Delete** /v1/volume-purchasing-subscriptions/{id} | Delete a Volume Purchasing Subscription with the supplied id
+*VolumePurchasingSubscriptionsAPI* | [**V1VolumePurchasingSubscriptionsIdGet**](docs/VolumePurchasingSubscriptionsAPI.md#v1volumepurchasingsubscriptionsidget) | **Get** /v1/volume-purchasing-subscriptions/{id} | Retrieve a Volume Purchasing Subscription with the supplied id
+*VolumePurchasingSubscriptionsAPI* | [**V1VolumePurchasingSubscriptionsIdPut**](docs/VolumePurchasingSubscriptionsAPI.md#v1volumepurchasingsubscriptionsidput) | **Put** /v1/volume-purchasing-subscriptions/{id} | Update a Volume Purchasing Subscription
+*VolumePurchasingSubscriptionsAPI* | [**V1VolumePurchasingSubscriptionsPost**](docs/VolumePurchasingSubscriptionsAPI.md#v1volumepurchasingsubscriptionspost) | **Post** /v1/volume-purchasing-subscriptions | Create a Volume Purchasing Subscription
+*VppAdminAccountsPreviewAPI* | [**VppAdminAccountsGet**](docs/VppAdminAccountsPreviewAPI.md#vppadminaccountsget) | **Get** /vpp/admin-accounts | Found all VPP Admin Accounts 
+*VppSubscriptionsPreviewAPI* | [**VppSubscriptionsGet**](docs/VppSubscriptionsPreviewAPI.md#vppsubscriptionsget) | **Get** /vpp/subscriptions | Found all VPP - subscriptions 
+*VppSubscriptionsPreviewAPI* | [**VppSubscriptionsIdGet**](docs/VppSubscriptionsPreviewAPI.md#vppsubscriptionsidget) | **Get** /vpp/subscriptions/{id} | Found VPP subscription by id 
 
 
 ## Documentation For Models
 
  - [AccessGroupsPreviewSearchResults](docs/AccessGroupsPreviewSearchResults.md)
- - [AccessGroupsSearchResults](docs/AccessGroupsSearchResults.md)
  - [AccessGroupsV2SearchResults](docs/AccessGroupsV2SearchResults.md)
  - [Account](docs/Account.md)
+ - [AccountDrivenUserEnrollmentSessionTokenSettings](docs/AccountDrivenUserEnrollmentSessionTokenSettings.md)
  - [AccountGroup](docs/AccountGroup.md)
  - [AccountPreferences](docs/AccountPreferences.md)
  - [AccountPreferencesV1](docs/AccountPreferencesV1.md)
  - [AccountPreferencesV4](docs/AccountPreferencesV4.md)
- - [ActivePatchHistory](docs/ActivePatchHistory.md)
- - [ActivePatchHistorySearchResults](docs/ActivePatchHistorySearchResults.md)
- - [ActivePatchSummary](docs/ActivePatchSummary.md)
+ - [AccountSettingsRequest](docs/AccountSettingsRequest.md)
+ - [AccountSettingsResponse](docs/AccountSettingsResponse.md)
  - [AdminAccount](docs/AdminAccount.md)
  - [AdvancedSearch](docs/AdvancedSearch.md)
  - [AdvancedSearchCriteriaChoices](docs/AdvancedSearchCriteriaChoices.md)
@@ -639,8 +690,15 @@ Class | Method | HTTP request | Description
  - [AndroidDetails](docs/AndroidDetails.md)
  - [ApiError](docs/ApiError.md)
  - [ApiErrorCause](docs/ApiErrorCause.md)
+ - [ApiIntegrationRequest](docs/ApiIntegrationRequest.md)
+ - [ApiIntegrationResponse](docs/ApiIntegrationResponse.md)
+ - [ApiIntegrationSearchResult](docs/ApiIntegrationSearchResult.md)
+ - [ApiRole](docs/ApiRole.md)
+ - [ApiRolePrivileges](docs/ApiRolePrivileges.md)
+ - [ApiRoleRequest](docs/ApiRoleRequest.md)
+ - [ApiRoleResult](docs/ApiRoleResult.md)
  - [AppAnalyticsSetting](docs/AppAnalyticsSetting.md)
- - [AppDynamicsConfig](docs/AppDynamicsConfig.md)
+ - [AppConfigReinstallCode](docs/AppConfigReinstallCode.md)
  - [AppPath](docs/AppPath.md)
  - [AppRequestFormInputField](docs/AppRequestFormInputField.md)
  - [AppRequestFormInputFieldSearchResults](docs/AppRequestFormInputFieldSearchResults.md)
@@ -649,16 +707,18 @@ Class | Method | HTTP request | Description
  - [ApplicationAttributes](docs/ApplicationAttributes.md)
  - [ApplicationConfiguration](docs/ApplicationConfiguration.md)
  - [AssignRemoveProfileResponseSyncState](docs/AssignRemoveProfileResponseSyncState.md)
+ - [Assignment](docs/Assignment.md)
  - [Attributes](docs/Attributes.md)
  - [AuthAccount](docs/AuthAccount.md)
  - [AuthAccountV1](docs/AuthAccountV1.md)
  - [AuthToken](docs/AuthToken.md)
  - [AuthTokenV1](docs/AuthTokenV1.md)
+ - [AuthenticationType](docs/AuthenticationType.md)
  - [Authorization](docs/Authorization.md)
  - [AuthorizationV1](docs/AuthorizationV1.md)
+ - [AvailableOsUpdates](docs/AvailableOsUpdates.md)
+ - [AvailableOsUpdatesAvailableUpdates](docs/AvailableOsUpdatesAvailableUpdates.md)
  - [AvailableUpdates](docs/AvailableUpdates.md)
- - [AzureAdMigrationReportProcessStatus](docs/AzureAdMigrationReportProcessStatus.md)
- - [AzureAdMigrationReportRequest](docs/AzureAdMigrationReportRequest.md)
  - [AzureConfiguration](docs/AzureConfiguration.md)
  - [AzureConfigurationRequest](docs/AzureConfigurationRequest.md)
  - [AzureConfigurationUpdate](docs/AzureConfigurationUpdate.md)
@@ -673,7 +733,6 @@ Class | Method | HTTP request | Description
  - [CategoriesSearchResults](docs/CategoriesSearchResults.md)
  - [Category](docs/Category.md)
  - [CertificateDetails](docs/CertificateDetails.md)
- - [CertificateIdentityV1](docs/CertificateIdentityV1.md)
  - [CertificateIdentityV2](docs/CertificateIdentityV2.md)
  - [CertificateKey](docs/CertificateKey.md)
  - [CertificateRecord](docs/CertificateRecord.md)
@@ -692,6 +751,8 @@ Class | Method | HTTP request | Description
  - [CloudLdapServerRequest](docs/CloudLdapServerRequest.md)
  - [CloudLdapServerResponse](docs/CloudLdapServerResponse.md)
  - [CloudLdapServerUpdate](docs/CloudLdapServerUpdate.md)
+ - [CloudResponse](docs/CloudResponse.md)
+ - [ComplianceVendorDeviceInformation](docs/ComplianceVendorDeviceInformation.md)
  - [ComputerApplication](docs/ComputerApplication.md)
  - [ComputerAttachment](docs/ComputerAttachment.md)
  - [ComputerCertificate](docs/ComputerCertificate.md)
@@ -712,13 +773,16 @@ Class | Method | HTTP request | Description
  - [ComputerFont](docs/ComputerFont.md)
  - [ComputerGeneral](docs/ComputerGeneral.md)
  - [ComputerGeneralUpdate](docs/ComputerGeneralUpdate.md)
+ - [ComputerGroup](docs/ComputerGroup.md)
  - [ComputerHardware](docs/ComputerHardware.md)
  - [ComputerHardwareUpdate](docs/ComputerHardwareUpdate.md)
  - [ComputerIbeacon](docs/ComputerIbeacon.md)
+ - [ComputerInventory](docs/ComputerInventory.md)
  - [ComputerInventoryCollectionPreferences](docs/ComputerInventoryCollectionPreferences.md)
  - [ComputerInventoryCollectionSettings](docs/ComputerInventoryCollectionSettings.md)
+ - [ComputerInventoryFileVault](docs/ComputerInventoryFileVault.md)
+ - [ComputerInventoryFileVaultSearchResults](docs/ComputerInventoryFileVaultSearchResults.md)
  - [ComputerInventoryRecoveryLockPasswordResponse](docs/ComputerInventoryRecoveryLockPasswordResponse.md)
- - [ComputerInventoryResponse](docs/ComputerInventoryResponse.md)
  - [ComputerInventorySearchResults](docs/ComputerInventorySearchResults.md)
  - [ComputerInventoryUpdateRequest](docs/ComputerInventoryUpdateRequest.md)
  - [ComputerLicensedSoftware](docs/ComputerLicensedSoftware.md)
@@ -733,12 +797,10 @@ Class | Method | HTTP request | Description
  - [ComputerPartitionEncryption](docs/ComputerPartitionEncryption.md)
  - [ComputerPartitionFileVault2State](docs/ComputerPartitionFileVault2State.md)
  - [ComputerPlugin](docs/ComputerPlugin.md)
- - [ComputerPrestage](docs/ComputerPrestage.md)
- - [ComputerPrestageAllOf](docs/ComputerPrestageAllOf.md)
- - [ComputerPrestageSearchResults](docs/ComputerPrestageSearchResults.md)
  - [ComputerPrestageSearchResultsV2](docs/ComputerPrestageSearchResultsV2.md)
+ - [ComputerPrestageSearchResultsV3](docs/ComputerPrestageSearchResultsV3.md)
  - [ComputerPrestageV2](docs/ComputerPrestageV2.md)
- - [ComputerPrestageV2AllOf](docs/ComputerPrestageV2AllOf.md)
+ - [ComputerPrestageV3](docs/ComputerPrestageV3.md)
  - [ComputerPrinter](docs/ComputerPrinter.md)
  - [ComputerPurchase](docs/ComputerPurchase.md)
  - [ComputerRemoteManagement](docs/ComputerRemoteManagement.md)
@@ -761,21 +823,23 @@ Class | Method | HTTP request | Description
  - [CsaToken](docs/CsaToken.md)
  - [CurrentAccount](docs/CurrentAccount.md)
  - [CurrentAuthorization](docs/CurrentAuthorization.md)
+ - [DashboardApiError](docs/DashboardApiError.md)
+ - [DashboardDetail](docs/DashboardDetail.md)
+ - [DashboardItem](docs/DashboardItem.md)
+ - [DashboardMetric](docs/DashboardMetric.md)
+ - [DashboardSetup](docs/DashboardSetup.md)
+ - [DashboardSetupFeatureOptions](docs/DashboardSetupFeatureOptions.md)
+ - [DashboardSetupSetupTaskOptions](docs/DashboardSetupSetupTaskOptions.md)
+ - [DashboardSetupTask](docs/DashboardSetupTask.md)
  - [DataRoamingSetting](docs/DataRoamingSetting.md)
  - [DatabasePassword](docs/DatabasePassword.md)
  - [DayOfWeek](docs/DayOfWeek.md)
+ - [DeclarativeManagementCommand](docs/DeclarativeManagementCommand.md)
  - [DeleteUserCommand](docs/DeleteUserCommand.md)
  - [Department](docs/Department.md)
  - [DepartmentsSearchResults](docs/DepartmentsSearchResults.md)
  - [DeploymentTask](docs/DeploymentTask.md)
  - [DeploymentTaskSearchResults](docs/DeploymentTaskSearchResults.md)
- - [DeprecatedConfigurationRequest](docs/DeprecatedConfigurationRequest.md)
- - [DeprecatedConfigurationResponse](docs/DeprecatedConfigurationResponse.md)
- - [DeprecatedConfigurationSearchResults](docs/DeprecatedConfigurationSearchResults.md)
- - [DeprecatedConfigurationUpdate](docs/DeprecatedConfigurationUpdate.md)
- - [DeprecatedServerRequest](docs/DeprecatedServerRequest.md)
- - [DeprecatedServerResponse](docs/DeprecatedServerResponse.md)
- - [DeprecatedServerUpdate](docs/DeprecatedServerUpdate.md)
  - [DeviceCommunicationSettings](docs/DeviceCommunicationSettings.md)
  - [DeviceComplianceInformation](docs/DeviceComplianceInformation.md)
  - [DeviceEnrollmentDevice](docs/DeviceEnrollmentDevice.md)
@@ -797,7 +861,6 @@ Class | Method | HTTP request | Description
  - [EbookSearchResults](docs/EbookSearchResults.md)
  - [EnableLostModeCommand](docs/EnableLostModeCommand.md)
  - [Engage](docs/Engage.md)
- - [EnrollmentAccessGroup](docs/EnrollmentAccessGroup.md)
  - [EnrollmentAccessGroupPreview](docs/EnrollmentAccessGroupPreview.md)
  - [EnrollmentAccessGroupV2](docs/EnrollmentAccessGroupV2.md)
  - [EnrollmentCustomization](docs/EnrollmentCustomization.md)
@@ -807,19 +870,20 @@ Class | Method | HTTP request | Description
  - [EnrollmentCustomizationLdapGroupAccess](docs/EnrollmentCustomizationLdapGroupAccess.md)
  - [EnrollmentCustomizationPanel](docs/EnrollmentCustomizationPanel.md)
  - [EnrollmentCustomizationPanelLdapAuth](docs/EnrollmentCustomizationPanelLdapAuth.md)
- - [EnrollmentCustomizationPanelLdapAuthAllOf](docs/EnrollmentCustomizationPanelLdapAuthAllOf.md)
  - [EnrollmentCustomizationPanelList](docs/EnrollmentCustomizationPanelList.md)
  - [EnrollmentCustomizationPanelSsoAuth](docs/EnrollmentCustomizationPanelSsoAuth.md)
- - [EnrollmentCustomizationPanelSsoAuthAllOf](docs/EnrollmentCustomizationPanelSsoAuthAllOf.md)
  - [EnrollmentCustomizationPanelText](docs/EnrollmentCustomizationPanelText.md)
- - [EnrollmentCustomizationPanelTextAllOf](docs/EnrollmentCustomizationPanelTextAllOf.md)
  - [EnrollmentCustomizationSearchResults](docs/EnrollmentCustomizationSearchResults.md)
  - [EnrollmentCustomizationSearchResultsV2](docs/EnrollmentCustomizationSearchResultsV2.md)
  - [EnrollmentCustomizationV2](docs/EnrollmentCustomizationV2.md)
  - [EnrollmentMethod](docs/EnrollmentMethod.md)
+ - [EnrollmentMethodPrestage](docs/EnrollmentMethodPrestage.md)
  - [EnrollmentProcessTextObject](docs/EnrollmentProcessTextObject.md)
- - [EnrollmentSettings](docs/EnrollmentSettings.md)
  - [EnrollmentSettingsV2](docs/EnrollmentSettingsV2.md)
+ - [EnrollmentSettingsV3](docs/EnrollmentSettingsV3.md)
+ - [EnrollmentSsoConfig](docs/EnrollmentSsoConfig.md)
+ - [EraseDeviceCommand](docs/EraseDeviceCommand.md)
+ - [EraseDeviceCommandReturnToService](docs/EraseDeviceCommandReturnToService.md)
  - [ExportField](docs/ExportField.md)
  - [ExportParameters](docs/ExportParameters.md)
  - [ExtensionAttribute](docs/ExtensionAttribute.md)
@@ -828,24 +892,16 @@ Class | Method | HTTP request | Description
  - [FileAttachment](docs/FileAttachment.md)
  - [FileAttachmentDelete](docs/FileAttachmentDelete.md)
  - [FileAttachmentV2](docs/FileAttachmentV2.md)
- - [Filter](docs/Filter.md)
  - [FontPath](docs/FontPath.md)
- - [GetComputerPrestage](docs/GetComputerPrestage.md)
- - [GetComputerPrestageAllOf](docs/GetComputerPrestageAllOf.md)
  - [GetComputerPrestageV2](docs/GetComputerPrestageV2.md)
- - [GetComputerPrestageV2AllOf](docs/GetComputerPrestageV2AllOf.md)
+ - [GetComputerPrestageV3](docs/GetComputerPrestageV3.md)
  - [GetEnrollmentCustomization](docs/GetEnrollmentCustomization.md)
- - [GetEnrollmentCustomizationAllOf](docs/GetEnrollmentCustomizationAllOf.md)
  - [GetEnrollmentCustomizationPanel](docs/GetEnrollmentCustomizationPanel.md)
- - [GetEnrollmentCustomizationPanelAllOf](docs/GetEnrollmentCustomizationPanelAllOf.md)
  - [GetEnrollmentCustomizationPanelLdapAuth](docs/GetEnrollmentCustomizationPanelLdapAuth.md)
- - [GetEnrollmentCustomizationPanelLdapAuthAllOf](docs/GetEnrollmentCustomizationPanelLdapAuthAllOf.md)
  - [GetEnrollmentCustomizationPanelSsoAuth](docs/GetEnrollmentCustomizationPanelSsoAuth.md)
- - [GetEnrollmentCustomizationPanelSsoAuthAllOf](docs/GetEnrollmentCustomizationPanelSsoAuthAllOf.md)
  - [GetEnrollmentCustomizationPanelText](docs/GetEnrollmentCustomizationPanelText.md)
  - [GetMobileDevicePrestage](docs/GetMobileDevicePrestage.md)
  - [GetMobileDevicePrestageV2](docs/GetMobileDevicePrestageV2.md)
- - [GetMobileDevicePrestageV2AllOf](docs/GetMobileDevicePrestageV2AllOf.md)
  - [GroupMappings](docs/GroupMappings.md)
  - [GroupMembership](docs/GroupMembership.md)
  - [GroupTestSearch](docs/GroupTestSearch.md)
@@ -863,10 +919,11 @@ Class | Method | HTTP request | Description
  - [InstallPackage](docs/InstallPackage.md)
  - [InternalRecipient](docs/InternalRecipient.md)
  - [InventoryInformation](docs/InventoryInformation.md)
+ - [InventoryListMobileDevice](docs/InventoryListMobileDevice.md)
+ - [InventoryListMobileDeviceSearchResults](docs/InventoryListMobileDeviceSearchResults.md)
  - [InventoryPreloadCsvError](docs/InventoryPreloadCsvError.md)
  - [InventoryPreloadCsvValidationError](docs/InventoryPreloadCsvValidationError.md)
  - [InventoryPreloadCsvValidationErrorCause](docs/InventoryPreloadCsvValidationErrorCause.md)
- - [InventoryPreloadCsvValidationErrorCauseAllOf](docs/InventoryPreloadCsvValidationErrorCauseAllOf.md)
  - [InventoryPreloadCsvValidationSuccess](docs/InventoryPreloadCsvValidationSuccess.md)
  - [InventoryPreloadExtensionAttribute](docs/InventoryPreloadExtensionAttribute.md)
  - [InventoryPreloadExtensionAttributeColumn](docs/InventoryPreloadExtensionAttributeColumn.md)
@@ -884,10 +941,37 @@ Class | Method | HTTP request | Description
  - [JamfNationCredentials](docs/JamfNationCredentials.md)
  - [JamfPackageResponse](docs/JamfPackageResponse.md)
  - [JamfProInformation](docs/JamfProInformation.md)
+ - [JamfProInformationV2](docs/JamfProInformationV2.md)
  - [JamfProServerUrl](docs/JamfProServerUrl.md)
  - [JamfProVersion](docs/JamfProVersion.md)
  - [JamfProtectPlan](docs/JamfProtectPlan.md)
  - [LanguageCode](docs/LanguageCode.md)
+ - [LapsAudit](docs/LapsAudit.md)
+ - [LapsAuditV2](docs/LapsAuditV2.md)
+ - [LapsHistory](docs/LapsHistory.md)
+ - [LapsHistoryResponse](docs/LapsHistoryResponse.md)
+ - [LapsPasswordAndAudits](docs/LapsPasswordAndAudits.md)
+ - [LapsPasswordAndAuditsV2](docs/LapsPasswordAndAuditsV2.md)
+ - [LapsPasswordAuditsResults](docs/LapsPasswordAuditsResults.md)
+ - [LapsPasswordAuditsResultsV2](docs/LapsPasswordAuditsResultsV2.md)
+ - [LapsPasswordResponse](docs/LapsPasswordResponse.md)
+ - [LapsPasswordResponseV2](docs/LapsPasswordResponseV2.md)
+ - [LapsPendingRotation](docs/LapsPendingRotation.md)
+ - [LapsPendingRotationResponse](docs/LapsPendingRotationResponse.md)
+ - [LapsSettingsRequest](docs/LapsSettingsRequest.md)
+ - [LapsSettingsRequestV2](docs/LapsSettingsRequestV2.md)
+ - [LapsSettingsResponse](docs/LapsSettingsResponse.md)
+ - [LapsSettingsResponseV2](docs/LapsSettingsResponseV2.md)
+ - [LapsUser](docs/LapsUser.md)
+ - [LapsUserPassword](docs/LapsUserPassword.md)
+ - [LapsUserPasswordRequest](docs/LapsUserPasswordRequest.md)
+ - [LapsUserPasswordRequestV2](docs/LapsUserPasswordRequestV2.md)
+ - [LapsUserPasswordResponse](docs/LapsUserPasswordResponse.md)
+ - [LapsUserPasswordResponseV2](docs/LapsUserPasswordResponseV2.md)
+ - [LapsUserPasswordV2](docs/LapsUserPasswordV2.md)
+ - [LapsUserResults](docs/LapsUserResults.md)
+ - [LapsUserResultsV2](docs/LapsUserResultsV2.md)
+ - [LapsUserV2](docs/LapsUserV2.md)
  - [LdapConfigurationRequest](docs/LdapConfigurationRequest.md)
  - [LdapConfigurationResponse](docs/LdapConfigurationResponse.md)
  - [LdapConfigurationUpdate](docs/LdapConfigurationUpdate.md)
@@ -901,40 +985,59 @@ Class | Method | HTTP request | Description
  - [LocationInformation](docs/LocationInformation.md)
  - [LocationInformationV2](docs/LocationInformationV2.md)
  - [LocationV2](docs/LocationV2.md)
- - [LogOutUserCommand](docs/LogOutUserCommand.md)
  - [MacOsBrandingConfiguration](docs/MacOsBrandingConfiguration.md)
  - [MacOsBrandingSearchResults](docs/MacOsBrandingSearchResults.md)
  - [MacOsManagedSoftwareUpdate](docs/MacOsManagedSoftwareUpdate.md)
  - [MacOsManagedSoftwareUpdateResponse](docs/MacOsManagedSoftwareUpdateResponse.md)
+ - [ManagedSoftwareUpdatePlan](docs/ManagedSoftwareUpdatePlan.md)
+ - [ManagedSoftwareUpdatePlanGroupPost](docs/ManagedSoftwareUpdatePlanGroupPost.md)
+ - [ManagedSoftwareUpdatePlanPost](docs/ManagedSoftwareUpdatePlanPost.md)
+ - [ManagedSoftwareUpdatePlanPostResponse](docs/ManagedSoftwareUpdatePlanPostResponse.md)
+ - [ManagedSoftwareUpdatePlanToggle](docs/ManagedSoftwareUpdatePlanToggle.md)
+ - [ManagedSoftwareUpdatePlans](docs/ManagedSoftwareUpdatePlans.md)
+ - [ManagedSoftwareUpdateStatus](docs/ManagedSoftwareUpdateStatus.md)
+ - [ManagedSoftwareUpdateStatusDevice](docs/ManagedSoftwareUpdateStatusDevice.md)
+ - [ManagedSoftwareUpdateStatuses](docs/ManagedSoftwareUpdateStatuses.md)
  - [Markdown](docs/Markdown.md)
  - [MdmClientType](docs/MdmClientType.md)
  - [MdmCommand](docs/MdmCommand.md)
  - [MdmCommandClient](docs/MdmCommandClient.md)
+ - [MdmCommandClientRequest](docs/MdmCommandClientRequest.md)
  - [MdmCommandRequest](docs/MdmCommandRequest.md)
  - [MdmCommandRequestCommandData](docs/MdmCommandRequestCommandData.md)
+ - [MdmCommandResults](docs/MdmCommandResults.md)
  - [MdmCommandState](docs/MdmCommandState.md)
  - [MdmCommandType](docs/MdmCommandType.md)
- - [MdmSigningCertificate](docs/MdmSigningCertificate.md)
  - [MembershipMappings](docs/MembershipMappings.md)
  - [MembershipTestSearchRequest](docs/MembershipTestSearchRequest.md)
  - [MembershipTestSearchResponse](docs/MembershipTestSearchResponse.md)
  - [MemcachedEndpoints](docs/MemcachedEndpoints.md)
  - [MobileDevice](docs/MobileDevice.md)
  - [MobileDeviceApplication](docs/MobileDeviceApplication.md)
+ - [MobileDeviceApplicationInventoryDetail](docs/MobileDeviceApplicationInventoryDetail.md)
  - [MobileDeviceAttachment](docs/MobileDeviceAttachment.md)
  - [MobileDeviceAttachmentV2](docs/MobileDeviceAttachmentV2.md)
+ - [MobileDeviceCertificate](docs/MobileDeviceCertificate.md)
  - [MobileDeviceCertificateV1](docs/MobileDeviceCertificateV1.md)
  - [MobileDeviceCertificateV2](docs/MobileDeviceCertificateV2.md)
  - [MobileDeviceDetails](docs/MobileDeviceDetails.md)
  - [MobileDeviceDetailsGetV2](docs/MobileDeviceDetailsGetV2.md)
- - [MobileDeviceDetailsGetV2AllOf](docs/MobileDeviceDetailsGetV2AllOf.md)
  - [MobileDeviceDetailsV2](docs/MobileDeviceDetailsV2.md)
  - [MobileDeviceEbook](docs/MobileDeviceEbook.md)
+ - [MobileDeviceEbookInventoryDetail](docs/MobileDeviceEbookInventoryDetail.md)
+ - [MobileDeviceExtensionAttribute](docs/MobileDeviceExtensionAttribute.md)
  - [MobileDeviceExtensionAttributeResults](docs/MobileDeviceExtensionAttributeResults.md)
  - [MobileDeviceExtensionAttributeResultsExtensionAttributesInner](docs/MobileDeviceExtensionAttributeResultsExtensionAttributesInner.md)
+ - [MobileDeviceGeneral](docs/MobileDeviceGeneral.md)
  - [MobileDeviceGroup](docs/MobileDeviceGroup.md)
+ - [MobileDeviceHardware](docs/MobileDeviceHardware.md)
+ - [MobileDeviceInventory](docs/MobileDeviceInventory.md)
+ - [MobileDeviceInventorySearchResults](docs/MobileDeviceInventorySearchResults.md)
+ - [MobileDeviceIosGeneral](docs/MobileDeviceIosGeneral.md)
+ - [MobileDeviceIosInventory](docs/MobileDeviceIosInventory.md)
+ - [MobileDeviceLostModeLocation](docs/MobileDeviceLostModeLocation.md)
+ - [MobileDeviceNetwork](docs/MobileDeviceNetwork.md)
  - [MobileDevicePrestage](docs/MobileDevicePrestage.md)
- - [MobileDevicePrestageAllOf](docs/MobileDevicePrestageAllOf.md)
  - [MobileDevicePrestageName](docs/MobileDevicePrestageName.md)
  - [MobileDevicePrestageNameV2](docs/MobileDevicePrestageNameV2.md)
  - [MobileDevicePrestageNames](docs/MobileDevicePrestageNames.md)
@@ -942,16 +1045,28 @@ Class | Method | HTTP request | Description
  - [MobileDevicePrestageSearchResults](docs/MobileDevicePrestageSearchResults.md)
  - [MobileDevicePrestageSearchResultsV2](docs/MobileDevicePrestageSearchResultsV2.md)
  - [MobileDevicePrestageV2](docs/MobileDevicePrestageV2.md)
- - [MobileDevicePrestageV2AllOf](docs/MobileDevicePrestageV2AllOf.md)
+ - [MobileDeviceProfile](docs/MobileDeviceProfile.md)
+ - [MobileDeviceProvisioningProfiles](docs/MobileDeviceProvisioningProfiles.md)
+ - [MobileDevicePurchasing](docs/MobileDevicePurchasing.md)
+ - [MobileDeviceResponse](docs/MobileDeviceResponse.md)
  - [MobileDeviceSearchParams](docs/MobileDeviceSearchParams.md)
  - [MobileDeviceSearchResults](docs/MobileDeviceSearchResults.md)
  - [MobileDeviceSearchResultsV2](docs/MobileDeviceSearchResultsV2.md)
+ - [MobileDeviceSection](docs/MobileDeviceSection.md)
+ - [MobileDeviceSecurity](docs/MobileDeviceSecurity.md)
+ - [MobileDeviceServiceSubscriptions](docs/MobileDeviceServiceSubscriptions.md)
+ - [MobileDeviceSharedUser](docs/MobileDeviceSharedUser.md)
+ - [MobileDeviceTvOsGeneral](docs/MobileDeviceTvOsGeneral.md)
+ - [MobileDeviceTvOsInventory](docs/MobileDeviceTvOsInventory.md)
+ - [MobileDeviceUserAndLocation](docs/MobileDeviceUserAndLocation.md)
+ - [MobileDeviceUserProfile](docs/MobileDeviceUserProfile.md)
  - [MobileDeviceV2](docs/MobileDeviceV2.md)
  - [Network](docs/Network.md)
  - [NetworkV2](docs/NetworkV2.md)
  - [Notification](docs/Notification.md)
  - [NotificationType](docs/NotificationType.md)
  - [NotificationV1](docs/NotificationV1.md)
+ - [OAuthClientCredentials](docs/OAuthClientCredentials.md)
  - [ObjectHistory](docs/ObjectHistory.md)
  - [ObjectHistoryNote](docs/ObjectHistoryNote.md)
  - [ObjectHistoryV1](docs/ObjectHistoryV1.md)
@@ -959,20 +1074,45 @@ Class | Method | HTTP request | Description
  - [PackageManifest](docs/PackageManifest.md)
  - [ParentApp](docs/ParentApp.md)
  - [ParentAppRestrictedTimes](docs/ParentAppRestrictedTimes.md)
- - [PatchPolicyAttempt](docs/PatchPolicyAttempt.md)
- - [PatchPolicyAttemptAction](docs/PatchPolicyAttemptAction.md)
- - [PatchPolicyLog](docs/PatchPolicyLog.md)
- - [PatchPolicyLogSearchResults](docs/PatchPolicyLogSearchResults.md)
- - [PatchPolicyOnDashboard](docs/PatchPolicyOnDashboard.md)
- - [PatchPolicySummary](docs/PatchPolicySummary.md)
- - [PatchVersion](docs/PatchVersion.md)
+ - [PatchPolicies](docs/PatchPolicies.md)
+ - [PatchPolicyDetail](docs/PatchPolicyDetail.md)
+ - [PatchPolicyDetails](docs/PatchPolicyDetails.md)
+ - [PatchPolicyListView](docs/PatchPolicyListView.md)
+ - [PatchPolicyLogDetail](docs/PatchPolicyLogDetail.md)
+ - [PatchPolicyLogDetailAction](docs/PatchPolicyLogDetailAction.md)
+ - [PatchPolicyLogEligibleRetryCount](docs/PatchPolicyLogEligibleRetryCount.md)
+ - [PatchPolicyLogRetry](docs/PatchPolicyLogRetry.md)
+ - [PatchPolicyLogV2](docs/PatchPolicyLogV2.md)
+ - [PatchPolicyLogs](docs/PatchPolicyLogs.md)
+ - [PatchPolicyV2OnDashboard](docs/PatchPolicyV2OnDashboard.md)
+ - [PatchSoftwareTitleConfiguration](docs/PatchSoftwareTitleConfiguration.md)
+ - [PatchSoftwareTitleConfigurationBase](docs/PatchSoftwareTitleConfigurationBase.md)
+ - [PatchSoftwareTitleConfigurationDefinitionKillApp](docs/PatchSoftwareTitleConfigurationDefinitionKillApp.md)
+ - [PatchSoftwareTitleConfigurationDependencies](docs/PatchSoftwareTitleConfigurationDependencies.md)
+ - [PatchSoftwareTitleConfigurationDependency](docs/PatchSoftwareTitleConfigurationDependency.md)
+ - [PatchSoftwareTitleConfigurationExtensionAttributes](docs/PatchSoftwareTitleConfigurationExtensionAttributes.md)
+ - [PatchSoftwareTitleConfigurationPatch](docs/PatchSoftwareTitleConfigurationPatch.md)
+ - [PatchSoftwareTitleDefinition](docs/PatchSoftwareTitleDefinition.md)
+ - [PatchSoftwareTitleDefinitions](docs/PatchSoftwareTitleDefinitions.md)
+ - [PatchSoftwareTitleExtensionAttributes](docs/PatchSoftwareTitleExtensionAttributes.md)
+ - [PatchSoftwareTitlePackages](docs/PatchSoftwareTitlePackages.md)
+ - [PatchSoftwareTitleReport](docs/PatchSoftwareTitleReport.md)
+ - [PatchSoftwareTitleReportSearchResult](docs/PatchSoftwareTitleReportSearchResult.md)
+ - [PatchSummary](docs/PatchSummary.md)
+ - [PatchSummaryVersion](docs/PatchSummaryVersion.md)
  - [PersonalHotspotSetting](docs/PersonalHotspotSetting.md)
+ - [PlanConfigurationPost](docs/PlanConfigurationPost.md)
+ - [PlanDevice](docs/PlanDevice.md)
+ - [PlanDevicePost](docs/PlanDevicePost.md)
+ - [PlanDeviceResponse](docs/PlanDeviceResponse.md)
+ - [PlanGroupPost](docs/PlanGroupPost.md)
  - [PlanSearchResults](docs/PlanSearchResults.md)
+ - [PlanStatus](docs/PlanStatus.md)
  - [PluginPath](docs/PluginPath.md)
  - [PolicyProperties](docs/PolicyProperties.md)
  - [PolicyPropertiesV1](docs/PolicyPropertiesV1.md)
  - [PostComputerPrestageV2](docs/PostComputerPrestageV2.md)
- - [PostComputerPrestageV2AllOf](docs/PostComputerPrestageV2AllOf.md)
+ - [PostComputerPrestageV3](docs/PostComputerPrestageV3.md)
  - [PrestageDependencies](docs/PrestageDependencies.md)
  - [PrestageDependency](docs/PrestageDependency.md)
  - [PrestageFileAttachment](docs/PrestageFileAttachment.md)
@@ -992,13 +1132,10 @@ Class | Method | HTTP request | Description
  - [ProtectRegistrationRequest](docs/ProtectRegistrationRequest.md)
  - [ProtectSettingsResponse](docs/ProtectSettingsResponse.md)
  - [ProtectUpdatableSettingsRequest](docs/ProtectUpdatableSettingsRequest.md)
- - [ProvisioningProfile](docs/ProvisioningProfile.md)
  - [Purchasing](docs/Purchasing.md)
  - [PurchasingV2](docs/PurchasingV2.md)
- - [PutComputerPrestage](docs/PutComputerPrestage.md)
- - [PutComputerPrestageAllOf](docs/PutComputerPrestageAllOf.md)
  - [PutComputerPrestageV2](docs/PutComputerPrestageV2.md)
- - [PutComputerPrestageV2AllOf](docs/PutComputerPrestageV2AllOf.md)
+ - [PutComputerPrestageV3](docs/PutComputerPrestageV3.md)
  - [PutMobileDevicePrestage](docs/PutMobileDevicePrestage.md)
  - [PutMobileDevicePrestageV2](docs/PutMobileDevicePrestageV2.md)
  - [RecalculationResults](docs/RecalculationResults.md)
@@ -1010,12 +1147,9 @@ Class | Method | HTTP request | Description
  - [RemoteAdministrationSearchResults](docs/RemoteAdministrationSearchResults.md)
  - [RenewMdmProfileResponse](docs/RenewMdmProfileResponse.md)
  - [RestartDeviceCommand](docs/RestartDeviceCommand.md)
- - [RetryPatchPolicyParams](docs/RetryPatchPolicyParams.md)
- - [SafelistedAppsInner](docs/SafelistedAppsInner.md)
+ - [SafelistedApp](docs/SafelistedApp.md)
  - [Script](docs/Script.md)
  - [ScriptsSearchResults](docs/ScriptsSearchResults.md)
- - [SearchActivePatchHistoryParams](docs/SearchActivePatchHistoryParams.md)
- - [SearchPatchPolicyLogParams](docs/SearchPatchPolicyLogParams.md)
  - [Security](docs/Security.md)
  - [SecurityV2](docs/SecurityV2.md)
  - [SelfServiceInstallSettings](docs/SelfServiceInstallSettings.md)
@@ -1027,17 +1161,17 @@ Class | Method | HTTP request | Description
  - [SessionDetails](docs/SessionDetails.md)
  - [SessionDetailsSearchResults](docs/SessionDetailsSearchResults.md)
  - [SessionStatus](docs/SessionStatus.md)
+ - [SetAutoAdminPasswordCommand](docs/SetAutoAdminPasswordCommand.md)
  - [SetRecoveryLockCommand](docs/SetRecoveryLockCommand.md)
  - [SettingsCommand](docs/SettingsCommand.md)
  - [SharedDeviceConfiguration](docs/SharedDeviceConfiguration.md)
  - [Signature](docs/Signature.md)
  - [Site](docs/Site.md)
  - [SmartSearchCriterion](docs/SmartSearchCriterion.md)
- - [SoftwareTitleConfiguration](docs/SoftwareTitleConfiguration.md)
- - [SoftwareTitlePatchPolicySummaries](docs/SoftwareTitlePatchPolicySummaries.md)
+ - [SoftwareTitleConfigurationOnDashboard](docs/SoftwareTitleConfigurationOnDashboard.md)
  - [SoftwareUpdateSettings](docs/SoftwareUpdateSettings.md)
+ - [SsoFailoverData](docs/SsoFailoverData.md)
  - [SsoKeystore](docs/SsoKeystore.md)
- - [SsoKeystoreAllOf](docs/SsoKeystoreAllOf.md)
  - [SsoKeystoreCertParseResponse](docs/SsoKeystoreCertParseResponse.md)
  - [SsoKeystoreDetails](docs/SsoKeystoreDetails.md)
  - [SsoKeystoreParse](docs/SsoKeystoreParse.md)
@@ -1047,6 +1181,10 @@ Class | Method | HTTP request | Description
  - [SsoMetadataUrl](docs/SsoMetadataUrl.md)
  - [SsoSettings](docs/SsoSettings.md)
  - [StartupStatus](docs/StartupStatus.md)
+ - [StaticGroup](docs/StaticGroup.md)
+ - [StaticGroupAssignment](docs/StaticGroupAssignment.md)
+ - [StaticGroupSearchResults](docs/StaticGroupSearchResults.md)
+ - [StaticGroupSummary](docs/StaticGroupSummary.md)
  - [StaticUserGroup](docs/StaticUserGroup.md)
  - [SupervisionIdentity](docs/SupervisionIdentity.md)
  - [SupervisionIdentityCertificateUpload](docs/SupervisionIdentityCertificateUpload.md)
@@ -1066,8 +1204,9 @@ Class | Method | HTTP request | Description
  - [UpdateMobileDevice](docs/UpdateMobileDevice.md)
  - [UpdateMobileDeviceV2](docs/UpdateMobileDeviceV2.md)
  - [UpdateTvOs](docs/UpdateTvOs.md)
- - [UserAttributes](docs/UserAttributes.md)
  - [UserMappings](docs/UserMappings.md)
+ - [UserPreferencesSettings](docs/UserPreferencesSettings.md)
+ - [UserTestAttributes](docs/UserTestAttributes.md)
  - [UserTestSearch](docs/UserTestSearch.md)
  - [UserTestSearchRequest](docs/UserTestSearchRequest.md)
  - [UserTestSearchResponse](docs/UserTestSearchResponse.md)
@@ -1081,14 +1220,13 @@ Class | Method | HTTP request | Description
  - [VerbosePackageDeploymentResponseQueuedCommandsInner](docs/VerbosePackageDeploymentResponseQueuedCommandsInner.md)
  - [VoiceRoamingSetting](docs/VoiceRoamingSetting.md)
  - [VolumePurchasingContent](docs/VolumePurchasingContent.md)
+ - [VolumePurchasingContentList](docs/VolumePurchasingContentList.md)
  - [VolumePurchasingLocation](docs/VolumePurchasingLocation.md)
- - [VolumePurchasingLocationAllOf](docs/VolumePurchasingLocationAllOf.md)
  - [VolumePurchasingLocationListView](docs/VolumePurchasingLocationListView.md)
  - [VolumePurchasingLocationPatch](docs/VolumePurchasingLocationPatch.md)
  - [VolumePurchasingLocationPost](docs/VolumePurchasingLocationPost.md)
  - [VolumePurchasingLocations](docs/VolumePurchasingLocations.md)
  - [VolumePurchasingSubscription](docs/VolumePurchasingSubscription.md)
- - [VolumePurchasingSubscriptionAllOf](docs/VolumePurchasingSubscriptionAllOf.md)
  - [VolumePurchasingSubscriptionBase](docs/VolumePurchasingSubscriptionBase.md)
  - [VolumePurchasingSubscriptions](docs/VolumePurchasingSubscriptions.md)
  - [VppAdminAccount](docs/VppAdminAccount.md)
@@ -1099,6 +1237,17 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
+Authentication schemes defined for the API:
+### Bearer
+
+- **Type**: HTTP Bearer token authentication
+
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+r, err := client.Service.Operation(auth, args)
+```
 
 ### BasicAuth
 
@@ -1111,18 +1260,6 @@ auth := context.WithValue(context.Background(), sw.ContextBasicAuth, sw.BasicAut
     UserName: "username",
     Password: "password",
 })
-r, err := client.Service.Operation(auth, args)
-```
-
-
-### Bearer
-
-- **Type**: HTTP Bearer token authentication
-
-Example
-
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SupervisionIdentitySearchResults type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SupervisionIdentitySearchResults{}
+
 // SupervisionIdentitySearchResults struct for SupervisionIdentitySearchResults
 type SupervisionIdentitySearchResults struct {
 	TotalCount *int32 `json:"totalCount,omitempty"`
@@ -39,7 +42,7 @@ func NewSupervisionIdentitySearchResultsWithDefaults() *SupervisionIdentitySearc
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *SupervisionIdentitySearchResults) GetTotalCount() int32 {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *SupervisionIdentitySearchResults) GetTotalCount() int32 {
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentitySearchResults) GetTotalCountOk() (*int32, bool) {
-	if o == nil || o.TotalCount == nil {
+	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
 	return o.TotalCount, true
@@ -57,7 +60,7 @@ func (o *SupervisionIdentitySearchResults) GetTotalCountOk() (*int32, bool) {
 
 // HasTotalCount returns a boolean if a field has been set.
 func (o *SupervisionIdentitySearchResults) HasTotalCount() bool {
-	if o != nil && o.TotalCount != nil {
+	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *SupervisionIdentitySearchResults) SetTotalCount(v int32) {
 
 // GetResults returns the Results field value if set, zero value otherwise.
 func (o *SupervisionIdentitySearchResults) GetResults() []SupervisionIdentity {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		var ret []SupervisionIdentity
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *SupervisionIdentitySearchResults) GetResults() []SupervisionIdentity {
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentitySearchResults) GetResultsOk() ([]SupervisionIdentity, bool) {
-	if o == nil || o.Results == nil {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
 	return o.Results, true
@@ -89,7 +92,7 @@ func (o *SupervisionIdentitySearchResults) GetResultsOk() ([]SupervisionIdentity
 
 // HasResults returns a boolean if a field has been set.
 func (o *SupervisionIdentitySearchResults) HasResults() bool {
-	if o != nil && o.Results != nil {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *SupervisionIdentitySearchResults) SetResults(v []SupervisionIdentity) {
 }
 
 func (o SupervisionIdentitySearchResults) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TotalCount != nil {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.Results != nil {
-		toSerialize["results"] = o.Results
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SupervisionIdentitySearchResults) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TotalCount) {
+		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
+	}
+	return toSerialize, nil
 }
 
 type NullableSupervisionIdentitySearchResults struct {

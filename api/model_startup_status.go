@@ -14,17 +14,21 @@ import (
 	"encoding/json"
 )
 
+// checks if the StartupStatus type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &StartupStatus{}
+
 // StartupStatus struct for StartupStatus
 type StartupStatus struct {
 	Step *string `json:"step,omitempty"`
 	StepCode *string `json:"stepCode,omitempty"`
-	StepParam *string `json:"stepParam,omitempty"`
+	StepParam NullableString `json:"stepParam,omitempty"`
 	Percentage *int32 `json:"percentage,omitempty"`
-	Warning *string `json:"warning,omitempty"`
-	WarningCode *string `json:"warningCode,omitempty"`
-	WarningParam *string `json:"warningParam,omitempty"`
-	Error *string `json:"error,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty"`
+	Warning NullableString `json:"warning,omitempty"`
+	WarningCode NullableString `json:"warningCode,omitempty"`
+	WarningParam NullableString `json:"warningParam,omitempty"`
+	Error NullableString `json:"error,omitempty"`
+	ErrorCode NullableString `json:"errorCode,omitempty"`
+	SetupAssistantNecessary *bool `json:"setupAssistantNecessary,omitempty"`
 }
 
 // NewStartupStatus instantiates a new StartupStatus object
@@ -46,7 +50,7 @@ func NewStartupStatusWithDefaults() *StartupStatus {
 
 // GetStep returns the Step field value if set, zero value otherwise.
 func (o *StartupStatus) GetStep() string {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		var ret string
 		return ret
 	}
@@ -56,7 +60,7 @@ func (o *StartupStatus) GetStep() string {
 // GetStepOk returns a tuple with the Step field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartupStatus) GetStepOk() (*string, bool) {
-	if o == nil || o.Step == nil {
+	if o == nil || IsNil(o.Step) {
 		return nil, false
 	}
 	return o.Step, true
@@ -64,7 +68,7 @@ func (o *StartupStatus) GetStepOk() (*string, bool) {
 
 // HasStep returns a boolean if a field has been set.
 func (o *StartupStatus) HasStep() bool {
-	if o != nil && o.Step != nil {
+	if o != nil && !IsNil(o.Step) {
 		return true
 	}
 
@@ -78,7 +82,7 @@ func (o *StartupStatus) SetStep(v string) {
 
 // GetStepCode returns the StepCode field value if set, zero value otherwise.
 func (o *StartupStatus) GetStepCode() string {
-	if o == nil || o.StepCode == nil {
+	if o == nil || IsNil(o.StepCode) {
 		var ret string
 		return ret
 	}
@@ -88,7 +92,7 @@ func (o *StartupStatus) GetStepCode() string {
 // GetStepCodeOk returns a tuple with the StepCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartupStatus) GetStepCodeOk() (*string, bool) {
-	if o == nil || o.StepCode == nil {
+	if o == nil || IsNil(o.StepCode) {
 		return nil, false
 	}
 	return o.StepCode, true
@@ -96,7 +100,7 @@ func (o *StartupStatus) GetStepCodeOk() (*string, bool) {
 
 // HasStepCode returns a boolean if a field has been set.
 func (o *StartupStatus) HasStepCode() bool {
-	if o != nil && o.StepCode != nil {
+	if o != nil && !IsNil(o.StepCode) {
 		return true
 	}
 
@@ -108,41 +112,51 @@ func (o *StartupStatus) SetStepCode(v string) {
 	o.StepCode = &v
 }
 
-// GetStepParam returns the StepParam field value if set, zero value otherwise.
+// GetStepParam returns the StepParam field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetStepParam() string {
-	if o == nil || o.StepParam == nil {
+	if o == nil || IsNil(o.StepParam.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.StepParam
+	return *o.StepParam.Get()
 }
 
 // GetStepParamOk returns a tuple with the StepParam field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetStepParamOk() (*string, bool) {
-	if o == nil || o.StepParam == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.StepParam, true
+	return o.StepParam.Get(), o.StepParam.IsSet()
 }
 
 // HasStepParam returns a boolean if a field has been set.
 func (o *StartupStatus) HasStepParam() bool {
-	if o != nil && o.StepParam != nil {
+	if o != nil && o.StepParam.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStepParam gets a reference to the given string and assigns it to the StepParam field.
+// SetStepParam gets a reference to the given NullableString and assigns it to the StepParam field.
 func (o *StartupStatus) SetStepParam(v string) {
-	o.StepParam = &v
+	o.StepParam.Set(&v)
+}
+// SetStepParamNil sets the value for StepParam to be an explicit nil
+func (o *StartupStatus) SetStepParamNil() {
+	o.StepParam.Set(nil)
+}
+
+// UnsetStepParam ensures that no value is present for StepParam, not even an explicit nil
+func (o *StartupStatus) UnsetStepParam() {
+	o.StepParam.Unset()
 }
 
 // GetPercentage returns the Percentage field value if set, zero value otherwise.
 func (o *StartupStatus) GetPercentage() int32 {
-	if o == nil || o.Percentage == nil {
+	if o == nil || IsNil(o.Percentage) {
 		var ret int32
 		return ret
 	}
@@ -152,7 +166,7 @@ func (o *StartupStatus) GetPercentage() int32 {
 // GetPercentageOk returns a tuple with the Percentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *StartupStatus) GetPercentageOk() (*int32, bool) {
-	if o == nil || o.Percentage == nil {
+	if o == nil || IsNil(o.Percentage) {
 		return nil, false
 	}
 	return o.Percentage, true
@@ -160,7 +174,7 @@ func (o *StartupStatus) GetPercentageOk() (*int32, bool) {
 
 // HasPercentage returns a boolean if a field has been set.
 func (o *StartupStatus) HasPercentage() bool {
-	if o != nil && o.Percentage != nil {
+	if o != nil && !IsNil(o.Percentage) {
 		return true
 	}
 
@@ -172,196 +186,289 @@ func (o *StartupStatus) SetPercentage(v int32) {
 	o.Percentage = &v
 }
 
-// GetWarning returns the Warning field value if set, zero value otherwise.
+// GetWarning returns the Warning field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetWarning() string {
-	if o == nil || o.Warning == nil {
+	if o == nil || IsNil(o.Warning.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Warning
+	return *o.Warning.Get()
 }
 
 // GetWarningOk returns a tuple with the Warning field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetWarningOk() (*string, bool) {
-	if o == nil || o.Warning == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Warning, true
+	return o.Warning.Get(), o.Warning.IsSet()
 }
 
 // HasWarning returns a boolean if a field has been set.
 func (o *StartupStatus) HasWarning() bool {
-	if o != nil && o.Warning != nil {
+	if o != nil && o.Warning.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWarning gets a reference to the given string and assigns it to the Warning field.
+// SetWarning gets a reference to the given NullableString and assigns it to the Warning field.
 func (o *StartupStatus) SetWarning(v string) {
-	o.Warning = &v
+	o.Warning.Set(&v)
+}
+// SetWarningNil sets the value for Warning to be an explicit nil
+func (o *StartupStatus) SetWarningNil() {
+	o.Warning.Set(nil)
 }
 
-// GetWarningCode returns the WarningCode field value if set, zero value otherwise.
+// UnsetWarning ensures that no value is present for Warning, not even an explicit nil
+func (o *StartupStatus) UnsetWarning() {
+	o.Warning.Unset()
+}
+
+// GetWarningCode returns the WarningCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetWarningCode() string {
-	if o == nil || o.WarningCode == nil {
+	if o == nil || IsNil(o.WarningCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WarningCode
+	return *o.WarningCode.Get()
 }
 
 // GetWarningCodeOk returns a tuple with the WarningCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetWarningCodeOk() (*string, bool) {
-	if o == nil || o.WarningCode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.WarningCode, true
+	return o.WarningCode.Get(), o.WarningCode.IsSet()
 }
 
 // HasWarningCode returns a boolean if a field has been set.
 func (o *StartupStatus) HasWarningCode() bool {
-	if o != nil && o.WarningCode != nil {
+	if o != nil && o.WarningCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWarningCode gets a reference to the given string and assigns it to the WarningCode field.
+// SetWarningCode gets a reference to the given NullableString and assigns it to the WarningCode field.
 func (o *StartupStatus) SetWarningCode(v string) {
-	o.WarningCode = &v
+	o.WarningCode.Set(&v)
+}
+// SetWarningCodeNil sets the value for WarningCode to be an explicit nil
+func (o *StartupStatus) SetWarningCodeNil() {
+	o.WarningCode.Set(nil)
 }
 
-// GetWarningParam returns the WarningParam field value if set, zero value otherwise.
+// UnsetWarningCode ensures that no value is present for WarningCode, not even an explicit nil
+func (o *StartupStatus) UnsetWarningCode() {
+	o.WarningCode.Unset()
+}
+
+// GetWarningParam returns the WarningParam field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetWarningParam() string {
-	if o == nil || o.WarningParam == nil {
+	if o == nil || IsNil(o.WarningParam.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WarningParam
+	return *o.WarningParam.Get()
 }
 
 // GetWarningParamOk returns a tuple with the WarningParam field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetWarningParamOk() (*string, bool) {
-	if o == nil || o.WarningParam == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.WarningParam, true
+	return o.WarningParam.Get(), o.WarningParam.IsSet()
 }
 
 // HasWarningParam returns a boolean if a field has been set.
 func (o *StartupStatus) HasWarningParam() bool {
-	if o != nil && o.WarningParam != nil {
+	if o != nil && o.WarningParam.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWarningParam gets a reference to the given string and assigns it to the WarningParam field.
+// SetWarningParam gets a reference to the given NullableString and assigns it to the WarningParam field.
 func (o *StartupStatus) SetWarningParam(v string) {
-	o.WarningParam = &v
+	o.WarningParam.Set(&v)
+}
+// SetWarningParamNil sets the value for WarningParam to be an explicit nil
+func (o *StartupStatus) SetWarningParamNil() {
+	o.WarningParam.Set(nil)
 }
 
-// GetError returns the Error field value if set, zero value otherwise.
+// UnsetWarningParam ensures that no value is present for WarningParam, not even an explicit nil
+func (o *StartupStatus) UnsetWarningParam() {
+	o.WarningParam.Unset()
+}
+
+// GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetError() string {
-	if o == nil || o.Error == nil {
+	if o == nil || IsNil(o.Error.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Error
+	return *o.Error.Get()
 }
 
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetErrorOk() (*string, bool) {
-	if o == nil || o.Error == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.Error, true
+	return o.Error.Get(), o.Error.IsSet()
 }
 
 // HasError returns a boolean if a field has been set.
 func (o *StartupStatus) HasError() bool {
-	if o != nil && o.Error != nil {
+	if o != nil && o.Error.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetError gets a reference to the given string and assigns it to the Error field.
+// SetError gets a reference to the given NullableString and assigns it to the Error field.
 func (o *StartupStatus) SetError(v string) {
-	o.Error = &v
+	o.Error.Set(&v)
+}
+// SetErrorNil sets the value for Error to be an explicit nil
+func (o *StartupStatus) SetErrorNil() {
+	o.Error.Set(nil)
 }
 
-// GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
+// UnsetError ensures that no value is present for Error, not even an explicit nil
+func (o *StartupStatus) UnsetError() {
+	o.Error.Unset()
+}
+
+// GetErrorCode returns the ErrorCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StartupStatus) GetErrorCode() string {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil || IsNil(o.ErrorCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ErrorCode
+	return *o.ErrorCode.Get()
 }
 
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StartupStatus) GetErrorCodeOk() (*string, bool) {
-	if o == nil || o.ErrorCode == nil {
+	if o == nil {
 		return nil, false
 	}
-	return o.ErrorCode, true
+	return o.ErrorCode.Get(), o.ErrorCode.IsSet()
 }
 
 // HasErrorCode returns a boolean if a field has been set.
 func (o *StartupStatus) HasErrorCode() bool {
-	if o != nil && o.ErrorCode != nil {
+	if o != nil && o.ErrorCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
+// SetErrorCode gets a reference to the given NullableString and assigns it to the ErrorCode field.
 func (o *StartupStatus) SetErrorCode(v string) {
-	o.ErrorCode = &v
+	o.ErrorCode.Set(&v)
+}
+// SetErrorCodeNil sets the value for ErrorCode to be an explicit nil
+func (o *StartupStatus) SetErrorCodeNil() {
+	o.ErrorCode.Set(nil)
+}
+
+// UnsetErrorCode ensures that no value is present for ErrorCode, not even an explicit nil
+func (o *StartupStatus) UnsetErrorCode() {
+	o.ErrorCode.Unset()
+}
+
+// GetSetupAssistantNecessary returns the SetupAssistantNecessary field value if set, zero value otherwise.
+func (o *StartupStatus) GetSetupAssistantNecessary() bool {
+	if o == nil || IsNil(o.SetupAssistantNecessary) {
+		var ret bool
+		return ret
+	}
+	return *o.SetupAssistantNecessary
+}
+
+// GetSetupAssistantNecessaryOk returns a tuple with the SetupAssistantNecessary field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StartupStatus) GetSetupAssistantNecessaryOk() (*bool, bool) {
+	if o == nil || IsNil(o.SetupAssistantNecessary) {
+		return nil, false
+	}
+	return o.SetupAssistantNecessary, true
+}
+
+// HasSetupAssistantNecessary returns a boolean if a field has been set.
+func (o *StartupStatus) HasSetupAssistantNecessary() bool {
+	if o != nil && !IsNil(o.SetupAssistantNecessary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSetupAssistantNecessary gets a reference to the given bool and assigns it to the SetupAssistantNecessary field.
+func (o *StartupStatus) SetSetupAssistantNecessary(v bool) {
+	o.SetupAssistantNecessary = &v
 }
 
 func (o StartupStatus) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Step != nil {
-		toSerialize["step"] = o.Step
-	}
-	if o.StepCode != nil {
-		toSerialize["stepCode"] = o.StepCode
-	}
-	if o.StepParam != nil {
-		toSerialize["stepParam"] = o.StepParam
-	}
-	if o.Percentage != nil {
-		toSerialize["percentage"] = o.Percentage
-	}
-	if o.Warning != nil {
-		toSerialize["warning"] = o.Warning
-	}
-	if o.WarningCode != nil {
-		toSerialize["warningCode"] = o.WarningCode
-	}
-	if o.WarningParam != nil {
-		toSerialize["warningParam"] = o.WarningParam
-	}
-	if o.Error != nil {
-		toSerialize["error"] = o.Error
-	}
-	if o.ErrorCode != nil {
-		toSerialize["errorCode"] = o.ErrorCode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o StartupStatus) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Step) {
+		toSerialize["step"] = o.Step
+	}
+	if !IsNil(o.StepCode) {
+		toSerialize["stepCode"] = o.StepCode
+	}
+	if o.StepParam.IsSet() {
+		toSerialize["stepParam"] = o.StepParam.Get()
+	}
+	if !IsNil(o.Percentage) {
+		toSerialize["percentage"] = o.Percentage
+	}
+	if o.Warning.IsSet() {
+		toSerialize["warning"] = o.Warning.Get()
+	}
+	if o.WarningCode.IsSet() {
+		toSerialize["warningCode"] = o.WarningCode.Get()
+	}
+	if o.WarningParam.IsSet() {
+		toSerialize["warningParam"] = o.WarningParam.Get()
+	}
+	if o.Error.IsSet() {
+		toSerialize["error"] = o.Error.Get()
+	}
+	if o.ErrorCode.IsSet() {
+		toSerialize["errorCode"] = o.ErrorCode.Get()
+	}
+	if !IsNil(o.SetupAssistantNecessary) {
+		toSerialize["setupAssistantNecessary"] = o.SetupAssistantNecessary
+	}
+	return toSerialize, nil
 }
 
 type NullableStartupStatus struct {

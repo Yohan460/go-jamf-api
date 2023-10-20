@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ExtensionAttribute type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ExtensionAttribute{}
+
 // ExtensionAttribute struct for ExtensionAttribute
 type ExtensionAttribute struct {
 	Id *int32 `json:"id,omitempty"`
@@ -42,7 +45,7 @@ func NewExtensionAttributeWithDefaults() *ExtensionAttribute {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *ExtensionAttribute) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *ExtensionAttribute) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtensionAttribute) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *ExtensionAttribute) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *ExtensionAttribute) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *ExtensionAttribute) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ExtensionAttribute) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *ExtensionAttribute) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtensionAttribute) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -92,7 +95,7 @@ func (o *ExtensionAttribute) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ExtensionAttribute) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *ExtensionAttribute) SetName(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *ExtensionAttribute) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *ExtensionAttribute) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtensionAttribute) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -124,7 +127,7 @@ func (o *ExtensionAttribute) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *ExtensionAttribute) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *ExtensionAttribute) SetType(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ExtensionAttribute) GetValue() []string {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		var ret []string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *ExtensionAttribute) GetValue() []string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtensionAttribute) GetValueOk() ([]string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -156,7 +159,7 @@ func (o *ExtensionAttribute) GetValueOk() ([]string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ExtensionAttribute) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *ExtensionAttribute) SetValue(v []string) {
 
 // GetIsExtensionAttributeCollectionAllowed returns the IsExtensionAttributeCollectionAllowed field value if set, zero value otherwise.
 func (o *ExtensionAttribute) GetIsExtensionAttributeCollectionAllowed() bool {
-	if o == nil || o.IsExtensionAttributeCollectionAllowed == nil {
+	if o == nil || IsNil(o.IsExtensionAttributeCollectionAllowed) {
 		var ret bool
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *ExtensionAttribute) GetIsExtensionAttributeCollectionAllowed() bool {
 // GetIsExtensionAttributeCollectionAllowedOk returns a tuple with the IsExtensionAttributeCollectionAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtensionAttribute) GetIsExtensionAttributeCollectionAllowedOk() (*bool, bool) {
-	if o == nil || o.IsExtensionAttributeCollectionAllowed == nil {
+	if o == nil || IsNil(o.IsExtensionAttributeCollectionAllowed) {
 		return nil, false
 	}
 	return o.IsExtensionAttributeCollectionAllowed, true
@@ -188,7 +191,7 @@ func (o *ExtensionAttribute) GetIsExtensionAttributeCollectionAllowedOk() (*bool
 
 // HasIsExtensionAttributeCollectionAllowed returns a boolean if a field has been set.
 func (o *ExtensionAttribute) HasIsExtensionAttributeCollectionAllowed() bool {
-	if o != nil && o.IsExtensionAttributeCollectionAllowed != nil {
+	if o != nil && !IsNil(o.IsExtensionAttributeCollectionAllowed) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *ExtensionAttribute) SetIsExtensionAttributeCollectionAllowed(v bool) {
 }
 
 func (o ExtensionAttribute) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Value != nil {
-		toSerialize["value"] = o.Value
-	}
-	if o.IsExtensionAttributeCollectionAllowed != nil {
-		toSerialize["isExtensionAttributeCollectionAllowed"] = o.IsExtensionAttributeCollectionAllowed
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ExtensionAttribute) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
+	}
+	if !IsNil(o.IsExtensionAttributeCollectionAllowed) {
+		toSerialize["isExtensionAttributeCollectionAllowed"] = o.IsExtensionAttributeCollectionAllowed
+	}
+	return toSerialize, nil
 }
 
 type NullableExtensionAttribute struct {

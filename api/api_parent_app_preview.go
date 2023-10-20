@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type ParentAppPreviewApi interface {
+type ParentAppPreviewAPI interface {
 
 	/*
 	V1ParentAppGet Get the current Jamf Parent app settings 
@@ -28,13 +28,13 @@ type ParentAppPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ParentAppGetRequest
+	@return ParentAppPreviewAPIV1ParentAppGetRequest
 	*/
-	V1ParentAppGet(ctx context.Context) ApiV1ParentAppGetRequest
+	V1ParentAppGet(ctx context.Context) ParentAppPreviewAPIV1ParentAppGetRequest
 
 	// V1ParentAppGetExecute executes the request
 	//  @return ParentApp
-	V1ParentAppGetExecute(r ApiV1ParentAppGetRequest) (*ParentApp, *http.Response, error)
+	V1ParentAppGetExecute(r ParentAppPreviewAPIV1ParentAppGetRequest) (*ParentApp, *http.Response, error)
 
 	/*
 	V1ParentAppHistoryGet Get Jamf Parent app settings history 
@@ -43,13 +43,13 @@ type ParentAppPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ParentAppHistoryGetRequest
+	@return ParentAppPreviewAPIV1ParentAppHistoryGetRequest
 	*/
-	V1ParentAppHistoryGet(ctx context.Context) ApiV1ParentAppHistoryGetRequest
+	V1ParentAppHistoryGet(ctx context.Context) ParentAppPreviewAPIV1ParentAppHistoryGetRequest
 
 	// V1ParentAppHistoryGetExecute executes the request
 	//  @return HistorySearchResults
-	V1ParentAppHistoryGetExecute(r ApiV1ParentAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+	V1ParentAppHistoryGetExecute(r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
 	V1ParentAppHistoryPost Add Jamf Parent app settings history notes 
@@ -58,13 +58,13 @@ type ParentAppPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ParentAppHistoryPostRequest
+	@return ParentAppPreviewAPIV1ParentAppHistoryPostRequest
 	*/
-	V1ParentAppHistoryPost(ctx context.Context) ApiV1ParentAppHistoryPostRequest
+	V1ParentAppHistoryPost(ctx context.Context) ParentAppPreviewAPIV1ParentAppHistoryPostRequest
 
 	// V1ParentAppHistoryPostExecute executes the request
 	//  @return ObjectHistory
-	V1ParentAppHistoryPostExecute(r ApiV1ParentAppHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+	V1ParentAppHistoryPostExecute(r ParentAppPreviewAPIV1ParentAppHistoryPostRequest) (*ObjectHistory, *http.Response, error)
 
 	/*
 	V1ParentAppPut Update Jamf Parent app settings 
@@ -73,24 +73,24 @@ type ParentAppPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1ParentAppPutRequest
+	@return ParentAppPreviewAPIV1ParentAppPutRequest
 	*/
-	V1ParentAppPut(ctx context.Context) ApiV1ParentAppPutRequest
+	V1ParentAppPut(ctx context.Context) ParentAppPreviewAPIV1ParentAppPutRequest
 
 	// V1ParentAppPutExecute executes the request
 	//  @return ParentApp
-	V1ParentAppPutExecute(r ApiV1ParentAppPutRequest) (*ParentApp, *http.Response, error)
+	V1ParentAppPutExecute(r ParentAppPreviewAPIV1ParentAppPutRequest) (*ParentApp, *http.Response, error)
 }
 
-// ParentAppPreviewApiService ParentAppPreviewApi service
-type ParentAppPreviewApiService service
+// ParentAppPreviewAPIService ParentAppPreviewAPI service
+type ParentAppPreviewAPIService service
 
-type ApiV1ParentAppGetRequest struct {
+type ParentAppPreviewAPIV1ParentAppGetRequest struct {
 	ctx context.Context
-	ApiService ParentAppPreviewApi
+	ApiService ParentAppPreviewAPI
 }
 
-func (r ApiV1ParentAppGetRequest) Execute() (*ParentApp, *http.Response, error) {
+func (r ParentAppPreviewAPIV1ParentAppGetRequest) Execute() (*ParentApp, *http.Response, error) {
 	return r.ApiService.V1ParentAppGetExecute(r)
 }
 
@@ -101,10 +101,10 @@ Get the current Jamf Parent app settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ParentAppGetRequest
+ @return ParentAppPreviewAPIV1ParentAppGetRequest
 */
-func (a *ParentAppPreviewApiService) V1ParentAppGet(ctx context.Context) ApiV1ParentAppGetRequest {
-	return ApiV1ParentAppGetRequest{
+func (a *ParentAppPreviewAPIService) V1ParentAppGet(ctx context.Context) ParentAppPreviewAPIV1ParentAppGetRequest {
+	return ParentAppPreviewAPIV1ParentAppGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -112,7 +112,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppGet(ctx context.Context) ApiV1Pa
 
 // Execute executes the request
 //  @return ParentApp
-func (a *ParentAppPreviewApiService) V1ParentAppGetExecute(r ApiV1ParentAppGetRequest) (*ParentApp, *http.Response, error) {
+func (a *ParentAppPreviewAPIService) V1ParentAppGetExecute(r ParentAppPreviewAPIV1ParentAppGetRequest) (*ParentApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -120,7 +120,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppGetExecute(r ApiV1ParentAppGetRe
 		localVarReturnValue  *ParentApp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewApiService.V1ParentAppGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewAPIService.V1ParentAppGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -158,9 +158,9 @@ func (a *ParentAppPreviewApiService) V1ParentAppGetExecute(r ApiV1ParentAppGetRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -185,38 +185,38 @@ func (a *ParentAppPreviewApiService) V1ParentAppGetExecute(r ApiV1ParentAppGetRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ParentAppHistoryGetRequest struct {
+type ParentAppPreviewAPIV1ParentAppHistoryGetRequest struct {
 	ctx context.Context
-	ApiService ParentAppPreviewApi
+	ApiService ParentAppPreviewAPI
 	page *int32
 	pageSize *int32
 	filter *string
 	sort *string
 }
 
-func (r ApiV1ParentAppHistoryGetRequest) Page(page int32) ApiV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Page(page int32) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiV1ParentAppHistoryGetRequest) PageSize(pageSize int32) ApiV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) PageSize(pageSize int32) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
-func (r ApiV1ParentAppHistoryGetRequest) Filter(filter string) ApiV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Filter(filter string) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.filter = &filter
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r ApiV1ParentAppHistoryGetRequest) Sort(sort string) ApiV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Sort(sort string) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiV1ParentAppHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
 	return r.ApiService.V1ParentAppHistoryGetExecute(r)
 }
 
@@ -227,10 +227,10 @@ Gets Jamf Parent app settings history
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ParentAppHistoryGetRequest
+ @return ParentAppPreviewAPIV1ParentAppHistoryGetRequest
 */
-func (a *ParentAppPreviewApiService) V1ParentAppHistoryGet(ctx context.Context) ApiV1ParentAppHistoryGetRequest {
-	return ApiV1ParentAppHistoryGetRequest{
+func (a *ParentAppPreviewAPIService) V1ParentAppHistoryGet(ctx context.Context) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
+	return ParentAppPreviewAPIV1ParentAppHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -238,7 +238,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGet(ctx context.Context) 
 
 // Execute executes the request
 //  @return HistorySearchResults
-func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+func (a *ParentAppPreviewAPIService) V1ParentAppHistoryGetExecute(r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -246,7 +246,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentA
 		localVarReturnValue  *HistorySearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewApiService.V1ParentAppHistoryGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewAPIService.V1ParentAppHistoryGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -258,16 +258,28 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentA
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.filter != nil {
-		localVarQueryParams.Add("filter", parameterToString(*r.filter, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "date:desc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -296,9 +308,9 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentA
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -323,19 +335,19 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryGetExecute(r ApiV1ParentA
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ParentAppHistoryPostRequest struct {
+type ParentAppPreviewAPIV1ParentAppHistoryPostRequest struct {
 	ctx context.Context
-	ApiService ParentAppPreviewApi
+	ApiService ParentAppPreviewAPI
 	objectHistoryNote *ObjectHistoryNote
 }
 
 // history notes to create
-func (r ApiV1ParentAppHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ApiV1ParentAppHistoryPostRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ParentAppPreviewAPIV1ParentAppHistoryPostRequest {
 	r.objectHistoryNote = &objectHistoryNote
 	return r
 }
 
-func (r ApiV1ParentAppHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+func (r ParentAppPreviewAPIV1ParentAppHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
 	return r.ApiService.V1ParentAppHistoryPostExecute(r)
 }
 
@@ -346,10 +358,10 @@ Adds Jamf Parent app settings history notes
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ParentAppHistoryPostRequest
+ @return ParentAppPreviewAPIV1ParentAppHistoryPostRequest
 */
-func (a *ParentAppPreviewApiService) V1ParentAppHistoryPost(ctx context.Context) ApiV1ParentAppHistoryPostRequest {
-	return ApiV1ParentAppHistoryPostRequest{
+func (a *ParentAppPreviewAPIService) V1ParentAppHistoryPost(ctx context.Context) ParentAppPreviewAPIV1ParentAppHistoryPostRequest {
+	return ParentAppPreviewAPIV1ParentAppHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -357,7 +369,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPost(ctx context.Context)
 
 // Execute executes the request
 //  @return ObjectHistory
-func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1ParentAppHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+func (a *ParentAppPreviewAPIService) V1ParentAppHistoryPostExecute(r ParentAppPreviewAPIV1ParentAppHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -365,7 +377,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1Parent
 		localVarReturnValue  *ObjectHistory
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewApiService.V1ParentAppHistoryPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewAPIService.V1ParentAppHistoryPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -408,9 +420,9 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1Parent
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -427,7 +439,8 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1Parent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -444,19 +457,19 @@ func (a *ParentAppPreviewApiService) V1ParentAppHistoryPostExecute(r ApiV1Parent
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1ParentAppPutRequest struct {
+type ParentAppPreviewAPIV1ParentAppPutRequest struct {
 	ctx context.Context
-	ApiService ParentAppPreviewApi
+	ApiService ParentAppPreviewAPI
 	parentApp *ParentApp
 }
 
 // Jamf Parent app settings to save.
-func (r ApiV1ParentAppPutRequest) ParentApp(parentApp ParentApp) ApiV1ParentAppPutRequest {
+func (r ParentAppPreviewAPIV1ParentAppPutRequest) ParentApp(parentApp ParentApp) ParentAppPreviewAPIV1ParentAppPutRequest {
 	r.parentApp = &parentApp
 	return r
 }
 
-func (r ApiV1ParentAppPutRequest) Execute() (*ParentApp, *http.Response, error) {
+func (r ParentAppPreviewAPIV1ParentAppPutRequest) Execute() (*ParentApp, *http.Response, error) {
 	return r.ApiService.V1ParentAppPutExecute(r)
 }
 
@@ -467,10 +480,10 @@ Update Jamf Parent app settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1ParentAppPutRequest
+ @return ParentAppPreviewAPIV1ParentAppPutRequest
 */
-func (a *ParentAppPreviewApiService) V1ParentAppPut(ctx context.Context) ApiV1ParentAppPutRequest {
-	return ApiV1ParentAppPutRequest{
+func (a *ParentAppPreviewAPIService) V1ParentAppPut(ctx context.Context) ParentAppPreviewAPIV1ParentAppPutRequest {
+	return ParentAppPreviewAPIV1ParentAppPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -478,7 +491,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppPut(ctx context.Context) ApiV1Pa
 
 // Execute executes the request
 //  @return ParentApp
-func (a *ParentAppPreviewApiService) V1ParentAppPutExecute(r ApiV1ParentAppPutRequest) (*ParentApp, *http.Response, error) {
+func (a *ParentAppPreviewAPIService) V1ParentAppPutExecute(r ParentAppPreviewAPIV1ParentAppPutRequest) (*ParentApp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -486,7 +499,7 @@ func (a *ParentAppPreviewApiService) V1ParentAppPutExecute(r ApiV1ParentAppPutRe
 		localVarReturnValue  *ParentApp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewApiService.V1ParentAppPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ParentAppPreviewAPIService.V1ParentAppPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -529,9 +542,9 @@ func (a *ParentAppPreviewApiService) V1ParentAppPutExecute(r ApiV1ParentAppPutRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -548,7 +561,8 @@ func (a *ParentAppPreviewApiService) V1ParentAppPutExecute(r ApiV1ParentAppPutRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

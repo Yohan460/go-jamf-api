@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Location type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Location{}
+
 // Location struct for Location
 type Location struct {
 	Username *string `json:"username,omitempty"`
@@ -45,7 +48,7 @@ func NewLocationWithDefaults() *Location {
 
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *Location) GetUsername() string {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *Location) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetUsernameOk() (*string, bool) {
-	if o == nil || o.Username == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
 	return o.Username, true
@@ -63,7 +66,7 @@ func (o *Location) GetUsernameOk() (*string, bool) {
 
 // HasUsername returns a boolean if a field has been set.
 func (o *Location) HasUsername() bool {
-	if o != nil && o.Username != nil {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *Location) SetUsername(v string) {
 
 // GetRealName returns the RealName field value if set, zero value otherwise.
 func (o *Location) GetRealName() string {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		var ret string
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *Location) GetRealName() string {
 // GetRealNameOk returns a tuple with the RealName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetRealNameOk() (*string, bool) {
-	if o == nil || o.RealName == nil {
+	if o == nil || IsNil(o.RealName) {
 		return nil, false
 	}
 	return o.RealName, true
@@ -95,7 +98,7 @@ func (o *Location) GetRealNameOk() (*string, bool) {
 
 // HasRealName returns a boolean if a field has been set.
 func (o *Location) HasRealName() bool {
-	if o != nil && o.RealName != nil {
+	if o != nil && !IsNil(o.RealName) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *Location) SetRealName(v string) {
 
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
 func (o *Location) GetEmailAddress() string {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *Location) GetEmailAddress() string {
 // GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetEmailAddressOk() (*string, bool) {
-	if o == nil || o.EmailAddress == nil {
+	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
 	return o.EmailAddress, true
@@ -127,7 +130,7 @@ func (o *Location) GetEmailAddressOk() (*string, bool) {
 
 // HasEmailAddress returns a boolean if a field has been set.
 func (o *Location) HasEmailAddress() bool {
-	if o != nil && o.EmailAddress != nil {
+	if o != nil && !IsNil(o.EmailAddress) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *Location) SetEmailAddress(v string) {
 
 // GetPosition returns the Position field value if set, zero value otherwise.
 func (o *Location) GetPosition() string {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *Location) GetPosition() string {
 // GetPositionOk returns a tuple with the Position field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetPositionOk() (*string, bool) {
-	if o == nil || o.Position == nil {
+	if o == nil || IsNil(o.Position) {
 		return nil, false
 	}
 	return o.Position, true
@@ -159,7 +162,7 @@ func (o *Location) GetPositionOk() (*string, bool) {
 
 // HasPosition returns a boolean if a field has been set.
 func (o *Location) HasPosition() bool {
-	if o != nil && o.Position != nil {
+	if o != nil && !IsNil(o.Position) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *Location) SetPosition(v string) {
 
 // GetPhoneNumber returns the PhoneNumber field value if set, zero value otherwise.
 func (o *Location) GetPhoneNumber() string {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		var ret string
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *Location) GetPhoneNumber() string {
 // GetPhoneNumberOk returns a tuple with the PhoneNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetPhoneNumberOk() (*string, bool) {
-	if o == nil || o.PhoneNumber == nil {
+	if o == nil || IsNil(o.PhoneNumber) {
 		return nil, false
 	}
 	return o.PhoneNumber, true
@@ -191,7 +194,7 @@ func (o *Location) GetPhoneNumberOk() (*string, bool) {
 
 // HasPhoneNumber returns a boolean if a field has been set.
 func (o *Location) HasPhoneNumber() bool {
-	if o != nil && o.PhoneNumber != nil {
+	if o != nil && !IsNil(o.PhoneNumber) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *Location) SetPhoneNumber(v string) {
 
 // GetDepartment returns the Department field value if set, zero value otherwise.
 func (o *Location) GetDepartment() IdAndName {
-	if o == nil || o.Department == nil {
+	if o == nil || IsNil(o.Department) {
 		var ret IdAndName
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *Location) GetDepartment() IdAndName {
 // GetDepartmentOk returns a tuple with the Department field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetDepartmentOk() (*IdAndName, bool) {
-	if o == nil || o.Department == nil {
+	if o == nil || IsNil(o.Department) {
 		return nil, false
 	}
 	return o.Department, true
@@ -223,7 +226,7 @@ func (o *Location) GetDepartmentOk() (*IdAndName, bool) {
 
 // HasDepartment returns a boolean if a field has been set.
 func (o *Location) HasDepartment() bool {
-	if o != nil && o.Department != nil {
+	if o != nil && !IsNil(o.Department) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *Location) SetDepartment(v IdAndName) {
 
 // GetBuilding returns the Building field value if set, zero value otherwise.
 func (o *Location) GetBuilding() IdAndName {
-	if o == nil || o.Building == nil {
+	if o == nil || IsNil(o.Building) {
 		var ret IdAndName
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *Location) GetBuilding() IdAndName {
 // GetBuildingOk returns a tuple with the Building field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetBuildingOk() (*IdAndName, bool) {
-	if o == nil || o.Building == nil {
+	if o == nil || IsNil(o.Building) {
 		return nil, false
 	}
 	return o.Building, true
@@ -255,7 +258,7 @@ func (o *Location) GetBuildingOk() (*IdAndName, bool) {
 
 // HasBuilding returns a boolean if a field has been set.
 func (o *Location) HasBuilding() bool {
-	if o != nil && o.Building != nil {
+	if o != nil && !IsNil(o.Building) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *Location) SetBuilding(v IdAndName) {
 
 // GetRoom returns the Room field value if set, zero value otherwise.
 func (o *Location) GetRoom() string {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		var ret string
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *Location) GetRoom() string {
 // GetRoomOk returns a tuple with the Room field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Location) GetRoomOk() (*string, bool) {
-	if o == nil || o.Room == nil {
+	if o == nil || IsNil(o.Room) {
 		return nil, false
 	}
 	return o.Room, true
@@ -287,7 +290,7 @@ func (o *Location) GetRoomOk() (*string, bool) {
 
 // HasRoom returns a boolean if a field has been set.
 func (o *Location) HasRoom() bool {
-	if o != nil && o.Room != nil {
+	if o != nil && !IsNil(o.Room) {
 		return true
 	}
 
@@ -300,32 +303,40 @@ func (o *Location) SetRoom(v string) {
 }
 
 func (o Location) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Username != nil {
-		toSerialize["username"] = o.Username
-	}
-	if o.RealName != nil {
-		toSerialize["realName"] = o.RealName
-	}
-	if o.EmailAddress != nil {
-		toSerialize["emailAddress"] = o.EmailAddress
-	}
-	if o.Position != nil {
-		toSerialize["position"] = o.Position
-	}
-	if o.PhoneNumber != nil {
-		toSerialize["phoneNumber"] = o.PhoneNumber
-	}
-	if o.Department != nil {
-		toSerialize["department"] = o.Department
-	}
-	if o.Building != nil {
-		toSerialize["building"] = o.Building
-	}
-	if o.Room != nil {
-		toSerialize["room"] = o.Room
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Location) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.RealName) {
+		toSerialize["realName"] = o.RealName
+	}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.Position) {
+		toSerialize["position"] = o.Position
+	}
+	if !IsNil(o.PhoneNumber) {
+		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	if !IsNil(o.Department) {
+		toSerialize["department"] = o.Department
+	}
+	if !IsNil(o.Building) {
+		toSerialize["building"] = o.Building
+	}
+	if !IsNil(o.Room) {
+		toSerialize["room"] = o.Room
+	}
+	return toSerialize, nil
 }
 
 type NullableLocation struct {

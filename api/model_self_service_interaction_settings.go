@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SelfServiceInteractionSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SelfServiceInteractionSettings{}
+
 // SelfServiceInteractionSettings object representation of Self Service settings regarding user interaction 
 type SelfServiceInteractionSettings struct {
 	// global Self Service setting for if notifications are on or off 
@@ -64,7 +67,7 @@ func NewSelfServiceInteractionSettingsWithDefaults() *SelfServiceInteractionSett
 
 // GetNotificationsEnabled returns the NotificationsEnabled field value if set, zero value otherwise.
 func (o *SelfServiceInteractionSettings) GetNotificationsEnabled() bool {
-	if o == nil || o.NotificationsEnabled == nil {
+	if o == nil || IsNil(o.NotificationsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -74,7 +77,7 @@ func (o *SelfServiceInteractionSettings) GetNotificationsEnabled() bool {
 // GetNotificationsEnabledOk returns a tuple with the NotificationsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceInteractionSettings) GetNotificationsEnabledOk() (*bool, bool) {
-	if o == nil || o.NotificationsEnabled == nil {
+	if o == nil || IsNil(o.NotificationsEnabled) {
 		return nil, false
 	}
 	return o.NotificationsEnabled, true
@@ -82,7 +85,7 @@ func (o *SelfServiceInteractionSettings) GetNotificationsEnabledOk() (*bool, boo
 
 // HasNotificationsEnabled returns a boolean if a field has been set.
 func (o *SelfServiceInteractionSettings) HasNotificationsEnabled() bool {
-	if o != nil && o.NotificationsEnabled != nil {
+	if o != nil && !IsNil(o.NotificationsEnabled) {
 		return true
 	}
 
@@ -96,7 +99,7 @@ func (o *SelfServiceInteractionSettings) SetNotificationsEnabled(v bool) {
 
 // GetAlertUserApprovedMdm returns the AlertUserApprovedMdm field value if set, zero value otherwise.
 func (o *SelfServiceInteractionSettings) GetAlertUserApprovedMdm() bool {
-	if o == nil || o.AlertUserApprovedMdm == nil {
+	if o == nil || IsNil(o.AlertUserApprovedMdm) {
 		var ret bool
 		return ret
 	}
@@ -106,7 +109,7 @@ func (o *SelfServiceInteractionSettings) GetAlertUserApprovedMdm() bool {
 // GetAlertUserApprovedMdmOk returns a tuple with the AlertUserApprovedMdm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceInteractionSettings) GetAlertUserApprovedMdmOk() (*bool, bool) {
-	if o == nil || o.AlertUserApprovedMdm == nil {
+	if o == nil || IsNil(o.AlertUserApprovedMdm) {
 		return nil, false
 	}
 	return o.AlertUserApprovedMdm, true
@@ -114,7 +117,7 @@ func (o *SelfServiceInteractionSettings) GetAlertUserApprovedMdmOk() (*bool, boo
 
 // HasAlertUserApprovedMdm returns a boolean if a field has been set.
 func (o *SelfServiceInteractionSettings) HasAlertUserApprovedMdm() bool {
-	if o != nil && o.AlertUserApprovedMdm != nil {
+	if o != nil && !IsNil(o.AlertUserApprovedMdm) {
 		return true
 	}
 
@@ -128,7 +131,7 @@ func (o *SelfServiceInteractionSettings) SetAlertUserApprovedMdm(v bool) {
 
 // GetDefaultLandingPage returns the DefaultLandingPage field value if set, zero value otherwise.
 func (o *SelfServiceInteractionSettings) GetDefaultLandingPage() string {
-	if o == nil || o.DefaultLandingPage == nil {
+	if o == nil || IsNil(o.DefaultLandingPage) {
 		var ret string
 		return ret
 	}
@@ -138,7 +141,7 @@ func (o *SelfServiceInteractionSettings) GetDefaultLandingPage() string {
 // GetDefaultLandingPageOk returns a tuple with the DefaultLandingPage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceInteractionSettings) GetDefaultLandingPageOk() (*string, bool) {
-	if o == nil || o.DefaultLandingPage == nil {
+	if o == nil || IsNil(o.DefaultLandingPage) {
 		return nil, false
 	}
 	return o.DefaultLandingPage, true
@@ -146,7 +149,7 @@ func (o *SelfServiceInteractionSettings) GetDefaultLandingPageOk() (*string, boo
 
 // HasDefaultLandingPage returns a boolean if a field has been set.
 func (o *SelfServiceInteractionSettings) HasDefaultLandingPage() bool {
-	if o != nil && o.DefaultLandingPage != nil {
+	if o != nil && !IsNil(o.DefaultLandingPage) {
 		return true
 	}
 
@@ -160,7 +163,7 @@ func (o *SelfServiceInteractionSettings) SetDefaultLandingPage(v string) {
 
 // GetDefaultHomeCategoryId returns the DefaultHomeCategoryId field value if set, zero value otherwise.
 func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int32 {
-	if o == nil || o.DefaultHomeCategoryId == nil {
+	if o == nil || IsNil(o.DefaultHomeCategoryId) {
 		var ret int32
 		return ret
 	}
@@ -170,7 +173,7 @@ func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int32 {
 // GetDefaultHomeCategoryIdOk returns a tuple with the DefaultHomeCategoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int32, bool) {
-	if o == nil || o.DefaultHomeCategoryId == nil {
+	if o == nil || IsNil(o.DefaultHomeCategoryId) {
 		return nil, false
 	}
 	return o.DefaultHomeCategoryId, true
@@ -178,7 +181,7 @@ func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int32, b
 
 // HasDefaultHomeCategoryId returns a boolean if a field has been set.
 func (o *SelfServiceInteractionSettings) HasDefaultHomeCategoryId() bool {
-	if o != nil && o.DefaultHomeCategoryId != nil {
+	if o != nil && !IsNil(o.DefaultHomeCategoryId) {
 		return true
 	}
 
@@ -215,23 +218,29 @@ func (o *SelfServiceInteractionSettings) SetBookmarksName(v string) {
 }
 
 func (o SelfServiceInteractionSettings) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.NotificationsEnabled != nil {
-		toSerialize["notificationsEnabled"] = o.NotificationsEnabled
-	}
-	if o.AlertUserApprovedMdm != nil {
-		toSerialize["alertUserApprovedMdm"] = o.AlertUserApprovedMdm
-	}
-	if o.DefaultLandingPage != nil {
-		toSerialize["defaultLandingPage"] = o.DefaultLandingPage
-	}
-	if o.DefaultHomeCategoryId != nil {
-		toSerialize["defaultHomeCategoryId"] = o.DefaultHomeCategoryId
-	}
-	if true {
-		toSerialize["bookmarksName"] = o.BookmarksName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SelfServiceInteractionSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.NotificationsEnabled) {
+		toSerialize["notificationsEnabled"] = o.NotificationsEnabled
+	}
+	if !IsNil(o.AlertUserApprovedMdm) {
+		toSerialize["alertUserApprovedMdm"] = o.AlertUserApprovedMdm
+	}
+	if !IsNil(o.DefaultLandingPage) {
+		toSerialize["defaultLandingPage"] = o.DefaultLandingPage
+	}
+	if !IsNil(o.DefaultHomeCategoryId) {
+		toSerialize["defaultHomeCategoryId"] = o.DefaultHomeCategoryId
+	}
+	toSerialize["bookmarksName"] = o.BookmarksName
+	return toSerialize, nil
 }
 
 type NullableSelfServiceInteractionSettings struct {

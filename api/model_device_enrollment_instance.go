@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentInstance type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentInstance{}
+
 // DeviceEnrollmentInstance struct for DeviceEnrollmentInstance
 type DeviceEnrollmentInstance struct {
 	Id *string `json:"id,omitempty"`
@@ -50,7 +53,7 @@ func NewDeviceEnrollmentInstanceWithDefaults() *DeviceEnrollmentInstance {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -60,7 +63,7 @@ func (o *DeviceEnrollmentInstance) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -68,7 +71,7 @@ func (o *DeviceEnrollmentInstance) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *DeviceEnrollmentInstance) SetName(v string) {
 
 // GetSupervisionIdentityId returns the SupervisionIdentityId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetSupervisionIdentityId() string {
-	if o == nil || o.SupervisionIdentityId == nil {
+	if o == nil || IsNil(o.SupervisionIdentityId) {
 		var ret string
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *DeviceEnrollmentInstance) GetSupervisionIdentityId() string {
 // GetSupervisionIdentityIdOk returns a tuple with the SupervisionIdentityId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetSupervisionIdentityIdOk() (*string, bool) {
-	if o == nil || o.SupervisionIdentityId == nil {
+	if o == nil || IsNil(o.SupervisionIdentityId) {
 		return nil, false
 	}
 	return o.SupervisionIdentityId, true
@@ -124,7 +127,7 @@ func (o *DeviceEnrollmentInstance) GetSupervisionIdentityIdOk() (*string, bool) 
 
 // HasSupervisionIdentityId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasSupervisionIdentityId() bool {
-	if o != nil && o.SupervisionIdentityId != nil {
+	if o != nil && !IsNil(o.SupervisionIdentityId) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *DeviceEnrollmentInstance) SetSupervisionIdentityId(v string) {
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetSiteId() string {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *DeviceEnrollmentInstance) GetSiteId() string {
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetSiteIdOk() (*string, bool) {
-	if o == nil || o.SiteId == nil {
+	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
 	return o.SiteId, true
@@ -156,7 +159,7 @@ func (o *DeviceEnrollmentInstance) GetSiteIdOk() (*string, bool) {
 
 // HasSiteId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasSiteId() bool {
-	if o != nil && o.SiteId != nil {
+	if o != nil && !IsNil(o.SiteId) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *DeviceEnrollmentInstance) SetSiteId(v string) {
 
 // GetServerName returns the ServerName field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetServerName() string {
-	if o == nil || o.ServerName == nil {
+	if o == nil || IsNil(o.ServerName) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *DeviceEnrollmentInstance) GetServerName() string {
 // GetServerNameOk returns a tuple with the ServerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetServerNameOk() (*string, bool) {
-	if o == nil || o.ServerName == nil {
+	if o == nil || IsNil(o.ServerName) {
 		return nil, false
 	}
 	return o.ServerName, true
@@ -188,7 +191,7 @@ func (o *DeviceEnrollmentInstance) GetServerNameOk() (*string, bool) {
 
 // HasServerName returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasServerName() bool {
-	if o != nil && o.ServerName != nil {
+	if o != nil && !IsNil(o.ServerName) {
 		return true
 	}
 
@@ -202,7 +205,7 @@ func (o *DeviceEnrollmentInstance) SetServerName(v string) {
 
 // GetServerUuid returns the ServerUuid field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetServerUuid() string {
-	if o == nil || o.ServerUuid == nil {
+	if o == nil || IsNil(o.ServerUuid) {
 		var ret string
 		return ret
 	}
@@ -212,7 +215,7 @@ func (o *DeviceEnrollmentInstance) GetServerUuid() string {
 // GetServerUuidOk returns a tuple with the ServerUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetServerUuidOk() (*string, bool) {
-	if o == nil || o.ServerUuid == nil {
+	if o == nil || IsNil(o.ServerUuid) {
 		return nil, false
 	}
 	return o.ServerUuid, true
@@ -220,7 +223,7 @@ func (o *DeviceEnrollmentInstance) GetServerUuidOk() (*string, bool) {
 
 // HasServerUuid returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasServerUuid() bool {
-	if o != nil && o.ServerUuid != nil {
+	if o != nil && !IsNil(o.ServerUuid) {
 		return true
 	}
 
@@ -234,7 +237,7 @@ func (o *DeviceEnrollmentInstance) SetServerUuid(v string) {
 
 // GetAdminId returns the AdminId field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetAdminId() string {
-	if o == nil || o.AdminId == nil {
+	if o == nil || IsNil(o.AdminId) {
 		var ret string
 		return ret
 	}
@@ -244,7 +247,7 @@ func (o *DeviceEnrollmentInstance) GetAdminId() string {
 // GetAdminIdOk returns a tuple with the AdminId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetAdminIdOk() (*string, bool) {
-	if o == nil || o.AdminId == nil {
+	if o == nil || IsNil(o.AdminId) {
 		return nil, false
 	}
 	return o.AdminId, true
@@ -252,7 +255,7 @@ func (o *DeviceEnrollmentInstance) GetAdminIdOk() (*string, bool) {
 
 // HasAdminId returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasAdminId() bool {
-	if o != nil && o.AdminId != nil {
+	if o != nil && !IsNil(o.AdminId) {
 		return true
 	}
 
@@ -266,7 +269,7 @@ func (o *DeviceEnrollmentInstance) SetAdminId(v string) {
 
 // GetOrgName returns the OrgName field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetOrgName() string {
-	if o == nil || o.OrgName == nil {
+	if o == nil || IsNil(o.OrgName) {
 		var ret string
 		return ret
 	}
@@ -276,7 +279,7 @@ func (o *DeviceEnrollmentInstance) GetOrgName() string {
 // GetOrgNameOk returns a tuple with the OrgName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetOrgNameOk() (*string, bool) {
-	if o == nil || o.OrgName == nil {
+	if o == nil || IsNil(o.OrgName) {
 		return nil, false
 	}
 	return o.OrgName, true
@@ -284,7 +287,7 @@ func (o *DeviceEnrollmentInstance) GetOrgNameOk() (*string, bool) {
 
 // HasOrgName returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasOrgName() bool {
-	if o != nil && o.OrgName != nil {
+	if o != nil && !IsNil(o.OrgName) {
 		return true
 	}
 
@@ -298,7 +301,7 @@ func (o *DeviceEnrollmentInstance) SetOrgName(v string) {
 
 // GetOrgEmail returns the OrgEmail field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetOrgEmail() string {
-	if o == nil || o.OrgEmail == nil {
+	if o == nil || IsNil(o.OrgEmail) {
 		var ret string
 		return ret
 	}
@@ -308,7 +311,7 @@ func (o *DeviceEnrollmentInstance) GetOrgEmail() string {
 // GetOrgEmailOk returns a tuple with the OrgEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetOrgEmailOk() (*string, bool) {
-	if o == nil || o.OrgEmail == nil {
+	if o == nil || IsNil(o.OrgEmail) {
 		return nil, false
 	}
 	return o.OrgEmail, true
@@ -316,7 +319,7 @@ func (o *DeviceEnrollmentInstance) GetOrgEmailOk() (*string, bool) {
 
 // HasOrgEmail returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasOrgEmail() bool {
-	if o != nil && o.OrgEmail != nil {
+	if o != nil && !IsNil(o.OrgEmail) {
 		return true
 	}
 
@@ -330,7 +333,7 @@ func (o *DeviceEnrollmentInstance) SetOrgEmail(v string) {
 
 // GetOrgPhone returns the OrgPhone field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetOrgPhone() string {
-	if o == nil || o.OrgPhone == nil {
+	if o == nil || IsNil(o.OrgPhone) {
 		var ret string
 		return ret
 	}
@@ -340,7 +343,7 @@ func (o *DeviceEnrollmentInstance) GetOrgPhone() string {
 // GetOrgPhoneOk returns a tuple with the OrgPhone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetOrgPhoneOk() (*string, bool) {
-	if o == nil || o.OrgPhone == nil {
+	if o == nil || IsNil(o.OrgPhone) {
 		return nil, false
 	}
 	return o.OrgPhone, true
@@ -348,7 +351,7 @@ func (o *DeviceEnrollmentInstance) GetOrgPhoneOk() (*string, bool) {
 
 // HasOrgPhone returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasOrgPhone() bool {
-	if o != nil && o.OrgPhone != nil {
+	if o != nil && !IsNil(o.OrgPhone) {
 		return true
 	}
 
@@ -362,7 +365,7 @@ func (o *DeviceEnrollmentInstance) SetOrgPhone(v string) {
 
 // GetOrgAddress returns the OrgAddress field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetOrgAddress() string {
-	if o == nil || o.OrgAddress == nil {
+	if o == nil || IsNil(o.OrgAddress) {
 		var ret string
 		return ret
 	}
@@ -372,7 +375,7 @@ func (o *DeviceEnrollmentInstance) GetOrgAddress() string {
 // GetOrgAddressOk returns a tuple with the OrgAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetOrgAddressOk() (*string, bool) {
-	if o == nil || o.OrgAddress == nil {
+	if o == nil || IsNil(o.OrgAddress) {
 		return nil, false
 	}
 	return o.OrgAddress, true
@@ -380,7 +383,7 @@ func (o *DeviceEnrollmentInstance) GetOrgAddressOk() (*string, bool) {
 
 // HasOrgAddress returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasOrgAddress() bool {
-	if o != nil && o.OrgAddress != nil {
+	if o != nil && !IsNil(o.OrgAddress) {
 		return true
 	}
 
@@ -394,7 +397,7 @@ func (o *DeviceEnrollmentInstance) SetOrgAddress(v string) {
 
 // GetTokenExpirationDate returns the TokenExpirationDate field value if set, zero value otherwise.
 func (o *DeviceEnrollmentInstance) GetTokenExpirationDate() string {
-	if o == nil || o.TokenExpirationDate == nil {
+	if o == nil || IsNil(o.TokenExpirationDate) {
 		var ret string
 		return ret
 	}
@@ -404,7 +407,7 @@ func (o *DeviceEnrollmentInstance) GetTokenExpirationDate() string {
 // GetTokenExpirationDateOk returns a tuple with the TokenExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentInstance) GetTokenExpirationDateOk() (*string, bool) {
-	if o == nil || o.TokenExpirationDate == nil {
+	if o == nil || IsNil(o.TokenExpirationDate) {
 		return nil, false
 	}
 	return o.TokenExpirationDate, true
@@ -412,7 +415,7 @@ func (o *DeviceEnrollmentInstance) GetTokenExpirationDateOk() (*string, bool) {
 
 // HasTokenExpirationDate returns a boolean if a field has been set.
 func (o *DeviceEnrollmentInstance) HasTokenExpirationDate() bool {
-	if o != nil && o.TokenExpirationDate != nil {
+	if o != nil && !IsNil(o.TokenExpirationDate) {
 		return true
 	}
 
@@ -425,44 +428,50 @@ func (o *DeviceEnrollmentInstance) SetTokenExpirationDate(v string) {
 }
 
 func (o DeviceEnrollmentInstance) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["name"] = o.Name
-	}
-	if o.SupervisionIdentityId != nil {
-		toSerialize["supervisionIdentityId"] = o.SupervisionIdentityId
-	}
-	if o.SiteId != nil {
-		toSerialize["siteId"] = o.SiteId
-	}
-	if o.ServerName != nil {
-		toSerialize["serverName"] = o.ServerName
-	}
-	if o.ServerUuid != nil {
-		toSerialize["serverUuid"] = o.ServerUuid
-	}
-	if o.AdminId != nil {
-		toSerialize["adminId"] = o.AdminId
-	}
-	if o.OrgName != nil {
-		toSerialize["orgName"] = o.OrgName
-	}
-	if o.OrgEmail != nil {
-		toSerialize["orgEmail"] = o.OrgEmail
-	}
-	if o.OrgPhone != nil {
-		toSerialize["orgPhone"] = o.OrgPhone
-	}
-	if o.OrgAddress != nil {
-		toSerialize["orgAddress"] = o.OrgAddress
-	}
-	if o.TokenExpirationDate != nil {
-		toSerialize["tokenExpirationDate"] = o.TokenExpirationDate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentInstance) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["name"] = o.Name
+	if !IsNil(o.SupervisionIdentityId) {
+		toSerialize["supervisionIdentityId"] = o.SupervisionIdentityId
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.ServerName) {
+		toSerialize["serverName"] = o.ServerName
+	}
+	if !IsNil(o.ServerUuid) {
+		toSerialize["serverUuid"] = o.ServerUuid
+	}
+	if !IsNil(o.AdminId) {
+		toSerialize["adminId"] = o.AdminId
+	}
+	if !IsNil(o.OrgName) {
+		toSerialize["orgName"] = o.OrgName
+	}
+	if !IsNil(o.OrgEmail) {
+		toSerialize["orgEmail"] = o.OrgEmail
+	}
+	if !IsNil(o.OrgPhone) {
+		toSerialize["orgPhone"] = o.OrgPhone
+	}
+	if !IsNil(o.OrgAddress) {
+		toSerialize["orgAddress"] = o.OrgAddress
+	}
+	if !IsNil(o.TokenExpirationDate) {
+		toSerialize["tokenExpirationDate"] = o.TokenExpirationDate
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentInstance struct {

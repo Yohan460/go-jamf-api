@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the LdapGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LdapGroup{}
+
 // LdapGroup An LDAP group.
 type LdapGroup struct {
 	Id *string `json:"id,omitempty"`
@@ -42,7 +45,7 @@ func NewLdapGroupWithDefaults() *LdapGroup {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *LdapGroup) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *LdapGroup) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapGroup) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -60,7 +63,7 @@ func (o *LdapGroup) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *LdapGroup) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *LdapGroup) SetId(v string) {
 
 // GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *LdapGroup) GetUuid() string {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *LdapGroup) GetUuid() string {
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapGroup) GetUuidOk() (*string, bool) {
-	if o == nil || o.Uuid == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
 	return o.Uuid, true
@@ -92,7 +95,7 @@ func (o *LdapGroup) GetUuidOk() (*string, bool) {
 
 // HasUuid returns a boolean if a field has been set.
 func (o *LdapGroup) HasUuid() bool {
-	if o != nil && o.Uuid != nil {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *LdapGroup) SetUuid(v string) {
 
 // GetLdapServerId returns the LdapServerId field value if set, zero value otherwise.
 func (o *LdapGroup) GetLdapServerId() int32 {
-	if o == nil || o.LdapServerId == nil {
+	if o == nil || IsNil(o.LdapServerId) {
 		var ret int32
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *LdapGroup) GetLdapServerId() int32 {
 // GetLdapServerIdOk returns a tuple with the LdapServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapGroup) GetLdapServerIdOk() (*int32, bool) {
-	if o == nil || o.LdapServerId == nil {
+	if o == nil || IsNil(o.LdapServerId) {
 		return nil, false
 	}
 	return o.LdapServerId, true
@@ -124,7 +127,7 @@ func (o *LdapGroup) GetLdapServerIdOk() (*int32, bool) {
 
 // HasLdapServerId returns a boolean if a field has been set.
 func (o *LdapGroup) HasLdapServerId() bool {
-	if o != nil && o.LdapServerId != nil {
+	if o != nil && !IsNil(o.LdapServerId) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *LdapGroup) SetLdapServerId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *LdapGroup) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *LdapGroup) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapGroup) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -156,7 +159,7 @@ func (o *LdapGroup) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *LdapGroup) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *LdapGroup) SetName(v string) {
 
 // GetDistinguishedName returns the DistinguishedName field value if set, zero value otherwise.
 func (o *LdapGroup) GetDistinguishedName() string {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		var ret string
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *LdapGroup) GetDistinguishedName() string {
 // GetDistinguishedNameOk returns a tuple with the DistinguishedName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *LdapGroup) GetDistinguishedNameOk() (*string, bool) {
-	if o == nil || o.DistinguishedName == nil {
+	if o == nil || IsNil(o.DistinguishedName) {
 		return nil, false
 	}
 	return o.DistinguishedName, true
@@ -188,7 +191,7 @@ func (o *LdapGroup) GetDistinguishedNameOk() (*string, bool) {
 
 // HasDistinguishedName returns a boolean if a field has been set.
 func (o *LdapGroup) HasDistinguishedName() bool {
-	if o != nil && o.DistinguishedName != nil {
+	if o != nil && !IsNil(o.DistinguishedName) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *LdapGroup) SetDistinguishedName(v string) {
 }
 
 func (o LdapGroup) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Uuid != nil {
-		toSerialize["uuid"] = o.Uuid
-	}
-	if o.LdapServerId != nil {
-		toSerialize["ldapServerId"] = o.LdapServerId
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.DistinguishedName != nil {
-		toSerialize["distinguishedName"] = o.DistinguishedName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o LdapGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
+	}
+	if !IsNil(o.LdapServerId) {
+		toSerialize["ldapServerId"] = o.LdapServerId
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.DistinguishedName) {
+		toSerialize["distinguishedName"] = o.DistinguishedName
+	}
+	return toSerialize, nil
 }
 
 type NullableLdapGroup struct {

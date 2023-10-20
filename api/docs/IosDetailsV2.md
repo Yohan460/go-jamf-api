@@ -25,11 +25,12 @@ Name | Type | Description | Notes
 **Purchasing** | Pointer to [**PurchasingV2**](PurchasingV2.md) |  | [optional] 
 **Security** | Pointer to [**SecurityV2**](SecurityV2.md) |  | [optional] 
 **Network** | Pointer to [**NetworkV2**](NetworkV2.md) |  | [optional] 
+**ServiceSubscriptions** | Pointer to [**[]MobileDeviceServiceSubscriptions**](MobileDeviceServiceSubscriptions.md) |  | [optional] 
 **Applications** | Pointer to [**[]MobileDeviceApplication**](MobileDeviceApplication.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificateV2**](MobileDeviceCertificateV2.md) |  | [optional] 
 **Ebooks** | Pointer to [**[]MobileDeviceEbook**](MobileDeviceEbook.md) |  | [optional] 
 **ConfigurationProfiles** | Pointer to [**[]ConfigurationProfile**](ConfigurationProfile.md) |  | [optional] 
-**ProvisioningProfiles** | Pointer to [**[]ProvisioningProfile**](ProvisioningProfile.md) |  | [optional] 
+**ProvisioningProfiles** | Pointer to [**[]MobileDeviceProvisioningProfiles**](MobileDeviceProvisioningProfiles.md) |  | [optional] 
 **Attachments** | Pointer to [**[]MobileDeviceAttachmentV2**](MobileDeviceAttachmentV2.md) |  | [optional] 
 
 ## Methods
@@ -576,6 +577,31 @@ SetNetwork sets Network field to given value.
 
 HasNetwork returns a boolean if a field has been set.
 
+### GetServiceSubscriptions
+
+`func (o *IosDetailsV2) GetServiceSubscriptions() []MobileDeviceServiceSubscriptions`
+
+GetServiceSubscriptions returns the ServiceSubscriptions field if non-nil, zero value otherwise.
+
+### GetServiceSubscriptionsOk
+
+`func (o *IosDetailsV2) GetServiceSubscriptionsOk() (*[]MobileDeviceServiceSubscriptions, bool)`
+
+GetServiceSubscriptionsOk returns a tuple with the ServiceSubscriptions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceSubscriptions
+
+`func (o *IosDetailsV2) SetServiceSubscriptions(v []MobileDeviceServiceSubscriptions)`
+
+SetServiceSubscriptions sets ServiceSubscriptions field to given value.
+
+### HasServiceSubscriptions
+
+`func (o *IosDetailsV2) HasServiceSubscriptions() bool`
+
+HasServiceSubscriptions returns a boolean if a field has been set.
+
 ### GetApplications
 
 `func (o *IosDetailsV2) GetApplications() []MobileDeviceApplication`
@@ -678,20 +704,20 @@ HasConfigurationProfiles returns a boolean if a field has been set.
 
 ### GetProvisioningProfiles
 
-`func (o *IosDetailsV2) GetProvisioningProfiles() []ProvisioningProfile`
+`func (o *IosDetailsV2) GetProvisioningProfiles() []MobileDeviceProvisioningProfiles`
 
 GetProvisioningProfiles returns the ProvisioningProfiles field if non-nil, zero value otherwise.
 
 ### GetProvisioningProfilesOk
 
-`func (o *IosDetailsV2) GetProvisioningProfilesOk() (*[]ProvisioningProfile, bool)`
+`func (o *IosDetailsV2) GetProvisioningProfilesOk() (*[]MobileDeviceProvisioningProfiles, bool)`
 
 GetProvisioningProfilesOk returns a tuple with the ProvisioningProfiles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvisioningProfiles
 
-`func (o *IosDetailsV2) SetProvisioningProfiles(v []ProvisioningProfile)`
+`func (o *IosDetailsV2) SetProvisioningProfiles(v []MobileDeviceProvisioningProfiles)`
 
 SetProvisioningProfiles sets ProvisioningProfiles field to given value.
 

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerContentCachingAlert type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerContentCachingAlert{}
+
 // ComputerContentCachingAlert struct for ComputerContentCachingAlert
 type ComputerContentCachingAlert struct {
 	CacheBytesLimit *int64 `json:"cacheBytesLimit,omitempty"`
@@ -44,7 +47,7 @@ func NewComputerContentCachingAlertWithDefaults() *ComputerContentCachingAlert {
 
 // GetCacheBytesLimit returns the CacheBytesLimit field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetCacheBytesLimit() int64 {
-	if o == nil || o.CacheBytesLimit == nil {
+	if o == nil || IsNil(o.CacheBytesLimit) {
 		var ret int64
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *ComputerContentCachingAlert) GetCacheBytesLimit() int64 {
 // GetCacheBytesLimitOk returns a tuple with the CacheBytesLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetCacheBytesLimitOk() (*int64, bool) {
-	if o == nil || o.CacheBytesLimit == nil {
+	if o == nil || IsNil(o.CacheBytesLimit) {
 		return nil, false
 	}
 	return o.CacheBytesLimit, true
@@ -62,7 +65,7 @@ func (o *ComputerContentCachingAlert) GetCacheBytesLimitOk() (*int64, bool) {
 
 // HasCacheBytesLimit returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasCacheBytesLimit() bool {
-	if o != nil && o.CacheBytesLimit != nil {
+	if o != nil && !IsNil(o.CacheBytesLimit) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *ComputerContentCachingAlert) SetCacheBytesLimit(v int64) {
 
 // GetClassName returns the ClassName field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetClassName() string {
-	if o == nil || o.ClassName == nil {
+	if o == nil || IsNil(o.ClassName) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *ComputerContentCachingAlert) GetClassName() string {
 // GetClassNameOk returns a tuple with the ClassName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetClassNameOk() (*string, bool) {
-	if o == nil || o.ClassName == nil {
+	if o == nil || IsNil(o.ClassName) {
 		return nil, false
 	}
 	return o.ClassName, true
@@ -94,7 +97,7 @@ func (o *ComputerContentCachingAlert) GetClassNameOk() (*string, bool) {
 
 // HasClassName returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasClassName() bool {
-	if o != nil && o.ClassName != nil {
+	if o != nil && !IsNil(o.ClassName) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *ComputerContentCachingAlert) SetClassName(v string) {
 
 // GetPathPreventingAccess returns the PathPreventingAccess field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetPathPreventingAccess() string {
-	if o == nil || o.PathPreventingAccess == nil {
+	if o == nil || IsNil(o.PathPreventingAccess) {
 		var ret string
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *ComputerContentCachingAlert) GetPathPreventingAccess() string {
 // GetPathPreventingAccessOk returns a tuple with the PathPreventingAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetPathPreventingAccessOk() (*string, bool) {
-	if o == nil || o.PathPreventingAccess == nil {
+	if o == nil || IsNil(o.PathPreventingAccess) {
 		return nil, false
 	}
 	return o.PathPreventingAccess, true
@@ -126,7 +129,7 @@ func (o *ComputerContentCachingAlert) GetPathPreventingAccessOk() (*string, bool
 
 // HasPathPreventingAccess returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasPathPreventingAccess() bool {
-	if o != nil && o.PathPreventingAccess != nil {
+	if o != nil && !IsNil(o.PathPreventingAccess) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *ComputerContentCachingAlert) SetPathPreventingAccess(v string) {
 
 // GetPostDate returns the PostDate field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetPostDate() time.Time {
-	if o == nil || o.PostDate == nil {
+	if o == nil || IsNil(o.PostDate) {
 		var ret time.Time
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *ComputerContentCachingAlert) GetPostDate() time.Time {
 // GetPostDateOk returns a tuple with the PostDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetPostDateOk() (*time.Time, bool) {
-	if o == nil || o.PostDate == nil {
+	if o == nil || IsNil(o.PostDate) {
 		return nil, false
 	}
 	return o.PostDate, true
@@ -158,7 +161,7 @@ func (o *ComputerContentCachingAlert) GetPostDateOk() (*time.Time, bool) {
 
 // HasPostDate returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasPostDate() bool {
-	if o != nil && o.PostDate != nil {
+	if o != nil && !IsNil(o.PostDate) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *ComputerContentCachingAlert) SetPostDate(v time.Time) {
 
 // GetReservedVolumeBytes returns the ReservedVolumeBytes field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetReservedVolumeBytes() int64 {
-	if o == nil || o.ReservedVolumeBytes == nil {
+	if o == nil || IsNil(o.ReservedVolumeBytes) {
 		var ret int64
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *ComputerContentCachingAlert) GetReservedVolumeBytes() int64 {
 // GetReservedVolumeBytesOk returns a tuple with the ReservedVolumeBytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetReservedVolumeBytesOk() (*int64, bool) {
-	if o == nil || o.ReservedVolumeBytes == nil {
+	if o == nil || IsNil(o.ReservedVolumeBytes) {
 		return nil, false
 	}
 	return o.ReservedVolumeBytes, true
@@ -190,7 +193,7 @@ func (o *ComputerContentCachingAlert) GetReservedVolumeBytesOk() (*int64, bool) 
 
 // HasReservedVolumeBytes returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasReservedVolumeBytes() bool {
-	if o != nil && o.ReservedVolumeBytes != nil {
+	if o != nil && !IsNil(o.ReservedVolumeBytes) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *ComputerContentCachingAlert) SetReservedVolumeBytes(v int64) {
 
 // GetResource returns the Resource field value if set, zero value otherwise.
 func (o *ComputerContentCachingAlert) GetResource() string {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *ComputerContentCachingAlert) GetResource() string {
 // GetResourceOk returns a tuple with the Resource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerContentCachingAlert) GetResourceOk() (*string, bool) {
-	if o == nil || o.Resource == nil {
+	if o == nil || IsNil(o.Resource) {
 		return nil, false
 	}
 	return o.Resource, true
@@ -222,7 +225,7 @@ func (o *ComputerContentCachingAlert) GetResourceOk() (*string, bool) {
 
 // HasResource returns a boolean if a field has been set.
 func (o *ComputerContentCachingAlert) HasResource() bool {
-	if o != nil && o.Resource != nil {
+	if o != nil && !IsNil(o.Resource) {
 		return true
 	}
 
@@ -235,26 +238,34 @@ func (o *ComputerContentCachingAlert) SetResource(v string) {
 }
 
 func (o ComputerContentCachingAlert) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CacheBytesLimit != nil {
-		toSerialize["cacheBytesLimit"] = o.CacheBytesLimit
-	}
-	if o.ClassName != nil {
-		toSerialize["className"] = o.ClassName
-	}
-	if o.PathPreventingAccess != nil {
-		toSerialize["pathPreventingAccess"] = o.PathPreventingAccess
-	}
-	if o.PostDate != nil {
-		toSerialize["postDate"] = o.PostDate
-	}
-	if o.ReservedVolumeBytes != nil {
-		toSerialize["reservedVolumeBytes"] = o.ReservedVolumeBytes
-	}
-	if o.Resource != nil {
-		toSerialize["resource"] = o.Resource
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerContentCachingAlert) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CacheBytesLimit) {
+		toSerialize["cacheBytesLimit"] = o.CacheBytesLimit
+	}
+	if !IsNil(o.ClassName) {
+		toSerialize["className"] = o.ClassName
+	}
+	if !IsNil(o.PathPreventingAccess) {
+		toSerialize["pathPreventingAccess"] = o.PathPreventingAccess
+	}
+	if !IsNil(o.PostDate) {
+		toSerialize["postDate"] = o.PostDate
+	}
+	if !IsNil(o.ReservedVolumeBytes) {
+		toSerialize["reservedVolumeBytes"] = o.ReservedVolumeBytes
+	}
+	if !IsNil(o.Resource) {
+		toSerialize["resource"] = o.Resource
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerContentCachingAlert struct {

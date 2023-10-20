@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AzureServerConfigurationRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureServerConfigurationRequest{}
+
 // AzureServerConfigurationRequest Azure Cloud Identity Provider configuration request
 type AzureServerConfigurationRequest struct {
 	Id *string `json:"id,omitempty"`
@@ -27,6 +30,8 @@ type AzureServerConfigurationRequest struct {
 	TransitiveMembershipUserField string `json:"transitiveMembershipUserField"`
 	// Use this field to enable transitive membership lookup. This setting would not apply to Single Sign On
 	TransitiveDirectoryMembershipEnabled bool `json:"transitiveDirectoryMembershipEnabled"`
+	// Use this field to enable membership calculation optimization. This setting would not apply to Single Sign On
+	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 	Code string `json:"code"`
 }
 
@@ -57,7 +62,7 @@ func NewAzureServerConfigurationRequestWithDefaults() *AzureServerConfigurationR
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *AzureServerConfigurationRequest) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -67,7 +72,7 @@ func (o *AzureServerConfigurationRequest) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AzureServerConfigurationRequest) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -75,7 +80,7 @@ func (o *AzureServerConfigurationRequest) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *AzureServerConfigurationRequest) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -255,6 +260,38 @@ func (o *AzureServerConfigurationRequest) SetTransitiveDirectoryMembershipEnable
 	o.TransitiveDirectoryMembershipEnabled = v
 }
 
+// GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field value if set, zero value otherwise.
+func (o *AzureServerConfigurationRequest) GetMembershipCalculationOptimizationEnabled() bool {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MembershipCalculationOptimizationEnabled
+}
+
+// GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureServerConfigurationRequest) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return nil, false
+	}
+	return o.MembershipCalculationOptimizationEnabled, true
+}
+
+// HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+func (o *AzureServerConfigurationRequest) HasMembershipCalculationOptimizationEnabled() bool {
+	if o != nil && !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembershipCalculationOptimizationEnabled gets a reference to the given bool and assigns it to the MembershipCalculationOptimizationEnabled field.
+func (o *AzureServerConfigurationRequest) SetMembershipCalculationOptimizationEnabled(v bool) {
+	o.MembershipCalculationOptimizationEnabled = &v
+}
+
 // GetCode returns the Code field value
 func (o *AzureServerConfigurationRequest) GetCode() string {
 	if o == nil {
@@ -280,35 +317,30 @@ func (o *AzureServerConfigurationRequest) SetCode(v string) {
 }
 
 func (o AzureServerConfigurationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if true {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if true {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if true {
-		toSerialize["mappings"] = o.Mappings
-	}
-	if true {
-		toSerialize["searchTimeout"] = o.SearchTimeout
-	}
-	if true {
-		toSerialize["transitiveMembershipEnabled"] = o.TransitiveMembershipEnabled
-	}
-	if true {
-		toSerialize["transitiveMembershipUserField"] = o.TransitiveMembershipUserField
-	}
-	if true {
-		toSerialize["transitiveDirectoryMembershipEnabled"] = o.TransitiveDirectoryMembershipEnabled
-	}
-	if true {
-		toSerialize["code"] = o.Code
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AzureServerConfigurationRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	toSerialize["tenantId"] = o.TenantId
+	toSerialize["enabled"] = o.Enabled
+	toSerialize["mappings"] = o.Mappings
+	toSerialize["searchTimeout"] = o.SearchTimeout
+	toSerialize["transitiveMembershipEnabled"] = o.TransitiveMembershipEnabled
+	toSerialize["transitiveMembershipUserField"] = o.TransitiveMembershipUserField
+	toSerialize["transitiveDirectoryMembershipEnabled"] = o.TransitiveDirectoryMembershipEnabled
+	if !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
+	}
+	toSerialize["code"] = o.Code
+	return toSerialize, nil
 }
 
 type NullableAzureServerConfigurationRequest struct {

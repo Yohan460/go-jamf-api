@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SupervisionIdentityUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SupervisionIdentityUpdate{}
+
 // SupervisionIdentityUpdate struct for SupervisionIdentityUpdate
 type SupervisionIdentityUpdate struct {
 	DisplayName string `json:"displayName"`
@@ -62,11 +65,17 @@ func (o *SupervisionIdentityUpdate) SetDisplayName(v string) {
 }
 
 func (o SupervisionIdentityUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SupervisionIdentityUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	return toSerialize, nil
 }
 
 type NullableSupervisionIdentityUpdate struct {

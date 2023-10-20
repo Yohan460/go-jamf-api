@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectionConfigurationUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectionConfigurationUpdateRequest{}
+
 // ConnectionConfigurationUpdateRequest Request that updates configuration connection between Jamf Pro and Team Viewer
 type ConnectionConfigurationUpdateRequest struct {
 	// Name for Team Viewer Connection Configuration
@@ -45,7 +48,7 @@ func NewConnectionConfigurationUpdateRequestWithDefaults() *ConnectionConfigurat
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *ConnectionConfigurationUpdateRequest) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionConfigurationUpdateRequest) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -63,7 +66,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetDisplayNameOk() (*string, bool
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *ConnectionConfigurationUpdateRequest) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *ConnectionConfigurationUpdateRequest) SetDisplayName(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *ConnectionConfigurationUpdateRequest) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionConfigurationUpdateRequest) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -95,7 +98,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *ConnectionConfigurationUpdateRequest) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *ConnectionConfigurationUpdateRequest) SetEnabled(v bool) {
 
 // GetSessionTimeout returns the SessionTimeout field value if set, zero value otherwise.
 func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int32 {
-	if o == nil || o.SessionTimeout == nil {
+	if o == nil || IsNil(o.SessionTimeout) {
 		var ret int32
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int32 {
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int32, bool) {
-	if o == nil || o.SessionTimeout == nil {
+	if o == nil || IsNil(o.SessionTimeout) {
 		return nil, false
 	}
 	return o.SessionTimeout, true
@@ -127,7 +130,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int32, bo
 
 // HasSessionTimeout returns a boolean if a field has been set.
 func (o *ConnectionConfigurationUpdateRequest) HasSessionTimeout() bool {
-	if o != nil && o.SessionTimeout != nil {
+	if o != nil && !IsNil(o.SessionTimeout) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *ConnectionConfigurationUpdateRequest) SetSessionTimeout(v int32) {
 
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *ConnectionConfigurationUpdateRequest) GetToken() string {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetToken() string {
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ConnectionConfigurationUpdateRequest) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
 	return o.Token, true
@@ -159,7 +162,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetTokenOk() (*string, bool) {
 
 // HasToken returns a boolean if a field has been set.
 func (o *ConnectionConfigurationUpdateRequest) HasToken() bool {
-	if o != nil && o.Token != nil {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
@@ -172,20 +175,28 @@ func (o *ConnectionConfigurationUpdateRequest) SetToken(v string) {
 }
 
 func (o ConnectionConfigurationUpdateRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.SessionTimeout != nil {
-		toSerialize["sessionTimeout"] = o.SessionTimeout
-	}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectionConfigurationUpdateRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.SessionTimeout) {
+		toSerialize["sessionTimeout"] = o.SessionTimeout
+	}
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
+	}
+	return toSerialize, nil
 }
 
 type NullableConnectionConfigurationUpdateRequest struct {

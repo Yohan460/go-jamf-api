@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SupervisionIdentity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SupervisionIdentity{}
+
 // SupervisionIdentity struct for SupervisionIdentity
 type SupervisionIdentity struct {
 	Id *int32 `json:"id,omitempty"`
@@ -41,7 +44,7 @@ func NewSupervisionIdentityWithDefaults() *SupervisionIdentity {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *SupervisionIdentity) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *SupervisionIdentity) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentity) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -59,7 +62,7 @@ func (o *SupervisionIdentity) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *SupervisionIdentity) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *SupervisionIdentity) SetId(v int32) {
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise.
 func (o *SupervisionIdentity) GetDisplayName() string {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *SupervisionIdentity) GetDisplayName() string {
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentity) GetDisplayNameOk() (*string, bool) {
-	if o == nil || o.DisplayName == nil {
+	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
 	return o.DisplayName, true
@@ -91,7 +94,7 @@ func (o *SupervisionIdentity) GetDisplayNameOk() (*string, bool) {
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *SupervisionIdentity) HasDisplayName() bool {
-	if o != nil && o.DisplayName != nil {
+	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *SupervisionIdentity) SetDisplayName(v string) {
 
 // GetCommonName returns the CommonName field value if set, zero value otherwise.
 func (o *SupervisionIdentity) GetCommonName() string {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		var ret string
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *SupervisionIdentity) GetCommonName() string {
 // GetCommonNameOk returns a tuple with the CommonName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentity) GetCommonNameOk() (*string, bool) {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		return nil, false
 	}
 	return o.CommonName, true
@@ -123,7 +126,7 @@ func (o *SupervisionIdentity) GetCommonNameOk() (*string, bool) {
 
 // HasCommonName returns a boolean if a field has been set.
 func (o *SupervisionIdentity) HasCommonName() bool {
-	if o != nil && o.CommonName != nil {
+	if o != nil && !IsNil(o.CommonName) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *SupervisionIdentity) SetCommonName(v string) {
 
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
 func (o *SupervisionIdentity) GetExpirationDate() string {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *SupervisionIdentity) GetExpirationDate() string {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SupervisionIdentity) GetExpirationDateOk() (*string, bool) {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		return nil, false
 	}
 	return o.ExpirationDate, true
@@ -155,7 +158,7 @@ func (o *SupervisionIdentity) GetExpirationDateOk() (*string, bool) {
 
 // HasExpirationDate returns a boolean if a field has been set.
 func (o *SupervisionIdentity) HasExpirationDate() bool {
-	if o != nil && o.ExpirationDate != nil {
+	if o != nil && !IsNil(o.ExpirationDate) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *SupervisionIdentity) SetExpirationDate(v string) {
 }
 
 func (o SupervisionIdentity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.DisplayName != nil {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if o.CommonName != nil {
-		toSerialize["commonName"] = o.CommonName
-	}
-	if o.ExpirationDate != nil {
-		toSerialize["expirationDate"] = o.ExpirationDate
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o SupervisionIdentity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.DisplayName) {
+		toSerialize["displayName"] = o.DisplayName
+	}
+	if !IsNil(o.CommonName) {
+		toSerialize["commonName"] = o.CommonName
+	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expirationDate"] = o.ExpirationDate
+	}
+	return toSerialize, nil
 }
 
 type NullableSupervisionIdentity struct {

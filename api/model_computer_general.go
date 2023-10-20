@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the ComputerGeneral type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ComputerGeneral{}
+
 // ComputerGeneral struct for ComputerGeneral
 type ComputerGeneral struct {
 	Name *string `json:"name,omitempty"`
@@ -40,7 +43,9 @@ type ComputerGeneral struct {
 	ItunesStoreAccountActive *bool `json:"itunesStoreAccountActive,omitempty"`
 	EnrolledViaAutomatedDeviceEnrollment *bool `json:"enrolledViaAutomatedDeviceEnrollment,omitempty"`
 	UserApprovedMdm *bool `json:"userApprovedMdm,omitempty"`
+	DeclarativeDeviceManagementEnabled *bool `json:"declarativeDeviceManagementEnabled,omitempty"`
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
+	ManagementId *string `json:"managementId,omitempty"`
 }
 
 // NewComputerGeneral instantiates a new ComputerGeneral object
@@ -62,7 +67,7 @@ func NewComputerGeneralWithDefaults() *ComputerGeneral {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -72,7 +77,7 @@ func (o *ComputerGeneral) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -80,7 +85,7 @@ func (o *ComputerGeneral) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -94,7 +99,7 @@ func (o *ComputerGeneral) SetName(v string) {
 
 // GetLastIpAddress returns the LastIpAddress field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetLastIpAddress() string {
-	if o == nil || o.LastIpAddress == nil {
+	if o == nil || IsNil(o.LastIpAddress) {
 		var ret string
 		return ret
 	}
@@ -104,7 +109,7 @@ func (o *ComputerGeneral) GetLastIpAddress() string {
 // GetLastIpAddressOk returns a tuple with the LastIpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetLastIpAddressOk() (*string, bool) {
-	if o == nil || o.LastIpAddress == nil {
+	if o == nil || IsNil(o.LastIpAddress) {
 		return nil, false
 	}
 	return o.LastIpAddress, true
@@ -112,7 +117,7 @@ func (o *ComputerGeneral) GetLastIpAddressOk() (*string, bool) {
 
 // HasLastIpAddress returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasLastIpAddress() bool {
-	if o != nil && o.LastIpAddress != nil {
+	if o != nil && !IsNil(o.LastIpAddress) {
 		return true
 	}
 
@@ -126,7 +131,7 @@ func (o *ComputerGeneral) SetLastIpAddress(v string) {
 
 // GetLastReportedIp returns the LastReportedIp field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetLastReportedIp() string {
-	if o == nil || o.LastReportedIp == nil {
+	if o == nil || IsNil(o.LastReportedIp) {
 		var ret string
 		return ret
 	}
@@ -136,7 +141,7 @@ func (o *ComputerGeneral) GetLastReportedIp() string {
 // GetLastReportedIpOk returns a tuple with the LastReportedIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetLastReportedIpOk() (*string, bool) {
-	if o == nil || o.LastReportedIp == nil {
+	if o == nil || IsNil(o.LastReportedIp) {
 		return nil, false
 	}
 	return o.LastReportedIp, true
@@ -144,7 +149,7 @@ func (o *ComputerGeneral) GetLastReportedIpOk() (*string, bool) {
 
 // HasLastReportedIp returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasLastReportedIp() bool {
-	if o != nil && o.LastReportedIp != nil {
+	if o != nil && !IsNil(o.LastReportedIp) {
 		return true
 	}
 
@@ -158,7 +163,7 @@ func (o *ComputerGeneral) SetLastReportedIp(v string) {
 
 // GetJamfBinaryVersion returns the JamfBinaryVersion field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetJamfBinaryVersion() string {
-	if o == nil || o.JamfBinaryVersion == nil {
+	if o == nil || IsNil(o.JamfBinaryVersion) {
 		var ret string
 		return ret
 	}
@@ -168,7 +173,7 @@ func (o *ComputerGeneral) GetJamfBinaryVersion() string {
 // GetJamfBinaryVersionOk returns a tuple with the JamfBinaryVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetJamfBinaryVersionOk() (*string, bool) {
-	if o == nil || o.JamfBinaryVersion == nil {
+	if o == nil || IsNil(o.JamfBinaryVersion) {
 		return nil, false
 	}
 	return o.JamfBinaryVersion, true
@@ -176,7 +181,7 @@ func (o *ComputerGeneral) GetJamfBinaryVersionOk() (*string, bool) {
 
 // HasJamfBinaryVersion returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasJamfBinaryVersion() bool {
-	if o != nil && o.JamfBinaryVersion != nil {
+	if o != nil && !IsNil(o.JamfBinaryVersion) {
 		return true
 	}
 
@@ -190,7 +195,7 @@ func (o *ComputerGeneral) SetJamfBinaryVersion(v string) {
 
 // GetPlatform returns the Platform field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetPlatform() string {
-	if o == nil || o.Platform == nil {
+	if o == nil || IsNil(o.Platform) {
 		var ret string
 		return ret
 	}
@@ -200,7 +205,7 @@ func (o *ComputerGeneral) GetPlatform() string {
 // GetPlatformOk returns a tuple with the Platform field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetPlatformOk() (*string, bool) {
-	if o == nil || o.Platform == nil {
+	if o == nil || IsNil(o.Platform) {
 		return nil, false
 	}
 	return o.Platform, true
@@ -208,7 +213,7 @@ func (o *ComputerGeneral) GetPlatformOk() (*string, bool) {
 
 // HasPlatform returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasPlatform() bool {
-	if o != nil && o.Platform != nil {
+	if o != nil && !IsNil(o.Platform) {
 		return true
 	}
 
@@ -222,7 +227,7 @@ func (o *ComputerGeneral) SetPlatform(v string) {
 
 // GetBarcode1 returns the Barcode1 field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetBarcode1() string {
-	if o == nil || o.Barcode1 == nil {
+	if o == nil || IsNil(o.Barcode1) {
 		var ret string
 		return ret
 	}
@@ -232,7 +237,7 @@ func (o *ComputerGeneral) GetBarcode1() string {
 // GetBarcode1Ok returns a tuple with the Barcode1 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetBarcode1Ok() (*string, bool) {
-	if o == nil || o.Barcode1 == nil {
+	if o == nil || IsNil(o.Barcode1) {
 		return nil, false
 	}
 	return o.Barcode1, true
@@ -240,7 +245,7 @@ func (o *ComputerGeneral) GetBarcode1Ok() (*string, bool) {
 
 // HasBarcode1 returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasBarcode1() bool {
-	if o != nil && o.Barcode1 != nil {
+	if o != nil && !IsNil(o.Barcode1) {
 		return true
 	}
 
@@ -254,7 +259,7 @@ func (o *ComputerGeneral) SetBarcode1(v string) {
 
 // GetBarcode2 returns the Barcode2 field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetBarcode2() string {
-	if o == nil || o.Barcode2 == nil {
+	if o == nil || IsNil(o.Barcode2) {
 		var ret string
 		return ret
 	}
@@ -264,7 +269,7 @@ func (o *ComputerGeneral) GetBarcode2() string {
 // GetBarcode2Ok returns a tuple with the Barcode2 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetBarcode2Ok() (*string, bool) {
-	if o == nil || o.Barcode2 == nil {
+	if o == nil || IsNil(o.Barcode2) {
 		return nil, false
 	}
 	return o.Barcode2, true
@@ -272,7 +277,7 @@ func (o *ComputerGeneral) GetBarcode2Ok() (*string, bool) {
 
 // HasBarcode2 returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasBarcode2() bool {
-	if o != nil && o.Barcode2 != nil {
+	if o != nil && !IsNil(o.Barcode2) {
 		return true
 	}
 
@@ -286,7 +291,7 @@ func (o *ComputerGeneral) SetBarcode2(v string) {
 
 // GetAssetTag returns the AssetTag field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetAssetTag() string {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		var ret string
 		return ret
 	}
@@ -296,7 +301,7 @@ func (o *ComputerGeneral) GetAssetTag() string {
 // GetAssetTagOk returns a tuple with the AssetTag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetAssetTagOk() (*string, bool) {
-	if o == nil || o.AssetTag == nil {
+	if o == nil || IsNil(o.AssetTag) {
 		return nil, false
 	}
 	return o.AssetTag, true
@@ -304,7 +309,7 @@ func (o *ComputerGeneral) GetAssetTagOk() (*string, bool) {
 
 // HasAssetTag returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasAssetTag() bool {
-	if o != nil && o.AssetTag != nil {
+	if o != nil && !IsNil(o.AssetTag) {
 		return true
 	}
 
@@ -318,7 +323,7 @@ func (o *ComputerGeneral) SetAssetTag(v string) {
 
 // GetRemoteManagement returns the RemoteManagement field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetRemoteManagement() ComputerRemoteManagement {
-	if o == nil || o.RemoteManagement == nil {
+	if o == nil || IsNil(o.RemoteManagement) {
 		var ret ComputerRemoteManagement
 		return ret
 	}
@@ -328,7 +333,7 @@ func (o *ComputerGeneral) GetRemoteManagement() ComputerRemoteManagement {
 // GetRemoteManagementOk returns a tuple with the RemoteManagement field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetRemoteManagementOk() (*ComputerRemoteManagement, bool) {
-	if o == nil || o.RemoteManagement == nil {
+	if o == nil || IsNil(o.RemoteManagement) {
 		return nil, false
 	}
 	return o.RemoteManagement, true
@@ -336,7 +341,7 @@ func (o *ComputerGeneral) GetRemoteManagementOk() (*ComputerRemoteManagement, bo
 
 // HasRemoteManagement returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasRemoteManagement() bool {
-	if o != nil && o.RemoteManagement != nil {
+	if o != nil && !IsNil(o.RemoteManagement) {
 		return true
 	}
 
@@ -350,7 +355,7 @@ func (o *ComputerGeneral) SetRemoteManagement(v ComputerRemoteManagement) {
 
 // GetSupervised returns the Supervised field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetSupervised() bool {
-	if o == nil || o.Supervised == nil {
+	if o == nil || IsNil(o.Supervised) {
 		var ret bool
 		return ret
 	}
@@ -360,7 +365,7 @@ func (o *ComputerGeneral) GetSupervised() bool {
 // GetSupervisedOk returns a tuple with the Supervised field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetSupervisedOk() (*bool, bool) {
-	if o == nil || o.Supervised == nil {
+	if o == nil || IsNil(o.Supervised) {
 		return nil, false
 	}
 	return o.Supervised, true
@@ -368,7 +373,7 @@ func (o *ComputerGeneral) GetSupervisedOk() (*bool, bool) {
 
 // HasSupervised returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasSupervised() bool {
-	if o != nil && o.Supervised != nil {
+	if o != nil && !IsNil(o.Supervised) {
 		return true
 	}
 
@@ -382,7 +387,7 @@ func (o *ComputerGeneral) SetSupervised(v bool) {
 
 // GetMdmCapable returns the MdmCapable field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetMdmCapable() ComputerMdmCapability {
-	if o == nil || o.MdmCapable == nil {
+	if o == nil || IsNil(o.MdmCapable) {
 		var ret ComputerMdmCapability
 		return ret
 	}
@@ -392,7 +397,7 @@ func (o *ComputerGeneral) GetMdmCapable() ComputerMdmCapability {
 // GetMdmCapableOk returns a tuple with the MdmCapable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetMdmCapableOk() (*ComputerMdmCapability, bool) {
-	if o == nil || o.MdmCapable == nil {
+	if o == nil || IsNil(o.MdmCapable) {
 		return nil, false
 	}
 	return o.MdmCapable, true
@@ -400,7 +405,7 @@ func (o *ComputerGeneral) GetMdmCapableOk() (*ComputerMdmCapability, bool) {
 
 // HasMdmCapable returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasMdmCapable() bool {
-	if o != nil && o.MdmCapable != nil {
+	if o != nil && !IsNil(o.MdmCapable) {
 		return true
 	}
 
@@ -414,7 +419,7 @@ func (o *ComputerGeneral) SetMdmCapable(v ComputerMdmCapability) {
 
 // GetReportDate returns the ReportDate field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetReportDate() time.Time {
-	if o == nil || o.ReportDate == nil {
+	if o == nil || IsNil(o.ReportDate) {
 		var ret time.Time
 		return ret
 	}
@@ -424,7 +429,7 @@ func (o *ComputerGeneral) GetReportDate() time.Time {
 // GetReportDateOk returns a tuple with the ReportDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetReportDateOk() (*time.Time, bool) {
-	if o == nil || o.ReportDate == nil {
+	if o == nil || IsNil(o.ReportDate) {
 		return nil, false
 	}
 	return o.ReportDate, true
@@ -432,7 +437,7 @@ func (o *ComputerGeneral) GetReportDateOk() (*time.Time, bool) {
 
 // HasReportDate returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasReportDate() bool {
-	if o != nil && o.ReportDate != nil {
+	if o != nil && !IsNil(o.ReportDate) {
 		return true
 	}
 
@@ -446,7 +451,7 @@ func (o *ComputerGeneral) SetReportDate(v time.Time) {
 
 // GetLastContactTime returns the LastContactTime field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetLastContactTime() time.Time {
-	if o == nil || o.LastContactTime == nil {
+	if o == nil || IsNil(o.LastContactTime) {
 		var ret time.Time
 		return ret
 	}
@@ -456,7 +461,7 @@ func (o *ComputerGeneral) GetLastContactTime() time.Time {
 // GetLastContactTimeOk returns a tuple with the LastContactTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetLastContactTimeOk() (*time.Time, bool) {
-	if o == nil || o.LastContactTime == nil {
+	if o == nil || IsNil(o.LastContactTime) {
 		return nil, false
 	}
 	return o.LastContactTime, true
@@ -464,7 +469,7 @@ func (o *ComputerGeneral) GetLastContactTimeOk() (*time.Time, bool) {
 
 // HasLastContactTime returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasLastContactTime() bool {
-	if o != nil && o.LastContactTime != nil {
+	if o != nil && !IsNil(o.LastContactTime) {
 		return true
 	}
 
@@ -478,7 +483,7 @@ func (o *ComputerGeneral) SetLastContactTime(v time.Time) {
 
 // GetLastCloudBackupDate returns the LastCloudBackupDate field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetLastCloudBackupDate() time.Time {
-	if o == nil || o.LastCloudBackupDate == nil {
+	if o == nil || IsNil(o.LastCloudBackupDate) {
 		var ret time.Time
 		return ret
 	}
@@ -488,7 +493,7 @@ func (o *ComputerGeneral) GetLastCloudBackupDate() time.Time {
 // GetLastCloudBackupDateOk returns a tuple with the LastCloudBackupDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetLastCloudBackupDateOk() (*time.Time, bool) {
-	if o == nil || o.LastCloudBackupDate == nil {
+	if o == nil || IsNil(o.LastCloudBackupDate) {
 		return nil, false
 	}
 	return o.LastCloudBackupDate, true
@@ -496,7 +501,7 @@ func (o *ComputerGeneral) GetLastCloudBackupDateOk() (*time.Time, bool) {
 
 // HasLastCloudBackupDate returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasLastCloudBackupDate() bool {
-	if o != nil && o.LastCloudBackupDate != nil {
+	if o != nil && !IsNil(o.LastCloudBackupDate) {
 		return true
 	}
 
@@ -510,7 +515,7 @@ func (o *ComputerGeneral) SetLastCloudBackupDate(v time.Time) {
 
 // GetLastEnrolledDate returns the LastEnrolledDate field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetLastEnrolledDate() time.Time {
-	if o == nil || o.LastEnrolledDate == nil {
+	if o == nil || IsNil(o.LastEnrolledDate) {
 		var ret time.Time
 		return ret
 	}
@@ -520,7 +525,7 @@ func (o *ComputerGeneral) GetLastEnrolledDate() time.Time {
 // GetLastEnrolledDateOk returns a tuple with the LastEnrolledDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetLastEnrolledDateOk() (*time.Time, bool) {
-	if o == nil || o.LastEnrolledDate == nil {
+	if o == nil || IsNil(o.LastEnrolledDate) {
 		return nil, false
 	}
 	return o.LastEnrolledDate, true
@@ -528,7 +533,7 @@ func (o *ComputerGeneral) GetLastEnrolledDateOk() (*time.Time, bool) {
 
 // HasLastEnrolledDate returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasLastEnrolledDate() bool {
-	if o != nil && o.LastEnrolledDate != nil {
+	if o != nil && !IsNil(o.LastEnrolledDate) {
 		return true
 	}
 
@@ -542,7 +547,7 @@ func (o *ComputerGeneral) SetLastEnrolledDate(v time.Time) {
 
 // GetMdmProfileExpiration returns the MdmProfileExpiration field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetMdmProfileExpiration() time.Time {
-	if o == nil || o.MdmProfileExpiration == nil {
+	if o == nil || IsNil(o.MdmProfileExpiration) {
 		var ret time.Time
 		return ret
 	}
@@ -552,7 +557,7 @@ func (o *ComputerGeneral) GetMdmProfileExpiration() time.Time {
 // GetMdmProfileExpirationOk returns a tuple with the MdmProfileExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetMdmProfileExpirationOk() (*time.Time, bool) {
-	if o == nil || o.MdmProfileExpiration == nil {
+	if o == nil || IsNil(o.MdmProfileExpiration) {
 		return nil, false
 	}
 	return o.MdmProfileExpiration, true
@@ -560,7 +565,7 @@ func (o *ComputerGeneral) GetMdmProfileExpirationOk() (*time.Time, bool) {
 
 // HasMdmProfileExpiration returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasMdmProfileExpiration() bool {
-	if o != nil && o.MdmProfileExpiration != nil {
+	if o != nil && !IsNil(o.MdmProfileExpiration) {
 		return true
 	}
 
@@ -574,7 +579,7 @@ func (o *ComputerGeneral) SetMdmProfileExpiration(v time.Time) {
 
 // GetInitialEntryDate returns the InitialEntryDate field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetInitialEntryDate() string {
-	if o == nil || o.InitialEntryDate == nil {
+	if o == nil || IsNil(o.InitialEntryDate) {
 		var ret string
 		return ret
 	}
@@ -584,7 +589,7 @@ func (o *ComputerGeneral) GetInitialEntryDate() string {
 // GetInitialEntryDateOk returns a tuple with the InitialEntryDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetInitialEntryDateOk() (*string, bool) {
-	if o == nil || o.InitialEntryDate == nil {
+	if o == nil || IsNil(o.InitialEntryDate) {
 		return nil, false
 	}
 	return o.InitialEntryDate, true
@@ -592,7 +597,7 @@ func (o *ComputerGeneral) GetInitialEntryDateOk() (*string, bool) {
 
 // HasInitialEntryDate returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasInitialEntryDate() bool {
-	if o != nil && o.InitialEntryDate != nil {
+	if o != nil && !IsNil(o.InitialEntryDate) {
 		return true
 	}
 
@@ -606,7 +611,7 @@ func (o *ComputerGeneral) SetInitialEntryDate(v string) {
 
 // GetDistributionPoint returns the DistributionPoint field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetDistributionPoint() string {
-	if o == nil || o.DistributionPoint == nil {
+	if o == nil || IsNil(o.DistributionPoint) {
 		var ret string
 		return ret
 	}
@@ -616,7 +621,7 @@ func (o *ComputerGeneral) GetDistributionPoint() string {
 // GetDistributionPointOk returns a tuple with the DistributionPoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetDistributionPointOk() (*string, bool) {
-	if o == nil || o.DistributionPoint == nil {
+	if o == nil || IsNil(o.DistributionPoint) {
 		return nil, false
 	}
 	return o.DistributionPoint, true
@@ -624,7 +629,7 @@ func (o *ComputerGeneral) GetDistributionPointOk() (*string, bool) {
 
 // HasDistributionPoint returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasDistributionPoint() bool {
-	if o != nil && o.DistributionPoint != nil {
+	if o != nil && !IsNil(o.DistributionPoint) {
 		return true
 	}
 
@@ -638,7 +643,7 @@ func (o *ComputerGeneral) SetDistributionPoint(v string) {
 
 // GetEnrollmentMethod returns the EnrollmentMethod field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetEnrollmentMethod() EnrollmentMethod {
-	if o == nil || o.EnrollmentMethod == nil {
+	if o == nil || IsNil(o.EnrollmentMethod) {
 		var ret EnrollmentMethod
 		return ret
 	}
@@ -648,7 +653,7 @@ func (o *ComputerGeneral) GetEnrollmentMethod() EnrollmentMethod {
 // GetEnrollmentMethodOk returns a tuple with the EnrollmentMethod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetEnrollmentMethodOk() (*EnrollmentMethod, bool) {
-	if o == nil || o.EnrollmentMethod == nil {
+	if o == nil || IsNil(o.EnrollmentMethod) {
 		return nil, false
 	}
 	return o.EnrollmentMethod, true
@@ -656,7 +661,7 @@ func (o *ComputerGeneral) GetEnrollmentMethodOk() (*EnrollmentMethod, bool) {
 
 // HasEnrollmentMethod returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasEnrollmentMethod() bool {
-	if o != nil && o.EnrollmentMethod != nil {
+	if o != nil && !IsNil(o.EnrollmentMethod) {
 		return true
 	}
 
@@ -670,7 +675,7 @@ func (o *ComputerGeneral) SetEnrollmentMethod(v EnrollmentMethod) {
 
 // GetSite returns the Site field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetSite() V1Site {
-	if o == nil || o.Site == nil {
+	if o == nil || IsNil(o.Site) {
 		var ret V1Site
 		return ret
 	}
@@ -680,7 +685,7 @@ func (o *ComputerGeneral) GetSite() V1Site {
 // GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetSiteOk() (*V1Site, bool) {
-	if o == nil || o.Site == nil {
+	if o == nil || IsNil(o.Site) {
 		return nil, false
 	}
 	return o.Site, true
@@ -688,7 +693,7 @@ func (o *ComputerGeneral) GetSiteOk() (*V1Site, bool) {
 
 // HasSite returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasSite() bool {
-	if o != nil && o.Site != nil {
+	if o != nil && !IsNil(o.Site) {
 		return true
 	}
 
@@ -702,7 +707,7 @@ func (o *ComputerGeneral) SetSite(v V1Site) {
 
 // GetItunesStoreAccountActive returns the ItunesStoreAccountActive field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetItunesStoreAccountActive() bool {
-	if o == nil || o.ItunesStoreAccountActive == nil {
+	if o == nil || IsNil(o.ItunesStoreAccountActive) {
 		var ret bool
 		return ret
 	}
@@ -712,7 +717,7 @@ func (o *ComputerGeneral) GetItunesStoreAccountActive() bool {
 // GetItunesStoreAccountActiveOk returns a tuple with the ItunesStoreAccountActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetItunesStoreAccountActiveOk() (*bool, bool) {
-	if o == nil || o.ItunesStoreAccountActive == nil {
+	if o == nil || IsNil(o.ItunesStoreAccountActive) {
 		return nil, false
 	}
 	return o.ItunesStoreAccountActive, true
@@ -720,7 +725,7 @@ func (o *ComputerGeneral) GetItunesStoreAccountActiveOk() (*bool, bool) {
 
 // HasItunesStoreAccountActive returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasItunesStoreAccountActive() bool {
-	if o != nil && o.ItunesStoreAccountActive != nil {
+	if o != nil && !IsNil(o.ItunesStoreAccountActive) {
 		return true
 	}
 
@@ -734,7 +739,7 @@ func (o *ComputerGeneral) SetItunesStoreAccountActive(v bool) {
 
 // GetEnrolledViaAutomatedDeviceEnrollment returns the EnrolledViaAutomatedDeviceEnrollment field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetEnrolledViaAutomatedDeviceEnrollment() bool {
-	if o == nil || o.EnrolledViaAutomatedDeviceEnrollment == nil {
+	if o == nil || IsNil(o.EnrolledViaAutomatedDeviceEnrollment) {
 		var ret bool
 		return ret
 	}
@@ -744,7 +749,7 @@ func (o *ComputerGeneral) GetEnrolledViaAutomatedDeviceEnrollment() bool {
 // GetEnrolledViaAutomatedDeviceEnrollmentOk returns a tuple with the EnrolledViaAutomatedDeviceEnrollment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetEnrolledViaAutomatedDeviceEnrollmentOk() (*bool, bool) {
-	if o == nil || o.EnrolledViaAutomatedDeviceEnrollment == nil {
+	if o == nil || IsNil(o.EnrolledViaAutomatedDeviceEnrollment) {
 		return nil, false
 	}
 	return o.EnrolledViaAutomatedDeviceEnrollment, true
@@ -752,7 +757,7 @@ func (o *ComputerGeneral) GetEnrolledViaAutomatedDeviceEnrollmentOk() (*bool, bo
 
 // HasEnrolledViaAutomatedDeviceEnrollment returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasEnrolledViaAutomatedDeviceEnrollment() bool {
-	if o != nil && o.EnrolledViaAutomatedDeviceEnrollment != nil {
+	if o != nil && !IsNil(o.EnrolledViaAutomatedDeviceEnrollment) {
 		return true
 	}
 
@@ -766,7 +771,7 @@ func (o *ComputerGeneral) SetEnrolledViaAutomatedDeviceEnrollment(v bool) {
 
 // GetUserApprovedMdm returns the UserApprovedMdm field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetUserApprovedMdm() bool {
-	if o == nil || o.UserApprovedMdm == nil {
+	if o == nil || IsNil(o.UserApprovedMdm) {
 		var ret bool
 		return ret
 	}
@@ -776,7 +781,7 @@ func (o *ComputerGeneral) GetUserApprovedMdm() bool {
 // GetUserApprovedMdmOk returns a tuple with the UserApprovedMdm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetUserApprovedMdmOk() (*bool, bool) {
-	if o == nil || o.UserApprovedMdm == nil {
+	if o == nil || IsNil(o.UserApprovedMdm) {
 		return nil, false
 	}
 	return o.UserApprovedMdm, true
@@ -784,7 +789,7 @@ func (o *ComputerGeneral) GetUserApprovedMdmOk() (*bool, bool) {
 
 // HasUserApprovedMdm returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasUserApprovedMdm() bool {
-	if o != nil && o.UserApprovedMdm != nil {
+	if o != nil && !IsNil(o.UserApprovedMdm) {
 		return true
 	}
 
@@ -796,9 +801,41 @@ func (o *ComputerGeneral) SetUserApprovedMdm(v bool) {
 	o.UserApprovedMdm = &v
 }
 
+// GetDeclarativeDeviceManagementEnabled returns the DeclarativeDeviceManagementEnabled field value if set, zero value otherwise.
+func (o *ComputerGeneral) GetDeclarativeDeviceManagementEnabled() bool {
+	if o == nil || IsNil(o.DeclarativeDeviceManagementEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DeclarativeDeviceManagementEnabled
+}
+
+// GetDeclarativeDeviceManagementEnabledOk returns a tuple with the DeclarativeDeviceManagementEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneral) GetDeclarativeDeviceManagementEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeclarativeDeviceManagementEnabled) {
+		return nil, false
+	}
+	return o.DeclarativeDeviceManagementEnabled, true
+}
+
+// HasDeclarativeDeviceManagementEnabled returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasDeclarativeDeviceManagementEnabled() bool {
+	if o != nil && !IsNil(o.DeclarativeDeviceManagementEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeclarativeDeviceManagementEnabled gets a reference to the given bool and assigns it to the DeclarativeDeviceManagementEnabled field.
+func (o *ComputerGeneral) SetDeclarativeDeviceManagementEnabled(v bool) {
+	o.DeclarativeDeviceManagementEnabled = &v
+}
+
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerGeneral) GetExtensionAttributes() []ComputerExtensionAttribute {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		var ret []ComputerExtensionAttribute
 		return ret
 	}
@@ -808,7 +845,7 @@ func (o *ComputerGeneral) GetExtensionAttributes() []ComputerExtensionAttribute 
 // GetExtensionAttributesOk returns a tuple with the ExtensionAttributes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ComputerGeneral) GetExtensionAttributesOk() ([]ComputerExtensionAttribute, bool) {
-	if o == nil || o.ExtensionAttributes == nil {
+	if o == nil || IsNil(o.ExtensionAttributes) {
 		return nil, false
 	}
 	return o.ExtensionAttributes, true
@@ -816,7 +853,7 @@ func (o *ComputerGeneral) GetExtensionAttributesOk() ([]ComputerExtensionAttribu
 
 // HasExtensionAttributes returns a boolean if a field has been set.
 func (o *ComputerGeneral) HasExtensionAttributes() bool {
-	if o != nil && o.ExtensionAttributes != nil {
+	if o != nil && !IsNil(o.ExtensionAttributes) {
 		return true
 	}
 
@@ -828,81 +865,127 @@ func (o *ComputerGeneral) SetExtensionAttributes(v []ComputerExtensionAttribute)
 	o.ExtensionAttributes = v
 }
 
+// GetManagementId returns the ManagementId field value if set, zero value otherwise.
+func (o *ComputerGeneral) GetManagementId() string {
+	if o == nil || IsNil(o.ManagementId) {
+		var ret string
+		return ret
+	}
+	return *o.ManagementId
+}
+
+// GetManagementIdOk returns a tuple with the ManagementId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneral) GetManagementIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ManagementId) {
+		return nil, false
+	}
+	return o.ManagementId, true
+}
+
+// HasManagementId returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasManagementId() bool {
+	if o != nil && !IsNil(o.ManagementId) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagementId gets a reference to the given string and assigns it to the ManagementId field.
+func (o *ComputerGeneral) SetManagementId(v string) {
+	o.ManagementId = &v
+}
+
 func (o ComputerGeneral) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.LastIpAddress != nil {
-		toSerialize["lastIpAddress"] = o.LastIpAddress
-	}
-	if o.LastReportedIp != nil {
-		toSerialize["lastReportedIp"] = o.LastReportedIp
-	}
-	if o.JamfBinaryVersion != nil {
-		toSerialize["jamfBinaryVersion"] = o.JamfBinaryVersion
-	}
-	if o.Platform != nil {
-		toSerialize["platform"] = o.Platform
-	}
-	if o.Barcode1 != nil {
-		toSerialize["barcode1"] = o.Barcode1
-	}
-	if o.Barcode2 != nil {
-		toSerialize["barcode2"] = o.Barcode2
-	}
-	if o.AssetTag != nil {
-		toSerialize["assetTag"] = o.AssetTag
-	}
-	if o.RemoteManagement != nil {
-		toSerialize["remoteManagement"] = o.RemoteManagement
-	}
-	if o.Supervised != nil {
-		toSerialize["supervised"] = o.Supervised
-	}
-	if o.MdmCapable != nil {
-		toSerialize["mdmCapable"] = o.MdmCapable
-	}
-	if o.ReportDate != nil {
-		toSerialize["reportDate"] = o.ReportDate
-	}
-	if o.LastContactTime != nil {
-		toSerialize["lastContactTime"] = o.LastContactTime
-	}
-	if o.LastCloudBackupDate != nil {
-		toSerialize["lastCloudBackupDate"] = o.LastCloudBackupDate
-	}
-	if o.LastEnrolledDate != nil {
-		toSerialize["lastEnrolledDate"] = o.LastEnrolledDate
-	}
-	if o.MdmProfileExpiration != nil {
-		toSerialize["mdmProfileExpiration"] = o.MdmProfileExpiration
-	}
-	if o.InitialEntryDate != nil {
-		toSerialize["initialEntryDate"] = o.InitialEntryDate
-	}
-	if o.DistributionPoint != nil {
-		toSerialize["distributionPoint"] = o.DistributionPoint
-	}
-	if o.EnrollmentMethod != nil {
-		toSerialize["enrollmentMethod"] = o.EnrollmentMethod
-	}
-	if o.Site != nil {
-		toSerialize["site"] = o.Site
-	}
-	if o.ItunesStoreAccountActive != nil {
-		toSerialize["itunesStoreAccountActive"] = o.ItunesStoreAccountActive
-	}
-	if o.EnrolledViaAutomatedDeviceEnrollment != nil {
-		toSerialize["enrolledViaAutomatedDeviceEnrollment"] = o.EnrolledViaAutomatedDeviceEnrollment
-	}
-	if o.UserApprovedMdm != nil {
-		toSerialize["userApprovedMdm"] = o.UserApprovedMdm
-	}
-	if o.ExtensionAttributes != nil {
-		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ComputerGeneral) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LastIpAddress) {
+		toSerialize["lastIpAddress"] = o.LastIpAddress
+	}
+	if !IsNil(o.LastReportedIp) {
+		toSerialize["lastReportedIp"] = o.LastReportedIp
+	}
+	if !IsNil(o.JamfBinaryVersion) {
+		toSerialize["jamfBinaryVersion"] = o.JamfBinaryVersion
+	}
+	if !IsNil(o.Platform) {
+		toSerialize["platform"] = o.Platform
+	}
+	if !IsNil(o.Barcode1) {
+		toSerialize["barcode1"] = o.Barcode1
+	}
+	if !IsNil(o.Barcode2) {
+		toSerialize["barcode2"] = o.Barcode2
+	}
+	if !IsNil(o.AssetTag) {
+		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.RemoteManagement) {
+		toSerialize["remoteManagement"] = o.RemoteManagement
+	}
+	if !IsNil(o.Supervised) {
+		toSerialize["supervised"] = o.Supervised
+	}
+	if !IsNil(o.MdmCapable) {
+		toSerialize["mdmCapable"] = o.MdmCapable
+	}
+	if !IsNil(o.ReportDate) {
+		toSerialize["reportDate"] = o.ReportDate
+	}
+	if !IsNil(o.LastContactTime) {
+		toSerialize["lastContactTime"] = o.LastContactTime
+	}
+	if !IsNil(o.LastCloudBackupDate) {
+		toSerialize["lastCloudBackupDate"] = o.LastCloudBackupDate
+	}
+	if !IsNil(o.LastEnrolledDate) {
+		toSerialize["lastEnrolledDate"] = o.LastEnrolledDate
+	}
+	if !IsNil(o.MdmProfileExpiration) {
+		toSerialize["mdmProfileExpiration"] = o.MdmProfileExpiration
+	}
+	if !IsNil(o.InitialEntryDate) {
+		toSerialize["initialEntryDate"] = o.InitialEntryDate
+	}
+	if !IsNil(o.DistributionPoint) {
+		toSerialize["distributionPoint"] = o.DistributionPoint
+	}
+	if !IsNil(o.EnrollmentMethod) {
+		toSerialize["enrollmentMethod"] = o.EnrollmentMethod
+	}
+	if !IsNil(o.Site) {
+		toSerialize["site"] = o.Site
+	}
+	if !IsNil(o.ItunesStoreAccountActive) {
+		toSerialize["itunesStoreAccountActive"] = o.ItunesStoreAccountActive
+	}
+	if !IsNil(o.EnrolledViaAutomatedDeviceEnrollment) {
+		toSerialize["enrolledViaAutomatedDeviceEnrollment"] = o.EnrolledViaAutomatedDeviceEnrollment
+	}
+	if !IsNil(o.UserApprovedMdm) {
+		toSerialize["userApprovedMdm"] = o.UserApprovedMdm
+	}
+	if !IsNil(o.DeclarativeDeviceManagementEnabled) {
+		toSerialize["declarativeDeviceManagementEnabled"] = o.DeclarativeDeviceManagementEnabled
+	}
+	if !IsNil(o.ExtensionAttributes) {
+		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	if !IsNil(o.ManagementId) {
+		toSerialize["managementId"] = o.ManagementId
+	}
+	return toSerialize, nil
 }
 
 type NullableComputerGeneral struct {

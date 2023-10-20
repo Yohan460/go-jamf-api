@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeviceEnrollmentToken type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeviceEnrollmentToken{}
+
 // DeviceEnrollmentToken struct for DeviceEnrollmentToken
 type DeviceEnrollmentToken struct {
 	// Optional name of the token to be saved, if no name is provided one will be auto-generated
@@ -41,7 +44,7 @@ func NewDeviceEnrollmentTokenWithDefaults() *DeviceEnrollmentToken {
 
 // GetTokenFileName returns the TokenFileName field value if set, zero value otherwise.
 func (o *DeviceEnrollmentToken) GetTokenFileName() string {
-	if o == nil || o.TokenFileName == nil {
+	if o == nil || IsNil(o.TokenFileName) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *DeviceEnrollmentToken) GetTokenFileName() string {
 // GetTokenFileNameOk returns a tuple with the TokenFileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentToken) GetTokenFileNameOk() (*string, bool) {
-	if o == nil || o.TokenFileName == nil {
+	if o == nil || IsNil(o.TokenFileName) {
 		return nil, false
 	}
 	return o.TokenFileName, true
@@ -59,7 +62,7 @@ func (o *DeviceEnrollmentToken) GetTokenFileNameOk() (*string, bool) {
 
 // HasTokenFileName returns a boolean if a field has been set.
 func (o *DeviceEnrollmentToken) HasTokenFileName() bool {
-	if o != nil && o.TokenFileName != nil {
+	if o != nil && !IsNil(o.TokenFileName) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *DeviceEnrollmentToken) SetTokenFileName(v string) {
 
 // GetEncodedToken returns the EncodedToken field value if set, zero value otherwise.
 func (o *DeviceEnrollmentToken) GetEncodedToken() string {
-	if o == nil || o.EncodedToken == nil {
+	if o == nil || IsNil(o.EncodedToken) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *DeviceEnrollmentToken) GetEncodedToken() string {
 // GetEncodedTokenOk returns a tuple with the EncodedToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeviceEnrollmentToken) GetEncodedTokenOk() (*string, bool) {
-	if o == nil || o.EncodedToken == nil {
+	if o == nil || IsNil(o.EncodedToken) {
 		return nil, false
 	}
 	return o.EncodedToken, true
@@ -91,7 +94,7 @@ func (o *DeviceEnrollmentToken) GetEncodedTokenOk() (*string, bool) {
 
 // HasEncodedToken returns a boolean if a field has been set.
 func (o *DeviceEnrollmentToken) HasEncodedToken() bool {
-	if o != nil && o.EncodedToken != nil {
+	if o != nil && !IsNil(o.EncodedToken) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *DeviceEnrollmentToken) SetEncodedToken(v string) {
 }
 
 func (o DeviceEnrollmentToken) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.TokenFileName != nil {
-		toSerialize["tokenFileName"] = o.TokenFileName
-	}
-	if o.EncodedToken != nil {
-		toSerialize["encodedToken"] = o.EncodedToken
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeviceEnrollmentToken) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TokenFileName) {
+		toSerialize["tokenFileName"] = o.TokenFileName
+	}
+	if !IsNil(o.EncodedToken) {
+		toSerialize["encodedToken"] = o.EncodedToken
+	}
+	return toSerialize, nil
 }
 
 type NullableDeviceEnrollmentToken struct {

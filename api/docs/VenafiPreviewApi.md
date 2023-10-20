@@ -1,22 +1,22 @@
-# \VenafiPreviewApi
+# \VenafiPreviewAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1PkiVenafiIdConnectionStatusGet**](VenafiPreviewApi.md#V1PkiVenafiIdConnectionStatusGet) | **Get** /v1/pki/venafi/{id}/connection-status | Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiIdDelete**](VenafiPreviewApi.md#V1PkiVenafiIdDelete) | **Delete** /v1/pki/venafi/{id} | Delete a Venafi PKI configuration from Jamf Pro 
-[**V1PkiVenafiIdDependentProfilesGet**](VenafiPreviewApi.md#V1PkiVenafiIdDependentProfilesGet) | **Get** /v1/pki/venafi/{id}/dependent-profiles | Get configuration profile data using specified Venafi CA object 
-[**V1PkiVenafiIdGet**](VenafiPreviewApi.md#V1PkiVenafiIdGet) | **Get** /v1/pki/venafi/{id} | Retrieve a Venafi PKI configuration from Jamf Pro 
-[**V1PkiVenafiIdHistoryGet**](VenafiPreviewApi.md#V1PkiVenafiIdHistoryGet) | **Get** /v1/pki/venafi/{id}/history | Get specified Venafi CA history object 
-[**V1PkiVenafiIdHistoryPost**](VenafiPreviewApi.md#V1PkiVenafiIdHistoryPost) | **Post** /v1/pki/venafi/{id}/history | Add specified Venafi CA Object Note 
-[**V1PkiVenafiIdJamfPublicKeyGet**](VenafiPreviewApi.md#V1PkiVenafiIdJamfPublicKeyGet) | **Get** /v1/pki/venafi/{id}/jamf-public-key | Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiIdJamfPublicKeyRegeneratePost**](VenafiPreviewApi.md#V1PkiVenafiIdJamfPublicKeyRegeneratePost) | **Post** /v1/pki/venafi/{id}/jamf-public-key/regenerate | Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiIdPatch**](VenafiPreviewApi.md#V1PkiVenafiIdPatch) | **Patch** /v1/pki/venafi/{id} | Update a Venafi PKI configuration in Jamf Pro 
-[**V1PkiVenafiIdProxyTrustStoreDelete**](VenafiPreviewApi.md#V1PkiVenafiIdProxyTrustStoreDelete) | **Delete** /v1/pki/venafi/{id}/proxy-trust-store | Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiIdProxyTrustStoreGet**](VenafiPreviewApi.md#V1PkiVenafiIdProxyTrustStoreGet) | **Get** /v1/pki/venafi/{id}/proxy-trust-store | Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiIdProxyTrustStorePost**](VenafiPreviewApi.md#V1PkiVenafiIdProxyTrustStorePost) | **Post** /v1/pki/venafi/{id}/proxy-trust-store | Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
-[**V1PkiVenafiPost**](VenafiPreviewApi.md#V1PkiVenafiPost) | **Post** /v1/pki/venafi | Create a PKI configuration in Jamf Pro for Venafi 
+[**V1PkiVenafiIdConnectionStatusGet**](VenafiPreviewAPI.md#V1PkiVenafiIdConnectionStatusGet) | **Get** /v1/pki/venafi/{id}/connection-status | Tests the communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiIdDelete**](VenafiPreviewAPI.md#V1PkiVenafiIdDelete) | **Delete** /v1/pki/venafi/{id} | Delete a Venafi PKI configuration from Jamf Pro 
+[**V1PkiVenafiIdDependentProfilesGet**](VenafiPreviewAPI.md#V1PkiVenafiIdDependentProfilesGet) | **Get** /v1/pki/venafi/{id}/dependent-profiles | Get configuration profile data using specified Venafi CA object 
+[**V1PkiVenafiIdGet**](VenafiPreviewAPI.md#V1PkiVenafiIdGet) | **Get** /v1/pki/venafi/{id} | Retrieve a Venafi PKI configuration from Jamf Pro 
+[**V1PkiVenafiIdHistoryGet**](VenafiPreviewAPI.md#V1PkiVenafiIdHistoryGet) | **Get** /v1/pki/venafi/{id}/history | Get specified Venafi CA history object 
+[**V1PkiVenafiIdHistoryPost**](VenafiPreviewAPI.md#V1PkiVenafiIdHistoryPost) | **Post** /v1/pki/venafi/{id}/history | Add specified Venafi CA Object Note 
+[**V1PkiVenafiIdJamfPublicKeyGet**](VenafiPreviewAPI.md#V1PkiVenafiIdJamfPublicKeyGet) | **Get** /v1/pki/venafi/{id}/jamf-public-key | Downloads a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiIdJamfPublicKeyRegeneratePost**](VenafiPreviewAPI.md#V1PkiVenafiIdJamfPublicKeyRegeneratePost) | **Post** /v1/pki/venafi/{id}/jamf-public-key/regenerate | Regenerates a certificate used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiIdPatch**](VenafiPreviewAPI.md#V1PkiVenafiIdPatch) | **Patch** /v1/pki/venafi/{id} | Update a Venafi PKI configuration in Jamf Pro 
+[**V1PkiVenafiIdProxyTrustStoreDelete**](VenafiPreviewAPI.md#V1PkiVenafiIdProxyTrustStoreDelete) | **Delete** /v1/pki/venafi/{id}/proxy-trust-store | Removes the PKI Proxy Server public key used to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiIdProxyTrustStoreGet**](VenafiPreviewAPI.md#V1PkiVenafiIdProxyTrustStoreGet) | **Get** /v1/pki/venafi/{id}/proxy-trust-store | Downloads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiIdProxyTrustStorePost**](VenafiPreviewAPI.md#V1PkiVenafiIdProxyTrustStorePost) | **Post** /v1/pki/venafi/{id}/proxy-trust-store | Uploads the PKI Proxy Server public key to secure communication between Jamf Pro and a Jamf Pro PKI Proxy Server 
+[**V1PkiVenafiPost**](VenafiPreviewAPI.md#V1PkiVenafiPost) | **Post** /v1/pki/venafi | Create a PKI configuration in Jamf Pro for Venafi 
 
 
 
@@ -37,7 +37,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -45,13 +45,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdConnectionStatusGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdConnectionStatusGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdConnectionStatusGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdConnectionStatusGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdConnectionStatusGet`: VenafiServiceStatus
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdConnectionStatusGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdConnectionStatusGet`: %v\n", resp)
 }
 ```
 
@@ -107,7 +107,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -115,9 +115,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -175,7 +175,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -183,13 +183,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdDependentProfilesGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdDependentProfilesGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdDependentProfilesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdDependentProfilesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdDependentProfilesGet`: VenafiPkiPayloadRecordSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdDependentProfilesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdDependentProfilesGet`: %v\n", resp)
 }
 ```
 
@@ -245,7 +245,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -253,13 +253,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdGet`: VenafiCaRecord
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdGet`: %v\n", resp)
 }
 ```
 
@@ -315,7 +315,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -327,13 +327,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -393,22 +393,22 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department history record
+    id := "id_example" // string | instance id of Venafi CA history record
     objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | venafi ca history notes to create
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -418,7 +418,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | instance id of department history record | 
+**id** | **string** | instance id of Venafi CA history record | 
 
 ### Other Parameters
 
@@ -465,7 +465,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -473,13 +473,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdJamfPublicKeyGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdJamfPublicKeyGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdJamfPublicKeyGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdJamfPublicKeyGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdJamfPublicKeyGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdJamfPublicKeyGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdJamfPublicKeyGet`: %v\n", resp)
 }
 ```
 
@@ -535,7 +535,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -543,9 +543,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdJamfPublicKeyRegeneratePost(context.Background(), id).Execute()
+    r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdJamfPublicKeyRegeneratePost(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdJamfPublicKeyRegeneratePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdJamfPublicKeyRegeneratePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -603,7 +603,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -612,13 +612,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdPatch(context.Background(), id).VenafiCaRecord(venafiCaRecord).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdPatch(context.Background(), id).VenafiCaRecord(venafiCaRecord).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdPatch``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdPatch``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdPatch`: VenafiCaRecord
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdPatch`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdPatch`: %v\n", resp)
 }
 ```
 
@@ -675,7 +675,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -683,9 +683,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdProxyTrustStoreDelete(context.Background(), id).Execute()
+    r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStoreDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdProxyTrustStoreDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStoreDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -743,7 +743,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -751,13 +751,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdProxyTrustStoreGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStoreGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdProxyTrustStoreGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStoreGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiIdProxyTrustStoreGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiIdProxyTrustStoreGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStoreGet`: %v\n", resp)
 }
 ```
 
@@ -813,7 +813,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -822,9 +822,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiIdProxyTrustStorePost(context.Background(), id).Body(body).Execute()
+    r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStorePost(context.Background(), id).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiIdProxyTrustStorePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiIdProxyTrustStorePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -883,7 +883,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -891,13 +891,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VenafiPreviewApi.V1PkiVenafiPost(context.Background()).VenafiCaRecord(venafiCaRecord).Execute()
+    resp, r, err := apiClient.VenafiPreviewAPI.V1PkiVenafiPost(context.Background()).VenafiCaRecord(venafiCaRecord).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewApi.V1PkiVenafiPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `VenafiPreviewAPI.V1PkiVenafiPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1PkiVenafiPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewApi.V1PkiVenafiPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `VenafiPreviewAPI.V1PkiVenafiPost`: %v\n", resp)
 }
 ```
 

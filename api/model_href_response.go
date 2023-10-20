@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the HrefResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HrefResponse{}
+
 // HrefResponse struct for HrefResponse
 type HrefResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -39,7 +42,7 @@ func NewHrefResponseWithDefaults() *HrefResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *HrefResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *HrefResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HrefResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -57,7 +60,7 @@ func (o *HrefResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *HrefResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *HrefResponse) SetId(v string) {
 
 // GetHref returns the Href field value if set, zero value otherwise.
 func (o *HrefResponse) GetHref() string {
-	if o == nil || o.Href == nil {
+	if o == nil || IsNil(o.Href) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *HrefResponse) GetHref() string {
 // GetHrefOk returns a tuple with the Href field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *HrefResponse) GetHrefOk() (*string, bool) {
-	if o == nil || o.Href == nil {
+	if o == nil || IsNil(o.Href) {
 		return nil, false
 	}
 	return o.Href, true
@@ -89,7 +92,7 @@ func (o *HrefResponse) GetHrefOk() (*string, bool) {
 
 // HasHref returns a boolean if a field has been set.
 func (o *HrefResponse) HasHref() bool {
-	if o != nil && o.Href != nil {
+	if o != nil && !IsNil(o.Href) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *HrefResponse) SetHref(v string) {
 }
 
 func (o HrefResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Href != nil {
-		toSerialize["href"] = o.Href
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o HrefResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Href) {
+		toSerialize["href"] = o.Href
+	}
+	return toSerialize, nil
 }
 
 type NullableHrefResponse struct {

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **TransitiveMembershipEnabled** | **bool** | Use this field to enable transitive membership lookup with Single Sign On | 
 **TransitiveMembershipUserField** | **string** | Use this field to set user field mapping for transitive membership lookup with Single Sign On | 
 **TransitiveDirectoryMembershipEnabled** | **bool** | Use this field to enable transitive membership lookup. This setting would not apply to Single Sign On | 
+**MembershipCalculationOptimizationEnabled** | Pointer to **bool** | Use this field to enable membership calculation optimization. This setting would not apply to Single Sign On | [optional] 
 **Code** | **string** |  | 
 
 ## Methods
@@ -197,6 +198,31 @@ and a boolean to check if the value has been set.
 
 SetTransitiveDirectoryMembershipEnabled sets TransitiveDirectoryMembershipEnabled field to given value.
 
+
+### GetMembershipCalculationOptimizationEnabled
+
+`func (o *AzureServerConfigurationRequest) GetMembershipCalculationOptimizationEnabled() bool`
+
+GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field if non-nil, zero value otherwise.
+
+### GetMembershipCalculationOptimizationEnabledOk
+
+`func (o *AzureServerConfigurationRequest) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool)`
+
+GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMembershipCalculationOptimizationEnabled
+
+`func (o *AzureServerConfigurationRequest) SetMembershipCalculationOptimizationEnabled(v bool)`
+
+SetMembershipCalculationOptimizationEnabled sets MembershipCalculationOptimizationEnabled field to given value.
+
+### HasMembershipCalculationOptimizationEnabled
+
+`func (o *AzureServerConfigurationRequest) HasMembershipCalculationOptimizationEnabled() bool`
+
+HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
 
 ### GetCode
 

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the GetEnrollmentCustomizationPanel type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GetEnrollmentCustomizationPanel{}
+
 // GetEnrollmentCustomizationPanel struct for GetEnrollmentCustomizationPanel
 type GetEnrollmentCustomizationPanel struct {
 	DisplayName string `json:"displayName"`
@@ -91,7 +94,7 @@ func (o *GetEnrollmentCustomizationPanel) SetRank(v int32) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanel) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -101,7 +104,7 @@ func (o *GetEnrollmentCustomizationPanel) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanel) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -109,7 +112,7 @@ func (o *GetEnrollmentCustomizationPanel) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanel) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -123,7 +126,7 @@ func (o *GetEnrollmentCustomizationPanel) SetId(v int32) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *GetEnrollmentCustomizationPanel) GetType() string {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
@@ -133,7 +136,7 @@ func (o *GetEnrollmentCustomizationPanel) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GetEnrollmentCustomizationPanel) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -141,7 +144,7 @@ func (o *GetEnrollmentCustomizationPanel) GetTypeOk() (*string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *GetEnrollmentCustomizationPanel) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -154,20 +157,24 @@ func (o *GetEnrollmentCustomizationPanel) SetType(v string) {
 }
 
 func (o GetEnrollmentCustomizationPanel) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["displayName"] = o.DisplayName
-	}
-	if true {
-		toSerialize["rank"] = o.Rank
-	}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o GetEnrollmentCustomizationPanel) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["displayName"] = o.DisplayName
+	toSerialize["rank"] = o.Rank
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableGetEnrollmentCustomizationPanel struct {

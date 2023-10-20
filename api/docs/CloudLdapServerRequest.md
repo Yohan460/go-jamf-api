@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **SearchTimeout** | **int32** |  | 
 **UseWildcards** | **bool** |  | 
 **ConnectionType** | **string** |  | 
+**MembershipCalculationOptimizationEnabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -212,6 +213,31 @@ and a boolean to check if the value has been set.
 
 SetConnectionType sets ConnectionType field to given value.
 
+
+### GetMembershipCalculationOptimizationEnabled
+
+`func (o *CloudLdapServerRequest) GetMembershipCalculationOptimizationEnabled() bool`
+
+GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field if non-nil, zero value otherwise.
+
+### GetMembershipCalculationOptimizationEnabledOk
+
+`func (o *CloudLdapServerRequest) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool)`
+
+GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMembershipCalculationOptimizationEnabled
+
+`func (o *CloudLdapServerRequest) SetMembershipCalculationOptimizationEnabled(v bool)`
+
+SetMembershipCalculationOptimizationEnabled sets MembershipCalculationOptimizationEnabled field to given value.
+
+### HasMembershipCalculationOptimizationEnabled
+
+`func (o *CloudLdapServerRequest) HasMembershipCalculationOptimizationEnabled() bool`
+
+HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

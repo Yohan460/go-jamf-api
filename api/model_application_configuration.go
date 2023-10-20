@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ApplicationConfiguration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApplicationConfiguration{}
+
 // ApplicationConfiguration struct for ApplicationConfiguration
 type ApplicationConfiguration struct {
 	Configuration *string `json:"configuration,omitempty"`
@@ -39,7 +42,7 @@ func NewApplicationConfigurationWithDefaults() *ApplicationConfiguration {
 
 // GetConfiguration returns the Configuration field value if set, zero value otherwise.
 func (o *ApplicationConfiguration) GetConfiguration() string {
-	if o == nil || o.Configuration == nil {
+	if o == nil || IsNil(o.Configuration) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *ApplicationConfiguration) GetConfiguration() string {
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationConfiguration) GetConfigurationOk() (*string, bool) {
-	if o == nil || o.Configuration == nil {
+	if o == nil || IsNil(o.Configuration) {
 		return nil, false
 	}
 	return o.Configuration, true
@@ -57,7 +60,7 @@ func (o *ApplicationConfiguration) GetConfigurationOk() (*string, bool) {
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *ApplicationConfiguration) HasConfiguration() bool {
-	if o != nil && o.Configuration != nil {
+	if o != nil && !IsNil(o.Configuration) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *ApplicationConfiguration) SetConfiguration(v string) {
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
 func (o *ApplicationConfiguration) GetIdentifier() string {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *ApplicationConfiguration) GetIdentifier() string {
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ApplicationConfiguration) GetIdentifierOk() (*string, bool) {
-	if o == nil || o.Identifier == nil {
+	if o == nil || IsNil(o.Identifier) {
 		return nil, false
 	}
 	return o.Identifier, true
@@ -89,7 +92,7 @@ func (o *ApplicationConfiguration) GetIdentifierOk() (*string, bool) {
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *ApplicationConfiguration) HasIdentifier() bool {
-	if o != nil && o.Identifier != nil {
+	if o != nil && !IsNil(o.Identifier) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *ApplicationConfiguration) SetIdentifier(v string) {
 }
 
 func (o ApplicationConfiguration) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Configuration != nil {
-		toSerialize["configuration"] = o.Configuration
-	}
-	if o.Identifier != nil {
-		toSerialize["identifier"] = o.Identifier
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ApplicationConfiguration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Configuration) {
+		toSerialize["configuration"] = o.Configuration
+	}
+	if !IsNil(o.Identifier) {
+		toSerialize["identifier"] = o.Identifier
+	}
+	return toSerialize, nil
 }
 
 type NullableApplicationConfiguration struct {

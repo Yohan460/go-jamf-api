@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the AvailableUpdates type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AvailableUpdates{}
+
 // AvailableUpdates struct for AvailableUpdates
 type AvailableUpdates struct {
 	AvailableUpdates []string `json:"availableUpdates,omitempty"`
@@ -38,7 +41,7 @@ func NewAvailableUpdatesWithDefaults() *AvailableUpdates {
 
 // GetAvailableUpdates returns the AvailableUpdates field value if set, zero value otherwise.
 func (o *AvailableUpdates) GetAvailableUpdates() []string {
-	if o == nil || o.AvailableUpdates == nil {
+	if o == nil || IsNil(o.AvailableUpdates) {
 		var ret []string
 		return ret
 	}
@@ -48,7 +51,7 @@ func (o *AvailableUpdates) GetAvailableUpdates() []string {
 // GetAvailableUpdatesOk returns a tuple with the AvailableUpdates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AvailableUpdates) GetAvailableUpdatesOk() ([]string, bool) {
-	if o == nil || o.AvailableUpdates == nil {
+	if o == nil || IsNil(o.AvailableUpdates) {
 		return nil, false
 	}
 	return o.AvailableUpdates, true
@@ -56,7 +59,7 @@ func (o *AvailableUpdates) GetAvailableUpdatesOk() ([]string, bool) {
 
 // HasAvailableUpdates returns a boolean if a field has been set.
 func (o *AvailableUpdates) HasAvailableUpdates() bool {
-	if o != nil && o.AvailableUpdates != nil {
+	if o != nil && !IsNil(o.AvailableUpdates) {
 		return true
 	}
 
@@ -69,11 +72,19 @@ func (o *AvailableUpdates) SetAvailableUpdates(v []string) {
 }
 
 func (o AvailableUpdates) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.AvailableUpdates != nil {
-		toSerialize["availableUpdates"] = o.AvailableUpdates
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o AvailableUpdates) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AvailableUpdates) {
+		toSerialize["availableUpdates"] = o.AvailableUpdates
+	}
+	return toSerialize, nil
 }
 
 type NullableAvailableUpdates struct {

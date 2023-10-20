@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type ComputersPreviewApi interface {
+type ComputersPreviewAPI interface {
 
 	/*
 	PreviewComputersGet Return a list of Computers 
@@ -27,21 +27,21 @@ type ComputersPreviewApi interface {
 	Returns a list of computers.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPreviewComputersGetRequest
+	@return ComputersPreviewAPIPreviewComputersGetRequest
 	*/
-	PreviewComputersGet(ctx context.Context) ApiPreviewComputersGetRequest
+	PreviewComputersGet(ctx context.Context) ComputersPreviewAPIPreviewComputersGetRequest
 
 	// PreviewComputersGetExecute executes the request
 	//  @return ComputersSearchResults
-	PreviewComputersGetExecute(r ApiPreviewComputersGetRequest) (*ComputersSearchResults, *http.Response, error)
+	PreviewComputersGetExecute(r ComputersPreviewAPIPreviewComputersGetRequest) (*ComputersSearchResults, *http.Response, error)
 }
 
-// ComputersPreviewApiService ComputersPreviewApi service
-type ComputersPreviewApiService service
+// ComputersPreviewAPIService ComputersPreviewAPI service
+type ComputersPreviewAPIService service
 
-type ApiPreviewComputersGetRequest struct {
+type ComputersPreviewAPIPreviewComputersGetRequest struct {
 	ctx context.Context
-	ApiService ComputersPreviewApi
+	ApiService ComputersPreviewAPI
 	page *int32
 	size *int32
 	pagesize *int32
@@ -49,35 +49,35 @@ type ApiPreviewComputersGetRequest struct {
 	sort *string
 }
 
-func (r ApiPreviewComputersGetRequest) Page(page int32) ApiPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Page(page int32) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ApiPreviewComputersGetRequest) Size(size int32) ApiPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Size(size int32) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ApiPreviewComputersGetRequest) Pagesize(pagesize int32) ApiPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Pagesize(pagesize int32) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ApiPreviewComputersGetRequest) PageSize(pageSize int32) ApiPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) PageSize(pageSize int32) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
 
 // Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc
-func (r ApiPreviewComputersGetRequest) Sort(sort string) ApiPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Sort(sort string) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.sort = &sort
 	return r
 }
 
-func (r ApiPreviewComputersGetRequest) Execute() (*ComputersSearchResults, *http.Response, error) {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Execute() (*ComputersSearchResults, *http.Response, error) {
 	return r.ApiService.PreviewComputersGetExecute(r)
 }
 
@@ -87,10 +87,10 @@ PreviewComputersGet Return a list of Computers
 Returns a list of computers.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPreviewComputersGetRequest
+ @return ComputersPreviewAPIPreviewComputersGetRequest
 */
-func (a *ComputersPreviewApiService) PreviewComputersGet(ctx context.Context) ApiPreviewComputersGetRequest {
-	return ApiPreviewComputersGetRequest{
+func (a *ComputersPreviewAPIService) PreviewComputersGet(ctx context.Context) ComputersPreviewAPIPreviewComputersGetRequest {
+	return ComputersPreviewAPIPreviewComputersGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -98,7 +98,7 @@ func (a *ComputersPreviewApiService) PreviewComputersGet(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return ComputersSearchResults
-func (a *ComputersPreviewApiService) PreviewComputersGetExecute(r ApiPreviewComputersGetRequest) (*ComputersSearchResults, *http.Response, error) {
+func (a *ComputersPreviewAPIService) PreviewComputersGetExecute(r ComputersPreviewAPIPreviewComputersGetRequest) (*ComputersSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -106,7 +106,7 @@ func (a *ComputersPreviewApiService) PreviewComputersGetExecute(r ApiPreviewComp
 		localVarReturnValue  *ComputersSearchResults
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputersPreviewApiService.PreviewComputersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputersPreviewAPIService.PreviewComputersGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -118,19 +118,34 @@ func (a *ComputersPreviewApiService) PreviewComputersGetExecute(r ApiPreviewComp
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		localVarQueryParams.Add("page", parameterToString(*r.page, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
 	}
 	if r.size != nil {
-		localVarQueryParams.Add("size", parameterToString(*r.size, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
+	} else {
+		var defaultValue int32 = 100
+		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
-		localVarQueryParams.Add("pagesize", parameterToString(*r.pagesize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
-		localVarQueryParams.Add("page-size", parameterToString(*r.pageSize, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
-		localVarQueryParams.Add("sort", parameterToString(*r.sort, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
+	} else {
+		var defaultValue string = "name:asc"
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -159,9 +174,9 @@ func (a *ComputersPreviewApiService) PreviewComputersGetExecute(r ApiPreviewComp
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

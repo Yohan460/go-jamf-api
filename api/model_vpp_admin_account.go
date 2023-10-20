@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the VppAdminAccount type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VppAdminAccount{}
+
 // VppAdminAccount struct for VppAdminAccount
 type VppAdminAccount struct {
 	Id *int32 `json:"id,omitempty"`
@@ -44,7 +47,7 @@ func NewVppAdminAccountWithDefaults() *VppAdminAccount {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetId() int32 {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
@@ -54,7 +57,7 @@ func (o *VppAdminAccount) GetId() int32 {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetIdOk() (*int32, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -62,7 +65,7 @@ func (o *VppAdminAccount) GetIdOk() (*int32, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -76,7 +79,7 @@ func (o *VppAdminAccount) SetId(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -86,7 +89,7 @@ func (o *VppAdminAccount) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -94,7 +97,7 @@ func (o *VppAdminAccount) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -108,7 +111,7 @@ func (o *VppAdminAccount) SetName(v string) {
 
 // GetLicenseCount returns the LicenseCount field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetLicenseCount() int32 {
-	if o == nil || o.LicenseCount == nil {
+	if o == nil || IsNil(o.LicenseCount) {
 		var ret int32
 		return ret
 	}
@@ -118,7 +121,7 @@ func (o *VppAdminAccount) GetLicenseCount() int32 {
 // GetLicenseCountOk returns a tuple with the LicenseCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetLicenseCountOk() (*int32, bool) {
-	if o == nil || o.LicenseCount == nil {
+	if o == nil || IsNil(o.LicenseCount) {
 		return nil, false
 	}
 	return o.LicenseCount, true
@@ -126,7 +129,7 @@ func (o *VppAdminAccount) GetLicenseCountOk() (*int32, bool) {
 
 // HasLicenseCount returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasLicenseCount() bool {
-	if o != nil && o.LicenseCount != nil {
+	if o != nil && !IsNil(o.LicenseCount) {
 		return true
 	}
 
@@ -140,7 +143,7 @@ func (o *VppAdminAccount) SetLicenseCount(v int32) {
 
 // GetUsedLicenseCount returns the UsedLicenseCount field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetUsedLicenseCount() int32 {
-	if o == nil || o.UsedLicenseCount == nil {
+	if o == nil || IsNil(o.UsedLicenseCount) {
 		var ret int32
 		return ret
 	}
@@ -150,7 +153,7 @@ func (o *VppAdminAccount) GetUsedLicenseCount() int32 {
 // GetUsedLicenseCountOk returns a tuple with the UsedLicenseCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int32, bool) {
-	if o == nil || o.UsedLicenseCount == nil {
+	if o == nil || IsNil(o.UsedLicenseCount) {
 		return nil, false
 	}
 	return o.UsedLicenseCount, true
@@ -158,7 +161,7 @@ func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int32, bool) {
 
 // HasUsedLicenseCount returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasUsedLicenseCount() bool {
-	if o != nil && o.UsedLicenseCount != nil {
+	if o != nil && !IsNil(o.UsedLicenseCount) {
 		return true
 	}
 
@@ -172,7 +175,7 @@ func (o *VppAdminAccount) SetUsedLicenseCount(v int32) {
 
 // GetLocation returns the Location field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetLocation() string {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
@@ -182,7 +185,7 @@ func (o *VppAdminAccount) GetLocation() string {
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetLocationOk() (*string, bool) {
-	if o == nil || o.Location == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
 	return o.Location, true
@@ -190,7 +193,7 @@ func (o *VppAdminAccount) GetLocationOk() (*string, bool) {
 
 // HasLocation returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasLocation() bool {
-	if o != nil && o.Location != nil {
+	if o != nil && !IsNil(o.Location) {
 		return true
 	}
 
@@ -204,7 +207,7 @@ func (o *VppAdminAccount) SetLocation(v string) {
 
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetExpirationDate() string {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		var ret string
 		return ret
 	}
@@ -214,7 +217,7 @@ func (o *VppAdminAccount) GetExpirationDate() string {
 // GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetExpirationDateOk() (*string, bool) {
-	if o == nil || o.ExpirationDate == nil {
+	if o == nil || IsNil(o.ExpirationDate) {
 		return nil, false
 	}
 	return o.ExpirationDate, true
@@ -222,7 +225,7 @@ func (o *VppAdminAccount) GetExpirationDateOk() (*string, bool) {
 
 // HasExpirationDate returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasExpirationDate() bool {
-	if o != nil && o.ExpirationDate != nil {
+	if o != nil && !IsNil(o.ExpirationDate) {
 		return true
 	}
 
@@ -236,7 +239,7 @@ func (o *VppAdminAccount) SetExpirationDate(v string) {
 
 // GetSite returns the Site field value if set, zero value otherwise.
 func (o *VppAdminAccount) GetSite() Site {
-	if o == nil || o.Site == nil {
+	if o == nil || IsNil(o.Site) {
 		var ret Site
 		return ret
 	}
@@ -246,7 +249,7 @@ func (o *VppAdminAccount) GetSite() Site {
 // GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VppAdminAccount) GetSiteOk() (*Site, bool) {
-	if o == nil || o.Site == nil {
+	if o == nil || IsNil(o.Site) {
 		return nil, false
 	}
 	return o.Site, true
@@ -254,7 +257,7 @@ func (o *VppAdminAccount) GetSiteOk() (*Site, bool) {
 
 // HasSite returns a boolean if a field has been set.
 func (o *VppAdminAccount) HasSite() bool {
-	if o != nil && o.Site != nil {
+	if o != nil && !IsNil(o.Site) {
 		return true
 	}
 
@@ -267,29 +270,37 @@ func (o *VppAdminAccount) SetSite(v Site) {
 }
 
 func (o VppAdminAccount) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.LicenseCount != nil {
-		toSerialize["licenseCount"] = o.LicenseCount
-	}
-	if o.UsedLicenseCount != nil {
-		toSerialize["usedLicenseCount"] = o.UsedLicenseCount
-	}
-	if o.Location != nil {
-		toSerialize["location"] = o.Location
-	}
-	if o.ExpirationDate != nil {
-		toSerialize["expirationDate"] = o.ExpirationDate
-	}
-	if o.Site != nil {
-		toSerialize["site"] = o.Site
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o VppAdminAccount) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.LicenseCount) {
+		toSerialize["licenseCount"] = o.LicenseCount
+	}
+	if !IsNil(o.UsedLicenseCount) {
+		toSerialize["usedLicenseCount"] = o.UsedLicenseCount
+	}
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
+	}
+	if !IsNil(o.ExpirationDate) {
+		toSerialize["expirationDate"] = o.ExpirationDate
+	}
+	if !IsNil(o.Site) {
+		toSerialize["site"] = o.Site
+	}
+	return toSerialize, nil
 }
 
 type NullableVppAdminAccount struct {

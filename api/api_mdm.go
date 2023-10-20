@@ -13,14 +13,14 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 	"reflect"
 )
 
 
-type MdmApi interface {
+type MdmAPI interface {
 
 	/*
 	PreviewMdmCommandsPost Post a command for creation and queuing 
@@ -28,13 +28,13 @@ type MdmApi interface {
 	Provided an MDM command type and appropriate information, will create and then queue said command.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPreviewMdmCommandsPostRequest
+	@return MdmAPIPreviewMdmCommandsPostRequest
 	*/
-	PreviewMdmCommandsPost(ctx context.Context) ApiPreviewMdmCommandsPostRequest
+	PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest
 
 	// PreviewMdmCommandsPostExecute executes the request
 	//  @return []HrefResponse
-	PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
+	PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
 
 	/*
 	V1DeployPackagePost Deploy packages using MDM
@@ -42,27 +42,27 @@ type MdmApi interface {
 	Deploys packages to macOS devices using the InstallEnterpriseApplication MDM command.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1DeployPackagePostRequest
+	@return MdmAPIV1DeployPackagePostRequest
 	*/
-	V1DeployPackagePost(ctx context.Context) ApiV1DeployPackagePostRequest
+	V1DeployPackagePost(ctx context.Context) MdmAPIV1DeployPackagePostRequest
 
 	// V1DeployPackagePostExecute executes the request
 	//  @return VerbosePackageDeploymentResponse
-	V1DeployPackagePostExecute(r ApiV1DeployPackagePostRequest) (*VerbosePackageDeploymentResponse, *http.Response, error)
+	V1DeployPackagePostExecute(r MdmAPIV1DeployPackagePostRequest) (*VerbosePackageDeploymentResponse, *http.Response, error)
 
 	/*
-	V1MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
+	V1MdmCommandsGet Get information about mdm commands made by Jamf Pro.
 
 	Get information about mdm commands made by Jamf Pro.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MdmCommandsGetRequest
+	@return MdmAPIV1MdmCommandsGetRequest
 	*/
-	V1MdmCommandsGet(ctx context.Context) ApiV1MdmCommandsGetRequest
+	V1MdmCommandsGet(ctx context.Context) MdmAPIV1MdmCommandsGetRequest
 
 	// V1MdmCommandsGetExecute executes the request
 	//  @return []MdmCommand
-	V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error)
+	V1MdmCommandsGetExecute(r MdmAPIV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error)
 
 	/*
 	V1MdmRenewProfilePost Renew MDM Profile 
@@ -71,31 +71,45 @@ type MdmApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1MdmRenewProfilePostRequest
+	@return MdmAPIV1MdmRenewProfilePostRequest
 	*/
-	V1MdmRenewProfilePost(ctx context.Context) ApiV1MdmRenewProfilePostRequest
+	V1MdmRenewProfilePost(ctx context.Context) MdmAPIV1MdmRenewProfilePostRequest
 
 	// V1MdmRenewProfilePostExecute executes the request
 	//  @return RenewMdmProfileResponse
-	V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error)
+	V1MdmRenewProfilePostExecute(r MdmAPIV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error)
+
+	/*
+	V2MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
+
+	Get information about mdm commands made by Jamf Pro.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MdmAPIV2MdmCommandsGetRequest
+	*/
+	V2MdmCommandsGet(ctx context.Context) MdmAPIV2MdmCommandsGetRequest
+
+	// V2MdmCommandsGetExecute executes the request
+	//  @return MdmCommandResults
+	V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest) (*MdmCommandResults, *http.Response, error)
 }
 
-// MdmApiService MdmApi service
-type MdmApiService service
+// MdmAPIService MdmAPI service
+type MdmAPIService service
 
-type ApiPreviewMdmCommandsPostRequest struct {
+type MdmAPIPreviewMdmCommandsPostRequest struct {
 	ctx context.Context
-	ApiService MdmApi
+	ApiService MdmAPI
 	mdmCommandRequest *MdmCommandRequest
 }
 
 // The mdm command object to create and queue
-func (r ApiPreviewMdmCommandsPostRequest) MdmCommandRequest(mdmCommandRequest MdmCommandRequest) ApiPreviewMdmCommandsPostRequest {
+func (r MdmAPIPreviewMdmCommandsPostRequest) MdmCommandRequest(mdmCommandRequest MdmCommandRequest) MdmAPIPreviewMdmCommandsPostRequest {
 	r.mdmCommandRequest = &mdmCommandRequest
 	return r
 }
 
-func (r ApiPreviewMdmCommandsPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
+func (r MdmAPIPreviewMdmCommandsPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
 	return r.ApiService.PreviewMdmCommandsPostExecute(r)
 }
 
@@ -105,10 +119,10 @@ PreviewMdmCommandsPost Post a command for creation and queuing
 Provided an MDM command type and appropriate information, will create and then queue said command.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPreviewMdmCommandsPostRequest
+ @return MdmAPIPreviewMdmCommandsPostRequest
 */
-func (a *MdmApiService) PreviewMdmCommandsPost(ctx context.Context) ApiPreviewMdmCommandsPostRequest {
-	return ApiPreviewMdmCommandsPostRequest{
+func (a *MdmAPIService) PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest {
+	return MdmAPIPreviewMdmCommandsPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -116,7 +130,7 @@ func (a *MdmApiService) PreviewMdmCommandsPost(ctx context.Context) ApiPreviewMd
 
 // Execute executes the request
 //  @return []HrefResponse
-func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error) {
+func (a *MdmAPIService) PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -124,7 +138,7 @@ func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPos
 		localVarReturnValue  []HrefResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmApiService.PreviewMdmCommandsPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.PreviewMdmCommandsPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -164,9 +178,9 @@ func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPos
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -183,7 +197,8 @@ func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPos
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -200,25 +215,25 @@ func (a *MdmApiService) PreviewMdmCommandsPostExecute(r ApiPreviewMdmCommandsPos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1DeployPackagePostRequest struct {
+type MdmAPIV1DeployPackagePostRequest struct {
 	ctx context.Context
-	ApiService MdmApi
+	ApiService MdmAPI
 	installPackage *InstallPackage
 	verbose *bool
 }
 
-func (r ApiV1DeployPackagePostRequest) InstallPackage(installPackage InstallPackage) ApiV1DeployPackagePostRequest {
+func (r MdmAPIV1DeployPackagePostRequest) InstallPackage(installPackage InstallPackage) MdmAPIV1DeployPackagePostRequest {
 	r.installPackage = &installPackage
 	return r
 }
 
 // Enables the &#39;verbose&#39; response, which includes information about the commands queued as well as information about commands that failed to queue.
-func (r ApiV1DeployPackagePostRequest) Verbose(verbose bool) ApiV1DeployPackagePostRequest {
+func (r MdmAPIV1DeployPackagePostRequest) Verbose(verbose bool) MdmAPIV1DeployPackagePostRequest {
 	r.verbose = &verbose
 	return r
 }
 
-func (r ApiV1DeployPackagePostRequest) Execute() (*VerbosePackageDeploymentResponse, *http.Response, error) {
+func (r MdmAPIV1DeployPackagePostRequest) Execute() (*VerbosePackageDeploymentResponse, *http.Response, error) {
 	return r.ApiService.V1DeployPackagePostExecute(r)
 }
 
@@ -228,10 +243,10 @@ V1DeployPackagePost Deploy packages using MDM
 Deploys packages to macOS devices using the InstallEnterpriseApplication MDM command.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1DeployPackagePostRequest
+ @return MdmAPIV1DeployPackagePostRequest
 */
-func (a *MdmApiService) V1DeployPackagePost(ctx context.Context) ApiV1DeployPackagePostRequest {
-	return ApiV1DeployPackagePostRequest{
+func (a *MdmAPIService) V1DeployPackagePost(ctx context.Context) MdmAPIV1DeployPackagePostRequest {
+	return MdmAPIV1DeployPackagePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -239,7 +254,7 @@ func (a *MdmApiService) V1DeployPackagePost(ctx context.Context) ApiV1DeployPack
 
 // Execute executes the request
 //  @return VerbosePackageDeploymentResponse
-func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostRequest) (*VerbosePackageDeploymentResponse, *http.Response, error) {
+func (a *MdmAPIService) V1DeployPackagePostExecute(r MdmAPIV1DeployPackagePostRequest) (*VerbosePackageDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -247,7 +262,7 @@ func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostReque
 		localVarReturnValue  *VerbosePackageDeploymentResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmApiService.V1DeployPackagePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V1DeployPackagePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -262,7 +277,10 @@ func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostReque
 	}
 
 	if r.verbose != nil {
-		localVarQueryParams.Add("verbose", parameterToString(*r.verbose, ""))
+		parameterAddToHeaderOrQuery(localVarQueryParams, "verbose", r.verbose, "")
+	} else {
+		var defaultValue bool = false
+		r.verbose = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -293,9 +311,9 @@ func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostReque
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -320,32 +338,39 @@ func (a *MdmApiService) V1DeployPackagePostExecute(r ApiV1DeployPackagePostReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MdmCommandsGetRequest struct {
+type MdmAPIV1MdmCommandsGetRequest struct {
 	ctx context.Context
-	ApiService MdmApi
+	ApiService MdmAPI
 	uuids *[]string
+	clientManagementId *string
 }
 
-// A list of the UUIDs of the commands being searched for.  Limited to 40 UUIDs in length.
-func (r ApiV1MdmCommandsGetRequest) Uuids(uuids []string) ApiV1MdmCommandsGetRequest {
+// A list of the UUIDs of the commands being searched for.  Limited to 40 UUIDs in length. Choose one of two parameters, but not both.
+func (r MdmAPIV1MdmCommandsGetRequest) Uuids(uuids []string) MdmAPIV1MdmCommandsGetRequest {
 	r.uuids = &uuids
 	return r
 }
 
-func (r ApiV1MdmCommandsGetRequest) Execute() ([]MdmCommand, *http.Response, error) {
+// The client management id used to search for a list of commands. Choose one of two parameters, but not both.
+func (r MdmAPIV1MdmCommandsGetRequest) ClientManagementId(clientManagementId string) MdmAPIV1MdmCommandsGetRequest {
+	r.clientManagementId = &clientManagementId
+	return r
+}
+
+func (r MdmAPIV1MdmCommandsGetRequest) Execute() ([]MdmCommand, *http.Response, error) {
 	return r.ApiService.V1MdmCommandsGetExecute(r)
 }
 
 /*
-V1MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
+V1MdmCommandsGet Get information about mdm commands made by Jamf Pro.
 
 Get information about mdm commands made by Jamf Pro.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MdmCommandsGetRequest
+ @return MdmAPIV1MdmCommandsGetRequest
 */
-func (a *MdmApiService) V1MdmCommandsGet(ctx context.Context) ApiV1MdmCommandsGetRequest {
-	return ApiV1MdmCommandsGetRequest{
+func (a *MdmAPIService) V1MdmCommandsGet(ctx context.Context) MdmAPIV1MdmCommandsGetRequest {
+	return MdmAPIV1MdmCommandsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -353,7 +378,7 @@ func (a *MdmApiService) V1MdmCommandsGet(ctx context.Context) ApiV1MdmCommandsGe
 
 // Execute executes the request
 //  @return []MdmCommand
-func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error) {
+func (a *MdmAPIService) V1MdmCommandsGetExecute(r MdmAPIV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -361,7 +386,7 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 		localVarReturnValue  []MdmCommand
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmApiService.V1MdmCommandsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V1MdmCommandsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -371,20 +396,20 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.uuids == nil {
-		return localVarReturnValue, nil, reportError("uuids is required and must be specified")
-	}
 
-	{
+	if r.uuids != nil {
 		t := *r.uuids
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("uuids", parameterToString(s.Index(i), "multi"))
+				parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", s.Index(i).Interface(), "multi")
 			}
 		} else {
-			localVarQueryParams.Add("uuids", parameterToString(t, "multi"))
+			parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", t, "multi")
 		}
+	}
+	if r.clientManagementId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client-management-id", r.clientManagementId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -413,9 +438,9 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -432,7 +457,8 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -442,7 +468,8 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -459,19 +486,19 @@ func (a *MdmApiService) V1MdmCommandsGetExecute(r ApiV1MdmCommandsGetRequest) ([
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1MdmRenewProfilePostRequest struct {
+type MdmAPIV1MdmRenewProfilePostRequest struct {
 	ctx context.Context
-	ApiService MdmApi
+	ApiService MdmAPI
 	udids *Udids
 }
 
 // List of devices&#39; UDIDs to perform MDM profile renewal
-func (r ApiV1MdmRenewProfilePostRequest) Udids(udids Udids) ApiV1MdmRenewProfilePostRequest {
+func (r MdmAPIV1MdmRenewProfilePostRequest) Udids(udids Udids) MdmAPIV1MdmRenewProfilePostRequest {
 	r.udids = &udids
 	return r
 }
 
-func (r ApiV1MdmRenewProfilePostRequest) Execute() (*RenewMdmProfileResponse, *http.Response, error) {
+func (r MdmAPIV1MdmRenewProfilePostRequest) Execute() (*RenewMdmProfileResponse, *http.Response, error) {
 	return r.ApiService.V1MdmRenewProfilePostExecute(r)
 }
 
@@ -482,10 +509,10 @@ Renews the device's MDM Profile, including the device identity certificate withi
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1MdmRenewProfilePostRequest
+ @return MdmAPIV1MdmRenewProfilePostRequest
 */
-func (a *MdmApiService) V1MdmRenewProfilePost(ctx context.Context) ApiV1MdmRenewProfilePostRequest {
-	return ApiV1MdmRenewProfilePostRequest{
+func (a *MdmAPIService) V1MdmRenewProfilePost(ctx context.Context) MdmAPIV1MdmRenewProfilePostRequest {
+	return MdmAPIV1MdmRenewProfilePostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -493,7 +520,7 @@ func (a *MdmApiService) V1MdmRenewProfilePost(ctx context.Context) ApiV1MdmRenew
 
 // Execute executes the request
 //  @return RenewMdmProfileResponse
-func (a *MdmApiService) V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error) {
+func (a *MdmAPIService) V1MdmRenewProfilePostExecute(r MdmAPIV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -501,7 +528,7 @@ func (a *MdmApiService) V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostR
 		localVarReturnValue  *RenewMdmProfileResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmApiService.V1MdmRenewProfilePost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V1MdmRenewProfilePost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -544,9 +571,9 @@ func (a *MdmApiService) V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostR
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -555,6 +582,173 @@ func (a *MdmApiService) V1MdmRenewProfilePostExecute(r ApiV1MdmRenewProfilePostR
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MdmAPIV2MdmCommandsGetRequest struct {
+	ctx context.Context
+	ApiService MdmAPI
+	page *int32
+	pageSize *int32
+	sort *[]string
+	filter *string
+}
+
+func (r MdmAPIV2MdmCommandsGetRequest) Page(page int32) MdmAPIV2MdmCommandsGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r MdmAPIV2MdmCommandsGetRequest) PageSize(pageSize int32) MdmAPIV2MdmCommandsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma.
+func (r MdmAPIV2MdmCommandsGetRequest) Sort(sort []string) MdmAPIV2MdmCommandsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true
+func (r MdmAPIV2MdmCommandsGetRequest) Filter(filter string) MdmAPIV2MdmCommandsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r MdmAPIV2MdmCommandsGetRequest) Execute() (*MdmCommandResults, *http.Response, error) {
+	return r.ApiService.V2MdmCommandsGetExecute(r)
+}
+
+/*
+V2MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
+
+Get information about mdm commands made by Jamf Pro.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MdmAPIV2MdmCommandsGetRequest
+*/
+func (a *MdmAPIService) V2MdmCommandsGet(ctx context.Context) MdmAPIV2MdmCommandsGetRequest {
+	return MdmAPIV2MdmCommandsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MdmCommandResults
+func (a *MdmAPIService) V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest) (*MdmCommandResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MdmCommandResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V2MdmCommandsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/mdm/commands"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"dateSent:asc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ConnectionConfigurationStatusResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ConnectionConfigurationStatusResponse{}
+
 // ConnectionConfigurationStatusResponse Response that contains connection configuration status for Team Viewer
 type ConnectionConfigurationStatusResponse struct {
 	// connection configuration status for Team Viewer
@@ -63,11 +66,17 @@ func (o *ConnectionConfigurationStatusResponse) SetConnectionVerificationResult(
 }
 
 func (o ConnectionConfigurationStatusResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["connectionVerificationResult"] = o.ConnectionVerificationResult
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ConnectionConfigurationStatusResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["connectionVerificationResult"] = o.ConnectionVerificationResult
+	return toSerialize, nil
 }
 
 type NullableConnectionConfigurationStatusResponse struct {

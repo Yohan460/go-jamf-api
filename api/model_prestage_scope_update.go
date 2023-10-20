@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageScopeUpdate type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageScopeUpdate{}
+
 // PrestageScopeUpdate struct for PrestageScopeUpdate
 type PrestageScopeUpdate struct {
 	SerialNumbers []string `json:"serialNumbers"`
@@ -88,14 +91,18 @@ func (o *PrestageScopeUpdate) SetVersionLock(v int32) {
 }
 
 func (o PrestageScopeUpdate) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["serialNumbers"] = o.SerialNumbers
-	}
-	if true {
-		toSerialize["versionLock"] = o.VersionLock
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageScopeUpdate) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["serialNumbers"] = o.SerialNumbers
+	toSerialize["versionLock"] = o.VersionLock
+	return toSerialize, nil
 }
 
 type NullablePrestageScopeUpdate struct {

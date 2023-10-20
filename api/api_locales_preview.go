@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type LocalesPreviewApi interface {
+type LocalesPreviewAPI interface {
 
 	/*
 	V1LocalesGet Return locales that can be used in other features 
@@ -28,24 +28,24 @@ type LocalesPreviewApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1LocalesGetRequest
+	@return LocalesPreviewAPIV1LocalesGetRequest
 	*/
-	V1LocalesGet(ctx context.Context) ApiV1LocalesGetRequest
+	V1LocalesGet(ctx context.Context) LocalesPreviewAPIV1LocalesGetRequest
 
 	// V1LocalesGetExecute executes the request
 	//  @return []Locale
-	V1LocalesGetExecute(r ApiV1LocalesGetRequest) ([]Locale, *http.Response, error)
+	V1LocalesGetExecute(r LocalesPreviewAPIV1LocalesGetRequest) ([]Locale, *http.Response, error)
 }
 
-// LocalesPreviewApiService LocalesPreviewApi service
-type LocalesPreviewApiService service
+// LocalesPreviewAPIService LocalesPreviewAPI service
+type LocalesPreviewAPIService service
 
-type ApiV1LocalesGetRequest struct {
+type LocalesPreviewAPIV1LocalesGetRequest struct {
 	ctx context.Context
-	ApiService LocalesPreviewApi
+	ApiService LocalesPreviewAPI
 }
 
-func (r ApiV1LocalesGetRequest) Execute() ([]Locale, *http.Response, error) {
+func (r LocalesPreviewAPIV1LocalesGetRequest) Execute() ([]Locale, *http.Response, error) {
 	return r.ApiService.V1LocalesGetExecute(r)
 }
 
@@ -56,10 +56,10 @@ Returns locales that can be used in other features.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1LocalesGetRequest
+ @return LocalesPreviewAPIV1LocalesGetRequest
 */
-func (a *LocalesPreviewApiService) V1LocalesGet(ctx context.Context) ApiV1LocalesGetRequest {
-	return ApiV1LocalesGetRequest{
+func (a *LocalesPreviewAPIService) V1LocalesGet(ctx context.Context) LocalesPreviewAPIV1LocalesGetRequest {
+	return LocalesPreviewAPIV1LocalesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -67,7 +67,7 @@ func (a *LocalesPreviewApiService) V1LocalesGet(ctx context.Context) ApiV1Locale
 
 // Execute executes the request
 //  @return []Locale
-func (a *LocalesPreviewApiService) V1LocalesGetExecute(r ApiV1LocalesGetRequest) ([]Locale, *http.Response, error) {
+func (a *LocalesPreviewAPIService) V1LocalesGetExecute(r LocalesPreviewAPIV1LocalesGetRequest) ([]Locale, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -75,7 +75,7 @@ func (a *LocalesPreviewApiService) V1LocalesGetExecute(r ApiV1LocalesGetRequest)
 		localVarReturnValue  []Locale
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalesPreviewApiService.V1LocalesGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalesPreviewAPIService.V1LocalesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -113,9 +113,9 @@ func (a *LocalesPreviewApiService) V1LocalesGetExecute(r ApiV1LocalesGetRequest)
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}

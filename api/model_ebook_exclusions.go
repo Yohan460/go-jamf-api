@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the EbookExclusions type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EbookExclusions{}
+
 // EbookExclusions struct for EbookExclusions
 type EbookExclusions struct {
 	ComputerIds []string `json:"computerIds,omitempty"`
@@ -46,7 +49,7 @@ func NewEbookExclusionsWithDefaults() *EbookExclusions {
 
 // GetComputerIds returns the ComputerIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetComputerIds() []string {
-	if o == nil || o.ComputerIds == nil {
+	if o == nil || IsNil(o.ComputerIds) {
 		var ret []string
 		return ret
 	}
@@ -56,7 +59,7 @@ func (o *EbookExclusions) GetComputerIds() []string {
 // GetComputerIdsOk returns a tuple with the ComputerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetComputerIdsOk() ([]string, bool) {
-	if o == nil || o.ComputerIds == nil {
+	if o == nil || IsNil(o.ComputerIds) {
 		return nil, false
 	}
 	return o.ComputerIds, true
@@ -64,7 +67,7 @@ func (o *EbookExclusions) GetComputerIdsOk() ([]string, bool) {
 
 // HasComputerIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasComputerIds() bool {
-	if o != nil && o.ComputerIds != nil {
+	if o != nil && !IsNil(o.ComputerIds) {
 		return true
 	}
 
@@ -78,7 +81,7 @@ func (o *EbookExclusions) SetComputerIds(v []string) {
 
 // GetComputerGroupIds returns the ComputerGroupIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetComputerGroupIds() []string {
-	if o == nil || o.ComputerGroupIds == nil {
+	if o == nil || IsNil(o.ComputerGroupIds) {
 		var ret []string
 		return ret
 	}
@@ -88,7 +91,7 @@ func (o *EbookExclusions) GetComputerGroupIds() []string {
 // GetComputerGroupIdsOk returns a tuple with the ComputerGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetComputerGroupIdsOk() ([]string, bool) {
-	if o == nil || o.ComputerGroupIds == nil {
+	if o == nil || IsNil(o.ComputerGroupIds) {
 		return nil, false
 	}
 	return o.ComputerGroupIds, true
@@ -96,7 +99,7 @@ func (o *EbookExclusions) GetComputerGroupIdsOk() ([]string, bool) {
 
 // HasComputerGroupIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasComputerGroupIds() bool {
-	if o != nil && o.ComputerGroupIds != nil {
+	if o != nil && !IsNil(o.ComputerGroupIds) {
 		return true
 	}
 
@@ -110,7 +113,7 @@ func (o *EbookExclusions) SetComputerGroupIds(v []string) {
 
 // GetMobileDeviceIds returns the MobileDeviceIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetMobileDeviceIds() []string {
-	if o == nil || o.MobileDeviceIds == nil {
+	if o == nil || IsNil(o.MobileDeviceIds) {
 		var ret []string
 		return ret
 	}
@@ -120,7 +123,7 @@ func (o *EbookExclusions) GetMobileDeviceIds() []string {
 // GetMobileDeviceIdsOk returns a tuple with the MobileDeviceIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetMobileDeviceIdsOk() ([]string, bool) {
-	if o == nil || o.MobileDeviceIds == nil {
+	if o == nil || IsNil(o.MobileDeviceIds) {
 		return nil, false
 	}
 	return o.MobileDeviceIds, true
@@ -128,7 +131,7 @@ func (o *EbookExclusions) GetMobileDeviceIdsOk() ([]string, bool) {
 
 // HasMobileDeviceIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasMobileDeviceIds() bool {
-	if o != nil && o.MobileDeviceIds != nil {
+	if o != nil && !IsNil(o.MobileDeviceIds) {
 		return true
 	}
 
@@ -142,7 +145,7 @@ func (o *EbookExclusions) SetMobileDeviceIds(v []string) {
 
 // GetMobileDeviceGroupIds returns the MobileDeviceGroupIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetMobileDeviceGroupIds() []string {
-	if o == nil || o.MobileDeviceGroupIds == nil {
+	if o == nil || IsNil(o.MobileDeviceGroupIds) {
 		var ret []string
 		return ret
 	}
@@ -152,7 +155,7 @@ func (o *EbookExclusions) GetMobileDeviceGroupIds() []string {
 // GetMobileDeviceGroupIdsOk returns a tuple with the MobileDeviceGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetMobileDeviceGroupIdsOk() ([]string, bool) {
-	if o == nil || o.MobileDeviceGroupIds == nil {
+	if o == nil || IsNil(o.MobileDeviceGroupIds) {
 		return nil, false
 	}
 	return o.MobileDeviceGroupIds, true
@@ -160,7 +163,7 @@ func (o *EbookExclusions) GetMobileDeviceGroupIdsOk() ([]string, bool) {
 
 // HasMobileDeviceGroupIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasMobileDeviceGroupIds() bool {
-	if o != nil && o.MobileDeviceGroupIds != nil {
+	if o != nil && !IsNil(o.MobileDeviceGroupIds) {
 		return true
 	}
 
@@ -174,7 +177,7 @@ func (o *EbookExclusions) SetMobileDeviceGroupIds(v []string) {
 
 // GetBuildingIds returns the BuildingIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetBuildingIds() []string {
-	if o == nil || o.BuildingIds == nil {
+	if o == nil || IsNil(o.BuildingIds) {
 		var ret []string
 		return ret
 	}
@@ -184,7 +187,7 @@ func (o *EbookExclusions) GetBuildingIds() []string {
 // GetBuildingIdsOk returns a tuple with the BuildingIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetBuildingIdsOk() ([]string, bool) {
-	if o == nil || o.BuildingIds == nil {
+	if o == nil || IsNil(o.BuildingIds) {
 		return nil, false
 	}
 	return o.BuildingIds, true
@@ -192,7 +195,7 @@ func (o *EbookExclusions) GetBuildingIdsOk() ([]string, bool) {
 
 // HasBuildingIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasBuildingIds() bool {
-	if o != nil && o.BuildingIds != nil {
+	if o != nil && !IsNil(o.BuildingIds) {
 		return true
 	}
 
@@ -206,7 +209,7 @@ func (o *EbookExclusions) SetBuildingIds(v []string) {
 
 // GetDepartmentIds returns the DepartmentIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetDepartmentIds() []string {
-	if o == nil || o.DepartmentIds == nil {
+	if o == nil || IsNil(o.DepartmentIds) {
 		var ret []string
 		return ret
 	}
@@ -216,7 +219,7 @@ func (o *EbookExclusions) GetDepartmentIds() []string {
 // GetDepartmentIdsOk returns a tuple with the DepartmentIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetDepartmentIdsOk() ([]string, bool) {
-	if o == nil || o.DepartmentIds == nil {
+	if o == nil || IsNil(o.DepartmentIds) {
 		return nil, false
 	}
 	return o.DepartmentIds, true
@@ -224,7 +227,7 @@ func (o *EbookExclusions) GetDepartmentIdsOk() ([]string, bool) {
 
 // HasDepartmentIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasDepartmentIds() bool {
-	if o != nil && o.DepartmentIds != nil {
+	if o != nil && !IsNil(o.DepartmentIds) {
 		return true
 	}
 
@@ -238,7 +241,7 @@ func (o *EbookExclusions) SetDepartmentIds(v []string) {
 
 // GetUserIds returns the UserIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetUserIds() []string {
-	if o == nil || o.UserIds == nil {
+	if o == nil || IsNil(o.UserIds) {
 		var ret []string
 		return ret
 	}
@@ -248,7 +251,7 @@ func (o *EbookExclusions) GetUserIds() []string {
 // GetUserIdsOk returns a tuple with the UserIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetUserIdsOk() ([]string, bool) {
-	if o == nil || o.UserIds == nil {
+	if o == nil || IsNil(o.UserIds) {
 		return nil, false
 	}
 	return o.UserIds, true
@@ -256,7 +259,7 @@ func (o *EbookExclusions) GetUserIdsOk() ([]string, bool) {
 
 // HasUserIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasUserIds() bool {
-	if o != nil && o.UserIds != nil {
+	if o != nil && !IsNil(o.UserIds) {
 		return true
 	}
 
@@ -270,7 +273,7 @@ func (o *EbookExclusions) SetUserIds(v []string) {
 
 // GetUserGroupIds returns the UserGroupIds field value if set, zero value otherwise.
 func (o *EbookExclusions) GetUserGroupIds() []string {
-	if o == nil || o.UserGroupIds == nil {
+	if o == nil || IsNil(o.UserGroupIds) {
 		var ret []string
 		return ret
 	}
@@ -280,7 +283,7 @@ func (o *EbookExclusions) GetUserGroupIds() []string {
 // GetUserGroupIdsOk returns a tuple with the UserGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetUserGroupIdsOk() ([]string, bool) {
-	if o == nil || o.UserGroupIds == nil {
+	if o == nil || IsNil(o.UserGroupIds) {
 		return nil, false
 	}
 	return o.UserGroupIds, true
@@ -288,7 +291,7 @@ func (o *EbookExclusions) GetUserGroupIdsOk() ([]string, bool) {
 
 // HasUserGroupIds returns a boolean if a field has been set.
 func (o *EbookExclusions) HasUserGroupIds() bool {
-	if o != nil && o.UserGroupIds != nil {
+	if o != nil && !IsNil(o.UserGroupIds) {
 		return true
 	}
 
@@ -302,7 +305,7 @@ func (o *EbookExclusions) SetUserGroupIds(v []string) {
 
 // GetLimitations returns the Limitations field value if set, zero value otherwise.
 func (o *EbookExclusions) GetLimitations() EbookLimitations {
-	if o == nil || o.Limitations == nil {
+	if o == nil || IsNil(o.Limitations) {
 		var ret EbookLimitations
 		return ret
 	}
@@ -312,7 +315,7 @@ func (o *EbookExclusions) GetLimitations() EbookLimitations {
 // GetLimitationsOk returns a tuple with the Limitations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EbookExclusions) GetLimitationsOk() (*EbookLimitations, bool) {
-	if o == nil || o.Limitations == nil {
+	if o == nil || IsNil(o.Limitations) {
 		return nil, false
 	}
 	return o.Limitations, true
@@ -320,7 +323,7 @@ func (o *EbookExclusions) GetLimitationsOk() (*EbookLimitations, bool) {
 
 // HasLimitations returns a boolean if a field has been set.
 func (o *EbookExclusions) HasLimitations() bool {
-	if o != nil && o.Limitations != nil {
+	if o != nil && !IsNil(o.Limitations) {
 		return true
 	}
 
@@ -333,35 +336,43 @@ func (o *EbookExclusions) SetLimitations(v EbookLimitations) {
 }
 
 func (o EbookExclusions) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.ComputerIds != nil {
-		toSerialize["computerIds"] = o.ComputerIds
-	}
-	if o.ComputerGroupIds != nil {
-		toSerialize["computerGroupIds"] = o.ComputerGroupIds
-	}
-	if o.MobileDeviceIds != nil {
-		toSerialize["mobileDeviceIds"] = o.MobileDeviceIds
-	}
-	if o.MobileDeviceGroupIds != nil {
-		toSerialize["mobileDeviceGroupIds"] = o.MobileDeviceGroupIds
-	}
-	if o.BuildingIds != nil {
-		toSerialize["buildingIds"] = o.BuildingIds
-	}
-	if o.DepartmentIds != nil {
-		toSerialize["departmentIds"] = o.DepartmentIds
-	}
-	if o.UserIds != nil {
-		toSerialize["userIds"] = o.UserIds
-	}
-	if o.UserGroupIds != nil {
-		toSerialize["userGroupIds"] = o.UserGroupIds
-	}
-	if o.Limitations != nil {
-		toSerialize["limitations"] = o.Limitations
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o EbookExclusions) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ComputerIds) {
+		toSerialize["computerIds"] = o.ComputerIds
+	}
+	if !IsNil(o.ComputerGroupIds) {
+		toSerialize["computerGroupIds"] = o.ComputerGroupIds
+	}
+	if !IsNil(o.MobileDeviceIds) {
+		toSerialize["mobileDeviceIds"] = o.MobileDeviceIds
+	}
+	if !IsNil(o.MobileDeviceGroupIds) {
+		toSerialize["mobileDeviceGroupIds"] = o.MobileDeviceGroupIds
+	}
+	if !IsNil(o.BuildingIds) {
+		toSerialize["buildingIds"] = o.BuildingIds
+	}
+	if !IsNil(o.DepartmentIds) {
+		toSerialize["departmentIds"] = o.DepartmentIds
+	}
+	if !IsNil(o.UserIds) {
+		toSerialize["userIds"] = o.UserIds
+	}
+	if !IsNil(o.UserGroupIds) {
+		toSerialize["userGroupIds"] = o.UserGroupIds
+	}
+	if !IsNil(o.Limitations) {
+		toSerialize["limitations"] = o.Limitations
+	}
+	return toSerialize, nil
 }
 
 type NullableEbookExclusions struct {

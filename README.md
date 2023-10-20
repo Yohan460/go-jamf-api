@@ -36,3 +36,9 @@ func main() {
 ## UAPI Usage
 
 See [Usage docs](api/README.md)
+
+## UAPI Regeneration
+
+When there is a Jamf UAPI schema upgrade the [generate-api.sh](scripts/generate-api.sh) file can be run with the new swagger schema as the first parameter to re-generate it
+
+The script contains a couple of patches to ensure it is syntactically correct go code.

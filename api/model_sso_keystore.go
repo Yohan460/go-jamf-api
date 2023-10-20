@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the SsoKeystore type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SsoKeystore{}
+
 // SsoKeystore struct for SsoKeystore
 type SsoKeystore struct {
 	SsoKeystoreParse
@@ -51,7 +54,7 @@ func NewSsoKeystoreWithDefaults() *SsoKeystore {
 
 // GetKeys returns the Keys field value if set, zero value otherwise.
 func (o *SsoKeystore) GetKeys() []CertificateKey {
-	if o == nil || o.Keys == nil {
+	if o == nil || IsNil(o.Keys) {
 		var ret []CertificateKey
 		return ret
 	}
@@ -61,7 +64,7 @@ func (o *SsoKeystore) GetKeys() []CertificateKey {
 // GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoKeystore) GetKeysOk() ([]CertificateKey, bool) {
-	if o == nil || o.Keys == nil {
+	if o == nil || IsNil(o.Keys) {
 		return nil, false
 	}
 	return o.Keys, true
@@ -69,7 +72,7 @@ func (o *SsoKeystore) GetKeysOk() ([]CertificateKey, bool) {
 
 // HasKeys returns a boolean if a field has been set.
 func (o *SsoKeystore) HasKeys() bool {
-	if o != nil && o.Keys != nil {
+	if o != nil && !IsNil(o.Keys) {
 		return true
 	}
 
@@ -155,7 +158,7 @@ func (o *SsoKeystore) SetType(v string) {
 
 // GetKeystoreSetupType returns the KeystoreSetupType field value if set, zero value otherwise.
 func (o *SsoKeystore) GetKeystoreSetupType() string {
-	if o == nil || o.KeystoreSetupType == nil {
+	if o == nil || IsNil(o.KeystoreSetupType) {
 		var ret string
 		return ret
 	}
@@ -165,7 +168,7 @@ func (o *SsoKeystore) GetKeystoreSetupType() string {
 // GetKeystoreSetupTypeOk returns a tuple with the KeystoreSetupType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SsoKeystore) GetKeystoreSetupTypeOk() (*string, bool) {
-	if o == nil || o.KeystoreSetupType == nil {
+	if o == nil || IsNil(o.KeystoreSetupType) {
 		return nil, false
 	}
 	return o.KeystoreSetupType, true
@@ -173,7 +176,7 @@ func (o *SsoKeystore) GetKeystoreSetupTypeOk() (*string, bool) {
 
 // HasKeystoreSetupType returns a boolean if a field has been set.
 func (o *SsoKeystore) HasKeystoreSetupType() bool {
-	if o != nil && o.KeystoreSetupType != nil {
+	if o != nil && !IsNil(o.KeystoreSetupType) {
 		return true
 	}
 
@@ -186,31 +189,33 @@ func (o *SsoKeystore) SetKeystoreSetupType(v string) {
 }
 
 func (o SsoKeystore) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SsoKeystore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	serializedSsoKeystoreParse, errSsoKeystoreParse := json.Marshal(o.SsoKeystoreParse)
 	if errSsoKeystoreParse != nil {
-		return []byte{}, errSsoKeystoreParse
+		return map[string]interface{}{}, errSsoKeystoreParse
 	}
 	errSsoKeystoreParse = json.Unmarshal([]byte(serializedSsoKeystoreParse), &toSerialize)
 	if errSsoKeystoreParse != nil {
-		return []byte{}, errSsoKeystoreParse
+		return map[string]interface{}{}, errSsoKeystoreParse
 	}
-	if o.Keys != nil {
+	if !IsNil(o.Keys) {
 		toSerialize["keys"] = o.Keys
 	}
-	if true {
-		toSerialize["key"] = o.Key
-	}
-	if true {
-		toSerialize["password"] = o.Password
-	}
-	if true {
-		toSerialize["type"] = o.Type
-	}
-	if o.KeystoreSetupType != nil {
+	toSerialize["key"] = o.Key
+	toSerialize["password"] = o.Password
+	toSerialize["type"] = o.Type
+	if !IsNil(o.KeystoreSetupType) {
 		toSerialize["keystoreSetupType"] = o.KeystoreSetupType
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableSsoKeystore struct {

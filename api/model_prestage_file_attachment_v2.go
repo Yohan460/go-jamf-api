@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PrestageFileAttachmentV2 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrestageFileAttachmentV2{}
+
 // PrestageFileAttachmentV2 struct for PrestageFileAttachmentV2
 type PrestageFileAttachmentV2 struct {
 	Id *string `json:"id,omitempty"`
@@ -40,7 +43,7 @@ func NewPrestageFileAttachmentV2WithDefaults() *PrestageFileAttachmentV2 {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *PrestageFileAttachmentV2) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *PrestageFileAttachmentV2) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachmentV2) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -58,7 +61,7 @@ func (o *PrestageFileAttachmentV2) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *PrestageFileAttachmentV2) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *PrestageFileAttachmentV2) SetId(v string) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *PrestageFileAttachmentV2) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *PrestageFileAttachmentV2) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachmentV2) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -90,7 +93,7 @@ func (o *PrestageFileAttachmentV2) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *PrestageFileAttachmentV2) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *PrestageFileAttachmentV2) SetName(v string) {
 
 // GetFileType returns the FileType field value if set, zero value otherwise.
 func (o *PrestageFileAttachmentV2) GetFileType() string {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *PrestageFileAttachmentV2) GetFileType() string {
 // GetFileTypeOk returns a tuple with the FileType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PrestageFileAttachmentV2) GetFileTypeOk() (*string, bool) {
-	if o == nil || o.FileType == nil {
+	if o == nil || IsNil(o.FileType) {
 		return nil, false
 	}
 	return o.FileType, true
@@ -122,7 +125,7 @@ func (o *PrestageFileAttachmentV2) GetFileTypeOk() (*string, bool) {
 
 // HasFileType returns a boolean if a field has been set.
 func (o *PrestageFileAttachmentV2) HasFileType() bool {
-	if o != nil && o.FileType != nil {
+	if o != nil && !IsNil(o.FileType) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *PrestageFileAttachmentV2) SetFileType(v string) {
 }
 
 func (o PrestageFileAttachmentV2) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.FileType != nil {
-		toSerialize["fileType"] = o.FileType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PrestageFileAttachmentV2) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.FileType) {
+		toSerialize["fileType"] = o.FileType
+	}
+	return toSerialize, nil
 }
 
 type NullablePrestageFileAttachmentV2 struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CloudLdapServerResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudLdapServerResponse{}
+
 // CloudLdapServerResponse A Cloud Identity Provider LDAP server configuration for responses
 type CloudLdapServerResponse struct {
 	Id *string `json:"id,omitempty"`
@@ -26,6 +29,7 @@ type CloudLdapServerResponse struct {
 	SearchTimeout *int32 `json:"searchTimeout,omitempty"`
 	UseWildcards *bool `json:"useWildcards,omitempty"`
 	ConnectionType *string `json:"connectionType,omitempty"`
+	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
 // NewCloudLdapServerResponse instantiates a new CloudLdapServerResponse object
@@ -47,7 +51,7 @@ func NewCloudLdapServerResponseWithDefaults() *CloudLdapServerResponse {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetId() string {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -57,7 +61,7 @@ func (o *CloudLdapServerResponse) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetIdOk() (*string, bool) {
-	if o == nil || o.Id == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
 	return o.Id, true
@@ -65,7 +69,7 @@ func (o *CloudLdapServerResponse) GetIdOk() (*string, bool) {
 
 // HasId returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasId() bool {
-	if o != nil && o.Id != nil {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -79,7 +83,7 @@ func (o *CloudLdapServerResponse) SetId(v string) {
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetEnabled() bool {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
@@ -89,7 +93,7 @@ func (o *CloudLdapServerResponse) GetEnabled() bool {
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetEnabledOk() (*bool, bool) {
-	if o == nil || o.Enabled == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
 	return o.Enabled, true
@@ -97,7 +101,7 @@ func (o *CloudLdapServerResponse) GetEnabledOk() (*bool, bool) {
 
 // HasEnabled returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasEnabled() bool {
-	if o != nil && o.Enabled != nil {
+	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
 
@@ -111,7 +115,7 @@ func (o *CloudLdapServerResponse) SetEnabled(v bool) {
 
 // GetServerUrl returns the ServerUrl field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetServerUrl() string {
-	if o == nil || o.ServerUrl == nil {
+	if o == nil || IsNil(o.ServerUrl) {
 		var ret string
 		return ret
 	}
@@ -121,7 +125,7 @@ func (o *CloudLdapServerResponse) GetServerUrl() string {
 // GetServerUrlOk returns a tuple with the ServerUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetServerUrlOk() (*string, bool) {
-	if o == nil || o.ServerUrl == nil {
+	if o == nil || IsNil(o.ServerUrl) {
 		return nil, false
 	}
 	return o.ServerUrl, true
@@ -129,7 +133,7 @@ func (o *CloudLdapServerResponse) GetServerUrlOk() (*string, bool) {
 
 // HasServerUrl returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasServerUrl() bool {
-	if o != nil && o.ServerUrl != nil {
+	if o != nil && !IsNil(o.ServerUrl) {
 		return true
 	}
 
@@ -143,7 +147,7 @@ func (o *CloudLdapServerResponse) SetServerUrl(v string) {
 
 // GetDomainName returns the DomainName field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetDomainName() string {
-	if o == nil || o.DomainName == nil {
+	if o == nil || IsNil(o.DomainName) {
 		var ret string
 		return ret
 	}
@@ -153,7 +157,7 @@ func (o *CloudLdapServerResponse) GetDomainName() string {
 // GetDomainNameOk returns a tuple with the DomainName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetDomainNameOk() (*string, bool) {
-	if o == nil || o.DomainName == nil {
+	if o == nil || IsNil(o.DomainName) {
 		return nil, false
 	}
 	return o.DomainName, true
@@ -161,7 +165,7 @@ func (o *CloudLdapServerResponse) GetDomainNameOk() (*string, bool) {
 
 // HasDomainName returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasDomainName() bool {
-	if o != nil && o.DomainName != nil {
+	if o != nil && !IsNil(o.DomainName) {
 		return true
 	}
 
@@ -175,7 +179,7 @@ func (o *CloudLdapServerResponse) SetDomainName(v string) {
 
 // GetPort returns the Port field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetPort() int32 {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
@@ -185,7 +189,7 @@ func (o *CloudLdapServerResponse) GetPort() int32 {
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetPortOk() (*int32, bool) {
-	if o == nil || o.Port == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
 	return o.Port, true
@@ -193,7 +197,7 @@ func (o *CloudLdapServerResponse) GetPortOk() (*int32, bool) {
 
 // HasPort returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasPort() bool {
-	if o != nil && o.Port != nil {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
@@ -207,7 +211,7 @@ func (o *CloudLdapServerResponse) SetPort(v int32) {
 
 // GetKeystore returns the Keystore field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetKeystore() CloudLdapKeystore {
-	if o == nil || o.Keystore == nil {
+	if o == nil || IsNil(o.Keystore) {
 		var ret CloudLdapKeystore
 		return ret
 	}
@@ -217,7 +221,7 @@ func (o *CloudLdapServerResponse) GetKeystore() CloudLdapKeystore {
 // GetKeystoreOk returns a tuple with the Keystore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetKeystoreOk() (*CloudLdapKeystore, bool) {
-	if o == nil || o.Keystore == nil {
+	if o == nil || IsNil(o.Keystore) {
 		return nil, false
 	}
 	return o.Keystore, true
@@ -225,7 +229,7 @@ func (o *CloudLdapServerResponse) GetKeystoreOk() (*CloudLdapKeystore, bool) {
 
 // HasKeystore returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasKeystore() bool {
-	if o != nil && o.Keystore != nil {
+	if o != nil && !IsNil(o.Keystore) {
 		return true
 	}
 
@@ -239,7 +243,7 @@ func (o *CloudLdapServerResponse) SetKeystore(v CloudLdapKeystore) {
 
 // GetConnectionTimeout returns the ConnectionTimeout field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetConnectionTimeout() int32 {
-	if o == nil || o.ConnectionTimeout == nil {
+	if o == nil || IsNil(o.ConnectionTimeout) {
 		var ret int32
 		return ret
 	}
@@ -249,7 +253,7 @@ func (o *CloudLdapServerResponse) GetConnectionTimeout() int32 {
 // GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int32, bool) {
-	if o == nil || o.ConnectionTimeout == nil {
+	if o == nil || IsNil(o.ConnectionTimeout) {
 		return nil, false
 	}
 	return o.ConnectionTimeout, true
@@ -257,7 +261,7 @@ func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int32, bool) {
 
 // HasConnectionTimeout returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasConnectionTimeout() bool {
-	if o != nil && o.ConnectionTimeout != nil {
+	if o != nil && !IsNil(o.ConnectionTimeout) {
 		return true
 	}
 
@@ -271,7 +275,7 @@ func (o *CloudLdapServerResponse) SetConnectionTimeout(v int32) {
 
 // GetSearchTimeout returns the SearchTimeout field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetSearchTimeout() int32 {
-	if o == nil || o.SearchTimeout == nil {
+	if o == nil || IsNil(o.SearchTimeout) {
 		var ret int32
 		return ret
 	}
@@ -281,7 +285,7 @@ func (o *CloudLdapServerResponse) GetSearchTimeout() int32 {
 // GetSearchTimeoutOk returns a tuple with the SearchTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int32, bool) {
-	if o == nil || o.SearchTimeout == nil {
+	if o == nil || IsNil(o.SearchTimeout) {
 		return nil, false
 	}
 	return o.SearchTimeout, true
@@ -289,7 +293,7 @@ func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int32, bool) {
 
 // HasSearchTimeout returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasSearchTimeout() bool {
-	if o != nil && o.SearchTimeout != nil {
+	if o != nil && !IsNil(o.SearchTimeout) {
 		return true
 	}
 
@@ -303,7 +307,7 @@ func (o *CloudLdapServerResponse) SetSearchTimeout(v int32) {
 
 // GetUseWildcards returns the UseWildcards field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetUseWildcards() bool {
-	if o == nil || o.UseWildcards == nil {
+	if o == nil || IsNil(o.UseWildcards) {
 		var ret bool
 		return ret
 	}
@@ -313,7 +317,7 @@ func (o *CloudLdapServerResponse) GetUseWildcards() bool {
 // GetUseWildcardsOk returns a tuple with the UseWildcards field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetUseWildcardsOk() (*bool, bool) {
-	if o == nil || o.UseWildcards == nil {
+	if o == nil || IsNil(o.UseWildcards) {
 		return nil, false
 	}
 	return o.UseWildcards, true
@@ -321,7 +325,7 @@ func (o *CloudLdapServerResponse) GetUseWildcardsOk() (*bool, bool) {
 
 // HasUseWildcards returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasUseWildcards() bool {
-	if o != nil && o.UseWildcards != nil {
+	if o != nil && !IsNil(o.UseWildcards) {
 		return true
 	}
 
@@ -335,7 +339,7 @@ func (o *CloudLdapServerResponse) SetUseWildcards(v bool) {
 
 // GetConnectionType returns the ConnectionType field value if set, zero value otherwise.
 func (o *CloudLdapServerResponse) GetConnectionType() string {
-	if o == nil || o.ConnectionType == nil {
+	if o == nil || IsNil(o.ConnectionType) {
 		var ret string
 		return ret
 	}
@@ -345,7 +349,7 @@ func (o *CloudLdapServerResponse) GetConnectionType() string {
 // GetConnectionTypeOk returns a tuple with the ConnectionType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CloudLdapServerResponse) GetConnectionTypeOk() (*string, bool) {
-	if o == nil || o.ConnectionType == nil {
+	if o == nil || IsNil(o.ConnectionType) {
 		return nil, false
 	}
 	return o.ConnectionType, true
@@ -353,7 +357,7 @@ func (o *CloudLdapServerResponse) GetConnectionTypeOk() (*string, bool) {
 
 // HasConnectionType returns a boolean if a field has been set.
 func (o *CloudLdapServerResponse) HasConnectionType() bool {
-	if o != nil && o.ConnectionType != nil {
+	if o != nil && !IsNil(o.ConnectionType) {
 		return true
 	}
 
@@ -365,39 +369,82 @@ func (o *CloudLdapServerResponse) SetConnectionType(v string) {
 	o.ConnectionType = &v
 }
 
+// GetMembershipCalculationOptimizationEnabled returns the MembershipCalculationOptimizationEnabled field value if set, zero value otherwise.
+func (o *CloudLdapServerResponse) GetMembershipCalculationOptimizationEnabled() bool {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MembershipCalculationOptimizationEnabled
+}
+
+// GetMembershipCalculationOptimizationEnabledOk returns a tuple with the MembershipCalculationOptimizationEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudLdapServerResponse) GetMembershipCalculationOptimizationEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return nil, false
+	}
+	return o.MembershipCalculationOptimizationEnabled, true
+}
+
+// HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+func (o *CloudLdapServerResponse) HasMembershipCalculationOptimizationEnabled() bool {
+	if o != nil && !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMembershipCalculationOptimizationEnabled gets a reference to the given bool and assigns it to the MembershipCalculationOptimizationEnabled field.
+func (o *CloudLdapServerResponse) SetMembershipCalculationOptimizationEnabled(v bool) {
+	o.MembershipCalculationOptimizationEnabled = &v
+}
+
 func (o CloudLdapServerResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
-		toSerialize["id"] = o.Id
-	}
-	if o.Enabled != nil {
-		toSerialize["enabled"] = o.Enabled
-	}
-	if o.ServerUrl != nil {
-		toSerialize["serverUrl"] = o.ServerUrl
-	}
-	if o.DomainName != nil {
-		toSerialize["domainName"] = o.DomainName
-	}
-	if o.Port != nil {
-		toSerialize["port"] = o.Port
-	}
-	if o.Keystore != nil {
-		toSerialize["keystore"] = o.Keystore
-	}
-	if o.ConnectionTimeout != nil {
-		toSerialize["connectionTimeout"] = o.ConnectionTimeout
-	}
-	if o.SearchTimeout != nil {
-		toSerialize["searchTimeout"] = o.SearchTimeout
-	}
-	if o.UseWildcards != nil {
-		toSerialize["useWildcards"] = o.UseWildcards
-	}
-	if o.ConnectionType != nil {
-		toSerialize["connectionType"] = o.ConnectionType
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CloudLdapServerResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
+	if !IsNil(o.ServerUrl) {
+		toSerialize["serverUrl"] = o.ServerUrl
+	}
+	if !IsNil(o.DomainName) {
+		toSerialize["domainName"] = o.DomainName
+	}
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
+	}
+	if !IsNil(o.Keystore) {
+		toSerialize["keystore"] = o.Keystore
+	}
+	if !IsNil(o.ConnectionTimeout) {
+		toSerialize["connectionTimeout"] = o.ConnectionTimeout
+	}
+	if !IsNil(o.SearchTimeout) {
+		toSerialize["searchTimeout"] = o.SearchTimeout
+	}
+	if !IsNil(o.UseWildcards) {
+		toSerialize["useWildcards"] = o.UseWildcards
+	}
+	if !IsNil(o.ConnectionType) {
+		toSerialize["connectionType"] = o.ConnectionType
+	}
+	if !IsNil(o.MembershipCalculationOptimizationEnabled) {
+		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableCloudLdapServerResponse struct {

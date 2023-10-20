@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TeacherFeatures type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TeacherFeatures{}
+
 // TeacherFeatures struct for TeacherFeatures
 type TeacherFeatures struct {
 	IsAllowAppLock *bool `json:"isAllowAppLock,omitempty"`
@@ -42,7 +45,7 @@ func NewTeacherFeaturesWithDefaults() *TeacherFeatures {
 
 // GetIsAllowAppLock returns the IsAllowAppLock field value if set, zero value otherwise.
 func (o *TeacherFeatures) GetIsAllowAppLock() bool {
-	if o == nil || o.IsAllowAppLock == nil {
+	if o == nil || IsNil(o.IsAllowAppLock) {
 		var ret bool
 		return ret
 	}
@@ -52,7 +55,7 @@ func (o *TeacherFeatures) GetIsAllowAppLock() bool {
 // GetIsAllowAppLockOk returns a tuple with the IsAllowAppLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherFeatures) GetIsAllowAppLockOk() (*bool, bool) {
-	if o == nil || o.IsAllowAppLock == nil {
+	if o == nil || IsNil(o.IsAllowAppLock) {
 		return nil, false
 	}
 	return o.IsAllowAppLock, true
@@ -60,7 +63,7 @@ func (o *TeacherFeatures) GetIsAllowAppLockOk() (*bool, bool) {
 
 // HasIsAllowAppLock returns a boolean if a field has been set.
 func (o *TeacherFeatures) HasIsAllowAppLock() bool {
-	if o != nil && o.IsAllowAppLock != nil {
+	if o != nil && !IsNil(o.IsAllowAppLock) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *TeacherFeatures) SetIsAllowAppLock(v bool) {
 
 // GetIsAllowWebLock returns the IsAllowWebLock field value if set, zero value otherwise.
 func (o *TeacherFeatures) GetIsAllowWebLock() bool {
-	if o == nil || o.IsAllowWebLock == nil {
+	if o == nil || IsNil(o.IsAllowWebLock) {
 		var ret bool
 		return ret
 	}
@@ -84,7 +87,7 @@ func (o *TeacherFeatures) GetIsAllowWebLock() bool {
 // GetIsAllowWebLockOk returns a tuple with the IsAllowWebLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherFeatures) GetIsAllowWebLockOk() (*bool, bool) {
-	if o == nil || o.IsAllowWebLock == nil {
+	if o == nil || IsNil(o.IsAllowWebLock) {
 		return nil, false
 	}
 	return o.IsAllowWebLock, true
@@ -92,7 +95,7 @@ func (o *TeacherFeatures) GetIsAllowWebLockOk() (*bool, bool) {
 
 // HasIsAllowWebLock returns a boolean if a field has been set.
 func (o *TeacherFeatures) HasIsAllowWebLock() bool {
-	if o != nil && o.IsAllowWebLock != nil {
+	if o != nil && !IsNil(o.IsAllowWebLock) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *TeacherFeatures) SetIsAllowWebLock(v bool) {
 
 // GetIsAllowRestrictions returns the IsAllowRestrictions field value if set, zero value otherwise.
 func (o *TeacherFeatures) GetIsAllowRestrictions() bool {
-	if o == nil || o.IsAllowRestrictions == nil {
+	if o == nil || IsNil(o.IsAllowRestrictions) {
 		var ret bool
 		return ret
 	}
@@ -116,7 +119,7 @@ func (o *TeacherFeatures) GetIsAllowRestrictions() bool {
 // GetIsAllowRestrictionsOk returns a tuple with the IsAllowRestrictions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherFeatures) GetIsAllowRestrictionsOk() (*bool, bool) {
-	if o == nil || o.IsAllowRestrictions == nil {
+	if o == nil || IsNil(o.IsAllowRestrictions) {
 		return nil, false
 	}
 	return o.IsAllowRestrictions, true
@@ -124,7 +127,7 @@ func (o *TeacherFeatures) GetIsAllowRestrictionsOk() (*bool, bool) {
 
 // HasIsAllowRestrictions returns a boolean if a field has been set.
 func (o *TeacherFeatures) HasIsAllowRestrictions() bool {
-	if o != nil && o.IsAllowRestrictions != nil {
+	if o != nil && !IsNil(o.IsAllowRestrictions) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *TeacherFeatures) SetIsAllowRestrictions(v bool) {
 
 // GetIsAllowAttentionScreen returns the IsAllowAttentionScreen field value if set, zero value otherwise.
 func (o *TeacherFeatures) GetIsAllowAttentionScreen() bool {
-	if o == nil || o.IsAllowAttentionScreen == nil {
+	if o == nil || IsNil(o.IsAllowAttentionScreen) {
 		var ret bool
 		return ret
 	}
@@ -148,7 +151,7 @@ func (o *TeacherFeatures) GetIsAllowAttentionScreen() bool {
 // GetIsAllowAttentionScreenOk returns a tuple with the IsAllowAttentionScreen field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherFeatures) GetIsAllowAttentionScreenOk() (*bool, bool) {
-	if o == nil || o.IsAllowAttentionScreen == nil {
+	if o == nil || IsNil(o.IsAllowAttentionScreen) {
 		return nil, false
 	}
 	return o.IsAllowAttentionScreen, true
@@ -156,7 +159,7 @@ func (o *TeacherFeatures) GetIsAllowAttentionScreenOk() (*bool, bool) {
 
 // HasIsAllowAttentionScreen returns a boolean if a field has been set.
 func (o *TeacherFeatures) HasIsAllowAttentionScreen() bool {
-	if o != nil && o.IsAllowAttentionScreen != nil {
+	if o != nil && !IsNil(o.IsAllowAttentionScreen) {
 		return true
 	}
 
@@ -170,7 +173,7 @@ func (o *TeacherFeatures) SetIsAllowAttentionScreen(v bool) {
 
 // GetIsAllowClearPasscode returns the IsAllowClearPasscode field value if set, zero value otherwise.
 func (o *TeacherFeatures) GetIsAllowClearPasscode() bool {
-	if o == nil || o.IsAllowClearPasscode == nil {
+	if o == nil || IsNil(o.IsAllowClearPasscode) {
 		var ret bool
 		return ret
 	}
@@ -180,7 +183,7 @@ func (o *TeacherFeatures) GetIsAllowClearPasscode() bool {
 // GetIsAllowClearPasscodeOk returns a tuple with the IsAllowClearPasscode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TeacherFeatures) GetIsAllowClearPasscodeOk() (*bool, bool) {
-	if o == nil || o.IsAllowClearPasscode == nil {
+	if o == nil || IsNil(o.IsAllowClearPasscode) {
 		return nil, false
 	}
 	return o.IsAllowClearPasscode, true
@@ -188,7 +191,7 @@ func (o *TeacherFeatures) GetIsAllowClearPasscodeOk() (*bool, bool) {
 
 // HasIsAllowClearPasscode returns a boolean if a field has been set.
 func (o *TeacherFeatures) HasIsAllowClearPasscode() bool {
-	if o != nil && o.IsAllowClearPasscode != nil {
+	if o != nil && !IsNil(o.IsAllowClearPasscode) {
 		return true
 	}
 
@@ -201,23 +204,31 @@ func (o *TeacherFeatures) SetIsAllowClearPasscode(v bool) {
 }
 
 func (o TeacherFeatures) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsAllowAppLock != nil {
-		toSerialize["isAllowAppLock"] = o.IsAllowAppLock
-	}
-	if o.IsAllowWebLock != nil {
-		toSerialize["isAllowWebLock"] = o.IsAllowWebLock
-	}
-	if o.IsAllowRestrictions != nil {
-		toSerialize["isAllowRestrictions"] = o.IsAllowRestrictions
-	}
-	if o.IsAllowAttentionScreen != nil {
-		toSerialize["isAllowAttentionScreen"] = o.IsAllowAttentionScreen
-	}
-	if o.IsAllowClearPasscode != nil {
-		toSerialize["isAllowClearPasscode"] = o.IsAllowClearPasscode
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o TeacherFeatures) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsAllowAppLock) {
+		toSerialize["isAllowAppLock"] = o.IsAllowAppLock
+	}
+	if !IsNil(o.IsAllowWebLock) {
+		toSerialize["isAllowWebLock"] = o.IsAllowWebLock
+	}
+	if !IsNil(o.IsAllowRestrictions) {
+		toSerialize["isAllowRestrictions"] = o.IsAllowRestrictions
+	}
+	if !IsNil(o.IsAllowAttentionScreen) {
+		toSerialize["isAllowAttentionScreen"] = o.IsAllowAttentionScreen
+	}
+	if !IsNil(o.IsAllowClearPasscode) {
+		toSerialize["isAllowClearPasscode"] = o.IsAllowClearPasscode
+	}
+	return toSerialize, nil
 }
 
 type NullableTeacherFeatures struct {

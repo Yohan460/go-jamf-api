@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the DeleteUserCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeleteUserCommand{}
+
 // DeleteUserCommand struct for DeleteUserCommand
 type DeleteUserCommand struct {
 	UserName *string `json:"userName,omitempty"`
@@ -40,7 +43,7 @@ func NewDeleteUserCommandWithDefaults() *DeleteUserCommand {
 
 // GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *DeleteUserCommand) GetUserName() string {
-	if o == nil || o.UserName == nil {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *DeleteUserCommand) GetUserName() string {
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteUserCommand) GetUserNameOk() (*string, bool) {
-	if o == nil || o.UserName == nil {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
 	return o.UserName, true
@@ -58,7 +61,7 @@ func (o *DeleteUserCommand) GetUserNameOk() (*string, bool) {
 
 // HasUserName returns a boolean if a field has been set.
 func (o *DeleteUserCommand) HasUserName() bool {
-	if o != nil && o.UserName != nil {
+	if o != nil && !IsNil(o.UserName) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *DeleteUserCommand) SetUserName(v string) {
 
 // GetForceDeletion returns the ForceDeletion field value if set, zero value otherwise.
 func (o *DeleteUserCommand) GetForceDeletion() bool {
-	if o == nil || o.ForceDeletion == nil {
+	if o == nil || IsNil(o.ForceDeletion) {
 		var ret bool
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *DeleteUserCommand) GetForceDeletion() bool {
 // GetForceDeletionOk returns a tuple with the ForceDeletion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteUserCommand) GetForceDeletionOk() (*bool, bool) {
-	if o == nil || o.ForceDeletion == nil {
+	if o == nil || IsNil(o.ForceDeletion) {
 		return nil, false
 	}
 	return o.ForceDeletion, true
@@ -90,7 +93,7 @@ func (o *DeleteUserCommand) GetForceDeletionOk() (*bool, bool) {
 
 // HasForceDeletion returns a boolean if a field has been set.
 func (o *DeleteUserCommand) HasForceDeletion() bool {
-	if o != nil && o.ForceDeletion != nil {
+	if o != nil && !IsNil(o.ForceDeletion) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *DeleteUserCommand) SetForceDeletion(v bool) {
 
 // GetDeleteAllUsers returns the DeleteAllUsers field value if set, zero value otherwise.
 func (o *DeleteUserCommand) GetDeleteAllUsers() bool {
-	if o == nil || o.DeleteAllUsers == nil {
+	if o == nil || IsNil(o.DeleteAllUsers) {
 		var ret bool
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *DeleteUserCommand) GetDeleteAllUsers() bool {
 // GetDeleteAllUsersOk returns a tuple with the DeleteAllUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DeleteUserCommand) GetDeleteAllUsersOk() (*bool, bool) {
-	if o == nil || o.DeleteAllUsers == nil {
+	if o == nil || IsNil(o.DeleteAllUsers) {
 		return nil, false
 	}
 	return o.DeleteAllUsers, true
@@ -122,7 +125,7 @@ func (o *DeleteUserCommand) GetDeleteAllUsersOk() (*bool, bool) {
 
 // HasDeleteAllUsers returns a boolean if a field has been set.
 func (o *DeleteUserCommand) HasDeleteAllUsers() bool {
-	if o != nil && o.DeleteAllUsers != nil {
+	if o != nil && !IsNil(o.DeleteAllUsers) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *DeleteUserCommand) SetDeleteAllUsers(v bool) {
 }
 
 func (o DeleteUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.UserName != nil {
-		toSerialize["userName"] = o.UserName
-	}
-	if o.ForceDeletion != nil {
-		toSerialize["forceDeletion"] = o.ForceDeletion
-	}
-	if o.DeleteAllUsers != nil {
-		toSerialize["deleteAllUsers"] = o.DeleteAllUsers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o DeleteUserCommand) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.UserName) {
+		toSerialize["userName"] = o.UserName
+	}
+	if !IsNil(o.ForceDeletion) {
+		toSerialize["forceDeletion"] = o.ForceDeletion
+	}
+	if !IsNil(o.DeleteAllUsers) {
+		toSerialize["deleteAllUsers"] = o.DeleteAllUsers
+	}
+	return toSerialize, nil
 }
 
 type NullableDeleteUserCommand struct {

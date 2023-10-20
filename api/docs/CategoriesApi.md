@@ -1,17 +1,17 @@
-# \CategoriesApi
+# \CategoriesAPI
 
 All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1CategoriesDeleteMultiplePost**](CategoriesApi.md#V1CategoriesDeleteMultiplePost) | **Post** /v1/categories/delete-multiple | Delete multiple Categories by their IDs 
-[**V1CategoriesGet**](CategoriesApi.md#V1CategoriesGet) | **Get** /v1/categories | Get Category objects 
-[**V1CategoriesIdDelete**](CategoriesApi.md#V1CategoriesIdDelete) | **Delete** /v1/categories/{id} | Remove specified Category record 
-[**V1CategoriesIdGet**](CategoriesApi.md#V1CategoriesIdGet) | **Get** /v1/categories/{id} | Get specified Category object 
-[**V1CategoriesIdHistoryGet**](CategoriesApi.md#V1CategoriesIdHistoryGet) | **Get** /v1/categories/{id}/history | Get specified Category history object 
-[**V1CategoriesIdHistoryPost**](CategoriesApi.md#V1CategoriesIdHistoryPost) | **Post** /v1/categories/{id}/history | Add specified Category history object notes 
-[**V1CategoriesIdPut**](CategoriesApi.md#V1CategoriesIdPut) | **Put** /v1/categories/{id} | Update specified Category object 
-[**V1CategoriesPost**](CategoriesApi.md#V1CategoriesPost) | **Post** /v1/categories | Create Category record 
+[**V1CategoriesDeleteMultiplePost**](CategoriesAPI.md#V1CategoriesDeleteMultiplePost) | **Post** /v1/categories/delete-multiple | Delete multiple Categories by their IDs 
+[**V1CategoriesGet**](CategoriesAPI.md#V1CategoriesGet) | **Get** /v1/categories | Get Category objects 
+[**V1CategoriesIdDelete**](CategoriesAPI.md#V1CategoriesIdDelete) | **Delete** /v1/categories/{id} | Remove specified Category record 
+[**V1CategoriesIdGet**](CategoriesAPI.md#V1CategoriesIdGet) | **Get** /v1/categories/{id} | Get specified Category object 
+[**V1CategoriesIdHistoryGet**](CategoriesAPI.md#V1CategoriesIdHistoryGet) | **Get** /v1/categories/{id}/history | Get specified Category history object 
+[**V1CategoriesIdHistoryPost**](CategoriesAPI.md#V1CategoriesIdHistoryPost) | **Post** /v1/categories/{id}/history | Add specified Category history object notes 
+[**V1CategoriesIdPut**](CategoriesAPI.md#V1CategoriesIdPut) | **Put** /v1/categories/{id} | Update specified Category object 
+[**V1CategoriesPost**](CategoriesAPI.md#V1CategoriesPost) | **Post** /v1/categories | Create Category record 
 
 
 
@@ -32,7 +32,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -40,9 +40,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+    r, err := apiClient.CategoriesAPI.V1CategoriesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesDeleteMultiplePost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesDeleteMultiplePost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -96,7 +96,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesGet`: CategoriesSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesGet`: %v\n", resp)
 }
 ```
 
@@ -168,7 +168,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -176,9 +176,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesIdDelete(context.Background(), id).Execute()
+    r, err := apiClient.CategoriesAPI.V1CategoriesIdDelete(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -236,7 +236,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -244,13 +244,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesIdGet(context.Background(), id).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesIdGet(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesIdGet`: Category
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesIdGet`: %v\n", resp)
 }
 ```
 
@@ -306,7 +306,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -318,13 +318,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesIdHistoryGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesIdHistoryGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesIdHistoryGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -384,7 +384,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -393,13 +393,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesIdHistoryPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesIdHistoryPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesIdHistoryPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -456,7 +456,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -465,13 +465,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesIdPut(context.Background(), id).Category(category).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesIdPut(context.Background(), id).Category(category).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesIdPut``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesIdPut``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesIdPut`: Category
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesIdPut`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesIdPut`: %v\n", resp)
 }
 ```
 
@@ -528,7 +528,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
@@ -536,13 +536,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CategoriesApi.V1CategoriesPost(context.Background()).Category(category).Execute()
+    resp, r, err := apiClient.CategoriesAPI.V1CategoriesPost(context.Background()).Category(category).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesApi.V1CategoriesPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `CategoriesAPI.V1CategoriesPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `V1CategoriesPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `CategoriesApi.V1CategoriesPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `CategoriesAPI.V1CategoriesPost`: %v\n", resp)
 }
 ```
 

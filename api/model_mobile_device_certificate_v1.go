@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the MobileDeviceCertificateV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &MobileDeviceCertificateV1{}
+
 // MobileDeviceCertificateV1 struct for MobileDeviceCertificateV1
 type MobileDeviceCertificateV1 struct {
 	CommonName *string `json:"commonName,omitempty"`
@@ -39,7 +42,7 @@ func NewMobileDeviceCertificateV1WithDefaults() *MobileDeviceCertificateV1 {
 
 // GetCommonName returns the CommonName field value if set, zero value otherwise.
 func (o *MobileDeviceCertificateV1) GetCommonName() string {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *MobileDeviceCertificateV1) GetCommonName() string {
 // GetCommonNameOk returns a tuple with the CommonName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceCertificateV1) GetCommonNameOk() (*string, bool) {
-	if o == nil || o.CommonName == nil {
+	if o == nil || IsNil(o.CommonName) {
 		return nil, false
 	}
 	return o.CommonName, true
@@ -57,7 +60,7 @@ func (o *MobileDeviceCertificateV1) GetCommonNameOk() (*string, bool) {
 
 // HasCommonName returns a boolean if a field has been set.
 func (o *MobileDeviceCertificateV1) HasCommonName() bool {
-	if o != nil && o.CommonName != nil {
+	if o != nil && !IsNil(o.CommonName) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *MobileDeviceCertificateV1) SetCommonName(v string) {
 
 // GetIsIdentity returns the IsIdentity field value if set, zero value otherwise.
 func (o *MobileDeviceCertificateV1) GetIsIdentity() bool {
-	if o == nil || o.IsIdentity == nil {
+	if o == nil || IsNil(o.IsIdentity) {
 		var ret bool
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *MobileDeviceCertificateV1) GetIsIdentity() bool {
 // GetIsIdentityOk returns a tuple with the IsIdentity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *MobileDeviceCertificateV1) GetIsIdentityOk() (*bool, bool) {
-	if o == nil || o.IsIdentity == nil {
+	if o == nil || IsNil(o.IsIdentity) {
 		return nil, false
 	}
 	return o.IsIdentity, true
@@ -89,7 +92,7 @@ func (o *MobileDeviceCertificateV1) GetIsIdentityOk() (*bool, bool) {
 
 // HasIsIdentity returns a boolean if a field has been set.
 func (o *MobileDeviceCertificateV1) HasIsIdentity() bool {
-	if o != nil && o.IsIdentity != nil {
+	if o != nil && !IsNil(o.IsIdentity) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *MobileDeviceCertificateV1) SetIsIdentity(v bool) {
 }
 
 func (o MobileDeviceCertificateV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.CommonName != nil {
-		toSerialize["commonName"] = o.CommonName
-	}
-	if o.IsIdentity != nil {
-		toSerialize["isIdentity"] = o.IsIdentity
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o MobileDeviceCertificateV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CommonName) {
+		toSerialize["commonName"] = o.CommonName
+	}
+	if !IsNil(o.IsIdentity) {
+		toSerialize["isIdentity"] = o.IsIdentity
+	}
+	return toSerialize, nil
 }
 
 type NullableMobileDeviceCertificateV1 struct {

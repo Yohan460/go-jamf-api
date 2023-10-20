@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the PolicyPropertiesV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyPropertiesV1{}
+
 // PolicyPropertiesV1 struct for PolicyPropertiesV1
 type PolicyPropertiesV1 struct {
 	// This field always returns false.
@@ -48,7 +51,7 @@ func NewPolicyPropertiesV1WithDefaults() *PolicyPropertiesV1 {
 
 // GetPoliciesRequireNetworkStateChange returns the PoliciesRequireNetworkStateChange field value if set, zero value otherwise.
 func (o *PolicyPropertiesV1) GetPoliciesRequireNetworkStateChange() bool {
-	if o == nil || o.PoliciesRequireNetworkStateChange == nil {
+	if o == nil || IsNil(o.PoliciesRequireNetworkStateChange) {
 		var ret bool
 		return ret
 	}
@@ -58,7 +61,7 @@ func (o *PolicyPropertiesV1) GetPoliciesRequireNetworkStateChange() bool {
 // GetPoliciesRequireNetworkStateChangeOk returns a tuple with the PoliciesRequireNetworkStateChange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyPropertiesV1) GetPoliciesRequireNetworkStateChangeOk() (*bool, bool) {
-	if o == nil || o.PoliciesRequireNetworkStateChange == nil {
+	if o == nil || IsNil(o.PoliciesRequireNetworkStateChange) {
 		return nil, false
 	}
 	return o.PoliciesRequireNetworkStateChange, true
@@ -66,7 +69,7 @@ func (o *PolicyPropertiesV1) GetPoliciesRequireNetworkStateChangeOk() (*bool, bo
 
 // HasPoliciesRequireNetworkStateChange returns a boolean if a field has been set.
 func (o *PolicyPropertiesV1) HasPoliciesRequireNetworkStateChange() bool {
-	if o != nil && o.PoliciesRequireNetworkStateChange != nil {
+	if o != nil && !IsNil(o.PoliciesRequireNetworkStateChange) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *PolicyPropertiesV1) SetPoliciesRequireNetworkStateChange(v bool) {
 
 // GetAllowNetworkStateChangeTriggers returns the AllowNetworkStateChangeTriggers field value if set, zero value otherwise.
 func (o *PolicyPropertiesV1) GetAllowNetworkStateChangeTriggers() bool {
-	if o == nil || o.AllowNetworkStateChangeTriggers == nil {
+	if o == nil || IsNil(o.AllowNetworkStateChangeTriggers) {
 		var ret bool
 		return ret
 	}
@@ -90,7 +93,7 @@ func (o *PolicyPropertiesV1) GetAllowNetworkStateChangeTriggers() bool {
 // GetAllowNetworkStateChangeTriggersOk returns a tuple with the AllowNetworkStateChangeTriggers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PolicyPropertiesV1) GetAllowNetworkStateChangeTriggersOk() (*bool, bool) {
-	if o == nil || o.AllowNetworkStateChangeTriggers == nil {
+	if o == nil || IsNil(o.AllowNetworkStateChangeTriggers) {
 		return nil, false
 	}
 	return o.AllowNetworkStateChangeTriggers, true
@@ -98,7 +101,7 @@ func (o *PolicyPropertiesV1) GetAllowNetworkStateChangeTriggersOk() (*bool, bool
 
 // HasAllowNetworkStateChangeTriggers returns a boolean if a field has been set.
 func (o *PolicyPropertiesV1) HasAllowNetworkStateChangeTriggers() bool {
-	if o != nil && o.AllowNetworkStateChangeTriggers != nil {
+	if o != nil && !IsNil(o.AllowNetworkStateChangeTriggers) {
 		return true
 	}
 
@@ -111,14 +114,22 @@ func (o *PolicyPropertiesV1) SetAllowNetworkStateChangeTriggers(v bool) {
 }
 
 func (o PolicyPropertiesV1) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.PoliciesRequireNetworkStateChange != nil {
-		toSerialize["policiesRequireNetworkStateChange"] = o.PoliciesRequireNetworkStateChange
-	}
-	if o.AllowNetworkStateChangeTriggers != nil {
-		toSerialize["allowNetworkStateChangeTriggers"] = o.AllowNetworkStateChangeTriggers
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o PolicyPropertiesV1) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PoliciesRequireNetworkStateChange) {
+		toSerialize["policiesRequireNetworkStateChange"] = o.PoliciesRequireNetworkStateChange
+	}
+	if !IsNil(o.AllowNetworkStateChangeTriggers) {
+		toSerialize["allowNetworkStateChangeTriggers"] = o.AllowNetworkStateChangeTriggers
+	}
+	return toSerialize, nil
 }
 
 type NullablePolicyPropertiesV1 struct {

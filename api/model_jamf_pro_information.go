@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the JamfProInformation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &JamfProInformation{}
+
 // JamfProInformation struct for JamfProInformation
 type JamfProInformation struct {
 	IsVppTokenEnabled *bool `json:"isVppTokenEnabled,omitempty"`
@@ -45,7 +48,7 @@ func NewJamfProInformationWithDefaults() *JamfProInformation {
 
 // GetIsVppTokenEnabled returns the IsVppTokenEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsVppTokenEnabled() bool {
-	if o == nil || o.IsVppTokenEnabled == nil {
+	if o == nil || IsNil(o.IsVppTokenEnabled) {
 		var ret bool
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *JamfProInformation) GetIsVppTokenEnabled() bool {
 // GetIsVppTokenEnabledOk returns a tuple with the IsVppTokenEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsVppTokenEnabledOk() (*bool, bool) {
-	if o == nil || o.IsVppTokenEnabled == nil {
+	if o == nil || IsNil(o.IsVppTokenEnabled) {
 		return nil, false
 	}
 	return o.IsVppTokenEnabled, true
@@ -63,7 +66,7 @@ func (o *JamfProInformation) GetIsVppTokenEnabledOk() (*bool, bool) {
 
 // HasIsVppTokenEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsVppTokenEnabled() bool {
-	if o != nil && o.IsVppTokenEnabled != nil {
+	if o != nil && !IsNil(o.IsVppTokenEnabled) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *JamfProInformation) SetIsVppTokenEnabled(v bool) {
 
 // GetIsDepAccountEnabled returns the IsDepAccountEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsDepAccountEnabled() bool {
-	if o == nil || o.IsDepAccountEnabled == nil {
+	if o == nil || IsNil(o.IsDepAccountEnabled) {
 		var ret bool
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *JamfProInformation) GetIsDepAccountEnabled() bool {
 // GetIsDepAccountEnabledOk returns a tuple with the IsDepAccountEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsDepAccountEnabledOk() (*bool, bool) {
-	if o == nil || o.IsDepAccountEnabled == nil {
+	if o == nil || IsNil(o.IsDepAccountEnabled) {
 		return nil, false
 	}
 	return o.IsDepAccountEnabled, true
@@ -95,7 +98,7 @@ func (o *JamfProInformation) GetIsDepAccountEnabledOk() (*bool, bool) {
 
 // HasIsDepAccountEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsDepAccountEnabled() bool {
-	if o != nil && o.IsDepAccountEnabled != nil {
+	if o != nil && !IsNil(o.IsDepAccountEnabled) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *JamfProInformation) SetIsDepAccountEnabled(v bool) {
 
 // GetIsByodEnabled returns the IsByodEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsByodEnabled() bool {
-	if o == nil || o.IsByodEnabled == nil {
+	if o == nil || IsNil(o.IsByodEnabled) {
 		var ret bool
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *JamfProInformation) GetIsByodEnabled() bool {
 // GetIsByodEnabledOk returns a tuple with the IsByodEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsByodEnabledOk() (*bool, bool) {
-	if o == nil || o.IsByodEnabled == nil {
+	if o == nil || IsNil(o.IsByodEnabled) {
 		return nil, false
 	}
 	return o.IsByodEnabled, true
@@ -127,7 +130,7 @@ func (o *JamfProInformation) GetIsByodEnabledOk() (*bool, bool) {
 
 // HasIsByodEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsByodEnabled() bool {
-	if o != nil && o.IsByodEnabled != nil {
+	if o != nil && !IsNil(o.IsByodEnabled) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *JamfProInformation) SetIsByodEnabled(v bool) {
 
 // GetIsUserMigrationEnabled returns the IsUserMigrationEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsUserMigrationEnabled() bool {
-	if o == nil || o.IsUserMigrationEnabled == nil {
+	if o == nil || IsNil(o.IsUserMigrationEnabled) {
 		var ret bool
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *JamfProInformation) GetIsUserMigrationEnabled() bool {
 // GetIsUserMigrationEnabledOk returns a tuple with the IsUserMigrationEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsUserMigrationEnabledOk() (*bool, bool) {
-	if o == nil || o.IsUserMigrationEnabled == nil {
+	if o == nil || IsNil(o.IsUserMigrationEnabled) {
 		return nil, false
 	}
 	return o.IsUserMigrationEnabled, true
@@ -159,7 +162,7 @@ func (o *JamfProInformation) GetIsUserMigrationEnabledOk() (*bool, bool) {
 
 // HasIsUserMigrationEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsUserMigrationEnabled() bool {
-	if o != nil && o.IsUserMigrationEnabled != nil {
+	if o != nil && !IsNil(o.IsUserMigrationEnabled) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *JamfProInformation) SetIsUserMigrationEnabled(v bool) {
 
 // GetIsCloudDeploymentsEnabled returns the IsCloudDeploymentsEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsCloudDeploymentsEnabled() bool {
-	if o == nil || o.IsCloudDeploymentsEnabled == nil {
+	if o == nil || IsNil(o.IsCloudDeploymentsEnabled) {
 		var ret bool
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *JamfProInformation) GetIsCloudDeploymentsEnabled() bool {
 // GetIsCloudDeploymentsEnabledOk returns a tuple with the IsCloudDeploymentsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsCloudDeploymentsEnabledOk() (*bool, bool) {
-	if o == nil || o.IsCloudDeploymentsEnabled == nil {
+	if o == nil || IsNil(o.IsCloudDeploymentsEnabled) {
 		return nil, false
 	}
 	return o.IsCloudDeploymentsEnabled, true
@@ -191,7 +194,7 @@ func (o *JamfProInformation) GetIsCloudDeploymentsEnabledOk() (*bool, bool) {
 
 // HasIsCloudDeploymentsEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsCloudDeploymentsEnabled() bool {
-	if o != nil && o.IsCloudDeploymentsEnabled != nil {
+	if o != nil && !IsNil(o.IsCloudDeploymentsEnabled) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *JamfProInformation) SetIsCloudDeploymentsEnabled(v bool) {
 
 // GetIsPatchEnabled returns the IsPatchEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsPatchEnabled() bool {
-	if o == nil || o.IsPatchEnabled == nil {
+	if o == nil || IsNil(o.IsPatchEnabled) {
 		var ret bool
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *JamfProInformation) GetIsPatchEnabled() bool {
 // GetIsPatchEnabledOk returns a tuple with the IsPatchEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsPatchEnabledOk() (*bool, bool) {
-	if o == nil || o.IsPatchEnabled == nil {
+	if o == nil || IsNil(o.IsPatchEnabled) {
 		return nil, false
 	}
 	return o.IsPatchEnabled, true
@@ -223,7 +226,7 @@ func (o *JamfProInformation) GetIsPatchEnabledOk() (*bool, bool) {
 
 // HasIsPatchEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsPatchEnabled() bool {
-	if o != nil && o.IsPatchEnabled != nil {
+	if o != nil && !IsNil(o.IsPatchEnabled) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *JamfProInformation) SetIsPatchEnabled(v bool) {
 
 // GetIsSsoSamlEnabled returns the IsSsoSamlEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsSsoSamlEnabled() bool {
-	if o == nil || o.IsSsoSamlEnabled == nil {
+	if o == nil || IsNil(o.IsSsoSamlEnabled) {
 		var ret bool
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *JamfProInformation) GetIsSsoSamlEnabled() bool {
 // GetIsSsoSamlEnabledOk returns a tuple with the IsSsoSamlEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsSsoSamlEnabledOk() (*bool, bool) {
-	if o == nil || o.IsSsoSamlEnabled == nil {
+	if o == nil || IsNil(o.IsSsoSamlEnabled) {
 		return nil, false
 	}
 	return o.IsSsoSamlEnabled, true
@@ -255,7 +258,7 @@ func (o *JamfProInformation) GetIsSsoSamlEnabledOk() (*bool, bool) {
 
 // HasIsSsoSamlEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsSsoSamlEnabled() bool {
-	if o != nil && o.IsSsoSamlEnabled != nil {
+	if o != nil && !IsNil(o.IsSsoSamlEnabled) {
 		return true
 	}
 
@@ -269,7 +272,7 @@ func (o *JamfProInformation) SetIsSsoSamlEnabled(v bool) {
 
 // GetIsSmtpEnabled returns the IsSmtpEnabled field value if set, zero value otherwise.
 func (o *JamfProInformation) GetIsSmtpEnabled() bool {
-	if o == nil || o.IsSmtpEnabled == nil {
+	if o == nil || IsNil(o.IsSmtpEnabled) {
 		var ret bool
 		return ret
 	}
@@ -279,7 +282,7 @@ func (o *JamfProInformation) GetIsSmtpEnabled() bool {
 // GetIsSmtpEnabledOk returns a tuple with the IsSmtpEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *JamfProInformation) GetIsSmtpEnabledOk() (*bool, bool) {
-	if o == nil || o.IsSmtpEnabled == nil {
+	if o == nil || IsNil(o.IsSmtpEnabled) {
 		return nil, false
 	}
 	return o.IsSmtpEnabled, true
@@ -287,7 +290,7 @@ func (o *JamfProInformation) GetIsSmtpEnabledOk() (*bool, bool) {
 
 // HasIsSmtpEnabled returns a boolean if a field has been set.
 func (o *JamfProInformation) HasIsSmtpEnabled() bool {
-	if o != nil && o.IsSmtpEnabled != nil {
+	if o != nil && !IsNil(o.IsSmtpEnabled) {
 		return true
 	}
 
@@ -300,32 +303,40 @@ func (o *JamfProInformation) SetIsSmtpEnabled(v bool) {
 }
 
 func (o JamfProInformation) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if o.IsVppTokenEnabled != nil {
-		toSerialize["isVppTokenEnabled"] = o.IsVppTokenEnabled
-	}
-	if o.IsDepAccountEnabled != nil {
-		toSerialize["isDepAccountEnabled"] = o.IsDepAccountEnabled
-	}
-	if o.IsByodEnabled != nil {
-		toSerialize["isByodEnabled"] = o.IsByodEnabled
-	}
-	if o.IsUserMigrationEnabled != nil {
-		toSerialize["isUserMigrationEnabled"] = o.IsUserMigrationEnabled
-	}
-	if o.IsCloudDeploymentsEnabled != nil {
-		toSerialize["isCloudDeploymentsEnabled"] = o.IsCloudDeploymentsEnabled
-	}
-	if o.IsPatchEnabled != nil {
-		toSerialize["isPatchEnabled"] = o.IsPatchEnabled
-	}
-	if o.IsSsoSamlEnabled != nil {
-		toSerialize["isSsoSamlEnabled"] = o.IsSsoSamlEnabled
-	}
-	if o.IsSmtpEnabled != nil {
-		toSerialize["isSmtpEnabled"] = o.IsSmtpEnabled
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o JamfProInformation) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IsVppTokenEnabled) {
+		toSerialize["isVppTokenEnabled"] = o.IsVppTokenEnabled
+	}
+	if !IsNil(o.IsDepAccountEnabled) {
+		toSerialize["isDepAccountEnabled"] = o.IsDepAccountEnabled
+	}
+	if !IsNil(o.IsByodEnabled) {
+		toSerialize["isByodEnabled"] = o.IsByodEnabled
+	}
+	if !IsNil(o.IsUserMigrationEnabled) {
+		toSerialize["isUserMigrationEnabled"] = o.IsUserMigrationEnabled
+	}
+	if !IsNil(o.IsCloudDeploymentsEnabled) {
+		toSerialize["isCloudDeploymentsEnabled"] = o.IsCloudDeploymentsEnabled
+	}
+	if !IsNil(o.IsPatchEnabled) {
+		toSerialize["isPatchEnabled"] = o.IsPatchEnabled
+	}
+	if !IsNil(o.IsSsoSamlEnabled) {
+		toSerialize["isSsoSamlEnabled"] = o.IsSsoSamlEnabled
+	}
+	if !IsNil(o.IsSmtpEnabled) {
+		toSerialize["isSmtpEnabled"] = o.IsSmtpEnabled
+	}
+	return toSerialize, nil
 }
 
 type NullableJamfProInformation struct {

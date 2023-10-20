@@ -13,13 +13,13 @@ package api
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-type SelfServiceApi interface {
+type SelfServiceAPI interface {
 
 	/*
 	V1SelfServiceSettingsGet Get an object representation of Self Service settings 
@@ -28,13 +28,13 @@ type SelfServiceApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SelfServiceSettingsGetRequest
+	@return SelfServiceAPIV1SelfServiceSettingsGetRequest
 	*/
-	V1SelfServiceSettingsGet(ctx context.Context) ApiV1SelfServiceSettingsGetRequest
+	V1SelfServiceSettingsGet(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsGetRequest
 
 	// V1SelfServiceSettingsGetExecute executes the request
 	//  @return SelfServiceSettings
-	V1SelfServiceSettingsGetExecute(r ApiV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error)
+	V1SelfServiceSettingsGetExecute(r SelfServiceAPIV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error)
 
 	/*
 	V1SelfServiceSettingsPut Put an object representation of Self Service settings 
@@ -43,24 +43,24 @@ type SelfServiceApi interface {
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiV1SelfServiceSettingsPutRequest
+	@return SelfServiceAPIV1SelfServiceSettingsPutRequest
 	*/
-	V1SelfServiceSettingsPut(ctx context.Context) ApiV1SelfServiceSettingsPutRequest
+	V1SelfServiceSettingsPut(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsPutRequest
 
 	// V1SelfServiceSettingsPutExecute executes the request
 	//  @return SelfServiceSettings
-	V1SelfServiceSettingsPutExecute(r ApiV1SelfServiceSettingsPutRequest) (*SelfServiceSettings, *http.Response, error)
+	V1SelfServiceSettingsPutExecute(r SelfServiceAPIV1SelfServiceSettingsPutRequest) (*SelfServiceSettings, *http.Response, error)
 }
 
-// SelfServiceApiService SelfServiceApi service
-type SelfServiceApiService service
+// SelfServiceAPIService SelfServiceAPI service
+type SelfServiceAPIService service
 
-type ApiV1SelfServiceSettingsGetRequest struct {
+type SelfServiceAPIV1SelfServiceSettingsGetRequest struct {
 	ctx context.Context
-	ApiService SelfServiceApi
+	ApiService SelfServiceAPI
 }
 
-func (r ApiV1SelfServiceSettingsGetRequest) Execute() (*SelfServiceSettings, *http.Response, error) {
+func (r SelfServiceAPIV1SelfServiceSettingsGetRequest) Execute() (*SelfServiceSettings, *http.Response, error) {
 	return r.ApiService.V1SelfServiceSettingsGetExecute(r)
 }
 
@@ -71,10 +71,10 @@ gets an object representation of Self Service settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SelfServiceSettingsGetRequest
+ @return SelfServiceAPIV1SelfServiceSettingsGetRequest
 */
-func (a *SelfServiceApiService) V1SelfServiceSettingsGet(ctx context.Context) ApiV1SelfServiceSettingsGetRequest {
-	return ApiV1SelfServiceSettingsGetRequest{
+func (a *SelfServiceAPIService) V1SelfServiceSettingsGet(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsGetRequest {
+	return SelfServiceAPIV1SelfServiceSettingsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -82,7 +82,7 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsGet(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return SelfServiceSettings
-func (a *SelfServiceApiService) V1SelfServiceSettingsGetExecute(r ApiV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error) {
+func (a *SelfServiceAPIService) V1SelfServiceSettingsGetExecute(r SelfServiceAPIV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -90,7 +90,7 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsGetExecute(r ApiV1SelfServi
 		localVarReturnValue  *SelfServiceSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceApiService.V1SelfServiceSettingsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceAPIService.V1SelfServiceSettingsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -128,9 +128,9 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsGetExecute(r ApiV1SelfServi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -155,19 +155,19 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsGetExecute(r ApiV1SelfServi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiV1SelfServiceSettingsPutRequest struct {
+type SelfServiceAPIV1SelfServiceSettingsPutRequest struct {
 	ctx context.Context
-	ApiService SelfServiceApi
+	ApiService SelfServiceAPI
 	selfServiceSettings *SelfServiceSettings
 }
 
 // object that contains all editable global fields to alter Self Service settings 
-func (r ApiV1SelfServiceSettingsPutRequest) SelfServiceSettings(selfServiceSettings SelfServiceSettings) ApiV1SelfServiceSettingsPutRequest {
+func (r SelfServiceAPIV1SelfServiceSettingsPutRequest) SelfServiceSettings(selfServiceSettings SelfServiceSettings) SelfServiceAPIV1SelfServiceSettingsPutRequest {
 	r.selfServiceSettings = &selfServiceSettings
 	return r
 }
 
-func (r ApiV1SelfServiceSettingsPutRequest) Execute() (*SelfServiceSettings, *http.Response, error) {
+func (r SelfServiceAPIV1SelfServiceSettingsPutRequest) Execute() (*SelfServiceSettings, *http.Response, error) {
 	return r.ApiService.V1SelfServiceSettingsPutExecute(r)
 }
 
@@ -178,10 +178,10 @@ puts an object representation of Self Service settings
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiV1SelfServiceSettingsPutRequest
+ @return SelfServiceAPIV1SelfServiceSettingsPutRequest
 */
-func (a *SelfServiceApiService) V1SelfServiceSettingsPut(ctx context.Context) ApiV1SelfServiceSettingsPutRequest {
-	return ApiV1SelfServiceSettingsPutRequest{
+func (a *SelfServiceAPIService) V1SelfServiceSettingsPut(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsPutRequest {
+	return SelfServiceAPIV1SelfServiceSettingsPutRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -189,7 +189,7 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsPut(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return SelfServiceSettings
-func (a *SelfServiceApiService) V1SelfServiceSettingsPutExecute(r ApiV1SelfServiceSettingsPutRequest) (*SelfServiceSettings, *http.Response, error) {
+func (a *SelfServiceAPIService) V1SelfServiceSettingsPutExecute(r SelfServiceAPIV1SelfServiceSettingsPutRequest) (*SelfServiceSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -197,7 +197,7 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsPutExecute(r ApiV1SelfServi
 		localVarReturnValue  *SelfServiceSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceApiService.V1SelfServiceSettingsPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceAPIService.V1SelfServiceSettingsPut")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -240,9 +240,9 @@ func (a *SelfServiceApiService) V1SelfServiceSettingsPutExecute(r ApiV1SelfServi
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
