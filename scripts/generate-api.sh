@@ -37,6 +37,7 @@ fi
 rm ./api/git_push.sh
 rm ./api/go.mod
 rm ./api/go.sum
+rm ./api/.gitignore
 
 # Patch the defaultValue generation
 echo "Patching defaultValue generation"
