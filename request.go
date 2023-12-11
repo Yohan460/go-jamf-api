@@ -177,9 +177,18 @@ func (c *Client) createRequest(method, api string, params *url.Values, reqbody i
 			}
 			bodyReader = strings.NewReader(b.Encode())
 		} else {
-			b, err := json.Marshal(reqbody)
-			if err != nil {
-				return nil, err
+			var b []byte
+			var err error
+			if c.jsonMarshalFunc == nil {
+				b, err = json.Marshal(reqbody)
+				if err != nil {
+					return nil, err
+				}
+			} else {
+				b, err = c.jsonMarshalFunc(reqbody)
+				if err != nil {
+					return nil, err
+				}
 			}
 			bodyReader = bytes.NewReader(b)
 		}
