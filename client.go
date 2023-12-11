@@ -22,6 +22,9 @@ type Client struct {
 	HttpClient       *http.Client
 	HttpRetryTimeout time.Duration
 
+	// Store custom JSON Unmarshal function
+	jsonMarshalFunc JsonMarshalFunc
+
 	// Option to specify extra headers like User-Agent
 	ExtraHeader map[string]string
 }
@@ -42,7 +45,18 @@ type FormOptions struct {
 	GrantType    string `url:"grant_type"`
 }
 
+type JsonMarshalFunc func(v any) ([]byte, error)
+
 type Option func(*Client)
+
+// WithJsonMarshalFunc allow override (encoding/json) json.Marshal function with own implementation
+// while keep original function signature.
+func WithJsonMarshalFunc(f JsonMarshalFunc) Option {
+	return func(c *Client) {
+		c.jsonMarshalFunc = f
+
+	}
+}
 
 // WithHttpClient sets the http client to use for requests
 func WithHttpClient(client *http.Client) Option {
