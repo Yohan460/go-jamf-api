@@ -22,24 +22,24 @@ Redeploy Jamf Management Framework
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer
+	id := "id_example" // string | instance id of computer
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfManagementFrameworkRedeployIdPost`: RedeployJamfManagementFrameworkResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfManagementFrameworkRedeployIdPost`: RedeployJamfManagementFrameworkResponse
+	fmt.Fprintf(os.Stdout, "Response from `JamfManagementFrameworkAPI.V1JamfManagementFrameworkRedeployIdPost`: %v\n", resp)
 }
 ```
 

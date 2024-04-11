@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **SubjectX500Principal** | Pointer to **string** |  | [optional] 
 **IssuerX500Principal** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
-**Version** | Pointer to **int32** |  | [optional] 
-**NotAfter** | Pointer to **int32** |  | [optional] 
-**NotBefore** | Pointer to **int32** |  | [optional] 
+**Version** | Pointer to **int64** |  | [optional] 
+**NotAfter** | Pointer to **int64** |  | [optional] 
+**NotBefore** | Pointer to **int64** |  | [optional] 
 **Signature** | Pointer to [**Signature**](Signature.md) |  | [optional] 
 **KeyUsage** | Pointer to **[]string** |  | [optional] 
 **KeyUsageExtended** | Pointer to **[]string** |  | [optional] 
@@ -112,20 +112,20 @@ HasSerialNumber returns a boolean if a field has been set.
 
 ### GetVersion
 
-`func (o *CertificateRecord) GetVersion() int32`
+`func (o *CertificateRecord) GetVersion() int64`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *CertificateRecord) GetVersionOk() (*int32, bool)`
+`func (o *CertificateRecord) GetVersionOk() (*int64, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *CertificateRecord) SetVersion(v int32)`
+`func (o *CertificateRecord) SetVersion(v int64)`
 
 SetVersion sets Version field to given value.
 
@@ -137,20 +137,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetNotAfter
 
-`func (o *CertificateRecord) GetNotAfter() int32`
+`func (o *CertificateRecord) GetNotAfter() int64`
 
 GetNotAfter returns the NotAfter field if non-nil, zero value otherwise.
 
 ### GetNotAfterOk
 
-`func (o *CertificateRecord) GetNotAfterOk() (*int32, bool)`
+`func (o *CertificateRecord) GetNotAfterOk() (*int64, bool)`
 
 GetNotAfterOk returns a tuple with the NotAfter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotAfter
 
-`func (o *CertificateRecord) SetNotAfter(v int32)`
+`func (o *CertificateRecord) SetNotAfter(v int64)`
 
 SetNotAfter sets NotAfter field to given value.
 
@@ -162,20 +162,20 @@ HasNotAfter returns a boolean if a field has been set.
 
 ### GetNotBefore
 
-`func (o *CertificateRecord) GetNotBefore() int32`
+`func (o *CertificateRecord) GetNotBefore() int64`
 
 GetNotBefore returns the NotBefore field if non-nil, zero value otherwise.
 
 ### GetNotBeforeOk
 
-`func (o *CertificateRecord) GetNotBeforeOk() (*int32, bool)`
+`func (o *CertificateRecord) GetNotBeforeOk() (*int64, bool)`
 
 GetNotBeforeOk returns a tuple with the NotBefore field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotBefore
 
-`func (o *CertificateRecord) SetNotBefore(v int32)`
+`func (o *CertificateRecord) SetNotBefore(v int64)`
 
 SetNotBefore sets NotBefore field to given value.
 

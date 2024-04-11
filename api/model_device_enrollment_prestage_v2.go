@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceEnrollmentPrestageV2 type satisfies the MappedNullable interface at compile time
@@ -44,6 +46,8 @@ type DeviceEnrollmentPrestageV2 struct {
 	Region *string `json:"region,omitempty"`
 	AutoAdvanceSetup bool `json:"autoAdvanceSetup"`
 }
+
+type _DeviceEnrollmentPrestageV2 DeviceEnrollmentPrestageV2
 
 // NewDeviceEnrollmentPrestageV2 instantiates a new DeviceEnrollmentPrestageV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -716,6 +720,60 @@ func (o DeviceEnrollmentPrestageV2) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["autoAdvanceSetup"] = o.AutoAdvanceSetup
 	return toSerialize, nil
+}
+
+func (o *DeviceEnrollmentPrestageV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"mandatory",
+		"mdmRemovable",
+		"supportPhoneNumber",
+		"supportEmailAddress",
+		"department",
+		"defaultPrestage",
+		"enrollmentSiteId",
+		"keepExistingSiteMembership",
+		"keepExistingLocationInformation",
+		"requireAuthentication",
+		"authenticationPrompt",
+		"preventActivationLock",
+		"enableDeviceBasedActivationLock",
+		"deviceEnrollmentProgramInstanceId",
+		"locationInformation",
+		"purchasingInformation",
+		"autoAdvanceSetup",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceEnrollmentPrestageV2 := _DeviceEnrollmentPrestageV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceEnrollmentPrestageV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceEnrollmentPrestageV2(varDeviceEnrollmentPrestageV2)
+
+	return err
 }
 
 type NullableDeviceEnrollmentPrestageV2 struct {

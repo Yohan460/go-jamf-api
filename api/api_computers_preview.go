@@ -42,31 +42,31 @@ type ComputersPreviewAPIService service
 type ComputersPreviewAPIPreviewComputersGetRequest struct {
 	ctx context.Context
 	ApiService ComputersPreviewAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r ComputersPreviewAPIPreviewComputersGetRequest) Page(page int32) ComputersPreviewAPIPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Page(page int64) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ComputersPreviewAPIPreviewComputersGetRequest) Size(size int32) ComputersPreviewAPIPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Size(size int64) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ComputersPreviewAPIPreviewComputersGetRequest) Pagesize(pagesize int32) ComputersPreviewAPIPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) Pagesize(pagesize int64) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ComputersPreviewAPIPreviewComputersGetRequest) PageSize(pageSize int32) ComputersPreviewAPIPreviewComputersGetRequest {
+func (r ComputersPreviewAPIPreviewComputersGetRequest) PageSize(pageSize int64) ComputersPreviewAPIPreviewComputersGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -120,25 +120,25 @@ func (a *ComputersPreviewAPIService) PreviewComputersGetExecute(r ComputersPrevi
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

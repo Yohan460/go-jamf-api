@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **MacAddress** | Pointer to **string** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **ModelIdentifier** | Pointer to **string** |  | [optional] 
-**MdmAccessRights** | Pointer to **int32** |  | [optional] 
+**MdmAccessRights** | Pointer to **int64** |  | [optional] 
 **IsManaged** | Pointer to **bool** |  | [optional] 
 **ManagementId** | Pointer to **string** |  | [optional] [readonly] 
 
@@ -445,20 +445,20 @@ HasModelIdentifier returns a boolean if a field has been set.
 
 ### GetMdmAccessRights
 
-`func (o *ComputerOverview) GetMdmAccessRights() int32`
+`func (o *ComputerOverview) GetMdmAccessRights() int64`
 
 GetMdmAccessRights returns the MdmAccessRights field if non-nil, zero value otherwise.
 
 ### GetMdmAccessRightsOk
 
-`func (o *ComputerOverview) GetMdmAccessRightsOk() (*int32, bool)`
+`func (o *ComputerOverview) GetMdmAccessRightsOk() (*int64, bool)`
 
 GetMdmAccessRightsOk returns a tuple with the MdmAccessRights field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMdmAccessRights
 
-`func (o *ComputerOverview) SetMdmAccessRights(v int32)`
+`func (o *ComputerOverview) SetMdmAccessRights(v int64)`
 
 SetMdmAccessRights sets MdmAccessRights field to given value.
 

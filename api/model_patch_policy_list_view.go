@@ -26,10 +26,10 @@ type PatchPolicyListView struct {
 	PolicyDeploymentMethod *string `json:"policyDeploymentMethod,omitempty"`
 	SoftwareTitle *string `json:"softwareTitle,omitempty"`
 	SoftwareTitleConfigurationId *string `json:"softwareTitleConfigurationId,omitempty"`
-	Pending *int32 `json:"pending,omitempty"`
-	Completed *int32 `json:"completed,omitempty"`
-	Deferred *int32 `json:"deferred,omitempty"`
-	Failed *int32 `json:"failed,omitempty"`
+	Pending *int64 `json:"pending,omitempty"`
+	Completed *int64 `json:"completed,omitempty"`
+	Deferred *int64 `json:"deferred,omitempty"`
+	Failed *int64 `json:"failed,omitempty"`
 }
 
 // NewPatchPolicyListView instantiates a new PatchPolicyListView object
@@ -274,9 +274,9 @@ func (o *PatchPolicyListView) SetSoftwareTitleConfigurationId(v string) {
 }
 
 // GetPending returns the Pending field value if set, zero value otherwise.
-func (o *PatchPolicyListView) GetPending() int32 {
+func (o *PatchPolicyListView) GetPending() int64 {
 	if o == nil || IsNil(o.Pending) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Pending
@@ -284,7 +284,7 @@ func (o *PatchPolicyListView) GetPending() int32 {
 
 // GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyListView) GetPendingOk() (*int32, bool) {
+func (o *PatchPolicyListView) GetPendingOk() (*int64, bool) {
 	if o == nil || IsNil(o.Pending) {
 		return nil, false
 	}
@@ -300,15 +300,15 @@ func (o *PatchPolicyListView) HasPending() bool {
 	return false
 }
 
-// SetPending gets a reference to the given int32 and assigns it to the Pending field.
-func (o *PatchPolicyListView) SetPending(v int32) {
+// SetPending gets a reference to the given int64 and assigns it to the Pending field.
+func (o *PatchPolicyListView) SetPending(v int64) {
 	o.Pending = &v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *PatchPolicyListView) GetCompleted() int32 {
+func (o *PatchPolicyListView) GetCompleted() int64 {
 	if o == nil || IsNil(o.Completed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Completed
@@ -316,7 +316,7 @@ func (o *PatchPolicyListView) GetCompleted() int32 {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyListView) GetCompletedOk() (*int32, bool) {
+func (o *PatchPolicyListView) GetCompletedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -332,15 +332,15 @@ func (o *PatchPolicyListView) HasCompleted() bool {
 	return false
 }
 
-// SetCompleted gets a reference to the given int32 and assigns it to the Completed field.
-func (o *PatchPolicyListView) SetCompleted(v int32) {
+// SetCompleted gets a reference to the given int64 and assigns it to the Completed field.
+func (o *PatchPolicyListView) SetCompleted(v int64) {
 	o.Completed = &v
 }
 
 // GetDeferred returns the Deferred field value if set, zero value otherwise.
-func (o *PatchPolicyListView) GetDeferred() int32 {
+func (o *PatchPolicyListView) GetDeferred() int64 {
 	if o == nil || IsNil(o.Deferred) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Deferred
@@ -348,7 +348,7 @@ func (o *PatchPolicyListView) GetDeferred() int32 {
 
 // GetDeferredOk returns a tuple with the Deferred field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyListView) GetDeferredOk() (*int32, bool) {
+func (o *PatchPolicyListView) GetDeferredOk() (*int64, bool) {
 	if o == nil || IsNil(o.Deferred) {
 		return nil, false
 	}
@@ -364,15 +364,15 @@ func (o *PatchPolicyListView) HasDeferred() bool {
 	return false
 }
 
-// SetDeferred gets a reference to the given int32 and assigns it to the Deferred field.
-func (o *PatchPolicyListView) SetDeferred(v int32) {
+// SetDeferred gets a reference to the given int64 and assigns it to the Deferred field.
+func (o *PatchPolicyListView) SetDeferred(v int64) {
 	o.Deferred = &v
 }
 
 // GetFailed returns the Failed field value if set, zero value otherwise.
-func (o *PatchPolicyListView) GetFailed() int32 {
+func (o *PatchPolicyListView) GetFailed() int64 {
 	if o == nil || IsNil(o.Failed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Failed
@@ -380,7 +380,7 @@ func (o *PatchPolicyListView) GetFailed() int32 {
 
 // GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyListView) GetFailedOk() (*int32, bool) {
+func (o *PatchPolicyListView) GetFailedOk() (*int64, bool) {
 	if o == nil || IsNil(o.Failed) {
 		return nil, false
 	}
@@ -396,8 +396,8 @@ func (o *PatchPolicyListView) HasFailed() bool {
 	return false
 }
 
-// SetFailed gets a reference to the given int32 and assigns it to the Failed field.
-func (o *PatchPolicyListView) SetFailed(v int32) {
+// SetFailed gets a reference to the given int64 and assigns it to the Failed field.
+func (o *PatchPolicyListView) SetFailed(v int64) {
 	o.Failed = &v
 }
 

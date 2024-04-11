@@ -23,23 +23,23 @@ Get Cache Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CacheSettingsAPI.V1CacheSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CacheSettingsAPI.V1CacheSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CacheSettingsGet`: CacheSettings
-    fmt.Fprintf(os.Stdout, "Response from `CacheSettingsAPI.V1CacheSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CacheSettingsAPI.V1CacheSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CacheSettingsAPI.V1CacheSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CacheSettingsGet`: CacheSettings
+	fmt.Fprintf(os.Stdout, "Response from `CacheSettingsAPI.V1CacheSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Update Cache Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    cacheSettings := *openapiclient.NewCacheSettings("ehcache", int32(120), "24864549-94ea-4cc1-bb80-d7fb392c6556", []openapiclient.MemcachedEndpoints{*openapiclient.NewMemcachedEndpoints()}) // CacheSettings | 
+	cacheSettings := *openapiclient.NewCacheSettings("ehcache", int64(120), "24864549-94ea-4cc1-bb80-d7fb392c6556", []openapiclient.MemcachedEndpoints{*openapiclient.NewMemcachedEndpoints()}) // CacheSettings | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CacheSettingsAPI.V1CacheSettingsPut(context.Background()).CacheSettings(cacheSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CacheSettingsAPI.V1CacheSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CacheSettingsPut`: CacheSettings
-    fmt.Fprintf(os.Stdout, "Response from `CacheSettingsAPI.V1CacheSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CacheSettingsAPI.V1CacheSettingsPut(context.Background()).CacheSettings(cacheSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CacheSettingsAPI.V1CacheSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CacheSettingsPut`: CacheSettings
+	fmt.Fprintf(os.Stdout, "Response from `CacheSettingsAPI.V1CacheSettingsPut`: %v\n", resp)
 }
 ```
 

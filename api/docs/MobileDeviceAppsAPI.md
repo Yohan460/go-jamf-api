@@ -22,22 +22,22 @@ Reinstall App Config for Managed iOS Apps
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    appConfigReinstallCode := *openapiclient.NewAppConfigReinstallCode() // AppConfigReinstallCode | The $APP_CONFIG_REINSTALL_CODE variable for the specific device and app supplied by the managed iOS app's current App Config. 
+	appConfigReinstallCode := *openapiclient.NewAppConfigReinstallCode() // AppConfigReinstallCode | The $APP_CONFIG_REINSTALL_CODE variable for the specific device and app supplied by the managed iOS app's current App Config. 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MobileDeviceAppsAPI.V1MobileDeviceAppsReinstallAppConfigPost(context.Background()).AppConfigReinstallCode(appConfigReinstallCode).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceAppsAPI.V1MobileDeviceAppsReinstallAppConfigPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.MobileDeviceAppsAPI.V1MobileDeviceAppsReinstallAppConfigPost(context.Background()).AppConfigReinstallCode(appConfigReinstallCode).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceAppsAPI.V1MobileDeviceAppsReinstallAppConfigPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

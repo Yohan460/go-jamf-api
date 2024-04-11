@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PutMobileDevicePrestage type satisfies the MappedNullable interface at compile time
@@ -26,37 +28,39 @@ type PutMobileDevicePrestage struct {
 	SupportEmailAddress string `json:"supportEmailAddress"`
 	Department string `json:"department"`
 	IsDefaultPrestage bool `json:"isDefaultPrestage"`
-	EnrollmentSiteId int32 `json:"enrollmentSiteId"`
+	EnrollmentSiteId int64 `json:"enrollmentSiteId"`
 	IsKeepExistingSiteMembership bool `json:"isKeepExistingSiteMembership"`
 	IsKeepExistingLocationInformation bool `json:"isKeepExistingLocationInformation"`
 	IsRequireAuthentication bool `json:"isRequireAuthentication"`
 	AuthenticationPrompt string `json:"authenticationPrompt"`
 	IsPreventActivationLock bool `json:"isPreventActivationLock"`
 	IsEnableDeviceBasedActivationLock bool `json:"isEnableDeviceBasedActivationLock"`
-	DeviceEnrollmentProgramInstanceId int32 `json:"deviceEnrollmentProgramInstanceId"`
+	DeviceEnrollmentProgramInstanceId int64 `json:"deviceEnrollmentProgramInstanceId"`
 	SkipSetupItems *map[string]bool `json:"skipSetupItems,omitempty"`
 	LocationInformation LocationInformation `json:"locationInformation"`
 	PurchasingInformation PrestagePurchasingInformation `json:"purchasingInformation"`
 	// The Base64 encoded PEM Certificate
 	AnchorCertificates []string `json:"anchorCertificates,omitempty"`
-	EnrollmentCustomizationId *int32 `json:"enrollmentCustomizationId,omitempty"`
+	EnrollmentCustomizationId *int64 `json:"enrollmentCustomizationId,omitempty"`
 	IsAllowPairing bool `json:"isAllowPairing"`
 	IsMultiUser bool `json:"isMultiUser"`
 	IsSupervised bool `json:"isSupervised"`
-	MaximumSharedAccounts int32 `json:"maximumSharedAccounts"`
+	MaximumSharedAccounts int64 `json:"maximumSharedAccounts"`
 	IsAutoAdvanceSetup bool `json:"isAutoAdvanceSetup"`
 	IsConfigureDeviceBeforeSetupAssistant bool `json:"isConfigureDeviceBeforeSetupAssistant"`
 	Language *string `json:"language,omitempty"`
 	Region *string `json:"region,omitempty"`
 	Names *MobileDevicePrestageNames `json:"names,omitempty"`
-	VersionLock *int32 `json:"versionLock,omitempty"`
+	VersionLock *int64 `json:"versionLock,omitempty"`
 }
+
+type _PutMobileDevicePrestage PutMobileDevicePrestage
 
 // NewPutMobileDevicePrestage instantiates a new PutMobileDevicePrestage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPutMobileDevicePrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int32, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int32, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, isAllowPairing bool, isMultiUser bool, isSupervised bool, maximumSharedAccounts int32, isAutoAdvanceSetup bool, isConfigureDeviceBeforeSetupAssistant bool) *PutMobileDevicePrestage {
+func NewPutMobileDevicePrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int64, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int64, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, isAllowPairing bool, isMultiUser bool, isSupervised bool, maximumSharedAccounts int64, isAutoAdvanceSetup bool, isConfigureDeviceBeforeSetupAssistant bool) *PutMobileDevicePrestage {
 	this := PutMobileDevicePrestage{}
 	this.DisplayName = displayName
 	this.IsMandatory = isMandatory
@@ -261,9 +265,9 @@ func (o *PutMobileDevicePrestage) SetIsDefaultPrestage(v bool) {
 }
 
 // GetEnrollmentSiteId returns the EnrollmentSiteId field value
-func (o *PutMobileDevicePrestage) GetEnrollmentSiteId() int32 {
+func (o *PutMobileDevicePrestage) GetEnrollmentSiteId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -272,7 +276,7 @@ func (o *PutMobileDevicePrestage) GetEnrollmentSiteId() int32 {
 
 // GetEnrollmentSiteIdOk returns a tuple with the EnrollmentSiteId field value
 // and a boolean to check if the value has been set.
-func (o *PutMobileDevicePrestage) GetEnrollmentSiteIdOk() (*int32, bool) {
+func (o *PutMobileDevicePrestage) GetEnrollmentSiteIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -280,7 +284,7 @@ func (o *PutMobileDevicePrestage) GetEnrollmentSiteIdOk() (*int32, bool) {
 }
 
 // SetEnrollmentSiteId sets field value
-func (o *PutMobileDevicePrestage) SetEnrollmentSiteId(v int32) {
+func (o *PutMobileDevicePrestage) SetEnrollmentSiteId(v int64) {
 	o.EnrollmentSiteId = v
 }
 
@@ -429,9 +433,9 @@ func (o *PutMobileDevicePrestage) SetIsEnableDeviceBasedActivationLock(v bool) {
 }
 
 // GetDeviceEnrollmentProgramInstanceId returns the DeviceEnrollmentProgramInstanceId field value
-func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceId() int32 {
+func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -440,7 +444,7 @@ func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceId() int32 {
 
 // GetDeviceEnrollmentProgramInstanceIdOk returns a tuple with the DeviceEnrollmentProgramInstanceId field value
 // and a boolean to check if the value has been set.
-func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int32, bool) {
+func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -448,7 +452,7 @@ func (o *PutMobileDevicePrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int
 }
 
 // SetDeviceEnrollmentProgramInstanceId sets field value
-func (o *PutMobileDevicePrestage) SetDeviceEnrollmentProgramInstanceId(v int32) {
+func (o *PutMobileDevicePrestage) SetDeviceEnrollmentProgramInstanceId(v int64) {
 	o.DeviceEnrollmentProgramInstanceId = v
 }
 
@@ -565,9 +569,9 @@ func (o *PutMobileDevicePrestage) SetAnchorCertificates(v []string) {
 }
 
 // GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field value if set, zero value otherwise.
-func (o *PutMobileDevicePrestage) GetEnrollmentCustomizationId() int32 {
+func (o *PutMobileDevicePrestage) GetEnrollmentCustomizationId() int64 {
 	if o == nil || IsNil(o.EnrollmentCustomizationId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EnrollmentCustomizationId
@@ -575,7 +579,7 @@ func (o *PutMobileDevicePrestage) GetEnrollmentCustomizationId() int32 {
 
 // GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutMobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int32, bool) {
+func (o *PutMobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		return nil, false
 	}
@@ -591,8 +595,8 @@ func (o *PutMobileDevicePrestage) HasEnrollmentCustomizationId() bool {
 	return false
 }
 
-// SetEnrollmentCustomizationId gets a reference to the given int32 and assigns it to the EnrollmentCustomizationId field.
-func (o *PutMobileDevicePrestage) SetEnrollmentCustomizationId(v int32) {
+// SetEnrollmentCustomizationId gets a reference to the given int64 and assigns it to the EnrollmentCustomizationId field.
+func (o *PutMobileDevicePrestage) SetEnrollmentCustomizationId(v int64) {
 	o.EnrollmentCustomizationId = &v
 }
 
@@ -669,9 +673,9 @@ func (o *PutMobileDevicePrestage) SetIsSupervised(v bool) {
 }
 
 // GetMaximumSharedAccounts returns the MaximumSharedAccounts field value
-func (o *PutMobileDevicePrestage) GetMaximumSharedAccounts() int32 {
+func (o *PutMobileDevicePrestage) GetMaximumSharedAccounts() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -680,7 +684,7 @@ func (o *PutMobileDevicePrestage) GetMaximumSharedAccounts() int32 {
 
 // GetMaximumSharedAccountsOk returns a tuple with the MaximumSharedAccounts field value
 // and a boolean to check if the value has been set.
-func (o *PutMobileDevicePrestage) GetMaximumSharedAccountsOk() (*int32, bool) {
+func (o *PutMobileDevicePrestage) GetMaximumSharedAccountsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -688,7 +692,7 @@ func (o *PutMobileDevicePrestage) GetMaximumSharedAccountsOk() (*int32, bool) {
 }
 
 // SetMaximumSharedAccounts sets field value
-func (o *PutMobileDevicePrestage) SetMaximumSharedAccounts(v int32) {
+func (o *PutMobileDevicePrestage) SetMaximumSharedAccounts(v int64) {
 	o.MaximumSharedAccounts = v
 }
 
@@ -837,9 +841,9 @@ func (o *PutMobileDevicePrestage) SetNames(v MobileDevicePrestageNames) {
 }
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
-func (o *PutMobileDevicePrestage) GetVersionLock() int32 {
+func (o *PutMobileDevicePrestage) GetVersionLock() int64 {
 	if o == nil || IsNil(o.VersionLock) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VersionLock
@@ -847,7 +851,7 @@ func (o *PutMobileDevicePrestage) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PutMobileDevicePrestage) GetVersionLockOk() (*int32, bool) {
+func (o *PutMobileDevicePrestage) GetVersionLockOk() (*int64, bool) {
 	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
@@ -863,8 +867,8 @@ func (o *PutMobileDevicePrestage) HasVersionLock() bool {
 	return false
 }
 
-// SetVersionLock gets a reference to the given int32 and assigns it to the VersionLock field.
-func (o *PutMobileDevicePrestage) SetVersionLock(v int32) {
+// SetVersionLock gets a reference to the given int64 and assigns it to the VersionLock field.
+func (o *PutMobileDevicePrestage) SetVersionLock(v int64) {
 	o.VersionLock = &v
 }
 
@@ -923,6 +927,65 @@ func (o PutMobileDevicePrestage) ToMap() (map[string]interface{}, error) {
 		toSerialize["versionLock"] = o.VersionLock
 	}
 	return toSerialize, nil
+}
+
+func (o *PutMobileDevicePrestage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"isMandatory",
+		"isMdmRemovable",
+		"supportPhoneNumber",
+		"supportEmailAddress",
+		"department",
+		"isDefaultPrestage",
+		"enrollmentSiteId",
+		"isKeepExistingSiteMembership",
+		"isKeepExistingLocationInformation",
+		"isRequireAuthentication",
+		"authenticationPrompt",
+		"isPreventActivationLock",
+		"isEnableDeviceBasedActivationLock",
+		"deviceEnrollmentProgramInstanceId",
+		"locationInformation",
+		"purchasingInformation",
+		"isAllowPairing",
+		"isMultiUser",
+		"isSupervised",
+		"maximumSharedAccounts",
+		"isAutoAdvanceSetup",
+		"isConfigureDeviceBeforeSetupAssistant",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPutMobileDevicePrestage := _PutMobileDevicePrestage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPutMobileDevicePrestage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PutMobileDevicePrestage(varPutMobileDevicePrestage)
+
+	return err
 }
 
 type NullablePutMobileDevicePrestage struct {

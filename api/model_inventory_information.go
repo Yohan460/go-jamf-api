@@ -20,13 +20,13 @@ var _ MappedNullable = &InventoryInformation{}
 // InventoryInformation Jamf Pro Inventory statistics object. Aggregates managed/unmanaged devices and computers counters
 type InventoryInformation struct {
 	// Number of managed computers in inventory.
-	ManagedComputers *int32 `json:"managedComputers,omitempty"`
+	ManagedComputers *int64 `json:"managedComputers,omitempty"`
 	// Number of unmanaged computers in inventory.
-	UnmanagedComputers *int32 `json:"unmanagedComputers,omitempty"`
+	UnmanagedComputers *int64 `json:"unmanagedComputers,omitempty"`
 	// Number of managed devices in inventory.
-	ManagedDevices *int32 `json:"managedDevices,omitempty"`
+	ManagedDevices *int64 `json:"managedDevices,omitempty"`
 	// Number of unmanaged devices in inventory.
-	UnmanagedDevices *int32 `json:"unmanagedDevices,omitempty"`
+	UnmanagedDevices *int64 `json:"unmanagedDevices,omitempty"`
 }
 
 // NewInventoryInformation instantiates a new InventoryInformation object
@@ -47,9 +47,9 @@ func NewInventoryInformationWithDefaults() *InventoryInformation {
 }
 
 // GetManagedComputers returns the ManagedComputers field value if set, zero value otherwise.
-func (o *InventoryInformation) GetManagedComputers() int32 {
+func (o *InventoryInformation) GetManagedComputers() int64 {
 	if o == nil || IsNil(o.ManagedComputers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ManagedComputers
@@ -57,7 +57,7 @@ func (o *InventoryInformation) GetManagedComputers() int32 {
 
 // GetManagedComputersOk returns a tuple with the ManagedComputers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryInformation) GetManagedComputersOk() (*int32, bool) {
+func (o *InventoryInformation) GetManagedComputersOk() (*int64, bool) {
 	if o == nil || IsNil(o.ManagedComputers) {
 		return nil, false
 	}
@@ -73,15 +73,15 @@ func (o *InventoryInformation) HasManagedComputers() bool {
 	return false
 }
 
-// SetManagedComputers gets a reference to the given int32 and assigns it to the ManagedComputers field.
-func (o *InventoryInformation) SetManagedComputers(v int32) {
+// SetManagedComputers gets a reference to the given int64 and assigns it to the ManagedComputers field.
+func (o *InventoryInformation) SetManagedComputers(v int64) {
 	o.ManagedComputers = &v
 }
 
 // GetUnmanagedComputers returns the UnmanagedComputers field value if set, zero value otherwise.
-func (o *InventoryInformation) GetUnmanagedComputers() int32 {
+func (o *InventoryInformation) GetUnmanagedComputers() int64 {
 	if o == nil || IsNil(o.UnmanagedComputers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UnmanagedComputers
@@ -89,7 +89,7 @@ func (o *InventoryInformation) GetUnmanagedComputers() int32 {
 
 // GetUnmanagedComputersOk returns a tuple with the UnmanagedComputers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryInformation) GetUnmanagedComputersOk() (*int32, bool) {
+func (o *InventoryInformation) GetUnmanagedComputersOk() (*int64, bool) {
 	if o == nil || IsNil(o.UnmanagedComputers) {
 		return nil, false
 	}
@@ -105,15 +105,15 @@ func (o *InventoryInformation) HasUnmanagedComputers() bool {
 	return false
 }
 
-// SetUnmanagedComputers gets a reference to the given int32 and assigns it to the UnmanagedComputers field.
-func (o *InventoryInformation) SetUnmanagedComputers(v int32) {
+// SetUnmanagedComputers gets a reference to the given int64 and assigns it to the UnmanagedComputers field.
+func (o *InventoryInformation) SetUnmanagedComputers(v int64) {
 	o.UnmanagedComputers = &v
 }
 
 // GetManagedDevices returns the ManagedDevices field value if set, zero value otherwise.
-func (o *InventoryInformation) GetManagedDevices() int32 {
+func (o *InventoryInformation) GetManagedDevices() int64 {
 	if o == nil || IsNil(o.ManagedDevices) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ManagedDevices
@@ -121,7 +121,7 @@ func (o *InventoryInformation) GetManagedDevices() int32 {
 
 // GetManagedDevicesOk returns a tuple with the ManagedDevices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryInformation) GetManagedDevicesOk() (*int32, bool) {
+func (o *InventoryInformation) GetManagedDevicesOk() (*int64, bool) {
 	if o == nil || IsNil(o.ManagedDevices) {
 		return nil, false
 	}
@@ -137,15 +137,15 @@ func (o *InventoryInformation) HasManagedDevices() bool {
 	return false
 }
 
-// SetManagedDevices gets a reference to the given int32 and assigns it to the ManagedDevices field.
-func (o *InventoryInformation) SetManagedDevices(v int32) {
+// SetManagedDevices gets a reference to the given int64 and assigns it to the ManagedDevices field.
+func (o *InventoryInformation) SetManagedDevices(v int64) {
 	o.ManagedDevices = &v
 }
 
 // GetUnmanagedDevices returns the UnmanagedDevices field value if set, zero value otherwise.
-func (o *InventoryInformation) GetUnmanagedDevices() int32 {
+func (o *InventoryInformation) GetUnmanagedDevices() int64 {
 	if o == nil || IsNil(o.UnmanagedDevices) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UnmanagedDevices
@@ -153,7 +153,7 @@ func (o *InventoryInformation) GetUnmanagedDevices() int32 {
 
 // GetUnmanagedDevicesOk returns a tuple with the UnmanagedDevices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryInformation) GetUnmanagedDevicesOk() (*int32, bool) {
+func (o *InventoryInformation) GetUnmanagedDevicesOk() (*int64, bool) {
 	if o == nil || IsNil(o.UnmanagedDevices) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *InventoryInformation) HasUnmanagedDevices() bool {
 	return false
 }
 
-// SetUnmanagedDevices gets a reference to the given int32 and assigns it to the UnmanagedDevices field.
-func (o *InventoryInformation) SetUnmanagedDevices(v int32) {
+// SetUnmanagedDevices gets a reference to the given int64 and assigns it to the UnmanagedDevices field.
+func (o *InventoryInformation) SetUnmanagedDevices(v int64) {
 	o.UnmanagedDevices = &v
 }
 

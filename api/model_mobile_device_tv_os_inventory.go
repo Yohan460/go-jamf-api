@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MobileDeviceTvOsInventory type satisfies the MappedNullable interface at compile time
@@ -32,6 +34,8 @@ type MobileDeviceTvOsInventory struct {
 	ExtensionAttributes []MobileDeviceExtensionAttribute `json:"extensionAttributes,omitempty"`
 	General *MobileDeviceTvOsGeneral `json:"general,omitempty"`
 }
+
+type _MobileDeviceTvOsInventory MobileDeviceTvOsInventory
 
 // NewMobileDeviceTvOsInventory instantiates a new MobileDeviceTvOsInventory object
 // This constructor will assign default values to properties that have it defined,
@@ -437,6 +441,43 @@ func (o MobileDeviceTvOsInventory) ToMap() (map[string]interface{}, error) {
 		toSerialize["general"] = o.General
 	}
 	return toSerialize, nil
+}
+
+func (o *MobileDeviceTvOsInventory) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"deviceType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMobileDeviceTvOsInventory := _MobileDeviceTvOsInventory{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMobileDeviceTvOsInventory)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MobileDeviceTvOsInventory(varMobileDeviceTvOsInventory)
+
+	return err
 }
 
 type NullableMobileDeviceTvOsInventory struct {

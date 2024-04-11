@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | **string** |  | 
-**Rank** | **int32** |  | 
-**Id** | Pointer to **int32** |  | [optional] 
+**Rank** | **int64** |  | 
+**Id** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewGetEnrollmentCustomizationPanel
 
-`func NewGetEnrollmentCustomizationPanel(displayName string, rank int32, ) *GetEnrollmentCustomizationPanel`
+`func NewGetEnrollmentCustomizationPanel(displayName string, rank int64, ) *GetEnrollmentCustomizationPanel`
 
 NewGetEnrollmentCustomizationPanel instantiates a new GetEnrollmentCustomizationPanel object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetDisplayName sets DisplayName field to given value.
 
 ### GetRank
 
-`func (o *GetEnrollmentCustomizationPanel) GetRank() int32`
+`func (o *GetEnrollmentCustomizationPanel) GetRank() int64`
 
 GetRank returns the Rank field if non-nil, zero value otherwise.
 
 ### GetRankOk
 
-`func (o *GetEnrollmentCustomizationPanel) GetRankOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanel) GetRankOk() (*int64, bool)`
 
 GetRankOk returns a tuple with the Rank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRank
 
-`func (o *GetEnrollmentCustomizationPanel) SetRank(v int32)`
+`func (o *GetEnrollmentCustomizationPanel) SetRank(v int64)`
 
 SetRank sets Rank field to given value.
 
 
 ### GetId
 
-`func (o *GetEnrollmentCustomizationPanel) GetId() int32`
+`func (o *GetEnrollmentCustomizationPanel) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetEnrollmentCustomizationPanel) GetIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanel) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetEnrollmentCustomizationPanel) SetId(v int32)`
+`func (o *GetEnrollmentCustomizationPanel) SetId(v int64)`
 
 SetId sets Id field to given value.
 

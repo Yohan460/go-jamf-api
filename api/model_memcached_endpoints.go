@@ -22,9 +22,9 @@ type MemcachedEndpoints struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	HostName *string `json:"hostName,omitempty"`
-	Port *int32 `json:"port,omitempty"`
+	Port *int64 `json:"port,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
-	JssCacheConfigurationId *int32 `json:"jssCacheConfigurationId,omitempty"`
+	JssCacheConfigurationId *int64 `json:"jssCacheConfigurationId,omitempty"`
 }
 
 // NewMemcachedEndpoints instantiates a new MemcachedEndpoints object
@@ -141,9 +141,9 @@ func (o *MemcachedEndpoints) SetHostName(v string) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *MemcachedEndpoints) GetPort() int32 {
+func (o *MemcachedEndpoints) GetPort() int64 {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Port
@@ -151,7 +151,7 @@ func (o *MemcachedEndpoints) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemcachedEndpoints) GetPortOk() (*int32, bool) {
+func (o *MemcachedEndpoints) GetPortOk() (*int64, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -167,8 +167,8 @@ func (o *MemcachedEndpoints) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *MemcachedEndpoints) SetPort(v int32) {
+// SetPort gets a reference to the given int64 and assigns it to the Port field.
+func (o *MemcachedEndpoints) SetPort(v int64) {
 	o.Port = &v
 }
 
@@ -205,9 +205,9 @@ func (o *MemcachedEndpoints) SetEnabled(v bool) {
 }
 
 // GetJssCacheConfigurationId returns the JssCacheConfigurationId field value if set, zero value otherwise.
-func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int32 {
+func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int64 {
 	if o == nil || IsNil(o.JssCacheConfigurationId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.JssCacheConfigurationId
@@ -215,7 +215,7 @@ func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int32 {
 
 // GetJssCacheConfigurationIdOk returns a tuple with the JssCacheConfigurationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int32, bool) {
+func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.JssCacheConfigurationId) {
 		return nil, false
 	}
@@ -231,8 +231,8 @@ func (o *MemcachedEndpoints) HasJssCacheConfigurationId() bool {
 	return false
 }
 
-// SetJssCacheConfigurationId gets a reference to the given int32 and assigns it to the JssCacheConfigurationId field.
-func (o *MemcachedEndpoints) SetJssCacheConfigurationId(v int32) {
+// SetJssCacheConfigurationId gets a reference to the given int64 and assigns it to the JssCacheConfigurationId field.
+func (o *MemcachedEndpoints) SetJssCacheConfigurationId(v int64) {
 	o.JssCacheConfigurationId = &v
 }
 

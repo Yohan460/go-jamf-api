@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrestagePurchasingInformationV2 type satisfies the MappedNullable interface at compile time
@@ -26,20 +28,22 @@ type PrestagePurchasingInformationV2 struct {
 	PoNumber string `json:"poNumber"`
 	Vendor string `json:"vendor"`
 	PurchasePrice string `json:"purchasePrice"`
-	LifeExpectancy int32 `json:"lifeExpectancy"`
+	LifeExpectancy int64 `json:"lifeExpectancy"`
 	PurchasingAccount string `json:"purchasingAccount"`
 	PurchasingContact string `json:"purchasingContact"`
 	LeaseDate string `json:"leaseDate"`
 	PoDate string `json:"poDate"`
 	WarrantyDate string `json:"warrantyDate"`
-	VersionLock int32 `json:"versionLock"`
+	VersionLock int64 `json:"versionLock"`
 }
+
+type _PrestagePurchasingInformationV2 PrestagePurchasingInformationV2
 
 // NewPrestagePurchasingInformationV2 instantiates a new PrestagePurchasingInformationV2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrestagePurchasingInformationV2(id string, leased bool, purchased bool, appleCareId string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int32, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int32) *PrestagePurchasingInformationV2 {
+func NewPrestagePurchasingInformationV2(id string, leased bool, purchased bool, appleCareId string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int64, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int64) *PrestagePurchasingInformationV2 {
 	this := PrestagePurchasingInformationV2{}
 	this.Id = id
 	this.Leased = leased
@@ -235,9 +239,9 @@ func (o *PrestagePurchasingInformationV2) SetPurchasePrice(v string) {
 }
 
 // GetLifeExpectancy returns the LifeExpectancy field value
-func (o *PrestagePurchasingInformationV2) GetLifeExpectancy() int32 {
+func (o *PrestagePurchasingInformationV2) GetLifeExpectancy() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -246,7 +250,7 @@ func (o *PrestagePurchasingInformationV2) GetLifeExpectancy() int32 {
 
 // GetLifeExpectancyOk returns a tuple with the LifeExpectancy field value
 // and a boolean to check if the value has been set.
-func (o *PrestagePurchasingInformationV2) GetLifeExpectancyOk() (*int32, bool) {
+func (o *PrestagePurchasingInformationV2) GetLifeExpectancyOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -254,7 +258,7 @@ func (o *PrestagePurchasingInformationV2) GetLifeExpectancyOk() (*int32, bool) {
 }
 
 // SetLifeExpectancy sets field value
-func (o *PrestagePurchasingInformationV2) SetLifeExpectancy(v int32) {
+func (o *PrestagePurchasingInformationV2) SetLifeExpectancy(v int64) {
 	o.LifeExpectancy = v
 }
 
@@ -379,9 +383,9 @@ func (o *PrestagePurchasingInformationV2) SetWarrantyDate(v string) {
 }
 
 // GetVersionLock returns the VersionLock field value
-func (o *PrestagePurchasingInformationV2) GetVersionLock() int32 {
+func (o *PrestagePurchasingInformationV2) GetVersionLock() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -390,7 +394,7 @@ func (o *PrestagePurchasingInformationV2) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value
 // and a boolean to check if the value has been set.
-func (o *PrestagePurchasingInformationV2) GetVersionLockOk() (*int32, bool) {
+func (o *PrestagePurchasingInformationV2) GetVersionLockOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -398,7 +402,7 @@ func (o *PrestagePurchasingInformationV2) GetVersionLockOk() (*int32, bool) {
 }
 
 // SetVersionLock sets field value
-func (o *PrestagePurchasingInformationV2) SetVersionLock(v int32) {
+func (o *PrestagePurchasingInformationV2) SetVersionLock(v int64) {
 	o.VersionLock = v
 }
 
@@ -427,6 +431,56 @@ func (o PrestagePurchasingInformationV2) ToMap() (map[string]interface{}, error)
 	toSerialize["warrantyDate"] = o.WarrantyDate
 	toSerialize["versionLock"] = o.VersionLock
 	return toSerialize, nil
+}
+
+func (o *PrestagePurchasingInformationV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"leased",
+		"purchased",
+		"appleCareId",
+		"poNumber",
+		"vendor",
+		"purchasePrice",
+		"lifeExpectancy",
+		"purchasingAccount",
+		"purchasingContact",
+		"leaseDate",
+		"poDate",
+		"warrantyDate",
+		"versionLock",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrestagePurchasingInformationV2 := _PrestagePurchasingInformationV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrestagePurchasingInformationV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrestagePurchasingInformationV2(varPrestagePurchasingInformationV2)
+
+	return err
 }
 
 type NullablePrestagePurchasingInformationV2 struct {

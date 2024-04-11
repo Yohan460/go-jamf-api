@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CapacityMb** | Pointer to **int32** |  | [optional] 
-**AvailableSpaceMb** | Pointer to **int32** |  | [optional] 
-**UsedSpacePercentage** | Pointer to **int32** |  | [optional] 
-**BatteryLevel** | Pointer to **int32** |  | [optional] 
+**CapacityMb** | Pointer to **int64** |  | [optional] 
+**AvailableSpaceMb** | Pointer to **int64** |  | [optional] 
+**UsedSpacePercentage** | Pointer to **int64** |  | [optional] 
+**BatteryLevel** | Pointer to **int64** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **WifiMacAddress** | Pointer to **string** |  | [optional] 
 **BluetoothMacAddress** | Pointer to **string** |  | [optional] 
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCapacityMb
 
-`func (o *MobileDeviceHardware) GetCapacityMb() int32`
+`func (o *MobileDeviceHardware) GetCapacityMb() int64`
 
 GetCapacityMb returns the CapacityMb field if non-nil, zero value otherwise.
 
 ### GetCapacityMbOk
 
-`func (o *MobileDeviceHardware) GetCapacityMbOk() (*int32, bool)`
+`func (o *MobileDeviceHardware) GetCapacityMbOk() (*int64, bool)`
 
 GetCapacityMbOk returns a tuple with the CapacityMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCapacityMb
 
-`func (o *MobileDeviceHardware) SetCapacityMb(v int32)`
+`func (o *MobileDeviceHardware) SetCapacityMb(v int64)`
 
 SetCapacityMb sets CapacityMb field to given value.
 
@@ -65,20 +65,20 @@ HasCapacityMb returns a boolean if a field has been set.
 
 ### GetAvailableSpaceMb
 
-`func (o *MobileDeviceHardware) GetAvailableSpaceMb() int32`
+`func (o *MobileDeviceHardware) GetAvailableSpaceMb() int64`
 
 GetAvailableSpaceMb returns the AvailableSpaceMb field if non-nil, zero value otherwise.
 
 ### GetAvailableSpaceMbOk
 
-`func (o *MobileDeviceHardware) GetAvailableSpaceMbOk() (*int32, bool)`
+`func (o *MobileDeviceHardware) GetAvailableSpaceMbOk() (*int64, bool)`
 
 GetAvailableSpaceMbOk returns a tuple with the AvailableSpaceMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailableSpaceMb
 
-`func (o *MobileDeviceHardware) SetAvailableSpaceMb(v int32)`
+`func (o *MobileDeviceHardware) SetAvailableSpaceMb(v int64)`
 
 SetAvailableSpaceMb sets AvailableSpaceMb field to given value.
 
@@ -90,20 +90,20 @@ HasAvailableSpaceMb returns a boolean if a field has been set.
 
 ### GetUsedSpacePercentage
 
-`func (o *MobileDeviceHardware) GetUsedSpacePercentage() int32`
+`func (o *MobileDeviceHardware) GetUsedSpacePercentage() int64`
 
 GetUsedSpacePercentage returns the UsedSpacePercentage field if non-nil, zero value otherwise.
 
 ### GetUsedSpacePercentageOk
 
-`func (o *MobileDeviceHardware) GetUsedSpacePercentageOk() (*int32, bool)`
+`func (o *MobileDeviceHardware) GetUsedSpacePercentageOk() (*int64, bool)`
 
 GetUsedSpacePercentageOk returns a tuple with the UsedSpacePercentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsedSpacePercentage
 
-`func (o *MobileDeviceHardware) SetUsedSpacePercentage(v int32)`
+`func (o *MobileDeviceHardware) SetUsedSpacePercentage(v int64)`
 
 SetUsedSpacePercentage sets UsedSpacePercentage field to given value.
 
@@ -115,20 +115,20 @@ HasUsedSpacePercentage returns a boolean if a field has been set.
 
 ### GetBatteryLevel
 
-`func (o *MobileDeviceHardware) GetBatteryLevel() int32`
+`func (o *MobileDeviceHardware) GetBatteryLevel() int64`
 
 GetBatteryLevel returns the BatteryLevel field if non-nil, zero value otherwise.
 
 ### GetBatteryLevelOk
 
-`func (o *MobileDeviceHardware) GetBatteryLevelOk() (*int32, bool)`
+`func (o *MobileDeviceHardware) GetBatteryLevelOk() (*int64, bool)`
 
 GetBatteryLevelOk returns a tuple with the BatteryLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatteryLevel
 
-`func (o *MobileDeviceHardware) SetBatteryLevel(v int32)`
+`func (o *MobileDeviceHardware) SetBatteryLevel(v int64)`
 
 SetBatteryLevel sets BatteryLevel field to given value.
 

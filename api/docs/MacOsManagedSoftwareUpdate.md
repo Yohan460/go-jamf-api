@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeviceIds** | Pointer to **[]string** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
-**MaxDeferrals** | Pointer to **int32** | Allow users to defer the update the provided number of times before macOS forces the update. If a value is provided, the Software Update will use the InstallLater install action. | [optional] 
+**MaxDeferrals** | Pointer to **int64** | Allow users to defer the update the provided number of times before macOS forces the update. If a value is provided, the Software Update will use the InstallLater install action. | [optional] 
 **Version** | Pointer to **string** | If no value is provided, the version will default to latest version based on device eligibility. | [optional] 
 **SkipVersionVerification** | Pointer to **bool** | If no value is provided, the skipVersionVerification will default to false. If a value is provided, the specified version will be forced to complete DownloadAndInstall install action. | [optional] [default to false]
 **ApplyMajorUpdate** | Pointer to **bool** | ApplyMajorUpdate setting is available only when updating to the latest version based on device eligibility. If no value is provided, the calculated latest version will only include minor version updates. If a value is provided, the calculated latest version will include minor and major version updates. | [optional] [default to false]
@@ -85,20 +85,20 @@ HasGroupId returns a boolean if a field has been set.
 
 ### GetMaxDeferrals
 
-`func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int32`
+`func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int64`
 
 GetMaxDeferrals returns the MaxDeferrals field if non-nil, zero value otherwise.
 
 ### GetMaxDeferralsOk
 
-`func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int32, bool)`
+`func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int64, bool)`
 
 GetMaxDeferralsOk returns a tuple with the MaxDeferrals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxDeferrals
 
-`func (o *MacOsManagedSoftwareUpdate) SetMaxDeferrals(v int32)`
+`func (o *MacOsManagedSoftwareUpdate) SetMaxDeferrals(v int64)`
 
 SetMaxDeferrals sets MaxDeferrals field to given value.
 

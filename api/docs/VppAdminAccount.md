@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**LicenseCount** | Pointer to **int32** |  | [optional] 
-**UsedLicenseCount** | Pointer to **int32** |  | [optional] 
+**LicenseCount** | Pointer to **int64** |  | [optional] 
+**UsedLicenseCount** | Pointer to **int64** |  | [optional] 
 **Location** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **string** |  | [optional] 
 **Site** | Pointer to [**Site**](Site.md) |  | [optional] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *VppAdminAccount) GetId() int32`
+`func (o *VppAdminAccount) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *VppAdminAccount) GetIdOk() (*int32, bool)`
+`func (o *VppAdminAccount) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *VppAdminAccount) SetId(v int32)`
+`func (o *VppAdminAccount) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -83,20 +83,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetLicenseCount
 
-`func (o *VppAdminAccount) GetLicenseCount() int32`
+`func (o *VppAdminAccount) GetLicenseCount() int64`
 
 GetLicenseCount returns the LicenseCount field if non-nil, zero value otherwise.
 
 ### GetLicenseCountOk
 
-`func (o *VppAdminAccount) GetLicenseCountOk() (*int32, bool)`
+`func (o *VppAdminAccount) GetLicenseCountOk() (*int64, bool)`
 
 GetLicenseCountOk returns a tuple with the LicenseCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicenseCount
 
-`func (o *VppAdminAccount) SetLicenseCount(v int32)`
+`func (o *VppAdminAccount) SetLicenseCount(v int64)`
 
 SetLicenseCount sets LicenseCount field to given value.
 
@@ -108,20 +108,20 @@ HasLicenseCount returns a boolean if a field has been set.
 
 ### GetUsedLicenseCount
 
-`func (o *VppAdminAccount) GetUsedLicenseCount() int32`
+`func (o *VppAdminAccount) GetUsedLicenseCount() int64`
 
 GetUsedLicenseCount returns the UsedLicenseCount field if non-nil, zero value otherwise.
 
 ### GetUsedLicenseCountOk
 
-`func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int32, bool)`
+`func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int64, bool)`
 
 GetUsedLicenseCountOk returns a tuple with the UsedLicenseCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsedLicenseCount
 
-`func (o *VppAdminAccount) SetUsedLicenseCount(v int32)`
+`func (o *VppAdminAccount) SetUsedLicenseCount(v int64)`
 
 SetUsedLicenseCount sets UsedLicenseCount field to given value.
 

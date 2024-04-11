@@ -24,7 +24,7 @@ type ConnectionConfigurationUpdateRequest struct {
 	// Defines the intent to enable or disable Team Viewer connection
 	Enabled *bool `json:"enabled,omitempty"`
 	// Number of minutes before the session expires
-	SessionTimeout *int32 `json:"sessionTimeout,omitempty"`
+	SessionTimeout *int64 `json:"sessionTimeout,omitempty"`
 	// Script token for Team Viewer Connection Configuration
 	Token *string `json:"token,omitempty"`
 }
@@ -111,9 +111,9 @@ func (o *ConnectionConfigurationUpdateRequest) SetEnabled(v bool) {
 }
 
 // GetSessionTimeout returns the SessionTimeout field value if set, zero value otherwise.
-func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int32 {
+func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int64 {
 	if o == nil || IsNil(o.SessionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SessionTimeout
@@ -121,7 +121,7 @@ func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int32 {
 
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int32, bool) {
+func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.SessionTimeout) {
 		return nil, false
 	}
@@ -137,8 +137,8 @@ func (o *ConnectionConfigurationUpdateRequest) HasSessionTimeout() bool {
 	return false
 }
 
-// SetSessionTimeout gets a reference to the given int32 and assigns it to the SessionTimeout field.
-func (o *ConnectionConfigurationUpdateRequest) SetSessionTimeout(v int32) {
+// SetSessionTimeout gets a reference to the given int64 and assigns it to the SessionTimeout field.
+func (o *ConnectionConfigurationUpdateRequest) SetSessionTimeout(v int64) {
 	o.SessionTimeout = &v
 }
 

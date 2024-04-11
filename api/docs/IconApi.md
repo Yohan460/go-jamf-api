@@ -24,26 +24,26 @@ Download a self service icon
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of the self service icon
-    res := "300" // string | request a specific resolution of original, 300, or 512; invalid options will result in original resolution (optional) (default to "original")
-    scale := "1" // string | request a scale; 0 results in original image, non-0 results in scaled to 300 (optional) (default to "0")
+	id := "id_example" // string | id of the self service icon
+	res := "300" // string | request a specific resolution of original, 300, or 512; invalid options will result in original resolution (optional) (default to "original")
+	scale := "1" // string | request a scale; 0 results in original image, non-0 results in scaled to 300 (optional) (default to "0")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IconAPI.V1IconDownloadIdGet(context.Background(), id).Res(res).Scale(scale).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconDownloadIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1IconDownloadIdGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconDownloadIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IconAPI.V1IconDownloadIdGet(context.Background(), id).Res(res).Scale(scale).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconDownloadIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1IconDownloadIdGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconDownloadIdGet`: %v\n", resp)
 }
 ```
 
@@ -98,24 +98,24 @@ Get an icon
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of the icon
+	id := "id_example" // string | id of the icon
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IconAPI.V1IconIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1IconIdGet`: IconResponse
-    fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IconAPI.V1IconIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1IconIdGet`: IconResponse
+	fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconIdGet`: %v\n", resp)
 }
 ```
 
@@ -168,24 +168,24 @@ Upload an icon
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    file := os.NewFile(1234, "some_file") // *os.File | The file to upload
+	file := os.NewFile(1234, "some_file") // *os.File | The file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.IconAPI.V1IconPost(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1IconPost`: IconResponse
-    fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.IconAPI.V1IconPost(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `IconAPI.V1IconPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1IconPost`: IconResponse
+	fmt.Fprintf(os.Stdout, "Response from `IconAPI.V1IconPost`: %v\n", resp)
 }
 ```
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &HistorySearchResults{}
 
 // HistorySearchResults struct for HistorySearchResults
 type HistorySearchResults struct {
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int64 `json:"totalCount,omitempty"`
 	Results []ObjectHistory `json:"results,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewHistorySearchResultsWithDefaults() *HistorySearchResults {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *HistorySearchResults) GetTotalCount() int32 {
+func (o *HistorySearchResults) GetTotalCount() int64 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalCount
@@ -51,7 +51,7 @@ func (o *HistorySearchResults) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HistorySearchResults) GetTotalCountOk() (*int32, bool) {
+func (o *HistorySearchResults) GetTotalCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *HistorySearchResults) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *HistorySearchResults) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
+func (o *HistorySearchResults) SetTotalCount(v int64) {
 	o.TotalCount = &v
 }
 

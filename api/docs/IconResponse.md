@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasUrl returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *IconResponse) GetId() int32`
+`func (o *IconResponse) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *IconResponse) GetIdOk() (*int32, bool)`
+`func (o *IconResponse) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *IconResponse) SetId(v int32)`
+`func (o *IconResponse) SetId(v int64)`
 
 SetId sets Id field to given value.
 

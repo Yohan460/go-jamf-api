@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | **string** |  | 
-**Priority** | **int32** |  | 
+**Priority** | **int64** |  | 
 
 ## Methods
 
 ### NewCategory
 
-`func NewCategory(name string, priority int32, ) *Category`
+`func NewCategory(name string, priority int64, ) *Category`
 
 NewCategory instantiates a new Category object
 This constructor will assign default values to properties that have it defined,
@@ -74,20 +74,20 @@ SetName sets Name field to given value.
 
 ### GetPriority
 
-`func (o *Category) GetPriority() int32`
+`func (o *Category) GetPriority() int64`
 
 GetPriority returns the Priority field if non-nil, zero value otherwise.
 
 ### GetPriorityOk
 
-`func (o *Category) GetPriorityOk() (*int32, bool)`
+`func (o *Category) GetPriorityOk() (*int64, bool)`
 
 GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPriority
 
-`func (o *Category) SetPriority(v int32)`
+`func (o *Category) SetPriority(v int64)`
 
 SetPriority sets Priority field to given value.
 

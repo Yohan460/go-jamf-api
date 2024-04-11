@@ -19,10 +19,10 @@ var _ MappedNullable = &MobileDeviceHardware{}
 
 // MobileDeviceHardware struct for MobileDeviceHardware
 type MobileDeviceHardware struct {
-	CapacityMb *int32 `json:"capacityMb,omitempty"`
-	AvailableSpaceMb *int32 `json:"availableSpaceMb,omitempty"`
-	UsedSpacePercentage *int32 `json:"usedSpacePercentage,omitempty"`
-	BatteryLevel *int32 `json:"batteryLevel,omitempty"`
+	CapacityMb *int64 `json:"capacityMb,omitempty"`
+	AvailableSpaceMb *int64 `json:"availableSpaceMb,omitempty"`
+	UsedSpacePercentage *int64 `json:"usedSpacePercentage,omitempty"`
+	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	WifiMacAddress *string `json:"wifiMacAddress,omitempty"`
 	BluetoothMacAddress *string `json:"bluetoothMacAddress,omitempty"`
@@ -53,9 +53,9 @@ func NewMobileDeviceHardwareWithDefaults() *MobileDeviceHardware {
 }
 
 // GetCapacityMb returns the CapacityMb field value if set, zero value otherwise.
-func (o *MobileDeviceHardware) GetCapacityMb() int32 {
+func (o *MobileDeviceHardware) GetCapacityMb() int64 {
 	if o == nil || IsNil(o.CapacityMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CapacityMb
@@ -63,7 +63,7 @@ func (o *MobileDeviceHardware) GetCapacityMb() int32 {
 
 // GetCapacityMbOk returns a tuple with the CapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceHardware) GetCapacityMbOk() (*int32, bool) {
+func (o *MobileDeviceHardware) GetCapacityMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.CapacityMb) {
 		return nil, false
 	}
@@ -79,15 +79,15 @@ func (o *MobileDeviceHardware) HasCapacityMb() bool {
 	return false
 }
 
-// SetCapacityMb gets a reference to the given int32 and assigns it to the CapacityMb field.
-func (o *MobileDeviceHardware) SetCapacityMb(v int32) {
+// SetCapacityMb gets a reference to the given int64 and assigns it to the CapacityMb field.
+func (o *MobileDeviceHardware) SetCapacityMb(v int64) {
 	o.CapacityMb = &v
 }
 
 // GetAvailableSpaceMb returns the AvailableSpaceMb field value if set, zero value otherwise.
-func (o *MobileDeviceHardware) GetAvailableSpaceMb() int32 {
+func (o *MobileDeviceHardware) GetAvailableSpaceMb() int64 {
 	if o == nil || IsNil(o.AvailableSpaceMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AvailableSpaceMb
@@ -95,7 +95,7 @@ func (o *MobileDeviceHardware) GetAvailableSpaceMb() int32 {
 
 // GetAvailableSpaceMbOk returns a tuple with the AvailableSpaceMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceHardware) GetAvailableSpaceMbOk() (*int32, bool) {
+func (o *MobileDeviceHardware) GetAvailableSpaceMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvailableSpaceMb) {
 		return nil, false
 	}
@@ -111,15 +111,15 @@ func (o *MobileDeviceHardware) HasAvailableSpaceMb() bool {
 	return false
 }
 
-// SetAvailableSpaceMb gets a reference to the given int32 and assigns it to the AvailableSpaceMb field.
-func (o *MobileDeviceHardware) SetAvailableSpaceMb(v int32) {
+// SetAvailableSpaceMb gets a reference to the given int64 and assigns it to the AvailableSpaceMb field.
+func (o *MobileDeviceHardware) SetAvailableSpaceMb(v int64) {
 	o.AvailableSpaceMb = &v
 }
 
 // GetUsedSpacePercentage returns the UsedSpacePercentage field value if set, zero value otherwise.
-func (o *MobileDeviceHardware) GetUsedSpacePercentage() int32 {
+func (o *MobileDeviceHardware) GetUsedSpacePercentage() int64 {
 	if o == nil || IsNil(o.UsedSpacePercentage) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsedSpacePercentage
@@ -127,7 +127,7 @@ func (o *MobileDeviceHardware) GetUsedSpacePercentage() int32 {
 
 // GetUsedSpacePercentageOk returns a tuple with the UsedSpacePercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceHardware) GetUsedSpacePercentageOk() (*int32, bool) {
+func (o *MobileDeviceHardware) GetUsedSpacePercentageOk() (*int64, bool) {
 	if o == nil || IsNil(o.UsedSpacePercentage) {
 		return nil, false
 	}
@@ -143,15 +143,15 @@ func (o *MobileDeviceHardware) HasUsedSpacePercentage() bool {
 	return false
 }
 
-// SetUsedSpacePercentage gets a reference to the given int32 and assigns it to the UsedSpacePercentage field.
-func (o *MobileDeviceHardware) SetUsedSpacePercentage(v int32) {
+// SetUsedSpacePercentage gets a reference to the given int64 and assigns it to the UsedSpacePercentage field.
+func (o *MobileDeviceHardware) SetUsedSpacePercentage(v int64) {
 	o.UsedSpacePercentage = &v
 }
 
 // GetBatteryLevel returns the BatteryLevel field value if set, zero value otherwise.
-func (o *MobileDeviceHardware) GetBatteryLevel() int32 {
+func (o *MobileDeviceHardware) GetBatteryLevel() int64 {
 	if o == nil || IsNil(o.BatteryLevel) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BatteryLevel
@@ -159,7 +159,7 @@ func (o *MobileDeviceHardware) GetBatteryLevel() int32 {
 
 // GetBatteryLevelOk returns a tuple with the BatteryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceHardware) GetBatteryLevelOk() (*int32, bool) {
+func (o *MobileDeviceHardware) GetBatteryLevelOk() (*int64, bool) {
 	if o == nil || IsNil(o.BatteryLevel) {
 		return nil, false
 	}
@@ -175,8 +175,8 @@ func (o *MobileDeviceHardware) HasBatteryLevel() bool {
 	return false
 }
 
-// SetBatteryLevel gets a reference to the given int32 and assigns it to the BatteryLevel field.
-func (o *MobileDeviceHardware) SetBatteryLevel(v int32) {
+// SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
+func (o *MobileDeviceHardware) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
 }
 

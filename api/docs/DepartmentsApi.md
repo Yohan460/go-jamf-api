@@ -29,22 +29,22 @@ Deletes all departments by ids passed in body
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ids := *openapiclient.NewIds() // Ids | ids of departments to be deleted. pass in an array of ids
+	ids := *openapiclient.NewIds() // Ids | ids of departments to be deleted. pass in an array of ids
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DepartmentsAPI.V1DepartmentsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsDeleteMultiplePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DepartmentsAPI.V1DepartmentsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsDeleteMultiplePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -93,27 +93,27 @@ Search for Departments
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter department collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. Example: name==\"*department*\" (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter department collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. Example: name==\"*department*\" (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsGet`: DepartmentsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsGet`: DepartmentsSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsGet`: %v\n", resp)
 }
 ```
 
@@ -128,8 +128,8 @@ Other parameters are passed through a pointer to a apiV1DepartmentsGetRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter department collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. Example: name&#x3D;&#x3D;\&quot;*department*\&quot; | [default to &quot;&quot;]
 
@@ -165,22 +165,22 @@ Remove specified department record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department record
+	id := "id_example" // string | instance id of department record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DepartmentsAPI.V1DepartmentsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DepartmentsAPI.V1DepartmentsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -233,24 +233,24 @@ Get specified Department object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department record
+	id := "id_example" // string | instance id of department record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsIdGet`: Department
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsIdGet`: Department
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdGet`: %v\n", resp)
 }
 ```
 
@@ -303,28 +303,28 @@ Get specified Department history object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department history record
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	id := "id_example" // string | instance id of department history record
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -344,8 +344,8 @@ Other parameters are passed through a pointer to a apiV1DepartmentsIdHistoryGetR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -381,25 +381,25 @@ Add specified Department history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department history record
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	id := "id_example" // string | instance id of department history record
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsIdHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -453,25 +453,25 @@ Update specified department object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of department record
-    department := *openapiclient.NewDepartment("Department of Redundancy Department") // Department | department object to create. ids defined in this body will be ignored
+	id := "id_example" // string | instance id of department record
+	department := *openapiclient.NewDepartment("Department of Redundancy Department") // Department | department object to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdPut(context.Background(), id).Department(department).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsIdPut`: Department
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsIdPut(context.Background(), id).Department(department).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsIdPut`: Department
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsIdPut`: %v\n", resp)
 }
 ```
 
@@ -525,24 +525,24 @@ Create department record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    department := *openapiclient.NewDepartment("Department of Redundancy Department") // Department | department object to create. ids defined in this body will be ignored
+	department := *openapiclient.NewDepartment("Department of Redundancy Department") // Department | department object to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsPost(context.Background()).Department(department).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DepartmentsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DepartmentsAPI.V1DepartmentsPost(context.Background()).Department(department).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DepartmentsAPI.V1DepartmentsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DepartmentsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `DepartmentsAPI.V1DepartmentsPost`: %v\n", resp)
 }
 ```
 

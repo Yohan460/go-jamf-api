@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConnectionConfigurationResponse type satisfies the MappedNullable interface at compile time
@@ -28,14 +30,16 @@ type ConnectionConfigurationResponse struct {
 	// Describes if Team Viewer connection is enabled or disabled
 	Enabled bool `json:"enabled"`
 	// Number of minutes before the session expires
-	SessionTimeout NullableInt32 `json:"sessionTimeout"`
+	SessionTimeout NullableInt64 `json:"sessionTimeout"`
 }
+
+type _ConnectionConfigurationResponse ConnectionConfigurationResponse
 
 // NewConnectionConfigurationResponse instantiates a new ConnectionConfigurationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt32) *ConnectionConfigurationResponse {
+func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt64) *ConnectionConfigurationResponse {
 	this := ConnectionConfigurationResponse{}
 	this.Id = id
 	this.SiteId = siteId
@@ -150,10 +154,10 @@ func (o *ConnectionConfigurationResponse) SetEnabled(v bool) {
 }
 
 // GetSessionTimeout returns the SessionTimeout field value
-// If the value is explicit nil, the zero value for int32 will be returned
-func (o *ConnectionConfigurationResponse) GetSessionTimeout() int32 {
+// If the value is explicit nil, the zero value for int64 will be returned
+func (o *ConnectionConfigurationResponse) GetSessionTimeout() int64 {
 	if o == nil || o.SessionTimeout.Get() == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -163,7 +167,7 @@ func (o *ConnectionConfigurationResponse) GetSessionTimeout() int32 {
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int32, bool) {
+func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -171,7 +175,7 @@ func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int32, bool) {
 }
 
 // SetSessionTimeout sets field value
-func (o *ConnectionConfigurationResponse) SetSessionTimeout(v int32) {
+func (o *ConnectionConfigurationResponse) SetSessionTimeout(v int64) {
 	o.SessionTimeout.Set(&v)
 }
 
@@ -191,6 +195,47 @@ func (o ConnectionConfigurationResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["sessionTimeout"] = o.SessionTimeout.Get()
 	return toSerialize, nil
+}
+
+func (o *ConnectionConfigurationResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"siteId",
+		"displayName",
+		"enabled",
+		"sessionTimeout",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConnectionConfigurationResponse := _ConnectionConfigurationResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConnectionConfigurationResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConnectionConfigurationResponse(varConnectionConfigurationResponse)
+
+	return err
 }
 
 type NullableConnectionConfigurationResponse struct {

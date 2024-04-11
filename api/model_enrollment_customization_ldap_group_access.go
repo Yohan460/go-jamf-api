@@ -19,7 +19,7 @@ var _ MappedNullable = &EnrollmentCustomizationLdapGroupAccess{}
 
 // EnrollmentCustomizationLdapGroupAccess struct for EnrollmentCustomizationLdapGroupAccess
 type EnrollmentCustomizationLdapGroupAccess struct {
-	LdapServerId *int32 `json:"ldapServerId,omitempty"`
+	LdapServerId *int64 `json:"ldapServerId,omitempty"`
 	GroupName *string `json:"groupName,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewEnrollmentCustomizationLdapGroupAccessWithDefaults() *EnrollmentCustomiz
 }
 
 // GetLdapServerId returns the LdapServerId field value if set, zero value otherwise.
-func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerId() int32 {
+func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerId() int64 {
 	if o == nil || IsNil(o.LdapServerId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LdapServerId
@@ -51,7 +51,7 @@ func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerId() int32 {
 
 // GetLdapServerIdOk returns a tuple with the LdapServerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerIdOk() (*int32, bool) {
+func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.LdapServerId) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *EnrollmentCustomizationLdapGroupAccess) HasLdapServerId() bool {
 	return false
 }
 
-// SetLdapServerId gets a reference to the given int32 and assigns it to the LdapServerId field.
-func (o *EnrollmentCustomizationLdapGroupAccess) SetLdapServerId(v int32) {
+// SetLdapServerId gets a reference to the given int64 and assigns it to the LdapServerId field.
+func (o *EnrollmentCustomizationLdapGroupAccess) SetLdapServerId(v int64) {
 	o.LdapServerId = &v
 }
 

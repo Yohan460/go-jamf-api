@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SiteId** | **int32** |  | 
+**SiteId** | **int64** |  | 
 **DisplayName** | **string** |  | 
 **Description** | **string** |  | 
 **EnrollmentCustomizationBrandingSettings** | [**EnrollmentCustomizationBrandingSettings**](EnrollmentCustomizationBrandingSettings.md) |  | 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
 ### NewGetEnrollmentCustomization
 
-`func NewGetEnrollmentCustomization(siteId int32, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *GetEnrollmentCustomization`
+`func NewGetEnrollmentCustomization(siteId int64, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *GetEnrollmentCustomization`
 
 NewGetEnrollmentCustomization instantiates a new GetEnrollmentCustomization object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSiteId
 
-`func (o *GetEnrollmentCustomization) GetSiteId() int32`
+`func (o *GetEnrollmentCustomization) GetSiteId() int64`
 
 GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *GetEnrollmentCustomization) GetSiteIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomization) GetSiteIdOk() (*int64, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSiteId
 
-`func (o *GetEnrollmentCustomization) SetSiteId(v int32)`
+`func (o *GetEnrollmentCustomization) SetSiteId(v int64)`
 
 SetSiteId sets SiteId field to given value.
 
@@ -111,20 +111,20 @@ SetEnrollmentCustomizationBrandingSettings sets EnrollmentCustomizationBrandingS
 
 ### GetId
 
-`func (o *GetEnrollmentCustomization) GetId() int32`
+`func (o *GetEnrollmentCustomization) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetEnrollmentCustomization) GetIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomization) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetEnrollmentCustomization) SetId(v int32)`
+`func (o *GetEnrollmentCustomization) SetId(v int64)`
 
 SetId sets Id field to given value.
 

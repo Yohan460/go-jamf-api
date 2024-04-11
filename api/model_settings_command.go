@@ -26,7 +26,7 @@ type SettingsCommand struct {
 	DataRoaming *DataRoamingSetting `json:"dataRoaming,omitempty"`
 	VoiceRoaming *VoiceRoamingSetting `json:"voiceRoaming,omitempty"`
 	PersonalHotspot *PersonalHotspotSetting `json:"personalHotspot,omitempty"`
-	MaximumResidentUsers *int32 `json:"maximumResidentUsers,omitempty"`
+	MaximumResidentUsers *int64 `json:"maximumResidentUsers,omitempty"`
 	DeviceName *string `json:"deviceName,omitempty"`
 	ApplicationAttributes *ApplicationAttributes `json:"applicationAttributes,omitempty"`
 	SharedDeviceConfiguration *SharedDeviceConfiguration `json:"sharedDeviceConfiguration,omitempty"`
@@ -34,7 +34,7 @@ type SettingsCommand struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 	SoftwareUpdateSettings *SoftwareUpdateSettings `json:"softwareUpdateSettings,omitempty"`
 	// The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only)
-	PasscodeLockGracePeriod *int32 `json:"passcodeLockGracePeriod,omitempty"`
+	PasscodeLockGracePeriod *int64 `json:"passcodeLockGracePeriod,omitempty"`
 }
 
 // NewSettingsCommand instantiates a new SettingsCommand object
@@ -279,9 +279,9 @@ func (o *SettingsCommand) SetPersonalHotspot(v PersonalHotspotSetting) {
 }
 
 // GetMaximumResidentUsers returns the MaximumResidentUsers field value if set, zero value otherwise.
-func (o *SettingsCommand) GetMaximumResidentUsers() int32 {
+func (o *SettingsCommand) GetMaximumResidentUsers() int64 {
 	if o == nil || IsNil(o.MaximumResidentUsers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaximumResidentUsers
@@ -289,7 +289,7 @@ func (o *SettingsCommand) GetMaximumResidentUsers() int32 {
 
 // GetMaximumResidentUsersOk returns a tuple with the MaximumResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int32, bool) {
+func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaximumResidentUsers) {
 		return nil, false
 	}
@@ -305,8 +305,8 @@ func (o *SettingsCommand) HasMaximumResidentUsers() bool {
 	return false
 }
 
-// SetMaximumResidentUsers gets a reference to the given int32 and assigns it to the MaximumResidentUsers field.
-func (o *SettingsCommand) SetMaximumResidentUsers(v int32) {
+// SetMaximumResidentUsers gets a reference to the given int64 and assigns it to the MaximumResidentUsers field.
+func (o *SettingsCommand) SetMaximumResidentUsers(v int64) {
 	o.MaximumResidentUsers = &v
 }
 
@@ -503,9 +503,9 @@ func (o *SettingsCommand) SetSoftwareUpdateSettings(v SoftwareUpdateSettings) {
 }
 
 // GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field value if set, zero value otherwise.
-func (o *SettingsCommand) GetPasscodeLockGracePeriod() int32 {
+func (o *SettingsCommand) GetPasscodeLockGracePeriod() int64 {
 	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasscodeLockGracePeriod
@@ -513,7 +513,7 @@ func (o *SettingsCommand) GetPasscodeLockGracePeriod() int32 {
 
 // GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int32, bool) {
+func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
 		return nil, false
 	}
@@ -529,8 +529,8 @@ func (o *SettingsCommand) HasPasscodeLockGracePeriod() bool {
 	return false
 }
 
-// SetPasscodeLockGracePeriod gets a reference to the given int32 and assigns it to the PasscodeLockGracePeriod field.
-func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int32) {
+// SetPasscodeLockGracePeriod gets a reference to the given int64 and assigns it to the PasscodeLockGracePeriod field.
+func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int64) {
 	o.PasscodeLockGracePeriod = &v
 }
 

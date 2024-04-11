@@ -29,10 +29,10 @@ type ComputerLocalUserAccount struct {
 	HomeDirectorySizeMb *int64 `json:"homeDirectorySizeMb,omitempty"`
 	FileVault2Enabled *bool `json:"fileVault2Enabled,omitempty"`
 	UserAccountType *string `json:"userAccountType,omitempty"`
-	PasswordMinLength *int32 `json:"passwordMinLength,omitempty"`
-	PasswordMaxAge *int32 `json:"passwordMaxAge,omitempty"`
-	PasswordMinComplexCharacters *int32 `json:"passwordMinComplexCharacters,omitempty"`
-	PasswordHistoryDepth *int32 `json:"passwordHistoryDepth,omitempty"`
+	PasswordMinLength *int64 `json:"passwordMinLength,omitempty"`
+	PasswordMaxAge *int64 `json:"passwordMaxAge,omitempty"`
+	PasswordMinComplexCharacters *int64 `json:"passwordMinComplexCharacters,omitempty"`
+	PasswordHistoryDepth *int64 `json:"passwordHistoryDepth,omitempty"`
 	PasswordRequireAlphanumeric *bool `json:"passwordRequireAlphanumeric,omitempty"`
 	ComputerAzureActiveDirectoryId *string `json:"computerAzureActiveDirectoryId,omitempty"`
 	UserAzureActiveDirectoryId *string `json:"userAzureActiveDirectoryId,omitempty"`
@@ -345,9 +345,9 @@ func (o *ComputerLocalUserAccount) SetUserAccountType(v string) {
 }
 
 // GetPasswordMinLength returns the PasswordMinLength field value if set, zero value otherwise.
-func (o *ComputerLocalUserAccount) GetPasswordMinLength() int32 {
+func (o *ComputerLocalUserAccount) GetPasswordMinLength() int64 {
 	if o == nil || IsNil(o.PasswordMinLength) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasswordMinLength
@@ -355,7 +355,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinLength() int32 {
 
 // GetPasswordMinLengthOk returns a tuple with the PasswordMinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int32, bool) {
+func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasswordMinLength) {
 		return nil, false
 	}
@@ -371,15 +371,15 @@ func (o *ComputerLocalUserAccount) HasPasswordMinLength() bool {
 	return false
 }
 
-// SetPasswordMinLength gets a reference to the given int32 and assigns it to the PasswordMinLength field.
-func (o *ComputerLocalUserAccount) SetPasswordMinLength(v int32) {
+// SetPasswordMinLength gets a reference to the given int64 and assigns it to the PasswordMinLength field.
+func (o *ComputerLocalUserAccount) SetPasswordMinLength(v int64) {
 	o.PasswordMinLength = &v
 }
 
 // GetPasswordMaxAge returns the PasswordMaxAge field value if set, zero value otherwise.
-func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int32 {
+func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int64 {
 	if o == nil || IsNil(o.PasswordMaxAge) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasswordMaxAge
@@ -387,7 +387,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int32 {
 
 // GetPasswordMaxAgeOk returns a tuple with the PasswordMaxAge field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int32, bool) {
+func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasswordMaxAge) {
 		return nil, false
 	}
@@ -403,15 +403,15 @@ func (o *ComputerLocalUserAccount) HasPasswordMaxAge() bool {
 	return false
 }
 
-// SetPasswordMaxAge gets a reference to the given int32 and assigns it to the PasswordMaxAge field.
-func (o *ComputerLocalUserAccount) SetPasswordMaxAge(v int32) {
+// SetPasswordMaxAge gets a reference to the given int64 and assigns it to the PasswordMaxAge field.
+func (o *ComputerLocalUserAccount) SetPasswordMaxAge(v int64) {
 	o.PasswordMaxAge = &v
 }
 
 // GetPasswordMinComplexCharacters returns the PasswordMinComplexCharacters field value if set, zero value otherwise.
-func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int32 {
+func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int64 {
 	if o == nil || IsNil(o.PasswordMinComplexCharacters) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasswordMinComplexCharacters
@@ -419,7 +419,7 @@ func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int32 {
 
 // GetPasswordMinComplexCharactersOk returns a tuple with the PasswordMinComplexCharacters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int32, bool) {
+func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasswordMinComplexCharacters) {
 		return nil, false
 	}
@@ -435,15 +435,15 @@ func (o *ComputerLocalUserAccount) HasPasswordMinComplexCharacters() bool {
 	return false
 }
 
-// SetPasswordMinComplexCharacters gets a reference to the given int32 and assigns it to the PasswordMinComplexCharacters field.
-func (o *ComputerLocalUserAccount) SetPasswordMinComplexCharacters(v int32) {
+// SetPasswordMinComplexCharacters gets a reference to the given int64 and assigns it to the PasswordMinComplexCharacters field.
+func (o *ComputerLocalUserAccount) SetPasswordMinComplexCharacters(v int64) {
 	o.PasswordMinComplexCharacters = &v
 }
 
 // GetPasswordHistoryDepth returns the PasswordHistoryDepth field value if set, zero value otherwise.
-func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int32 {
+func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int64 {
 	if o == nil || IsNil(o.PasswordHistoryDepth) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasswordHistoryDepth
@@ -451,7 +451,7 @@ func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int32 {
 
 // GetPasswordHistoryDepthOk returns a tuple with the PasswordHistoryDepth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int32, bool) {
+func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasswordHistoryDepth) {
 		return nil, false
 	}
@@ -467,8 +467,8 @@ func (o *ComputerLocalUserAccount) HasPasswordHistoryDepth() bool {
 	return false
 }
 
-// SetPasswordHistoryDepth gets a reference to the given int32 and assigns it to the PasswordHistoryDepth field.
-func (o *ComputerLocalUserAccount) SetPasswordHistoryDepth(v int32) {
+// SetPasswordHistoryDepth gets a reference to the given int64 and assigns it to the PasswordHistoryDepth field.
+func (o *ComputerLocalUserAccount) SetPasswordHistoryDepth(v int64) {
 	o.PasswordHistoryDepth = &v
 }
 

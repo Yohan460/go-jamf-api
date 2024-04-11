@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Path** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **MacAppStore** | Pointer to **bool** |  | [optional] 
-**SizeMegabytes** | Pointer to **int32** |  | [optional] 
+**SizeMegabytes** | Pointer to **int64** |  | [optional] 
 **BundleId** | Pointer to **string** |  | [optional] 
 **UpdateAvailable** | Pointer to **bool** |  | [optional] 
 **ExternalVersionId** | Pointer to **string** | The app&#39;s external version ID. It can be used in the iTunes Search API to decide if the app needs to be updated | [optional] 
@@ -134,20 +134,20 @@ HasMacAppStore returns a boolean if a field has been set.
 
 ### GetSizeMegabytes
 
-`func (o *ComputerApplication) GetSizeMegabytes() int32`
+`func (o *ComputerApplication) GetSizeMegabytes() int64`
 
 GetSizeMegabytes returns the SizeMegabytes field if non-nil, zero value otherwise.
 
 ### GetSizeMegabytesOk
 
-`func (o *ComputerApplication) GetSizeMegabytesOk() (*int32, bool)`
+`func (o *ComputerApplication) GetSizeMegabytesOk() (*int64, bool)`
 
 GetSizeMegabytesOk returns a tuple with the SizeMegabytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSizeMegabytes
 
-`func (o *ComputerApplication) SetSizeMegabytes(v int32)`
+`func (o *ComputerApplication) SetSizeMegabytes(v int64)`
 
 SetSizeMegabytes sets SizeMegabytes field to given value.
 

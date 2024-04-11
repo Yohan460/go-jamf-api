@@ -282,18 +282,18 @@ type JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
 	ApiService JamfProtectAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) Page(page int64) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
+func (r JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest) PageSize(pageSize int64) JamfProtectAPIV1JamfProtectDeploymentsIdTasksGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -356,13 +356,13 @@ func (a *JamfProtectAPIService) V1JamfProtectDeploymentsIdTasksGetExecute(r Jamf
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -699,18 +699,18 @@ func (a *JamfProtectAPIService) V1JamfProtectGetExecute(r JamfProtectAPIV1JamfPr
 type JamfProtectAPIV1JamfProtectHistoryGetRequest struct {
 	ctx context.Context
 	ApiService JamfProtectAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) Page(page int64) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectHistoryGetRequest {
+func (r JamfProtectAPIV1JamfProtectHistoryGetRequest) PageSize(pageSize int64) JamfProtectAPIV1JamfProtectHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -771,13 +771,13 @@ func (a *JamfProtectAPIService) V1JamfProtectHistoryGetExecute(r JamfProtectAPIV
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -979,18 +979,18 @@ func (a *JamfProtectAPIService) V1JamfProtectHistoryPostExecute(r JamfProtectAPI
 type JamfProtectAPIV1JamfProtectPlansGetRequest struct {
 	ctx context.Context
 	ApiService JamfProtectAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Page(page int32) JamfProtectAPIV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) Page(page int64) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfProtectAPIV1JamfProtectPlansGetRequest) PageSize(pageSize int32) JamfProtectAPIV1JamfProtectPlansGetRequest {
+func (r JamfProtectAPIV1JamfProtectPlansGetRequest) PageSize(pageSize int64) JamfProtectAPIV1JamfProtectPlansGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1050,13 +1050,13 @@ func (a *JamfProtectAPIService) V1JamfProtectPlansGetExecute(r JamfProtectAPIV1J
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

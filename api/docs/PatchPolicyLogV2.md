@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **PatchPolicyId** | Pointer to **string** |  | [optional] 
 **DeviceName** | Pointer to **string** |  | [optional] 
 **DeviceId** | Pointer to **string** |  | [optional] 
-**StatusCode** | Pointer to **int32** |  | [optional] 
+**StatusCode** | Pointer to **int64** |  | [optional] 
 **StatusDate** | Pointer to **time.Time** |  | [optional] 
 **StatusEnum** | Pointer to **string** |  | [optional] 
-**AttemptNumber** | Pointer to **int32** |  | [optional] 
+**AttemptNumber** | Pointer to **int64** |  | [optional] 
 **IgnoredForPatchPolicyId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -109,20 +109,20 @@ HasDeviceId returns a boolean if a field has been set.
 
 ### GetStatusCode
 
-`func (o *PatchPolicyLogV2) GetStatusCode() int32`
+`func (o *PatchPolicyLogV2) GetStatusCode() int64`
 
 GetStatusCode returns the StatusCode field if non-nil, zero value otherwise.
 
 ### GetStatusCodeOk
 
-`func (o *PatchPolicyLogV2) GetStatusCodeOk() (*int32, bool)`
+`func (o *PatchPolicyLogV2) GetStatusCodeOk() (*int64, bool)`
 
 GetStatusCodeOk returns a tuple with the StatusCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusCode
 
-`func (o *PatchPolicyLogV2) SetStatusCode(v int32)`
+`func (o *PatchPolicyLogV2) SetStatusCode(v int64)`
 
 SetStatusCode sets StatusCode field to given value.
 
@@ -184,20 +184,20 @@ HasStatusEnum returns a boolean if a field has been set.
 
 ### GetAttemptNumber
 
-`func (o *PatchPolicyLogV2) GetAttemptNumber() int32`
+`func (o *PatchPolicyLogV2) GetAttemptNumber() int64`
 
 GetAttemptNumber returns the AttemptNumber field if non-nil, zero value otherwise.
 
 ### GetAttemptNumberOk
 
-`func (o *PatchPolicyLogV2) GetAttemptNumberOk() (*int32, bool)`
+`func (o *PatchPolicyLogV2) GetAttemptNumberOk() (*int64, bool)`
 
 GetAttemptNumberOk returns a tuple with the AttemptNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttemptNumber
 
-`func (o *PatchPolicyLogV2) SetAttemptNumber(v int32)`
+`func (o *PatchPolicyLogV2) SetAttemptNumber(v int64)`
 
 SetAttemptNumber sets AttemptNumber field to given value.
 

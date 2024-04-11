@@ -23,23 +23,23 @@ Get basic information about the Jamf Pro Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProInformationAPI.V1JamfProInformationGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInformationAPI.V1JamfProInformationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfProInformationGet`: JamfProInformation
-    fmt.Fprintf(os.Stdout, "Response from `JamfProInformationAPI.V1JamfProInformationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfProInformationAPI.V1JamfProInformationGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProInformationAPI.V1JamfProInformationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfProInformationGet`: JamfProInformation
+	fmt.Fprintf(os.Stdout, "Response from `JamfProInformationAPI.V1JamfProInformationGet`: %v\n", resp)
 }
 ```
 
@@ -84,23 +84,23 @@ Get basic information about the Jamf Pro Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProInformationAPI.V2JamfProInformationGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInformationAPI.V2JamfProInformationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2JamfProInformationGet`: JamfProInformationV2
-    fmt.Fprintf(os.Stdout, "Response from `JamfProInformationAPI.V2JamfProInformationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfProInformationAPI.V2JamfProInformationGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProInformationAPI.V2JamfProInformationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2JamfProInformationGet`: JamfProInformationV2
+	fmt.Fprintf(os.Stdout, "Response from `JamfProInformationAPI.V2JamfProInformationGet`: %v\n", resp)
 }
 ```
 

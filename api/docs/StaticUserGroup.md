@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *StaticUserGroup) GetId() int32`
+`func (o *StaticUserGroup) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *StaticUserGroup) GetIdOk() (*int32, bool)`
+`func (o *StaticUserGroup) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *StaticUserGroup) SetId(v int32)`
+`func (o *StaticUserGroup) SetId(v int64)`
 
 SetId sets Id field to given value.
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **BrandingName** | **string** |  | 
-**IconId** | Pointer to **int32** |  | [optional] 
+**IconId** | Pointer to **int64** |  | [optional] 
 **HeaderBackgroundColorCode** | **string** |  | 
 **MenuIconColorCode** | **string** |  | 
 **BrandingNameColorCode** | **string** |  | 
@@ -78,20 +78,20 @@ SetBrandingName sets BrandingName field to given value.
 
 ### GetIconId
 
-`func (o *IosBrandingConfiguration) GetIconId() int32`
+`func (o *IosBrandingConfiguration) GetIconId() int64`
 
 GetIconId returns the IconId field if non-nil, zero value otherwise.
 
 ### GetIconIdOk
 
-`func (o *IosBrandingConfiguration) GetIconIdOk() (*int32, bool)`
+`func (o *IosBrandingConfiguration) GetIconIdOk() (*int64, bool)`
 
 GetIconIdOk returns a tuple with the IconId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIconId
 
-`func (o *IosBrandingConfiguration) SetIconId(v int32)`
+`func (o *IosBrandingConfiguration) SetIconId(v int64)`
 
 SetIconId sets IconId field to given value.
 

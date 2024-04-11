@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring** | Pointer to **bool** |  | [optional] 
 **AutoRenewComputerMdmProfileWhenCaRenewed** | Pointer to **bool** |  | [optional] 
 **AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring** | Pointer to **bool** |  | [optional] 
-**MdmProfileMobileDeviceExpirationLimitInDays** | Pointer to **int32** |  | [optional] [default to 180]
-**MdmProfileComputerExpirationLimitInDays** | Pointer to **int32** |  | [optional] [default to 180]
+**MdmProfileMobileDeviceExpirationLimitInDays** | Pointer to **int64** |  | [optional] [default to 180]
+**MdmProfileComputerExpirationLimitInDays** | Pointer to **int64** |  | [optional] [default to 180]
 
 ## Methods
 
@@ -132,20 +132,20 @@ HasAutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring returns a boolean i
 
 ### GetMdmProfileMobileDeviceExpirationLimitInDays
 
-`func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDays() int32`
+`func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDays() int64`
 
 GetMdmProfileMobileDeviceExpirationLimitInDays returns the MdmProfileMobileDeviceExpirationLimitInDays field if non-nil, zero value otherwise.
 
 ### GetMdmProfileMobileDeviceExpirationLimitInDaysOk
 
-`func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDaysOk() (*int32, bool)`
+`func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDaysOk() (*int64, bool)`
 
 GetMdmProfileMobileDeviceExpirationLimitInDaysOk returns a tuple with the MdmProfileMobileDeviceExpirationLimitInDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMdmProfileMobileDeviceExpirationLimitInDays
 
-`func (o *DeviceCommunicationSettings) SetMdmProfileMobileDeviceExpirationLimitInDays(v int32)`
+`func (o *DeviceCommunicationSettings) SetMdmProfileMobileDeviceExpirationLimitInDays(v int64)`
 
 SetMdmProfileMobileDeviceExpirationLimitInDays sets MdmProfileMobileDeviceExpirationLimitInDays field to given value.
 
@@ -157,20 +157,20 @@ HasMdmProfileMobileDeviceExpirationLimitInDays returns a boolean if a field has 
 
 ### GetMdmProfileComputerExpirationLimitInDays
 
-`func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays() int32`
+`func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays() int64`
 
 GetMdmProfileComputerExpirationLimitInDays returns the MdmProfileComputerExpirationLimitInDays field if non-nil, zero value otherwise.
 
 ### GetMdmProfileComputerExpirationLimitInDaysOk
 
-`func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDaysOk() (*int32, bool)`
+`func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDaysOk() (*int64, bool)`
 
 GetMdmProfileComputerExpirationLimitInDaysOk returns a tuple with the MdmProfileComputerExpirationLimitInDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMdmProfileComputerExpirationLimitInDays
 
-`func (o *DeviceCommunicationSettings) SetMdmProfileComputerExpirationLimitInDays(v int32)`
+`func (o *DeviceCommunicationSettings) SetMdmProfileComputerExpirationLimitInDays(v int64)`
 
 SetMdmProfileComputerExpirationLimitInDays sets MdmProfileComputerExpirationLimitInDays field to given value.
 

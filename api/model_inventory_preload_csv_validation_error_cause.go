@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InventoryPreloadCsvValidationErrorCause type satisfies the MappedNullable interface at compile time
@@ -29,10 +31,12 @@ type InventoryPreloadCsvValidationErrorCause struct {
 	Id NullableString `json:"id,omitempty"`
 	Value *string `json:"value,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
-	Line *int32 `json:"line,omitempty"`
-	FieldSize *int32 `json:"fieldSize,omitempty"`
+	Line *int64 `json:"line,omitempty"`
+	FieldSize *int64 `json:"fieldSize,omitempty"`
 	DeviceType *string `json:"deviceType,omitempty"`
 }
+
+type _InventoryPreloadCsvValidationErrorCause InventoryPreloadCsvValidationErrorCause
 
 // NewInventoryPreloadCsvValidationErrorCause instantiates a new InventoryPreloadCsvValidationErrorCause object
 // This constructor will assign default values to properties that have it defined,
@@ -247,9 +251,9 @@ func (o *InventoryPreloadCsvValidationErrorCause) SetSerialNumber(v string) {
 }
 
 // GetLine returns the Line field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int32 {
+func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int64 {
 	if o == nil || IsNil(o.Line) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Line
@@ -257,7 +261,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int32 {
 
 // GetLineOk returns a tuple with the Line field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int32, bool) {
+func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int64, bool) {
 	if o == nil || IsNil(o.Line) {
 		return nil, false
 	}
@@ -273,15 +277,15 @@ func (o *InventoryPreloadCsvValidationErrorCause) HasLine() bool {
 	return false
 }
 
-// SetLine gets a reference to the given int32 and assigns it to the Line field.
-func (o *InventoryPreloadCsvValidationErrorCause) SetLine(v int32) {
+// SetLine gets a reference to the given int64 and assigns it to the Line field.
+func (o *InventoryPreloadCsvValidationErrorCause) SetLine(v int64) {
 	o.Line = &v
 }
 
 // GetFieldSize returns the FieldSize field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int32 {
+func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int64 {
 	if o == nil || IsNil(o.FieldSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FieldSize
@@ -289,7 +293,7 @@ func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int32 {
 
 // GetFieldSizeOk returns a tuple with the FieldSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int32, bool) {
+func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.FieldSize) {
 		return nil, false
 	}
@@ -305,8 +309,8 @@ func (o *InventoryPreloadCsvValidationErrorCause) HasFieldSize() bool {
 	return false
 }
 
-// SetFieldSize gets a reference to the given int32 and assigns it to the FieldSize field.
-func (o *InventoryPreloadCsvValidationErrorCause) SetFieldSize(v int32) {
+// SetFieldSize gets a reference to the given int64 and assigns it to the FieldSize field.
+func (o *InventoryPreloadCsvValidationErrorCause) SetFieldSize(v int64) {
 	o.FieldSize = &v
 }
 
@@ -378,6 +382,43 @@ func (o InventoryPreloadCsvValidationErrorCause) ToMap() (map[string]interface{}
 		toSerialize["deviceType"] = o.DeviceType
 	}
 	return toSerialize, nil
+}
+
+func (o *InventoryPreloadCsvValidationErrorCause) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"field",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInventoryPreloadCsvValidationErrorCause := _InventoryPreloadCsvValidationErrorCause{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInventoryPreloadCsvValidationErrorCause)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InventoryPreloadCsvValidationErrorCause(varInventoryPreloadCsvValidationErrorCause)
+
+	return err
 }
 
 type NullableInventoryPreloadCsvValidationErrorCause struct {

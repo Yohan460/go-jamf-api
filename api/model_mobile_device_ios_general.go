@@ -45,13 +45,13 @@ type MobileDeviceIosGeneral struct {
 	SharedIpad *bool `json:"sharedIpad,omitempty"`
 	DiagnosticAndUsageReportingEnabled *bool `json:"diagnosticAndUsageReportingEnabled,omitempty"`
 	AppAnalyticsEnabled *bool `json:"appAnalyticsEnabled,omitempty"`
-	ResidentUsers *int32 `json:"residentUsers,omitempty"`
-	QuotaSize *int32 `json:"quotaSize,omitempty"`
+	ResidentUsers *int64 `json:"residentUsers,omitempty"`
+	QuotaSize *int64 `json:"quotaSize,omitempty"`
 	TemporarySessionOnly *bool `json:"temporarySessionOnly,omitempty"`
-	TemporarySessionTimeout *int32 `json:"temporarySessionTimeout,omitempty"`
-	UserSessionTimeout *int32 `json:"userSessionTimeout,omitempty"`
-	SyncedToComputer *int32 `json:"syncedToComputer,omitempty"`
-	MaximumSharediPadUsersStored *int32 `json:"maximumSharediPadUsersStored,omitempty"`
+	TemporarySessionTimeout *int64 `json:"temporarySessionTimeout,omitempty"`
+	UserSessionTimeout *int64 `json:"userSessionTimeout,omitempty"`
+	SyncedToComputer *int64 `json:"syncedToComputer,omitempty"`
+	MaximumSharediPadUsersStored *int64 `json:"maximumSharediPadUsersStored,omitempty"`
 	LastBackupDate *time.Time `json:"lastBackupDate,omitempty"`
 	DeviceLocatorServiceEnabled *bool `json:"deviceLocatorServiceEnabled,omitempty"`
 	DoNotDisturbEnabled *bool `json:"doNotDisturbEnabled,omitempty"`
@@ -849,9 +849,9 @@ func (o *MobileDeviceIosGeneral) SetAppAnalyticsEnabled(v bool) {
 }
 
 // GetResidentUsers returns the ResidentUsers field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetResidentUsers() int32 {
+func (o *MobileDeviceIosGeneral) GetResidentUsers() int64 {
 	if o == nil || IsNil(o.ResidentUsers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ResidentUsers
@@ -859,7 +859,7 @@ func (o *MobileDeviceIosGeneral) GetResidentUsers() int32 {
 
 // GetResidentUsersOk returns a tuple with the ResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetResidentUsersOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetResidentUsersOk() (*int64, bool) {
 	if o == nil || IsNil(o.ResidentUsers) {
 		return nil, false
 	}
@@ -875,15 +875,15 @@ func (o *MobileDeviceIosGeneral) HasResidentUsers() bool {
 	return false
 }
 
-// SetResidentUsers gets a reference to the given int32 and assigns it to the ResidentUsers field.
-func (o *MobileDeviceIosGeneral) SetResidentUsers(v int32) {
+// SetResidentUsers gets a reference to the given int64 and assigns it to the ResidentUsers field.
+func (o *MobileDeviceIosGeneral) SetResidentUsers(v int64) {
 	o.ResidentUsers = &v
 }
 
 // GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetQuotaSize() int32 {
+func (o *MobileDeviceIosGeneral) GetQuotaSize() int64 {
 	if o == nil || IsNil(o.QuotaSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.QuotaSize
@@ -891,7 +891,7 @@ func (o *MobileDeviceIosGeneral) GetQuotaSize() int32 {
 
 // GetQuotaSizeOk returns a tuple with the QuotaSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetQuotaSizeOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetQuotaSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.QuotaSize) {
 		return nil, false
 	}
@@ -907,8 +907,8 @@ func (o *MobileDeviceIosGeneral) HasQuotaSize() bool {
 	return false
 }
 
-// SetQuotaSize gets a reference to the given int32 and assigns it to the QuotaSize field.
-func (o *MobileDeviceIosGeneral) SetQuotaSize(v int32) {
+// SetQuotaSize gets a reference to the given int64 and assigns it to the QuotaSize field.
+func (o *MobileDeviceIosGeneral) SetQuotaSize(v int64) {
 	o.QuotaSize = &v
 }
 
@@ -945,9 +945,9 @@ func (o *MobileDeviceIosGeneral) SetTemporarySessionOnly(v bool) {
 }
 
 // GetTemporarySessionTimeout returns the TemporarySessionTimeout field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeout() int32 {
+func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeout() int64 {
 	if o == nil || IsNil(o.TemporarySessionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TemporarySessionTimeout
@@ -955,7 +955,7 @@ func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeout() int32 {
 
 // GetTemporarySessionTimeoutOk returns a tuple with the TemporarySessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeoutOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.TemporarySessionTimeout) {
 		return nil, false
 	}
@@ -971,15 +971,15 @@ func (o *MobileDeviceIosGeneral) HasTemporarySessionTimeout() bool {
 	return false
 }
 
-// SetTemporarySessionTimeout gets a reference to the given int32 and assigns it to the TemporarySessionTimeout field.
-func (o *MobileDeviceIosGeneral) SetTemporarySessionTimeout(v int32) {
+// SetTemporarySessionTimeout gets a reference to the given int64 and assigns it to the TemporarySessionTimeout field.
+func (o *MobileDeviceIosGeneral) SetTemporarySessionTimeout(v int64) {
 	o.TemporarySessionTimeout = &v
 }
 
 // GetUserSessionTimeout returns the UserSessionTimeout field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetUserSessionTimeout() int32 {
+func (o *MobileDeviceIosGeneral) GetUserSessionTimeout() int64 {
 	if o == nil || IsNil(o.UserSessionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UserSessionTimeout
@@ -987,7 +987,7 @@ func (o *MobileDeviceIosGeneral) GetUserSessionTimeout() int32 {
 
 // GetUserSessionTimeoutOk returns a tuple with the UserSessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetUserSessionTimeoutOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetUserSessionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.UserSessionTimeout) {
 		return nil, false
 	}
@@ -1003,15 +1003,15 @@ func (o *MobileDeviceIosGeneral) HasUserSessionTimeout() bool {
 	return false
 }
 
-// SetUserSessionTimeout gets a reference to the given int32 and assigns it to the UserSessionTimeout field.
-func (o *MobileDeviceIosGeneral) SetUserSessionTimeout(v int32) {
+// SetUserSessionTimeout gets a reference to the given int64 and assigns it to the UserSessionTimeout field.
+func (o *MobileDeviceIosGeneral) SetUserSessionTimeout(v int64) {
 	o.UserSessionTimeout = &v
 }
 
 // GetSyncedToComputer returns the SyncedToComputer field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetSyncedToComputer() int32 {
+func (o *MobileDeviceIosGeneral) GetSyncedToComputer() int64 {
 	if o == nil || IsNil(o.SyncedToComputer) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SyncedToComputer
@@ -1019,7 +1019,7 @@ func (o *MobileDeviceIosGeneral) GetSyncedToComputer() int32 {
 
 // GetSyncedToComputerOk returns a tuple with the SyncedToComputer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetSyncedToComputerOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetSyncedToComputerOk() (*int64, bool) {
 	if o == nil || IsNil(o.SyncedToComputer) {
 		return nil, false
 	}
@@ -1035,15 +1035,15 @@ func (o *MobileDeviceIosGeneral) HasSyncedToComputer() bool {
 	return false
 }
 
-// SetSyncedToComputer gets a reference to the given int32 and assigns it to the SyncedToComputer field.
-func (o *MobileDeviceIosGeneral) SetSyncedToComputer(v int32) {
+// SetSyncedToComputer gets a reference to the given int64 and assigns it to the SyncedToComputer field.
+func (o *MobileDeviceIosGeneral) SetSyncedToComputer(v int64) {
 	o.SyncedToComputer = &v
 }
 
 // GetMaximumSharediPadUsersStored returns the MaximumSharediPadUsersStored field value if set, zero value otherwise.
-func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStored() int32 {
+func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStored() int64 {
 	if o == nil || IsNil(o.MaximumSharediPadUsersStored) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaximumSharediPadUsersStored
@@ -1051,7 +1051,7 @@ func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStored() int32 {
 
 // GetMaximumSharediPadUsersStoredOk returns a tuple with the MaximumSharediPadUsersStored field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStoredOk() (*int32, bool) {
+func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStoredOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaximumSharediPadUsersStored) {
 		return nil, false
 	}
@@ -1067,8 +1067,8 @@ func (o *MobileDeviceIosGeneral) HasMaximumSharediPadUsersStored() bool {
 	return false
 }
 
-// SetMaximumSharediPadUsersStored gets a reference to the given int32 and assigns it to the MaximumSharediPadUsersStored field.
-func (o *MobileDeviceIosGeneral) SetMaximumSharediPadUsersStored(v int32) {
+// SetMaximumSharediPadUsersStored gets a reference to the given int64 and assigns it to the MaximumSharediPadUsersStored field.
+func (o *MobileDeviceIosGeneral) SetMaximumSharediPadUsersStored(v int64) {
 	o.MaximumSharediPadUsersStored = &v
 }
 

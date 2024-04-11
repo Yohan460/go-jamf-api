@@ -22,7 +22,7 @@ type StartupStatus struct {
 	Step *string `json:"step,omitempty"`
 	StepCode *string `json:"stepCode,omitempty"`
 	StepParam NullableString `json:"stepParam,omitempty"`
-	Percentage *int32 `json:"percentage,omitempty"`
+	Percentage *int64 `json:"percentage,omitempty"`
 	Warning NullableString `json:"warning,omitempty"`
 	WarningCode NullableString `json:"warningCode,omitempty"`
 	WarningParam NullableString `json:"warningParam,omitempty"`
@@ -155,9 +155,9 @@ func (o *StartupStatus) UnsetStepParam() {
 }
 
 // GetPercentage returns the Percentage field value if set, zero value otherwise.
-func (o *StartupStatus) GetPercentage() int32 {
+func (o *StartupStatus) GetPercentage() int64 {
 	if o == nil || IsNil(o.Percentage) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Percentage
@@ -165,7 +165,7 @@ func (o *StartupStatus) GetPercentage() int32 {
 
 // GetPercentageOk returns a tuple with the Percentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StartupStatus) GetPercentageOk() (*int32, bool) {
+func (o *StartupStatus) GetPercentageOk() (*int64, bool) {
 	if o == nil || IsNil(o.Percentage) {
 		return nil, false
 	}
@@ -181,8 +181,8 @@ func (o *StartupStatus) HasPercentage() bool {
 	return false
 }
 
-// SetPercentage gets a reference to the given int32 and assigns it to the Percentage field.
-func (o *StartupStatus) SetPercentage(v int32) {
+// SetPercentage gets a reference to the given int64 and assigns it to the Percentage field.
+func (o *StartupStatus) SetPercentage(v int64) {
 	o.Percentage = &v
 }
 

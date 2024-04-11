@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Field** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
-**Line** | Pointer to **int32** |  | [optional] 
-**FieldSize** | Pointer to **int32** |  | [optional] 
+**Line** | Pointer to **int64** |  | [optional] 
+**FieldSize** | Pointer to **int64** |  | [optional] 
 **DeviceType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -159,20 +159,20 @@ HasSerialNumber returns a boolean if a field has been set.
 
 ### GetLine
 
-`func (o *InventoryPreloadCsvError) GetLine() int32`
+`func (o *InventoryPreloadCsvError) GetLine() int64`
 
 GetLine returns the Line field if non-nil, zero value otherwise.
 
 ### GetLineOk
 
-`func (o *InventoryPreloadCsvError) GetLineOk() (*int32, bool)`
+`func (o *InventoryPreloadCsvError) GetLineOk() (*int64, bool)`
 
 GetLineOk returns a tuple with the Line field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLine
 
-`func (o *InventoryPreloadCsvError) SetLine(v int32)`
+`func (o *InventoryPreloadCsvError) SetLine(v int64)`
 
 SetLine sets Line field to given value.
 
@@ -184,20 +184,20 @@ HasLine returns a boolean if a field has been set.
 
 ### GetFieldSize
 
-`func (o *InventoryPreloadCsvError) GetFieldSize() int32`
+`func (o *InventoryPreloadCsvError) GetFieldSize() int64`
 
 GetFieldSize returns the FieldSize field if non-nil, zero value otherwise.
 
 ### GetFieldSizeOk
 
-`func (o *InventoryPreloadCsvError) GetFieldSizeOk() (*int32, bool)`
+`func (o *InventoryPreloadCsvError) GetFieldSizeOk() (*int64, bool)`
 
 GetFieldSizeOk returns a tuple with the FieldSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFieldSize
 
-`func (o *InventoryPreloadCsvError) SetFieldSize(v int32)`
+`func (o *InventoryPreloadCsvError) SetFieldSize(v int64)`
 
 SetFieldSize sets FieldSize field to given value.
 

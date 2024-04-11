@@ -216,8 +216,8 @@ type ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest struct {
 	ApiService ReEnrollmentPreviewAPI
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -235,12 +235,12 @@ func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) ExportLabe
 	return r
 }
 
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Page(page int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) Page(page int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) PageSize(pageSize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest) PageSize(pageSize int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -335,13 +335,13 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -444,31 +444,31 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryExportPostExecute(r
 type ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest struct {
 	ctx context.Context
 	ApiService ReEnrollmentPreviewAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Page(page int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Page(page int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Size(size int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Size(size int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Pagesize(pagesize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) Pagesize(pagesize int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) PageSize(pageSize int32) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
+func (r ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest) PageSize(pageSize int64) ReEnrollmentPreviewAPIV1ReenrollmentHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -523,25 +523,25 @@ func (a *ReEnrollmentPreviewAPIService) V1ReenrollmentHistoryGetExecute(r ReEnro
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

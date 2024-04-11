@@ -22,23 +22,23 @@ Retrieve information related to cloud setup.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudInformationAPI.V1CloudInformationGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudInformationAPI.V1CloudInformationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudInformationGet`: CloudResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudInformationAPI.V1CloudInformationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudInformationAPI.V1CloudInformationGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudInformationAPI.V1CloudInformationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudInformationGet`: CloudResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudInformationAPI.V1CloudInformationGet`: %v\n", resp)
 }
 ```
 

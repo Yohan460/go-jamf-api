@@ -22,23 +22,23 @@ Returns the list of all computer groups
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerGroupsAPI.V1ComputerGroupsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerGroupsAPI.V1ComputerGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputerGroupsGet`: []ComputerGroup
-    fmt.Fprintf(os.Stdout, "Response from `ComputerGroupsAPI.V1ComputerGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerGroupsAPI.V1ComputerGroupsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerGroupsAPI.V1ComputerGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputerGroupsGet`: []ComputerGroup
+	fmt.Fprintf(os.Stdout, "Response from `ComputerGroupsAPI.V1ComputerGroupsGet`: %v\n", resp)
 }
 ```
 

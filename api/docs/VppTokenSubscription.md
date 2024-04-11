@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Recipients** | Pointer to [**Recipients**](Recipients.md) |  | [optional] 
 **AdminAccounts** | Pointer to [**[]AdminAccount**](AdminAccount.md) |  | [optional] 
-**SiteID** | Pointer to **int32** |  | [optional] 
+**SiteID** | Pointer to **int64** |  | [optional] 
 **SiteName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *VppTokenSubscription) GetId() int32`
+`func (o *VppTokenSubscription) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *VppTokenSubscription) GetIdOk() (*int32, bool)`
+`func (o *VppTokenSubscription) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *VppTokenSubscription) SetId(v int32)`
+`func (o *VppTokenSubscription) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -158,20 +158,20 @@ HasAdminAccounts returns a boolean if a field has been set.
 
 ### GetSiteID
 
-`func (o *VppTokenSubscription) GetSiteID() int32`
+`func (o *VppTokenSubscription) GetSiteID() int64`
 
 GetSiteID returns the SiteID field if non-nil, zero value otherwise.
 
 ### GetSiteIDOk
 
-`func (o *VppTokenSubscription) GetSiteIDOk() (*int32, bool)`
+`func (o *VppTokenSubscription) GetSiteIDOk() (*int64, bool)`
 
 GetSiteIDOk returns a tuple with the SiteID field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSiteID
 
-`func (o *VppTokenSubscription) SetSiteID(v int32)`
+`func (o *VppTokenSubscription) SetSiteID(v int64)`
 
 SetSiteID sets SiteID field to given value.
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &CsaToken{}
 
 // CsaToken struct for CsaToken
 type CsaToken struct {
-	RefreshExpiration *int32 `json:"refreshExpiration,omitempty"`
+	RefreshExpiration *int64 `json:"refreshExpiration,omitempty"`
 	Scopes []string `json:"scopes,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewCsaTokenWithDefaults() *CsaToken {
 }
 
 // GetRefreshExpiration returns the RefreshExpiration field value if set, zero value otherwise.
-func (o *CsaToken) GetRefreshExpiration() int32 {
+func (o *CsaToken) GetRefreshExpiration() int64 {
 	if o == nil || IsNil(o.RefreshExpiration) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RefreshExpiration
@@ -51,7 +51,7 @@ func (o *CsaToken) GetRefreshExpiration() int32 {
 
 // GetRefreshExpirationOk returns a tuple with the RefreshExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CsaToken) GetRefreshExpirationOk() (*int32, bool) {
+func (o *CsaToken) GetRefreshExpirationOk() (*int64, bool) {
 	if o == nil || IsNil(o.RefreshExpiration) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *CsaToken) HasRefreshExpiration() bool {
 	return false
 }
 
-// SetRefreshExpiration gets a reference to the given int32 and assigns it to the RefreshExpiration field.
-func (o *CsaToken) SetRefreshExpiration(v int32) {
+// SetRefreshExpiration gets a reference to the given int64 and assigns it to the RefreshExpiration field.
+func (o *CsaToken) SetRefreshExpiration(v int64) {
 	o.RefreshExpiration = &v
 }
 

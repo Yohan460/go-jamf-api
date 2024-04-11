@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **RotateRecoveryLockPassword** | Pointer to **bool** |  | [optional] 
 **AccountSettings** | Pointer to [**AccountSettingsRequest**](AccountSettingsRequest.md) |  | [optional] 
 **RecoveryLockPassword** | Pointer to **string** |  | [optional] 
-**VersionLock** | Pointer to **int32** |  | [optional] 
+**VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -749,20 +749,20 @@ HasRecoveryLockPassword returns a boolean if a field has been set.
 
 ### GetVersionLock
 
-`func (o *PutComputerPrestageV3) GetVersionLock() int32`
+`func (o *PutComputerPrestageV3) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PutComputerPrestageV3) GetVersionLockOk() (*int32, bool)`
+`func (o *PutComputerPrestageV3) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PutComputerPrestageV3) SetVersionLock(v int32)`
+`func (o *PutComputerPrestageV3) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

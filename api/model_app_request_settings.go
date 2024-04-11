@@ -22,7 +22,7 @@ type AppRequestSettings struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
 	// Can be any of the country codes from /v1/app-store-country-codes or \"deviceLocale\" to use each individual device's locale
 	AppStoreLocale *string `json:"appStoreLocale,omitempty"`
-	RequesterUserGroupId *int32 `json:"requesterUserGroupId,omitempty"`
+	RequesterUserGroupId *int64 `json:"requesterUserGroupId,omitempty"`
 	ApproverEmails []string `json:"approverEmails,omitempty"`
 }
 
@@ -108,9 +108,9 @@ func (o *AppRequestSettings) SetAppStoreLocale(v string) {
 }
 
 // GetRequesterUserGroupId returns the RequesterUserGroupId field value if set, zero value otherwise.
-func (o *AppRequestSettings) GetRequesterUserGroupId() int32 {
+func (o *AppRequestSettings) GetRequesterUserGroupId() int64 {
 	if o == nil || IsNil(o.RequesterUserGroupId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RequesterUserGroupId
@@ -118,7 +118,7 @@ func (o *AppRequestSettings) GetRequesterUserGroupId() int32 {
 
 // GetRequesterUserGroupIdOk returns a tuple with the RequesterUserGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int32, bool) {
+func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.RequesterUserGroupId) {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *AppRequestSettings) HasRequesterUserGroupId() bool {
 	return false
 }
 
-// SetRequesterUserGroupId gets a reference to the given int32 and assigns it to the RequesterUserGroupId field.
-func (o *AppRequestSettings) SetRequesterUserGroupId(v int32) {
+// SetRequesterUserGroupId gets a reference to the given int64 and assigns it to the RequesterUserGroupId field.
+func (o *AppRequestSettings) SetRequesterUserGroupId(v int64) {
 	o.RequesterUserGroupId = &v
 }
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] [readonly] 
+**Id** | Pointer to **int64** |  | [optional] [readonly] 
 **SerialNumber** | **string** |  | 
 **DeviceType** | **string** |  | 
 **Username** | Pointer to **string** |  | [optional] 
@@ -51,20 +51,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *InventoryPreloadRecord) GetId() int32`
+`func (o *InventoryPreloadRecord) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *InventoryPreloadRecord) GetIdOk() (*int32, bool)`
+`func (o *InventoryPreloadRecord) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *InventoryPreloadRecord) SetId(v int32)`
+`func (o *InventoryPreloadRecord) SetId(v int64)`
 
 SetId sets Id field to given value.
 

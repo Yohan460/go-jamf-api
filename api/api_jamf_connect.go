@@ -132,18 +132,18 @@ type JamfConnectAPIService service
 type JamfConnectAPIV1JamfConnectConfigProfilesGetRequest struct {
 	ctx context.Context
 	ApiService JamfConnectAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) Page(page int64) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
+func (r JamfConnectAPIV1JamfConnectConfigProfilesGetRequest) PageSize(pageSize int64) JamfConnectAPIV1JamfConnectConfigProfilesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -203,13 +203,13 @@ func (a *JamfConnectAPIService) V1JamfConnectConfigProfilesGetExecute(r JamfConn
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -402,18 +402,18 @@ type JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest struct {
 	ctx context.Context
 	ApiService JamfConnectAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) Page(page int64) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
+func (r JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest) PageSize(pageSize int64) JamfConnectAPIV1JamfConnectDeploymentsIdTasksGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -476,13 +476,13 @@ func (a *JamfConnectAPIService) V1JamfConnectDeploymentsIdTasksGetExecute(r Jamf
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -786,18 +786,18 @@ func (a *JamfConnectAPIService) V1JamfConnectGetExecute(r JamfConnectAPIV1JamfCo
 type JamfConnectAPIV1JamfConnectHistoryGetRequest struct {
 	ctx context.Context
 	ApiService JamfConnectAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Page(page int32) JamfConnectAPIV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) Page(page int64) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) PageSize(pageSize int32) JamfConnectAPIV1JamfConnectHistoryGetRequest {
+func (r JamfConnectAPIV1JamfConnectHistoryGetRequest) PageSize(pageSize int64) JamfConnectAPIV1JamfConnectHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -858,13 +858,13 @@ func (a *JamfConnectAPIService) V1JamfConnectHistoryGetExecute(r JamfConnectAPIV
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

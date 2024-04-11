@@ -23,8 +23,8 @@ type DeviceCommunicationSettings struct {
 	AutoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring *bool `json:"autoRenewMobileDeviceMdmProfileWhenDeviceIdentityCertExpiring,omitempty"`
 	AutoRenewComputerMdmProfileWhenCaRenewed *bool `json:"autoRenewComputerMdmProfileWhenCaRenewed,omitempty"`
 	AutoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring *bool `json:"autoRenewComputerMdmProfileWhenDeviceIdentityCertExpiring,omitempty"`
-	MdmProfileMobileDeviceExpirationLimitInDays *int32 `json:"mdmProfileMobileDeviceExpirationLimitInDays,omitempty"`
-	MdmProfileComputerExpirationLimitInDays *int32 `json:"mdmProfileComputerExpirationLimitInDays,omitempty"`
+	MdmProfileMobileDeviceExpirationLimitInDays *int64 `json:"mdmProfileMobileDeviceExpirationLimitInDays,omitempty"`
+	MdmProfileComputerExpirationLimitInDays *int64 `json:"mdmProfileComputerExpirationLimitInDays,omitempty"`
 }
 
 // NewDeviceCommunicationSettings instantiates a new DeviceCommunicationSettings object
@@ -33,9 +33,9 @@ type DeviceCommunicationSettings struct {
 // will change when the set of required properties is changed
 func NewDeviceCommunicationSettings() *DeviceCommunicationSettings {
 	this := DeviceCommunicationSettings{}
-	var mdmProfileMobileDeviceExpirationLimitInDays int32 = 180
+	var mdmProfileMobileDeviceExpirationLimitInDays int64 = 180
 	this.MdmProfileMobileDeviceExpirationLimitInDays = &mdmProfileMobileDeviceExpirationLimitInDays
-	var mdmProfileComputerExpirationLimitInDays int32 = 180
+	var mdmProfileComputerExpirationLimitInDays int64 = 180
 	this.MdmProfileComputerExpirationLimitInDays = &mdmProfileComputerExpirationLimitInDays
 	return &this
 }
@@ -45,9 +45,9 @@ func NewDeviceCommunicationSettings() *DeviceCommunicationSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewDeviceCommunicationSettingsWithDefaults() *DeviceCommunicationSettings {
 	this := DeviceCommunicationSettings{}
-	var mdmProfileMobileDeviceExpirationLimitInDays int32 = 180
+	var mdmProfileMobileDeviceExpirationLimitInDays int64 = 180
 	this.MdmProfileMobileDeviceExpirationLimitInDays = &mdmProfileMobileDeviceExpirationLimitInDays
-	var mdmProfileComputerExpirationLimitInDays int32 = 180
+	var mdmProfileComputerExpirationLimitInDays int64 = 180
 	this.MdmProfileComputerExpirationLimitInDays = &mdmProfileComputerExpirationLimitInDays
 	return &this
 }
@@ -181,9 +181,9 @@ func (o *DeviceCommunicationSettings) SetAutoRenewComputerMdmProfileWhenDeviceId
 }
 
 // GetMdmProfileMobileDeviceExpirationLimitInDays returns the MdmProfileMobileDeviceExpirationLimitInDays field value if set, zero value otherwise.
-func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDays() int32 {
+func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDays() int64 {
 	if o == nil || IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MdmProfileMobileDeviceExpirationLimitInDays
@@ -191,7 +191,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitIn
 
 // GetMdmProfileMobileDeviceExpirationLimitInDaysOk returns a tuple with the MdmProfileMobileDeviceExpirationLimitInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDaysOk() (*int32, bool) {
+func (o *DeviceCommunicationSettings) GetMdmProfileMobileDeviceExpirationLimitInDaysOk() (*int64, bool) {
 	if o == nil || IsNil(o.MdmProfileMobileDeviceExpirationLimitInDays) {
 		return nil, false
 	}
@@ -207,15 +207,15 @@ func (o *DeviceCommunicationSettings) HasMdmProfileMobileDeviceExpirationLimitIn
 	return false
 }
 
-// SetMdmProfileMobileDeviceExpirationLimitInDays gets a reference to the given int32 and assigns it to the MdmProfileMobileDeviceExpirationLimitInDays field.
-func (o *DeviceCommunicationSettings) SetMdmProfileMobileDeviceExpirationLimitInDays(v int32) {
+// SetMdmProfileMobileDeviceExpirationLimitInDays gets a reference to the given int64 and assigns it to the MdmProfileMobileDeviceExpirationLimitInDays field.
+func (o *DeviceCommunicationSettings) SetMdmProfileMobileDeviceExpirationLimitInDays(v int64) {
 	o.MdmProfileMobileDeviceExpirationLimitInDays = &v
 }
 
 // GetMdmProfileComputerExpirationLimitInDays returns the MdmProfileComputerExpirationLimitInDays field value if set, zero value otherwise.
-func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays() int32 {
+func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays() int64 {
 	if o == nil || IsNil(o.MdmProfileComputerExpirationLimitInDays) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MdmProfileComputerExpirationLimitInDays
@@ -223,7 +223,7 @@ func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDays
 
 // GetMdmProfileComputerExpirationLimitInDaysOk returns a tuple with the MdmProfileComputerExpirationLimitInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDaysOk() (*int32, bool) {
+func (o *DeviceCommunicationSettings) GetMdmProfileComputerExpirationLimitInDaysOk() (*int64, bool) {
 	if o == nil || IsNil(o.MdmProfileComputerExpirationLimitInDays) {
 		return nil, false
 	}
@@ -239,8 +239,8 @@ func (o *DeviceCommunicationSettings) HasMdmProfileComputerExpirationLimitInDays
 	return false
 }
 
-// SetMdmProfileComputerExpirationLimitInDays gets a reference to the given int32 and assigns it to the MdmProfileComputerExpirationLimitInDays field.
-func (o *DeviceCommunicationSettings) SetMdmProfileComputerExpirationLimitInDays(v int32) {
+// SetMdmProfileComputerExpirationLimitInDays gets a reference to the given int64 and assigns it to the MdmProfileComputerExpirationLimitInDays field.
+func (o *DeviceCommunicationSettings) SetMdmProfileComputerExpirationLimitInDays(v int64) {
 	o.MdmProfileComputerExpirationLimitInDays = &v
 }
 

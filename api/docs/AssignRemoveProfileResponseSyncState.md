@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **ProfileUUID** | Pointer to **string** |  | [optional] 
 **SyncStatus** | Pointer to **string** |  | [optional] 
-**FailureCount** | Pointer to **int32** |  | [optional] 
-**Timestamp** | Pointer to **int32** |  | [optional] 
+**FailureCount** | Pointer to **int64** |  | [optional] 
+**Timestamp** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *AssignRemoveProfileResponseSyncState) GetId() int32`
+`func (o *AssignRemoveProfileResponseSyncState) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int32, bool)`
+`func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AssignRemoveProfileResponseSyncState) SetId(v int32)`
+`func (o *AssignRemoveProfileResponseSyncState) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -132,20 +132,20 @@ HasSyncStatus returns a boolean if a field has been set.
 
 ### GetFailureCount
 
-`func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int32`
+`func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int64`
 
 GetFailureCount returns the FailureCount field if non-nil, zero value otherwise.
 
 ### GetFailureCountOk
 
-`func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int32, bool)`
+`func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int64, bool)`
 
 GetFailureCountOk returns a tuple with the FailureCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFailureCount
 
-`func (o *AssignRemoveProfileResponseSyncState) SetFailureCount(v int32)`
+`func (o *AssignRemoveProfileResponseSyncState) SetFailureCount(v int64)`
 
 SetFailureCount sets FailureCount field to given value.
 
@@ -157,20 +157,20 @@ HasFailureCount returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int32`
+`func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int64`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int32, bool)`
+`func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int64, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *AssignRemoveProfileResponseSyncState) SetTimestamp(v int32)`
+`func (o *AssignRemoveProfileResponseSyncState) SetTimestamp(v int64)`
 
 SetTimestamp sets Timestamp field to given value.
 

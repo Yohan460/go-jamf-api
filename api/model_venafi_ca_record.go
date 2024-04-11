@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VenafiCaRecord type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &VenafiCaRecord{}
 
 // VenafiCaRecord struct for VenafiCaRecord
 type VenafiCaRecord struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name string `json:"name"`
 	Username *string `json:"username,omitempty"`
 	Password *string `json:"password,omitempty"`
@@ -30,6 +32,8 @@ type VenafiCaRecord struct {
 	RefreshToken *string `json:"refreshToken,omitempty"`
 	RefreshTokenConfigured *bool `json:"refreshTokenConfigured,omitempty"`
 }
+
+type _VenafiCaRecord VenafiCaRecord
 
 // NewVenafiCaRecord instantiates a new VenafiCaRecord object
 // This constructor will assign default values to properties that have it defined,
@@ -50,9 +54,9 @@ func NewVenafiCaRecordWithDefaults() *VenafiCaRecord {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *VenafiCaRecord) GetId() int32 {
+func (o *VenafiCaRecord) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -60,7 +64,7 @@ func (o *VenafiCaRecord) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VenafiCaRecord) GetIdOk() (*int32, bool) {
+func (o *VenafiCaRecord) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -76,8 +80,8 @@ func (o *VenafiCaRecord) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *VenafiCaRecord) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *VenafiCaRecord) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -400,6 +404,43 @@ func (o VenafiCaRecord) ToMap() (map[string]interface{}, error) {
 		toSerialize["refreshTokenConfigured"] = o.RefreshTokenConfigured
 	}
 	return toSerialize, nil
+}
+
+func (o *VenafiCaRecord) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVenafiCaRecord := _VenafiCaRecord{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVenafiCaRecord)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VenafiCaRecord(varVenafiCaRecord)
+
+	return err
 }
 
 type NullableVenafiCaRecord struct {

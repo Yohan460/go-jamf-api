@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SiteId** | **int32** |  | 
+**SiteId** | **int64** |  | 
 **DisplayName** | **string** |  | 
 **Description** | **string** |  | 
 **EnrollmentCustomizationBrandingSettings** | [**EnrollmentCustomizationBrandingSettings**](EnrollmentCustomizationBrandingSettings.md) |  | 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewEnrollmentCustomization
 
-`func NewEnrollmentCustomization(siteId int32, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *EnrollmentCustomization`
+`func NewEnrollmentCustomization(siteId int64, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings, ) *EnrollmentCustomization`
 
 NewEnrollmentCustomization instantiates a new EnrollmentCustomization object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSiteId
 
-`func (o *EnrollmentCustomization) GetSiteId() int32`
+`func (o *EnrollmentCustomization) GetSiteId() int64`
 
 GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *EnrollmentCustomization) GetSiteIdOk() (*int32, bool)`
+`func (o *EnrollmentCustomization) GetSiteIdOk() (*int64, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSiteId
 
-`func (o *EnrollmentCustomization) SetSiteId(v int32)`
+`func (o *EnrollmentCustomization) SetSiteId(v int64)`
 
 SetSiteId sets SiteId field to given value.
 

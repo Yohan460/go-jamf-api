@@ -34,7 +34,7 @@ type ComputerPrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest
+	V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest
 
 	// V1ComputerPrestagesIdScopeDeleteExecute executes the request
 	//  @return PrestageScopeResponse
@@ -52,7 +52,7 @@ type ComputerPrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest
+	V1ComputerPrestagesIdScopeGet(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest
 
 	// V1ComputerPrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponse
@@ -70,7 +70,7 @@ type ComputerPrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest
+	V1ComputerPrestagesIdScopePost(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest
 
 	// V1ComputerPrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponse
@@ -88,7 +88,7 @@ type ComputerPrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest
+	V1ComputerPrestagesIdScopePut(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest
 
 	// V1ComputerPrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponse
@@ -352,7 +352,7 @@ type ComputerPrestagesAPIService service
 type ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -377,7 +377,7 @@ Remove device scope for a specific computer prestage
 
 Deprecated
 */
-func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeDelete(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest {
 	return ComputerPrestagesAPIV1ComputerPrestagesIdScopeDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -502,7 +502,7 @@ func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeDeleteExecute(r 
 type ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	id int32
+	id int64
 }
 
 func (r ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
@@ -520,7 +520,7 @@ Get device scope for a specific computer prestage
 
 Deprecated
 */
-func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeGet(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeGet(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest {
 	return ComputerPrestagesAPIV1ComputerPrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -618,7 +618,7 @@ func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopeGetExecute(r Com
 type ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -643,7 +643,7 @@ Add device scope for a specific computer prestage
 
 Deprecated
 */
-func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePost(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePost(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest {
 	return ComputerPrestagesAPIV1ComputerPrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -768,7 +768,7 @@ func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePostExecute(r Co
 type ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -793,7 +793,7 @@ Replace device scope for a specific computer prestage
 
 Deprecated
 */
-func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePut(ctx context.Context, id int32) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest {
+func (a *ComputerPrestagesAPIService) V1ComputerPrestagesIdScopePut(ctx context.Context, id int64) ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest {
 	return ComputerPrestagesAPIV1ComputerPrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1020,17 +1020,17 @@ func (a *ComputerPrestagesAPIService) V1ComputerPrestagesScopeGetExecute(r Compu
 type ComputerPrestagesAPIV2ComputerPrestagesGetRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) Page(page int32) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) Page(page int64) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) PageSize(pageSize int32) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV2ComputerPrestagesGetRequest) PageSize(pageSize int64) ComputerPrestagesAPIV2ComputerPrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1087,13 +1087,13 @@ func (a *ComputerPrestagesAPIService) V2ComputerPrestagesGetExecute(r ComputerPr
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2305,17 +2305,17 @@ func (a *ComputerPrestagesAPIService) V2ComputerPrestagesScopeGetExecute(r Compu
 type ComputerPrestagesAPIV3ComputerPrestagesGetRequest struct {
 	ctx context.Context
 	ApiService ComputerPrestagesAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) Page(page int32) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) Page(page int64) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) PageSize(pageSize int32) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
+func (r ComputerPrestagesAPIV3ComputerPrestagesGetRequest) PageSize(pageSize int64) ComputerPrestagesAPIV3ComputerPrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2369,13 +2369,13 @@ func (a *ComputerPrestagesAPIService) V3ComputerPrestagesGetExecute(r ComputerPr
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

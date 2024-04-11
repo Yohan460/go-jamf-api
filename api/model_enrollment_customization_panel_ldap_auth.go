@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnrollmentCustomizationPanelLdapAuth type satisfies the MappedNullable interface at compile time
@@ -20,7 +22,7 @@ var _ MappedNullable = &EnrollmentCustomizationPanelLdapAuth{}
 // EnrollmentCustomizationPanelLdapAuth struct for EnrollmentCustomizationPanelLdapAuth
 type EnrollmentCustomizationPanelLdapAuth struct {
 	DisplayName string `json:"displayName"`
-	Rank int32 `json:"rank"`
+	Rank int64 `json:"rank"`
 	UsernameLabel string `json:"usernameLabel"`
 	PasswordLabel string `json:"passwordLabel"`
 	Title string `json:"title"`
@@ -29,11 +31,13 @@ type EnrollmentCustomizationPanelLdapAuth struct {
 	LdapGroupAccess []EnrollmentCustomizationLdapGroupAccess `json:"ldapGroupAccess,omitempty"`
 }
 
+type _EnrollmentCustomizationPanelLdapAuth EnrollmentCustomizationPanelLdapAuth
+
 // NewEnrollmentCustomizationPanelLdapAuth instantiates a new EnrollmentCustomizationPanelLdapAuth object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnrollmentCustomizationPanelLdapAuth(displayName string, rank int32, usernameLabel string, passwordLabel string, title string, backButtonText string, continueButtonText string) *EnrollmentCustomizationPanelLdapAuth {
+func NewEnrollmentCustomizationPanelLdapAuth(displayName string, rank int64, usernameLabel string, passwordLabel string, title string, backButtonText string, continueButtonText string) *EnrollmentCustomizationPanelLdapAuth {
 	this := EnrollmentCustomizationPanelLdapAuth{}
 	this.DisplayName = displayName
 	this.Rank = rank
@@ -78,9 +82,9 @@ func (o *EnrollmentCustomizationPanelLdapAuth) SetDisplayName(v string) {
 }
 
 // GetRank returns the Rank field value
-func (o *EnrollmentCustomizationPanelLdapAuth) GetRank() int32 {
+func (o *EnrollmentCustomizationPanelLdapAuth) GetRank() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -89,7 +93,7 @@ func (o *EnrollmentCustomizationPanelLdapAuth) GetRank() int32 {
 
 // GetRankOk returns a tuple with the Rank field value
 // and a boolean to check if the value has been set.
-func (o *EnrollmentCustomizationPanelLdapAuth) GetRankOk() (*int32, bool) {
+func (o *EnrollmentCustomizationPanelLdapAuth) GetRankOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,7 +101,7 @@ func (o *EnrollmentCustomizationPanelLdapAuth) GetRankOk() (*int32, bool) {
 }
 
 // SetRank sets field value
-func (o *EnrollmentCustomizationPanelLdapAuth) SetRank(v int32) {
+func (o *EnrollmentCustomizationPanelLdapAuth) SetRank(v int64) {
 	o.Rank = v
 }
 
@@ -274,6 +278,49 @@ func (o EnrollmentCustomizationPanelLdapAuth) ToMap() (map[string]interface{}, e
 		toSerialize["ldapGroupAccess"] = o.LdapGroupAccess
 	}
 	return toSerialize, nil
+}
+
+func (o *EnrollmentCustomizationPanelLdapAuth) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"rank",
+		"usernameLabel",
+		"passwordLabel",
+		"title",
+		"backButtonText",
+		"continueButtonText",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentCustomizationPanelLdapAuth := _EnrollmentCustomizationPanelLdapAuth{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentCustomizationPanelLdapAuth)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentCustomizationPanelLdapAuth(varEnrollmentCustomizationPanelLdapAuth)
+
+	return err
 }
 
 type NullableEnrollmentCustomizationPanelLdapAuth struct {

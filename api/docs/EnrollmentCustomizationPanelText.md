@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | **string** |  | 
-**Rank** | **int32** |  | 
+**Rank** | **int64** |  | 
 **Body** | **string** |  | 
 **Subtext** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEnrollmentCustomizationPanelText
 
-`func NewEnrollmentCustomizationPanelText(displayName string, rank int32, body string, title string, backButtonText string, continueButtonText string, ) *EnrollmentCustomizationPanelText`
+`func NewEnrollmentCustomizationPanelText(displayName string, rank int64, body string, title string, backButtonText string, continueButtonText string, ) *EnrollmentCustomizationPanelText`
 
 NewEnrollmentCustomizationPanelText instantiates a new EnrollmentCustomizationPanelText object
 This constructor will assign default values to properties that have it defined,
@@ -53,20 +53,20 @@ SetDisplayName sets DisplayName field to given value.
 
 ### GetRank
 
-`func (o *EnrollmentCustomizationPanelText) GetRank() int32`
+`func (o *EnrollmentCustomizationPanelText) GetRank() int64`
 
 GetRank returns the Rank field if non-nil, zero value otherwise.
 
 ### GetRankOk
 
-`func (o *EnrollmentCustomizationPanelText) GetRankOk() (*int32, bool)`
+`func (o *EnrollmentCustomizationPanelText) GetRankOk() (*int64, bool)`
 
 GetRankOk returns a tuple with the Rank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRank
 
-`func (o *EnrollmentCustomizationPanelText) SetRank(v int32)`
+`func (o *EnrollmentCustomizationPanelText) SetRank(v int64)`
 
 SetRank sets Rank field to given value.
 

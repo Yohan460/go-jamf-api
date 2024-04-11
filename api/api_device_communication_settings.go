@@ -189,18 +189,18 @@ func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsGet
 type DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest struct {
 	ctx context.Context
 	ApiService DeviceCommunicationSettingsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Page(page int32) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) Page(page int64) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) PageSize(pageSize int32) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
+func (r DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest) PageSize(pageSize int64) DeviceCommunicationSettingsAPIV1DeviceCommunicationSettingsHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -261,13 +261,13 @@ func (a *DeviceCommunicationSettingsAPIService) V1DeviceCommunicationSettingsHis
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **TimezoneId** | Pointer to **string** |  | [optional] 
 **AutoClear** | Pointer to **NullableString** |  | [optional] 
-**MaxRestrictionLengthSeconds** | Pointer to **int32** |  | [optional] 
+**MaxRestrictionLengthSeconds** | Pointer to **int64** |  | [optional] 
 **SafelistedApps** | Pointer to [**[]SafelistedApp**](SafelistedApp.md) |  | [optional] 
 
 ## Methods
@@ -116,20 +116,20 @@ HasAutoClear returns a boolean if a field has been set.
 UnsetAutoClear ensures that no value is present for AutoClear, not even an explicit nil
 ### GetMaxRestrictionLengthSeconds
 
-`func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int32`
+`func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int64`
 
 GetMaxRestrictionLengthSeconds returns the MaxRestrictionLengthSeconds field if non-nil, zero value otherwise.
 
 ### GetMaxRestrictionLengthSecondsOk
 
-`func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int32, bool)`
+`func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int64, bool)`
 
 GetMaxRestrictionLengthSecondsOk returns a tuple with the MaxRestrictionLengthSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxRestrictionLengthSeconds
 
-`func (o *TeacherSettingsRequest) SetMaxRestrictionLengthSeconds(v int32)`
+`func (o *TeacherSettingsRequest) SetMaxRestrictionLengthSeconds(v int64)`
 
 SetMaxRestrictionLengthSeconds sets MaxRestrictionLengthSeconds field to given value.
 

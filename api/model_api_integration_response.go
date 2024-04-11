@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ApiIntegrationResponse type satisfies the MappedNullable interface at compile time
@@ -19,21 +21,23 @@ var _ MappedNullable = &ApiIntegrationResponse{}
 
 // ApiIntegrationResponse struct for ApiIntegrationResponse
 type ApiIntegrationResponse struct {
-	Id int32 `json:"id"`
+	Id int64 `json:"id"`
 	AuthorizationScopes []string `json:"authorizationScopes"`
 	DisplayName string `json:"displayName"`
 	Enabled bool `json:"enabled"`
-	AccessTokenLifetimeSeconds *int32 `json:"accessTokenLifetimeSeconds,omitempty"`
+	AccessTokenLifetimeSeconds *int64 `json:"accessTokenLifetimeSeconds,omitempty"`
 	// Type of API Client:     * `CLIENT_CREDENTIALS` - A client ID and secret have been generated for this integration.     * `NATIVE_APP_OAUTH` - A native app (i.e., Jamf Reset) has been linked to this integration for auth code grant type via Managed App Config.     * `NONE` - No client is currently associated with this integration. 
 	AppType string `json:"appType"`
 	ClientId string `json:"clientId"`
 }
 
+type _ApiIntegrationResponse ApiIntegrationResponse
+
 // NewApiIntegrationResponse instantiates a new ApiIntegrationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiIntegrationResponse(id int32, authorizationScopes []string, displayName string, enabled bool, appType string, clientId string) *ApiIntegrationResponse {
+func NewApiIntegrationResponse(id int64, authorizationScopes []string, displayName string, enabled bool, appType string, clientId string) *ApiIntegrationResponse {
 	this := ApiIntegrationResponse{}
 	this.Id = id
 	this.AuthorizationScopes = authorizationScopes
@@ -53,9 +57,9 @@ func NewApiIntegrationResponseWithDefaults() *ApiIntegrationResponse {
 }
 
 // GetId returns the Id field value
-func (o *ApiIntegrationResponse) GetId() int32 {
+func (o *ApiIntegrationResponse) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -64,7 +68,7 @@ func (o *ApiIntegrationResponse) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ApiIntegrationResponse) GetIdOk() (*int32, bool) {
+func (o *ApiIntegrationResponse) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,7 +76,7 @@ func (o *ApiIntegrationResponse) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ApiIntegrationResponse) SetId(v int32) {
+func (o *ApiIntegrationResponse) SetId(v int64) {
 	o.Id = v
 }
 
@@ -149,9 +153,9 @@ func (o *ApiIntegrationResponse) SetEnabled(v bool) {
 }
 
 // GetAccessTokenLifetimeSeconds returns the AccessTokenLifetimeSeconds field value if set, zero value otherwise.
-func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSeconds() int32 {
+func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSeconds() int64 {
 	if o == nil || IsNil(o.AccessTokenLifetimeSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AccessTokenLifetimeSeconds
@@ -159,7 +163,7 @@ func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSeconds() int32 {
 
 // GetAccessTokenLifetimeSecondsOk returns a tuple with the AccessTokenLifetimeSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSecondsOk() (*int32, bool) {
+func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AccessTokenLifetimeSeconds) {
 		return nil, false
 	}
@@ -175,8 +179,8 @@ func (o *ApiIntegrationResponse) HasAccessTokenLifetimeSeconds() bool {
 	return false
 }
 
-// SetAccessTokenLifetimeSeconds gets a reference to the given int32 and assigns it to the AccessTokenLifetimeSeconds field.
-func (o *ApiIntegrationResponse) SetAccessTokenLifetimeSeconds(v int32) {
+// SetAccessTokenLifetimeSeconds gets a reference to the given int64 and assigns it to the AccessTokenLifetimeSeconds field.
+func (o *ApiIntegrationResponse) SetAccessTokenLifetimeSeconds(v int64) {
 	o.AccessTokenLifetimeSeconds = &v
 }
 
@@ -248,6 +252,48 @@ func (o ApiIntegrationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["appType"] = o.AppType
 	toSerialize["clientId"] = o.ClientId
 	return toSerialize, nil
+}
+
+func (o *ApiIntegrationResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"authorizationScopes",
+		"displayName",
+		"enabled",
+		"appType",
+		"clientId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApiIntegrationResponse := _ApiIntegrationResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApiIntegrationResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApiIntegrationResponse(varApiIntegrationResponse)
+
+	return err
 }
 
 type NullableApiIntegrationResponse struct {

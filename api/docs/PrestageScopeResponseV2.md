@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PrestageId** | Pointer to **string** |  | [optional] 
 **Assignments** | Pointer to [**[]PrestageScopeAssignmentV2**](PrestageScopeAssignmentV2.md) |  | [optional] 
-**VersionLock** | Pointer to **int32** |  | [optional] 
+**VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasAssignments returns a boolean if a field has been set.
 
 ### GetVersionLock
 
-`func (o *PrestageScopeResponseV2) GetVersionLock() int32`
+`func (o *PrestageScopeResponseV2) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int32, bool)`
+`func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PrestageScopeResponseV2) SetVersionLock(v int32)`
+`func (o *PrestageScopeResponseV2) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

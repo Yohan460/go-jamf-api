@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HttpsStatus** | Pointer to **int32** |  | [optional] 
+**HttpsStatus** | Pointer to **int64** |  | [optional] 
 **Errors** | Pointer to [**[]InventoryPreloadCsvError**](InventoryPreloadCsvError.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHttpsStatus
 
-`func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatus() int32`
+`func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatus() int64`
 
 GetHttpsStatus returns the HttpsStatus field if non-nil, zero value otherwise.
 
 ### GetHttpsStatusOk
 
-`func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatusOk() (*int32, bool)`
+`func (o *InventoryPreloadInvalidCsvResponse) GetHttpsStatusOk() (*int64, bool)`
 
 GetHttpsStatusOk returns a tuple with the HttpsStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpsStatus
 
-`func (o *InventoryPreloadInvalidCsvResponse) SetHttpsStatus(v int32)`
+`func (o *InventoryPreloadInvalidCsvResponse) SetHttpsStatus(v int64)`
 
 SetHttpsStatus sets HttpsStatus field to given value.
 

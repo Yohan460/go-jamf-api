@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **SiteId** | **string** | An identifier of a site which Team Viewer Remote Administration is configured on | 
 **DisplayName** | **string** | Name for Team Viewer Connection Configuration | 
 **Enabled** | **bool** | Describes if Team Viewer connection is enabled or disabled | 
-**SessionTimeout** | **NullableInt32** | Number of minutes before the session expires | 
+**SessionTimeout** | **NullableInt64** | Number of minutes before the session expires | 
 
 ## Methods
 
 ### NewConnectionConfigurationResponse
 
-`func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt32, ) *ConnectionConfigurationResponse`
+`func NewConnectionConfigurationResponse(id string, siteId string, displayName string, enabled bool, sessionTimeout NullableInt64, ) *ConnectionConfigurationResponse`
 
 NewConnectionConfigurationResponse instantiates a new ConnectionConfigurationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetSessionTimeout
 
-`func (o *ConnectionConfigurationResponse) GetSessionTimeout() int32`
+`func (o *ConnectionConfigurationResponse) GetSessionTimeout() int64`
 
 GetSessionTimeout returns the SessionTimeout field if non-nil, zero value otherwise.
 
 ### GetSessionTimeoutOk
 
-`func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int32, bool)`
+`func (o *ConnectionConfigurationResponse) GetSessionTimeoutOk() (*int64, bool)`
 
 GetSessionTimeoutOk returns a tuple with the SessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionTimeout
 
-`func (o *ConnectionConfigurationResponse) SetSessionTimeout(v int32)`
+`func (o *ConnectionConfigurationResponse) SetSessionTimeout(v int64)`
 
 SetSessionTimeout sets SessionTimeout field to given value.
 

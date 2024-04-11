@@ -31,22 +31,22 @@ Delete multiple Buildings by their ids
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ids := *openapiclient.NewIds() // Ids | ids of the building to be deleted
+	ids := *openapiclient.NewIds() // Ids | ids of the building to be deleted
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BuildingsAPI.V1BuildingsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsDeleteMultiplePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BuildingsAPI.V1BuildingsDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsDeleteMultiplePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -95,30 +95,30 @@ Export Buildings collection
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-    exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*buildings*\" (optional) (default to "")
-    exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*buildings*\" (optional) (default to "")
+	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsExportPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsExportPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsExportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsExportPost`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsExportPost`: %v\n", resp)
 }
 ```
 
@@ -135,8 +135,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
  **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*buildings*\&quot; | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
@@ -173,27 +173,27 @@ Search for sorted and paged Buildings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter buildings collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, streetAddress1, streetAddress2, city, stateProvince, zipPostalCode, country. This param can be combined with paging and sorting. Example: filter=city==\"Chicago\" and name==\"*build*\" (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter buildings collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, streetAddress1, streetAddress2, city, stateProvince, zipPostalCode, country. This param can be combined with paging and sorting. Example: filter=city==\"Chicago\" and name==\"*build*\" (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsGet`: BuildingSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsGet`: BuildingSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsGet`: %v\n", resp)
 }
 ```
 
@@ -208,8 +208,8 @@ Other parameters are passed through a pointer to a apiV1BuildingsGetRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter buildings collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, streetAddress1, streetAddress2, city, stateProvince, zipPostalCode, country. This param can be combined with paging and sorting. Example: filter&#x3D;city&#x3D;&#x3D;\&quot;Chicago\&quot; and name&#x3D;&#x3D;\&quot;*build*\&quot; | [default to &quot;&quot;]
 
@@ -245,22 +245,22 @@ Remove specified Building record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of building record
+	id := "id_example" // string | instance id of building record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BuildingsAPI.V1BuildingsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BuildingsAPI.V1BuildingsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -313,24 +313,24 @@ Get specified Building object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of building record
+	id := "id_example" // string | instance id of building record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsIdGet`: Building
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsIdGet`: Building
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdGet`: %v\n", resp)
 }
 ```
 
@@ -383,31 +383,31 @@ Export history object collection in specified format for specified Buildings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of buildings
-    exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-    exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
-    exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
+	id := "id_example" // string | instance id of buildings
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryExportPost(context.Background(), id).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryExportPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsIdHistoryExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryExportPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryExportPost(context.Background(), id).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryExportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsIdHistoryExportPost`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryExportPost`: %v\n", resp)
 }
 ```
 
@@ -429,8 +429,8 @@ Name | Type | Description  | Notes
 
  **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
  **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
@@ -467,28 +467,28 @@ Get specified Building History object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of building history record
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	id := "id_example" // string | instance id of building history record
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -508,8 +508,8 @@ Other parameters are passed through a pointer to a apiV1BuildingsIdHistoryGetReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -545,25 +545,25 @@ Add specified Building history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of building history record
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	id := "id_example" // string | instance id of building history record
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsIdHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -617,25 +617,25 @@ Update specified Building object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of building record
-    building := *openapiclient.NewBuilding("Apple Park") // Building | building object to update. ids defined in this body will be ignored
+	id := "id_example" // string | instance id of building record
+	building := *openapiclient.NewBuilding("Apple Park") // Building | building object to update. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdPut(context.Background(), id).Building(building).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsIdPut`: Building
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsIdPut(context.Background(), id).Building(building).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsIdPut`: Building
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsIdPut`: %v\n", resp)
 }
 ```
 
@@ -689,24 +689,24 @@ Create Building record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    building := *openapiclient.NewBuilding("Apple Park") // Building | building object to create. ids defined in this body will be ignored
+	building := *openapiclient.NewBuilding("Apple Park") // Building | building object to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BuildingsAPI.V1BuildingsPost(context.Background()).Building(building).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BuildingsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BuildingsAPI.V1BuildingsPost(context.Background()).Building(building).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BuildingsAPI.V1BuildingsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BuildingsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `BuildingsAPI.V1BuildingsPost`: %v\n", resp)
 }
 ```
 

@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VolumePurchasingLocationPost type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type VolumePurchasingLocationPost struct {
 	SiteId *string `json:"siteId,omitempty"`
 	ServiceToken string `json:"serviceToken"`
 }
+
+type _VolumePurchasingLocationPost VolumePurchasingLocationPost
 
 // NewVolumePurchasingLocationPost instantiates a new VolumePurchasingLocationPost object
 // This constructor will assign default values to properties that have it defined,
@@ -273,6 +277,43 @@ func (o VolumePurchasingLocationPost) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["serviceToken"] = o.ServiceToken
 	return toSerialize, nil
+}
+
+func (o *VolumePurchasingLocationPost) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serviceToken",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVolumePurchasingLocationPost := _VolumePurchasingLocationPost{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVolumePurchasingLocationPost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VolumePurchasingLocationPost(varVolumePurchasingLocationPost)
+
+	return err
 }
 
 type NullableVolumePurchasingLocationPost struct {

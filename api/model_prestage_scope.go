@@ -19,7 +19,7 @@ var _ MappedNullable = &PrestageScope{}
 
 // PrestageScope struct for PrestageScope
 type PrestageScope struct {
-	SerialsByPrestageId *map[string]int32 `json:"serialsByPrestageId,omitempty"`
+	SerialsByPrestageId *map[string]int64 `json:"serialsByPrestageId,omitempty"`
 }
 
 // NewPrestageScope instantiates a new PrestageScope object
@@ -40,9 +40,9 @@ func NewPrestageScopeWithDefaults() *PrestageScope {
 }
 
 // GetSerialsByPrestageId returns the SerialsByPrestageId field value if set, zero value otherwise.
-func (o *PrestageScope) GetSerialsByPrestageId() map[string]int32 {
+func (o *PrestageScope) GetSerialsByPrestageId() map[string]int64 {
 	if o == nil || IsNil(o.SerialsByPrestageId) {
-		var ret map[string]int32
+		var ret map[string]int64
 		return ret
 	}
 	return *o.SerialsByPrestageId
@@ -50,7 +50,7 @@ func (o *PrestageScope) GetSerialsByPrestageId() map[string]int32 {
 
 // GetSerialsByPrestageIdOk returns a tuple with the SerialsByPrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrestageScope) GetSerialsByPrestageIdOk() (*map[string]int32, bool) {
+func (o *PrestageScope) GetSerialsByPrestageIdOk() (*map[string]int64, bool) {
 	if o == nil || IsNil(o.SerialsByPrestageId) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *PrestageScope) HasSerialsByPrestageId() bool {
 	return false
 }
 
-// SetSerialsByPrestageId gets a reference to the given map[string]int32 and assigns it to the SerialsByPrestageId field.
-func (o *PrestageScope) SetSerialsByPrestageId(v map[string]int32) {
+// SetSerialsByPrestageId gets a reference to the given map[string]int64 and assigns it to the SerialsByPrestageId field.
+func (o *PrestageScope) SetSerialsByPrestageId(v map[string]int64) {
 	o.SerialsByPrestageId = &v
 }
 

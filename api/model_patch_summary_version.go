@@ -21,7 +21,7 @@ var _ MappedNullable = &PatchSummaryVersion{}
 type PatchSummaryVersion struct {
 	AbsoluteOrderId *string `json:"absoluteOrderId,omitempty"`
 	Version *string `json:"version,omitempty"`
-	OnVersion *int32 `json:"onVersion,omitempty"`
+	OnVersion *int64 `json:"onVersion,omitempty"`
 }
 
 // NewPatchSummaryVersion instantiates a new PatchSummaryVersion object
@@ -106,9 +106,9 @@ func (o *PatchSummaryVersion) SetVersion(v string) {
 }
 
 // GetOnVersion returns the OnVersion field value if set, zero value otherwise.
-func (o *PatchSummaryVersion) GetOnVersion() int32 {
+func (o *PatchSummaryVersion) GetOnVersion() int64 {
 	if o == nil || IsNil(o.OnVersion) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OnVersion
@@ -116,7 +116,7 @@ func (o *PatchSummaryVersion) GetOnVersion() int32 {
 
 // GetOnVersionOk returns a tuple with the OnVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchSummaryVersion) GetOnVersionOk() (*int32, bool) {
+func (o *PatchSummaryVersion) GetOnVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.OnVersion) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *PatchSummaryVersion) HasOnVersion() bool {
 	return false
 }
 
-// SetOnVersion gets a reference to the given int32 and assigns it to the OnVersion field.
-func (o *PatchSummaryVersion) SetOnVersion(v int32) {
+// SetOnVersion gets a reference to the given int64 and assigns it to the OnVersion field.
+func (o *PatchSummaryVersion) SetOnVersion(v int64) {
 	o.OnVersion = &v
 }
 

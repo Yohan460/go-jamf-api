@@ -19,7 +19,7 @@ var _ MappedNullable = &AdminAccount{}
 
 // AdminAccount struct for AdminAccount
 type AdminAccount struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 }
 
 // NewAdminAccount instantiates a new AdminAccount object
@@ -40,9 +40,9 @@ func NewAdminAccountWithDefaults() *AdminAccount {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AdminAccount) GetId() int32 {
+func (o *AdminAccount) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -50,7 +50,7 @@ func (o *AdminAccount) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdminAccount) GetIdOk() (*int32, bool) {
+func (o *AdminAccount) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *AdminAccount) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *AdminAccount) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *AdminAccount) SetId(v int64) {
 	o.Id = &v
 }
 

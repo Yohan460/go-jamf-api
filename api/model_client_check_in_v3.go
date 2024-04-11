@@ -20,7 +20,7 @@ var _ MappedNullable = &ClientCheckInV3{}
 // ClientCheckInV3 struct for ClientCheckInV3
 type ClientCheckInV3 struct {
 	// Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60.
-	CheckInFrequency *int32 `json:"checkInFrequency,omitempty"`
+	CheckInFrequency *int64 `json:"checkInFrequency,omitempty"`
 	CreateHooks *bool `json:"createHooks,omitempty"`
 	HookLog *bool `json:"hookLog,omitempty"`
 	HookPolicies *bool `json:"hookPolicies,omitempty"`
@@ -37,7 +37,7 @@ type ClientCheckInV3 struct {
 // will change when the set of required properties is changed
 func NewClientCheckInV3() *ClientCheckInV3 {
 	this := ClientCheckInV3{}
-	var checkInFrequency int32 = 15
+	var checkInFrequency int64 = 15
 	this.CheckInFrequency = &checkInFrequency
 	var createHooks bool = false
 	this.CreateHooks = &createHooks
@@ -63,7 +63,7 @@ func NewClientCheckInV3() *ClientCheckInV3 {
 // but it doesn't guarantee that properties required by API are set
 func NewClientCheckInV3WithDefaults() *ClientCheckInV3 {
 	this := ClientCheckInV3{}
-	var checkInFrequency int32 = 15
+	var checkInFrequency int64 = 15
 	this.CheckInFrequency = &checkInFrequency
 	var createHooks bool = false
 	this.CreateHooks = &createHooks
@@ -85,9 +85,9 @@ func NewClientCheckInV3WithDefaults() *ClientCheckInV3 {
 }
 
 // GetCheckInFrequency returns the CheckInFrequency field value if set, zero value otherwise.
-func (o *ClientCheckInV3) GetCheckInFrequency() int32 {
+func (o *ClientCheckInV3) GetCheckInFrequency() int64 {
 	if o == nil || IsNil(o.CheckInFrequency) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CheckInFrequency
@@ -95,7 +95,7 @@ func (o *ClientCheckInV3) GetCheckInFrequency() int32 {
 
 // GetCheckInFrequencyOk returns a tuple with the CheckInFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClientCheckInV3) GetCheckInFrequencyOk() (*int32, bool) {
+func (o *ClientCheckInV3) GetCheckInFrequencyOk() (*int64, bool) {
 	if o == nil || IsNil(o.CheckInFrequency) {
 		return nil, false
 	}
@@ -111,8 +111,8 @@ func (o *ClientCheckInV3) HasCheckInFrequency() bool {
 	return false
 }
 
-// SetCheckInFrequency gets a reference to the given int32 and assigns it to the CheckInFrequency field.
-func (o *ClientCheckInV3) SetCheckInFrequency(v int32) {
+// SetCheckInFrequency gets a reference to the given int64 and assigns it to the CheckInFrequency field.
+func (o *ClientCheckInV3) SetCheckInFrequency(v int64) {
 	o.CheckInFrequency = &v
 }
 

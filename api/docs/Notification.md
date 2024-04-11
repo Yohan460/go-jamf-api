@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Type** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Params** | Pointer to **map[string]map[string]interface{}** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *Notification) GetId() int32`
+`func (o *Notification) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Notification) GetIdOk() (*int32, bool)`
+`func (o *Notification) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Notification) SetId(v int32)`
+`func (o *Notification) SetId(v int64)`
 
 SetId sets Id field to given value.
 

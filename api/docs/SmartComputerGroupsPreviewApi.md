@@ -23,24 +23,24 @@ Recalculate a smart group for the given id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | id of computer
+	id := int64(56) // int64 | id of computer
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersIdRecalculateSmartGroupsPost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersIdRecalculateSmartGroupsPost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1ComputersIdRecalculateSmartGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | id of computer | 
+**id** | **int64** | id of computer | 
 
 ### Other Parameters
 
@@ -93,24 +93,24 @@ Recalculate the smart group for the given id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | instance id of smart group
+	id := int64(56) // int64 | instance id of smart group
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SmartComputerGroupsIdRecalculatePost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SmartComputerGroupsIdRecalculatePost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartComputerGroupsPreviewAPI.V1SmartComputerGroupsIdRecalculatePost`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | instance id of smart group | 
+**id** | **int64** | instance id of smart group | 
 
 ### Other Parameters
 

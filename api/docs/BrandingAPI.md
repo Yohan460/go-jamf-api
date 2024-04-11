@@ -22,24 +22,24 @@ Download a self service branding image
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of the self service branding image
+	id := "id_example" // string | id of the self service branding image
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BrandingAPI.V1BrandingImagesDownloadIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.V1BrandingImagesDownloadIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1BrandingImagesDownloadIdGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.V1BrandingImagesDownloadIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BrandingAPI.V1BrandingImagesDownloadIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BrandingAPI.V1BrandingImagesDownloadIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1BrandingImagesDownloadIdGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `BrandingAPI.V1BrandingImagesDownloadIdGet`: %v\n", resp)
 }
 ```
 

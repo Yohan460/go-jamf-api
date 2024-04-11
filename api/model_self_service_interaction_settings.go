@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SelfServiceInteractionSettings type satisfies the MappedNullable interface at compile time
@@ -26,10 +28,12 @@ type SelfServiceInteractionSettings struct {
 	// the default landing page in Self Service 
 	DefaultLandingPage *string `json:"defaultLandingPage,omitempty"`
 	// id for the default home category in Self Service 
-	DefaultHomeCategoryId *int32 `json:"defaultHomeCategoryId,omitempty"`
+	DefaultHomeCategoryId *int64 `json:"defaultHomeCategoryId,omitempty"`
 	// renamed string for bookmarks if the admin wishes 
 	BookmarksName string `json:"bookmarksName"`
 }
+
+type _SelfServiceInteractionSettings SelfServiceInteractionSettings
 
 // NewSelfServiceInteractionSettings instantiates a new SelfServiceInteractionSettings object
 // This constructor will assign default values to properties that have it defined,
@@ -43,7 +47,7 @@ func NewSelfServiceInteractionSettings(bookmarksName string) *SelfServiceInterac
 	this.AlertUserApprovedMdm = &alertUserApprovedMdm
 	var defaultLandingPage string = "HOME"
 	this.DefaultLandingPage = &defaultLandingPage
-	var defaultHomeCategoryId int32 = -1
+	var defaultHomeCategoryId int64 = -1
 	this.DefaultHomeCategoryId = &defaultHomeCategoryId
 	this.BookmarksName = bookmarksName
 	return &this
@@ -60,7 +64,7 @@ func NewSelfServiceInteractionSettingsWithDefaults() *SelfServiceInteractionSett
 	this.AlertUserApprovedMdm = &alertUserApprovedMdm
 	var defaultLandingPage string = "HOME"
 	this.DefaultLandingPage = &defaultLandingPage
-	var defaultHomeCategoryId int32 = -1
+	var defaultHomeCategoryId int64 = -1
 	this.DefaultHomeCategoryId = &defaultHomeCategoryId
 	return &this
 }
@@ -162,9 +166,9 @@ func (o *SelfServiceInteractionSettings) SetDefaultLandingPage(v string) {
 }
 
 // GetDefaultHomeCategoryId returns the DefaultHomeCategoryId field value if set, zero value otherwise.
-func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int32 {
+func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int64 {
 	if o == nil || IsNil(o.DefaultHomeCategoryId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DefaultHomeCategoryId
@@ -172,7 +176,7 @@ func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int32 {
 
 // GetDefaultHomeCategoryIdOk returns a tuple with the DefaultHomeCategoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int32, bool) {
+func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.DefaultHomeCategoryId) {
 		return nil, false
 	}
@@ -188,8 +192,8 @@ func (o *SelfServiceInteractionSettings) HasDefaultHomeCategoryId() bool {
 	return false
 }
 
-// SetDefaultHomeCategoryId gets a reference to the given int32 and assigns it to the DefaultHomeCategoryId field.
-func (o *SelfServiceInteractionSettings) SetDefaultHomeCategoryId(v int32) {
+// SetDefaultHomeCategoryId gets a reference to the given int64 and assigns it to the DefaultHomeCategoryId field.
+func (o *SelfServiceInteractionSettings) SetDefaultHomeCategoryId(v int64) {
 	o.DefaultHomeCategoryId = &v
 }
 
@@ -241,6 +245,43 @@ func (o SelfServiceInteractionSettings) ToMap() (map[string]interface{}, error) 
 	}
 	toSerialize["bookmarksName"] = o.BookmarksName
 	return toSerialize, nil
+}
+
+func (o *SelfServiceInteractionSettings) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bookmarksName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSelfServiceInteractionSettings := _SelfServiceInteractionSettings{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSelfServiceInteractionSettings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SelfServiceInteractionSettings(varSelfServiceInteractionSettings)
+
+	return err
 }
 
 type NullableSelfServiceInteractionSettings struct {

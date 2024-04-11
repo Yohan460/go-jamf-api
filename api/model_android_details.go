@@ -23,15 +23,15 @@ type AndroidDetails struct {
 	OsName *string `json:"osName,omitempty"`
 	Manufacturer *string `json:"manufacturer,omitempty"`
 	Model *string `json:"model,omitempty"`
-	InternalCapacityMb *int32 `json:"internalCapacityMb,omitempty"`
-	InternalAvailableMb *int32 `json:"internalAvailableMb,omitempty"`
-	InternalPercentUsed *int32 `json:"internalPercentUsed,omitempty"`
-	ExternalCapacityMb *int32 `json:"externalCapacityMb,omitempty"`
-	ExternalAvailableMb *int32 `json:"externalAvailableMb,omitempty"`
-	ExternalPercentUsed *int32 `json:"externalPercentUsed,omitempty"`
-	BatteryLevel *int32 `json:"batteryLevel,omitempty"`
+	InternalCapacityMb *int64 `json:"internalCapacityMb,omitempty"`
+	InternalAvailableMb *int64 `json:"internalAvailableMb,omitempty"`
+	InternalPercentUsed *int64 `json:"internalPercentUsed,omitempty"`
+	ExternalCapacityMb *int64 `json:"externalCapacityMb,omitempty"`
+	ExternalAvailableMb *int64 `json:"externalAvailableMb,omitempty"`
+	ExternalPercentUsed *int64 `json:"externalPercentUsed,omitempty"`
+	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
 	LastBackupTimestamp *time.Time `json:"lastBackupTimestamp,omitempty"`
-	ApiVersion *int32 `json:"apiVersion,omitempty"`
+	ApiVersion *int64 `json:"apiVersion,omitempty"`
 	Computer *IdAndName `json:"computer,omitempty"`
 	Security *Security `json:"security,omitempty"`
 }
@@ -150,9 +150,9 @@ func (o *AndroidDetails) SetModel(v string) {
 }
 
 // GetInternalCapacityMb returns the InternalCapacityMb field value if set, zero value otherwise.
-func (o *AndroidDetails) GetInternalCapacityMb() int32 {
+func (o *AndroidDetails) GetInternalCapacityMb() int64 {
 	if o == nil || IsNil(o.InternalCapacityMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.InternalCapacityMb
@@ -160,7 +160,7 @@ func (o *AndroidDetails) GetInternalCapacityMb() int32 {
 
 // GetInternalCapacityMbOk returns a tuple with the InternalCapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetInternalCapacityMbOk() (*int32, bool) {
+func (o *AndroidDetails) GetInternalCapacityMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.InternalCapacityMb) {
 		return nil, false
 	}
@@ -176,15 +176,15 @@ func (o *AndroidDetails) HasInternalCapacityMb() bool {
 	return false
 }
 
-// SetInternalCapacityMb gets a reference to the given int32 and assigns it to the InternalCapacityMb field.
-func (o *AndroidDetails) SetInternalCapacityMb(v int32) {
+// SetInternalCapacityMb gets a reference to the given int64 and assigns it to the InternalCapacityMb field.
+func (o *AndroidDetails) SetInternalCapacityMb(v int64) {
 	o.InternalCapacityMb = &v
 }
 
 // GetInternalAvailableMb returns the InternalAvailableMb field value if set, zero value otherwise.
-func (o *AndroidDetails) GetInternalAvailableMb() int32 {
+func (o *AndroidDetails) GetInternalAvailableMb() int64 {
 	if o == nil || IsNil(o.InternalAvailableMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.InternalAvailableMb
@@ -192,7 +192,7 @@ func (o *AndroidDetails) GetInternalAvailableMb() int32 {
 
 // GetInternalAvailableMbOk returns a tuple with the InternalAvailableMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetInternalAvailableMbOk() (*int32, bool) {
+func (o *AndroidDetails) GetInternalAvailableMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.InternalAvailableMb) {
 		return nil, false
 	}
@@ -208,15 +208,15 @@ func (o *AndroidDetails) HasInternalAvailableMb() bool {
 	return false
 }
 
-// SetInternalAvailableMb gets a reference to the given int32 and assigns it to the InternalAvailableMb field.
-func (o *AndroidDetails) SetInternalAvailableMb(v int32) {
+// SetInternalAvailableMb gets a reference to the given int64 and assigns it to the InternalAvailableMb field.
+func (o *AndroidDetails) SetInternalAvailableMb(v int64) {
 	o.InternalAvailableMb = &v
 }
 
 // GetInternalPercentUsed returns the InternalPercentUsed field value if set, zero value otherwise.
-func (o *AndroidDetails) GetInternalPercentUsed() int32 {
+func (o *AndroidDetails) GetInternalPercentUsed() int64 {
 	if o == nil || IsNil(o.InternalPercentUsed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.InternalPercentUsed
@@ -224,7 +224,7 @@ func (o *AndroidDetails) GetInternalPercentUsed() int32 {
 
 // GetInternalPercentUsedOk returns a tuple with the InternalPercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetInternalPercentUsedOk() (*int32, bool) {
+func (o *AndroidDetails) GetInternalPercentUsedOk() (*int64, bool) {
 	if o == nil || IsNil(o.InternalPercentUsed) {
 		return nil, false
 	}
@@ -240,15 +240,15 @@ func (o *AndroidDetails) HasInternalPercentUsed() bool {
 	return false
 }
 
-// SetInternalPercentUsed gets a reference to the given int32 and assigns it to the InternalPercentUsed field.
-func (o *AndroidDetails) SetInternalPercentUsed(v int32) {
+// SetInternalPercentUsed gets a reference to the given int64 and assigns it to the InternalPercentUsed field.
+func (o *AndroidDetails) SetInternalPercentUsed(v int64) {
 	o.InternalPercentUsed = &v
 }
 
 // GetExternalCapacityMb returns the ExternalCapacityMb field value if set, zero value otherwise.
-func (o *AndroidDetails) GetExternalCapacityMb() int32 {
+func (o *AndroidDetails) GetExternalCapacityMb() int64 {
 	if o == nil || IsNil(o.ExternalCapacityMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ExternalCapacityMb
@@ -256,7 +256,7 @@ func (o *AndroidDetails) GetExternalCapacityMb() int32 {
 
 // GetExternalCapacityMbOk returns a tuple with the ExternalCapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetExternalCapacityMbOk() (*int32, bool) {
+func (o *AndroidDetails) GetExternalCapacityMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.ExternalCapacityMb) {
 		return nil, false
 	}
@@ -272,15 +272,15 @@ func (o *AndroidDetails) HasExternalCapacityMb() bool {
 	return false
 }
 
-// SetExternalCapacityMb gets a reference to the given int32 and assigns it to the ExternalCapacityMb field.
-func (o *AndroidDetails) SetExternalCapacityMb(v int32) {
+// SetExternalCapacityMb gets a reference to the given int64 and assigns it to the ExternalCapacityMb field.
+func (o *AndroidDetails) SetExternalCapacityMb(v int64) {
 	o.ExternalCapacityMb = &v
 }
 
 // GetExternalAvailableMb returns the ExternalAvailableMb field value if set, zero value otherwise.
-func (o *AndroidDetails) GetExternalAvailableMb() int32 {
+func (o *AndroidDetails) GetExternalAvailableMb() int64 {
 	if o == nil || IsNil(o.ExternalAvailableMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ExternalAvailableMb
@@ -288,7 +288,7 @@ func (o *AndroidDetails) GetExternalAvailableMb() int32 {
 
 // GetExternalAvailableMbOk returns a tuple with the ExternalAvailableMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetExternalAvailableMbOk() (*int32, bool) {
+func (o *AndroidDetails) GetExternalAvailableMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.ExternalAvailableMb) {
 		return nil, false
 	}
@@ -304,15 +304,15 @@ func (o *AndroidDetails) HasExternalAvailableMb() bool {
 	return false
 }
 
-// SetExternalAvailableMb gets a reference to the given int32 and assigns it to the ExternalAvailableMb field.
-func (o *AndroidDetails) SetExternalAvailableMb(v int32) {
+// SetExternalAvailableMb gets a reference to the given int64 and assigns it to the ExternalAvailableMb field.
+func (o *AndroidDetails) SetExternalAvailableMb(v int64) {
 	o.ExternalAvailableMb = &v
 }
 
 // GetExternalPercentUsed returns the ExternalPercentUsed field value if set, zero value otherwise.
-func (o *AndroidDetails) GetExternalPercentUsed() int32 {
+func (o *AndroidDetails) GetExternalPercentUsed() int64 {
 	if o == nil || IsNil(o.ExternalPercentUsed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ExternalPercentUsed
@@ -320,7 +320,7 @@ func (o *AndroidDetails) GetExternalPercentUsed() int32 {
 
 // GetExternalPercentUsedOk returns a tuple with the ExternalPercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetExternalPercentUsedOk() (*int32, bool) {
+func (o *AndroidDetails) GetExternalPercentUsedOk() (*int64, bool) {
 	if o == nil || IsNil(o.ExternalPercentUsed) {
 		return nil, false
 	}
@@ -336,15 +336,15 @@ func (o *AndroidDetails) HasExternalPercentUsed() bool {
 	return false
 }
 
-// SetExternalPercentUsed gets a reference to the given int32 and assigns it to the ExternalPercentUsed field.
-func (o *AndroidDetails) SetExternalPercentUsed(v int32) {
+// SetExternalPercentUsed gets a reference to the given int64 and assigns it to the ExternalPercentUsed field.
+func (o *AndroidDetails) SetExternalPercentUsed(v int64) {
 	o.ExternalPercentUsed = &v
 }
 
 // GetBatteryLevel returns the BatteryLevel field value if set, zero value otherwise.
-func (o *AndroidDetails) GetBatteryLevel() int32 {
+func (o *AndroidDetails) GetBatteryLevel() int64 {
 	if o == nil || IsNil(o.BatteryLevel) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BatteryLevel
@@ -352,7 +352,7 @@ func (o *AndroidDetails) GetBatteryLevel() int32 {
 
 // GetBatteryLevelOk returns a tuple with the BatteryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetBatteryLevelOk() (*int32, bool) {
+func (o *AndroidDetails) GetBatteryLevelOk() (*int64, bool) {
 	if o == nil || IsNil(o.BatteryLevel) {
 		return nil, false
 	}
@@ -368,8 +368,8 @@ func (o *AndroidDetails) HasBatteryLevel() bool {
 	return false
 }
 
-// SetBatteryLevel gets a reference to the given int32 and assigns it to the BatteryLevel field.
-func (o *AndroidDetails) SetBatteryLevel(v int32) {
+// SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
+func (o *AndroidDetails) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
 }
 
@@ -406,9 +406,9 @@ func (o *AndroidDetails) SetLastBackupTimestamp(v time.Time) {
 }
 
 // GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
-func (o *AndroidDetails) GetApiVersion() int32 {
+func (o *AndroidDetails) GetApiVersion() int64 {
 	if o == nil || IsNil(o.ApiVersion) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ApiVersion
@@ -416,7 +416,7 @@ func (o *AndroidDetails) GetApiVersion() int32 {
 
 // GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AndroidDetails) GetApiVersionOk() (*int32, bool) {
+func (o *AndroidDetails) GetApiVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.ApiVersion) {
 		return nil, false
 	}
@@ -432,8 +432,8 @@ func (o *AndroidDetails) HasApiVersion() bool {
 	return false
 }
 
-// SetApiVersion gets a reference to the given int32 and assigns it to the ApiVersion field.
-func (o *AndroidDetails) SetApiVersion(v int32) {
+// SetApiVersion gets a reference to the given int64 and assigns it to the ApiVersion field.
+func (o *AndroidDetails) SetApiVersion(v int64) {
 	o.ApiVersion = &v
 }
 

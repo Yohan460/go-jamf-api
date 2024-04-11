@@ -22,28 +22,28 @@ Return a list of Computers
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc (optional) (default to "name:asc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc (optional) (default to "name:asc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputersPreviewAPI.PreviewComputersGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputersPreviewAPI.PreviewComputersGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PreviewComputersGet`: ComputersSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ComputersPreviewAPI.PreviewComputersGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputersPreviewAPI.PreviewComputersGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputersPreviewAPI.PreviewComputersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PreviewComputersGet`: ComputersSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ComputersPreviewAPI.PreviewComputersGet`: %v\n", resp)
 }
 ```
 
@@ -58,10 +58,10 @@ Other parameters are passed through a pointer to a apiPreviewComputersGetRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc | [default to &quot;name:asc&quot;]
 
 ### Return type

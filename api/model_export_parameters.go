@@ -19,8 +19,8 @@ var _ MappedNullable = &ExportParameters{}
 
 // ExportParameters struct for ExportParameters
 type ExportParameters struct {
-	Page NullableInt32 `json:"page,omitempty"`
-	PageSize NullableInt32 `json:"pageSize,omitempty"`
+	Page NullableInt64 `json:"page,omitempty"`
+	PageSize NullableInt64 `json:"pageSize,omitempty"`
 	// Sorting criteria in the format: [<property>[:asc/desc]. Default direction when not stated is ascending.
 	Sort []string `json:"sort,omitempty"`
 	Filter NullableString `json:"filter,omitempty"`
@@ -34,10 +34,10 @@ type ExportParameters struct {
 // will change when the set of required properties is changed
 func NewExportParameters() *ExportParameters {
 	this := ExportParameters{}
-	var page int32 = 0
-	this.Page = *NewNullableInt32(&page)
-	var pageSize int32 = 100
-	this.PageSize = *NewNullableInt32(&pageSize)
+	var page int64 = 0
+	this.Page = *NewNullableInt64(&page)
+	var pageSize int64 = 100
+	this.PageSize = *NewNullableInt64(&pageSize)
 	return &this
 }
 
@@ -46,17 +46,17 @@ func NewExportParameters() *ExportParameters {
 // but it doesn't guarantee that properties required by API are set
 func NewExportParametersWithDefaults() *ExportParameters {
 	this := ExportParameters{}
-	var page int32 = 0
-	this.Page = *NewNullableInt32(&page)
-	var pageSize int32 = 100
-	this.PageSize = *NewNullableInt32(&pageSize)
+	var page int64 = 0
+	this.Page = *NewNullableInt64(&page)
+	var pageSize int64 = 100
+	this.PageSize = *NewNullableInt64(&pageSize)
 	return &this
 }
 
 // GetPage returns the Page field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ExportParameters) GetPage() int32 {
+func (o *ExportParameters) GetPage() int64 {
 	if o == nil || IsNil(o.Page.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Page.Get()
@@ -65,7 +65,7 @@ func (o *ExportParameters) GetPage() int32 {
 // GetPageOk returns a tuple with the Page field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ExportParameters) GetPageOk() (*int32, bool) {
+func (o *ExportParameters) GetPageOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -81,8 +81,8 @@ func (o *ExportParameters) HasPage() bool {
 	return false
 }
 
-// SetPage gets a reference to the given NullableInt32 and assigns it to the Page field.
-func (o *ExportParameters) SetPage(v int32) {
+// SetPage gets a reference to the given NullableInt64 and assigns it to the Page field.
+func (o *ExportParameters) SetPage(v int64) {
 	o.Page.Set(&v)
 }
 // SetPageNil sets the value for Page to be an explicit nil
@@ -96,9 +96,9 @@ func (o *ExportParameters) UnsetPage() {
 }
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ExportParameters) GetPageSize() int32 {
+func (o *ExportParameters) GetPageSize() int64 {
 	if o == nil || IsNil(o.PageSize.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PageSize.Get()
@@ -107,7 +107,7 @@ func (o *ExportParameters) GetPageSize() int32 {
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ExportParameters) GetPageSizeOk() (*int32, bool) {
+func (o *ExportParameters) GetPageSizeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,8 +123,8 @@ func (o *ExportParameters) HasPageSize() bool {
 	return false
 }
 
-// SetPageSize gets a reference to the given NullableInt32 and assigns it to the PageSize field.
-func (o *ExportParameters) SetPageSize(v int32) {
+// SetPageSize gets a reference to the given NullableInt64 and assigns it to the PageSize field.
+func (o *ExportParameters) SetPageSize(v int64) {
 	o.PageSize.Set(&v)
 }
 // SetPageSizeNil sets the value for PageSize to be an explicit nil

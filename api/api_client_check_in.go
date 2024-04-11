@@ -264,18 +264,18 @@ func (a *ClientCheckInAPIService) V2CheckInGetExecute(r ClientCheckInAPIV2CheckI
 type ClientCheckInAPIV2CheckInHistoryGetRequest struct {
 	ctx context.Context
 	ApiService ClientCheckInAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Page(page int32) ClientCheckInAPIV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) Page(page int64) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ClientCheckInAPIV2CheckInHistoryGetRequest) PageSize(pageSize int32) ClientCheckInAPIV2CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV2CheckInHistoryGetRequest) PageSize(pageSize int64) ClientCheckInAPIV2CheckInHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -339,13 +339,13 @@ func (a *ClientCheckInAPIService) V2CheckInHistoryGetExecute(r ClientCheckInAPIV
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -765,18 +765,18 @@ func (a *ClientCheckInAPIService) V3CheckInGetExecute(r ClientCheckInAPIV3CheckI
 type ClientCheckInAPIV3CheckInHistoryGetRequest struct {
 	ctx context.Context
 	ApiService ClientCheckInAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Page(page int32) ClientCheckInAPIV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) Page(page int64) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ClientCheckInAPIV3CheckInHistoryGetRequest) PageSize(pageSize int32) ClientCheckInAPIV3CheckInHistoryGetRequest {
+func (r ClientCheckInAPIV3CheckInHistoryGetRequest) PageSize(pageSize int64) ClientCheckInAPIV3CheckInHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -837,13 +837,13 @@ func (a *ClientCheckInAPIService) V3CheckInHistoryGetExecute(r ClientCheckInAPIV
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

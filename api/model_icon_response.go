@@ -20,7 +20,7 @@ var _ MappedNullable = &IconResponse{}
 // IconResponse struct for IconResponse
 type IconResponse struct {
 	Url *string `json:"url,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 }
 
 // NewIconResponse instantiates a new IconResponse object
@@ -73,9 +73,9 @@ func (o *IconResponse) SetUrl(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *IconResponse) GetId() int32 {
+func (o *IconResponse) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -83,7 +83,7 @@ func (o *IconResponse) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IconResponse) GetIdOk() (*int32, bool) {
+func (o *IconResponse) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *IconResponse) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *IconResponse) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *IconResponse) SetId(v int64) {
 	o.Id = &v
 }
 

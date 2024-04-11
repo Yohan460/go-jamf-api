@@ -19,7 +19,7 @@ var _ MappedNullable = &PatchSoftwareTitleReportSearchResult{}
 
 // PatchSoftwareTitleReportSearchResult struct for PatchSoftwareTitleReportSearchResult
 type PatchSoftwareTitleReportSearchResult struct {
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int64 `json:"totalCount,omitempty"`
 	Results []PatchSoftwareTitleReport `json:"results,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewPatchSoftwareTitleReportSearchResultWithDefaults() *PatchSoftwareTitleRe
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PatchSoftwareTitleReportSearchResult) GetTotalCount() int32 {
+func (o *PatchSoftwareTitleReportSearchResult) GetTotalCount() int64 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalCount
@@ -51,7 +51,7 @@ func (o *PatchSoftwareTitleReportSearchResult) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchSoftwareTitleReportSearchResult) GetTotalCountOk() (*int32, bool) {
+func (o *PatchSoftwareTitleReportSearchResult) GetTotalCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *PatchSoftwareTitleReportSearchResult) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *PatchSoftwareTitleReportSearchResult) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
+func (o *PatchSoftwareTitleReportSearchResult) SetTotalCount(v int64) {
 	o.TotalCount = &v
 }
 

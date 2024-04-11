@@ -24,26 +24,26 @@ Get Ebook object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["name:asc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["name:asc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksAPI.V1EbooksGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EbooksGet`: EbookSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EbooksAPI.V1EbooksGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EbooksGet`: EbookSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksGet`: %v\n", resp)
 }
 ```
 
@@ -58,8 +58,8 @@ Other parameters are passed through a pointer to a apiV1EbooksGetRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;name:asc&quot;]]
 
 ### Return type
@@ -94,24 +94,24 @@ Get specified Ebook object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of ebook record
+	id := "id_example" // string | instance id of ebook record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksAPI.V1EbooksIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EbooksIdGet`: Ebook
-    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EbooksAPI.V1EbooksIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EbooksIdGet`: Ebook
+	fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdGet`: %v\n", resp)
 }
 ```
 
@@ -164,24 +164,24 @@ Get specified scope of Ebook object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of ebook record
+	id := "id_example" // string | instance id of ebook record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EbooksAPI.V1EbooksIdScopeGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdScopeGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EbooksIdScopeGet`: EbookScope
-    fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdScopeGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EbooksAPI.V1EbooksIdScopeGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EbooksAPI.V1EbooksIdScopeGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EbooksIdScopeGet`: EbookScope
+	fmt.Fprintf(os.Stdout, "Response from `EbooksAPI.V1EbooksIdScopeGet`: %v\n", resp)
 }
 ```
 

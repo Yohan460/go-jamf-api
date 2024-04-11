@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SyncState** | Pointer to **string** |  | [optional] 
-**PrestageId** | Pointer to **int32** |  | [optional] 
+**PrestageId** | Pointer to **int64** |  | [optional] 
 **Timestamp** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasSyncState returns a boolean if a field has been set.
 
 ### GetPrestageId
 
-`func (o *PrestageSyncStatus) GetPrestageId() int32`
+`func (o *PrestageSyncStatus) GetPrestageId() int64`
 
 GetPrestageId returns the PrestageId field if non-nil, zero value otherwise.
 
 ### GetPrestageIdOk
 
-`func (o *PrestageSyncStatus) GetPrestageIdOk() (*int32, bool)`
+`func (o *PrestageSyncStatus) GetPrestageIdOk() (*int64, bool)`
 
 GetPrestageIdOk returns a tuple with the PrestageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrestageId
 
-`func (o *PrestageSyncStatus) SetPrestageId(v int32)`
+`func (o *PrestageSyncStatus) SetPrestageId(v int64)`
 
 SetPrestageId sets PrestageId field to given value.
 

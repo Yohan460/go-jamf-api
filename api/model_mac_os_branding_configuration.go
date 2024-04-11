@@ -23,8 +23,8 @@ type MacOsBrandingConfiguration struct {
 	ApplicationName *string `json:"applicationName,omitempty"`
 	BrandingName *string `json:"brandingName,omitempty"`
 	BrandingNameSecondary *string `json:"brandingNameSecondary,omitempty"`
-	IconId *int32 `json:"iconId,omitempty"`
-	BrandingHeaderImageId *int32 `json:"brandingHeaderImageId,omitempty"`
+	IconId *int64 `json:"iconId,omitempty"`
+	BrandingHeaderImageId *int64 `json:"brandingHeaderImageId,omitempty"`
 }
 
 // NewMacOsBrandingConfiguration instantiates a new MacOsBrandingConfiguration object
@@ -173,9 +173,9 @@ func (o *MacOsBrandingConfiguration) SetBrandingNameSecondary(v string) {
 }
 
 // GetIconId returns the IconId field value if set, zero value otherwise.
-func (o *MacOsBrandingConfiguration) GetIconId() int32 {
+func (o *MacOsBrandingConfiguration) GetIconId() int64 {
 	if o == nil || IsNil(o.IconId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.IconId
@@ -183,7 +183,7 @@ func (o *MacOsBrandingConfiguration) GetIconId() int32 {
 
 // GetIconIdOk returns a tuple with the IconId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int32, bool) {
+func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.IconId) {
 		return nil, false
 	}
@@ -199,15 +199,15 @@ func (o *MacOsBrandingConfiguration) HasIconId() bool {
 	return false
 }
 
-// SetIconId gets a reference to the given int32 and assigns it to the IconId field.
-func (o *MacOsBrandingConfiguration) SetIconId(v int32) {
+// SetIconId gets a reference to the given int64 and assigns it to the IconId field.
+func (o *MacOsBrandingConfiguration) SetIconId(v int64) {
 	o.IconId = &v
 }
 
 // GetBrandingHeaderImageId returns the BrandingHeaderImageId field value if set, zero value otherwise.
-func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int32 {
+func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int64 {
 	if o == nil || IsNil(o.BrandingHeaderImageId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BrandingHeaderImageId
@@ -215,7 +215,7 @@ func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int32 {
 
 // GetBrandingHeaderImageIdOk returns a tuple with the BrandingHeaderImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int32, bool) {
+func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.BrandingHeaderImageId) {
 		return nil, false
 	}
@@ -231,8 +231,8 @@ func (o *MacOsBrandingConfiguration) HasBrandingHeaderImageId() bool {
 	return false
 }
 
-// SetBrandingHeaderImageId gets a reference to the given int32 and assigns it to the BrandingHeaderImageId field.
-func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int32) {
+// SetBrandingHeaderImageId gets a reference to the given int64 and assigns it to the BrandingHeaderImageId field.
+func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int64) {
 	o.BrandingHeaderImageId = &v
 }
 

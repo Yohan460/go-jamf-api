@@ -22,24 +22,24 @@ Get Mobile Device Extension Attribute values placed in select paramter
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    select_ := "select__example" // string | Acceptable values currently include: * name  (optional) (default to "name")
+	select_ := "select__example" // string | Acceptable values currently include: * name  (optional) (default to "name")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet(context.Background()).Select_(select_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DevicesExtensionAttributesGet`: MobileDeviceExtensionAttributeResults
-    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet(context.Background()).Select_(select_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DevicesExtensionAttributesGet`: MobileDeviceExtensionAttributeResults
+	fmt.Fprintf(os.Stdout, "Response from `MobileDeviceExtensionAttributesPreviewAPI.DevicesExtensionAttributesGet`: %v\n", resp)
 }
 ```
 

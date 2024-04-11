@@ -52,7 +52,7 @@ type JamfProNotificationsPreviewAPI interface {
 
 	Deprecated
 	*/
-	NotificationsAlertsIdDelete(ctx context.Context, id int32) JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest
+	NotificationsAlertsIdDelete(ctx context.Context, id int64) JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest
 
 	// NotificationsAlertsIdDeleteExecute executes the request
 	// Deprecated
@@ -71,7 +71,7 @@ type JamfProNotificationsPreviewAPI interface {
 
 	Deprecated
 	*/
-	NotificationsAlertsTypeIdDelete(ctx context.Context, id int32, type_ NotificationType) JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest
+	NotificationsAlertsTypeIdDelete(ctx context.Context, id int64, type_ NotificationType) JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest
 
 	// NotificationsAlertsTypeIdDeleteExecute executes the request
 	// Deprecated
@@ -187,7 +187,7 @@ func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsGetExecute(r 
 type JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest struct {
 	ctx context.Context
 	ApiService JamfProNotificationsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -206,7 +206,7 @@ DEPRECATED - USE "alerts/{type}/{id}" INSTEAD. Deletes only Patch Management not
 
 Deprecated
 */
-func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsIdDelete(ctx context.Context, id int32) JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest {
+func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsIdDelete(ctx context.Context, id int64) JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest {
 	return JamfProNotificationsPreviewAPINotificationsAlertsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -283,7 +283,7 @@ func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsIdDeleteExecu
 type JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest struct {
 	ctx context.Context
 	ApiService JamfProNotificationsPreviewAPI
-	id int32
+	id int64
 	type_ NotificationType
 }
 
@@ -304,7 +304,7 @@ Deletes notifications. Option for 'type' is 'PATCH_UPDATE'.
 
 Deprecated
 */
-func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsTypeIdDelete(ctx context.Context, id int32, type_ NotificationType) JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest {
+func (a *JamfProNotificationsPreviewAPIService) NotificationsAlertsTypeIdDelete(ctx context.Context, id int64, type_ NotificationType) JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest {
 	return JamfProNotificationsPreviewAPINotificationsAlertsTypeIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,

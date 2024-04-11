@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnrollmentCustomizationPanel type satisfies the MappedNullable interface at compile time
@@ -20,14 +22,16 @@ var _ MappedNullable = &EnrollmentCustomizationPanel{}
 // EnrollmentCustomizationPanel struct for EnrollmentCustomizationPanel
 type EnrollmentCustomizationPanel struct {
 	DisplayName string `json:"displayName"`
-	Rank int32 `json:"rank"`
+	Rank int64 `json:"rank"`
 }
+
+type _EnrollmentCustomizationPanel EnrollmentCustomizationPanel
 
 // NewEnrollmentCustomizationPanel instantiates a new EnrollmentCustomizationPanel object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnrollmentCustomizationPanel(displayName string, rank int32) *EnrollmentCustomizationPanel {
+func NewEnrollmentCustomizationPanel(displayName string, rank int64) *EnrollmentCustomizationPanel {
 	this := EnrollmentCustomizationPanel{}
 	this.DisplayName = displayName
 	this.Rank = rank
@@ -67,9 +71,9 @@ func (o *EnrollmentCustomizationPanel) SetDisplayName(v string) {
 }
 
 // GetRank returns the Rank field value
-func (o *EnrollmentCustomizationPanel) GetRank() int32 {
+func (o *EnrollmentCustomizationPanel) GetRank() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -78,7 +82,7 @@ func (o *EnrollmentCustomizationPanel) GetRank() int32 {
 
 // GetRankOk returns a tuple with the Rank field value
 // and a boolean to check if the value has been set.
-func (o *EnrollmentCustomizationPanel) GetRankOk() (*int32, bool) {
+func (o *EnrollmentCustomizationPanel) GetRankOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +90,7 @@ func (o *EnrollmentCustomizationPanel) GetRankOk() (*int32, bool) {
 }
 
 // SetRank sets field value
-func (o *EnrollmentCustomizationPanel) SetRank(v int32) {
+func (o *EnrollmentCustomizationPanel) SetRank(v int64) {
 	o.Rank = v
 }
 
@@ -103,6 +107,44 @@ func (o EnrollmentCustomizationPanel) ToMap() (map[string]interface{}, error) {
 	toSerialize["displayName"] = o.DisplayName
 	toSerialize["rank"] = o.Rank
 	return toSerialize, nil
+}
+
+func (o *EnrollmentCustomizationPanel) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"rank",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentCustomizationPanel := _EnrollmentCustomizationPanel{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentCustomizationPanel)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentCustomizationPanel(varEnrollmentCustomizationPanel)
+
+	return err
 }
 
 type NullableEnrollmentCustomizationPanel struct {

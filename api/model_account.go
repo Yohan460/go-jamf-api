@@ -19,7 +19,7 @@ var _ MappedNullable = &Account{}
 
 // Account struct for Account
 type Account struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Username *string `json:"username,omitempty"`
 	RealName *string `json:"realName,omitempty"`
 	Email *string `json:"email,omitempty"`
@@ -28,8 +28,8 @@ type Account struct {
 	AccessLevel *string `json:"accessLevel,omitempty"`
 	PrivilegeSet *string `json:"privilegeSet,omitempty"`
 	PrivilegesBySite *map[string][]string `json:"privilegesBySite,omitempty"`
-	GroupIds []int32 `json:"groupIds,omitempty"`
-	CurrentSiteId *int32 `json:"currentSiteId,omitempty"`
+	GroupIds []int64 `json:"groupIds,omitempty"`
+	CurrentSiteId *int64 `json:"currentSiteId,omitempty"`
 }
 
 // NewAccount instantiates a new Account object
@@ -50,9 +50,9 @@ func NewAccountWithDefaults() *Account {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Account) GetId() int32 {
+func (o *Account) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -60,7 +60,7 @@ func (o *Account) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetIdOk() (*int32, bool) {
+func (o *Account) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *Account) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *Account) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *Account) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -338,9 +338,9 @@ func (o *Account) SetPrivilegesBySite(v map[string][]string) {
 }
 
 // GetGroupIds returns the GroupIds field value if set, zero value otherwise.
-func (o *Account) GetGroupIds() []int32 {
+func (o *Account) GetGroupIds() []int64 {
 	if o == nil || IsNil(o.GroupIds) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.GroupIds
@@ -348,7 +348,7 @@ func (o *Account) GetGroupIds() []int32 {
 
 // GetGroupIdsOk returns a tuple with the GroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetGroupIdsOk() ([]int32, bool) {
+func (o *Account) GetGroupIdsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.GroupIds) {
 		return nil, false
 	}
@@ -364,15 +364,15 @@ func (o *Account) HasGroupIds() bool {
 	return false
 }
 
-// SetGroupIds gets a reference to the given []int32 and assigns it to the GroupIds field.
-func (o *Account) SetGroupIds(v []int32) {
+// SetGroupIds gets a reference to the given []int64 and assigns it to the GroupIds field.
+func (o *Account) SetGroupIds(v []int64) {
 	o.GroupIds = v
 }
 
 // GetCurrentSiteId returns the CurrentSiteId field value if set, zero value otherwise.
-func (o *Account) GetCurrentSiteId() int32 {
+func (o *Account) GetCurrentSiteId() int64 {
 	if o == nil || IsNil(o.CurrentSiteId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CurrentSiteId
@@ -380,7 +380,7 @@ func (o *Account) GetCurrentSiteId() int32 {
 
 // GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Account) GetCurrentSiteIdOk() (*int32, bool) {
+func (o *Account) GetCurrentSiteIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.CurrentSiteId) {
 		return nil, false
 	}
@@ -396,8 +396,8 @@ func (o *Account) HasCurrentSiteId() bool {
 	return false
 }
 
-// SetCurrentSiteId gets a reference to the given int32 and assigns it to the CurrentSiteId field.
-func (o *Account) SetCurrentSiteId(v int32) {
+// SetCurrentSiteId gets a reference to the given int64 and assigns it to the CurrentSiteId field.
+func (o *Account) SetCurrentSiteId(v int64) {
 	o.CurrentSiteId = &v
 }
 

@@ -19,7 +19,7 @@ var _ MappedNullable = &ScriptsSearchResults{}
 
 // ScriptsSearchResults struct for ScriptsSearchResults
 type ScriptsSearchResults struct {
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int64 `json:"totalCount,omitempty"`
 	Results []Script `json:"results,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewScriptsSearchResultsWithDefaults() *ScriptsSearchResults {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *ScriptsSearchResults) GetTotalCount() int32 {
+func (o *ScriptsSearchResults) GetTotalCount() int64 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalCount
@@ -51,7 +51,7 @@ func (o *ScriptsSearchResults) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ScriptsSearchResults) GetTotalCountOk() (*int32, bool) {
+func (o *ScriptsSearchResults) GetTotalCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *ScriptsSearchResults) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *ScriptsSearchResults) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
+func (o *ScriptsSearchResults) SetTotalCount(v int64) {
 	o.TotalCount = &v
 }
 

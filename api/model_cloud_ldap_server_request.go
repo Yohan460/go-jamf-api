@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CloudLdapServerRequest type satisfies the MappedNullable interface at compile time
@@ -22,20 +24,22 @@ type CloudLdapServerRequest struct {
 	ServerUrl string `json:"serverUrl"`
 	Enabled bool `json:"enabled"`
 	DomainName string `json:"domainName"`
-	Port int32 `json:"port"`
+	Port int64 `json:"port"`
 	Keystore CloudLdapKeystoreFile `json:"keystore"`
-	ConnectionTimeout int32 `json:"connectionTimeout"`
-	SearchTimeout int32 `json:"searchTimeout"`
+	ConnectionTimeout int64 `json:"connectionTimeout"`
+	SearchTimeout int64 `json:"searchTimeout"`
 	UseWildcards bool `json:"useWildcards"`
 	ConnectionType string `json:"connectionType"`
 	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
+type _CloudLdapServerRequest CloudLdapServerRequest
+
 // NewCloudLdapServerRequest instantiates a new CloudLdapServerRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudLdapServerRequest(serverUrl string, enabled bool, domainName string, port int32, keystore CloudLdapKeystoreFile, connectionTimeout int32, searchTimeout int32, useWildcards bool, connectionType string) *CloudLdapServerRequest {
+func NewCloudLdapServerRequest(serverUrl string, enabled bool, domainName string, port int64, keystore CloudLdapKeystoreFile, connectionTimeout int64, searchTimeout int64, useWildcards bool, connectionType string) *CloudLdapServerRequest {
 	this := CloudLdapServerRequest{}
 	this.ServerUrl = serverUrl
 	this.Enabled = enabled
@@ -130,9 +134,9 @@ func (o *CloudLdapServerRequest) SetDomainName(v string) {
 }
 
 // GetPort returns the Port field value
-func (o *CloudLdapServerRequest) GetPort() int32 {
+func (o *CloudLdapServerRequest) GetPort() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -141,7 +145,7 @@ func (o *CloudLdapServerRequest) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerRequest) GetPortOk() (*int32, bool) {
+func (o *CloudLdapServerRequest) GetPortOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,7 +153,7 @@ func (o *CloudLdapServerRequest) GetPortOk() (*int32, bool) {
 }
 
 // SetPort sets field value
-func (o *CloudLdapServerRequest) SetPort(v int32) {
+func (o *CloudLdapServerRequest) SetPort(v int64) {
 	o.Port = v
 }
 
@@ -178,9 +182,9 @@ func (o *CloudLdapServerRequest) SetKeystore(v CloudLdapKeystoreFile) {
 }
 
 // GetConnectionTimeout returns the ConnectionTimeout field value
-func (o *CloudLdapServerRequest) GetConnectionTimeout() int32 {
+func (o *CloudLdapServerRequest) GetConnectionTimeout() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -189,7 +193,7 @@ func (o *CloudLdapServerRequest) GetConnectionTimeout() int32 {
 
 // GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field value
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerRequest) GetConnectionTimeoutOk() (*int32, bool) {
+func (o *CloudLdapServerRequest) GetConnectionTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -197,14 +201,14 @@ func (o *CloudLdapServerRequest) GetConnectionTimeoutOk() (*int32, bool) {
 }
 
 // SetConnectionTimeout sets field value
-func (o *CloudLdapServerRequest) SetConnectionTimeout(v int32) {
+func (o *CloudLdapServerRequest) SetConnectionTimeout(v int64) {
 	o.ConnectionTimeout = v
 }
 
 // GetSearchTimeout returns the SearchTimeout field value
-func (o *CloudLdapServerRequest) GetSearchTimeout() int32 {
+func (o *CloudLdapServerRequest) GetSearchTimeout() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -213,7 +217,7 @@ func (o *CloudLdapServerRequest) GetSearchTimeout() int32 {
 
 // GetSearchTimeoutOk returns a tuple with the SearchTimeout field value
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerRequest) GetSearchTimeoutOk() (*int32, bool) {
+func (o *CloudLdapServerRequest) GetSearchTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -221,7 +225,7 @@ func (o *CloudLdapServerRequest) GetSearchTimeoutOk() (*int32, bool) {
 }
 
 // SetSearchTimeout sets field value
-func (o *CloudLdapServerRequest) SetSearchTimeout(v int32) {
+func (o *CloudLdapServerRequest) SetSearchTimeout(v int64) {
 	o.SearchTimeout = v
 }
 
@@ -328,6 +332,51 @@ func (o CloudLdapServerRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
 	}
 	return toSerialize, nil
+}
+
+func (o *CloudLdapServerRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serverUrl",
+		"enabled",
+		"domainName",
+		"port",
+		"keystore",
+		"connectionTimeout",
+		"searchTimeout",
+		"useWildcards",
+		"connectionType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCloudLdapServerRequest := _CloudLdapServerRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCloudLdapServerRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudLdapServerRequest(varCloudLdapServerRequest)
+
+	return err
 }
 
 type NullableCloudLdapServerRequest struct {

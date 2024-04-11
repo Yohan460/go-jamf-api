@@ -22,7 +22,7 @@ type MacOsManagedSoftwareUpdate struct {
 	DeviceIds []string `json:"deviceIds,omitempty"`
 	GroupId *string `json:"groupId,omitempty"`
 	// Allow users to defer the update the provided number of times before macOS forces the update. If a value is provided, the Software Update will use the InstallLater install action.
-	MaxDeferrals *int32 `json:"maxDeferrals,omitempty"`
+	MaxDeferrals *int64 `json:"maxDeferrals,omitempty"`
 	// If no value is provided, the version will default to latest version based on device eligibility.
 	Version *string `json:"version,omitempty"`
 	// If no value is provided, the skipVersionVerification will default to false. If a value is provided, the specified version will be forced to complete DownloadAndInstall install action.
@@ -135,9 +135,9 @@ func (o *MacOsManagedSoftwareUpdate) SetGroupId(v string) {
 }
 
 // GetMaxDeferrals returns the MaxDeferrals field value if set, zero value otherwise.
-func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int32 {
+func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int64 {
 	if o == nil || IsNil(o.MaxDeferrals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxDeferrals
@@ -145,7 +145,7 @@ func (o *MacOsManagedSoftwareUpdate) GetMaxDeferrals() int32 {
 
 // GetMaxDeferralsOk returns a tuple with the MaxDeferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int32, bool) {
+func (o *MacOsManagedSoftwareUpdate) GetMaxDeferralsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxDeferrals) {
 		return nil, false
 	}
@@ -161,8 +161,8 @@ func (o *MacOsManagedSoftwareUpdate) HasMaxDeferrals() bool {
 	return false
 }
 
-// SetMaxDeferrals gets a reference to the given int32 and assigns it to the MaxDeferrals field.
-func (o *MacOsManagedSoftwareUpdate) SetMaxDeferrals(v int32) {
+// SetMaxDeferrals gets a reference to the given int64 and assigns it to the MaxDeferrals field.
+func (o *MacOsManagedSoftwareUpdate) SetMaxDeferrals(v int64) {
 	o.MaxDeferrals = &v
 }
 

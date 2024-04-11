@@ -37,7 +37,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **ProfileUuid** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
-**VersionLock** | Pointer to **int32** |  | [optional] 
+**VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -775,20 +775,20 @@ HasSiteId returns a boolean if a field has been set.
 
 ### GetVersionLock
 
-`func (o *GetComputerPrestageV2) GetVersionLock() int32`
+`func (o *GetComputerPrestageV2) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *GetComputerPrestageV2) GetVersionLockOk() (*int32, bool)`
+`func (o *GetComputerPrestageV2) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *GetComputerPrestageV2) SetVersionLock(v int32)`
+`func (o *GetComputerPrestageV2) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

@@ -27,23 +27,23 @@ Returns X.509 of active Certificate Authority (CA) in DER format
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityActiveDerGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityActiveDerGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveDerGet`: %v\n", resp)
 }
 ```
 
@@ -88,23 +88,23 @@ Returns X.509 details of the active Certificate Authority (CA)
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityActiveGet`: CertificateRecord
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityActiveGet`: CertificateRecord
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActiveGet`: %v\n", resp)
 }
 ```
 
@@ -149,23 +149,23 @@ Returns active Certificate Authority (CA) in PEM format
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityActivePemGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityActivePemGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityActivePemGet`: %v\n", resp)
 }
 ```
 
@@ -210,24 +210,24 @@ Returns X.509 current Certificate Authority (CA) with provided ID in DER format
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | UUID of the Certificate Authority (CA)
+	id := "id_example" // string | UUID of the Certificate Authority (CA)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityIdDerGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityIdDerGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdDerGet`: %v\n", resp)
 }
 ```
 
@@ -280,24 +280,24 @@ Returns X.509 details of Certificate Authority (CA) with provided ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | UUID of the Certificate Authority (CA)
+	id := "id_example" // string | UUID of the Certificate Authority (CA)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityIdGet`: CertificateRecord
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityIdGet`: CertificateRecord
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdGet`: %v\n", resp)
 }
 ```
 
@@ -350,24 +350,24 @@ Returns current Certificate Authority (CA) with provided ID in PEM format
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | UUID of the Certificate Authority (CA)
+	id := "id_example" // string | UUID of the Certificate Authority (CA)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1PkiCertificateAuthorityIdPemGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1PkiCertificateAuthorityIdPemGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `CertificateAuthorityAPI.V1PkiCertificateAuthorityIdPemGet`: %v\n", resp)
 }
 ```
 

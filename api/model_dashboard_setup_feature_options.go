@@ -95,10 +95,10 @@ func (o DashboardSetupFeatureOptions) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *DashboardSetupFeatureOptions) UnmarshalJSON(bytes []byte) (err error) {
+func (o *DashboardSetupFeatureOptions) UnmarshalJSON(data []byte) (err error) {
 	varDashboardSetupFeatureOptions := _DashboardSetupFeatureOptions{}
 
-	err = json.Unmarshal(bytes, &varDashboardSetupFeatureOptions)
+	err = json.Unmarshal(data, &varDashboardSetupFeatureOptions)
 
 	if err != nil {
 		return err
@@ -108,7 +108,7 @@ func (o *DashboardSetupFeatureOptions) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "feature")
 		o.AdditionalProperties = additionalProperties
 	}

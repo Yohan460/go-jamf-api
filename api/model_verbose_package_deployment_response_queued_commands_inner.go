@@ -19,7 +19,7 @@ var _ MappedNullable = &VerbosePackageDeploymentResponseQueuedCommandsInner{}
 
 // VerbosePackageDeploymentResponseQueuedCommandsInner struct for VerbosePackageDeploymentResponseQueuedCommandsInner
 type VerbosePackageDeploymentResponseQueuedCommandsInner struct {
-	Device *int32 `json:"device,omitempty"`
+	Device *int64 `json:"device,omitempty"`
 	CommandUuid *string `json:"commandUuid,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewVerbosePackageDeploymentResponseQueuedCommandsInnerWithDefaults() *Verbo
 }
 
 // GetDevice returns the Device field value if set, zero value otherwise.
-func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int32 {
+func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int64 {
 	if o == nil || IsNil(o.Device) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Device
@@ -51,7 +51,7 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int32 
 
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*int32, bool) {
+func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*int64, bool) {
 	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) HasDevice() bool {
 	return false
 }
 
-// SetDevice gets a reference to the given int32 and assigns it to the Device field.
-func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetDevice(v int32) {
+// SetDevice gets a reference to the given int64 and assigns it to the Device field.
+func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetDevice(v int64) {
 	o.Device = &v
 }
 

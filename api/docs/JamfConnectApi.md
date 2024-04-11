@@ -28,27 +28,27 @@ Search for config profiles linked to Jamf Connect
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfConnectConfigProfilesGet`: LinkedConnectProfileSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfConnectConfigProfilesGet`: LinkedConnectProfileSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesGet`: %v\n", resp)
 }
 ```
 
@@ -63,8 +63,8 @@ Other parameters are passed through a pointer to a apiV1JamfConnectConfigProfile
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated | [default to []]
  **filter** | **string** | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -100,25 +100,25 @@ Update the way the Jamf Connect app gets updated on computers within scope of th
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the profile to update
-    linkedConnectProfile := *openapiclient.NewLinkedConnectProfile() // LinkedConnectProfile | Updatable Jamf Connect Settings (optional)
+	id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the profile to update
+	linkedConnectProfile := *openapiclient.NewLinkedConnectProfile() // LinkedConnectProfile | Updatable Jamf Connect Settings (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesIdPut(context.Background(), id).LinkedConnectProfile(linkedConnectProfile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfConnectConfigProfilesIdPut`: LinkedConnectProfile
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectConfigProfilesIdPut(context.Background(), id).LinkedConnectProfile(linkedConnectProfile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfConnectConfigProfilesIdPut`: LinkedConnectProfile
+	fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectConfigProfilesIdPut`: %v\n", resp)
 }
 ```
 
@@ -172,28 +172,28 @@ Search for deployment tasks for a config profile linked to Jamf Connect
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the Jamf Connect deployment
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the Jamf Connect deployment
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfConnectDeploymentsIdTasksGet`: DeploymentTaskSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfConnectDeploymentsIdTasksGet`: DeploymentTaskSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksGet`: %v\n", resp)
 }
 ```
 
@@ -213,8 +213,8 @@ Other parameters are passed through a pointer to a apiV1JamfConnectDeploymentsId
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated | [default to []]
  **filter** | **string** | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -250,23 +250,23 @@ Request a retry of Connect install tasks
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the deployment associated with the retry
-    ids := *openapiclient.NewIds() // Ids | task IDs to retry
+	id := "24a7bb2a-9871-4895-9009-d1be07ed31b1" // string | the UUID of the deployment associated with the retry
+	ids := *openapiclient.NewIds() // Ids | task IDs to retry
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost(context.Background(), id).Ids(ids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectDeploymentsIdTasksRetryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -320,21 +320,21 @@ Get the Jamf Connect settings that you have access to see
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfConnectAPI.V1JamfConnectGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfConnectAPI.V1JamfConnectGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -379,27 +379,27 @@ Get Jamf Connect history
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is not duplicated for each sort criterion, e.g., ...&sort=name:asc,date:desc. Fields that can be sorted: status, updated (optional) (default to [])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfConnectHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfConnectHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -414,8 +414,8 @@ Other parameters are passed through a pointer to a apiV1JamfConnectHistoryGetReq
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated | [default to []]
  **filter** | **string** | Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -451,24 +451,24 @@ Add Jamf Connect history notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfConnectHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfConnectAPI.V1JamfConnectHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfConnectAPI.V1JamfConnectHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfConnectHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `JamfConnectAPI.V1JamfConnectHistoryPost`: %v\n", resp)
 }
 ```
 

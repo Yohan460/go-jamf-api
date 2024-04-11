@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **TenantId** | **string** |  | 
 **Enabled** | **bool** |  | 
 **Mappings** | [**AzureMappings**](AzureMappings.md) |  | 
-**SearchTimeout** | **int32** |  | 
+**SearchTimeout** | **int64** |  | 
 **TransitiveMembershipEnabled** | **bool** | Use this field to enable transitive membership lookup with Single Sign On | 
 **TransitiveMembershipUserField** | **string** | Use this field to set user field mapping for transitive membership lookup with Single Sign On | 
 **TransitiveDirectoryMembershipEnabled** | **bool** | Use this field to enable transitive membership lookup. This setting would not apply to Single Sign On | 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewAzureServerConfigurationRequest
 
-`func NewAzureServerConfigurationRequest(tenantId string, enabled bool, mappings AzureMappings, searchTimeout int32, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool, code string, ) *AzureServerConfigurationRequest`
+`func NewAzureServerConfigurationRequest(tenantId string, enabled bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool, code string, ) *AzureServerConfigurationRequest`
 
 NewAzureServerConfigurationRequest instantiates a new AzureServerConfigurationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -121,20 +121,20 @@ SetMappings sets Mappings field to given value.
 
 ### GetSearchTimeout
 
-`func (o *AzureServerConfigurationRequest) GetSearchTimeout() int32`
+`func (o *AzureServerConfigurationRequest) GetSearchTimeout() int64`
 
 GetSearchTimeout returns the SearchTimeout field if non-nil, zero value otherwise.
 
 ### GetSearchTimeoutOk
 
-`func (o *AzureServerConfigurationRequest) GetSearchTimeoutOk() (*int32, bool)`
+`func (o *AzureServerConfigurationRequest) GetSearchTimeoutOk() (*int64, bool)`
 
 GetSearchTimeoutOk returns a tuple with the SearchTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchTimeout
 
-`func (o *AzureServerConfigurationRequest) SetSearchTimeout(v int32)`
+`func (o *AzureServerConfigurationRequest) SetSearchTimeout(v int64)`
 
 SetSearchTimeout sets SearchTimeout field to given value.
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] [readonly] 
+**Id** | Pointer to **int64** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *MobileDeviceAttachment) GetId() int32`
+`func (o *MobileDeviceAttachment) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *MobileDeviceAttachment) GetIdOk() (*int32, bool)`
+`func (o *MobileDeviceAttachment) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *MobileDeviceAttachment) SetId(v int32)`
+`func (o *MobileDeviceAttachment) SetId(v int64)`
 
 SetId sets Id field to given value.
 

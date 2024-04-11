@@ -22,23 +22,23 @@ Return information about the currently supported Time Zones
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TimeZonesPreviewAPI.V1TimeZonesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TimeZonesPreviewAPI.V1TimeZonesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1TimeZonesGet`: []TimeZone
-    fmt.Fprintf(os.Stdout, "Response from `TimeZonesPreviewAPI.V1TimeZonesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TimeZonesPreviewAPI.V1TimeZonesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TimeZonesPreviewAPI.V1TimeZonesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1TimeZonesGet`: []TimeZone
+	fmt.Fprintf(os.Stdout, "Response from `TimeZonesPreviewAPI.V1TimeZonesGet`: %v\n", resp)
 }
 ```
 

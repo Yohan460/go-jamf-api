@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConnectionConfigurationCandidateRequest type satisfies the MappedNullable interface at compile time
@@ -28,14 +30,16 @@ type ConnectionConfigurationCandidateRequest struct {
 	// Defines the intent to enable or disable Team Viewer connection
 	Enabled bool `json:"enabled"`
 	// Number of minutes before the session expires
-	SessionTimeout int32 `json:"sessionTimeout"`
+	SessionTimeout int64 `json:"sessionTimeout"`
 }
+
+type _ConnectionConfigurationCandidateRequest ConnectionConfigurationCandidateRequest
 
 // NewConnectionConfigurationCandidateRequest instantiates a new ConnectionConfigurationCandidateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewConnectionConfigurationCandidateRequest(siteId string, displayName string, scriptToken string, enabled bool, sessionTimeout int32) *ConnectionConfigurationCandidateRequest {
+func NewConnectionConfigurationCandidateRequest(siteId string, displayName string, scriptToken string, enabled bool, sessionTimeout int64) *ConnectionConfigurationCandidateRequest {
 	this := ConnectionConfigurationCandidateRequest{}
 	this.SiteId = siteId
 	this.DisplayName = displayName
@@ -150,9 +154,9 @@ func (o *ConnectionConfigurationCandidateRequest) SetEnabled(v bool) {
 }
 
 // GetSessionTimeout returns the SessionTimeout field value
-func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeout() int32 {
+func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeout() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -161,7 +165,7 @@ func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeout() int32 {
 
 // GetSessionTimeoutOk returns a tuple with the SessionTimeout field value
 // and a boolean to check if the value has been set.
-func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeoutOk() (*int32, bool) {
+func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -169,7 +173,7 @@ func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeoutOk() (*int32,
 }
 
 // SetSessionTimeout sets field value
-func (o *ConnectionConfigurationCandidateRequest) SetSessionTimeout(v int32) {
+func (o *ConnectionConfigurationCandidateRequest) SetSessionTimeout(v int64) {
 	o.SessionTimeout = v
 }
 
@@ -189,6 +193,47 @@ func (o ConnectionConfigurationCandidateRequest) ToMap() (map[string]interface{}
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["sessionTimeout"] = o.SessionTimeout
 	return toSerialize, nil
+}
+
+func (o *ConnectionConfigurationCandidateRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"siteId",
+		"displayName",
+		"scriptToken",
+		"enabled",
+		"sessionTimeout",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConnectionConfigurationCandidateRequest := _ConnectionConfigurationCandidateRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConnectionConfigurationCandidateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConnectionConfigurationCandidateRequest(varConnectionConfigurationCandidateRequest)
+
+	return err
 }
 
 type NullableConnectionConfigurationCandidateRequest struct {

@@ -19,7 +19,7 @@ var _ MappedNullable = &FileAttachmentDelete{}
 
 // FileAttachmentDelete struct for FileAttachmentDelete
 type FileAttachmentDelete struct {
-	Ids []int32 `json:"ids,omitempty"`
+	Ids []int64 `json:"ids,omitempty"`
 }
 
 // NewFileAttachmentDelete instantiates a new FileAttachmentDelete object
@@ -40,9 +40,9 @@ func NewFileAttachmentDeleteWithDefaults() *FileAttachmentDelete {
 }
 
 // GetIds returns the Ids field value if set, zero value otherwise.
-func (o *FileAttachmentDelete) GetIds() []int32 {
+func (o *FileAttachmentDelete) GetIds() []int64 {
 	if o == nil || IsNil(o.Ids) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.Ids
@@ -50,7 +50,7 @@ func (o *FileAttachmentDelete) GetIds() []int32 {
 
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FileAttachmentDelete) GetIdsOk() ([]int32, bool) {
+func (o *FileAttachmentDelete) GetIdsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.Ids) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *FileAttachmentDelete) HasIds() bool {
 	return false
 }
 
-// SetIds gets a reference to the given []int32 and assigns it to the Ids field.
-func (o *FileAttachmentDelete) SetIds(v []int32) {
+// SetIds gets a reference to the given []int64 and assigns it to the Ids field.
+func (o *FileAttachmentDelete) SetIds(v []int64) {
 	o.Ids = v
 }
 

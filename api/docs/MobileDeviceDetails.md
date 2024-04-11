@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
@@ -51,20 +51,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *MobileDeviceDetails) GetId() int32`
+`func (o *MobileDeviceDetails) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *MobileDeviceDetails) GetIdOk() (*int32, bool)`
+`func (o *MobileDeviceDetails) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *MobileDeviceDetails) SetId(v int32)`
+`func (o *MobileDeviceDetails) SetId(v int64)`
 
 SetId sets Id field to given value.
 

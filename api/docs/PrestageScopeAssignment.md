@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SerialNumber** | Pointer to **string** |  | [optional] 
-**AssignmentEpoch** | Pointer to **int32** |  | [optional] 
+**AssignmentEpoch** | Pointer to **int64** |  | [optional] 
 **UserAssigned** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasSerialNumber returns a boolean if a field has been set.
 
 ### GetAssignmentEpoch
 
-`func (o *PrestageScopeAssignment) GetAssignmentEpoch() int32`
+`func (o *PrestageScopeAssignment) GetAssignmentEpoch() int64`
 
 GetAssignmentEpoch returns the AssignmentEpoch field if non-nil, zero value otherwise.
 
 ### GetAssignmentEpochOk
 
-`func (o *PrestageScopeAssignment) GetAssignmentEpochOk() (*int32, bool)`
+`func (o *PrestageScopeAssignment) GetAssignmentEpochOk() (*int64, bool)`
 
 GetAssignmentEpochOk returns a tuple with the AssignmentEpoch field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignmentEpoch
 
-`func (o *PrestageScopeAssignment) SetAssignmentEpoch(v int32)`
+`func (o *PrestageScopeAssignment) SetAssignmentEpoch(v int64)`
 
 SetAssignmentEpoch sets AssignmentEpoch field to given value.
 

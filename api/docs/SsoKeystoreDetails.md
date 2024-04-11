@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Keys** | Pointer to **[]string** |  | [optional] 
-**SerialNumber** | Pointer to **int32** |  | [optional] 
+**SerialNumber** | Pointer to **int64** |  | [optional] 
 **Subject** | Pointer to **string** |  | [optional] 
 **Issuer** | Pointer to **string** |  | [optional] 
 **Expiration** | Pointer to **string** |  | [optional] 
@@ -56,20 +56,20 @@ HasKeys returns a boolean if a field has been set.
 
 ### GetSerialNumber
 
-`func (o *SsoKeystoreDetails) GetSerialNumber() int32`
+`func (o *SsoKeystoreDetails) GetSerialNumber() int64`
 
 GetSerialNumber returns the SerialNumber field if non-nil, zero value otherwise.
 
 ### GetSerialNumberOk
 
-`func (o *SsoKeystoreDetails) GetSerialNumberOk() (*int32, bool)`
+`func (o *SsoKeystoreDetails) GetSerialNumberOk() (*int64, bool)`
 
 GetSerialNumberOk returns a tuple with the SerialNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSerialNumber
 
-`func (o *SsoKeystoreDetails) SetSerialNumber(v int32)`
+`func (o *SsoKeystoreDetails) SetSerialNumber(v int64)`
 
 SetSerialNumber sets SerialNumber field to given value.
 

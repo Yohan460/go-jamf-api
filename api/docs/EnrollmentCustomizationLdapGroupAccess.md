@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**LdapServerId** | Pointer to **int32** |  | [optional] 
+**LdapServerId** | Pointer to **int64** |  | [optional] 
 **GroupName** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetLdapServerId
 
-`func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerId() int32`
+`func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerId() int64`
 
 GetLdapServerId returns the LdapServerId field if non-nil, zero value otherwise.
 
 ### GetLdapServerIdOk
 
-`func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerIdOk() (*int32, bool)`
+`func (o *EnrollmentCustomizationLdapGroupAccess) GetLdapServerIdOk() (*int64, bool)`
 
 GetLdapServerIdOk returns a tuple with the LdapServerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLdapServerId
 
-`func (o *EnrollmentCustomizationLdapGroupAccess) SetLdapServerId(v int32)`
+`func (o *EnrollmentCustomizationLdapGroupAccess) SetLdapServerId(v int64)`
 
 SetLdapServerId sets LdapServerId field to given value.
 

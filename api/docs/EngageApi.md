@@ -29,23 +29,23 @@ Get Engage settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V1EngageGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EngageGet`: Engage
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V1EngageGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EngageGet`: Engage
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageGet`: %v\n", resp)
 }
 ```
 
@@ -90,30 +90,30 @@ Get Engage settings history
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
-    search := "search_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: search=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
+	search := "search_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: search=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V1EngageHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Search(search).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EngageHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V1EngageHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Search(search).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EngageHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -128,10 +128,10 @@ Other parameters are passed through a pointer to a apiV1EngageHistoryGetRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;date:desc&quot;]
  **search** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: search&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
@@ -168,24 +168,24 @@ Add Engage settings history notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V1EngageHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EngageHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V1EngageHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngageHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EngageHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngageHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -234,24 +234,24 @@ Update Engage settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    engage := *openapiclient.NewEngage() // Engage | Engage settings object
+	engage := *openapiclient.NewEngage() // Engage | Engage settings object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V1EngagePut(context.Background()).Engage(engage).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngagePut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EngagePut`: Engage
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngagePut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V1EngagePut(context.Background()).Engage(engage).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V1EngagePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EngagePut`: Engage
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V1EngagePut`: %v\n", resp)
 }
 ```
 
@@ -300,23 +300,23 @@ Get Engage settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V2EngageGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EngageGet`: Engage
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V2EngageGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EngageGet`: Engage
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageGet`: %v\n", resp)
 }
 ```
 
@@ -361,27 +361,27 @@ Get Engage settings history
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V2EngageHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EngageHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V2EngageHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EngageHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -396,8 +396,8 @@ Other parameters are passed through a pointer to a apiV2EngageHistoryGetRequest 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -433,24 +433,24 @@ Add Engage settings history notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V2EngageHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EngageHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V2EngageHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngageHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EngageHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngageHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -499,24 +499,24 @@ Update Engage settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    engage := *openapiclient.NewEngage() // Engage | Engage settings object
+	engage := *openapiclient.NewEngage() // Engage | Engage settings object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EngageAPI.V2EngagePut(context.Background()).Engage(engage).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngagePut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EngagePut`: Engage
-    fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngagePut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EngageAPI.V2EngagePut(context.Background()).Engage(engage).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EngageAPI.V2EngagePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EngagePut`: Engage
+	fmt.Fprintf(os.Stdout, "Response from `EngageAPI.V2EngagePut`: %v\n", resp)
 }
 ```
 

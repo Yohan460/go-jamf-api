@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeployEnabled** | Pointer to **bool** | When enabled, all appropriate computers will have the SetAutoAdminPassword command sent to them automatically. | [optional] 
-**PasswordRotationTime** | Pointer to **int32** | The amount of time in seconds that the local admin password will be rotated after viewing. | [optional] 
+**PasswordRotationTime** | Pointer to **int64** | The amount of time in seconds that the local admin password will be rotated after viewing. | [optional] 
 **AutoRotateEnabled** | Pointer to **bool** | When enabled, all appropriate computers will automatically have their password expired and rotated after the configured autoRotateExpirationTime | [optional] 
-**AutoRotateExpirationTime** | Pointer to **int32** | The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed. | [optional] 
+**AutoRotateExpirationTime** | Pointer to **int64** | The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed. | [optional] 
 
 ## Methods
 
@@ -55,20 +55,20 @@ HasAutoDeployEnabled returns a boolean if a field has been set.
 
 ### GetPasswordRotationTime
 
-`func (o *LapsSettingsResponseV2) GetPasswordRotationTime() int32`
+`func (o *LapsSettingsResponseV2) GetPasswordRotationTime() int64`
 
 GetPasswordRotationTime returns the PasswordRotationTime field if non-nil, zero value otherwise.
 
 ### GetPasswordRotationTimeOk
 
-`func (o *LapsSettingsResponseV2) GetPasswordRotationTimeOk() (*int32, bool)`
+`func (o *LapsSettingsResponseV2) GetPasswordRotationTimeOk() (*int64, bool)`
 
 GetPasswordRotationTimeOk returns a tuple with the PasswordRotationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordRotationTime
 
-`func (o *LapsSettingsResponseV2) SetPasswordRotationTime(v int32)`
+`func (o *LapsSettingsResponseV2) SetPasswordRotationTime(v int64)`
 
 SetPasswordRotationTime sets PasswordRotationTime field to given value.
 
@@ -105,20 +105,20 @@ HasAutoRotateEnabled returns a boolean if a field has been set.
 
 ### GetAutoRotateExpirationTime
 
-`func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTime() int32`
+`func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTime() int64`
 
 GetAutoRotateExpirationTime returns the AutoRotateExpirationTime field if non-nil, zero value otherwise.
 
 ### GetAutoRotateExpirationTimeOk
 
-`func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTimeOk() (*int32, bool)`
+`func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTimeOk() (*int64, bool)`
 
 GetAutoRotateExpirationTimeOk returns a tuple with the AutoRotateExpirationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoRotateExpirationTime
 
-`func (o *LapsSettingsResponseV2) SetAutoRotateExpirationTime(v int32)`
+`func (o *LapsSettingsResponseV2) SetAutoRotateExpirationTime(v int64)`
 
 SetAutoRotateExpirationTime sets AutoRotateExpirationTime field to given value.
 

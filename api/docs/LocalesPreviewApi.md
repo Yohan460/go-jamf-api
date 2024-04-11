@@ -22,23 +22,23 @@ Return locales that can be used in other features
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalesPreviewAPI.V1LocalesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalesPreviewAPI.V1LocalesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalesGet`: []Locale
-    fmt.Fprintf(os.Stdout, "Response from `LocalesPreviewAPI.V1LocalesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalesPreviewAPI.V1LocalesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalesPreviewAPI.V1LocalesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalesGet`: []Locale
+	fmt.Fprintf(os.Stdout, "Response from `LocalesPreviewAPI.V1LocalesGet`: %v\n", resp)
 }
 ```
 

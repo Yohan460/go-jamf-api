@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **OtherProviderTypeName** | Pointer to **string** |  | [optional] [default to " "]
 **FederationMetadataFile** | Pointer to **string** |  | [optional] 
 **MetadataSource** | **string** |  | 
-**SessionTimeout** | Pointer to **int32** |  | [optional] [default to 480]
+**SessionTimeout** | Pointer to **int64** |  | [optional] [default to 480]
 
 ## Methods
 
@@ -503,20 +503,20 @@ SetMetadataSource sets MetadataSource field to given value.
 
 ### GetSessionTimeout
 
-`func (o *SsoSettings) GetSessionTimeout() int32`
+`func (o *SsoSettings) GetSessionTimeout() int64`
 
 GetSessionTimeout returns the SessionTimeout field if non-nil, zero value otherwise.
 
 ### GetSessionTimeoutOk
 
-`func (o *SsoSettings) GetSessionTimeoutOk() (*int32, bool)`
+`func (o *SsoSettings) GetSessionTimeoutOk() (*int64, bool)`
 
 GetSessionTimeoutOk returns a tuple with the SessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionTimeout
 
-`func (o *SsoSettings) SetSessionTimeout(v int32)`
+`func (o *SsoSettings) SetSessionTimeout(v int64)`
 
 SetSessionTimeout sets SessionTimeout field to given value.
 

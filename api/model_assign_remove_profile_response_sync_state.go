@@ -19,12 +19,12 @@ var _ MappedNullable = &AssignRemoveProfileResponseSyncState{}
 
 // AssignRemoveProfileResponseSyncState struct for AssignRemoveProfileResponseSyncState
 type AssignRemoveProfileResponseSyncState struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	ProfileUUID *string `json:"profileUUID,omitempty"`
 	SyncStatus *string `json:"syncStatus,omitempty"`
-	FailureCount *int32 `json:"failureCount,omitempty"`
-	Timestamp *int32 `json:"timestamp,omitempty"`
+	FailureCount *int64 `json:"failureCount,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty"`
 }
 
 // NewAssignRemoveProfileResponseSyncState instantiates a new AssignRemoveProfileResponseSyncState object
@@ -45,9 +45,9 @@ func NewAssignRemoveProfileResponseSyncStateWithDefaults() *AssignRemoveProfileR
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AssignRemoveProfileResponseSyncState) GetId() int32 {
+func (o *AssignRemoveProfileResponseSyncState) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -55,7 +55,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int32, bool) {
+func (o *AssignRemoveProfileResponseSyncState) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *AssignRemoveProfileResponseSyncState) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *AssignRemoveProfileResponseSyncState) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *AssignRemoveProfileResponseSyncState) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -173,9 +173,9 @@ func (o *AssignRemoveProfileResponseSyncState) SetSyncStatus(v string) {
 }
 
 // GetFailureCount returns the FailureCount field value if set, zero value otherwise.
-func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int32 {
+func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int64 {
 	if o == nil || IsNil(o.FailureCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FailureCount
@@ -183,7 +183,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetFailureCount() int32 {
 
 // GetFailureCountOk returns a tuple with the FailureCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int32, bool) {
+func (o *AssignRemoveProfileResponseSyncState) GetFailureCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.FailureCount) {
 		return nil, false
 	}
@@ -199,15 +199,15 @@ func (o *AssignRemoveProfileResponseSyncState) HasFailureCount() bool {
 	return false
 }
 
-// SetFailureCount gets a reference to the given int32 and assigns it to the FailureCount field.
-func (o *AssignRemoveProfileResponseSyncState) SetFailureCount(v int32) {
+// SetFailureCount gets a reference to the given int64 and assigns it to the FailureCount field.
+func (o *AssignRemoveProfileResponseSyncState) SetFailureCount(v int64) {
 	o.FailureCount = &v
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int32 {
+func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int64 {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Timestamp
@@ -215,7 +215,7 @@ func (o *AssignRemoveProfileResponseSyncState) GetTimestamp() int32 {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int32, bool) {
+func (o *AssignRemoveProfileResponseSyncState) GetTimestampOk() (*int64, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -231,8 +231,8 @@ func (o *AssignRemoveProfileResponseSyncState) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given int32 and assigns it to the Timestamp field.
-func (o *AssignRemoveProfileResponseSyncState) SetTimestamp(v int32) {
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *AssignRemoveProfileResponseSyncState) SetTimestamp(v int64) {
 	o.Timestamp = &v
 }
 

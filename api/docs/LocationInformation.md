@@ -10,16 +10,16 @@ Name | Type | Description | Notes
 **Email** | **string** |  | 
 **Room** | **string** |  | 
 **Position** | **string** |  | 
-**DepartmentId** | **int32** |  | 
-**BuildingId** | **int32** |  | 
-**Id** | **int32** |  | 
-**VersionLock** | **int32** |  | 
+**DepartmentId** | **int64** |  | 
+**BuildingId** | **int64** |  | 
+**Id** | **int64** |  | 
+**VersionLock** | **int64** |  | 
 
 ## Methods
 
 ### NewLocationInformation
 
-`func NewLocationInformation(username string, realname string, phone string, email string, room string, position string, departmentId int32, buildingId int32, id int32, versionLock int32, ) *LocationInformation`
+`func NewLocationInformation(username string, realname string, phone string, email string, room string, position string, departmentId int64, buildingId int64, id int64, versionLock int64, ) *LocationInformation`
 
 NewLocationInformation instantiates a new LocationInformation object
 This constructor will assign default values to properties that have it defined,
@@ -156,80 +156,80 @@ SetPosition sets Position field to given value.
 
 ### GetDepartmentId
 
-`func (o *LocationInformation) GetDepartmentId() int32`
+`func (o *LocationInformation) GetDepartmentId() int64`
 
 GetDepartmentId returns the DepartmentId field if non-nil, zero value otherwise.
 
 ### GetDepartmentIdOk
 
-`func (o *LocationInformation) GetDepartmentIdOk() (*int32, bool)`
+`func (o *LocationInformation) GetDepartmentIdOk() (*int64, bool)`
 
 GetDepartmentIdOk returns a tuple with the DepartmentId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDepartmentId
 
-`func (o *LocationInformation) SetDepartmentId(v int32)`
+`func (o *LocationInformation) SetDepartmentId(v int64)`
 
 SetDepartmentId sets DepartmentId field to given value.
 
 
 ### GetBuildingId
 
-`func (o *LocationInformation) GetBuildingId() int32`
+`func (o *LocationInformation) GetBuildingId() int64`
 
 GetBuildingId returns the BuildingId field if non-nil, zero value otherwise.
 
 ### GetBuildingIdOk
 
-`func (o *LocationInformation) GetBuildingIdOk() (*int32, bool)`
+`func (o *LocationInformation) GetBuildingIdOk() (*int64, bool)`
 
 GetBuildingIdOk returns a tuple with the BuildingId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuildingId
 
-`func (o *LocationInformation) SetBuildingId(v int32)`
+`func (o *LocationInformation) SetBuildingId(v int64)`
 
 SetBuildingId sets BuildingId field to given value.
 
 
 ### GetId
 
-`func (o *LocationInformation) GetId() int32`
+`func (o *LocationInformation) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *LocationInformation) GetIdOk() (*int32, bool)`
+`func (o *LocationInformation) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *LocationInformation) SetId(v int32)`
+`func (o *LocationInformation) SetId(v int64)`
 
 SetId sets Id field to given value.
 
 
 ### GetVersionLock
 
-`func (o *LocationInformation) GetVersionLock() int32`
+`func (o *LocationInformation) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *LocationInformation) GetVersionLockOk() (*int32, bool)`
+`func (o *LocationInformation) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *LocationInformation) SetVersionLock(v int32)`
+`func (o *LocationInformation) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

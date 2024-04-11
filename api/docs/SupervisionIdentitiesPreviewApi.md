@@ -28,28 +28,28 @@ Search for sorted and paged Supervision Identities
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesGet`: SupervisionIdentitySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesGet`: SupervisionIdentitySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesGet`: %v\n", resp)
 }
 ```
 
@@ -64,10 +64,10 @@ Other parameters are passed through a pointer to a apiV1SupervisionIdentitiesGet
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;id:asc&quot;]
 
 ### Return type
@@ -102,22 +102,22 @@ Delete a Supervision Identity with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Supervision Identity identifier
+	id := int64(56) // int64 | Supervision Identity identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -127,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Supervision Identity identifier | 
+**id** | **int64** | Supervision Identity identifier | 
 
 ### Other Parameters
 
@@ -170,24 +170,24 @@ Download the Supervision Identity .p12 file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Supervision Identity identifier
+	id := int64(56) // int64 | Supervision Identity identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesIdDownloadGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesIdDownloadGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdDownloadGet`: %v\n", resp)
 }
 ```
 
@@ -197,7 +197,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Supervision Identity identifier | 
+**id** | **int64** | Supervision Identity identifier | 
 
 ### Other Parameters
 
@@ -240,24 +240,24 @@ Retrieve a Supervision Identity with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Supervision Identity identifier
+	id := int64(56) // int64 | Supervision Identity identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesIdGet`: SupervisionIdentity
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesIdGet`: SupervisionIdentity
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdGet`: %v\n", resp)
 }
 ```
 
@@ -267,7 +267,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Supervision Identity identifier | 
+**id** | **int64** | Supervision Identity identifier | 
 
 ### Other Parameters
 
@@ -310,25 +310,25 @@ Update a Supervision Identity with the supplied information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Supervision Identity identifier
-    supervisionIdentityUpdate := *openapiclient.NewSupervisionIdentityUpdate("Supervision Identity") // SupervisionIdentityUpdate | 
+	id := int64(56) // int64 | Supervision Identity identifier
+	supervisionIdentityUpdate := *openapiclient.NewSupervisionIdentityUpdate("Supervision Identity") // SupervisionIdentityUpdate | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut(context.Background(), id).SupervisionIdentityUpdate(supervisionIdentityUpdate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesIdPut`: SupervisionIdentity
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut(context.Background(), id).SupervisionIdentityUpdate(supervisionIdentityUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesIdPut`: SupervisionIdentity
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesIdPut`: %v\n", resp)
 }
 ```
 
@@ -338,7 +338,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Supervision Identity identifier | 
+**id** | **int64** | Supervision Identity identifier | 
 
 ### Other Parameters
 
@@ -382,24 +382,24 @@ Create a Supervision Identity for the supplied information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    supervisionIdentityCreate := *openapiclient.NewSupervisionIdentityCreate("Supervision Identity", "jamf1234") // SupervisionIdentityCreate | 
+	supervisionIdentityCreate := *openapiclient.NewSupervisionIdentityCreate("Supervision Identity", "jamf1234") // SupervisionIdentityCreate | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost(context.Background()).SupervisionIdentityCreate(supervisionIdentityCreate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesPost`: SupervisionIdentity
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost(context.Background()).SupervisionIdentityCreate(supervisionIdentityCreate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesPost`: SupervisionIdentity
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesPost`: %v\n", resp)
 }
 ```
 
@@ -448,24 +448,24 @@ Upload the Supervision Identity .p12 file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    supervisionIdentityCertificateUpload := *openapiclient.NewSupervisionIdentityCertificateUpload("Supervision Identity", "jamf1234") // SupervisionIdentityCertificateUpload | The base 64 encoded .p12 file alone with other needed information
+	supervisionIdentityCertificateUpload := *openapiclient.NewSupervisionIdentityCertificateUpload("Supervision Identity", "jamf1234") // SupervisionIdentityCertificateUpload | The base 64 encoded .p12 file alone with other needed information
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost(context.Background()).SupervisionIdentityCertificateUpload(supervisionIdentityCertificateUpload).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SupervisionIdentitiesUploadPost`: SupervisionIdentity
-    fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost(context.Background()).SupervisionIdentityCertificateUpload(supervisionIdentityCertificateUpload).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SupervisionIdentitiesUploadPost`: SupervisionIdentity
+	fmt.Fprintf(os.Stdout, "Response from `SupervisionIdentitiesPreviewAPI.V1SupervisionIdentitiesUploadPost`: %v\n", resp)
 }
 ```
 

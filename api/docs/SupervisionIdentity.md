@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **DisplayName** | Pointer to **string** |  | [optional] 
 **CommonName** | Pointer to **string** |  | [optional] 
 **ExpirationDate** | Pointer to **string** |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *SupervisionIdentity) GetId() int32`
+`func (o *SupervisionIdentity) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *SupervisionIdentity) GetIdOk() (*int32, bool)`
+`func (o *SupervisionIdentity) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *SupervisionIdentity) SetId(v int32)`
+`func (o *SupervisionIdentity) SetId(v int64)`
 
 SetId sets Id field to given value.
 

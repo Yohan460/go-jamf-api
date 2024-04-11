@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrestageScopeUpdate type satisfies the MappedNullable interface at compile time
@@ -20,14 +22,16 @@ var _ MappedNullable = &PrestageScopeUpdate{}
 // PrestageScopeUpdate struct for PrestageScopeUpdate
 type PrestageScopeUpdate struct {
 	SerialNumbers []string `json:"serialNumbers"`
-	VersionLock int32 `json:"versionLock"`
+	VersionLock int64 `json:"versionLock"`
 }
+
+type _PrestageScopeUpdate PrestageScopeUpdate
 
 // NewPrestageScopeUpdate instantiates a new PrestageScopeUpdate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrestageScopeUpdate(serialNumbers []string, versionLock int32) *PrestageScopeUpdate {
+func NewPrestageScopeUpdate(serialNumbers []string, versionLock int64) *PrestageScopeUpdate {
 	this := PrestageScopeUpdate{}
 	this.SerialNumbers = serialNumbers
 	this.VersionLock = versionLock
@@ -67,9 +71,9 @@ func (o *PrestageScopeUpdate) SetSerialNumbers(v []string) {
 }
 
 // GetVersionLock returns the VersionLock field value
-func (o *PrestageScopeUpdate) GetVersionLock() int32 {
+func (o *PrestageScopeUpdate) GetVersionLock() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -78,7 +82,7 @@ func (o *PrestageScopeUpdate) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value
 // and a boolean to check if the value has been set.
-func (o *PrestageScopeUpdate) GetVersionLockOk() (*int32, bool) {
+func (o *PrestageScopeUpdate) GetVersionLockOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +90,7 @@ func (o *PrestageScopeUpdate) GetVersionLockOk() (*int32, bool) {
 }
 
 // SetVersionLock sets field value
-func (o *PrestageScopeUpdate) SetVersionLock(v int32) {
+func (o *PrestageScopeUpdate) SetVersionLock(v int64) {
 	o.VersionLock = v
 }
 
@@ -103,6 +107,44 @@ func (o PrestageScopeUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize["serialNumbers"] = o.SerialNumbers
 	toSerialize["versionLock"] = o.VersionLock
 	return toSerialize, nil
+}
+
+func (o *PrestageScopeUpdate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serialNumbers",
+		"versionLock",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrestageScopeUpdate := _PrestageScopeUpdate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrestageScopeUpdate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrestageScopeUpdate(varPrestageScopeUpdate)
+
+	return err
 }
 
 type NullablePrestageScopeUpdate struct {

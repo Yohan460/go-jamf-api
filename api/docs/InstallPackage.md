@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Manifest** | [**PackageManifest**](PackageManifest.md) |  | 
 **InstallAsManaged** | Pointer to **bool** |  | [optional] 
-**Devices** | Pointer to **[]int32** |  | [optional] 
+**Devices** | Pointer to **[]int64** |  | [optional] 
 **GroupId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -75,20 +75,20 @@ HasInstallAsManaged returns a boolean if a field has been set.
 
 ### GetDevices
 
-`func (o *InstallPackage) GetDevices() []int32`
+`func (o *InstallPackage) GetDevices() []int64`
 
 GetDevices returns the Devices field if non-nil, zero value otherwise.
 
 ### GetDevicesOk
 
-`func (o *InstallPackage) GetDevicesOk() (*[]int32, bool)`
+`func (o *InstallPackage) GetDevicesOk() (*[]int64, bool)`
 
 GetDevicesOk returns a tuple with the Devices field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevices
 
-`func (o *InstallPackage) SetDevices(v []int32)`
+`func (o *InstallPackage) SetDevices(v []int64)`
 
 SetDevices sets Devices field to given value.
 

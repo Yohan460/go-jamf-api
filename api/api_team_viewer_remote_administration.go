@@ -195,17 +195,17 @@ type TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsT
 	ctx context.Context
 	ApiService TeamViewerRemoteAdministrationAPI
 	configurationId string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	filter *string
 }
 
-func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Page(page int32) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) Page(page int64) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) PageSize(pageSize int32) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
+func (r TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest) PageSize(pageSize int64) TeamViewerRemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsTeamViewerConfigurationIdSessionsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -262,13 +262,13 @@ func (a *TeamViewerRemoteAdministrationAPIService) PreviewRemoteAdministrationCo
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.filter != nil {

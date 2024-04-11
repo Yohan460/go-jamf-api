@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HttpStatus** | Pointer to **int32** | HTTP status of the response | [optional] 
+**HttpStatus** | Pointer to **int64** | HTTP status of the response | [optional] 
 **Errors** | Pointer to [**[]ApiErrorCause**](ApiErrorCause.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHttpStatus
 
-`func (o *ApiError) GetHttpStatus() int32`
+`func (o *ApiError) GetHttpStatus() int64`
 
 GetHttpStatus returns the HttpStatus field if non-nil, zero value otherwise.
 
 ### GetHttpStatusOk
 
-`func (o *ApiError) GetHttpStatusOk() (*int32, bool)`
+`func (o *ApiError) GetHttpStatusOk() (*int64, bool)`
 
 GetHttpStatusOk returns a tuple with the HttpStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpStatus
 
-`func (o *ApiError) SetHttpStatus(v int32)`
+`func (o *ApiError) SetHttpStatus(v int64)`
 
 SetHttpStatus sets HttpStatus field to given value.
 

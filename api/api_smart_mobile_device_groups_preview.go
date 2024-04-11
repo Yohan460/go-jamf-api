@@ -33,7 +33,7 @@ returns the count of smart groups the device falls into
 	@param id id of mobile device
 	@return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 	*/
-	V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
+	V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int64) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 
 	// V1MobileDevicesIdRecalculateSmartGroupsPostExecute executes the request
 	//  @return RecalculationResults
@@ -50,7 +50,7 @@ returns the ids for the devices in the smart group
 	@param id instance id of smart group
 	@return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 	*/
-	V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
+	V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int64) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 
 	// V1SmartMobileDeviceGroupsIdRecalculatePostExecute executes the request
 	//  @return RecalculationResults
@@ -63,7 +63,7 @@ type SmartMobileDeviceGroupsPreviewAPIService service
 type SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest struct {
 	ctx context.Context
 	ApiService SmartMobileDeviceGroupsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
@@ -81,7 +81,7 @@ returns the count of smart groups the device falls into
  @param id id of mobile device
  @return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest
 */
-func (a *SmartMobileDeviceGroupsPreviewAPIService) V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest {
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1MobileDevicesIdRecalculateSmartGroupsPost(ctx context.Context, id int64) SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest {
 	return SmartMobileDeviceGroupsPreviewAPIV1MobileDevicesIdRecalculateSmartGroupsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -178,7 +178,7 @@ func (a *SmartMobileDeviceGroupsPreviewAPIService) V1MobileDevicesIdRecalculateS
 type SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest struct {
 	ctx context.Context
 	ApiService SmartMobileDeviceGroupsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
@@ -196,7 +196,7 @@ returns the ids for the devices in the smart group
  @param id instance id of smart group
  @return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest
 */
-func (a *SmartMobileDeviceGroupsPreviewAPIService) V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int32) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest {
+func (a *SmartMobileDeviceGroupsPreviewAPIService) V1SmartMobileDeviceGroupsIdRecalculatePost(ctx context.Context, id int64) SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest {
 	return SmartMobileDeviceGroupsPreviewAPIV1SmartMobileDeviceGroupsIdRecalculatePostRequest{
 		ApiService: a,
 		ctx: ctx,

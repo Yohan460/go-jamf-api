@@ -31,7 +31,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param id Enrollment Customization identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 	*/
-	V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
+	V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 
 	// V1EnrollmentCustomizationIdAllGetExecute executes the request
 	//  @return EnrollmentCustomizationPanelList
@@ -47,7 +47,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdAllPanelIdDeleteExecute executes the request
 	V1EnrollmentCustomizationIdAllPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) (*http.Response, error)
@@ -62,7 +62,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
+	V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdAllPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanel
@@ -78,7 +78,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute executes the request
 	V1EnrollmentCustomizationIdLdapPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) (*http.Response, error)
@@ -93,7 +93,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
+	V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
@@ -109,7 +109,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
+	V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdLdapPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
@@ -124,7 +124,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param id Enrollment Customization identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 	*/
-	V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
+	V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 
 	// V1EnrollmentCustomizationIdLdapPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelLdapAuth
@@ -140,7 +140,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute executes the request
 	V1EnrollmentCustomizationIdSsoPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) (*http.Response, error)
@@ -155,7 +155,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
+	V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
@@ -171,7 +171,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
+	V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdSsoPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
@@ -186,7 +186,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param id Enrollment Customization identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 	*/
-	V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
+	V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 
 	// V1EnrollmentCustomizationIdSsoPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelSsoAuth
@@ -202,7 +202,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
+	V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdDeleteExecute executes the request
 	V1EnrollmentCustomizationIdTextPanelIdDeleteExecute(r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) (*http.Response, error)
@@ -217,7 +217,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
+	V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdGetExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
@@ -233,7 +233,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
+	V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdMarkdownGetExecute executes the request
 	//  @return Markdown
@@ -249,7 +249,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param panelId Panel object identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 	*/
-	V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
+	V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 
 	// V1EnrollmentCustomizationIdTextPanelIdPutExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
@@ -264,7 +264,7 @@ type EnrollmentCustomizationPreviewAPI interface {
 	@param id Enrollment Customization identifier
 	@return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 	*/
-	V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
+	V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 
 	// V1EnrollmentCustomizationIdTextPostExecute executes the request
 	//  @return GetEnrollmentCustomizationPanelText
@@ -291,7 +291,7 @@ type EnrollmentCustomizationPreviewAPIService service
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
+	id int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest) Execute() (*EnrollmentCustomizationPanelList, *http.Response, error) {
@@ -307,7 +307,7 @@ Get all panels for single enrollment customization
  @param id Enrollment Customization identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllGet(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -404,8 +404,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAl
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest) Execute() (*http.Response, error) {
@@ -422,7 +422,7 @@ Delete a single panel from an Enrollment Customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -500,8 +500,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAl
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanel, *http.Response, error) {
@@ -518,7 +518,7 @@ Get a single panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAllPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdAllPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -617,8 +617,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdAl
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest) Execute() (*http.Response, error) {
@@ -635,7 +635,7 @@ Delete an LDAP single Panel from an Enrollment Customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -713,8 +713,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLd
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelLdapAuth, *http.Response, error) {
@@ -731,7 +731,7 @@ Get a single LDAP panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -830,8 +830,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLd
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
 }
 
@@ -855,7 +855,7 @@ Update a single LDAP panel for a single enrollment customization. If multiple LD
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -959,7 +959,7 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLd
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
+	id int64
 	enrollmentCustomizationPanelLdapAuth *EnrollmentCustomizationPanelLdapAuth
 }
 
@@ -982,7 +982,7 @@ Create an LDAP panel for a single enrollment customization. If multiple LDAP acc
  @param id Enrollment Customization identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLdapPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdLdapPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1084,8 +1084,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdLd
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest) Execute() (*http.Response, error) {
@@ -1102,7 +1102,7 @@ Delete a single SSO panel from an Enrollment Customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1180,8 +1180,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSs
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelSsoAuth, *http.Response, error) {
@@ -1198,7 +1198,7 @@ Get a single SSO panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1297,8 +1297,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSs
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
 }
 
@@ -1322,7 +1322,7 @@ Update a single SSO panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1426,7 +1426,7 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSs
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
+	id int64
 	enrollmentCustomizationPanelSsoAuth *EnrollmentCustomizationPanelSsoAuth
 }
 
@@ -1449,7 +1449,7 @@ Create an SSO panel for a single enrollment customization
  @param id Enrollment Customization identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSsoPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdSsoPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1551,8 +1551,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdSs
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest) Execute() (*http.Response, error) {
@@ -1569,7 +1569,7 @@ Delete a Text single panel from an Enrollment Customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdDelete(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1647,8 +1647,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTe
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest) Execute() (*GetEnrollmentCustomizationPanelText, *http.Response, error) {
@@ -1665,7 +1665,7 @@ Get a single Text panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1764,8 +1764,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTe
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 }
 
 func (r EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest) Execute() (*Markdown, *http.Response, error) {
@@ -1782,7 +1782,7 @@ Get the markdown output of a single Text panel for a single enrollment customiza
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdMarkdownGet(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdMarkdownGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1881,8 +1881,8 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTe
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
-	panelId int32
+	id int64
+	panelId int64
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
 }
 
@@ -1906,7 +1906,7 @@ Update a single Text panel for a single enrollment customization
  @param panelId Panel object identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int32, panelId int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPanelIdPut(ctx context.Context, id int64, panelId int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPanelIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2010,7 +2010,7 @@ func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTe
 type EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationPreviewAPI
-	id int32
+	id int64
 	enrollmentCustomizationPanelText *EnrollmentCustomizationPanelText
 }
 
@@ -2033,7 +2033,7 @@ Create a Text panel for a single enrollment customization
  @param id Enrollment Customization identifier
  @return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest
 */
-func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int32) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest {
+func (a *EnrollmentCustomizationPreviewAPIService) V1EnrollmentCustomizationIdTextPost(ctx context.Context, id int64) EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest {
 	return EnrollmentCustomizationPreviewAPIV1EnrollmentCustomizationIdTextPostRequest{
 		ApiService: a,
 		ctx: ctx,

@@ -25,7 +25,7 @@ type SecurityV2 struct {
 	PasscodePresent *bool `json:"passcodePresent,omitempty"`
 	PasscodeCompliant *bool `json:"passcodeCompliant,omitempty"`
 	PasscodeCompliantWithProfile *bool `json:"passcodeCompliantWithProfile,omitempty"`
-	HardwareEncryption *int32 `json:"hardwareEncryption,omitempty"`
+	HardwareEncryption *int64 `json:"hardwareEncryption,omitempty"`
 	ActivationLockEnabled *bool `json:"activationLockEnabled,omitempty"`
 	JailBreakDetected *bool `json:"jailBreakDetected,omitempty"`
 }
@@ -240,9 +240,9 @@ func (o *SecurityV2) SetPasscodeCompliantWithProfile(v bool) {
 }
 
 // GetHardwareEncryption returns the HardwareEncryption field value if set, zero value otherwise.
-func (o *SecurityV2) GetHardwareEncryption() int32 {
+func (o *SecurityV2) GetHardwareEncryption() int64 {
 	if o == nil || IsNil(o.HardwareEncryption) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.HardwareEncryption
@@ -250,7 +250,7 @@ func (o *SecurityV2) GetHardwareEncryption() int32 {
 
 // GetHardwareEncryptionOk returns a tuple with the HardwareEncryption field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecurityV2) GetHardwareEncryptionOk() (*int32, bool) {
+func (o *SecurityV2) GetHardwareEncryptionOk() (*int64, bool) {
 	if o == nil || IsNil(o.HardwareEncryption) {
 		return nil, false
 	}
@@ -266,8 +266,8 @@ func (o *SecurityV2) HasHardwareEncryption() bool {
 	return false
 }
 
-// SetHardwareEncryption gets a reference to the given int32 and assigns it to the HardwareEncryption field.
-func (o *SecurityV2) SetHardwareEncryption(v int32) {
+// SetHardwareEncryption gets a reference to the given int64 and assigns it to the HardwareEncryption field.
+func (o *SecurityV2) SetHardwareEncryption(v int64) {
 	o.HardwareEncryption = &v
 }
 

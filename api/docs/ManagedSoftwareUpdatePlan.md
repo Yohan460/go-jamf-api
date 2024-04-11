@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdateAction** | **string** |  | [readonly] 
 **VersionType** | **string** |  | [readonly] 
 **SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [readonly] [default to "NO_SPECIFIC_VERSION"]
-**MaxDeferrals** | **int32** | Not applicable to all managed software update plans | [readonly] 
+**MaxDeferrals** | **int64** | Not applicable to all managed software update plans | [readonly] 
 **ForceInstallLocalDateTime** | Pointer to **NullableString** | Optional. Indicates the local date and time of the device to force update by. | [optional] 
 **Status** | [**PlanStatus**](PlanStatus.md) |  | 
 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewManagedSoftwareUpdatePlan
 
-`func NewManagedSoftwareUpdatePlan(planUuid string, device PlanDevice, updateAction string, versionType string, maxDeferrals int32, status PlanStatus, ) *ManagedSoftwareUpdatePlan`
+`func NewManagedSoftwareUpdatePlan(planUuid string, device PlanDevice, updateAction string, versionType string, maxDeferrals int64, status PlanStatus, ) *ManagedSoftwareUpdatePlan`
 
 NewManagedSoftwareUpdatePlan instantiates a new ManagedSoftwareUpdatePlan object
 This constructor will assign default values to properties that have it defined,
@@ -139,20 +139,20 @@ HasSpecificVersion returns a boolean if a field has been set.
 
 ### GetMaxDeferrals
 
-`func (o *ManagedSoftwareUpdatePlan) GetMaxDeferrals() int32`
+`func (o *ManagedSoftwareUpdatePlan) GetMaxDeferrals() int64`
 
 GetMaxDeferrals returns the MaxDeferrals field if non-nil, zero value otherwise.
 
 ### GetMaxDeferralsOk
 
-`func (o *ManagedSoftwareUpdatePlan) GetMaxDeferralsOk() (*int32, bool)`
+`func (o *ManagedSoftwareUpdatePlan) GetMaxDeferralsOk() (*int64, bool)`
 
 GetMaxDeferralsOk returns a tuple with the MaxDeferrals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxDeferrals
 
-`func (o *ManagedSoftwareUpdatePlan) SetMaxDeferrals(v int32)`
+`func (o *ManagedSoftwareUpdatePlan) SetMaxDeferrals(v int64)`
 
 SetMaxDeferrals sets MaxDeferrals field to given value.
 

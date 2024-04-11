@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PostComputerPrestageV3 type satisfies the MappedNullable interface at compile time
@@ -53,6 +55,8 @@ type PostComputerPrestageV3 struct {
 	AccountSettings *AccountSettingsRequest `json:"accountSettings,omitempty"`
 	RecoveryLockPassword *string `json:"recoveryLockPassword,omitempty"`
 }
+
+type _PostComputerPrestageV3 PostComputerPrestageV3
 
 // NewPostComputerPrestageV3 instantiates a new PostComputerPrestageV3 object
 // This constructor will assign default values to properties that have it defined,
@@ -1004,6 +1008,64 @@ func (o PostComputerPrestageV3) ToMap() (map[string]interface{}, error) {
 		toSerialize["recoveryLockPassword"] = o.RecoveryLockPassword
 	}
 	return toSerialize, nil
+}
+
+func (o *PostComputerPrestageV3) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"mandatory",
+		"mdmRemovable",
+		"supportPhoneNumber",
+		"supportEmailAddress",
+		"department",
+		"defaultPrestage",
+		"enrollmentSiteId",
+		"keepExistingSiteMembership",
+		"keepExistingLocationInformation",
+		"requireAuthentication",
+		"authenticationPrompt",
+		"preventActivationLock",
+		"enableDeviceBasedActivationLock",
+		"deviceEnrollmentProgramInstanceId",
+		"locationInformation",
+		"purchasingInformation",
+		"autoAdvanceSetup",
+		"installProfilesDuringSetup",
+		"prestageInstalledProfileIds",
+		"customPackageIds",
+		"customPackageDistributionPointId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPostComputerPrestageV3 := _PostComputerPrestageV3{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPostComputerPrestageV3)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PostComputerPrestageV3(varPostComputerPrestageV3)
+
+	return err
 }
 
 type NullablePostComputerPrestageV3 struct {

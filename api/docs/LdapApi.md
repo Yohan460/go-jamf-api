@@ -26,24 +26,24 @@ Retrieve the configured access groups that contain the text in the search param
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    q := "q_example" // string | Will perform a \"contains\" search on the names of access groups (optional) (default to "null")
+	q := "q_example" // string | Will perform a \"contains\" search on the names of access groups (optional) (default to "null")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapAPI.LdapGroupsGet(context.Background()).Q(q).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `LdapGroupsGet`: LdapGroupSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LdapAPI.LdapGroupsGet(context.Background()).Q(q).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LdapGroupsGet`: LdapGroupSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -92,23 +92,23 @@ Retrieve all Servers including LDAP and Cloud Identity Providers.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapAPI.LdapServersGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapServersGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `LdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapServersGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LdapAPI.LdapServersGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.LdapServersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LdapServersGet`: []LdapServer
+	fmt.Fprintf(os.Stdout, "Response from `LdapAPI.LdapServersGet`: %v\n", resp)
 }
 ```
 
@@ -153,24 +153,24 @@ Retrieve the configured access groups that contain the text in the search param
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    q := "q_example" // string | Will perform a \"contains\" search on the names of access groups (optional) (default to "null")
+	q := "q_example" // string | Will perform a \"contains\" search on the names of access groups (optional) (default to "null")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapAPI.V1LdapGroupsGet(context.Background()).Q(q).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LdapGroupsGet`: LdapGroupSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LdapAPI.V1LdapGroupsGet(context.Background()).Q(q).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LdapGroupsGet`: LdapGroupSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -219,23 +219,23 @@ Retrieve all LDAP Servers.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapAPI.V1LdapLdapServersGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapLdapServersGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LdapLdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapLdapServersGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LdapAPI.V1LdapLdapServersGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapLdapServersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LdapLdapServersGet`: []LdapServer
+	fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapLdapServersGet`: %v\n", resp)
 }
 ```
 
@@ -280,23 +280,23 @@ Retrieve all Servers including LDAP and Cloud Identity Providers.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LdapAPI.V1LdapServersGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapServersGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LdapServersGet`: []LdapServer
-    fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapServersGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LdapAPI.V1LdapServersGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LdapAPI.V1LdapServersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LdapServersGet`: []LdapServer
+	fmt.Fprintf(os.Stdout, "Response from `LdapAPI.V1LdapServersGet`: %v\n", resp)
 }
 ```
 

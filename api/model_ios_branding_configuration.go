@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the IosBrandingConfiguration type satisfies the MappedNullable interface at compile time
@@ -21,12 +23,14 @@ var _ MappedNullable = &IosBrandingConfiguration{}
 type IosBrandingConfiguration struct {
 	Id *string `json:"id,omitempty"`
 	BrandingName string `json:"brandingName"`
-	IconId *int32 `json:"iconId,omitempty"`
+	IconId *int64 `json:"iconId,omitempty"`
 	HeaderBackgroundColorCode string `json:"headerBackgroundColorCode"`
 	MenuIconColorCode string `json:"menuIconColorCode"`
 	BrandingNameColorCode string `json:"brandingNameColorCode"`
 	StatusBarTextColor string `json:"statusBarTextColor"`
 }
+
+type _IosBrandingConfiguration IosBrandingConfiguration
 
 // NewIosBrandingConfiguration instantiates a new IosBrandingConfiguration object
 // This constructor will assign default values to properties that have it defined,
@@ -107,9 +111,9 @@ func (o *IosBrandingConfiguration) SetBrandingName(v string) {
 }
 
 // GetIconId returns the IconId field value if set, zero value otherwise.
-func (o *IosBrandingConfiguration) GetIconId() int32 {
+func (o *IosBrandingConfiguration) GetIconId() int64 {
 	if o == nil || IsNil(o.IconId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.IconId
@@ -117,7 +121,7 @@ func (o *IosBrandingConfiguration) GetIconId() int32 {
 
 // GetIconIdOk returns a tuple with the IconId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IosBrandingConfiguration) GetIconIdOk() (*int32, bool) {
+func (o *IosBrandingConfiguration) GetIconIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.IconId) {
 		return nil, false
 	}
@@ -133,8 +137,8 @@ func (o *IosBrandingConfiguration) HasIconId() bool {
 	return false
 }
 
-// SetIconId gets a reference to the given int32 and assigns it to the IconId field.
-func (o *IosBrandingConfiguration) SetIconId(v int32) {
+// SetIconId gets a reference to the given int64 and assigns it to the IconId field.
+func (o *IosBrandingConfiguration) SetIconId(v int64) {
 	o.IconId = &v
 }
 
@@ -256,6 +260,47 @@ func (o IosBrandingConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize["brandingNameColorCode"] = o.BrandingNameColorCode
 	toSerialize["statusBarTextColor"] = o.StatusBarTextColor
 	return toSerialize, nil
+}
+
+func (o *IosBrandingConfiguration) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"brandingName",
+		"headerBackgroundColorCode",
+		"menuIconColorCode",
+		"brandingNameColorCode",
+		"statusBarTextColor",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varIosBrandingConfiguration := _IosBrandingConfiguration{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varIosBrandingConfiguration)
+
+	if err != nil {
+		return err
+	}
+
+	*o = IosBrandingConfiguration(varIosBrandingConfiguration)
+
+	return err
 }
 
 type NullableIosBrandingConfiguration struct {

@@ -4,26 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
+**Id** | **int64** |  | 
 **IsLeased** | **bool** |  | 
 **IsPurchased** | **bool** |  | 
 **AppleCareID** | **string** |  | 
 **PoNumber** | **string** |  | 
 **Vendor** | **string** |  | 
 **PurchasePrice** | **string** |  | 
-**LifeExpectancy** | **int32** |  | 
+**LifeExpectancy** | **int64** |  | 
 **PurchasingAccount** | **string** |  | 
 **PurchasingContact** | **string** |  | 
 **LeaseDate** | **string** |  | 
 **PoDate** | **string** |  | 
 **WarrantyDate** | **string** |  | 
-**VersionLock** | **int32** |  | 
+**VersionLock** | **int64** |  | 
 
 ## Methods
 
 ### NewPrestagePurchasingInformation
 
-`func NewPrestagePurchasingInformation(id int32, isLeased bool, isPurchased bool, appleCareID string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int32, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int32, ) *PrestagePurchasingInformation`
+`func NewPrestagePurchasingInformation(id int64, isLeased bool, isPurchased bool, appleCareID string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int64, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int64, ) *PrestagePurchasingInformation`
 
 NewPrestagePurchasingInformation instantiates a new PrestagePurchasingInformation object
 This constructor will assign default values to properties that have it defined,
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *PrestagePurchasingInformation) GetId() int32`
+`func (o *PrestagePurchasingInformation) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *PrestagePurchasingInformation) GetIdOk() (*int32, bool)`
+`func (o *PrestagePurchasingInformation) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *PrestagePurchasingInformation) SetId(v int32)`
+`func (o *PrestagePurchasingInformation) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -180,20 +180,20 @@ SetPurchasePrice sets PurchasePrice field to given value.
 
 ### GetLifeExpectancy
 
-`func (o *PrestagePurchasingInformation) GetLifeExpectancy() int32`
+`func (o *PrestagePurchasingInformation) GetLifeExpectancy() int64`
 
 GetLifeExpectancy returns the LifeExpectancy field if non-nil, zero value otherwise.
 
 ### GetLifeExpectancyOk
 
-`func (o *PrestagePurchasingInformation) GetLifeExpectancyOk() (*int32, bool)`
+`func (o *PrestagePurchasingInformation) GetLifeExpectancyOk() (*int64, bool)`
 
 GetLifeExpectancyOk returns a tuple with the LifeExpectancy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifeExpectancy
 
-`func (o *PrestagePurchasingInformation) SetLifeExpectancy(v int32)`
+`func (o *PrestagePurchasingInformation) SetLifeExpectancy(v int64)`
 
 SetLifeExpectancy sets LifeExpectancy field to given value.
 
@@ -300,20 +300,20 @@ SetWarrantyDate sets WarrantyDate field to given value.
 
 ### GetVersionLock
 
-`func (o *PrestagePurchasingInformation) GetVersionLock() int32`
+`func (o *PrestagePurchasingInformation) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PrestagePurchasingInformation) GetVersionLockOk() (*int32, bool)`
+`func (o *PrestagePurchasingInformation) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PrestagePurchasingInformation) SetVersionLock(v int32)`
+`func (o *PrestagePurchasingInformation) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

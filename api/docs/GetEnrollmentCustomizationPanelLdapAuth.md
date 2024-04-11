@@ -5,21 +5,21 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | **string** |  | 
-**Rank** | **int32** |  | 
+**Rank** | **int64** |  | 
 **UsernameLabel** | **string** |  | 
 **PasswordLabel** | **string** |  | 
 **Title** | **string** |  | 
 **BackButtonText** | **string** |  | 
 **ContinueButtonText** | **string** |  | 
 **LdapGroupAccess** | Pointer to [**[]EnrollmentCustomizationLdapGroupAccess**](EnrollmentCustomizationLdapGroupAccess.md) |  | [optional] 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewGetEnrollmentCustomizationPanelLdapAuth
 
-`func NewGetEnrollmentCustomizationPanelLdapAuth(displayName string, rank int32, usernameLabel string, passwordLabel string, title string, backButtonText string, continueButtonText string, ) *GetEnrollmentCustomizationPanelLdapAuth`
+`func NewGetEnrollmentCustomizationPanelLdapAuth(displayName string, rank int64, usernameLabel string, passwordLabel string, title string, backButtonText string, continueButtonText string, ) *GetEnrollmentCustomizationPanelLdapAuth`
 
 NewGetEnrollmentCustomizationPanelLdapAuth instantiates a new GetEnrollmentCustomizationPanelLdapAuth object
 This constructor will assign default values to properties that have it defined,
@@ -56,20 +56,20 @@ SetDisplayName sets DisplayName field to given value.
 
 ### GetRank
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetRank() int32`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetRank() int64`
 
 GetRank returns the Rank field if non-nil, zero value otherwise.
 
 ### GetRankOk
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetRankOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetRankOk() (*int64, bool)`
 
 GetRankOk returns a tuple with the Rank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRank
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) SetRank(v int32)`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) SetRank(v int64)`
 
 SetRank sets Rank field to given value.
 
@@ -201,20 +201,20 @@ HasLdapGroupAccess returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetId() int32`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetEnrollmentCustomizationPanelLdapAuth) SetId(v int32)`
+`func (o *GetEnrollmentCustomizationPanelLdapAuth) SetId(v int64)`
 
 SetId sets Id field to given value.
 

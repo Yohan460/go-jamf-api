@@ -19,7 +19,7 @@ var _ MappedNullable = &ObjectHistory{}
 
 // ObjectHistory struct for ObjectHistory
 type ObjectHistory struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Username *string `json:"username,omitempty"`
 	Date *string `json:"date,omitempty"`
 	Note *string `json:"note,omitempty"`
@@ -44,9 +44,9 @@ func NewObjectHistoryWithDefaults() *ObjectHistory {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ObjectHistory) GetId() int32 {
+func (o *ObjectHistory) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -54,7 +54,7 @@ func (o *ObjectHistory) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectHistory) GetIdOk() (*int32, bool) {
+func (o *ObjectHistory) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *ObjectHistory) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ObjectHistory) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *ObjectHistory) SetId(v int64) {
 	o.Id = &v
 }
 

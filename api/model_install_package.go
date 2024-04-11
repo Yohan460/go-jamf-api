@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InstallPackage type satisfies the MappedNullable interface at compile time
@@ -21,9 +23,11 @@ var _ MappedNullable = &InstallPackage{}
 type InstallPackage struct {
 	Manifest PackageManifest `json:"manifest"`
 	InstallAsManaged *bool `json:"installAsManaged,omitempty"`
-	Devices []int32 `json:"devices,omitempty"`
+	Devices []int64 `json:"devices,omitempty"`
 	GroupId *string `json:"groupId,omitempty"`
 }
+
+type _InstallPackage InstallPackage
 
 // NewInstallPackage instantiates a new InstallPackage object
 // This constructor will assign default values to properties that have it defined,
@@ -100,9 +104,9 @@ func (o *InstallPackage) SetInstallAsManaged(v bool) {
 }
 
 // GetDevices returns the Devices field value if set, zero value otherwise.
-func (o *InstallPackage) GetDevices() []int32 {
+func (o *InstallPackage) GetDevices() []int64 {
 	if o == nil || IsNil(o.Devices) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.Devices
@@ -110,7 +114,7 @@ func (o *InstallPackage) GetDevices() []int32 {
 
 // GetDevicesOk returns a tuple with the Devices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallPackage) GetDevicesOk() ([]int32, bool) {
+func (o *InstallPackage) GetDevicesOk() ([]int64, bool) {
 	if o == nil || IsNil(o.Devices) {
 		return nil, false
 	}
@@ -126,8 +130,8 @@ func (o *InstallPackage) HasDevices() bool {
 	return false
 }
 
-// SetDevices gets a reference to the given []int32 and assigns it to the Devices field.
-func (o *InstallPackage) SetDevices(v []int32) {
+// SetDevices gets a reference to the given []int64 and assigns it to the Devices field.
+func (o *InstallPackage) SetDevices(v []int64) {
 	o.Devices = v
 }
 
@@ -184,6 +188,43 @@ func (o InstallPackage) ToMap() (map[string]interface{}, error) {
 		toSerialize["groupId"] = o.GroupId
 	}
 	return toSerialize, nil
+}
+
+func (o *InstallPackage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"manifest",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInstallPackage := _InstallPackage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInstallPackage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InstallPackage(varInstallPackage)
+
+	return err
 }
 
 type NullableInstallPackage struct {

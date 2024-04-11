@@ -26,23 +26,23 @@ Get Re-enrollment object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ReenrollmentGet`: Reenrollment
-    fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ReenrollmentGet`: Reenrollment
+	fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentGet`: %v\n", resp)
 }
 ```
 
@@ -87,30 +87,30 @@ Export reenrollment history collection
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-    exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*script*\" (optional) (default to "")
-    exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*script*\" (optional) (default to "")
+	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ReenrollmentHistoryExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ReenrollmentHistoryExportPost`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryExportPost`: %v\n", resp)
 }
 ```
 
@@ -127,8 +127,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
  **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*script*\&quot; | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
@@ -165,28 +165,28 @@ Get Re-enrollment history object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ReenrollmentHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ReenrollmentHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -201,10 +201,10 @@ Other parameters are passed through a pointer to a apiV1ReenrollmentHistoryGetRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;date:desc&quot;]
 
 ### Return type
@@ -239,24 +239,24 @@ Add specified Re-enrollment history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ReenrollmentHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ReenrollmentHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -305,24 +305,24 @@ Update the Re-enrollment object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    reenrollment := *openapiclient.NewReenrollment("DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED") // Reenrollment | Re-enrollment object to update
+	reenrollment := *openapiclient.NewReenrollment("DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED") // Reenrollment | Re-enrollment object to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentPut(context.Background()).Reenrollment(reenrollment).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ReenrollmentPut`: Reenrollment
-    fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ReEnrollmentPreviewAPI.V1ReenrollmentPut(context.Background()).Reenrollment(reenrollment).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ReEnrollmentPreviewAPI.V1ReenrollmentPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ReenrollmentPut`: Reenrollment
+	fmt.Fprintf(os.Stdout, "Response from `ReEnrollmentPreviewAPI.V1ReenrollmentPut`: %v\n", resp)
 }
 ```
 

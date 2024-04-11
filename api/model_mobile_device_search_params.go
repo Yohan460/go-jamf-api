@@ -19,8 +19,8 @@ var _ MappedNullable = &MobileDeviceSearchParams{}
 
 // MobileDeviceSearchParams struct for MobileDeviceSearchParams
 type MobileDeviceSearchParams struct {
-	PageNumber *int32 `json:"pageNumber,omitempty"`
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageNumber *int64 `json:"pageNumber,omitempty"`
+	PageSize *int64 `json:"pageSize,omitempty"`
 	IsLoadToEnd *bool `json:"isLoadToEnd,omitempty"`
 	OrderBy []OrderBy `json:"orderBy,omitempty"`
 	Udid *string `json:"udid,omitempty"`
@@ -29,7 +29,7 @@ type MobileDeviceSearchParams struct {
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	OsType *string `json:"osType,omitempty"`
 	IsManaged *bool `json:"isManaged,omitempty"`
-	ExcludedIds []int32 `json:"excludedIds,omitempty"`
+	ExcludedIds []int64 `json:"excludedIds,omitempty"`
 }
 
 // NewMobileDeviceSearchParams instantiates a new MobileDeviceSearchParams object
@@ -50,9 +50,9 @@ func NewMobileDeviceSearchParamsWithDefaults() *MobileDeviceSearchParams {
 }
 
 // GetPageNumber returns the PageNumber field value if set, zero value otherwise.
-func (o *MobileDeviceSearchParams) GetPageNumber() int32 {
+func (o *MobileDeviceSearchParams) GetPageNumber() int64 {
 	if o == nil || IsNil(o.PageNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PageNumber
@@ -60,7 +60,7 @@ func (o *MobileDeviceSearchParams) GetPageNumber() int32 {
 
 // GetPageNumberOk returns a tuple with the PageNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int32, bool) {
+func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.PageNumber) {
 		return nil, false
 	}
@@ -76,15 +76,15 @@ func (o *MobileDeviceSearchParams) HasPageNumber() bool {
 	return false
 }
 
-// SetPageNumber gets a reference to the given int32 and assigns it to the PageNumber field.
-func (o *MobileDeviceSearchParams) SetPageNumber(v int32) {
+// SetPageNumber gets a reference to the given int64 and assigns it to the PageNumber field.
+func (o *MobileDeviceSearchParams) SetPageNumber(v int64) {
 	o.PageNumber = &v
 }
 
 // GetPageSize returns the PageSize field value if set, zero value otherwise.
-func (o *MobileDeviceSearchParams) GetPageSize() int32 {
+func (o *MobileDeviceSearchParams) GetPageSize() int64 {
 	if o == nil || IsNil(o.PageSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PageSize
@@ -92,7 +92,7 @@ func (o *MobileDeviceSearchParams) GetPageSize() int32 {
 
 // GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int32, bool) {
+func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.PageSize) {
 		return nil, false
 	}
@@ -108,8 +108,8 @@ func (o *MobileDeviceSearchParams) HasPageSize() bool {
 	return false
 }
 
-// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
-func (o *MobileDeviceSearchParams) SetPageSize(v int32) {
+// SetPageSize gets a reference to the given int64 and assigns it to the PageSize field.
+func (o *MobileDeviceSearchParams) SetPageSize(v int64) {
 	o.PageSize = &v
 }
 
@@ -370,9 +370,9 @@ func (o *MobileDeviceSearchParams) SetIsManaged(v bool) {
 }
 
 // GetExcludedIds returns the ExcludedIds field value if set, zero value otherwise.
-func (o *MobileDeviceSearchParams) GetExcludedIds() []int32 {
+func (o *MobileDeviceSearchParams) GetExcludedIds() []int64 {
 	if o == nil || IsNil(o.ExcludedIds) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.ExcludedIds
@@ -380,7 +380,7 @@ func (o *MobileDeviceSearchParams) GetExcludedIds() []int32 {
 
 // GetExcludedIdsOk returns a tuple with the ExcludedIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceSearchParams) GetExcludedIdsOk() ([]int32, bool) {
+func (o *MobileDeviceSearchParams) GetExcludedIdsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.ExcludedIds) {
 		return nil, false
 	}
@@ -396,8 +396,8 @@ func (o *MobileDeviceSearchParams) HasExcludedIds() bool {
 	return false
 }
 
-// SetExcludedIds gets a reference to the given []int32 and assigns it to the ExcludedIds field.
-func (o *MobileDeviceSearchParams) SetExcludedIds(v []int32) {
+// SetExcludedIds gets a reference to the given []int64 and assigns it to the ExcludedIds field.
+func (o *MobileDeviceSearchParams) SetExcludedIds(v []int64) {
 	o.ExcludedIds = v
 }
 

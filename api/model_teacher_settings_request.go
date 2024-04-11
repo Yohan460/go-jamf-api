@@ -22,7 +22,7 @@ type TeacherSettingsRequest struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
 	TimezoneId *string `json:"timezoneId,omitempty"`
 	AutoClear NullableString `json:"autoClear,omitempty"`
-	MaxRestrictionLengthSeconds *int32 `json:"maxRestrictionLengthSeconds,omitempty"`
+	MaxRestrictionLengthSeconds *int64 `json:"maxRestrictionLengthSeconds,omitempty"`
 	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
 }
 
@@ -150,9 +150,9 @@ func (o *TeacherSettingsRequest) UnsetAutoClear() {
 }
 
 // GetMaxRestrictionLengthSeconds returns the MaxRestrictionLengthSeconds field value if set, zero value otherwise.
-func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int32 {
+func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int64 {
 	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxRestrictionLengthSeconds
@@ -160,7 +160,7 @@ func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSeconds() int32 {
 
 // GetMaxRestrictionLengthSecondsOk returns a tuple with the MaxRestrictionLengthSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int32, bool) {
+func (o *TeacherSettingsRequest) GetMaxRestrictionLengthSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		return nil, false
 	}
@@ -176,8 +176,8 @@ func (o *TeacherSettingsRequest) HasMaxRestrictionLengthSeconds() bool {
 	return false
 }
 
-// SetMaxRestrictionLengthSeconds gets a reference to the given int32 and assigns it to the MaxRestrictionLengthSeconds field.
-func (o *TeacherSettingsRequest) SetMaxRestrictionLengthSeconds(v int32) {
+// SetMaxRestrictionLengthSeconds gets a reference to the given int64 and assigns it to the MaxRestrictionLengthSeconds field.
+func (o *TeacherSettingsRequest) SetMaxRestrictionLengthSeconds(v int64) {
 	o.MaxRestrictionLengthSeconds = &v
 }
 

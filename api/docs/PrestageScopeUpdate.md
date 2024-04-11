@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SerialNumbers** | **[]string** |  | 
-**VersionLock** | **int32** |  | 
+**VersionLock** | **int64** |  | 
 
 ## Methods
 
 ### NewPrestageScopeUpdate
 
-`func NewPrestageScopeUpdate(serialNumbers []string, versionLock int32, ) *PrestageScopeUpdate`
+`func NewPrestageScopeUpdate(serialNumbers []string, versionLock int64, ) *PrestageScopeUpdate`
 
 NewPrestageScopeUpdate instantiates a new PrestageScopeUpdate object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetSerialNumbers sets SerialNumbers field to given value.
 
 ### GetVersionLock
 
-`func (o *PrestageScopeUpdate) GetVersionLock() int32`
+`func (o *PrestageScopeUpdate) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PrestageScopeUpdate) GetVersionLockOk() (*int32, bool)`
+`func (o *PrestageScopeUpdate) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PrestageScopeUpdate) SetVersionLock(v int32)`
+`func (o *PrestageScopeUpdate) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

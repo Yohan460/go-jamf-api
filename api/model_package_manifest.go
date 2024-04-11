@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PackageManifest type satisfies the MappedNullable interface at compile time
@@ -28,14 +30,16 @@ type PackageManifest struct {
 	BundleVersion string `json:"bundleVersion"`
 	Subtitle *string `json:"subtitle,omitempty"`
 	Title string `json:"title"`
-	SizeInBytes int32 `json:"sizeInBytes"`
+	SizeInBytes int64 `json:"sizeInBytes"`
 }
+
+type _PackageManifest PackageManifest
 
 // NewPackageManifest instantiates a new PackageManifest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPackageManifest(url string, hash string, hashType string, bundleId string, bundleVersion string, title string, sizeInBytes int32) *PackageManifest {
+func NewPackageManifest(url string, hash string, hashType string, bundleId string, bundleVersion string, title string, sizeInBytes int64) *PackageManifest {
 	this := PackageManifest{}
 	this.Url = url
 	this.Hash = hash
@@ -296,9 +300,9 @@ func (o *PackageManifest) SetTitle(v string) {
 }
 
 // GetSizeInBytes returns the SizeInBytes field value
-func (o *PackageManifest) GetSizeInBytes() int32 {
+func (o *PackageManifest) GetSizeInBytes() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -307,7 +311,7 @@ func (o *PackageManifest) GetSizeInBytes() int32 {
 
 // GetSizeInBytesOk returns a tuple with the SizeInBytes field value
 // and a boolean to check if the value has been set.
-func (o *PackageManifest) GetSizeInBytesOk() (*int32, bool) {
+func (o *PackageManifest) GetSizeInBytesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -315,7 +319,7 @@ func (o *PackageManifest) GetSizeInBytesOk() (*int32, bool) {
 }
 
 // SetSizeInBytes sets field value
-func (o *PackageManifest) SetSizeInBytes(v int32) {
+func (o *PackageManifest) SetSizeInBytes(v int64) {
 	o.SizeInBytes = v
 }
 
@@ -346,6 +350,49 @@ func (o PackageManifest) ToMap() (map[string]interface{}, error) {
 	toSerialize["title"] = o.Title
 	toSerialize["sizeInBytes"] = o.SizeInBytes
 	return toSerialize, nil
+}
+
+func (o *PackageManifest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"url",
+		"hash",
+		"hashType",
+		"bundleId",
+		"bundleVersion",
+		"title",
+		"sizeInBytes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPackageManifest := _PackageManifest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPackageManifest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PackageManifest(varPackageManifest)
+
+	return err
 }
 
 type NullablePackageManifest struct {

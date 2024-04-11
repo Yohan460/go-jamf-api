@@ -28,7 +28,7 @@ type ComputerPurchase struct {
 	AppleCareId *string `json:"appleCareId,omitempty"`
 	LeaseDate *string `json:"leaseDate,omitempty"`
 	PurchasePrice *string `json:"purchasePrice,omitempty"`
-	LifeExpectancy *int32 `json:"lifeExpectancy,omitempty"`
+	LifeExpectancy *int64 `json:"lifeExpectancy,omitempty"`
 	PurchasingAccount *string `json:"purchasingAccount,omitempty"`
 	PurchasingContact *string `json:"purchasingContact,omitempty"`
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
@@ -340,9 +340,9 @@ func (o *ComputerPurchase) SetPurchasePrice(v string) {
 }
 
 // GetLifeExpectancy returns the LifeExpectancy field value if set, zero value otherwise.
-func (o *ComputerPurchase) GetLifeExpectancy() int32 {
+func (o *ComputerPurchase) GetLifeExpectancy() int64 {
 	if o == nil || IsNil(o.LifeExpectancy) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LifeExpectancy
@@ -350,7 +350,7 @@ func (o *ComputerPurchase) GetLifeExpectancy() int32 {
 
 // GetLifeExpectancyOk returns a tuple with the LifeExpectancy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerPurchase) GetLifeExpectancyOk() (*int32, bool) {
+func (o *ComputerPurchase) GetLifeExpectancyOk() (*int64, bool) {
 	if o == nil || IsNil(o.LifeExpectancy) {
 		return nil, false
 	}
@@ -366,8 +366,8 @@ func (o *ComputerPurchase) HasLifeExpectancy() bool {
 	return false
 }
 
-// SetLifeExpectancy gets a reference to the given int32 and assigns it to the LifeExpectancy field.
-func (o *ComputerPurchase) SetLifeExpectancy(v int32) {
+// SetLifeExpectancy gets a reference to the given int64 and assigns it to the LifeExpectancy field.
+func (o *ComputerPurchase) SetLifeExpectancy(v int64) {
 	o.LifeExpectancy = &v
 }
 

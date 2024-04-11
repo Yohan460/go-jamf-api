@@ -52,7 +52,7 @@ type VppSubscriptionsPreviewAPI interface {
 
 	Deprecated
 	*/
-	VppSubscriptionsIdGet(ctx context.Context, id int32) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest
+	VppSubscriptionsIdGet(ctx context.Context, id int64) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest
 
 	// VppSubscriptionsIdGetExecute executes the request
 	//  @return VppTokenSubscription
@@ -169,7 +169,7 @@ func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsGetExecute(r VppSubs
 type VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest struct {
 	ctx context.Context
 	ApiService VppSubscriptionsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest) Execute() (*VppTokenSubscription, *http.Response, error) {
@@ -188,7 +188,7 @@ Found vpp subscription by id.
 
 Deprecated
 */
-func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsIdGet(ctx context.Context, id int32) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest {
+func (a *VppSubscriptionsPreviewAPIService) VppSubscriptionsIdGet(ctx context.Context, id int64) VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest {
 	return VppSubscriptionsPreviewAPIVppSubscriptionsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,

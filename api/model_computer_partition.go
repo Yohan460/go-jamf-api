@@ -26,10 +26,10 @@ type ComputerPartition struct {
 	AvailableMegabytes *int64 `json:"availableMegabytes,omitempty"`
 	PartitionType *string `json:"partitionType,omitempty"`
 	// Percentage of space used.
-	PercentUsed *int32 `json:"percentUsed,omitempty"`
+	PercentUsed *int64 `json:"percentUsed,omitempty"`
 	FileVault2State *ComputerPartitionFileVault2State `json:"fileVault2State,omitempty"`
 	// Percentage progress of current FileVault 2 operation.
-	FileVault2ProgressPercent NullableInt32 `json:"fileVault2ProgressPercent,omitempty"`
+	FileVault2ProgressPercent NullableInt64 `json:"fileVault2ProgressPercent,omitempty"`
 	LvmManaged *bool `json:"lvmManaged,omitempty"`
 }
 
@@ -179,9 +179,9 @@ func (o *ComputerPartition) SetPartitionType(v string) {
 }
 
 // GetPercentUsed returns the PercentUsed field value if set, zero value otherwise.
-func (o *ComputerPartition) GetPercentUsed() int32 {
+func (o *ComputerPartition) GetPercentUsed() int64 {
 	if o == nil || IsNil(o.PercentUsed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PercentUsed
@@ -189,7 +189,7 @@ func (o *ComputerPartition) GetPercentUsed() int32 {
 
 // GetPercentUsedOk returns a tuple with the PercentUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerPartition) GetPercentUsedOk() (*int32, bool) {
+func (o *ComputerPartition) GetPercentUsedOk() (*int64, bool) {
 	if o == nil || IsNil(o.PercentUsed) {
 		return nil, false
 	}
@@ -205,8 +205,8 @@ func (o *ComputerPartition) HasPercentUsed() bool {
 	return false
 }
 
-// SetPercentUsed gets a reference to the given int32 and assigns it to the PercentUsed field.
-func (o *ComputerPartition) SetPercentUsed(v int32) {
+// SetPercentUsed gets a reference to the given int64 and assigns it to the PercentUsed field.
+func (o *ComputerPartition) SetPercentUsed(v int64) {
 	o.PercentUsed = &v
 }
 
@@ -243,9 +243,9 @@ func (o *ComputerPartition) SetFileVault2State(v ComputerPartitionFileVault2Stat
 }
 
 // GetFileVault2ProgressPercent returns the FileVault2ProgressPercent field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ComputerPartition) GetFileVault2ProgressPercent() int32 {
+func (o *ComputerPartition) GetFileVault2ProgressPercent() int64 {
 	if o == nil || IsNil(o.FileVault2ProgressPercent.Get()) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FileVault2ProgressPercent.Get()
@@ -254,7 +254,7 @@ func (o *ComputerPartition) GetFileVault2ProgressPercent() int32 {
 // GetFileVault2ProgressPercentOk returns a tuple with the FileVault2ProgressPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ComputerPartition) GetFileVault2ProgressPercentOk() (*int32, bool) {
+func (o *ComputerPartition) GetFileVault2ProgressPercentOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *ComputerPartition) HasFileVault2ProgressPercent() bool {
 	return false
 }
 
-// SetFileVault2ProgressPercent gets a reference to the given NullableInt32 and assigns it to the FileVault2ProgressPercent field.
-func (o *ComputerPartition) SetFileVault2ProgressPercent(v int32) {
+// SetFileVault2ProgressPercent gets a reference to the given NullableInt64 and assigns it to the FileVault2ProgressPercent field.
+func (o *ComputerPartition) SetFileVault2ProgressPercent(v int64) {
 	o.FileVault2ProgressPercent.Set(&v)
 }
 // SetFileVault2ProgressPercentNil sets the value for FileVault2ProgressPercent to be an explicit nil

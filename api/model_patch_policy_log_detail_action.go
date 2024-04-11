@@ -20,7 +20,7 @@ var _ MappedNullable = &PatchPolicyLogDetailAction{}
 // PatchPolicyLogDetailAction struct for PatchPolicyLogDetailAction
 type PatchPolicyLogDetailAction struct {
 	Id *string `json:"id,omitempty"`
-	ActionOrder *int32 `json:"actionOrder,omitempty"`
+	ActionOrder *int64 `json:"actionOrder,omitempty"`
 	Action *string `json:"action,omitempty"`
 }
 
@@ -74,9 +74,9 @@ func (o *PatchPolicyLogDetailAction) SetId(v string) {
 }
 
 // GetActionOrder returns the ActionOrder field value if set, zero value otherwise.
-func (o *PatchPolicyLogDetailAction) GetActionOrder() int32 {
+func (o *PatchPolicyLogDetailAction) GetActionOrder() int64 {
 	if o == nil || IsNil(o.ActionOrder) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ActionOrder
@@ -84,7 +84,7 @@ func (o *PatchPolicyLogDetailAction) GetActionOrder() int32 {
 
 // GetActionOrderOk returns a tuple with the ActionOrder field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyLogDetailAction) GetActionOrderOk() (*int32, bool) {
+func (o *PatchPolicyLogDetailAction) GetActionOrderOk() (*int64, bool) {
 	if o == nil || IsNil(o.ActionOrder) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *PatchPolicyLogDetailAction) HasActionOrder() bool {
 	return false
 }
 
-// SetActionOrder gets a reference to the given int32 and assigns it to the ActionOrder field.
-func (o *PatchPolicyLogDetailAction) SetActionOrder(v int32) {
+// SetActionOrder gets a reference to the given int64 and assigns it to the ActionOrder field.
+func (o *PatchPolicyLogDetailAction) SetActionOrder(v int64) {
 	o.ActionOrder = &v
 }
 

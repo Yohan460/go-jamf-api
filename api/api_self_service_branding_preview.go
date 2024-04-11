@@ -117,8 +117,6 @@ func (a *SelfServiceBrandingPreviewAPIService) SelfServiceBrandingImagesPostExec
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {

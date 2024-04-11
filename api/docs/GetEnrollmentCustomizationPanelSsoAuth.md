@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | **string** |  | 
-**Rank** | **int32** |  | 
+**Rank** | **int64** |  | 
 **IsUseJamfConnect** | **bool** |  | 
 **LongNameAttribute** | **string** |  | 
 **ShortNameAttribute** | **string** |  | 
 **IsGroupEnrollmentAccessEnabled** | **bool** |  | 
 **GroupEnrollmentAccessName** | **string** |  | [default to ""]
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewGetEnrollmentCustomizationPanelSsoAuth
 
-`func NewGetEnrollmentCustomizationPanelSsoAuth(displayName string, rank int32, isUseJamfConnect bool, longNameAttribute string, shortNameAttribute string, isGroupEnrollmentAccessEnabled bool, groupEnrollmentAccessName string, ) *GetEnrollmentCustomizationPanelSsoAuth`
+`func NewGetEnrollmentCustomizationPanelSsoAuth(displayName string, rank int64, isUseJamfConnect bool, longNameAttribute string, shortNameAttribute string, isGroupEnrollmentAccessEnabled bool, groupEnrollmentAccessName string, ) *GetEnrollmentCustomizationPanelSsoAuth`
 
 NewGetEnrollmentCustomizationPanelSsoAuth instantiates a new GetEnrollmentCustomizationPanelSsoAuth object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +55,20 @@ SetDisplayName sets DisplayName field to given value.
 
 ### GetRank
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetRank() int32`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetRank() int64`
 
 GetRank returns the Rank field if non-nil, zero value otherwise.
 
 ### GetRankOk
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetRankOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetRankOk() (*int64, bool)`
 
 GetRankOk returns a tuple with the Rank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRank
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) SetRank(v int32)`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) SetRank(v int64)`
 
 SetRank sets Rank field to given value.
 
@@ -175,20 +175,20 @@ SetGroupEnrollmentAccessName sets GroupEnrollmentAccessName field to given value
 
 ### GetId
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetId() int32`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetEnrollmentCustomizationPanelSsoAuth) SetId(v int32)`
+`func (o *GetEnrollmentCustomizationPanelSsoAuth) SetId(v int64)`
 
 SetId sets Id field to given value.
 

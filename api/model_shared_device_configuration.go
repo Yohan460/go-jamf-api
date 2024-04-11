@@ -19,8 +19,8 @@ var _ MappedNullable = &SharedDeviceConfiguration{}
 
 // SharedDeviceConfiguration struct for SharedDeviceConfiguration
 type SharedDeviceConfiguration struct {
-	QuotaSize *int32 `json:"quotaSize,omitempty"`
-	ResidentUsers *int32 `json:"residentUsers,omitempty"`
+	QuotaSize *int64 `json:"quotaSize,omitempty"`
+	ResidentUsers *int64 `json:"residentUsers,omitempty"`
 }
 
 // NewSharedDeviceConfiguration instantiates a new SharedDeviceConfiguration object
@@ -41,9 +41,9 @@ func NewSharedDeviceConfigurationWithDefaults() *SharedDeviceConfiguration {
 }
 
 // GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
-func (o *SharedDeviceConfiguration) GetQuotaSize() int32 {
+func (o *SharedDeviceConfiguration) GetQuotaSize() int64 {
 	if o == nil || IsNil(o.QuotaSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.QuotaSize
@@ -51,7 +51,7 @@ func (o *SharedDeviceConfiguration) GetQuotaSize() int32 {
 
 // GetQuotaSizeOk returns a tuple with the QuotaSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int32, bool) {
+func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.QuotaSize) {
 		return nil, false
 	}
@@ -67,15 +67,15 @@ func (o *SharedDeviceConfiguration) HasQuotaSize() bool {
 	return false
 }
 
-// SetQuotaSize gets a reference to the given int32 and assigns it to the QuotaSize field.
-func (o *SharedDeviceConfiguration) SetQuotaSize(v int32) {
+// SetQuotaSize gets a reference to the given int64 and assigns it to the QuotaSize field.
+func (o *SharedDeviceConfiguration) SetQuotaSize(v int64) {
 	o.QuotaSize = &v
 }
 
 // GetResidentUsers returns the ResidentUsers field value if set, zero value otherwise.
-func (o *SharedDeviceConfiguration) GetResidentUsers() int32 {
+func (o *SharedDeviceConfiguration) GetResidentUsers() int64 {
 	if o == nil || IsNil(o.ResidentUsers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ResidentUsers
@@ -83,7 +83,7 @@ func (o *SharedDeviceConfiguration) GetResidentUsers() int32 {
 
 // GetResidentUsersOk returns a tuple with the ResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int32, bool) {
+func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int64, bool) {
 	if o == nil || IsNil(o.ResidentUsers) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *SharedDeviceConfiguration) HasResidentUsers() bool {
 	return false
 }
 
-// SetResidentUsers gets a reference to the given int32 and assigns it to the ResidentUsers field.
-func (o *SharedDeviceConfiguration) SetResidentUsers(v int32) {
+// SetResidentUsers gets a reference to the given int64 and assigns it to the ResidentUsers field.
+func (o *SharedDeviceConfiguration) SetResidentUsers(v int64) {
 	o.ResidentUsers = &v
 }
 

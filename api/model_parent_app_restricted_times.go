@@ -95,10 +95,10 @@ func (o ParentAppRestrictedTimes) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *ParentAppRestrictedTimes) UnmarshalJSON(bytes []byte) (err error) {
+func (o *ParentAppRestrictedTimes) UnmarshalJSON(data []byte) (err error) {
 	varParentAppRestrictedTimes := _ParentAppRestrictedTimes{}
 
-	err = json.Unmarshal(bytes, &varParentAppRestrictedTimes)
+	err = json.Unmarshal(data, &varParentAppRestrictedTimes)
 
 	if err != nil {
 		return err
@@ -108,7 +108,7 @@ func (o *ParentAppRestrictedTimes) UnmarshalJSON(bytes []byte) (err error) {
 
 	additionalProperties := make(map[string]interface{})
 
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		o.AdditionalProperties = additionalProperties
 	}

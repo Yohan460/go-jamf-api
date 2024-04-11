@@ -29,27 +29,27 @@ Search for sorted and paged Scripts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: `id`, `name`, `info`, `notes`, `priority`, `categoryId`, `categoryName`, `parameter4` up to `parameter11`, `osRequirements`, `scriptContents`. Example: sort=date:desc,name:asc  (optional) (default to ["name:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter scripts collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: `id`, `name`, `info`, `notes`, `priority`, `categoryId`, `categoryName`, `parameter4` up to `parameter11`, `osRequirements`, `scriptContents`. This param can be combined with paging and sorting. Example: filter=categoryName==\"Category\" and name==\"*script name*\" (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: `id`, `name`, `info`, `notes`, `priority`, `categoryId`, `categoryName`, `parameter4` up to `parameter11`, `osRequirements`, `scriptContents`. Example: sort=date:desc,name:asc  (optional) (default to ["name:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter scripts collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: `id`, `name`, `info`, `notes`, `priority`, `categoryId`, `categoryName`, `parameter4` up to `parameter11`, `osRequirements`, `scriptContents`. This param can be combined with paging and sorting. Example: filter=categoryName==\"Category\" and name==\"*script name*\" (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsGet`: ScriptsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsGet`: ScriptsSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsGet`: %v\n", resp)
 }
 ```
 
@@ -64,8 +64,8 @@ Other parameters are passed through a pointer to a apiV1ScriptsGetRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;info&#x60;, &#x60;notes&#x60;, &#x60;priority&#x60;, &#x60;categoryId&#x60;, &#x60;categoryName&#x60;, &#x60;parameter4&#x60; up to &#x60;parameter11&#x60;, &#x60;osRequirements&#x60;, &#x60;scriptContents&#x60;. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;name:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter scripts collection. Default search is empty query - returning all results for the requested page. Fields allowed in the query: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;info&#x60;, &#x60;notes&#x60;, &#x60;priority&#x60;, &#x60;categoryId&#x60;, &#x60;categoryName&#x60;, &#x60;parameter4&#x60; up to &#x60;parameter11&#x60;, &#x60;osRequirements&#x60;, &#x60;scriptContents&#x60;. This param can be combined with paging and sorting. Example: filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot; and name&#x3D;&#x3D;\&quot;*script name*\&quot; | [default to &quot;&quot;]
 
@@ -101,22 +101,22 @@ Delete a Script at the specified id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Script object identifier
+	id := "id_example" // string | Script object identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ScriptsAPI.V1ScriptsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ScriptsAPI.V1ScriptsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -169,24 +169,24 @@ Download a text file of the Script contents
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of the script to be downloaded
+	id := "id_example" // string | id of the script to be downloaded
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdDownloadGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDownloadGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsIdDownloadGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdDownloadGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdDownloadGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdDownloadGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsIdDownloadGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdDownloadGet`: %v\n", resp)
 }
 ```
 
@@ -239,24 +239,24 @@ Retrieve a full script object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Script object identifier
+	id := "id_example" // string | Script object identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsIdGet`: Script
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsIdGet`: Script
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdGet`: %v\n", resp)
 }
 ```
 
@@ -309,28 +309,28 @@ Get specified Script history object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of script history record
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	id := "id_example" // string | id of script history record
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -350,8 +350,8 @@ Other parameters are passed through a pointer to a apiV1ScriptsIdHistoryGetReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -387,25 +387,25 @@ Add specified Script history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of script history record
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	id := "id_example" // string | instance id of script history record
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsIdHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -459,25 +459,25 @@ Replace the script at the id with the supplied information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Script object identifier
-    script := *openapiclient.NewScript("Install Developer Utils Script") // Script | new script to upload to existing id. ids defined in this body will be ignored
+	id := "id_example" // string | Script object identifier
+	script := *openapiclient.NewScript("Install Developer Utils Script") // Script | new script to upload to existing id. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdPut(context.Background(), id).Script(script).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsIdPut`: Script
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsIdPut(context.Background(), id).Script(script).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsIdPut`: Script
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsIdPut`: %v\n", resp)
 }
 ```
 
@@ -531,24 +531,24 @@ Create a Script
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    script := *openapiclient.NewScript("Install Developer Utils Script") // Script | new script to create. ids defined in this body will be ignored
+	script := *openapiclient.NewScript("Install Developer Utils Script") // Script | new script to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScriptsAPI.V1ScriptsPost(context.Background()).Script(script).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ScriptsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScriptsAPI.V1ScriptsPost(context.Background()).Script(script).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScriptsAPI.V1ScriptsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ScriptsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ScriptsAPI.V1ScriptsPost`: %v\n", resp)
 }
 ```
 

@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ApiIntegrationRequest type satisfies the MappedNullable interface at compile time
@@ -23,8 +25,10 @@ type ApiIntegrationRequest struct {
 	AuthorizationScopes []string `json:"authorizationScopes"`
 	DisplayName string `json:"displayName"`
 	Enabled *bool `json:"enabled,omitempty"`
-	AccessTokenLifetimeSeconds *int32 `json:"accessTokenLifetimeSeconds,omitempty"`
+	AccessTokenLifetimeSeconds *int64 `json:"accessTokenLifetimeSeconds,omitempty"`
 }
+
+type _ApiIntegrationRequest ApiIntegrationRequest
 
 // NewApiIntegrationRequest instantiates a new ApiIntegrationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -126,9 +130,9 @@ func (o *ApiIntegrationRequest) SetEnabled(v bool) {
 }
 
 // GetAccessTokenLifetimeSeconds returns the AccessTokenLifetimeSeconds field value if set, zero value otherwise.
-func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSeconds() int32 {
+func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSeconds() int64 {
 	if o == nil || IsNil(o.AccessTokenLifetimeSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AccessTokenLifetimeSeconds
@@ -136,7 +140,7 @@ func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSeconds() int32 {
 
 // GetAccessTokenLifetimeSecondsOk returns a tuple with the AccessTokenLifetimeSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSecondsOk() (*int32, bool) {
+func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AccessTokenLifetimeSeconds) {
 		return nil, false
 	}
@@ -152,8 +156,8 @@ func (o *ApiIntegrationRequest) HasAccessTokenLifetimeSeconds() bool {
 	return false
 }
 
-// SetAccessTokenLifetimeSeconds gets a reference to the given int32 and assigns it to the AccessTokenLifetimeSeconds field.
-func (o *ApiIntegrationRequest) SetAccessTokenLifetimeSeconds(v int32) {
+// SetAccessTokenLifetimeSeconds gets a reference to the given int64 and assigns it to the AccessTokenLifetimeSeconds field.
+func (o *ApiIntegrationRequest) SetAccessTokenLifetimeSeconds(v int64) {
 	o.AccessTokenLifetimeSeconds = &v
 }
 
@@ -176,6 +180,44 @@ func (o ApiIntegrationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["accessTokenLifetimeSeconds"] = o.AccessTokenLifetimeSeconds
 	}
 	return toSerialize, nil
+}
+
+func (o *ApiIntegrationRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"authorizationScopes",
+		"displayName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varApiIntegrationRequest := _ApiIntegrationRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varApiIntegrationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApiIntegrationRequest(varApiIntegrationRequest)
+
+	return err
 }
 
 type NullableApiIntegrationRequest struct {

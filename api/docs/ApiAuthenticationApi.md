@@ -30,23 +30,23 @@ Get the authorization details associated with the current API token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.AuthCurrentPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthCurrentPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthCurrentPost`: CurrentAuthorization
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthCurrentPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.AuthCurrentPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthCurrentPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthCurrentPost`: CurrentAuthorization
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthCurrentPost`: %v\n", resp)
 }
 ```
 
@@ -91,23 +91,23 @@ Get all the Authorization details associated with the current api
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.AuthGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthGet`: Authorization
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.AuthGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthGet`: Authorization
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthGet`: %v\n", resp)
 }
 ```
 
@@ -152,21 +152,21 @@ Invalidate current token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApiAuthenticationAPI.AuthInvalidateTokenPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthInvalidateTokenPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApiAuthenticationAPI.AuthInvalidateTokenPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthInvalidateTokenPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -211,23 +211,23 @@ Invalidate existing token and generates new token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.AuthKeepAlivePost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthKeepAlivePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthKeepAlivePost`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthKeepAlivePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.AuthKeepAlivePost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthKeepAlivePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthKeepAlivePost`: AuthToken
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthKeepAlivePost`: %v\n", resp)
 }
 ```
 
@@ -272,23 +272,23 @@ Create a token based on other authentication details (basic, etc.)
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.AuthTokensPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthTokensPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensPost`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthTokensPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.AuthTokensPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthTokensPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensPost`: AuthToken
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthTokensPost`: %v\n", resp)
 }
 ```
 
@@ -333,23 +333,23 @@ Get all the Authorization details associated with the current api
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AuthGet`: AuthorizationV1
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AuthGet`: AuthorizationV1
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthGet`: %v\n", resp)
 }
 ```
 
@@ -394,21 +394,21 @@ Invalidate current token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApiAuthenticationAPI.V1AuthInvalidateTokenPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthInvalidateTokenPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApiAuthenticationAPI.V1AuthInvalidateTokenPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthInvalidateTokenPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -453,23 +453,23 @@ Invalidate existing token and generates new token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthKeepAlivePost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthKeepAlivePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AuthKeepAlivePost`: AuthTokenV1
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthKeepAlivePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthKeepAlivePost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthKeepAlivePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AuthKeepAlivePost`: AuthTokenV1
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthKeepAlivePost`: %v\n", resp)
 }
 ```
 
@@ -514,23 +514,23 @@ Create a token based on other authentication details (basic, etc.)
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthTokenPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthTokenPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AuthTokenPost`: AuthTokenV1
-    fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthTokenPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.V1AuthTokenPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.V1AuthTokenPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AuthTokenPost`: AuthTokenV1
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.V1AuthTokenPost`: %v\n", resp)
 }
 ```
 

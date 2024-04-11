@@ -19,7 +19,7 @@ var _ MappedNullable = &InventoryPreloadCsvValidationSuccess{}
 
 // InventoryPreloadCsvValidationSuccess struct for InventoryPreloadCsvValidationSuccess
 type InventoryPreloadCsvValidationSuccess struct {
-	RecordCount *int32 `json:"recordCount,omitempty"`
+	RecordCount *int64 `json:"recordCount,omitempty"`
 }
 
 // NewInventoryPreloadCsvValidationSuccess instantiates a new InventoryPreloadCsvValidationSuccess object
@@ -40,9 +40,9 @@ func NewInventoryPreloadCsvValidationSuccessWithDefaults() *InventoryPreloadCsvV
 }
 
 // GetRecordCount returns the RecordCount field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int32 {
+func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int64 {
 	if o == nil || IsNil(o.RecordCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RecordCount
@@ -50,7 +50,7 @@ func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int32 {
 
 // GetRecordCountOk returns a tuple with the RecordCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int32, bool) {
+func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.RecordCount) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *InventoryPreloadCsvValidationSuccess) HasRecordCount() bool {
 	return false
 }
 
-// SetRecordCount gets a reference to the given int32 and assigns it to the RecordCount field.
-func (o *InventoryPreloadCsvValidationSuccess) SetRecordCount(v int32) {
+// SetRecordCount gets a reference to the given int64 and assigns it to the RecordCount field.
+func (o *InventoryPreloadCsvValidationSuccess) SetRecordCount(v int64) {
 	o.RecordCount = &v
 }
 

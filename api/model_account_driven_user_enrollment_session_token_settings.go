@@ -20,8 +20,8 @@ var _ MappedNullable = &AccountDrivenUserEnrollmentSessionTokenSettings{}
 // AccountDrivenUserEnrollmentSessionTokenSettings Settings for Account Driven User Enrollment. Only 1 of expirationIntervalDays or expirationIntervalSeconds can be supplied.
 type AccountDrivenUserEnrollmentSessionTokenSettings struct {
 	Enabled *bool `json:"enabled,omitempty"`
-	ExpirationIntervalDays *int32 `json:"expirationIntervalDays,omitempty"`
-	ExpirationIntervalSeconds *int32 `json:"expirationIntervalSeconds,omitempty"`
+	ExpirationIntervalDays *int64 `json:"expirationIntervalDays,omitempty"`
+	ExpirationIntervalSeconds *int64 `json:"expirationIntervalSeconds,omitempty"`
 }
 
 // NewAccountDrivenUserEnrollmentSessionTokenSettings instantiates a new AccountDrivenUserEnrollmentSessionTokenSettings object
@@ -74,9 +74,9 @@ func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetEnabled(v bool) {
 }
 
 // GetExpirationIntervalDays returns the ExpirationIntervalDays field value if set, zero value otherwise.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDays() int32 {
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDays() int64 {
 	if o == nil || IsNil(o.ExpirationIntervalDays) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ExpirationIntervalDays
@@ -84,7 +84,7 @@ func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalD
 
 // GetExpirationIntervalDaysOk returns a tuple with the ExpirationIntervalDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDaysOk() (*int32, bool) {
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDaysOk() (*int64, bool) {
 	if o == nil || IsNil(o.ExpirationIntervalDays) {
 		return nil, false
 	}
@@ -100,15 +100,15 @@ func (o *AccountDrivenUserEnrollmentSessionTokenSettings) HasExpirationIntervalD
 	return false
 }
 
-// SetExpirationIntervalDays gets a reference to the given int32 and assigns it to the ExpirationIntervalDays field.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalDays(v int32) {
+// SetExpirationIntervalDays gets a reference to the given int64 and assigns it to the ExpirationIntervalDays field.
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalDays(v int64) {
 	o.ExpirationIntervalDays = &v
 }
 
 // GetExpirationIntervalSeconds returns the ExpirationIntervalSeconds field value if set, zero value otherwise.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSeconds() int32 {
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSeconds() int64 {
 	if o == nil || IsNil(o.ExpirationIntervalSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ExpirationIntervalSeconds
@@ -116,7 +116,7 @@ func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalS
 
 // GetExpirationIntervalSecondsOk returns a tuple with the ExpirationIntervalSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSecondsOk() (*int32, bool) {
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.ExpirationIntervalSeconds) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *AccountDrivenUserEnrollmentSessionTokenSettings) HasExpirationIntervalS
 	return false
 }
 
-// SetExpirationIntervalSeconds gets a reference to the given int32 and assigns it to the ExpirationIntervalSeconds field.
-func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalSeconds(v int32) {
+// SetExpirationIntervalSeconds gets a reference to the given int64 and assigns it to the ExpirationIntervalSeconds field.
+func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalSeconds(v int64) {
 	o.ExpirationIntervalSeconds = &v
 }
 

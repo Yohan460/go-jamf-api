@@ -40,28 +40,28 @@ Retrieve sorted and paged Enrollment Customizations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationGet`: EnrollmentCustomizationSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationGet`: EnrollmentCustomizationSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationGet`: %v\n", resp)
 }
 ```
 
@@ -76,10 +76,10 @@ Other parameters are passed through a pointer to a apiV1EnrollmentCustomizationG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;id:asc&quot;]
 
 ### Return type
@@ -114,22 +114,22 @@ Delete an Enrollment Customization with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
+	id := int64(56) // int64 | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -139,7 +139,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -182,24 +182,24 @@ Retrieve an Enrollment Customization with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
+	id := int64(56) // int64 | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationIdGet`: GetEnrollmentCustomization
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationIdGet`: GetEnrollmentCustomization
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdGet`: %v\n", resp)
 }
 ```
 
@@ -209,7 +209,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -252,29 +252,29 @@ Get sorted and paged Enrollment Customization history objects
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is duplicated for each sort criterion, e.g., ...&sort=name%2Casc&sort=date%2Cdesc (optional) (default to ["date:desc"])
+	id := int64(56) // int64 | Enrollment Customization identifier
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is duplicated for each sort criterion, e.g., ...&sort=name%2Casc&sort=date%2Cdesc (optional) (default to ["date:desc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet(context.Background(), id).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet(context.Background(), id).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -284,7 +284,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -294,10 +294,10 @@ Other parameters are passed through a pointer to a apiV1EnrollmentCustomizationI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc | [default to [&quot;date:desc&quot;]]
 
 ### Return type
@@ -332,25 +332,25 @@ Add Enrollment Customization history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	id := int64(56) // int64 | Enrollment Customization identifier
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationIdHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -360,7 +360,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -404,24 +404,24 @@ Retrieve the list of Prestages using this Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
+	id := int64(56) // int64 | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationIdPrestagesGet`: PrestageDependencies
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationIdPrestagesGet`: PrestageDependencies
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPrestagesGet`: %v\n", resp)
 }
 ```
 
@@ -431,7 +431,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -474,25 +474,25 @@ Update an Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Enrollment Customization identifier
-    enrollmentCustomization := *openapiclient.NewEnrollmentCustomization(int32(2), "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomization | Enrollment Customization to update
+	id := int64(56) // int64 | Enrollment Customization identifier
+	enrollmentCustomization := *openapiclient.NewEnrollmentCustomization(int64(2), "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomization | Enrollment Customization to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut(context.Background(), id).EnrollmentCustomization(enrollmentCustomization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationIdPut`: GetEnrollmentCustomization
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut(context.Background(), id).EnrollmentCustomization(enrollmentCustomization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationIdPut`: GetEnrollmentCustomization
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationIdPut`: %v\n", resp)
 }
 ```
 
@@ -502,7 +502,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Enrollment Customization identifier | 
+**id** | **int64** | Enrollment Customization identifier | 
 
 ### Other Parameters
 
@@ -546,24 +546,24 @@ Upload an image
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    file := os.NewFile(1234, "some_file") // *os.File | The file to upload
+	file := os.NewFile(1234, "some_file") // *os.File | The file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationImagesPost`: BrandingImageUrl
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationImagesPost`: BrandingImageUrl
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationImagesPost`: %v\n", resp)
 }
 ```
 
@@ -612,24 +612,24 @@ Create an Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentCustomization := *openapiclient.NewEnrollmentCustomization(int32(2), "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomization | Enrollment customization to create.
+	enrollmentCustomization := *openapiclient.NewEnrollmentCustomization(int64(2), "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomization | Enrollment customization to create.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost(context.Background()).EnrollmentCustomization(enrollmentCustomization).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1EnrollmentCustomizationPost`: GetEnrollmentCustomization
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost(context.Background()).EnrollmentCustomization(enrollmentCustomization).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1EnrollmentCustomizationPost`: GetEnrollmentCustomization
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V1EnrollmentCustomizationPost`: %v\n", resp)
 }
 ```
 
@@ -678,26 +678,26 @@ Retrieve sorted and paged Enrollment Customizations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["id:asc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsGet`: EnrollmentCustomizationSearchResultsV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsGet`: EnrollmentCustomizationSearchResultsV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsGet`: %v\n", resp)
 }
 ```
 
@@ -712,8 +712,8 @@ Other parameters are passed through a pointer to a apiV2EnrollmentCustomizations
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;id:asc&quot;]]
 
 ### Return type
@@ -748,22 +748,22 @@ Delete an Enrollment Customization with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
+	id := "id_example" // string | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -816,24 +816,24 @@ Retrieve an Enrollment Customization with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
+	id := "id_example" // string | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsIdGet`: EnrollmentCustomizationV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsIdGet`: EnrollmentCustomizationV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdGet`: %v\n", resp)
 }
 ```
 
@@ -886,27 +886,27 @@ Get sorted and paged Enrollment Customization history objects
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is duplicated for each sort criterion, e.g., ...&sort=name%2Casc&sort=date%2Cdesc (optional) (default to ["date:desc"])
+	id := "id_example" // string | Enrollment Customization identifier
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the 'sort' query param is duplicated for each sort criterion, e.g., ...&sort=name%2Casc&sort=date%2Cdesc (optional) (default to ["date:desc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -926,8 +926,8 @@ Other parameters are passed through a pointer to a apiV2EnrollmentCustomizations
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc | [default to [&quot;date:desc&quot;]]
 
 ### Return type
@@ -962,25 +962,25 @@ Add Enrollment Customization history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	id := "id_example" // string | Enrollment Customization identifier
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsIdHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsIdHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -1034,24 +1034,24 @@ Retrieve the list of Prestages using this Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
+	id := "id_example" // string | Enrollment Customization identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsIdPrestagesGet`: PrestageDependencies
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsIdPrestagesGet`: PrestageDependencies
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPrestagesGet`: %v\n", resp)
 }
 ```
 
@@ -1104,25 +1104,25 @@ Update an Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Enrollment Customization identifier
-    enrollmentCustomizationV2 := *openapiclient.NewEnrollmentCustomizationV2("2", "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomizationV2 | Enrollment Customization to update
+	id := "id_example" // string | Enrollment Customization identifier
+	enrollmentCustomizationV2 := *openapiclient.NewEnrollmentCustomizationV2("2", "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomizationV2 | Enrollment Customization to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut(context.Background(), id).EnrollmentCustomizationV2(enrollmentCustomizationV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsIdPut`: EnrollmentCustomizationV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut(context.Background(), id).EnrollmentCustomizationV2(enrollmentCustomizationV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsIdPut`: EnrollmentCustomizationV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsIdPut`: %v\n", resp)
 }
 ```
 
@@ -1176,24 +1176,24 @@ Download an enrollment customization image
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of the enrollment customization image
+	id := "id_example" // string | id of the enrollment customization image
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsImagesIdGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsImagesIdGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesIdGet`: %v\n", resp)
 }
 ```
 
@@ -1246,24 +1246,24 @@ Upload an image
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    file := os.NewFile(1234, "some_file") // *os.File | The file to upload
+	file := os.NewFile(1234, "some_file") // *os.File | The file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsImagesPost`: BrandingImageUrl
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsImagesPost`: BrandingImageUrl
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsImagesPost`: %v\n", resp)
 }
 ```
 
@@ -1312,24 +1312,24 @@ Create an Enrollment Customization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentCustomizationV2 := *openapiclient.NewEnrollmentCustomizationV2("2", "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomizationV2 | Enrollment customization to create.
+	enrollmentCustomizationV2 := *openapiclient.NewEnrollmentCustomizationV2("2", "Example", "Example description", *openapiclient.NewEnrollmentCustomizationBrandingSettings("0000FF", "0000FF", "0000FF", "0000FF", "https://jamfUrl/api/v2/enrollment-customizations/images/1")) // EnrollmentCustomizationV2 | Enrollment customization to create.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost(context.Background()).EnrollmentCustomizationV2(enrollmentCustomizationV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentCustomizationsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost(context.Background()).EnrollmentCustomizationV2(enrollmentCustomizationV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentCustomizationsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentCustomizationAPI.V2EnrollmentCustomizationsPost`: %v\n", resp)
 }
 ```
 

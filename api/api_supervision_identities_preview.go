@@ -46,7 +46,7 @@ type SupervisionIdentitiesPreviewAPI interface {
 	@param id Supervision Identity identifier
 	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 	*/
-	V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
+	V1SupervisionIdentitiesIdDelete(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 
 	// V1SupervisionIdentitiesIdDeleteExecute executes the request
 	V1SupervisionIdentitiesIdDeleteExecute(r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest) (*http.Response, error)
@@ -60,7 +60,7 @@ type SupervisionIdentitiesPreviewAPI interface {
 	@param id Supervision Identity identifier
 	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 	*/
-	V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
+	V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 
 	// V1SupervisionIdentitiesIdDownloadGetExecute executes the request
 	//  @return *os.File
@@ -75,7 +75,7 @@ type SupervisionIdentitiesPreviewAPI interface {
 	@param id Supervision Identity identifier
 	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 	*/
-	V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
+	V1SupervisionIdentitiesIdGet(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 
 	// V1SupervisionIdentitiesIdGetExecute executes the request
 	//  @return SupervisionIdentity
@@ -90,7 +90,7 @@ type SupervisionIdentitiesPreviewAPI interface {
 	@param id Supervision Identity identifier
 	@return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 	*/
-	V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
+	V1SupervisionIdentitiesIdPut(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 
 	// V1SupervisionIdentitiesIdPutExecute executes the request
 	//  @return SupervisionIdentity
@@ -131,31 +131,31 @@ type SupervisionIdentitiesPreviewAPIService service
 type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest struct {
 	ctx context.Context
 	ApiService SupervisionIdentitiesPreviewAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Page(page int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Page(page int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Size(size int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Size(size int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Pagesize(pagesize int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) Pagesize(pagesize int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) PageSize(pageSize int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
+func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest) PageSize(pageSize int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -209,25 +209,25 @@ func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesGetExecu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -293,7 +293,7 @@ func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesGetExecu
 type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest struct {
 	ctx context.Context
 	ApiService SupervisionIdentitiesPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -309,7 +309,7 @@ Deletes a Supervision Identity with the supplied id
  @param id Supervision Identity identifier
  @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest
 */
-func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDelete(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDelete(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest {
 	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -395,7 +395,7 @@ func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDelete
 type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest struct {
 	ctx context.Context
 	ApiService SupervisionIdentitiesPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
@@ -411,7 +411,7 @@ Download the Supervision Identity .p12 file
  @param id Supervision Identity identifier
  @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest
 */
-func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDownloadGet(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest {
 	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdDownloadGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -508,7 +508,7 @@ func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdDownlo
 type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest struct {
 	ctx context.Context
 	ApiService SupervisionIdentitiesPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest) Execute() (*SupervisionIdentity, *http.Response, error) {
@@ -524,7 +524,7 @@ Retrieves a Supervision Identity with the supplied id
  @param id Supervision Identity identifier
  @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest
 */
-func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdGet(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdGet(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest {
 	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -621,7 +621,7 @@ func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdGetExe
 type SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest struct {
 	ctx context.Context
 	ApiService SupervisionIdentitiesPreviewAPI
-	id int32
+	id int64
 	supervisionIdentityUpdate *SupervisionIdentityUpdate
 }
 
@@ -643,7 +643,7 @@ Updates a Supervision Identity with the supplied information
  @param id Supervision Identity identifier
  @return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest
 */
-func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdPut(ctx context.Context, id int32) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest {
+func (a *SupervisionIdentitiesPreviewAPIService) V1SupervisionIdentitiesIdPut(ctx context.Context, id int64) SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest {
 	return SupervisionIdentitiesPreviewAPIV1SupervisionIdentitiesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,

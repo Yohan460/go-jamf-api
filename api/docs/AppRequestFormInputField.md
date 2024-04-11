@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] [readonly] 
+**Id** | Pointer to **int64** |  | [optional] [readonly] 
 **Title** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Priority** | **int32** | Highest priority is 1, lowest is 255 | 
+**Priority** | **int64** | Highest priority is 1, lowest is 255 | 
 
 ## Methods
 
 ### NewAppRequestFormInputField
 
-`func NewAppRequestFormInputField(title string, priority int32, ) *AppRequestFormInputField`
+`func NewAppRequestFormInputField(title string, priority int64, ) *AppRequestFormInputField`
 
 NewAppRequestFormInputField instantiates a new AppRequestFormInputField object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *AppRequestFormInputField) GetId() int32`
+`func (o *AppRequestFormInputField) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AppRequestFormInputField) GetIdOk() (*int32, bool)`
+`func (o *AppRequestFormInputField) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AppRequestFormInputField) SetId(v int32)`
+`func (o *AppRequestFormInputField) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -110,20 +110,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPriority
 
-`func (o *AppRequestFormInputField) GetPriority() int32`
+`func (o *AppRequestFormInputField) GetPriority() int64`
 
 GetPriority returns the Priority field if non-nil, zero value otherwise.
 
 ### GetPriorityOk
 
-`func (o *AppRequestFormInputField) GetPriorityOk() (*int32, bool)`
+`func (o *AppRequestFormInputField) GetPriorityOk() (*int64, bool)`
 
 GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPriority
 
-`func (o *AppRequestFormInputField) SetPriority(v int32)`
+`func (o *AppRequestFormInputField) SetPriority(v int64)`
 
 SetPriority sets Priority field to given value.
 

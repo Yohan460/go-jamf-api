@@ -19,12 +19,12 @@ var _ MappedNullable = &VppTokenSubscription{}
 
 // VppTokenSubscription struct for VppTokenSubscription
 type VppTokenSubscription struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	Recipients *Recipients `json:"recipients,omitempty"`
 	AdminAccounts []AdminAccount `json:"adminAccounts,omitempty"`
-	SiteID *int32 `json:"siteID,omitempty"`
+	SiteID *int64 `json:"siteID,omitempty"`
 	SiteName *string `json:"siteName,omitempty"`
 }
 
@@ -46,9 +46,9 @@ func NewVppTokenSubscriptionWithDefaults() *VppTokenSubscription {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *VppTokenSubscription) GetId() int32 {
+func (o *VppTokenSubscription) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -56,7 +56,7 @@ func (o *VppTokenSubscription) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VppTokenSubscription) GetIdOk() (*int32, bool) {
+func (o *VppTokenSubscription) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *VppTokenSubscription) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *VppTokenSubscription) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *VppTokenSubscription) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -206,9 +206,9 @@ func (o *VppTokenSubscription) SetAdminAccounts(v []AdminAccount) {
 }
 
 // GetSiteID returns the SiteID field value if set, zero value otherwise.
-func (o *VppTokenSubscription) GetSiteID() int32 {
+func (o *VppTokenSubscription) GetSiteID() int64 {
 	if o == nil || IsNil(o.SiteID) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SiteID
@@ -216,7 +216,7 @@ func (o *VppTokenSubscription) GetSiteID() int32 {
 
 // GetSiteIDOk returns a tuple with the SiteID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VppTokenSubscription) GetSiteIDOk() (*int32, bool) {
+func (o *VppTokenSubscription) GetSiteIDOk() (*int64, bool) {
 	if o == nil || IsNil(o.SiteID) {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *VppTokenSubscription) HasSiteID() bool {
 	return false
 }
 
-// SetSiteID gets a reference to the given int32 and assigns it to the SiteID field.
-func (o *VppTokenSubscription) SetSiteID(v int32) {
+// SetSiteID gets a reference to the given int64 and assigns it to the SiteID field.
+func (o *VppTokenSubscription) SetSiteID(v int64) {
 	o.SiteID = &v
 }
 

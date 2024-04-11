@@ -20,7 +20,7 @@ var _ MappedNullable = &Notification{}
 // Notification Jamf Pro notification used for important alerts.
 type Notification struct {
 	Type *string `json:"type,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Params map[string]map[string]interface{} `json:"params,omitempty"`
 }
 
@@ -74,9 +74,9 @@ func (o *Notification) SetType(v string) {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Notification) GetId() int32 {
+func (o *Notification) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -84,7 +84,7 @@ func (o *Notification) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Notification) GetIdOk() (*int32, bool) {
+func (o *Notification) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *Notification) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *Notification) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *Notification) SetId(v int64) {
 	o.Id = &v
 }
 

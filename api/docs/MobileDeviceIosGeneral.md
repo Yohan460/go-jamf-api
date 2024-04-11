@@ -28,13 +28,13 @@ Name | Type | Description | Notes
 **SharedIpad** | Pointer to **bool** |  | [optional] 
 **DiagnosticAndUsageReportingEnabled** | Pointer to **bool** |  | [optional] 
 **AppAnalyticsEnabled** | Pointer to **bool** |  | [optional] 
-**ResidentUsers** | Pointer to **int32** |  | [optional] 
-**QuotaSize** | Pointer to **int32** |  | [optional] 
+**ResidentUsers** | Pointer to **int64** |  | [optional] 
+**QuotaSize** | Pointer to **int64** |  | [optional] 
 **TemporarySessionOnly** | Pointer to **bool** |  | [optional] 
-**TemporarySessionTimeout** | Pointer to **int32** |  | [optional] 
-**UserSessionTimeout** | Pointer to **int32** |  | [optional] 
-**SyncedToComputer** | Pointer to **int32** |  | [optional] 
-**MaximumSharediPadUsersStored** | Pointer to **int32** |  | [optional] 
+**TemporarySessionTimeout** | Pointer to **int64** |  | [optional] 
+**UserSessionTimeout** | Pointer to **int64** |  | [optional] 
+**SyncedToComputer** | Pointer to **int64** |  | [optional] 
+**MaximumSharediPadUsersStored** | Pointer to **int64** |  | [optional] 
 **LastBackupDate** | Pointer to **time.Time** |  | [optional] 
 **DeviceLocatorServiceEnabled** | Pointer to **bool** |  | [optional] 
 **DoNotDisturbEnabled** | Pointer to **bool** |  | [optional] 
@@ -666,20 +666,20 @@ HasAppAnalyticsEnabled returns a boolean if a field has been set.
 
 ### GetResidentUsers
 
-`func (o *MobileDeviceIosGeneral) GetResidentUsers() int32`
+`func (o *MobileDeviceIosGeneral) GetResidentUsers() int64`
 
 GetResidentUsers returns the ResidentUsers field if non-nil, zero value otherwise.
 
 ### GetResidentUsersOk
 
-`func (o *MobileDeviceIosGeneral) GetResidentUsersOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetResidentUsersOk() (*int64, bool)`
 
 GetResidentUsersOk returns a tuple with the ResidentUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResidentUsers
 
-`func (o *MobileDeviceIosGeneral) SetResidentUsers(v int32)`
+`func (o *MobileDeviceIosGeneral) SetResidentUsers(v int64)`
 
 SetResidentUsers sets ResidentUsers field to given value.
 
@@ -691,20 +691,20 @@ HasResidentUsers returns a boolean if a field has been set.
 
 ### GetQuotaSize
 
-`func (o *MobileDeviceIosGeneral) GetQuotaSize() int32`
+`func (o *MobileDeviceIosGeneral) GetQuotaSize() int64`
 
 GetQuotaSize returns the QuotaSize field if non-nil, zero value otherwise.
 
 ### GetQuotaSizeOk
 
-`func (o *MobileDeviceIosGeneral) GetQuotaSizeOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetQuotaSizeOk() (*int64, bool)`
 
 GetQuotaSizeOk returns a tuple with the QuotaSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuotaSize
 
-`func (o *MobileDeviceIosGeneral) SetQuotaSize(v int32)`
+`func (o *MobileDeviceIosGeneral) SetQuotaSize(v int64)`
 
 SetQuotaSize sets QuotaSize field to given value.
 
@@ -741,20 +741,20 @@ HasTemporarySessionOnly returns a boolean if a field has been set.
 
 ### GetTemporarySessionTimeout
 
-`func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeout() int32`
+`func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeout() int64`
 
 GetTemporarySessionTimeout returns the TemporarySessionTimeout field if non-nil, zero value otherwise.
 
 ### GetTemporarySessionTimeoutOk
 
-`func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeoutOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetTemporarySessionTimeoutOk() (*int64, bool)`
 
 GetTemporarySessionTimeoutOk returns a tuple with the TemporarySessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTemporarySessionTimeout
 
-`func (o *MobileDeviceIosGeneral) SetTemporarySessionTimeout(v int32)`
+`func (o *MobileDeviceIosGeneral) SetTemporarySessionTimeout(v int64)`
 
 SetTemporarySessionTimeout sets TemporarySessionTimeout field to given value.
 
@@ -766,20 +766,20 @@ HasTemporarySessionTimeout returns a boolean if a field has been set.
 
 ### GetUserSessionTimeout
 
-`func (o *MobileDeviceIosGeneral) GetUserSessionTimeout() int32`
+`func (o *MobileDeviceIosGeneral) GetUserSessionTimeout() int64`
 
 GetUserSessionTimeout returns the UserSessionTimeout field if non-nil, zero value otherwise.
 
 ### GetUserSessionTimeoutOk
 
-`func (o *MobileDeviceIosGeneral) GetUserSessionTimeoutOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetUserSessionTimeoutOk() (*int64, bool)`
 
 GetUserSessionTimeoutOk returns a tuple with the UserSessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserSessionTimeout
 
-`func (o *MobileDeviceIosGeneral) SetUserSessionTimeout(v int32)`
+`func (o *MobileDeviceIosGeneral) SetUserSessionTimeout(v int64)`
 
 SetUserSessionTimeout sets UserSessionTimeout field to given value.
 
@@ -791,20 +791,20 @@ HasUserSessionTimeout returns a boolean if a field has been set.
 
 ### GetSyncedToComputer
 
-`func (o *MobileDeviceIosGeneral) GetSyncedToComputer() int32`
+`func (o *MobileDeviceIosGeneral) GetSyncedToComputer() int64`
 
 GetSyncedToComputer returns the SyncedToComputer field if non-nil, zero value otherwise.
 
 ### GetSyncedToComputerOk
 
-`func (o *MobileDeviceIosGeneral) GetSyncedToComputerOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetSyncedToComputerOk() (*int64, bool)`
 
 GetSyncedToComputerOk returns a tuple with the SyncedToComputer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSyncedToComputer
 
-`func (o *MobileDeviceIosGeneral) SetSyncedToComputer(v int32)`
+`func (o *MobileDeviceIosGeneral) SetSyncedToComputer(v int64)`
 
 SetSyncedToComputer sets SyncedToComputer field to given value.
 
@@ -816,20 +816,20 @@ HasSyncedToComputer returns a boolean if a field has been set.
 
 ### GetMaximumSharediPadUsersStored
 
-`func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStored() int32`
+`func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStored() int64`
 
 GetMaximumSharediPadUsersStored returns the MaximumSharediPadUsersStored field if non-nil, zero value otherwise.
 
 ### GetMaximumSharediPadUsersStoredOk
 
-`func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStoredOk() (*int32, bool)`
+`func (o *MobileDeviceIosGeneral) GetMaximumSharediPadUsersStoredOk() (*int64, bool)`
 
 GetMaximumSharediPadUsersStoredOk returns a tuple with the MaximumSharediPadUsersStored field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumSharediPadUsersStored
 
-`func (o *MobileDeviceIosGeneral) SetMaximumSharediPadUsersStored(v int32)`
+`func (o *MobileDeviceIosGeneral) SetMaximumSharediPadUsersStored(v int64)`
 
 SetMaximumSharediPadUsersStored sets MaximumSharediPadUsersStored field to given value.
 

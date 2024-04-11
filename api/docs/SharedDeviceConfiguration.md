@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuotaSize** | Pointer to **int32** |  | [optional] 
-**ResidentUsers** | Pointer to **int32** |  | [optional] 
+**QuotaSize** | Pointer to **int64** |  | [optional] 
+**ResidentUsers** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetQuotaSize
 
-`func (o *SharedDeviceConfiguration) GetQuotaSize() int32`
+`func (o *SharedDeviceConfiguration) GetQuotaSize() int64`
 
 GetQuotaSize returns the QuotaSize field if non-nil, zero value otherwise.
 
 ### GetQuotaSizeOk
 
-`func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int32, bool)`
+`func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int64, bool)`
 
 GetQuotaSizeOk returns a tuple with the QuotaSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuotaSize
 
-`func (o *SharedDeviceConfiguration) SetQuotaSize(v int32)`
+`func (o *SharedDeviceConfiguration) SetQuotaSize(v int64)`
 
 SetQuotaSize sets QuotaSize field to given value.
 
@@ -53,20 +53,20 @@ HasQuotaSize returns a boolean if a field has been set.
 
 ### GetResidentUsers
 
-`func (o *SharedDeviceConfiguration) GetResidentUsers() int32`
+`func (o *SharedDeviceConfiguration) GetResidentUsers() int64`
 
 GetResidentUsers returns the ResidentUsers field if non-nil, zero value otherwise.
 
 ### GetResidentUsersOk
 
-`func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int32, bool)`
+`func (o *SharedDeviceConfiguration) GetResidentUsersOk() (*int64, bool)`
 
 GetResidentUsersOk returns a tuple with the ResidentUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResidentUsers
 
-`func (o *SharedDeviceConfiguration) SetResidentUsers(v int32)`
+`func (o *SharedDeviceConfiguration) SetResidentUsers(v int64)`
 
 SetResidentUsers sets ResidentUsers field to given value.
 

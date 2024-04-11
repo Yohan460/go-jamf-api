@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **PolicyDeploymentMethod** | Pointer to **string** |  | [optional] 
 **SoftwareTitle** | Pointer to **string** |  | [optional] 
 **SoftwareTitleConfigurationId** | Pointer to **string** |  | [optional] 
-**Pending** | Pointer to **int32** |  | [optional] 
-**Completed** | Pointer to **int32** |  | [optional] 
-**Deferred** | Pointer to **int32** |  | [optional] 
-**Failed** | Pointer to **int32** |  | [optional] 
+**Pending** | Pointer to **int64** |  | [optional] 
+**Completed** | Pointer to **int64** |  | [optional] 
+**Deferred** | Pointer to **int64** |  | [optional] 
+**Failed** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -212,20 +212,20 @@ HasSoftwareTitleConfigurationId returns a boolean if a field has been set.
 
 ### GetPending
 
-`func (o *PatchPolicyListView) GetPending() int32`
+`func (o *PatchPolicyListView) GetPending() int64`
 
 GetPending returns the Pending field if non-nil, zero value otherwise.
 
 ### GetPendingOk
 
-`func (o *PatchPolicyListView) GetPendingOk() (*int32, bool)`
+`func (o *PatchPolicyListView) GetPendingOk() (*int64, bool)`
 
 GetPendingOk returns a tuple with the Pending field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPending
 
-`func (o *PatchPolicyListView) SetPending(v int32)`
+`func (o *PatchPolicyListView) SetPending(v int64)`
 
 SetPending sets Pending field to given value.
 
@@ -237,20 +237,20 @@ HasPending returns a boolean if a field has been set.
 
 ### GetCompleted
 
-`func (o *PatchPolicyListView) GetCompleted() int32`
+`func (o *PatchPolicyListView) GetCompleted() int64`
 
 GetCompleted returns the Completed field if non-nil, zero value otherwise.
 
 ### GetCompletedOk
 
-`func (o *PatchPolicyListView) GetCompletedOk() (*int32, bool)`
+`func (o *PatchPolicyListView) GetCompletedOk() (*int64, bool)`
 
 GetCompletedOk returns a tuple with the Completed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCompleted
 
-`func (o *PatchPolicyListView) SetCompleted(v int32)`
+`func (o *PatchPolicyListView) SetCompleted(v int64)`
 
 SetCompleted sets Completed field to given value.
 
@@ -262,20 +262,20 @@ HasCompleted returns a boolean if a field has been set.
 
 ### GetDeferred
 
-`func (o *PatchPolicyListView) GetDeferred() int32`
+`func (o *PatchPolicyListView) GetDeferred() int64`
 
 GetDeferred returns the Deferred field if non-nil, zero value otherwise.
 
 ### GetDeferredOk
 
-`func (o *PatchPolicyListView) GetDeferredOk() (*int32, bool)`
+`func (o *PatchPolicyListView) GetDeferredOk() (*int64, bool)`
 
 GetDeferredOk returns a tuple with the Deferred field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeferred
 
-`func (o *PatchPolicyListView) SetDeferred(v int32)`
+`func (o *PatchPolicyListView) SetDeferred(v int64)`
 
 SetDeferred sets Deferred field to given value.
 
@@ -287,20 +287,20 @@ HasDeferred returns a boolean if a field has been set.
 
 ### GetFailed
 
-`func (o *PatchPolicyListView) GetFailed() int32`
+`func (o *PatchPolicyListView) GetFailed() int64`
 
 GetFailed returns the Failed field if non-nil, zero value otherwise.
 
 ### GetFailedOk
 
-`func (o *PatchPolicyListView) GetFailedOk() (*int32, bool)`
+`func (o *PatchPolicyListView) GetFailedOk() (*int64, bool)`
 
 GetFailedOk returns a tuple with the Failed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFailed
 
-`func (o *PatchPolicyListView) SetFailed(v int32)`
+`func (o *PatchPolicyListView) SetFailed(v int64)`
 
 SetFailed sets Failed field to given value.
 

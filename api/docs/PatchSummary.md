@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Title** | Pointer to **string** |  | [optional] 
 **LatestVersion** | Pointer to **string** |  | [optional] 
 **ReleaseDate** | Pointer to **time.Time** |  | [optional] 
-**UpToDate** | Pointer to **int32** |  | [optional] 
-**OutOfDate** | Pointer to **int32** |  | [optional] 
+**UpToDate** | Pointer to **int64** |  | [optional] 
+**OutOfDate** | Pointer to **int64** |  | [optional] 
 **OnDashboard** | Pointer to **bool** |  | [optional] 
 **SoftwareTitleConfigurationId** | Pointer to **string** |  | [optional] 
 
@@ -134,20 +134,20 @@ HasReleaseDate returns a boolean if a field has been set.
 
 ### GetUpToDate
 
-`func (o *PatchSummary) GetUpToDate() int32`
+`func (o *PatchSummary) GetUpToDate() int64`
 
 GetUpToDate returns the UpToDate field if non-nil, zero value otherwise.
 
 ### GetUpToDateOk
 
-`func (o *PatchSummary) GetUpToDateOk() (*int32, bool)`
+`func (o *PatchSummary) GetUpToDateOk() (*int64, bool)`
 
 GetUpToDateOk returns a tuple with the UpToDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpToDate
 
-`func (o *PatchSummary) SetUpToDate(v int32)`
+`func (o *PatchSummary) SetUpToDate(v int64)`
 
 SetUpToDate sets UpToDate field to given value.
 
@@ -159,20 +159,20 @@ HasUpToDate returns a boolean if a field has been set.
 
 ### GetOutOfDate
 
-`func (o *PatchSummary) GetOutOfDate() int32`
+`func (o *PatchSummary) GetOutOfDate() int64`
 
 GetOutOfDate returns the OutOfDate field if non-nil, zero value otherwise.
 
 ### GetOutOfDateOk
 
-`func (o *PatchSummary) GetOutOfDateOk() (*int32, bool)`
+`func (o *PatchSummary) GetOutOfDateOk() (*int64, bool)`
 
 GetOutOfDateOk returns a tuple with the OutOfDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOutOfDate
 
-`func (o *PatchSummary) SetOutOfDate(v int32)`
+`func (o *PatchSummary) SetOutOfDate(v int64)`
 
 SetOutOfDate sets OutOfDate field to given value.
 

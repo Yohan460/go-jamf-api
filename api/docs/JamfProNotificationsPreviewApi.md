@@ -24,23 +24,23 @@ Get Notifications for user and site
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `NotificationsAlertsGet`: []Notification
-    fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsPreviewAPI.NotificationsAlertsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `NotificationsAlertsGet`: []Notification
+	fmt.Fprintf(os.Stdout, "Response from `JamfProNotificationsPreviewAPI.NotificationsAlertsGet`: %v\n", resp)
 }
 ```
 
@@ -85,22 +85,22 @@ DEPRECATED - USE \"alerts/{type}/{id}\" INSTEAD. Deletes only Patch Management n
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | instance ID of the notification
+	id := int64(56) // int64 | instance ID of the notification
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -110,7 +110,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | instance ID of the notification | 
+**id** | **int64** | instance ID of the notification | 
 
 ### Other Parameters
 
@@ -153,23 +153,23 @@ Delete Notifications
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | instance ID of the notification
-    type_ := openapiclient.NotificationType("APNS_CERT_REVOKED") // NotificationType | type of the notification
+	id := int64(56) // int64 | instance ID of the notification
+	type_ := openapiclient.NotificationType("APNS_CERT_REVOKED") // NotificationType | type of the notification
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete(context.Background(), id, type_).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete(context.Background(), id, type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProNotificationsPreviewAPI.NotificationsAlertsTypeIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -179,7 +179,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | instance ID of the notification | 
+**id** | **int64** | instance ID of the notification | 
 **type_** | [**NotificationType**](.md) | type of the notification | 
 
 ### Other Parameters

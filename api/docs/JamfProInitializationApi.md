@@ -23,22 +23,22 @@ Provide Database Password during startup
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    databasePassword := *openapiclient.NewDatabasePassword("12345") // DatabasePassword | 
+	databasePassword := *openapiclient.NewDatabasePassword("12345") // DatabasePassword | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost(context.Background()).DatabasePassword(databasePassword).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost(context.Background()).DatabasePassword(databasePassword).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializeDatabaseConnectionPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -87,22 +87,22 @@ Set up fresh installed Jamf Pro Server
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    initializeV1 := *openapiclient.NewInitializeV1("VFAB-YDAB-DFAB-UDAB-DEAB-EFAB-ABAB-DEAB", "Jamf", false, "admin", "12345", "https://jamf.jamfcloud.com") // InitializeV1 | 
+	initializeV1 := *openapiclient.NewInitializeV1("VFAB-YDAB-DFAB-UDAB-DEAB-EFAB-ABAB-DEAB", "Jamf", false, "admin", "12345", "https://jamf.jamfcloud.com") // InitializeV1 | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JamfProInitializationAPI.V1SystemInitializePost(context.Background()).InitializeV1(initializeV1).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfProInitializationAPI.V1SystemInitializePost(context.Background()).InitializeV1(initializeV1).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemInitializePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

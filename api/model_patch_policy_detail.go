@@ -26,17 +26,17 @@ type PatchPolicyDetail struct {
 	DeploymentMethod *string `json:"deploymentMethod,omitempty"`
 	SoftwareTitleId *string `json:"softwareTitleId,omitempty"`
 	SoftwareTitleConfigurationId *string `json:"softwareTitleConfigurationId,omitempty"`
-	KillAppsDelayMinutes *int32 `json:"killAppsDelayMinutes,omitempty"`
+	KillAppsDelayMinutes *int64 `json:"killAppsDelayMinutes,omitempty"`
 	KillAppsMessage *string `json:"killAppsMessage,omitempty"`
 	Downgrade *bool `json:"downgrade,omitempty"`
 	PatchUnknownVersion *bool `json:"patchUnknownVersion,omitempty"`
 	NotificationHeader *string `json:"notificationHeader,omitempty"`
 	SelfServiceEnforceDeadline *bool `json:"selfServiceEnforceDeadline,omitempty"`
-	SelfServiceDeadline *int32 `json:"selfServiceDeadline,omitempty"`
+	SelfServiceDeadline *int64 `json:"selfServiceDeadline,omitempty"`
 	InstallButtonText *string `json:"installButtonText,omitempty"`
 	SelfServiceDescription *string `json:"selfServiceDescription,omitempty"`
 	IconId *string `json:"iconId,omitempty"`
-	ReminderFrequency *int32 `json:"reminderFrequency,omitempty"`
+	ReminderFrequency *int64 `json:"reminderFrequency,omitempty"`
 	ReminderEnabled *bool `json:"reminderEnabled,omitempty"`
 }
 
@@ -282,9 +282,9 @@ func (o *PatchPolicyDetail) SetSoftwareTitleConfigurationId(v string) {
 }
 
 // GetKillAppsDelayMinutes returns the KillAppsDelayMinutes field value if set, zero value otherwise.
-func (o *PatchPolicyDetail) GetKillAppsDelayMinutes() int32 {
+func (o *PatchPolicyDetail) GetKillAppsDelayMinutes() int64 {
 	if o == nil || IsNil(o.KillAppsDelayMinutes) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.KillAppsDelayMinutes
@@ -292,7 +292,7 @@ func (o *PatchPolicyDetail) GetKillAppsDelayMinutes() int32 {
 
 // GetKillAppsDelayMinutesOk returns a tuple with the KillAppsDelayMinutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyDetail) GetKillAppsDelayMinutesOk() (*int32, bool) {
+func (o *PatchPolicyDetail) GetKillAppsDelayMinutesOk() (*int64, bool) {
 	if o == nil || IsNil(o.KillAppsDelayMinutes) {
 		return nil, false
 	}
@@ -308,8 +308,8 @@ func (o *PatchPolicyDetail) HasKillAppsDelayMinutes() bool {
 	return false
 }
 
-// SetKillAppsDelayMinutes gets a reference to the given int32 and assigns it to the KillAppsDelayMinutes field.
-func (o *PatchPolicyDetail) SetKillAppsDelayMinutes(v int32) {
+// SetKillAppsDelayMinutes gets a reference to the given int64 and assigns it to the KillAppsDelayMinutes field.
+func (o *PatchPolicyDetail) SetKillAppsDelayMinutes(v int64) {
 	o.KillAppsDelayMinutes = &v
 }
 
@@ -474,9 +474,9 @@ func (o *PatchPolicyDetail) SetSelfServiceEnforceDeadline(v bool) {
 }
 
 // GetSelfServiceDeadline returns the SelfServiceDeadline field value if set, zero value otherwise.
-func (o *PatchPolicyDetail) GetSelfServiceDeadline() int32 {
+func (o *PatchPolicyDetail) GetSelfServiceDeadline() int64 {
 	if o == nil || IsNil(o.SelfServiceDeadline) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SelfServiceDeadline
@@ -484,7 +484,7 @@ func (o *PatchPolicyDetail) GetSelfServiceDeadline() int32 {
 
 // GetSelfServiceDeadlineOk returns a tuple with the SelfServiceDeadline field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyDetail) GetSelfServiceDeadlineOk() (*int32, bool) {
+func (o *PatchPolicyDetail) GetSelfServiceDeadlineOk() (*int64, bool) {
 	if o == nil || IsNil(o.SelfServiceDeadline) {
 		return nil, false
 	}
@@ -500,8 +500,8 @@ func (o *PatchPolicyDetail) HasSelfServiceDeadline() bool {
 	return false
 }
 
-// SetSelfServiceDeadline gets a reference to the given int32 and assigns it to the SelfServiceDeadline field.
-func (o *PatchPolicyDetail) SetSelfServiceDeadline(v int32) {
+// SetSelfServiceDeadline gets a reference to the given int64 and assigns it to the SelfServiceDeadline field.
+func (o *PatchPolicyDetail) SetSelfServiceDeadline(v int64) {
 	o.SelfServiceDeadline = &v
 }
 
@@ -602,9 +602,9 @@ func (o *PatchPolicyDetail) SetIconId(v string) {
 }
 
 // GetReminderFrequency returns the ReminderFrequency field value if set, zero value otherwise.
-func (o *PatchPolicyDetail) GetReminderFrequency() int32 {
+func (o *PatchPolicyDetail) GetReminderFrequency() int64 {
 	if o == nil || IsNil(o.ReminderFrequency) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ReminderFrequency
@@ -612,7 +612,7 @@ func (o *PatchPolicyDetail) GetReminderFrequency() int32 {
 
 // GetReminderFrequencyOk returns a tuple with the ReminderFrequency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyDetail) GetReminderFrequencyOk() (*int32, bool) {
+func (o *PatchPolicyDetail) GetReminderFrequencyOk() (*int64, bool) {
 	if o == nil || IsNil(o.ReminderFrequency) {
 		return nil, false
 	}
@@ -628,8 +628,8 @@ func (o *PatchPolicyDetail) HasReminderFrequency() bool {
 	return false
 }
 
-// SetReminderFrequency gets a reference to the given int32 and assigns it to the ReminderFrequency field.
-func (o *PatchPolicyDetail) SetReminderFrequency(v int32) {
+// SetReminderFrequency gets a reference to the given int64 and assigns it to the ReminderFrequency field.
+func (o *PatchPolicyDetail) SetReminderFrequency(v int64) {
 	o.ReminderFrequency = &v
 }
 
