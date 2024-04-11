@@ -788,18 +788,18 @@ func (a *EnrollmentAPIService) V1AdueSessionTokenSettingsPutExecute(r Enrollment
 type EnrollmentAPIV2EnrollmentAccessGroupsGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	allUsersOptionFirst *bool
 }
 
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) Page(page int32) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
+func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) Page(page int64) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) PageSize(pageSize int32) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
+func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -862,13 +862,13 @@ func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1638,8 +1638,8 @@ type EnrollmentAPIV2EnrollmentHistoryExportPostRequest struct {
 	ApiService EnrollmentAPI
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -1657,12 +1657,12 @@ func (r EnrollmentAPIV2EnrollmentHistoryExportPostRequest) ExportLabels(exportLa
 	return r
 }
 
-func (r EnrollmentAPIV2EnrollmentHistoryExportPostRequest) Page(page int32) EnrollmentAPIV2EnrollmentHistoryExportPostRequest {
+func (r EnrollmentAPIV2EnrollmentHistoryExportPostRequest) Page(page int64) EnrollmentAPIV2EnrollmentHistoryExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV2EnrollmentHistoryExportPostRequest) PageSize(pageSize int32) EnrollmentAPIV2EnrollmentHistoryExportPostRequest {
+func (r EnrollmentAPIV2EnrollmentHistoryExportPostRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentHistoryExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1757,13 +1757,13 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1866,17 +1866,17 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 type EnrollmentAPIV2EnrollmentHistoryGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentAPIV2EnrollmentHistoryGetRequest) Page(page int32) EnrollmentAPIV2EnrollmentHistoryGetRequest {
+func (r EnrollmentAPIV2EnrollmentHistoryGetRequest) Page(page int64) EnrollmentAPIV2EnrollmentHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV2EnrollmentHistoryGetRequest) PageSize(pageSize int32) EnrollmentAPIV2EnrollmentHistoryGetRequest {
+func (r EnrollmentAPIV2EnrollmentHistoryGetRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1931,13 +1931,13 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryGetExecute(r EnrollmentAPIV2En
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2348,17 +2348,17 @@ func (a *EnrollmentAPIService) V2EnrollmentLanguagesDeleteMultiplePostExecute(r 
 type EnrollmentAPIV2EnrollmentLanguagesGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) Page(page int32) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
+func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) Page(page int64) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) PageSize(pageSize int32) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
+func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2415,13 +2415,13 @@ func (a *EnrollmentAPIService) V2EnrollmentLanguagesGetExecute(r EnrollmentAPIV2
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2969,18 +2969,18 @@ func (a *EnrollmentAPIService) V2EnrollmentPutExecute(r EnrollmentAPIV2Enrollmen
 type EnrollmentAPIV3EnrollmentAccessGroupsGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	allUsersOptionFirst *bool
 }
 
-func (r EnrollmentAPIV3EnrollmentAccessGroupsGetRequest) Page(page int32) EnrollmentAPIV3EnrollmentAccessGroupsGetRequest {
+func (r EnrollmentAPIV3EnrollmentAccessGroupsGetRequest) Page(page int64) EnrollmentAPIV3EnrollmentAccessGroupsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV3EnrollmentAccessGroupsGetRequest) PageSize(pageSize int32) EnrollmentAPIV3EnrollmentAccessGroupsGetRequest {
+func (r EnrollmentAPIV3EnrollmentAccessGroupsGetRequest) PageSize(pageSize int64) EnrollmentAPIV3EnrollmentAccessGroupsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -3041,13 +3041,13 @@ func (a *EnrollmentAPIService) V3EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -4009,17 +4009,17 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesDeleteMultiplePostExecute(r 
 type EnrollmentAPIV3EnrollmentLanguagesGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentAPIV3EnrollmentLanguagesGetRequest) Page(page int32) EnrollmentAPIV3EnrollmentLanguagesGetRequest {
+func (r EnrollmentAPIV3EnrollmentLanguagesGetRequest) Page(page int64) EnrollmentAPIV3EnrollmentLanguagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentAPIV3EnrollmentLanguagesGetRequest) PageSize(pageSize int32) EnrollmentAPIV3EnrollmentLanguagesGetRequest {
+func (r EnrollmentAPIV3EnrollmentLanguagesGetRequest) PageSize(pageSize int64) EnrollmentAPIV3EnrollmentLanguagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -4073,13 +4073,13 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesGetExecute(r EnrollmentAPIV3
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

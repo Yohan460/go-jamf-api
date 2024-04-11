@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RefreshExpiration** | Pointer to **int32** |  | [optional] 
+**RefreshExpiration** | Pointer to **int64** |  | [optional] 
 **Scopes** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRefreshExpiration
 
-`func (o *CsaToken) GetRefreshExpiration() int32`
+`func (o *CsaToken) GetRefreshExpiration() int64`
 
 GetRefreshExpiration returns the RefreshExpiration field if non-nil, zero value otherwise.
 
 ### GetRefreshExpirationOk
 
-`func (o *CsaToken) GetRefreshExpirationOk() (*int32, bool)`
+`func (o *CsaToken) GetRefreshExpirationOk() (*int64, bool)`
 
 GetRefreshExpirationOk returns a tuple with the RefreshExpiration field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRefreshExpiration
 
-`func (o *CsaToken) SetRefreshExpiration(v int32)`
+`func (o *CsaToken) SetRefreshExpiration(v int64)`
 
 SetRefreshExpiration sets RefreshExpiration field to given value.
 

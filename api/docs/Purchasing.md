@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **PoDate** | Pointer to **time.Time** |  | [optional] 
 **WarrantyExpiresDate** | Pointer to **time.Time** |  | [optional] 
 **LeaseExpiresDate** | Pointer to **time.Time** |  | [optional] 
-**LifeExpectancy** | Pointer to **int32** |  | [optional] 
+**LifeExpectancy** | Pointer to **int64** |  | [optional] 
 **PurchasingContact** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -288,20 +288,20 @@ HasLeaseExpiresDate returns a boolean if a field has been set.
 
 ### GetLifeExpectancy
 
-`func (o *Purchasing) GetLifeExpectancy() int32`
+`func (o *Purchasing) GetLifeExpectancy() int64`
 
 GetLifeExpectancy returns the LifeExpectancy field if non-nil, zero value otherwise.
 
 ### GetLifeExpectancyOk
 
-`func (o *Purchasing) GetLifeExpectancyOk() (*int32, bool)`
+`func (o *Purchasing) GetLifeExpectancyOk() (*int64, bool)`
 
 GetLifeExpectancyOk returns a tuple with the LifeExpectancy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifeExpectancy
 
-`func (o *Purchasing) SetLifeExpectancy(v int32)`
+`func (o *Purchasing) SetLifeExpectancy(v int64)`
 
 SetLifeExpectancy sets LifeExpectancy field to given value.
 

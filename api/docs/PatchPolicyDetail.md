@@ -11,17 +11,17 @@ Name | Type | Description | Notes
 **DeploymentMethod** | Pointer to **string** |  | [optional] 
 **SoftwareTitleId** | Pointer to **string** |  | [optional] 
 **SoftwareTitleConfigurationId** | Pointer to **string** |  | [optional] 
-**KillAppsDelayMinutes** | Pointer to **int32** |  | [optional] 
+**KillAppsDelayMinutes** | Pointer to **int64** |  | [optional] 
 **KillAppsMessage** | Pointer to **string** |  | [optional] 
 **Downgrade** | Pointer to **bool** |  | [optional] 
 **PatchUnknownVersion** | Pointer to **bool** |  | [optional] 
 **NotificationHeader** | Pointer to **string** |  | [optional] 
 **SelfServiceEnforceDeadline** | Pointer to **bool** |  | [optional] 
-**SelfServiceDeadline** | Pointer to **int32** |  | [optional] 
+**SelfServiceDeadline** | Pointer to **int64** |  | [optional] 
 **InstallButtonText** | Pointer to **string** |  | [optional] 
 **SelfServiceDescription** | Pointer to **string** |  | [optional] 
 **IconId** | Pointer to **string** |  | [optional] 
-**ReminderFrequency** | Pointer to **int32** |  | [optional] 
+**ReminderFrequency** | Pointer to **int64** |  | [optional] 
 **ReminderEnabled** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -220,20 +220,20 @@ HasSoftwareTitleConfigurationId returns a boolean if a field has been set.
 
 ### GetKillAppsDelayMinutes
 
-`func (o *PatchPolicyDetail) GetKillAppsDelayMinutes() int32`
+`func (o *PatchPolicyDetail) GetKillAppsDelayMinutes() int64`
 
 GetKillAppsDelayMinutes returns the KillAppsDelayMinutes field if non-nil, zero value otherwise.
 
 ### GetKillAppsDelayMinutesOk
 
-`func (o *PatchPolicyDetail) GetKillAppsDelayMinutesOk() (*int32, bool)`
+`func (o *PatchPolicyDetail) GetKillAppsDelayMinutesOk() (*int64, bool)`
 
 GetKillAppsDelayMinutesOk returns a tuple with the KillAppsDelayMinutes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKillAppsDelayMinutes
 
-`func (o *PatchPolicyDetail) SetKillAppsDelayMinutes(v int32)`
+`func (o *PatchPolicyDetail) SetKillAppsDelayMinutes(v int64)`
 
 SetKillAppsDelayMinutes sets KillAppsDelayMinutes field to given value.
 
@@ -370,20 +370,20 @@ HasSelfServiceEnforceDeadline returns a boolean if a field has been set.
 
 ### GetSelfServiceDeadline
 
-`func (o *PatchPolicyDetail) GetSelfServiceDeadline() int32`
+`func (o *PatchPolicyDetail) GetSelfServiceDeadline() int64`
 
 GetSelfServiceDeadline returns the SelfServiceDeadline field if non-nil, zero value otherwise.
 
 ### GetSelfServiceDeadlineOk
 
-`func (o *PatchPolicyDetail) GetSelfServiceDeadlineOk() (*int32, bool)`
+`func (o *PatchPolicyDetail) GetSelfServiceDeadlineOk() (*int64, bool)`
 
 GetSelfServiceDeadlineOk returns a tuple with the SelfServiceDeadline field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSelfServiceDeadline
 
-`func (o *PatchPolicyDetail) SetSelfServiceDeadline(v int32)`
+`func (o *PatchPolicyDetail) SetSelfServiceDeadline(v int64)`
 
 SetSelfServiceDeadline sets SelfServiceDeadline field to given value.
 
@@ -470,20 +470,20 @@ HasIconId returns a boolean if a field has been set.
 
 ### GetReminderFrequency
 
-`func (o *PatchPolicyDetail) GetReminderFrequency() int32`
+`func (o *PatchPolicyDetail) GetReminderFrequency() int64`
 
 GetReminderFrequency returns the ReminderFrequency field if non-nil, zero value otherwise.
 
 ### GetReminderFrequencyOk
 
-`func (o *PatchPolicyDetail) GetReminderFrequencyOk() (*int32, bool)`
+`func (o *PatchPolicyDetail) GetReminderFrequencyOk() (*int64, bool)`
 
 GetReminderFrequencyOk returns a tuple with the ReminderFrequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReminderFrequency
 
-`func (o *PatchPolicyDetail) SetReminderFrequency(v int32)`
+`func (o *PatchPolicyDetail) SetReminderFrequency(v int64)`
 
 SetReminderFrequency sets ReminderFrequency field to given value.
 

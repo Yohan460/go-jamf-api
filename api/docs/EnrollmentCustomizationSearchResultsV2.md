@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | Pointer to **int32** |  | [optional] 
+**TotalCount** | Pointer to **int64** |  | [optional] 
 **Results** | Pointer to [**[]EnrollmentCustomizationV2**](EnrollmentCustomizationV2.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTotalCount
 
-`func (o *EnrollmentCustomizationSearchResultsV2) GetTotalCount() int32`
+`func (o *EnrollmentCustomizationSearchResultsV2) GetTotalCount() int64`
 
 GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
 
 ### GetTotalCountOk
 
-`func (o *EnrollmentCustomizationSearchResultsV2) GetTotalCountOk() (*int32, bool)`
+`func (o *EnrollmentCustomizationSearchResultsV2) GetTotalCountOk() (*int64, bool)`
 
 GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCount
 
-`func (o *EnrollmentCustomizationSearchResultsV2) SetTotalCount(v int32)`
+`func (o *EnrollmentCustomizationSearchResultsV2) SetTotalCount(v int64)`
 
 SetTotalCount sets TotalCount field to given value.
 

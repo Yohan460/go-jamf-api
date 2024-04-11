@@ -24,8 +24,8 @@ type InventoryPreloadCsvError struct {
 	Field *string `json:"field,omitempty"`
 	Value *string `json:"value,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
-	Line *int32 `json:"line,omitempty"`
-	FieldSize *int32 `json:"fieldSize,omitempty"`
+	Line *int64 `json:"line,omitempty"`
+	FieldSize *int64 `json:"fieldSize,omitempty"`
 	DeviceType *string `json:"deviceType,omitempty"`
 }
 
@@ -207,9 +207,9 @@ func (o *InventoryPreloadCsvError) SetSerialNumber(v string) {
 }
 
 // GetLine returns the Line field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvError) GetLine() int32 {
+func (o *InventoryPreloadCsvError) GetLine() int64 {
 	if o == nil || IsNil(o.Line) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Line
@@ -217,7 +217,7 @@ func (o *InventoryPreloadCsvError) GetLine() int32 {
 
 // GetLineOk returns a tuple with the Line field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvError) GetLineOk() (*int32, bool) {
+func (o *InventoryPreloadCsvError) GetLineOk() (*int64, bool) {
 	if o == nil || IsNil(o.Line) {
 		return nil, false
 	}
@@ -233,15 +233,15 @@ func (o *InventoryPreloadCsvError) HasLine() bool {
 	return false
 }
 
-// SetLine gets a reference to the given int32 and assigns it to the Line field.
-func (o *InventoryPreloadCsvError) SetLine(v int32) {
+// SetLine gets a reference to the given int64 and assigns it to the Line field.
+func (o *InventoryPreloadCsvError) SetLine(v int64) {
 	o.Line = &v
 }
 
 // GetFieldSize returns the FieldSize field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvError) GetFieldSize() int32 {
+func (o *InventoryPreloadCsvError) GetFieldSize() int64 {
 	if o == nil || IsNil(o.FieldSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.FieldSize
@@ -249,7 +249,7 @@ func (o *InventoryPreloadCsvError) GetFieldSize() int32 {
 
 // GetFieldSizeOk returns a tuple with the FieldSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvError) GetFieldSizeOk() (*int32, bool) {
+func (o *InventoryPreloadCsvError) GetFieldSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.FieldSize) {
 		return nil, false
 	}
@@ -265,8 +265,8 @@ func (o *InventoryPreloadCsvError) HasFieldSize() bool {
 	return false
 }
 
-// SetFieldSize gets a reference to the given int32 and assigns it to the FieldSize field.
-func (o *InventoryPreloadCsvError) SetFieldSize(v int32) {
+// SetFieldSize gets a reference to the given int64 and assigns it to the FieldSize field.
+func (o *InventoryPreloadCsvError) SetFieldSize(v int64) {
 	o.FieldSize = &v
 }
 

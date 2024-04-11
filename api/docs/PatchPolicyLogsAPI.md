@@ -27,25 +27,25 @@ Return attempt details for a specific log
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
-    deviceId := "deviceId_example" // string | device id
+	id := "id_example" // string | patch policy id
+	deviceId := "deviceId_example" // string | device id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet(context.Background(), id, deviceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchPoliciesIdLogsDeviceIdDetailsGet`: []PatchPolicyLogDetail
-    fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet(context.Background(), id, deviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchPoliciesIdLogsDeviceIdDetailsGet`: []PatchPolicyLogDetail
+	fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdDetailsGet`: %v\n", resp)
 }
 ```
 
@@ -100,25 +100,25 @@ Retrieves a single Patch Policy Log
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
-    deviceId := "deviceId_example" // string | device id
+	id := "id_example" // string | patch policy id
+	deviceId := "deviceId_example" // string | device id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet(context.Background(), id, deviceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchPoliciesIdLogsDeviceIdGet`: PatchPolicyLogV2
-    fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet(context.Background(), id, deviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchPoliciesIdLogsDeviceIdGet`: PatchPolicyLogV2
+	fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsDeviceIdGet`: %v\n", resp)
 }
 ```
 
@@ -173,24 +173,24 @@ Return the count of the Patch Policy Logs for the patch policy id that are eligi
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
+	id := "id_example" // string | patch policy id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchPoliciesIdLogsEligibleRetryCountGet`: PatchPolicyLogEligibleRetryCount
-    fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchPoliciesIdLogsEligibleRetryCountGet`: PatchPolicyLogEligibleRetryCount
+	fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsEligibleRetryCountGet`: %v\n", resp)
 }
 ```
 
@@ -243,28 +243,28 @@ Retrieve Patch Policy Logs
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is deviceName:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["deviceName:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Policy Logs collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: deviceId, deviceName, statusCode, statusDate, attemptNumber, ignoredForPatchPolicyId. This param can be combined with paging and sorting. (optional) (default to "")
+	id := "id_example" // string | patch policy id
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is deviceName:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["deviceName:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Policy Logs collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: deviceId, deviceName, statusCode, statusDate, attemptNumber, ignoredForPatchPolicyId. This param can be combined with paging and sorting. (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchPoliciesIdLogsGet`: PatchPolicyLogs
-    fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchPoliciesIdLogsGet`: PatchPolicyLogs
+	fmt.Fprintf(os.Stdout, "Response from `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsGet`: %v\n", resp)
 }
 ```
 
@@ -284,8 +284,8 @@ Other parameters are passed through a pointer to a apiV2PatchPoliciesIdLogsGetRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is deviceName:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;deviceName:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Patch Policy Logs collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: deviceId, deviceName, statusCode, statusDate, attemptNumber, ignoredForPatchPolicyId. This param can be combined with paging and sorting. | [default to &quot;&quot;]
 
@@ -321,22 +321,22 @@ Send retry attempts for all devices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
+	id := "id_example" // string | patch policy id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryAllPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryAllPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryAllPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryAllPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -389,23 +389,23 @@ Send retry attempts for specific devices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | patch policy id
-    patchPolicyLogRetry := *openapiclient.NewPatchPolicyLogRetry() // PatchPolicyLogRetry | 
+	id := "id_example" // string | patch policy id
+	patchPolicyLogRetry := *openapiclient.NewPatchPolicyLogRetry() // PatchPolicyLogRetry | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryPost(context.Background(), id).PatchPolicyLogRetry(patchPolicyLogRetry).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryPost(context.Background(), id).PatchPolicyLogRetry(patchPolicyLogRetry).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchPolicyLogsAPI.V2PatchPoliciesIdLogsRetryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

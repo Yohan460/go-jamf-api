@@ -37,7 +37,7 @@ type ComputerOverview struct {
 	MacAddress *string `json:"macAddress,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
-	MdmAccessRights *int32 `json:"mdmAccessRights,omitempty"`
+	MdmAccessRights *int64 `json:"mdmAccessRights,omitempty"`
 	IsManaged *bool `json:"isManaged,omitempty"`
 	ManagementId *string `json:"managementId,omitempty"`
 }
@@ -572,9 +572,9 @@ func (o *ComputerOverview) SetModelIdentifier(v string) {
 }
 
 // GetMdmAccessRights returns the MdmAccessRights field value if set, zero value otherwise.
-func (o *ComputerOverview) GetMdmAccessRights() int32 {
+func (o *ComputerOverview) GetMdmAccessRights() int64 {
 	if o == nil || IsNil(o.MdmAccessRights) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MdmAccessRights
@@ -582,7 +582,7 @@ func (o *ComputerOverview) GetMdmAccessRights() int32 {
 
 // GetMdmAccessRightsOk returns a tuple with the MdmAccessRights field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerOverview) GetMdmAccessRightsOk() (*int32, bool) {
+func (o *ComputerOverview) GetMdmAccessRightsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MdmAccessRights) {
 		return nil, false
 	}
@@ -598,8 +598,8 @@ func (o *ComputerOverview) HasMdmAccessRights() bool {
 	return false
 }
 
-// SetMdmAccessRights gets a reference to the given int32 and assigns it to the MdmAccessRights field.
-func (o *ComputerOverview) SetMdmAccessRights(v int32) {
+// SetMdmAccessRights gets a reference to the given int64 and assigns it to the MdmAccessRights field.
+func (o *ComputerOverview) SetMdmAccessRights(v int64) {
 	o.MdmAccessRights = &v
 }
 

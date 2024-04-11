@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **ApplicationName** | Pointer to **string** |  | [optional] 
 **BrandingName** | Pointer to **string** |  | [optional] 
 **BrandingNameSecondary** | Pointer to **string** |  | [optional] 
-**IconId** | Pointer to **int32** |  | [optional] 
-**BrandingHeaderImageId** | Pointer to **int32** |  | [optional] 
+**IconId** | Pointer to **int64** |  | [optional] 
+**BrandingHeaderImageId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -132,20 +132,20 @@ HasBrandingNameSecondary returns a boolean if a field has been set.
 
 ### GetIconId
 
-`func (o *MacOsBrandingConfiguration) GetIconId() int32`
+`func (o *MacOsBrandingConfiguration) GetIconId() int64`
 
 GetIconId returns the IconId field if non-nil, zero value otherwise.
 
 ### GetIconIdOk
 
-`func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int32, bool)`
+`func (o *MacOsBrandingConfiguration) GetIconIdOk() (*int64, bool)`
 
 GetIconIdOk returns a tuple with the IconId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIconId
 
-`func (o *MacOsBrandingConfiguration) SetIconId(v int32)`
+`func (o *MacOsBrandingConfiguration) SetIconId(v int64)`
 
 SetIconId sets IconId field to given value.
 
@@ -157,20 +157,20 @@ HasIconId returns a boolean if a field has been set.
 
 ### GetBrandingHeaderImageId
 
-`func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int32`
+`func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageId() int64`
 
 GetBrandingHeaderImageId returns the BrandingHeaderImageId field if non-nil, zero value otherwise.
 
 ### GetBrandingHeaderImageIdOk
 
-`func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int32, bool)`
+`func (o *MacOsBrandingConfiguration) GetBrandingHeaderImageIdOk() (*int64, bool)`
 
 GetBrandingHeaderImageIdOk returns a tuple with the BrandingHeaderImageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBrandingHeaderImageId
 
-`func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int32)`
+`func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int64)`
 
 SetBrandingHeaderImageId sets BrandingHeaderImageId field to given value.
 

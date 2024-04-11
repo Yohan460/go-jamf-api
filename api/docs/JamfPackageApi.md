@@ -23,24 +23,24 @@ Get the packages for a given Jamf application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    application := "protect" // string | The Jamf Application key. The only supported values are protect and connect.
+	application := "protect" // string | The Jamf Application key. The only supported values are protect and connect.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfPackageAPI.V1JamfPackageGet(context.Background()).Application(application).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V1JamfPackageGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1JamfPackageGet`: []JamfPackageResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V1JamfPackageGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfPackageAPI.V1JamfPackageGet(context.Background()).Application(application).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V1JamfPackageGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1JamfPackageGet`: []JamfPackageResponse
+	fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V1JamfPackageGet`: %v\n", resp)
 }
 ```
 
@@ -89,24 +89,24 @@ Get the packages for a given Jamf application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    application := "protect" // string | The Jamf Application key. The only supported values are protect and connect.
+	application := "protect" // string | The Jamf Application key. The only supported values are protect and connect.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JamfPackageAPI.V2JamfPackageGet(context.Background()).Application(application).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V2JamfPackageGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2JamfPackageGet`: JamfApplicationResponse
-    fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V2JamfPackageGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JamfPackageAPI.V2JamfPackageGet(context.Background()).Application(application).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfPackageAPI.V2JamfPackageGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2JamfPackageGet`: JamfApplicationResponse
+	fmt.Fprintf(os.Stdout, "Response from `JamfPackageAPI.V2JamfPackageGet`: %v\n", resp)
 }
 ```
 

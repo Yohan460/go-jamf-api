@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Device** | Pointer to **int32** |  | [optional] 
-**Group** | Pointer to **int32** |  | [optional] 
+**Device** | Pointer to **int64** |  | [optional] 
+**Group** | Pointer to **int64** |  | [optional] 
 **Reason** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDevice
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int32`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int64`
 
 GetDevice returns the Device field if non-nil, zero value otherwise.
 
 ### GetDeviceOk
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int32, bool)`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int64, bool)`
 
 GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevice
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) SetDevice(v int32)`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) SetDevice(v int64)`
 
 SetDevice sets Device field to given value.
 
@@ -54,20 +54,20 @@ HasDevice returns a boolean if a field has been set.
 
 ### GetGroup
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int32`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int64`
 
 GetGroup returns the Group field if non-nil, zero value otherwise.
 
 ### GetGroupOk
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int32, bool)`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int64, bool)`
 
 GetGroupOk returns a tuple with the Group field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroup
 
-`func (o *VerbosePackageDeploymentResponseErrorsInner) SetGroup(v int32)`
+`func (o *VerbosePackageDeploymentResponseErrorsInner) SetGroup(v int64)`
 
 SetGroup sets Group field to given value.
 

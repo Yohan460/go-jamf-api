@@ -22,7 +22,7 @@ type TeacherSettingsResponse struct {
 	IsEnabled *bool `json:"isEnabled,omitempty"`
 	TimezoneId *string `json:"timezoneId,omitempty"`
 	AutoClear *string `json:"autoClear,omitempty"`
-	MaxRestrictionLengthSeconds *int32 `json:"maxRestrictionLengthSeconds,omitempty"`
+	MaxRestrictionLengthSeconds *int64 `json:"maxRestrictionLengthSeconds,omitempty"`
 	DisplayNameType *string `json:"displayNameType,omitempty"`
 	Features *TeacherFeatures `json:"features,omitempty"`
 	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
@@ -142,9 +142,9 @@ func (o *TeacherSettingsResponse) SetAutoClear(v string) {
 }
 
 // GetMaxRestrictionLengthSeconds returns the MaxRestrictionLengthSeconds field value if set, zero value otherwise.
-func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSeconds() int32 {
+func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSeconds() int64 {
 	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxRestrictionLengthSeconds
@@ -152,7 +152,7 @@ func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSeconds() int32 {
 
 // GetMaxRestrictionLengthSecondsOk returns a tuple with the MaxRestrictionLengthSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSecondsOk() (*int32, bool) {
+func (o *TeacherSettingsResponse) GetMaxRestrictionLengthSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxRestrictionLengthSeconds) {
 		return nil, false
 	}
@@ -168,8 +168,8 @@ func (o *TeacherSettingsResponse) HasMaxRestrictionLengthSeconds() bool {
 	return false
 }
 
-// SetMaxRestrictionLengthSeconds gets a reference to the given int32 and assigns it to the MaxRestrictionLengthSeconds field.
-func (o *TeacherSettingsResponse) SetMaxRestrictionLengthSeconds(v int32) {
+// SetMaxRestrictionLengthSeconds gets a reference to the given int64 and assigns it to the MaxRestrictionLengthSeconds field.
+func (o *TeacherSettingsResponse) SetMaxRestrictionLengthSeconds(v int64) {
 	o.MaxRestrictionLengthSeconds = &v
 }
 

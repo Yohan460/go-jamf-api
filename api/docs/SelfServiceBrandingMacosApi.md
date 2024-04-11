@@ -26,26 +26,26 @@ Search for sorted and paged macOS branding configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,brandingName:asc  (optional) (default to ["id:asc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,brandingName:asc  (optional) (default to ["id:asc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceBrandingMacosGet`: MacOsBrandingSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceBrandingMacosGet`: MacOsBrandingSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosGet`: %v\n", resp)
 }
 ```
 
@@ -60,8 +60,8 @@ Other parameters are passed through a pointer to a apiV1SelfServiceBrandingMacos
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,brandingName:asc  | [default to [&quot;id:asc&quot;]]
 
 ### Return type
@@ -96,22 +96,22 @@ Delete the Self Service macOS branding configuration indicated by the provided i
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of macOS branding configuration
+	id := "id_example" // string | id of macOS branding configuration
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -164,24 +164,24 @@ Read a single Self Service macOS branding configuration indicated by the provide
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of macOS branding configuration
+	id := "id_example" // string | id of macOS branding configuration
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceBrandingMacosIdGet`: MacOsBrandingConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceBrandingMacosIdGet`: MacOsBrandingConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdGet`: %v\n", resp)
 }
 ```
 
@@ -234,25 +234,25 @@ Update a Self Service macOS branding configuration with the supplied details
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of macOS branding configuration
-    macOsBrandingConfiguration := *openapiclient.NewMacOsBrandingConfiguration() // MacOsBrandingConfiguration | The macOS branding configuration values to update (optional)
+	id := "id_example" // string | id of macOS branding configuration
+	macOsBrandingConfiguration := *openapiclient.NewMacOsBrandingConfiguration() // MacOsBrandingConfiguration | The macOS branding configuration values to update (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut(context.Background(), id).MacOsBrandingConfiguration(macOsBrandingConfiguration).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceBrandingMacosIdPut`: MacOsBrandingConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut(context.Background(), id).MacOsBrandingConfiguration(macOsBrandingConfiguration).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceBrandingMacosIdPut`: MacOsBrandingConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosIdPut`: %v\n", resp)
 }
 ```
 
@@ -306,24 +306,24 @@ Create a Self Service macOS branding configuration with the supplied
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    macOsBrandingConfiguration := *openapiclient.NewMacOsBrandingConfiguration() // MacOsBrandingConfiguration | The macOS branding configuration to create (optional)
+	macOsBrandingConfiguration := *openapiclient.NewMacOsBrandingConfiguration() // MacOsBrandingConfiguration | The macOS branding configuration to create (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost(context.Background()).MacOsBrandingConfiguration(macOsBrandingConfiguration).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceBrandingMacosPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost(context.Background()).MacOsBrandingConfiguration(macOsBrandingConfiguration).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceBrandingMacosPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceBrandingMacosAPI.V1SelfServiceBrandingMacosPost`: %v\n", resp)
 }
 ```
 

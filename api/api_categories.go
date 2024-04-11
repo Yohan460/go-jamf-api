@@ -262,18 +262,18 @@ func (a *CategoriesAPIService) V1CategoriesDeleteMultiplePostExecute(r Categorie
 type CategoriesAPIV1CategoriesGetRequest struct {
 	ctx context.Context
 	ApiService CategoriesAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r CategoriesAPIV1CategoriesGetRequest) Page(page int32) CategoriesAPIV1CategoriesGetRequest {
+func (r CategoriesAPIV1CategoriesGetRequest) Page(page int64) CategoriesAPIV1CategoriesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r CategoriesAPIV1CategoriesGetRequest) PageSize(pageSize int32) CategoriesAPIV1CategoriesGetRequest {
+func (r CategoriesAPIV1CategoriesGetRequest) PageSize(pageSize int64) CategoriesAPIV1CategoriesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -334,13 +334,13 @@ func (a *CategoriesAPIService) V1CategoriesGetExecute(r CategoriesAPIV1Categorie
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -628,18 +628,18 @@ type CategoriesAPIV1CategoriesIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService CategoriesAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r CategoriesAPIV1CategoriesIdHistoryGetRequest) Page(page int32) CategoriesAPIV1CategoriesIdHistoryGetRequest {
+func (r CategoriesAPIV1CategoriesIdHistoryGetRequest) Page(page int64) CategoriesAPIV1CategoriesIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r CategoriesAPIV1CategoriesIdHistoryGetRequest) PageSize(pageSize int32) CategoriesAPIV1CategoriesIdHistoryGetRequest {
+func (r CategoriesAPIV1CategoriesIdHistoryGetRequest) PageSize(pageSize int64) CategoriesAPIV1CategoriesIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -703,13 +703,13 @@ func (a *CategoriesAPIService) V1CategoriesIdHistoryGetExecute(r CategoriesAPIV1
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

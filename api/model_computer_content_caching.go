@@ -32,9 +32,9 @@ type ComputerContentCaching struct {
 	CacheStatus *string `json:"cacheStatus,omitempty"`
 	CacheBytesUsed *int64 `json:"cacheBytesUsed,omitempty"`
 	DataMigrationCompleted *bool `json:"dataMigrationCompleted,omitempty"`
-	DataMigrationProgressPercentage *int32 `json:"dataMigrationProgressPercentage,omitempty"`
+	DataMigrationProgressPercentage *int64 `json:"dataMigrationProgressPercentage,omitempty"`
 	DataMigrationError *ComputerContentCachingDataMigrationError `json:"dataMigrationError,omitempty"`
-	MaxCachePressureLast1HourPercentage *int32 `json:"maxCachePressureLast1HourPercentage,omitempty"`
+	MaxCachePressureLast1HourPercentage *int64 `json:"maxCachePressureLast1HourPercentage,omitempty"`
 	PersonalCacheBytesFree *int64 `json:"personalCacheBytesFree,omitempty"`
 	PersonalCacheBytesLimit *int64 `json:"personalCacheBytesLimit,omitempty"`
 	PersonalCacheBytesUsed *int64 `json:"personalCacheBytesUsed,omitempty"`
@@ -461,9 +461,9 @@ func (o *ComputerContentCaching) SetDataMigrationCompleted(v bool) {
 }
 
 // GetDataMigrationProgressPercentage returns the DataMigrationProgressPercentage field value if set, zero value otherwise.
-func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int32 {
+func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int64 {
 	if o == nil || IsNil(o.DataMigrationProgressPercentage) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DataMigrationProgressPercentage
@@ -471,7 +471,7 @@ func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int32 {
 
 // GetDataMigrationProgressPercentageOk returns a tuple with the DataMigrationProgressPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int32, bool) {
+func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int64, bool) {
 	if o == nil || IsNil(o.DataMigrationProgressPercentage) {
 		return nil, false
 	}
@@ -487,8 +487,8 @@ func (o *ComputerContentCaching) HasDataMigrationProgressPercentage() bool {
 	return false
 }
 
-// SetDataMigrationProgressPercentage gets a reference to the given int32 and assigns it to the DataMigrationProgressPercentage field.
-func (o *ComputerContentCaching) SetDataMigrationProgressPercentage(v int32) {
+// SetDataMigrationProgressPercentage gets a reference to the given int64 and assigns it to the DataMigrationProgressPercentage field.
+func (o *ComputerContentCaching) SetDataMigrationProgressPercentage(v int64) {
 	o.DataMigrationProgressPercentage = &v
 }
 
@@ -525,9 +525,9 @@ func (o *ComputerContentCaching) SetDataMigrationError(v ComputerContentCachingD
 }
 
 // GetMaxCachePressureLast1HourPercentage returns the MaxCachePressureLast1HourPercentage field value if set, zero value otherwise.
-func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int32 {
+func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int64 {
 	if o == nil || IsNil(o.MaxCachePressureLast1HourPercentage) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxCachePressureLast1HourPercentage
@@ -535,7 +535,7 @@ func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int32 
 
 // GetMaxCachePressureLast1HourPercentageOk returns a tuple with the MaxCachePressureLast1HourPercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*int32, bool) {
+func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxCachePressureLast1HourPercentage) {
 		return nil, false
 	}
@@ -551,8 +551,8 @@ func (o *ComputerContentCaching) HasMaxCachePressureLast1HourPercentage() bool {
 	return false
 }
 
-// SetMaxCachePressureLast1HourPercentage gets a reference to the given int32 and assigns it to the MaxCachePressureLast1HourPercentage field.
-func (o *ComputerContentCaching) SetMaxCachePressureLast1HourPercentage(v int32) {
+// SetMaxCachePressureLast1HourPercentage gets a reference to the given int64 and assigns it to the MaxCachePressureLast1HourPercentage field.
+func (o *ComputerContentCaching) SetMaxCachePressureLast1HourPercentage(v int64) {
 	o.MaxCachePressureLast1HourPercentage = &v
 }
 

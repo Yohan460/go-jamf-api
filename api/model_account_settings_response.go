@@ -27,7 +27,7 @@ type AccountSettingsResponse struct {
 	HiddenAdminAccount *bool `json:"hiddenAdminAccount,omitempty"`
 	LocalUserManaged *bool `json:"localUserManaged,omitempty"`
 	UserAccountType *string `json:"userAccountType,omitempty"`
-	VersionLock *int32 `json:"versionLock,omitempty"`
+	VersionLock *int64 `json:"versionLock,omitempty"`
 	PrefillPrimaryAccountInfoFeatureEnabled *bool `json:"prefillPrimaryAccountInfoFeatureEnabled,omitempty"`
 	// Values accepted are only CUSTOM and DEVICE_OWNER
 	PrefillType *string `json:"prefillType,omitempty"`
@@ -54,7 +54,7 @@ func NewAccountSettingsResponse() *AccountSettingsResponse {
 	this.LocalUserManaged = &localUserManaged
 	var userAccountType string = "STANDARD"
 	this.UserAccountType = &userAccountType
-	var versionLock int32 = 0
+	var versionLock int64 = 0
 	this.VersionLock = &versionLock
 	var prefillPrimaryAccountInfoFeatureEnabled bool = false
 	this.PrefillPrimaryAccountInfoFeatureEnabled = &prefillPrimaryAccountInfoFeatureEnabled
@@ -86,7 +86,7 @@ func NewAccountSettingsResponseWithDefaults() *AccountSettingsResponse {
 	this.LocalUserManaged = &localUserManaged
 	var userAccountType string = "STANDARD"
 	this.UserAccountType = &userAccountType
-	var versionLock int32 = 0
+	var versionLock int64 = 0
 	this.VersionLock = &versionLock
 	var prefillPrimaryAccountInfoFeatureEnabled bool = false
 	this.PrefillPrimaryAccountInfoFeatureEnabled = &prefillPrimaryAccountInfoFeatureEnabled
@@ -326,9 +326,9 @@ func (o *AccountSettingsResponse) SetUserAccountType(v string) {
 }
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
-func (o *AccountSettingsResponse) GetVersionLock() int32 {
+func (o *AccountSettingsResponse) GetVersionLock() int64 {
 	if o == nil || IsNil(o.VersionLock) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VersionLock
@@ -336,7 +336,7 @@ func (o *AccountSettingsResponse) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountSettingsResponse) GetVersionLockOk() (*int32, bool) {
+func (o *AccountSettingsResponse) GetVersionLockOk() (*int64, bool) {
 	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
@@ -352,8 +352,8 @@ func (o *AccountSettingsResponse) HasVersionLock() bool {
 	return false
 }
 
-// SetVersionLock gets a reference to the given int32 and assigns it to the VersionLock field.
-func (o *AccountSettingsResponse) SetVersionLock(v int32) {
+// SetVersionLock gets a reference to the given int64 and assigns it to the VersionLock field.
+func (o *AccountSettingsResponse) SetVersionLock(v int64) {
 	o.VersionLock = &v
 }
 

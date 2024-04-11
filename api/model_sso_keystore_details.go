@@ -20,7 +20,7 @@ var _ MappedNullable = &SsoKeystoreDetails{}
 // SsoKeystoreDetails struct for SsoKeystoreDetails
 type SsoKeystoreDetails struct {
 	Keys []string `json:"keys,omitempty"`
-	SerialNumber *int32 `json:"serialNumber,omitempty"`
+	SerialNumber *int64 `json:"serialNumber,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Issuer *string `json:"issuer,omitempty"`
 	Expiration *string `json:"expiration,omitempty"`
@@ -76,9 +76,9 @@ func (o *SsoKeystoreDetails) SetKeys(v []string) {
 }
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
-func (o *SsoKeystoreDetails) GetSerialNumber() int32 {
+func (o *SsoKeystoreDetails) GetSerialNumber() int64 {
 	if o == nil || IsNil(o.SerialNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SerialNumber
@@ -86,7 +86,7 @@ func (o *SsoKeystoreDetails) GetSerialNumber() int32 {
 
 // GetSerialNumberOk returns a tuple with the SerialNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SsoKeystoreDetails) GetSerialNumberOk() (*int32, bool) {
+func (o *SsoKeystoreDetails) GetSerialNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.SerialNumber) {
 		return nil, false
 	}
@@ -102,8 +102,8 @@ func (o *SsoKeystoreDetails) HasSerialNumber() bool {
 	return false
 }
 
-// SetSerialNumber gets a reference to the given int32 and assigns it to the SerialNumber field.
-func (o *SsoKeystoreDetails) SetSerialNumber(v int32) {
+// SetSerialNumber gets a reference to the given int64 and assigns it to the SerialNumber field.
+func (o *SsoKeystoreDetails) SetSerialNumber(v int64) {
 	o.SerialNumber = &v
 }
 

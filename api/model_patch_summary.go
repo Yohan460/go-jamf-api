@@ -24,8 +24,8 @@ type PatchSummary struct {
 	Title *string `json:"title,omitempty"`
 	LatestVersion *string `json:"latestVersion,omitempty"`
 	ReleaseDate *time.Time `json:"releaseDate,omitempty"`
-	UpToDate *int32 `json:"upToDate,omitempty"`
-	OutOfDate *int32 `json:"outOfDate,omitempty"`
+	UpToDate *int64 `json:"upToDate,omitempty"`
+	OutOfDate *int64 `json:"outOfDate,omitempty"`
 	OnDashboard *bool `json:"onDashboard,omitempty"`
 	SoftwareTitleConfigurationId *string `json:"softwareTitleConfigurationId,omitempty"`
 }
@@ -176,9 +176,9 @@ func (o *PatchSummary) SetReleaseDate(v time.Time) {
 }
 
 // GetUpToDate returns the UpToDate field value if set, zero value otherwise.
-func (o *PatchSummary) GetUpToDate() int32 {
+func (o *PatchSummary) GetUpToDate() int64 {
 	if o == nil || IsNil(o.UpToDate) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UpToDate
@@ -186,7 +186,7 @@ func (o *PatchSummary) GetUpToDate() int32 {
 
 // GetUpToDateOk returns a tuple with the UpToDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchSummary) GetUpToDateOk() (*int32, bool) {
+func (o *PatchSummary) GetUpToDateOk() (*int64, bool) {
 	if o == nil || IsNil(o.UpToDate) {
 		return nil, false
 	}
@@ -202,15 +202,15 @@ func (o *PatchSummary) HasUpToDate() bool {
 	return false
 }
 
-// SetUpToDate gets a reference to the given int32 and assigns it to the UpToDate field.
-func (o *PatchSummary) SetUpToDate(v int32) {
+// SetUpToDate gets a reference to the given int64 and assigns it to the UpToDate field.
+func (o *PatchSummary) SetUpToDate(v int64) {
 	o.UpToDate = &v
 }
 
 // GetOutOfDate returns the OutOfDate field value if set, zero value otherwise.
-func (o *PatchSummary) GetOutOfDate() int32 {
+func (o *PatchSummary) GetOutOfDate() int64 {
 	if o == nil || IsNil(o.OutOfDate) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OutOfDate
@@ -218,7 +218,7 @@ func (o *PatchSummary) GetOutOfDate() int32 {
 
 // GetOutOfDateOk returns a tuple with the OutOfDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchSummary) GetOutOfDateOk() (*int32, bool) {
+func (o *PatchSummary) GetOutOfDateOk() (*int64, bool) {
 	if o == nil || IsNil(o.OutOfDate) {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *PatchSummary) HasOutOfDate() bool {
 	return false
 }
 
-// SetOutOfDate gets a reference to the given int32 and assigns it to the OutOfDate field.
-func (o *PatchSummary) SetOutOfDate(v int32) {
+// SetOutOfDate gets a reference to the given int64 and assigns it to the OutOfDate field.
+func (o *PatchSummary) SetOutOfDate(v int64) {
 	o.OutOfDate = &v
 }
 

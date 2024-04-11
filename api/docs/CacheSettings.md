@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] [readonly] [default to "0"]
 **Name** | Pointer to **string** |  | [optional] [default to "cache configuration"]
 **CacheType** | **string** |  | 
-**TimeToLiveSeconds** | **int32** |  | 
-**TimeToIdleSeconds** | Pointer to **int32** |  | [optional] 
-**DirectoryTimeToLiveSeconds** | Pointer to **int32** |  | [optional] 
+**TimeToLiveSeconds** | **int64** |  | 
+**TimeToIdleSeconds** | Pointer to **int64** |  | [optional] 
+**DirectoryTimeToLiveSeconds** | Pointer to **int64** |  | [optional] 
 **EhcacheMaxBytesLocalHeap** | Pointer to **string** |  | [optional] [default to "null"]
 **CacheUniqueId** | **string** | The default is for Jamf Pro to generate a UUID, so we can only give an example instead. | 
 **Elasticache** | Pointer to **bool** |  | [optional] [default to false]
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewCacheSettings
 
-`func NewCacheSettings(cacheType string, timeToLiveSeconds int32, cacheUniqueId string, memcachedEndpoints []MemcachedEndpoints, ) *CacheSettings`
+`func NewCacheSettings(cacheType string, timeToLiveSeconds int64, cacheUniqueId string, memcachedEndpoints []MemcachedEndpoints, ) *CacheSettings`
 
 NewCacheSettings instantiates a new CacheSettings object
 This constructor will assign default values to properties that have it defined,
@@ -106,40 +106,40 @@ SetCacheType sets CacheType field to given value.
 
 ### GetTimeToLiveSeconds
 
-`func (o *CacheSettings) GetTimeToLiveSeconds() int32`
+`func (o *CacheSettings) GetTimeToLiveSeconds() int64`
 
 GetTimeToLiveSeconds returns the TimeToLiveSeconds field if non-nil, zero value otherwise.
 
 ### GetTimeToLiveSecondsOk
 
-`func (o *CacheSettings) GetTimeToLiveSecondsOk() (*int32, bool)`
+`func (o *CacheSettings) GetTimeToLiveSecondsOk() (*int64, bool)`
 
 GetTimeToLiveSecondsOk returns a tuple with the TimeToLiveSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeToLiveSeconds
 
-`func (o *CacheSettings) SetTimeToLiveSeconds(v int32)`
+`func (o *CacheSettings) SetTimeToLiveSeconds(v int64)`
 
 SetTimeToLiveSeconds sets TimeToLiveSeconds field to given value.
 
 
 ### GetTimeToIdleSeconds
 
-`func (o *CacheSettings) GetTimeToIdleSeconds() int32`
+`func (o *CacheSettings) GetTimeToIdleSeconds() int64`
 
 GetTimeToIdleSeconds returns the TimeToIdleSeconds field if non-nil, zero value otherwise.
 
 ### GetTimeToIdleSecondsOk
 
-`func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int32, bool)`
+`func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int64, bool)`
 
 GetTimeToIdleSecondsOk returns a tuple with the TimeToIdleSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeToIdleSeconds
 
-`func (o *CacheSettings) SetTimeToIdleSeconds(v int32)`
+`func (o *CacheSettings) SetTimeToIdleSeconds(v int64)`
 
 SetTimeToIdleSeconds sets TimeToIdleSeconds field to given value.
 
@@ -151,20 +151,20 @@ HasTimeToIdleSeconds returns a boolean if a field has been set.
 
 ### GetDirectoryTimeToLiveSeconds
 
-`func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int32`
+`func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int64`
 
 GetDirectoryTimeToLiveSeconds returns the DirectoryTimeToLiveSeconds field if non-nil, zero value otherwise.
 
 ### GetDirectoryTimeToLiveSecondsOk
 
-`func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int32, bool)`
+`func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int64, bool)`
 
 GetDirectoryTimeToLiveSecondsOk returns a tuple with the DirectoryTimeToLiveSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDirectoryTimeToLiveSeconds
 
-`func (o *CacheSettings) SetDirectoryTimeToLiveSeconds(v int32)`
+`func (o *CacheSettings) SetDirectoryTimeToLiveSeconds(v int64)`
 
 SetDirectoryTimeToLiveSeconds sets DirectoryTimeToLiveSeconds field to given value.
 

@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InventoryPreloadRecordV2 type satisfies the MappedNullable interface at compile time
@@ -45,6 +47,8 @@ type InventoryPreloadRecordV2 struct {
 	Vendor NullableString `json:"vendor,omitempty"`
 	ExtensionAttributes []InventoryPreloadExtensionAttribute `json:"extensionAttributes,omitempty"`
 }
+
+type _InventoryPreloadRecordV2 InventoryPreloadRecordV2
 
 // NewInventoryPreloadRecordV2 instantiates a new InventoryPreloadRecordV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -1141,6 +1145,44 @@ func (o InventoryPreloadRecordV2) ToMap() (map[string]interface{}, error) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes
 	}
 	return toSerialize, nil
+}
+
+func (o *InventoryPreloadRecordV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serialNumber",
+		"deviceType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInventoryPreloadRecordV2 := _InventoryPreloadRecordV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInventoryPreloadRecordV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InventoryPreloadRecordV2(varInventoryPreloadRecordV2)
+
+	return err
 }
 
 type NullableInventoryPreloadRecordV2 struct {

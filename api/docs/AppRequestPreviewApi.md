@@ -29,23 +29,23 @@ Search for Form Input Fields
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestFormInputFieldsGet`: AppRequestFormInputFieldSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestFormInputFieldsGet`: AppRequestFormInputFieldSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsGet`: %v\n", resp)
 }
 ```
 
@@ -90,22 +90,22 @@ Remove specified Form Input Field record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Instance id of form input field record
+	id := int64(56) // int64 | Instance id of form input field record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -115,7 +115,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Instance id of form input field record | 
+**id** | **int64** | Instance id of form input field record | 
 
 ### Other Parameters
 
@@ -158,24 +158,24 @@ Get specified Form Input Field object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Instance id of form input field record
+	id := int64(56) // int64 | Instance id of form input field record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestFormInputFieldsIdGet`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestFormInputFieldsIdGet`: AppRequestFormInputField
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdGet`: %v\n", resp)
 }
 ```
 
@@ -185,7 +185,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Instance id of form input field record | 
+**id** | **int64** | Instance id of form input field record | 
 
 ### Other Parameters
 
@@ -228,25 +228,25 @@ Update specified Form Input Field object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Instance id of form input field record
-    appRequestFormInputField := *openapiclient.NewAppRequestFormInputField("Quantity", int32(1)) // AppRequestFormInputField | form input field object to create. ids defined in this body will be ignored
+	id := int64(56) // int64 | Instance id of form input field record
+	appRequestFormInputField := *openapiclient.NewAppRequestFormInputField("Quantity", int64(1)) // AppRequestFormInputField | form input field object to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut(context.Background(), id).AppRequestFormInputField(appRequestFormInputField).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestFormInputFieldsIdPut`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut(context.Background(), id).AppRequestFormInputField(appRequestFormInputField).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestFormInputFieldsIdPut`: AppRequestFormInputField
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsIdPut`: %v\n", resp)
 }
 ```
 
@@ -256,7 +256,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Instance id of form input field record | 
+**id** | **int64** | Instance id of form input field record | 
 
 ### Other Parameters
 
@@ -300,24 +300,24 @@ Create Form Input Field record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    appRequestFormInputField := *openapiclient.NewAppRequestFormInputField("Quantity", int32(1)) // AppRequestFormInputField | form input field object to create. ids defined in this body will be ignored
+	appRequestFormInputField := *openapiclient.NewAppRequestFormInputField("Quantity", int64(1)) // AppRequestFormInputField | form input field object to create. ids defined in this body will be ignored
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestFormInputFieldsPost`: AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestFormInputFieldsPost`: AppRequestFormInputField
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPost`: %v\n", resp)
 }
 ```
 
@@ -366,24 +366,24 @@ Replace all Form Input Fields
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    appRequestFormInputField := []openapiclient.AppRequestFormInputField{*openapiclient.NewAppRequestFormInputField("Quantity", int32(1))} // []AppRequestFormInputField | list of form input fields to replace all existing fields. Will delete, update, and create all input fields accordingly.
+	appRequestFormInputField := []openapiclient.AppRequestFormInputField{*openapiclient.NewAppRequestFormInputField("Quantity", int64(1))} // []AppRequestFormInputField | list of form input fields to replace all existing fields. Will delete, update, and create all input fields accordingly.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestFormInputFieldsPut`: []AppRequestFormInputField
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut(context.Background()).AppRequestFormInputField(appRequestFormInputField).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestFormInputFieldsPut`: []AppRequestFormInputField
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestFormInputFieldsPut`: %v\n", resp)
 }
 ```
 
@@ -432,23 +432,23 @@ Get Applicastion Request Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestSettingsGet`: AppRequestSettings
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestSettingsGet`: AppRequestSettings
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -493,24 +493,24 @@ Update Application Request Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    appRequestSettings := *openapiclient.NewAppRequestSettings() // AppRequestSettings | App request settings object
+	appRequestSettings := *openapiclient.NewAppRequestSettings() // AppRequestSettings | App request settings object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsPut(context.Background()).AppRequestSettings(appRequestSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppRequestSettingsPut`: AppRequestSettings
-    fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppRequestPreviewAPI.V1AppRequestSettingsPut(context.Background()).AppRequestSettings(appRequestSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppRequestPreviewAPI.V1AppRequestSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppRequestSettingsPut`: AppRequestSettings
+	fmt.Fprintf(os.Stdout, "Response from `AppRequestPreviewAPI.V1AppRequestSettingsPut`: %v\n", resp)
 }
 ```
 

@@ -20,8 +20,8 @@ var _ MappedNullable = &VolumePurchasingLocation{}
 // VolumePurchasingLocation struct for VolumePurchasingLocation
 type VolumePurchasingLocation struct {
 	Name *string `json:"name,omitempty"`
-	TotalPurchasedLicenses *int32 `json:"totalPurchasedLicenses,omitempty"`
-	TotalUsedLicenses *int32 `json:"totalUsedLicenses,omitempty"`
+	TotalPurchasedLicenses *int64 `json:"totalPurchasedLicenses,omitempty"`
+	TotalUsedLicenses *int64 `json:"totalUsedLicenses,omitempty"`
 	Id *string `json:"id,omitempty"`
 	AppleId *string `json:"appleId,omitempty"`
 	OrganizationName *string `json:"organizationName,omitempty"`
@@ -89,9 +89,9 @@ func (o *VolumePurchasingLocation) SetName(v string) {
 }
 
 // GetTotalPurchasedLicenses returns the TotalPurchasedLicenses field value if set, zero value otherwise.
-func (o *VolumePurchasingLocation) GetTotalPurchasedLicenses() int32 {
+func (o *VolumePurchasingLocation) GetTotalPurchasedLicenses() int64 {
 	if o == nil || IsNil(o.TotalPurchasedLicenses) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalPurchasedLicenses
@@ -99,7 +99,7 @@ func (o *VolumePurchasingLocation) GetTotalPurchasedLicenses() int32 {
 
 // GetTotalPurchasedLicensesOk returns a tuple with the TotalPurchasedLicenses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumePurchasingLocation) GetTotalPurchasedLicensesOk() (*int32, bool) {
+func (o *VolumePurchasingLocation) GetTotalPurchasedLicensesOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalPurchasedLicenses) {
 		return nil, false
 	}
@@ -115,15 +115,15 @@ func (o *VolumePurchasingLocation) HasTotalPurchasedLicenses() bool {
 	return false
 }
 
-// SetTotalPurchasedLicenses gets a reference to the given int32 and assigns it to the TotalPurchasedLicenses field.
-func (o *VolumePurchasingLocation) SetTotalPurchasedLicenses(v int32) {
+// SetTotalPurchasedLicenses gets a reference to the given int64 and assigns it to the TotalPurchasedLicenses field.
+func (o *VolumePurchasingLocation) SetTotalPurchasedLicenses(v int64) {
 	o.TotalPurchasedLicenses = &v
 }
 
 // GetTotalUsedLicenses returns the TotalUsedLicenses field value if set, zero value otherwise.
-func (o *VolumePurchasingLocation) GetTotalUsedLicenses() int32 {
+func (o *VolumePurchasingLocation) GetTotalUsedLicenses() int64 {
 	if o == nil || IsNil(o.TotalUsedLicenses) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalUsedLicenses
@@ -131,7 +131,7 @@ func (o *VolumePurchasingLocation) GetTotalUsedLicenses() int32 {
 
 // GetTotalUsedLicensesOk returns a tuple with the TotalUsedLicenses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumePurchasingLocation) GetTotalUsedLicensesOk() (*int32, bool) {
+func (o *VolumePurchasingLocation) GetTotalUsedLicensesOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalUsedLicenses) {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *VolumePurchasingLocation) HasTotalUsedLicenses() bool {
 	return false
 }
 
-// SetTotalUsedLicenses gets a reference to the given int32 and assigns it to the TotalUsedLicenses field.
-func (o *VolumePurchasingLocation) SetTotalUsedLicenses(v int32) {
+// SetTotalUsedLicenses gets a reference to the given int64 and assigns it to the TotalUsedLicenses field.
+func (o *VolumePurchasingLocation) SetTotalUsedLicenses(v int64) {
 	o.TotalUsedLicenses = &v
 }
 

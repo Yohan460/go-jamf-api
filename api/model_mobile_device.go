@@ -19,7 +19,7 @@ var _ MappedNullable = &MobileDevice{}
 
 // MobileDevice struct for MobileDevice
 type MobileDevice struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	WifiMacAddress *string `json:"wifiMacAddress,omitempty"`
@@ -50,9 +50,9 @@ func NewMobileDeviceWithDefaults() *MobileDevice {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *MobileDevice) GetId() int32 {
+func (o *MobileDevice) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -60,7 +60,7 @@ func (o *MobileDevice) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDevice) GetIdOk() (*int32, bool) {
+func (o *MobileDevice) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -76,8 +76,8 @@ func (o *MobileDevice) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *MobileDevice) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *MobileDevice) SetId(v int64) {
 	o.Id = &v
 }
 

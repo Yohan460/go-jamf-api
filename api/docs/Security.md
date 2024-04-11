@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IsPasscodePresent** | Pointer to **bool** |  | [optional] 
 **IsPasscodeCompliant** | Pointer to **bool** |  | [optional] 
 **IsPasscodeCompliantWithProfile** | Pointer to **bool** |  | [optional] 
-**HardwareEncryption** | Pointer to **int32** |  | [optional] 
+**HardwareEncryption** | Pointer to **int64** |  | [optional] 
 **IsActivationLockEnabled** | Pointer to **bool** |  | [optional] 
 **IsJailBreakDetected** | Pointer to **bool** |  | [optional] 
 
@@ -185,20 +185,20 @@ HasIsPasscodeCompliantWithProfile returns a boolean if a field has been set.
 
 ### GetHardwareEncryption
 
-`func (o *Security) GetHardwareEncryption() int32`
+`func (o *Security) GetHardwareEncryption() int64`
 
 GetHardwareEncryption returns the HardwareEncryption field if non-nil, zero value otherwise.
 
 ### GetHardwareEncryptionOk
 
-`func (o *Security) GetHardwareEncryptionOk() (*int32, bool)`
+`func (o *Security) GetHardwareEncryptionOk() (*int64, bool)`
 
 GetHardwareEncryptionOk returns a tuple with the HardwareEncryption field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHardwareEncryption
 
-`func (o *Security) SetHardwareEncryption(v int32)`
+`func (o *Security) SetHardwareEncryption(v int64)`
 
 SetHardwareEncryption sets HardwareEncryption field to given value.
 

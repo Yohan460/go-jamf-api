@@ -19,7 +19,7 @@ var _ MappedNullable = &PrestageFileAttachment{}
 
 // PrestageFileAttachment struct for PrestageFileAttachment
 type PrestageFileAttachment struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	FileType *string `json:"fileType,omitempty"`
 }
@@ -42,9 +42,9 @@ func NewPrestageFileAttachmentWithDefaults() *PrestageFileAttachment {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *PrestageFileAttachment) GetId() int32 {
+func (o *PrestageFileAttachment) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -52,7 +52,7 @@ func (o *PrestageFileAttachment) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrestageFileAttachment) GetIdOk() (*int32, bool) {
+func (o *PrestageFileAttachment) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *PrestageFileAttachment) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *PrestageFileAttachment) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *PrestageFileAttachment) SetId(v int64) {
 	o.Id = &v
 }
 

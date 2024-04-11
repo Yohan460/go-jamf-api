@@ -19,7 +19,7 @@ var _ MappedNullable = &LdapServer{}
 
 // LdapServer An LDAP Server.
 type LdapServer struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewLdapServerWithDefaults() *LdapServer {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *LdapServer) GetId() int32 {
+func (o *LdapServer) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -51,7 +51,7 @@ func (o *LdapServer) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LdapServer) GetIdOk() (*int32, bool) {
+func (o *LdapServer) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *LdapServer) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *LdapServer) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *LdapServer) SetId(v int64) {
 	o.Id = &v
 }
 

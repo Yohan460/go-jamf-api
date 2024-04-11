@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LapsSettingsRequestV2 type satisfies the MappedNullable interface at compile time
@@ -22,18 +24,20 @@ type LapsSettingsRequestV2 struct {
 	// When enabled, all appropriate computers will have the SetAutoAdminPassword command sent to them automatically.
 	AutoDeployEnabled bool `json:"autoDeployEnabled"`
 	// The amount of time in seconds that the local admin password will be rotated after viewing.
-	PasswordRotationTime int32 `json:"passwordRotationTime"`
+	PasswordRotationTime int64 `json:"passwordRotationTime"`
 	// When enabled, all appropriate computers will automatically have their password expired and rotated after the configured autoRotateExpirationTime
 	AutoRotateEnabled bool `json:"autoRotateEnabled"`
 	// The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed.
-	AutoRotateExpirationTime int32 `json:"autoRotateExpirationTime"`
+	AutoRotateExpirationTime int64 `json:"autoRotateExpirationTime"`
 }
+
+type _LapsSettingsRequestV2 LapsSettingsRequestV2
 
 // NewLapsSettingsRequestV2 instantiates a new LapsSettingsRequestV2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLapsSettingsRequestV2(autoDeployEnabled bool, passwordRotationTime int32, autoRotateEnabled bool, autoRotateExpirationTime int32) *LapsSettingsRequestV2 {
+func NewLapsSettingsRequestV2(autoDeployEnabled bool, passwordRotationTime int64, autoRotateEnabled bool, autoRotateExpirationTime int64) *LapsSettingsRequestV2 {
 	this := LapsSettingsRequestV2{}
 	this.AutoDeployEnabled = autoDeployEnabled
 	this.PasswordRotationTime = passwordRotationTime
@@ -75,9 +79,9 @@ func (o *LapsSettingsRequestV2) SetAutoDeployEnabled(v bool) {
 }
 
 // GetPasswordRotationTime returns the PasswordRotationTime field value
-func (o *LapsSettingsRequestV2) GetPasswordRotationTime() int32 {
+func (o *LapsSettingsRequestV2) GetPasswordRotationTime() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -86,7 +90,7 @@ func (o *LapsSettingsRequestV2) GetPasswordRotationTime() int32 {
 
 // GetPasswordRotationTimeOk returns a tuple with the PasswordRotationTime field value
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsRequestV2) GetPasswordRotationTimeOk() (*int32, bool) {
+func (o *LapsSettingsRequestV2) GetPasswordRotationTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,7 +98,7 @@ func (o *LapsSettingsRequestV2) GetPasswordRotationTimeOk() (*int32, bool) {
 }
 
 // SetPasswordRotationTime sets field value
-func (o *LapsSettingsRequestV2) SetPasswordRotationTime(v int32) {
+func (o *LapsSettingsRequestV2) SetPasswordRotationTime(v int64) {
 	o.PasswordRotationTime = v
 }
 
@@ -123,9 +127,9 @@ func (o *LapsSettingsRequestV2) SetAutoRotateEnabled(v bool) {
 }
 
 // GetAutoRotateExpirationTime returns the AutoRotateExpirationTime field value
-func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTime() int32 {
+func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTime() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -134,7 +138,7 @@ func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTime() int32 {
 
 // GetAutoRotateExpirationTimeOk returns a tuple with the AutoRotateExpirationTime field value
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTimeOk() (*int32, bool) {
+func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -142,7 +146,7 @@ func (o *LapsSettingsRequestV2) GetAutoRotateExpirationTimeOk() (*int32, bool) {
 }
 
 // SetAutoRotateExpirationTime sets field value
-func (o *LapsSettingsRequestV2) SetAutoRotateExpirationTime(v int32) {
+func (o *LapsSettingsRequestV2) SetAutoRotateExpirationTime(v int64) {
 	o.AutoRotateExpirationTime = v
 }
 
@@ -161,6 +165,46 @@ func (o LapsSettingsRequestV2) ToMap() (map[string]interface{}, error) {
 	toSerialize["autoRotateEnabled"] = o.AutoRotateEnabled
 	toSerialize["autoRotateExpirationTime"] = o.AutoRotateExpirationTime
 	return toSerialize, nil
+}
+
+func (o *LapsSettingsRequestV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"autoDeployEnabled",
+		"passwordRotationTime",
+		"autoRotateEnabled",
+		"autoRotateExpirationTime",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLapsSettingsRequestV2 := _LapsSettingsRequestV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLapsSettingsRequestV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LapsSettingsRequestV2(varLapsSettingsRequestV2)
+
+	return err
 }
 
 type NullableLapsSettingsRequestV2 struct {

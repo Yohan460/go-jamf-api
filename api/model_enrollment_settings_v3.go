@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnrollmentSettingsV3 type satisfies the MappedNullable interface at compile time
@@ -44,6 +46,8 @@ type EnrollmentSettingsV3 struct {
 	PersonalDeviceEnrollmentType *string `json:"personalDeviceEnrollmentType,omitempty"`
 	AccountDrivenUserEnrollmentEnabled *bool `json:"accountDrivenUserEnrollmentEnabled,omitempty"`
 }
+
+type _EnrollmentSettingsV3 EnrollmentSettingsV3
 
 // NewEnrollmentSettingsV3 instantiates a new EnrollmentSettingsV3 object
 // This constructor will assign default values to properties that have it defined,
@@ -1002,6 +1006,43 @@ func (o EnrollmentSettingsV3) ToMap() (map[string]interface{}, error) {
 		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
 	}
 	return toSerialize, nil
+}
+
+func (o *EnrollmentSettingsV3) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"managementUsername",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentSettingsV3 := _EnrollmentSettingsV3{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentSettingsV3)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentSettingsV3(varEnrollmentSettingsV3)
+
+	return err
 }
 
 type NullableEnrollmentSettingsV3 struct {

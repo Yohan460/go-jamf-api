@@ -294,8 +294,8 @@ type BuildingsAPIV1BuildingsExportPostRequest struct {
 	ApiService BuildingsAPI
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -313,12 +313,12 @@ func (r BuildingsAPIV1BuildingsExportPostRequest) ExportLabels(exportLabels []st
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsExportPostRequest) Page(page int32) BuildingsAPIV1BuildingsExportPostRequest {
+func (r BuildingsAPIV1BuildingsExportPostRequest) Page(page int64) BuildingsAPIV1BuildingsExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsExportPostRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsExportPostRequest {
+func (r BuildingsAPIV1BuildingsExportPostRequest) PageSize(pageSize int64) BuildingsAPIV1BuildingsExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -413,13 +413,13 @@ func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1Build
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -522,18 +522,18 @@ func (a *BuildingsAPIService) V1BuildingsExportPostExecute(r BuildingsAPIV1Build
 type BuildingsAPIV1BuildingsGetRequest struct {
 	ctx context.Context
 	ApiService BuildingsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r BuildingsAPIV1BuildingsGetRequest) Page(page int32) BuildingsAPIV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) Page(page int64) BuildingsAPIV1BuildingsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsGetRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsGetRequest {
+func (r BuildingsAPIV1BuildingsGetRequest) PageSize(pageSize int64) BuildingsAPIV1BuildingsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -593,13 +593,13 @@ func (a *BuildingsAPIService) V1BuildingsGetExecute(r BuildingsAPIV1BuildingsGet
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -889,8 +889,8 @@ type BuildingsAPIV1BuildingsIdHistoryExportPostRequest struct {
 	id string
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -908,12 +908,12 @@ func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) ExportLabels(exportLa
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Page(page int32) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) Page(page int64) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryExportPostRequest) PageSize(pageSize int64) BuildingsAPIV1BuildingsIdHistoryExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1011,13 +1011,13 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryExportPostExecute(r BuildingsA
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1121,18 +1121,18 @@ type BuildingsAPIV1BuildingsIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService BuildingsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Page(page int32) BuildingsAPIV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) Page(page int64) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) PageSize(pageSize int32) BuildingsAPIV1BuildingsIdHistoryGetRequest {
+func (r BuildingsAPIV1BuildingsIdHistoryGetRequest) PageSize(pageSize int64) BuildingsAPIV1BuildingsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1196,13 +1196,13 @@ func (a *BuildingsAPIService) V1BuildingsIdHistoryGetExecute(r BuildingsAPIV1Bui
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

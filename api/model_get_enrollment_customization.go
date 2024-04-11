@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GetEnrollmentCustomization type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,20 @@ var _ MappedNullable = &GetEnrollmentCustomization{}
 
 // GetEnrollmentCustomization struct for GetEnrollmentCustomization
 type GetEnrollmentCustomization struct {
-	SiteId int32 `json:"siteId"`
+	SiteId int64 `json:"siteId"`
 	DisplayName string `json:"displayName"`
 	Description string `json:"description"`
 	EnrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings `json:"enrollmentCustomizationBrandingSettings"`
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 }
+
+type _GetEnrollmentCustomization GetEnrollmentCustomization
 
 // NewGetEnrollmentCustomization instantiates a new GetEnrollmentCustomization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetEnrollmentCustomization(siteId int32, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings) *GetEnrollmentCustomization {
+func NewGetEnrollmentCustomization(siteId int64, displayName string, description string, enrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings) *GetEnrollmentCustomization {
 	this := GetEnrollmentCustomization{}
 	this.SiteId = siteId
 	this.DisplayName = displayName
@@ -48,9 +52,9 @@ func NewGetEnrollmentCustomizationWithDefaults() *GetEnrollmentCustomization {
 }
 
 // GetSiteId returns the SiteId field value
-func (o *GetEnrollmentCustomization) GetSiteId() int32 {
+func (o *GetEnrollmentCustomization) GetSiteId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -59,7 +63,7 @@ func (o *GetEnrollmentCustomization) GetSiteId() int32 {
 
 // GetSiteIdOk returns a tuple with the SiteId field value
 // and a boolean to check if the value has been set.
-func (o *GetEnrollmentCustomization) GetSiteIdOk() (*int32, bool) {
+func (o *GetEnrollmentCustomization) GetSiteIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +71,7 @@ func (o *GetEnrollmentCustomization) GetSiteIdOk() (*int32, bool) {
 }
 
 // SetSiteId sets field value
-func (o *GetEnrollmentCustomization) SetSiteId(v int32) {
+func (o *GetEnrollmentCustomization) SetSiteId(v int64) {
 	o.SiteId = v
 }
 
@@ -144,9 +148,9 @@ func (o *GetEnrollmentCustomization) SetEnrollmentCustomizationBrandingSettings(
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GetEnrollmentCustomization) GetId() int32 {
+func (o *GetEnrollmentCustomization) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -154,7 +158,7 @@ func (o *GetEnrollmentCustomization) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetEnrollmentCustomization) GetIdOk() (*int32, bool) {
+func (o *GetEnrollmentCustomization) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -170,8 +174,8 @@ func (o *GetEnrollmentCustomization) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *GetEnrollmentCustomization) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *GetEnrollmentCustomization) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -193,6 +197,46 @@ func (o GetEnrollmentCustomization) ToMap() (map[string]interface{}, error) {
 		toSerialize["id"] = o.Id
 	}
 	return toSerialize, nil
+}
+
+func (o *GetEnrollmentCustomization) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"siteId",
+		"displayName",
+		"description",
+		"enrollmentCustomizationBrandingSettings",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetEnrollmentCustomization := _GetEnrollmentCustomization{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetEnrollmentCustomization)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetEnrollmentCustomization(varGetEnrollmentCustomization)
+
+	return err
 }
 
 type NullableGetEnrollmentCustomization struct {

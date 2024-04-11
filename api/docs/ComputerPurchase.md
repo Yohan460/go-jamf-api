@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **AppleCareId** | Pointer to **string** |  | [optional] 
 **LeaseDate** | Pointer to **string** |  | [optional] 
 **PurchasePrice** | Pointer to **string** |  | [optional] 
-**LifeExpectancy** | Pointer to **int32** |  | [optional] 
+**LifeExpectancy** | Pointer to **int64** |  | [optional] 
 **PurchasingAccount** | Pointer to **string** |  | [optional] 
 **PurchasingContact** | Pointer to **string** |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ComputerExtensionAttribute**](ComputerExtensionAttribute.md) |  | [optional] 
@@ -264,20 +264,20 @@ HasPurchasePrice returns a boolean if a field has been set.
 
 ### GetLifeExpectancy
 
-`func (o *ComputerPurchase) GetLifeExpectancy() int32`
+`func (o *ComputerPurchase) GetLifeExpectancy() int64`
 
 GetLifeExpectancy returns the LifeExpectancy field if non-nil, zero value otherwise.
 
 ### GetLifeExpectancyOk
 
-`func (o *ComputerPurchase) GetLifeExpectancyOk() (*int32, bool)`
+`func (o *ComputerPurchase) GetLifeExpectancyOk() (*int64, bool)`
 
 GetLifeExpectancyOk returns a tuple with the LifeExpectancy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifeExpectancy
 
-`func (o *ComputerPurchase) SetLifeExpectancy(v int32)`
+`func (o *ComputerPurchase) SetLifeExpectancy(v int64)`
 
 SetLifeExpectancy sets LifeExpectancy field to given value.
 

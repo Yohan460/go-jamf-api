@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**HttpStatusCode** | Pointer to **int32** |  | [optional] [default to 500]
+**HttpStatusCode** | Pointer to **int64** |  | [optional] [default to 500]
 **Id** | Pointer to **string** |  | [optional] [default to ""]
 **Description** | Pointer to **string** |  | [optional] [default to ""]
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetHttpStatusCode
 
-`func (o *DashboardApiError) GetHttpStatusCode() int32`
+`func (o *DashboardApiError) GetHttpStatusCode() int64`
 
 GetHttpStatusCode returns the HttpStatusCode field if non-nil, zero value otherwise.
 
 ### GetHttpStatusCodeOk
 
-`func (o *DashboardApiError) GetHttpStatusCodeOk() (*int32, bool)`
+`func (o *DashboardApiError) GetHttpStatusCodeOk() (*int64, bool)`
 
 GetHttpStatusCodeOk returns a tuple with the HttpStatusCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHttpStatusCode
 
-`func (o *DashboardApiError) SetHttpStatusCode(v int32)`
+`func (o *DashboardApiError) SetHttpStatusCode(v int64)`
 
 SetHttpStatusCode sets HttpStatusCode field to given value.
 

@@ -27,23 +27,23 @@ Get default mappings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureDefaultsMappingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureDefaultsMappingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudAzureDefaultsMappingsGet`: AzureMappings
-    fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureDefaultsMappingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureDefaultsMappingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureDefaultsMappingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudAzureDefaultsMappingsGet`: AzureMappings
+	fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureDefaultsMappingsGet`: %v\n", resp)
 }
 ```
 
@@ -88,23 +88,23 @@ Get default server configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudAzureDefaultsServerConfigurationGet`: AzureServerConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudAzureDefaultsServerConfigurationGet`: AzureServerConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureDefaultsServerConfigurationGet`: %v\n", resp)
 }
 ```
 
@@ -149,22 +149,22 @@ Delete Cloud Identity Provider configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudAzureAPI.V1CloudAzureIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudAzureAPI.V1CloudAzureIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -217,24 +217,24 @@ Get Azure Cloud Identity Provider configuration with given ID.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudAzureIdGet`: AzureConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudAzureIdGet`: AzureConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureIdGet`: %v\n", resp)
 }
 ```
 
@@ -287,25 +287,25 @@ Update Azure Cloud Identity Provider configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
-    azureConfigurationUpdate := *openapiclient.NewAzureConfigurationUpdate(*openapiclient.NewCloudIdPCommon("1001", "Cloud Identity Provider", "PROVIDER"), *openapiclient.NewAzureServerConfigurationUpdate("1001", true, *openapiclient.NewAzureMappings("id", "userPrincipalName", "displayName", "mail", "department", "companyName", "officeLocation", "mobilePhone", "jobTitle", "id", "displayName"), int32(30), false, "userPrincipalName", false)) // AzureConfigurationUpdate | Azure Cloud Identity Provider configuration to update
+	id := "id_example" // string | Cloud Identity Provider identifier
+	azureConfigurationUpdate := *openapiclient.NewAzureConfigurationUpdate(*openapiclient.NewCloudIdPCommon("1001", "Cloud Identity Provider", "PROVIDER"), *openapiclient.NewAzureServerConfigurationUpdate("1001", true, *openapiclient.NewAzureMappings("id", "userPrincipalName", "displayName", "mail", "department", "companyName", "officeLocation", "mobilePhone", "jobTitle", "id", "displayName"), int64(30), false, "userPrincipalName", false)) // AzureConfigurationUpdate | Azure Cloud Identity Provider configuration to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureIdPut(context.Background(), id).AzureConfigurationUpdate(azureConfigurationUpdate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudAzureIdPut`: AzureConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudAzureAPI.V1CloudAzureIdPut(context.Background(), id).AzureConfigurationUpdate(azureConfigurationUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzureIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudAzureIdPut`: AzureConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzureIdPut`: %v\n", resp)
 }
 ```
 
@@ -359,24 +359,24 @@ Create Azure Cloud Identity Provider configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    azureConfigurationRequest := *openapiclient.NewAzureConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewAzureServerConfigurationRequest("db65d325-0350-4a17-9af9-b302d0fc386b", true, *openapiclient.NewAzureMappings("id", "userPrincipalName", "displayName", "mail", "department", "companyName", "officeLocation", "mobilePhone", "jobTitle", "id", "displayName"), int32(30), false, "userPrincipalName", false, "auth")) // AzureConfigurationRequest | Azure Cloud Identity Provider configuration to create
+	azureConfigurationRequest := *openapiclient.NewAzureConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewAzureServerConfigurationRequest("db65d325-0350-4a17-9af9-b302d0fc386b", true, *openapiclient.NewAzureMappings("id", "userPrincipalName", "displayName", "mail", "department", "companyName", "officeLocation", "mobilePhone", "jobTitle", "id", "displayName"), int64(30), false, "userPrincipalName", false, "auth")) // AzureConfigurationRequest | Azure Cloud Identity Provider configuration to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudAzureAPI.V1CloudAzurePost(context.Background()).AzureConfigurationRequest(azureConfigurationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzurePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CloudAzurePost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzurePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudAzureAPI.V1CloudAzurePost(context.Background()).AzureConfigurationRequest(azureConfigurationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudAzureAPI.V1CloudAzurePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CloudAzurePost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudAzureAPI.V1CloudAzurePost`: %v\n", resp)
 }
 ```
 

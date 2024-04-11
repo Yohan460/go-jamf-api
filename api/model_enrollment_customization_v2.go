@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnrollmentCustomizationV2 type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type EnrollmentCustomizationV2 struct {
 	Description string `json:"description"`
 	EnrollmentCustomizationBrandingSettings EnrollmentCustomizationBrandingSettings `json:"enrollmentCustomizationBrandingSettings"`
 }
+
+type _EnrollmentCustomizationV2 EnrollmentCustomizationV2
 
 // NewEnrollmentCustomizationV2 instantiates a new EnrollmentCustomizationV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -193,6 +197,46 @@ func (o EnrollmentCustomizationV2) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["enrollmentCustomizationBrandingSettings"] = o.EnrollmentCustomizationBrandingSettings
 	return toSerialize, nil
+}
+
+func (o *EnrollmentCustomizationV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"siteId",
+		"displayName",
+		"description",
+		"enrollmentCustomizationBrandingSettings",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentCustomizationV2 := _EnrollmentCustomizationV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentCustomizationV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentCustomizationV2(varEnrollmentCustomizationV2)
+
+	return err
 }
 
 type NullableEnrollmentCustomizationV2 struct {

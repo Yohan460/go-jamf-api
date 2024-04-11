@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Device** | Pointer to **int32** |  | [optional] 
+**Device** | Pointer to **int64** |  | [optional] 
 **CommandUuid** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDevice
 
-`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int32`
+`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDevice() int64`
 
 GetDevice returns the Device field if non-nil, zero value otherwise.
 
 ### GetDeviceOk
 
-`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*int32, bool)`
+`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) GetDeviceOk() (*int64, bool)`
 
 GetDeviceOk returns a tuple with the Device field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDevice
 
-`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetDevice(v int32)`
+`func (o *VerbosePackageDeploymentResponseQueuedCommandsInner) SetDevice(v int64)`
 
 SetDevice sets Device field to given value.
 

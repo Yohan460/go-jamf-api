@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**RecordCount** | Pointer to **int32** |  | [optional] 
+**RecordCount** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetRecordCount
 
-`func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int32`
+`func (o *InventoryPreloadCsvValidationSuccess) GetRecordCount() int64`
 
 GetRecordCount returns the RecordCount field if non-nil, zero value otherwise.
 
 ### GetRecordCountOk
 
-`func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int32, bool)`
+`func (o *InventoryPreloadCsvValidationSuccess) GetRecordCountOk() (*int64, bool)`
 
 GetRecordCountOk returns a tuple with the RecordCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRecordCount
 
-`func (o *InventoryPreloadCsvValidationSuccess) SetRecordCount(v int32)`
+`func (o *InventoryPreloadCsvValidationSuccess) SetRecordCount(v int64)`
 
 SetRecordCount sets RecordCount field to given value.
 

@@ -26,22 +26,22 @@ Delete API Integrations Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of API role
+	id := "id_example" // string | instance id of API role
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApiRolesAPI.DeleteApiRole(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.DeleteApiRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApiRolesAPI.DeleteApiRole(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.DeleteApiRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,27 +94,27 @@ Get the current Jamf API Roles
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: id, displayName. Example: sort=displayName:desc (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter app titles collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, displayName. Example: displayName==\"*myRole*\" (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: id, displayName. Example: sort=displayName:desc (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter app titles collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, displayName. Example: displayName==\"*myRole*\" (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolesAPI.GetAllApiRoles(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.GetAllApiRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAllApiRoles`: ApiRoleResult
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.GetAllApiRoles`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolesAPI.GetAllApiRoles(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.GetAllApiRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAllApiRoles`: ApiRoleResult
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.GetAllApiRoles`: %v\n", resp)
 }
 ```
 
@@ -129,8 +129,8 @@ Other parameters are passed through a pointer to a apiGetAllApiRolesRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in the query: id, displayName. Example: sort&#x3D;displayName:desc | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter app titles collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, displayName. Example: displayName&#x3D;&#x3D;\&quot;*myRole*\&quot; | [default to &quot;&quot;]
 
@@ -166,24 +166,24 @@ Get the specific Jamf API Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of API role
+	id := "id_example" // string | instance id of API role
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolesAPI.GetOneApiRole(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.GetOneApiRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOneApiRole`: ApiRole
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.GetOneApiRole`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolesAPI.GetOneApiRole(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.GetOneApiRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOneApiRole`: ApiRole
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.GetOneApiRole`: %v\n", resp)
 }
 ```
 
@@ -236,24 +236,24 @@ Create a new API role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    apiRoleRequest := *openapiclient.NewApiRoleRequest("One Role to Rule them all", []string{"View License Serial Numbers"}) // ApiRoleRequest | API Integrations Role to create
+	apiRoleRequest := *openapiclient.NewApiRoleRequest("One Role to Rule them all", []string{"View License Serial Numbers"}) // ApiRoleRequest | API Integrations Role to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolesAPI.PostCreateApiRole(context.Background()).ApiRoleRequest(apiRoleRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.PostCreateApiRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PostCreateApiRole`: ApiRole
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.PostCreateApiRole`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolesAPI.PostCreateApiRole(context.Background()).ApiRoleRequest(apiRoleRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.PostCreateApiRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostCreateApiRole`: ApiRole
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.PostCreateApiRole`: %v\n", resp)
 }
 ```
 
@@ -302,25 +302,25 @@ Update API Integrations Role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of API role
-    apiRoleRequest := *openapiclient.NewApiRoleRequest("One Role to Rule them all", []string{"View License Serial Numbers"}) // ApiRoleRequest | API Integrations Role to update
+	id := "id_example" // string | instance id of API role
+	apiRoleRequest := *openapiclient.NewApiRoleRequest("One Role to Rule them all", []string{"View License Serial Numbers"}) // ApiRoleRequest | API Integrations Role to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolesAPI.PutUpdateApiRole(context.Background(), id).ApiRoleRequest(apiRoleRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.PutUpdateApiRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PutUpdateApiRole`: ApiRole
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.PutUpdateApiRole`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolesAPI.PutUpdateApiRole(context.Background(), id).ApiRoleRequest(apiRoleRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolesAPI.PutUpdateApiRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutUpdateApiRole`: ApiRole
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolesAPI.PutUpdateApiRole`: %v\n", resp)
 }
 ```
 

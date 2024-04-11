@@ -21,7 +21,7 @@ var _ MappedNullable = &PrestageScopeResponseV2{}
 type PrestageScopeResponseV2 struct {
 	PrestageId *string `json:"prestageId,omitempty"`
 	Assignments []PrestageScopeAssignmentV2 `json:"assignments,omitempty"`
-	VersionLock *int32 `json:"versionLock,omitempty"`
+	VersionLock *int64 `json:"versionLock,omitempty"`
 }
 
 // NewPrestageScopeResponseV2 instantiates a new PrestageScopeResponseV2 object
@@ -106,9 +106,9 @@ func (o *PrestageScopeResponseV2) SetAssignments(v []PrestageScopeAssignmentV2) 
 }
 
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
-func (o *PrestageScopeResponseV2) GetVersionLock() int32 {
+func (o *PrestageScopeResponseV2) GetVersionLock() int64 {
 	if o == nil || IsNil(o.VersionLock) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.VersionLock
@@ -116,7 +116,7 @@ func (o *PrestageScopeResponseV2) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int32, bool) {
+func (o *PrestageScopeResponseV2) GetVersionLockOk() (*int64, bool) {
 	if o == nil || IsNil(o.VersionLock) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *PrestageScopeResponseV2) HasVersionLock() bool {
 	return false
 }
 
-// SetVersionLock gets a reference to the given int32 and assigns it to the VersionLock field.
-func (o *PrestageScopeResponseV2) SetVersionLock(v int32) {
+// SetVersionLock gets a reference to the given int64 and assigns it to the VersionLock field.
+func (o *PrestageScopeResponseV2) SetVersionLock(v int64) {
 	o.VersionLock = &v
 }
 

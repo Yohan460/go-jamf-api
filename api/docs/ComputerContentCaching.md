@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **CacheStatus** | Pointer to **string** |  | [optional] [readonly] 
 **CacheBytesUsed** | Pointer to **int64** |  | [optional] [readonly] 
 **DataMigrationCompleted** | Pointer to **bool** |  | [optional] [readonly] 
-**DataMigrationProgressPercentage** | Pointer to **int32** |  | [optional] [readonly] 
+**DataMigrationProgressPercentage** | Pointer to **int64** |  | [optional] [readonly] 
 **DataMigrationError** | Pointer to [**ComputerContentCachingDataMigrationError**](ComputerContentCachingDataMigrationError.md) |  | [optional] 
-**MaxCachePressureLast1HourPercentage** | Pointer to **int32** |  | [optional] [readonly] 
+**MaxCachePressureLast1HourPercentage** | Pointer to **int64** |  | [optional] [readonly] 
 **PersonalCacheBytesFree** | Pointer to **int64** |  | [optional] [readonly] 
 **PersonalCacheBytesLimit** | Pointer to **int64** |  | [optional] [readonly] 
 **PersonalCacheBytesUsed** | Pointer to **int64** |  | [optional] [readonly] 
@@ -363,20 +363,20 @@ HasDataMigrationCompleted returns a boolean if a field has been set.
 
 ### GetDataMigrationProgressPercentage
 
-`func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int32`
+`func (o *ComputerContentCaching) GetDataMigrationProgressPercentage() int64`
 
 GetDataMigrationProgressPercentage returns the DataMigrationProgressPercentage field if non-nil, zero value otherwise.
 
 ### GetDataMigrationProgressPercentageOk
 
-`func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int32, bool)`
+`func (o *ComputerContentCaching) GetDataMigrationProgressPercentageOk() (*int64, bool)`
 
 GetDataMigrationProgressPercentageOk returns a tuple with the DataMigrationProgressPercentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataMigrationProgressPercentage
 
-`func (o *ComputerContentCaching) SetDataMigrationProgressPercentage(v int32)`
+`func (o *ComputerContentCaching) SetDataMigrationProgressPercentage(v int64)`
 
 SetDataMigrationProgressPercentage sets DataMigrationProgressPercentage field to given value.
 
@@ -413,20 +413,20 @@ HasDataMigrationError returns a boolean if a field has been set.
 
 ### GetMaxCachePressureLast1HourPercentage
 
-`func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int32`
+`func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentage() int64`
 
 GetMaxCachePressureLast1HourPercentage returns the MaxCachePressureLast1HourPercentage field if non-nil, zero value otherwise.
 
 ### GetMaxCachePressureLast1HourPercentageOk
 
-`func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*int32, bool)`
+`func (o *ComputerContentCaching) GetMaxCachePressureLast1HourPercentageOk() (*int64, bool)`
 
 GetMaxCachePressureLast1HourPercentageOk returns a tuple with the MaxCachePressureLast1HourPercentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxCachePressureLast1HourPercentage
 
-`func (o *ComputerContentCaching) SetMaxCachePressureLast1HourPercentage(v int32)`
+`func (o *ComputerContentCaching) SetMaxCachePressureLast1HourPercentage(v int64)`
 
 SetMaxCachePressureLast1HourPercentage sets MaxCachePressureLast1HourPercentage field to given value.
 

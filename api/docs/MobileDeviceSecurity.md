@@ -10,10 +10,10 @@ Name | Type | Description | Notes
 **PasscodePresent** | Pointer to **bool** |  | [optional] 
 **PasscodeCompliant** | Pointer to **bool** |  | [optional] 
 **PasscodeCompliantWithProfile** | Pointer to **bool** |  | [optional] 
-**HardwareEncryption** | Pointer to **int32** |  | [optional] 
+**HardwareEncryption** | Pointer to **int64** |  | [optional] 
 **ActivationLockEnabled** | Pointer to **bool** |  | [optional] 
 **JailBreakDetected** | Pointer to **bool** |  | [optional] 
-**PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int32** |  | [optional] 
+**PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int64** |  | [optional] 
 **PersonalDeviceProfileCurrent** | Pointer to **bool** |  | [optional] 
 **LostModeEnabled** | Pointer to **bool** |  | [optional] 
 **LostModePersistent** | Pointer to **bool** |  | [optional] 
@@ -193,20 +193,20 @@ HasPasscodeCompliantWithProfile returns a boolean if a field has been set.
 
 ### GetHardwareEncryption
 
-`func (o *MobileDeviceSecurity) GetHardwareEncryption() int32`
+`func (o *MobileDeviceSecurity) GetHardwareEncryption() int64`
 
 GetHardwareEncryption returns the HardwareEncryption field if non-nil, zero value otherwise.
 
 ### GetHardwareEncryptionOk
 
-`func (o *MobileDeviceSecurity) GetHardwareEncryptionOk() (*int32, bool)`
+`func (o *MobileDeviceSecurity) GetHardwareEncryptionOk() (*int64, bool)`
 
 GetHardwareEncryptionOk returns a tuple with the HardwareEncryption field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHardwareEncryption
 
-`func (o *MobileDeviceSecurity) SetHardwareEncryption(v int32)`
+`func (o *MobileDeviceSecurity) SetHardwareEncryption(v int64)`
 
 SetHardwareEncryption sets HardwareEncryption field to given value.
 
@@ -268,20 +268,20 @@ HasJailBreakDetected returns a boolean if a field has been set.
 
 ### GetPasscodeLockGracePeriodEnforcedSeconds
 
-`func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int32`
+`func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int64`
 
 GetPasscodeLockGracePeriodEnforcedSeconds returns the PasscodeLockGracePeriodEnforcedSeconds field if non-nil, zero value otherwise.
 
 ### GetPasscodeLockGracePeriodEnforcedSecondsOk
 
-`func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int32, bool)`
+`func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int64, bool)`
 
 GetPasscodeLockGracePeriodEnforcedSecondsOk returns a tuple with the PasscodeLockGracePeriodEnforcedSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasscodeLockGracePeriodEnforcedSeconds
 
-`func (o *MobileDeviceSecurity) SetPasscodeLockGracePeriodEnforcedSeconds(v int32)`
+`func (o *MobileDeviceSecurity) SetPasscodeLockGracePeriodEnforcedSeconds(v int64)`
 
 SetPasscodeLockGracePeriodEnforcedSeconds sets PasscodeLockGracePeriodEnforcedSeconds field to given value.
 

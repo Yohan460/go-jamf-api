@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsEnabled** | Pointer to **bool** |  | [optional] 
 **AppStoreLocale** | Pointer to **string** | Can be any of the country codes from /v1/app-store-country-codes or \&quot;deviceLocale\&quot; to use each individual device&#39;s locale | [optional] 
-**RequesterUserGroupId** | Pointer to **int32** |  | [optional] 
+**RequesterUserGroupId** | Pointer to **int64** |  | [optional] 
 **ApproverEmails** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasAppStoreLocale returns a boolean if a field has been set.
 
 ### GetRequesterUserGroupId
 
-`func (o *AppRequestSettings) GetRequesterUserGroupId() int32`
+`func (o *AppRequestSettings) GetRequesterUserGroupId() int64`
 
 GetRequesterUserGroupId returns the RequesterUserGroupId field if non-nil, zero value otherwise.
 
 ### GetRequesterUserGroupIdOk
 
-`func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int32, bool)`
+`func (o *AppRequestSettings) GetRequesterUserGroupIdOk() (*int64, bool)`
 
 GetRequesterUserGroupIdOk returns a tuple with the RequesterUserGroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRequesterUserGroupId
 
-`func (o *AppRequestSettings) SetRequesterUserGroupId(v int32)`
+`func (o *AppRequestSettings) SetRequesterUserGroupId(v int64)`
 
 SetRequesterUserGroupId sets RequesterUserGroupId field to given value.
 

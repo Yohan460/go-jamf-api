@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Step** | Pointer to **string** |  | [optional] 
 **StepCode** | Pointer to **string** |  | [optional] 
 **StepParam** | Pointer to **NullableString** |  | [optional] 
-**Percentage** | Pointer to **int32** |  | [optional] 
+**Percentage** | Pointer to **int64** |  | [optional] 
 **Warning** | Pointer to **NullableString** |  | [optional] 
 **WarningCode** | Pointer to **NullableString** |  | [optional] 
 **WarningParam** | Pointer to **NullableString** |  | [optional] 
@@ -121,20 +121,20 @@ HasStepParam returns a boolean if a field has been set.
 UnsetStepParam ensures that no value is present for StepParam, not even an explicit nil
 ### GetPercentage
 
-`func (o *StartupStatus) GetPercentage() int32`
+`func (o *StartupStatus) GetPercentage() int64`
 
 GetPercentage returns the Percentage field if non-nil, zero value otherwise.
 
 ### GetPercentageOk
 
-`func (o *StartupStatus) GetPercentageOk() (*int32, bool)`
+`func (o *StartupStatus) GetPercentageOk() (*int64, bool)`
 
 GetPercentageOk returns a tuple with the Percentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPercentage
 
-`func (o *StartupStatus) SetPercentage(v int32)`
+`func (o *StartupStatus) SetPercentage(v int64)`
 
 SetPercentage sets Percentage field to given value.
 

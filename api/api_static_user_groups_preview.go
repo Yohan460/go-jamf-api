@@ -47,7 +47,7 @@ type StaticUserGroupsPreviewAPI interface {
 	@param id Instance id of static user group record
 	@return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 	*/
-	V1StaticUserGroupsIdGet(ctx context.Context, id int32) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
+	V1StaticUserGroupsIdGet(ctx context.Context, id int64) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 
 	// V1StaticUserGroupsIdGetExecute executes the request
 	//  @return StaticUserGroup
@@ -160,7 +160,7 @@ func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsGetExecute(r Stati
 type StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest struct {
 	ctx context.Context
 	ApiService StaticUserGroupsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest) Execute() (*StaticUserGroup, *http.Response, error) {
@@ -177,7 +177,7 @@ Returns a specific static user group by id.
  @param id Instance id of static user group record
  @return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest
 */
-func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsIdGet(ctx context.Context, id int32) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest {
+func (a *StaticUserGroupsPreviewAPIService) V1StaticUserGroupsIdGet(ctx context.Context, id int64) StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest {
 	return StaticUserGroupsPreviewAPIV1StaticUserGroupsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
-**SiteId** | Pointer to **int32** |  | [optional] 
+**SiteId** | Pointer to **int64** |  | [optional] 
 **Location** | Pointer to [**Location**](Location.md) |  | [optional] 
 **UpdatedExtensionAttributes** | Pointer to [**[]ExtensionAttribute**](ExtensionAttribute.md) |  | [optional] 
 **Ios** | Pointer to [**UpdateIos**](UpdateIos.md) |  | [optional] 
@@ -83,20 +83,20 @@ HasAssetTag returns a boolean if a field has been set.
 
 ### GetSiteId
 
-`func (o *UpdateMobileDevice) GetSiteId() int32`
+`func (o *UpdateMobileDevice) GetSiteId() int64`
 
 GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *UpdateMobileDevice) GetSiteIdOk() (*int32, bool)`
+`func (o *UpdateMobileDevice) GetSiteIdOk() (*int64, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSiteId
 
-`func (o *UpdateMobileDevice) SetSiteId(v int32)`
+`func (o *UpdateMobileDevice) SetSiteId(v int64)`
 
 SetSiteId sets SiteId field to given value.
 

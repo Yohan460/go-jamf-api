@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **DepartmentId** | **string** |  | 
 **BuildingId** | **string** |  | 
 **Id** | **string** |  | 
-**VersionLock** | **int32** |  | 
+**VersionLock** | **int64** |  | 
 
 ## Methods
 
 ### NewLocationInformationV2
 
-`func NewLocationInformationV2(username string, realname string, phone string, email string, room string, position string, departmentId string, buildingId string, id string, versionLock int32, ) *LocationInformationV2`
+`func NewLocationInformationV2(username string, realname string, phone string, email string, room string, position string, departmentId string, buildingId string, id string, versionLock int64, ) *LocationInformationV2`
 
 NewLocationInformationV2 instantiates a new LocationInformationV2 object
 This constructor will assign default values to properties that have it defined,
@@ -216,20 +216,20 @@ SetId sets Id field to given value.
 
 ### GetVersionLock
 
-`func (o *LocationInformationV2) GetVersionLock() int32`
+`func (o *LocationInformationV2) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *LocationInformationV2) GetVersionLockOk() (*int32, bool)`
+`func (o *LocationInformationV2) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *LocationInformationV2) SetVersionLock(v int32)`
+`func (o *LocationInformationV2) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

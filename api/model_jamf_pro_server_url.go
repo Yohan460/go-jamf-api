@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the JamfProServerUrl type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type JamfProServerUrl struct {
 	Url string `json:"url"`
 	UnsecuredEnrollmentUrl string `json:"unsecuredEnrollmentUrl"`
 }
+
+type _JamfProServerUrl JamfProServerUrl
 
 // NewJamfProServerUrl instantiates a new JamfProServerUrl object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +107,44 @@ func (o JamfProServerUrl) ToMap() (map[string]interface{}, error) {
 	toSerialize["url"] = o.Url
 	toSerialize["unsecuredEnrollmentUrl"] = o.UnsecuredEnrollmentUrl
 	return toSerialize, nil
+}
+
+func (o *JamfProServerUrl) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"url",
+		"unsecuredEnrollmentUrl",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varJamfProServerUrl := _JamfProServerUrl{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varJamfProServerUrl)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JamfProServerUrl(varJamfProServerUrl)
+
+	return err
 }
 
 type NullableJamfProServerUrl struct {

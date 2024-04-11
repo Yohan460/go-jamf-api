@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AzureServerConfiguration type satisfies the MappedNullable interface at compile time
@@ -24,7 +26,7 @@ type AzureServerConfiguration struct {
 	Enabled bool `json:"enabled"`
 	Migrated bool `json:"migrated"`
 	Mappings AzureMappings `json:"mappings"`
-	SearchTimeout int32 `json:"searchTimeout"`
+	SearchTimeout int64 `json:"searchTimeout"`
 	// Use this field to enable transitive membership lookup with Single Sign On
 	TransitiveMembershipEnabled bool `json:"transitiveMembershipEnabled"`
 	// Use this field to set user field mapping for transitive membership lookup with Single Sign On
@@ -35,11 +37,13 @@ type AzureServerConfiguration struct {
 	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 }
 
+type _AzureServerConfiguration AzureServerConfiguration
+
 // NewAzureServerConfiguration instantiates a new AzureServerConfiguration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureServerConfiguration(id string, tenantId string, enabled bool, migrated bool, mappings AzureMappings, searchTimeout int32, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool) *AzureServerConfiguration {
+func NewAzureServerConfiguration(id string, tenantId string, enabled bool, migrated bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool) *AzureServerConfiguration {
 	this := AzureServerConfiguration{}
 	this.Id = id
 	this.TenantId = tenantId
@@ -182,9 +186,9 @@ func (o *AzureServerConfiguration) SetMappings(v AzureMappings) {
 }
 
 // GetSearchTimeout returns the SearchTimeout field value
-func (o *AzureServerConfiguration) GetSearchTimeout() int32 {
+func (o *AzureServerConfiguration) GetSearchTimeout() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -193,7 +197,7 @@ func (o *AzureServerConfiguration) GetSearchTimeout() int32 {
 
 // GetSearchTimeoutOk returns a tuple with the SearchTimeout field value
 // and a boolean to check if the value has been set.
-func (o *AzureServerConfiguration) GetSearchTimeoutOk() (*int32, bool) {
+func (o *AzureServerConfiguration) GetSearchTimeoutOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -201,7 +205,7 @@ func (o *AzureServerConfiguration) GetSearchTimeoutOk() (*int32, bool) {
 }
 
 // SetSearchTimeout sets field value
-func (o *AzureServerConfiguration) SetSearchTimeout(v int32) {
+func (o *AzureServerConfiguration) SetSearchTimeout(v int64) {
 	o.SearchTimeout = v
 }
 
@@ -332,6 +336,51 @@ func (o AzureServerConfiguration) ToMap() (map[string]interface{}, error) {
 		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
 	}
 	return toSerialize, nil
+}
+
+func (o *AzureServerConfiguration) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"tenantId",
+		"enabled",
+		"migrated",
+		"mappings",
+		"searchTimeout",
+		"transitiveMembershipEnabled",
+		"transitiveMembershipUserField",
+		"transitiveDirectoryMembershipEnabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAzureServerConfiguration := _AzureServerConfiguration{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAzureServerConfiguration)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureServerConfiguration(varAzureServerConfiguration)
+
+	return err
 }
 
 type NullableAzureServerConfiguration struct {

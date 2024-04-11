@@ -52,7 +52,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
+	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsDeleteExecute executes the request
 	// Deprecated
@@ -69,7 +69,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
+	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsGetExecute executes the request
 	//  @return []FileAttachment
@@ -87,7 +87,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
+	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
 
 	// V1MobileDevicePrestagesIdAttachmentsPostExecute executes the request
 	//  @return PrestageFileAttachment
@@ -105,7 +105,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
+	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
 
 	// V1MobileDevicePrestagesIdDeleteExecute executes the request
 	// Deprecated
@@ -122,7 +122,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
+	V1MobileDevicePrestagesIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
 
 	// V1MobileDevicePrestagesIdGetExecute executes the request
 	//  @return GetMobileDevicePrestage
@@ -140,7 +140,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
+	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
 
 	// V1MobileDevicePrestagesIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
@@ -158,7 +158,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
+	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
 
 	// V1MobileDevicePrestagesIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
@@ -176,7 +176,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
+	V1MobileDevicePrestagesIdPut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
 
 	// V1MobileDevicePrestagesIdPutExecute executes the request
 	//  @return GetMobileDevicePrestage
@@ -194,7 +194,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
+	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
 
 	// V1MobileDevicePrestagesIdScopeDeleteExecute executes the request
 	//  @return PrestageScopeResponse
@@ -212,7 +212,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
+	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
 
 	// V1MobileDevicePrestagesIdScopeGetExecute executes the request
 	//  @return PrestageScopeResponse
@@ -230,7 +230,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
+	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
 
 	// V1MobileDevicePrestagesIdScopePostExecute executes the request
 	//  @return PrestageScopeResponse
@@ -248,7 +248,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
+	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
 
 	// V1MobileDevicePrestagesIdScopePutExecute executes the request
 	//  @return PrestageScopeResponse
@@ -317,7 +317,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
+	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
 
 	// V1MobileDevicePrestagesSyncIdGetExecute executes the request
 	//  @return []PrestageSyncStatus
@@ -335,7 +335,7 @@ type MobileDevicePrestagesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
+	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
 
 	// V1MobileDevicePrestagesSyncIdLatestGetExecute executes the request
 	//  @return PrestageSyncStatus
@@ -613,31 +613,31 @@ type MobileDevicePrestagesAPIService service
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Page(page int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Page(page int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Size(size int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Size(size int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Pagesize(pagesize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Pagesize(pagesize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -694,25 +694,25 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGetExecute(r Mo
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -778,7 +778,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGetExecute(r Mo
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	fileAttachmentDelete *FileAttachmentDelete
 }
 
@@ -802,7 +802,7 @@ Remove an attachment for a Mobile Device Prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -884,7 +884,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDe
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachment, *http.Response, error) {
@@ -902,7 +902,7 @@ Get attachments for a Mobile Device Prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1000,7 +1000,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGe
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	file *os.File
 }
 
@@ -1025,7 +1025,7 @@ Add an attachment to a Mobile Device prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1081,8 +1081,6 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPo
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
@@ -1154,7 +1152,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPo
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
@@ -1172,7 +1170,7 @@ Deletes a Mobile Device Prestage with the supplied id
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1249,7 +1247,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDeleteExecute
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
@@ -1267,7 +1265,7 @@ Retrieves a Mobile Device Prestage with the supplied id
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1365,32 +1363,32 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGetExecute(r 
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	id int64
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Page(page int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Size(size int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Size(size int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Pagesize(pagesize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Pagesize(pagesize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1416,7 +1414,7 @@ Gets sorted and paged mobile device prestage history objects
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1450,25 +1448,25 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGetExe
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1542,7 +1540,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGetExe
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -1567,7 +1565,7 @@ Adds mobile device prestage history object notes
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1670,7 +1668,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPostEx
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	putMobileDevicePrestage *PutMobileDevicePrestage
 }
 
@@ -1695,7 +1693,7 @@ Updates a Mobile Device Prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1809,7 +1807,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPutExecute(r 
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -1834,7 +1832,7 @@ Remove device scope for a specific mobile device prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1959,7 +1957,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDeleteEx
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
@@ -1977,7 +1975,7 @@ Get device scope for a specific mobile device prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2075,7 +2073,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGetExecu
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -2100,7 +2098,7 @@ Add device scope for a specific mobile device prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2225,7 +2223,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePostExec
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 	prestageScopeUpdate *PrestageScopeUpdate
 }
 
@@ -2250,7 +2248,7 @@ Replace device scope for a specific mobile device prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2693,7 +2691,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncGetExecute(
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
@@ -2711,7 +2709,7 @@ Get all prestage sync states for a single prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2799,7 +2797,7 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGetExecut
 type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) Execute() (*PrestageSyncStatus, *http.Response, error) {
@@ -2817,7 +2815,7 @@ Get the latest sync state for a single prestage
 
 Deprecated
 */
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int32) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest {
+func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest {
 	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2905,17 +2903,17 @@ func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGet
 type MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) Page(page int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) Page(page int64) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2969,13 +2967,13 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGetExecute(r Mo
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -3343,8 +3341,6 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPo
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
@@ -3622,17 +3618,17 @@ type MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicePrestagesAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) Page(page int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) Page(page int64) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int32) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
+func (r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -3689,13 +3685,13 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGetExe
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

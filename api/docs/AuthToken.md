@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Token** | Pointer to **string** |  | [optional] 
-**Expires** | Pointer to **int32** |  | [optional] 
+**Expires** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasToken returns a boolean if a field has been set.
 
 ### GetExpires
 
-`func (o *AuthToken) GetExpires() int32`
+`func (o *AuthToken) GetExpires() int64`
 
 GetExpires returns the Expires field if non-nil, zero value otherwise.
 
 ### GetExpiresOk
 
-`func (o *AuthToken) GetExpiresOk() (*int32, bool)`
+`func (o *AuthToken) GetExpiresOk() (*int64, bool)`
 
 GetExpiresOk returns a tuple with the Expires field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpires
 
-`func (o *AuthToken) SetExpires(v int32)`
+`func (o *AuthToken) SetExpires(v int64)`
 
 SetExpires sets Expires field to given value.
 

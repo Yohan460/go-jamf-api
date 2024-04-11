@@ -42,16 +42,16 @@ type RemoteAdministrationAPIService service
 type RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest struct {
 	ctx context.Context
 	ApiService RemoteAdministrationAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 }
 
-func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) Page(page int32) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
+func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) Page(page int64) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) PageSize(pageSize int32) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
+func (r RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest) PageSize(pageSize int64) RemoteAdministrationAPIPreviewRemoteAdministrationConfigurationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -99,13 +99,13 @@ func (a *RemoteAdministrationAPIService) PreviewRemoteAdministrationConfiguratio
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header

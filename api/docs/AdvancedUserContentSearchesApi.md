@@ -26,23 +26,23 @@ Get All Advanced User Content Search objects
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdvancedUserContentSearchesGet`: AdvancedUserContentSearchSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdvancedUserContentSearchesGet`: AdvancedUserContentSearchSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesGet`: %v\n", resp)
 }
 ```
 
@@ -87,22 +87,22 @@ Remove specified Advanced User Content Search object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of Advanced User Content Search record
+	id := "id_example" // string | instance id of Advanced User Content Search record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -155,24 +155,24 @@ Get Specified Advanced User Content Search object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of target Advanced User Content Search
+	id := "id_example" // string | id of target Advanced User Content Search
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdvancedUserContentSearchesIdGet`: AdvancedUserContentSearch
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdvancedUserContentSearchesIdGet`: AdvancedUserContentSearch
+	fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdGet`: %v\n", resp)
 }
 ```
 
@@ -225,25 +225,25 @@ Get Specified Advanced User Content Search object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of target Advanced User Content Search
-    advancedUserContentSearch := *openapiclient.NewAdvancedUserContentSearch("Andy's Search") // AdvancedUserContentSearch | 
+	id := "id_example" // string | id of target Advanced User Content Search
+	advancedUserContentSearch := *openapiclient.NewAdvancedUserContentSearch("Andy's Search") // AdvancedUserContentSearch | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut(context.Background(), id).AdvancedUserContentSearch(advancedUserContentSearch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdvancedUserContentSearchesIdPut`: AdvancedUserContentSearch
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut(context.Background(), id).AdvancedUserContentSearch(advancedUserContentSearch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdvancedUserContentSearchesIdPut`: AdvancedUserContentSearch
+	fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesIdPut`: %v\n", resp)
 }
 ```
 
@@ -297,24 +297,24 @@ Create Advanced User Content Search object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    advancedUserContentSearch := *openapiclient.NewAdvancedUserContentSearch("Andy's Search") // AdvancedUserContentSearch | 
+	advancedUserContentSearch := *openapiclient.NewAdvancedUserContentSearch("Andy's Search") // AdvancedUserContentSearch | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost(context.Background()).AdvancedUserContentSearch(advancedUserContentSearch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdvancedUserContentSearchesPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost(context.Background()).AdvancedUserContentSearch(advancedUserContentSearch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdvancedUserContentSearchesPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `AdvancedUserContentSearchesAPI.V1AdvancedUserContentSearchesPost`: %v\n", resp)
 }
 ```
 

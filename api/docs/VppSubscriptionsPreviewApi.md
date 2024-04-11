@@ -23,23 +23,23 @@ Found all VPP - subscriptions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VppSubscriptionsPreviewAPI.VppSubscriptionsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VppSubscriptionsPreviewAPI.VppSubscriptionsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `VppSubscriptionsGet`: []VppTokenSubscription
-    fmt.Fprintf(os.Stdout, "Response from `VppSubscriptionsPreviewAPI.VppSubscriptionsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VppSubscriptionsPreviewAPI.VppSubscriptionsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VppSubscriptionsPreviewAPI.VppSubscriptionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `VppSubscriptionsGet`: []VppTokenSubscription
+	fmt.Fprintf(os.Stdout, "Response from `VppSubscriptionsPreviewAPI.VppSubscriptionsGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Found VPP subscription by id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | id of vpp subscription to be retrieved
+	id := int64(56) // int64 | id of vpp subscription to be retrieved
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `VppSubscriptionsIdGet`: VppTokenSubscription
-    fmt.Fprintf(os.Stdout, "Response from `VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `VppSubscriptionsIdGet`: VppTokenSubscription
+	fmt.Fprintf(os.Stdout, "Response from `VppSubscriptionsPreviewAPI.VppSubscriptionsIdGet`: %v\n", resp)
 }
 ```
 
@@ -111,7 +111,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | id of vpp subscription to be retrieved | 
+**id** | **int64** | id of vpp subscription to be retrieved | 
 
 ### Other Parameters
 

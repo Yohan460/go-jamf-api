@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CacheSettings type satisfies the MappedNullable interface at compile time
@@ -22,9 +24,9 @@ type CacheSettings struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	CacheType string `json:"cacheType"`
-	TimeToLiveSeconds int32 `json:"timeToLiveSeconds"`
-	TimeToIdleSeconds *int32 `json:"timeToIdleSeconds,omitempty"`
-	DirectoryTimeToLiveSeconds *int32 `json:"directoryTimeToLiveSeconds,omitempty"`
+	TimeToLiveSeconds int64 `json:"timeToLiveSeconds"`
+	TimeToIdleSeconds *int64 `json:"timeToIdleSeconds,omitempty"`
+	DirectoryTimeToLiveSeconds *int64 `json:"directoryTimeToLiveSeconds,omitempty"`
 	EhcacheMaxBytesLocalHeap *string `json:"ehcacheMaxBytesLocalHeap,omitempty"`
 	// The default is for Jamf Pro to generate a UUID, so we can only give an example instead.
 	CacheUniqueId string `json:"cacheUniqueId"`
@@ -32,11 +34,13 @@ type CacheSettings struct {
 	MemcachedEndpoints []MemcachedEndpoints `json:"memcachedEndpoints"`
 }
 
+type _CacheSettings CacheSettings
+
 // NewCacheSettings instantiates a new CacheSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCacheSettings(cacheType string, timeToLiveSeconds int32, cacheUniqueId string, memcachedEndpoints []MemcachedEndpoints) *CacheSettings {
+func NewCacheSettings(cacheType string, timeToLiveSeconds int64, cacheUniqueId string, memcachedEndpoints []MemcachedEndpoints) *CacheSettings {
 	this := CacheSettings{}
 	var name string = "cache configuration"
 	this.Name = &name
@@ -154,9 +158,9 @@ func (o *CacheSettings) SetCacheType(v string) {
 }
 
 // GetTimeToLiveSeconds returns the TimeToLiveSeconds field value
-func (o *CacheSettings) GetTimeToLiveSeconds() int32 {
+func (o *CacheSettings) GetTimeToLiveSeconds() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -165,7 +169,7 @@ func (o *CacheSettings) GetTimeToLiveSeconds() int32 {
 
 // GetTimeToLiveSecondsOk returns a tuple with the TimeToLiveSeconds field value
 // and a boolean to check if the value has been set.
-func (o *CacheSettings) GetTimeToLiveSecondsOk() (*int32, bool) {
+func (o *CacheSettings) GetTimeToLiveSecondsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,14 +177,14 @@ func (o *CacheSettings) GetTimeToLiveSecondsOk() (*int32, bool) {
 }
 
 // SetTimeToLiveSeconds sets field value
-func (o *CacheSettings) SetTimeToLiveSeconds(v int32) {
+func (o *CacheSettings) SetTimeToLiveSeconds(v int64) {
 	o.TimeToLiveSeconds = v
 }
 
 // GetTimeToIdleSeconds returns the TimeToIdleSeconds field value if set, zero value otherwise.
-func (o *CacheSettings) GetTimeToIdleSeconds() int32 {
+func (o *CacheSettings) GetTimeToIdleSeconds() int64 {
 	if o == nil || IsNil(o.TimeToIdleSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TimeToIdleSeconds
@@ -188,7 +192,7 @@ func (o *CacheSettings) GetTimeToIdleSeconds() int32 {
 
 // GetTimeToIdleSecondsOk returns a tuple with the TimeToIdleSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int32, bool) {
+func (o *CacheSettings) GetTimeToIdleSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.TimeToIdleSeconds) {
 		return nil, false
 	}
@@ -204,15 +208,15 @@ func (o *CacheSettings) HasTimeToIdleSeconds() bool {
 	return false
 }
 
-// SetTimeToIdleSeconds gets a reference to the given int32 and assigns it to the TimeToIdleSeconds field.
-func (o *CacheSettings) SetTimeToIdleSeconds(v int32) {
+// SetTimeToIdleSeconds gets a reference to the given int64 and assigns it to the TimeToIdleSeconds field.
+func (o *CacheSettings) SetTimeToIdleSeconds(v int64) {
 	o.TimeToIdleSeconds = &v
 }
 
 // GetDirectoryTimeToLiveSeconds returns the DirectoryTimeToLiveSeconds field value if set, zero value otherwise.
-func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int32 {
+func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int64 {
 	if o == nil || IsNil(o.DirectoryTimeToLiveSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DirectoryTimeToLiveSeconds
@@ -220,7 +224,7 @@ func (o *CacheSettings) GetDirectoryTimeToLiveSeconds() int32 {
 
 // GetDirectoryTimeToLiveSecondsOk returns a tuple with the DirectoryTimeToLiveSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int32, bool) {
+func (o *CacheSettings) GetDirectoryTimeToLiveSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.DirectoryTimeToLiveSeconds) {
 		return nil, false
 	}
@@ -236,8 +240,8 @@ func (o *CacheSettings) HasDirectoryTimeToLiveSeconds() bool {
 	return false
 }
 
-// SetDirectoryTimeToLiveSeconds gets a reference to the given int32 and assigns it to the DirectoryTimeToLiveSeconds field.
-func (o *CacheSettings) SetDirectoryTimeToLiveSeconds(v int32) {
+// SetDirectoryTimeToLiveSeconds gets a reference to the given int64 and assigns it to the DirectoryTimeToLiveSeconds field.
+func (o *CacheSettings) SetDirectoryTimeToLiveSeconds(v int64) {
 	o.DirectoryTimeToLiveSeconds = &v
 }
 
@@ -386,6 +390,46 @@ func (o CacheSettings) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["memcachedEndpoints"] = o.MemcachedEndpoints
 	return toSerialize, nil
+}
+
+func (o *CacheSettings) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cacheType",
+		"timeToLiveSeconds",
+		"cacheUniqueId",
+		"memcachedEndpoints",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCacheSettings := _CacheSettings{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCacheSettings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CacheSettings(varCacheSettings)
+
+	return err
 }
 
 type NullableCacheSettings struct {

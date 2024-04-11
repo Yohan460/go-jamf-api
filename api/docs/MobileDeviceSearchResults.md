@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalCount** | Pointer to **int32** |  | [optional] 
+**TotalCount** | Pointer to **int64** |  | [optional] 
 **Results** | Pointer to [**[]MobileDevice**](MobileDevice.md) |  | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTotalCount
 
-`func (o *MobileDeviceSearchResults) GetTotalCount() int32`
+`func (o *MobileDeviceSearchResults) GetTotalCount() int64`
 
 GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
 
 ### GetTotalCountOk
 
-`func (o *MobileDeviceSearchResults) GetTotalCountOk() (*int32, bool)`
+`func (o *MobileDeviceSearchResults) GetTotalCountOk() (*int64, bool)`
 
 GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCount
 
-`func (o *MobileDeviceSearchResults) SetTotalCount(v int32)`
+`func (o *MobileDeviceSearchResults) SetTotalCount(v int64)`
 
 SetTotalCount sets TotalCount field to given value.
 

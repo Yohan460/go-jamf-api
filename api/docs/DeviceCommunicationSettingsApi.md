@@ -25,23 +25,23 @@ Retrieves all settings for device communication
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeviceCommunicationSettingsGet`: DeviceCommunicationSettings
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeviceCommunicationSettingsGet`: DeviceCommunicationSettings
+	fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -86,27 +86,27 @@ Get Device Communication settings history
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeviceCommunicationSettingsHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeviceCommunicationSettingsHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -121,8 +121,8 @@ Other parameters are passed through a pointer to a apiV1DeviceCommunicationSetti
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -158,24 +158,24 @@ Add Device Communication Settings history notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeviceCommunicationSettingsHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeviceCommunicationSettingsHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -224,24 +224,24 @@ Update device communication settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    deviceCommunicationSettings := *openapiclient.NewDeviceCommunicationSettings() // DeviceCommunicationSettings | 
+	deviceCommunicationSettings := *openapiclient.NewDeviceCommunicationSettings() // DeviceCommunicationSettings | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut(context.Background()).DeviceCommunicationSettings(deviceCommunicationSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeviceCommunicationSettingsPut`: DeviceCommunicationSettings
-    fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut(context.Background()).DeviceCommunicationSettings(deviceCommunicationSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeviceCommunicationSettingsPut`: DeviceCommunicationSettings
+	fmt.Fprintf(os.Stdout, "Response from `DeviceCommunicationSettingsAPI.V1DeviceCommunicationSettingsPut`: %v\n", resp)
 }
 ```
 

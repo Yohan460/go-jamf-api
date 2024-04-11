@@ -5,20 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | **string** |  | 
-**Rank** | **int32** |  | 
+**Rank** | **int64** |  | 
 **Body** | **string** |  | 
 **Subtext** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
 **BackButtonText** | **string** |  | 
 **ContinueButtonText** | **string** |  | 
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewGetEnrollmentCustomizationPanelText
 
-`func NewGetEnrollmentCustomizationPanelText(displayName string, rank int32, body string, title string, backButtonText string, continueButtonText string, ) *GetEnrollmentCustomizationPanelText`
+`func NewGetEnrollmentCustomizationPanelText(displayName string, rank int64, body string, title string, backButtonText string, continueButtonText string, ) *GetEnrollmentCustomizationPanelText`
 
 NewGetEnrollmentCustomizationPanelText instantiates a new GetEnrollmentCustomizationPanelText object
 This constructor will assign default values to properties that have it defined,
@@ -55,20 +55,20 @@ SetDisplayName sets DisplayName field to given value.
 
 ### GetRank
 
-`func (o *GetEnrollmentCustomizationPanelText) GetRank() int32`
+`func (o *GetEnrollmentCustomizationPanelText) GetRank() int64`
 
 GetRank returns the Rank field if non-nil, zero value otherwise.
 
 ### GetRankOk
 
-`func (o *GetEnrollmentCustomizationPanelText) GetRankOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelText) GetRankOk() (*int64, bool)`
 
 GetRankOk returns a tuple with the Rank field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRank
 
-`func (o *GetEnrollmentCustomizationPanelText) SetRank(v int32)`
+`func (o *GetEnrollmentCustomizationPanelText) SetRank(v int64)`
 
 SetRank sets Rank field to given value.
 
@@ -180,20 +180,20 @@ SetContinueButtonText sets ContinueButtonText field to given value.
 
 ### GetId
 
-`func (o *GetEnrollmentCustomizationPanelText) GetId() int32`
+`func (o *GetEnrollmentCustomizationPanelText) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetEnrollmentCustomizationPanelText) GetIdOk() (*int32, bool)`
+`func (o *GetEnrollmentCustomizationPanelText) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetEnrollmentCustomizationPanelText) SetId(v int32)`
+`func (o *GetEnrollmentCustomizationPanelText) SetId(v int64)`
 
 SetId sets Id field to given value.
 

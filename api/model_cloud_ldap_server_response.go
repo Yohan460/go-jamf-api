@@ -23,10 +23,10 @@ type CloudLdapServerResponse struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	ServerUrl *string `json:"serverUrl,omitempty"`
 	DomainName *string `json:"domainName,omitempty"`
-	Port *int32 `json:"port,omitempty"`
+	Port *int64 `json:"port,omitempty"`
 	Keystore *CloudLdapKeystore `json:"keystore,omitempty"`
-	ConnectionTimeout *int32 `json:"connectionTimeout,omitempty"`
-	SearchTimeout *int32 `json:"searchTimeout,omitempty"`
+	ConnectionTimeout *int64 `json:"connectionTimeout,omitempty"`
+	SearchTimeout *int64 `json:"searchTimeout,omitempty"`
 	UseWildcards *bool `json:"useWildcards,omitempty"`
 	ConnectionType *string `json:"connectionType,omitempty"`
 	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
@@ -178,9 +178,9 @@ func (o *CloudLdapServerResponse) SetDomainName(v string) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *CloudLdapServerResponse) GetPort() int32 {
+func (o *CloudLdapServerResponse) GetPort() int64 {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Port
@@ -188,7 +188,7 @@ func (o *CloudLdapServerResponse) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerResponse) GetPortOk() (*int32, bool) {
+func (o *CloudLdapServerResponse) GetPortOk() (*int64, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -204,8 +204,8 @@ func (o *CloudLdapServerResponse) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *CloudLdapServerResponse) SetPort(v int32) {
+// SetPort gets a reference to the given int64 and assigns it to the Port field.
+func (o *CloudLdapServerResponse) SetPort(v int64) {
 	o.Port = &v
 }
 
@@ -242,9 +242,9 @@ func (o *CloudLdapServerResponse) SetKeystore(v CloudLdapKeystore) {
 }
 
 // GetConnectionTimeout returns the ConnectionTimeout field value if set, zero value otherwise.
-func (o *CloudLdapServerResponse) GetConnectionTimeout() int32 {
+func (o *CloudLdapServerResponse) GetConnectionTimeout() int64 {
 	if o == nil || IsNil(o.ConnectionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ConnectionTimeout
@@ -252,7 +252,7 @@ func (o *CloudLdapServerResponse) GetConnectionTimeout() int32 {
 
 // GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int32, bool) {
+func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.ConnectionTimeout) {
 		return nil, false
 	}
@@ -268,15 +268,15 @@ func (o *CloudLdapServerResponse) HasConnectionTimeout() bool {
 	return false
 }
 
-// SetConnectionTimeout gets a reference to the given int32 and assigns it to the ConnectionTimeout field.
-func (o *CloudLdapServerResponse) SetConnectionTimeout(v int32) {
+// SetConnectionTimeout gets a reference to the given int64 and assigns it to the ConnectionTimeout field.
+func (o *CloudLdapServerResponse) SetConnectionTimeout(v int64) {
 	o.ConnectionTimeout = &v
 }
 
 // GetSearchTimeout returns the SearchTimeout field value if set, zero value otherwise.
-func (o *CloudLdapServerResponse) GetSearchTimeout() int32 {
+func (o *CloudLdapServerResponse) GetSearchTimeout() int64 {
 	if o == nil || IsNil(o.SearchTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SearchTimeout
@@ -284,7 +284,7 @@ func (o *CloudLdapServerResponse) GetSearchTimeout() int32 {
 
 // GetSearchTimeoutOk returns a tuple with the SearchTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int32, bool) {
+func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.SearchTimeout) {
 		return nil, false
 	}
@@ -300,8 +300,8 @@ func (o *CloudLdapServerResponse) HasSearchTimeout() bool {
 	return false
 }
 
-// SetSearchTimeout gets a reference to the given int32 and assigns it to the SearchTimeout field.
-func (o *CloudLdapServerResponse) SetSearchTimeout(v int32) {
+// SetSearchTimeout gets a reference to the given int64 and assigns it to the SearchTimeout field.
+func (o *CloudLdapServerResponse) SetSearchTimeout(v int64) {
 	o.SearchTimeout = &v
 }
 

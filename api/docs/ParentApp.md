@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TimezoneId** | **string** |  | 
 **RestrictedTimes** | [**ParentAppRestrictedTimes**](ParentAppRestrictedTimes.md) |  | 
-**DeviceGroupId** | **int32** |  | 
+**DeviceGroupId** | **int64** |  | 
 **IsEnabled** | **bool** |  | 
 **AllowTemplates** | Pointer to **bool** |  | [optional] 
 **DisassociateOnWipeAndReEnroll** | Pointer to **bool** |  | [optional] 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewParentApp
 
-`func NewParentApp(timezoneId string, restrictedTimes ParentAppRestrictedTimes, deviceGroupId int32, isEnabled bool, ) *ParentApp`
+`func NewParentApp(timezoneId string, restrictedTimes ParentAppRestrictedTimes, deviceGroupId int64, isEnabled bool, ) *ParentApp`
 
 NewParentApp instantiates a new ParentApp object
 This constructor will assign default values to properties that have it defined,
@@ -74,20 +74,20 @@ SetRestrictedTimes sets RestrictedTimes field to given value.
 
 ### GetDeviceGroupId
 
-`func (o *ParentApp) GetDeviceGroupId() int32`
+`func (o *ParentApp) GetDeviceGroupId() int64`
 
 GetDeviceGroupId returns the DeviceGroupId field if non-nil, zero value otherwise.
 
 ### GetDeviceGroupIdOk
 
-`func (o *ParentApp) GetDeviceGroupIdOk() (*int32, bool)`
+`func (o *ParentApp) GetDeviceGroupIdOk() (*int64, bool)`
 
 GetDeviceGroupIdOk returns a tuple with the DeviceGroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceGroupId
 
-`func (o *ParentApp) SetDeviceGroupId(v int32)`
+`func (o *ParentApp) SetDeviceGroupId(v int64)`
 
 SetDeviceGroupId sets DeviceGroupId field to given value.
 

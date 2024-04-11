@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ServerUrl** | Pointer to **string** |  | [optional] 
 **DomainName** | Pointer to **string** |  | [optional] 
-**Port** | Pointer to **int32** |  | [optional] 
+**Port** | Pointer to **int64** |  | [optional] 
 **Keystore** | Pointer to [**CloudLdapKeystore**](CloudLdapKeystore.md) |  | [optional] 
-**ConnectionTimeout** | Pointer to **int32** |  | [optional] 
-**SearchTimeout** | Pointer to **int32** |  | [optional] 
+**ConnectionTimeout** | Pointer to **int64** |  | [optional] 
+**SearchTimeout** | Pointer to **int64** |  | [optional] 
 **UseWildcards** | Pointer to **bool** |  | [optional] 
 **ConnectionType** | Pointer to **string** |  | [optional] 
 **MembershipCalculationOptimizationEnabled** | Pointer to **bool** |  | [optional] 
@@ -137,20 +137,20 @@ HasDomainName returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *CloudLdapServerResponse) GetPort() int32`
+`func (o *CloudLdapServerResponse) GetPort() int64`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *CloudLdapServerResponse) GetPortOk() (*int32, bool)`
+`func (o *CloudLdapServerResponse) GetPortOk() (*int64, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *CloudLdapServerResponse) SetPort(v int32)`
+`func (o *CloudLdapServerResponse) SetPort(v int64)`
 
 SetPort sets Port field to given value.
 
@@ -187,20 +187,20 @@ HasKeystore returns a boolean if a field has been set.
 
 ### GetConnectionTimeout
 
-`func (o *CloudLdapServerResponse) GetConnectionTimeout() int32`
+`func (o *CloudLdapServerResponse) GetConnectionTimeout() int64`
 
 GetConnectionTimeout returns the ConnectionTimeout field if non-nil, zero value otherwise.
 
 ### GetConnectionTimeoutOk
 
-`func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int32, bool)`
+`func (o *CloudLdapServerResponse) GetConnectionTimeoutOk() (*int64, bool)`
 
 GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionTimeout
 
-`func (o *CloudLdapServerResponse) SetConnectionTimeout(v int32)`
+`func (o *CloudLdapServerResponse) SetConnectionTimeout(v int64)`
 
 SetConnectionTimeout sets ConnectionTimeout field to given value.
 
@@ -212,20 +212,20 @@ HasConnectionTimeout returns a boolean if a field has been set.
 
 ### GetSearchTimeout
 
-`func (o *CloudLdapServerResponse) GetSearchTimeout() int32`
+`func (o *CloudLdapServerResponse) GetSearchTimeout() int64`
 
 GetSearchTimeout returns the SearchTimeout field if non-nil, zero value otherwise.
 
 ### GetSearchTimeoutOk
 
-`func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int32, bool)`
+`func (o *CloudLdapServerResponse) GetSearchTimeoutOk() (*int64, bool)`
 
 GetSearchTimeoutOk returns a tuple with the SearchTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchTimeout
 
-`func (o *CloudLdapServerResponse) SetSearchTimeout(v int32)`
+`func (o *CloudLdapServerResponse) SetSearchTimeout(v int64)`
 
 SetSearchTimeout sets SearchTimeout field to given value.
 

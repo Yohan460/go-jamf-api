@@ -52,7 +52,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest
+	V1EnrollmentCustomizationIdDelete(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest
 
 	// V1EnrollmentCustomizationIdDeleteExecute executes the request
 	// Deprecated
@@ -69,7 +69,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest
+	V1EnrollmentCustomizationIdGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest
 
 	// V1EnrollmentCustomizationIdGetExecute executes the request
 	//  @return GetEnrollmentCustomization
@@ -87,7 +87,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest
+	V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest
 
 	// V1EnrollmentCustomizationIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
@@ -105,7 +105,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest
+	V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest
 
 	// V1EnrollmentCustomizationIdHistoryPostExecute executes the request
 	//  @return ObjectHistory
@@ -123,7 +123,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest
+	V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest
 
 	// V1EnrollmentCustomizationIdPrestagesGetExecute executes the request
 	//  @return PrestageDependencies
@@ -141,7 +141,7 @@ type EnrollmentCustomizationAPI interface {
 
 	Deprecated
 	*/
-	V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest
+	V1EnrollmentCustomizationIdPut(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest
 
 	// V1EnrollmentCustomizationIdPutExecute executes the request
 	//  @return GetEnrollmentCustomization
@@ -335,31 +335,31 @@ type EnrollmentCustomizationAPIService service
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Page(page int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Page(page int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Size(size int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Size(size int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Pagesize(pagesize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) Pagesize(pagesize int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest) PageSize(pageSize int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -416,25 +416,25 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationGetExecute(
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -500,7 +500,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationGetExecute(
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
+	id int64
 }
 
 func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest) Execute() (*http.Response, error) {
@@ -518,7 +518,7 @@ Deletes an Enrollment Customization with the supplied id
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdDelete(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdDelete(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -595,7 +595,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdDeleteExe
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
+	id int64
 }
 
 func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest) Execute() (*GetEnrollmentCustomization, *http.Response, error) {
@@ -613,7 +613,7 @@ Retrieves an Enrollment Customization with the supplied id
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -711,32 +711,32 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdGetExecut
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	id int64
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Page(page int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Page(page int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Size(size int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Size(size int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Pagesize(pagesize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) Pagesize(pagesize int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest) PageSize(pageSize int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -762,7 +762,7 @@ Gets sorted and paged enrollment customization history objects
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -796,25 +796,25 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGe
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -888,7 +888,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryGe
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
+	id int64
 	objectHistoryNote *ObjectHistoryNote
 }
 
@@ -913,7 +913,7 @@ Adds enrollment customization history object notes
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryPost(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdHistoryPostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1016,7 +1016,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdHistoryPo
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
+	id int64
 }
 
 func (r EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest) Execute() (*PrestageDependencies, *http.Response, error) {
@@ -1034,7 +1034,7 @@ Retrieves the list of Prestages using this Enrollment Customization
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPrestagesGet(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPrestagesGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1132,7 +1132,7 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPrestages
 type EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	id int32
+	id int64
 	enrollmentCustomization *EnrollmentCustomization
 }
 
@@ -1157,7 +1157,7 @@ Updates an Enrollment Customization
 
 Deprecated
 */
-func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPut(ctx context.Context, id int32) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest {
+func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationIdPut(ctx context.Context, id int64) EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest {
 	return EnrollmentCustomizationAPIV1EnrollmentCustomizationIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1337,8 +1337,6 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationImagesPostE
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {
@@ -1503,17 +1501,17 @@ func (a *EnrollmentCustomizationAPIService) V1EnrollmentCustomizationPostExecute
 type EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) Page(page int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) Page(page int64) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest) PageSize(pageSize int64) EnrollmentCustomizationAPIV2EnrollmentCustomizationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1567,13 +1565,13 @@ func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsGetExecute
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1853,17 +1851,17 @@ type EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest str
 	ctx context.Context
 	ApiService EnrollmentCustomizationAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) Page(page int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) Page(page int64) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) PageSize(pageSize int32) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
+func (r EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest) PageSize(pageSize int64) EnrollmentCustomizationAPIV2EnrollmentCustomizationsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1920,13 +1918,13 @@ func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsIdHistoryG
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2540,8 +2538,6 @@ func (a *EnrollmentCustomizationAPIService) V2EnrollmentCustomizationsImagesPost
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {

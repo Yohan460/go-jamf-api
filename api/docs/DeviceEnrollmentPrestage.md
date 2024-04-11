@@ -11,25 +11,25 @@ Name | Type | Description | Notes
 **SupportEmailAddress** | **string** |  | 
 **Department** | **string** |  | 
 **IsDefaultPrestage** | **bool** |  | 
-**EnrollmentSiteId** | **int32** |  | 
+**EnrollmentSiteId** | **int64** |  | 
 **IsKeepExistingSiteMembership** | **bool** |  | 
 **IsKeepExistingLocationInformation** | **bool** |  | 
 **IsRequireAuthentication** | **bool** |  | 
 **AuthenticationPrompt** | **string** |  | 
 **IsPreventActivationLock** | **bool** |  | 
 **IsEnableDeviceBasedActivationLock** | **bool** |  | 
-**DeviceEnrollmentProgramInstanceId** | **int32** |  | 
+**DeviceEnrollmentProgramInstanceId** | **int64** |  | 
 **SkipSetupItems** | Pointer to **map[string]bool** |  | [optional] 
 **LocationInformation** | [**LocationInformation**](LocationInformation.md) |  | 
 **PurchasingInformation** | [**PrestagePurchasingInformation**](PrestagePurchasingInformation.md) |  | 
 **AnchorCertificates** | Pointer to **[]string** | The Base64 encoded PEM Certificate | [optional] 
-**EnrollmentCustomizationId** | Pointer to **int32** |  | [optional] 
+**EnrollmentCustomizationId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
 ### NewDeviceEnrollmentPrestage
 
-`func NewDeviceEnrollmentPrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int32, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int32, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, ) *DeviceEnrollmentPrestage`
+`func NewDeviceEnrollmentPrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int64, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int64, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, ) *DeviceEnrollmentPrestage`
 
 NewDeviceEnrollmentPrestage instantiates a new DeviceEnrollmentPrestage object
 This constructor will assign default values to properties that have it defined,
@@ -186,20 +186,20 @@ SetIsDefaultPrestage sets IsDefaultPrestage field to given value.
 
 ### GetEnrollmentSiteId
 
-`func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteId() int32`
+`func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteId() int64`
 
 GetEnrollmentSiteId returns the EnrollmentSiteId field if non-nil, zero value otherwise.
 
 ### GetEnrollmentSiteIdOk
 
-`func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteIdOk() (*int32, bool)`
+`func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteIdOk() (*int64, bool)`
 
 GetEnrollmentSiteIdOk returns a tuple with the EnrollmentSiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnrollmentSiteId
 
-`func (o *DeviceEnrollmentPrestage) SetEnrollmentSiteId(v int32)`
+`func (o *DeviceEnrollmentPrestage) SetEnrollmentSiteId(v int64)`
 
 SetEnrollmentSiteId sets EnrollmentSiteId field to given value.
 
@@ -326,20 +326,20 @@ SetIsEnableDeviceBasedActivationLock sets IsEnableDeviceBasedActivationLock fiel
 
 ### GetDeviceEnrollmentProgramInstanceId
 
-`func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceId() int32`
+`func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceId() int64`
 
 GetDeviceEnrollmentProgramInstanceId returns the DeviceEnrollmentProgramInstanceId field if non-nil, zero value otherwise.
 
 ### GetDeviceEnrollmentProgramInstanceIdOk
 
-`func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int32, bool)`
+`func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int64, bool)`
 
 GetDeviceEnrollmentProgramInstanceIdOk returns a tuple with the DeviceEnrollmentProgramInstanceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceEnrollmentProgramInstanceId
 
-`func (o *DeviceEnrollmentPrestage) SetDeviceEnrollmentProgramInstanceId(v int32)`
+`func (o *DeviceEnrollmentPrestage) SetDeviceEnrollmentProgramInstanceId(v int64)`
 
 SetDeviceEnrollmentProgramInstanceId sets DeviceEnrollmentProgramInstanceId field to given value.
 
@@ -436,20 +436,20 @@ HasAnchorCertificates returns a boolean if a field has been set.
 
 ### GetEnrollmentCustomizationId
 
-`func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int32`
+`func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int64`
 
 GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field if non-nil, zero value otherwise.
 
 ### GetEnrollmentCustomizationIdOk
 
-`func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int32, bool)`
+`func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int64, bool)`
 
 GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnrollmentCustomizationId
 
-`func (o *DeviceEnrollmentPrestage) SetEnrollmentCustomizationId(v int32)`
+`func (o *DeviceEnrollmentPrestage) SetEnrollmentCustomizationId(v int64)`
 
 SetEnrollmentCustomizationId sets EnrollmentCustomizationId field to given value.
 

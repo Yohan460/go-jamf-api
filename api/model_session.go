@@ -19,7 +19,7 @@ var _ MappedNullable = &Session{}
 
 // Session struct for Session
 type Session struct {
-	CurrentSiteId *int32 `json:"currentSiteId,omitempty"`
+	CurrentSiteId *int64 `json:"currentSiteId,omitempty"`
 }
 
 // NewSession instantiates a new Session object
@@ -40,9 +40,9 @@ func NewSessionWithDefaults() *Session {
 }
 
 // GetCurrentSiteId returns the CurrentSiteId field value if set, zero value otherwise.
-func (o *Session) GetCurrentSiteId() int32 {
+func (o *Session) GetCurrentSiteId() int64 {
 	if o == nil || IsNil(o.CurrentSiteId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CurrentSiteId
@@ -50,7 +50,7 @@ func (o *Session) GetCurrentSiteId() int32 {
 
 // GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Session) GetCurrentSiteIdOk() (*int32, bool) {
+func (o *Session) GetCurrentSiteIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.CurrentSiteId) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *Session) HasCurrentSiteId() bool {
 	return false
 }
 
-// SetCurrentSiteId gets a reference to the given int32 and assigns it to the CurrentSiteId field.
-func (o *Session) SetCurrentSiteId(v int32) {
+// SetCurrentSiteId gets a reference to the given int64 and assigns it to the CurrentSiteId field.
+func (o *Session) SetCurrentSiteId(v int64) {
 	o.CurrentSiteId = &v
 }
 

@@ -25,8 +25,8 @@ type ComputerHardware struct {
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	// Processor Speed in MHz.
 	ProcessorSpeedMhz *int64 `json:"processorSpeedMhz,omitempty"`
-	ProcessorCount *int32 `json:"processorCount,omitempty"`
-	CoreCount *int32 `json:"coreCount,omitempty"`
+	ProcessorCount *int64 `json:"processorCount,omitempty"`
+	CoreCount *int64 `json:"coreCount,omitempty"`
 	ProcessorType *string `json:"processorType,omitempty"`
 	ProcessorArchitecture *string `json:"processorArchitecture,omitempty"`
 	BusSpeedMhz *int64 `json:"busSpeedMhz,omitempty"`
@@ -39,9 +39,9 @@ type ComputerHardware struct {
 	// Total RAM Size in MB.
 	TotalRamMegabytes *int64 `json:"totalRamMegabytes,omitempty"`
 	// Available RAM slots.
-	OpenRamSlots *int32 `json:"openRamSlots,omitempty"`
+	OpenRamSlots *int64 `json:"openRamSlots,omitempty"`
 	// Remaining percentage of battery power.
-	BatteryCapacityPercent *int32 `json:"batteryCapacityPercent,omitempty"`
+	BatteryCapacityPercent *int64 `json:"batteryCapacityPercent,omitempty"`
 	SmcVersion *string `json:"smcVersion,omitempty"`
 	NicSpeed *string `json:"nicSpeed,omitempty"`
 	OpticalDrive *string `json:"opticalDrive,omitempty"`
@@ -230,9 +230,9 @@ func (o *ComputerHardware) SetProcessorSpeedMhz(v int64) {
 }
 
 // GetProcessorCount returns the ProcessorCount field value if set, zero value otherwise.
-func (o *ComputerHardware) GetProcessorCount() int32 {
+func (o *ComputerHardware) GetProcessorCount() int64 {
 	if o == nil || IsNil(o.ProcessorCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ProcessorCount
@@ -240,7 +240,7 @@ func (o *ComputerHardware) GetProcessorCount() int32 {
 
 // GetProcessorCountOk returns a tuple with the ProcessorCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerHardware) GetProcessorCountOk() (*int32, bool) {
+func (o *ComputerHardware) GetProcessorCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.ProcessorCount) {
 		return nil, false
 	}
@@ -256,15 +256,15 @@ func (o *ComputerHardware) HasProcessorCount() bool {
 	return false
 }
 
-// SetProcessorCount gets a reference to the given int32 and assigns it to the ProcessorCount field.
-func (o *ComputerHardware) SetProcessorCount(v int32) {
+// SetProcessorCount gets a reference to the given int64 and assigns it to the ProcessorCount field.
+func (o *ComputerHardware) SetProcessorCount(v int64) {
 	o.ProcessorCount = &v
 }
 
 // GetCoreCount returns the CoreCount field value if set, zero value otherwise.
-func (o *ComputerHardware) GetCoreCount() int32 {
+func (o *ComputerHardware) GetCoreCount() int64 {
 	if o == nil || IsNil(o.CoreCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CoreCount
@@ -272,7 +272,7 @@ func (o *ComputerHardware) GetCoreCount() int32 {
 
 // GetCoreCountOk returns a tuple with the CoreCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerHardware) GetCoreCountOk() (*int32, bool) {
+func (o *ComputerHardware) GetCoreCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.CoreCount) {
 		return nil, false
 	}
@@ -288,8 +288,8 @@ func (o *ComputerHardware) HasCoreCount() bool {
 	return false
 }
 
-// SetCoreCount gets a reference to the given int32 and assigns it to the CoreCount field.
-func (o *ComputerHardware) SetCoreCount(v int32) {
+// SetCoreCount gets a reference to the given int64 and assigns it to the CoreCount field.
+func (o *ComputerHardware) SetCoreCount(v int64) {
 	o.CoreCount = &v
 }
 
@@ -582,9 +582,9 @@ func (o *ComputerHardware) SetTotalRamMegabytes(v int64) {
 }
 
 // GetOpenRamSlots returns the OpenRamSlots field value if set, zero value otherwise.
-func (o *ComputerHardware) GetOpenRamSlots() int32 {
+func (o *ComputerHardware) GetOpenRamSlots() int64 {
 	if o == nil || IsNil(o.OpenRamSlots) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.OpenRamSlots
@@ -592,7 +592,7 @@ func (o *ComputerHardware) GetOpenRamSlots() int32 {
 
 // GetOpenRamSlotsOk returns a tuple with the OpenRamSlots field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerHardware) GetOpenRamSlotsOk() (*int32, bool) {
+func (o *ComputerHardware) GetOpenRamSlotsOk() (*int64, bool) {
 	if o == nil || IsNil(o.OpenRamSlots) {
 		return nil, false
 	}
@@ -608,15 +608,15 @@ func (o *ComputerHardware) HasOpenRamSlots() bool {
 	return false
 }
 
-// SetOpenRamSlots gets a reference to the given int32 and assigns it to the OpenRamSlots field.
-func (o *ComputerHardware) SetOpenRamSlots(v int32) {
+// SetOpenRamSlots gets a reference to the given int64 and assigns it to the OpenRamSlots field.
+func (o *ComputerHardware) SetOpenRamSlots(v int64) {
 	o.OpenRamSlots = &v
 }
 
 // GetBatteryCapacityPercent returns the BatteryCapacityPercent field value if set, zero value otherwise.
-func (o *ComputerHardware) GetBatteryCapacityPercent() int32 {
+func (o *ComputerHardware) GetBatteryCapacityPercent() int64 {
 	if o == nil || IsNil(o.BatteryCapacityPercent) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BatteryCapacityPercent
@@ -624,7 +624,7 @@ func (o *ComputerHardware) GetBatteryCapacityPercent() int32 {
 
 // GetBatteryCapacityPercentOk returns a tuple with the BatteryCapacityPercent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int32, bool) {
+func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int64, bool) {
 	if o == nil || IsNil(o.BatteryCapacityPercent) {
 		return nil, false
 	}
@@ -640,8 +640,8 @@ func (o *ComputerHardware) HasBatteryCapacityPercent() bool {
 	return false
 }
 
-// SetBatteryCapacityPercent gets a reference to the given int32 and assigns it to the BatteryCapacityPercent field.
-func (o *ComputerHardware) SetBatteryCapacityPercent(v int32) {
+// SetBatteryCapacityPercent gets a reference to the given int64 and assigns it to the BatteryCapacityPercent field.
+func (o *ComputerHardware) SetBatteryCapacityPercent(v int64) {
 	o.BatteryCapacityPercent = &v
 }
 

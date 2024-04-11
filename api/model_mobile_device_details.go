@@ -20,7 +20,7 @@ var _ MappedNullable = &MobileDeviceDetails{}
 
 // MobileDeviceDetails struct for MobileDeviceDetails
 type MobileDeviceDetails struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
 	LastInventoryUpdateTimestamp *time.Time `json:"lastInventoryUpdateTimestamp,omitempty"`
@@ -68,9 +68,9 @@ func NewMobileDeviceDetailsWithDefaults() *MobileDeviceDetails {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *MobileDeviceDetails) GetId() int32 {
+func (o *MobileDeviceDetails) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -78,7 +78,7 @@ func (o *MobileDeviceDetails) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceDetails) GetIdOk() (*int32, bool) {
+func (o *MobileDeviceDetails) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *MobileDeviceDetails) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *MobileDeviceDetails) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *MobileDeviceDetails) SetId(v int64) {
 	o.Id = &v
 }
 

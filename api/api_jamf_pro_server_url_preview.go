@@ -183,31 +183,31 @@ func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlGetExecute(r JamfP
 type JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest struct {
 	ctx context.Context
 	ApiService JamfProServerUrlPreviewAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Page(page int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Page(page int64) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Size(size int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Size(size int64) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Pagesize(pagesize int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) Pagesize(pagesize int64) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) PageSize(pageSize int32) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
+func (r JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest) PageSize(pageSize int64) JamfProServerUrlPreviewAPIV1JamfProServerUrlHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -261,25 +261,25 @@ func (a *JamfProServerUrlPreviewAPIService) V1JamfProServerUrlHistoryGetExecute(
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

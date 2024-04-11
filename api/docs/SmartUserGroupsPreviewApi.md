@@ -23,24 +23,24 @@ Recalculate the smart group for the given id and then return the ids for the use
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | instance id of smart group
+	id := int64(56) // int64 | instance id of smart group
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SmartUserGroupsIdRecalculatePost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SmartUserGroupsIdRecalculatePost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartUserGroupsPreviewAPI.V1SmartUserGroupsIdRecalculatePost`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | instance id of smart group | 
+**id** | **int64** | instance id of smart group | 
 
 ### Other Parameters
 
@@ -93,24 +93,24 @@ Recalculate a smart group for the given user id and then return the count of sma
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | id of user
+	id := int64(56) // int64 | id of user
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1UsersIdRecalculateSmartGroupsPost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1UsersIdRecalculateSmartGroupsPost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartUserGroupsPreviewAPI.V1UsersIdRecalculateSmartGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | id of user | 
+**id** | **int64** | id of user | 
 
 ### Other Parameters
 

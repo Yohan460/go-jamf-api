@@ -20,7 +20,7 @@ var _ MappedNullable = &PatchPolicyLogDetail{}
 // PatchPolicyLogDetail struct for PatchPolicyLogDetail
 type PatchPolicyLogDetail struct {
 	Id *string `json:"id,omitempty"`
-	AttemptNumber *int32 `json:"attemptNumber,omitempty"`
+	AttemptNumber *int64 `json:"attemptNumber,omitempty"`
 	DeviceId *string `json:"deviceId,omitempty"`
 	Actions []PatchPolicyLogDetailAction `json:"actions,omitempty"`
 }
@@ -75,9 +75,9 @@ func (o *PatchPolicyLogDetail) SetId(v string) {
 }
 
 // GetAttemptNumber returns the AttemptNumber field value if set, zero value otherwise.
-func (o *PatchPolicyLogDetail) GetAttemptNumber() int32 {
+func (o *PatchPolicyLogDetail) GetAttemptNumber() int64 {
 	if o == nil || IsNil(o.AttemptNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AttemptNumber
@@ -85,7 +85,7 @@ func (o *PatchPolicyLogDetail) GetAttemptNumber() int32 {
 
 // GetAttemptNumberOk returns a tuple with the AttemptNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyLogDetail) GetAttemptNumberOk() (*int32, bool) {
+func (o *PatchPolicyLogDetail) GetAttemptNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.AttemptNumber) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *PatchPolicyLogDetail) HasAttemptNumber() bool {
 	return false
 }
 
-// SetAttemptNumber gets a reference to the given int32 and assigns it to the AttemptNumber field.
-func (o *PatchPolicyLogDetail) SetAttemptNumber(v int32) {
+// SetAttemptNumber gets a reference to the given int64 and assigns it to the AttemptNumber field.
+func (o *PatchPolicyLogDetail) SetAttemptNumber(v int64) {
 	o.AttemptNumber = &v
 }
 

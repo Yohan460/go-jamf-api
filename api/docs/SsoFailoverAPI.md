@@ -23,23 +23,23 @@ Regenerates failover url
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoFailoverAPI.V1SsoFailoverGeneratePost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoFailoverAPI.V1SsoFailoverGeneratePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SsoFailoverGeneratePost`: SsoFailoverData
-    fmt.Fprintf(os.Stdout, "Response from `SsoFailoverAPI.V1SsoFailoverGeneratePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SsoFailoverAPI.V1SsoFailoverGeneratePost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SsoFailoverAPI.V1SsoFailoverGeneratePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SsoFailoverGeneratePost`: SsoFailoverData
+	fmt.Fprintf(os.Stdout, "Response from `SsoFailoverAPI.V1SsoFailoverGeneratePost`: %v\n", resp)
 }
 ```
 
@@ -84,23 +84,23 @@ Retrieve the current failover settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SsoFailoverAPI.V1SsoFailoverGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SsoFailoverAPI.V1SsoFailoverGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SsoFailoverGet`: SsoFailoverData
-    fmt.Fprintf(os.Stdout, "Response from `SsoFailoverAPI.V1SsoFailoverGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SsoFailoverAPI.V1SsoFailoverGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SsoFailoverAPI.V1SsoFailoverGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SsoFailoverGet`: SsoFailoverData
+	fmt.Fprintf(os.Stdout, "Response from `SsoFailoverAPI.V1SsoFailoverGet`: %v\n", resp)
 }
 ```
 

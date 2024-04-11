@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SupervisionIdentityUpdate type satisfies the MappedNullable interface at compile time
@@ -21,6 +23,8 @@ var _ MappedNullable = &SupervisionIdentityUpdate{}
 type SupervisionIdentityUpdate struct {
 	DisplayName string `json:"displayName"`
 }
+
+type _SupervisionIdentityUpdate SupervisionIdentityUpdate
 
 // NewSupervisionIdentityUpdate instantiates a new SupervisionIdentityUpdate object
 // This constructor will assign default values to properties that have it defined,
@@ -76,6 +80,43 @@ func (o SupervisionIdentityUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["displayName"] = o.DisplayName
 	return toSerialize, nil
+}
+
+func (o *SupervisionIdentityUpdate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSupervisionIdentityUpdate := _SupervisionIdentityUpdate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSupervisionIdentityUpdate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SupervisionIdentityUpdate(varSupervisionIdentityUpdate)
+
+	return err
 }
 
 type NullableSupervisionIdentityUpdate struct {

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PrestageId** | Pointer to **int32** |  | [optional] 
+**PrestageId** | Pointer to **int64** |  | [optional] 
 **Assignments** | Pointer to [**[]PrestageScopeAssignment**](PrestageScopeAssignment.md) |  | [optional] 
-**VersionLock** | Pointer to **int32** |  | [optional] 
+**VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPrestageId
 
-`func (o *PrestageScopeResponse) GetPrestageId() int32`
+`func (o *PrestageScopeResponse) GetPrestageId() int64`
 
 GetPrestageId returns the PrestageId field if non-nil, zero value otherwise.
 
 ### GetPrestageIdOk
 
-`func (o *PrestageScopeResponse) GetPrestageIdOk() (*int32, bool)`
+`func (o *PrestageScopeResponse) GetPrestageIdOk() (*int64, bool)`
 
 GetPrestageIdOk returns a tuple with the PrestageId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrestageId
 
-`func (o *PrestageScopeResponse) SetPrestageId(v int32)`
+`func (o *PrestageScopeResponse) SetPrestageId(v int64)`
 
 SetPrestageId sets PrestageId field to given value.
 
@@ -79,20 +79,20 @@ HasAssignments returns a boolean if a field has been set.
 
 ### GetVersionLock
 
-`func (o *PrestageScopeResponse) GetVersionLock() int32`
+`func (o *PrestageScopeResponse) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PrestageScopeResponse) GetVersionLockOk() (*int32, bool)`
+`func (o *PrestageScopeResponse) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PrestageScopeResponse) SetVersionLock(v int32)`
+`func (o *PrestageScopeResponse) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

@@ -22,24 +22,24 @@ Retrieve the MDM Enrollment Profile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | MDM Enrollment Profile identifier
+	id := "id_example" // string | MDM Enrollment Profile identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `MobileDeviceEnrollmentProfileAPI.V1MobileDeviceEnrollmentProfileIdDownloadProfileGet`: %v\n", resp)
 }
 ```
 

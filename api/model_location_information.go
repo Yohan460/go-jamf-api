@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LocationInformation type satisfies the MappedNullable interface at compile time
@@ -25,17 +27,19 @@ type LocationInformation struct {
 	Email string `json:"email"`
 	Room string `json:"room"`
 	Position string `json:"position"`
-	DepartmentId int32 `json:"departmentId"`
-	BuildingId int32 `json:"buildingId"`
-	Id int32 `json:"id"`
-	VersionLock int32 `json:"versionLock"`
+	DepartmentId int64 `json:"departmentId"`
+	BuildingId int64 `json:"buildingId"`
+	Id int64 `json:"id"`
+	VersionLock int64 `json:"versionLock"`
 }
+
+type _LocationInformation LocationInformation
 
 // NewLocationInformation instantiates a new LocationInformation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLocationInformation(username string, realname string, phone string, email string, room string, position string, departmentId int32, buildingId int32, id int32, versionLock int32) *LocationInformation {
+func NewLocationInformation(username string, realname string, phone string, email string, room string, position string, departmentId int64, buildingId int64, id int64, versionLock int64) *LocationInformation {
 	this := LocationInformation{}
 	this.Username = username
 	this.Realname = realname
@@ -203,9 +207,9 @@ func (o *LocationInformation) SetPosition(v string) {
 }
 
 // GetDepartmentId returns the DepartmentId field value
-func (o *LocationInformation) GetDepartmentId() int32 {
+func (o *LocationInformation) GetDepartmentId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -214,7 +218,7 @@ func (o *LocationInformation) GetDepartmentId() int32 {
 
 // GetDepartmentIdOk returns a tuple with the DepartmentId field value
 // and a boolean to check if the value has been set.
-func (o *LocationInformation) GetDepartmentIdOk() (*int32, bool) {
+func (o *LocationInformation) GetDepartmentIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -222,14 +226,14 @@ func (o *LocationInformation) GetDepartmentIdOk() (*int32, bool) {
 }
 
 // SetDepartmentId sets field value
-func (o *LocationInformation) SetDepartmentId(v int32) {
+func (o *LocationInformation) SetDepartmentId(v int64) {
 	o.DepartmentId = v
 }
 
 // GetBuildingId returns the BuildingId field value
-func (o *LocationInformation) GetBuildingId() int32 {
+func (o *LocationInformation) GetBuildingId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -238,7 +242,7 @@ func (o *LocationInformation) GetBuildingId() int32 {
 
 // GetBuildingIdOk returns a tuple with the BuildingId field value
 // and a boolean to check if the value has been set.
-func (o *LocationInformation) GetBuildingIdOk() (*int32, bool) {
+func (o *LocationInformation) GetBuildingIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -246,14 +250,14 @@ func (o *LocationInformation) GetBuildingIdOk() (*int32, bool) {
 }
 
 // SetBuildingId sets field value
-func (o *LocationInformation) SetBuildingId(v int32) {
+func (o *LocationInformation) SetBuildingId(v int64) {
 	o.BuildingId = v
 }
 
 // GetId returns the Id field value
-func (o *LocationInformation) GetId() int32 {
+func (o *LocationInformation) GetId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -262,7 +266,7 @@ func (o *LocationInformation) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *LocationInformation) GetIdOk() (*int32, bool) {
+func (o *LocationInformation) GetIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -270,14 +274,14 @@ func (o *LocationInformation) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *LocationInformation) SetId(v int32) {
+func (o *LocationInformation) SetId(v int64) {
 	o.Id = v
 }
 
 // GetVersionLock returns the VersionLock field value
-func (o *LocationInformation) GetVersionLock() int32 {
+func (o *LocationInformation) GetVersionLock() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -286,7 +290,7 @@ func (o *LocationInformation) GetVersionLock() int32 {
 
 // GetVersionLockOk returns a tuple with the VersionLock field value
 // and a boolean to check if the value has been set.
-func (o *LocationInformation) GetVersionLockOk() (*int32, bool) {
+func (o *LocationInformation) GetVersionLockOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -294,7 +298,7 @@ func (o *LocationInformation) GetVersionLockOk() (*int32, bool) {
 }
 
 // SetVersionLock sets field value
-func (o *LocationInformation) SetVersionLock(v int32) {
+func (o *LocationInformation) SetVersionLock(v int64) {
 	o.VersionLock = v
 }
 
@@ -319,6 +323,52 @@ func (o LocationInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["versionLock"] = o.VersionLock
 	return toSerialize, nil
+}
+
+func (o *LocationInformation) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"username",
+		"realname",
+		"phone",
+		"email",
+		"room",
+		"position",
+		"departmentId",
+		"buildingId",
+		"id",
+		"versionLock",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLocationInformation := _LocationInformation{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLocationInformation)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LocationInformation(varLocationInformation)
+
+	return err
 }
 
 type NullableLocationInformation struct {

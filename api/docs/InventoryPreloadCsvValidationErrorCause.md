@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **Id** | Pointer to **NullableString** | id of object with error. Optional. | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
-**Line** | Pointer to **int32** |  | [optional] 
-**FieldSize** | Pointer to **int32** |  | [optional] 
+**Line** | Pointer to **int64** |  | [optional] 
+**FieldSize** | Pointer to **int64** |  | [optional] 
 **DeviceType** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -190,20 +190,20 @@ HasSerialNumber returns a boolean if a field has been set.
 
 ### GetLine
 
-`func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int32`
+`func (o *InventoryPreloadCsvValidationErrorCause) GetLine() int64`
 
 GetLine returns the Line field if non-nil, zero value otherwise.
 
 ### GetLineOk
 
-`func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int32, bool)`
+`func (o *InventoryPreloadCsvValidationErrorCause) GetLineOk() (*int64, bool)`
 
 GetLineOk returns a tuple with the Line field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLine
 
-`func (o *InventoryPreloadCsvValidationErrorCause) SetLine(v int32)`
+`func (o *InventoryPreloadCsvValidationErrorCause) SetLine(v int64)`
 
 SetLine sets Line field to given value.
 
@@ -215,20 +215,20 @@ HasLine returns a boolean if a field has been set.
 
 ### GetFieldSize
 
-`func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int32`
+`func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSize() int64`
 
 GetFieldSize returns the FieldSize field if non-nil, zero value otherwise.
 
 ### GetFieldSizeOk
 
-`func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int32, bool)`
+`func (o *InventoryPreloadCsvValidationErrorCause) GetFieldSizeOk() (*int64, bool)`
 
 GetFieldSizeOk returns a tuple with the FieldSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFieldSize
 
-`func (o *InventoryPreloadCsvValidationErrorCause) SetFieldSize(v int32)`
+`func (o *InventoryPreloadCsvValidationErrorCause) SetFieldSize(v int64)`
 
 SetFieldSize sets FieldSize field to given value.
 

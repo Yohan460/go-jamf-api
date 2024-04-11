@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AccountPreferencesV4 type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type AccountPreferencesV4 struct {
 	DisableShortcutsTooltips bool `json:"disableShortcutsTooltips"`
 	ConfigProfilesSortingMethod string `json:"configProfilesSortingMethod"`
 }
+
+type _AccountPreferencesV4 AccountPreferencesV4
 
 // NewAccountPreferencesV4 instantiates a new AccountPreferencesV4 object
 // This constructor will assign default values to properties that have it defined,
@@ -268,6 +272,50 @@ func (o AccountPreferencesV4) ToMap() (map[string]interface{}, error) {
 	toSerialize["disableShortcutsTooltips"] = o.DisableShortcutsTooltips
 	toSerialize["configProfilesSortingMethod"] = o.ConfigProfilesSortingMethod
 	return toSerialize, nil
+}
+
+func (o *AccountPreferencesV4) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"language",
+		"dateFormat",
+		"timezone",
+		"disableRelativeDates",
+		"disablePageLeaveCheck",
+		"disableTablePagination",
+		"disableShortcutsTooltips",
+		"configProfilesSortingMethod",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAccountPreferencesV4 := _AccountPreferencesV4{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAccountPreferencesV4)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccountPreferencesV4(varAccountPreferencesV4)
+
+	return err
 }
 
 type NullableAccountPreferencesV4 struct {

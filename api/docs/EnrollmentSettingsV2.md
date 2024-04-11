@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **ManagementPassword** | Pointer to **string** | managementPassword is no longer in use. Input value for managementPassword will be ignored. | [optional] [default to "null"]
 **ManagementPasswordSet** | Pointer to **bool** | managementPasswordSet is no longer in use. Input value for managementPasswordSet will be ignored. | [optional] [readonly] 
 **PasswordType** | Pointer to **string** | passwordType is no longer in use. Input value for passwordType will be ignored. | [optional] [default to "STATIC"]
-**RandomPasswordLength** | Pointer to **int32** | randomPasswordLength is no longer in use. Input value for randomPasswordLength will be ignored. | [optional] [default to 8]
+**RandomPasswordLength** | Pointer to **int64** | randomPasswordLength is no longer in use. Input value for randomPasswordLength will be ignored. | [optional] [default to 8]
 **CreateManagementAccount** | Pointer to **bool** |  | [optional] [default to true]
 **HideManagementAccount** | Pointer to **bool** |  | [optional] [default to false]
 **AllowSshOnlyManagementAccount** | Pointer to **bool** |  | [optional] [default to false]
@@ -409,20 +409,20 @@ HasPasswordType returns a boolean if a field has been set.
 
 ### GetRandomPasswordLength
 
-`func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int32`
+`func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int64`
 
 GetRandomPasswordLength returns the RandomPasswordLength field if non-nil, zero value otherwise.
 
 ### GetRandomPasswordLengthOk
 
-`func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int32, bool)`
+`func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int64, bool)`
 
 GetRandomPasswordLengthOk returns a tuple with the RandomPasswordLength field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRandomPasswordLength
 
-`func (o *EnrollmentSettingsV2) SetRandomPasswordLength(v int32)`
+`func (o *EnrollmentSettingsV2) SetRandomPasswordLength(v int64)`
 
 SetRandomPasswordLength sets RandomPasswordLength field to given value.
 

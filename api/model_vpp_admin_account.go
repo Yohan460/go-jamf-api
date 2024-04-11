@@ -19,10 +19,10 @@ var _ MappedNullable = &VppAdminAccount{}
 
 // VppAdminAccount struct for VppAdminAccount
 type VppAdminAccount struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	LicenseCount *int32 `json:"licenseCount,omitempty"`
-	UsedLicenseCount *int32 `json:"usedLicenseCount,omitempty"`
+	LicenseCount *int64 `json:"licenseCount,omitempty"`
+	UsedLicenseCount *int64 `json:"usedLicenseCount,omitempty"`
 	Location *string `json:"location,omitempty"`
 	ExpirationDate *string `json:"expirationDate,omitempty"`
 	Site *Site `json:"site,omitempty"`
@@ -46,9 +46,9 @@ func NewVppAdminAccountWithDefaults() *VppAdminAccount {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *VppAdminAccount) GetId() int32 {
+func (o *VppAdminAccount) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -56,7 +56,7 @@ func (o *VppAdminAccount) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VppAdminAccount) GetIdOk() (*int32, bool) {
+func (o *VppAdminAccount) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *VppAdminAccount) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *VppAdminAccount) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *VppAdminAccount) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -110,9 +110,9 @@ func (o *VppAdminAccount) SetName(v string) {
 }
 
 // GetLicenseCount returns the LicenseCount field value if set, zero value otherwise.
-func (o *VppAdminAccount) GetLicenseCount() int32 {
+func (o *VppAdminAccount) GetLicenseCount() int64 {
 	if o == nil || IsNil(o.LicenseCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LicenseCount
@@ -120,7 +120,7 @@ func (o *VppAdminAccount) GetLicenseCount() int32 {
 
 // GetLicenseCountOk returns a tuple with the LicenseCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VppAdminAccount) GetLicenseCountOk() (*int32, bool) {
+func (o *VppAdminAccount) GetLicenseCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.LicenseCount) {
 		return nil, false
 	}
@@ -136,15 +136,15 @@ func (o *VppAdminAccount) HasLicenseCount() bool {
 	return false
 }
 
-// SetLicenseCount gets a reference to the given int32 and assigns it to the LicenseCount field.
-func (o *VppAdminAccount) SetLicenseCount(v int32) {
+// SetLicenseCount gets a reference to the given int64 and assigns it to the LicenseCount field.
+func (o *VppAdminAccount) SetLicenseCount(v int64) {
 	o.LicenseCount = &v
 }
 
 // GetUsedLicenseCount returns the UsedLicenseCount field value if set, zero value otherwise.
-func (o *VppAdminAccount) GetUsedLicenseCount() int32 {
+func (o *VppAdminAccount) GetUsedLicenseCount() int64 {
 	if o == nil || IsNil(o.UsedLicenseCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsedLicenseCount
@@ -152,7 +152,7 @@ func (o *VppAdminAccount) GetUsedLicenseCount() int32 {
 
 // GetUsedLicenseCountOk returns a tuple with the UsedLicenseCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int32, bool) {
+func (o *VppAdminAccount) GetUsedLicenseCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.UsedLicenseCount) {
 		return nil, false
 	}
@@ -168,8 +168,8 @@ func (o *VppAdminAccount) HasUsedLicenseCount() bool {
 	return false
 }
 
-// SetUsedLicenseCount gets a reference to the given int32 and assigns it to the UsedLicenseCount field.
-func (o *VppAdminAccount) SetUsedLicenseCount(v int32) {
+// SetUsedLicenseCount gets a reference to the given int64 and assigns it to the UsedLicenseCount field.
+func (o *VppAdminAccount) SetUsedLicenseCount(v int64) {
 	o.UsedLicenseCount = &v
 }
 

@@ -264,33 +264,33 @@ func (a *EngageAPIService) V1EngageGetExecute(r EngageAPIV1EngageGetRequest) (*E
 type EngageAPIV1EngageHistoryGetRequest struct {
 	ctx context.Context
 	ApiService EngageAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 	search *string
 	filter *string
 }
 
-func (r EngageAPIV1EngageHistoryGetRequest) Page(page int32) EngageAPIV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Page(page int64) EngageAPIV1EngageHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r EngageAPIV1EngageHistoryGetRequest) Size(size int32) EngageAPIV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Size(size int64) EngageAPIV1EngageHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r EngageAPIV1EngageHistoryGetRequest) Pagesize(pagesize int32) EngageAPIV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) Pagesize(pagesize int64) EngageAPIV1EngageHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r EngageAPIV1EngageHistoryGetRequest) PageSize(pageSize int32) EngageAPIV1EngageHistoryGetRequest {
+func (r EngageAPIV1EngageHistoryGetRequest) PageSize(pageSize int64) EngageAPIV1EngageHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -360,25 +360,25 @@ func (a *EngageAPIService) V1EngageHistoryGetExecute(r EngageAPIV1EngageHistoryG
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -796,18 +796,18 @@ func (a *EngageAPIService) V2EngageGetExecute(r EngageAPIV2EngageGetRequest) (*E
 type EngageAPIV2EngageHistoryGetRequest struct {
 	ctx context.Context
 	ApiService EngageAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r EngageAPIV2EngageHistoryGetRequest) Page(page int32) EngageAPIV2EngageHistoryGetRequest {
+func (r EngageAPIV2EngageHistoryGetRequest) Page(page int64) EngageAPIV2EngageHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r EngageAPIV2EngageHistoryGetRequest) PageSize(pageSize int32) EngageAPIV2EngageHistoryGetRequest {
+func (r EngageAPIV2EngageHistoryGetRequest) PageSize(pageSize int64) EngageAPIV2EngageHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -868,13 +868,13 @@ func (a *EngageAPIService) V2EngageHistoryGetExecute(r EngageAPIV2EngageHistoryG
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

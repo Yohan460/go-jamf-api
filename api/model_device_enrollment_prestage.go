@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeviceEnrollmentPrestage type satisfies the MappedNullable interface at compile time
@@ -26,27 +28,29 @@ type DeviceEnrollmentPrestage struct {
 	SupportEmailAddress string `json:"supportEmailAddress"`
 	Department string `json:"department"`
 	IsDefaultPrestage bool `json:"isDefaultPrestage"`
-	EnrollmentSiteId int32 `json:"enrollmentSiteId"`
+	EnrollmentSiteId int64 `json:"enrollmentSiteId"`
 	IsKeepExistingSiteMembership bool `json:"isKeepExistingSiteMembership"`
 	IsKeepExistingLocationInformation bool `json:"isKeepExistingLocationInformation"`
 	IsRequireAuthentication bool `json:"isRequireAuthentication"`
 	AuthenticationPrompt string `json:"authenticationPrompt"`
 	IsPreventActivationLock bool `json:"isPreventActivationLock"`
 	IsEnableDeviceBasedActivationLock bool `json:"isEnableDeviceBasedActivationLock"`
-	DeviceEnrollmentProgramInstanceId int32 `json:"deviceEnrollmentProgramInstanceId"`
+	DeviceEnrollmentProgramInstanceId int64 `json:"deviceEnrollmentProgramInstanceId"`
 	SkipSetupItems *map[string]bool `json:"skipSetupItems,omitempty"`
 	LocationInformation LocationInformation `json:"locationInformation"`
 	PurchasingInformation PrestagePurchasingInformation `json:"purchasingInformation"`
 	// The Base64 encoded PEM Certificate
 	AnchorCertificates []string `json:"anchorCertificates,omitempty"`
-	EnrollmentCustomizationId *int32 `json:"enrollmentCustomizationId,omitempty"`
+	EnrollmentCustomizationId *int64 `json:"enrollmentCustomizationId,omitempty"`
 }
+
+type _DeviceEnrollmentPrestage DeviceEnrollmentPrestage
 
 // NewDeviceEnrollmentPrestage instantiates a new DeviceEnrollmentPrestage object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeviceEnrollmentPrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int32, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int32, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation) *DeviceEnrollmentPrestage {
+func NewDeviceEnrollmentPrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int64, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int64, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation) *DeviceEnrollmentPrestage {
 	this := DeviceEnrollmentPrestage{}
 	this.DisplayName = displayName
 	this.IsMandatory = isMandatory
@@ -245,9 +249,9 @@ func (o *DeviceEnrollmentPrestage) SetIsDefaultPrestage(v bool) {
 }
 
 // GetEnrollmentSiteId returns the EnrollmentSiteId field value
-func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteId() int32 {
+func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -256,7 +260,7 @@ func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteId() int32 {
 
 // GetEnrollmentSiteIdOk returns a tuple with the EnrollmentSiteId field value
 // and a boolean to check if the value has been set.
-func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteIdOk() (*int32, bool) {
+func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -264,7 +268,7 @@ func (o *DeviceEnrollmentPrestage) GetEnrollmentSiteIdOk() (*int32, bool) {
 }
 
 // SetEnrollmentSiteId sets field value
-func (o *DeviceEnrollmentPrestage) SetEnrollmentSiteId(v int32) {
+func (o *DeviceEnrollmentPrestage) SetEnrollmentSiteId(v int64) {
 	o.EnrollmentSiteId = v
 }
 
@@ -413,9 +417,9 @@ func (o *DeviceEnrollmentPrestage) SetIsEnableDeviceBasedActivationLock(v bool) 
 }
 
 // GetDeviceEnrollmentProgramInstanceId returns the DeviceEnrollmentProgramInstanceId field value
-func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceId() int32 {
+func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -424,7 +428,7 @@ func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceId() int32 
 
 // GetDeviceEnrollmentProgramInstanceIdOk returns a tuple with the DeviceEnrollmentProgramInstanceId field value
 // and a boolean to check if the value has been set.
-func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int32, bool) {
+func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -432,7 +436,7 @@ func (o *DeviceEnrollmentPrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*in
 }
 
 // SetDeviceEnrollmentProgramInstanceId sets field value
-func (o *DeviceEnrollmentPrestage) SetDeviceEnrollmentProgramInstanceId(v int32) {
+func (o *DeviceEnrollmentPrestage) SetDeviceEnrollmentProgramInstanceId(v int64) {
 	o.DeviceEnrollmentProgramInstanceId = v
 }
 
@@ -549,9 +553,9 @@ func (o *DeviceEnrollmentPrestage) SetAnchorCertificates(v []string) {
 }
 
 // GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field value if set, zero value otherwise.
-func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int32 {
+func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int64 {
 	if o == nil || IsNil(o.EnrollmentCustomizationId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.EnrollmentCustomizationId
@@ -559,7 +563,7 @@ func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationId() int32 {
 
 // GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int32, bool) {
+func (o *DeviceEnrollmentPrestage) GetEnrollmentCustomizationIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.EnrollmentCustomizationId) {
 		return nil, false
 	}
@@ -575,8 +579,8 @@ func (o *DeviceEnrollmentPrestage) HasEnrollmentCustomizationId() bool {
 	return false
 }
 
-// SetEnrollmentCustomizationId gets a reference to the given int32 and assigns it to the EnrollmentCustomizationId field.
-func (o *DeviceEnrollmentPrestage) SetEnrollmentCustomizationId(v int32) {
+// SetEnrollmentCustomizationId gets a reference to the given int64 and assigns it to the EnrollmentCustomizationId field.
+func (o *DeviceEnrollmentPrestage) SetEnrollmentCustomizationId(v int64) {
 	o.EnrollmentCustomizationId = &v
 }
 
@@ -617,6 +621,59 @@ func (o DeviceEnrollmentPrestage) ToMap() (map[string]interface{}, error) {
 		toSerialize["enrollmentCustomizationId"] = o.EnrollmentCustomizationId
 	}
 	return toSerialize, nil
+}
+
+func (o *DeviceEnrollmentPrestage) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"isMandatory",
+		"isMdmRemovable",
+		"supportPhoneNumber",
+		"supportEmailAddress",
+		"department",
+		"isDefaultPrestage",
+		"enrollmentSiteId",
+		"isKeepExistingSiteMembership",
+		"isKeepExistingLocationInformation",
+		"isRequireAuthentication",
+		"authenticationPrompt",
+		"isPreventActivationLock",
+		"isEnableDeviceBasedActivationLock",
+		"deviceEnrollmentProgramInstanceId",
+		"locationInformation",
+		"purchasingInformation",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeviceEnrollmentPrestage := _DeviceEnrollmentPrestage{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeviceEnrollmentPrestage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeviceEnrollmentPrestage(varDeviceEnrollmentPrestage)
+
+	return err
 }
 
 type NullableDeviceEnrollmentPrestage struct {

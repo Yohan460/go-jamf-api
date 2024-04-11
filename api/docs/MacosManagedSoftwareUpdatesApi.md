@@ -23,23 +23,23 @@ Retrieve available MacOs Managed Software Updates
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MacosManagedSoftwareUpdatesAvailableUpdatesGet`: AvailableUpdates
-    fmt.Fprintf(os.Stdout, "Response from `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MacosManagedSoftwareUpdatesAvailableUpdatesGet`: AvailableUpdates
+	fmt.Fprintf(os.Stdout, "Response from `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesAvailableUpdatesGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Send MacOs Managed Software Updates
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    macOsManagedSoftwareUpdate := *openapiclient.NewMacOsManagedSoftwareUpdate() // MacOsManagedSoftwareUpdate | MacOs Managed Software Update to send
+	macOsManagedSoftwareUpdate := *openapiclient.NewMacOsManagedSoftwareUpdate() // MacOsManagedSoftwareUpdate | MacOs Managed Software Update to send
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost(context.Background()).MacOsManagedSoftwareUpdate(macOsManagedSoftwareUpdate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MacosManagedSoftwareUpdatesSendUpdatesPost`: MacOsManagedSoftwareUpdateResponse
-    fmt.Fprintf(os.Stdout, "Response from `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost(context.Background()).MacOsManagedSoftwareUpdate(macOsManagedSoftwareUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MacosManagedSoftwareUpdatesSendUpdatesPost`: MacOsManagedSoftwareUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `MacosManagedSoftwareUpdatesAPI.V1MacosManagedSoftwareUpdatesSendUpdatesPost`: %v\n", resp)
 }
 ```
 

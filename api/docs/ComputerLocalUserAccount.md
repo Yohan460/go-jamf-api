@@ -13,10 +13,10 @@ Name | Type | Description | Notes
 **HomeDirectorySizeMb** | Pointer to **int64** | Home directory size in MB. | [optional] [readonly] 
 **FileVault2Enabled** | Pointer to **bool** |  | [optional] 
 **UserAccountType** | Pointer to **string** |  | [optional] 
-**PasswordMinLength** | Pointer to **int32** |  | [optional] 
-**PasswordMaxAge** | Pointer to **int32** |  | [optional] 
-**PasswordMinComplexCharacters** | Pointer to **int32** |  | [optional] 
-**PasswordHistoryDepth** | Pointer to **int32** |  | [optional] 
+**PasswordMinLength** | Pointer to **int64** |  | [optional] 
+**PasswordMaxAge** | Pointer to **int64** |  | [optional] 
+**PasswordMinComplexCharacters** | Pointer to **int64** |  | [optional] 
+**PasswordHistoryDepth** | Pointer to **int64** |  | [optional] 
 **PasswordRequireAlphanumeric** | Pointer to **bool** |  | [optional] 
 **ComputerAzureActiveDirectoryId** | Pointer to **string** |  | [optional] 
 **UserAzureActiveDirectoryId** | Pointer to **string** |  | [optional] 
@@ -268,20 +268,20 @@ HasUserAccountType returns a boolean if a field has been set.
 
 ### GetPasswordMinLength
 
-`func (o *ComputerLocalUserAccount) GetPasswordMinLength() int32`
+`func (o *ComputerLocalUserAccount) GetPasswordMinLength() int64`
 
 GetPasswordMinLength returns the PasswordMinLength field if non-nil, zero value otherwise.
 
 ### GetPasswordMinLengthOk
 
-`func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int32, bool)`
+`func (o *ComputerLocalUserAccount) GetPasswordMinLengthOk() (*int64, bool)`
 
 GetPasswordMinLengthOk returns a tuple with the PasswordMinLength field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordMinLength
 
-`func (o *ComputerLocalUserAccount) SetPasswordMinLength(v int32)`
+`func (o *ComputerLocalUserAccount) SetPasswordMinLength(v int64)`
 
 SetPasswordMinLength sets PasswordMinLength field to given value.
 
@@ -293,20 +293,20 @@ HasPasswordMinLength returns a boolean if a field has been set.
 
 ### GetPasswordMaxAge
 
-`func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int32`
+`func (o *ComputerLocalUserAccount) GetPasswordMaxAge() int64`
 
 GetPasswordMaxAge returns the PasswordMaxAge field if non-nil, zero value otherwise.
 
 ### GetPasswordMaxAgeOk
 
-`func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int32, bool)`
+`func (o *ComputerLocalUserAccount) GetPasswordMaxAgeOk() (*int64, bool)`
 
 GetPasswordMaxAgeOk returns a tuple with the PasswordMaxAge field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordMaxAge
 
-`func (o *ComputerLocalUserAccount) SetPasswordMaxAge(v int32)`
+`func (o *ComputerLocalUserAccount) SetPasswordMaxAge(v int64)`
 
 SetPasswordMaxAge sets PasswordMaxAge field to given value.
 
@@ -318,20 +318,20 @@ HasPasswordMaxAge returns a boolean if a field has been set.
 
 ### GetPasswordMinComplexCharacters
 
-`func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int32`
+`func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharacters() int64`
 
 GetPasswordMinComplexCharacters returns the PasswordMinComplexCharacters field if non-nil, zero value otherwise.
 
 ### GetPasswordMinComplexCharactersOk
 
-`func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int32, bool)`
+`func (o *ComputerLocalUserAccount) GetPasswordMinComplexCharactersOk() (*int64, bool)`
 
 GetPasswordMinComplexCharactersOk returns a tuple with the PasswordMinComplexCharacters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordMinComplexCharacters
 
-`func (o *ComputerLocalUserAccount) SetPasswordMinComplexCharacters(v int32)`
+`func (o *ComputerLocalUserAccount) SetPasswordMinComplexCharacters(v int64)`
 
 SetPasswordMinComplexCharacters sets PasswordMinComplexCharacters field to given value.
 
@@ -343,20 +343,20 @@ HasPasswordMinComplexCharacters returns a boolean if a field has been set.
 
 ### GetPasswordHistoryDepth
 
-`func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int32`
+`func (o *ComputerLocalUserAccount) GetPasswordHistoryDepth() int64`
 
 GetPasswordHistoryDepth returns the PasswordHistoryDepth field if non-nil, zero value otherwise.
 
 ### GetPasswordHistoryDepthOk
 
-`func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int32, bool)`
+`func (o *ComputerLocalUserAccount) GetPasswordHistoryDepthOk() (*int64, bool)`
 
 GetPasswordHistoryDepthOk returns a tuple with the PasswordHistoryDepth field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordHistoryDepth
 
-`func (o *ComputerLocalUserAccount) SetPasswordHistoryDepth(v int32)`
+`func (o *ComputerLocalUserAccount) SetPasswordHistoryDepth(v int64)`
 
 SetPasswordHistoryDepth sets PasswordHistoryDepth field to given value.
 

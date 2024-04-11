@@ -23,7 +23,7 @@ type ComputerApplication struct {
 	Path *string `json:"path,omitempty"`
 	Version *string `json:"version,omitempty"`
 	MacAppStore *bool `json:"macAppStore,omitempty"`
-	SizeMegabytes *int32 `json:"sizeMegabytes,omitempty"`
+	SizeMegabytes *int64 `json:"sizeMegabytes,omitempty"`
 	BundleId *string `json:"bundleId,omitempty"`
 	UpdateAvailable *bool `json:"updateAvailable,omitempty"`
 	// The app's external version ID. It can be used in the iTunes Search API to decide if the app needs to be updated
@@ -176,9 +176,9 @@ func (o *ComputerApplication) SetMacAppStore(v bool) {
 }
 
 // GetSizeMegabytes returns the SizeMegabytes field value if set, zero value otherwise.
-func (o *ComputerApplication) GetSizeMegabytes() int32 {
+func (o *ComputerApplication) GetSizeMegabytes() int64 {
 	if o == nil || IsNil(o.SizeMegabytes) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SizeMegabytes
@@ -186,7 +186,7 @@ func (o *ComputerApplication) GetSizeMegabytes() int32 {
 
 // GetSizeMegabytesOk returns a tuple with the SizeMegabytes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerApplication) GetSizeMegabytesOk() (*int32, bool) {
+func (o *ComputerApplication) GetSizeMegabytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.SizeMegabytes) {
 		return nil, false
 	}
@@ -202,8 +202,8 @@ func (o *ComputerApplication) HasSizeMegabytes() bool {
 	return false
 }
 
-// SetSizeMegabytes gets a reference to the given int32 and assigns it to the SizeMegabytes field.
-func (o *ComputerApplication) SetSizeMegabytes(v int32) {
+// SetSizeMegabytes gets a reference to the given int64 and assigns it to the SizeMegabytes field.
+func (o *ComputerApplication) SetSizeMegabytes(v int64) {
 	o.SizeMegabytes = &v
 }
 

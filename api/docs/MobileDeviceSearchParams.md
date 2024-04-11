@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PageNumber** | Pointer to **int32** |  | [optional] 
-**PageSize** | Pointer to **int32** |  | [optional] 
+**PageNumber** | Pointer to **int64** |  | [optional] 
+**PageSize** | Pointer to **int64** |  | [optional] 
 **IsLoadToEnd** | Pointer to **bool** |  | [optional] 
 **OrderBy** | Pointer to [**[]OrderBy**](OrderBy.md) |  | [optional] 
 **Udid** | Pointer to **string** |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **OsType** | Pointer to **string** |  | [optional] 
 **IsManaged** | Pointer to **bool** |  | [optional] 
-**ExcludedIds** | Pointer to **[]int32** |  | [optional] 
+**ExcludedIds** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPageNumber
 
-`func (o *MobileDeviceSearchParams) GetPageNumber() int32`
+`func (o *MobileDeviceSearchParams) GetPageNumber() int64`
 
 GetPageNumber returns the PageNumber field if non-nil, zero value otherwise.
 
 ### GetPageNumberOk
 
-`func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int32, bool)`
+`func (o *MobileDeviceSearchParams) GetPageNumberOk() (*int64, bool)`
 
 GetPageNumberOk returns a tuple with the PageNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPageNumber
 
-`func (o *MobileDeviceSearchParams) SetPageNumber(v int32)`
+`func (o *MobileDeviceSearchParams) SetPageNumber(v int64)`
 
 SetPageNumber sets PageNumber field to given value.
 
@@ -62,20 +62,20 @@ HasPageNumber returns a boolean if a field has been set.
 
 ### GetPageSize
 
-`func (o *MobileDeviceSearchParams) GetPageSize() int32`
+`func (o *MobileDeviceSearchParams) GetPageSize() int64`
 
 GetPageSize returns the PageSize field if non-nil, zero value otherwise.
 
 ### GetPageSizeOk
 
-`func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int32, bool)`
+`func (o *MobileDeviceSearchParams) GetPageSizeOk() (*int64, bool)`
 
 GetPageSizeOk returns a tuple with the PageSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPageSize
 
-`func (o *MobileDeviceSearchParams) SetPageSize(v int32)`
+`func (o *MobileDeviceSearchParams) SetPageSize(v int64)`
 
 SetPageSize sets PageSize field to given value.
 
@@ -287,20 +287,20 @@ HasIsManaged returns a boolean if a field has been set.
 
 ### GetExcludedIds
 
-`func (o *MobileDeviceSearchParams) GetExcludedIds() []int32`
+`func (o *MobileDeviceSearchParams) GetExcludedIds() []int64`
 
 GetExcludedIds returns the ExcludedIds field if non-nil, zero value otherwise.
 
 ### GetExcludedIdsOk
 
-`func (o *MobileDeviceSearchParams) GetExcludedIdsOk() (*[]int32, bool)`
+`func (o *MobileDeviceSearchParams) GetExcludedIdsOk() (*[]int64, bool)`
 
 GetExcludedIdsOk returns a tuple with the ExcludedIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExcludedIds
 
-`func (o *MobileDeviceSearchParams) SetExcludedIds(v []int32)`
+`func (o *MobileDeviceSearchParams) SetExcludedIds(v []int64)`
 
 SetExcludedIds sets ExcludedIds field to given value.
 

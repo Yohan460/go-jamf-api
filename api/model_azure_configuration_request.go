@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AzureConfigurationRequest type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ type AzureConfigurationRequest struct {
 	CloudIdPCommon CloudIdPCommonRequest `json:"cloudIdPCommon"`
 	Server AzureServerConfigurationRequest `json:"server"`
 }
+
+type _AzureConfigurationRequest AzureConfigurationRequest
 
 // NewAzureConfigurationRequest instantiates a new AzureConfigurationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -103,6 +107,44 @@ func (o AzureConfigurationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudIdPCommon"] = o.CloudIdPCommon
 	toSerialize["server"] = o.Server
 	return toSerialize, nil
+}
+
+func (o *AzureConfigurationRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cloudIdPCommon",
+		"server",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAzureConfigurationRequest := _AzureConfigurationRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAzureConfigurationRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AzureConfigurationRequest(varAzureConfigurationRequest)
+
+	return err
 }
 
 type NullableAzureConfigurationRequest struct {

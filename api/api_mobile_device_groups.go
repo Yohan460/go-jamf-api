@@ -239,18 +239,18 @@ type MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest 
 	ctx context.Context
 	ApiService MobileDeviceGroupsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) Page(page int32) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) Page(page int64) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) PageSize(pageSize int32) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) PageSize(pageSize int64) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -314,13 +314,13 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupMembership
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -410,18 +410,18 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupMembership
 type MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest struct {
 	ctx context.Context
 	ApiService MobileDeviceGroupsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest) Page(page int32) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest {
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest) Page(page int64) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest) PageSize(pageSize int32) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest {
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest) PageSize(pageSize int64) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -482,13 +482,13 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupsGetExecut
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

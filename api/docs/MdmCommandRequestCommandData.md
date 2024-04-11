@@ -23,14 +23,14 @@ Name | Type | Description | Notes
 **DataRoaming** | Pointer to [**DataRoamingSetting**](DataRoamingSetting.md) |  | [optional] 
 **VoiceRoaming** | Pointer to [**VoiceRoamingSetting**](VoiceRoamingSetting.md) |  | [optional] 
 **PersonalHotspot** | Pointer to [**PersonalHotspotSetting**](PersonalHotspotSetting.md) |  | [optional] 
-**MaximumResidentUsers** | Pointer to **int32** |  | [optional] 
+**MaximumResidentUsers** | Pointer to **int64** |  | [optional] 
 **DeviceName** | Pointer to **string** |  | [optional] 
 **ApplicationAttributes** | Pointer to [**ApplicationAttributes**](ApplicationAttributes.md) |  | [optional] 
 **SharedDeviceConfiguration** | Pointer to [**SharedDeviceConfiguration**](SharedDeviceConfiguration.md) |  | [optional] 
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
 **TimeZone** | Pointer to **string** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
-**PasscodeLockGracePeriod** | Pointer to **int32** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **int64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
 **RebuildKernelCache** | Pointer to **bool** |  | [optional] 
 **KextPaths** | Pointer to **[]string** | Only used if RebuildKernelCache is true | [optional] 
 **NotifyUser** | Pointer to **bool** |  | [optional] 
@@ -535,20 +535,20 @@ HasPersonalHotspot returns a boolean if a field has been set.
 
 ### GetMaximumResidentUsers
 
-`func (o *MdmCommandRequestCommandData) GetMaximumResidentUsers() int32`
+`func (o *MdmCommandRequestCommandData) GetMaximumResidentUsers() int64`
 
 GetMaximumResidentUsers returns the MaximumResidentUsers field if non-nil, zero value otherwise.
 
 ### GetMaximumResidentUsersOk
 
-`func (o *MdmCommandRequestCommandData) GetMaximumResidentUsersOk() (*int32, bool)`
+`func (o *MdmCommandRequestCommandData) GetMaximumResidentUsersOk() (*int64, bool)`
 
 GetMaximumResidentUsersOk returns a tuple with the MaximumResidentUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumResidentUsers
 
-`func (o *MdmCommandRequestCommandData) SetMaximumResidentUsers(v int32)`
+`func (o *MdmCommandRequestCommandData) SetMaximumResidentUsers(v int64)`
 
 SetMaximumResidentUsers sets MaximumResidentUsers field to given value.
 
@@ -710,20 +710,20 @@ HasSoftwareUpdateSettings returns a boolean if a field has been set.
 
 ### GetPasscodeLockGracePeriod
 
-`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriod() int32`
+`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriod() int64`
 
 GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field if non-nil, zero value otherwise.
 
 ### GetPasscodeLockGracePeriodOk
 
-`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriodOk() (*int32, bool)`
+`func (o *MdmCommandRequestCommandData) GetPasscodeLockGracePeriodOk() (*int64, bool)`
 
 GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasscodeLockGracePeriod
 
-`func (o *MdmCommandRequestCommandData) SetPasscodeLockGracePeriod(v int32)`
+`func (o *MdmCommandRequestCommandData) SetPasscodeLockGracePeriod(v int64)`
 
 SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
 

@@ -20,7 +20,7 @@ var _ MappedNullable = &AuthToken{}
 // AuthToken struct for AuthToken
 type AuthToken struct {
 	Token *string `json:"token,omitempty"`
-	Expires *int32 `json:"expires,omitempty"`
+	Expires *int64 `json:"expires,omitempty"`
 }
 
 // NewAuthToken instantiates a new AuthToken object
@@ -73,9 +73,9 @@ func (o *AuthToken) SetToken(v string) {
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise.
-func (o *AuthToken) GetExpires() int32 {
+func (o *AuthToken) GetExpires() int64 {
 	if o == nil || IsNil(o.Expires) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Expires
@@ -83,7 +83,7 @@ func (o *AuthToken) GetExpires() int32 {
 
 // GetExpiresOk returns a tuple with the Expires field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthToken) GetExpiresOk() (*int32, bool) {
+func (o *AuthToken) GetExpiresOk() (*int64, bool) {
 	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *AuthToken) HasExpires() bool {
 	return false
 }
 
-// SetExpires gets a reference to the given int32 and assigns it to the Expires field.
-func (o *AuthToken) SetExpires(v int32) {
+// SetExpires gets a reference to the given int64 and assigns it to the Expires field.
+func (o *AuthToken) SetExpires(v int64) {
 	o.Expires = &v
 }
 

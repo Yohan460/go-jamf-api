@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **NotificationsEnabled** | Pointer to **bool** | global Self Service setting for if notifications are on or off  | [optional] [default to false]
 **AlertUserApprovedMdm** | Pointer to **bool** | whether users should be notified they need to approve organization&#39;s MDM profile  | [optional] [default to true]
 **DefaultLandingPage** | Pointer to **string** | the default landing page in Self Service  | [optional] [default to "HOME"]
-**DefaultHomeCategoryId** | Pointer to **int32** | id for the default home category in Self Service  | [optional] [default to -1]
+**DefaultHomeCategoryId** | Pointer to **int64** | id for the default home category in Self Service  | [optional] [default to -1]
 **BookmarksName** | **string** | renamed string for bookmarks if the admin wishes  | 
 
 ## Methods
@@ -106,20 +106,20 @@ HasDefaultLandingPage returns a boolean if a field has been set.
 
 ### GetDefaultHomeCategoryId
 
-`func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int32`
+`func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryId() int64`
 
 GetDefaultHomeCategoryId returns the DefaultHomeCategoryId field if non-nil, zero value otherwise.
 
 ### GetDefaultHomeCategoryIdOk
 
-`func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int32, bool)`
+`func (o *SelfServiceInteractionSettings) GetDefaultHomeCategoryIdOk() (*int64, bool)`
 
 GetDefaultHomeCategoryIdOk returns a tuple with the DefaultHomeCategoryId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultHomeCategoryId
 
-`func (o *SelfServiceInteractionSettings) SetDefaultHomeCategoryId(v int32)`
+`func (o *SelfServiceInteractionSettings) SetDefaultHomeCategoryId(v int64)`
 
 SetDefaultHomeCategoryId sets DefaultHomeCategoryId field to given value.
 

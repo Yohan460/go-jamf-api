@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LdapConfigurationResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type LdapConfigurationResponse struct {
 	Server CloudLdapServerResponse `json:"server"`
 	Mappings *CloudLdapMappingsResponse `json:"mappings,omitempty"`
 }
+
+type _LdapConfigurationResponse LdapConfigurationResponse
 
 // NewLdapConfigurationResponse instantiates a new LdapConfigurationResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -139,6 +143,44 @@ func (o LdapConfigurationResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["mappings"] = o.Mappings
 	}
 	return toSerialize, nil
+}
+
+func (o *LdapConfigurationResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cloudIdPCommon",
+		"server",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLdapConfigurationResponse := _LdapConfigurationResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLdapConfigurationResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LdapConfigurationResponse(varLdapConfigurationResponse)
+
+	return err
 }
 
 type NullableLdapConfigurationResponse struct {

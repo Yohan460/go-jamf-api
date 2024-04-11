@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**Priority** | Pointer to **int32** |  | [optional] 
+**Priority** | Pointer to **int64** |  | [optional] 
 **AndOr** | Pointer to **string** |  | [optional] 
 **SearchType** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to **string** |  | [optional] 
@@ -58,20 +58,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetPriority
 
-`func (o *SmartSearchCriterion) GetPriority() int32`
+`func (o *SmartSearchCriterion) GetPriority() int64`
 
 GetPriority returns the Priority field if non-nil, zero value otherwise.
 
 ### GetPriorityOk
 
-`func (o *SmartSearchCriterion) GetPriorityOk() (*int32, bool)`
+`func (o *SmartSearchCriterion) GetPriorityOk() (*int64, bool)`
 
 GetPriorityOk returns a tuple with the Priority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPriority
 
-`func (o *SmartSearchCriterion) SetPriority(v int32)`
+`func (o *SmartSearchCriterion) SetPriority(v int64)`
 
 SetPriority sets Priority field to given value.
 

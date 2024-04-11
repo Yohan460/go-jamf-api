@@ -22,23 +22,23 @@ Get all the dashboard setup information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DashboardAPI.V1DashboardGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DashboardAPI.V1DashboardGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DashboardGet`: DashboardSetup
-    fmt.Fprintf(os.Stdout, "Response from `DashboardAPI.V1DashboardGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DashboardAPI.V1DashboardGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DashboardAPI.V1DashboardGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DashboardGet`: DashboardSetup
+	fmt.Fprintf(os.Stdout, "Response from `DashboardAPI.V1DashboardGet`: %v\n", resp)
 }
 ```
 

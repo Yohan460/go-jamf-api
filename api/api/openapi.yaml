@@ -21514,6 +21514,21 @@ components:
       - timezone
       type: object
     AccountSettingsRequest:
+      example:
+        prefillAccountUserName: UserName
+        hiddenAdminAccount: false
+        versionLock: 4
+        prefillType: DEVICE_OWNER
+        payloadConfigured: true
+        adminUsername: admin
+        localAdminAccountEnabled: true
+        localUserManaged: true
+        prefillPrimaryAccountInfoFeatureEnabled: true
+        prefillAccountFullName: TestUser FullName
+        preventPrefillInfoFromModification: false
+        id: "1"
+        userAccountType: STANDARD
+        adminPassword: password
       properties:
         id:
           description: id of Account Settings
@@ -21596,6 +21611,20 @@ components:
           type: boolean
       type: object
     AccountSettingsResponse:
+      example:
+        prefillAccountUserName: UserName
+        hiddenAdminAccount: false
+        versionLock: 4
+        prefillType: DEVICE_OWNER
+        payloadConfigured: true
+        adminUsername: admin
+        localAdminAccountEnabled: true
+        localUserManaged: true
+        prefillPrimaryAccountInfoFeatureEnabled: true
+        prefillAccountFullName: TestUser FullName
+        preventPrefillInfoFromModification: false
+        id: "1"
+        userAccountType: STANDARD
       properties:
         id:
           description: id of Account Settings
@@ -21979,6 +22008,19 @@ components:
           $ref: '#/components/schemas/Security'
       type: object
     ApiError:
+      example:
+        httpStatus: 400
+        errors:
+        - code: "8675309"
+          field: Name
+          description: I've just picked up a fault in the AE35 unit. It's going to
+            go 100% failure in 72 hours
+          id: "3"
+        - code: "8675309"
+          field: Name
+          description: I've just picked up a fault in the AE35 unit. It's going to
+            go 100% failure in 72 hours
+          id: "3"
       properties:
         httpStatus:
           description: HTTP status of the response
@@ -25169,7 +25211,7 @@ components:
           - admin
           - rootadmin
           capable: true
-        initialEntryDate: 2018-10-31T00:00:00.000+00:00
+        initialEntryDate: 2018-10-31
         lastContactTime: 2018-10-31T18:04:13Z
         enrollmentMethod:
           objectName: user@domain.com
@@ -25653,13 +25695,13 @@ components:
             definitionId: "23"
           appleCareId: abcd
           purchasePrice: $500
-          warrantyDate: 2019-01-01T00:00:00.000+00:00
+          warrantyDate: 2019-01-01
           purchasingContact: "true"
           lifeExpectancy: 5
           purchased: true
-          poDate: 2019-01-01T00:00:00.000+00:00
+          poDate: 2019-01-01
           vendor: Example Vendor
-          leaseDate: 2019-01-01T00:00:00.000+00:00
+          leaseDate: 2019-01-01
           poNumber: 53-1
         plugins:
         - path: /Applications/
@@ -25776,7 +25818,7 @@ components:
             - admin
             - rootadmin
             capable: true
-          initialEntryDate: 2018-10-31T00:00:00.000+00:00
+          initialEntryDate: 2018-10-31
           lastContactTime: 2018-10-31T18:04:13Z
           enrollmentMethod:
             objectName: user@domain.com
@@ -26568,13 +26610,13 @@ components:
               definitionId: "23"
             appleCareId: abcd
             purchasePrice: $500
-            warrantyDate: 2019-01-01T00:00:00.000+00:00
+            warrantyDate: 2019-01-01
             purchasingContact: "true"
             lifeExpectancy: 5
             purchased: true
-            poDate: 2019-01-01T00:00:00.000+00:00
+            poDate: 2019-01-01
             vendor: Example Vendor
-            leaseDate: 2019-01-01T00:00:00.000+00:00
+            leaseDate: 2019-01-01
             poNumber: 53-1
           plugins:
           - path: /Applications/
@@ -26691,7 +26733,7 @@ components:
               - admin
               - rootadmin
               capable: true
-            initialEntryDate: 2018-10-31T00:00:00.000+00:00
+            initialEntryDate: 2018-10-31
             lastContactTime: 2018-10-31T18:04:13Z
             enrollmentMethod:
               objectName: user@domain.com
@@ -27181,13 +27223,13 @@ components:
               definitionId: "23"
             appleCareId: abcd
             purchasePrice: $500
-            warrantyDate: 2019-01-01T00:00:00.000+00:00
+            warrantyDate: 2019-01-01
             purchasingContact: "true"
             lifeExpectancy: 5
             purchased: true
-            poDate: 2019-01-01T00:00:00.000+00:00
+            poDate: 2019-01-01
             vendor: Example Vendor
-            leaseDate: 2019-01-01T00:00:00.000+00:00
+            leaseDate: 2019-01-01
             poNumber: 53-1
           plugins:
           - path: /Applications/
@@ -27304,7 +27346,7 @@ components:
               - admin
               - rootadmin
               capable: true
-            initialEntryDate: 2018-10-31T00:00:00.000+00:00
+            initialEntryDate: 2018-10-31
             lastContactTime: 2018-10-31T18:04:13Z
             enrollmentMethod:
               objectName: user@domain.com
@@ -27823,13 +27865,13 @@ components:
             definitionId: "23"
           appleCareId: abcd
           purchasePrice: $500
-          warrantyDate: 2019-01-01T00:00:00.000+00:00
+          warrantyDate: 2019-01-01
           purchasingContact: "true"
           lifeExpectancy: 5
           purchased: true
-          poDate: 2019-01-01T00:00:00.000+00:00
+          poDate: 2019-01-01
           vendor: Example Vendor
-          leaseDate: 2019-01-01T00:00:00.000+00:00
+          leaseDate: 2019-01-01
           poNumber: 53-1
         extensionAttributes:
         - values:
@@ -28441,8 +28483,14 @@ components:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
       properties:
         totalCount:
           example: 1
@@ -28458,8 +28506,42 @@ components:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
+          accountSettings:
+            prefillAccountUserName: UserName
+            hiddenAdminAccount: false
+            versionLock: 4
+            prefillType: DEVICE_OWNER
+            payloadConfigured: true
+            adminUsername: admin
+            localAdminAccountEnabled: true
+            localUserManaged: true
+            prefillPrimaryAccountInfoFeatureEnabled: true
+            prefillAccountFullName: TestUser FullName
+            preventPrefillInfoFromModification: false
+            id: "1"
+            userAccountType: STANDARD
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
+          accountSettings:
+            prefillAccountUserName: UserName
+            hiddenAdminAccount: false
+            versionLock: 4
+            prefillType: DEVICE_OWNER
+            payloadConfigured: true
+            adminUsername: admin
+            localAdminAccountEnabled: true
+            localUserManaged: true
+            prefillPrimaryAccountInfoFeatureEnabled: true
+            prefillAccountFullName: TestUser FullName
+            preventPrefillInfoFromModification: false
+            id: "1"
+            userAccountType: STANDARD
       properties:
         totalCount:
           example: 1
@@ -28604,13 +28686,13 @@ components:
           definitionId: "23"
         appleCareId: abcd
         purchasePrice: $500
-        warrantyDate: 2019-01-01T00:00:00.000+00:00
+        warrantyDate: 2019-01-01
         purchasingContact: "true"
         lifeExpectancy: 5
         purchased: true
-        poDate: 2019-01-01T00:00:00.000+00:00
+        poDate: 2019-01-01
         vendor: Example Vendor
-        leaseDate: 2019-01-01T00:00:00.000+00:00
+        leaseDate: 2019-01-01
         poNumber: 53-1
       properties:
         leased:
@@ -30662,6 +30744,9 @@ components:
           type: string
       type: object
     EnrollmentCustomizationLdapGroupAccess:
+      example:
+        groupName: admins
+        ldapServerId: 1
       properties:
         ldapServerId:
           example: 1
@@ -30713,11 +30798,30 @@ components:
         - title
         - usernameLabel
         type: object
+      example:
+        backButtonText: Back
+        ldapGroupAccess:
+        - groupName: admins
+          ldapServerId: 1
+        - groupName: admins
+          ldapServerId: 1
+        displayName: A Panel
+        rank: 0
+        usernameLabel: Username
+        title: My Ldap Panel
+        continueButtonText: Continue
+        passwordLabel: Password
     EnrollmentCustomizationPanelList:
       example:
         panels:
-        - null
-        - null
+        - displayName: A Panel
+          rank: 0
+          id: 2
+          type: text
+        - displayName: A Panel
+          rank: 0
+          id: 2
+          type: text
       properties:
         panels:
           items:
@@ -30751,6 +30855,14 @@ components:
         - longNameAttribute
         - shortNameAttribute
         type: object
+      example:
+        isGroupEnrollmentAccessEnabled: false
+        displayName: A Panel
+        shortNameAttribute: name
+        rank: 0
+        longNameAttribute: long name
+        groupEnrollmentAccessName: GroupNameA
+        isUseJamfConnect: false
     EnrollmentCustomizationPanelText:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomizationPanel'
@@ -30776,12 +30888,38 @@ components:
         - continueButtonText
         - title
         type: object
+      example:
+        backButtonText: Back
+        subtext: World!
+        displayName: A Panel
+        rank: 0
+        body: Welcome!
+        title: My text panel
+        continueButtonText: Continue
     EnrollmentCustomizationSearchResults:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - displayName: Example
+          siteId: 2
+          description: Example description
+          id: 1
+          enrollmentCustomizationBrandingSettings:
+            backgroundColor: 0000FF
+            buttonColor: 0000FF
+            buttonTextColor: 0000FF
+            iconUrl: https://jamfUrl/api/v2/enrollment-customizations/images/1
+            textColor: 0000FF
+        - displayName: Example
+          siteId: 2
+          description: Example description
+          id: 1
+          enrollmentCustomizationBrandingSettings:
+            backgroundColor: 0000FF
+            buttonColor: 0000FF
+            buttonTextColor: 0000FF
+            iconUrl: https://jamfUrl/api/v2/enrollment-customizations/images/1
+            textColor: 0000FF
       properties:
         totalCount:
           example: 1
@@ -30880,6 +31018,9 @@ components:
           type: string
       type: object
     EnrollmentMethodPrestage:
+      example:
+        profileName: All Mobiles
+        mobileDevicePrestageId: "5"
       properties:
         mobileDevicePrestageId:
           example: "5"
@@ -31696,6 +31837,11 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+        siteId: "5"
+        id: "1"
+        versionLock: 0
     GetComputerPrestageV3:
       allOf:
       - $ref: '#/components/schemas/ComputerPrestageV3'
@@ -31718,6 +31864,25 @@ components:
           accountSettings:
             $ref: '#/components/schemas/AccountSettingsResponse'
         type: object
+      example:
+        profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+        siteId: "5"
+        id: "1"
+        versionLock: 0
+        accountSettings:
+          prefillAccountUserName: UserName
+          hiddenAdminAccount: false
+          versionLock: 4
+          prefillType: DEVICE_OWNER
+          payloadConfigured: true
+          adminUsername: admin
+          localAdminAccountEnabled: true
+          localUserManaged: true
+          prefillPrimaryAccountInfoFeatureEnabled: true
+          prefillAccountFullName: TestUser FullName
+          preventPrefillInfoFromModification: false
+          id: "1"
+          userAccountType: STANDARD
     GetEnrollmentCustomization:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomization'
@@ -31726,6 +31891,17 @@ components:
             example: 1
             type: integer
         type: object
+      example:
+        displayName: Example
+        siteId: 2
+        description: Example description
+        id: 1
+        enrollmentCustomizationBrandingSettings:
+          backgroundColor: 0000FF
+          buttonColor: 0000FF
+          buttonTextColor: 0000FF
+          iconUrl: https://jamfUrl/api/v2/enrollment-customizations/images/1
+          textColor: 0000FF
     GetEnrollmentCustomizationPanel:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomizationPanel'
@@ -31737,6 +31913,11 @@ components:
             example: text
             type: string
         type: object
+      example:
+        displayName: A Panel
+        rank: 0
+        id: 2
+        type: text
     GetEnrollmentCustomizationPanelLdapAuth:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomizationPanelLdapAuth'
@@ -31748,6 +31929,9 @@ components:
             example: ldap
             type: string
         type: object
+      example:
+        id: 2
+        type: ldap
     GetEnrollmentCustomizationPanelSsoAuth:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomizationPanelSsoAuth'
@@ -31759,6 +31943,9 @@ components:
             example: sso
             type: string
         type: object
+      example:
+        id: 2
+        type: sso
     GetEnrollmentCustomizationPanelText:
       allOf:
       - $ref: '#/components/schemas/EnrollmentCustomizationPanelText'
@@ -31770,6 +31957,9 @@ components:
             example: text
             type: string
         type: object
+      example:
+        id: 2
+        type: text
     GetMobileDevicePrestage:
       allOf:
       - $ref: '#/components/schemas/MobileDevicePrestage'
@@ -31787,6 +31977,11 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        profileUUID: 29d-a8d8f-b8sdjndf-dsa9
+        siteId: 5
+        id: 1
+        versionLock: 0
     GetMobileDevicePrestageV2:
       allOf:
       - $ref: '#/components/schemas/MobileDevicePrestageV2'
@@ -31804,6 +31999,11 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+        siteId: "5"
+        id: "1"
+        versionLock: 0
     GroupMappings:
       description: Cloud Identity Provider user group mappings configuration
       example:
@@ -32847,6 +33047,15 @@ components:
           type: array
       type: object
     InventoryPreloadCsvError:
+      example:
+        deviceType: Computer
+        code: SIZE_EXCEEDED
+        serialNumber: R7QFDE2YCFN4
+        fieldSize: 60
+        field: vendor
+        line: 5
+        description: Field 'vendor' exceeds max size 60
+        value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
       properties:
         code:
           example: SIZE_EXCEEDED
@@ -32874,6 +33083,29 @@ components:
           type: string
       type: object
     InventoryPreloadCsvValidationError:
+      example:
+        httpStatus: 400
+        errors:
+        - deviceType: Computer
+          code: "8675309"
+          serialNumber: R7QFDE2YCFN4
+          fieldSize: 60
+          field: Name
+          line: 5
+          description: I've just picked up a fault in the AE35 unit. It's going to
+            go 100% failure in 72 hours
+          id: "3"
+          value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
+        - deviceType: Computer
+          code: "8675309"
+          serialNumber: R7QFDE2YCFN4
+          fieldSize: 60
+          field: Name
+          line: 5
+          description: I've just picked up a fault in the AE35 unit. It's going to
+            go 100% failure in 72 hours
+          id: "3"
+          value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
       properties:
         httpStatus:
           description: HTTP status of the response
@@ -32904,6 +33136,17 @@ components:
             example: Computer
             type: string
         type: object
+      example:
+        deviceType: Computer
+        code: "8675309"
+        serialNumber: R7QFDE2YCFN4
+        fieldSize: 60
+        field: Name
+        line: 5
+        description: I've just picked up a fault in the AE35 unit. It's going to go
+          100% failure in 72 hours
+        id: "3"
+        value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
     InventoryPreloadCsvValidationSuccess:
       example:
         recordCount: 10
@@ -32957,6 +33200,25 @@ components:
           type: array
       type: object
     InventoryPreloadInvalidCsvResponse:
+      example:
+        httpsStatus: 400
+        errors:
+        - deviceType: Computer
+          code: SIZE_EXCEEDED
+          serialNumber: R7QFDE2YCFN4
+          fieldSize: 60
+          field: vendor
+          line: 5
+          description: Field 'vendor' exceeds max size 60
+          value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
+        - deviceType: Computer
+          code: SIZE_EXCEEDED
+          serialNumber: R7QFDE2YCFN4
+          fieldSize: 60
+          field: vendor
+          line: 5
+          description: Field 'vendor' exceeds max size 60
+          value: abcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyzabcdefghijklmnopqrstuwxyz
       properties:
         httpsStatus:
           example: 400
@@ -33723,7 +33985,7 @@ components:
           voicePreferred: true
           iccid: 8901 2605 7071 8002 130
           dataPreferred: true
-          phoneNumber: +15128145868
+          phoneNumber: "+15128145868"
           labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
           imei: 35 882334 083223 0
           carrierSettingsVersion: "47.1"
@@ -33739,7 +34001,7 @@ components:
           voicePreferred: true
           iccid: 8901 2605 7071 8002 130
           dataPreferred: true
-          phoneNumber: +15128145868
+          phoneNumber: "+15128145868"
           labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
           imei: 35 882334 083223 0
           carrierSettingsVersion: "47.1"
@@ -35012,6 +35274,17 @@ components:
           type: string
       type: object
     LocationInformation:
+      example:
+        phone: 123-456-7890
+        departmentId: 1
+        position: postion
+        id: 0
+        versionLock: 1
+        email: test@jamf.com
+        room: room
+        username: name
+        realname: realName
+        buildingId: 1
       properties:
         username:
           example: name
@@ -35056,6 +35329,17 @@ components:
       - versionLock
       type: object
     LocationInformationV2:
+      example:
+        phone: 123-456-7890
+        departmentId: "1"
+        position: postion
+        id: "-1"
+        versionLock: 1
+        email: test@jamf.com
+        room: room
+        username: name
+        realname: realName
+        buildingId: "1"
       properties:
         username:
           example: name
@@ -35996,6 +36280,15 @@ components:
           type: string
       type: object
     MobileDeviceApplicationInventoryDetail:
+      example:
+        identifier: com.apple.airport.mobileairportutility
+        shortVersion: "7.0"
+        dynamicSize: "1423"
+        managementStatus: Managed
+        bundleSize: "1024"
+        name: AirPort Utility
+        version: "135.24"
+        validationStatus: true
       properties:
         identifier:
           example: com.apple.airport.mobileairportutility
@@ -36049,6 +36342,10 @@ components:
           type: string
       type: object
     MobileDeviceCertificate:
+      example:
+        commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+        identity: false
+        expirationDate: 2019-02-04T21:09:31.661Z
       properties:
         commonName:
           example: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
@@ -36428,6 +36725,260 @@ components:
             readOnly: true
             type: string
         type: object
+      example:
+        osBuild: 15F79
+        osRapidSecurityResponse: (a)
+        managementId: 73226fb6-61df-4c10-9552-eb9bc353d507
+        softwareUpdateDeviceId: J132AP
+        initialEntryTimestamp: 2018-10-15T16:39:56.307Z
+        assetTag: "12345"
+        type: ios
+        ios:
+          shared: false
+          modelIdentifier: "ipad6,11"
+          attachments:
+          - name: Bob's Attachment
+            id: "1"
+          - name: Bob's Attachment
+            id: "1"
+          purchasing:
+            leaseExpiresDate: 2019-02-04T21:09:31.661Z
+            lifeExpectancy: 7
+            leased: false
+            purchased: true
+            vendor: Apple
+            poDate: 2019-02-04T21:09:31.661Z
+            purchasingAccount: IT Budget
+            appleCareId: "9546567.0"
+            purchasePrice: $399
+            poNumber: "8675309"
+            warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+            purchasingContact: Nick in IT
+          lastBackupTimestamp: 2018-10-15T16:39:56Z
+          provisioningProfiles:
+          - displayName: jamfnation
+            uuid: 89AF33FC-123C-1231-AEFD-9C3ED123AFCC
+            expirationDate: 2018-10-24T21:57:37Z
+          - displayName: jamfnation
+            uuid: 89AF33FC-123C-1231-AEFD-9C3ED123AFCC
+            expirationDate: 2018-10-24T21:57:37Z
+          locationServicesEnabled: false
+          deviceLocatorServiceEnabled: false
+          network:
+            meid: "15302309236898"
+            eid: "12547444452496388545569920380795"
+            roaming: false
+            personalHotspotEnabled: false
+            currentMobileCountryCode: "311"
+            homeCarrierNetwork: Verizon
+            homeMobileNetworkCode: "480"
+            homeMobileCountryCode: US
+            iccid: "8991101200003204514"
+            phoneNumber: 555-555-5555 ext 5
+            dataRoamingEnabled: true
+            voiceRoamingEnabled: false
+            imei: 59 105109 176278 3
+            carrierSettingsVersion: "33.1"
+            currentCarrierNetwork: Verizon Wireless
+            currentMobileNetworkCode: "480"
+            cellularTechnology: Unknown
+          percentageUsed: 3
+          computer:
+            name: A name
+            id: "1"
+          security:
+            fileLevelEncryptionCapable: true
+            passcodePresent: false
+            passcodeCompliant: true
+            hardwareEncryption: 3
+            passcodeCompliantWithProfile: true
+            activationLockEnabled: false
+            dataProtected: false
+            jailBreakDetected: false
+            blockLevelEncryptionCapable: true
+          ebooks:
+          - author: Homer J Simpson
+            title: The Odyssey
+            version: "0.1"
+          - author: Homer J Simpson
+            title: The Odyssey
+            version: "0.1"
+          model: iPad 5th Generation (Wi-Fi)
+          batteryLevel: 100
+          configurationProfiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            displayName: Test WiFi
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            displayName: Test WiFi
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          cloudBackupEnabled: false
+          bleCapable: false
+          iTunesStoreAccountActive: false
+          capacityMb: 27503
+          lastCloudBackupTimestamp: 2018-10-15T16:39:56.307Z
+          serviceSubscriptions:
+          - meid: "35882334083223"
+            eid: "89049032007008882600085727376656"
+            subscriberCarrierNetwork: T-Mobile Wi-Fi
+            roaming: true
+            currentMobileCountryCode: "310"
+            label: Primary
+            slot: CTSubscriptionSlotOne
+            voicePreferred: true
+            iccid: 8901 2605 7071 8002 130
+            dataPreferred: true
+            phoneNumber: "+15128145868"
+            labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
+            imei: 35 882334 083223 0
+            carrierSettingsVersion: "47.1"
+            currentCarrierNetwork: T-Mobile Wi-Fi
+            currentMobileNetworkCode: "260"
+          - meid: "35882334083223"
+            eid: "89049032007008882600085727376656"
+            subscriberCarrierNetwork: T-Mobile Wi-Fi
+            roaming: true
+            currentMobileCountryCode: "310"
+            label: Primary
+            slot: CTSubscriptionSlotOne
+            voicePreferred: true
+            iccid: 8901 2605 7071 8002 130
+            dataPreferred: true
+            phoneNumber: "+15128145868"
+            labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
+            imei: 35 882334 083223 0
+            carrierSettingsVersion: "47.1"
+            currentCarrierNetwork: T-Mobile Wi-Fi
+            currentMobileNetworkCode: "260"
+          supervised: true
+          availableMb: 26646
+          certificates:
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            expirationDateEpoch: 2030-10-31T18:04:13Z
+            serialNumber: 5c28fdae
+            certificateStatus: ISSUED
+            issuedDateEpoch: 2022-05-23T14:54:10Z
+            lifecycleStatus: ACTIVE
+            identity: false
+            sha1Fingerprint: 050cfe8ec9d170be7bf8f1a3cac2c52f3c6ddb20
+            subjectName: CN=Fleet Docker Jamf Pro JSS Built-in Certificate Authority
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            expirationDateEpoch: 2030-10-31T18:04:13Z
+            serialNumber: 5c28fdae
+            certificateStatus: ISSUED
+            issuedDateEpoch: 2022-05-23T14:54:10Z
+            lifecycleStatus: ACTIVE
+            identity: false
+            sha1Fingerprint: 050cfe8ec9d170be7bf8f1a3cac2c52f3c6ddb20
+            subjectName: CN=Fleet Docker Jamf Pro JSS Built-in Certificate Authority
+          modelNumber: MP2F2LL
+          doNotDisturbEnabled: false
+          applications:
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            name: AirPort Utility
+            version: "135.24"
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            name: AirPort Utility
+            version: "135.24"
+        wifiMacAddress: ee:00:7c:f0:e5:ff
+        lastEnrollmentTimestamp: 2018-10-15T16:39:56.307Z
+        tvos:
+          airplayPassword: "1234"
+          supervised: true
+          locales: "null"
+          modelIdentifier: "AppleTV3,2"
+          certificates:
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            expirationDateEpoch: 2030-10-31T18:04:13Z
+            serialNumber: 5c28fdae
+            certificateStatus: ISSUED
+            issuedDateEpoch: 2022-05-23T14:54:10Z
+            lifecycleStatus: ACTIVE
+            identity: false
+            sha1Fingerprint: 050cfe8ec9d170be7bf8f1a3cac2c52f3c6ddb20
+            subjectName: CN=Fleet Docker Jamf Pro JSS Built-in Certificate Authority
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            expirationDateEpoch: 2030-10-31T18:04:13Z
+            serialNumber: 5c28fdae
+            certificateStatus: ISSUED
+            issuedDateEpoch: 2022-05-23T14:54:10Z
+            lifecycleStatus: ACTIVE
+            identity: false
+            sha1Fingerprint: 050cfe8ec9d170be7bf8f1a3cac2c52f3c6ddb20
+            subjectName: CN=Fleet Docker Jamf Pro JSS Built-in Certificate Authority
+          purchasing:
+            leaseExpiresDate: 2019-02-04T21:09:31.661Z
+            lifeExpectancy: 7
+            leased: false
+            purchased: true
+            vendor: Apple
+            poDate: 2019-02-04T21:09:31.661Z
+            purchasingAccount: IT Budget
+            appleCareId: "9546567.0"
+            purchasePrice: $399
+            poNumber: "8675309"
+            warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+            purchasingContact: Nick in IT
+          model: Apple TV 3rd Generation Rev 2
+          modelNumber: MD199LL
+          deviceId: "1"
+          configurationProfiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            displayName: Test WiFi
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            displayName: Test WiFi
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+        osVersion: "11.4"
+        managed: true
+        enforceName: false
+        osSupplementalBuildVersion: 20B101
+        bluetoothMacAddress: ee:00:7c:f0:e5:aa
+        id: "1"
+        udid: 0dad565fb40b010a9e490440188063a378721069
+        enrollmentMethod: User-initiated - no invitation
+        deviceOwnershipLevel: institutional
+        serialNumber: DMQVGC0DHLF0
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+        ipAddress: 10.0.0.1
+        timeZone: Europe/Warsaw
+        site:
+          name: Eau Claire
+          id: "1"
+        lastInventoryUpdateTimestamp: 2018-10-15T16:39:56Z
+        mdmProfileExpirationTimestamp: 2018-10-15T16:39:56.307Z
+        enrollmentSessionTokenValid: false
+        declarativeDeviceManagementEnabled: true
+        name: Jon's iPad
+        location:
+          realName: IT Bob
+          emailAddress: ITBob@jamf.com
+          phoneNumber: 555-555-5555
+          departmentId: "1"
+          position: IT Team Lead
+          room: 4th Floor - Quad 3
+          username: admin
+          buildingId: "1"
     MobileDeviceDetailsV2:
       example:
         osBuild: 15F79
@@ -36533,7 +37084,7 @@ components:
             voicePreferred: true
             iccid: 8901 2605 7071 8002 130
             dataPreferred: true
-            phoneNumber: +15128145868
+            phoneNumber: "+15128145868"
             labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
             imei: 35 882334 083223 0
             carrierSettingsVersion: "47.1"
@@ -36549,7 +37100,7 @@ components:
             voicePreferred: true
             iccid: 8901 2605 7071 8002 130
             dataPreferred: true
-            phoneNumber: +15128145868
+            phoneNumber: "+15128145868"
             labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
             imei: 35 882334 083223 0
             carrierSettingsVersion: "47.1"
@@ -36823,6 +37374,15 @@ components:
           type: string
       type: object
     MobileDeviceExtensionAttribute:
+      example:
+        name: Example EA
+        id: "1"
+        type: STRING
+        extensionAttributeCollectionAllowed: false
+        value:
+        - EA Value
+        - EA Value
+        inventoryDisplay: General
       properties:
         id:
           example: "1"
@@ -36953,6 +37513,37 @@ components:
           type: boolean
       type: object
     MobileDeviceHardware:
+      example:
+        serialNumber: 5c28fdae
+        modelIdentifier: "iPad7,11"
+        usedSpacePercentage: 70
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        modemFirmwareVersion: "iPad7,11"
+        capacityMb: 100
+        deviceId: c6a49c6d-8c09-4d71-a37d-2f6a9dfbb69b
+        wifiMacAddress: ee:00:7c:f0:e5:ff
+        availableSpaceMb: 30
+        bluetoothMacAddress: ee:00:7c:f0:e5:aa
+        model: iPad 7th Generation (Wi-Fi)
+        modelNumber: MW742LL
+        bluetoothLowEnergyCapable: false
+        batteryLevel: 60
       properties:
         capacityMb:
           example: 100
@@ -37043,8 +37634,412 @@ components:
       example:
         totalCount: 2
         results:
-        - null
-        - null
+        - deviceType: "[\"tvOS\",\"iOS\"]"
+          general:
+            osBuild: 15F79
+            osRapidSecurityResponse: (a)
+            languages: english
+            displayName: Banezicron
+            lastEnrolledDate: 2022-10-17T11:48:56.307Z
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            softwareUpdateDeviceId: J132AP
+            ipAddress: 10.0.0.1
+            timeZone: Europe/Warsaw
+            assetTag: "8675309"
+            lastInventoryUpdateDate: 2022-10-17T11:48:56.307Z
+            supervised: true
+            locales: "null"
+            deviceOwnershipType: Institutional
+            osVersion: "11.4"
+            enrollmentSessionTokenValid: false
+            managed: true
+            declarativeDeviceManagementEnabled: true
+            osSupplementalBuildVersion: 22A103310o
+            mdmProfileExpirationDate: 2022-10-17T11:48:56.307Z
+            siteId: "-1"
+            enrollmentMethodPrestage:
+              profileName: All Mobiles
+              mobileDevicePrestageId: "5"
+            airPlayPassword: "1234"
+            udid: 0dad565fb40b010a9e490440188063a378721069
+          mobileDeviceId: "1"
+          certificates:
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            identity: false
+            expirationDate: 2019-02-04T21:09:31.661Z
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            identity: false
+            expirationDate: 2019-02-04T21:09:31.661Z
+          purchasing:
+            leaseExpiresDate: 2019-02-04T21:09:31.661Z
+            leased: false
+            purchasingAccount: IT Budget
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            appleCareId: "9546567.0"
+            purchasePrice: $399
+            warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+            purchasingContact: Nick in IT
+            lifeExpectancy: 7
+            purchased: true
+            vendor: Apple
+            poDate: 2019-02-04T21:09:31.661Z
+            poNumber: "8675309"
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          profiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          userProfiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+            username: admin
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+            username: admin
+          userAndLocation:
+            realName: IT Bob
+            emailAddress: ITBob@jamf.com
+            phoneNumber: 555-555-5555
+            departmentId: "1"
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            position: IT Team Lead
+            department: Department 1
+            room: room
+            building: Building 1
+            username: admin
+            buildingId: "1"
+          hardware:
+            serialNumber: 5c28fdae
+            modelIdentifier: "iPad7,11"
+            usedSpacePercentage: 70
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            modemFirmwareVersion: "iPad7,11"
+            capacityMb: 100
+            deviceId: c6a49c6d-8c09-4d71-a37d-2f6a9dfbb69b
+            wifiMacAddress: ee:00:7c:f0:e5:ff
+            availableSpaceMb: 30
+            bluetoothMacAddress: ee:00:7c:f0:e5:aa
+            model: iPad 7th Generation (Wi-Fi)
+            modelNumber: MW742LL
+            bluetoothLowEnergyCapable: false
+            batteryLevel: 60
+          applications:
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            dynamicSize: "1423"
+            managementStatus: Managed
+            bundleSize: "1024"
+            name: AirPort Utility
+            version: "135.24"
+            validationStatus: true
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            dynamicSize: "1423"
+            managementStatus: Managed
+            bundleSize: "1024"
+            name: AirPort Utility
+            version: "135.24"
+            validationStatus: true
+        - deviceType: "[\"tvOS\",\"iOS\"]"
+          general:
+            osBuild: 15F79
+            osRapidSecurityResponse: (a)
+            languages: english
+            displayName: Banezicron
+            lastEnrolledDate: 2022-10-17T11:48:56.307Z
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            softwareUpdateDeviceId: J132AP
+            ipAddress: 10.0.0.1
+            timeZone: Europe/Warsaw
+            assetTag: "8675309"
+            lastInventoryUpdateDate: 2022-10-17T11:48:56.307Z
+            supervised: true
+            locales: "null"
+            deviceOwnershipType: Institutional
+            osVersion: "11.4"
+            enrollmentSessionTokenValid: false
+            managed: true
+            declarativeDeviceManagementEnabled: true
+            osSupplementalBuildVersion: 22A103310o
+            mdmProfileExpirationDate: 2022-10-17T11:48:56.307Z
+            siteId: "-1"
+            enrollmentMethodPrestage:
+              profileName: All Mobiles
+              mobileDevicePrestageId: "5"
+            airPlayPassword: "1234"
+            udid: 0dad565fb40b010a9e490440188063a378721069
+          mobileDeviceId: "1"
+          certificates:
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            identity: false
+            expirationDate: 2019-02-04T21:09:31.661Z
+          - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+            identity: false
+            expirationDate: 2019-02-04T21:09:31.661Z
+          purchasing:
+            leaseExpiresDate: 2019-02-04T21:09:31.661Z
+            leased: false
+            purchasingAccount: IT Budget
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            appleCareId: "9546567.0"
+            purchasePrice: $399
+            warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+            purchasingContact: Nick in IT
+            lifeExpectancy: 7
+            purchased: true
+            vendor: Apple
+            poDate: 2019-02-04T21:09:31.661Z
+            poNumber: "8675309"
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          profiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          userProfiles:
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+            username: admin
+          - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+            lastInstalled: 2019-02-04T21:09:31.661Z
+            displayName: Test WiFi
+            removable: true
+            version: "1"
+            uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+            username: admin
+          userAndLocation:
+            realName: IT Bob
+            emailAddress: ITBob@jamf.com
+            phoneNumber: 555-555-5555
+            departmentId: "1"
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            position: IT Team Lead
+            department: Department 1
+            room: room
+            building: Building 1
+            username: admin
+            buildingId: "1"
+          hardware:
+            serialNumber: 5c28fdae
+            modelIdentifier: "iPad7,11"
+            usedSpacePercentage: 70
+            extensionAttributes:
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            - name: Example EA
+              id: "1"
+              type: STRING
+              extensionAttributeCollectionAllowed: false
+              value:
+              - EA Value
+              - EA Value
+              inventoryDisplay: General
+            modemFirmwareVersion: "iPad7,11"
+            capacityMb: 100
+            deviceId: c6a49c6d-8c09-4d71-a37d-2f6a9dfbb69b
+            wifiMacAddress: ee:00:7c:f0:e5:ff
+            availableSpaceMb: 30
+            bluetoothMacAddress: ee:00:7c:f0:e5:aa
+            model: iPad 7th Generation (Wi-Fi)
+            modelNumber: MW742LL
+            bluetoothLowEnergyCapable: false
+            batteryLevel: 60
+          applications:
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            dynamicSize: "1423"
+            managementStatus: Managed
+            bundleSize: "1024"
+            name: AirPort Utility
+            version: "135.24"
+            validationStatus: true
+          - identifier: com.apple.airport.mobileairportutility
+            shortVersion: "7.0"
+            dynamicSize: "1423"
+            managementStatus: Managed
+            bundleSize: "1024"
+            name: AirPort Utility
+            version: "135.24"
+            validationStatus: true
       properties:
         totalCount:
           example: 2
@@ -37267,7 +38262,82 @@ components:
         - isSupervised
         - maximumSharedAccounts
         type: object
+      example:
+        enrollmentCustomizationId: 2
+        supportPhoneNumber: "5555555555"
+        deviceEnrollmentProgramInstanceId: 5
+        displayName: Example Mobile Prestage Name
+        language: en
+        purchasingInformation:
+          isLeased: true
+          purchasingAccount: admin
+          appleCareID: abcd
+          purchasePrice: $500
+          versionLock: 1
+          isPurchased: true
+          purchasingContact: "true"
+          warrantyDate: 2019-01-01
+          lifeExpectancy: 5
+          vendor: Example Vendor
+          leaseDate: 2019-01-01
+          poDate: 2019-01-01
+          id: 0
+          poNumber: 53-1
+        isPreventActivationLock: true
+        isEnableDeviceBasedActivationLock: true
+        locationInformation:
+          phone: 123-456-7890
+          departmentId: 1
+          position: postion
+          id: 0
+          versionLock: 1
+          email: test@jamf.com
+          room: room
+          username: name
+          realname: realName
+          buildingId: 1
+        isAutoAdvanceSetup: true
+        isMultiUser: true
+        skipSetupItems:
+          Location: true
+          Privacy: false
+        department: Oxbow
+        authenticationPrompt: LDAP authentication prompt
+        isMandatory: false
+        isDefaultPrestage: false
+        enrollmentSiteId: -1
+        maximumSharedAccounts: 10
+        isSupervised: true
+        isKeepExistingLocationInformation: true
+        isConfigureDeviceBeforeSetupAssistant: true
+        isMdmRemovable: true
+        supportEmailAddress: example@example.com
+        isKeepExistingSiteMembership: true
+        names:
+          assignNamesUsing: List of Names
+          isDeviceNamingConfigured: true
+          deviceNameSuffix: suffix
+          prestageDeviceNames:
+          - id: 1
+            deviceName: iPad
+            isUsed: false
+          - id: 1
+            deviceName: iPad
+            isUsed: false
+          deviceNamePrefix: prefix
+          singleDeviceName: name
+          isManageNames: true
+        anchorCertificates:
+        - xNE5HRgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        - xNE5HRgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        isRequireAuthentication: true
+        isAllowPairing: true
+        region: US
     MobileDevicePrestageName:
+      example:
+        id: 1
+        deviceName: iPad
+        isUsed: false
       properties:
         id:
           example: 1
@@ -37280,6 +38350,10 @@ components:
           type: boolean
       type: object
     MobileDevicePrestageNameV2:
+      example:
+        id: "1"
+        used: false
+        deviceName: iPad
       properties:
         id:
           example: "1"
@@ -37292,6 +38366,20 @@ components:
           type: boolean
       type: object
     MobileDevicePrestageNames:
+      example:
+        assignNamesUsing: List of Names
+        isDeviceNamingConfigured: true
+        deviceNameSuffix: suffix
+        prestageDeviceNames:
+        - id: 1
+          deviceName: iPad
+          isUsed: false
+        - id: 1
+          deviceName: iPad
+          isUsed: false
+        deviceNamePrefix: prefix
+        singleDeviceName: name
+        isManageNames: true
       properties:
         assignNamesUsing:
           example: List of Names
@@ -37317,6 +38405,20 @@ components:
           type: boolean
       type: object
     MobileDevicePrestageNamesV2:
+      example:
+        manageNames: true
+        assignNamesUsing: List of Names
+        deviceNamingConfigured: true
+        deviceNameSuffix: suffix
+        prestageDeviceNames:
+        - id: "1"
+          used: false
+          deviceName: iPad
+        - id: "1"
+          used: false
+          deviceName: iPad
+        deviceNamePrefix: prefix
+        singleDeviceName: name
       properties:
         assignNamesUsing:
           example: List of Names
@@ -37345,8 +38447,14 @@ components:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - profileUUID: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: 5
+          id: 1
+          versionLock: 0
+        - profileUUID: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: 5
+          id: 1
+          versionLock: 0
       properties:
         totalCount:
           example: 1
@@ -37361,8 +38469,14 @@ components:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
+        - profileUuid: 29d-a8d8f-b8sdjndf-dsa9
+          siteId: "5"
+          id: "1"
+          versionLock: 0
       properties:
         totalCount:
           example: 1
@@ -37432,7 +38546,94 @@ components:
         - timezone
         - useStorageQuotaSize
         type: object
+      example:
+        enrollmentCustomizationId: "2"
+        supportPhoneNumber: "5555555555"
+        userSessionTimeout: 30
+        deviceEnrollmentProgramInstanceId: "5"
+        requireAuthentication: true
+        displayName: Example Mobile Prestage Name
+        timezone: America/Chicago
+        language: en
+        sendTimezone: true
+        temporarySessionOnly: false
+        purchasingInformation:
+          leased: true
+          purchasingAccount: admin
+          appleCareId: abcd
+          purchasePrice: $500
+          versionLock: 1
+          purchasingContact: "true"
+          warrantyDate: 2019-01-01
+          lifeExpectancy: 5
+          purchased: true
+          vendor: Example Vendor
+          leaseDate: 2019-01-01
+          poDate: 2019-01-01
+          id: "-1"
+          poNumber: 53-1
+        mandatory: false
+        useStorageQuotaSize: true
+        autoAdvanceSetup: true
+        locationInformation:
+          phone: 123-456-7890
+          departmentId: "1"
+          position: postion
+          id: "-1"
+          versionLock: 1
+          email: test@jamf.com
+          room: room
+          username: name
+          realname: realName
+          buildingId: "1"
+        skipSetupItems:
+          Location: true
+          Privacy: false
+        defaultPrestage: false
+        mdmRemovable: true
+        department: Oxbow
+        authenticationPrompt: LDAP authentication prompt
+        configureDeviceBeforeSetupAssistant: true
+        keepExistingSiteMembership: true
+        enforceUserSessionTimeout: false
+        enrollmentSiteId: "-1"
+        allowPairing: true
+        multiUser: true
+        maximumSharedAccounts: 10
+        preventActivationLock: true
+        enableDeviceBasedActivationLock: true
+        supervised: true
+        supportEmailAddress: example@example.com
+        names:
+          manageNames: true
+          assignNamesUsing: List of Names
+          deviceNamingConfigured: true
+          deviceNameSuffix: suffix
+          prestageDeviceNames:
+          - id: "1"
+            used: false
+            deviceName: iPad
+          - id: "1"
+            used: false
+            deviceName: iPad
+          deviceNamePrefix: prefix
+          singleDeviceName: name
+        anchorCertificates:
+        - xNE5HRgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        - xNE5HRgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+        enforceTemporarySessionTimeout: false
+        keepExistingLocationInformation: true
+        storageQuotaSizeMegabytes: 4096
+        region: US
+        temporarySessionTimeout: 30
     MobileDeviceProfile:
+      example:
+        identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+        lastInstalled: 2019-02-04T21:09:31.661Z
+        displayName: Test WiFi
+        removable: true
+        version: "1"
+        uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
       properties:
         displayName:
           example: Test WiFi
@@ -37472,6 +38673,36 @@ components:
           type: string
       type: object
     MobileDevicePurchasing:
+      example:
+        leaseExpiresDate: 2019-02-04T21:09:31.661Z
+        leased: false
+        purchasingAccount: IT Budget
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        appleCareId: "9546567.0"
+        purchasePrice: $399
+        warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+        purchasingContact: Nick in IT
+        lifeExpectancy: 7
+        purchased: true
+        vendor: Apple
+        poDate: 2019-02-04T21:09:31.661Z
+        poNumber: "8675309"
       properties:
         purchased:
           example: true
@@ -37745,7 +38976,7 @@ components:
         voicePreferred: true
         iccid: 8901 2605 7071 8002 130
         dataPreferred: true
-        phoneNumber: +15128145868
+        phoneNumber: "+15128145868"
         labelId: D1F4AEC5-2FCD-4A6D-A09E-A940F60F856B
         imei: 35 882334 083223 0
         carrierSettingsVersion: "47.1"
@@ -37796,7 +39027,7 @@ components:
           example: "35882334083223"
           type: string
         phoneNumber:
-          example: +15128145868
+          example: "+15128145868"
           type: string
         slot:
           description: The description of the slot that contains the SIM representing
@@ -37830,6 +39061,49 @@ components:
             example: english
             type: string
         type: object
+      example:
+        osBuild: 15F79
+        osRapidSecurityResponse: (a)
+        languages: english
+        displayName: Banezicron
+        lastEnrolledDate: 2022-10-17T11:48:56.307Z
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        softwareUpdateDeviceId: J132AP
+        ipAddress: 10.0.0.1
+        timeZone: Europe/Warsaw
+        assetTag: "8675309"
+        lastInventoryUpdateDate: 2022-10-17T11:48:56.307Z
+        supervised: true
+        locales: "null"
+        deviceOwnershipType: Institutional
+        osVersion: "11.4"
+        enrollmentSessionTokenValid: false
+        managed: true
+        declarativeDeviceManagementEnabled: true
+        osSupplementalBuildVersion: 22A103310o
+        mdmProfileExpirationDate: 2022-10-17T11:48:56.307Z
+        siteId: "-1"
+        enrollmentMethodPrestage:
+          profileName: All Mobiles
+          mobileDevicePrestageId: "5"
+        airPlayPassword: "1234"
+        udid: 0dad565fb40b010a9e490440188063a378721069
     MobileDeviceTvOsInventory:
       allOf:
       - $ref: '#/components/schemas/MobileDeviceInventory'
@@ -37837,7 +39111,239 @@ components:
           general:
             $ref: '#/components/schemas/MobileDeviceTvOsGeneral'
         type: object
+      example:
+        deviceType: "[\"tvOS\",\"iOS\"]"
+        general:
+          osBuild: 15F79
+          osRapidSecurityResponse: (a)
+          languages: english
+          displayName: Banezicron
+          lastEnrolledDate: 2022-10-17T11:48:56.307Z
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          softwareUpdateDeviceId: J132AP
+          ipAddress: 10.0.0.1
+          timeZone: Europe/Warsaw
+          assetTag: "8675309"
+          lastInventoryUpdateDate: 2022-10-17T11:48:56.307Z
+          supervised: true
+          locales: "null"
+          deviceOwnershipType: Institutional
+          osVersion: "11.4"
+          enrollmentSessionTokenValid: false
+          managed: true
+          declarativeDeviceManagementEnabled: true
+          osSupplementalBuildVersion: 22A103310o
+          mdmProfileExpirationDate: 2022-10-17T11:48:56.307Z
+          siteId: "-1"
+          enrollmentMethodPrestage:
+            profileName: All Mobiles
+            mobileDevicePrestageId: "5"
+          airPlayPassword: "1234"
+          udid: 0dad565fb40b010a9e490440188063a378721069
+        mobileDeviceId: "1"
+        certificates:
+        - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+          identity: false
+          expirationDate: 2019-02-04T21:09:31.661Z
+        - commonName: 3B259E4B-FAD5-4860-B1DD-336ADA786EBA
+          identity: false
+          expirationDate: 2019-02-04T21:09:31.661Z
+        purchasing:
+          leaseExpiresDate: 2019-02-04T21:09:31.661Z
+          leased: false
+          purchasingAccount: IT Budget
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          appleCareId: "9546567.0"
+          purchasePrice: $399
+          warrantyExpiresDate: 2019-02-04T21:09:31.661Z
+          purchasingContact: Nick in IT
+          lifeExpectancy: 7
+          purchased: true
+          vendor: Apple
+          poDate: 2019-02-04T21:09:31.661Z
+          poNumber: "8675309"
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        profiles:
+        - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+          lastInstalled: 2019-02-04T21:09:31.661Z
+          displayName: Test WiFi
+          removable: true
+          version: "1"
+          uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+        - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+          lastInstalled: 2019-02-04T21:09:31.661Z
+          displayName: Test WiFi
+          removable: true
+          version: "1"
+          uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+        userProfiles:
+        - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+          lastInstalled: 2019-02-04T21:09:31.661Z
+          displayName: Test WiFi
+          removable: true
+          version: "1"
+          uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          username: admin
+        - identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+          lastInstalled: 2019-02-04T21:09:31.661Z
+          displayName: Test WiFi
+          removable: true
+          version: "1"
+          uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+          username: admin
+        userAndLocation:
+          realName: IT Bob
+          emailAddress: ITBob@jamf.com
+          phoneNumber: 555-555-5555
+          departmentId: "1"
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          position: IT Team Lead
+          department: Department 1
+          room: room
+          building: Building 1
+          username: admin
+          buildingId: "1"
+        hardware:
+          serialNumber: 5c28fdae
+          modelIdentifier: "iPad7,11"
+          usedSpacePercentage: 70
+          extensionAttributes:
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          - name: Example EA
+            id: "1"
+            type: STRING
+            extensionAttributeCollectionAllowed: false
+            value:
+            - EA Value
+            - EA Value
+            inventoryDisplay: General
+          modemFirmwareVersion: "iPad7,11"
+          capacityMb: 100
+          deviceId: c6a49c6d-8c09-4d71-a37d-2f6a9dfbb69b
+          wifiMacAddress: ee:00:7c:f0:e5:ff
+          availableSpaceMb: 30
+          bluetoothMacAddress: ee:00:7c:f0:e5:aa
+          model: iPad 7th Generation (Wi-Fi)
+          modelNumber: MW742LL
+          bluetoothLowEnergyCapable: false
+          batteryLevel: 60
+        applications:
+        - identifier: com.apple.airport.mobileairportutility
+          shortVersion: "7.0"
+          dynamicSize: "1423"
+          managementStatus: Managed
+          bundleSize: "1024"
+          name: AirPort Utility
+          version: "135.24"
+          validationStatus: true
+        - identifier: com.apple.airport.mobileairportutility
+          shortVersion: "7.0"
+          dynamicSize: "1423"
+          managementStatus: Managed
+          bundleSize: "1024"
+          name: AirPort Utility
+          version: "135.24"
+          validationStatus: true
     MobileDeviceUserAndLocation:
+      example:
+        realName: IT Bob
+        emailAddress: ITBob@jamf.com
+        phoneNumber: 555-555-5555
+        departmentId: "1"
+        extensionAttributes:
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        - name: Example EA
+          id: "1"
+          type: STRING
+          extensionAttributeCollectionAllowed: false
+          value:
+          - EA Value
+          - EA Value
+          inventoryDisplay: General
+        position: IT Team Lead
+        department: Department 1
+        room: room
+        building: Building 1
+        username: admin
+        buildingId: "1"
       properties:
         username:
           example: admin
@@ -37875,6 +39381,14 @@ components:
           type: array
       type: object
     MobileDeviceUserProfile:
+      example:
+        identifier: ac2-server4.D0EFAC2D-326C-4BB6-87E6-2BCB88490AAA
+        lastInstalled: 2019-02-04T21:09:31.661Z
+        displayName: Test WiFi
+        removable: true
+        version: "1"
+        uuid: D29DD9FB-0D5B-422F-A3A2-ABBC5848E949
+        username: admin
       properties:
         displayName:
           example: Test WiFi
@@ -38766,6 +40280,32 @@ components:
               $ref: '#/components/schemas/PatchSoftwareTitlePackages'
             type: array
         type: object
+      example:
+        emailNotifications: false
+        uiNotifications: false
+        softwareTitleId: "1"
+        displayName: Google Chrome
+        jamfOfficial: false
+        extensionAttributes:
+        - eaId: google-chrome-ea
+          accepted: false
+        - eaId: google-chrome-ea
+          accepted: false
+        packages:
+        - displayName: Firefox.pkg
+          packageId: "1"
+          version: "1"
+        - displayName: Firefox.pkg
+          packageId: "1"
+          version: "1"
+        patchSourceEnabled: true
+        softwareTitleName: Safari
+        siteId: "-1"
+        softwareTitleNameId: AppleSafari
+        id: "1"
+        softwareTitlePublisher: Apple
+        patchSourceName: Jamf
+        categoryId: "-1"
     PatchSoftwareTitleConfigurationBase:
       example:
         emailNotifications: false
@@ -39019,6 +40559,10 @@ components:
           type: string
       type: object
     PatchSoftwareTitlePackages:
+      example:
+        displayName: Firefox.pkg
+        packageId: "1"
+        version: "1"
       properties:
         packageId:
           example: "1"
@@ -39457,6 +41001,8 @@ components:
             type: string
             writeOnly: true
         type: object
+      example:
+        recoveryLockPassword: password123
     PostComputerPrestageV3:
       allOf:
       - $ref: '#/components/schemas/ComputerPrestageV3'
@@ -39470,6 +41016,23 @@ components:
             type: string
             writeOnly: true
         type: object
+      example:
+        recoveryLockPassword: password123
+        accountSettings:
+          prefillAccountUserName: UserName
+          hiddenAdminAccount: false
+          versionLock: 4
+          prefillType: DEVICE_OWNER
+          payloadConfigured: true
+          adminUsername: admin
+          localAdminAccountEnabled: true
+          localUserManaged: true
+          prefillPrimaryAccountInfoFeatureEnabled: true
+          prefillAccountFullName: TestUser FullName
+          preventPrefillInfoFromModification: false
+          id: "1"
+          userAccountType: STANDARD
+          adminPassword: password
     PrestageDependencies:
       example:
         dependencies:
@@ -39534,6 +41097,21 @@ components:
           type: string
       type: object
     PrestagePurchasingInformation:
+      example:
+        isLeased: true
+        purchasingAccount: admin
+        appleCareID: abcd
+        purchasePrice: $500
+        versionLock: 1
+        isPurchased: true
+        purchasingContact: "true"
+        warrantyDate: 2019-01-01
+        lifeExpectancy: 5
+        vendor: Example Vendor
+        leaseDate: 2019-01-01
+        poDate: 2019-01-01
+        id: 0
+        poNumber: 53-1
       properties:
         id:
           example: 0
@@ -39594,6 +41172,21 @@ components:
       - warrantyDate
       type: object
     PrestagePurchasingInformationV2:
+      example:
+        leased: true
+        purchasingAccount: admin
+        appleCareId: abcd
+        purchasePrice: $500
+        versionLock: 1
+        purchasingContact: "true"
+        warrantyDate: 2019-01-01
+        lifeExpectancy: 5
+        purchased: true
+        vendor: Example Vendor
+        leaseDate: 2019-01-01
+        poDate: 2019-01-01
+        id: "-1"
+        poNumber: 53-1
       properties:
         id:
           example: "-1"
@@ -40194,6 +41787,9 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        versionLock: 0
+        recoveryLockPassword: password123
     PutComputerPrestageV3:
       allOf:
       - $ref: '#/components/schemas/ComputerPrestageV3'
@@ -40211,6 +41807,24 @@ components:
             minimum: 0
             type: integer
         type: object
+      example:
+        versionLock: 0
+        recoveryLockPassword: password123
+        accountSettings:
+          prefillAccountUserName: UserName
+          hiddenAdminAccount: false
+          versionLock: 4
+          prefillType: DEVICE_OWNER
+          payloadConfigured: true
+          adminUsername: admin
+          localAdminAccountEnabled: true
+          localUserManaged: true
+          prefillPrimaryAccountInfoFeatureEnabled: true
+          prefillAccountFullName: TestUser FullName
+          preventPrefillInfoFromModification: false
+          id: "1"
+          userAccountType: STANDARD
+          adminPassword: password
     PutMobileDevicePrestage:
       allOf:
       - $ref: '#/components/schemas/MobileDevicePrestage'
@@ -40219,6 +41833,8 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        versionLock: 0
     PutMobileDevicePrestageV2:
       allOf:
       - $ref: '#/components/schemas/MobileDevicePrestageV2'
@@ -40227,6 +41843,8 @@ components:
             example: 0
             type: integer
         type: object
+      example:
+        versionLock: 0
     RecalculationResults:
       example:
         count: 3
@@ -41102,6 +42720,21 @@ components:
         - password
         - type
         type: object
+      example:
+        password: '***'
+        keystorePassword: '***'
+        keys:
+        - valid: true
+          id: "1"
+        - valid: true
+          id: "1"
+        keystoreSetupType: UPLOADED
+        keystoreFile: !!binary |-
+          V2xob2FHSllRbk5hVTBKMldtbENhRWxIU21oak1sVXlUa05DYkdKdFRuWmFSMVpyU1VoYWFHSkhi
+          R3RKU0VGNFRXazBaMkV5VmpWak0xSjJZMjFWWjFwdGJITmFVVDA5
+        keystoreFileName: keystore.p12
+        type: PKCS12
+        key: ' '
     SsoKeystoreCertParseResponse:
       example:
         keys:
@@ -41273,7 +42906,21 @@ components:
       type: object
     SsoKeystoreWithDetails:
       example:
-        keystore: null
+        keystore:
+          password: '***'
+          keystorePassword: '***'
+          keys:
+          - valid: true
+            id: "1"
+          - valid: true
+            id: "1"
+          keystoreSetupType: UPLOADED
+          keystoreFile: !!binary |-
+            V2xob2FHSllRbk5hVTBKMldtbENhRWxIU21oak1sVXlUa05DYkdKdFRuWmFSMVpyU1VoYWFHSkhi
+            R3RKU0VGNFRXazBaMkV5VmpWak0xSjJZMjFWWjFwdGJITmFVVDA5
+          keystoreFileName: keystore.p12
+          type: PKCS12
+          key: ' '
         keystoreDetails:
           serialNumber: 2322472237
           keys:
@@ -42688,6 +44335,45 @@ components:
             readOnly: true
             type: array
         type: object
+      example:
+        locationName: Example Location
+        lastSyncTime: 2022-09-25T21:09:31.661Z
+        organizationName: Jamf
+        clientContextMismatch: false
+        totalUsedLicenses: 1
+        autoRegisterManagedUsers: false
+        appleId: testUser@apple.com
+        content:
+        - pricingParam: STDQ
+          deviceTypes:
+          - IOS
+          - IOS
+          licenseCountReported: 1
+          licenseCountInUse: 1
+          name: Example Content
+          licenseCountTotal: 1
+          iconUrl: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/73/d4/73/73d47332-fefc-d350-2984-5b4a4755a502/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/360x216bb.png
+          contentType: IOS_APP
+          adamId: "748057890"
+        - pricingParam: STDQ
+          deviceTypes:
+          - IOS
+          - IOS
+          licenseCountReported: 1
+          licenseCountInUse: 1
+          name: Example Content
+          licenseCountTotal: 1
+          iconUrl: https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/73/d4/73/73d47332-fefc-d350-2984-5b4a4755a502/AppIcon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-220-0-0-0-6.png/360x216bb.png
+          contentType: IOS_APP
+          adamId: "748057890"
+        sendNotificationWhenNoLongerAssigned: false
+        tokenExpiration: 2022-04-25T21:09:31.661Z
+        automaticallyPopulatePurchasedContent: false
+        countryCode: US
+        name: Example Location
+        siteId: "1"
+        totalPurchasedLicenses: 1
+        id: "1"
     VolumePurchasingLocationListView:
       example:
         locationName: Example Location
@@ -42881,6 +44567,27 @@ components:
             readOnly: true
             type: string
         type: object
+      example:
+        internalRecipients:
+        - accountId: "1"
+          frequency: DAILY
+        - accountId: "1"
+          frequency: DAILY
+        externalRecipients:
+        - name: Bob Exampleman
+          email: bob@example.com
+        - name: Bob Exampleman
+          email: bob@example.com
+        name: Example
+        locationIds:
+        - "1"
+        - "1"
+        siteId: "1"
+        id: "1"
+        triggers:
+        - NO_MORE_LICENSES
+        - NO_MORE_LICENSES
+        enabled: true
     VolumePurchasingSubscriptionBase:
       example:
         internalRecipients:
@@ -42944,8 +44651,46 @@ components:
       example:
         totalCount: 1
         results:
-        - null
-        - null
+        - internalRecipients:
+          - accountId: "1"
+            frequency: DAILY
+          - accountId: "1"
+            frequency: DAILY
+          externalRecipients:
+          - name: Bob Exampleman
+            email: bob@example.com
+          - name: Bob Exampleman
+            email: bob@example.com
+          name: Example
+          locationIds:
+          - "1"
+          - "1"
+          siteId: "1"
+          id: "1"
+          triggers:
+          - NO_MORE_LICENSES
+          - NO_MORE_LICENSES
+          enabled: true
+        - internalRecipients:
+          - accountId: "1"
+            frequency: DAILY
+          - accountId: "1"
+            frequency: DAILY
+          externalRecipients:
+          - name: Bob Exampleman
+            email: bob@example.com
+          - name: Bob Exampleman
+            email: bob@example.com
+          name: Example
+          locationIds:
+          - "1"
+          - "1"
+          siteId: "1"
+          id: "1"
+          triggers:
+          - NO_MORE_LICENSES
+          - NO_MORE_LICENSES
+          enabled: true
       properties:
         totalCount:
           example: 1

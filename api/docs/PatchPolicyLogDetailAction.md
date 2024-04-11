@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**ActionOrder** | Pointer to **int32** |  | [optional] 
+**ActionOrder** | Pointer to **int64** |  | [optional] 
 **Action** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetActionOrder
 
-`func (o *PatchPolicyLogDetailAction) GetActionOrder() int32`
+`func (o *PatchPolicyLogDetailAction) GetActionOrder() int64`
 
 GetActionOrder returns the ActionOrder field if non-nil, zero value otherwise.
 
 ### GetActionOrderOk
 
-`func (o *PatchPolicyLogDetailAction) GetActionOrderOk() (*int32, bool)`
+`func (o *PatchPolicyLogDetailAction) GetActionOrderOk() (*int64, bool)`
 
 GetActionOrderOk returns a tuple with the ActionOrder field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActionOrder
 
-`func (o *PatchPolicyLogDetailAction) SetActionOrder(v int32)`
+`func (o *PatchPolicyLogDetailAction) SetActionOrder(v int64)`
 
 SetActionOrder sets ActionOrder field to given value.
 

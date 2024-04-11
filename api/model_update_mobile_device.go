@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateMobileDevice{}
 type UpdateMobileDevice struct {
 	Name *string `json:"name,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
-	SiteId *int32 `json:"siteId,omitempty"`
+	SiteId *int64 `json:"siteId,omitempty"`
 	Location *Location `json:"location,omitempty"`
 	UpdatedExtensionAttributes []ExtensionAttribute `json:"updatedExtensionAttributes,omitempty"`
 	Ios *UpdateIos `json:"ios,omitempty"`
@@ -110,9 +110,9 @@ func (o *UpdateMobileDevice) SetAssetTag(v string) {
 }
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
-func (o *UpdateMobileDevice) GetSiteId() int32 {
+func (o *UpdateMobileDevice) GetSiteId() int64 {
 	if o == nil || IsNil(o.SiteId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SiteId
@@ -120,7 +120,7 @@ func (o *UpdateMobileDevice) GetSiteId() int32 {
 
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateMobileDevice) GetSiteIdOk() (*int32, bool) {
+func (o *UpdateMobileDevice) GetSiteIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *UpdateMobileDevice) HasSiteId() bool {
 	return false
 }
 
-// SetSiteId gets a reference to the given int32 and assigns it to the SiteId field.
-func (o *UpdateMobileDevice) SetSiteId(v int32) {
+// SetSiteId gets a reference to the given int64 and assigns it to the SiteId field.
+func (o *UpdateMobileDevice) SetSiteId(v int64) {
 	o.SiteId = &v
 }
 

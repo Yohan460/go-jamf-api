@@ -21,9 +21,9 @@ var _ MappedNullable = &AccountGroup{}
 type AccountGroup struct {
 	AccessLevel *string `json:"accessLevel,omitempty"`
 	PrivilegeSet *string `json:"privilegeSet,omitempty"`
-	SiteId *int32 `json:"siteId,omitempty"`
+	SiteId *int64 `json:"siteId,omitempty"`
 	Privileges []string `json:"privileges,omitempty"`
-	MemberUserIds []int32 `json:"memberUserIds,omitempty"`
+	MemberUserIds []int64 `json:"memberUserIds,omitempty"`
 }
 
 // NewAccountGroup instantiates a new AccountGroup object
@@ -108,9 +108,9 @@ func (o *AccountGroup) SetPrivilegeSet(v string) {
 }
 
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
-func (o *AccountGroup) GetSiteId() int32 {
+func (o *AccountGroup) GetSiteId() int64 {
 	if o == nil || IsNil(o.SiteId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.SiteId
@@ -118,7 +118,7 @@ func (o *AccountGroup) GetSiteId() int32 {
 
 // GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountGroup) GetSiteIdOk() (*int32, bool) {
+func (o *AccountGroup) GetSiteIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.SiteId) {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *AccountGroup) HasSiteId() bool {
 	return false
 }
 
-// SetSiteId gets a reference to the given int32 and assigns it to the SiteId field.
-func (o *AccountGroup) SetSiteId(v int32) {
+// SetSiteId gets a reference to the given int64 and assigns it to the SiteId field.
+func (o *AccountGroup) SetSiteId(v int64) {
 	o.SiteId = &v
 }
 
@@ -172,9 +172,9 @@ func (o *AccountGroup) SetPrivileges(v []string) {
 }
 
 // GetMemberUserIds returns the MemberUserIds field value if set, zero value otherwise.
-func (o *AccountGroup) GetMemberUserIds() []int32 {
+func (o *AccountGroup) GetMemberUserIds() []int64 {
 	if o == nil || IsNil(o.MemberUserIds) {
-		var ret []int32
+		var ret []int64
 		return ret
 	}
 	return o.MemberUserIds
@@ -182,7 +182,7 @@ func (o *AccountGroup) GetMemberUserIds() []int32 {
 
 // GetMemberUserIdsOk returns a tuple with the MemberUserIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AccountGroup) GetMemberUserIdsOk() ([]int32, bool) {
+func (o *AccountGroup) GetMemberUserIdsOk() ([]int64, bool) {
 	if o == nil || IsNil(o.MemberUserIds) {
 		return nil, false
 	}
@@ -198,8 +198,8 @@ func (o *AccountGroup) HasMemberUserIds() bool {
 	return false
 }
 
-// SetMemberUserIds gets a reference to the given []int32 and assigns it to the MemberUserIds field.
-func (o *AccountGroup) SetMemberUserIds(v []int32) {
+// SetMemberUserIds gets a reference to the given []int64 and assigns it to the MemberUserIds field.
+func (o *AccountGroup) SetMemberUserIds(v []int64) {
 	o.MemberUserIds = v
 }
 

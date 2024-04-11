@@ -264,18 +264,18 @@ func (a *DepartmentsAPIService) V1DepartmentsDeleteMultiplePostExecute(r Departm
 type DepartmentsAPIV1DepartmentsGetRequest struct {
 	ctx context.Context
 	ApiService DepartmentsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r DepartmentsAPIV1DepartmentsGetRequest) Page(page int32) DepartmentsAPIV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) Page(page int64) DepartmentsAPIV1DepartmentsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r DepartmentsAPIV1DepartmentsGetRequest) PageSize(pageSize int32) DepartmentsAPIV1DepartmentsGetRequest {
+func (r DepartmentsAPIV1DepartmentsGetRequest) PageSize(pageSize int64) DepartmentsAPIV1DepartmentsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -336,13 +336,13 @@ func (a *DepartmentsAPIService) V1DepartmentsGetExecute(r DepartmentsAPIV1Depart
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -630,18 +630,18 @@ type DepartmentsAPIV1DepartmentsIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService DepartmentsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Page(page int32) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) Page(page int64) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) PageSize(pageSize int32) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
+func (r DepartmentsAPIV1DepartmentsIdHistoryGetRequest) PageSize(pageSize int64) DepartmentsAPIV1DepartmentsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -705,13 +705,13 @@ func (a *DepartmentsAPIService) V1DepartmentsIdHistoryGetExecute(r DepartmentsAP
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

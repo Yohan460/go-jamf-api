@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Uuid** | Pointer to **string** |  | [optional] 
-**LdapServerId** | Pointer to **int32** |  | [optional] 
+**LdapServerId** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **DistinguishedName** | Pointer to **string** |  | [optional] 
 
@@ -81,20 +81,20 @@ HasUuid returns a boolean if a field has been set.
 
 ### GetLdapServerId
 
-`func (o *LdapGroup) GetLdapServerId() int32`
+`func (o *LdapGroup) GetLdapServerId() int64`
 
 GetLdapServerId returns the LdapServerId field if non-nil, zero value otherwise.
 
 ### GetLdapServerIdOk
 
-`func (o *LdapGroup) GetLdapServerIdOk() (*int32, bool)`
+`func (o *LdapGroup) GetLdapServerIdOk() (*int64, bool)`
 
 GetLdapServerIdOk returns a tuple with the LdapServerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLdapServerId
 
-`func (o *LdapGroup) SetLdapServerId(v int32)`
+`func (o *LdapGroup) SetLdapServerId(v int64)`
 
 SetLdapServerId sets LdapServerId field to given value.
 

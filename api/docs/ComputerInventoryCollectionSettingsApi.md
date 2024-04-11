@@ -25,22 +25,22 @@ Delete Custom Path from Computer Inventory Collection Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | id of Custom Path
+	id := "id_example" // string | id of Custom Path
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -93,24 +93,24 @@ Create Computer Inventory Collection Settings Custom Path
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    createPath := *openapiclient.NewCreatePath("APP", "/Example/Path/") // CreatePath | Computer inventory settings to update
+	createPath := *openapiclient.NewCreatePath("APP", "/Example/Path/") // CreatePath | Computer inventory settings to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost(context.Background()).CreatePath(createPath).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputerInventoryCollectionSettingsCustomPathPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost(context.Background()).CreatePath(createPath).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputerInventoryCollectionSettingsCustomPathPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsCustomPathPost`: %v\n", resp)
 }
 ```
 
@@ -159,23 +159,23 @@ Returns computer inventory settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputerInventoryCollectionSettingsGet`: ComputerInventoryCollectionSettings
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputerInventoryCollectionSettingsGet`: ComputerInventoryCollectionSettings
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -220,24 +220,24 @@ Update computer inventory settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    computerInventoryCollectionSettings := *openapiclient.NewComputerInventoryCollectionSettings() // ComputerInventoryCollectionSettings | Computer inventory settings to update
+	computerInventoryCollectionSettings := *openapiclient.NewComputerInventoryCollectionSettings() // ComputerInventoryCollectionSettings | Computer inventory settings to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch(context.Background()).ComputerInventoryCollectionSettings(computerInventoryCollectionSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputerInventoryCollectionSettingsPatch`: ComputerInventoryCollectionSettings
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch(context.Background()).ComputerInventoryCollectionSettings(computerInventoryCollectionSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputerInventoryCollectionSettingsPatch`: ComputerInventoryCollectionSettings
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V1ComputerInventoryCollectionSettingsPatch`: %v\n", resp)
 }
 ```
 

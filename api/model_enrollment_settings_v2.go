@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnrollmentSettingsV2 type satisfies the MappedNullable interface at compile time
@@ -41,7 +43,7 @@ type EnrollmentSettingsV2 struct {
 	PasswordType *string `json:"passwordType,omitempty"`
 	// randomPasswordLength is no longer in use. Input value for randomPasswordLength will be ignored.
 	// Deprecated
-	RandomPasswordLength *int32 `json:"randomPasswordLength,omitempty"`
+	RandomPasswordLength *int64 `json:"randomPasswordLength,omitempty"`
 	CreateManagementAccount *bool `json:"createManagementAccount,omitempty"`
 	HideManagementAccount *bool `json:"hideManagementAccount,omitempty"`
 	AllowSshOnlyManagementAccount *bool `json:"allowSshOnlyManagementAccount,omitempty"`
@@ -56,6 +58,8 @@ type EnrollmentSettingsV2 struct {
 	PersonalDeviceEnrollmentType *string `json:"personalDeviceEnrollmentType,omitempty"`
 	AccountDrivenUserEnrollmentEnabled *bool `json:"accountDrivenUserEnrollmentEnabled,omitempty"`
 }
+
+type _EnrollmentSettingsV2 EnrollmentSettingsV2
 
 // NewEnrollmentSettingsV2 instantiates a new EnrollmentSettingsV2 object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +90,7 @@ func NewEnrollmentSettingsV2(managementUsername string) *EnrollmentSettingsV2 {
 	this.ManagementPassword = &managementPassword
 	var passwordType string = "STATIC"
 	this.PasswordType = &passwordType
-	var randomPasswordLength int32 = 8
+	var randomPasswordLength int64 = 8
 	this.RandomPasswordLength = &randomPasswordLength
 	var createManagementAccount bool = true
 	this.CreateManagementAccount = &createManagementAccount
@@ -140,7 +144,7 @@ func NewEnrollmentSettingsV2WithDefaults() *EnrollmentSettingsV2 {
 	this.ManagementPassword = &managementPassword
 	var passwordType string = "STATIC"
 	this.PasswordType = &passwordType
-	var randomPasswordLength int32 = 8
+	var randomPasswordLength int64 = 8
 	this.RandomPasswordLength = &randomPasswordLength
 	var createManagementAccount bool = true
 	this.CreateManagementAccount = &createManagementAccount
@@ -626,9 +630,9 @@ func (o *EnrollmentSettingsV2) SetPasswordType(v string) {
 
 // GetRandomPasswordLength returns the RandomPasswordLength field value if set, zero value otherwise.
 // Deprecated
-func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int32 {
+func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int64 {
 	if o == nil || IsNil(o.RandomPasswordLength) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.RandomPasswordLength
@@ -637,7 +641,7 @@ func (o *EnrollmentSettingsV2) GetRandomPasswordLength() int32 {
 // GetRandomPasswordLengthOk returns a tuple with the RandomPasswordLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int32, bool) {
+func (o *EnrollmentSettingsV2) GetRandomPasswordLengthOk() (*int64, bool) {
 	if o == nil || IsNil(o.RandomPasswordLength) {
 		return nil, false
 	}
@@ -653,9 +657,9 @@ func (o *EnrollmentSettingsV2) HasRandomPasswordLength() bool {
 	return false
 }
 
-// SetRandomPasswordLength gets a reference to the given int32 and assigns it to the RandomPasswordLength field.
+// SetRandomPasswordLength gets a reference to the given int64 and assigns it to the RandomPasswordLength field.
 // Deprecated
-func (o *EnrollmentSettingsV2) SetRandomPasswordLength(v int32) {
+func (o *EnrollmentSettingsV2) SetRandomPasswordLength(v int64) {
 	o.RandomPasswordLength = &v
 }
 
@@ -1178,6 +1182,43 @@ func (o EnrollmentSettingsV2) ToMap() (map[string]interface{}, error) {
 		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
 	}
 	return toSerialize, nil
+}
+
+func (o *EnrollmentSettingsV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"managementUsername",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnrollmentSettingsV2 := _EnrollmentSettingsV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnrollmentSettingsV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnrollmentSettingsV2(varEnrollmentSettingsV2)
+
+	return err
 }
 
 type NullableEnrollmentSettingsV2 struct {

@@ -152,8 +152,8 @@ type CloudIdpAPIV1CloudIdpExportPostRequest struct {
 	ApiService CloudIdpAPI
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -171,12 +171,12 @@ func (r CloudIdpAPIV1CloudIdpExportPostRequest) ExportLabels(exportLabels []stri
 	return r
 }
 
-func (r CloudIdpAPIV1CloudIdpExportPostRequest) Page(page int32) CloudIdpAPIV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) Page(page int64) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r CloudIdpAPIV1CloudIdpExportPostRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpExportPostRequest {
+func (r CloudIdpAPIV1CloudIdpExportPostRequest) PageSize(pageSize int64) CloudIdpAPIV1CloudIdpExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -271,13 +271,13 @@ func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdp
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -380,17 +380,17 @@ func (a *CloudIdpAPIService) V1CloudIdpExportPostExecute(r CloudIdpAPIV1CloudIdp
 type CloudIdpAPIV1CloudIdpGetRequest struct {
 	ctx context.Context
 	ApiService CloudIdpAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r CloudIdpAPIV1CloudIdpGetRequest) Page(page int32) CloudIdpAPIV1CloudIdpGetRequest {
+func (r CloudIdpAPIV1CloudIdpGetRequest) Page(page int64) CloudIdpAPIV1CloudIdpGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r CloudIdpAPIV1CloudIdpGetRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpGetRequest {
+func (r CloudIdpAPIV1CloudIdpGetRequest) PageSize(pageSize int64) CloudIdpAPIV1CloudIdpGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -444,13 +444,13 @@ func (a *CloudIdpAPIService) V1CloudIdpGetExecute(r CloudIdpAPIV1CloudIdpGetRequ
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -649,18 +649,18 @@ type CloudIdpAPIV1CloudIdpIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService CloudIdpAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Page(page int32) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) Page(page int64) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) PageSize(pageSize int32) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
+func (r CloudIdpAPIV1CloudIdpIdHistoryGetRequest) PageSize(pageSize int64) CloudIdpAPIV1CloudIdpIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -723,13 +723,13 @@ func (a *CloudIdpAPIService) V1CloudIdpIdHistoryGetExecute(r CloudIdpAPIV1CloudI
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

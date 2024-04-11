@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrentSiteId** | Pointer to **int32** |  | [optional] 
+**CurrentSiteId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCurrentSiteId
 
-`func (o *Session) GetCurrentSiteId() int32`
+`func (o *Session) GetCurrentSiteId() int64`
 
 GetCurrentSiteId returns the CurrentSiteId field if non-nil, zero value otherwise.
 
 ### GetCurrentSiteIdOk
 
-`func (o *Session) GetCurrentSiteIdOk() (*int32, bool)`
+`func (o *Session) GetCurrentSiteIdOk() (*int64, bool)`
 
 GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentSiteId
 
-`func (o *Session) SetCurrentSiteId(v int32)`
+`func (o *Session) SetCurrentSiteId(v int64)`
 
 SetCurrentSiteId sets CurrentSiteId field to given value.
 

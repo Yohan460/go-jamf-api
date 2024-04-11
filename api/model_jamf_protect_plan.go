@@ -23,7 +23,7 @@ type JamfProtectPlan struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
-	ProfileId *int32 `json:"profileId,omitempty"`
+	ProfileId *int64 `json:"profileId,omitempty"`
 	ProfileName *string `json:"profileName,omitempty"`
 	ScopeDescription *string `json:"scopeDescription,omitempty"`
 }
@@ -174,9 +174,9 @@ func (o *JamfProtectPlan) SetDescription(v string) {
 }
 
 // GetProfileId returns the ProfileId field value if set, zero value otherwise.
-func (o *JamfProtectPlan) GetProfileId() int32 {
+func (o *JamfProtectPlan) GetProfileId() int64 {
 	if o == nil || IsNil(o.ProfileId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ProfileId
@@ -184,7 +184,7 @@ func (o *JamfProtectPlan) GetProfileId() int32 {
 
 // GetProfileIdOk returns a tuple with the ProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JamfProtectPlan) GetProfileIdOk() (*int32, bool) {
+func (o *JamfProtectPlan) GetProfileIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.ProfileId) {
 		return nil, false
 	}
@@ -200,8 +200,8 @@ func (o *JamfProtectPlan) HasProfileId() bool {
 	return false
 }
 
-// SetProfileId gets a reference to the given int32 and assigns it to the ProfileId field.
-func (o *JamfProtectPlan) SetProfileId(v int32) {
+// SetProfileId gets a reference to the given int64 and assigns it to the ProfileId field.
+func (o *JamfProtectPlan) SetProfileId(v int64) {
 	o.ProfileId = &v
 }
 

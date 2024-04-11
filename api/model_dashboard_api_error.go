@@ -19,7 +19,7 @@ var _ MappedNullable = &DashboardApiError{}
 
 // DashboardApiError struct for DashboardApiError
 type DashboardApiError struct {
-	HttpStatusCode *int32 `json:"httpStatusCode,omitempty"`
+	HttpStatusCode *int64 `json:"httpStatusCode,omitempty"`
 	Id *string `json:"id,omitempty"`
 	Description *string `json:"description,omitempty"`
 }
@@ -30,7 +30,7 @@ type DashboardApiError struct {
 // will change when the set of required properties is changed
 func NewDashboardApiError() *DashboardApiError {
 	this := DashboardApiError{}
-	var httpStatusCode int32 = 500
+	var httpStatusCode int64 = 500
 	this.HttpStatusCode = &httpStatusCode
 	var id string = ""
 	this.Id = &id
@@ -44,7 +44,7 @@ func NewDashboardApiError() *DashboardApiError {
 // but it doesn't guarantee that properties required by API are set
 func NewDashboardApiErrorWithDefaults() *DashboardApiError {
 	this := DashboardApiError{}
-	var httpStatusCode int32 = 500
+	var httpStatusCode int64 = 500
 	this.HttpStatusCode = &httpStatusCode
 	var id string = ""
 	this.Id = &id
@@ -54,9 +54,9 @@ func NewDashboardApiErrorWithDefaults() *DashboardApiError {
 }
 
 // GetHttpStatusCode returns the HttpStatusCode field value if set, zero value otherwise.
-func (o *DashboardApiError) GetHttpStatusCode() int32 {
+func (o *DashboardApiError) GetHttpStatusCode() int64 {
 	if o == nil || IsNil(o.HttpStatusCode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.HttpStatusCode
@@ -64,7 +64,7 @@ func (o *DashboardApiError) GetHttpStatusCode() int32 {
 
 // GetHttpStatusCodeOk returns a tuple with the HttpStatusCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DashboardApiError) GetHttpStatusCodeOk() (*int32, bool) {
+func (o *DashboardApiError) GetHttpStatusCodeOk() (*int64, bool) {
 	if o == nil || IsNil(o.HttpStatusCode) {
 		return nil, false
 	}
@@ -80,8 +80,8 @@ func (o *DashboardApiError) HasHttpStatusCode() bool {
 	return false
 }
 
-// SetHttpStatusCode gets a reference to the given int32 and assigns it to the HttpStatusCode field.
-func (o *DashboardApiError) SetHttpStatusCode(v int32) {
+// SetHttpStatusCode gets a reference to the given int64 and assigns it to the HttpStatusCode field.
+func (o *DashboardApiError) SetHttpStatusCode(v int64) {
 	o.HttpStatusCode = &v
 }
 

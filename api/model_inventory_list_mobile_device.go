@@ -25,11 +25,11 @@ type InventoryListMobileDevice struct {
 	AirPlayPassword *string `json:"airPlayPassword,omitempty"`
 	AppAnalyticsEnabled *bool `json:"appAnalyticsEnabled,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
-	AvailableSpaceMb *int32 `json:"availableSpaceMb,omitempty"`
-	BatteryLevel *int32 `json:"batteryLevel,omitempty"`
+	AvailableSpaceMb *int64 `json:"availableSpaceMb,omitempty"`
+	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
 	BluetoothLowEnergyCapable *bool `json:"bluetoothLowEnergyCapable,omitempty"`
 	BluetoothMacAddress *string `json:"bluetoothMacAddress,omitempty"`
-	CapacityMb *int32 `json:"capacityMb,omitempty"`
+	CapacityMb *int64 `json:"capacityMb,omitempty"`
 	LostModeEnabledDate *time.Time `json:"lostModeEnabledDate,omitempty"`
 	DeclarativeDeviceManagementEnabled *bool `json:"declarativeDeviceManagementEnabled,omitempty"`
 	DeviceId *string `json:"deviceId,omitempty"`
@@ -48,7 +48,7 @@ type InventoryListMobileDevice struct {
 	OsVersion *string `json:"osVersion,omitempty"`
 	IpAddress *string `json:"ipAddress,omitempty"`
 	ItunesStoreAccountActive *bool `json:"itunesStoreAccountActive,omitempty"`
-	JamfParentPairings *int32 `json:"jamfParentPairings,omitempty"`
+	JamfParentPairings *int64 `json:"jamfParentPairings,omitempty"`
 	Languages *string `json:"languages,omitempty"`
 	LastBackupDate *time.Time `json:"lastBackupDate,omitempty"`
 	LastEnrolledDate *time.Time `json:"lastEnrolledDate,omitempty"`
@@ -63,14 +63,14 @@ type InventoryListMobileDevice struct {
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
 	ModelNumber *string `json:"modelNumber,omitempty"`
 	ModemFirmwareVersion *string `json:"modemFirmwareVersion,omitempty"`
-	QuotaSize *int32 `json:"quotaSize,omitempty"`
-	ResidentUsers *int32 `json:"residentUsers,omitempty"`
+	QuotaSize *int64 `json:"quotaSize,omitempty"`
+	ResidentUsers *int64 `json:"residentUsers,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	SharedIpad *bool `json:"sharedIpad,omitempty"`
 	Supervised *bool `json:"supervised,omitempty"`
 	Tethered *bool `json:"tethered,omitempty"`
 	TimeZone *string `json:"timeZone,omitempty"`
-	UsedSpacePercentage *int32 `json:"usedSpacePercentage,omitempty"`
+	UsedSpacePercentage *int64 `json:"usedSpacePercentage,omitempty"`
 	WifiMacAddress *string `json:"wifiMacAddress,omitempty"`
 	Building *string `json:"building,omitempty"`
 	Department *string `json:"department,omitempty"`
@@ -82,7 +82,7 @@ type InventoryListMobileDevice struct {
 	Username *string `json:"username,omitempty"`
 	AppleCareId *string `json:"appleCareId,omitempty"`
 	LeaseExpirationDate *time.Time `json:"leaseExpirationDate,omitempty"`
-	LifeExpectancyYears *int32 `json:"lifeExpectancyYears,omitempty"`
+	LifeExpectancyYears *int64 `json:"lifeExpectancyYears,omitempty"`
 	PoDate *time.Time `json:"poDate,omitempty"`
 	PoNumber *string `json:"poNumber,omitempty"`
 	PurchasePrice *string `json:"purchasePrice,omitempty"`
@@ -99,7 +99,7 @@ type InventoryListMobileDevice struct {
 	JailbreakStatus *string `json:"jailbreakStatus,omitempty"`
 	PasscodeCompliant *bool `json:"passcodeCompliant,omitempty"`
 	PasscodeCompliantWithProfile *bool `json:"passcodeCompliantWithProfile,omitempty"`
-	PasscodeLockGracePeriodEnforcedSeconds *int32 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
+	PasscodeLockGracePeriodEnforcedSeconds *int64 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
 	PasscodePresent *bool `json:"passcodePresent,omitempty"`
 	PersonalDeviceProfileCurrent *bool `json:"personalDeviceProfileCurrent,omitempty"`
 	CarrierSettingsVersion *string `json:"carrierSettingsVersion,omitempty"`
@@ -299,9 +299,9 @@ func (o *InventoryListMobileDevice) SetAssetTag(v string) {
 }
 
 // GetAvailableSpaceMb returns the AvailableSpaceMb field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetAvailableSpaceMb() int32 {
+func (o *InventoryListMobileDevice) GetAvailableSpaceMb() int64 {
 	if o == nil || IsNil(o.AvailableSpaceMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AvailableSpaceMb
@@ -309,7 +309,7 @@ func (o *InventoryListMobileDevice) GetAvailableSpaceMb() int32 {
 
 // GetAvailableSpaceMbOk returns a tuple with the AvailableSpaceMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetAvailableSpaceMbOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetAvailableSpaceMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvailableSpaceMb) {
 		return nil, false
 	}
@@ -325,15 +325,15 @@ func (o *InventoryListMobileDevice) HasAvailableSpaceMb() bool {
 	return false
 }
 
-// SetAvailableSpaceMb gets a reference to the given int32 and assigns it to the AvailableSpaceMb field.
-func (o *InventoryListMobileDevice) SetAvailableSpaceMb(v int32) {
+// SetAvailableSpaceMb gets a reference to the given int64 and assigns it to the AvailableSpaceMb field.
+func (o *InventoryListMobileDevice) SetAvailableSpaceMb(v int64) {
 	o.AvailableSpaceMb = &v
 }
 
 // GetBatteryLevel returns the BatteryLevel field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetBatteryLevel() int32 {
+func (o *InventoryListMobileDevice) GetBatteryLevel() int64 {
 	if o == nil || IsNil(o.BatteryLevel) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BatteryLevel
@@ -341,7 +341,7 @@ func (o *InventoryListMobileDevice) GetBatteryLevel() int32 {
 
 // GetBatteryLevelOk returns a tuple with the BatteryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetBatteryLevelOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetBatteryLevelOk() (*int64, bool) {
 	if o == nil || IsNil(o.BatteryLevel) {
 		return nil, false
 	}
@@ -357,8 +357,8 @@ func (o *InventoryListMobileDevice) HasBatteryLevel() bool {
 	return false
 }
 
-// SetBatteryLevel gets a reference to the given int32 and assigns it to the BatteryLevel field.
-func (o *InventoryListMobileDevice) SetBatteryLevel(v int32) {
+// SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
+func (o *InventoryListMobileDevice) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
 }
 
@@ -427,9 +427,9 @@ func (o *InventoryListMobileDevice) SetBluetoothMacAddress(v string) {
 }
 
 // GetCapacityMb returns the CapacityMb field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetCapacityMb() int32 {
+func (o *InventoryListMobileDevice) GetCapacityMb() int64 {
 	if o == nil || IsNil(o.CapacityMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CapacityMb
@@ -437,7 +437,7 @@ func (o *InventoryListMobileDevice) GetCapacityMb() int32 {
 
 // GetCapacityMbOk returns a tuple with the CapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetCapacityMbOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetCapacityMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.CapacityMb) {
 		return nil, false
 	}
@@ -453,8 +453,8 @@ func (o *InventoryListMobileDevice) HasCapacityMb() bool {
 	return false
 }
 
-// SetCapacityMb gets a reference to the given int32 and assigns it to the CapacityMb field.
-func (o *InventoryListMobileDevice) SetCapacityMb(v int32) {
+// SetCapacityMb gets a reference to the given int64 and assigns it to the CapacityMb field.
+func (o *InventoryListMobileDevice) SetCapacityMb(v int64) {
 	o.CapacityMb = &v
 }
 
@@ -1035,9 +1035,9 @@ func (o *InventoryListMobileDevice) SetItunesStoreAccountActive(v bool) {
 }
 
 // GetJamfParentPairings returns the JamfParentPairings field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetJamfParentPairings() int32 {
+func (o *InventoryListMobileDevice) GetJamfParentPairings() int64 {
 	if o == nil || IsNil(o.JamfParentPairings) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.JamfParentPairings
@@ -1045,7 +1045,7 @@ func (o *InventoryListMobileDevice) GetJamfParentPairings() int32 {
 
 // GetJamfParentPairingsOk returns a tuple with the JamfParentPairings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetJamfParentPairingsOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetJamfParentPairingsOk() (*int64, bool) {
 	if o == nil || IsNil(o.JamfParentPairings) {
 		return nil, false
 	}
@@ -1061,8 +1061,8 @@ func (o *InventoryListMobileDevice) HasJamfParentPairings() bool {
 	return false
 }
 
-// SetJamfParentPairings gets a reference to the given int32 and assigns it to the JamfParentPairings field.
-func (o *InventoryListMobileDevice) SetJamfParentPairings(v int32) {
+// SetJamfParentPairings gets a reference to the given int64 and assigns it to the JamfParentPairings field.
+func (o *InventoryListMobileDevice) SetJamfParentPairings(v int64) {
 	o.JamfParentPairings = &v
 }
 
@@ -1515,9 +1515,9 @@ func (o *InventoryListMobileDevice) SetModemFirmwareVersion(v string) {
 }
 
 // GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetQuotaSize() int32 {
+func (o *InventoryListMobileDevice) GetQuotaSize() int64 {
 	if o == nil || IsNil(o.QuotaSize) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.QuotaSize
@@ -1525,7 +1525,7 @@ func (o *InventoryListMobileDevice) GetQuotaSize() int32 {
 
 // GetQuotaSizeOk returns a tuple with the QuotaSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetQuotaSizeOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetQuotaSizeOk() (*int64, bool) {
 	if o == nil || IsNil(o.QuotaSize) {
 		return nil, false
 	}
@@ -1541,15 +1541,15 @@ func (o *InventoryListMobileDevice) HasQuotaSize() bool {
 	return false
 }
 
-// SetQuotaSize gets a reference to the given int32 and assigns it to the QuotaSize field.
-func (o *InventoryListMobileDevice) SetQuotaSize(v int32) {
+// SetQuotaSize gets a reference to the given int64 and assigns it to the QuotaSize field.
+func (o *InventoryListMobileDevice) SetQuotaSize(v int64) {
 	o.QuotaSize = &v
 }
 
 // GetResidentUsers returns the ResidentUsers field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetResidentUsers() int32 {
+func (o *InventoryListMobileDevice) GetResidentUsers() int64 {
 	if o == nil || IsNil(o.ResidentUsers) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.ResidentUsers
@@ -1557,7 +1557,7 @@ func (o *InventoryListMobileDevice) GetResidentUsers() int32 {
 
 // GetResidentUsersOk returns a tuple with the ResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetResidentUsersOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetResidentUsersOk() (*int64, bool) {
 	if o == nil || IsNil(o.ResidentUsers) {
 		return nil, false
 	}
@@ -1573,8 +1573,8 @@ func (o *InventoryListMobileDevice) HasResidentUsers() bool {
 	return false
 }
 
-// SetResidentUsers gets a reference to the given int32 and assigns it to the ResidentUsers field.
-func (o *InventoryListMobileDevice) SetResidentUsers(v int32) {
+// SetResidentUsers gets a reference to the given int64 and assigns it to the ResidentUsers field.
+func (o *InventoryListMobileDevice) SetResidentUsers(v int64) {
 	o.ResidentUsers = &v
 }
 
@@ -1739,9 +1739,9 @@ func (o *InventoryListMobileDevice) SetTimeZone(v string) {
 }
 
 // GetUsedSpacePercentage returns the UsedSpacePercentage field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetUsedSpacePercentage() int32 {
+func (o *InventoryListMobileDevice) GetUsedSpacePercentage() int64 {
 	if o == nil || IsNil(o.UsedSpacePercentage) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UsedSpacePercentage
@@ -1749,7 +1749,7 @@ func (o *InventoryListMobileDevice) GetUsedSpacePercentage() int32 {
 
 // GetUsedSpacePercentageOk returns a tuple with the UsedSpacePercentage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetUsedSpacePercentageOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetUsedSpacePercentageOk() (*int64, bool) {
 	if o == nil || IsNil(o.UsedSpacePercentage) {
 		return nil, false
 	}
@@ -1765,8 +1765,8 @@ func (o *InventoryListMobileDevice) HasUsedSpacePercentage() bool {
 	return false
 }
 
-// SetUsedSpacePercentage gets a reference to the given int32 and assigns it to the UsedSpacePercentage field.
-func (o *InventoryListMobileDevice) SetUsedSpacePercentage(v int32) {
+// SetUsedSpacePercentage gets a reference to the given int64 and assigns it to the UsedSpacePercentage field.
+func (o *InventoryListMobileDevice) SetUsedSpacePercentage(v int64) {
 	o.UsedSpacePercentage = &v
 }
 
@@ -2123,9 +2123,9 @@ func (o *InventoryListMobileDevice) SetLeaseExpirationDate(v time.Time) {
 }
 
 // GetLifeExpectancyYears returns the LifeExpectancyYears field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetLifeExpectancyYears() int32 {
+func (o *InventoryListMobileDevice) GetLifeExpectancyYears() int64 {
 	if o == nil || IsNil(o.LifeExpectancyYears) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LifeExpectancyYears
@@ -2133,7 +2133,7 @@ func (o *InventoryListMobileDevice) GetLifeExpectancyYears() int32 {
 
 // GetLifeExpectancyYearsOk returns a tuple with the LifeExpectancyYears field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetLifeExpectancyYearsOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetLifeExpectancyYearsOk() (*int64, bool) {
 	if o == nil || IsNil(o.LifeExpectancyYears) {
 		return nil, false
 	}
@@ -2149,8 +2149,8 @@ func (o *InventoryListMobileDevice) HasLifeExpectancyYears() bool {
 	return false
 }
 
-// SetLifeExpectancyYears gets a reference to the given int32 and assigns it to the LifeExpectancyYears field.
-func (o *InventoryListMobileDevice) SetLifeExpectancyYears(v int32) {
+// SetLifeExpectancyYears gets a reference to the given int64 and assigns it to the LifeExpectancyYears field.
+func (o *InventoryListMobileDevice) SetLifeExpectancyYears(v int64) {
 	o.LifeExpectancyYears = &v
 }
 
@@ -2667,9 +2667,9 @@ func (o *InventoryListMobileDevice) SetPasscodeCompliantWithProfile(v bool) {
 }
 
 // GetPasscodeLockGracePeriodEnforcedSeconds returns the PasscodeLockGracePeriodEnforcedSeconds field value if set, zero value otherwise.
-func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSeconds() int32 {
+func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSeconds() int64 {
 	if o == nil || IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasscodeLockGracePeriodEnforcedSeconds
@@ -2677,7 +2677,7 @@ func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSeconds() 
 
 // GetPasscodeLockGracePeriodEnforcedSecondsOk returns a tuple with the PasscodeLockGracePeriodEnforcedSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int32, bool) {
+func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
 		return nil, false
 	}
@@ -2693,8 +2693,8 @@ func (o *InventoryListMobileDevice) HasPasscodeLockGracePeriodEnforcedSeconds() 
 	return false
 }
 
-// SetPasscodeLockGracePeriodEnforcedSeconds gets a reference to the given int32 and assigns it to the PasscodeLockGracePeriodEnforcedSeconds field.
-func (o *InventoryListMobileDevice) SetPasscodeLockGracePeriodEnforcedSeconds(v int32) {
+// SetPasscodeLockGracePeriodEnforcedSeconds gets a reference to the given int64 and assigns it to the PasscodeLockGracePeriodEnforcedSeconds field.
+func (o *InventoryListMobileDevice) SetPasscodeLockGracePeriodEnforcedSeconds(v int64) {
 	o.PasscodeLockGracePeriodEnforcedSeconds = &v
 }
 

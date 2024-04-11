@@ -11,19 +11,19 @@ Name | Type | Description | Notes
 **PoNumber** | **string** |  | 
 **Vendor** | **string** |  | 
 **PurchasePrice** | **string** |  | 
-**LifeExpectancy** | **int32** |  | 
+**LifeExpectancy** | **int64** |  | 
 **PurchasingAccount** | **string** |  | 
 **PurchasingContact** | **string** |  | 
 **LeaseDate** | **string** |  | 
 **PoDate** | **string** |  | 
 **WarrantyDate** | **string** |  | 
-**VersionLock** | **int32** |  | 
+**VersionLock** | **int64** |  | 
 
 ## Methods
 
 ### NewPrestagePurchasingInformationV2
 
-`func NewPrestagePurchasingInformationV2(id string, leased bool, purchased bool, appleCareId string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int32, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int32, ) *PrestagePurchasingInformationV2`
+`func NewPrestagePurchasingInformationV2(id string, leased bool, purchased bool, appleCareId string, poNumber string, vendor string, purchasePrice string, lifeExpectancy int64, purchasingAccount string, purchasingContact string, leaseDate string, poDate string, warrantyDate string, versionLock int64, ) *PrestagePurchasingInformationV2`
 
 NewPrestagePurchasingInformationV2 instantiates a new PrestagePurchasingInformationV2 object
 This constructor will assign default values to properties that have it defined,
@@ -180,20 +180,20 @@ SetPurchasePrice sets PurchasePrice field to given value.
 
 ### GetLifeExpectancy
 
-`func (o *PrestagePurchasingInformationV2) GetLifeExpectancy() int32`
+`func (o *PrestagePurchasingInformationV2) GetLifeExpectancy() int64`
 
 GetLifeExpectancy returns the LifeExpectancy field if non-nil, zero value otherwise.
 
 ### GetLifeExpectancyOk
 
-`func (o *PrestagePurchasingInformationV2) GetLifeExpectancyOk() (*int32, bool)`
+`func (o *PrestagePurchasingInformationV2) GetLifeExpectancyOk() (*int64, bool)`
 
 GetLifeExpectancyOk returns a tuple with the LifeExpectancy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifeExpectancy
 
-`func (o *PrestagePurchasingInformationV2) SetLifeExpectancy(v int32)`
+`func (o *PrestagePurchasingInformationV2) SetLifeExpectancy(v int64)`
 
 SetLifeExpectancy sets LifeExpectancy field to given value.
 
@@ -300,20 +300,20 @@ SetWarrantyDate sets WarrantyDate field to given value.
 
 ### GetVersionLock
 
-`func (o *PrestagePurchasingInformationV2) GetVersionLock() int32`
+`func (o *PrestagePurchasingInformationV2) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *PrestagePurchasingInformationV2) GetVersionLockOk() (*int32, bool)`
+`func (o *PrestagePurchasingInformationV2) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *PrestagePurchasingInformationV2) SetVersionLock(v int32)`
+`func (o *PrestagePurchasingInformationV2) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

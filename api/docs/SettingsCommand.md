@@ -11,14 +11,14 @@ Name | Type | Description | Notes
 **DataRoaming** | Pointer to [**DataRoamingSetting**](DataRoamingSetting.md) |  | [optional] 
 **VoiceRoaming** | Pointer to [**VoiceRoamingSetting**](VoiceRoamingSetting.md) |  | [optional] 
 **PersonalHotspot** | Pointer to [**PersonalHotspotSetting**](PersonalHotspotSetting.md) |  | [optional] 
-**MaximumResidentUsers** | Pointer to **int32** |  | [optional] 
+**MaximumResidentUsers** | Pointer to **int64** |  | [optional] 
 **DeviceName** | Pointer to **string** |  | [optional] 
 **ApplicationAttributes** | Pointer to [**ApplicationAttributes**](ApplicationAttributes.md) |  | [optional] 
 **SharedDeviceConfiguration** | Pointer to [**SharedDeviceConfiguration**](SharedDeviceConfiguration.md) |  | [optional] 
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
 **TimeZone** | Pointer to **string** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
-**PasscodeLockGracePeriod** | Pointer to **int32** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **int64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
 
 ## Methods
 
@@ -216,20 +216,20 @@ HasPersonalHotspot returns a boolean if a field has been set.
 
 ### GetMaximumResidentUsers
 
-`func (o *SettingsCommand) GetMaximumResidentUsers() int32`
+`func (o *SettingsCommand) GetMaximumResidentUsers() int64`
 
 GetMaximumResidentUsers returns the MaximumResidentUsers field if non-nil, zero value otherwise.
 
 ### GetMaximumResidentUsersOk
 
-`func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int32, bool)`
+`func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int64, bool)`
 
 GetMaximumResidentUsersOk returns a tuple with the MaximumResidentUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumResidentUsers
 
-`func (o *SettingsCommand) SetMaximumResidentUsers(v int32)`
+`func (o *SettingsCommand) SetMaximumResidentUsers(v int64)`
 
 SetMaximumResidentUsers sets MaximumResidentUsers field to given value.
 
@@ -391,20 +391,20 @@ HasSoftwareUpdateSettings returns a boolean if a field has been set.
 
 ### GetPasscodeLockGracePeriod
 
-`func (o *SettingsCommand) GetPasscodeLockGracePeriod() int32`
+`func (o *SettingsCommand) GetPasscodeLockGracePeriod() int64`
 
 GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field if non-nil, zero value otherwise.
 
 ### GetPasscodeLockGracePeriodOk
 
-`func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int32, bool)`
+`func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int64, bool)`
 
 GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasscodeLockGracePeriod
 
-`func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int32)`
+`func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int64)`
 
 SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
 

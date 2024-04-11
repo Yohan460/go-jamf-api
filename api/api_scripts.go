@@ -150,18 +150,18 @@ type ScriptsAPIService service
 type ScriptsAPIV1ScriptsGetRequest struct {
 	ctx context.Context
 	ApiService ScriptsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r ScriptsAPIV1ScriptsGetRequest) Page(page int32) ScriptsAPIV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) Page(page int64) ScriptsAPIV1ScriptsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ScriptsAPIV1ScriptsGetRequest) PageSize(pageSize int32) ScriptsAPIV1ScriptsGetRequest {
+func (r ScriptsAPIV1ScriptsGetRequest) PageSize(pageSize int64) ScriptsAPIV1ScriptsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -221,13 +221,13 @@ func (a *ScriptsAPIService) V1ScriptsGetExecute(r ScriptsAPIV1ScriptsGetRequest)
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -626,18 +626,18 @@ type ScriptsAPIV1ScriptsIdHistoryGetRequest struct {
 	ctx context.Context
 	ApiService ScriptsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Page(page int32) ScriptsAPIV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) Page(page int64) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) PageSize(pageSize int32) ScriptsAPIV1ScriptsIdHistoryGetRequest {
+func (r ScriptsAPIV1ScriptsIdHistoryGetRequest) PageSize(pageSize int64) ScriptsAPIV1ScriptsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -701,13 +701,13 @@ func (a *ScriptsAPIService) V1ScriptsIdHistoryGetExecute(r ScriptsAPIV1ScriptsId
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

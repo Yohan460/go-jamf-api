@@ -23,23 +23,23 @@ Return all Jamf Pro user acounts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSessionPreviewAPI.UserGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UserGet`: []Account
-    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserSessionPreviewAPI.UserGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UserGet`: []Account
+	fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Update values in the User's current session
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    session := *openapiclient.NewSession() // Session | Values to update in user's current session. (optional)
+	session := *openapiclient.NewSession() // Session | Values to update in user's current session. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSessionPreviewAPI.UserUpdateSessionPost(context.Background()).Session(session).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserUpdateSessionPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UserUpdateSessionPost`: Session
-    fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserUpdateSessionPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserSessionPreviewAPI.UserUpdateSessionPost(context.Background()).Session(session).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserSessionPreviewAPI.UserUpdateSessionPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UserUpdateSessionPost`: Session
+	fmt.Fprintf(os.Stdout, "Response from `UserSessionPreviewAPI.UserUpdateSessionPost`: %v\n", resp)
 }
 ```
 

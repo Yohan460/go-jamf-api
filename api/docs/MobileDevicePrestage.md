@@ -11,23 +11,23 @@ Name | Type | Description | Notes
 **SupportEmailAddress** | **string** |  | 
 **Department** | **string** |  | 
 **IsDefaultPrestage** | **bool** |  | 
-**EnrollmentSiteId** | **int32** |  | 
+**EnrollmentSiteId** | **int64** |  | 
 **IsKeepExistingSiteMembership** | **bool** |  | 
 **IsKeepExistingLocationInformation** | **bool** |  | 
 **IsRequireAuthentication** | **bool** |  | 
 **AuthenticationPrompt** | **string** |  | 
 **IsPreventActivationLock** | **bool** |  | 
 **IsEnableDeviceBasedActivationLock** | **bool** |  | 
-**DeviceEnrollmentProgramInstanceId** | **int32** |  | 
+**DeviceEnrollmentProgramInstanceId** | **int64** |  | 
 **SkipSetupItems** | Pointer to **map[string]bool** |  | [optional] 
 **LocationInformation** | [**LocationInformation**](LocationInformation.md) |  | 
 **PurchasingInformation** | [**PrestagePurchasingInformation**](PrestagePurchasingInformation.md) |  | 
 **AnchorCertificates** | Pointer to **[]string** | The Base64 encoded PEM Certificate | [optional] 
-**EnrollmentCustomizationId** | Pointer to **int32** |  | [optional] 
+**EnrollmentCustomizationId** | Pointer to **int64** |  | [optional] 
 **IsAllowPairing** | **bool** |  | 
 **IsMultiUser** | **bool** |  | 
 **IsSupervised** | **bool** |  | 
-**MaximumSharedAccounts** | **int32** |  | 
+**MaximumSharedAccounts** | **int64** |  | 
 **IsAutoAdvanceSetup** | **bool** |  | 
 **IsConfigureDeviceBeforeSetupAssistant** | **bool** |  | 
 **Language** | Pointer to **string** |  | [optional] 
@@ -38,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewMobileDevicePrestage
 
-`func NewMobileDevicePrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int32, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int32, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, isAllowPairing bool, isMultiUser bool, isSupervised bool, maximumSharedAccounts int32, isAutoAdvanceSetup bool, isConfigureDeviceBeforeSetupAssistant bool, ) *MobileDevicePrestage`
+`func NewMobileDevicePrestage(displayName string, isMandatory bool, isMdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, isDefaultPrestage bool, enrollmentSiteId int64, isKeepExistingSiteMembership bool, isKeepExistingLocationInformation bool, isRequireAuthentication bool, authenticationPrompt string, isPreventActivationLock bool, isEnableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId int64, locationInformation LocationInformation, purchasingInformation PrestagePurchasingInformation, isAllowPairing bool, isMultiUser bool, isSupervised bool, maximumSharedAccounts int64, isAutoAdvanceSetup bool, isConfigureDeviceBeforeSetupAssistant bool, ) *MobileDevicePrestage`
 
 NewMobileDevicePrestage instantiates a new MobileDevicePrestage object
 This constructor will assign default values to properties that have it defined,
@@ -195,20 +195,20 @@ SetIsDefaultPrestage sets IsDefaultPrestage field to given value.
 
 ### GetEnrollmentSiteId
 
-`func (o *MobileDevicePrestage) GetEnrollmentSiteId() int32`
+`func (o *MobileDevicePrestage) GetEnrollmentSiteId() int64`
 
 GetEnrollmentSiteId returns the EnrollmentSiteId field if non-nil, zero value otherwise.
 
 ### GetEnrollmentSiteIdOk
 
-`func (o *MobileDevicePrestage) GetEnrollmentSiteIdOk() (*int32, bool)`
+`func (o *MobileDevicePrestage) GetEnrollmentSiteIdOk() (*int64, bool)`
 
 GetEnrollmentSiteIdOk returns a tuple with the EnrollmentSiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnrollmentSiteId
 
-`func (o *MobileDevicePrestage) SetEnrollmentSiteId(v int32)`
+`func (o *MobileDevicePrestage) SetEnrollmentSiteId(v int64)`
 
 SetEnrollmentSiteId sets EnrollmentSiteId field to given value.
 
@@ -335,20 +335,20 @@ SetIsEnableDeviceBasedActivationLock sets IsEnableDeviceBasedActivationLock fiel
 
 ### GetDeviceEnrollmentProgramInstanceId
 
-`func (o *MobileDevicePrestage) GetDeviceEnrollmentProgramInstanceId() int32`
+`func (o *MobileDevicePrestage) GetDeviceEnrollmentProgramInstanceId() int64`
 
 GetDeviceEnrollmentProgramInstanceId returns the DeviceEnrollmentProgramInstanceId field if non-nil, zero value otherwise.
 
 ### GetDeviceEnrollmentProgramInstanceIdOk
 
-`func (o *MobileDevicePrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int32, bool)`
+`func (o *MobileDevicePrestage) GetDeviceEnrollmentProgramInstanceIdOk() (*int64, bool)`
 
 GetDeviceEnrollmentProgramInstanceIdOk returns a tuple with the DeviceEnrollmentProgramInstanceId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeviceEnrollmentProgramInstanceId
 
-`func (o *MobileDevicePrestage) SetDeviceEnrollmentProgramInstanceId(v int32)`
+`func (o *MobileDevicePrestage) SetDeviceEnrollmentProgramInstanceId(v int64)`
 
 SetDeviceEnrollmentProgramInstanceId sets DeviceEnrollmentProgramInstanceId field to given value.
 
@@ -445,20 +445,20 @@ HasAnchorCertificates returns a boolean if a field has been set.
 
 ### GetEnrollmentCustomizationId
 
-`func (o *MobileDevicePrestage) GetEnrollmentCustomizationId() int32`
+`func (o *MobileDevicePrestage) GetEnrollmentCustomizationId() int64`
 
 GetEnrollmentCustomizationId returns the EnrollmentCustomizationId field if non-nil, zero value otherwise.
 
 ### GetEnrollmentCustomizationIdOk
 
-`func (o *MobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int32, bool)`
+`func (o *MobileDevicePrestage) GetEnrollmentCustomizationIdOk() (*int64, bool)`
 
 GetEnrollmentCustomizationIdOk returns a tuple with the EnrollmentCustomizationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnrollmentCustomizationId
 
-`func (o *MobileDevicePrestage) SetEnrollmentCustomizationId(v int32)`
+`func (o *MobileDevicePrestage) SetEnrollmentCustomizationId(v int64)`
 
 SetEnrollmentCustomizationId sets EnrollmentCustomizationId field to given value.
 
@@ -530,20 +530,20 @@ SetIsSupervised sets IsSupervised field to given value.
 
 ### GetMaximumSharedAccounts
 
-`func (o *MobileDevicePrestage) GetMaximumSharedAccounts() int32`
+`func (o *MobileDevicePrestage) GetMaximumSharedAccounts() int64`
 
 GetMaximumSharedAccounts returns the MaximumSharedAccounts field if non-nil, zero value otherwise.
 
 ### GetMaximumSharedAccountsOk
 
-`func (o *MobileDevicePrestage) GetMaximumSharedAccountsOk() (*int32, bool)`
+`func (o *MobileDevicePrestage) GetMaximumSharedAccountsOk() (*int64, bool)`
 
 GetMaximumSharedAccountsOk returns a tuple with the MaximumSharedAccounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumSharedAccounts
 
-`func (o *MobileDevicePrestage) SetMaximumSharedAccounts(v int32)`
+`func (o *MobileDevicePrestage) SetMaximumSharedAccounts(v int64)`
 
 SetMaximumSharedAccounts sets MaximumSharedAccounts field to given value.
 

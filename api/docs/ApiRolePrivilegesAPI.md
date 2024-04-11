@@ -23,23 +23,23 @@ Get the current Jamf API Role Privileges
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ApiRolePrivilegesGet`: ApiRolePrivileges
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ApiRolePrivilegesGet`: ApiRolePrivileges
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolePrivilegesAPI.V1ApiRolePrivilegesGet`: %v\n", resp)
 }
 ```
 
@@ -84,25 +84,25 @@ Search the current Jamf API Role Privileges
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    name := "Flush" // string | The partial or complete privilege name we are searching for
-    limit := "50" // string | Limit the query results, defaults to 15 (optional) (default to "15")
+	name := "Flush" // string | The partial or complete privilege name we are searching for
+	limit := "50" // string | Limit the query results, defaults to 15 (optional) (default to "15")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet(context.Background()).Name(name).Limit(limit).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ApiRolePrivilegesSearchGet`: ApiRolePrivileges
-    fmt.Fprintf(os.Stdout, "Response from `ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet(context.Background()).Name(name).Limit(limit).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ApiRolePrivilegesSearchGet`: ApiRolePrivileges
+	fmt.Fprintf(os.Stdout, "Response from `ApiRolePrivilegesAPI.V1ApiRolePrivilegesSearchGet`: %v\n", resp)
 }
 ```
 

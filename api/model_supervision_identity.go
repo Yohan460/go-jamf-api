@@ -19,7 +19,7 @@ var _ MappedNullable = &SupervisionIdentity{}
 
 // SupervisionIdentity struct for SupervisionIdentity
 type SupervisionIdentity struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	DisplayName *string `json:"displayName,omitempty"`
 	CommonName *string `json:"commonName,omitempty"`
 	ExpirationDate *string `json:"expirationDate,omitempty"`
@@ -43,9 +43,9 @@ func NewSupervisionIdentityWithDefaults() *SupervisionIdentity {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *SupervisionIdentity) GetId() int32 {
+func (o *SupervisionIdentity) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -53,7 +53,7 @@ func (o *SupervisionIdentity) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SupervisionIdentity) GetIdOk() (*int32, bool) {
+func (o *SupervisionIdentity) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *SupervisionIdentity) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *SupervisionIdentity) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *SupervisionIdentity) SetId(v int64) {
 	o.Id = &v
 }
 

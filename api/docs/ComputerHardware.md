@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **ModelIdentifier** | Pointer to **string** |  | [optional] [readonly] 
 **SerialNumber** | Pointer to **string** |  | [optional] [readonly] 
 **ProcessorSpeedMhz** | Pointer to **int64** | Processor Speed in MHz. | [optional] [readonly] 
-**ProcessorCount** | Pointer to **int32** |  | [optional] [readonly] 
-**CoreCount** | Pointer to **int32** |  | [optional] [readonly] 
+**ProcessorCount** | Pointer to **int64** |  | [optional] [readonly] 
+**CoreCount** | Pointer to **int64** |  | [optional] [readonly] 
 **ProcessorType** | Pointer to **string** |  | [optional] [readonly] 
 **ProcessorArchitecture** | Pointer to **string** |  | [optional] [readonly] 
 **BusSpeedMhz** | Pointer to **int64** |  | [optional] [readonly] 
@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **AltNetworkAdapterType** | Pointer to **string** |  | [optional] 
 **AltMacAddress** | Pointer to **string** |  | [optional] 
 **TotalRamMegabytes** | Pointer to **int64** | Total RAM Size in MB. | [optional] [readonly] 
-**OpenRamSlots** | Pointer to **int32** | Available RAM slots. | [optional] [readonly] 
-**BatteryCapacityPercent** | Pointer to **int32** | Remaining percentage of battery power. | [optional] [readonly] 
+**OpenRamSlots** | Pointer to **int64** | Available RAM slots. | [optional] [readonly] 
+**BatteryCapacityPercent** | Pointer to **int64** | Remaining percentage of battery power. | [optional] [readonly] 
 **SmcVersion** | Pointer to **string** |  | [optional] [readonly] 
 **NicSpeed** | Pointer to **string** |  | [optional] [readonly] 
 **OpticalDrive** | Pointer to **string** |  | [optional] [readonly] 
@@ -177,20 +177,20 @@ HasProcessorSpeedMhz returns a boolean if a field has been set.
 
 ### GetProcessorCount
 
-`func (o *ComputerHardware) GetProcessorCount() int32`
+`func (o *ComputerHardware) GetProcessorCount() int64`
 
 GetProcessorCount returns the ProcessorCount field if non-nil, zero value otherwise.
 
 ### GetProcessorCountOk
 
-`func (o *ComputerHardware) GetProcessorCountOk() (*int32, bool)`
+`func (o *ComputerHardware) GetProcessorCountOk() (*int64, bool)`
 
 GetProcessorCountOk returns a tuple with the ProcessorCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProcessorCount
 
-`func (o *ComputerHardware) SetProcessorCount(v int32)`
+`func (o *ComputerHardware) SetProcessorCount(v int64)`
 
 SetProcessorCount sets ProcessorCount field to given value.
 
@@ -202,20 +202,20 @@ HasProcessorCount returns a boolean if a field has been set.
 
 ### GetCoreCount
 
-`func (o *ComputerHardware) GetCoreCount() int32`
+`func (o *ComputerHardware) GetCoreCount() int64`
 
 GetCoreCount returns the CoreCount field if non-nil, zero value otherwise.
 
 ### GetCoreCountOk
 
-`func (o *ComputerHardware) GetCoreCountOk() (*int32, bool)`
+`func (o *ComputerHardware) GetCoreCountOk() (*int64, bool)`
 
 GetCoreCountOk returns a tuple with the CoreCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCoreCount
 
-`func (o *ComputerHardware) SetCoreCount(v int32)`
+`func (o *ComputerHardware) SetCoreCount(v int64)`
 
 SetCoreCount sets CoreCount field to given value.
 
@@ -452,20 +452,20 @@ HasTotalRamMegabytes returns a boolean if a field has been set.
 
 ### GetOpenRamSlots
 
-`func (o *ComputerHardware) GetOpenRamSlots() int32`
+`func (o *ComputerHardware) GetOpenRamSlots() int64`
 
 GetOpenRamSlots returns the OpenRamSlots field if non-nil, zero value otherwise.
 
 ### GetOpenRamSlotsOk
 
-`func (o *ComputerHardware) GetOpenRamSlotsOk() (*int32, bool)`
+`func (o *ComputerHardware) GetOpenRamSlotsOk() (*int64, bool)`
 
 GetOpenRamSlotsOk returns a tuple with the OpenRamSlots field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOpenRamSlots
 
-`func (o *ComputerHardware) SetOpenRamSlots(v int32)`
+`func (o *ComputerHardware) SetOpenRamSlots(v int64)`
 
 SetOpenRamSlots sets OpenRamSlots field to given value.
 
@@ -477,20 +477,20 @@ HasOpenRamSlots returns a boolean if a field has been set.
 
 ### GetBatteryCapacityPercent
 
-`func (o *ComputerHardware) GetBatteryCapacityPercent() int32`
+`func (o *ComputerHardware) GetBatteryCapacityPercent() int64`
 
 GetBatteryCapacityPercent returns the BatteryCapacityPercent field if non-nil, zero value otherwise.
 
 ### GetBatteryCapacityPercentOk
 
-`func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int32, bool)`
+`func (o *ComputerHardware) GetBatteryCapacityPercentOk() (*int64, bool)`
 
 GetBatteryCapacityPercentOk returns a tuple with the BatteryCapacityPercent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatteryCapacityPercent
 
-`func (o *ComputerHardware) SetBatteryCapacityPercent(v int32)`
+`func (o *ComputerHardware) SetBatteryCapacityPercent(v int64)`
 
 SetBatteryCapacityPercent sets BatteryCapacityPercent field to given value.
 

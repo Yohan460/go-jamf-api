@@ -25,21 +25,21 @@ Delete the CSA token exchange - This will disable Jamf Pro's ability to authenti
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CsaAPI.V1CsaTokenDelete(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CsaAPI.V1CsaTokenDelete(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -84,23 +84,23 @@ Get details regarding the CSA token exchange
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaAPI.V1CsaTokenGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CsaTokenGet`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CsaAPI.V1CsaTokenGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CsaTokenGet`: CsaToken
+	fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenGet`: %v\n", resp)
 }
 ```
 
@@ -145,24 +145,24 @@ Initialize the CSA token exchange
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    jamfNationCredentials := *openapiclient.NewJamfNationCredentials() // JamfNationCredentials | Jamf Nation username and password  (optional)
+	jamfNationCredentials := *openapiclient.NewJamfNationCredentials() // JamfNationCredentials | Jamf Nation username and password  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaAPI.V1CsaTokenPost(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CsaTokenPost`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CsaAPI.V1CsaTokenPost(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CsaTokenPost`: CsaToken
+	fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPost`: %v\n", resp)
 }
 ```
 
@@ -211,24 +211,24 @@ Re-initialize the CSA token exchange with new credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    jamfNationCredentials := *openapiclient.NewJamfNationCredentials() // JamfNationCredentials | Jamf Nation username and password  (optional)
+	jamfNationCredentials := *openapiclient.NewJamfNationCredentials() // JamfNationCredentials | Jamf Nation username and password  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CsaAPI.V1CsaTokenPut(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1CsaTokenPut`: CsaToken
-    fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CsaAPI.V1CsaTokenPut(context.Background()).JamfNationCredentials(jamfNationCredentials).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CsaAPI.V1CsaTokenPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1CsaTokenPut`: CsaToken
+	fmt.Fprintf(os.Stdout, "Response from `CsaAPI.V1CsaTokenPut`: %v\n", resp)
 }
 ```
 

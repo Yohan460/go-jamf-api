@@ -23,7 +23,7 @@ type StaticGroupSummary struct {
 	GroupName *string `json:"groupName,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`
 	// membership count
-	Count *int32 `json:"count,omitempty"`
+	Count *int64 `json:"count,omitempty"`
 }
 
 // NewStaticGroupSummary instantiates a new StaticGroupSummary object
@@ -140,9 +140,9 @@ func (o *StaticGroupSummary) SetSiteId(v string) {
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
-func (o *StaticGroupSummary) GetCount() int32 {
+func (o *StaticGroupSummary) GetCount() int64 {
 	if o == nil || IsNil(o.Count) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Count
@@ -150,7 +150,7 @@ func (o *StaticGroupSummary) GetCount() int32 {
 
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StaticGroupSummary) GetCountOk() (*int32, bool) {
+func (o *StaticGroupSummary) GetCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
@@ -166,8 +166,8 @@ func (o *StaticGroupSummary) HasCount() bool {
 	return false
 }
 
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
-func (o *StaticGroupSummary) SetCount(v int32) {
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *StaticGroupSummary) SetCount(v int64) {
 	o.Count = &v
 }
 

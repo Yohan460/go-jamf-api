@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **Downloaded** | Pointer to **bool** |  | [optional] 
 **ProductKey** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
-**DeferralsRemaining** | Pointer to **int32** | not applicable to all managed software update statuses | [optional] 
-**MaxDeferrals** | Pointer to **int32** | not applicable to all managed software update statuses | [optional] 
+**DeferralsRemaining** | Pointer to **int64** | not applicable to all managed software update statuses | [optional] 
+**MaxDeferrals** | Pointer to **int64** | not applicable to all managed software update statuses | [optional] 
 **NextScheduledInstall** | Pointer to **time.Time** | not applicable to all managed software update statuses | [optional] 
 **PastNotifications** | Pointer to [**[]time.Time**](time.Time.md) | not applicable to all managed software update statuses | [optional] 
 **Created** | Pointer to **time.Time** |  | [optional] 
@@ -188,20 +188,20 @@ HasStatus returns a boolean if a field has been set.
 
 ### GetDeferralsRemaining
 
-`func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemaining() int32`
+`func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemaining() int64`
 
 GetDeferralsRemaining returns the DeferralsRemaining field if non-nil, zero value otherwise.
 
 ### GetDeferralsRemainingOk
 
-`func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemainingOk() (*int32, bool)`
+`func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemainingOk() (*int64, bool)`
 
 GetDeferralsRemainingOk returns a tuple with the DeferralsRemaining field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDeferralsRemaining
 
-`func (o *ManagedSoftwareUpdateStatus) SetDeferralsRemaining(v int32)`
+`func (o *ManagedSoftwareUpdateStatus) SetDeferralsRemaining(v int64)`
 
 SetDeferralsRemaining sets DeferralsRemaining field to given value.
 
@@ -213,20 +213,20 @@ HasDeferralsRemaining returns a boolean if a field has been set.
 
 ### GetMaxDeferrals
 
-`func (o *ManagedSoftwareUpdateStatus) GetMaxDeferrals() int32`
+`func (o *ManagedSoftwareUpdateStatus) GetMaxDeferrals() int64`
 
 GetMaxDeferrals returns the MaxDeferrals field if non-nil, zero value otherwise.
 
 ### GetMaxDeferralsOk
 
-`func (o *ManagedSoftwareUpdateStatus) GetMaxDeferralsOk() (*int32, bool)`
+`func (o *ManagedSoftwareUpdateStatus) GetMaxDeferralsOk() (*int64, bool)`
 
 GetMaxDeferralsOk returns a tuple with the MaxDeferrals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxDeferrals
 
-`func (o *ManagedSoftwareUpdateStatus) SetMaxDeferrals(v int32)`
+`func (o *ManagedSoftwareUpdateStatus) SetMaxDeferrals(v int64)`
 
 SetMaxDeferrals sets MaxDeferrals field to given value.
 

@@ -35,25 +35,25 @@ Get LAPS password viewed history.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    username := "username_example" // string | user name to view audit information for
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name to view audit information for
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(context.Background(), clientManagementId, username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: LapsPasswordAuditsResults
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(context.Background(), clientManagementId, username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: LapsPasswordAuditsResults
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: %v\n", resp)
 }
 ```
 
@@ -108,25 +108,25 @@ Get current LAPS password for specified username on a client.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    username := "username_example" // string | user name for the account
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name for the account
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(context.Background(), clientManagementId, username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: LapsPasswordResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(context.Background(), clientManagementId, username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: LapsPasswordResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: %v\n", resp)
 }
 ```
 
@@ -181,24 +181,24 @@ Get the LAPS capable admin accounts for a device.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet(context.Background(), clientManagementId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordClientManagementIdAccountsGet`: LapsUserResults
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet(context.Background(), clientManagementId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordClientManagementIdAccountsGet`: LapsUserResults
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet`: %v\n", resp)
 }
 ```
 
@@ -251,25 +251,25 @@ Set the LAPS password for a device.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    lapsUserPasswordRequest := *openapiclient.NewLapsUserPasswordRequest() // LapsUserPasswordRequest | LAPS password to set
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	lapsUserPasswordRequest := *openapiclient.NewLapsUserPasswordRequest() // LapsUserPasswordRequest | LAPS password to set
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut(context.Background(), clientManagementId).LapsUserPasswordRequest(lapsUserPasswordRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordClientManagementIdSetPasswordPut`: LapsUserPasswordResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut(context.Background(), clientManagementId).LapsUserPasswordRequest(lapsUserPasswordRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordClientManagementIdSetPasswordPut`: LapsUserPasswordResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut`: %v\n", resp)
 }
 ```
 
@@ -323,23 +323,23 @@ Get the current LAPS settings.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordSettingsGet`: LapsSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordSettingsGet`: LapsSettingsResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -384,24 +384,24 @@ Update settings for LAPS.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    lapsSettingsRequest := *openapiclient.NewLapsSettingsRequest(false, int32(3600), int32(7776000)) // LapsSettingsRequest | LAPS settings to update
+	lapsSettingsRequest := *openapiclient.NewLapsSettingsRequest(false, int64(3600), int64(7776000)) // LapsSettingsRequest | LAPS settings to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut(context.Background()).LapsSettingsRequest(lapsSettingsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LocalAdminPasswordSettingsPut`: LapsSettingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut(context.Background()).LapsSettingsRequest(lapsSettingsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LocalAdminPasswordSettingsPut`: LapsSettingsResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut`: %v\n", resp)
 }
 ```
 
@@ -450,25 +450,25 @@ Get LAPS password viewed history.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    username := "username_example" // string | user name to view audit information for
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name to view audit information for
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(context.Background(), clientManagementId, username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: LapsPasswordAuditsResultsV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(context.Background(), clientManagementId, username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: LapsPasswordAuditsResultsV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: %v\n", resp)
 }
 ```
 
@@ -523,25 +523,25 @@ Get LAPS historical records for target device and username.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    username := "username_example" // string | user name to view history for
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name to view history for
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet(context.Background(), clientManagementId, username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet`: LapsHistoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet(context.Background(), clientManagementId, username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet`: LapsHistoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -596,25 +596,25 @@ Get current LAPS password for specified username on a client.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    username := "username_example" // string | user name for the account
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name for the account
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(context.Background(), clientManagementId, username).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: LapsPasswordResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(context.Background(), clientManagementId, username).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: LapsPasswordResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: %v\n", resp)
 }
 ```
 
@@ -669,24 +669,24 @@ Get the LAPS capable admin accounts for a device.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet(context.Background(), clientManagementId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordClientManagementIdAccountsGet`: LapsUserResultsV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet(context.Background(), clientManagementId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountsGet`: LapsUserResultsV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountsGet`: %v\n", resp)
 }
 ```
 
@@ -739,25 +739,25 @@ Set the LAPS password for a device.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    clientManagementId := "clientManagementId_example" // string | client management id of target device.
-    lapsUserPasswordRequestV2 := *openapiclient.NewLapsUserPasswordRequestV2() // LapsUserPasswordRequestV2 | LAPS password to set
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	lapsUserPasswordRequestV2 := *openapiclient.NewLapsUserPasswordRequestV2() // LapsUserPasswordRequestV2 | LAPS password to set
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut(context.Background(), clientManagementId).LapsUserPasswordRequestV2(lapsUserPasswordRequestV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordClientManagementIdSetPasswordPut`: LapsUserPasswordResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut(context.Background(), clientManagementId).LapsUserPasswordRequestV2(lapsUserPasswordRequestV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdSetPasswordPut`: LapsUserPasswordResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdSetPasswordPut`: %v\n", resp)
 }
 ```
 
@@ -811,23 +811,23 @@ Get a list of the current devices and usernames with pending LAPS rotations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordPendingRotationsGet`: LapsPendingRotationResponse
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordPendingRotationsGet`: LapsPendingRotationResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordPendingRotationsGet`: %v\n", resp)
 }
 ```
 
@@ -872,23 +872,23 @@ Get the current LAPS settings.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordSettingsGet`: LapsSettingsResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordSettingsGet`: LapsSettingsResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -933,24 +933,24 @@ Update settings for LAPS.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    lapsSettingsRequestV2 := *openapiclient.NewLapsSettingsRequestV2(false, int32(3600), false, int32(7776000)) // LapsSettingsRequestV2 | LAPS settings to update
+	lapsSettingsRequestV2 := *openapiclient.NewLapsSettingsRequestV2(false, int64(3600), false, int64(7776000)) // LapsSettingsRequestV2 | LAPS settings to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut(context.Background()).LapsSettingsRequestV2(lapsSettingsRequestV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2LocalAdminPasswordSettingsPut`: LapsSettingsResponseV2
-    fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut(context.Background()).LapsSettingsRequestV2(lapsSettingsRequestV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordSettingsPut`: LapsSettingsResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordSettingsPut`: %v\n", resp)
 }
 ```
 

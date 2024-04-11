@@ -20,7 +20,7 @@ var _ MappedNullable = &InventoryPreloadCsvValidationError{}
 // InventoryPreloadCsvValidationError struct for InventoryPreloadCsvValidationError
 type InventoryPreloadCsvValidationError struct {
 	// HTTP status of the response
-	HttpStatus *int32 `json:"httpStatus,omitempty"`
+	HttpStatus *int64 `json:"httpStatus,omitempty"`
 	Errors []InventoryPreloadCsvValidationErrorCause `json:"errors,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewInventoryPreloadCsvValidationErrorWithDefaults() *InventoryPreloadCsvVal
 }
 
 // GetHttpStatus returns the HttpStatus field value if set, zero value otherwise.
-func (o *InventoryPreloadCsvValidationError) GetHttpStatus() int32 {
+func (o *InventoryPreloadCsvValidationError) GetHttpStatus() int64 {
 	if o == nil || IsNil(o.HttpStatus) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.HttpStatus
@@ -52,7 +52,7 @@ func (o *InventoryPreloadCsvValidationError) GetHttpStatus() int32 {
 
 // GetHttpStatusOk returns a tuple with the HttpStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadCsvValidationError) GetHttpStatusOk() (*int32, bool) {
+func (o *InventoryPreloadCsvValidationError) GetHttpStatusOk() (*int64, bool) {
 	if o == nil || IsNil(o.HttpStatus) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *InventoryPreloadCsvValidationError) HasHttpStatus() bool {
 	return false
 }
 
-// SetHttpStatus gets a reference to the given int32 and assigns it to the HttpStatus field.
-func (o *InventoryPreloadCsvValidationError) SetHttpStatus(v int32) {
+// SetHttpStatus gets a reference to the given int64 and assigns it to the HttpStatus field.
+func (o *InventoryPreloadCsvValidationError) SetHttpStatus(v int64) {
 	o.HttpStatus = &v
 }
 

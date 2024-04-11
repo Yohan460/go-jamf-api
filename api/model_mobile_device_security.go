@@ -25,10 +25,10 @@ type MobileDeviceSecurity struct {
 	PasscodePresent *bool `json:"passcodePresent,omitempty"`
 	PasscodeCompliant *bool `json:"passcodeCompliant,omitempty"`
 	PasscodeCompliantWithProfile *bool `json:"passcodeCompliantWithProfile,omitempty"`
-	HardwareEncryption *int32 `json:"hardwareEncryption,omitempty"`
+	HardwareEncryption *int64 `json:"hardwareEncryption,omitempty"`
 	ActivationLockEnabled *bool `json:"activationLockEnabled,omitempty"`
 	JailBreakDetected *bool `json:"jailBreakDetected,omitempty"`
-	PasscodeLockGracePeriodEnforcedSeconds *int32 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
+	PasscodeLockGracePeriodEnforcedSeconds *int64 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
 	PersonalDeviceProfileCurrent *bool `json:"personalDeviceProfileCurrent,omitempty"`
 	LostModeEnabled *bool `json:"lostModeEnabled,omitempty"`
 	LostModePersistent *bool `json:"lostModePersistent,omitempty"`
@@ -248,9 +248,9 @@ func (o *MobileDeviceSecurity) SetPasscodeCompliantWithProfile(v bool) {
 }
 
 // GetHardwareEncryption returns the HardwareEncryption field value if set, zero value otherwise.
-func (o *MobileDeviceSecurity) GetHardwareEncryption() int32 {
+func (o *MobileDeviceSecurity) GetHardwareEncryption() int64 {
 	if o == nil || IsNil(o.HardwareEncryption) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.HardwareEncryption
@@ -258,7 +258,7 @@ func (o *MobileDeviceSecurity) GetHardwareEncryption() int32 {
 
 // GetHardwareEncryptionOk returns a tuple with the HardwareEncryption field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceSecurity) GetHardwareEncryptionOk() (*int32, bool) {
+func (o *MobileDeviceSecurity) GetHardwareEncryptionOk() (*int64, bool) {
 	if o == nil || IsNil(o.HardwareEncryption) {
 		return nil, false
 	}
@@ -274,8 +274,8 @@ func (o *MobileDeviceSecurity) HasHardwareEncryption() bool {
 	return false
 }
 
-// SetHardwareEncryption gets a reference to the given int32 and assigns it to the HardwareEncryption field.
-func (o *MobileDeviceSecurity) SetHardwareEncryption(v int32) {
+// SetHardwareEncryption gets a reference to the given int64 and assigns it to the HardwareEncryption field.
+func (o *MobileDeviceSecurity) SetHardwareEncryption(v int64) {
 	o.HardwareEncryption = &v
 }
 
@@ -344,9 +344,9 @@ func (o *MobileDeviceSecurity) SetJailBreakDetected(v bool) {
 }
 
 // GetPasscodeLockGracePeriodEnforcedSeconds returns the PasscodeLockGracePeriodEnforcedSeconds field value if set, zero value otherwise.
-func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int32 {
+func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int64 {
 	if o == nil || IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasscodeLockGracePeriodEnforcedSeconds
@@ -354,7 +354,7 @@ func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int32
 
 // GetPasscodeLockGracePeriodEnforcedSecondsOk returns a tuple with the PasscodeLockGracePeriodEnforcedSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int32, bool) {
+func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
 		return nil, false
 	}
@@ -370,8 +370,8 @@ func (o *MobileDeviceSecurity) HasPasscodeLockGracePeriodEnforcedSeconds() bool 
 	return false
 }
 
-// SetPasscodeLockGracePeriodEnforcedSeconds gets a reference to the given int32 and assigns it to the PasscodeLockGracePeriodEnforcedSeconds field.
-func (o *MobileDeviceSecurity) SetPasscodeLockGracePeriodEnforcedSeconds(v int32) {
+// SetPasscodeLockGracePeriodEnforcedSeconds gets a reference to the given int64 and assigns it to the PasscodeLockGracePeriodEnforcedSeconds field.
+func (o *MobileDeviceSecurity) SetPasscodeLockGracePeriodEnforcedSeconds(v int64) {
 	o.PasscodeLockGracePeriodEnforcedSeconds = &v
 }
 

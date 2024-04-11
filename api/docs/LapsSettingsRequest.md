@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeployEnabled** | **bool** | When enabled, all appropriate computers will have the SetAutoAdminPassword command sent to them automatically. | 
-**PasswordRotationTime** | **int32** | The amount of time in seconds that the local admin password will be rotated after viewing. | 
-**AutoExpirationTime** | **int32** | The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed. | 
+**PasswordRotationTime** | **int64** | The amount of time in seconds that the local admin password will be rotated after viewing. | 
+**AutoExpirationTime** | **int64** | The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed. | 
 
 ## Methods
 
 ### NewLapsSettingsRequest
 
-`func NewLapsSettingsRequest(autoDeployEnabled bool, passwordRotationTime int32, autoExpirationTime int32, ) *LapsSettingsRequest`
+`func NewLapsSettingsRequest(autoDeployEnabled bool, passwordRotationTime int64, autoExpirationTime int64, ) *LapsSettingsRequest`
 
 NewLapsSettingsRequest instantiates a new LapsSettingsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -49,40 +49,40 @@ SetAutoDeployEnabled sets AutoDeployEnabled field to given value.
 
 ### GetPasswordRotationTime
 
-`func (o *LapsSettingsRequest) GetPasswordRotationTime() int32`
+`func (o *LapsSettingsRequest) GetPasswordRotationTime() int64`
 
 GetPasswordRotationTime returns the PasswordRotationTime field if non-nil, zero value otherwise.
 
 ### GetPasswordRotationTimeOk
 
-`func (o *LapsSettingsRequest) GetPasswordRotationTimeOk() (*int32, bool)`
+`func (o *LapsSettingsRequest) GetPasswordRotationTimeOk() (*int64, bool)`
 
 GetPasswordRotationTimeOk returns a tuple with the PasswordRotationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasswordRotationTime
 
-`func (o *LapsSettingsRequest) SetPasswordRotationTime(v int32)`
+`func (o *LapsSettingsRequest) SetPasswordRotationTime(v int64)`
 
 SetPasswordRotationTime sets PasswordRotationTime field to given value.
 
 
 ### GetAutoExpirationTime
 
-`func (o *LapsSettingsRequest) GetAutoExpirationTime() int32`
+`func (o *LapsSettingsRequest) GetAutoExpirationTime() int64`
 
 GetAutoExpirationTime returns the AutoExpirationTime field if non-nil, zero value otherwise.
 
 ### GetAutoExpirationTimeOk
 
-`func (o *LapsSettingsRequest) GetAutoExpirationTimeOk() (*int32, bool)`
+`func (o *LapsSettingsRequest) GetAutoExpirationTimeOk() (*int64, bool)`
 
 GetAutoExpirationTimeOk returns a tuple with the AutoExpirationTime field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoExpirationTime
 
-`func (o *LapsSettingsRequest) SetAutoExpirationTime(v int32)`
+`func (o *LapsSettingsRequest) SetAutoExpirationTime(v int64)`
 
 SetAutoExpirationTime sets AutoExpirationTime field to given value.
 

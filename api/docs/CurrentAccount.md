@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int32** |  | [optional] 
+**Id** | Pointer to **int64** |  | [optional] 
 **Username** | Pointer to **string** |  | [optional] 
 **RealName** | Pointer to **string** |  | [optional] 
 **Email** | Pointer to **string** |  | [optional] 
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **AccessLevel** | Pointer to **string** |  | [optional] 
 **PrivilegeSet** | Pointer to **string** |  | [optional] 
 **Privileges** | Pointer to **[]string** |  | [optional] 
-**GroupIds** | Pointer to **[]int32** |  | [optional] 
-**CurrentSiteId** | Pointer to **int32** |  | [optional] 
+**GroupIds** | Pointer to **[]int64** |  | [optional] 
+**CurrentSiteId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -37,20 +37,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *CurrentAccount) GetId() int32`
+`func (o *CurrentAccount) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *CurrentAccount) GetIdOk() (*int32, bool)`
+`func (o *CurrentAccount) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *CurrentAccount) SetId(v int32)`
+`func (o *CurrentAccount) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -262,20 +262,20 @@ HasPrivileges returns a boolean if a field has been set.
 
 ### GetGroupIds
 
-`func (o *CurrentAccount) GetGroupIds() []int32`
+`func (o *CurrentAccount) GetGroupIds() []int64`
 
 GetGroupIds returns the GroupIds field if non-nil, zero value otherwise.
 
 ### GetGroupIdsOk
 
-`func (o *CurrentAccount) GetGroupIdsOk() (*[]int32, bool)`
+`func (o *CurrentAccount) GetGroupIdsOk() (*[]int64, bool)`
 
 GetGroupIdsOk returns a tuple with the GroupIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupIds
 
-`func (o *CurrentAccount) SetGroupIds(v []int32)`
+`func (o *CurrentAccount) SetGroupIds(v []int64)`
 
 SetGroupIds sets GroupIds field to given value.
 
@@ -287,20 +287,20 @@ HasGroupIds returns a boolean if a field has been set.
 
 ### GetCurrentSiteId
 
-`func (o *CurrentAccount) GetCurrentSiteId() int32`
+`func (o *CurrentAccount) GetCurrentSiteId() int64`
 
 GetCurrentSiteId returns the CurrentSiteId field if non-nil, zero value otherwise.
 
 ### GetCurrentSiteIdOk
 
-`func (o *CurrentAccount) GetCurrentSiteIdOk() (*int32, bool)`
+`func (o *CurrentAccount) GetCurrentSiteIdOk() (*int64, bool)`
 
 GetCurrentSiteIdOk returns a tuple with the CurrentSiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentSiteId
 
-`func (o *CurrentAccount) SetCurrentSiteId(v int32)`
+`func (o *CurrentAccount) SetCurrentSiteId(v int64)`
 
 SetCurrentSiteId sets CurrentSiteId field to given value.
 

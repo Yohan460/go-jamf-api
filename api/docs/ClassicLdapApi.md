@@ -22,24 +22,24 @@ Get mappings for OnPrem Ldap configuration with given id.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | OnPrem Ldap identifier
+	id := "id_example" // string | OnPrem Ldap identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ClassicLdapAPI.V1ClassicLdapIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ClassicLdapAPI.V1ClassicLdapIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ClassicLdapIdGet`: ClassicLdapMappings
-    fmt.Fprintf(os.Stdout, "Response from `ClassicLdapAPI.V1ClassicLdapIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClassicLdapAPI.V1ClassicLdapIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClassicLdapAPI.V1ClassicLdapIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ClassicLdapIdGet`: ClassicLdapMappings
+	fmt.Fprintf(os.Stdout, "Response from `ClassicLdapAPI.V1ClassicLdapIdGet`: %v\n", resp)
 }
 ```
 

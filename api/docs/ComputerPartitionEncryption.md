@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PartitionName** | Pointer to **string** |  | [optional] 
 **PartitionFileVault2State** | Pointer to [**ComputerPartitionFileVault2State**](ComputerPartitionFileVault2State.md) |  | [optional] 
-**PartitionFileVault2Percent** | Pointer to **int32** |  | [optional] 
+**PartitionFileVault2Percent** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasPartitionFileVault2State returns a boolean if a field has been set.
 
 ### GetPartitionFileVault2Percent
 
-`func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int32`
+`func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int64`
 
 GetPartitionFileVault2Percent returns the PartitionFileVault2Percent field if non-nil, zero value otherwise.
 
 ### GetPartitionFileVault2PercentOk
 
-`func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int32, bool)`
+`func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int64, bool)`
 
 GetPartitionFileVault2PercentOk returns a tuple with the PartitionFileVault2Percent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartitionFileVault2Percent
 
-`func (o *ComputerPartitionEncryption) SetPartitionFileVault2Percent(v int32)`
+`func (o *ComputerPartitionEncryption) SetPartitionFileVault2Percent(v int64)`
 
 SetPartitionFileVault2Percent sets PartitionFileVault2Percent field to given value.
 

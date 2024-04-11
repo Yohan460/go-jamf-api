@@ -55,23 +55,23 @@ Get the Inventory Preload CSV template
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadCsvTemplateGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadCsvTemplateGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadCsvTemplateGet`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadCsvTemplateGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadCsvTemplateGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadCsvTemplateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadCsvTemplateGet`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadCsvTemplateGet`: %v\n", resp)
 }
 ```
 
@@ -116,21 +116,21 @@ Delete all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.InventoryPreloadDelete(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.InventoryPreloadDelete(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -175,27 +175,27 @@ Return all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string |  (optional) (default to "ASC")
-    sortBy := "sortBy_example" // string |  (optional) (default to "id")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string |  (optional) (default to "ASC")
+	sortBy := "sortBy_example" // string |  (optional) (default to "id")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadGet(context.Background()).Page(page).Pagesize(pagesize).Sort(sort).SortBy(sortBy).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadGet`: []InventoryPreloadRecordSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadGet(context.Background()).Page(page).Pagesize(pagesize).Sort(sort).SortBy(sortBy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadGet`: []InventoryPreloadRecordSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadGet`: %v\n", resp)
 }
 ```
 
@@ -210,8 +210,8 @@ Other parameters are passed through a pointer to a apiInventoryPreloadGetRequest
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pagesize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pagesize** | **int64** |  | [default to 100]
  **sort** | **string** |  | [default to &quot;ASC&quot;]
  **sortBy** | **string** |  | [default to &quot;id&quot;]
 
@@ -247,28 +247,28 @@ Get Inventory Preload history entries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -283,10 +283,10 @@ Other parameters are passed through a pointer to a apiInventoryPreloadHistoryGet
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;date:desc&quot;]
 
 ### Return type
@@ -321,24 +321,24 @@ Add Inventory Preload history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadHistoryNotesPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadHistoryNotesPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadHistoryNotesPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadHistoryNotesPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadHistoryNotesPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadHistoryNotesPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadHistoryNotesPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadHistoryNotesPost`: %v\n", resp)
 }
 ```
 
@@ -387,22 +387,22 @@ Delete an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
+	id := int64(56) // int64 | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -412,7 +412,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -455,24 +455,24 @@ Get an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
+	id := int64(56) // int64 | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadIdGet`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadIdGet`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadIdGet`: %v\n", resp)
 }
 ```
 
@@ -482,7 +482,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -525,25 +525,25 @@ Update an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
-    inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record to update
+	id := int64(56) // int64 | Inventory Preload identifier
+	inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdPut(context.Background(), id).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadIdPut`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadIdPut(context.Background(), id).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadIdPut`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadIdPut`: %v\n", resp)
 }
 ```
 
@@ -553,7 +553,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -597,24 +597,24 @@ Create a new Inventory Preload record using JSON or CSV
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record or records to be created
+	inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record or records to be created
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadPost(context.Background()).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadPost`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadPost(context.Background()).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadPost`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadPost`: %v\n", resp)
 }
 ```
 
@@ -663,24 +663,24 @@ Validate a given CSV file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    body := map[string]interface{}{ ... } // map[string]interface{} | Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
+	body := map[string]interface{}{ ... } // map[string]interface{} | Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadValidateCsvPost(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadValidateCsvPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `InventoryPreloadValidateCsvPost`: InventoryPreloadCsvValidationSuccess
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadValidateCsvPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.InventoryPreloadValidateCsvPost(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.InventoryPreloadValidateCsvPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `InventoryPreloadValidateCsvPost`: InventoryPreloadCsvValidationSuccess
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.InventoryPreloadValidateCsvPost`: %v\n", resp)
 }
 ```
 
@@ -729,23 +729,23 @@ Retrieve the Inventory Preload CSV template
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadCsvTemplateGet`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadCsvTemplateGet`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadCsvTemplateGet`: %v\n", resp)
 }
 ```
 
@@ -790,21 +790,21 @@ Delete all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadDelete(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadDelete(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -849,28 +849,28 @@ Return all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "id:asc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadGet`: InventoryPreloadRecordSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadGet`: InventoryPreloadRecordSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadGet`: %v\n", resp)
 }
 ```
 
@@ -885,10 +885,10 @@ Other parameters are passed through a pointer to a apiV1InventoryPreloadGetReque
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;id:asc&quot;]
 
 ### Return type
@@ -923,28 +923,28 @@ Get Inventory Preload history entries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    size := int32(56) // int32 |  (optional) (default to 100)
-    pagesize := int32(56) // int32 |  (optional) (default to 100)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	size := int64(56) // int64 |  (optional) (default to 100)
+	pagesize := int64(56) // int64 |  (optional) (default to 100)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := "sort_example" // string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,name:asc  (optional) (default to "date:desc")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadHistoryGet(context.Background()).Page(page).Size(size).Pagesize(pagesize).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -959,10 +959,10 @@ Other parameters are passed through a pointer to a apiV1InventoryPreloadHistoryG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **size** | **int32** |  | [default to 100]
- **pagesize** | **int32** |  | [default to 100]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **size** | **int64** |  | [default to 100]
+ **pagesize** | **int64** |  | [default to 100]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc  | [default to &quot;date:desc&quot;]
 
 ### Return type
@@ -997,24 +997,24 @@ Add Inventory Preload history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadHistoryPost`: ObjectHistory
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadHistoryPost`: ObjectHistory
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -1063,22 +1063,22 @@ Delete an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
+	id := int64(56) // int64 | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1088,7 +1088,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -1131,24 +1131,24 @@ Get an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
+	id := int64(56) // int64 | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadIdGet`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadIdGet`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadIdGet`: %v\n", resp)
 }
 ```
 
@@ -1158,7 +1158,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -1201,25 +1201,25 @@ Update an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Inventory Preload identifier
-    inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record to update
+	id := int64(56) // int64 | Inventory Preload identifier
+	inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdPut(context.Background(), id).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadIdPut`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadIdPut(context.Background(), id).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadIdPut`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadIdPut`: %v\n", resp)
 }
 ```
 
@@ -1229,7 +1229,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Inventory Preload identifier | 
+**id** | **int64** | Inventory Preload identifier | 
 
 ### Other Parameters
 
@@ -1273,24 +1273,24 @@ Create a new Inventory Preload record using JSON or CSV
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record or records to be created
+	inventoryPreloadRecord := *openapiclient.NewInventoryPreloadRecord("C02L29ECF8J1", "Computer") // InventoryPreloadRecord | Inventory Preload record or records to be created
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadPost(context.Background()).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadPost`: InventoryPreloadRecord
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadPost(context.Background()).InventoryPreloadRecord(inventoryPreloadRecord).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadPost`: InventoryPreloadRecord
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadPost`: %v\n", resp)
 }
 ```
 
@@ -1339,24 +1339,24 @@ Validate a given CSV file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    body := map[string]interface{}{ ... } // map[string]interface{} | Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
+	body := map[string]interface{}{ ... } // map[string]interface{} | Inventory Preload records to be validated. A CSV template can be downloaded from /api/inventory-preload/csv-template
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost(context.Background()).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryPreloadValidateCsvPost`: InventoryPreloadCsvValidationSuccess
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost(context.Background()).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryPreloadValidateCsvPost`: InventoryPreloadCsvValidationSuccess
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V1InventoryPreloadValidateCsvPost`: %v\n", resp)
 }
 ```
 
@@ -1405,23 +1405,23 @@ Download all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadCsvGet`: string
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadCsvGet`: string
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvGet`: %v\n", resp)
 }
 ```
 
@@ -1466,24 +1466,24 @@ Create one or more new Inventory Preload records using CSV
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    file := "file_example" // string | The CSV file to upload
+	file := "file_example" // string | The CSV file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvPost(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadCsvPost`: []HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvPost(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadCsvPost`: []HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvPost`: %v\n", resp)
 }
 ```
 
@@ -1532,23 +1532,23 @@ Download the Inventory Preload CSV template
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadCsvTemplateGet`: string
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadCsvTemplateGet`: string
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvTemplateGet`: %v\n", resp)
 }
 ```
 
@@ -1593,24 +1593,24 @@ Validate a given CSV file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    file := "file_example" // string | The CSV file to upload
+	file := "file_example" // string | The CSV file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost(context.Background()).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadCsvValidatePost`: InventoryPreloadCsvValidationSuccess
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost(context.Background()).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadCsvValidatePost`: InventoryPreloadCsvValidationSuccess
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadCsvValidatePost`: %v\n", resp)
 }
 ```
 
@@ -1659,23 +1659,23 @@ Retrieve a list of extension attribute columns
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadEaColumnsGet`: InventoryPreloadExtensionAttributeColumnResult
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadEaColumnsGet`: InventoryPreloadExtensionAttributeColumnResult
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadEaColumnsGet`: %v\n", resp)
 }
 ```
 
@@ -1720,30 +1720,30 @@ Export a collection of inventory preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-    exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
-    exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
+	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadExportPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadExportPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadExportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadExportPost`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadExportPost`: %v\n", resp)
 }
 ```
 
@@ -1760,8 +1760,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
  **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60;  | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
@@ -1798,27 +1798,27 @@ Get Inventory Preload history entries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=username==\"admin\"`  (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=username==\"admin\"`  (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -1833,8 +1833,8 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadHistoryG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;date:desc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;username&#x3D;&#x3D;\&quot;admin\&quot;&#x60;  | [default to &quot;&quot;]
 
@@ -1870,24 +1870,24 @@ Add Inventory Preload history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -1936,21 +1936,21 @@ Delete all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsDeleteAllPost(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsDeleteAllPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsDeleteAllPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsDeleteAllPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1995,27 +1995,27 @@ Return all Inventory Preload records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadRecordsGet`: InventoryPreloadRecordSearchResultsV2
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadRecordsGet`: InventoryPreloadRecordSearchResultsV2
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsGet`: %v\n", resp)
 }
 ```
 
@@ -2030,8 +2030,8 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadRecordsG
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60;  | [default to &quot;&quot;]
 
@@ -2067,22 +2067,22 @@ Delete an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Inventory Preload identifier
+	id := "id_example" // string | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2135,24 +2135,24 @@ Get an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Inventory Preload identifier
+	id := "id_example" // string | Inventory Preload identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadRecordsIdGet`: InventoryPreloadRecordV2
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadRecordsIdGet`: InventoryPreloadRecordV2
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsIdGet`: %v\n", resp)
 }
 ```
 
@@ -2205,25 +2205,25 @@ Update an Inventory Preload record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Inventory Preload identifier
-    inventoryPreloadRecordV2 := *openapiclient.NewInventoryPreloadRecordV2("C02L29ECF8J1", "Computer") // InventoryPreloadRecordV2 | Inventory Preload record to update
+	id := "id_example" // string | Inventory Preload identifier
+	inventoryPreloadRecordV2 := *openapiclient.NewInventoryPreloadRecordV2("C02L29ECF8J1", "Computer") // InventoryPreloadRecordV2 | Inventory Preload record to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut(context.Background(), id).InventoryPreloadRecordV2(inventoryPreloadRecordV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadRecordsIdPut`: InventoryPreloadRecordV2
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut(context.Background(), id).InventoryPreloadRecordV2(inventoryPreloadRecordV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadRecordsIdPut`: InventoryPreloadRecordV2
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsIdPut`: %v\n", resp)
 }
 ```
 
@@ -2277,24 +2277,24 @@ Create a new Inventory Preload record using JSON
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    inventoryPreloadRecordV2 := *openapiclient.NewInventoryPreloadRecordV2("C02L29ECF8J1", "Computer") // InventoryPreloadRecordV2 | Inventory Preload record to be created.
+	inventoryPreloadRecordV2 := *openapiclient.NewInventoryPreloadRecordV2("C02L29ECF8J1", "Computer") // InventoryPreloadRecordV2 | Inventory Preload record to be created.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsPost(context.Background()).InventoryPreloadRecordV2(inventoryPreloadRecordV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2InventoryPreloadRecordsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryPreloadAPI.V2InventoryPreloadRecordsPost(context.Background()).InventoryPreloadRecordV2(inventoryPreloadRecordV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryPreloadAPI.V2InventoryPreloadRecordsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2InventoryPreloadRecordsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `InventoryPreloadAPI.V2InventoryPreloadRecordsPost`: %v\n", resp)
 }
 ```
 

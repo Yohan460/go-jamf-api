@@ -22,11 +22,11 @@ type LapsSettingsResponseV2 struct {
 	// When enabled, all appropriate computers will have the SetAutoAdminPassword command sent to them automatically.
 	AutoDeployEnabled *bool `json:"autoDeployEnabled,omitempty"`
 	// The amount of time in seconds that the local admin password will be rotated after viewing.
-	PasswordRotationTime *int32 `json:"passwordRotationTime,omitempty"`
+	PasswordRotationTime *int64 `json:"passwordRotationTime,omitempty"`
 	// When enabled, all appropriate computers will automatically have their password expired and rotated after the configured autoRotateExpirationTime
 	AutoRotateEnabled *bool `json:"autoRotateEnabled,omitempty"`
 	// The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed.
-	AutoRotateExpirationTime *int32 `json:"autoRotateExpirationTime,omitempty"`
+	AutoRotateExpirationTime *int64 `json:"autoRotateExpirationTime,omitempty"`
 }
 
 // NewLapsSettingsResponseV2 instantiates a new LapsSettingsResponseV2 object
@@ -79,9 +79,9 @@ func (o *LapsSettingsResponseV2) SetAutoDeployEnabled(v bool) {
 }
 
 // GetPasswordRotationTime returns the PasswordRotationTime field value if set, zero value otherwise.
-func (o *LapsSettingsResponseV2) GetPasswordRotationTime() int32 {
+func (o *LapsSettingsResponseV2) GetPasswordRotationTime() int64 {
 	if o == nil || IsNil(o.PasswordRotationTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PasswordRotationTime
@@ -89,7 +89,7 @@ func (o *LapsSettingsResponseV2) GetPasswordRotationTime() int32 {
 
 // GetPasswordRotationTimeOk returns a tuple with the PasswordRotationTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsResponseV2) GetPasswordRotationTimeOk() (*int32, bool) {
+func (o *LapsSettingsResponseV2) GetPasswordRotationTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.PasswordRotationTime) {
 		return nil, false
 	}
@@ -105,8 +105,8 @@ func (o *LapsSettingsResponseV2) HasPasswordRotationTime() bool {
 	return false
 }
 
-// SetPasswordRotationTime gets a reference to the given int32 and assigns it to the PasswordRotationTime field.
-func (o *LapsSettingsResponseV2) SetPasswordRotationTime(v int32) {
+// SetPasswordRotationTime gets a reference to the given int64 and assigns it to the PasswordRotationTime field.
+func (o *LapsSettingsResponseV2) SetPasswordRotationTime(v int64) {
 	o.PasswordRotationTime = &v
 }
 
@@ -143,9 +143,9 @@ func (o *LapsSettingsResponseV2) SetAutoRotateEnabled(v bool) {
 }
 
 // GetAutoRotateExpirationTime returns the AutoRotateExpirationTime field value if set, zero value otherwise.
-func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTime() int32 {
+func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTime() int64 {
 	if o == nil || IsNil(o.AutoRotateExpirationTime) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AutoRotateExpirationTime
@@ -153,7 +153,7 @@ func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTime() int32 {
 
 // GetAutoRotateExpirationTimeOk returns a tuple with the AutoRotateExpirationTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTimeOk() (*int32, bool) {
+func (o *LapsSettingsResponseV2) GetAutoRotateExpirationTimeOk() (*int64, bool) {
 	if o == nil || IsNil(o.AutoRotateExpirationTime) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *LapsSettingsResponseV2) HasAutoRotateExpirationTime() bool {
 	return false
 }
 
-// SetAutoRotateExpirationTime gets a reference to the given int32 and assigns it to the AutoRotateExpirationTime field.
-func (o *LapsSettingsResponseV2) SetAutoRotateExpirationTime(v int32) {
+// SetAutoRotateExpirationTime gets a reference to the given int64 and assigns it to the AutoRotateExpirationTime field.
+func (o *LapsSettingsResponseV2) SetAutoRotateExpirationTime(v int64) {
 	o.AutoRotateExpirationTime = &v
 }
 

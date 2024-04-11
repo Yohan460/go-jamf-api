@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **ServerUrl** | **string** |  | 
 **Enabled** | **bool** |  | 
 **DomainName** | **string** |  | 
-**Port** | **int32** |  | 
+**Port** | **int64** |  | 
 **Keystore** | [**CloudLdapKeystoreFile**](CloudLdapKeystoreFile.md) |  | 
-**ConnectionTimeout** | **int32** |  | 
-**SearchTimeout** | **int32** |  | 
+**ConnectionTimeout** | **int64** |  | 
+**SearchTimeout** | **int64** |  | 
 **UseWildcards** | **bool** |  | 
 **ConnectionType** | **string** |  | 
 **MembershipCalculationOptimizationEnabled** | Pointer to **bool** |  | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewCloudLdapServerRequest
 
-`func NewCloudLdapServerRequest(serverUrl string, enabled bool, domainName string, port int32, keystore CloudLdapKeystoreFile, connectionTimeout int32, searchTimeout int32, useWildcards bool, connectionType string, ) *CloudLdapServerRequest`
+`func NewCloudLdapServerRequest(serverUrl string, enabled bool, domainName string, port int64, keystore CloudLdapKeystoreFile, connectionTimeout int64, searchTimeout int64, useWildcards bool, connectionType string, ) *CloudLdapServerRequest`
 
 NewCloudLdapServerRequest instantiates a new CloudLdapServerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -96,20 +96,20 @@ SetDomainName sets DomainName field to given value.
 
 ### GetPort
 
-`func (o *CloudLdapServerRequest) GetPort() int32`
+`func (o *CloudLdapServerRequest) GetPort() int64`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *CloudLdapServerRequest) GetPortOk() (*int32, bool)`
+`func (o *CloudLdapServerRequest) GetPortOk() (*int64, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *CloudLdapServerRequest) SetPort(v int32)`
+`func (o *CloudLdapServerRequest) SetPort(v int64)`
 
 SetPort sets Port field to given value.
 
@@ -136,40 +136,40 @@ SetKeystore sets Keystore field to given value.
 
 ### GetConnectionTimeout
 
-`func (o *CloudLdapServerRequest) GetConnectionTimeout() int32`
+`func (o *CloudLdapServerRequest) GetConnectionTimeout() int64`
 
 GetConnectionTimeout returns the ConnectionTimeout field if non-nil, zero value otherwise.
 
 ### GetConnectionTimeoutOk
 
-`func (o *CloudLdapServerRequest) GetConnectionTimeoutOk() (*int32, bool)`
+`func (o *CloudLdapServerRequest) GetConnectionTimeoutOk() (*int64, bool)`
 
 GetConnectionTimeoutOk returns a tuple with the ConnectionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnectionTimeout
 
-`func (o *CloudLdapServerRequest) SetConnectionTimeout(v int32)`
+`func (o *CloudLdapServerRequest) SetConnectionTimeout(v int64)`
 
 SetConnectionTimeout sets ConnectionTimeout field to given value.
 
 
 ### GetSearchTimeout
 
-`func (o *CloudLdapServerRequest) GetSearchTimeout() int32`
+`func (o *CloudLdapServerRequest) GetSearchTimeout() int64`
 
 GetSearchTimeout returns the SearchTimeout field if non-nil, zero value otherwise.
 
 ### GetSearchTimeoutOk
 
-`func (o *CloudLdapServerRequest) GetSearchTimeoutOk() (*int32, bool)`
+`func (o *CloudLdapServerRequest) GetSearchTimeoutOk() (*int64, bool)`
 
 GetSearchTimeoutOk returns a tuple with the SearchTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSearchTimeout
 
-`func (o *CloudLdapServerRequest) SetSearchTimeout(v int32)`
+`func (o *CloudLdapServerRequest) SetSearchTimeout(v int64)`
 
 SetSearchTimeout sets SearchTimeout field to given value.
 

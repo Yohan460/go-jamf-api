@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InventoryPreloadRecord type satisfies the MappedNullable interface at compile time
@@ -19,7 +21,7 @@ var _ MappedNullable = &InventoryPreloadRecord{}
 
 // InventoryPreloadRecord struct for InventoryPreloadRecord
 type InventoryPreloadRecord struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	SerialNumber string `json:"serialNumber"`
 	DeviceType string `json:"deviceType"`
 	Username *string `json:"username,omitempty"`
@@ -46,6 +48,8 @@ type InventoryPreloadRecord struct {
 	ExtensionAttributes []InventoryPreloadExtensionAttribute `json:"extensionAttributes,omitempty"`
 }
 
+type _InventoryPreloadRecord InventoryPreloadRecord
+
 // NewInventoryPreloadRecord instantiates a new InventoryPreloadRecord object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -66,9 +70,9 @@ func NewInventoryPreloadRecordWithDefaults() *InventoryPreloadRecord {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *InventoryPreloadRecord) GetId() int32 {
+func (o *InventoryPreloadRecord) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -76,7 +80,7 @@ func (o *InventoryPreloadRecord) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InventoryPreloadRecord) GetIdOk() (*int32, bool) {
+func (o *InventoryPreloadRecord) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -92,8 +96,8 @@ func (o *InventoryPreloadRecord) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *InventoryPreloadRecord) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *InventoryPreloadRecord) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -931,6 +935,44 @@ func (o InventoryPreloadRecord) ToMap() (map[string]interface{}, error) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes
 	}
 	return toSerialize, nil
+}
+
+func (o *InventoryPreloadRecord) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"serialNumber",
+		"deviceType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInventoryPreloadRecord := _InventoryPreloadRecord{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInventoryPreloadRecord)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InventoryPreloadRecord(varInventoryPreloadRecord)
+
+	return err
 }
 
 type NullableInventoryPreloadRecord struct {

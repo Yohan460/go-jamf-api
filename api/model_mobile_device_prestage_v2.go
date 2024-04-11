@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MobileDevicePrestageV2 type satisfies the MappedNullable interface at compile time
@@ -46,25 +48,27 @@ type MobileDevicePrestageV2 struct {
 	AllowPairing bool `json:"allowPairing"`
 	MultiUser bool `json:"multiUser"`
 	Supervised bool `json:"supervised"`
-	MaximumSharedAccounts int32 `json:"maximumSharedAccounts"`
+	MaximumSharedAccounts int64 `json:"maximumSharedAccounts"`
 	ConfigureDeviceBeforeSetupAssistant bool `json:"configureDeviceBeforeSetupAssistant"`
 	Names *MobileDevicePrestageNamesV2 `json:"names,omitempty"`
 	SendTimezone bool `json:"sendTimezone"`
 	Timezone string `json:"timezone"`
-	StorageQuotaSizeMegabytes int32 `json:"storageQuotaSizeMegabytes"`
+	StorageQuotaSizeMegabytes int64 `json:"storageQuotaSizeMegabytes"`
 	UseStorageQuotaSize bool `json:"useStorageQuotaSize"`
 	TemporarySessionOnly *bool `json:"temporarySessionOnly,omitempty"`
 	EnforceTemporarySessionTimeout *bool `json:"enforceTemporarySessionTimeout,omitempty"`
-	TemporarySessionTimeout *int32 `json:"temporarySessionTimeout,omitempty"`
+	TemporarySessionTimeout *int64 `json:"temporarySessionTimeout,omitempty"`
 	EnforceUserSessionTimeout *bool `json:"enforceUserSessionTimeout,omitempty"`
-	UserSessionTimeout *int32 `json:"userSessionTimeout,omitempty"`
+	UserSessionTimeout *int64 `json:"userSessionTimeout,omitempty"`
 }
+
+type _MobileDevicePrestageV2 MobileDevicePrestageV2
 
 // NewMobileDevicePrestageV2 instantiates a new MobileDevicePrestageV2 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMobileDevicePrestageV2(displayName string, mandatory bool, mdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, defaultPrestage bool, enrollmentSiteId string, keepExistingSiteMembership bool, keepExistingLocationInformation bool, requireAuthentication bool, authenticationPrompt string, preventActivationLock bool, enableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId string, locationInformation LocationInformationV2, purchasingInformation PrestagePurchasingInformationV2, autoAdvanceSetup bool, allowPairing bool, multiUser bool, supervised bool, maximumSharedAccounts int32, configureDeviceBeforeSetupAssistant bool, sendTimezone bool, timezone string, storageQuotaSizeMegabytes int32, useStorageQuotaSize bool) *MobileDevicePrestageV2 {
+func NewMobileDevicePrestageV2(displayName string, mandatory bool, mdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, defaultPrestage bool, enrollmentSiteId string, keepExistingSiteMembership bool, keepExistingLocationInformation bool, requireAuthentication bool, authenticationPrompt string, preventActivationLock bool, enableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId string, locationInformation LocationInformationV2, purchasingInformation PrestagePurchasingInformationV2, autoAdvanceSetup bool, allowPairing bool, multiUser bool, supervised bool, maximumSharedAccounts int64, configureDeviceBeforeSetupAssistant bool, sendTimezone bool, timezone string, storageQuotaSizeMegabytes int64, useStorageQuotaSize bool) *MobileDevicePrestageV2 {
 	this := MobileDevicePrestageV2{}
 	this.DisplayName = displayName
 	this.Mandatory = mandatory
@@ -769,9 +773,9 @@ func (o *MobileDevicePrestageV2) SetSupervised(v bool) {
 }
 
 // GetMaximumSharedAccounts returns the MaximumSharedAccounts field value
-func (o *MobileDevicePrestageV2) GetMaximumSharedAccounts() int32 {
+func (o *MobileDevicePrestageV2) GetMaximumSharedAccounts() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -780,7 +784,7 @@ func (o *MobileDevicePrestageV2) GetMaximumSharedAccounts() int32 {
 
 // GetMaximumSharedAccountsOk returns a tuple with the MaximumSharedAccounts field value
 // and a boolean to check if the value has been set.
-func (o *MobileDevicePrestageV2) GetMaximumSharedAccountsOk() (*int32, bool) {
+func (o *MobileDevicePrestageV2) GetMaximumSharedAccountsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -788,7 +792,7 @@ func (o *MobileDevicePrestageV2) GetMaximumSharedAccountsOk() (*int32, bool) {
 }
 
 // SetMaximumSharedAccounts sets field value
-func (o *MobileDevicePrestageV2) SetMaximumSharedAccounts(v int32) {
+func (o *MobileDevicePrestageV2) SetMaximumSharedAccounts(v int64) {
 	o.MaximumSharedAccounts = v
 }
 
@@ -897,9 +901,9 @@ func (o *MobileDevicePrestageV2) SetTimezone(v string) {
 }
 
 // GetStorageQuotaSizeMegabytes returns the StorageQuotaSizeMegabytes field value
-func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytes() int32 {
+func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytes() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -908,7 +912,7 @@ func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytes() int32 {
 
 // GetStorageQuotaSizeMegabytesOk returns a tuple with the StorageQuotaSizeMegabytes field value
 // and a boolean to check if the value has been set.
-func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytesOk() (*int32, bool) {
+func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytesOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -916,7 +920,7 @@ func (o *MobileDevicePrestageV2) GetStorageQuotaSizeMegabytesOk() (*int32, bool)
 }
 
 // SetStorageQuotaSizeMegabytes sets field value
-func (o *MobileDevicePrestageV2) SetStorageQuotaSizeMegabytes(v int32) {
+func (o *MobileDevicePrestageV2) SetStorageQuotaSizeMegabytes(v int64) {
 	o.StorageQuotaSizeMegabytes = v
 }
 
@@ -1009,9 +1013,9 @@ func (o *MobileDevicePrestageV2) SetEnforceTemporarySessionTimeout(v bool) {
 }
 
 // GetTemporarySessionTimeout returns the TemporarySessionTimeout field value if set, zero value otherwise.
-func (o *MobileDevicePrestageV2) GetTemporarySessionTimeout() int32 {
+func (o *MobileDevicePrestageV2) GetTemporarySessionTimeout() int64 {
 	if o == nil || IsNil(o.TemporarySessionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TemporarySessionTimeout
@@ -1019,7 +1023,7 @@ func (o *MobileDevicePrestageV2) GetTemporarySessionTimeout() int32 {
 
 // GetTemporarySessionTimeoutOk returns a tuple with the TemporarySessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDevicePrestageV2) GetTemporarySessionTimeoutOk() (*int32, bool) {
+func (o *MobileDevicePrestageV2) GetTemporarySessionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.TemporarySessionTimeout) {
 		return nil, false
 	}
@@ -1035,8 +1039,8 @@ func (o *MobileDevicePrestageV2) HasTemporarySessionTimeout() bool {
 	return false
 }
 
-// SetTemporarySessionTimeout gets a reference to the given int32 and assigns it to the TemporarySessionTimeout field.
-func (o *MobileDevicePrestageV2) SetTemporarySessionTimeout(v int32) {
+// SetTemporarySessionTimeout gets a reference to the given int64 and assigns it to the TemporarySessionTimeout field.
+func (o *MobileDevicePrestageV2) SetTemporarySessionTimeout(v int64) {
 	o.TemporarySessionTimeout = &v
 }
 
@@ -1073,9 +1077,9 @@ func (o *MobileDevicePrestageV2) SetEnforceUserSessionTimeout(v bool) {
 }
 
 // GetUserSessionTimeout returns the UserSessionTimeout field value if set, zero value otherwise.
-func (o *MobileDevicePrestageV2) GetUserSessionTimeout() int32 {
+func (o *MobileDevicePrestageV2) GetUserSessionTimeout() int64 {
 	if o == nil || IsNil(o.UserSessionTimeout) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.UserSessionTimeout
@@ -1083,7 +1087,7 @@ func (o *MobileDevicePrestageV2) GetUserSessionTimeout() int32 {
 
 // GetUserSessionTimeoutOk returns a tuple with the UserSessionTimeout field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDevicePrestageV2) GetUserSessionTimeoutOk() (*int32, bool) {
+func (o *MobileDevicePrestageV2) GetUserSessionTimeoutOk() (*int64, bool) {
 	if o == nil || IsNil(o.UserSessionTimeout) {
 		return nil, false
 	}
@@ -1099,8 +1103,8 @@ func (o *MobileDevicePrestageV2) HasUserSessionTimeout() bool {
 	return false
 }
 
-// SetUserSessionTimeout gets a reference to the given int32 and assigns it to the UserSessionTimeout field.
-func (o *MobileDevicePrestageV2) SetUserSessionTimeout(v int32) {
+// SetUserSessionTimeout gets a reference to the given int64 and assigns it to the UserSessionTimeout field.
+func (o *MobileDevicePrestageV2) SetUserSessionTimeout(v int64) {
 	o.UserSessionTimeout = &v
 }
 
@@ -1175,6 +1179,69 @@ func (o MobileDevicePrestageV2) ToMap() (map[string]interface{}, error) {
 		toSerialize["userSessionTimeout"] = o.UserSessionTimeout
 	}
 	return toSerialize, nil
+}
+
+func (o *MobileDevicePrestageV2) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"displayName",
+		"mandatory",
+		"mdmRemovable",
+		"supportPhoneNumber",
+		"supportEmailAddress",
+		"department",
+		"defaultPrestage",
+		"enrollmentSiteId",
+		"keepExistingSiteMembership",
+		"keepExistingLocationInformation",
+		"requireAuthentication",
+		"authenticationPrompt",
+		"preventActivationLock",
+		"enableDeviceBasedActivationLock",
+		"deviceEnrollmentProgramInstanceId",
+		"locationInformation",
+		"purchasingInformation",
+		"autoAdvanceSetup",
+		"allowPairing",
+		"multiUser",
+		"supervised",
+		"maximumSharedAccounts",
+		"configureDeviceBeforeSetupAssistant",
+		"sendTimezone",
+		"timezone",
+		"storageQuotaSizeMegabytes",
+		"useStorageQuotaSize",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMobileDevicePrestageV2 := _MobileDevicePrestageV2{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMobileDevicePrestageV2)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MobileDevicePrestageV2(varMobileDevicePrestageV2)
+
+	return err
 }
 
 type NullableMobileDevicePrestageV2 struct {

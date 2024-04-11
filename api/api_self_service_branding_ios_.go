@@ -102,17 +102,17 @@ type SelfServiceBrandingIosAPIService service
 type SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest struct {
 	ctx context.Context
 	ApiService SelfServiceBrandingIosAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest) Page(page int32) SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest {
+func (r SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest) Page(page int64) SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest) PageSize(pageSize int32) SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest {
+func (r SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest) PageSize(pageSize int64) SelfServiceBrandingIosAPIV1SelfServiceBrandingIosGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -166,13 +166,13 @@ func (a *SelfServiceBrandingIosAPIService) V1SelfServiceBrandingIosGetExecute(r 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

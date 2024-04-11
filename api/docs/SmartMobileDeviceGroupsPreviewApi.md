@@ -23,24 +23,24 @@ Recalculate all smart groups for the given device id and then return count of sm
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | id of mobile device
+	id := int64(56) // int64 | id of mobile device
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MobileDevicesIdRecalculateSmartGroupsPost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MobileDevicesIdRecalculateSmartGroupsPost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1MobileDevicesIdRecalculateSmartGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | id of mobile device | 
+**id** | **int64** | id of mobile device | 
 
 ### Other Parameters
 
@@ -93,24 +93,24 @@ Recalculate a smart group for the given id then return the ids for the devices i
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | instance id of smart group
+	id := int64(56) // int64 | instance id of smart group
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SmartMobileDeviceGroupsIdRecalculatePost`: RecalculationResults
-    fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SmartMobileDeviceGroupsIdRecalculatePost`: RecalculationResults
+	fmt.Fprintf(os.Stdout, "Response from `SmartMobileDeviceGroupsPreviewAPI.V1SmartMobileDeviceGroupsIdRecalculatePost`: %v\n", resp)
 }
 ```
 
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | instance id of smart group | 
+**id** | **int64** | instance id of smart group | 
 
 ### Other Parameters
 

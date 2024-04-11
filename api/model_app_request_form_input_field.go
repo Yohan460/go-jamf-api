@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AppRequestFormInputField type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,20 @@ var _ MappedNullable = &AppRequestFormInputField{}
 
 // AppRequestFormInputField struct for AppRequestFormInputField
 type AppRequestFormInputField struct {
-	Id *int32 `json:"id,omitempty"`
+	Id *int64 `json:"id,omitempty"`
 	Title string `json:"title"`
 	Description NullableString `json:"description,omitempty"`
 	// Highest priority is 1, lowest is 255
-	Priority int32 `json:"priority"`
+	Priority int64 `json:"priority"`
 }
+
+type _AppRequestFormInputField AppRequestFormInputField
 
 // NewAppRequestFormInputField instantiates a new AppRequestFormInputField object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAppRequestFormInputField(title string, priority int32) *AppRequestFormInputField {
+func NewAppRequestFormInputField(title string, priority int64) *AppRequestFormInputField {
 	this := AppRequestFormInputField{}
 	this.Title = title
 	this.Priority = priority
@@ -46,9 +50,9 @@ func NewAppRequestFormInputFieldWithDefaults() *AppRequestFormInputField {
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AppRequestFormInputField) GetId() int32 {
+func (o *AppRequestFormInputField) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Id
@@ -56,7 +60,7 @@ func (o *AppRequestFormInputField) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AppRequestFormInputField) GetIdOk() (*int32, bool) {
+func (o *AppRequestFormInputField) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -72,8 +76,8 @@ func (o *AppRequestFormInputField) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *AppRequestFormInputField) SetId(v int32) {
+// SetId gets a reference to the given int64 and assigns it to the Id field.
+func (o *AppRequestFormInputField) SetId(v int64) {
 	o.Id = &v
 }
 
@@ -144,9 +148,9 @@ func (o *AppRequestFormInputField) UnsetDescription() {
 }
 
 // GetPriority returns the Priority field value
-func (o *AppRequestFormInputField) GetPriority() int32 {
+func (o *AppRequestFormInputField) GetPriority() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -155,7 +159,7 @@ func (o *AppRequestFormInputField) GetPriority() int32 {
 
 // GetPriorityOk returns a tuple with the Priority field value
 // and a boolean to check if the value has been set.
-func (o *AppRequestFormInputField) GetPriorityOk() (*int32, bool) {
+func (o *AppRequestFormInputField) GetPriorityOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -163,7 +167,7 @@ func (o *AppRequestFormInputField) GetPriorityOk() (*int32, bool) {
 }
 
 // SetPriority sets field value
-func (o *AppRequestFormInputField) SetPriority(v int32) {
+func (o *AppRequestFormInputField) SetPriority(v int64) {
 	o.Priority = v
 }
 
@@ -186,6 +190,44 @@ func (o AppRequestFormInputField) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["priority"] = o.Priority
 	return toSerialize, nil
+}
+
+func (o *AppRequestFormInputField) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"title",
+		"priority",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAppRequestFormInputField := _AppRequestFormInputField{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAppRequestFormInputField)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AppRequestFormInputField(varAppRequestFormInputField)
+
+	return err
 }
 
 type NullableAppRequestFormInputField struct {

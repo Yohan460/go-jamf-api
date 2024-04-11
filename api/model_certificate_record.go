@@ -22,9 +22,9 @@ type CertificateRecord struct {
 	SubjectX500Principal *string `json:"subjectX500Principal,omitempty"`
 	IssuerX500Principal *string `json:"issuerX500Principal,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
-	Version *int32 `json:"version,omitempty"`
-	NotAfter *int32 `json:"notAfter,omitempty"`
-	NotBefore *int32 `json:"notBefore,omitempty"`
+	Version *int64 `json:"version,omitempty"`
+	NotAfter *int64 `json:"notAfter,omitempty"`
+	NotBefore *int64 `json:"notBefore,omitempty"`
 	Signature *Signature `json:"signature,omitempty"`
 	KeyUsage []string `json:"keyUsage,omitempty"`
 	KeyUsageExtended []string `json:"keyUsageExtended,omitempty"`
@@ -146,9 +146,9 @@ func (o *CertificateRecord) SetSerialNumber(v string) {
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *CertificateRecord) GetVersion() int32 {
+func (o *CertificateRecord) GetVersion() int64 {
 	if o == nil || IsNil(o.Version) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Version
@@ -156,7 +156,7 @@ func (o *CertificateRecord) GetVersion() int32 {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateRecord) GetVersionOk() (*int32, bool) {
+func (o *CertificateRecord) GetVersionOk() (*int64, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -172,15 +172,15 @@ func (o *CertificateRecord) HasVersion() bool {
 	return false
 }
 
-// SetVersion gets a reference to the given int32 and assigns it to the Version field.
-func (o *CertificateRecord) SetVersion(v int32) {
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *CertificateRecord) SetVersion(v int64) {
 	o.Version = &v
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise.
-func (o *CertificateRecord) GetNotAfter() int32 {
+func (o *CertificateRecord) GetNotAfter() int64 {
 	if o == nil || IsNil(o.NotAfter) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NotAfter
@@ -188,7 +188,7 @@ func (o *CertificateRecord) GetNotAfter() int32 {
 
 // GetNotAfterOk returns a tuple with the NotAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateRecord) GetNotAfterOk() (*int32, bool) {
+func (o *CertificateRecord) GetNotAfterOk() (*int64, bool) {
 	if o == nil || IsNil(o.NotAfter) {
 		return nil, false
 	}
@@ -204,15 +204,15 @@ func (o *CertificateRecord) HasNotAfter() bool {
 	return false
 }
 
-// SetNotAfter gets a reference to the given int32 and assigns it to the NotAfter field.
-func (o *CertificateRecord) SetNotAfter(v int32) {
+// SetNotAfter gets a reference to the given int64 and assigns it to the NotAfter field.
+func (o *CertificateRecord) SetNotAfter(v int64) {
 	o.NotAfter = &v
 }
 
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise.
-func (o *CertificateRecord) GetNotBefore() int32 {
+func (o *CertificateRecord) GetNotBefore() int64 {
 	if o == nil || IsNil(o.NotBefore) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.NotBefore
@@ -220,7 +220,7 @@ func (o *CertificateRecord) GetNotBefore() int32 {
 
 // GetNotBeforeOk returns a tuple with the NotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CertificateRecord) GetNotBeforeOk() (*int32, bool) {
+func (o *CertificateRecord) GetNotBeforeOk() (*int64, bool) {
 	if o == nil || IsNil(o.NotBefore) {
 		return nil, false
 	}
@@ -236,8 +236,8 @@ func (o *CertificateRecord) HasNotBefore() bool {
 	return false
 }
 
-// SetNotBefore gets a reference to the given int32 and assigns it to the NotBefore field.
-func (o *CertificateRecord) SetNotBefore(v int32) {
+// SetNotBefore gets a reference to the given int64 and assigns it to the NotBefore field.
+func (o *CertificateRecord) SetNotBefore(v int64) {
 	o.NotBefore = &v
 }
 

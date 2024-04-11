@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CheckInFrequency** | Pointer to **int32** | Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60. | [optional] [default to 15]
+**CheckInFrequency** | Pointer to **int64** | Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60. | [optional] [default to 15]
 **CreateHooks** | Pointer to **bool** |  | [optional] [default to false]
 **HookLog** | Pointer to **bool** |  | [optional] [default to false]
 **HookPolicies** | Pointer to **bool** |  | [optional] [default to false]
@@ -40,20 +40,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCheckInFrequency
 
-`func (o *ClientCheckInV2) GetCheckInFrequency() int32`
+`func (o *ClientCheckInV2) GetCheckInFrequency() int64`
 
 GetCheckInFrequency returns the CheckInFrequency field if non-nil, zero value otherwise.
 
 ### GetCheckInFrequencyOk
 
-`func (o *ClientCheckInV2) GetCheckInFrequencyOk() (*int32, bool)`
+`func (o *ClientCheckInV2) GetCheckInFrequencyOk() (*int64, bool)`
 
 GetCheckInFrequencyOk returns a tuple with the CheckInFrequency field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCheckInFrequency
 
-`func (o *ClientCheckInV2) SetCheckInFrequency(v int32)`
+`func (o *ClientCheckInV2) SetCheckInFrequency(v int64)`
 
 SetCheckInFrequency sets CheckInFrequency field to given value.
 

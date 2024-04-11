@@ -54,23 +54,23 @@ Retrieve the Account Driven User Enrollment Session Token Settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V1AdueSessionTokenSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V1AdueSessionTokenSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdueSessionTokenSettingsGet`: AccountDrivenUserEnrollmentSessionTokenSettings
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V1AdueSessionTokenSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V1AdueSessionTokenSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V1AdueSessionTokenSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdueSessionTokenSettingsGet`: AccountDrivenUserEnrollmentSessionTokenSettings
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V1AdueSessionTokenSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -115,24 +115,24 @@ Update Account Driven User Enrollment Session Token Settings.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    accountDrivenUserEnrollmentSessionTokenSettings := *openapiclient.NewAccountDrivenUserEnrollmentSessionTokenSettings() // AccountDrivenUserEnrollmentSessionTokenSettings | Update Account Driven User Enrollment Session Token Settings.
+	accountDrivenUserEnrollmentSessionTokenSettings := *openapiclient.NewAccountDrivenUserEnrollmentSessionTokenSettings() // AccountDrivenUserEnrollmentSessionTokenSettings | Update Account Driven User Enrollment Session Token Settings.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V1AdueSessionTokenSettingsPut(context.Background()).AccountDrivenUserEnrollmentSessionTokenSettings(accountDrivenUserEnrollmentSessionTokenSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V1AdueSessionTokenSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AdueSessionTokenSettingsPut`: AccountDrivenUserEnrollmentSessionTokenSettings
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V1AdueSessionTokenSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V1AdueSessionTokenSettingsPut(context.Background()).AccountDrivenUserEnrollmentSessionTokenSettings(accountDrivenUserEnrollmentSessionTokenSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V1AdueSessionTokenSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AdueSessionTokenSettingsPut`: AccountDrivenUserEnrollmentSessionTokenSettings
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V1AdueSessionTokenSettingsPut`: %v\n", resp)
 }
 ```
 
@@ -181,27 +181,27 @@ Retrieve the configured LDAP groups configured for User-Initiated Enrollment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `name:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["name:asc"])
-    allUsersOptionFirst := true // bool | Return \"All LDAP Users\" option on the first position if it is present in the current page (optional) (default to false)
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `name:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["name:asc"])
+	allUsersOptionFirst := true // bool | Return \"All LDAP Users\" option on the first position if it is present in the current page (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).AllUsersOptionFirst(allUsersOptionFirst).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentAccessGroupsGet`: AccessGroupsV2SearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).AllUsersOptionFirst(allUsersOptionFirst).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentAccessGroupsGet`: AccessGroupsV2SearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -216,8 +216,8 @@ Other parameters are passed through a pointer to a apiV2EnrollmentAccessGroupsGe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;name:asc&quot;]]
  **allUsersOptionFirst** | **bool** | Return \&quot;All LDAP Users\&quot; option on the first position if it is present in the current page | [default to false]
 
@@ -253,24 +253,24 @@ Add the configured LDAP group for User-Initiated Enrollment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentAccessGroupV2 := *openapiclient.NewEnrollmentAccessGroupV2() // EnrollmentAccessGroupV2 | Configured LDAP group to create.
+	enrollmentAccessGroupV2 := *openapiclient.NewEnrollmentAccessGroupV2() // EnrollmentAccessGroupV2 | Configured LDAP group to create.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsPost(context.Background()).EnrollmentAccessGroupV2(enrollmentAccessGroupV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentAccessGroupsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsPost(context.Background()).EnrollmentAccessGroupV2(enrollmentAccessGroupV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentAccessGroupsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -319,23 +319,23 @@ Delete an LDAP group's access to user initiated Enrollment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    serverId := "serverId_example" // string | LDAP server id
-    groupId := "groupId_example" // string | LDAP group id.
+	serverId := "serverId_example" // string | LDAP server id
+	groupId := "groupId_example" // string | LDAP group id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdDelete(context.Background(), serverId, groupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdDelete(context.Background(), serverId, groupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -390,25 +390,25 @@ Retrieve the configured LDAP groups configured for User-Initiated Enrollment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    serverId := "serverId_example" // string | LDAP server id.
-    groupId := "groupId_example" // string | LDAP group id.
+	serverId := "serverId_example" // string | LDAP server id.
+	groupId := "groupId_example" // string | LDAP group id.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet(context.Background(), serverId, groupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentAccessGroupsServerIdGroupIdGet`: EnrollmentAccessGroupV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet(context.Background(), serverId, groupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentAccessGroupsServerIdGroupIdGet`: EnrollmentAccessGroupV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdGet`: %v\n", resp)
 }
 ```
 
@@ -463,26 +463,26 @@ Modify the configured LDAP groups configured for User-Initiated Enrollment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    serverId := "serverId_example" // string | LDAP server id.
-    groupId := "groupId_example" // string | LDAP group id.
-    enrollmentAccessGroupV2 := *openapiclient.NewEnrollmentAccessGroupV2() // EnrollmentAccessGroupV2 |  (optional)
+	serverId := "serverId_example" // string | LDAP server id.
+	groupId := "groupId_example" // string | LDAP group id.
+	enrollmentAccessGroupV2 := *openapiclient.NewEnrollmentAccessGroupV2() // EnrollmentAccessGroupV2 |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut(context.Background(), serverId, groupId).EnrollmentAccessGroupV2(enrollmentAccessGroupV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentAccessGroupsServerIdGroupIdPut`: EnrollmentAccessGroupV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut(context.Background(), serverId, groupId).EnrollmentAccessGroupV2(enrollmentAccessGroupV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentAccessGroupsServerIdGroupIdPut`: EnrollmentAccessGroupV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentAccessGroupsServerIdGroupIdPut`: %v\n", resp)
 }
 ```
 
@@ -538,23 +538,23 @@ Retrieve the list of languages and corresponding ISO 639-1 Codes but only those 
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentFilteredLanguageCodesGet`: []LanguageCode
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentFilteredLanguageCodesGet`: []LanguageCode
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentFilteredLanguageCodesGet`: %v\n", resp)
 }
 ```
 
@@ -599,23 +599,23 @@ Get Enrollment object and Re-enrollment settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentGet`: EnrollmentSettingsV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentGet`: EnrollmentSettingsV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentGet`: %v\n", resp)
 }
 ```
 
@@ -660,30 +660,30 @@ Export enrollment history collection
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-    exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*script*\" (optional) (default to "")
-    exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc  (optional) (default to ["id:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name==\"*script*\" (optional) (default to "")
+	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryExportPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentHistoryExportPost`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryExportPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryExportPost(context.Background()).ExportFields(exportFields).ExportLabels(exportLabels).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).ExportParameters(exportParameters).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryExportPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentHistoryExportPost`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryExportPost`: %v\n", resp)
 }
 ```
 
@@ -700,8 +700,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
  **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc  | [default to [&quot;id:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name. This param can be combined with paging and sorting. Example: name&#x3D;&#x3D;\&quot;*script*\&quot; | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
@@ -738,26 +738,26 @@ Get sorted and paged Enrollment history object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["date:desc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["date:desc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -772,8 +772,8 @@ Other parameters are passed through a pointer to a apiV2EnrollmentHistoryGetRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;date:desc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;date:desc&quot;]]
 
 ### Return type
@@ -808,24 +808,24 @@ Add Enrollment history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | history notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentHistoryPost(context.Background()).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -874,23 +874,23 @@ Retrieve the list of languages and corresponding ISO 639-1 Codes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguageCodesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguageCodesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentLanguageCodesGet`: []LanguageCode
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguageCodesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguageCodesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguageCodesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentLanguageCodesGet`: []LanguageCode
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguageCodesGet`: %v\n", resp)
 }
 ```
 
@@ -935,22 +935,22 @@ Delete multiple configured languages from User-Initiated Enrollment settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ids := *openapiclient.NewIds() // Ids | ids of each language to delete
+	ids := *openapiclient.NewIds() // Ids | ids of each language to delete
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesDeleteMultiplePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesDeleteMultiplePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -999,26 +999,26 @@ Get an array of the language codes that have Enrollment messaging
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is `languageCode:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["languageCode:asc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is `languageCode:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["languageCode:asc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentLanguagesGet`: ProcessTextsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentLanguagesGet`: ProcessTextsSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesGet`: %v\n", resp)
 }
 ```
 
@@ -1033,8 +1033,8 @@ Other parameters are passed through a pointer to a apiV2EnrollmentLanguagesGetRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is &#x60;languageCode:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;languageCode:asc&quot;]]
 
 ### Return type
@@ -1069,22 +1069,22 @@ Delete the Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdDelete(context.Background(), languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdDelete(context.Background(), languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1137,24 +1137,24 @@ Retrieve the Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet(context.Background(), languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentLanguagesLanguageIdGet`: EnrollmentProcessTextObject
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet(context.Background(), languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentLanguagesLanguageIdGet`: EnrollmentProcessTextObject
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdGet`: %v\n", resp)
 }
 ```
 
@@ -1207,25 +1207,25 @@ Edit Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
-    enrollmentProcessTextObject := *openapiclient.NewEnrollmentProcessTextObject() // EnrollmentProcessTextObject |  (optional)
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	enrollmentProcessTextObject := *openapiclient.NewEnrollmentProcessTextObject() // EnrollmentProcessTextObject |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut(context.Background(), languageId).EnrollmentProcessTextObject(enrollmentProcessTextObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentLanguagesLanguageIdPut`: EnrollmentProcessTextObject
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut(context.Background(), languageId).EnrollmentProcessTextObject(enrollmentProcessTextObject).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentLanguagesLanguageIdPut`: EnrollmentProcessTextObject
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentLanguagesLanguageIdPut`: %v\n", resp)
 }
 ```
 
@@ -1279,24 +1279,24 @@ Update Enrollment object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentSettingsV2 := *openapiclient.NewEnrollmentSettingsV2("radmin") // EnrollmentSettingsV2 | Update enrollment
+	enrollmentSettingsV2 := *openapiclient.NewEnrollmentSettingsV2("radmin") // EnrollmentSettingsV2 | Update enrollment
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentPut(context.Background()).EnrollmentSettingsV2(enrollmentSettingsV2).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2EnrollmentPut`: EnrollmentSettingsV2
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V2EnrollmentPut(context.Background()).EnrollmentSettingsV2(enrollmentSettingsV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V2EnrollmentPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2EnrollmentPut`: EnrollmentSettingsV2
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V2EnrollmentPut`: %v\n", resp)
 }
 ```
 
@@ -1345,27 +1345,27 @@ Retrieve the configured LDAP groups configured for User-Initiated Enrollment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `name:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["name:asc"])
-    allUsersOptionFirst := true // bool | Return \"All LDAP Users\" option on the first position if it is present in the current page (optional) (default to false)
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `name:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["name:asc"])
+	allUsersOptionFirst := true // bool | Return \"All LDAP Users\" option on the first position if it is present in the current page (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).AllUsersOptionFirst(allUsersOptionFirst).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentAccessGroupsGet`: AccessGroupsPreviewSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).AllUsersOptionFirst(allUsersOptionFirst).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentAccessGroupsGet`: AccessGroupsPreviewSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -1380,8 +1380,8 @@ Other parameters are passed through a pointer to a apiV3EnrollmentAccessGroupsGe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;name:asc&quot;]]
  **allUsersOptionFirst** | **bool** | Return \&quot;All LDAP Users\&quot; option on the first position if it is present in the current page | [default to false]
 
@@ -1417,22 +1417,22 @@ Delete an LDAP group's access to user initiated Enrollment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Autogenerated Access Group ID.
+	id := "id_example" // string | Autogenerated Access Group ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1485,24 +1485,24 @@ Retrieve the configured LDAP groups configured for User-Initiated Enrollment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Autogenerated Access Group ID.
+	id := "id_example" // string | Autogenerated Access Group ID.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentAccessGroupsIdGet`: EnrollmentAccessGroupPreview
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentAccessGroupsIdGet`: EnrollmentAccessGroupPreview
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsIdGet`: %v\n", resp)
 }
 ```
 
@@ -1555,25 +1555,25 @@ Modify the configured LDAP groups configured for User-Initiated Enrollment. Only
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Autogenerated Access Group ID.
-    enrollmentAccessGroupPreview := *openapiclient.NewEnrollmentAccessGroupPreview("1", "1", "Grade School Pupils") // EnrollmentAccessGroupPreview | 
+	id := "id_example" // string | Autogenerated Access Group ID.
+	enrollmentAccessGroupPreview := *openapiclient.NewEnrollmentAccessGroupPreview("1", "1", "Grade School Pupils") // EnrollmentAccessGroupPreview | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdPut(context.Background(), id).EnrollmentAccessGroupPreview(enrollmentAccessGroupPreview).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentAccessGroupsIdPut`: EnrollmentAccessGroupPreview
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsIdPut(context.Background(), id).EnrollmentAccessGroupPreview(enrollmentAccessGroupPreview).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentAccessGroupsIdPut`: EnrollmentAccessGroupPreview
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsIdPut`: %v\n", resp)
 }
 ```
 
@@ -1627,24 +1627,24 @@ Add the configured LDAP group for User-Initiated Enrollment.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentAccessGroupPreview := *openapiclient.NewEnrollmentAccessGroupPreview("1", "1", "Grade School Pupils") // EnrollmentAccessGroupPreview | Configured LDAP group to create.
+	enrollmentAccessGroupPreview := *openapiclient.NewEnrollmentAccessGroupPreview("1", "1", "Grade School Pupils") // EnrollmentAccessGroupPreview | Configured LDAP group to create.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsPost(context.Background()).EnrollmentAccessGroupPreview(enrollmentAccessGroupPreview).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentAccessGroupsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentAccessGroupsPost(context.Background()).EnrollmentAccessGroupPreview(enrollmentAccessGroupPreview).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentAccessGroupsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentAccessGroupsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentAccessGroupsPost`: %v\n", resp)
 }
 ```
 
@@ -1693,23 +1693,23 @@ Retrieve the list of languages and corresponding ISO 639-1 Codes but only those 
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentFilteredLanguageCodesGet`: []LanguageCode
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentFilteredLanguageCodesGet`: []LanguageCode
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentFilteredLanguageCodesGet`: %v\n", resp)
 }
 ```
 
@@ -1754,23 +1754,23 @@ Get Enrollment object and Re-enrollment settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentGet`: EnrollmentSettingsV3
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentGet`: EnrollmentSettingsV3
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentGet`: %v\n", resp)
 }
 ```
 
@@ -1815,23 +1815,23 @@ Retrieve the list of languages and corresponding ISO 639-1 Codes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguageCodesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguageCodesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentLanguageCodesGet`: []LanguageCode
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguageCodesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguageCodesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguageCodesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentLanguageCodesGet`: []LanguageCode
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguageCodesGet`: %v\n", resp)
 }
 ```
 
@@ -1876,22 +1876,22 @@ Delete multiple configured languages from User-Initiated Enrollment settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ids := *openapiclient.NewIds() // Ids | ids of each language to delete
+	ids := *openapiclient.NewIds() // Ids | ids of each language to delete
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesDeleteMultiplePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesDeleteMultiplePost(context.Background()).Ids(ids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesDeleteMultiplePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -1940,26 +1940,26 @@ Get an array of the language codes that have Enrollment messaging
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is `languageCode:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["languageCode:asc"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is `languageCode:asc`. Multiple sort criteria are supported and must be separated with a comma. Example: `sort=date:desc,name:asc`.  (optional) (default to ["languageCode:asc"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentLanguagesGet`: ProcessTextsSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentLanguagesGet`: ProcessTextsSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesGet`: %v\n", resp)
 }
 ```
 
@@ -1974,8 +1974,8 @@ Other parameters are passed through a pointer to a apiV3EnrollmentLanguagesGetRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is &#x60;languageCode:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;languageCode:asc&quot;]]
 
 ### Return type
@@ -2010,22 +2010,22 @@ Delete the Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdDelete(context.Background(), languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdDelete(context.Background(), languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -2078,24 +2078,24 @@ Retrieve the Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet(context.Background(), languageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentLanguagesLanguageIdGet`: EnrollmentProcessTextObject
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet(context.Background(), languageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentLanguagesLanguageIdGet`: EnrollmentProcessTextObject
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdGet`: %v\n", resp)
 }
 ```
 
@@ -2148,25 +2148,25 @@ Edit Enrollment messaging for a language
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
-    enrollmentProcessTextObject := *openapiclient.NewEnrollmentProcessTextObject() // EnrollmentProcessTextObject |  (optional)
+	languageId := "languageId_example" // string | Two letter ISO 639-1 Language Code
+	enrollmentProcessTextObject := *openapiclient.NewEnrollmentProcessTextObject() // EnrollmentProcessTextObject |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut(context.Background(), languageId).EnrollmentProcessTextObject(enrollmentProcessTextObject).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentLanguagesLanguageIdPut`: EnrollmentProcessTextObject
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut(context.Background(), languageId).EnrollmentProcessTextObject(enrollmentProcessTextObject).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentLanguagesLanguageIdPut`: EnrollmentProcessTextObject
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentLanguagesLanguageIdPut`: %v\n", resp)
 }
 ```
 
@@ -2220,24 +2220,24 @@ Update Enrollment object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    enrollmentSettingsV3 := *openapiclient.NewEnrollmentSettingsV3("radmin") // EnrollmentSettingsV3 | Update enrollment
+	enrollmentSettingsV3 := *openapiclient.NewEnrollmentSettingsV3("radmin") // EnrollmentSettingsV3 | Update enrollment
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentPut(context.Background()).EnrollmentSettingsV3(enrollmentSettingsV3).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V3EnrollmentPut`: EnrollmentSettingsV3
-    fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V3EnrollmentPut(context.Background()).EnrollmentSettingsV3(enrollmentSettingsV3).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V3EnrollmentPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3EnrollmentPut`: EnrollmentSettingsV3
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V3EnrollmentPut`: %v\n", resp)
 }
 ```
 

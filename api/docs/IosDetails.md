@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **ModelIdentifier** | Pointer to **string** |  | [optional] 
 **ModelNumber** | Pointer to **string** |  | [optional] 
 **IsSupervised** | Pointer to **bool** |  | [optional] 
-**BatteryLevel** | Pointer to **int32** |  | [optional] 
+**BatteryLevel** | Pointer to **int64** |  | [optional] 
 **LastBackupTimestamp** | Pointer to **time.Time** |  | [optional] 
-**CapacityMb** | Pointer to **int32** |  | [optional] 
-**AvailableMb** | Pointer to **int32** |  | [optional] 
-**PercentageUsed** | Pointer to **int32** |  | [optional] 
+**CapacityMb** | Pointer to **int64** |  | [optional] 
+**AvailableMb** | Pointer to **int64** |  | [optional] 
+**PercentageUsed** | Pointer to **int64** |  | [optional] 
 **IsShared** | Pointer to **bool** |  | [optional] 
 **IsDeviceLocatorServiceEnabled** | Pointer to **bool** |  | [optional] 
 **IsDoNotDisturbEnabled** | Pointer to **bool** |  | [optional] 
@@ -153,20 +153,20 @@ HasIsSupervised returns a boolean if a field has been set.
 
 ### GetBatteryLevel
 
-`func (o *IosDetails) GetBatteryLevel() int32`
+`func (o *IosDetails) GetBatteryLevel() int64`
 
 GetBatteryLevel returns the BatteryLevel field if non-nil, zero value otherwise.
 
 ### GetBatteryLevelOk
 
-`func (o *IosDetails) GetBatteryLevelOk() (*int32, bool)`
+`func (o *IosDetails) GetBatteryLevelOk() (*int64, bool)`
 
 GetBatteryLevelOk returns a tuple with the BatteryLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatteryLevel
 
-`func (o *IosDetails) SetBatteryLevel(v int32)`
+`func (o *IosDetails) SetBatteryLevel(v int64)`
 
 SetBatteryLevel sets BatteryLevel field to given value.
 
@@ -203,20 +203,20 @@ HasLastBackupTimestamp returns a boolean if a field has been set.
 
 ### GetCapacityMb
 
-`func (o *IosDetails) GetCapacityMb() int32`
+`func (o *IosDetails) GetCapacityMb() int64`
 
 GetCapacityMb returns the CapacityMb field if non-nil, zero value otherwise.
 
 ### GetCapacityMbOk
 
-`func (o *IosDetails) GetCapacityMbOk() (*int32, bool)`
+`func (o *IosDetails) GetCapacityMbOk() (*int64, bool)`
 
 GetCapacityMbOk returns a tuple with the CapacityMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCapacityMb
 
-`func (o *IosDetails) SetCapacityMb(v int32)`
+`func (o *IosDetails) SetCapacityMb(v int64)`
 
 SetCapacityMb sets CapacityMb field to given value.
 
@@ -228,20 +228,20 @@ HasCapacityMb returns a boolean if a field has been set.
 
 ### GetAvailableMb
 
-`func (o *IosDetails) GetAvailableMb() int32`
+`func (o *IosDetails) GetAvailableMb() int64`
 
 GetAvailableMb returns the AvailableMb field if non-nil, zero value otherwise.
 
 ### GetAvailableMbOk
 
-`func (o *IosDetails) GetAvailableMbOk() (*int32, bool)`
+`func (o *IosDetails) GetAvailableMbOk() (*int64, bool)`
 
 GetAvailableMbOk returns a tuple with the AvailableMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailableMb
 
-`func (o *IosDetails) SetAvailableMb(v int32)`
+`func (o *IosDetails) SetAvailableMb(v int64)`
 
 SetAvailableMb sets AvailableMb field to given value.
 
@@ -253,20 +253,20 @@ HasAvailableMb returns a boolean if a field has been set.
 
 ### GetPercentageUsed
 
-`func (o *IosDetails) GetPercentageUsed() int32`
+`func (o *IosDetails) GetPercentageUsed() int64`
 
 GetPercentageUsed returns the PercentageUsed field if non-nil, zero value otherwise.
 
 ### GetPercentageUsedOk
 
-`func (o *IosDetails) GetPercentageUsedOk() (*int32, bool)`
+`func (o *IosDetails) GetPercentageUsedOk() (*int64, bool)`
 
 GetPercentageUsedOk returns a tuple with the PercentageUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPercentageUsed
 
-`func (o *IosDetails) SetPercentageUsed(v int32)`
+`func (o *IosDetails) SetPercentageUsed(v int64)`
 
 SetPercentageUsed sets PercentageUsed field to given value.
 

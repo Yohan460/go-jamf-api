@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** |  | [optional] 
-**ExpirationIntervalDays** | Pointer to **int32** |  | [optional] 
-**ExpirationIntervalSeconds** | Pointer to **int32** |  | [optional] 
+**ExpirationIntervalDays** | Pointer to **int64** |  | [optional] 
+**ExpirationIntervalSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetExpirationIntervalDays
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDays() int32`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDays() int64`
 
 GetExpirationIntervalDays returns the ExpirationIntervalDays field if non-nil, zero value otherwise.
 
 ### GetExpirationIntervalDaysOk
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDaysOk() (*int32, bool)`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalDaysOk() (*int64, bool)`
 
 GetExpirationIntervalDaysOk returns a tuple with the ExpirationIntervalDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpirationIntervalDays
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalDays(v int32)`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalDays(v int64)`
 
 SetExpirationIntervalDays sets ExpirationIntervalDays field to given value.
 
@@ -79,20 +79,20 @@ HasExpirationIntervalDays returns a boolean if a field has been set.
 
 ### GetExpirationIntervalSeconds
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSeconds() int32`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSeconds() int64`
 
 GetExpirationIntervalSeconds returns the ExpirationIntervalSeconds field if non-nil, zero value otherwise.
 
 ### GetExpirationIntervalSecondsOk
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSecondsOk() (*int32, bool)`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) GetExpirationIntervalSecondsOk() (*int64, bool)`
 
 GetExpirationIntervalSecondsOk returns a tuple with the ExpirationIntervalSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpirationIntervalSeconds
 
-`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalSeconds(v int32)`
+`func (o *AccountDrivenUserEnrollmentSessionTokenSettings) SetExpirationIntervalSeconds(v int64)`
 
 SetExpirationIntervalSeconds sets ExpirationIntervalSeconds field to given value.
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DisplayName** | Pointer to **string** | Name for Team Viewer Connection Configuration | [optional] 
 **Enabled** | Pointer to **bool** | Defines the intent to enable or disable Team Viewer connection | [optional] 
-**SessionTimeout** | Pointer to **int32** | Number of minutes before the session expires | [optional] 
+**SessionTimeout** | Pointer to **int64** | Number of minutes before the session expires | [optional] 
 **Token** | Pointer to **string** | Script token for Team Viewer Connection Configuration | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetSessionTimeout
 
-`func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int32`
+`func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeout() int64`
 
 GetSessionTimeout returns the SessionTimeout field if non-nil, zero value otherwise.
 
 ### GetSessionTimeoutOk
 
-`func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int32, bool)`
+`func (o *ConnectionConfigurationUpdateRequest) GetSessionTimeoutOk() (*int64, bool)`
 
 GetSessionTimeoutOk returns a tuple with the SessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionTimeout
 
-`func (o *ConnectionConfigurationUpdateRequest) SetSessionTimeout(v int32)`
+`func (o *ConnectionConfigurationUpdateRequest) SetSessionTimeout(v int64)`
 
 SetSessionTimeout sets SessionTimeout field to given value.
 

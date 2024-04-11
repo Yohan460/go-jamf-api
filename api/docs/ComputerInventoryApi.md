@@ -32,24 +32,24 @@ Return all sections of a computer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
+	id := "id_example" // string | instance id of computer record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryDetailIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryDetailIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryDetailIdGet`: ComputerInventory
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryDetailIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryDetailIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryDetailIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryDetailIdGet`: ComputerInventory
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryDetailIdGet`: %v\n", resp)
 }
 ```
 
@@ -102,25 +102,25 @@ Update specific fields on a computer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
-    computerInventoryUpdateRequest := *openapiclient.NewComputerInventoryUpdateRequest() // ComputerInventoryUpdateRequest | 
+	id := "id_example" // string | instance id of computer record
+	computerInventoryUpdateRequest := *openapiclient.NewComputerInventoryUpdateRequest() // ComputerInventoryUpdateRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch(context.Background(), id).ComputerInventoryUpdateRequest(computerInventoryUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryDetailIdPatch`: ComputerInventory
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch(context.Background(), id).ComputerInventoryUpdateRequest(computerInventoryUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryDetailIdPatch`: ComputerInventory
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryDetailIdPatch`: %v\n", resp)
 }
 ```
 
@@ -174,25 +174,25 @@ Return paginated FileVault information for all computers
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryFilevaultGet(context.Background()).Page(page).PageSize(pageSize).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryFilevaultGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryFilevaultGet`: ComputerInventoryFileVaultSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryFilevaultGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryFilevaultGet(context.Background()).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryFilevaultGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryFilevaultGet`: ComputerInventoryFileVaultSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryFilevaultGet`: %v\n", resp)
 }
 ```
 
@@ -207,8 +207,8 @@ Other parameters are passed through a pointer to a apiV1ComputersInventoryFileva
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
 
 ### Return type
 
@@ -242,28 +242,28 @@ Return paginated Computer Inventory records
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    section := []openapiclient.ComputerSection{openapiclient.ComputerSection("GENERAL")} // []ComputerSection | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=GENERAL&section=HARDWARE (optional) (default to ["GENERAL"])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `general.name:asc`. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: `general.name`, `udid`, `id`, `general.assetTag`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.remoteManagement.managementUsername`, `general.mdmCertificateExpiration`, `general.platform`, `hardware.make`, `hardware.model`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `userAndLocation.realname`, `purchasing.lifeExpectancy`, `purchasing.warrantyDate`  Example: `sort=udid:desc,general.name:asc`.  (optional) (default to ["general.name:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: `general.name`, `udid`, `id`, `general.assetTag`, `general.barcode1`, `general.barcode2`, `general.enrolledViaAutomatedDeviceEnrollment`, `general.lastIpAddress`, `general.itunesStoreAccountActive`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.lastReportedIp`, `general.remoteManagement.managed`, `general.remoteManagement.managementUsername`, `general.mdmCapable.capable`, `general.mdmCertificateExpiration`, `general.platform`, `general.supervised`, `general.userApprovedMdm`, `general.declarativeDeviceManagementEnabled`,  `hardware.bleCapable`, `hardware.macAddress`, `hardware.make`, `hardware.model`, `hardware.modelIdentifier`, `hardware.serialNumber`, `hardware.supportsIosAppInstalls`,`hardware.appleSilicon`, `operatingSystem.activeDirectoryStatus`, `operatingSystem.fileVault2Status`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `security.activationLockEnabled`, `security.recoveryLockEnabled`,`security.firewallEnabled`,`userAndLocation.buildingId`, `userAndLocation.departmentId`, `userAndLocation.email`, `userAndLocation.realname`, `userAndLocation.phone`, `userAndLocation.position`,`userAndLocation.room`, `userAndLocation.username`, `purchasing.appleCareId`, `purchasing.lifeExpectancy`, `purchasing.purchased`, `purchasing.leased`, `purchasing.vendor`, `purchasing.warrantyDate`,  This param can be combined with paging and sorting. Example: `filter=general.name==\"Orchard\"`  (optional) (default to "")
+	section := []openapiclient.ComputerSection{openapiclient.ComputerSection("GENERAL")} // []ComputerSection | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=GENERAL&section=HARDWARE (optional) (default to ["GENERAL"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `general.name:asc`. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: `general.name`, `udid`, `id`, `general.assetTag`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.remoteManagement.managementUsername`, `general.mdmCertificateExpiration`, `general.platform`, `hardware.make`, `hardware.model`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `userAndLocation.realname`, `purchasing.lifeExpectancy`, `purchasing.warrantyDate`  Example: `sort=udid:desc,general.name:asc`.  (optional) (default to ["general.name:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: `general.name`, `udid`, `id`, `general.assetTag`, `general.barcode1`, `general.barcode2`, `general.enrolledViaAutomatedDeviceEnrollment`, `general.lastIpAddress`, `general.itunesStoreAccountActive`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.lastReportedIp`, `general.remoteManagement.managed`, `general.remoteManagement.managementUsername`, `general.mdmCapable.capable`, `general.mdmCertificateExpiration`, `general.platform`, `general.supervised`, `general.userApprovedMdm`, `general.declarativeDeviceManagementEnabled`,  `hardware.bleCapable`, `hardware.macAddress`, `hardware.make`, `hardware.model`, `hardware.modelIdentifier`, `hardware.serialNumber`, `hardware.supportsIosAppInstalls`,`hardware.appleSilicon`, `operatingSystem.activeDirectoryStatus`, `operatingSystem.fileVault2Status`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `security.activationLockEnabled`, `security.recoveryLockEnabled`,`security.firewallEnabled`,`userAndLocation.buildingId`, `userAndLocation.departmentId`, `userAndLocation.email`, `userAndLocation.realname`, `userAndLocation.phone`, `userAndLocation.position`,`userAndLocation.room`, `userAndLocation.username`, `purchasing.appleCareId`, `purchasing.lifeExpectancy`, `purchasing.purchased`, `purchasing.leased`, `purchasing.vendor`, `purchasing.warrantyDate`,  This param can be combined with paging and sorting. Example: `filter=general.name==\"Orchard\"`  (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryGet(context.Background()).Section(section).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryGet`: ComputerInventorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryGet(context.Background()).Section(section).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryGet`: ComputerInventorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryGet`: %v\n", resp)
 }
 ```
 
@@ -279,8 +279,8 @@ Other parameters are passed through a pointer to a apiV1ComputersInventoryGetReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **section** | [**[]ComputerSection**](ComputerSection.md) | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;GENERAL&amp;section&#x3D;HARDWARE | [default to [&quot;GENERAL&quot;]]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;general.name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.remoteManagement.managementUsername&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.warrantyDate&#x60;  Example: &#x60;sort&#x3D;udid:desc,general.name:asc&#x60;.  | [default to [&quot;general.name:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.barcode1&#x60;, &#x60;general.barcode2&#x60;, &#x60;general.enrolledViaAutomatedDeviceEnrollment&#x60;, &#x60;general.lastIpAddress&#x60;, &#x60;general.itunesStoreAccountActive&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.lastReportedIp&#x60;, &#x60;general.remoteManagement.managed&#x60;, &#x60;general.remoteManagement.managementUsername&#x60;, &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;,  &#x60;hardware.bleCapable&#x60;, &#x60;hardware.macAddress&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;hardware.modelIdentifier&#x60;, &#x60;hardware.serialNumber&#x60;, &#x60;hardware.supportsIosAppInstalls&#x60;,&#x60;hardware.appleSilicon&#x60;, &#x60;operatingSystem.activeDirectoryStatus&#x60;, &#x60;operatingSystem.fileVault2Status&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;security.activationLockEnabled&#x60;, &#x60;security.recoveryLockEnabled&#x60;,&#x60;security.firewallEnabled&#x60;,&#x60;userAndLocation.buildingId&#x60;, &#x60;userAndLocation.departmentId&#x60;, &#x60;userAndLocation.email&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;userAndLocation.phone&#x60;, &#x60;userAndLocation.position&#x60;,&#x60;userAndLocation.room&#x60;, &#x60;userAndLocation.username&#x60;, &#x60;purchasing.appleCareId&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.purchased&#x60;, &#x60;purchasing.leased&#x60;, &#x60;purchasing.vendor&#x60;, &#x60;purchasing.warrantyDate&#x60;,  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;general.name&#x3D;&#x3D;\&quot;Orchard\&quot;&#x60;  | [default to &quot;&quot;]
 
@@ -316,23 +316,23 @@ Remove attachment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
-    attachmentId := "attachmentId_example" // string | instance id of attachment object
+	id := "id_example" // string | instance id of computer record
+	attachmentId := "attachmentId_example" // string | instance id of attachment object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdDelete(context.Background(), id, attachmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdDelete(context.Background(), id, attachmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -387,25 +387,25 @@ Download attachment file
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
-    attachmentId := "attachmentId_example" // string | instance id of attachment object
+	id := "id_example" // string | instance id of computer record
+	attachmentId := "attachmentId_example" // string | instance id of attachment object
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet(context.Background(), id, attachmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryIdAttachmentsAttachmentIdGet`: *os.File
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet(context.Background(), id, attachmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryIdAttachmentsAttachmentIdGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsAttachmentIdGet`: %v\n", resp)
 }
 ```
 
@@ -460,25 +460,25 @@ Upload attachment and assign to computer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
-    file := os.NewFile(1234, "some_file") // *os.File | The file to upload
+	id := "id_example" // string | instance id of computer record
+	file := os.NewFile(1234, "some_file") // *os.File | The file to upload
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost(context.Background(), id).File(file).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryIdAttachmentsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost(context.Background(), id).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryIdAttachmentsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdAttachmentsPost`: %v\n", resp)
 }
 ```
 
@@ -532,22 +532,22 @@ Remove specified Computer record
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
+	id := "id_example" // string | instance id of computer record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -600,24 +600,24 @@ Return FileVault information for a specific computer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
+	id := "id_example" // string | instance id of computer record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryIdFilevaultGet`: ComputerInventoryFileVault
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryIdFilevaultGet`: ComputerInventoryFileVault
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdFilevaultGet`: %v\n", resp)
 }
 ```
 
@@ -670,25 +670,25 @@ Return General section of a Computer
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
-    section := []openapiclient.ComputerSection{openapiclient.ComputerSection("GENERAL")} // []ComputerSection | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=general&section=hardware (optional) (default to ["GENERAL"])
+	id := "id_example" // string | instance id of computer record
+	section := []openapiclient.ComputerSection{openapiclient.ComputerSection("GENERAL")} // []ComputerSection | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=general&section=hardware (optional) (default to ["GENERAL"])
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdGet(context.Background(), id).Section(section).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryIdGet`: ComputerInventory
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdGet(context.Background(), id).Section(section).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryIdGet`: ComputerInventory
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdGet`: %v\n", resp)
 }
 ```
 
@@ -742,24 +742,24 @@ Return a Computers Recovery Lock Password
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | instance id of computer record
+	id := "id_example" // string | instance id of computer record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ComputersInventoryIdViewRecoveryLockPasswordGet`: ComputerInventoryRecoveryLockPasswordResponse
-    fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ComputersInventoryIdViewRecoveryLockPasswordGet`: ComputerInventoryRecoveryLockPasswordResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V1ComputersInventoryIdViewRecoveryLockPasswordGet`: %v\n", resp)
 }
 ```
 

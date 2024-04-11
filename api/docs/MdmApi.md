@@ -26,24 +26,24 @@ Post a command for creation and queuing
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    mdmCommandRequest := *openapiclient.NewMdmCommandRequest() // MdmCommandRequest | The mdm command object to create and queue (optional)
+	mdmCommandRequest := *openapiclient.NewMdmCommandRequest() // MdmCommandRequest | The mdm command object to create and queue (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MdmAPI.PreviewMdmCommandsPost(context.Background()).MdmCommandRequest(mdmCommandRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.PreviewMdmCommandsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PreviewMdmCommandsPost`: []HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `MdmAPI.PreviewMdmCommandsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.PreviewMdmCommandsPost(context.Background()).MdmCommandRequest(mdmCommandRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.PreviewMdmCommandsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PreviewMdmCommandsPost`: []HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.PreviewMdmCommandsPost`: %v\n", resp)
 }
 ```
 
@@ -92,25 +92,25 @@ Deploy packages using MDM
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    installPackage := *openapiclient.NewInstallPackage(*openapiclient.NewPackageManifest("https://example.jamf.com/this/package", "dcb02a41cd6d842943459a88c96a5f72", "MD5", "com.jamf.example", "0.1.0", "Title", int32(12345))) // InstallPackage | 
-    verbose := true // bool | Enables the 'verbose' response, which includes information about the commands queued as well as information about commands that failed to queue. (optional) (default to false)
+	installPackage := *openapiclient.NewInstallPackage(*openapiclient.NewPackageManifest("https://example.jamf.com/this/package", "dcb02a41cd6d842943459a88c96a5f72", "MD5", "com.jamf.example", "0.1.0", "Title", int64(12345))) // InstallPackage | 
+	verbose := true // bool | Enables the 'verbose' response, which includes information about the commands queued as well as information about commands that failed to queue. (optional) (default to false)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MdmAPI.V1DeployPackagePost(context.Background()).InstallPackage(installPackage).Verbose(verbose).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1DeployPackagePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeployPackagePost`: VerbosePackageDeploymentResponse
-    fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1DeployPackagePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V1DeployPackagePost(context.Background()).InstallPackage(installPackage).Verbose(verbose).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1DeployPackagePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeployPackagePost`: VerbosePackageDeploymentResponse
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1DeployPackagePost`: %v\n", resp)
 }
 ```
 
@@ -160,25 +160,25 @@ Get information about mdm commands made by Jamf Pro.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    uuids := []string{"Inner_example"} // []string | A list of the UUIDs of the commands being searched for.  Limited to 40 UUIDs in length. Choose one of two parameters, but not both. (optional)
-    clientManagementId := "fd68c371-5921-436e-b16b-8a3c1bf90ee5" // string | The client management id used to search for a list of commands. Choose one of two parameters, but not both. (optional)
+	uuids := []string{"Inner_example"} // []string | A list of the UUIDs of the commands being searched for.  Limited to 40 UUIDs in length. Choose one of two parameters, but not both. (optional)
+	clientManagementId := "fd68c371-5921-436e-b16b-8a3c1bf90ee5" // string | The client management id used to search for a list of commands. Choose one of two parameters, but not both. (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MdmAPI.V1MdmCommandsGet(context.Background()).Uuids(uuids).ClientManagementId(clientManagementId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1MdmCommandsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MdmCommandsGet`: []MdmCommand
-    fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1MdmCommandsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V1MdmCommandsGet(context.Background()).Uuids(uuids).ClientManagementId(clientManagementId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1MdmCommandsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MdmCommandsGet`: []MdmCommand
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1MdmCommandsGet`: %v\n", resp)
 }
 ```
 
@@ -228,24 +228,24 @@ Renew MDM Profile
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    udids := *openapiclient.NewUdids() // Udids | List of devices' UDIDs to perform MDM profile renewal
+	udids := *openapiclient.NewUdids() // Udids | List of devices' UDIDs to perform MDM profile renewal
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MdmAPI.V1MdmRenewProfilePost(context.Background()).Udids(udids).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1MdmRenewProfilePost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1MdmRenewProfilePost`: RenewMdmProfileResponse
-    fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1MdmRenewProfilePost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V1MdmRenewProfilePost(context.Background()).Udids(udids).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V1MdmRenewProfilePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1MdmRenewProfilePost`: RenewMdmProfileResponse
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V1MdmRenewProfilePost`: %v\n", resp)
 }
 ```
 
@@ -294,27 +294,27 @@ Get information about mdm commands made by Jamf Pro.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["dateSent:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId==fb511aae-c557-474f-a9c1-5dc845b90d0f;status==Pending;command==INSTALL_PROFILE;uuid==9e18f849-e689-4f2d-b616-a99d3da7db42;clientType==COMPUTER_USER;profileIdentifier==18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted=ge=2021-08-04T14:25:18.26Z;dateCompleted=le=2021-08-04T14:25:18.26Z;validAfter=ge=2021-08-05T14:25:18.26Z;active==true (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["dateSent:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId==fb511aae-c557-474f-a9c1-5dc845b90d0f;status==Pending;command==INSTALL_PROFILE;uuid==9e18f849-e689-4f2d-b616-a99d3da7db42;clientType==COMPUTER_USER;profileIdentifier==18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted=ge=2021-08-04T14:25:18.26Z;dateCompleted=le=2021-08-04T14:25:18.26Z;validAfter=ge=2021-08-05T14:25:18.26Z;active==true (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MdmAPI.V2MdmCommandsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V2MdmCommandsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2MdmCommandsGet`: MdmCommandResults
-    fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V2MdmCommandsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V2MdmCommandsGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V2MdmCommandsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2MdmCommandsGet`: MdmCommandResults
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V2MdmCommandsGet`: %v\n", resp)
 }
 ```
 
@@ -329,8 +329,8 @@ Other parameters are passed through a pointer to a apiV2MdmCommandsGetRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;dateSent:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true | [default to &quot;&quot;]
 

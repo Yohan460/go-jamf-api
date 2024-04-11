@@ -20,7 +20,7 @@ var _ MappedNullable = &PrestageSyncStatus{}
 // PrestageSyncStatus struct for PrestageSyncStatus
 type PrestageSyncStatus struct {
 	SyncState *string `json:"syncState,omitempty"`
-	PrestageId *int32 `json:"prestageId,omitempty"`
+	PrestageId *int64 `json:"prestageId,omitempty"`
 	Timestamp *string `json:"timestamp,omitempty"`
 }
 
@@ -74,9 +74,9 @@ func (o *PrestageSyncStatus) SetSyncState(v string) {
 }
 
 // GetPrestageId returns the PrestageId field value if set, zero value otherwise.
-func (o *PrestageSyncStatus) GetPrestageId() int32 {
+func (o *PrestageSyncStatus) GetPrestageId() int64 {
 	if o == nil || IsNil(o.PrestageId) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PrestageId
@@ -84,7 +84,7 @@ func (o *PrestageSyncStatus) GetPrestageId() int32 {
 
 // GetPrestageIdOk returns a tuple with the PrestageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrestageSyncStatus) GetPrestageIdOk() (*int32, bool) {
+func (o *PrestageSyncStatus) GetPrestageIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.PrestageId) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *PrestageSyncStatus) HasPrestageId() bool {
 	return false
 }
 
-// SetPrestageId gets a reference to the given int32 and assigns it to the PrestageId field.
-func (o *PrestageSyncStatus) SetPrestageId(v int32) {
+// SetPrestageId gets a reference to the given int64 and assigns it to the PrestageId field.
+func (o *PrestageSyncStatus) SetPrestageId(v int64) {
 	o.PrestageId = &v
 }
 

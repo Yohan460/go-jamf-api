@@ -20,7 +20,7 @@ var _ MappedNullable = &PrestageScopeAssignment{}
 // PrestageScopeAssignment struct for PrestageScopeAssignment
 type PrestageScopeAssignment struct {
 	SerialNumber *string `json:"serialNumber,omitempty"`
-	AssignmentEpoch *int32 `json:"assignmentEpoch,omitempty"`
+	AssignmentEpoch *int64 `json:"assignmentEpoch,omitempty"`
 	UserAssigned *string `json:"userAssigned,omitempty"`
 }
 
@@ -74,9 +74,9 @@ func (o *PrestageScopeAssignment) SetSerialNumber(v string) {
 }
 
 // GetAssignmentEpoch returns the AssignmentEpoch field value if set, zero value otherwise.
-func (o *PrestageScopeAssignment) GetAssignmentEpoch() int32 {
+func (o *PrestageScopeAssignment) GetAssignmentEpoch() int64 {
 	if o == nil || IsNil(o.AssignmentEpoch) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AssignmentEpoch
@@ -84,7 +84,7 @@ func (o *PrestageScopeAssignment) GetAssignmentEpoch() int32 {
 
 // GetAssignmentEpochOk returns a tuple with the AssignmentEpoch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrestageScopeAssignment) GetAssignmentEpochOk() (*int32, bool) {
+func (o *PrestageScopeAssignment) GetAssignmentEpochOk() (*int64, bool) {
 	if o == nil || IsNil(o.AssignmentEpoch) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *PrestageScopeAssignment) HasAssignmentEpoch() bool {
 	return false
 }
 
-// SetAssignmentEpoch gets a reference to the given int32 and assigns it to the AssignmentEpoch field.
-func (o *PrestageScopeAssignment) SetAssignmentEpoch(v int32) {
+// SetAssignmentEpoch gets a reference to the given int64 and assigns it to the AssignmentEpoch field.
+func (o *PrestageScopeAssignment) SetAssignmentEpoch(v int64) {
 	o.AssignmentEpoch = &v
 }
 

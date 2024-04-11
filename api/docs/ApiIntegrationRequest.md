@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AuthorizationScopes** | **[]string** | API Role display names.  | 
 **DisplayName** | **string** |  | 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**AccessTokenLifetimeSeconds** | Pointer to **int32** |  | [optional] 
+**AccessTokenLifetimeSeconds** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -95,20 +95,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetAccessTokenLifetimeSeconds
 
-`func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSeconds() int32`
+`func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSeconds() int64`
 
 GetAccessTokenLifetimeSeconds returns the AccessTokenLifetimeSeconds field if non-nil, zero value otherwise.
 
 ### GetAccessTokenLifetimeSecondsOk
 
-`func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSecondsOk() (*int32, bool)`
+`func (o *ApiIntegrationRequest) GetAccessTokenLifetimeSecondsOk() (*int64, bool)`
 
 GetAccessTokenLifetimeSecondsOk returns a tuple with the AccessTokenLifetimeSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessTokenLifetimeSeconds
 
-`func (o *ApiIntegrationRequest) SetAccessTokenLifetimeSeconds(v int32)`
+`func (o *ApiIntegrationRequest) SetAccessTokenLifetimeSeconds(v int64)`
 
 SetAccessTokenLifetimeSeconds sets AccessTokenLifetimeSeconds field to given value.
 

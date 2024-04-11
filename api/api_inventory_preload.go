@@ -118,7 +118,7 @@ type InventoryPreloadAPI interface {
 
 	Deprecated
 	*/
-	InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdDeleteRequest
+	InventoryPreloadIdDelete(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdDeleteRequest
 
 	// InventoryPreloadIdDeleteExecute executes the request
 	// Deprecated
@@ -135,7 +135,7 @@ type InventoryPreloadAPI interface {
 
 	Deprecated
 	*/
-	InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdGetRequest
+	InventoryPreloadIdGet(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdGetRequest
 
 	// InventoryPreloadIdGetExecute executes the request
 	//  @return InventoryPreloadRecord
@@ -153,7 +153,7 @@ type InventoryPreloadAPI interface {
 
 	Deprecated
 	*/
-	InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdPutRequest
+	InventoryPreloadIdPut(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdPutRequest
 
 	// InventoryPreloadIdPutExecute executes the request
 	//  @return InventoryPreloadRecord
@@ -304,7 +304,7 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest
+	V1InventoryPreloadIdDelete(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest
 
 	// V1InventoryPreloadIdDeleteExecute executes the request
 	// Deprecated
@@ -321,7 +321,7 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdGetRequest
+	V1InventoryPreloadIdGet(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdGetRequest
 
 	// V1InventoryPreloadIdGetExecute executes the request
 	//  @return InventoryPreloadRecord
@@ -339,7 +339,7 @@ A CSV template can be downloaded from /api/inventory-preload/csv-template.
 
 	Deprecated
 	*/
-	V1InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdPutRequest
+	V1InventoryPreloadIdPut(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdPutRequest
 
 	// V1InventoryPreloadIdPutExecute executes the request
 	//  @return InventoryPreloadRecord
@@ -810,19 +810,19 @@ func (a *InventoryPreloadAPIService) InventoryPreloadDeleteExecute(r InventoryPr
 type InventoryPreloadAPIInventoryPreloadGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	pagesize *int32
+	page *int64
+	pagesize *int64
 	sort *string
 	sortBy *string
 }
 
-func (r InventoryPreloadAPIInventoryPreloadGetRequest) Page(page int32) InventoryPreloadAPIInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Page(page int64) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIInventoryPreloadGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIInventoryPreloadGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadGetRequest) Pagesize(pagesize int64) InventoryPreloadAPIInventoryPreloadGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
@@ -883,13 +883,13 @@ func (a *InventoryPreloadAPIService) InventoryPreloadGetExecute(r InventoryPrelo
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.sort != nil {
@@ -961,31 +961,31 @@ func (a *InventoryPreloadAPIService) InventoryPreloadGetExecute(r InventoryPrelo
 type InventoryPreloadAPIInventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Page(page int64) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Size(size int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Size(size int64) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) Pagesize(pagesize int64) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIInventoryPreloadHistoryGetRequest) PageSize(pageSize int64) InventoryPreloadAPIInventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1042,25 +1042,25 @@ func (a *InventoryPreloadAPIService) InventoryPreloadHistoryGetExecute(r Invento
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1250,7 +1250,7 @@ func (a *InventoryPreloadAPIService) InventoryPreloadHistoryNotesPostExecute(r I
 type InventoryPreloadAPIInventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 }
 
 func (r InventoryPreloadAPIInventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
@@ -1268,7 +1268,7 @@ Deletes an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdDeleteRequest {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdDelete(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdDeleteRequest {
 	return InventoryPreloadAPIInventoryPreloadIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1355,7 +1355,7 @@ func (a *InventoryPreloadAPIService) InventoryPreloadIdDeleteExecute(r Inventory
 type InventoryPreloadAPIInventoryPreloadIdGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 }
 
 func (r InventoryPreloadAPIInventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
@@ -1373,7 +1373,7 @@ Retrieves an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdGetRequest {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdGet(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdGetRequest {
 	return InventoryPreloadAPIInventoryPreloadIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1471,7 +1471,7 @@ func (a *InventoryPreloadAPIService) InventoryPreloadIdGetExecute(r InventoryPre
 type InventoryPreloadAPIInventoryPreloadIdPutRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
@@ -1496,7 +1496,7 @@ Updates an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIInventoryPreloadIdPutRequest {
+func (a *InventoryPreloadAPIService) InventoryPreloadIdPut(ctx context.Context, id int64) InventoryPreloadAPIInventoryPreloadIdPutRequest {
 	return InventoryPreloadAPIInventoryPreloadIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2055,31 +2055,31 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadDeleteExecute(r Inventory
 type InventoryPreloadAPIV1InventoryPreloadGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Page(page int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Page(page int64) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Size(size int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Size(size int64) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) Pagesize(pagesize int64) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV1InventoryPreloadGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadGetRequest) PageSize(pageSize int64) InventoryPreloadAPIV1InventoryPreloadGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2136,25 +2136,25 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadGetExecute(r InventoryPre
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2220,31 +2220,31 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadGetExecute(r InventoryPre
 type InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	size *int32
-	pagesize *int32
-	pageSize *int32
+	page *int64
+	size *int64
+	pagesize *int64
+	pageSize *int64
 	sort *string
 }
 
-func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Page(page int64) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Size(size int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Size(size int64) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.size = &size
 	return r
 }
 
 // Deprecated
-func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Pagesize(pagesize int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) Pagesize(pagesize int64) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.pagesize = &pagesize
 	return r
 }
 
-func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest) PageSize(pageSize int64) InventoryPreloadAPIV1InventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2301,25 +2301,25 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryGetExecute(r Inven
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.size != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.size = &defaultValue
 	}
 	if r.pagesize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pagesize = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -2509,7 +2509,7 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadHistoryPostExecute(r Inve
 type InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 }
 
 func (r InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest) Execute() (*http.Response, error) {
@@ -2527,7 +2527,7 @@ Deletes an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) V1InventoryPreloadIdDelete(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdDelete(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest {
 	return InventoryPreloadAPIV1InventoryPreloadIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2614,7 +2614,7 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadIdDeleteExecute(r Invento
 type InventoryPreloadAPIV1InventoryPreloadIdGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 }
 
 func (r InventoryPreloadAPIV1InventoryPreloadIdGetRequest) Execute() (*InventoryPreloadRecord, *http.Response, error) {
@@ -2632,7 +2632,7 @@ Retrieves an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) V1InventoryPreloadIdGet(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdGetRequest {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdGet(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdGetRequest {
 	return InventoryPreloadAPIV1InventoryPreloadIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -2730,7 +2730,7 @@ func (a *InventoryPreloadAPIService) V1InventoryPreloadIdGetExecute(r InventoryP
 type InventoryPreloadAPIV1InventoryPreloadIdPutRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	id int32
+	id int64
 	inventoryPreloadRecord *InventoryPreloadRecord
 }
 
@@ -2755,7 +2755,7 @@ Updates an Inventory Preload record.
 
 Deprecated
 */
-func (a *InventoryPreloadAPIService) V1InventoryPreloadIdPut(ctx context.Context, id int32) InventoryPreloadAPIV1InventoryPreloadIdPutRequest {
+func (a *InventoryPreloadAPIService) V1InventoryPreloadIdPut(ctx context.Context, id int64) InventoryPreloadAPIV1InventoryPreloadIdPutRequest {
 	return InventoryPreloadAPIV1InventoryPreloadIdPutRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -3677,8 +3677,8 @@ type InventoryPreloadAPIV2InventoryPreloadExportPostRequest struct {
 	ApiService InventoryPreloadAPI
 	exportFields *[]string
 	exportLabels *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	exportParameters *ExportParameters
@@ -3696,12 +3696,12 @@ func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) ExportLabels(exp
 	return r
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) Page(page int64) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.page = &page
 	return r
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadExportPostRequest) PageSize(pageSize int64) InventoryPreloadAPIV2InventoryPreloadExportPostRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -3796,13 +3796,13 @@ func (a *InventoryPreloadAPIService) V2InventoryPreloadExportPostExecute(r Inven
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -3894,18 +3894,18 @@ func (a *InventoryPreloadAPIService) V2InventoryPreloadExportPostExecute(r Inven
 type InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) Page(page int64) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest) PageSize(pageSize int64) InventoryPreloadAPIV2InventoryPreloadHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -3965,13 +3965,13 @@ func (a *InventoryPreloadAPIService) V2InventoryPreloadHistoryGetExecute(r Inven
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -4260,18 +4260,18 @@ func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsDeleteAllPostExecu
 type InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest struct {
 	ctx context.Context
 	ApiService InventoryPreloadAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Page(page int32) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) Page(page int64) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) PageSize(pageSize int32) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
+func (r InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest) PageSize(pageSize int64) InventoryPreloadAPIV2InventoryPreloadRecordsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -4331,13 +4331,13 @@ func (a *InventoryPreloadAPIService) V2InventoryPreloadRecordsGetExecute(r Inven
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

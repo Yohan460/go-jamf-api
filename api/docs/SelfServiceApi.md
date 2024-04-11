@@ -23,23 +23,23 @@ Get an object representation of Self Service settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceSettingsGet`: SelfServiceSettings
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceSettingsGet`: SelfServiceSettings
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Put an object representation of Self Service settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    selfServiceSettings := *openapiclient.NewSelfServiceSettings() // SelfServiceSettings | object that contains all editable global fields to alter Self Service settings 
+	selfServiceSettings := *openapiclient.NewSelfServiceSettings() // SelfServiceSettings | object that contains all editable global fields to alter Self Service settings 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsPut(context.Background()).SelfServiceSettings(selfServiceSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1SelfServiceSettingsPut`: SelfServiceSettings
-    fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SelfServiceAPI.V1SelfServiceSettingsPut(context.Background()).SelfServiceSettings(selfServiceSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SelfServiceAPI.V1SelfServiceSettingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1SelfServiceSettingsPut`: SelfServiceSettings
+	fmt.Fprintf(os.Stdout, "Response from `SelfServiceAPI.V1SelfServiceSettingsPut`: %v\n", resp)
 }
 ```
 

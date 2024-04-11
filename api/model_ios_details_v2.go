@@ -24,11 +24,11 @@ type IosDetailsV2 struct {
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
 	ModelNumber *string `json:"modelNumber,omitempty"`
 	Supervised *bool `json:"supervised,omitempty"`
-	BatteryLevel *int32 `json:"batteryLevel,omitempty"`
+	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
 	LastBackupTimestamp *time.Time `json:"lastBackupTimestamp,omitempty"`
-	CapacityMb *int32 `json:"capacityMb,omitempty"`
-	AvailableMb *int32 `json:"availableMb,omitempty"`
-	PercentageUsed *int32 `json:"percentageUsed,omitempty"`
+	CapacityMb *int64 `json:"capacityMb,omitempty"`
+	AvailableMb *int64 `json:"availableMb,omitempty"`
+	PercentageUsed *int64 `json:"percentageUsed,omitempty"`
 	Shared *bool `json:"shared,omitempty"`
 	DeviceLocatorServiceEnabled *bool `json:"deviceLocatorServiceEnabled,omitempty"`
 	DoNotDisturbEnabled *bool `json:"doNotDisturbEnabled,omitempty"`
@@ -196,9 +196,9 @@ func (o *IosDetailsV2) SetSupervised(v bool) {
 }
 
 // GetBatteryLevel returns the BatteryLevel field value if set, zero value otherwise.
-func (o *IosDetailsV2) GetBatteryLevel() int32 {
+func (o *IosDetailsV2) GetBatteryLevel() int64 {
 	if o == nil || IsNil(o.BatteryLevel) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.BatteryLevel
@@ -206,7 +206,7 @@ func (o *IosDetailsV2) GetBatteryLevel() int32 {
 
 // GetBatteryLevelOk returns a tuple with the BatteryLevel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IosDetailsV2) GetBatteryLevelOk() (*int32, bool) {
+func (o *IosDetailsV2) GetBatteryLevelOk() (*int64, bool) {
 	if o == nil || IsNil(o.BatteryLevel) {
 		return nil, false
 	}
@@ -222,8 +222,8 @@ func (o *IosDetailsV2) HasBatteryLevel() bool {
 	return false
 }
 
-// SetBatteryLevel gets a reference to the given int32 and assigns it to the BatteryLevel field.
-func (o *IosDetailsV2) SetBatteryLevel(v int32) {
+// SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
+func (o *IosDetailsV2) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
 }
 
@@ -260,9 +260,9 @@ func (o *IosDetailsV2) SetLastBackupTimestamp(v time.Time) {
 }
 
 // GetCapacityMb returns the CapacityMb field value if set, zero value otherwise.
-func (o *IosDetailsV2) GetCapacityMb() int32 {
+func (o *IosDetailsV2) GetCapacityMb() int64 {
 	if o == nil || IsNil(o.CapacityMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.CapacityMb
@@ -270,7 +270,7 @@ func (o *IosDetailsV2) GetCapacityMb() int32 {
 
 // GetCapacityMbOk returns a tuple with the CapacityMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IosDetailsV2) GetCapacityMbOk() (*int32, bool) {
+func (o *IosDetailsV2) GetCapacityMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.CapacityMb) {
 		return nil, false
 	}
@@ -286,15 +286,15 @@ func (o *IosDetailsV2) HasCapacityMb() bool {
 	return false
 }
 
-// SetCapacityMb gets a reference to the given int32 and assigns it to the CapacityMb field.
-func (o *IosDetailsV2) SetCapacityMb(v int32) {
+// SetCapacityMb gets a reference to the given int64 and assigns it to the CapacityMb field.
+func (o *IosDetailsV2) SetCapacityMb(v int64) {
 	o.CapacityMb = &v
 }
 
 // GetAvailableMb returns the AvailableMb field value if set, zero value otherwise.
-func (o *IosDetailsV2) GetAvailableMb() int32 {
+func (o *IosDetailsV2) GetAvailableMb() int64 {
 	if o == nil || IsNil(o.AvailableMb) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AvailableMb
@@ -302,7 +302,7 @@ func (o *IosDetailsV2) GetAvailableMb() int32 {
 
 // GetAvailableMbOk returns a tuple with the AvailableMb field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IosDetailsV2) GetAvailableMbOk() (*int32, bool) {
+func (o *IosDetailsV2) GetAvailableMbOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvailableMb) {
 		return nil, false
 	}
@@ -318,15 +318,15 @@ func (o *IosDetailsV2) HasAvailableMb() bool {
 	return false
 }
 
-// SetAvailableMb gets a reference to the given int32 and assigns it to the AvailableMb field.
-func (o *IosDetailsV2) SetAvailableMb(v int32) {
+// SetAvailableMb gets a reference to the given int64 and assigns it to the AvailableMb field.
+func (o *IosDetailsV2) SetAvailableMb(v int64) {
 	o.AvailableMb = &v
 }
 
 // GetPercentageUsed returns the PercentageUsed field value if set, zero value otherwise.
-func (o *IosDetailsV2) GetPercentageUsed() int32 {
+func (o *IosDetailsV2) GetPercentageUsed() int64 {
 	if o == nil || IsNil(o.PercentageUsed) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PercentageUsed
@@ -334,7 +334,7 @@ func (o *IosDetailsV2) GetPercentageUsed() int32 {
 
 // GetPercentageUsedOk returns a tuple with the PercentageUsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IosDetailsV2) GetPercentageUsedOk() (*int32, bool) {
+func (o *IosDetailsV2) GetPercentageUsedOk() (*int64, bool) {
 	if o == nil || IsNil(o.PercentageUsed) {
 		return nil, false
 	}
@@ -350,8 +350,8 @@ func (o *IosDetailsV2) HasPercentageUsed() bool {
 	return false
 }
 
-// SetPercentageUsed gets a reference to the given int32 and assigns it to the PercentageUsed field.
-func (o *IosDetailsV2) SetPercentageUsed(v int32) {
+// SetPercentageUsed gets a reference to the given int64 and assigns it to the PercentageUsed field.
+func (o *IosDetailsV2) SetPercentageUsed(v int64) {
 	o.PercentageUsed = &v
 }
 

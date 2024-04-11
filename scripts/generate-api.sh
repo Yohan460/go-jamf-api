@@ -17,6 +17,10 @@ then
     exit
 fi
 
+# Clearing old generated files
+echo "clearing old generated files"
+find ./api -name "*.go" -type f -delete
+
 # Generate UAPI
 openapi-generator generate \
     -i $1 \
@@ -26,6 +30,7 @@ openapi-generator generate \
     --git-user-id "yohan460" \
     --git-repo-id "go-jamf-api" \
     --global-property=apiTests=false \
+    --type-mappings=integer=int64 \
     --additional-properties=packageName=api,enumClassPrefix=true,structPrefix=true,generateInterfaces=true,isGoSubmodule=true
 returncode=$?
 echo "Return code: $returncode"

@@ -188,18 +188,18 @@ func (a *ParentAppPreviewAPIService) V1ParentAppGetExecute(r ParentAppPreviewAPI
 type ParentAppPreviewAPIV1ParentAppHistoryGetRequest struct {
 	ctx context.Context
 	ApiService ParentAppPreviewAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	filter *string
 	sort *string
 }
 
-func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Page(page int32) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) Page(page int64) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) PageSize(pageSize int32) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
+func (r ParentAppPreviewAPIV1ParentAppHistoryGetRequest) PageSize(pageSize int64) ParentAppPreviewAPIV1ParentAppHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -260,13 +260,13 @@ func (a *ParentAppPreviewAPIService) V1ParentAppHistoryGetExecute(r ParentAppPre
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.filter != nil {

@@ -13,13 +13,13 @@ Name | Type | Description | Notes
 **BundleVersion** | **string** |  | 
 **Subtitle** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
-**SizeInBytes** | **int32** |  | 
+**SizeInBytes** | **int64** |  | 
 
 ## Methods
 
 ### NewPackageManifest
 
-`func NewPackageManifest(url string, hash string, hashType string, bundleId string, bundleVersion string, title string, sizeInBytes int32, ) *PackageManifest`
+`func NewPackageManifest(url string, hash string, hashType string, bundleId string, bundleVersion string, title string, sizeInBytes int64, ) *PackageManifest`
 
 NewPackageManifest instantiates a new PackageManifest object
 This constructor will assign default values to properties that have it defined,
@@ -231,20 +231,20 @@ SetTitle sets Title field to given value.
 
 ### GetSizeInBytes
 
-`func (o *PackageManifest) GetSizeInBytes() int32`
+`func (o *PackageManifest) GetSizeInBytes() int64`
 
 GetSizeInBytes returns the SizeInBytes field if non-nil, zero value otherwise.
 
 ### GetSizeInBytesOk
 
-`func (o *PackageManifest) GetSizeInBytesOk() (*int32, bool)`
+`func (o *PackageManifest) GetSizeInBytesOk() (*int64, bool)`
 
 GetSizeInBytesOk returns a tuple with the SizeInBytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSizeInBytes
 
-`func (o *PackageManifest) SetSizeInBytes(v int32)`
+`func (o *PackageManifest) SetSizeInBytes(v int64)`
 
 SetSizeInBytes sets SizeInBytes field to given value.
 

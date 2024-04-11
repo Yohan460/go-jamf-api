@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **UpdateAction** | **string** |  | 
 **VersionType** | **string** |  | 
 **SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [default to "NO_SPECIFIC_VERSION"]
-**MaxDeferrals** | Pointer to **int32** | Required when the provided updateAction is DOWNLOAD_INSTALL_ALLOW_DEFERRAL, not applicable to all managed software update plans | [optional] 
+**MaxDeferrals** | Pointer to **int64** | Required when the provided updateAction is DOWNLOAD_INSTALL_ALLOW_DEFERRAL, not applicable to all managed software update plans | [optional] 
 **ForceInstallLocalDateTime** | Pointer to **NullableString** | Optional. Indicates the local date and time of the device to force update by. | [optional] 
 
 ## Methods
@@ -96,20 +96,20 @@ HasSpecificVersion returns a boolean if a field has been set.
 
 ### GetMaxDeferrals
 
-`func (o *PlanConfigurationPost) GetMaxDeferrals() int32`
+`func (o *PlanConfigurationPost) GetMaxDeferrals() int64`
 
 GetMaxDeferrals returns the MaxDeferrals field if non-nil, zero value otherwise.
 
 ### GetMaxDeferralsOk
 
-`func (o *PlanConfigurationPost) GetMaxDeferralsOk() (*int32, bool)`
+`func (o *PlanConfigurationPost) GetMaxDeferralsOk() (*int64, bool)`
 
 GetMaxDeferralsOk returns a tuple with the MaxDeferrals field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxDeferrals
 
-`func (o *PlanConfigurationPost) SetMaxDeferrals(v int32)`
+`func (o *PlanConfigurationPost) SetMaxDeferrals(v int64)`
 
 SetMaxDeferrals sets MaxDeferrals field to given value.
 

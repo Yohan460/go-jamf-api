@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AbsoluteOrderId** | Pointer to **string** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
-**OnVersion** | Pointer to **int32** |  | [optional] 
+**OnVersion** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasVersion returns a boolean if a field has been set.
 
 ### GetOnVersion
 
-`func (o *PatchSummaryVersion) GetOnVersion() int32`
+`func (o *PatchSummaryVersion) GetOnVersion() int64`
 
 GetOnVersion returns the OnVersion field if non-nil, zero value otherwise.
 
 ### GetOnVersionOk
 
-`func (o *PatchSummaryVersion) GetOnVersionOk() (*int32, bool)`
+`func (o *PatchSummaryVersion) GetOnVersionOk() (*int64, bool)`
 
 GetOnVersionOk returns a tuple with the OnVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOnVersion
 
-`func (o *PatchSummaryVersion) SetOnVersion(v int32)`
+`func (o *PatchSummaryVersion) SetOnVersion(v int64)`
 
 SetOnVersion sets OnVersion field to given value.
 

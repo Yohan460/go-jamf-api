@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int32** |  | 
+**Id** | **int64** |  | 
 **AuthorizationScopes** | **[]string** |  | 
 **DisplayName** | **string** |  | 
 **Enabled** | **bool** |  | 
-**AccessTokenLifetimeSeconds** | Pointer to **int32** |  | [optional] 
+**AccessTokenLifetimeSeconds** | Pointer to **int64** |  | [optional] 
 **AppType** | **string** | Type of API Client:     * &#x60;CLIENT_CREDENTIALS&#x60; - A client ID and secret have been generated for this integration.     * &#x60;NATIVE_APP_OAUTH&#x60; - A native app (i.e., Jamf Reset) has been linked to this integration for auth code grant type via Managed App Config.     * &#x60;NONE&#x60; - No client is currently associated with this integration.  | [readonly] 
 **ClientId** | **string** |  | [readonly] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewApiIntegrationResponse
 
-`func NewApiIntegrationResponse(id int32, authorizationScopes []string, displayName string, enabled bool, appType string, clientId string, ) *ApiIntegrationResponse`
+`func NewApiIntegrationResponse(id int64, authorizationScopes []string, displayName string, enabled bool, appType string, clientId string, ) *ApiIntegrationResponse`
 
 NewApiIntegrationResponse instantiates a new ApiIntegrationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ApiIntegrationResponse) GetId() int32`
+`func (o *ApiIntegrationResponse) GetId() int64`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ApiIntegrationResponse) GetIdOk() (*int32, bool)`
+`func (o *ApiIntegrationResponse) GetIdOk() (*int64, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ApiIntegrationResponse) SetId(v int32)`
+`func (o *ApiIntegrationResponse) SetId(v int64)`
 
 SetId sets Id field to given value.
 
@@ -113,20 +113,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetAccessTokenLifetimeSeconds
 
-`func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSeconds() int32`
+`func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSeconds() int64`
 
 GetAccessTokenLifetimeSeconds returns the AccessTokenLifetimeSeconds field if non-nil, zero value otherwise.
 
 ### GetAccessTokenLifetimeSecondsOk
 
-`func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSecondsOk() (*int32, bool)`
+`func (o *ApiIntegrationResponse) GetAccessTokenLifetimeSecondsOk() (*int64, bool)`
 
 GetAccessTokenLifetimeSecondsOk returns a tuple with the AccessTokenLifetimeSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessTokenLifetimeSeconds
 
-`func (o *ApiIntegrationResponse) SetAccessTokenLifetimeSeconds(v int32)`
+`func (o *ApiIntegrationResponse) SetAccessTokenLifetimeSeconds(v int64)`
 
 SetAccessTokenLifetimeSeconds sets AccessTokenLifetimeSeconds field to given value.
 

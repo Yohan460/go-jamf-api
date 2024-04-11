@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 **OsName** | Pointer to **string** |  | [optional] 
 **Manufacturer** | Pointer to **string** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
-**InternalCapacityMb** | Pointer to **int32** |  | [optional] 
-**InternalAvailableMb** | Pointer to **int32** |  | [optional] 
-**InternalPercentUsed** | Pointer to **int32** |  | [optional] 
-**ExternalCapacityMb** | Pointer to **int32** |  | [optional] 
-**ExternalAvailableMb** | Pointer to **int32** |  | [optional] 
-**ExternalPercentUsed** | Pointer to **int32** |  | [optional] 
-**BatteryLevel** | Pointer to **int32** |  | [optional] 
+**InternalCapacityMb** | Pointer to **int64** |  | [optional] 
+**InternalAvailableMb** | Pointer to **int64** |  | [optional] 
+**InternalPercentUsed** | Pointer to **int64** |  | [optional] 
+**ExternalCapacityMb** | Pointer to **int64** |  | [optional] 
+**ExternalAvailableMb** | Pointer to **int64** |  | [optional] 
+**ExternalPercentUsed** | Pointer to **int64** |  | [optional] 
+**BatteryLevel** | Pointer to **int64** |  | [optional] 
 **LastBackupTimestamp** | Pointer to **time.Time** |  | [optional] 
-**ApiVersion** | Pointer to **int32** |  | [optional] 
+**ApiVersion** | Pointer to **int64** |  | [optional] 
 **Computer** | Pointer to [**IdAndName**](IdAndName.md) |  | [optional] 
 **Security** | Pointer to [**Security**](Security.md) |  | [optional] 
 
@@ -115,20 +115,20 @@ HasModel returns a boolean if a field has been set.
 
 ### GetInternalCapacityMb
 
-`func (o *AndroidDetails) GetInternalCapacityMb() int32`
+`func (o *AndroidDetails) GetInternalCapacityMb() int64`
 
 GetInternalCapacityMb returns the InternalCapacityMb field if non-nil, zero value otherwise.
 
 ### GetInternalCapacityMbOk
 
-`func (o *AndroidDetails) GetInternalCapacityMbOk() (*int32, bool)`
+`func (o *AndroidDetails) GetInternalCapacityMbOk() (*int64, bool)`
 
 GetInternalCapacityMbOk returns a tuple with the InternalCapacityMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalCapacityMb
 
-`func (o *AndroidDetails) SetInternalCapacityMb(v int32)`
+`func (o *AndroidDetails) SetInternalCapacityMb(v int64)`
 
 SetInternalCapacityMb sets InternalCapacityMb field to given value.
 
@@ -140,20 +140,20 @@ HasInternalCapacityMb returns a boolean if a field has been set.
 
 ### GetInternalAvailableMb
 
-`func (o *AndroidDetails) GetInternalAvailableMb() int32`
+`func (o *AndroidDetails) GetInternalAvailableMb() int64`
 
 GetInternalAvailableMb returns the InternalAvailableMb field if non-nil, zero value otherwise.
 
 ### GetInternalAvailableMbOk
 
-`func (o *AndroidDetails) GetInternalAvailableMbOk() (*int32, bool)`
+`func (o *AndroidDetails) GetInternalAvailableMbOk() (*int64, bool)`
 
 GetInternalAvailableMbOk returns a tuple with the InternalAvailableMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalAvailableMb
 
-`func (o *AndroidDetails) SetInternalAvailableMb(v int32)`
+`func (o *AndroidDetails) SetInternalAvailableMb(v int64)`
 
 SetInternalAvailableMb sets InternalAvailableMb field to given value.
 
@@ -165,20 +165,20 @@ HasInternalAvailableMb returns a boolean if a field has been set.
 
 ### GetInternalPercentUsed
 
-`func (o *AndroidDetails) GetInternalPercentUsed() int32`
+`func (o *AndroidDetails) GetInternalPercentUsed() int64`
 
 GetInternalPercentUsed returns the InternalPercentUsed field if non-nil, zero value otherwise.
 
 ### GetInternalPercentUsedOk
 
-`func (o *AndroidDetails) GetInternalPercentUsedOk() (*int32, bool)`
+`func (o *AndroidDetails) GetInternalPercentUsedOk() (*int64, bool)`
 
 GetInternalPercentUsedOk returns a tuple with the InternalPercentUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInternalPercentUsed
 
-`func (o *AndroidDetails) SetInternalPercentUsed(v int32)`
+`func (o *AndroidDetails) SetInternalPercentUsed(v int64)`
 
 SetInternalPercentUsed sets InternalPercentUsed field to given value.
 
@@ -190,20 +190,20 @@ HasInternalPercentUsed returns a boolean if a field has been set.
 
 ### GetExternalCapacityMb
 
-`func (o *AndroidDetails) GetExternalCapacityMb() int32`
+`func (o *AndroidDetails) GetExternalCapacityMb() int64`
 
 GetExternalCapacityMb returns the ExternalCapacityMb field if non-nil, zero value otherwise.
 
 ### GetExternalCapacityMbOk
 
-`func (o *AndroidDetails) GetExternalCapacityMbOk() (*int32, bool)`
+`func (o *AndroidDetails) GetExternalCapacityMbOk() (*int64, bool)`
 
 GetExternalCapacityMbOk returns a tuple with the ExternalCapacityMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalCapacityMb
 
-`func (o *AndroidDetails) SetExternalCapacityMb(v int32)`
+`func (o *AndroidDetails) SetExternalCapacityMb(v int64)`
 
 SetExternalCapacityMb sets ExternalCapacityMb field to given value.
 
@@ -215,20 +215,20 @@ HasExternalCapacityMb returns a boolean if a field has been set.
 
 ### GetExternalAvailableMb
 
-`func (o *AndroidDetails) GetExternalAvailableMb() int32`
+`func (o *AndroidDetails) GetExternalAvailableMb() int64`
 
 GetExternalAvailableMb returns the ExternalAvailableMb field if non-nil, zero value otherwise.
 
 ### GetExternalAvailableMbOk
 
-`func (o *AndroidDetails) GetExternalAvailableMbOk() (*int32, bool)`
+`func (o *AndroidDetails) GetExternalAvailableMbOk() (*int64, bool)`
 
 GetExternalAvailableMbOk returns a tuple with the ExternalAvailableMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalAvailableMb
 
-`func (o *AndroidDetails) SetExternalAvailableMb(v int32)`
+`func (o *AndroidDetails) SetExternalAvailableMb(v int64)`
 
 SetExternalAvailableMb sets ExternalAvailableMb field to given value.
 
@@ -240,20 +240,20 @@ HasExternalAvailableMb returns a boolean if a field has been set.
 
 ### GetExternalPercentUsed
 
-`func (o *AndroidDetails) GetExternalPercentUsed() int32`
+`func (o *AndroidDetails) GetExternalPercentUsed() int64`
 
 GetExternalPercentUsed returns the ExternalPercentUsed field if non-nil, zero value otherwise.
 
 ### GetExternalPercentUsedOk
 
-`func (o *AndroidDetails) GetExternalPercentUsedOk() (*int32, bool)`
+`func (o *AndroidDetails) GetExternalPercentUsedOk() (*int64, bool)`
 
 GetExternalPercentUsedOk returns a tuple with the ExternalPercentUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExternalPercentUsed
 
-`func (o *AndroidDetails) SetExternalPercentUsed(v int32)`
+`func (o *AndroidDetails) SetExternalPercentUsed(v int64)`
 
 SetExternalPercentUsed sets ExternalPercentUsed field to given value.
 
@@ -265,20 +265,20 @@ HasExternalPercentUsed returns a boolean if a field has been set.
 
 ### GetBatteryLevel
 
-`func (o *AndroidDetails) GetBatteryLevel() int32`
+`func (o *AndroidDetails) GetBatteryLevel() int64`
 
 GetBatteryLevel returns the BatteryLevel field if non-nil, zero value otherwise.
 
 ### GetBatteryLevelOk
 
-`func (o *AndroidDetails) GetBatteryLevelOk() (*int32, bool)`
+`func (o *AndroidDetails) GetBatteryLevelOk() (*int64, bool)`
 
 GetBatteryLevelOk returns a tuple with the BatteryLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatteryLevel
 
-`func (o *AndroidDetails) SetBatteryLevel(v int32)`
+`func (o *AndroidDetails) SetBatteryLevel(v int64)`
 
 SetBatteryLevel sets BatteryLevel field to given value.
 
@@ -315,20 +315,20 @@ HasLastBackupTimestamp returns a boolean if a field has been set.
 
 ### GetApiVersion
 
-`func (o *AndroidDetails) GetApiVersion() int32`
+`func (o *AndroidDetails) GetApiVersion() int64`
 
 GetApiVersion returns the ApiVersion field if non-nil, zero value otherwise.
 
 ### GetApiVersionOk
 
-`func (o *AndroidDetails) GetApiVersionOk() (*int32, bool)`
+`func (o *AndroidDetails) GetApiVersionOk() (*int64, bool)`
 
 GetApiVersionOk returns a tuple with the ApiVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiVersion
 
-`func (o *AndroidDetails) SetApiVersion(v int32)`
+`func (o *AndroidDetails) SetApiVersion(v int64)`
 
 SetApiVersion sets ApiVersion field to given value.
 

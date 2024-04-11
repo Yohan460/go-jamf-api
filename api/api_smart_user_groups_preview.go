@@ -33,7 +33,7 @@ returns the ids for the users in the smart group
 	@param id instance id of smart group
 	@return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 	*/
-	V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
+	V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int64) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 
 	// V1SmartUserGroupsIdRecalculatePostExecute executes the request
 	//  @return RecalculationResults
@@ -50,7 +50,7 @@ returns the count of smart groups the user falls into
 	@param id id of user
 	@return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 	*/
-	V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
+	V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int64) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 
 	// V1UsersIdRecalculateSmartGroupsPostExecute executes the request
 	//  @return RecalculationResults
@@ -63,7 +63,7 @@ type SmartUserGroupsPreviewAPIService service
 type SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest struct {
 	ctx context.Context
 	ApiService SmartUserGroupsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest) Execute() (*RecalculationResults, *http.Response, error) {
@@ -81,7 +81,7 @@ returns the ids for the users in the smart group
  @param id instance id of smart group
  @return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest
 */
-func (a *SmartUserGroupsPreviewAPIService) V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest {
+func (a *SmartUserGroupsPreviewAPIService) V1SmartUserGroupsIdRecalculatePost(ctx context.Context, id int64) SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest {
 	return SmartUserGroupsPreviewAPIV1SmartUserGroupsIdRecalculatePostRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -178,7 +178,7 @@ func (a *SmartUserGroupsPreviewAPIService) V1SmartUserGroupsIdRecalculatePostExe
 type SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest struct {
 	ctx context.Context
 	ApiService SmartUserGroupsPreviewAPI
-	id int32
+	id int64
 }
 
 func (r SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest) Execute() (*RecalculationResults, *http.Response, error) {
@@ -196,7 +196,7 @@ returns the count of smart groups the user falls into
  @param id id of user
  @return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest
 */
-func (a *SmartUserGroupsPreviewAPIService) V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int32) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest {
+func (a *SmartUserGroupsPreviewAPIService) V1UsersIdRecalculateSmartGroupsPost(ctx context.Context, id int64) SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest {
 	return SmartUserGroupsPreviewAPIV1UsersIdRecalculateSmartGroupsPostRequest{
 		ApiService: a,
 		ctx: ctx,

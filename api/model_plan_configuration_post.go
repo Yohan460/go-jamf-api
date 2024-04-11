@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PlanConfigurationPost type satisfies the MappedNullable interface at compile time
@@ -24,10 +26,12 @@ type PlanConfigurationPost struct {
 	// Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION.
 	SpecificVersion *string `json:"specificVersion,omitempty"`
 	// Required when the provided updateAction is DOWNLOAD_INSTALL_ALLOW_DEFERRAL, not applicable to all managed software update plans
-	MaxDeferrals *int32 `json:"maxDeferrals,omitempty"`
+	MaxDeferrals *int64 `json:"maxDeferrals,omitempty"`
 	// Optional. Indicates the local date and time of the device to force update by.
 	ForceInstallLocalDateTime NullableString `json:"forceInstallLocalDateTime,omitempty"`
 }
+
+type _PlanConfigurationPost PlanConfigurationPost
 
 // NewPlanConfigurationPost instantiates a new PlanConfigurationPost object
 // This constructor will assign default values to properties that have it defined,
@@ -133,9 +137,9 @@ func (o *PlanConfigurationPost) SetSpecificVersion(v string) {
 }
 
 // GetMaxDeferrals returns the MaxDeferrals field value if set, zero value otherwise.
-func (o *PlanConfigurationPost) GetMaxDeferrals() int32 {
+func (o *PlanConfigurationPost) GetMaxDeferrals() int64 {
 	if o == nil || IsNil(o.MaxDeferrals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxDeferrals
@@ -143,7 +147,7 @@ func (o *PlanConfigurationPost) GetMaxDeferrals() int32 {
 
 // GetMaxDeferralsOk returns a tuple with the MaxDeferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlanConfigurationPost) GetMaxDeferralsOk() (*int32, bool) {
+func (o *PlanConfigurationPost) GetMaxDeferralsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxDeferrals) {
 		return nil, false
 	}
@@ -159,8 +163,8 @@ func (o *PlanConfigurationPost) HasMaxDeferrals() bool {
 	return false
 }
 
-// SetMaxDeferrals gets a reference to the given int32 and assigns it to the MaxDeferrals field.
-func (o *PlanConfigurationPost) SetMaxDeferrals(v int32) {
+// SetMaxDeferrals gets a reference to the given int64 and assigns it to the MaxDeferrals field.
+func (o *PlanConfigurationPost) SetMaxDeferrals(v int64) {
 	o.MaxDeferrals = &v
 }
 
@@ -228,6 +232,44 @@ func (o PlanConfigurationPost) ToMap() (map[string]interface{}, error) {
 		toSerialize["forceInstallLocalDateTime"] = o.ForceInstallLocalDateTime.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *PlanConfigurationPost) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"updateAction",
+		"versionType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPlanConfigurationPost := _PlanConfigurationPost{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPlanConfigurationPost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PlanConfigurationPost(varPlanConfigurationPost)
+
+	return err
 }
 
 type NullablePlanConfigurationPost struct {

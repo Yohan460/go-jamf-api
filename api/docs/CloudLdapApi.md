@@ -33,24 +33,24 @@ Validate keystore for Cloud Identity Provider secure connection
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    cloudLdapKeystoreFile := *openapiclient.NewCloudLdapKeystoreFile("***", string([B@46baf579), "keystore.p12") // CloudLdapKeystoreFile | 
+	cloudLdapKeystoreFile := *openapiclient.NewCloudLdapKeystoreFile("***", string([B@5f8890c2), "keystore.p12") // CloudLdapKeystoreFile | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V1LdapKeystoreVerifyPost(context.Background()).CloudLdapKeystoreFile(cloudLdapKeystoreFile).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V1LdapKeystoreVerifyPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1LdapKeystoreVerifyPost`: CloudLdapKeystore
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V1LdapKeystoreVerifyPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V1LdapKeystoreVerifyPost(context.Background()).CloudLdapKeystoreFile(cloudLdapKeystoreFile).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V1LdapKeystoreVerifyPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1LdapKeystoreVerifyPost`: CloudLdapKeystore
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V1LdapKeystoreVerifyPost`: %v\n", resp)
 }
 ```
 
@@ -99,24 +99,24 @@ Get default mappings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    provider := "google" // string | Cloud Identity Provider name
+	provider := "google" // string | Cloud Identity Provider name
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet(context.Background(), provider).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsDefaultsProviderMappingsGet`: CloudLdapMappingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet(context.Background(), provider).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsDefaultsProviderMappingsGet`: CloudLdapMappingsResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsDefaultsProviderMappingsGet`: %v\n", resp)
 }
 ```
 
@@ -169,24 +169,24 @@ Get default server configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    provider := "google" // string | Cloud Identity Provider name
+	provider := "google" // string | Cloud Identity Provider name
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet(context.Background(), provider).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsDefaultsProviderServerConfigurationGet`: CloudLdapServerResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet(context.Background(), provider).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsDefaultsProviderServerConfigurationGet`: CloudLdapServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsDefaultsProviderServerConfigurationGet`: %v\n", resp)
 }
 ```
 
@@ -239,24 +239,24 @@ Get bind connection pool statistics
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionBindGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionBindGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdConnectionBindGet`: CloudLdapConnectionPoolStatistics
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionBindGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionBindGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionBindGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdConnectionBindGet`: CloudLdapConnectionPoolStatistics
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionBindGet`: %v\n", resp)
 }
 ```
 
@@ -309,24 +309,24 @@ Get search connection pool statistics
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdConnectionSearchGet`: CloudLdapConnectionPoolStatistics
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdConnectionSearchGet`: CloudLdapConnectionPoolStatistics
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionSearchGet`: %v\n", resp)
 }
 ```
 
@@ -379,24 +379,24 @@ Tests the communication with the specified cloud connection
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdConnectionStatusGet`: CloudLdapConnectionStatus
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdConnectionStatusGet`: CloudLdapConnectionStatus
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdConnectionStatusGet`: %v\n", resp)
 }
 ```
 
@@ -449,22 +449,22 @@ Delete Cloud Identity Provider configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -517,24 +517,24 @@ Get Cloud Identity Provider configuration with given id.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdGet`: LdapConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdGet`: LdapConfigurationResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdGet`: %v\n", resp)
 }
 ```
 
@@ -587,24 +587,24 @@ Get mappings configurations for Cloud Identity Providers server configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
+	id := "id_example" // string | Cloud Identity Provider identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdMappingsGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdMappingsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdMappingsGet`: CloudLdapMappingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdMappingsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdMappingsGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdMappingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdMappingsGet`: CloudLdapMappingsResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdMappingsGet`: %v\n", resp)
 }
 ```
 
@@ -657,25 +657,25 @@ Update Cloud Identity Provider mappings configuration.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
-    cloudLdapMappingsRequest := *openapiclient.NewCloudLdapMappingsRequest(*openapiclient.NewUserMappings("ANY_OBJECT_CLASSES", "inetOrgPerson", "ou=Users", "ALL_SUBTREES", "mail", "uid", "displayName", "mail", "departmentNumber", "Building_example", "Room_example", "Phone_example", "title", "uid"), *openapiclient.NewGroupMappings("ANY_OBJECT_CLASSES", "groupOfNames", "ou=Groups", "ALL_SUBTREES", "cn", "cn", "gidNumber"), *openapiclient.NewMembershipMappings("memberOf")) // CloudLdapMappingsRequest | Cloud Identity Provider mappings to update.
+	id := "id_example" // string | Cloud Identity Provider identifier
+	cloudLdapMappingsRequest := *openapiclient.NewCloudLdapMappingsRequest(*openapiclient.NewUserMappings("ANY_OBJECT_CLASSES", "inetOrgPerson", "ou=Users", "ALL_SUBTREES", "mail", "uid", "displayName", "mail", "departmentNumber", "Building_example", "Room_example", "Phone_example", "title", "uid"), *openapiclient.NewGroupMappings("ANY_OBJECT_CLASSES", "groupOfNames", "ou=Groups", "ALL_SUBTREES", "cn", "cn", "gidNumber"), *openapiclient.NewMembershipMappings("memberOf")) // CloudLdapMappingsRequest | Cloud Identity Provider mappings to update.
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdMappingsPut(context.Background(), id).CloudLdapMappingsRequest(cloudLdapMappingsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdMappingsPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdMappingsPut`: CloudLdapMappingsResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdMappingsPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdMappingsPut(context.Background(), id).CloudLdapMappingsRequest(cloudLdapMappingsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdMappingsPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdMappingsPut`: CloudLdapMappingsResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdMappingsPut`: %v\n", resp)
 }
 ```
 
@@ -729,25 +729,25 @@ Update Cloud Identity Provider configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Cloud Identity Provider identifier
-    ldapConfigurationUpdate := *openapiclient.NewLdapConfigurationUpdate(*openapiclient.NewCloudIdPCommon("1001", "Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerUpdate("ldap.google.com", true, "jamf.com", int32(636), int32(15), int32(60), true, "LDAPS")) // LdapConfigurationUpdate | Cloud Identity Provider configuration to update
+	id := "id_example" // string | Cloud Identity Provider identifier
+	ldapConfigurationUpdate := *openapiclient.NewLdapConfigurationUpdate(*openapiclient.NewCloudIdPCommon("1001", "Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerUpdate("ldap.google.com", true, "jamf.com", int64(636), int64(15), int64(60), true, "LDAPS")) // LdapConfigurationUpdate | Cloud Identity Provider configuration to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdPut(context.Background(), id).LdapConfigurationUpdate(ldapConfigurationUpdate).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdPut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsIdPut`: LdapConfigurationResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdPut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsIdPut(context.Background(), id).LdapConfigurationUpdate(ldapConfigurationUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsIdPut`: LdapConfigurationResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsIdPut`: %v\n", resp)
 }
 ```
 
@@ -801,24 +801,24 @@ Create Cloud Identity Provider configuration
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    ldapConfigurationRequest := *openapiclient.NewLdapConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerRequest("ldap.google.com", true, "jamf.com", int32(636), *openapiclient.NewCloudLdapKeystoreFile("***", string([B@46baf579), "keystore.p12"), int32(15), int32(60), true, "LDAPS")) // LdapConfigurationRequest | Cloud Identity Provider configuration to create
+	ldapConfigurationRequest := *openapiclient.NewLdapConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerRequest("ldap.google.com", true, "jamf.com", int64(636), *openapiclient.NewCloudLdapKeystoreFile("***", string([B@5f8890c2), "keystore.p12"), int64(15), int64(60), true, "LDAPS")) // LdapConfigurationRequest | Cloud Identity Provider configuration to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsPost(context.Background()).LdapConfigurationRequest(ldapConfigurationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2CloudLdapsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudLdapAPI.V2CloudLdapsPost(context.Background()).LdapConfigurationRequest(ldapConfigurationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudLdapAPI.V2CloudLdapsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2CloudLdapsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `CloudLdapAPI.V2CloudLdapsPost`: %v\n", resp)
 }
 ```
 

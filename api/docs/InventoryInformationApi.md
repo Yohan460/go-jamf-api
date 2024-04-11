@@ -22,23 +22,23 @@ Get statistics about managed/unmanaged devices and computers in the inventory
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryInformationAPI.V1InventoryInformationGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryInformationAPI.V1InventoryInformationGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1InventoryInformationGet`: InventoryInformation
-    fmt.Fprintf(os.Stdout, "Response from `InventoryInformationAPI.V1InventoryInformationGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.InventoryInformationAPI.V1InventoryInformationGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `InventoryInformationAPI.V1InventoryInformationGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1InventoryInformationGet`: InventoryInformation
+	fmt.Fprintf(os.Stdout, "Response from `InventoryInformationAPI.V1InventoryInformationGet`: %v\n", resp)
 }
 ```
 

@@ -431,16 +431,16 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdPatchExecute(r
 type ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest struct {
 	ctx context.Context
 	ApiService ComputerInventoryAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 }
 
-func (r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) Page(page int32) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest {
+func (r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) Page(page int64) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) PageSize(pageSize int32) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest {
+func (r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) PageSize(pageSize int64) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -488,13 +488,13 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryFilevaultGetExecute(r 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
@@ -555,8 +555,8 @@ type ComputerInventoryAPIV1ComputersInventoryGetRequest struct {
 	ctx context.Context
 	ApiService ComputerInventoryAPI
 	section *[]ComputerSection
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
@@ -567,12 +567,12 @@ func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) Section(section []Co
 	return r
 }
 
-func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) Page(page int32) ComputerInventoryAPIV1ComputersInventoryGetRequest {
+func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) Page(page int64) ComputerInventoryAPIV1ComputersInventoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) PageSize(pageSize int32) ComputerInventoryAPIV1ComputersInventoryGetRequest {
+func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) PageSize(pageSize int64) ComputerInventoryAPIV1ComputersInventoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -646,13 +646,13 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryGetExecute(r ComputerI
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1033,8 +1033,6 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsPostExecu
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {

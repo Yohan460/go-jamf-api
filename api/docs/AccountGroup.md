@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessLevel** | Pointer to **string** |  | [optional] 
 **PrivilegeSet** | Pointer to **string** |  | [optional] 
-**SiteId** | Pointer to **int32** |  | [optional] 
+**SiteId** | Pointer to **int64** |  | [optional] 
 **Privileges** | Pointer to **[]string** |  | [optional] 
-**MemberUserIds** | Pointer to **[]int32** |  | [optional] 
+**MemberUserIds** | Pointer to **[]int64** |  | [optional] 
 
 ## Methods
 
@@ -81,20 +81,20 @@ HasPrivilegeSet returns a boolean if a field has been set.
 
 ### GetSiteId
 
-`func (o *AccountGroup) GetSiteId() int32`
+`func (o *AccountGroup) GetSiteId() int64`
 
 GetSiteId returns the SiteId field if non-nil, zero value otherwise.
 
 ### GetSiteIdOk
 
-`func (o *AccountGroup) GetSiteIdOk() (*int32, bool)`
+`func (o *AccountGroup) GetSiteIdOk() (*int64, bool)`
 
 GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSiteId
 
-`func (o *AccountGroup) SetSiteId(v int32)`
+`func (o *AccountGroup) SetSiteId(v int64)`
 
 SetSiteId sets SiteId field to given value.
 
@@ -131,20 +131,20 @@ HasPrivileges returns a boolean if a field has been set.
 
 ### GetMemberUserIds
 
-`func (o *AccountGroup) GetMemberUserIds() []int32`
+`func (o *AccountGroup) GetMemberUserIds() []int64`
 
 GetMemberUserIds returns the MemberUserIds field if non-nil, zero value otherwise.
 
 ### GetMemberUserIdsOk
 
-`func (o *AccountGroup) GetMemberUserIdsOk() (*[]int32, bool)`
+`func (o *AccountGroup) GetMemberUserIdsOk() (*[]int64, bool)`
 
 GetMemberUserIdsOk returns a tuple with the MemberUserIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMemberUserIds
 
-`func (o *AccountGroup) SetMemberUserIds(v []int32)`
+`func (o *AccountGroup) SetMemberUserIds(v []int64)`
 
 SetMemberUserIds sets MemberUserIds field to given value.
 

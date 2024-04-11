@@ -46,7 +46,7 @@ type AppRequestPreviewAPI interface {
 	@param id Instance id of form input field record
 	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 	*/
-	V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
+	V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 
 	// V1AppRequestFormInputFieldsIdDeleteExecute executes the request
 	V1AppRequestFormInputFieldsIdDeleteExecute(r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest) (*http.Response, error)
@@ -61,7 +61,7 @@ type AppRequestPreviewAPI interface {
 	@param id Instance id of form input field record
 	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 	*/
-	V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
+	V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 
 	// V1AppRequestFormInputFieldsIdGetExecute executes the request
 	//  @return AppRequestFormInputField
@@ -77,7 +77,7 @@ type AppRequestPreviewAPI interface {
 	@param id Instance id of form input field record
 	@return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 	*/
-	V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
+	V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 
 	// V1AppRequestFormInputFieldsIdPutExecute executes the request
 	//  @return AppRequestFormInputField
@@ -249,7 +249,7 @@ func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsGetExecute(r Ap
 type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest struct {
 	ctx context.Context
 	ApiService AppRequestPreviewAPI
-	id int32
+	id int64
 }
 
 func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest) Execute() (*http.Response, error) {
@@ -266,7 +266,7 @@ Removes specified form input field record
  @param id Instance id of form input field record
  @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest
 */
-func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdDelete(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest {
 	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -352,7 +352,7 @@ func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdDeleteExecute
 type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest struct {
 	ctx context.Context
 	ApiService AppRequestPreviewAPI
-	id int32
+	id int64
 }
 
 func (r AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest) Execute() (*AppRequestFormInputField, *http.Response, error) {
@@ -369,7 +369,7 @@ Gets specified form input field object
  @param id Instance id of form input field record
  @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest
 */
-func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdGet(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest {
 	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -466,7 +466,7 @@ func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdGetExecute(r 
 type AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest struct {
 	ctx context.Context
 	ApiService AppRequestPreviewAPI
-	id int32
+	id int64
 	appRequestFormInputField *AppRequestFormInputField
 }
 
@@ -490,7 +490,7 @@ Update specified form input field object
  @param id Instance id of form input field record
  @return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest
 */
-func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int32) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest {
+func (a *AppRequestPreviewAPIService) V1AppRequestFormInputFieldsIdPut(ctx context.Context, id int64) AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest {
 	return AppRequestPreviewAPIV1AppRequestFormInputFieldsIdPutRequest{
 		ApiService: a,
 		ctx: ctx,

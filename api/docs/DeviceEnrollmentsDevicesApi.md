@@ -22,24 +22,24 @@ Retrieve a list of Devices assigned to the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Device Enrollment Instance identifier
+	id := "id_example" // string | Device Enrollment Instance identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1DeviceEnrollmentsIdDevicesGet`: DeviceEnrollmentDeviceSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1DeviceEnrollmentsIdDevicesGet`: DeviceEnrollmentDeviceSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `DeviceEnrollmentsDevicesAPI.V1DeviceEnrollmentsIdDevicesGet`: %v\n", resp)
 }
 ```
 

@@ -30,28 +30,28 @@ Name | Type | Description | Notes
 **AllowPairing** | **bool** |  | 
 **MultiUser** | **bool** |  | 
 **Supervised** | **bool** |  | 
-**MaximumSharedAccounts** | **int32** |  | 
+**MaximumSharedAccounts** | **int64** |  | 
 **ConfigureDeviceBeforeSetupAssistant** | **bool** |  | 
 **Names** | Pointer to [**MobileDevicePrestageNamesV2**](MobileDevicePrestageNamesV2.md) |  | [optional] 
 **SendTimezone** | **bool** |  | 
 **Timezone** | **string** |  | 
-**StorageQuotaSizeMegabytes** | **int32** |  | 
+**StorageQuotaSizeMegabytes** | **int64** |  | 
 **UseStorageQuotaSize** | **bool** |  | 
 **TemporarySessionOnly** | Pointer to **bool** |  | [optional] 
 **EnforceTemporarySessionTimeout** | Pointer to **bool** |  | [optional] 
-**TemporarySessionTimeout** | Pointer to **int32** |  | [optional] 
+**TemporarySessionTimeout** | Pointer to **int64** |  | [optional] 
 **EnforceUserSessionTimeout** | Pointer to **bool** |  | [optional] 
-**UserSessionTimeout** | Pointer to **int32** |  | [optional] 
+**UserSessionTimeout** | Pointer to **int64** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **ProfileUuid** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
-**VersionLock** | Pointer to **int32** |  | [optional] 
+**VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
 ### NewGetMobileDevicePrestageV2
 
-`func NewGetMobileDevicePrestageV2(displayName string, mandatory bool, mdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, defaultPrestage bool, enrollmentSiteId string, keepExistingSiteMembership bool, keepExistingLocationInformation bool, requireAuthentication bool, authenticationPrompt string, preventActivationLock bool, enableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId string, locationInformation LocationInformationV2, purchasingInformation PrestagePurchasingInformationV2, autoAdvanceSetup bool, allowPairing bool, multiUser bool, supervised bool, maximumSharedAccounts int32, configureDeviceBeforeSetupAssistant bool, sendTimezone bool, timezone string, storageQuotaSizeMegabytes int32, useStorageQuotaSize bool, ) *GetMobileDevicePrestageV2`
+`func NewGetMobileDevicePrestageV2(displayName string, mandatory bool, mdmRemovable bool, supportPhoneNumber string, supportEmailAddress string, department string, defaultPrestage bool, enrollmentSiteId string, keepExistingSiteMembership bool, keepExistingLocationInformation bool, requireAuthentication bool, authenticationPrompt string, preventActivationLock bool, enableDeviceBasedActivationLock bool, deviceEnrollmentProgramInstanceId string, locationInformation LocationInformationV2, purchasingInformation PrestagePurchasingInformationV2, autoAdvanceSetup bool, allowPairing bool, multiUser bool, supervised bool, maximumSharedAccounts int64, configureDeviceBeforeSetupAssistant bool, sendTimezone bool, timezone string, storageQuotaSizeMegabytes int64, useStorageQuotaSize bool, ) *GetMobileDevicePrestageV2`
 
 NewGetMobileDevicePrestageV2 instantiates a new GetMobileDevicePrestageV2 object
 This constructor will assign default values to properties that have it defined,
@@ -613,20 +613,20 @@ SetSupervised sets Supervised field to given value.
 
 ### GetMaximumSharedAccounts
 
-`func (o *GetMobileDevicePrestageV2) GetMaximumSharedAccounts() int32`
+`func (o *GetMobileDevicePrestageV2) GetMaximumSharedAccounts() int64`
 
 GetMaximumSharedAccounts returns the MaximumSharedAccounts field if non-nil, zero value otherwise.
 
 ### GetMaximumSharedAccountsOk
 
-`func (o *GetMobileDevicePrestageV2) GetMaximumSharedAccountsOk() (*int32, bool)`
+`func (o *GetMobileDevicePrestageV2) GetMaximumSharedAccountsOk() (*int64, bool)`
 
 GetMaximumSharedAccountsOk returns a tuple with the MaximumSharedAccounts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaximumSharedAccounts
 
-`func (o *GetMobileDevicePrestageV2) SetMaximumSharedAccounts(v int32)`
+`func (o *GetMobileDevicePrestageV2) SetMaximumSharedAccounts(v int64)`
 
 SetMaximumSharedAccounts sets MaximumSharedAccounts field to given value.
 
@@ -718,20 +718,20 @@ SetTimezone sets Timezone field to given value.
 
 ### GetStorageQuotaSizeMegabytes
 
-`func (o *GetMobileDevicePrestageV2) GetStorageQuotaSizeMegabytes() int32`
+`func (o *GetMobileDevicePrestageV2) GetStorageQuotaSizeMegabytes() int64`
 
 GetStorageQuotaSizeMegabytes returns the StorageQuotaSizeMegabytes field if non-nil, zero value otherwise.
 
 ### GetStorageQuotaSizeMegabytesOk
 
-`func (o *GetMobileDevicePrestageV2) GetStorageQuotaSizeMegabytesOk() (*int32, bool)`
+`func (o *GetMobileDevicePrestageV2) GetStorageQuotaSizeMegabytesOk() (*int64, bool)`
 
 GetStorageQuotaSizeMegabytesOk returns a tuple with the StorageQuotaSizeMegabytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStorageQuotaSizeMegabytes
 
-`func (o *GetMobileDevicePrestageV2) SetStorageQuotaSizeMegabytes(v int32)`
+`func (o *GetMobileDevicePrestageV2) SetStorageQuotaSizeMegabytes(v int64)`
 
 SetStorageQuotaSizeMegabytes sets StorageQuotaSizeMegabytes field to given value.
 
@@ -808,20 +808,20 @@ HasEnforceTemporarySessionTimeout returns a boolean if a field has been set.
 
 ### GetTemporarySessionTimeout
 
-`func (o *GetMobileDevicePrestageV2) GetTemporarySessionTimeout() int32`
+`func (o *GetMobileDevicePrestageV2) GetTemporarySessionTimeout() int64`
 
 GetTemporarySessionTimeout returns the TemporarySessionTimeout field if non-nil, zero value otherwise.
 
 ### GetTemporarySessionTimeoutOk
 
-`func (o *GetMobileDevicePrestageV2) GetTemporarySessionTimeoutOk() (*int32, bool)`
+`func (o *GetMobileDevicePrestageV2) GetTemporarySessionTimeoutOk() (*int64, bool)`
 
 GetTemporarySessionTimeoutOk returns a tuple with the TemporarySessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTemporarySessionTimeout
 
-`func (o *GetMobileDevicePrestageV2) SetTemporarySessionTimeout(v int32)`
+`func (o *GetMobileDevicePrestageV2) SetTemporarySessionTimeout(v int64)`
 
 SetTemporarySessionTimeout sets TemporarySessionTimeout field to given value.
 
@@ -858,20 +858,20 @@ HasEnforceUserSessionTimeout returns a boolean if a field has been set.
 
 ### GetUserSessionTimeout
 
-`func (o *GetMobileDevicePrestageV2) GetUserSessionTimeout() int32`
+`func (o *GetMobileDevicePrestageV2) GetUserSessionTimeout() int64`
 
 GetUserSessionTimeout returns the UserSessionTimeout field if non-nil, zero value otherwise.
 
 ### GetUserSessionTimeoutOk
 
-`func (o *GetMobileDevicePrestageV2) GetUserSessionTimeoutOk() (*int32, bool)`
+`func (o *GetMobileDevicePrestageV2) GetUserSessionTimeoutOk() (*int64, bool)`
 
 GetUserSessionTimeoutOk returns a tuple with the UserSessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserSessionTimeout
 
-`func (o *GetMobileDevicePrestageV2) SetUserSessionTimeout(v int32)`
+`func (o *GetMobileDevicePrestageV2) SetUserSessionTimeout(v int64)`
 
 SetUserSessionTimeout sets UserSessionTimeout field to given value.
 
@@ -958,20 +958,20 @@ HasSiteId returns a boolean if a field has been set.
 
 ### GetVersionLock
 
-`func (o *GetMobileDevicePrestageV2) GetVersionLock() int32`
+`func (o *GetMobileDevicePrestageV2) GetVersionLock() int64`
 
 GetVersionLock returns the VersionLock field if non-nil, zero value otherwise.
 
 ### GetVersionLockOk
 
-`func (o *GetMobileDevicePrestageV2) GetVersionLockOk() (*int32, bool)`
+`func (o *GetMobileDevicePrestageV2) GetVersionLockOk() (*int64, bool)`
 
 GetVersionLockOk returns a tuple with the VersionLock field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersionLock
 
-`func (o *GetMobileDevicePrestageV2) SetVersionLock(v int32)`
+`func (o *GetMobileDevicePrestageV2) SetVersionLock(v int64)`
 
 SetVersionLock sets VersionLock field to given value.
 

@@ -678,18 +678,18 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefi
 	ctx context.Context
 	ApiService PatchSoftwareTitleConfigurationsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest) Page(page int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest) Page(page int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest) PageSize(pageSize int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest) PageSize(pageSize int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdDefinitionsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -752,13 +752,13 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1055,8 +1055,8 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExpo
 	ApiService PatchSoftwareTitleConfigurationsAPI
 	id string
 	columnsToExport *[]string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 	accept *string
@@ -1068,13 +1068,13 @@ func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdE
 	return r
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) Page(page int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) Page(page int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
 	r.page = &page
 	return r
 }
 
 // Leave blank for full export
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) PageSize(pageSize int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) PageSize(pageSize int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1146,13 +1146,13 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1516,18 +1516,18 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHist
 	ctx context.Context
 	ApiService PatchSoftwareTitleConfigurationsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest) Page(page int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest) Page(page int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest) PageSize(pageSize int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest) PageSize(pageSize int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -1591,13 +1591,13 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -1982,18 +1982,18 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatc
 	ctx context.Context
 	ApiService PatchSoftwareTitleConfigurationsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest) Page(page int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest) Page(page int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest) PageSize(pageSize int32) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest {
+func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest) PageSize(pageSize int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdPatchReportGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -2056,13 +2056,13 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

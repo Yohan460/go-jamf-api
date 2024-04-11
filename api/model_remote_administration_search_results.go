@@ -19,7 +19,7 @@ var _ MappedNullable = &RemoteAdministrationSearchResults{}
 
 // RemoteAdministrationSearchResults A list with Remote administration configurations
 type RemoteAdministrationSearchResults struct {
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int64 `json:"totalCount,omitempty"`
 	Results []RemoteAdministrationResponse `json:"results,omitempty"`
 }
 
@@ -41,9 +41,9 @@ func NewRemoteAdministrationSearchResultsWithDefaults() *RemoteAdministrationSea
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *RemoteAdministrationSearchResults) GetTotalCount() int32 {
+func (o *RemoteAdministrationSearchResults) GetTotalCount() int64 {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.TotalCount
@@ -51,7 +51,7 @@ func (o *RemoteAdministrationSearchResults) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RemoteAdministrationSearchResults) GetTotalCountOk() (*int32, bool) {
+func (o *RemoteAdministrationSearchResults) GetTotalCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *RemoteAdministrationSearchResults) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *RemoteAdministrationSearchResults) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int64 and assigns it to the TotalCount field.
+func (o *RemoteAdministrationSearchResults) SetTotalCount(v int64) {
 	o.TotalCount = &v
 }
 

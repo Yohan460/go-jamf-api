@@ -22,23 +22,23 @@ Return a list of Countries and the associated Codes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1AppStoreCountryCodesGet`: CountryCodes
-    fmt.Fprintf(os.Stdout, "Response from `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AppStoreCountryCodesGet`: CountryCodes
+	fmt.Fprintf(os.Stdout, "Response from `AppStoreCountryCodesPreviewAPI.V1AppStoreCountryCodesGet`: %v\n", resp)
 }
 ```
 

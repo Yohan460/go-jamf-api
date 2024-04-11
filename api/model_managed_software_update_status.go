@@ -27,9 +27,9 @@ type ManagedSoftwareUpdateStatus struct {
 	ProductKey *string `json:"productKey,omitempty"`
 	Status *string `json:"status,omitempty"`
 	// not applicable to all managed software update statuses
-	DeferralsRemaining *int32 `json:"deferralsRemaining,omitempty"`
+	DeferralsRemaining *int64 `json:"deferralsRemaining,omitempty"`
 	// not applicable to all managed software update statuses
-	MaxDeferrals *int32 `json:"maxDeferrals,omitempty"`
+	MaxDeferrals *int64 `json:"maxDeferrals,omitempty"`
 	// not applicable to all managed software update statuses
 	NextScheduledInstall *time.Time `json:"nextScheduledInstall,omitempty"`
 	// not applicable to all managed software update statuses
@@ -248,9 +248,9 @@ func (o *ManagedSoftwareUpdateStatus) SetStatus(v string) {
 }
 
 // GetDeferralsRemaining returns the DeferralsRemaining field value if set, zero value otherwise.
-func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemaining() int32 {
+func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemaining() int64 {
 	if o == nil || IsNil(o.DeferralsRemaining) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.DeferralsRemaining
@@ -258,7 +258,7 @@ func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemaining() int32 {
 
 // GetDeferralsRemainingOk returns a tuple with the DeferralsRemaining field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemainingOk() (*int32, bool) {
+func (o *ManagedSoftwareUpdateStatus) GetDeferralsRemainingOk() (*int64, bool) {
 	if o == nil || IsNil(o.DeferralsRemaining) {
 		return nil, false
 	}
@@ -274,15 +274,15 @@ func (o *ManagedSoftwareUpdateStatus) HasDeferralsRemaining() bool {
 	return false
 }
 
-// SetDeferralsRemaining gets a reference to the given int32 and assigns it to the DeferralsRemaining field.
-func (o *ManagedSoftwareUpdateStatus) SetDeferralsRemaining(v int32) {
+// SetDeferralsRemaining gets a reference to the given int64 and assigns it to the DeferralsRemaining field.
+func (o *ManagedSoftwareUpdateStatus) SetDeferralsRemaining(v int64) {
 	o.DeferralsRemaining = &v
 }
 
 // GetMaxDeferrals returns the MaxDeferrals field value if set, zero value otherwise.
-func (o *ManagedSoftwareUpdateStatus) GetMaxDeferrals() int32 {
+func (o *ManagedSoftwareUpdateStatus) GetMaxDeferrals() int64 {
 	if o == nil || IsNil(o.MaxDeferrals) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.MaxDeferrals
@@ -290,7 +290,7 @@ func (o *ManagedSoftwareUpdateStatus) GetMaxDeferrals() int32 {
 
 // GetMaxDeferralsOk returns a tuple with the MaxDeferrals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ManagedSoftwareUpdateStatus) GetMaxDeferralsOk() (*int32, bool) {
+func (o *ManagedSoftwareUpdateStatus) GetMaxDeferralsOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaxDeferrals) {
 		return nil, false
 	}
@@ -306,8 +306,8 @@ func (o *ManagedSoftwareUpdateStatus) HasMaxDeferrals() bool {
 	return false
 }
 
-// SetMaxDeferrals gets a reference to the given int32 and assigns it to the MaxDeferrals field.
-func (o *ManagedSoftwareUpdateStatus) SetMaxDeferrals(v int32) {
+// SetMaxDeferrals gets a reference to the given int64 and assigns it to the MaxDeferrals field.
+func (o *ManagedSoftwareUpdateStatus) SetMaxDeferrals(v int64) {
 	o.MaxDeferrals = &v
 }
 

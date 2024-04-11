@@ -20,9 +20,9 @@ var _ MappedNullable = &VolumePurchasingContent{}
 // VolumePurchasingContent struct for VolumePurchasingContent
 type VolumePurchasingContent struct {
 	Name *string `json:"name,omitempty"`
-	LicenseCountTotal *int32 `json:"licenseCountTotal,omitempty"`
-	LicenseCountInUse *int32 `json:"licenseCountInUse,omitempty"`
-	LicenseCountReported *int32 `json:"licenseCountReported,omitempty"`
+	LicenseCountTotal *int64 `json:"licenseCountTotal,omitempty"`
+	LicenseCountInUse *int64 `json:"licenseCountInUse,omitempty"`
+	LicenseCountReported *int64 `json:"licenseCountReported,omitempty"`
 	IconUrl *string `json:"iconUrl,omitempty"`
 	DeviceTypes []string `json:"deviceTypes,omitempty"`
 	ContentType *string `json:"contentType,omitempty"`
@@ -80,9 +80,9 @@ func (o *VolumePurchasingContent) SetName(v string) {
 }
 
 // GetLicenseCountTotal returns the LicenseCountTotal field value if set, zero value otherwise.
-func (o *VolumePurchasingContent) GetLicenseCountTotal() int32 {
+func (o *VolumePurchasingContent) GetLicenseCountTotal() int64 {
 	if o == nil || IsNil(o.LicenseCountTotal) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LicenseCountTotal
@@ -90,7 +90,7 @@ func (o *VolumePurchasingContent) GetLicenseCountTotal() int32 {
 
 // GetLicenseCountTotalOk returns a tuple with the LicenseCountTotal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int32, bool) {
+func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int64, bool) {
 	if o == nil || IsNil(o.LicenseCountTotal) {
 		return nil, false
 	}
@@ -106,15 +106,15 @@ func (o *VolumePurchasingContent) HasLicenseCountTotal() bool {
 	return false
 }
 
-// SetLicenseCountTotal gets a reference to the given int32 and assigns it to the LicenseCountTotal field.
-func (o *VolumePurchasingContent) SetLicenseCountTotal(v int32) {
+// SetLicenseCountTotal gets a reference to the given int64 and assigns it to the LicenseCountTotal field.
+func (o *VolumePurchasingContent) SetLicenseCountTotal(v int64) {
 	o.LicenseCountTotal = &v
 }
 
 // GetLicenseCountInUse returns the LicenseCountInUse field value if set, zero value otherwise.
-func (o *VolumePurchasingContent) GetLicenseCountInUse() int32 {
+func (o *VolumePurchasingContent) GetLicenseCountInUse() int64 {
 	if o == nil || IsNil(o.LicenseCountInUse) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LicenseCountInUse
@@ -122,7 +122,7 @@ func (o *VolumePurchasingContent) GetLicenseCountInUse() int32 {
 
 // GetLicenseCountInUseOk returns a tuple with the LicenseCountInUse field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int32, bool) {
+func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int64, bool) {
 	if o == nil || IsNil(o.LicenseCountInUse) {
 		return nil, false
 	}
@@ -138,15 +138,15 @@ func (o *VolumePurchasingContent) HasLicenseCountInUse() bool {
 	return false
 }
 
-// SetLicenseCountInUse gets a reference to the given int32 and assigns it to the LicenseCountInUse field.
-func (o *VolumePurchasingContent) SetLicenseCountInUse(v int32) {
+// SetLicenseCountInUse gets a reference to the given int64 and assigns it to the LicenseCountInUse field.
+func (o *VolumePurchasingContent) SetLicenseCountInUse(v int64) {
 	o.LicenseCountInUse = &v
 }
 
 // GetLicenseCountReported returns the LicenseCountReported field value if set, zero value otherwise.
-func (o *VolumePurchasingContent) GetLicenseCountReported() int32 {
+func (o *VolumePurchasingContent) GetLicenseCountReported() int64 {
 	if o == nil || IsNil(o.LicenseCountReported) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.LicenseCountReported
@@ -154,7 +154,7 @@ func (o *VolumePurchasingContent) GetLicenseCountReported() int32 {
 
 // GetLicenseCountReportedOk returns a tuple with the LicenseCountReported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int32, bool) {
+func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int64, bool) {
 	if o == nil || IsNil(o.LicenseCountReported) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *VolumePurchasingContent) HasLicenseCountReported() bool {
 	return false
 }
 
-// SetLicenseCountReported gets a reference to the given int32 and assigns it to the LicenseCountReported field.
-func (o *VolumePurchasingContent) SetLicenseCountReported(v int32) {
+// SetLicenseCountReported gets a reference to the given int64 and assigns it to the LicenseCountReported field.
+func (o *VolumePurchasingContent) SetLicenseCountReported(v int64) {
 	o.LicenseCountReported = &v
 }
 

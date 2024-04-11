@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the LapsSettingsRequest type satisfies the MappedNullable interface at compile time
@@ -22,16 +24,18 @@ type LapsSettingsRequest struct {
 	// When enabled, all appropriate computers will have the SetAutoAdminPassword command sent to them automatically.
 	AutoDeployEnabled bool `json:"autoDeployEnabled"`
 	// The amount of time in seconds that the local admin password will be rotated after viewing.
-	PasswordRotationTime int32 `json:"passwordRotationTime"`
+	PasswordRotationTime int64 `json:"passwordRotationTime"`
 	// The amount of time in seconds that the local admin password will be rotated automatically if it is never viewed.
-	AutoExpirationTime int32 `json:"autoExpirationTime"`
+	AutoExpirationTime int64 `json:"autoExpirationTime"`
 }
+
+type _LapsSettingsRequest LapsSettingsRequest
 
 // NewLapsSettingsRequest instantiates a new LapsSettingsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLapsSettingsRequest(autoDeployEnabled bool, passwordRotationTime int32, autoExpirationTime int32) *LapsSettingsRequest {
+func NewLapsSettingsRequest(autoDeployEnabled bool, passwordRotationTime int64, autoExpirationTime int64) *LapsSettingsRequest {
 	this := LapsSettingsRequest{}
 	this.AutoDeployEnabled = autoDeployEnabled
 	this.PasswordRotationTime = passwordRotationTime
@@ -72,9 +76,9 @@ func (o *LapsSettingsRequest) SetAutoDeployEnabled(v bool) {
 }
 
 // GetPasswordRotationTime returns the PasswordRotationTime field value
-func (o *LapsSettingsRequest) GetPasswordRotationTime() int32 {
+func (o *LapsSettingsRequest) GetPasswordRotationTime() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -83,7 +87,7 @@ func (o *LapsSettingsRequest) GetPasswordRotationTime() int32 {
 
 // GetPasswordRotationTimeOk returns a tuple with the PasswordRotationTime field value
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsRequest) GetPasswordRotationTimeOk() (*int32, bool) {
+func (o *LapsSettingsRequest) GetPasswordRotationTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,14 +95,14 @@ func (o *LapsSettingsRequest) GetPasswordRotationTimeOk() (*int32, bool) {
 }
 
 // SetPasswordRotationTime sets field value
-func (o *LapsSettingsRequest) SetPasswordRotationTime(v int32) {
+func (o *LapsSettingsRequest) SetPasswordRotationTime(v int64) {
 	o.PasswordRotationTime = v
 }
 
 // GetAutoExpirationTime returns the AutoExpirationTime field value
-func (o *LapsSettingsRequest) GetAutoExpirationTime() int32 {
+func (o *LapsSettingsRequest) GetAutoExpirationTime() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -107,7 +111,7 @@ func (o *LapsSettingsRequest) GetAutoExpirationTime() int32 {
 
 // GetAutoExpirationTimeOk returns a tuple with the AutoExpirationTime field value
 // and a boolean to check if the value has been set.
-func (o *LapsSettingsRequest) GetAutoExpirationTimeOk() (*int32, bool) {
+func (o *LapsSettingsRequest) GetAutoExpirationTimeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -115,7 +119,7 @@ func (o *LapsSettingsRequest) GetAutoExpirationTimeOk() (*int32, bool) {
 }
 
 // SetAutoExpirationTime sets field value
-func (o *LapsSettingsRequest) SetAutoExpirationTime(v int32) {
+func (o *LapsSettingsRequest) SetAutoExpirationTime(v int64) {
 	o.AutoExpirationTime = v
 }
 
@@ -133,6 +137,45 @@ func (o LapsSettingsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["passwordRotationTime"] = o.PasswordRotationTime
 	toSerialize["autoExpirationTime"] = o.AutoExpirationTime
 	return toSerialize, nil
+}
+
+func (o *LapsSettingsRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"autoDeployEnabled",
+		"passwordRotationTime",
+		"autoExpirationTime",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLapsSettingsRequest := _LapsSettingsRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLapsSettingsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LapsSettingsRequest(varLapsSettingsRequest)
+
+	return err
 }
 
 type NullableLapsSettingsRequest struct {

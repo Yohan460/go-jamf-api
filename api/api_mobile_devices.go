@@ -52,7 +52,7 @@ type MobileDevicesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicesIdDetailGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
+	V1MobileDevicesIdDetailGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
 
 	// V1MobileDevicesIdDetailGetExecute executes the request
 	//  @return MobileDeviceDetails
@@ -70,7 +70,7 @@ type MobileDevicesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicesIdGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdGetRequest
+	V1MobileDevicesIdGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdGetRequest
 
 	// V1MobileDevicesIdGetExecute executes the request
 	//  @return MobileDevice
@@ -88,7 +88,7 @@ type MobileDevicesAPI interface {
 
 	Deprecated
 	*/
-	V1MobileDevicesIdPatch(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdPatchRequest
+	V1MobileDevicesIdPatch(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdPatchRequest
 
 	// V1MobileDevicesIdPatchExecute executes the request
 	//  @return MobileDeviceDetails
@@ -296,7 +296,7 @@ func (a *MobileDevicesAPIService) V1MobileDevicesGetExecute(r MobileDevicesAPIV1
 type MobileDevicesAPIV1MobileDevicesIdDetailGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
@@ -314,7 +314,7 @@ Get MobileDevice
 
 Deprecated
 */
-func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest {
 	return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -402,7 +402,7 @@ func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGetExecute(r MobileDevi
 type MobileDevicesAPIV1MobileDevicesIdGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicesAPI
-	id int32
+	id int64
 }
 
 func (r MobileDevicesAPIV1MobileDevicesIdGetRequest) Execute() (*MobileDevice, *http.Response, error) {
@@ -420,7 +420,7 @@ Get MobileDevice
 
 Deprecated
 */
-func (a *MobileDevicesAPIService) V1MobileDevicesIdGet(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdGetRequest {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdGetRequest {
 	return MobileDevicesAPIV1MobileDevicesIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -508,7 +508,7 @@ func (a *MobileDevicesAPIService) V1MobileDevicesIdGetExecute(r MobileDevicesAPI
 type MobileDevicesAPIV1MobileDevicesIdPatchRequest struct {
 	ctx context.Context
 	ApiService MobileDevicesAPI
-	id int32
+	id int64
 	updateMobileDevice *UpdateMobileDevice
 }
 
@@ -532,7 +532,7 @@ Updates fields on a mobile device that are allowed to be modified by users.
 
 Deprecated
 */
-func (a *MobileDevicesAPIService) V1MobileDevicesIdPatch(ctx context.Context, id int32) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
+func (a *MobileDevicesAPIService) V1MobileDevicesIdPatch(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
 	return MobileDevicesAPIV1MobileDevicesIdPatchRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -736,8 +736,8 @@ type MobileDevicesAPIV2MobileDevicesDetailGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicesAPI
 	section *[]MobileDeviceSection
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
@@ -748,12 +748,12 @@ func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Section(section []Mobil
 	return r
 }
 
-func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Page(page int32) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Page(page int64) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) PageSize(pageSize int32) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) PageSize(pageSize int64) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -827,13 +827,13 @@ func (a *MobileDevicesAPIService) V2MobileDevicesDetailGetExecute(r MobileDevice
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -913,17 +913,17 @@ func (a *MobileDevicesAPIService) V2MobileDevicesDetailGetExecute(r MobileDevice
 type MobileDevicesAPIV2MobileDevicesGetRequest struct {
 	ctx context.Context
 	ApiService MobileDevicesAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 }
 
-func (r MobileDevicesAPIV2MobileDevicesGetRequest) Page(page int32) MobileDevicesAPIV2MobileDevicesGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) Page(page int64) MobileDevicesAPIV2MobileDevicesGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r MobileDevicesAPIV2MobileDevicesGetRequest) PageSize(pageSize int32) MobileDevicesAPIV2MobileDevicesGetRequest {
+func (r MobileDevicesAPIV2MobileDevicesGetRequest) PageSize(pageSize int64) MobileDevicesAPIV2MobileDevicesGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -978,13 +978,13 @@ func (a *MobileDevicesAPIService) V2MobileDevicesGetExecute(r MobileDevicesAPIV2
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

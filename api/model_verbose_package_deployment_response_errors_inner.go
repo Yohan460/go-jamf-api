@@ -19,8 +19,8 @@ var _ MappedNullable = &VerbosePackageDeploymentResponseErrorsInner{}
 
 // VerbosePackageDeploymentResponseErrorsInner The error will contain either the 'device' or 'group' property
 type VerbosePackageDeploymentResponseErrorsInner struct {
-	Device *int32 `json:"device,omitempty"`
-	Group *int32 `json:"group,omitempty"`
+	Device *int64 `json:"device,omitempty"`
+	Group *int64 `json:"group,omitempty"`
 	Reason *string `json:"reason,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewVerbosePackageDeploymentResponseErrorsInnerWithDefaults() *VerbosePackag
 }
 
 // GetDevice returns the Device field value if set, zero value otherwise.
-func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int32 {
+func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int64 {
 	if o == nil || IsNil(o.Device) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Device
@@ -52,7 +52,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetDevice() int32 {
 
 // GetDeviceOk returns a tuple with the Device field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int32, bool) {
+func (o *VerbosePackageDeploymentResponseErrorsInner) GetDeviceOk() (*int64, bool) {
 	if o == nil || IsNil(o.Device) {
 		return nil, false
 	}
@@ -68,15 +68,15 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) HasDevice() bool {
 	return false
 }
 
-// SetDevice gets a reference to the given int32 and assigns it to the Device field.
-func (o *VerbosePackageDeploymentResponseErrorsInner) SetDevice(v int32) {
+// SetDevice gets a reference to the given int64 and assigns it to the Device field.
+func (o *VerbosePackageDeploymentResponseErrorsInner) SetDevice(v int64) {
 	o.Device = &v
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
-func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int32 {
+func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int64 {
 	if o == nil || IsNil(o.Group) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Group
@@ -84,7 +84,7 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroup() int32 {
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int32, bool) {
+func (o *VerbosePackageDeploymentResponseErrorsInner) GetGroupOk() (*int64, bool) {
 	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *VerbosePackageDeploymentResponseErrorsInner) HasGroup() bool {
 	return false
 }
 
-// SetGroup gets a reference to the given int32 and assigns it to the Group field.
-func (o *VerbosePackageDeploymentResponseErrorsInner) SetGroup(v int32) {
+// SetGroup gets a reference to the given int64 and assigns it to the Group field.
+func (o *VerbosePackageDeploymentResponseErrorsInner) SetGroup(v int64) {
 	o.Group = &v
 }
 

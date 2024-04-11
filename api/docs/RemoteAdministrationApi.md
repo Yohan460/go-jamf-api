@@ -22,25 +22,25 @@ Get information about all remote administration configurations.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet(context.Background()).Page(page).PageSize(pageSize).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PreviewRemoteAdministrationConfigurationsGet`: RemoteAdministrationSearchResults
-    fmt.Fprintf(os.Stdout, "Response from `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet(context.Background()).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PreviewRemoteAdministrationConfigurationsGet`: RemoteAdministrationSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `RemoteAdministrationAPI.PreviewRemoteAdministrationConfigurationsGet`: %v\n", resp)
 }
 ```
 
@@ -55,8 +55,8 @@ Other parameters are passed through a pointer to a apiPreviewRemoteAdministratio
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
 
 ### Return type
 

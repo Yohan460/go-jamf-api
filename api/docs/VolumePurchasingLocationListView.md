@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
-**TotalPurchasedLicenses** | Pointer to **int32** |  | [optional] [readonly] 
-**TotalUsedLicenses** | Pointer to **int32** |  | [optional] [readonly] 
+**TotalPurchasedLicenses** | Pointer to **int64** |  | [optional] [readonly] 
+**TotalUsedLicenses** | Pointer to **int64** |  | [optional] [readonly] 
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **AppleId** | Pointer to **string** |  | [optional] [readonly] 
 **OrganizationName** | Pointer to **string** |  | [optional] [readonly] 
@@ -66,20 +66,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetTotalPurchasedLicenses
 
-`func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicenses() int32`
+`func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicenses() int64`
 
 GetTotalPurchasedLicenses returns the TotalPurchasedLicenses field if non-nil, zero value otherwise.
 
 ### GetTotalPurchasedLicensesOk
 
-`func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicensesOk() (*int32, bool)`
+`func (o *VolumePurchasingLocationListView) GetTotalPurchasedLicensesOk() (*int64, bool)`
 
 GetTotalPurchasedLicensesOk returns a tuple with the TotalPurchasedLicenses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalPurchasedLicenses
 
-`func (o *VolumePurchasingLocationListView) SetTotalPurchasedLicenses(v int32)`
+`func (o *VolumePurchasingLocationListView) SetTotalPurchasedLicenses(v int64)`
 
 SetTotalPurchasedLicenses sets TotalPurchasedLicenses field to given value.
 
@@ -91,20 +91,20 @@ HasTotalPurchasedLicenses returns a boolean if a field has been set.
 
 ### GetTotalUsedLicenses
 
-`func (o *VolumePurchasingLocationListView) GetTotalUsedLicenses() int32`
+`func (o *VolumePurchasingLocationListView) GetTotalUsedLicenses() int64`
 
 GetTotalUsedLicenses returns the TotalUsedLicenses field if non-nil, zero value otherwise.
 
 ### GetTotalUsedLicensesOk
 
-`func (o *VolumePurchasingLocationListView) GetTotalUsedLicensesOk() (*int32, bool)`
+`func (o *VolumePurchasingLocationListView) GetTotalUsedLicensesOk() (*int64, bool)`
 
 GetTotalUsedLicensesOk returns a tuple with the TotalUsedLicenses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalUsedLicenses
 
-`func (o *VolumePurchasingLocationListView) SetTotalUsedLicenses(v int32)`
+`func (o *VolumePurchasingLocationListView) SetTotalUsedLicenses(v int64)`
 
 SetTotalUsedLicenses sets TotalUsedLicenses field to given value.
 

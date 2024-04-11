@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
 **HostName** | Pointer to **string** |  | [optional] 
-**Port** | Pointer to **int32** |  | [optional] 
+**Port** | Pointer to **int64** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
-**JssCacheConfigurationId** | Pointer to **int32** |  | [optional] 
+**JssCacheConfigurationId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -107,20 +107,20 @@ HasHostName returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *MemcachedEndpoints) GetPort() int32`
+`func (o *MemcachedEndpoints) GetPort() int64`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *MemcachedEndpoints) GetPortOk() (*int32, bool)`
+`func (o *MemcachedEndpoints) GetPortOk() (*int64, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *MemcachedEndpoints) SetPort(v int32)`
+`func (o *MemcachedEndpoints) SetPort(v int64)`
 
 SetPort sets Port field to given value.
 
@@ -157,20 +157,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetJssCacheConfigurationId
 
-`func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int32`
+`func (o *MemcachedEndpoints) GetJssCacheConfigurationId() int64`
 
 GetJssCacheConfigurationId returns the JssCacheConfigurationId field if non-nil, zero value otherwise.
 
 ### GetJssCacheConfigurationIdOk
 
-`func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int32, bool)`
+`func (o *MemcachedEndpoints) GetJssCacheConfigurationIdOk() (*int64, bool)`
 
 GetJssCacheConfigurationIdOk returns a tuple with the JssCacheConfigurationId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJssCacheConfigurationId
 
-`func (o *MemcachedEndpoints) SetJssCacheConfigurationId(v int32)`
+`func (o *MemcachedEndpoints) SetJssCacheConfigurationId(v int64)`
 
 SetJssCacheConfigurationId sets JssCacheConfigurationId field to given value.
 

@@ -23,10 +23,10 @@ type PatchPolicyLogV2 struct {
 	PatchPolicyId *string `json:"patchPolicyId,omitempty"`
 	DeviceName *string `json:"deviceName,omitempty"`
 	DeviceId *string `json:"deviceId,omitempty"`
-	StatusCode *int32 `json:"statusCode,omitempty"`
+	StatusCode *int64 `json:"statusCode,omitempty"`
 	StatusDate *time.Time `json:"statusDate,omitempty"`
 	StatusEnum *string `json:"statusEnum,omitempty"`
-	AttemptNumber *int32 `json:"attemptNumber,omitempty"`
+	AttemptNumber *int64 `json:"attemptNumber,omitempty"`
 	IgnoredForPatchPolicyId *string `json:"ignoredForPatchPolicyId,omitempty"`
 }
 
@@ -144,9 +144,9 @@ func (o *PatchPolicyLogV2) SetDeviceId(v string) {
 }
 
 // GetStatusCode returns the StatusCode field value if set, zero value otherwise.
-func (o *PatchPolicyLogV2) GetStatusCode() int32 {
+func (o *PatchPolicyLogV2) GetStatusCode() int64 {
 	if o == nil || IsNil(o.StatusCode) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.StatusCode
@@ -154,7 +154,7 @@ func (o *PatchPolicyLogV2) GetStatusCode() int32 {
 
 // GetStatusCodeOk returns a tuple with the StatusCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyLogV2) GetStatusCodeOk() (*int32, bool) {
+func (o *PatchPolicyLogV2) GetStatusCodeOk() (*int64, bool) {
 	if o == nil || IsNil(o.StatusCode) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *PatchPolicyLogV2) HasStatusCode() bool {
 	return false
 }
 
-// SetStatusCode gets a reference to the given int32 and assigns it to the StatusCode field.
-func (o *PatchPolicyLogV2) SetStatusCode(v int32) {
+// SetStatusCode gets a reference to the given int64 and assigns it to the StatusCode field.
+func (o *PatchPolicyLogV2) SetStatusCode(v int64) {
 	o.StatusCode = &v
 }
 
@@ -240,9 +240,9 @@ func (o *PatchPolicyLogV2) SetStatusEnum(v string) {
 }
 
 // GetAttemptNumber returns the AttemptNumber field value if set, zero value otherwise.
-func (o *PatchPolicyLogV2) GetAttemptNumber() int32 {
+func (o *PatchPolicyLogV2) GetAttemptNumber() int64 {
 	if o == nil || IsNil(o.AttemptNumber) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.AttemptNumber
@@ -250,7 +250,7 @@ func (o *PatchPolicyLogV2) GetAttemptNumber() int32 {
 
 // GetAttemptNumberOk returns a tuple with the AttemptNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PatchPolicyLogV2) GetAttemptNumberOk() (*int32, bool) {
+func (o *PatchPolicyLogV2) GetAttemptNumberOk() (*int64, bool) {
 	if o == nil || IsNil(o.AttemptNumber) {
 		return nil, false
 	}
@@ -266,8 +266,8 @@ func (o *PatchPolicyLogV2) HasAttemptNumber() bool {
 	return false
 }
 
-// SetAttemptNumber gets a reference to the given int32 and assigns it to the AttemptNumber field.
-func (o *PatchPolicyLogV2) SetAttemptNumber(v int32) {
+// SetAttemptNumber gets a reference to the given int64 and assigns it to the AttemptNumber field.
+func (o *PatchPolicyLogV2) SetAttemptNumber(v int64) {
 	o.AttemptNumber = &v
 }
 

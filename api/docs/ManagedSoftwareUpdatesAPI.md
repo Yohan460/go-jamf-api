@@ -34,23 +34,23 @@ Retrieve available macOS and iOS Managed Software Updates
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesAvailableUpdatesGet`: AvailableOsUpdates
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesAvailableUpdatesGet`: AvailableOsUpdates
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesAvailableUpdatesGet`: %v\n", resp)
 }
 ```
 
@@ -95,23 +95,23 @@ Retrieve Status of the Feature Toggle
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansFeatureToggleGet`: ManagedSoftwareUpdatePlanToggle
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansFeatureToggleGet`: ManagedSoftwareUpdatePlanToggle
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleGet`: %v\n", resp)
 }
 ```
 
@@ -156,24 +156,24 @@ Updates Feature Toggle Value
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    managedSoftwareUpdatePlanToggle := *openapiclient.NewManagedSoftwareUpdatePlanToggle(false) // ManagedSoftwareUpdatePlanToggle | 
+	managedSoftwareUpdatePlanToggle := *openapiclient.NewManagedSoftwareUpdatePlanToggle(false) // ManagedSoftwareUpdatePlanToggle | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut(context.Background()).ManagedSoftwareUpdatePlanToggle(managedSoftwareUpdatePlanToggle).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansFeatureTogglePut`: ManagedSoftwareUpdatePlanToggle
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut(context.Background()).ManagedSoftwareUpdatePlanToggle(managedSoftwareUpdatePlanToggle).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansFeatureTogglePut`: ManagedSoftwareUpdatePlanToggle
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureTogglePut`: %v\n", resp)
 }
 ```
 
@@ -222,27 +222,27 @@ Retrieve Managed Software Update Plans
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is planUuid:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["planUuid:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state. (optional) (default to "")
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is planUuid:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["planUuid:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state. (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansGet`: ManagedSoftwareUpdatePlans
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet(context.Background()).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansGet`: ManagedSoftwareUpdatePlans
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGet`: %v\n", resp)
 }
 ```
 
@@ -257,8 +257,8 @@ Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesPl
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is planUuid:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;planUuid:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state. | [default to &quot;&quot;]
 
@@ -294,25 +294,25 @@ Retrieve Managed Software Update Plans for a Group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Managed Software Update Group Id
-    groupType := "COMPUTER_GROUP" // string | Managed Software Update Group Type, Available options are \"COMPUTER_GROUP\" or \"MOBILE_DEVICE_GROUP\"
+	id := "id_example" // string | Managed Software Update Group Id
+	groupType := "COMPUTER_GROUP" // string | Managed Software Update Group Type, Available options are \"COMPUTER_GROUP\" or \"MOBILE_DEVICE_GROUP\"
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet(context.Background(), id).GroupType(groupType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansGroupIdGet`: ManagedSoftwareUpdatePlans
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet(context.Background(), id).GroupType(groupType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansGroupIdGet`: ManagedSoftwareUpdatePlans
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupIdGet`: %v\n", resp)
 }
 ```
 
@@ -366,24 +366,24 @@ Create Managed Software Update Plans for a Group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    managedSoftwareUpdatePlanGroupPost := *openapiclient.NewManagedSoftwareUpdatePlanGroupPost(*openapiclient.NewPlanGroupPost("1", "COMPUTER_GROUP"), *openapiclient.NewPlanConfigurationPost("DOWNLOAD_INSTALL", "SPECIFIC_VERSION")) // ManagedSoftwareUpdatePlanGroupPost | Managed Software Update Plan to create for Group
+	managedSoftwareUpdatePlanGroupPost := *openapiclient.NewManagedSoftwareUpdatePlanGroupPost(*openapiclient.NewPlanGroupPost("1", "COMPUTER_GROUP"), *openapiclient.NewPlanConfigurationPost("DOWNLOAD_INSTALL", "SPECIFIC_VERSION")) // ManagedSoftwareUpdatePlanGroupPost | Managed Software Update Plan to create for Group
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost(context.Background()).ManagedSoftwareUpdatePlanGroupPost(managedSoftwareUpdatePlanGroupPost).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansGroupPost`: ManagedSoftwareUpdatePlanPostResponse
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost(context.Background()).ManagedSoftwareUpdatePlanGroupPost(managedSoftwareUpdatePlanGroupPost).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansGroupPost`: ManagedSoftwareUpdatePlanPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansGroupPost`: %v\n", resp)
 }
 ```
 
@@ -432,24 +432,24 @@ Retrieve a Managed Software Update Plan
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Managed Software Update Plan Uuid
+	id := "id_example" // string | Managed Software Update Plan Uuid
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansIdGet`: ManagedSoftwareUpdatePlan
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansIdGet`: ManagedSoftwareUpdatePlan
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdGet`: %v\n", resp)
 }
 ```
 
@@ -502,24 +502,24 @@ Create a Managed Software Update Plan
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    managedSoftwareUpdatePlanPost := *openapiclient.NewManagedSoftwareUpdatePlanPost([]openapiclient.PlanDevicePost{*openapiclient.NewPlanDevicePost("1", "COMPUTER")}, *openapiclient.NewPlanConfigurationPost("DOWNLOAD_INSTALL", "SPECIFIC_VERSION")) // ManagedSoftwareUpdatePlanPost | Managed Software Update Plan to create
+	managedSoftwareUpdatePlanPost := *openapiclient.NewManagedSoftwareUpdatePlanPost([]openapiclient.PlanDevicePost{*openapiclient.NewPlanDevicePost("1", "COMPUTER")}, *openapiclient.NewPlanConfigurationPost("DOWNLOAD_INSTALL", "SPECIFIC_VERSION")) // ManagedSoftwareUpdatePlanPost | Managed Software Update Plan to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost(context.Background()).ManagedSoftwareUpdatePlanPost(managedSoftwareUpdatePlanPost).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesPlansPost`: ManagedSoftwareUpdatePlanPostResponse
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost(context.Background()).ManagedSoftwareUpdatePlanPost(managedSoftwareUpdatePlanPost).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansPost`: ManagedSoftwareUpdatePlanPostResponse
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansPost`: %v\n", resp)
 }
 ```
 
@@ -568,24 +568,24 @@ Retrieve Managed Software Update Statuses for Computer Groups
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Computer Group identifier
+	id := "id_example" // string | Computer Group identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet`: ManagedSoftwareUpdateStatuses
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet`: ManagedSoftwareUpdateStatuses
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet`: %v\n", resp)
 }
 ```
 
@@ -638,24 +638,24 @@ Retrieve Managed Software Update Statuses for Computers
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Computer identifier
+	id := "id_example" // string | Computer identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet`: ManagedSoftwareUpdateStatuses
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet`: ManagedSoftwareUpdateStatuses
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet`: %v\n", resp)
 }
 ```
 
@@ -708,24 +708,24 @@ Retrieve Managed Software Update Statuses
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: osUpdatesStatusId, device.deviceId, device.objectType, downloaded, downloadPercentComplete, productKey, status, deferralsRemaining, maxDeferrals, nextScheduledInstall, created and updated. (optional) (default to "")
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: osUpdatesStatusId, device.deviceId, device.objectType, downloaded, downloadPercentComplete, productKey, status, deferralsRemaining, maxDeferrals, nextScheduledInstall, created and updated. (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet(context.Background()).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesUpdateStatusesGet`: ManagedSoftwareUpdateStatuses
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet(context.Background()).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesUpdateStatusesGet`: ManagedSoftwareUpdateStatuses
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesGet`: %v\n", resp)
 }
 ```
 
@@ -774,24 +774,24 @@ Retrieve Managed Software Update Statuses for Mobile Device Groups
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Mobile Device Group identifier
+	id := "id_example" // string | Mobile Device Group identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet`: ManagedSoftwareUpdateStatuses
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet`: ManagedSoftwareUpdateStatuses
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet`: %v\n", resp)
 }
 ```
 
@@ -844,24 +844,24 @@ Retrieve Managed Software Update Statuses for Mobile Devices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Mobile Device identifier
+	id := "id_example" // string | Mobile Device identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet`: ManagedSoftwareUpdateStatuses
-    fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet`: ManagedSoftwareUpdateStatuses
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet`: %v\n", resp)
 }
 ```
 

@@ -177,18 +177,18 @@ type VolumePurchasingLocationsAPIService service
 type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest struct {
 	ctx context.Context
 	ApiService VolumePurchasingLocationsAPI
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Page(page int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) PageSize(pageSize int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -248,13 +248,13 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsGetExec
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -335,18 +335,18 @@ type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest 
 	ctx context.Context
 	ApiService VolumePurchasingLocationsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) Page(page int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest) PageSize(pageSize int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdContentGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -409,13 +409,13 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdConte
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
@@ -721,18 +721,18 @@ type VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest 
 	ctx context.Context
 	ApiService VolumePurchasingLocationsAPI
 	id string
-	page *int32
-	pageSize *int32
+	page *int64
+	pageSize *int64
 	sort *[]string
 	filter *string
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Page(page int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) Page(page int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.page = &page
 	return r
 }
 
-func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) PageSize(pageSize int32) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
+func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest) PageSize(pageSize int64) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsIdHistoryGetRequest {
 	r.pageSize = &pageSize
 	return r
 }
@@ -796,13 +796,13 @@ func (a *VolumePurchasingLocationsAPIService) V1VolumePurchasingLocationsIdHisto
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	} else {
-		var defaultValue int32 = 0
+		var defaultValue int64 = 0
 		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int64 = 100
 		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {

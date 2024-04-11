@@ -8,9 +8,9 @@ Name | Type | Description | Notes
 **SizeMegabytes** | Pointer to **int64** | Partition Size in MB. | [optional] [readonly] 
 **AvailableMegabytes** | Pointer to **int64** | Available space in MB. | [optional] [readonly] 
 **PartitionType** | Pointer to **string** |  | [optional] [readonly] 
-**PercentUsed** | Pointer to **int32** | Percentage of space used. | [optional] [readonly] 
+**PercentUsed** | Pointer to **int64** | Percentage of space used. | [optional] [readonly] 
 **FileVault2State** | Pointer to [**ComputerPartitionFileVault2State**](ComputerPartitionFileVault2State.md) |  | [optional] 
-**FileVault2ProgressPercent** | Pointer to **NullableInt32** | Percentage progress of current FileVault 2 operation. | [optional] 
+**FileVault2ProgressPercent** | Pointer to **NullableInt64** | Percentage progress of current FileVault 2 operation. | [optional] 
 **LvmManaged** | Pointer to **bool** |  | [optional] [readonly] 
 
 ## Methods
@@ -134,20 +134,20 @@ HasPartitionType returns a boolean if a field has been set.
 
 ### GetPercentUsed
 
-`func (o *ComputerPartition) GetPercentUsed() int32`
+`func (o *ComputerPartition) GetPercentUsed() int64`
 
 GetPercentUsed returns the PercentUsed field if non-nil, zero value otherwise.
 
 ### GetPercentUsedOk
 
-`func (o *ComputerPartition) GetPercentUsedOk() (*int32, bool)`
+`func (o *ComputerPartition) GetPercentUsedOk() (*int64, bool)`
 
 GetPercentUsedOk returns a tuple with the PercentUsed field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPercentUsed
 
-`func (o *ComputerPartition) SetPercentUsed(v int32)`
+`func (o *ComputerPartition) SetPercentUsed(v int64)`
 
 SetPercentUsed sets PercentUsed field to given value.
 
@@ -184,20 +184,20 @@ HasFileVault2State returns a boolean if a field has been set.
 
 ### GetFileVault2ProgressPercent
 
-`func (o *ComputerPartition) GetFileVault2ProgressPercent() int32`
+`func (o *ComputerPartition) GetFileVault2ProgressPercent() int64`
 
 GetFileVault2ProgressPercent returns the FileVault2ProgressPercent field if non-nil, zero value otherwise.
 
 ### GetFileVault2ProgressPercentOk
 
-`func (o *ComputerPartition) GetFileVault2ProgressPercentOk() (*int32, bool)`
+`func (o *ComputerPartition) GetFileVault2ProgressPercentOk() (*int64, bool)`
 
 GetFileVault2ProgressPercentOk returns a tuple with the FileVault2ProgressPercent field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFileVault2ProgressPercent
 
-`func (o *ComputerPartition) SetFileVault2ProgressPercent(v int32)`
+`func (o *ComputerPartition) SetFileVault2ProgressPercent(v int64)`
 
 SetFileVault2ProgressPercent sets FileVault2ProgressPercent field to given value.
 

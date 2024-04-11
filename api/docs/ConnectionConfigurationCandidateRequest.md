@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **DisplayName** | **string** | Name for Team Viewer Connection Configuration | 
 **ScriptToken** | **string** | Token which is used for connecting to Team Viewer | 
 **Enabled** | **bool** | Defines the intent to enable or disable Team Viewer connection | 
-**SessionTimeout** | **int32** | Number of minutes before the session expires | 
+**SessionTimeout** | **int64** | Number of minutes before the session expires | 
 
 ## Methods
 
 ### NewConnectionConfigurationCandidateRequest
 
-`func NewConnectionConfigurationCandidateRequest(siteId string, displayName string, scriptToken string, enabled bool, sessionTimeout int32, ) *ConnectionConfigurationCandidateRequest`
+`func NewConnectionConfigurationCandidateRequest(siteId string, displayName string, scriptToken string, enabled bool, sessionTimeout int64, ) *ConnectionConfigurationCandidateRequest`
 
 NewConnectionConfigurationCandidateRequest instantiates a new ConnectionConfigurationCandidateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -111,20 +111,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetSessionTimeout
 
-`func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeout() int32`
+`func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeout() int64`
 
 GetSessionTimeout returns the SessionTimeout field if non-nil, zero value otherwise.
 
 ### GetSessionTimeoutOk
 
-`func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeoutOk() (*int32, bool)`
+`func (o *ConnectionConfigurationCandidateRequest) GetSessionTimeoutOk() (*int64, bool)`
 
 GetSessionTimeoutOk returns a tuple with the SessionTimeout field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSessionTimeout
 
-`func (o *ConnectionConfigurationCandidateRequest) SetSessionTimeout(v int32)`
+`func (o *ConnectionConfigurationCandidateRequest) SetSessionTimeout(v int64)`
 
 SetSessionTimeout sets SessionTimeout field to given value.
 

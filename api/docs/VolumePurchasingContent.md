@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] [readonly] 
-**LicenseCountTotal** | Pointer to **int32** |  | [optional] [readonly] 
-**LicenseCountInUse** | Pointer to **int32** |  | [optional] [readonly] 
-**LicenseCountReported** | Pointer to **int32** |  | [optional] [readonly] 
+**LicenseCountTotal** | Pointer to **int64** |  | [optional] [readonly] 
+**LicenseCountInUse** | Pointer to **int64** |  | [optional] [readonly] 
+**LicenseCountReported** | Pointer to **int64** |  | [optional] [readonly] 
 **IconUrl** | Pointer to **string** |  | [optional] [readonly] 
 **DeviceTypes** | Pointer to **[]string** |  | [optional] [readonly] 
 **ContentType** | Pointer to **string** |  | [optional] [readonly] 
@@ -60,20 +60,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetLicenseCountTotal
 
-`func (o *VolumePurchasingContent) GetLicenseCountTotal() int32`
+`func (o *VolumePurchasingContent) GetLicenseCountTotal() int64`
 
 GetLicenseCountTotal returns the LicenseCountTotal field if non-nil, zero value otherwise.
 
 ### GetLicenseCountTotalOk
 
-`func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int32, bool)`
+`func (o *VolumePurchasingContent) GetLicenseCountTotalOk() (*int64, bool)`
 
 GetLicenseCountTotalOk returns a tuple with the LicenseCountTotal field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicenseCountTotal
 
-`func (o *VolumePurchasingContent) SetLicenseCountTotal(v int32)`
+`func (o *VolumePurchasingContent) SetLicenseCountTotal(v int64)`
 
 SetLicenseCountTotal sets LicenseCountTotal field to given value.
 
@@ -85,20 +85,20 @@ HasLicenseCountTotal returns a boolean if a field has been set.
 
 ### GetLicenseCountInUse
 
-`func (o *VolumePurchasingContent) GetLicenseCountInUse() int32`
+`func (o *VolumePurchasingContent) GetLicenseCountInUse() int64`
 
 GetLicenseCountInUse returns the LicenseCountInUse field if non-nil, zero value otherwise.
 
 ### GetLicenseCountInUseOk
 
-`func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int32, bool)`
+`func (o *VolumePurchasingContent) GetLicenseCountInUseOk() (*int64, bool)`
 
 GetLicenseCountInUseOk returns a tuple with the LicenseCountInUse field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicenseCountInUse
 
-`func (o *VolumePurchasingContent) SetLicenseCountInUse(v int32)`
+`func (o *VolumePurchasingContent) SetLicenseCountInUse(v int64)`
 
 SetLicenseCountInUse sets LicenseCountInUse field to given value.
 
@@ -110,20 +110,20 @@ HasLicenseCountInUse returns a boolean if a field has been set.
 
 ### GetLicenseCountReported
 
-`func (o *VolumePurchasingContent) GetLicenseCountReported() int32`
+`func (o *VolumePurchasingContent) GetLicenseCountReported() int64`
 
 GetLicenseCountReported returns the LicenseCountReported field if non-nil, zero value otherwise.
 
 ### GetLicenseCountReportedOk
 
-`func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int32, bool)`
+`func (o *VolumePurchasingContent) GetLicenseCountReportedOk() (*int64, bool)`
 
 GetLicenseCountReportedOk returns a tuple with the LicenseCountReported field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicenseCountReported
 
-`func (o *VolumePurchasingContent) SetLicenseCountReported(v int32)`
+`func (o *VolumePurchasingContent) SetLicenseCountReported(v int64)`
 
 SetLicenseCountReported sets LicenseCountReported field to given value.
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**AttemptNumber** | Pointer to **int32** |  | [optional] 
+**AttemptNumber** | Pointer to **int64** |  | [optional] 
 **DeviceId** | Pointer to **string** |  | [optional] 
 **Actions** | Pointer to [**[]PatchPolicyLogDetailAction**](PatchPolicyLogDetailAction.md) |  | [optional] 
 
@@ -55,20 +55,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetAttemptNumber
 
-`func (o *PatchPolicyLogDetail) GetAttemptNumber() int32`
+`func (o *PatchPolicyLogDetail) GetAttemptNumber() int64`
 
 GetAttemptNumber returns the AttemptNumber field if non-nil, zero value otherwise.
 
 ### GetAttemptNumberOk
 
-`func (o *PatchPolicyLogDetail) GetAttemptNumberOk() (*int32, bool)`
+`func (o *PatchPolicyLogDetail) GetAttemptNumberOk() (*int64, bool)`
 
 GetAttemptNumberOk returns a tuple with the AttemptNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAttemptNumber
 
-`func (o *PatchPolicyLogDetail) SetAttemptNumber(v int32)`
+`func (o *PatchPolicyLogDetail) SetAttemptNumber(v int64)`
 
 SetAttemptNumber sets AttemptNumber field to given value.
 

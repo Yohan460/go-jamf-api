@@ -21,7 +21,7 @@ var _ MappedNullable = &ComputerPartitionEncryption{}
 type ComputerPartitionEncryption struct {
 	PartitionName *string `json:"partitionName,omitempty"`
 	PartitionFileVault2State *ComputerPartitionFileVault2State `json:"partitionFileVault2State,omitempty"`
-	PartitionFileVault2Percent *int32 `json:"partitionFileVault2Percent,omitempty"`
+	PartitionFileVault2Percent *int64 `json:"partitionFileVault2Percent,omitempty"`
 }
 
 // NewComputerPartitionEncryption instantiates a new ComputerPartitionEncryption object
@@ -106,9 +106,9 @@ func (o *ComputerPartitionEncryption) SetPartitionFileVault2State(v ComputerPart
 }
 
 // GetPartitionFileVault2Percent returns the PartitionFileVault2Percent field value if set, zero value otherwise.
-func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int32 {
+func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int64 {
 	if o == nil || IsNil(o.PartitionFileVault2Percent) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.PartitionFileVault2Percent
@@ -116,7 +116,7 @@ func (o *ComputerPartitionEncryption) GetPartitionFileVault2Percent() int32 {
 
 // GetPartitionFileVault2PercentOk returns a tuple with the PartitionFileVault2Percent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int32, bool) {
+func (o *ComputerPartitionEncryption) GetPartitionFileVault2PercentOk() (*int64, bool) {
 	if o == nil || IsNil(o.PartitionFileVault2Percent) {
 		return nil, false
 	}
@@ -132,8 +132,8 @@ func (o *ComputerPartitionEncryption) HasPartitionFileVault2Percent() bool {
 	return false
 }
 
-// SetPartitionFileVault2Percent gets a reference to the given int32 and assigns it to the PartitionFileVault2Percent field.
-func (o *ComputerPartitionEncryption) SetPartitionFileVault2Percent(v int32) {
+// SetPartitionFileVault2Percent gets a reference to the given int64 and assigns it to the PartitionFileVault2Percent field.
+func (o *ComputerPartitionEncryption) SetPartitionFileVault2Percent(v int64) {
 	o.PartitionFileVault2Percent = &v
 }
 

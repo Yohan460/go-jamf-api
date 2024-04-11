@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **AirPlayPassword** | Pointer to **string** |  | [optional] 
 **AppAnalyticsEnabled** | Pointer to **bool** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
-**AvailableSpaceMb** | Pointer to **int32** |  | [optional] 
-**BatteryLevel** | Pointer to **int32** |  | [optional] 
+**AvailableSpaceMb** | Pointer to **int64** |  | [optional] 
+**BatteryLevel** | Pointer to **int64** |  | [optional] 
 **BluetoothLowEnergyCapable** | Pointer to **bool** |  | [optional] 
 **BluetoothMacAddress** | Pointer to **string** |  | [optional] 
-**CapacityMb** | Pointer to **int32** |  | [optional] 
+**CapacityMb** | Pointer to **int64** |  | [optional] 
 **LostModeEnabledDate** | Pointer to **time.Time** |  | [optional] 
 **DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
 **DeviceId** | Pointer to **string** |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 **OsVersion** | Pointer to **string** |  | [optional] 
 **IpAddress** | Pointer to **string** |  | [optional] 
 **ItunesStoreAccountActive** | Pointer to **bool** |  | [optional] 
-**JamfParentPairings** | Pointer to **int32** |  | [optional] 
+**JamfParentPairings** | Pointer to **int64** |  | [optional] 
 **Languages** | Pointer to **string** |  | [optional] 
 **LastBackupDate** | Pointer to **time.Time** |  | [optional] 
 **LastEnrolledDate** | Pointer to **time.Time** |  | [optional] 
@@ -47,14 +47,14 @@ Name | Type | Description | Notes
 **ModelIdentifier** | Pointer to **string** |  | [optional] 
 **ModelNumber** | Pointer to **string** |  | [optional] 
 **ModemFirmwareVersion** | Pointer to **string** |  | [optional] 
-**QuotaSize** | Pointer to **int32** |  | [optional] 
-**ResidentUsers** | Pointer to **int32** |  | [optional] 
+**QuotaSize** | Pointer to **int64** |  | [optional] 
+**ResidentUsers** | Pointer to **int64** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **SharedIpad** | Pointer to **bool** |  | [optional] 
 **Supervised** | Pointer to **bool** |  | [optional] 
 **Tethered** | Pointer to **bool** |  | [optional] 
 **TimeZone** | Pointer to **string** |  | [optional] 
-**UsedSpacePercentage** | Pointer to **int32** |  | [optional] 
+**UsedSpacePercentage** | Pointer to **int64** |  | [optional] 
 **WifiMacAddress** | Pointer to **string** |  | [optional] 
 **Building** | Pointer to **string** |  | [optional] 
 **Department** | Pointer to **string** |  | [optional] 
@@ -66,7 +66,7 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** |  | [optional] 
 **AppleCareId** | Pointer to **string** |  | [optional] 
 **LeaseExpirationDate** | Pointer to **time.Time** |  | [optional] 
-**LifeExpectancyYears** | Pointer to **int32** |  | [optional] 
+**LifeExpectancyYears** | Pointer to **int64** |  | [optional] 
 **PoDate** | Pointer to **time.Time** |  | [optional] 
 **PoNumber** | Pointer to **string** |  | [optional] 
 **PurchasePrice** | Pointer to **string** |  | [optional] 
@@ -83,7 +83,7 @@ Name | Type | Description | Notes
 **JailbreakStatus** | Pointer to **string** |  | [optional] 
 **PasscodeCompliant** | Pointer to **bool** |  | [optional] 
 **PasscodeCompliantWithProfile** | Pointer to **bool** |  | [optional] 
-**PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int32** |  | [optional] 
+**PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int64** |  | [optional] 
 **PasscodePresent** | Pointer to **bool** |  | [optional] 
 **PersonalDeviceProfileCurrent** | Pointer to **bool** |  | [optional] 
 **CarrierSettingsVersion** | Pointer to **string** |  | [optional] 
@@ -250,20 +250,20 @@ HasAssetTag returns a boolean if a field has been set.
 
 ### GetAvailableSpaceMb
 
-`func (o *InventoryListMobileDevice) GetAvailableSpaceMb() int32`
+`func (o *InventoryListMobileDevice) GetAvailableSpaceMb() int64`
 
 GetAvailableSpaceMb returns the AvailableSpaceMb field if non-nil, zero value otherwise.
 
 ### GetAvailableSpaceMbOk
 
-`func (o *InventoryListMobileDevice) GetAvailableSpaceMbOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetAvailableSpaceMbOk() (*int64, bool)`
 
 GetAvailableSpaceMbOk returns a tuple with the AvailableSpaceMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAvailableSpaceMb
 
-`func (o *InventoryListMobileDevice) SetAvailableSpaceMb(v int32)`
+`func (o *InventoryListMobileDevice) SetAvailableSpaceMb(v int64)`
 
 SetAvailableSpaceMb sets AvailableSpaceMb field to given value.
 
@@ -275,20 +275,20 @@ HasAvailableSpaceMb returns a boolean if a field has been set.
 
 ### GetBatteryLevel
 
-`func (o *InventoryListMobileDevice) GetBatteryLevel() int32`
+`func (o *InventoryListMobileDevice) GetBatteryLevel() int64`
 
 GetBatteryLevel returns the BatteryLevel field if non-nil, zero value otherwise.
 
 ### GetBatteryLevelOk
 
-`func (o *InventoryListMobileDevice) GetBatteryLevelOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetBatteryLevelOk() (*int64, bool)`
 
 GetBatteryLevelOk returns a tuple with the BatteryLevel field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBatteryLevel
 
-`func (o *InventoryListMobileDevice) SetBatteryLevel(v int32)`
+`func (o *InventoryListMobileDevice) SetBatteryLevel(v int64)`
 
 SetBatteryLevel sets BatteryLevel field to given value.
 
@@ -350,20 +350,20 @@ HasBluetoothMacAddress returns a boolean if a field has been set.
 
 ### GetCapacityMb
 
-`func (o *InventoryListMobileDevice) GetCapacityMb() int32`
+`func (o *InventoryListMobileDevice) GetCapacityMb() int64`
 
 GetCapacityMb returns the CapacityMb field if non-nil, zero value otherwise.
 
 ### GetCapacityMbOk
 
-`func (o *InventoryListMobileDevice) GetCapacityMbOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetCapacityMbOk() (*int64, bool)`
 
 GetCapacityMbOk returns a tuple with the CapacityMb field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCapacityMb
 
-`func (o *InventoryListMobileDevice) SetCapacityMb(v int32)`
+`func (o *InventoryListMobileDevice) SetCapacityMb(v int64)`
 
 SetCapacityMb sets CapacityMb field to given value.
 
@@ -825,20 +825,20 @@ HasItunesStoreAccountActive returns a boolean if a field has been set.
 
 ### GetJamfParentPairings
 
-`func (o *InventoryListMobileDevice) GetJamfParentPairings() int32`
+`func (o *InventoryListMobileDevice) GetJamfParentPairings() int64`
 
 GetJamfParentPairings returns the JamfParentPairings field if non-nil, zero value otherwise.
 
 ### GetJamfParentPairingsOk
 
-`func (o *InventoryListMobileDevice) GetJamfParentPairingsOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetJamfParentPairingsOk() (*int64, bool)`
 
 GetJamfParentPairingsOk returns a tuple with the JamfParentPairings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJamfParentPairings
 
-`func (o *InventoryListMobileDevice) SetJamfParentPairings(v int32)`
+`func (o *InventoryListMobileDevice) SetJamfParentPairings(v int64)`
 
 SetJamfParentPairings sets JamfParentPairings field to given value.
 
@@ -1200,20 +1200,20 @@ HasModemFirmwareVersion returns a boolean if a field has been set.
 
 ### GetQuotaSize
 
-`func (o *InventoryListMobileDevice) GetQuotaSize() int32`
+`func (o *InventoryListMobileDevice) GetQuotaSize() int64`
 
 GetQuotaSize returns the QuotaSize field if non-nil, zero value otherwise.
 
 ### GetQuotaSizeOk
 
-`func (o *InventoryListMobileDevice) GetQuotaSizeOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetQuotaSizeOk() (*int64, bool)`
 
 GetQuotaSizeOk returns a tuple with the QuotaSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetQuotaSize
 
-`func (o *InventoryListMobileDevice) SetQuotaSize(v int32)`
+`func (o *InventoryListMobileDevice) SetQuotaSize(v int64)`
 
 SetQuotaSize sets QuotaSize field to given value.
 
@@ -1225,20 +1225,20 @@ HasQuotaSize returns a boolean if a field has been set.
 
 ### GetResidentUsers
 
-`func (o *InventoryListMobileDevice) GetResidentUsers() int32`
+`func (o *InventoryListMobileDevice) GetResidentUsers() int64`
 
 GetResidentUsers returns the ResidentUsers field if non-nil, zero value otherwise.
 
 ### GetResidentUsersOk
 
-`func (o *InventoryListMobileDevice) GetResidentUsersOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetResidentUsersOk() (*int64, bool)`
 
 GetResidentUsersOk returns a tuple with the ResidentUsers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResidentUsers
 
-`func (o *InventoryListMobileDevice) SetResidentUsers(v int32)`
+`func (o *InventoryListMobileDevice) SetResidentUsers(v int64)`
 
 SetResidentUsers sets ResidentUsers field to given value.
 
@@ -1375,20 +1375,20 @@ HasTimeZone returns a boolean if a field has been set.
 
 ### GetUsedSpacePercentage
 
-`func (o *InventoryListMobileDevice) GetUsedSpacePercentage() int32`
+`func (o *InventoryListMobileDevice) GetUsedSpacePercentage() int64`
 
 GetUsedSpacePercentage returns the UsedSpacePercentage field if non-nil, zero value otherwise.
 
 ### GetUsedSpacePercentageOk
 
-`func (o *InventoryListMobileDevice) GetUsedSpacePercentageOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetUsedSpacePercentageOk() (*int64, bool)`
 
 GetUsedSpacePercentageOk returns a tuple with the UsedSpacePercentage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsedSpacePercentage
 
-`func (o *InventoryListMobileDevice) SetUsedSpacePercentage(v int32)`
+`func (o *InventoryListMobileDevice) SetUsedSpacePercentage(v int64)`
 
 SetUsedSpacePercentage sets UsedSpacePercentage field to given value.
 
@@ -1675,20 +1675,20 @@ HasLeaseExpirationDate returns a boolean if a field has been set.
 
 ### GetLifeExpectancyYears
 
-`func (o *InventoryListMobileDevice) GetLifeExpectancyYears() int32`
+`func (o *InventoryListMobileDevice) GetLifeExpectancyYears() int64`
 
 GetLifeExpectancyYears returns the LifeExpectancyYears field if non-nil, zero value otherwise.
 
 ### GetLifeExpectancyYearsOk
 
-`func (o *InventoryListMobileDevice) GetLifeExpectancyYearsOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetLifeExpectancyYearsOk() (*int64, bool)`
 
 GetLifeExpectancyYearsOk returns a tuple with the LifeExpectancyYears field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLifeExpectancyYears
 
-`func (o *InventoryListMobileDevice) SetLifeExpectancyYears(v int32)`
+`func (o *InventoryListMobileDevice) SetLifeExpectancyYears(v int64)`
 
 SetLifeExpectancyYears sets LifeExpectancyYears field to given value.
 
@@ -2100,20 +2100,20 @@ HasPasscodeCompliantWithProfile returns a boolean if a field has been set.
 
 ### GetPasscodeLockGracePeriodEnforcedSeconds
 
-`func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSeconds() int32`
+`func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSeconds() int64`
 
 GetPasscodeLockGracePeriodEnforcedSeconds returns the PasscodeLockGracePeriodEnforcedSeconds field if non-nil, zero value otherwise.
 
 ### GetPasscodeLockGracePeriodEnforcedSecondsOk
 
-`func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int32, bool)`
+`func (o *InventoryListMobileDevice) GetPasscodeLockGracePeriodEnforcedSecondsOk() (*int64, bool)`
 
 GetPasscodeLockGracePeriodEnforcedSecondsOk returns a tuple with the PasscodeLockGracePeriodEnforcedSeconds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPasscodeLockGracePeriodEnforcedSeconds
 
-`func (o *InventoryListMobileDevice) SetPasscodeLockGracePeriodEnforcedSeconds(v int32)`
+`func (o *InventoryListMobileDevice) SetPasscodeLockGracePeriodEnforcedSeconds(v int64)`
 
 SetPasscodeLockGracePeriodEnforcedSeconds sets PasscodeLockGracePeriodEnforcedSeconds field to given value.
 

@@ -23,23 +23,23 @@ Return a list of all Static User Groups
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1StaticUserGroupsGet`: []StaticUserGroup
-    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1StaticUserGroupsGet`: []StaticUserGroup
+	fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsGet`: %v\n", resp)
 }
 ```
 
@@ -84,24 +84,24 @@ Return a specific Static User Group by id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := int32(56) // int32 | Instance id of static user group record
+	id := int64(56) // int64 | Instance id of static user group record
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V1StaticUserGroupsIdGet`: StaticUserGroup
-    fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1StaticUserGroupsIdGet`: StaticUserGroup
+	fmt.Fprintf(os.Stdout, "Response from `StaticUserGroupsPreviewAPI.V1StaticUserGroupsIdGet`: %v\n", resp)
 }
 ```
 
@@ -111,7 +111,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | Instance id of static user group record | 
+**id** | **int64** | Instance id of static user group record | 
 
 ### Other Parameters
 

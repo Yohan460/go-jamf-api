@@ -380,8 +380,6 @@ func (a *IconAPIService) V1IconPostExecute(r IconAPIV1IconPostRequest) (*IconRes
 	var fileLocalVarFileBytes    []byte
 
 	fileLocalVarFormFileName = "file"
-
-
 	fileLocalVarFile := r.file
 
 	if fileLocalVarFile != nil {

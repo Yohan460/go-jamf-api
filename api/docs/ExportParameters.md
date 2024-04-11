@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Page** | Pointer to **NullableInt32** |  | [optional] [default to 0]
-**PageSize** | Pointer to **NullableInt32** |  | [optional] [default to 100]
+**Page** | Pointer to **NullableInt64** |  | [optional] [default to 0]
+**PageSize** | Pointer to **NullableInt64** |  | [optional] [default to 100]
 **Sort** | Pointer to **[]string** | Sorting criteria in the format: [&lt;property&gt;[:asc/desc]. Default direction when not stated is ascending. | [optional] [default to ["id:desc"]]
 **Filter** | Pointer to **NullableString** |  | [optional] 
 **Fields** | Pointer to [**[]ExportField**](ExportField.md) | Used to change default order or ignore some of the fields. When null or empty array, all fields will be exported. | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPage
 
-`func (o *ExportParameters) GetPage() int32`
+`func (o *ExportParameters) GetPage() int64`
 
 GetPage returns the Page field if non-nil, zero value otherwise.
 
 ### GetPageOk
 
-`func (o *ExportParameters) GetPageOk() (*int32, bool)`
+`func (o *ExportParameters) GetPageOk() (*int64, bool)`
 
 GetPageOk returns a tuple with the Page field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPage
 
-`func (o *ExportParameters) SetPage(v int32)`
+`func (o *ExportParameters) SetPage(v int64)`
 
 SetPage sets Page field to given value.
 
@@ -66,20 +66,20 @@ HasPage returns a boolean if a field has been set.
 UnsetPage ensures that no value is present for Page, not even an explicit nil
 ### GetPageSize
 
-`func (o *ExportParameters) GetPageSize() int32`
+`func (o *ExportParameters) GetPageSize() int64`
 
 GetPageSize returns the PageSize field if non-nil, zero value otherwise.
 
 ### GetPageSizeOk
 
-`func (o *ExportParameters) GetPageSizeOk() (*int32, bool)`
+`func (o *ExportParameters) GetPageSizeOk() (*int64, bool)`
 
 GetPageSizeOk returns a tuple with the PageSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPageSize
 
-`func (o *ExportParameters) SetPageSize(v int32)`
+`func (o *ExportParameters) SetPageSize(v int64)`
 
 SetPageSize sets PageSize field to given value.
 

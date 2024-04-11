@@ -20,7 +20,7 @@ var _ MappedNullable = &SmartSearchCriterion{}
 // SmartSearchCriterion struct for SmartSearchCriterion
 type SmartSearchCriterion struct {
 	Name *string `json:"name,omitempty"`
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int64 `json:"priority,omitempty"`
 	AndOr *string `json:"andOr,omitempty"`
 	SearchType *string `json:"searchType,omitempty"`
 	Value *string `json:"value,omitempty"`
@@ -78,9 +78,9 @@ func (o *SmartSearchCriterion) SetName(v string) {
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
-func (o *SmartSearchCriterion) GetPriority() int32 {
+func (o *SmartSearchCriterion) GetPriority() int64 {
 	if o == nil || IsNil(o.Priority) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Priority
@@ -88,7 +88,7 @@ func (o *SmartSearchCriterion) GetPriority() int32 {
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SmartSearchCriterion) GetPriorityOk() (*int32, bool) {
+func (o *SmartSearchCriterion) GetPriorityOk() (*int64, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *SmartSearchCriterion) HasPriority() bool {
 	return false
 }
 
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
-func (o *SmartSearchCriterion) SetPriority(v int32) {
+// SetPriority gets a reference to the given int64 and assigns it to the Priority field.
+func (o *SmartSearchCriterion) SetPriority(v int64) {
 	o.Priority = &v
 }
 

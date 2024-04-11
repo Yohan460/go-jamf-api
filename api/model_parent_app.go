@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ParentApp type satisfies the MappedNullable interface at compile time
@@ -21,7 +23,7 @@ var _ MappedNullable = &ParentApp{}
 type ParentApp struct {
 	TimezoneId string `json:"timezoneId"`
 	RestrictedTimes ParentAppRestrictedTimes `json:"restrictedTimes"`
-	DeviceGroupId int32 `json:"deviceGroupId"`
+	DeviceGroupId int64 `json:"deviceGroupId"`
 	IsEnabled bool `json:"isEnabled"`
 	AllowTemplates *bool `json:"allowTemplates,omitempty"`
 	DisassociateOnWipeAndReEnroll *bool `json:"disassociateOnWipeAndReEnroll,omitempty"`
@@ -29,11 +31,13 @@ type ParentApp struct {
 	SafelistedApps []SafelistedApp `json:"safelistedApps,omitempty"`
 }
 
+type _ParentApp ParentApp
+
 // NewParentApp instantiates a new ParentApp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewParentApp(timezoneId string, restrictedTimes ParentAppRestrictedTimes, deviceGroupId int32, isEnabled bool) *ParentApp {
+func NewParentApp(timezoneId string, restrictedTimes ParentAppRestrictedTimes, deviceGroupId int64, isEnabled bool) *ParentApp {
 	this := ParentApp{}
 	this.TimezoneId = timezoneId
 	this.RestrictedTimes = restrictedTimes
@@ -99,9 +103,9 @@ func (o *ParentApp) SetRestrictedTimes(v ParentAppRestrictedTimes) {
 }
 
 // GetDeviceGroupId returns the DeviceGroupId field value
-func (o *ParentApp) GetDeviceGroupId() int32 {
+func (o *ParentApp) GetDeviceGroupId() int64 {
 	if o == nil {
-		var ret int32
+		var ret int64
 		return ret
 	}
 
@@ -110,7 +114,7 @@ func (o *ParentApp) GetDeviceGroupId() int32 {
 
 // GetDeviceGroupIdOk returns a tuple with the DeviceGroupId field value
 // and a boolean to check if the value has been set.
-func (o *ParentApp) GetDeviceGroupIdOk() (*int32, bool) {
+func (o *ParentApp) GetDeviceGroupIdOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +122,7 @@ func (o *ParentApp) GetDeviceGroupIdOk() (*int32, bool) {
 }
 
 // SetDeviceGroupId sets field value
-func (o *ParentApp) SetDeviceGroupId(v int32) {
+func (o *ParentApp) SetDeviceGroupId(v int64) {
 	o.DeviceGroupId = v
 }
 
@@ -301,6 +305,46 @@ func (o ParentApp) ToMap() (map[string]interface{}, error) {
 		toSerialize["safelistedApps"] = o.SafelistedApps
 	}
 	return toSerialize, nil
+}
+
+func (o *ParentApp) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"timezoneId",
+		"restrictedTimes",
+		"deviceGroupId",
+		"isEnabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varParentApp := _ParentApp{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varParentApp)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ParentApp(varParentApp)
+
+	return err
 }
 
 type NullableParentApp struct {

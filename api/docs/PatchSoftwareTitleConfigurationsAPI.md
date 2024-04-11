@@ -38,23 +38,23 @@ Retrieve Patch Software Title Configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsGet`: []PatchSoftwareTitleConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsGet`: []PatchSoftwareTitleConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsGet`: %v\n", resp)
 }
 ```
 
@@ -99,22 +99,22 @@ Remove a software title configuration from the dashboard
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | software title configuration id
+	id := "id_example" // string | software title configuration id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -167,24 +167,24 @@ Return whether or not the requested software title configuration is on the dashb
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | software title configuration id
+	id := "id_example" // string | software title configuration id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdDashboardGet`: SoftwareTitleConfigurationOnDashboard
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdDashboardGet`: SoftwareTitleConfigurationOnDashboard
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardGet`: %v\n", resp)
 }
 ```
 
@@ -237,22 +237,22 @@ Add a software title configuration to the dashboard
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | software title configuration id
+	id := "id_example" // string | software title configuration id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardPost(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardPost(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDashboardPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -305,28 +305,28 @@ Retrieve Patch Software Title Definitions with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title identifier
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is absoluteOrderId:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["absoluteOrderId:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Software Title Definition collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, version, minimumOperatingSystem, releaseDate, reboot, standalone and absoluteOrderId. This param can be combined with paging and sorting. (optional) (default to "")
+	id := "id_example" // string | Patch Software Title identifier
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is absoluteOrderId:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["absoluteOrderId:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Software Title Definition collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, version, minimumOperatingSystem, releaseDate, reboot, standalone and absoluteOrderId. This param can be combined with paging and sorting. (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdDefinitionsGet`: PatchSoftwareTitleDefinitions
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdDefinitionsGet`: PatchSoftwareTitleDefinitions
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDefinitionsGet`: %v\n", resp)
 }
 ```
 
@@ -346,8 +346,8 @@ Other parameters are passed through a pointer to a apiV2PatchSoftwareTitleConfig
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is absoluteOrderId:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;absoluteOrderId:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Patch Software Title Definition collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, version, minimumOperatingSystem, releaseDate, reboot, standalone and absoluteOrderId. This param can be combined with paging and sorting. | [default to &quot;&quot;]
 
@@ -383,22 +383,22 @@ Delete Patch Software Title Configurations with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configurations identifier
+	id := "id_example" // string | Patch Software Title Configurations identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDelete(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -451,24 +451,24 @@ Retrieve list of Patch Software Title Configuration Dependencies
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configuration Id
+	id := "id_example" // string | Patch Software Title Configuration Id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdDependenciesGet`: PatchSoftwareTitleConfigurationDependencies
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdDependenciesGet`: PatchSoftwareTitleConfigurationDependencies
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdDependenciesGet`: %v\n", resp)
 }
 ```
 
@@ -521,30 +521,30 @@ Export Patch Reporting Data
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configurations identifier
-    columnsToExport := []string{"Inner_example"} // []string | List of column names to export (default to ["computerName","deviceId","username","operatingSystemVersion","lastContactTime","buildingName","departmentName","siteName","version"])
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 | Leave blank for full export (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version (optional) (default to ["computerName:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: ==, != This param can be combined with paging and sorting. (optional) (default to "")
-    accept := "accept_example" // string | File (optional)
+	id := "id_example" // string | Patch Software Title Configurations identifier
+	columnsToExport := []string{"Inner_example"} // []string | List of column names to export (default to ["computerName","deviceId","username","operatingSystemVersion","lastContactTime","buildingName","departmentName","siteName","version"])
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 | Leave blank for full export (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version (optional) (default to ["computerName:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: ==, != This param can be combined with paging and sorting. (optional) (default to "")
+	accept := "accept_example" // string | File (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet(context.Background(), id).ColumnsToExport(columnsToExport).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Accept(accept).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdExportReportGet`: interface{}
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet(context.Background(), id).ColumnsToExport(columnsToExport).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Accept(accept).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdExportReportGet`: interface{}
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet`: %v\n", resp)
 }
 ```
 
@@ -565,8 +565,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnsToExport** | **[]string** | List of column names to export | [default to [&quot;computerName&quot;,&quot;deviceId&quot;,&quot;username&quot;,&quot;operatingSystemVersion&quot;,&quot;lastContactTime&quot;,&quot;buildingName&quot;,&quot;departmentName&quot;,&quot;siteName&quot;,&quot;version&quot;]]
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** | Leave blank for full export | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** | Leave blank for full export | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version | [default to [&quot;computerName:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: &#x3D;&#x3D;, !&#x3D; This param can be combined with paging and sorting. | [default to &quot;&quot;]
  **accept** | **string** | File | 
@@ -603,24 +603,24 @@ Retrieve Software Title Extension Attributes with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title identifier
+	id := "id_example" // string | Patch Software Title identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet`: []PatchSoftwareTitleExtensionAttributes
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet`: []PatchSoftwareTitleExtensionAttributes
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExtensionAttributesGet`: %v\n", resp)
 }
 ```
 
@@ -673,24 +673,24 @@ Retrieve Patch Software Title Configurations with the supplied id
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configurations identifier
+	id := "id_example" // string | Patch Software Title Configurations identifier
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdGet`: PatchSoftwareTitleConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdGet`: PatchSoftwareTitleConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdGet`: %v\n", resp)
 }
 ```
 
@@ -743,28 +743,28 @@ Get specified Patch Software Title Configuration history object
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configuration Id
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  (optional) (default to ["date:desc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+	id := "id_example" // string | Patch Software Title Configuration Id
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdHistoryGet`: HistorySearchResults
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryGet`: %v\n", resp)
 }
 ```
 
@@ -784,8 +784,8 @@ Other parameters are passed through a pointer to a apiV2PatchSoftwareTitleConfig
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  | [default to [&quot;date:desc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
@@ -821,25 +821,25 @@ Add Patch Software Title Configuration history object notes
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configuration Id
-    objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+	id := "id_example" // string | Patch Software Title Configuration Id
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdHistoryPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdHistoryPost`: %v\n", resp)
 }
 ```
 
@@ -893,25 +893,25 @@ Update Patch Software Title Configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configurations identifier
-    patchSoftwareTitleConfigurationPatch := *openapiclient.NewPatchSoftwareTitleConfigurationPatch() // PatchSoftwareTitleConfigurationPatch | Patch Software Title Configurations to update
+	id := "id_example" // string | Patch Software Title Configurations identifier
+	patchSoftwareTitleConfigurationPatch := *openapiclient.NewPatchSoftwareTitleConfigurationPatch() // PatchSoftwareTitleConfigurationPatch | Patch Software Title Configurations to update
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch(context.Background(), id).PatchSoftwareTitleConfigurationPatch(patchSoftwareTitleConfigurationPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdPatch`: PatchSoftwareTitleConfiguration
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch(context.Background(), id).PatchSoftwareTitleConfigurationPatch(patchSoftwareTitleConfigurationPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdPatch`: PatchSoftwareTitleConfiguration
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatch`: %v\n", resp)
 }
 ```
 
@@ -965,28 +965,28 @@ Retrieve Patch Software Title Configuration Patch Report
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch Software Title Configurations identifier
-    page := int32(56) // int32 |  (optional) (default to 0)
-    pageSize := int32(56) // int32 |  (optional) (default to 100)
-    sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version (optional) (default to ["computerName:asc"])
-    filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: ==, != This param can be combined with paging and sorting. (optional) (default to "")
+	id := "id_example" // string | Patch Software Title Configurations identifier
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version (optional) (default to ["computerName:asc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: ==, != This param can be combined with paging and sorting. (optional) (default to "")
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdPatchReportGet`: PatchSoftwareTitleReportSearchResult
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdPatchReportGet`: PatchSoftwareTitleReportSearchResult
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchReportGet`: %v\n", resp)
 }
 ```
 
@@ -1006,8 +1006,8 @@ Other parameters are passed through a pointer to a apiV2PatchSoftwareTitleConfig
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **page** | **int32** |  | [default to 0]
- **pageSize** | **int32** |  | [default to 100]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version | [default to [&quot;computerName:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: &#x3D;&#x3D;, !&#x3D; This param can be combined with paging and sorting. | [default to &quot;&quot;]
 
@@ -1043,24 +1043,24 @@ Return Active Patch Summary
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch id
+	id := "id_example" // string | Patch id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet`: PatchSummary
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet`: PatchSummary
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryGet`: %v\n", resp)
 }
 ```
 
@@ -1113,24 +1113,24 @@ Returns patch versions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    id := "id_example" // string | Patch id
+	id := "id_example" // string | Patch id
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet`: []PatchSummaryVersion
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet`: []PatchSummaryVersion
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdPatchSummaryVersionsGet`: %v\n", resp)
 }
 ```
 
@@ -1183,24 +1183,24 @@ Create Patch Software Title Configurations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/yohan460/go-jamf-api/api"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
 )
 
 func main() {
-    patchSoftwareTitleConfigurationBase := *openapiclient.NewPatchSoftwareTitleConfigurationBase("Google Chrome", "1") // PatchSoftwareTitleConfigurationBase | Software title configurations to create
+	patchSoftwareTitleConfigurationBase := *openapiclient.NewPatchSoftwareTitleConfigurationBase("Google Chrome", "1") // PatchSoftwareTitleConfigurationBase | Software title configurations to create
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost(context.Background()).PatchSoftwareTitleConfigurationBase(patchSoftwareTitleConfigurationBase).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `V2PatchSoftwareTitleConfigurationsPost`: HrefResponse
-    fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost(context.Background()).PatchSoftwareTitleConfigurationBase(patchSoftwareTitleConfigurationBase).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2PatchSoftwareTitleConfigurationsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsPost`: %v\n", resp)
 }
 ```
 
