@@ -26,22 +26,6 @@ type Client struct {
 	ExtraHeader map[string]string
 }
 
-type responseAuthToken struct {
-	Token   *string    `json:"token,omitempty"`
-	Expires *time.Time `json:"expires,omitempty"`
-}
-
-type responseOAuthToken struct {
-	Token     *string `json:"access_token,omitempty"`
-	ExpiresIn *int    `json:"expires_in,omitempty"`
-}
-
-type FormOptions struct {
-	ClientId     string `url:"client_id"`
-	ClientSecret string `url:"client_secret"`
-	GrantType    string `url:"grant_type"`
-}
-
 type Option func(*Client)
 
 // WithHttpClient sets the http client to use for requests
@@ -111,24 +95,23 @@ func (c *Client) refreshAuthToken() error {
 
 	c.token = nil
 
-	var out *responseAuthToken
 	if c.clientId != "" && c.clientSecret != "" {
-		var out *responseOAuthToken
-		data := FormOptions{c.clientId, c.clientSecret, "client_credentials"}
-		if err := c.DoRequest("POST", uriOAuthToken, data, nil, &out); err != nil {
+		tokenResp, err := c.CreateOAuthToken()
+		if err != nil {
 			return err
 		}
 
-		c.token = out.Token
-		expiration := time.Now().Add(time.Duration(*out.ExpiresIn) * time.Second)
+		c.token = tokenResp.Token
+		expiration := time.Now().Add(time.Duration(*tokenResp.ExpiresIn) * time.Second)
 		c.tokenExpiration = &expiration
 	} else {
-		if err := c.DoRequest("POST", uriAuthToken, nil, nil, &out); err != nil {
+		tokenResp, err := c.CreateAccessToken()
+		if err != nil {
 			return err
 		}
 
-		c.token = out.Token
-		c.tokenExpiration = out.Expires
+		c.token = tokenResp.Token
+		c.tokenExpiration = tokenResp.Expires
 	}
 
 	return nil
