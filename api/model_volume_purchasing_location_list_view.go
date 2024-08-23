@@ -35,6 +35,7 @@ type VolumePurchasingLocationListView struct {
 	SendNotificationWhenNoLongerAssigned *bool `json:"sendNotificationWhenNoLongerAssigned,omitempty"`
 	AutoRegisterManagedUsers *bool `json:"autoRegisterManagedUsers,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`
+	SiteName *string `json:"siteName,omitempty"`
 	LastSyncTime *string `json:"lastSyncTime,omitempty"`
 }
 
@@ -503,6 +504,38 @@ func (o *VolumePurchasingLocationListView) SetSiteId(v string) {
 	o.SiteId = &v
 }
 
+// GetSiteName returns the SiteName field value if set, zero value otherwise.
+func (o *VolumePurchasingLocationListView) GetSiteName() string {
+	if o == nil || IsNil(o.SiteName) {
+		var ret string
+		return ret
+	}
+	return *o.SiteName
+}
+
+// GetSiteNameOk returns a tuple with the SiteName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VolumePurchasingLocationListView) GetSiteNameOk() (*string, bool) {
+	if o == nil || IsNil(o.SiteName) {
+		return nil, false
+	}
+	return o.SiteName, true
+}
+
+// HasSiteName returns a boolean if a field has been set.
+func (o *VolumePurchasingLocationListView) HasSiteName() bool {
+	if o != nil && !IsNil(o.SiteName) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteName gets a reference to the given string and assigns it to the SiteName field.
+func (o *VolumePurchasingLocationListView) SetSiteName(v string) {
+	o.SiteName = &v
+}
+
 // GetLastSyncTime returns the LastSyncTime field value if set, zero value otherwise.
 func (o *VolumePurchasingLocationListView) GetLastSyncTime() string {
 	if o == nil || IsNil(o.LastSyncTime) {
@@ -586,6 +619,9 @@ func (o VolumePurchasingLocationListView) ToMap() (map[string]interface{}, error
 	}
 	if !IsNil(o.SiteId) {
 		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.SiteName) {
+		toSerialize["siteName"] = o.SiteName
 	}
 	if !IsNil(o.LastSyncTime) {
 		toSerialize["lastSyncTime"] = o.LastSyncTime

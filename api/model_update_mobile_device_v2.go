@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateMobileDeviceV2{}
 type UpdateMobileDeviceV2 struct {
 	// Mobile Device Name. When updated, Jamf Pro sends an MDM settings command to the device (device must be supervised).
 	Name *string `json:"name,omitempty"`
-	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in.
+	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in.
 	EnforceName *bool `json:"enforceName,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`

@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Toggle** | **bool** |  | 
 **ForceInstallLocalDateEnabled** | Pointer to **bool** |  | [optional] [readonly] 
+**CustomVersionEnabled** | Pointer to **bool** |  | [optional] [readonly] 
 **DssEnabled** | Pointer to **bool** |  | [optional] [readonly] 
+**RecipeEnabled** | Pointer to **bool** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -72,6 +74,31 @@ SetForceInstallLocalDateEnabled sets ForceInstallLocalDateEnabled field to given
 
 HasForceInstallLocalDateEnabled returns a boolean if a field has been set.
 
+### GetCustomVersionEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) GetCustomVersionEnabled() bool`
+
+GetCustomVersionEnabled returns the CustomVersionEnabled field if non-nil, zero value otherwise.
+
+### GetCustomVersionEnabledOk
+
+`func (o *ManagedSoftwareUpdatePlanToggle) GetCustomVersionEnabledOk() (*bool, bool)`
+
+GetCustomVersionEnabledOk returns a tuple with the CustomVersionEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomVersionEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) SetCustomVersionEnabled(v bool)`
+
+SetCustomVersionEnabled sets CustomVersionEnabled field to given value.
+
+### HasCustomVersionEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) HasCustomVersionEnabled() bool`
+
+HasCustomVersionEnabled returns a boolean if a field has been set.
+
 ### GetDssEnabled
 
 `func (o *ManagedSoftwareUpdatePlanToggle) GetDssEnabled() bool`
@@ -96,6 +123,31 @@ SetDssEnabled sets DssEnabled field to given value.
 `func (o *ManagedSoftwareUpdatePlanToggle) HasDssEnabled() bool`
 
 HasDssEnabled returns a boolean if a field has been set.
+
+### GetRecipeEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) GetRecipeEnabled() bool`
+
+GetRecipeEnabled returns the RecipeEnabled field if non-nil, zero value otherwise.
+
+### GetRecipeEnabledOk
+
+`func (o *ManagedSoftwareUpdatePlanToggle) GetRecipeEnabledOk() (*bool, bool)`
+
+GetRecipeEnabledOk returns a tuple with the RecipeEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecipeEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) SetRecipeEnabled(v bool)`
+
+SetRecipeEnabled sets RecipeEnabled field to given value.
+
+### HasRecipeEnabled
+
+`func (o *ManagedSoftwareUpdatePlanToggle) HasRecipeEnabled() bool`
+
+HasRecipeEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

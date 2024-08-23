@@ -29,11 +29,14 @@ type MdmAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return MdmAPIPreviewMdmCommandsPostRequest
+
+	Deprecated
 	*/
 	PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest
 
 	// PreviewMdmCommandsPostExecute executes the request
 	//  @return []HrefResponse
+	// Deprecated
 	PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
 
 	/*
@@ -57,11 +60,14 @@ type MdmAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return MdmAPIV1MdmCommandsGetRequest
+
+	Deprecated
 	*/
 	V1MdmCommandsGet(ctx context.Context) MdmAPIV1MdmCommandsGetRequest
 
 	// V1MdmCommandsGetExecute executes the request
 	//  @return []MdmCommand
+	// Deprecated
 	V1MdmCommandsGetExecute(r MdmAPIV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error)
 
 	/*
@@ -92,6 +98,20 @@ type MdmAPI interface {
 	// V2MdmCommandsGetExecute executes the request
 	//  @return MdmCommandResults
 	V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest) (*MdmCommandResults, *http.Response, error)
+
+	/*
+	V2MdmCommandsPost Post a command for creation and queuing 
+
+	Provided an MDM command type and appropriate information, will create and then queue said command.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MdmAPIV2MdmCommandsPostRequest
+	*/
+	V2MdmCommandsPost(ctx context.Context) MdmAPIV2MdmCommandsPostRequest
+
+	// V2MdmCommandsPostExecute executes the request
+	//  @return []HrefResponse
+	V2MdmCommandsPostExecute(r MdmAPIV2MdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
 }
 
 // MdmAPIService MdmAPI service
@@ -120,6 +140,8 @@ Provided an MDM command type and appropriate information, will create and then q
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return MdmAPIPreviewMdmCommandsPostRequest
+
+Deprecated
 */
 func (a *MdmAPIService) PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest {
 	return MdmAPIPreviewMdmCommandsPostRequest{
@@ -130,6 +152,7 @@ func (a *MdmAPIService) PreviewMdmCommandsPost(ctx context.Context) MdmAPIPrevie
 
 // Execute executes the request
 //  @return []HrefResponse
+// Deprecated
 func (a *MdmAPIService) PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -368,6 +391,8 @@ Get information about mdm commands made by Jamf Pro.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return MdmAPIV1MdmCommandsGetRequest
+
+Deprecated
 */
 func (a *MdmAPIService) V1MdmCommandsGet(ctx context.Context) MdmAPIV1MdmCommandsGetRequest {
 	return MdmAPIV1MdmCommandsGetRequest{
@@ -378,6 +403,7 @@ func (a *MdmAPIService) V1MdmCommandsGet(ctx context.Context) MdmAPIV1MdmCommand
 
 // Execute executes the request
 //  @return []MdmCommand
+// Deprecated
 func (a *MdmAPIService) V1MdmCommandsGetExecute(r MdmAPIV1MdmCommandsGetRequest) ([]MdmCommand, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -718,6 +744,124 @@ func (a *MdmAPIService) V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MdmAPIV2MdmCommandsPostRequest struct {
+	ctx context.Context
+	ApiService MdmAPI
+	mdmCommandRequest *MdmCommandRequest
+}
+
+// The mdm command object to create and queue
+func (r MdmAPIV2MdmCommandsPostRequest) MdmCommandRequest(mdmCommandRequest MdmCommandRequest) MdmAPIV2MdmCommandsPostRequest {
+	r.mdmCommandRequest = &mdmCommandRequest
+	return r
+}
+
+func (r MdmAPIV2MdmCommandsPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
+	return r.ApiService.V2MdmCommandsPostExecute(r)
+}
+
+/*
+V2MdmCommandsPost Post a command for creation and queuing 
+
+Provided an MDM command type and appropriate information, will create and then queue said command.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MdmAPIV2MdmCommandsPostRequest
+*/
+func (a *MdmAPIService) V2MdmCommandsPost(ctx context.Context) MdmAPIV2MdmCommandsPostRequest {
+	return MdmAPIV2MdmCommandsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []HrefResponse
+func (a *MdmAPIService) V2MdmCommandsPostExecute(r MdmAPIV2MdmCommandsPostRequest) ([]HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V2MdmCommandsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/mdm/commands"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mdmCommandRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

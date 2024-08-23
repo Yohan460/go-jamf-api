@@ -11,9 +11,13 @@ Method | HTTP request | Description
 [**V1LocalAdminPasswordSettingsGet**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordSettingsGet) | **Get** /v1/local-admin-password/settings | Get the current LAPS settings.
 [**V1LocalAdminPasswordSettingsPut**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordSettingsPut) | **Put** /v1/local-admin-password/settings | Update settings for LAPS.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/audit | Get LAPS password viewed history.
+[**V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/audit | Get LAPS password viewed history.
+[**V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/history | Get LAPS historical records for target device and user guid.
+[**V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/password | Get current LAPS password for specified user guid on a client.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/history | Get LAPS historical records for target device and username.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/password | Get current LAPS password for specified username on a client.
 [**V2LocalAdminPasswordClientManagementIdAccountsGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountsGet) | **Get** /v2/local-admin-password/{clientManagementId}/accounts | Get the LAPS capable admin accounts for a device.
+[**V2LocalAdminPasswordClientManagementIdHistoryGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdHistoryGet) | **Get** /v2/local-admin-password/{clientManagementId}/history | Get LAPS password viewed history, and rotation history.
 [**V2LocalAdminPasswordClientManagementIdSetPasswordPut**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdSetPasswordPut) | **Put** /v2/local-admin-password/{clientManagementId}/set-password | Set the LAPS password for a device.
 [**V2LocalAdminPasswordPendingRotationsGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordPendingRotationsGet) | **Get** /v2/local-admin-password/pending-rotations | Get a list of the current devices and usernames with pending LAPS rotations
 [**V2LocalAdminPasswordSettingsGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordSettingsGet) | **Get** /v2/local-admin-password/settings | Get the current LAPS settings.
@@ -509,6 +513,234 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet
+
+> LapsPasswordAuditsResultsV2 V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet(ctx, clientManagementId, username, guid).Execute()
+
+Get LAPS password viewed history.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name to view audit information for
+	guid := "guid_example" // string | user guid to view audit information for
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet(context.Background(), clientManagementId, username, guid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet`: LapsPasswordAuditsResultsV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clientManagementId** | **string** | client management id of target device. | 
+**username** | **string** | user name to view audit information for | 
+**guid** | **string** | user guid to view audit information for | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**LapsPasswordAuditsResultsV2**](LapsPasswordAuditsResultsV2.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet
+
+> LapsHistoryResponse V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet(ctx, clientManagementId, username, guid).Execute()
+
+Get LAPS historical records for target device and user guid.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name to view history for
+	guid := "guid_example" // string | user guid to view history for
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet(context.Background(), clientManagementId, username, guid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet`: LapsHistoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clientManagementId** | **string** | client management id of target device. | 
+**username** | **string** | user name to view history for | 
+**guid** | **string** | user guid to view history for | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**LapsHistoryResponse**](LapsHistoryResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet
+
+> LapsPasswordResponseV2 V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet(ctx, clientManagementId, username, guid).Execute()
+
+Get current LAPS password for specified user guid on a client.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+	username := "username_example" // string | user name for the account
+	guid := "guid_example" // string | user guid for the account
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet(context.Background(), clientManagementId, username, guid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet`: LapsPasswordResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clientManagementId** | **string** | client management id of target device. | 
+**username** | **string** | user name for the account | 
+**guid** | **string** | user guid for the account | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**LapsPasswordResponseV2**](LapsPasswordResponseV2.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet
 
 > LapsHistoryResponse V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet(ctx, clientManagementId, username).Execute()
@@ -710,6 +942,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LapsUserResultsV2**](LapsUserResultsV2.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2LocalAdminPasswordClientManagementIdHistoryGet
+
+> LapsAccountManagementHistoryResponse V2LocalAdminPasswordClientManagementIdHistoryGet(ctx, clientManagementId).Execute()
+
+Get LAPS password viewed history, and rotation history.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	clientManagementId := "clientManagementId_example" // string | client management id of target device.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdHistoryGet(context.Background(), clientManagementId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2LocalAdminPasswordClientManagementIdHistoryGet`: LapsAccountManagementHistoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V2LocalAdminPasswordClientManagementIdHistoryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clientManagementId** | **string** | client management id of target device. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2LocalAdminPasswordClientManagementIdHistoryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**LapsAccountManagementHistoryResponse**](LapsAccountManagementHistoryResponse.md)
 
 ### Authorization
 

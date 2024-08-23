@@ -7,6 +7,8 @@ Method | HTTP request | Description
 [**V1VolumePurchasingSubscriptionsGet**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsGet) | **Get** /v1/volume-purchasing-subscriptions | Retrieve Volume Purchasing Subscriptions
 [**V1VolumePurchasingSubscriptionsIdDelete**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdDelete) | **Delete** /v1/volume-purchasing-subscriptions/{id} | Delete a Volume Purchasing Subscription with the supplied id
 [**V1VolumePurchasingSubscriptionsIdGet**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdGet) | **Get** /v1/volume-purchasing-subscriptions/{id} | Retrieve a Volume Purchasing Subscription with the supplied id
+[**V1VolumePurchasingSubscriptionsIdHistoryGet**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdHistoryGet) | **Get** /v1/volume-purchasing-subscriptions/{id}/history | Get specified Volume Purchasing Subscription history object 
+[**V1VolumePurchasingSubscriptionsIdHistoryPost**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdHistoryPost) | **Post** /v1/volume-purchasing-subscriptions/{id}/history | Add Volume Purchasing Subscription history object notes 
 [**V1VolumePurchasingSubscriptionsIdPut**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsIdPut) | **Put** /v1/volume-purchasing-subscriptions/{id} | Update a Volume Purchasing Subscription
 [**V1VolumePurchasingSubscriptionsPost**](VolumePurchasingSubscriptionsAPI.md#V1VolumePurchasingSubscriptionsPost) | **Post** /v1/volume-purchasing-subscriptions | Create a Volume Purchasing Subscription
 
@@ -213,6 +215,156 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1VolumePurchasingSubscriptionsIdHistoryGet
+
+> HistorySearchResults V1VolumePurchasingSubscriptionsIdHistoryGet(ctx, id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+
+Get specified Volume Purchasing Subscription history object 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | Volume Purchasing Subscription Id
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  (optional) (default to ["date:desc"])
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryGet(context.Background(), id).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1VolumePurchasingSubscriptionsIdHistoryGet`: HistorySearchResults
+	fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Volume Purchasing Subscription Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1VolumePurchasingSubscriptionsIdHistoryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  | [default to [&quot;date:desc&quot;]]
+ **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
+
+### Return type
+
+[**HistorySearchResults**](HistorySearchResults.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1VolumePurchasingSubscriptionsIdHistoryPost
+
+> HrefResponse V1VolumePurchasingSubscriptionsIdHistoryPost(ctx, id).ObjectHistoryNote(objectHistoryNote).Execute()
+
+Add Volume Purchasing Subscription history object notes 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | Volume Purchasing Subscription Id
+	objectHistoryNote := *openapiclient.NewObjectHistoryNote("A generic note can sometimes be useful, but generally not.") // ObjectHistoryNote | History notes to create
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryPost(context.Background(), id).ObjectHistoryNote(objectHistoryNote).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1VolumePurchasingSubscriptionsIdHistoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `VolumePurchasingSubscriptionsAPI.V1VolumePurchasingSubscriptionsIdHistoryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Volume Purchasing Subscription Id | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1VolumePurchasingSubscriptionsIdHistoryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **objectHistoryNote** | [**ObjectHistoryNote**](ObjectHistoryNote.md) | History notes to create | 
+
+### Return type
+
+[**HrefResponse**](HrefResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

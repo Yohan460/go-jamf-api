@@ -233,7 +233,7 @@ import (
 )
 
 func main() {
-	jamfProServerUrl := *openapiclient.NewJamfProServerUrl("https://example.com:8443", "http://example.com") // JamfProServerUrl | Jamf Pro Server URL settings object
+	jamfProServerUrl := *openapiclient.NewJamfProServerUrl("https://example.com:8443") // JamfProServerUrl | Jamf Pro Server URL settings object
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

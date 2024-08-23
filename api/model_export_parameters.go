@@ -158,7 +158,7 @@ func (o *ExportParameters) GetSortOk() ([]string, bool) {
 
 // HasSort returns a boolean if a field has been set.
 func (o *ExportParameters) HasSort() bool {
-	if o != nil && IsNil(o.Sort) {
+	if o != nil && !IsNil(o.Sort) {
 		return true
 	}
 
@@ -233,7 +233,7 @@ func (o *ExportParameters) GetFieldsOk() ([]ExportField, bool) {
 
 // HasFields returns a boolean if a field has been set.
 func (o *ExportParameters) HasFields() bool {
-	if o != nil && IsNil(o.Fields) {
+	if o != nil && !IsNil(o.Fields) {
 		return true
 	}
 

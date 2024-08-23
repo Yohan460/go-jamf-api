@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **LostModeMessage** | Pointer to **string** |  | [optional] 
 **LostModePhone** | Pointer to **string** |  | [optional] 
 **LostModeFootnote** | Pointer to **string** |  | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewEnableLostModeCommand
 
-`func NewEnableLostModeCommand() *EnableLostModeCommand`
+`func NewEnableLostModeCommand(commandType MdmCommandType, ) *EnableLostModeCommand`
 
 NewEnableLostModeCommand instantiates a new EnableLostModeCommand object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewEnableLostModeCommandWithDefaults instantiates a new EnableLostModeCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *EnableLostModeCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *EnableLostModeCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *EnableLostModeCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetLostModeMessage
 

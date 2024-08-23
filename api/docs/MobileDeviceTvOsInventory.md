@@ -5,16 +5,16 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MobileDeviceId** | Pointer to **string** |  | [optional] [readonly] 
-**DeviceType** | **string** | Based on the value of this type either ios or appleTv objects will be populated. | 
+**DeviceType** | **string** | Based on the value of this type either ios, appleTv, watch or visionOS objects will be populated. | 
 **Hardware** | Pointer to [**MobileDeviceHardware**](MobileDeviceHardware.md) |  | [optional] 
 **UserAndLocation** | Pointer to [**MobileDeviceUserAndLocation**](MobileDeviceUserAndLocation.md) |  | [optional] 
-**Purchasing** | Pointer to [**MobileDevicePurchasing**](MobileDevicePurchasing.md) |  | [optional] 
 **Applications** | Pointer to [**[]MobileDeviceApplicationInventoryDetail**](MobileDeviceApplicationInventoryDetail.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificate**](MobileDeviceCertificate.md) |  | [optional] 
 **Profiles** | Pointer to [**[]MobileDeviceProfile**](MobileDeviceProfile.md) |  | [optional] 
-**UserProfiles** | Pointer to [**[]MobileDeviceUserProfile**](MobileDeviceUserProfile.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]MobileDeviceExtensionAttribute**](MobileDeviceExtensionAttribute.md) |  | [optional] 
 **General** | Pointer to [**MobileDeviceTvOsGeneral**](MobileDeviceTvOsGeneral.md) |  | [optional] 
+**Purchasing** | Pointer to [**MobileDevicePurchasing**](MobileDevicePurchasing.md) |  | [optional] 
+**UserProfiles** | Pointer to [**[]MobileDeviceUserProfile**](MobileDeviceUserProfile.md) |  | [optional] 
 
 ## Methods
 
@@ -130,31 +130,6 @@ SetUserAndLocation sets UserAndLocation field to given value.
 
 HasUserAndLocation returns a boolean if a field has been set.
 
-### GetPurchasing
-
-`func (o *MobileDeviceTvOsInventory) GetPurchasing() MobileDevicePurchasing`
-
-GetPurchasing returns the Purchasing field if non-nil, zero value otherwise.
-
-### GetPurchasingOk
-
-`func (o *MobileDeviceTvOsInventory) GetPurchasingOk() (*MobileDevicePurchasing, bool)`
-
-GetPurchasingOk returns a tuple with the Purchasing field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPurchasing
-
-`func (o *MobileDeviceTvOsInventory) SetPurchasing(v MobileDevicePurchasing)`
-
-SetPurchasing sets Purchasing field to given value.
-
-### HasPurchasing
-
-`func (o *MobileDeviceTvOsInventory) HasPurchasing() bool`
-
-HasPurchasing returns a boolean if a field has been set.
-
 ### GetApplications
 
 `func (o *MobileDeviceTvOsInventory) GetApplications() []MobileDeviceApplicationInventoryDetail`
@@ -230,31 +205,6 @@ SetProfiles sets Profiles field to given value.
 
 HasProfiles returns a boolean if a field has been set.
 
-### GetUserProfiles
-
-`func (o *MobileDeviceTvOsInventory) GetUserProfiles() []MobileDeviceUserProfile`
-
-GetUserProfiles returns the UserProfiles field if non-nil, zero value otherwise.
-
-### GetUserProfilesOk
-
-`func (o *MobileDeviceTvOsInventory) GetUserProfilesOk() (*[]MobileDeviceUserProfile, bool)`
-
-GetUserProfilesOk returns a tuple with the UserProfiles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserProfiles
-
-`func (o *MobileDeviceTvOsInventory) SetUserProfiles(v []MobileDeviceUserProfile)`
-
-SetUserProfiles sets UserProfiles field to given value.
-
-### HasUserProfiles
-
-`func (o *MobileDeviceTvOsInventory) HasUserProfiles() bool`
-
-HasUserProfiles returns a boolean if a field has been set.
-
 ### GetExtensionAttributes
 
 `func (o *MobileDeviceTvOsInventory) GetExtensionAttributes() []MobileDeviceExtensionAttribute`
@@ -304,6 +254,56 @@ SetGeneral sets General field to given value.
 `func (o *MobileDeviceTvOsInventory) HasGeneral() bool`
 
 HasGeneral returns a boolean if a field has been set.
+
+### GetPurchasing
+
+`func (o *MobileDeviceTvOsInventory) GetPurchasing() MobileDevicePurchasing`
+
+GetPurchasing returns the Purchasing field if non-nil, zero value otherwise.
+
+### GetPurchasingOk
+
+`func (o *MobileDeviceTvOsInventory) GetPurchasingOk() (*MobileDevicePurchasing, bool)`
+
+GetPurchasingOk returns a tuple with the Purchasing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPurchasing
+
+`func (o *MobileDeviceTvOsInventory) SetPurchasing(v MobileDevicePurchasing)`
+
+SetPurchasing sets Purchasing field to given value.
+
+### HasPurchasing
+
+`func (o *MobileDeviceTvOsInventory) HasPurchasing() bool`
+
+HasPurchasing returns a boolean if a field has been set.
+
+### GetUserProfiles
+
+`func (o *MobileDeviceTvOsInventory) GetUserProfiles() []MobileDeviceUserProfile`
+
+GetUserProfiles returns the UserProfiles field if non-nil, zero value otherwise.
+
+### GetUserProfilesOk
+
+`func (o *MobileDeviceTvOsInventory) GetUserProfilesOk() (*[]MobileDeviceUserProfile, bool)`
+
+GetUserProfilesOk returns a tuple with the UserProfiles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserProfiles
+
+`func (o *MobileDeviceTvOsInventory) SetUserProfiles(v []MobileDeviceUserProfile)`
+
+SetUserProfiles sets UserProfiles field to given value.
+
+### HasUserProfiles
+
+`func (o *MobileDeviceTvOsInventory) HasUserProfiles() bool`
+
+HasUserProfiles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

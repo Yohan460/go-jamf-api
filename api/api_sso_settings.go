@@ -30,11 +30,14 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoDependenciesGetRequest
+
+	Deprecated
 	*/
 	V1SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV1SsoDependenciesGetRequest
 
 	// V1SsoDependenciesGetExecute executes the request
 	//  @return EnrollmentCustomizationDependencies
+	// Deprecated
 	V1SsoDependenciesGetExecute(r SsoSettingsAPIV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error)
 
 	/*
@@ -44,10 +47,13 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoDisablePostRequest
+
+	Deprecated
 	*/
 	V1SsoDisablePost(ctx context.Context) SsoSettingsAPIV1SsoDisablePostRequest
 
 	// V1SsoDisablePostExecute executes the request
+	// Deprecated
 	V1SsoDisablePostExecute(r SsoSettingsAPIV1SsoDisablePostRequest) (*http.Response, error)
 
 	/*
@@ -57,12 +63,15 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoGetRequest
+
+	Deprecated
 	*/
 	V1SsoGet(ctx context.Context) SsoSettingsAPIV1SsoGetRequest
 
 	// V1SsoGetExecute executes the request
-	//  @return SsoSettings
-	V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettings, *http.Response, error)
+	//  @return SsoSettingsV1
+	// Deprecated
+	V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettingsV1, *http.Response, error)
 
 	/*
 	V1SsoHistoryGet Get SSO history object 
@@ -72,11 +81,14 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoHistoryGetRequest
+
+	Deprecated
 	*/
 	V1SsoHistoryGet(ctx context.Context) SsoSettingsAPIV1SsoHistoryGetRequest
 
 	// V1SsoHistoryGetExecute executes the request
 	//  @return HistorySearchResults
+	// Deprecated
 	V1SsoHistoryGetExecute(r SsoSettingsAPIV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
@@ -86,11 +98,14 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoHistoryPostRequest
+
+	Deprecated
 	*/
 	V1SsoHistoryPost(ctx context.Context) SsoSettingsAPIV1SsoHistoryPostRequest
 
 	// V1SsoHistoryPostExecute executes the request
 	//  @return HrefResponse
+	// Deprecated
 	V1SsoHistoryPostExecute(r SsoSettingsAPIV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
@@ -100,11 +115,14 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoMetadataDownloadGetRequest
+
+	Deprecated
 	*/
 	V1SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV1SsoMetadataDownloadGetRequest
 
 	// V1SsoMetadataDownloadGetExecute executes the request
 	//  @return *os.File
+	// Deprecated
 	V1SsoMetadataDownloadGetExecute(r SsoSettingsAPIV1SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error)
 
 	/*
@@ -114,12 +132,15 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoPutRequest
+
+	Deprecated
 	*/
 	V1SsoPut(ctx context.Context) SsoSettingsAPIV1SsoPutRequest
 
 	// V1SsoPutExecute executes the request
-	//  @return SsoSettings
-	V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettings, *http.Response, error)
+	//  @return SsoSettingsV1
+	// Deprecated
+	V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettingsV1, *http.Response, error)
 
 	/*
 	V1SsoValidatePost Endpoint for validation of a saml metadata url 
@@ -128,11 +149,125 @@ type SsoSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return SsoSettingsAPIV1SsoValidatePostRequest
+
+	Deprecated
 	*/
 	V1SsoValidatePost(ctx context.Context) SsoSettingsAPIV1SsoValidatePostRequest
 
 	// V1SsoValidatePostExecute executes the request
+	// Deprecated
 	V1SsoValidatePostExecute(r SsoSettingsAPIV1SsoValidatePostRequest) (*http.Response, error)
+
+	/*
+	V2SsoDependenciesGet Retrieve the list of Enrollment Customizations using SSO 
+
+	Retrieves the list of Enrollment Customizations using SSO
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoDependenciesGetRequest
+	*/
+	V2SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV2SsoDependenciesGetRequest
+
+	// V2SsoDependenciesGetExecute executes the request
+	//  @return EnrollmentCustomizationDependencies
+	V2SsoDependenciesGetExecute(r SsoSettingsAPIV2SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error)
+
+	/*
+	V2SsoDisablePost Disable SSO 
+
+	Disable SSO
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoDisablePostRequest
+	*/
+	V2SsoDisablePost(ctx context.Context) SsoSettingsAPIV2SsoDisablePostRequest
+
+	// V2SsoDisablePostExecute executes the request
+	V2SsoDisablePostExecute(r SsoSettingsAPIV2SsoDisablePostRequest) (*http.Response, error)
+
+	/*
+	V2SsoGet Retrieve the current Single Sign On configuration settings 
+
+	Retrieves the current Single Sign On configuration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoGetRequest
+	*/
+	V2SsoGet(ctx context.Context) SsoSettingsAPIV2SsoGetRequest
+
+	// V2SsoGetExecute executes the request
+	//  @return SsoSettingsV2
+	V2SsoGetExecute(r SsoSettingsAPIV2SsoGetRequest) (*SsoSettingsV2, *http.Response, error)
+
+	/*
+	V2SsoHistoryGet Get SSO history object 
+
+	Gets SSO history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoHistoryGetRequest
+	*/
+	V2SsoHistoryGet(ctx context.Context) SsoSettingsAPIV2SsoHistoryGetRequest
+
+	// V2SsoHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V2SsoHistoryGetExecute(r SsoSettingsAPIV2SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V2SsoHistoryPost Add SSO history object notes 
+
+	Adds SSO history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoHistoryPostRequest
+	*/
+	V2SsoHistoryPost(ctx context.Context) SsoSettingsAPIV2SsoHistoryPostRequest
+
+	// V2SsoHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V2SsoHistoryPostExecute(r SsoSettingsAPIV2SsoHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2SsoMetadataDownloadGet Download the Jamf Pro SAML metadata file 
+
+	Download the Jamf Pro SAML metadata file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoMetadataDownloadGetRequest
+	*/
+	V2SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV2SsoMetadataDownloadGetRequest
+
+	// V2SsoMetadataDownloadGetExecute executes the request
+	//  @return *os.File
+	V2SsoMetadataDownloadGetExecute(r SsoSettingsAPIV2SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error)
+
+	/*
+	V2SsoPut Updates the current Single Sign On configuration settings 
+
+	Updates the current Single Sign On configuration settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoPutRequest
+	*/
+	V2SsoPut(ctx context.Context) SsoSettingsAPIV2SsoPutRequest
+
+	// V2SsoPutExecute executes the request
+	//  @return SsoSettingsV2
+	V2SsoPutExecute(r SsoSettingsAPIV2SsoPutRequest) (*SsoSettingsV2, *http.Response, error)
+
+	/*
+	V2SsoValidatePost Endpoint for validation of a saml metadata url 
+
+	Validation of a content available under provided metadata URL.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SsoSettingsAPIV2SsoValidatePostRequest
+	*/
+	V2SsoValidatePost(ctx context.Context) SsoSettingsAPIV2SsoValidatePostRequest
+
+	// V2SsoValidatePostExecute executes the request
+	V2SsoValidatePostExecute(r SsoSettingsAPIV2SsoValidatePostRequest) (*http.Response, error)
 }
 
 // SsoSettingsAPIService SsoSettingsAPI service
@@ -154,6 +289,8 @@ Retrieves the list of Enrollment Customizations using SSO
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoDependenciesGetRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV1SsoDependenciesGetRequest {
 	return SsoSettingsAPIV1SsoDependenciesGetRequest{
@@ -164,6 +301,7 @@ func (a *SsoSettingsAPIService) V1SsoDependenciesGet(ctx context.Context) SsoSet
 
 // Execute executes the request
 //  @return EnrollmentCustomizationDependencies
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoDependenciesGetExecute(r SsoSettingsAPIV1SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -253,6 +391,8 @@ Disable SSO
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoDisablePostRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoDisablePost(ctx context.Context) SsoSettingsAPIV1SsoDisablePostRequest {
 	return SsoSettingsAPIV1SsoDisablePostRequest{
@@ -262,6 +402,7 @@ func (a *SsoSettingsAPIService) V1SsoDisablePost(ctx context.Context) SsoSetting
 }
 
 // Execute executes the request
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoDisablePostExecute(r SsoSettingsAPIV1SsoDisablePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -330,7 +471,7 @@ type SsoSettingsAPIV1SsoGetRequest struct {
 	ApiService SsoSettingsAPI
 }
 
-func (r SsoSettingsAPIV1SsoGetRequest) Execute() (*SsoSettings, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoGetRequest) Execute() (*SsoSettingsV1, *http.Response, error) {
 	return r.ApiService.V1SsoGetExecute(r)
 }
 
@@ -341,6 +482,8 @@ Retrieves the current Single Sign On configuration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoGetRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoGet(ctx context.Context) SsoSettingsAPIV1SsoGetRequest {
 	return SsoSettingsAPIV1SsoGetRequest{
@@ -350,13 +493,14 @@ func (a *SsoSettingsAPIService) V1SsoGet(ctx context.Context) SsoSettingsAPIV1Ss
 }
 
 // Execute executes the request
-//  @return SsoSettings
-func (a *SsoSettingsAPIService) V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettings, *http.Response, error) {
+//  @return SsoSettingsV1
+// Deprecated
+func (a *SsoSettingsAPIService) V1SsoGetExecute(r SsoSettingsAPIV1SsoGetRequest) (*SsoSettingsV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SsoSettings
+		localVarReturnValue  *SsoSettingsV1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoGet")
@@ -467,6 +611,8 @@ Gets SSO history object
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoHistoryGetRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoHistoryGet(ctx context.Context) SsoSettingsAPIV1SsoHistoryGetRequest {
 	return SsoSettingsAPIV1SsoHistoryGetRequest{
@@ -477,6 +623,7 @@ func (a *SsoSettingsAPIService) V1SsoHistoryGet(ctx context.Context) SsoSettings
 
 // Execute executes the request
 //  @return HistorySearchResults
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoHistoryGetExecute(r SsoSettingsAPIV1SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -605,6 +752,8 @@ Adds SSO history object notes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoHistoryPostRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoHistoryPost(ctx context.Context) SsoSettingsAPIV1SsoHistoryPostRequest {
 	return SsoSettingsAPIV1SsoHistoryPostRequest{
@@ -615,6 +764,7 @@ func (a *SsoSettingsAPIService) V1SsoHistoryPost(ctx context.Context) SsoSetting
 
 // Execute executes the request
 //  @return HrefResponse
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoHistoryPostExecute(r SsoSettingsAPIV1SsoHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -719,6 +869,8 @@ Download the Jamf Pro SAML metadata file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoMetadataDownloadGetRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV1SsoMetadataDownloadGetRequest {
 	return SsoSettingsAPIV1SsoMetadataDownloadGetRequest{
@@ -729,6 +881,7 @@ func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGet(ctx context.Context) Ss
 
 // Execute executes the request
 //  @return *os.File
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGetExecute(r SsoSettingsAPIV1SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -805,15 +958,15 @@ func (a *SsoSettingsAPIService) V1SsoMetadataDownloadGetExecute(r SsoSettingsAPI
 type SsoSettingsAPIV1SsoPutRequest struct {
 	ctx context.Context
 	ApiService SsoSettingsAPI
-	ssoSettings *SsoSettings
+	ssoSettingsV1 *SsoSettingsV1
 }
 
-func (r SsoSettingsAPIV1SsoPutRequest) SsoSettings(ssoSettings SsoSettings) SsoSettingsAPIV1SsoPutRequest {
-	r.ssoSettings = &ssoSettings
+func (r SsoSettingsAPIV1SsoPutRequest) SsoSettingsV1(ssoSettingsV1 SsoSettingsV1) SsoSettingsAPIV1SsoPutRequest {
+	r.ssoSettingsV1 = &ssoSettingsV1
 	return r
 }
 
-func (r SsoSettingsAPIV1SsoPutRequest) Execute() (*SsoSettings, *http.Response, error) {
+func (r SsoSettingsAPIV1SsoPutRequest) Execute() (*SsoSettingsV1, *http.Response, error) {
 	return r.ApiService.V1SsoPutExecute(r)
 }
 
@@ -824,6 +977,8 @@ Updates the current Single Sign On configuration settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoPutRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoPut(ctx context.Context) SsoSettingsAPIV1SsoPutRequest {
 	return SsoSettingsAPIV1SsoPutRequest{
@@ -833,13 +988,14 @@ func (a *SsoSettingsAPIService) V1SsoPut(ctx context.Context) SsoSettingsAPIV1Ss
 }
 
 // Execute executes the request
-//  @return SsoSettings
-func (a *SsoSettingsAPIService) V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettings, *http.Response, error) {
+//  @return SsoSettingsV1
+// Deprecated
+func (a *SsoSettingsAPIService) V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest) (*SsoSettingsV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SsoSettings
+		localVarReturnValue  *SsoSettingsV1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V1SsoPut")
@@ -852,8 +1008,8 @@ func (a *SsoSettingsAPIService) V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ssoSettings == nil {
-		return localVarReturnValue, nil, reportError("ssoSettings is required and must be specified")
+	if r.ssoSettingsV1 == nil {
+		return localVarReturnValue, nil, reportError("ssoSettingsV1 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -874,7 +1030,7 @@ func (a *SsoSettingsAPIService) V1SsoPutExecute(r SsoSettingsAPIV1SsoPutRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ssoSettings
+	localVarPostBody = r.ssoSettingsV1
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -945,6 +1101,8 @@ Validation of a content available under provided metadata URL.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return SsoSettingsAPIV1SsoValidatePostRequest
+
+Deprecated
 */
 func (a *SsoSettingsAPIService) V1SsoValidatePost(ctx context.Context) SsoSettingsAPIV1SsoValidatePostRequest {
 	return SsoSettingsAPIV1SsoValidatePostRequest{
@@ -954,6 +1112,7 @@ func (a *SsoSettingsAPIService) V1SsoValidatePost(ctx context.Context) SsoSettin
 }
 
 // Execute executes the request
+// Deprecated
 func (a *SsoSettingsAPIService) V1SsoValidatePostExecute(r SsoSettingsAPIV1SsoValidatePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -967,6 +1126,890 @@ func (a *SsoSettingsAPIService) V1SsoValidatePostExecute(r SsoSettingsAPIV1SsoVa
 	}
 
 	localVarPath := localBasePath + "/v1/sso/validate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ssoMetadataUrl == nil {
+		return nil, reportError("ssoMetadataUrl is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ssoMetadataUrl
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoDependenciesGetRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+}
+
+func (r SsoSettingsAPIV2SsoDependenciesGetRequest) Execute() (*EnrollmentCustomizationDependencies, *http.Response, error) {
+	return r.ApiService.V2SsoDependenciesGetExecute(r)
+}
+
+/*
+V2SsoDependenciesGet Retrieve the list of Enrollment Customizations using SSO 
+
+Retrieves the list of Enrollment Customizations using SSO
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoDependenciesGetRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoDependenciesGet(ctx context.Context) SsoSettingsAPIV2SsoDependenciesGetRequest {
+	return SsoSettingsAPIV2SsoDependenciesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return EnrollmentCustomizationDependencies
+func (a *SsoSettingsAPIService) V2SsoDependenciesGetExecute(r SsoSettingsAPIV2SsoDependenciesGetRequest) (*EnrollmentCustomizationDependencies, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnrollmentCustomizationDependencies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoDependenciesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/dependencies"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoDisablePostRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+}
+
+func (r SsoSettingsAPIV2SsoDisablePostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2SsoDisablePostExecute(r)
+}
+
+/*
+V2SsoDisablePost Disable SSO 
+
+Disable SSO
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoDisablePostRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoDisablePost(ctx context.Context) SsoSettingsAPIV2SsoDisablePostRequest {
+	return SsoSettingsAPIV2SsoDisablePostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *SsoSettingsAPIService) V2SsoDisablePostExecute(r SsoSettingsAPIV2SsoDisablePostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoDisablePost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/disable"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoGetRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+}
+
+func (r SsoSettingsAPIV2SsoGetRequest) Execute() (*SsoSettingsV2, *http.Response, error) {
+	return r.ApiService.V2SsoGetExecute(r)
+}
+
+/*
+V2SsoGet Retrieve the current Single Sign On configuration settings 
+
+Retrieves the current Single Sign On configuration settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoGetRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoGet(ctx context.Context) SsoSettingsAPIV2SsoGetRequest {
+	return SsoSettingsAPIV2SsoGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SsoSettingsV2
+func (a *SsoSettingsAPIService) V2SsoGetExecute(r SsoSettingsAPIV2SsoGetRequest) (*SsoSettingsV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SsoSettingsV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoHistoryGetRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r SsoSettingsAPIV2SsoHistoryGetRequest) Page(page int64) SsoSettingsAPIV2SsoHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r SsoSettingsAPIV2SsoHistoryGetRequest) PageSize(pageSize int64) SsoSettingsAPIV2SsoHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r SsoSettingsAPIV2SsoHistoryGetRequest) Sort(sort []string) SsoSettingsAPIV2SsoHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r SsoSettingsAPIV2SsoHistoryGetRequest) Filter(filter string) SsoSettingsAPIV2SsoHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r SsoSettingsAPIV2SsoHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V2SsoHistoryGetExecute(r)
+}
+
+/*
+V2SsoHistoryGet Get SSO history object 
+
+Gets SSO history object
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoHistoryGetRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoHistoryGet(ctx context.Context) SsoSettingsAPIV2SsoHistoryGetRequest {
+	return SsoSettingsAPIV2SsoHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *SsoSettingsAPIService) V2SsoHistoryGetExecute(r SsoSettingsAPIV2SsoHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"id:desc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoHistoryPostRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// history notes to create
+func (r SsoSettingsAPIV2SsoHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) SsoSettingsAPIV2SsoHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r SsoSettingsAPIV2SsoHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2SsoHistoryPostExecute(r)
+}
+
+/*
+V2SsoHistoryPost Add SSO history object notes 
+
+Adds SSO history object notes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoHistoryPostRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoHistoryPost(ctx context.Context) SsoSettingsAPIV2SsoHistoryPostRequest {
+	return SsoSettingsAPIV2SsoHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *SsoSettingsAPIService) V2SsoHistoryPostExecute(r SsoSettingsAPIV2SsoHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoMetadataDownloadGetRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+}
+
+func (r SsoSettingsAPIV2SsoMetadataDownloadGetRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.V2SsoMetadataDownloadGetExecute(r)
+}
+
+/*
+V2SsoMetadataDownloadGet Download the Jamf Pro SAML metadata file 
+
+Download the Jamf Pro SAML metadata file
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoMetadataDownloadGetRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoMetadataDownloadGet(ctx context.Context) SsoSettingsAPIV2SsoMetadataDownloadGetRequest {
+	return SsoSettingsAPIV2SsoMetadataDownloadGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *SsoSettingsAPIService) V2SsoMetadataDownloadGetExecute(r SsoSettingsAPIV2SsoMetadataDownloadGetRequest) (*os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoMetadataDownloadGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/metadata/download"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/plain"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoPutRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+	ssoSettingsV2 *SsoSettingsV2
+}
+
+func (r SsoSettingsAPIV2SsoPutRequest) SsoSettingsV2(ssoSettingsV2 SsoSettingsV2) SsoSettingsAPIV2SsoPutRequest {
+	r.ssoSettingsV2 = &ssoSettingsV2
+	return r
+}
+
+func (r SsoSettingsAPIV2SsoPutRequest) Execute() (*SsoSettingsV2, *http.Response, error) {
+	return r.ApiService.V2SsoPutExecute(r)
+}
+
+/*
+V2SsoPut Updates the current Single Sign On configuration settings 
+
+Updates the current Single Sign On configuration settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoPutRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoPut(ctx context.Context) SsoSettingsAPIV2SsoPutRequest {
+	return SsoSettingsAPIV2SsoPutRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SsoSettingsV2
+func (a *SsoSettingsAPIService) V2SsoPutExecute(r SsoSettingsAPIV2SsoPutRequest) (*SsoSettingsV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SsoSettingsV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ssoSettingsV2 == nil {
+		return localVarReturnValue, nil, reportError("ssoSettingsV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ssoSettingsV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SsoSettingsAPIV2SsoValidatePostRequest struct {
+	ctx context.Context
+	ApiService SsoSettingsAPI
+	ssoMetadataUrl *SsoMetadataUrl
+}
+
+// url to validate
+func (r SsoSettingsAPIV2SsoValidatePostRequest) SsoMetadataUrl(ssoMetadataUrl SsoMetadataUrl) SsoSettingsAPIV2SsoValidatePostRequest {
+	r.ssoMetadataUrl = &ssoMetadataUrl
+	return r
+}
+
+func (r SsoSettingsAPIV2SsoValidatePostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2SsoValidatePostExecute(r)
+}
+
+/*
+V2SsoValidatePost Endpoint for validation of a saml metadata url 
+
+Validation of a content available under provided metadata URL.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SsoSettingsAPIV2SsoValidatePostRequest
+*/
+func (a *SsoSettingsAPIService) V2SsoValidatePost(ctx context.Context) SsoSettingsAPIV2SsoValidatePostRequest {
+	return SsoSettingsAPIV2SsoValidatePostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *SsoSettingsAPIService) V2SsoValidatePostExecute(r SsoSettingsAPIV2SsoValidatePostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SsoSettingsAPIService.V2SsoValidatePost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/sso/validate"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

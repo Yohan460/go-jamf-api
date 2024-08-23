@@ -215,7 +215,7 @@ import (
 )
 
 func main() {
-	ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string([B@138a7441), "keystore.p12") // SsoKeystoreParse | 
+	ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string([B@456be73c), "keystore.p12") // SsoKeystoreParse | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -342,7 +342,7 @@ import (
 )
 
 func main() {
-	ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string([B@138a7441), "keystore.p12") // SsoKeystore | 
+	ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string([B@456be73c), "keystore.p12") // SsoKeystore | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

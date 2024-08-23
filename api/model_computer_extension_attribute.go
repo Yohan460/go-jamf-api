@@ -245,7 +245,7 @@ func (o *ComputerExtensionAttribute) GetValuesOk() ([]string, bool) {
 
 // HasValues returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasValues() bool {
-	if o != nil && IsNil(o.Values) {
+	if o != nil && !IsNil(o.Values) {
 		return true
 	}
 
@@ -320,7 +320,7 @@ func (o *ComputerExtensionAttribute) GetOptionsOk() ([]string, bool) {
 
 // HasOptions returns a boolean if a field has been set.
 func (o *ComputerExtensionAttribute) HasOptions() bool {
-	if o != nil && IsNil(o.Options) {
+	if o != nil && !IsNil(o.Options) {
 		return true
 	}
 

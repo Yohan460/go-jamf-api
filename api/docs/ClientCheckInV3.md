@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CheckInFrequency** | Pointer to **int64** | Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60. | [optional] [default to 15]
+**CheckInFrequency** | Pointer to **int64** | Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimum is 5, maximum is 60. | [optional] [default to 15]
 **CreateHooks** | Pointer to **bool** |  | [optional] [default to false]
 **HookLog** | Pointer to **bool** |  | [optional] [default to false]
 **HookPolicies** | Pointer to **bool** |  | [optional] [default to false]

@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **NewPassword** | Pointer to **string** | The new password for Recovery Lock. Set as an empty string to clear the Recovery Lock password. | [optional] 
 
 ## Methods
 
 ### NewSetRecoveryLockCommand
 
-`func NewSetRecoveryLockCommand() *SetRecoveryLockCommand`
+`func NewSetRecoveryLockCommand(commandType MdmCommandType, ) *SetRecoveryLockCommand`
 
 NewSetRecoveryLockCommand instantiates a new SetRecoveryLockCommand object
 This constructor will assign default values to properties that have it defined,
@@ -24,6 +25,26 @@ will change when the set of required properties is changed
 NewSetRecoveryLockCommandWithDefaults instantiates a new SetRecoveryLockCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *SetRecoveryLockCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *SetRecoveryLockCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *SetRecoveryLockCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetNewPassword
 

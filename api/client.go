@@ -49,6 +49,8 @@ type APIClient struct {
 
 	// API Services
 
+	ActivationCodeAPI ActivationCodeAPI
+
 	AdvancedMobileDeviceSearchesAPI AdvancedMobileDeviceSearchesAPI
 
 	AdvancedUserContentSearchesAPI AdvancedUserContentSearchesAPI
@@ -81,6 +83,8 @@ type APIClient struct {
 
 	CloudAzureAPI CloudAzureAPI
 
+	CloudDistributionPointAPI CloudDistributionPointAPI
+
 	CloudIdpAPI CloudIdpAPI
 
 	CloudInformationAPI CloudInformationAPI
@@ -111,6 +115,10 @@ type APIClient struct {
 
 	DeviceEnrollmentsDevicesAPI DeviceEnrollmentsDevicesAPI
 
+	DockItemsAPI DockItemsAPI
+
+	DssDeclarationsAPI DssDeclarationsAPI
+
 	EbooksAPI EbooksAPI
 
 	EngageAPI EngageAPI
@@ -121,6 +129,10 @@ type APIClient struct {
 
 	EnrollmentCustomizationPreviewAPI EnrollmentCustomizationPreviewAPI
 
+	GsxConnectionAPI GsxConnectionAPI
+
+	HealthCheckAPI HealthCheckAPI
+
 	IconAPI IconAPI
 
 	InventoryInformationAPI InventoryInformationAPI
@@ -129,15 +141,17 @@ type APIClient struct {
 
 	JamfConnectAPI JamfConnectAPI
 
+	JamfContentDistributionServerAPI JamfContentDistributionServerAPI
+
 	JamfManagementFrameworkAPI JamfManagementFrameworkAPI
 
 	JamfPackageAPI JamfPackageAPI
 
+	JamfProAccountPreferencesAPI JamfProAccountPreferencesAPI
+
 	JamfProInformationAPI JamfProInformationAPI
 
 	JamfProInitializationAPI JamfProInitializationAPI
-
-	JamfProInitializationPreviewAPI JamfProInitializationPreviewAPI
 
 	JamfProNotificationsAPI JamfProNotificationsAPI
 
@@ -153,11 +167,15 @@ type APIClient struct {
 
 	JamfProtectAPI JamfProtectAPI
 
+	JamfRemoteAssistAPI JamfRemoteAssistAPI
+
 	LdapAPI LdapAPI
 
 	LocalAdminPasswordAPI LocalAdminPasswordAPI
 
 	LocalesPreviewAPI LocalesPreviewAPI
+
+	LoginCustomizationAPI LoginCustomizationAPI
 
 	MacosManagedSoftwareUpdatesAPI MacosManagedSoftwareUpdatesAPI
 
@@ -177,6 +195,10 @@ type APIClient struct {
 
 	MobileDevicesAPI MobileDevicesAPI
 
+	OnboardingAPI OnboardingAPI
+
+	PackagesAPI PackagesAPI
+
 	ParentAppPreviewAPI ParentAppPreviewAPI
 
 	PatchManagementAPI PatchManagementAPI
@@ -193,6 +215,10 @@ type APIClient struct {
 
 	RemoteAdministrationAPI RemoteAdministrationAPI
 
+	ReturnToServiceAPI ReturnToServiceAPI
+
+	SchedulerAPI SchedulerAPI
+
 	ScriptsAPI ScriptsAPI
 
 	SelfServiceAPI SelfServiceAPI
@@ -207,11 +233,15 @@ type APIClient struct {
 
 	SitesPreviewAPI SitesPreviewAPI
 
+	SlasaAPI SlasaAPI
+
 	SmartComputerGroupsPreviewAPI SmartComputerGroupsPreviewAPI
 
 	SmartMobileDeviceGroupsPreviewAPI SmartMobileDeviceGroupsPreviewAPI
 
 	SmartUserGroupsPreviewAPI SmartUserGroupsPreviewAPI
+
+	SmtpServerAPI SmtpServerAPI
 
 	SsoCertificateAPI SsoCertificateAPI
 
@@ -235,6 +265,8 @@ type APIClient struct {
 
 	TomcatSettingsPreviewAPI TomcatSettingsPreviewAPI
 
+	UserAPI UserAPI
+
 	UserSessionPreviewAPI UserSessionPreviewAPI
 
 	VenafiPreviewAPI VenafiPreviewAPI
@@ -242,10 +274,6 @@ type APIClient struct {
 	VolumePurchasingLocationsAPI VolumePurchasingLocationsAPI
 
 	VolumePurchasingSubscriptionsAPI VolumePurchasingSubscriptionsAPI
-
-	VppAdminAccountsPreviewAPI VppAdminAccountsPreviewAPI
-
-	VppSubscriptionsPreviewAPI VppSubscriptionsPreviewAPI
 }
 
 type service struct {
@@ -264,6 +292,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.ActivationCodeAPI = (*ActivationCodeAPIService)(&c.common)
 	c.AdvancedMobileDeviceSearchesAPI = (*AdvancedMobileDeviceSearchesAPIService)(&c.common)
 	c.AdvancedUserContentSearchesAPI = (*AdvancedUserContentSearchesAPIService)(&c.common)
 	c.ApiAuthenticationAPI = (*ApiAuthenticationAPIService)(&c.common)
@@ -280,6 +309,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ClassicLdapAPI = (*ClassicLdapAPIService)(&c.common)
 	c.ClientCheckInAPI = (*ClientCheckInAPIService)(&c.common)
 	c.CloudAzureAPI = (*CloudAzureAPIService)(&c.common)
+	c.CloudDistributionPointAPI = (*CloudDistributionPointAPIService)(&c.common)
 	c.CloudIdpAPI = (*CloudIdpAPIService)(&c.common)
 	c.CloudInformationAPI = (*CloudInformationAPIService)(&c.common)
 	c.CloudLdapAPI = (*CloudLdapAPIService)(&c.common)
@@ -295,20 +325,25 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceCommunicationSettingsAPI = (*DeviceCommunicationSettingsAPIService)(&c.common)
 	c.DeviceEnrollmentsAPI = (*DeviceEnrollmentsAPIService)(&c.common)
 	c.DeviceEnrollmentsDevicesAPI = (*DeviceEnrollmentsDevicesAPIService)(&c.common)
+	c.DockItemsAPI = (*DockItemsAPIService)(&c.common)
+	c.DssDeclarationsAPI = (*DssDeclarationsAPIService)(&c.common)
 	c.EbooksAPI = (*EbooksAPIService)(&c.common)
 	c.EngageAPI = (*EngageAPIService)(&c.common)
 	c.EnrollmentAPI = (*EnrollmentAPIService)(&c.common)
 	c.EnrollmentCustomizationAPI = (*EnrollmentCustomizationAPIService)(&c.common)
 	c.EnrollmentCustomizationPreviewAPI = (*EnrollmentCustomizationPreviewAPIService)(&c.common)
+	c.GsxConnectionAPI = (*GsxConnectionAPIService)(&c.common)
+	c.HealthCheckAPI = (*HealthCheckAPIService)(&c.common)
 	c.IconAPI = (*IconAPIService)(&c.common)
 	c.InventoryInformationAPI = (*InventoryInformationAPIService)(&c.common)
 	c.InventoryPreloadAPI = (*InventoryPreloadAPIService)(&c.common)
 	c.JamfConnectAPI = (*JamfConnectAPIService)(&c.common)
+	c.JamfContentDistributionServerAPI = (*JamfContentDistributionServerAPIService)(&c.common)
 	c.JamfManagementFrameworkAPI = (*JamfManagementFrameworkAPIService)(&c.common)
 	c.JamfPackageAPI = (*JamfPackageAPIService)(&c.common)
+	c.JamfProAccountPreferencesAPI = (*JamfProAccountPreferencesAPIService)(&c.common)
 	c.JamfProInformationAPI = (*JamfProInformationAPIService)(&c.common)
 	c.JamfProInitializationAPI = (*JamfProInitializationAPIService)(&c.common)
-	c.JamfProInitializationPreviewAPI = (*JamfProInitializationPreviewAPIService)(&c.common)
 	c.JamfProNotificationsAPI = (*JamfProNotificationsAPIService)(&c.common)
 	c.JamfProNotificationsPreviewAPI = (*JamfProNotificationsPreviewAPIService)(&c.common)
 	c.JamfProServerUrlPreviewAPI = (*JamfProServerUrlPreviewAPIService)(&c.common)
@@ -316,9 +351,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JamfProUserAccountSettingsPreviewAPI = (*JamfProUserAccountSettingsPreviewAPIService)(&c.common)
 	c.JamfProVersionAPI = (*JamfProVersionAPIService)(&c.common)
 	c.JamfProtectAPI = (*JamfProtectAPIService)(&c.common)
+	c.JamfRemoteAssistAPI = (*JamfRemoteAssistAPIService)(&c.common)
 	c.LdapAPI = (*LdapAPIService)(&c.common)
 	c.LocalAdminPasswordAPI = (*LocalAdminPasswordAPIService)(&c.common)
 	c.LocalesPreviewAPI = (*LocalesPreviewAPIService)(&c.common)
+	c.LoginCustomizationAPI = (*LoginCustomizationAPIService)(&c.common)
 	c.MacosManagedSoftwareUpdatesAPI = (*MacosManagedSoftwareUpdatesAPIService)(&c.common)
 	c.ManagedSoftwareUpdatesAPI = (*ManagedSoftwareUpdatesAPIService)(&c.common)
 	c.MdmAPI = (*MdmAPIService)(&c.common)
@@ -328,6 +365,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MobileDeviceGroupsAPI = (*MobileDeviceGroupsAPIService)(&c.common)
 	c.MobileDevicePrestagesAPI = (*MobileDevicePrestagesAPIService)(&c.common)
 	c.MobileDevicesAPI = (*MobileDevicesAPIService)(&c.common)
+	c.OnboardingAPI = (*OnboardingAPIService)(&c.common)
+	c.PackagesAPI = (*PackagesAPIService)(&c.common)
 	c.ParentAppPreviewAPI = (*ParentAppPreviewAPIService)(&c.common)
 	c.PatchManagementAPI = (*PatchManagementAPIService)(&c.common)
 	c.PatchPoliciesAPI = (*PatchPoliciesAPIService)(&c.common)
@@ -336,6 +375,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PoliciesPreviewAPI = (*PoliciesPreviewAPIService)(&c.common)
 	c.ReEnrollmentPreviewAPI = (*ReEnrollmentPreviewAPIService)(&c.common)
 	c.RemoteAdministrationAPI = (*RemoteAdministrationAPIService)(&c.common)
+	c.ReturnToServiceAPI = (*ReturnToServiceAPIService)(&c.common)
+	c.SchedulerAPI = (*SchedulerAPIService)(&c.common)
 	c.ScriptsAPI = (*ScriptsAPIService)(&c.common)
 	c.SelfServiceAPI = (*SelfServiceAPIService)(&c.common)
 	c.SelfServiceBrandingIosAPI = (*SelfServiceBrandingIosAPIService)(&c.common)
@@ -343,9 +384,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SelfServiceBrandingPreviewAPI = (*SelfServiceBrandingPreviewAPIService)(&c.common)
 	c.SitesAPI = (*SitesAPIService)(&c.common)
 	c.SitesPreviewAPI = (*SitesPreviewAPIService)(&c.common)
+	c.SlasaAPI = (*SlasaAPIService)(&c.common)
 	c.SmartComputerGroupsPreviewAPI = (*SmartComputerGroupsPreviewAPIService)(&c.common)
 	c.SmartMobileDeviceGroupsPreviewAPI = (*SmartMobileDeviceGroupsPreviewAPIService)(&c.common)
 	c.SmartUserGroupsPreviewAPI = (*SmartUserGroupsPreviewAPIService)(&c.common)
+	c.SmtpServerAPI = (*SmtpServerAPIService)(&c.common)
 	c.SsoCertificateAPI = (*SsoCertificateAPIService)(&c.common)
 	c.SsoCertificatePreviewAPI = (*SsoCertificatePreviewAPIService)(&c.common)
 	c.SsoFailoverAPI = (*SsoFailoverAPIService)(&c.common)
@@ -357,12 +400,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TeamViewerRemoteAdministrationAPI = (*TeamViewerRemoteAdministrationAPIService)(&c.common)
 	c.TimeZonesPreviewAPI = (*TimeZonesPreviewAPIService)(&c.common)
 	c.TomcatSettingsPreviewAPI = (*TomcatSettingsPreviewAPIService)(&c.common)
+	c.UserAPI = (*UserAPIService)(&c.common)
 	c.UserSessionPreviewAPI = (*UserSessionPreviewAPIService)(&c.common)
 	c.VenafiPreviewAPI = (*VenafiPreviewAPIService)(&c.common)
 	c.VolumePurchasingLocationsAPI = (*VolumePurchasingLocationsAPIService)(&c.common)
 	c.VolumePurchasingSubscriptionsAPI = (*VolumePurchasingSubscriptionsAPIService)(&c.common)
-	c.VppAdminAccountsPreviewAPI = (*VppAdminAccountsPreviewAPIService)(&c.common)
-	c.VppSubscriptionsPreviewAPI = (*VppSubscriptionsPreviewAPIService)(&c.common)
 
 	return c
 }
@@ -456,7 +498,7 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 					return
 				}
 				if t, ok := obj.(time.Time); ok {
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), collectionType)
 					return
 				}
 				value = v.Type().String() + " value"

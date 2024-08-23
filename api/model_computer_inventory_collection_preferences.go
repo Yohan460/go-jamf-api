@@ -24,6 +24,7 @@ type ComputerInventoryCollectionPreferences struct {
 	IncludePlugins *bool `json:"includePlugins,omitempty"`
 	IncludePackages *bool `json:"includePackages,omitempty"`
 	IncludeSoftwareUpdates *bool `json:"includeSoftwareUpdates,omitempty"`
+	IncludeSoftwareId *bool `json:"includeSoftwareId,omitempty"`
 	IncludeAccounts *bool `json:"includeAccounts,omitempty"`
 	CalculateSizes *bool `json:"calculateSizes,omitempty"`
 	IncludeHiddenAccounts *bool `json:"includeHiddenAccounts,omitempty"`
@@ -34,6 +35,7 @@ type ComputerInventoryCollectionPreferences struct {
 	MonitorBeacons *bool `json:"monitorBeacons,omitempty"`
 	AllowChangingUserAndLocation *bool `json:"allowChangingUserAndLocation,omitempty"`
 	UseUnixUserPaths *bool `json:"useUnixUserPaths,omitempty"`
+	CollectUnmanagedCertificates *bool `json:"collectUnmanagedCertificates,omitempty"`
 }
 
 // NewComputerInventoryCollectionPreferences instantiates a new ComputerInventoryCollectionPreferences object
@@ -52,6 +54,8 @@ func NewComputerInventoryCollectionPreferences() *ComputerInventoryCollectionPre
 	this.IncludePackages = &includePackages
 	var includeSoftwareUpdates bool = false
 	this.IncludeSoftwareUpdates = &includeSoftwareUpdates
+	var includeSoftwareId bool = false
+	this.IncludeSoftwareId = &includeSoftwareId
 	var includeAccounts bool = false
 	this.IncludeAccounts = &includeAccounts
 	var calculateSizes bool = false
@@ -72,6 +76,8 @@ func NewComputerInventoryCollectionPreferences() *ComputerInventoryCollectionPre
 	this.AllowChangingUserAndLocation = &allowChangingUserAndLocation
 	var useUnixUserPaths bool = true
 	this.UseUnixUserPaths = &useUnixUserPaths
+	var collectUnmanagedCertificates bool = true
+	this.CollectUnmanagedCertificates = &collectUnmanagedCertificates
 	return &this
 }
 
@@ -90,6 +96,8 @@ func NewComputerInventoryCollectionPreferencesWithDefaults() *ComputerInventoryC
 	this.IncludePackages = &includePackages
 	var includeSoftwareUpdates bool = false
 	this.IncludeSoftwareUpdates = &includeSoftwareUpdates
+	var includeSoftwareId bool = false
+	this.IncludeSoftwareId = &includeSoftwareId
 	var includeAccounts bool = false
 	this.IncludeAccounts = &includeAccounts
 	var calculateSizes bool = false
@@ -110,6 +118,8 @@ func NewComputerInventoryCollectionPreferencesWithDefaults() *ComputerInventoryC
 	this.AllowChangingUserAndLocation = &allowChangingUserAndLocation
 	var useUnixUserPaths bool = true
 	this.UseUnixUserPaths = &useUnixUserPaths
+	var collectUnmanagedCertificates bool = true
+	this.CollectUnmanagedCertificates = &collectUnmanagedCertificates
 	return &this
 }
 
@@ -271,6 +281,38 @@ func (o *ComputerInventoryCollectionPreferences) HasIncludeSoftwareUpdates() boo
 // SetIncludeSoftwareUpdates gets a reference to the given bool and assigns it to the IncludeSoftwareUpdates field.
 func (o *ComputerInventoryCollectionPreferences) SetIncludeSoftwareUpdates(v bool) {
 	o.IncludeSoftwareUpdates = &v
+}
+
+// GetIncludeSoftwareId returns the IncludeSoftwareId field value if set, zero value otherwise.
+func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareId() bool {
+	if o == nil || IsNil(o.IncludeSoftwareId) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludeSoftwareId
+}
+
+// GetIncludeSoftwareIdOk returns a tuple with the IncludeSoftwareId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareIdOk() (*bool, bool) {
+	if o == nil || IsNil(o.IncludeSoftwareId) {
+		return nil, false
+	}
+	return o.IncludeSoftwareId, true
+}
+
+// HasIncludeSoftwareId returns a boolean if a field has been set.
+func (o *ComputerInventoryCollectionPreferences) HasIncludeSoftwareId() bool {
+	if o != nil && !IsNil(o.IncludeSoftwareId) {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludeSoftwareId gets a reference to the given bool and assigns it to the IncludeSoftwareId field.
+func (o *ComputerInventoryCollectionPreferences) SetIncludeSoftwareId(v bool) {
+	o.IncludeSoftwareId = &v
 }
 
 // GetIncludeAccounts returns the IncludeAccounts field value if set, zero value otherwise.
@@ -593,6 +635,38 @@ func (o *ComputerInventoryCollectionPreferences) SetUseUnixUserPaths(v bool) {
 	o.UseUnixUserPaths = &v
 }
 
+// GetCollectUnmanagedCertificates returns the CollectUnmanagedCertificates field value if set, zero value otherwise.
+func (o *ComputerInventoryCollectionPreferences) GetCollectUnmanagedCertificates() bool {
+	if o == nil || IsNil(o.CollectUnmanagedCertificates) {
+		var ret bool
+		return ret
+	}
+	return *o.CollectUnmanagedCertificates
+}
+
+// GetCollectUnmanagedCertificatesOk returns a tuple with the CollectUnmanagedCertificates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerInventoryCollectionPreferences) GetCollectUnmanagedCertificatesOk() (*bool, bool) {
+	if o == nil || IsNil(o.CollectUnmanagedCertificates) {
+		return nil, false
+	}
+	return o.CollectUnmanagedCertificates, true
+}
+
+// HasCollectUnmanagedCertificates returns a boolean if a field has been set.
+func (o *ComputerInventoryCollectionPreferences) HasCollectUnmanagedCertificates() bool {
+	if o != nil && !IsNil(o.CollectUnmanagedCertificates) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollectUnmanagedCertificates gets a reference to the given bool and assigns it to the CollectUnmanagedCertificates field.
+func (o *ComputerInventoryCollectionPreferences) SetCollectUnmanagedCertificates(v bool) {
+	o.CollectUnmanagedCertificates = &v
+}
+
 func (o ComputerInventoryCollectionPreferences) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -617,6 +691,9 @@ func (o ComputerInventoryCollectionPreferences) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.IncludeSoftwareUpdates) {
 		toSerialize["includeSoftwareUpdates"] = o.IncludeSoftwareUpdates
+	}
+	if !IsNil(o.IncludeSoftwareId) {
+		toSerialize["includeSoftwareId"] = o.IncludeSoftwareId
 	}
 	if !IsNil(o.IncludeAccounts) {
 		toSerialize["includeAccounts"] = o.IncludeAccounts
@@ -647,6 +724,9 @@ func (o ComputerInventoryCollectionPreferences) ToMap() (map[string]interface{},
 	}
 	if !IsNil(o.UseUnixUserPaths) {
 		toSerialize["useUnixUserPaths"] = o.UseUnixUserPaths
+	}
+	if !IsNil(o.CollectUnmanagedCertificates) {
+		toSerialize["collectUnmanagedCertificates"] = o.CollectUnmanagedCertificates
 	}
 	return toSerialize, nil
 }

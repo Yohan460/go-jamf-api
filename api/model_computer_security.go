@@ -35,6 +35,8 @@ type ComputerSecurity struct {
 	ExternalBootLevel *string `json:"externalBootLevel,omitempty"`
 	// Collected for macOS 11 or later
 	BootstrapTokenAllowed *bool `json:"bootstrapTokenAllowed,omitempty"`
+	// Collected for macOS 11 or later
+	BootstrapTokenEscrowedStatus *string `json:"bootstrapTokenEscrowedStatus,omitempty"`
 }
 
 // NewComputerSecurity instantiates a new ComputerSecurity object
@@ -406,6 +408,38 @@ func (o *ComputerSecurity) SetBootstrapTokenAllowed(v bool) {
 	o.BootstrapTokenAllowed = &v
 }
 
+// GetBootstrapTokenEscrowedStatus returns the BootstrapTokenEscrowedStatus field value if set, zero value otherwise.
+func (o *ComputerSecurity) GetBootstrapTokenEscrowedStatus() string {
+	if o == nil || IsNil(o.BootstrapTokenEscrowedStatus) {
+		var ret string
+		return ret
+	}
+	return *o.BootstrapTokenEscrowedStatus
+}
+
+// GetBootstrapTokenEscrowedStatusOk returns a tuple with the BootstrapTokenEscrowedStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerSecurity) GetBootstrapTokenEscrowedStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.BootstrapTokenEscrowedStatus) {
+		return nil, false
+	}
+	return o.BootstrapTokenEscrowedStatus, true
+}
+
+// HasBootstrapTokenEscrowedStatus returns a boolean if a field has been set.
+func (o *ComputerSecurity) HasBootstrapTokenEscrowedStatus() bool {
+	if o != nil && !IsNil(o.BootstrapTokenEscrowedStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetBootstrapTokenEscrowedStatus gets a reference to the given string and assigns it to the BootstrapTokenEscrowedStatus field.
+func (o *ComputerSecurity) SetBootstrapTokenEscrowedStatus(v string) {
+	o.BootstrapTokenEscrowedStatus = &v
+}
+
 func (o ComputerSecurity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -448,6 +482,9 @@ func (o ComputerSecurity) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BootstrapTokenAllowed) {
 		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
+	}
+	if !IsNil(o.BootstrapTokenEscrowedStatus) {
+		toSerialize["bootstrapTokenEscrowedStatus"] = o.BootstrapTokenEscrowedStatus
 	}
 	return toSerialize, nil
 }

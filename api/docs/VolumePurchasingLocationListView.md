@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **SendNotificationWhenNoLongerAssigned** | Pointer to **bool** |  | [optional] 
 **AutoRegisterManagedUsers** | Pointer to **bool** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
+**SiteName** | Pointer to **string** |  | [optional] 
 **LastSyncTime** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
@@ -388,6 +389,31 @@ SetSiteId sets SiteId field to given value.
 `func (o *VolumePurchasingLocationListView) HasSiteId() bool`
 
 HasSiteId returns a boolean if a field has been set.
+
+### GetSiteName
+
+`func (o *VolumePurchasingLocationListView) GetSiteName() string`
+
+GetSiteName returns the SiteName field if non-nil, zero value otherwise.
+
+### GetSiteNameOk
+
+`func (o *VolumePurchasingLocationListView) GetSiteNameOk() (*string, bool)`
+
+GetSiteNameOk returns a tuple with the SiteName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteName
+
+`func (o *VolumePurchasingLocationListView) SetSiteName(v string)`
+
+SetSiteName sets SiteName field to given value.
+
+### HasSiteName
+
+`func (o *VolumePurchasingLocationListView) HasSiteName() bool`
+
+HasSiteName returns a boolean if a field has been set.
 
 ### GetLastSyncTime
 

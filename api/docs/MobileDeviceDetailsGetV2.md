@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **string** | Mobile device name. | [optional] 
-**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in. | [optional] 
+**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in. | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
 **OsVersion** | Pointer to **string** |  | [optional] 
@@ -31,9 +31,11 @@ Name | Type | Description | Notes
 **Site** | Pointer to [**V1Site**](V1Site.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ExtensionAttributeV2**](ExtensionAttributeV2.md) |  | [optional] 
 **Location** | Pointer to [**LocationV2**](LocationV2.md) |  | [optional] 
-**Type** | Pointer to **string** | Based on the value of this either ios, appleTv, android objects will be populated. | [optional] 
-**Ios** | Pointer to [**IosDetailsV2**](IosDetailsV2.md) |  | [optional] 
+**Type** | Pointer to **string** | Based on the value of this either iOS, tvOS, watch or visionOS objects will be populated. | [optional] 
+**Ios** | Pointer to [**DetailsV2**](DetailsV2.md) |  | [optional] 
 **Tvos** | Pointer to [**TvOsDetails**](TvOsDetails.md) |  | [optional] 
+**Watchos** | Pointer to [**WatchOsDetailsV2**](WatchOsDetailsV2.md) |  | [optional] 
+**Visionos** | Pointer to [**DetailsV2**](DetailsV2.md) |  | [optional] 
 **ManagementId** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
@@ -757,20 +759,20 @@ HasType returns a boolean if a field has been set.
 
 ### GetIos
 
-`func (o *MobileDeviceDetailsGetV2) GetIos() IosDetailsV2`
+`func (o *MobileDeviceDetailsGetV2) GetIos() DetailsV2`
 
 GetIos returns the Ios field if non-nil, zero value otherwise.
 
 ### GetIosOk
 
-`func (o *MobileDeviceDetailsGetV2) GetIosOk() (*IosDetailsV2, bool)`
+`func (o *MobileDeviceDetailsGetV2) GetIosOk() (*DetailsV2, bool)`
 
 GetIosOk returns a tuple with the Ios field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIos
 
-`func (o *MobileDeviceDetailsGetV2) SetIos(v IosDetailsV2)`
+`func (o *MobileDeviceDetailsGetV2) SetIos(v DetailsV2)`
 
 SetIos sets Ios field to given value.
 
@@ -804,6 +806,56 @@ SetTvos sets Tvos field to given value.
 `func (o *MobileDeviceDetailsGetV2) HasTvos() bool`
 
 HasTvos returns a boolean if a field has been set.
+
+### GetWatchos
+
+`func (o *MobileDeviceDetailsGetV2) GetWatchos() WatchOsDetailsV2`
+
+GetWatchos returns the Watchos field if non-nil, zero value otherwise.
+
+### GetWatchosOk
+
+`func (o *MobileDeviceDetailsGetV2) GetWatchosOk() (*WatchOsDetailsV2, bool)`
+
+GetWatchosOk returns a tuple with the Watchos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWatchos
+
+`func (o *MobileDeviceDetailsGetV2) SetWatchos(v WatchOsDetailsV2)`
+
+SetWatchos sets Watchos field to given value.
+
+### HasWatchos
+
+`func (o *MobileDeviceDetailsGetV2) HasWatchos() bool`
+
+HasWatchos returns a boolean if a field has been set.
+
+### GetVisionos
+
+`func (o *MobileDeviceDetailsGetV2) GetVisionos() DetailsV2`
+
+GetVisionos returns the Visionos field if non-nil, zero value otherwise.
+
+### GetVisionosOk
+
+`func (o *MobileDeviceDetailsGetV2) GetVisionosOk() (*DetailsV2, bool)`
+
+GetVisionosOk returns a tuple with the Visionos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVisionos
+
+`func (o *MobileDeviceDetailsGetV2) SetVisionos(v DetailsV2)`
+
+SetVisionos sets Visionos field to given value.
+
+### HasVisionos
+
+`func (o *MobileDeviceDetailsGetV2) HasVisionos() bool`
+
+HasVisionos returns a boolean if a field has been set.
 
 ### GetManagementId
 

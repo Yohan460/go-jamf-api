@@ -22,15 +22,13 @@ var _ MappedNullable = &MobileDeviceInventory{}
 // MobileDeviceInventory struct for MobileDeviceInventory
 type MobileDeviceInventory struct {
 	MobileDeviceId *string `json:"mobileDeviceId,omitempty"`
-	// Based on the value of this type either ios or appleTv objects will be populated.
+	// Based on the value of this type either ios, appleTv, watch or visionOS objects will be populated.
 	DeviceType string `json:"deviceType"`
 	Hardware *MobileDeviceHardware `json:"hardware,omitempty"`
 	UserAndLocation *MobileDeviceUserAndLocation `json:"userAndLocation,omitempty"`
-	Purchasing *MobileDevicePurchasing `json:"purchasing,omitempty"`
 	Applications []MobileDeviceApplicationInventoryDetail `json:"applications,omitempty"`
 	Certificates []MobileDeviceCertificate `json:"certificates,omitempty"`
 	Profiles []MobileDeviceProfile `json:"profiles,omitempty"`
-	UserProfiles []MobileDeviceUserProfile `json:"userProfiles,omitempty"`
 	ExtensionAttributes []MobileDeviceExtensionAttribute `json:"extensionAttributes,omitempty"`
 }
 
@@ -174,38 +172,6 @@ func (o *MobileDeviceInventory) SetUserAndLocation(v MobileDeviceUserAndLocation
 	o.UserAndLocation = &v
 }
 
-// GetPurchasing returns the Purchasing field value if set, zero value otherwise.
-func (o *MobileDeviceInventory) GetPurchasing() MobileDevicePurchasing {
-	if o == nil || IsNil(o.Purchasing) {
-		var ret MobileDevicePurchasing
-		return ret
-	}
-	return *o.Purchasing
-}
-
-// GetPurchasingOk returns a tuple with the Purchasing field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MobileDeviceInventory) GetPurchasingOk() (*MobileDevicePurchasing, bool) {
-	if o == nil || IsNil(o.Purchasing) {
-		return nil, false
-	}
-	return o.Purchasing, true
-}
-
-// HasPurchasing returns a boolean if a field has been set.
-func (o *MobileDeviceInventory) HasPurchasing() bool {
-	if o != nil && !IsNil(o.Purchasing) {
-		return true
-	}
-
-	return false
-}
-
-// SetPurchasing gets a reference to the given MobileDevicePurchasing and assigns it to the Purchasing field.
-func (o *MobileDeviceInventory) SetPurchasing(v MobileDevicePurchasing) {
-	o.Purchasing = &v
-}
-
 // GetApplications returns the Applications field value if set, zero value otherwise.
 func (o *MobileDeviceInventory) GetApplications() []MobileDeviceApplicationInventoryDetail {
 	if o == nil || IsNil(o.Applications) {
@@ -302,38 +268,6 @@ func (o *MobileDeviceInventory) SetProfiles(v []MobileDeviceProfile) {
 	o.Profiles = v
 }
 
-// GetUserProfiles returns the UserProfiles field value if set, zero value otherwise.
-func (o *MobileDeviceInventory) GetUserProfiles() []MobileDeviceUserProfile {
-	if o == nil || IsNil(o.UserProfiles) {
-		var ret []MobileDeviceUserProfile
-		return ret
-	}
-	return o.UserProfiles
-}
-
-// GetUserProfilesOk returns a tuple with the UserProfiles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MobileDeviceInventory) GetUserProfilesOk() ([]MobileDeviceUserProfile, bool) {
-	if o == nil || IsNil(o.UserProfiles) {
-		return nil, false
-	}
-	return o.UserProfiles, true
-}
-
-// HasUserProfiles returns a boolean if a field has been set.
-func (o *MobileDeviceInventory) HasUserProfiles() bool {
-	if o != nil && !IsNil(o.UserProfiles) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserProfiles gets a reference to the given []MobileDeviceUserProfile and assigns it to the UserProfiles field.
-func (o *MobileDeviceInventory) SetUserProfiles(v []MobileDeviceUserProfile) {
-	o.UserProfiles = v
-}
-
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *MobileDeviceInventory) GetExtensionAttributes() []MobileDeviceExtensionAttribute {
 	if o == nil || IsNil(o.ExtensionAttributes) {
@@ -386,9 +320,6 @@ func (o MobileDeviceInventory) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UserAndLocation) {
 		toSerialize["userAndLocation"] = o.UserAndLocation
 	}
-	if !IsNil(o.Purchasing) {
-		toSerialize["purchasing"] = o.Purchasing
-	}
 	if !IsNil(o.Applications) {
 		toSerialize["applications"] = o.Applications
 	}
@@ -397,9 +328,6 @@ func (o MobileDeviceInventory) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Profiles) {
 		toSerialize["profiles"] = o.Profiles
-	}
-	if !IsNil(o.UserProfiles) {
-		toSerialize["userProfiles"] = o.UserProfiles
 	}
 	if !IsNil(o.ExtensionAttributes) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes

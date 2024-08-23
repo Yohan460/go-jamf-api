@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SecureBootLevel** | Pointer to **string** | Collected for macOS 10.15.0 or later | [optional] 
 **ExternalBootLevel** | Pointer to **string** | Collected for macOS 10.15.0 or later | [optional] 
 **BootstrapTokenAllowed** | Pointer to **bool** | Collected for macOS 11 or later | [optional] 
+**BootstrapTokenEscrowedStatus** | Pointer to **string** | Collected for macOS 11 or later | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetBootstrapTokenAllowed sets BootstrapTokenAllowed field to given value.
 `func (o *ComputerSecurity) HasBootstrapTokenAllowed() bool`
 
 HasBootstrapTokenAllowed returns a boolean if a field has been set.
+
+### GetBootstrapTokenEscrowedStatus
+
+`func (o *ComputerSecurity) GetBootstrapTokenEscrowedStatus() string`
+
+GetBootstrapTokenEscrowedStatus returns the BootstrapTokenEscrowedStatus field if non-nil, zero value otherwise.
+
+### GetBootstrapTokenEscrowedStatusOk
+
+`func (o *ComputerSecurity) GetBootstrapTokenEscrowedStatusOk() (*string, bool)`
+
+GetBootstrapTokenEscrowedStatusOk returns a tuple with the BootstrapTokenEscrowedStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBootstrapTokenEscrowedStatus
+
+`func (o *ComputerSecurity) SetBootstrapTokenEscrowedStatus(v string)`
+
+SetBootstrapTokenEscrowedStatus sets BootstrapTokenEscrowedStatus field to given value.
+
+### HasBootstrapTokenEscrowedStatus
+
+`func (o *ComputerSecurity) HasBootstrapTokenEscrowedStatus() bool`
+
+HasBootstrapTokenEscrowedStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

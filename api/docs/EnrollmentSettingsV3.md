@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **IosPersonalEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **PersonalDeviceEnrollmentType** | Pointer to **string** |  | [optional] [default to "PERSONALDEVICEPROFILES"]
 **AccountDrivenUserEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
+**AccountDrivenDeviceEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -662,6 +663,31 @@ SetAccountDrivenUserEnrollmentEnabled sets AccountDrivenUserEnrollmentEnabled fi
 `func (o *EnrollmentSettingsV3) HasAccountDrivenUserEnrollmentEnabled() bool`
 
 HasAccountDrivenUserEnrollmentEnabled returns a boolean if a field has been set.
+
+### GetAccountDrivenDeviceEnrollmentEnabled
+
+`func (o *EnrollmentSettingsV3) GetAccountDrivenDeviceEnrollmentEnabled() bool`
+
+GetAccountDrivenDeviceEnrollmentEnabled returns the AccountDrivenDeviceEnrollmentEnabled field if non-nil, zero value otherwise.
+
+### GetAccountDrivenDeviceEnrollmentEnabledOk
+
+`func (o *EnrollmentSettingsV3) GetAccountDrivenDeviceEnrollmentEnabledOk() (*bool, bool)`
+
+GetAccountDrivenDeviceEnrollmentEnabledOk returns a tuple with the AccountDrivenDeviceEnrollmentEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountDrivenDeviceEnrollmentEnabled
+
+`func (o *EnrollmentSettingsV3) SetAccountDrivenDeviceEnrollmentEnabled(v bool)`
+
+SetAccountDrivenDeviceEnrollmentEnabled sets AccountDrivenDeviceEnrollmentEnabled field to given value.
+
+### HasAccountDrivenDeviceEnrollmentEnabled
+
+`func (o *EnrollmentSettingsV3) HasAccountDrivenDeviceEnrollmentEnabled() bool`
+
+HasAccountDrivenDeviceEnrollmentEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

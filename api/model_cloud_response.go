@@ -20,6 +20,7 @@ var _ MappedNullable = &CloudResponse{}
 // CloudResponse struct for CloudResponse
 type CloudResponse struct {
 	CloudInstance *bool `json:"cloudInstance,omitempty"`
+	RampInstance *bool `json:"rampInstance,omitempty"`
 }
 
 // NewCloudResponse instantiates a new CloudResponse object
@@ -71,6 +72,38 @@ func (o *CloudResponse) SetCloudInstance(v bool) {
 	o.CloudInstance = &v
 }
 
+// GetRampInstance returns the RampInstance field value if set, zero value otherwise.
+func (o *CloudResponse) GetRampInstance() bool {
+	if o == nil || IsNil(o.RampInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.RampInstance
+}
+
+// GetRampInstanceOk returns a tuple with the RampInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetRampInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.RampInstance) {
+		return nil, false
+	}
+	return o.RampInstance, true
+}
+
+// HasRampInstance returns a boolean if a field has been set.
+func (o *CloudResponse) HasRampInstance() bool {
+	if o != nil && !IsNil(o.RampInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetRampInstance gets a reference to the given bool and assigns it to the RampInstance field.
+func (o *CloudResponse) SetRampInstance(v bool) {
+	o.RampInstance = &v
+}
+
 func (o CloudResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -83,6 +116,9 @@ func (o CloudResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CloudInstance) {
 		toSerialize["cloudInstance"] = o.CloudInstance
+	}
+	if !IsNil(o.RampInstance) {
+		toSerialize["rampInstance"] = o.RampInstance
 	}
 	return toSerialize, nil
 }

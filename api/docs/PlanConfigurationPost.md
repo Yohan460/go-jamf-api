@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UpdateAction** | **string** |  | 
 **VersionType** | **string** |  | 
-**SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [default to "NO_SPECIFIC_VERSION"]
+**SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version or custom version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [default to "NO_SPECIFIC_VERSION"]
+**BuildVersion** | Pointer to **NullableString** | Optional. Indicates the build version to update to. Only available when the version type is set to custom version. | [optional] 
 **MaxDeferrals** | Pointer to **int64** | Required when the provided updateAction is DOWNLOAD_INSTALL_ALLOW_DEFERRAL, not applicable to all managed software update plans | [optional] 
 **ForceInstallLocalDateTime** | Pointer to **NullableString** | Optional. Indicates the local date and time of the device to force update by. | [optional] 
 
@@ -94,6 +95,41 @@ SetSpecificVersion sets SpecificVersion field to given value.
 
 HasSpecificVersion returns a boolean if a field has been set.
 
+### GetBuildVersion
+
+`func (o *PlanConfigurationPost) GetBuildVersion() string`
+
+GetBuildVersion returns the BuildVersion field if non-nil, zero value otherwise.
+
+### GetBuildVersionOk
+
+`func (o *PlanConfigurationPost) GetBuildVersionOk() (*string, bool)`
+
+GetBuildVersionOk returns a tuple with the BuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildVersion
+
+`func (o *PlanConfigurationPost) SetBuildVersion(v string)`
+
+SetBuildVersion sets BuildVersion field to given value.
+
+### HasBuildVersion
+
+`func (o *PlanConfigurationPost) HasBuildVersion() bool`
+
+HasBuildVersion returns a boolean if a field has been set.
+
+### SetBuildVersionNil
+
+`func (o *PlanConfigurationPost) SetBuildVersionNil(b bool)`
+
+ SetBuildVersionNil sets the value for BuildVersion to be an explicit nil
+
+### UnsetBuildVersion
+`func (o *PlanConfigurationPost) UnsetBuildVersion()`
+
+UnsetBuildVersion ensures that no value is present for BuildVersion, not even an explicit nil
 ### GetMaxDeferrals
 
 `func (o *PlanConfigurationPost) GetMaxDeferrals() int64`

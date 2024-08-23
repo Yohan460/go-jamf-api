@@ -199,7 +199,7 @@ func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Sort(
 	return r
 }
 
-// Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, and sendNotificationWhenNoLongerAssigned. This param can be combined with paging and sorting.
+// Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, sendNotificationWhenNoLongerAssigned, siteId and siteName. This param can be combined with paging and sorting.
 func (r VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest) Filter(filter string) VolumePurchasingLocationsAPIV1VolumePurchasingLocationsGetRequest {
 	r.filter = &filter
 	return r

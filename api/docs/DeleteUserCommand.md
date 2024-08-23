@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **UserName** | Pointer to **string** |  | [optional] 
 **ForceDeletion** | Pointer to **bool** |  | [optional] 
 **DeleteAllUsers** | Pointer to **bool** |  | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewDeleteUserCommand
 
-`func NewDeleteUserCommand() *DeleteUserCommand`
+`func NewDeleteUserCommand(commandType MdmCommandType, ) *DeleteUserCommand`
 
 NewDeleteUserCommand instantiates a new DeleteUserCommand object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewDeleteUserCommandWithDefaults instantiates a new DeleteUserCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *DeleteUserCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *DeleteUserCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *DeleteUserCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetUserName
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **Guid** | Pointer to **string** | The unique identifier of the local administrator account. Must match the GUID of an administrator account that MDM created during Device Enrollment Program (DEP) enrollment. | [optional] 
 **Password** | Pointer to **string** | The new password for the local administrator account. | [optional] 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewSetAutoAdminPasswordCommand
 
-`func NewSetAutoAdminPasswordCommand() *SetAutoAdminPasswordCommand`
+`func NewSetAutoAdminPasswordCommand(commandType MdmCommandType, ) *SetAutoAdminPasswordCommand`
 
 NewSetAutoAdminPasswordCommand instantiates a new SetAutoAdminPasswordCommand object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewSetAutoAdminPasswordCommandWithDefaults instantiates a new SetAutoAdminPasswordCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *SetAutoAdminPasswordCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *SetAutoAdminPasswordCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *SetAutoAdminPasswordCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetGuid
 

@@ -4,17 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **PreserveDataPlan** | Pointer to **bool** | If true, preserve the data plan on an iPhone or iPad with eSIM functionality, if one exists. This value is available in iOS 11 and later. | [optional] [default to false]
 **DisallowProximitySetup** | Pointer to **bool** | If true, disable Proximity Setup on the next reboot and skip the pane in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS 14, don’t use this option with any other option. | [optional] [default to false]
 **Pin** | Pointer to **string** | The six-character PIN for Find My. This value is available in macOS 10.8 and later. | [optional] 
 **ObliterationBehavior** | Pointer to **string** | This key defines the fallback behavior for erasing a device. | [optional] 
-**ReturnToService** | Pointer to [**EraseDeviceCommandReturnToService**](EraseDeviceCommandReturnToService.md) |  | [optional] 
+**ReturnToService** | Pointer to [**EraseDeviceCommandAllOfReturnToService**](EraseDeviceCommandAllOfReturnToService.md) |  | [optional] 
 
 ## Methods
 
 ### NewEraseDeviceCommand
 
-`func NewEraseDeviceCommand() *EraseDeviceCommand`
+`func NewEraseDeviceCommand(commandType MdmCommandType, ) *EraseDeviceCommand`
 
 NewEraseDeviceCommand instantiates a new EraseDeviceCommand object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +29,26 @@ will change when the set of required properties is changed
 NewEraseDeviceCommandWithDefaults instantiates a new EraseDeviceCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *EraseDeviceCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *EraseDeviceCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *EraseDeviceCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetPreserveDataPlan
 
@@ -131,20 +152,20 @@ HasObliterationBehavior returns a boolean if a field has been set.
 
 ### GetReturnToService
 
-`func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandReturnToService`
+`func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandAllOfReturnToService`
 
 GetReturnToService returns the ReturnToService field if non-nil, zero value otherwise.
 
 ### GetReturnToServiceOk
 
-`func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandReturnToService, bool)`
+`func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandAllOfReturnToService, bool)`
 
 GetReturnToServiceOk returns a tuple with the ReturnToService field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturnToService
 
-`func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandReturnToService)`
+`func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandAllOfReturnToService)`
 
 SetReturnToService sets ReturnToService field to given value.
 

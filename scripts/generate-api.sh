@@ -31,7 +31,8 @@ openapi-generator generate \
     --git-repo-id "go-jamf-api" \
     --global-property=apiTests=false \
     --type-mappings=integer=int64 \
-    --additional-properties=packageName=api,enumClassPrefix=true,structPrefix=true,generateInterfaces=true,isGoSubmodule=true
+    --additional-properties=packageName=api,enumClassPrefix=true,structPrefix=true,generateInterfaces=true,isGoSubmodule=true \
+    --skip-validate-spec
 returncode=$?
 echo "Return code: $returncode"
 if [[ "${returncode}" != "0" ]]; then

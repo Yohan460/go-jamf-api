@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ## V2PatchSoftwareTitleConfigurationsIdExportReportGet
 
-> interface{} V2PatchSoftwareTitleConfigurationsIdExportReportGet(ctx, id).ColumnsToExport(columnsToExport).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Accept(accept).Execute()
+> interface{} V2PatchSoftwareTitleConfigurationsIdExportReportGet(ctx, id).ColumnsToExport(columnsToExport).Filter(filter).Accept(accept).Execute()
 
 Export Patch Reporting Data
 
@@ -530,15 +530,12 @@ import (
 func main() {
 	id := "id_example" // string | Patch Software Title Configurations identifier
 	columnsToExport := []string{"Inner_example"} // []string | List of column names to export (default to ["computerName","deviceId","username","operatingSystemVersion","lastContactTime","buildingName","departmentName","siteName","version"])
-	page := int64(56) // int64 |  (optional) (default to 0)
-	pageSize := int64(56) // int64 | Leave blank for full export (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version (optional) (default to ["computerName:asc"])
 	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: ==, != This param can be combined with paging and sorting. (optional) (default to "")
 	accept := "accept_example" // string | File (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet(context.Background(), id).ColumnsToExport(columnsToExport).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Accept(accept).Execute()
+	resp, r, err := apiClient.PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet(context.Background(), id).ColumnsToExport(columnsToExport).Filter(filter).Accept(accept).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PatchSoftwareTitleConfigurationsAPI.V2PatchSoftwareTitleConfigurationsIdExportReportGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -565,9 +562,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **columnsToExport** | **[]string** | List of column names to export | [default to [&quot;computerName&quot;,&quot;deviceId&quot;,&quot;username&quot;,&quot;operatingSystemVersion&quot;,&quot;lastContactTime&quot;,&quot;buildingName&quot;,&quot;departmentName&quot;,&quot;siteName&quot;,&quot;version&quot;]]
- **page** | **int64** |  | [default to 0]
- **pageSize** | **int64** | Leave blank for full export | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version | [default to [&quot;computerName:asc&quot;]]
  **filter** | **string** | Query in the RSQL format, allowing to filter Patch Report collection on version equality only. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: version. Comparators allowed in the query: &#x3D;&#x3D;, !&#x3D; This param can be combined with paging and sorting. | [default to &quot;&quot;]
  **accept** | **string** | File | 
 

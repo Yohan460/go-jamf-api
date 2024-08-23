@@ -23,7 +23,7 @@ type MobileDeviceDetailsGetV2 struct {
 	Id *string `json:"id,omitempty"`
 	// Mobile device name.
 	Name *string `json:"name,omitempty"`
-	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in.
+	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in.
 	EnforceName *bool `json:"enforceName,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
 	LastInventoryUpdateTimestamp *time.Time `json:"lastInventoryUpdateTimestamp,omitempty"`
@@ -51,10 +51,12 @@ type MobileDeviceDetailsGetV2 struct {
 	Site *V1Site `json:"site,omitempty"`
 	ExtensionAttributes []ExtensionAttributeV2 `json:"extensionAttributes,omitempty"`
 	Location *LocationV2 `json:"location,omitempty"`
-	// Based on the value of this either ios, appleTv, android objects will be populated.
+	// Based on the value of this either iOS, tvOS, watch or visionOS objects will be populated.
 	Type *string `json:"type,omitempty"`
-	Ios *IosDetailsV2 `json:"ios,omitempty"`
+	Ios *DetailsV2 `json:"ios,omitempty"`
 	Tvos *TvOsDetails `json:"tvos,omitempty"`
+	Watchos *WatchOsDetailsV2 `json:"watchos,omitempty"`
+	Visionos *DetailsV2 `json:"visionos,omitempty"`
 	ManagementId *string `json:"managementId,omitempty"`
 }
 
@@ -972,9 +974,9 @@ func (o *MobileDeviceDetailsGetV2) SetType(v string) {
 }
 
 // GetIos returns the Ios field value if set, zero value otherwise.
-func (o *MobileDeviceDetailsGetV2) GetIos() IosDetailsV2 {
+func (o *MobileDeviceDetailsGetV2) GetIos() DetailsV2 {
 	if o == nil || IsNil(o.Ios) {
-		var ret IosDetailsV2
+		var ret DetailsV2
 		return ret
 	}
 	return *o.Ios
@@ -982,7 +984,7 @@ func (o *MobileDeviceDetailsGetV2) GetIos() IosDetailsV2 {
 
 // GetIosOk returns a tuple with the Ios field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceDetailsGetV2) GetIosOk() (*IosDetailsV2, bool) {
+func (o *MobileDeviceDetailsGetV2) GetIosOk() (*DetailsV2, bool) {
 	if o == nil || IsNil(o.Ios) {
 		return nil, false
 	}
@@ -998,8 +1000,8 @@ func (o *MobileDeviceDetailsGetV2) HasIos() bool {
 	return false
 }
 
-// SetIos gets a reference to the given IosDetailsV2 and assigns it to the Ios field.
-func (o *MobileDeviceDetailsGetV2) SetIos(v IosDetailsV2) {
+// SetIos gets a reference to the given DetailsV2 and assigns it to the Ios field.
+func (o *MobileDeviceDetailsGetV2) SetIos(v DetailsV2) {
 	o.Ios = &v
 }
 
@@ -1033,6 +1035,70 @@ func (o *MobileDeviceDetailsGetV2) HasTvos() bool {
 // SetTvos gets a reference to the given TvOsDetails and assigns it to the Tvos field.
 func (o *MobileDeviceDetailsGetV2) SetTvos(v TvOsDetails) {
 	o.Tvos = &v
+}
+
+// GetWatchos returns the Watchos field value if set, zero value otherwise.
+func (o *MobileDeviceDetailsGetV2) GetWatchos() WatchOsDetailsV2 {
+	if o == nil || IsNil(o.Watchos) {
+		var ret WatchOsDetailsV2
+		return ret
+	}
+	return *o.Watchos
+}
+
+// GetWatchosOk returns a tuple with the Watchos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceDetailsGetV2) GetWatchosOk() (*WatchOsDetailsV2, bool) {
+	if o == nil || IsNil(o.Watchos) {
+		return nil, false
+	}
+	return o.Watchos, true
+}
+
+// HasWatchos returns a boolean if a field has been set.
+func (o *MobileDeviceDetailsGetV2) HasWatchos() bool {
+	if o != nil && !IsNil(o.Watchos) {
+		return true
+	}
+
+	return false
+}
+
+// SetWatchos gets a reference to the given WatchOsDetailsV2 and assigns it to the Watchos field.
+func (o *MobileDeviceDetailsGetV2) SetWatchos(v WatchOsDetailsV2) {
+	o.Watchos = &v
+}
+
+// GetVisionos returns the Visionos field value if set, zero value otherwise.
+func (o *MobileDeviceDetailsGetV2) GetVisionos() DetailsV2 {
+	if o == nil || IsNil(o.Visionos) {
+		var ret DetailsV2
+		return ret
+	}
+	return *o.Visionos
+}
+
+// GetVisionosOk returns a tuple with the Visionos field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceDetailsGetV2) GetVisionosOk() (*DetailsV2, bool) {
+	if o == nil || IsNil(o.Visionos) {
+		return nil, false
+	}
+	return o.Visionos, true
+}
+
+// HasVisionos returns a boolean if a field has been set.
+func (o *MobileDeviceDetailsGetV2) HasVisionos() bool {
+	if o != nil && !IsNil(o.Visionos) {
+		return true
+	}
+
+	return false
+}
+
+// SetVisionos gets a reference to the given DetailsV2 and assigns it to the Visionos field.
+func (o *MobileDeviceDetailsGetV2) SetVisionos(v DetailsV2) {
+	o.Visionos = &v
 }
 
 // GetManagementId returns the ManagementId field value if set, zero value otherwise.
@@ -1166,6 +1232,12 @@ func (o MobileDeviceDetailsGetV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Tvos) {
 		toSerialize["tvos"] = o.Tvos
+	}
+	if !IsNil(o.Watchos) {
+		toSerialize["watchos"] = o.Watchos
+	}
+	if !IsNil(o.Visionos) {
+		toSerialize["visionos"] = o.Visionos
 	}
 	if !IsNil(o.ManagementId) {
 		toSerialize["managementId"] = o.ManagementId

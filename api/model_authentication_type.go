@@ -30,6 +30,7 @@ const (
 	AUTHENTICATIONTYPE_SYSTEM_ACCOUNT AuthenticationType = "SYSTEM_ACCOUNT"
 	AUTHENTICATIONTYPE_USER_ENROLLMENT AuthenticationType = "USER_ENROLLMENT"
 	AUTHENTICATIONTYPE_CLIENT_CREDENTIALS AuthenticationType = "CLIENT_CREDENTIALS"
+	AUTHENTICATIONTYPE_M2_M AuthenticationType = "M2M"
 )
 
 // All allowed values of AuthenticationType enum
@@ -44,6 +45,7 @@ var AllowedAuthenticationTypeEnumValues = []AuthenticationType{
 	"SYSTEM_ACCOUNT",
 	"USER_ENROLLMENT",
 	"CLIENT_CREDENTIALS",
+	"M2M",
 }
 
 func (v *AuthenticationType) UnmarshalJSON(src []byte) error {

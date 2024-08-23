@@ -5,14 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MobileDeviceId** | Pointer to **string** |  | [optional] [readonly] 
-**DeviceType** | **string** | Based on the value of this type either ios or appleTv objects will be populated. | 
+**DeviceType** | **string** | Based on the value of this type either ios, appleTv, watch or visionOS objects will be populated. | 
 **Hardware** | Pointer to [**MobileDeviceHardware**](MobileDeviceHardware.md) |  | [optional] 
 **UserAndLocation** | Pointer to [**MobileDeviceUserAndLocation**](MobileDeviceUserAndLocation.md) |  | [optional] 
-**Purchasing** | Pointer to [**MobileDevicePurchasing**](MobileDevicePurchasing.md) |  | [optional] 
 **Applications** | Pointer to [**[]MobileDeviceApplicationInventoryDetail**](MobileDeviceApplicationInventoryDetail.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificate**](MobileDeviceCertificate.md) |  | [optional] 
 **Profiles** | Pointer to [**[]MobileDeviceProfile**](MobileDeviceProfile.md) |  | [optional] 
-**UserProfiles** | Pointer to [**[]MobileDeviceUserProfile**](MobileDeviceUserProfile.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]MobileDeviceExtensionAttribute**](MobileDeviceExtensionAttribute.md) |  | [optional] 
 
 ## Methods
@@ -129,31 +127,6 @@ SetUserAndLocation sets UserAndLocation field to given value.
 
 HasUserAndLocation returns a boolean if a field has been set.
 
-### GetPurchasing
-
-`func (o *MobileDeviceInventory) GetPurchasing() MobileDevicePurchasing`
-
-GetPurchasing returns the Purchasing field if non-nil, zero value otherwise.
-
-### GetPurchasingOk
-
-`func (o *MobileDeviceInventory) GetPurchasingOk() (*MobileDevicePurchasing, bool)`
-
-GetPurchasingOk returns a tuple with the Purchasing field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPurchasing
-
-`func (o *MobileDeviceInventory) SetPurchasing(v MobileDevicePurchasing)`
-
-SetPurchasing sets Purchasing field to given value.
-
-### HasPurchasing
-
-`func (o *MobileDeviceInventory) HasPurchasing() bool`
-
-HasPurchasing returns a boolean if a field has been set.
-
 ### GetApplications
 
 `func (o *MobileDeviceInventory) GetApplications() []MobileDeviceApplicationInventoryDetail`
@@ -228,31 +201,6 @@ SetProfiles sets Profiles field to given value.
 `func (o *MobileDeviceInventory) HasProfiles() bool`
 
 HasProfiles returns a boolean if a field has been set.
-
-### GetUserProfiles
-
-`func (o *MobileDeviceInventory) GetUserProfiles() []MobileDeviceUserProfile`
-
-GetUserProfiles returns the UserProfiles field if non-nil, zero value otherwise.
-
-### GetUserProfilesOk
-
-`func (o *MobileDeviceInventory) GetUserProfilesOk() (*[]MobileDeviceUserProfile, bool)`
-
-GetUserProfilesOk returns a tuple with the UserProfiles field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserProfiles
-
-`func (o *MobileDeviceInventory) SetUserProfiles(v []MobileDeviceUserProfile)`
-
-SetUserProfiles sets UserProfiles field to given value.
-
-### HasUserProfiles
-
-`func (o *MobileDeviceInventory) HasUserProfiles() bool`
-
-HasUserProfiles returns a boolean if a field has been set.
 
 ### GetExtensionAttributes
 

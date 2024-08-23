@@ -22,6 +22,20 @@ import (
 type CsaAPI interface {
 
 	/*
+	V1CsaTenantIdGet Returns the CSA tenant ID.
+
+	Returns the CSA tenant ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CsaAPIV1CsaTenantIdGetRequest
+	*/
+	V1CsaTenantIdGet(ctx context.Context) CsaAPIV1CsaTenantIdGetRequest
+
+	// V1CsaTenantIdGetExecute executes the request
+	//  @return CsaTenantIdInfo
+	V1CsaTenantIdGetExecute(r CsaAPIV1CsaTenantIdGetRequest) (*CsaTenantIdInfo, *http.Response, error)
+
+	/*
 	V1CsaTokenDelete Delete the CSA token exchange - This will disable Jamf Pro's ability to authenticate with cloud-hosted services 
 
 	Delete the CSA token exchange - This will disable Jamf Pro's ability to authenticate with cloud-hosted services
@@ -49,40 +63,109 @@ type CsaAPI interface {
 	// V1CsaTokenGetExecute executes the request
 	//  @return CsaToken
 	V1CsaTokenGetExecute(r CsaAPIV1CsaTokenGetRequest) (*CsaToken, *http.Response, error)
-
-	/*
-	V1CsaTokenPost Initialize the CSA token exchange 
-
-	Initializes the CSA token exchange - This will allow Jamf Pro to authenticate with cloud-hosted services
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CsaAPIV1CsaTokenPostRequest
-	*/
-	V1CsaTokenPost(ctx context.Context) CsaAPIV1CsaTokenPostRequest
-
-	// V1CsaTokenPostExecute executes the request
-	//  @return CsaToken
-	V1CsaTokenPostExecute(r CsaAPIV1CsaTokenPostRequest) (*CsaToken, *http.Response, error)
-
-	/*
-	V1CsaTokenPut Re-initialize the CSA token exchange with new credentials 
-
-	Re-initialize the CSA token exchange with new credentials
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CsaAPIV1CsaTokenPutRequest
-	*/
-	V1CsaTokenPut(ctx context.Context) CsaAPIV1CsaTokenPutRequest
-
-	// V1CsaTokenPutExecute executes the request
-	//  @return CsaToken
-	V1CsaTokenPutExecute(r CsaAPIV1CsaTokenPutRequest) (*CsaToken, *http.Response, error)
 }
 
 // CsaAPIService CsaAPI service
 type CsaAPIService service
+
+type CsaAPIV1CsaTenantIdGetRequest struct {
+	ctx context.Context
+	ApiService CsaAPI
+}
+
+func (r CsaAPIV1CsaTenantIdGetRequest) Execute() (*CsaTenantIdInfo, *http.Response, error) {
+	return r.ApiService.V1CsaTenantIdGetExecute(r)
+}
+
+/*
+V1CsaTenantIdGet Returns the CSA tenant ID.
+
+Returns the CSA tenant ID.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CsaAPIV1CsaTenantIdGetRequest
+*/
+func (a *CsaAPIService) V1CsaTenantIdGet(ctx context.Context) CsaAPIV1CsaTenantIdGetRequest {
+	return CsaAPIV1CsaTenantIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CsaTenantIdInfo
+func (a *CsaAPIService) V1CsaTenantIdGetExecute(r CsaAPIV1CsaTenantIdGetRequest) (*CsaTenantIdInfo, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CsaTenantIdInfo
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTenantIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/csa/tenant-id"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CsaAPIV1CsaTokenDeleteRequest struct {
 	ctx context.Context
@@ -267,266 +350,6 @@ func (a *CsaAPIService) V1CsaTokenGetExecute(r CsaAPIV1CsaTokenGetRequest) (*Csa
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CsaAPIV1CsaTokenPostRequest struct {
-	ctx context.Context
-	ApiService CsaAPI
-	jamfNationCredentials *JamfNationCredentials
-}
-
-// Jamf Nation username and password 
-func (r CsaAPIV1CsaTokenPostRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) CsaAPIV1CsaTokenPostRequest {
-	r.jamfNationCredentials = &jamfNationCredentials
-	return r
-}
-
-func (r CsaAPIV1CsaTokenPostRequest) Execute() (*CsaToken, *http.Response, error) {
-	return r.ApiService.V1CsaTokenPostExecute(r)
-}
-
-/*
-V1CsaTokenPost Initialize the CSA token exchange 
-
-Initializes the CSA token exchange - This will allow Jamf Pro to authenticate with cloud-hosted services
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CsaAPIV1CsaTokenPostRequest
-*/
-func (a *CsaAPIService) V1CsaTokenPost(ctx context.Context) CsaAPIV1CsaTokenPostRequest {
-	return CsaAPIV1CsaTokenPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return CsaToken
-func (a *CsaAPIService) V1CsaTokenPostExecute(r CsaAPIV1CsaTokenPostRequest) (*CsaToken, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsaToken
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/csa/token"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.jamfNationCredentials
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type CsaAPIV1CsaTokenPutRequest struct {
-	ctx context.Context
-	ApiService CsaAPI
-	jamfNationCredentials *JamfNationCredentials
-}
-
-// Jamf Nation username and password 
-func (r CsaAPIV1CsaTokenPutRequest) JamfNationCredentials(jamfNationCredentials JamfNationCredentials) CsaAPIV1CsaTokenPutRequest {
-	r.jamfNationCredentials = &jamfNationCredentials
-	return r
-}
-
-func (r CsaAPIV1CsaTokenPutRequest) Execute() (*CsaToken, *http.Response, error) {
-	return r.ApiService.V1CsaTokenPutExecute(r)
-}
-
-/*
-V1CsaTokenPut Re-initialize the CSA token exchange with new credentials 
-
-Re-initialize the CSA token exchange with new credentials
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CsaAPIV1CsaTokenPutRequest
-*/
-func (a *CsaAPIService) V1CsaTokenPut(ctx context.Context) CsaAPIV1CsaTokenPutRequest {
-	return CsaAPIV1CsaTokenPutRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return CsaToken
-func (a *CsaAPIService) V1CsaTokenPutExecute(r CsaAPIV1CsaTokenPutRequest) (*CsaToken, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CsaToken
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CsaAPIService.V1CsaTokenPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/csa/token"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.jamfNationCredentials
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ApiError

@@ -24,95 +24,6 @@ import (
 type MobileDevicesAPI interface {
 
 	/*
-	V1MobileDevicesGet Get Mobile Device objects 
-
-	Gets Mobile Device objects.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicesAPIV1MobileDevicesGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicesGet(ctx context.Context) MobileDevicesAPIV1MobileDevicesGetRequest
-
-	// V1MobileDevicesGetExecute executes the request
-	//  @return []MobileDevice
-	// Deprecated
-	V1MobileDevicesGetExecute(r MobileDevicesAPIV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error)
-
-	/*
-	V1MobileDevicesIdDetailGet Get Mobile Device 
-
-	Get MobileDevice
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id instance id of mobile device record
-	@return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicesIdDetailGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
-
-	// V1MobileDevicesIdDetailGetExecute executes the request
-	//  @return MobileDeviceDetails
-	// Deprecated
-	V1MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error)
-
-	/*
-	V1MobileDevicesIdGet Get Mobile Device 
-
-	Get MobileDevice
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id instance id of mobile device record
-	@return MobileDevicesAPIV1MobileDevicesIdGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicesIdGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdGetRequest
-
-	// V1MobileDevicesIdGetExecute executes the request
-	//  @return MobileDevice
-	// Deprecated
-	V1MobileDevicesIdGetExecute(r MobileDevicesAPIV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error)
-
-	/*
-	V1MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
-
-	Updates fields on a mobile device that are allowed to be modified by users.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id instance id of mobile device record
-	@return MobileDevicesAPIV1MobileDevicesIdPatchRequest
-
-	Deprecated
-	*/
-	V1MobileDevicesIdPatch(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdPatchRequest
-
-	// V1MobileDevicesIdPatchExecute executes the request
-	//  @return MobileDeviceDetails
-	// Deprecated
-	V1MobileDevicesIdPatchExecute(r MobileDevicesAPIV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error)
-
-	/*
-	V1SearchMobileDevicesPost Search Mobile Devices 
-
-	Search Mobile Devices
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicesAPIV1SearchMobileDevicesPostRequest
-
-	Deprecated
-	*/
-	V1SearchMobileDevicesPost(ctx context.Context) MobileDevicesAPIV1SearchMobileDevicesPostRequest
-
-	// V1SearchMobileDevicesPostExecute executes the request
-	//  @return MobileDeviceSearchResults
-	// Deprecated
-	V1SearchMobileDevicesPostExecute(r MobileDevicesAPIV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error)
-
-	/*
 	V2MobileDevicesDetailGet Return paginated Mobile Device Inventory records
 
 	Return paginated Mobile Device Inventory records
@@ -172,6 +83,21 @@ type MobileDevicesAPI interface {
 	V2MobileDevicesIdGetExecute(r MobileDevicesAPIV2MobileDevicesIdGetRequest) (*MobileDeviceV2, *http.Response, error)
 
 	/*
+	V2MobileDevicesIdPairedDevicesGet Return paginated Mobile Device Inventory records of all paired devices for the device 
+
+	Return paginated Mobile Device Inventory records of all paired devices for the device
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile device record
+	@return MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest
+	*/
+	V2MobileDevicesIdPairedDevicesGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest
+
+	// V2MobileDevicesIdPairedDevicesGetExecute executes the request
+	//  @return MobileDeviceInventorySearchResults
+	V2MobileDevicesIdPairedDevicesGetExecute(r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) (*MobileDeviceInventorySearchResults, *http.Response, error)
+
+	/*
 	V2MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
 
 	Updates fields on a mobile device that are allowed to be modified by users.
@@ -189,548 +115,6 @@ type MobileDevicesAPI interface {
 
 // MobileDevicesAPIService MobileDevicesAPI service
 type MobileDevicesAPIService service
-
-type MobileDevicesAPIV1MobileDevicesGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicesAPI
-}
-
-func (r MobileDevicesAPIV1MobileDevicesGetRequest) Execute() ([]MobileDevice, *http.Response, error) {
-	return r.ApiService.V1MobileDevicesGetExecute(r)
-}
-
-/*
-V1MobileDevicesGet Get Mobile Device objects 
-
-Gets Mobile Device objects.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicesAPIV1MobileDevicesGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicesAPIService) V1MobileDevicesGet(ctx context.Context) MobileDevicesAPIV1MobileDevicesGetRequest {
-	return MobileDevicesAPIV1MobileDevicesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []MobileDevice
-// Deprecated
-func (a *MobileDevicesAPIService) V1MobileDevicesGetExecute(r MobileDevicesAPIV1MobileDevicesGetRequest) ([]MobileDevice, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []MobileDevice
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-devices"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicesAPIV1MobileDevicesIdDetailGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicesAPI
-	id int64
-}
-
-func (r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
-	return r.ApiService.V1MobileDevicesIdDetailGetExecute(r)
-}
-
-/*
-V1MobileDevicesIdDetailGet Get Mobile Device 
-
-Get MobileDevice
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id instance id of mobile device record
- @return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdDetailGetRequest {
-	return MobileDevicesAPIV1MobileDevicesIdDetailGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return MobileDeviceDetails
-// Deprecated
-func (a *MobileDevicesAPIService) V1MobileDevicesIdDetailGetExecute(r MobileDevicesAPIV1MobileDevicesIdDetailGetRequest) (*MobileDeviceDetails, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MobileDeviceDetails
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdDetailGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-devices/{id}/detail"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicesAPIV1MobileDevicesIdGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicesAPI
-	id int64
-}
-
-func (r MobileDevicesAPIV1MobileDevicesIdGetRequest) Execute() (*MobileDevice, *http.Response, error) {
-	return r.ApiService.V1MobileDevicesIdGetExecute(r)
-}
-
-/*
-V1MobileDevicesIdGet Get Mobile Device 
-
-Get MobileDevice
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id instance id of mobile device record
- @return MobileDevicesAPIV1MobileDevicesIdGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicesAPIService) V1MobileDevicesIdGet(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdGetRequest {
-	return MobileDevicesAPIV1MobileDevicesIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return MobileDevice
-// Deprecated
-func (a *MobileDevicesAPIService) V1MobileDevicesIdGetExecute(r MobileDevicesAPIV1MobileDevicesIdGetRequest) (*MobileDevice, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MobileDevice
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicesAPIV1MobileDevicesIdPatchRequest struct {
-	ctx context.Context
-	ApiService MobileDevicesAPI
-	id int64
-	updateMobileDevice *UpdateMobileDevice
-}
-
-func (r MobileDevicesAPIV1MobileDevicesIdPatchRequest) UpdateMobileDevice(updateMobileDevice UpdateMobileDevice) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
-	r.updateMobileDevice = &updateMobileDevice
-	return r
-}
-
-func (r MobileDevicesAPIV1MobileDevicesIdPatchRequest) Execute() (*MobileDeviceDetails, *http.Response, error) {
-	return r.ApiService.V1MobileDevicesIdPatchExecute(r)
-}
-
-/*
-V1MobileDevicesIdPatch Update fields on a mobile device that are allowed to be modified by users 
-
-Updates fields on a mobile device that are allowed to be modified by users.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id instance id of mobile device record
- @return MobileDevicesAPIV1MobileDevicesIdPatchRequest
-
-Deprecated
-*/
-func (a *MobileDevicesAPIService) V1MobileDevicesIdPatch(ctx context.Context, id int64) MobileDevicesAPIV1MobileDevicesIdPatchRequest {
-	return MobileDevicesAPIV1MobileDevicesIdPatchRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return MobileDeviceDetails
-// Deprecated
-func (a *MobileDevicesAPIService) V1MobileDevicesIdPatchExecute(r MobileDevicesAPIV1MobileDevicesIdPatchRequest) (*MobileDeviceDetails, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MobileDeviceDetails
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1MobileDevicesIdPatch")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-devices/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.updateMobileDevice == nil {
-		return localVarReturnValue, nil, reportError("updateMobileDevice is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateMobileDevice
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicesAPIV1SearchMobileDevicesPostRequest struct {
-	ctx context.Context
-	ApiService MobileDevicesAPI
-	mobileDeviceSearchParams *MobileDeviceSearchParams
-}
-
-func (r MobileDevicesAPIV1SearchMobileDevicesPostRequest) MobileDeviceSearchParams(mobileDeviceSearchParams MobileDeviceSearchParams) MobileDevicesAPIV1SearchMobileDevicesPostRequest {
-	r.mobileDeviceSearchParams = &mobileDeviceSearchParams
-	return r
-}
-
-func (r MobileDevicesAPIV1SearchMobileDevicesPostRequest) Execute() (*MobileDeviceSearchResults, *http.Response, error) {
-	return r.ApiService.V1SearchMobileDevicesPostExecute(r)
-}
-
-/*
-V1SearchMobileDevicesPost Search Mobile Devices 
-
-Search Mobile Devices
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicesAPIV1SearchMobileDevicesPostRequest
-
-Deprecated
-*/
-func (a *MobileDevicesAPIService) V1SearchMobileDevicesPost(ctx context.Context) MobileDevicesAPIV1SearchMobileDevicesPostRequest {
-	return MobileDevicesAPIV1SearchMobileDevicesPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return MobileDeviceSearchResults
-// Deprecated
-func (a *MobileDevicesAPIService) V1SearchMobileDevicesPostExecute(r MobileDevicesAPIV1SearchMobileDevicesPostRequest) (*MobileDeviceSearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MobileDeviceSearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V1SearchMobileDevicesPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/search-mobile-devices"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.mobileDeviceSearchParams
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
 
 type MobileDevicesAPIV2MobileDevicesDetailGetRequest struct {
 	ctx context.Context
@@ -764,7 +148,7 @@ func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Sort(sort []string) Mob
 	return r
 }
 
-// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;exchangeDeviceId&#x60;,  &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;,  &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;,  &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;,  &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;,  &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;,  &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;,  &#x60;roaming&#x60;  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
+// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;exchangeDeviceId&#x60;,  &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;,  &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;,  &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;,  &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;,  &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;,  &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;,  &#x60;roaming&#x60;  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
 func (r MobileDevicesAPIV2MobileDevicesDetailGetRequest) Filter(filter string) MobileDevicesAPIV2MobileDevicesDetailGetRequest {
 	r.filter = &filter
 	return r
@@ -1265,6 +649,188 @@ func (a *MobileDevicesAPIService) V2MobileDevicesIdGetExecute(r MobileDevicesAPI
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicesAPI
+	id string
+	section *[]MobileDeviceSection
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+// section of mobile device details, if not specified, Paired Devices section data is returned. Multiple section parameters are supported, e.g. section&#x3D;GENERAL&amp;section&#x3D;HARDWARE
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) Section(section []MobileDeviceSection) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	r.section = &section
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) Page(page int64) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) PageSize(pageSize int64) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is displayName:asc. Multiple sort criteria are supported and must be separated with a comma.    Fields allowed in the sort: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;, &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;, &#x60;lostModeEnabledDate&#x60;, &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;enrollmentSessionTokenValid&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastEnrolledDate&#x60;, &#x60;lastCloudBackupDate&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;mdmProfileExpirationDate&#x60;, &#x60;model&#x60;, &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;serialNumber&#x60;, &#x60;supervised&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;, &#x60;wifiMacAddress&#x60;, &#x60;deviceOwnershipType&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;leaseExpirationDate&#x60;,&#x60;lifeExpectancyYears&#x60;, &#x60;poDate&#x60;, &#x60;poNumber&#x60;, &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;warrantyExpirationDate&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;, &#x60;fileEncryptionCapable&#x60;, &#x60;hardwareEncryptionSupported&#x60;, &#x60;jailbreakStatus&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;cellularTechnology&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;, &#x60;voiceRoamingEnabled&#x60;, &#x60;roaming&#x60;            Example: &#x60;sort&#x3D;displayName:desc,username:asc&#x60; 
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) Sort(sort []string) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.            Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;, &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;, &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;, &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;serialNumber&#x60;, &#x60;supervised&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;, &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;, &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;, &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;, &#x60;roaming&#x60;            This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) Filter(filter string) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) Execute() (*MobileDeviceInventorySearchResults, *http.Response, error) {
+	return r.ApiService.V2MobileDevicesIdPairedDevicesGetExecute(r)
+}
+
+/*
+V2MobileDevicesIdPairedDevicesGet Return paginated Mobile Device Inventory records of all paired devices for the device 
+
+Return paginated Mobile Device Inventory records of all paired devices for the device
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of mobile device record
+ @return MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest
+*/
+func (a *MobileDevicesAPIService) V2MobileDevicesIdPairedDevicesGet(ctx context.Context, id string) MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest {
+	return MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return MobileDeviceInventorySearchResults
+func (a *MobileDevicesAPIService) V2MobileDevicesIdPairedDevicesGetExecute(r MobileDevicesAPIV2MobileDevicesIdPairedDevicesGetRequest) (*MobileDeviceInventorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MobileDeviceInventorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicesAPIService.V2MobileDevicesIdPairedDevicesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/mobile-devices/{id}/paired-devices"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.section != nil {
+		t := *r.section
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
+		}
+	} else {
+		defaultValue := []MobileDeviceSection{"GENERAL"}
+		r.section = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"displayName:asc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

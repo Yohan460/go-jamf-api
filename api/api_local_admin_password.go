@@ -133,7 +133,7 @@ type LocalAdminPasswordAPI interface {
 	/*
 	V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet Get LAPS password viewed history.
 
-	Get the full history of all local admin passwords for a specific username on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id and username as the path parameters.
+	Get the full history of all local admin passwords for a specific username on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id and username as the path parameters. If multiple accounts with the same username exist, the MDM source will be selected by default.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientManagementId client management id of target device.
@@ -145,6 +145,57 @@ type LocalAdminPasswordAPI interface {
 	// V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGetExecute executes the request
 	//  @return LapsPasswordAuditsResultsV2
 	V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameAuditGetRequest) (*LapsPasswordAuditsResultsV2, *http.Response, error)
+
+	/*
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet Get LAPS password viewed history.
+
+	Get the full history of all local admin passwords for a specific user guid on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id, username, and user guid as the path parameters.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientManagementId client management id of target device.
+	@param username user name to view audit information for
+	@param guid user guid to view audit information for
+	@return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest
+	*/
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest
+
+	// V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetExecute executes the request
+	//  @return LapsPasswordAuditsResultsV2
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest) (*LapsPasswordAuditsResultsV2, *http.Response, error)
+
+	/*
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet Get LAPS historical records for target device and user guid.
+
+	Get the full history of all for a specific user guid on a target device. History will include date created, date last seen, expiration time, and rotational status. Get audit history by using the client management id, username, and user guid as the path parameters.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientManagementId client management id of target device.
+	@param username user name to view history for
+	@param guid user guid to view history for
+	@return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest
+	*/
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest
+
+	// V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetExecute executes the request
+	//  @return LapsHistoryResponse
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest) (*LapsHistoryResponse, *http.Response, error)
+
+	/*
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet Get current LAPS password for specified user guid on a client.
+
+	Get current LAPS password for specified client by using the client management id, username, and user guid as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientManagementId client management id of target device.
+	@param username user name for the account
+	@param guid user guid for the account
+	@return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest
+	*/
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest
+
+	// V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetExecute executes the request
+	//  @return LapsPasswordResponseV2
+	V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest) (*LapsPasswordResponseV2, *http.Response, error)
 
 	/*
 	V2LocalAdminPasswordClientManagementIdAccountUsernameHistoryGet Get LAPS historical records for target device and username.
@@ -165,7 +216,7 @@ type LocalAdminPasswordAPI interface {
 	/*
 	V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet Get current LAPS password for specified username on a client.
 
-	Get current LAPS password for specified client by using the client management id and username as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings.
+	Get current LAPS password for specified client by using the client management id and username as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings. If multiple accounts with the same username exist, the MDM source will be selected by default.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clientManagementId client management id of target device.
@@ -192,6 +243,21 @@ type LocalAdminPasswordAPI interface {
 	// V2LocalAdminPasswordClientManagementIdAccountsGetExecute executes the request
 	//  @return LapsUserResultsV2
 	V2LocalAdminPasswordClientManagementIdAccountsGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountsGetRequest) (*LapsUserResultsV2, *http.Response, error)
+
+	/*
+	V2LocalAdminPasswordClientManagementIdHistoryGet Get LAPS password viewed history, and rotation history.
+
+	Get the full history of all local admin passwords for all accounts for a specific management ID. History will include password, who viewed the password and when it was viewed. This will include rotation history as well.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clientManagementId client management id of target device.
+	@return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest
+	*/
+	V2LocalAdminPasswordClientManagementIdHistoryGet(ctx context.Context, clientManagementId string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest
+
+	// V2LocalAdminPasswordClientManagementIdHistoryGetExecute executes the request
+	//  @return LapsAccountManagementHistoryResponse
+	V2LocalAdminPasswordClientManagementIdHistoryGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest) (*LapsAccountManagementHistoryResponse, *http.Response, error)
 
 	/*
 	V2LocalAdminPasswordClientManagementIdSetPasswordPut Set the LAPS password for a device.
@@ -1032,7 +1098,7 @@ func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUserna
 /*
 V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet Get LAPS password viewed history.
 
-Get the full history of all local admin passwords for a specific username on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id and username as the path parameters.
+Get the full history of all local admin passwords for a specific username on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id and username as the path parameters. If multiple accounts with the same username exist, the MDM source will be selected by default.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param clientManagementId client management id of target device.
@@ -1066,6 +1132,402 @@ func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAcc
 	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/account/{username}/audit"
 	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest struct {
+	ctx context.Context
+	ApiService LocalAdminPasswordAPI
+	clientManagementId string
+	username string
+	guid string
+}
+
+func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest) Execute() (*LapsPasswordAuditsResultsV2, *http.Response, error) {
+	return r.ApiService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetExecute(r)
+}
+
+/*
+V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet Get LAPS password viewed history.
+
+Get the full history of all local admin passwords for a specific user guid on a target device. History will include password, who viewed the password and when it was viewed. Get audit history by using the client management id, username, and user guid as the path parameters.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param clientManagementId client management id of target device.
+ @param username user name to view audit information for
+ @param guid user guid to view audit information for
+ @return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest
+*/
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest {
+	return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		clientManagementId: clientManagementId,
+		username: username,
+		guid: guid,
+	}
+}
+
+// Execute executes the request
+//  @return LapsPasswordAuditsResultsV2
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGetRequest) (*LapsPasswordAuditsResultsV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LapsPasswordAuditsResultsV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalAdminPasswordAPIService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/audit"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"guid"+"}", url.PathEscape(parameterValueToString(r.guid, "guid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest struct {
+	ctx context.Context
+	ApiService LocalAdminPasswordAPI
+	clientManagementId string
+	username string
+	guid string
+}
+
+func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest) Execute() (*LapsHistoryResponse, *http.Response, error) {
+	return r.ApiService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetExecute(r)
+}
+
+/*
+V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet Get LAPS historical records for target device and user guid.
+
+Get the full history of all for a specific user guid on a target device. History will include date created, date last seen, expiration time, and rotational status. Get audit history by using the client management id, username, and user guid as the path parameters.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param clientManagementId client management id of target device.
+ @param username user name to view history for
+ @param guid user guid to view history for
+ @return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest
+*/
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest {
+	return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		clientManagementId: clientManagementId,
+		username: username,
+		guid: guid,
+	}
+}
+
+// Execute executes the request
+//  @return LapsHistoryResponse
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGetRequest) (*LapsHistoryResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LapsHistoryResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalAdminPasswordAPIService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"guid"+"}", url.PathEscape(parameterValueToString(r.guid, "guid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest struct {
+	ctx context.Context
+	ApiService LocalAdminPasswordAPI
+	clientManagementId string
+	username string
+	guid string
+}
+
+func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest) Execute() (*LapsPasswordResponseV2, *http.Response, error) {
+	return r.ApiService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetExecute(r)
+}
+
+/*
+V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet Get current LAPS password for specified user guid on a client.
+
+Get current LAPS password for specified client by using the client management id, username, and user guid as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param clientManagementId client management id of target device.
+ @param username user name for the account
+ @param guid user guid for the account
+ @return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest
+*/
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet(ctx context.Context, clientManagementId string, username string, guid string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest {
+	return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		clientManagementId: clientManagementId,
+		username: username,
+		guid: guid,
+	}
+}
+
+// Execute executes the request
+//  @return LapsPasswordResponseV2
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGetRequest) (*LapsPasswordResponseV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LapsPasswordResponseV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalAdminPasswordAPIService.V2LocalAdminPasswordClientManagementIdAccountUsernameGuidPasswordGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/password"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(parameterValueToString(r.username, "username")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"guid"+"}", url.PathEscape(parameterValueToString(r.guid, "guid")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1288,7 +1750,7 @@ func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdAccountUserna
 /*
 V2LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet Get current LAPS password for specified username on a client.
 
-Get current LAPS password for specified client by using the client management id and username as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings.
+Get current LAPS password for specified client by using the client management id and username as the path parameters. Once the password is viewed it will be rotated out with a new password based on the rotation time settings. If multiple accounts with the same username exist, the MDM source will be selected by default.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param clientManagementId client management id of target device.
@@ -1445,6 +1907,130 @@ func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdAcc
 	}
 
 	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/accounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest struct {
+	ctx context.Context
+	ApiService LocalAdminPasswordAPI
+	clientManagementId string
+}
+
+func (r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest) Execute() (*LapsAccountManagementHistoryResponse, *http.Response, error) {
+	return r.ApiService.V2LocalAdminPasswordClientManagementIdHistoryGetExecute(r)
+}
+
+/*
+V2LocalAdminPasswordClientManagementIdHistoryGet Get LAPS password viewed history, and rotation history.
+
+Get the full history of all local admin passwords for all accounts for a specific management ID. History will include password, who viewed the password and when it was viewed. This will include rotation history as well.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param clientManagementId client management id of target device.
+ @return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest
+*/
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdHistoryGet(ctx context.Context, clientManagementId string) LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest {
+	return LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		clientManagementId: clientManagementId,
+	}
+}
+
+// Execute executes the request
+//  @return LapsAccountManagementHistoryResponse
+func (a *LocalAdminPasswordAPIService) V2LocalAdminPasswordClientManagementIdHistoryGetExecute(r LocalAdminPasswordAPIV2LocalAdminPasswordClientManagementIdHistoryGetRequest) (*LapsAccountManagementHistoryResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *LapsAccountManagementHistoryResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LocalAdminPasswordAPIService.V2LocalAdminPasswordClientManagementIdHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/local-admin-password/{clientManagementId}/history"
 	localVarPath = strings.Replace(localVarPath, "{"+"clientManagementId"+"}", url.PathEscape(parameterValueToString(r.clientManagementId, "clientManagementId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

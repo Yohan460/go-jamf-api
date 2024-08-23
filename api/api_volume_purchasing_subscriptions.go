@@ -67,6 +67,37 @@ type VolumePurchasingSubscriptionsAPI interface {
 	V1VolumePurchasingSubscriptionsIdGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdGetRequest) (*VolumePurchasingSubscription, *http.Response, error)
 
 	/*
+	V1VolumePurchasingSubscriptionsIdHistoryGet Get specified Volume Purchasing Subscription history object 
+
+	Gets specified Volume Purchasing Subscription history object
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Subscription Id
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest
+	*/
+	V1VolumePurchasingSubscriptionsIdHistoryGet(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest
+
+	// V1VolumePurchasingSubscriptionsIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1VolumePurchasingSubscriptionsIdHistoryGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1VolumePurchasingSubscriptionsIdHistoryPost Add Volume Purchasing Subscription history object notes 
+
+	Adds Volume Purchasing Subscription history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Volume Purchasing Subscription Id
+	@return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest
+	*/
+	V1VolumePurchasingSubscriptionsIdHistoryPost(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest
+
+	// V1VolumePurchasingSubscriptionsIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1VolumePurchasingSubscriptionsIdHistoryPostExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
 	V1VolumePurchasingSubscriptionsIdPut Update a Volume Purchasing Subscription
 
 	Updates a Volume Purchasing Subscription
@@ -434,6 +465,325 @@ func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscription
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest struct {
+	ctx context.Context
+	ApiService VolumePurchasingSubscriptionsAPI
+	id string
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) Page(page int64) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) PageSize(pageSize int64) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. 
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) Sort(sort []string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) Filter(filter string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V1VolumePurchasingSubscriptionsIdHistoryGetExecute(r)
+}
+
+/*
+V1VolumePurchasingSubscriptionsIdHistoryGet Get specified Volume Purchasing Subscription history object 
+
+Gets specified Volume Purchasing Subscription history object
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Volume Purchasing Subscription Id
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest
+*/
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdHistoryGet(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdHistoryGetExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsIdHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/volume-purchasing-subscriptions/{id}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"date:desc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = ""
+		r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest struct {
+	ctx context.Context
+	ApiService VolumePurchasingSubscriptionsAPI
+	id string
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// History notes to create
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V1VolumePurchasingSubscriptionsIdHistoryPostExecute(r)
+}
+
+/*
+V1VolumePurchasingSubscriptionsIdHistoryPost Add Volume Purchasing Subscription history object notes 
+
+Adds Volume Purchasing Subscription history object notes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Volume Purchasing Subscription Id
+ @return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest
+*/
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdHistoryPost(ctx context.Context, id string) VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest {
+	return VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *VolumePurchasingSubscriptionsAPIService) V1VolumePurchasingSubscriptionsIdHistoryPostExecute(r VolumePurchasingSubscriptionsAPIV1VolumePurchasingSubscriptionsIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VolumePurchasingSubscriptionsAPIService.V1VolumePurchasingSubscriptionsIdHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/volume-purchasing-subscriptions/{id}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
 			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {

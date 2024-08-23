@@ -442,17 +442,19 @@ in the response.
 	/*
 	V3EnrollmentGet Get Enrollment object and Re-enrollment settings 
 
-	Gets Enrollment object and re-enrollment settings. The settings can be altered without providing the existing management password by providing the following value for `managementPassword`:
-`\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff`.
+	Gets Enrollment object and re-enrollment settings.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return EnrollmentAPIV3EnrollmentGetRequest
+
+	Deprecated
 	*/
 	V3EnrollmentGet(ctx context.Context) EnrollmentAPIV3EnrollmentGetRequest
 
 	// V3EnrollmentGetExecute executes the request
 	//  @return EnrollmentSettingsV3
+	// Deprecated
 	V3EnrollmentGetExecute(r EnrollmentAPIV3EnrollmentGetRequest) (*EnrollmentSettingsV3, *http.Response, error)
 
 	/*
@@ -552,12 +554,49 @@ in the response.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return EnrollmentAPIV3EnrollmentPutRequest
+
+	Deprecated
 	*/
 	V3EnrollmentPut(ctx context.Context) EnrollmentAPIV3EnrollmentPutRequest
 
 	// V3EnrollmentPutExecute executes the request
 	//  @return EnrollmentSettingsV3
+	// Deprecated
 	V3EnrollmentPutExecute(r EnrollmentAPIV3EnrollmentPutRequest) (*EnrollmentSettingsV3, *http.Response, error)
+
+	/*
+	V4EnrollmentGet Get Enrollment object and Re-enrollment settings 
+
+	Gets Enrollment object and re-enrollment settings.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EnrollmentAPIV4EnrollmentGetRequest
+	*/
+	V4EnrollmentGet(ctx context.Context) EnrollmentAPIV4EnrollmentGetRequest
+
+	// V4EnrollmentGetExecute executes the request
+	//  @return EnrollmentSettingsV4
+	V4EnrollmentGetExecute(r EnrollmentAPIV4EnrollmentGetRequest) (*EnrollmentSettingsV4, *http.Response, error)
+
+	/*
+	V4EnrollmentPut Update Enrollment object 
+
+	Update enrollment object. Regarding the `developerCertificateIdentity`,
+if this object is omitted, the certificate will not be deleted from Jamf Pro.
+The `identityKeystore` is the entire cert file as a base64 encoded string. The
+`md5Sum` field is not required in the PUT request, but is calculated and returned
+in the response.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EnrollmentAPIV4EnrollmentPutRequest
+	*/
+	V4EnrollmentPut(ctx context.Context) EnrollmentAPIV4EnrollmentPutRequest
+
+	// V4EnrollmentPutExecute executes the request
+	//  @return EnrollmentSettingsV4
+	V4EnrollmentPutExecute(r EnrollmentAPIV4EnrollmentPutRequest) (*EnrollmentSettingsV4, *http.Response, error)
 }
 
 // EnrollmentAPIService EnrollmentAPI service
@@ -3708,12 +3747,13 @@ func (r EnrollmentAPIV3EnrollmentGetRequest) Execute() (*EnrollmentSettingsV3, *
 /*
 V3EnrollmentGet Get Enrollment object and Re-enrollment settings 
 
-Gets Enrollment object and re-enrollment settings. The settings can be altered without providing the existing management password by providing the following value for `managementPassword`:
-`\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff`.
+Gets Enrollment object and re-enrollment settings.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return EnrollmentAPIV3EnrollmentGetRequest
+
+Deprecated
 */
 func (a *EnrollmentAPIService) V3EnrollmentGet(ctx context.Context) EnrollmentAPIV3EnrollmentGetRequest {
 	return EnrollmentAPIV3EnrollmentGetRequest{
@@ -3724,6 +3764,7 @@ func (a *EnrollmentAPIService) V3EnrollmentGet(ctx context.Context) EnrollmentAP
 
 // Execute executes the request
 //  @return EnrollmentSettingsV3
+// Deprecated
 func (a *EnrollmentAPIService) V3EnrollmentGetExecute(r EnrollmentAPIV3EnrollmentGetRequest) (*EnrollmentSettingsV3, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -4514,6 +4555,8 @@ in the response.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return EnrollmentAPIV3EnrollmentPutRequest
+
+Deprecated
 */
 func (a *EnrollmentAPIService) V3EnrollmentPut(ctx context.Context) EnrollmentAPIV3EnrollmentPutRequest {
 	return EnrollmentAPIV3EnrollmentPutRequest{
@@ -4524,6 +4567,7 @@ func (a *EnrollmentAPIService) V3EnrollmentPut(ctx context.Context) EnrollmentAP
 
 // Execute executes the request
 //  @return EnrollmentSettingsV3
+// Deprecated
 func (a *EnrollmentAPIService) V3EnrollmentPutExecute(r EnrollmentAPIV3EnrollmentPutRequest) (*EnrollmentSettingsV3, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -4565,6 +4609,232 @@ func (a *EnrollmentAPIService) V3EnrollmentPutExecute(r EnrollmentAPIV3Enrollmen
 	}
 	// body params
 	localVarPostBody = r.enrollmentSettingsV3
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EnrollmentAPIV4EnrollmentGetRequest struct {
+	ctx context.Context
+	ApiService EnrollmentAPI
+}
+
+func (r EnrollmentAPIV4EnrollmentGetRequest) Execute() (*EnrollmentSettingsV4, *http.Response, error) {
+	return r.ApiService.V4EnrollmentGetExecute(r)
+}
+
+/*
+V4EnrollmentGet Get Enrollment object and Re-enrollment settings 
+
+Gets Enrollment object and re-enrollment settings.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EnrollmentAPIV4EnrollmentGetRequest
+*/
+func (a *EnrollmentAPIService) V4EnrollmentGet(ctx context.Context) EnrollmentAPIV4EnrollmentGetRequest {
+	return EnrollmentAPIV4EnrollmentGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return EnrollmentSettingsV4
+func (a *EnrollmentAPIService) V4EnrollmentGetExecute(r EnrollmentAPIV4EnrollmentGetRequest) (*EnrollmentSettingsV4, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnrollmentSettingsV4
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V4EnrollmentGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/enrollment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EnrollmentAPIV4EnrollmentPutRequest struct {
+	ctx context.Context
+	ApiService EnrollmentAPI
+	enrollmentSettingsV4 *EnrollmentSettingsV4
+}
+
+// Update enrollment
+func (r EnrollmentAPIV4EnrollmentPutRequest) EnrollmentSettingsV4(enrollmentSettingsV4 EnrollmentSettingsV4) EnrollmentAPIV4EnrollmentPutRequest {
+	r.enrollmentSettingsV4 = &enrollmentSettingsV4
+	return r
+}
+
+func (r EnrollmentAPIV4EnrollmentPutRequest) Execute() (*EnrollmentSettingsV4, *http.Response, error) {
+	return r.ApiService.V4EnrollmentPutExecute(r)
+}
+
+/*
+V4EnrollmentPut Update Enrollment object 
+
+Update enrollment object. Regarding the `developerCertificateIdentity`,
+if this object is omitted, the certificate will not be deleted from Jamf Pro.
+The `identityKeystore` is the entire cert file as a base64 encoded string. The
+`md5Sum` field is not required in the PUT request, but is calculated and returned
+in the response.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EnrollmentAPIV4EnrollmentPutRequest
+*/
+func (a *EnrollmentAPIService) V4EnrollmentPut(ctx context.Context) EnrollmentAPIV4EnrollmentPutRequest {
+	return EnrollmentAPIV4EnrollmentPutRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return EnrollmentSettingsV4
+func (a *EnrollmentAPIService) V4EnrollmentPutExecute(r EnrollmentAPIV4EnrollmentPutRequest) (*EnrollmentSettingsV4, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EnrollmentSettingsV4
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V4EnrollmentPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/enrollment"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.enrollmentSettingsV4 == nil {
+		return localVarReturnValue, nil, reportError("enrollmentSettingsV4 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.enrollmentSettingsV4
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

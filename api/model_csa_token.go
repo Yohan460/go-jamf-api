@@ -19,6 +19,10 @@ var _ MappedNullable = &CsaToken{}
 
 // CsaToken struct for CsaToken
 type CsaToken struct {
+	// The tenant ID
+	TenantId NullableString `json:"tenantId,omitempty"`
+	// Salesforce CRM account ID
+	Subject *string `json:"subject,omitempty"`
 	RefreshExpiration *int64 `json:"refreshExpiration,omitempty"`
 	Scopes []string `json:"scopes,omitempty"`
 }
@@ -38,6 +42,80 @@ func NewCsaToken() *CsaToken {
 func NewCsaTokenWithDefaults() *CsaToken {
 	this := CsaToken{}
 	return &this
+}
+
+// GetTenantId returns the TenantId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CsaToken) GetTenantId() string {
+	if o == nil || IsNil(o.TenantId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.TenantId.Get()
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CsaToken) GetTenantIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TenantId.Get(), o.TenantId.IsSet()
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *CsaToken) HasTenantId() bool {
+	if o != nil && o.TenantId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given NullableString and assigns it to the TenantId field.
+func (o *CsaToken) SetTenantId(v string) {
+	o.TenantId.Set(&v)
+}
+// SetTenantIdNil sets the value for TenantId to be an explicit nil
+func (o *CsaToken) SetTenantIdNil() {
+	o.TenantId.Set(nil)
+}
+
+// UnsetTenantId ensures that no value is present for TenantId, not even an explicit nil
+func (o *CsaToken) UnsetTenantId() {
+	o.TenantId.Unset()
+}
+
+// GetSubject returns the Subject field value if set, zero value otherwise.
+func (o *CsaToken) GetSubject() string {
+	if o == nil || IsNil(o.Subject) {
+		var ret string
+		return ret
+	}
+	return *o.Subject
+}
+
+// GetSubjectOk returns a tuple with the Subject field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CsaToken) GetSubjectOk() (*string, bool) {
+	if o == nil || IsNil(o.Subject) {
+		return nil, false
+	}
+	return o.Subject, true
+}
+
+// HasSubject returns a boolean if a field has been set.
+func (o *CsaToken) HasSubject() bool {
+	if o != nil && !IsNil(o.Subject) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubject gets a reference to the given string and assigns it to the Subject field.
+func (o *CsaToken) SetSubject(v string) {
+	o.Subject = &v
 }
 
 // GetRefreshExpiration returns the RefreshExpiration field value if set, zero value otherwise.
@@ -114,6 +192,12 @@ func (o CsaToken) MarshalJSON() ([]byte, error) {
 
 func (o CsaToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.TenantId.IsSet() {
+		toSerialize["tenantId"] = o.TenantId.Get()
+	}
+	if !IsNil(o.Subject) {
+		toSerialize["subject"] = o.Subject
+	}
 	if !IsNil(o.RefreshExpiration) {
 		toSerialize["refreshExpiration"] = o.RefreshExpiration
 	}

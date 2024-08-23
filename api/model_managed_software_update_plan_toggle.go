@@ -23,7 +23,9 @@ var _ MappedNullable = &ManagedSoftwareUpdatePlanToggle{}
 type ManagedSoftwareUpdatePlanToggle struct {
 	Toggle bool `json:"toggle"`
 	ForceInstallLocalDateEnabled *bool `json:"forceInstallLocalDateEnabled,omitempty"`
+	CustomVersionEnabled *bool `json:"customVersionEnabled,omitempty"`
 	DssEnabled *bool `json:"dssEnabled,omitempty"`
+	RecipeEnabled *bool `json:"recipeEnabled,omitempty"`
 }
 
 type _ManagedSoftwareUpdatePlanToggle ManagedSoftwareUpdatePlanToggle
@@ -102,6 +104,38 @@ func (o *ManagedSoftwareUpdatePlanToggle) SetForceInstallLocalDateEnabled(v bool
 	o.ForceInstallLocalDateEnabled = &v
 }
 
+// GetCustomVersionEnabled returns the CustomVersionEnabled field value if set, zero value otherwise.
+func (o *ManagedSoftwareUpdatePlanToggle) GetCustomVersionEnabled() bool {
+	if o == nil || IsNil(o.CustomVersionEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.CustomVersionEnabled
+}
+
+// GetCustomVersionEnabledOk returns a tuple with the CustomVersionEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedSoftwareUpdatePlanToggle) GetCustomVersionEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.CustomVersionEnabled) {
+		return nil, false
+	}
+	return o.CustomVersionEnabled, true
+}
+
+// HasCustomVersionEnabled returns a boolean if a field has been set.
+func (o *ManagedSoftwareUpdatePlanToggle) HasCustomVersionEnabled() bool {
+	if o != nil && !IsNil(o.CustomVersionEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomVersionEnabled gets a reference to the given bool and assigns it to the CustomVersionEnabled field.
+func (o *ManagedSoftwareUpdatePlanToggle) SetCustomVersionEnabled(v bool) {
+	o.CustomVersionEnabled = &v
+}
+
 // GetDssEnabled returns the DssEnabled field value if set, zero value otherwise.
 func (o *ManagedSoftwareUpdatePlanToggle) GetDssEnabled() bool {
 	if o == nil || IsNil(o.DssEnabled) {
@@ -134,6 +168,38 @@ func (o *ManagedSoftwareUpdatePlanToggle) SetDssEnabled(v bool) {
 	o.DssEnabled = &v
 }
 
+// GetRecipeEnabled returns the RecipeEnabled field value if set, zero value otherwise.
+func (o *ManagedSoftwareUpdatePlanToggle) GetRecipeEnabled() bool {
+	if o == nil || IsNil(o.RecipeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.RecipeEnabled
+}
+
+// GetRecipeEnabledOk returns a tuple with the RecipeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedSoftwareUpdatePlanToggle) GetRecipeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.RecipeEnabled) {
+		return nil, false
+	}
+	return o.RecipeEnabled, true
+}
+
+// HasRecipeEnabled returns a boolean if a field has been set.
+func (o *ManagedSoftwareUpdatePlanToggle) HasRecipeEnabled() bool {
+	if o != nil && !IsNil(o.RecipeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipeEnabled gets a reference to the given bool and assigns it to the RecipeEnabled field.
+func (o *ManagedSoftwareUpdatePlanToggle) SetRecipeEnabled(v bool) {
+	o.RecipeEnabled = &v
+}
+
 func (o ManagedSoftwareUpdatePlanToggle) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -148,8 +214,14 @@ func (o ManagedSoftwareUpdatePlanToggle) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ForceInstallLocalDateEnabled) {
 		toSerialize["forceInstallLocalDateEnabled"] = o.ForceInstallLocalDateEnabled
 	}
+	if !IsNil(o.CustomVersionEnabled) {
+		toSerialize["customVersionEnabled"] = o.CustomVersionEnabled
+	}
 	if !IsNil(o.DssEnabled) {
 		toSerialize["dssEnabled"] = o.DssEnabled
+	}
+	if !IsNil(o.RecipeEnabled) {
+		toSerialize["recipeEnabled"] = o.RecipeEnabled
 	}
 	return toSerialize, nil
 }

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Mobile Device Name. When updated, Jamf Pro sends an MDM settings command to the device (device must be supervised). | [optional] 
-**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in. | [optional] 
+**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in. | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
 **TimeZone** | Pointer to **string** | IANA time zone database name | [optional] 
