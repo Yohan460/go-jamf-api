@@ -24,6 +24,7 @@ type AzureServerConfiguration struct {
 	Id string `json:"id"`
 	TenantId string `json:"tenantId"`
 	Enabled bool `json:"enabled"`
+	DeprecatedConsent bool `json:"deprecatedConsent"`
 	Migrated bool `json:"migrated"`
 	Mappings AzureMappings `json:"mappings"`
 	SearchTimeout int64 `json:"searchTimeout"`
@@ -43,11 +44,12 @@ type _AzureServerConfiguration AzureServerConfiguration
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureServerConfiguration(id string, tenantId string, enabled bool, migrated bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool) *AzureServerConfiguration {
+func NewAzureServerConfiguration(id string, tenantId string, enabled bool, deprecatedConsent bool, migrated bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool) *AzureServerConfiguration {
 	this := AzureServerConfiguration{}
 	this.Id = id
 	this.TenantId = tenantId
 	this.Enabled = enabled
+	this.DeprecatedConsent = deprecatedConsent
 	this.Migrated = migrated
 	this.Mappings = mappings
 	this.SearchTimeout = searchTimeout
@@ -135,6 +137,30 @@ func (o *AzureServerConfiguration) GetEnabledOk() (*bool, bool) {
 // SetEnabled sets field value
 func (o *AzureServerConfiguration) SetEnabled(v bool) {
 	o.Enabled = v
+}
+
+// GetDeprecatedConsent returns the DeprecatedConsent field value
+func (o *AzureServerConfiguration) GetDeprecatedConsent() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.DeprecatedConsent
+}
+
+// GetDeprecatedConsentOk returns a tuple with the DeprecatedConsent field value
+// and a boolean to check if the value has been set.
+func (o *AzureServerConfiguration) GetDeprecatedConsentOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DeprecatedConsent, true
+}
+
+// SetDeprecatedConsent sets field value
+func (o *AzureServerConfiguration) SetDeprecatedConsent(v bool) {
+	o.DeprecatedConsent = v
 }
 
 // GetMigrated returns the Migrated field value
@@ -326,6 +352,7 @@ func (o AzureServerConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["tenantId"] = o.TenantId
 	toSerialize["enabled"] = o.Enabled
+	toSerialize["deprecatedConsent"] = o.DeprecatedConsent
 	toSerialize["migrated"] = o.Migrated
 	toSerialize["mappings"] = o.Mappings
 	toSerialize["searchTimeout"] = o.SearchTimeout
@@ -346,6 +373,7 @@ func (o *AzureServerConfiguration) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"tenantId",
 		"enabled",
+		"deprecatedConsent",
 		"migrated",
 		"mappings",
 		"searchTimeout",

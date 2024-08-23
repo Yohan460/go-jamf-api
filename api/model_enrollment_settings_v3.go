@@ -45,6 +45,7 @@ type EnrollmentSettingsV3 struct {
 	IosPersonalEnrollmentEnabled *bool `json:"iosPersonalEnrollmentEnabled,omitempty"`
 	PersonalDeviceEnrollmentType *string `json:"personalDeviceEnrollmentType,omitempty"`
 	AccountDrivenUserEnrollmentEnabled *bool `json:"accountDrivenUserEnrollmentEnabled,omitempty"`
+	AccountDrivenDeviceEnrollmentEnabled *bool `json:"accountDrivenDeviceEnrollmentEnabled,omitempty"`
 }
 
 type _EnrollmentSettingsV3 EnrollmentSettingsV3
@@ -94,6 +95,8 @@ func NewEnrollmentSettingsV3(managementUsername string) *EnrollmentSettingsV3 {
 	this.PersonalDeviceEnrollmentType = &personalDeviceEnrollmentType
 	var accountDrivenUserEnrollmentEnabled bool = false
 	this.AccountDrivenUserEnrollmentEnabled = &accountDrivenUserEnrollmentEnabled
+	var accountDrivenDeviceEnrollmentEnabled bool = false
+	this.AccountDrivenDeviceEnrollmentEnabled = &accountDrivenDeviceEnrollmentEnabled
 	return &this
 }
 
@@ -142,6 +145,8 @@ func NewEnrollmentSettingsV3WithDefaults() *EnrollmentSettingsV3 {
 	this.PersonalDeviceEnrollmentType = &personalDeviceEnrollmentType
 	var accountDrivenUserEnrollmentEnabled bool = false
 	this.AccountDrivenUserEnrollmentEnabled = &accountDrivenUserEnrollmentEnabled
+	var accountDrivenDeviceEnrollmentEnabled bool = false
+	this.AccountDrivenDeviceEnrollmentEnabled = &accountDrivenDeviceEnrollmentEnabled
 	return &this
 }
 
@@ -925,6 +930,38 @@ func (o *EnrollmentSettingsV3) SetAccountDrivenUserEnrollmentEnabled(v bool) {
 	o.AccountDrivenUserEnrollmentEnabled = &v
 }
 
+// GetAccountDrivenDeviceEnrollmentEnabled returns the AccountDrivenDeviceEnrollmentEnabled field value if set, zero value otherwise.
+func (o *EnrollmentSettingsV3) GetAccountDrivenDeviceEnrollmentEnabled() bool {
+	if o == nil || IsNil(o.AccountDrivenDeviceEnrollmentEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AccountDrivenDeviceEnrollmentEnabled
+}
+
+// GetAccountDrivenDeviceEnrollmentEnabledOk returns a tuple with the AccountDrivenDeviceEnrollmentEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnrollmentSettingsV3) GetAccountDrivenDeviceEnrollmentEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AccountDrivenDeviceEnrollmentEnabled) {
+		return nil, false
+	}
+	return o.AccountDrivenDeviceEnrollmentEnabled, true
+}
+
+// HasAccountDrivenDeviceEnrollmentEnabled returns a boolean if a field has been set.
+func (o *EnrollmentSettingsV3) HasAccountDrivenDeviceEnrollmentEnabled() bool {
+	if o != nil && !IsNil(o.AccountDrivenDeviceEnrollmentEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountDrivenDeviceEnrollmentEnabled gets a reference to the given bool and assigns it to the AccountDrivenDeviceEnrollmentEnabled field.
+func (o *EnrollmentSettingsV3) SetAccountDrivenDeviceEnrollmentEnabled(v bool) {
+	o.AccountDrivenDeviceEnrollmentEnabled = &v
+}
+
 func (o EnrollmentSettingsV3) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1004,6 +1041,9 @@ func (o EnrollmentSettingsV3) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountDrivenUserEnrollmentEnabled) {
 		toSerialize["accountDrivenUserEnrollmentEnabled"] = o.AccountDrivenUserEnrollmentEnabled
+	}
+	if !IsNil(o.AccountDrivenDeviceEnrollmentEnabled) {
+		toSerialize["accountDrivenDeviceEnrollmentEnabled"] = o.AccountDrivenDeviceEnrollmentEnabled
 	}
 	return toSerialize, nil
 }

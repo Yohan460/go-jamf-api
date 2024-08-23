@@ -1055,9 +1055,6 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExpo
 	ApiService PatchSoftwareTitleConfigurationsAPI
 	id string
 	columnsToExport *[]string
-	page *int64
-	pageSize *int64
-	sort *[]string
 	filter *string
 	accept *string
 }
@@ -1065,23 +1062,6 @@ type PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExpo
 // List of column names to export
 func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) ColumnsToExport(columnsToExport []string) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
 	r.columnsToExport = &columnsToExport
-	return r
-}
-
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) Page(page int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
-	r.page = &page
-	return r
-}
-
-// Leave blank for full export
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) PageSize(pageSize int64) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Default sort is computerName:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;id:desc,name:asc Supported fields: computerName, deviceId, username, operatingSystemVersion, lastContactTime, buildingName, departmentName, siteName, version
-func (r PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest) Sort(sort []string) PatchSoftwareTitleConfigurationsAPIV2PatchSoftwareTitleConfigurationsIdExportReportGetRequest {
-	r.sort = &sort
 	return r
 }
 
@@ -1143,32 +1123,6 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 		return localVarReturnValue, nil, reportError("columnsToExport is required and must be specified")
 	}
 
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
-	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
-		}
-	} else {
-		defaultValue := []string{"computerName:asc"}
-		r.sort = &defaultValue
-	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
 	} else {

@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**TenantId** | Pointer to **NullableString** | The tenant ID | [optional] 
+**Subject** | Pointer to **string** | Salesforce CRM account ID | [optional] 
 **RefreshExpiration** | Pointer to **int64** |  | [optional] 
 **Scopes** | Pointer to **[]string** |  | [optional] 
 
@@ -25,6 +27,66 @@ will change when the set of required properties is changed
 NewCsaTokenWithDefaults instantiates a new CsaToken object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetTenantId
+
+`func (o *CsaToken) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *CsaToken) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *CsaToken) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *CsaToken) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
+
+### SetTenantIdNil
+
+`func (o *CsaToken) SetTenantIdNil(b bool)`
+
+ SetTenantIdNil sets the value for TenantId to be an explicit nil
+
+### UnsetTenantId
+`func (o *CsaToken) UnsetTenantId()`
+
+UnsetTenantId ensures that no value is present for TenantId, not even an explicit nil
+### GetSubject
+
+`func (o *CsaToken) GetSubject() string`
+
+GetSubject returns the Subject field if non-nil, zero value otherwise.
+
+### GetSubjectOk
+
+`func (o *CsaToken) GetSubjectOk() (*string, bool)`
+
+GetSubjectOk returns a tuple with the Subject field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubject
+
+`func (o *CsaToken) SetSubject(v string)`
+
+SetSubject sets Subject field to given value.
+
+### HasSubject
+
+`func (o *CsaToken) HasSubject() bool`
+
+HasSubject returns a boolean if a field has been set.
 
 ### GetRefreshExpiration
 

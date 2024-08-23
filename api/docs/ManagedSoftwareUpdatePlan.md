@@ -8,9 +8,11 @@ Name | Type | Description | Notes
 **Device** | [**PlanDevice**](PlanDevice.md) |  | 
 **UpdateAction** | **string** |  | [readonly] 
 **VersionType** | **string** |  | [readonly] 
-**SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [readonly] [default to "NO_SPECIFIC_VERSION"]
+**SpecificVersion** | Pointer to **string** | Optional. Indicates the specific version to update to. Only available when the version type is set to specific version or custom version, otherwise defaults to NO_SPECIFIC_VERSION. | [optional] [readonly] [default to "NO_SPECIFIC_VERSION"]
+**BuildVersion** | Pointer to **NullableString** | Optional. Indicates the build version to update to. Only available when the version type is set to custom version. | [optional] [readonly] 
 **MaxDeferrals** | **int64** | Not applicable to all managed software update plans | [readonly] 
 **ForceInstallLocalDateTime** | Pointer to **NullableString** | Optional. Indicates the local date and time of the device to force update by. | [optional] 
+**RecipeId** | Pointer to **string** | The id of the recipe that was used to generate the plan. | [optional] [readonly] [default to "-1"]
 **Status** | [**PlanStatus**](PlanStatus.md) |  | 
 
 ## Methods
@@ -137,6 +139,41 @@ SetSpecificVersion sets SpecificVersion field to given value.
 
 HasSpecificVersion returns a boolean if a field has been set.
 
+### GetBuildVersion
+
+`func (o *ManagedSoftwareUpdatePlan) GetBuildVersion() string`
+
+GetBuildVersion returns the BuildVersion field if non-nil, zero value otherwise.
+
+### GetBuildVersionOk
+
+`func (o *ManagedSoftwareUpdatePlan) GetBuildVersionOk() (*string, bool)`
+
+GetBuildVersionOk returns a tuple with the BuildVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildVersion
+
+`func (o *ManagedSoftwareUpdatePlan) SetBuildVersion(v string)`
+
+SetBuildVersion sets BuildVersion field to given value.
+
+### HasBuildVersion
+
+`func (o *ManagedSoftwareUpdatePlan) HasBuildVersion() bool`
+
+HasBuildVersion returns a boolean if a field has been set.
+
+### SetBuildVersionNil
+
+`func (o *ManagedSoftwareUpdatePlan) SetBuildVersionNil(b bool)`
+
+ SetBuildVersionNil sets the value for BuildVersion to be an explicit nil
+
+### UnsetBuildVersion
+`func (o *ManagedSoftwareUpdatePlan) UnsetBuildVersion()`
+
+UnsetBuildVersion ensures that no value is present for BuildVersion, not even an explicit nil
 ### GetMaxDeferrals
 
 `func (o *ManagedSoftwareUpdatePlan) GetMaxDeferrals() int64`
@@ -192,6 +229,31 @@ HasForceInstallLocalDateTime returns a boolean if a field has been set.
 `func (o *ManagedSoftwareUpdatePlan) UnsetForceInstallLocalDateTime()`
 
 UnsetForceInstallLocalDateTime ensures that no value is present for ForceInstallLocalDateTime, not even an explicit nil
+### GetRecipeId
+
+`func (o *ManagedSoftwareUpdatePlan) GetRecipeId() string`
+
+GetRecipeId returns the RecipeId field if non-nil, zero value otherwise.
+
+### GetRecipeIdOk
+
+`func (o *ManagedSoftwareUpdatePlan) GetRecipeIdOk() (*string, bool)`
+
+GetRecipeIdOk returns a tuple with the RecipeId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRecipeId
+
+`func (o *ManagedSoftwareUpdatePlan) SetRecipeId(v string)`
+
+SetRecipeId sets RecipeId field to given value.
+
+### HasRecipeId
+
+`func (o *ManagedSoftwareUpdatePlan) HasRecipeId() bool`
+
+HasRecipeId returns a boolean if a field has been set.
+
 ### GetStatus
 
 `func (o *ManagedSoftwareUpdatePlan) GetStatus() PlanStatus`

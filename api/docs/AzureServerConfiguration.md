@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **TenantId** | **string** |  | 
 **Enabled** | **bool** |  | 
+**DeprecatedConsent** | **bool** |  | 
 **Migrated** | **bool** |  | 
 **Mappings** | [**AzureMappings**](AzureMappings.md) |  | 
 **SearchTimeout** | **int64** |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAzureServerConfiguration
 
-`func NewAzureServerConfiguration(id string, tenantId string, enabled bool, migrated bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool, ) *AzureServerConfiguration`
+`func NewAzureServerConfiguration(id string, tenantId string, enabled bool, deprecatedConsent bool, migrated bool, mappings AzureMappings, searchTimeout int64, transitiveMembershipEnabled bool, transitiveMembershipUserField string, transitiveDirectoryMembershipEnabled bool, ) *AzureServerConfiguration`
 
 NewAzureServerConfiguration instantiates a new AzureServerConfiguration object
 This constructor will assign default values to properties that have it defined,
@@ -92,6 +93,26 @@ and a boolean to check if the value has been set.
 `func (o *AzureServerConfiguration) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
+
+
+### GetDeprecatedConsent
+
+`func (o *AzureServerConfiguration) GetDeprecatedConsent() bool`
+
+GetDeprecatedConsent returns the DeprecatedConsent field if non-nil, zero value otherwise.
+
+### GetDeprecatedConsentOk
+
+`func (o *AzureServerConfiguration) GetDeprecatedConsentOk() (*bool, bool)`
+
+GetDeprecatedConsentOk returns a tuple with the DeprecatedConsent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecatedConsent
+
+`func (o *AzureServerConfiguration) SetDeprecatedConsent(v bool)`
+
+SetDeprecatedConsent sets DeprecatedConsent field to given value.
 
 
 ### GetMigrated

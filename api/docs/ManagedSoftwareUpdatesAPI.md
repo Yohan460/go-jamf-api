@@ -5,11 +5,15 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1ManagedSoftwareUpdatesAvailableUpdatesGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesAvailableUpdatesGet) | **Get** /v1/managed-software-updates/available-updates | Retrieve available macOS and iOS Managed Software Updates
-[**V1ManagedSoftwareUpdatesPlansFeatureToggleGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansFeatureToggleGet) | **Get** /v1/managed-software-updates/plans/feature-toggle | Retrieve Status of the Feature Toggle
+[**V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost) | **Post** /v1/managed-software-updates/plans/feature-toggle/abandon | Force stops any ongoing or stalled feature-toggle processes
+[**V1ManagedSoftwareUpdatesPlansFeatureToggleGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansFeatureToggleGet) | **Get** /v1/managed-software-updates/plans/feature-toggle | Retrieve current value of the Feature Toggle
 [**V1ManagedSoftwareUpdatesPlansFeatureTogglePut**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansFeatureTogglePut) | **Put** /v1/managed-software-updates/plans/feature-toggle | Updates Feature Toggle Value
+[**V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet) | **Get** /v1/managed-software-updates/plans/feature-toggle/status | Retrieves background status of the Feature Toggle
 [**V1ManagedSoftwareUpdatesPlansGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansGet) | **Get** /v1/managed-software-updates/plans | Retrieve Managed Software Update Plans
 [**V1ManagedSoftwareUpdatesPlansGroupIdGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansGroupIdGet) | **Get** /v1/managed-software-updates/plans/group/{id} | Retrieve Managed Software Update Plans for a Group
 [**V1ManagedSoftwareUpdatesPlansGroupPost**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansGroupPost) | **Post** /v1/managed-software-updates/plans/group | Create Managed Software Update Plans for a Group
+[**V1ManagedSoftwareUpdatesPlansIdDeclarationsGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansIdDeclarationsGet) | **Get** /v1/managed-software-updates/plans/{id}/declarations | Retrieve all Declarations associated with a Managed Software Update Plan
+[**V1ManagedSoftwareUpdatesPlansIdEventsGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansIdEventsGet) | **Get** /v1/managed-software-updates/plans/{id}/events | Retrieve a Managed Software Update Plan Event Store
 [**V1ManagedSoftwareUpdatesPlansIdGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansIdGet) | **Get** /v1/managed-software-updates/plans/{id} | Retrieve a Managed Software Update Plan
 [**V1ManagedSoftwareUpdatesPlansPost**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesPlansPost) | **Post** /v1/managed-software-updates/plans | Create a Managed Software Update Plan
 [**V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet**](ManagedSoftwareUpdatesAPI.md#V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet) | **Get** /v1/managed-software-updates/update-statuses/computer-groups/{id} | Retrieve Managed Software Update Statuses for Computer Groups
@@ -81,11 +85,70 @@ Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesAv
 [[Back to README]](../README.md)
 
 
+## V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost
+
+> V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost(ctx).Execute()
+
+Force stops any ongoing or stalled feature-toggle processes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest struct via the builder pattern
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1ManagedSoftwareUpdatesPlansFeatureToggleGet
 
 > ManagedSoftwareUpdatePlanToggle V1ManagedSoftwareUpdatesPlansFeatureToggleGet(ctx).Execute()
 
-Retrieve Status of the Feature Toggle
+Retrieve current value of the Feature Toggle
 
 
 
@@ -208,6 +271,67 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet
+
+> ManagedSoftwareUpdatePlanToggleStatusWrapper V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet(ctx).Execute()
+
+Retrieves background status of the Feature Toggle
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet`: ManagedSoftwareUpdatePlanToggleStatusWrapper
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**ManagedSoftwareUpdatePlanToggleStatusWrapper**](ManagedSoftwareUpdatePlanToggleStatusWrapper.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1ManagedSoftwareUpdatesPlansGet
 
 > ManagedSoftwareUpdatePlans V1ManagedSoftwareUpdatesPlansGet(ctx).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
@@ -232,7 +356,7 @@ func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
 	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is planUuid:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["planUuid:asc"])
-	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state. (optional) (default to "")
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, recipeId, forceInstallLocalDateTime, state. (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -260,7 +384,7 @@ Name | Type | Description  | Notes
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
  **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is planUuid:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;planUuid:asc&quot;]]
- **filter** | **string** | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state. | [default to &quot;&quot;]
+ **filter** | **string** | Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, recipeId, forceInstallLocalDateTime, state. | [default to &quot;&quot;]
 
 ### Return type
 
@@ -411,6 +535,146 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ManagedSoftwareUpdatesPlansIdDeclarationsGet
+
+> DssDeclarations V1ManagedSoftwareUpdatesPlansIdDeclarationsGet(ctx, id).Execute()
+
+Retrieve all Declarations associated with a Managed Software Update Plan
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | Managed Software Update Plan Uuid
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdDeclarationsGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdDeclarationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansIdDeclarationsGet`: DssDeclarations
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdDeclarationsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Managed Software Update Plan Uuid | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**DssDeclarations**](DssDeclarations.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1ManagedSoftwareUpdatesPlansIdEventsGet
+
+> ManagedSoftwareUpdatePlanEventStore V1ManagedSoftwareUpdatesPlansIdEventsGet(ctx, id).Execute()
+
+Retrieve a Managed Software Update Plan Event Store
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | Managed Software Update Plan Uuid
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdEventsGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdEventsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1ManagedSoftwareUpdatesPlansIdEventsGet`: ManagedSoftwareUpdatePlanEventStore
+	fmt.Fprintf(os.Stdout, "Response from `ManagedSoftwareUpdatesAPI.V1ManagedSoftwareUpdatesPlansIdEventsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | Managed Software Update Plan Uuid | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1ManagedSoftwareUpdatesPlansIdEventsGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ManagedSoftwareUpdatePlanEventStore**](ManagedSoftwareUpdatePlanEventStore.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

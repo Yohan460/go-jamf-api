@@ -25,12 +25,16 @@ type ManagedSoftwareUpdatePlan struct {
 	Device PlanDevice `json:"device"`
 	UpdateAction string `json:"updateAction"`
 	VersionType string `json:"versionType"`
-	// Optional. Indicates the specific version to update to. Only available when the version type is set to specific version, otherwise defaults to NO_SPECIFIC_VERSION.
+	// Optional. Indicates the specific version to update to. Only available when the version type is set to specific version or custom version, otherwise defaults to NO_SPECIFIC_VERSION.
 	SpecificVersion *string `json:"specificVersion,omitempty"`
+	// Optional. Indicates the build version to update to. Only available when the version type is set to custom version.
+	BuildVersion NullableString `json:"buildVersion,omitempty"`
 	// Not applicable to all managed software update plans
 	MaxDeferrals int64 `json:"maxDeferrals"`
 	// Optional. Indicates the local date and time of the device to force update by.
 	ForceInstallLocalDateTime NullableString `json:"forceInstallLocalDateTime,omitempty"`
+	// The id of the recipe that was used to generate the plan.
+	RecipeId *string `json:"recipeId,omitempty"`
 	Status PlanStatus `json:"status"`
 }
 
@@ -187,6 +191,48 @@ func (o *ManagedSoftwareUpdatePlan) SetSpecificVersion(v string) {
 	o.SpecificVersion = &v
 }
 
+// GetBuildVersion returns the BuildVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ManagedSoftwareUpdatePlan) GetBuildVersion() string {
+	if o == nil || IsNil(o.BuildVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BuildVersion.Get()
+}
+
+// GetBuildVersionOk returns a tuple with the BuildVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ManagedSoftwareUpdatePlan) GetBuildVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BuildVersion.Get(), o.BuildVersion.IsSet()
+}
+
+// HasBuildVersion returns a boolean if a field has been set.
+func (o *ManagedSoftwareUpdatePlan) HasBuildVersion() bool {
+	if o != nil && o.BuildVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildVersion gets a reference to the given NullableString and assigns it to the BuildVersion field.
+func (o *ManagedSoftwareUpdatePlan) SetBuildVersion(v string) {
+	o.BuildVersion.Set(&v)
+}
+// SetBuildVersionNil sets the value for BuildVersion to be an explicit nil
+func (o *ManagedSoftwareUpdatePlan) SetBuildVersionNil() {
+	o.BuildVersion.Set(nil)
+}
+
+// UnsetBuildVersion ensures that no value is present for BuildVersion, not even an explicit nil
+func (o *ManagedSoftwareUpdatePlan) UnsetBuildVersion() {
+	o.BuildVersion.Unset()
+}
+
 // GetMaxDeferrals returns the MaxDeferrals field value
 func (o *ManagedSoftwareUpdatePlan) GetMaxDeferrals() int64 {
 	if o == nil {
@@ -253,6 +299,38 @@ func (o *ManagedSoftwareUpdatePlan) UnsetForceInstallLocalDateTime() {
 	o.ForceInstallLocalDateTime.Unset()
 }
 
+// GetRecipeId returns the RecipeId field value if set, zero value otherwise.
+func (o *ManagedSoftwareUpdatePlan) GetRecipeId() string {
+	if o == nil || IsNil(o.RecipeId) {
+		var ret string
+		return ret
+	}
+	return *o.RecipeId
+}
+
+// GetRecipeIdOk returns a tuple with the RecipeId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ManagedSoftwareUpdatePlan) GetRecipeIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RecipeId) {
+		return nil, false
+	}
+	return o.RecipeId, true
+}
+
+// HasRecipeId returns a boolean if a field has been set.
+func (o *ManagedSoftwareUpdatePlan) HasRecipeId() bool {
+	if o != nil && !IsNil(o.RecipeId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRecipeId gets a reference to the given string and assigns it to the RecipeId field.
+func (o *ManagedSoftwareUpdatePlan) SetRecipeId(v string) {
+	o.RecipeId = &v
+}
+
 // GetStatus returns the Status field value
 func (o *ManagedSoftwareUpdatePlan) GetStatus() PlanStatus {
 	if o == nil {
@@ -294,9 +372,15 @@ func (o ManagedSoftwareUpdatePlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SpecificVersion) {
 		toSerialize["specificVersion"] = o.SpecificVersion
 	}
+	if o.BuildVersion.IsSet() {
+		toSerialize["buildVersion"] = o.BuildVersion.Get()
+	}
 	toSerialize["maxDeferrals"] = o.MaxDeferrals
 	if o.ForceInstallLocalDateTime.IsSet() {
 		toSerialize["forceInstallLocalDateTime"] = o.ForceInstallLocalDateTime.Get()
+	}
+	if !IsNil(o.RecipeId) {
+		toSerialize["recipeId"] = o.RecipeId
 	}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil

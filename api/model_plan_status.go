@@ -93,7 +93,7 @@ func (o *PlanStatus) GetErrorReasonsOk() ([]string, bool) {
 
 // HasErrorReasons returns a boolean if a field has been set.
 func (o *PlanStatus) HasErrorReasons() bool {
-	if o != nil && IsNil(o.ErrorReasons) {
+	if o != nil && !IsNil(o.ErrorReasons) {
 		return true
 	}
 

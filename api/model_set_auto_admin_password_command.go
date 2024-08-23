@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SetAutoAdminPasswordCommand type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,22 @@ var _ MappedNullable = &SetAutoAdminPasswordCommand{}
 
 // SetAutoAdminPasswordCommand struct for SetAutoAdminPasswordCommand
 type SetAutoAdminPasswordCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	// The unique identifier of the local administrator account. Must match the GUID of an administrator account that MDM created during Device Enrollment Program (DEP) enrollment.
 	Guid *string `json:"guid,omitempty"`
 	// The new password for the local administrator account.
 	Password *string `json:"password,omitempty"`
 }
 
+type _SetAutoAdminPasswordCommand SetAutoAdminPasswordCommand
+
 // NewSetAutoAdminPasswordCommand instantiates a new SetAutoAdminPasswordCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetAutoAdminPasswordCommand() *SetAutoAdminPasswordCommand {
+func NewSetAutoAdminPasswordCommand(commandType MdmCommandType) *SetAutoAdminPasswordCommand {
 	this := SetAutoAdminPasswordCommand{}
+	this.CommandType = commandType
 	return &this
 }
 
@@ -40,6 +46,30 @@ func NewSetAutoAdminPasswordCommand() *SetAutoAdminPasswordCommand {
 func NewSetAutoAdminPasswordCommandWithDefaults() *SetAutoAdminPasswordCommand {
 	this := SetAutoAdminPasswordCommand{}
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *SetAutoAdminPasswordCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *SetAutoAdminPasswordCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *SetAutoAdminPasswordCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetGuid returns the Guid field value if set, zero value otherwise.
@@ -116,6 +146,7 @@ func (o SetAutoAdminPasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o SetAutoAdminPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.Guid) {
 		toSerialize["guid"] = o.Guid
 	}
@@ -123,6 +154,43 @@ func (o SetAutoAdminPasswordCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["password"] = o.Password
 	}
 	return toSerialize, nil
+}
+
+func (o *SetAutoAdminPasswordCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSetAutoAdminPasswordCommand := _SetAutoAdminPasswordCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSetAutoAdminPasswordCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SetAutoAdminPasswordCommand(varSetAutoAdminPasswordCommand)
+
+	return err
 }
 
 type NullableSetAutoAdminPasswordCommand struct {

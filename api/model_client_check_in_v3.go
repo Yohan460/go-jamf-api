@@ -19,7 +19,7 @@ var _ MappedNullable = &ClientCheckInV3{}
 
 // ClientCheckInV3 struct for ClientCheckInV3
 type ClientCheckInV3 struct {
-	// Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimim is 5, maximum is 60.
+	// Suggested values are 5, 15, 30, or 60. Web interface will not display correctly if not one of those. Minimum is 5, maximum is 60.
 	CheckInFrequency *int64 `json:"checkInFrequency,omitempty"`
 	CreateHooks *bool `json:"createHooks,omitempty"`
 	HookLog *bool `json:"hookLog,omitempty"`

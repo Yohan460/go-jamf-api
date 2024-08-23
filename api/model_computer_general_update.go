@@ -24,6 +24,8 @@ type ComputerGeneralUpdate struct {
 	Barcode1 *string `json:"barcode1,omitempty"`
 	Barcode2 *string `json:"barcode2,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
+	Managed *bool `json:"managed,omitempty"`
+	SiteId *string `json:"siteId,omitempty"`
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
 }
 
@@ -204,6 +206,70 @@ func (o *ComputerGeneralUpdate) SetAssetTag(v string) {
 	o.AssetTag = &v
 }
 
+// GetManaged returns the Managed field value if set, zero value otherwise.
+func (o *ComputerGeneralUpdate) GetManaged() bool {
+	if o == nil || IsNil(o.Managed) {
+		var ret bool
+		return ret
+	}
+	return *o.Managed
+}
+
+// GetManagedOk returns a tuple with the Managed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneralUpdate) GetManagedOk() (*bool, bool) {
+	if o == nil || IsNil(o.Managed) {
+		return nil, false
+	}
+	return o.Managed, true
+}
+
+// HasManaged returns a boolean if a field has been set.
+func (o *ComputerGeneralUpdate) HasManaged() bool {
+	if o != nil && !IsNil(o.Managed) {
+		return true
+	}
+
+	return false
+}
+
+// SetManaged gets a reference to the given bool and assigns it to the Managed field.
+func (o *ComputerGeneralUpdate) SetManaged(v bool) {
+	o.Managed = &v
+}
+
+// GetSiteId returns the SiteId field value if set, zero value otherwise.
+func (o *ComputerGeneralUpdate) GetSiteId() string {
+	if o == nil || IsNil(o.SiteId) {
+		var ret string
+		return ret
+	}
+	return *o.SiteId
+}
+
+// GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneralUpdate) GetSiteIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SiteId) {
+		return nil, false
+	}
+	return o.SiteId, true
+}
+
+// HasSiteId returns a boolean if a field has been set.
+func (o *ComputerGeneralUpdate) HasSiteId() bool {
+	if o != nil && !IsNil(o.SiteId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteId gets a reference to the given string and assigns it to the SiteId field.
+func (o *ComputerGeneralUpdate) SetSiteId(v string) {
+	o.SiteId = &v
+}
+
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerGeneralUpdate) GetExtensionAttributes() []ComputerExtensionAttribute {
 	if o == nil || IsNil(o.ExtensionAttributes) {
@@ -260,6 +326,12 @@ func (o ComputerGeneralUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AssetTag) {
 		toSerialize["assetTag"] = o.AssetTag
+	}
+	if !IsNil(o.Managed) {
+		toSerialize["managed"] = o.Managed
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
 	}
 	if !IsNil(o.ExtensionAttributes) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes

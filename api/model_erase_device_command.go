@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EraseDeviceCommand type satisfies the MappedNullable interface at compile time
@@ -19,6 +21,7 @@ var _ MappedNullable = &EraseDeviceCommand{}
 
 // EraseDeviceCommand struct for EraseDeviceCommand
 type EraseDeviceCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	// If true, preserve the data plan on an iPhone or iPad with eSIM functionality, if one exists. This value is available in iOS 11 and later.
 	PreserveDataPlan *bool `json:"preserveDataPlan,omitempty"`
 	// If true, disable Proximity Setup on the next reboot and skip the pane in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS 14, don’t use this option with any other option.
@@ -27,15 +30,18 @@ type EraseDeviceCommand struct {
 	Pin *string `json:"pin,omitempty"`
 	// This key defines the fallback behavior for erasing a device.
 	ObliterationBehavior *string `json:"obliterationBehavior,omitempty"`
-	ReturnToService *EraseDeviceCommandReturnToService `json:"returnToService,omitempty"`
+	ReturnToService *EraseDeviceCommandAllOfReturnToService `json:"returnToService,omitempty"`
 }
+
+type _EraseDeviceCommand EraseDeviceCommand
 
 // NewEraseDeviceCommand instantiates a new EraseDeviceCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEraseDeviceCommand() *EraseDeviceCommand {
+func NewEraseDeviceCommand(commandType MdmCommandType) *EraseDeviceCommand {
 	this := EraseDeviceCommand{}
+	this.CommandType = commandType
 	var preserveDataPlan bool = false
 	this.PreserveDataPlan = &preserveDataPlan
 	var disallowProximitySetup bool = false
@@ -53,6 +59,30 @@ func NewEraseDeviceCommandWithDefaults() *EraseDeviceCommand {
 	var disallowProximitySetup bool = false
 	this.DisallowProximitySetup = &disallowProximitySetup
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *EraseDeviceCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *EraseDeviceCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *EraseDeviceCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetPreserveDataPlan returns the PreserveDataPlan field value if set, zero value otherwise.
@@ -184,9 +214,9 @@ func (o *EraseDeviceCommand) SetObliterationBehavior(v string) {
 }
 
 // GetReturnToService returns the ReturnToService field value if set, zero value otherwise.
-func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandReturnToService {
+func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandAllOfReturnToService {
 	if o == nil || IsNil(o.ReturnToService) {
-		var ret EraseDeviceCommandReturnToService
+		var ret EraseDeviceCommandAllOfReturnToService
 		return ret
 	}
 	return *o.ReturnToService
@@ -194,7 +224,7 @@ func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandReturnToServ
 
 // GetReturnToServiceOk returns a tuple with the ReturnToService field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandReturnToService, bool) {
+func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandAllOfReturnToService, bool) {
 	if o == nil || IsNil(o.ReturnToService) {
 		return nil, false
 	}
@@ -210,8 +240,8 @@ func (o *EraseDeviceCommand) HasReturnToService() bool {
 	return false
 }
 
-// SetReturnToService gets a reference to the given EraseDeviceCommandReturnToService and assigns it to the ReturnToService field.
-func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandReturnToService) {
+// SetReturnToService gets a reference to the given EraseDeviceCommandAllOfReturnToService and assigns it to the ReturnToService field.
+func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandAllOfReturnToService) {
 	o.ReturnToService = &v
 }
 
@@ -225,6 +255,7 @@ func (o EraseDeviceCommand) MarshalJSON() ([]byte, error) {
 
 func (o EraseDeviceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.PreserveDataPlan) {
 		toSerialize["preserveDataPlan"] = o.PreserveDataPlan
 	}
@@ -241,6 +272,43 @@ func (o EraseDeviceCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["returnToService"] = o.ReturnToService
 	}
 	return toSerialize, nil
+}
+
+func (o *EraseDeviceCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEraseDeviceCommand := _EraseDeviceCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEraseDeviceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EraseDeviceCommand(varEraseDeviceCommand)
+
+	return err
 }
 
 type NullableEraseDeviceCommand struct {

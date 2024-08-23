@@ -40,7 +40,7 @@ import (
 )
 
 func main() {
-	cloudLdapKeystoreFile := *openapiclient.NewCloudLdapKeystoreFile("***", string([B@5f8890c2), "keystore.p12") // CloudLdapKeystoreFile | 
+	cloudLdapKeystoreFile := *openapiclient.NewCloudLdapKeystoreFile("***", string([B@7ff2b8d2), "keystore.p12") // CloudLdapKeystoreFile | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -808,7 +808,7 @@ import (
 )
 
 func main() {
-	ldapConfigurationRequest := *openapiclient.NewLdapConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerRequest("ldap.google.com", true, "jamf.com", int64(636), *openapiclient.NewCloudLdapKeystoreFile("***", string([B@5f8890c2), "keystore.p12"), int64(15), int64(60), true, "LDAPS")) // LdapConfigurationRequest | Cloud Identity Provider configuration to create
+	ldapConfigurationRequest := *openapiclient.NewLdapConfigurationRequest(*openapiclient.NewCloudIdPCommonRequest("Cloud Identity Provider", "PROVIDER"), *openapiclient.NewCloudLdapServerRequest("ldap.google.com", true, "jamf.com", int64(636), *openapiclient.NewCloudLdapKeystoreFile("***", string([B@7ff2b8d2), "keystore.p12"), int64(15), int64(60), true, "LDAPS")) // LdapConfigurationRequest | Cloud Identity Provider configuration to create
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

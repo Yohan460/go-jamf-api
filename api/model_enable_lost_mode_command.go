@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EnableLostModeCommand type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &EnableLostModeCommand{}
 
 // EnableLostModeCommand struct for EnableLostModeCommand
 type EnableLostModeCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	LostModeMessage *string `json:"lostModeMessage,omitempty"`
 	LostModePhone *string `json:"lostModePhone,omitempty"`
 	LostModeFootnote *string `json:"lostModeFootnote,omitempty"`
 }
 
+type _EnableLostModeCommand EnableLostModeCommand
+
 // NewEnableLostModeCommand instantiates a new EnableLostModeCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnableLostModeCommand() *EnableLostModeCommand {
+func NewEnableLostModeCommand(commandType MdmCommandType) *EnableLostModeCommand {
 	this := EnableLostModeCommand{}
+	this.CommandType = commandType
 	return &this
 }
 
@@ -39,6 +45,30 @@ func NewEnableLostModeCommand() *EnableLostModeCommand {
 func NewEnableLostModeCommandWithDefaults() *EnableLostModeCommand {
 	this := EnableLostModeCommand{}
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *EnableLostModeCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *EnableLostModeCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *EnableLostModeCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetLostModeMessage returns the LostModeMessage field value if set, zero value otherwise.
@@ -147,6 +177,7 @@ func (o EnableLostModeCommand) MarshalJSON() ([]byte, error) {
 
 func (o EnableLostModeCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.LostModeMessage) {
 		toSerialize["lostModeMessage"] = o.LostModeMessage
 	}
@@ -157,6 +188,43 @@ func (o EnableLostModeCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["lostModeFootnote"] = o.LostModeFootnote
 	}
 	return toSerialize, nil
+}
+
+func (o *EnableLostModeCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnableLostModeCommand := _EnableLostModeCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnableLostModeCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnableLostModeCommand(varEnableLostModeCommand)
+
+	return err
 }
 
 type NullableEnableLostModeCommand struct {

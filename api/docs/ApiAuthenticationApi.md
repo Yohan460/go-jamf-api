@@ -8,11 +8,10 @@ Method | HTTP request | Description
 [**AuthGet**](ApiAuthenticationAPI.md#AuthGet) | **Get** /auth | Get all the Authorization details associated with the current api 
 [**AuthInvalidateTokenPost**](ApiAuthenticationAPI.md#AuthInvalidateTokenPost) | **Post** /auth/invalidateToken | Invalidate current token 
 [**AuthKeepAlivePost**](ApiAuthenticationAPI.md#AuthKeepAlivePost) | **Post** /auth/keepAlive | Invalidate existing token and generates new token 
-[**AuthTokensPost**](ApiAuthenticationAPI.md#AuthTokensPost) | **Post** /auth/tokens | Create a token based on other authentication details (basic, etc.) 
 [**V1AuthGet**](ApiAuthenticationAPI.md#V1AuthGet) | **Get** /v1/auth | Get all the Authorization details associated with the current api 
 [**V1AuthInvalidateTokenPost**](ApiAuthenticationAPI.md#V1AuthInvalidateTokenPost) | **Post** /v1/auth/invalidate-token | Invalidate current token 
 [**V1AuthKeepAlivePost**](ApiAuthenticationAPI.md#V1AuthKeepAlivePost) | **Post** /v1/auth/keep-alive | Invalidate existing token and generates new token 
-[**V1AuthTokenPost**](ApiAuthenticationAPI.md#V1AuthTokenPost) | **Post** /v1/auth/token | Create a token based on other authentication details (basic, etc.) 
+[**V1AuthTokenPost**](ApiAuthenticationAPI.md#V1AuthTokenPost) | **Post** /v1/auth/token | Create a token based on other authentication details (basic, etc.)
 
 
 
@@ -258,67 +257,6 @@ Other parameters are passed through a pointer to a apiAuthKeepAlivePostRequest s
 [[Back to README]](../README.md)
 
 
-## AuthTokensPost
-
-> AuthToken AuthTokensPost(ctx).Execute()
-
-Create a token based on other authentication details (basic, etc.) 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApiAuthenticationAPI.AuthTokensPost(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.AuthTokensPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AuthTokensPost`: AuthToken
-	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.AuthTokensPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAuthTokensPostRequest struct via the builder pattern
-
-
-### Return type
-
-[**AuthToken**](AuthToken.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## V1AuthGet
 
 > AuthorizationV1 V1AuthGet(ctx).Execute()
@@ -504,7 +442,7 @@ Other parameters are passed through a pointer to a apiV1AuthKeepAlivePostRequest
 
 > AuthTokenV1 V1AuthTokenPost(ctx).Execute()
 
-Create a token based on other authentication details (basic, etc.) 
+Create a token based on other authentication details (basic, etc.)
 
 
 

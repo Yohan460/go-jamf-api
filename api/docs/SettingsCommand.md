@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **BootstrapTokenAllowed** | Pointer to **bool** |  | [optional] 
 **Bluetooth** | Pointer to **bool** |  | [optional] 
 **AppAnalytics** | Pointer to [**AppAnalyticsSetting**](AppAnalyticsSetting.md) |  | [optional] 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewSettingsCommand
 
-`func NewSettingsCommand() *SettingsCommand`
+`func NewSettingsCommand(commandType MdmCommandType, ) *SettingsCommand`
 
 NewSettingsCommand instantiates a new SettingsCommand object
 This constructor will assign default values to properties that have it defined,
@@ -38,6 +39,26 @@ will change when the set of required properties is changed
 NewSettingsCommandWithDefaults instantiates a new SettingsCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *SettingsCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *SettingsCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *SettingsCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetBootstrapTokenAllowed
 

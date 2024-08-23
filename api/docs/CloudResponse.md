@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudInstance** | Pointer to **bool** |  | [optional] 
+**RampInstance** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -49,6 +50,31 @@ SetCloudInstance sets CloudInstance field to given value.
 `func (o *CloudResponse) HasCloudInstance() bool`
 
 HasCloudInstance returns a boolean if a field has been set.
+
+### GetRampInstance
+
+`func (o *CloudResponse) GetRampInstance() bool`
+
+GetRampInstance returns the RampInstance field if non-nil, zero value otherwise.
+
+### GetRampInstanceOk
+
+`func (o *CloudResponse) GetRampInstanceOk() (*bool, bool)`
+
+GetRampInstanceOk returns a tuple with the RampInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRampInstance
+
+`func (o *CloudResponse) SetRampInstance(v bool)`
+
+SetRampInstance sets RampInstance field to given value.
+
+### HasRampInstance
+
+`func (o *CloudResponse) HasRampInstance() bool`
+
+HasRampInstance returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

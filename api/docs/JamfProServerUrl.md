@@ -5,13 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | 
-**UnsecuredEnrollmentUrl** | **string** |  | 
 
 ## Methods
 
 ### NewJamfProServerUrl
 
-`func NewJamfProServerUrl(url string, unsecuredEnrollmentUrl string, ) *JamfProServerUrl`
+`func NewJamfProServerUrl(url string, ) *JamfProServerUrl`
 
 NewJamfProServerUrl instantiates a new JamfProServerUrl object
 This constructor will assign default values to properties that have it defined,
@@ -44,26 +43,6 @@ and a boolean to check if the value has been set.
 `func (o *JamfProServerUrl) SetUrl(v string)`
 
 SetUrl sets Url field to given value.
-
-
-### GetUnsecuredEnrollmentUrl
-
-`func (o *JamfProServerUrl) GetUnsecuredEnrollmentUrl() string`
-
-GetUnsecuredEnrollmentUrl returns the UnsecuredEnrollmentUrl field if non-nil, zero value otherwise.
-
-### GetUnsecuredEnrollmentUrlOk
-
-`func (o *JamfProServerUrl) GetUnsecuredEnrollmentUrlOk() (*string, bool)`
-
-GetUnsecuredEnrollmentUrlOk returns a tuple with the UnsecuredEnrollmentUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUnsecuredEnrollmentUrl
-
-`func (o *JamfProServerUrl) SetUnsecuredEnrollmentUrl(v string)`
-
-SetUnsecuredEnrollmentUrl sets UnsecuredEnrollmentUrl field to given value.
 
 
 

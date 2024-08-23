@@ -22,7 +22,6 @@ var _ MappedNullable = &JamfProServerUrl{}
 // JamfProServerUrl struct for JamfProServerUrl
 type JamfProServerUrl struct {
 	Url string `json:"url"`
-	UnsecuredEnrollmentUrl string `json:"unsecuredEnrollmentUrl"`
 }
 
 type _JamfProServerUrl JamfProServerUrl
@@ -31,10 +30,9 @@ type _JamfProServerUrl JamfProServerUrl
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJamfProServerUrl(url string, unsecuredEnrollmentUrl string) *JamfProServerUrl {
+func NewJamfProServerUrl(url string) *JamfProServerUrl {
 	this := JamfProServerUrl{}
 	this.Url = url
-	this.UnsecuredEnrollmentUrl = unsecuredEnrollmentUrl
 	return &this
 }
 
@@ -70,30 +68,6 @@ func (o *JamfProServerUrl) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetUnsecuredEnrollmentUrl returns the UnsecuredEnrollmentUrl field value
-func (o *JamfProServerUrl) GetUnsecuredEnrollmentUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.UnsecuredEnrollmentUrl
-}
-
-// GetUnsecuredEnrollmentUrlOk returns a tuple with the UnsecuredEnrollmentUrl field value
-// and a boolean to check if the value has been set.
-func (o *JamfProServerUrl) GetUnsecuredEnrollmentUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.UnsecuredEnrollmentUrl, true
-}
-
-// SetUnsecuredEnrollmentUrl sets field value
-func (o *JamfProServerUrl) SetUnsecuredEnrollmentUrl(v string) {
-	o.UnsecuredEnrollmentUrl = v
-}
-
 func (o JamfProServerUrl) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -105,7 +79,6 @@ func (o JamfProServerUrl) MarshalJSON() ([]byte, error) {
 func (o JamfProServerUrl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
-	toSerialize["unsecuredEnrollmentUrl"] = o.UnsecuredEnrollmentUrl
 	return toSerialize, nil
 }
 
@@ -115,7 +88,6 @@ func (o *JamfProServerUrl) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"url",
-		"unsecuredEnrollmentUrl",
 	}
 
 	allProperties := make(map[string]interface{})

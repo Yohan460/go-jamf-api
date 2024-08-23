@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
 **RebuildKernelCache** | Pointer to **bool** |  | [optional] 
 **KextPaths** | Pointer to **[]string** | Only used if RebuildKernelCache is true | [optional] 
 **NotifyUser** | Pointer to **bool** |  | [optional] 
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewRestartDeviceCommand
 
-`func NewRestartDeviceCommand() *RestartDeviceCommand`
+`func NewRestartDeviceCommand(commandType MdmCommandType, ) *RestartDeviceCommand`
 
 NewRestartDeviceCommand instantiates a new RestartDeviceCommand object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +27,26 @@ will change when the set of required properties is changed
 NewRestartDeviceCommandWithDefaults instantiates a new RestartDeviceCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCommandType
+
+`func (o *RestartDeviceCommand) GetCommandType() MdmCommandType`
+
+GetCommandType returns the CommandType field if non-nil, zero value otherwise.
+
+### GetCommandTypeOk
+
+`func (o *RestartDeviceCommand) GetCommandTypeOk() (*MdmCommandType, bool)`
+
+GetCommandTypeOk returns a tuple with the CommandType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandType
+
+`func (o *RestartDeviceCommand) SetCommandType(v MdmCommandType)`
+
+SetCommandType sets CommandType field to given value.
+
 
 ### GetRebuildKernelCache
 

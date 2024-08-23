@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **IncludePlugins** | Pointer to **bool** |  | [optional] [default to false]
 **IncludePackages** | Pointer to **bool** |  | [optional] [default to false]
 **IncludeSoftwareUpdates** | Pointer to **bool** |  | [optional] [default to false]
+**IncludeSoftwareId** | Pointer to **bool** |  | [optional] [default to false]
 **IncludeAccounts** | Pointer to **bool** |  | [optional] [default to false]
 **CalculateSizes** | Pointer to **bool** |  | [optional] [default to false]
 **IncludeHiddenAccounts** | Pointer to **bool** |  | [optional] [default to false]
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **MonitorBeacons** | Pointer to **bool** |  | [optional] [default to false]
 **AllowChangingUserAndLocation** | Pointer to **bool** |  | [optional] [default to true]
 **UseUnixUserPaths** | Pointer to **bool** |  | [optional] [default to true]
+**CollectUnmanagedCertificates** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
 
@@ -163,6 +165,31 @@ SetIncludeSoftwareUpdates sets IncludeSoftwareUpdates field to given value.
 `func (o *ComputerInventoryCollectionPreferences) HasIncludeSoftwareUpdates() bool`
 
 HasIncludeSoftwareUpdates returns a boolean if a field has been set.
+
+### GetIncludeSoftwareId
+
+`func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareId() bool`
+
+GetIncludeSoftwareId returns the IncludeSoftwareId field if non-nil, zero value otherwise.
+
+### GetIncludeSoftwareIdOk
+
+`func (o *ComputerInventoryCollectionPreferences) GetIncludeSoftwareIdOk() (*bool, bool)`
+
+GetIncludeSoftwareIdOk returns a tuple with the IncludeSoftwareId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncludeSoftwareId
+
+`func (o *ComputerInventoryCollectionPreferences) SetIncludeSoftwareId(v bool)`
+
+SetIncludeSoftwareId sets IncludeSoftwareId field to given value.
+
+### HasIncludeSoftwareId
+
+`func (o *ComputerInventoryCollectionPreferences) HasIncludeSoftwareId() bool`
+
+HasIncludeSoftwareId returns a boolean if a field has been set.
 
 ### GetIncludeAccounts
 
@@ -413,6 +440,31 @@ SetUseUnixUserPaths sets UseUnixUserPaths field to given value.
 `func (o *ComputerInventoryCollectionPreferences) HasUseUnixUserPaths() bool`
 
 HasUseUnixUserPaths returns a boolean if a field has been set.
+
+### GetCollectUnmanagedCertificates
+
+`func (o *ComputerInventoryCollectionPreferences) GetCollectUnmanagedCertificates() bool`
+
+GetCollectUnmanagedCertificates returns the CollectUnmanagedCertificates field if non-nil, zero value otherwise.
+
+### GetCollectUnmanagedCertificatesOk
+
+`func (o *ComputerInventoryCollectionPreferences) GetCollectUnmanagedCertificatesOk() (*bool, bool)`
+
+GetCollectUnmanagedCertificatesOk returns a tuple with the CollectUnmanagedCertificates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCollectUnmanagedCertificates
+
+`func (o *ComputerInventoryCollectionPreferences) SetCollectUnmanagedCertificates(v bool)`
+
+SetCollectUnmanagedCertificates sets CollectUnmanagedCertificates field to given value.
+
+### HasCollectUnmanagedCertificates
+
+`func (o *ComputerInventoryCollectionPreferences) HasCollectUnmanagedCertificates() bool`
+
+HasCollectUnmanagedCertificates returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

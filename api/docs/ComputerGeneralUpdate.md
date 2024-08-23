@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Barcode1** | Pointer to **string** |  | [optional] 
 **Barcode2** | Pointer to **string** |  | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
+**Managed** | Pointer to **bool** |  | [optional] 
+**SiteId** | Pointer to **string** |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ComputerExtensionAttribute**](ComputerExtensionAttribute.md) |  | [optional] 
 
 ## Methods
@@ -154,6 +156,56 @@ SetAssetTag sets AssetTag field to given value.
 `func (o *ComputerGeneralUpdate) HasAssetTag() bool`
 
 HasAssetTag returns a boolean if a field has been set.
+
+### GetManaged
+
+`func (o *ComputerGeneralUpdate) GetManaged() bool`
+
+GetManaged returns the Managed field if non-nil, zero value otherwise.
+
+### GetManagedOk
+
+`func (o *ComputerGeneralUpdate) GetManagedOk() (*bool, bool)`
+
+GetManagedOk returns a tuple with the Managed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManaged
+
+`func (o *ComputerGeneralUpdate) SetManaged(v bool)`
+
+SetManaged sets Managed field to given value.
+
+### HasManaged
+
+`func (o *ComputerGeneralUpdate) HasManaged() bool`
+
+HasManaged returns a boolean if a field has been set.
+
+### GetSiteId
+
+`func (o *ComputerGeneralUpdate) GetSiteId() string`
+
+GetSiteId returns the SiteId field if non-nil, zero value otherwise.
+
+### GetSiteIdOk
+
+`func (o *ComputerGeneralUpdate) GetSiteIdOk() (*string, bool)`
+
+GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteId
+
+`func (o *ComputerGeneralUpdate) SetSiteId(v string)`
+
+SetSiteId sets SiteId field to given value.
+
+### HasSiteId
+
+`func (o *ComputerGeneralUpdate) HasSiteId() bool`
+
+HasSiteId returns a boolean if a field has been set.
 
 ### GetExtensionAttributes
 

@@ -26,11 +26,7 @@ type ManagedSoftwareUpdatesAPI interface {
 	/*
 	V1ManagedSoftwareUpdatesAvailableUpdatesGet Retrieve available macOS and iOS Managed Software Updates
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieves available macOS and iOS Managed Software Updates
+	Retrieves available macOS and iOS Managed Software Updates
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -43,13 +39,25 @@ Retrieves available macOS and iOS Managed Software Updates
 	V1ManagedSoftwareUpdatesAvailableUpdatesGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesAvailableUpdatesGetRequest) (*AvailableOsUpdates, *http.Response, error)
 
 	/*
-	V1ManagedSoftwareUpdatesPlansFeatureToggleGet Retrieve Status of the Feature Toggle
+	V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost Force stops any ongoing or stalled feature-toggle processes
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieves Status of the Feature Toggle
+	"Break Glass" endpoint, not for nominal usage.
+Use this endpoint to forcefully abandon the feature-toggle background process if the status of the feature-toggle is 'stuck' or has reached an non-restartable failed state.
+Usage of this endpoint under nominal conditions is undefined and unsupported.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest
+	*/
+	V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost(ctx context.Context) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest
+
+	// V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostExecute executes the request
+	V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest) (*http.Response, error)
+
+	/*
+	V1ManagedSoftwareUpdatesPlansFeatureToggleGet Retrieve current value of the Feature Toggle
+
+	Retrieves current value of the Feature Toggle
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -64,11 +72,7 @@ Retrieves Status of the Feature Toggle
 	/*
 	V1ManagedSoftwareUpdatesPlansFeatureTogglePut Updates Feature Toggle Value
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Updates the value of the Feature Toggle
+	Updates the value of the Feature Toggle - This endpoint is asynchronous, the provided value will not be immediately updated. Please use the following endpoint to track the status of your toggle request. /v1/managed-software-updates/plans/feature-toggle/status:
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -81,13 +85,24 @@ Updates the value of the Feature Toggle
 	V1ManagedSoftwareUpdatesPlansFeatureTogglePutExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureTogglePutRequest) (*ManagedSoftwareUpdatePlanToggle, *http.Response, error)
 
 	/*
+	V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet Retrieves background status of the Feature Toggle
+
+	Retrieves background status of the Feature Toggle
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest
+	*/
+	V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet(ctx context.Context) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest
+
+	// V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetExecute executes the request
+	//  @return ManagedSoftwareUpdatePlanToggleStatusWrapper
+	V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest) (*ManagedSoftwareUpdatePlanToggleStatusWrapper, *http.Response, error)
+
+	/*
 	V1ManagedSoftwareUpdatesPlansGet Retrieve Managed Software Update Plans
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Plans
+	Retrieve Managed Software Update Plans
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -102,11 +117,7 @@ Retrieve Managed Software Update Plans
 	/*
 	V1ManagedSoftwareUpdatesPlansGroupIdGet Retrieve Managed Software Update Plans for a Group
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieves Managed Software Update Plans for a Group
+	Retrieves Managed Software Update Plans for a Group
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -122,11 +133,7 @@ Retrieves Managed Software Update Plans for a Group
 	/*
 	V1ManagedSoftwareUpdatesPlansGroupPost Create Managed Software Update Plans for a Group
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Creates Managed Software Update Plans for a Group
+	Creates Managed Software Update Plans for a Group
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -139,13 +146,41 @@ Creates Managed Software Update Plans for a Group
 	V1ManagedSoftwareUpdatesPlansGroupPostExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGroupPostRequest) (*ManagedSoftwareUpdatePlanPostResponse, *http.Response, error)
 
 	/*
+	V1ManagedSoftwareUpdatesPlansIdDeclarationsGet Retrieve all Declarations associated with a Managed Software Update Plan
+
+	Retrieves all Declarations associated with a Managed Software Update Plan
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Managed Software Update Plan Uuid
+	@return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest
+	*/
+	V1ManagedSoftwareUpdatesPlansIdDeclarationsGet(ctx context.Context, id string) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest
+
+	// V1ManagedSoftwareUpdatesPlansIdDeclarationsGetExecute executes the request
+	//  @return DssDeclarations
+	V1ManagedSoftwareUpdatesPlansIdDeclarationsGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest) (*DssDeclarations, *http.Response, error)
+
+	/*
+	V1ManagedSoftwareUpdatesPlansIdEventsGet Retrieve a Managed Software Update Plan Event Store
+
+	Retrieves a Managed Software Update Plan Event Store
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Managed Software Update Plan Uuid
+	@return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest
+	*/
+	V1ManagedSoftwareUpdatesPlansIdEventsGet(ctx context.Context, id string) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest
+
+	// V1ManagedSoftwareUpdatesPlansIdEventsGetExecute executes the request
+	//  @return ManagedSoftwareUpdatePlanEventStore
+	V1ManagedSoftwareUpdatesPlansIdEventsGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest) (*ManagedSoftwareUpdatePlanEventStore, *http.Response, error)
+
+	/*
 	V1ManagedSoftwareUpdatesPlansIdGet Retrieve a Managed Software Update Plan
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieves a Managed Software Update Plan
+	Retrieves a Managed Software Update Plan
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -161,11 +196,7 @@ Retrieves a Managed Software Update Plan
 	/*
 	V1ManagedSoftwareUpdatesPlansPost Create a Managed Software Update Plan
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Creates a Managed Software Update Plan.
+	Creates a Managed Software Update Plan.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -180,11 +211,7 @@ Creates a Managed Software Update Plan.
 	/*
 	V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet Retrieve Managed Software Update Statuses for Computer Groups
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Statuses for Computer Groups
+	Retrieve Managed Software Update Statuses for Computer Groups
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -200,11 +227,7 @@ Retrieve Managed Software Update Statuses for Computer Groups
 	/*
 	V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet Retrieve Managed Software Update Statuses for Computers
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Statuses for Computers
+	Retrieve Managed Software Update Statuses for Computers
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -220,11 +243,7 @@ Retrieve Managed Software Update Statuses for Computers
 	/*
 	V1ManagedSoftwareUpdatesUpdateStatusesGet Retrieve Managed Software Update Statuses
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Statuses
+	Retrieve Managed Software Update Statuses
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -239,11 +258,7 @@ Retrieve Managed Software Update Statuses
 	/*
 	V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet Retrieve Managed Software Update Statuses for Mobile Device Groups
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Statuses for Mobile Device Groups
+	Retrieve Managed Software Update Statuses for Mobile Device Groups
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -259,11 +274,7 @@ Retrieve Managed Software Update Statuses for Mobile Device Groups
 	/*
 	V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet Retrieve Managed Software Update Statuses for Mobile Devices
 
-	## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieve Managed Software Update Statuses for Mobile Devices
+	Retrieve Managed Software Update Statuses for Mobile Devices
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -292,10 +303,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesAvailableUpdatesGetRequ
 /*
 V1ManagedSoftwareUpdatesAvailableUpdatesGet Retrieve available macOS and iOS Managed Software Updates
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieves available macOS and iOS Managed Software Updates
 
 
@@ -384,6 +391,107 @@ func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesAvailableUpda
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest struct {
+	ctx context.Context
+	ApiService ManagedSoftwareUpdatesAPI
+}
+
+func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostExecute(r)
+}
+
+/*
+V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost Force stops any ongoing or stalled feature-toggle processes
+
+"Break Glass" endpoint, not for nominal usage.
+Use this endpoint to forcefully abandon the feature-toggle background process if the status of the feature-toggle is 'stuck' or has reached an non-restartable failed state.
+Usage of this endpoint under nominal conditions is undefined and unsupported.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest
+*/
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost(ctx context.Context) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest {
+	return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedSoftwareUpdatesAPIService.V1ManagedSoftwareUpdatesPlansFeatureToggleAbandonPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/managed-software-updates/plans/feature-toggle/abandon"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleGetRequest struct {
 	ctx context.Context
 	ApiService ManagedSoftwareUpdatesAPI
@@ -394,13 +502,9 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleGetRe
 }
 
 /*
-V1ManagedSoftwareUpdatesPlansFeatureToggleGet Retrieve Status of the Feature Toggle
+V1ManagedSoftwareUpdatesPlansFeatureToggleGet Retrieve current value of the Feature Toggle
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Retrieves Status of the Feature Toggle
+Retrieves current value of the Feature Toggle
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -506,11 +610,7 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureTogglePutRe
 /*
 V1ManagedSoftwareUpdatesPlansFeatureTogglePut Updates Feature Toggle Value
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
-Updates the value of the Feature Toggle
+Updates the value of the Feature Toggle - This endpoint is asynchronous, the provided value will not be immediately updated. Please use the following endpoint to track the status of your toggle request. /v1/managed-software-updates/plans/feature-toggle/status:
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -613,6 +713,116 @@ func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansFeatureT
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest struct {
+	ctx context.Context
+	ApiService ManagedSoftwareUpdatesAPI
+}
+
+func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest) Execute() (*ManagedSoftwareUpdatePlanToggleStatusWrapper, *http.Response, error) {
+	return r.ApiService.V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetExecute(r)
+}
+
+/*
+V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet Retrieves background status of the Feature Toggle
+
+Retrieves background status of the Feature Toggle
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest
+*/
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet(ctx context.Context) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest {
+	return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedSoftwareUpdatePlanToggleStatusWrapper
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansFeatureToggleStatusGetRequest) (*ManagedSoftwareUpdatePlanToggleStatusWrapper, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ManagedSoftwareUpdatePlanToggleStatusWrapper
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedSoftwareUpdatesAPIService.V1ManagedSoftwareUpdatesPlansFeatureToggleStatusGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/managed-software-updates/plans/feature-toggle/status"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGetRequest struct {
 	ctx context.Context
 	ApiService ManagedSoftwareUpdatesAPI
@@ -638,7 +848,7 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGetRequest) Sort(s
 	return r
 }
 
-// Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, forceInstallLocalDateTime, state.
+// Query in the RSQL format, allowing to filter Managed Software Updates collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: planUuid, device.deviceId, device.objectType, updateAction, versionType, specificVersion, maxDeferrals, recipeId, forceInstallLocalDateTime, state.
 func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGetRequest) Filter(filter string) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGetRequest {
 	r.filter = &filter
 	return r
@@ -651,10 +861,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGetRequest) Execut
 /*
 V1ManagedSoftwareUpdatesPlansGet Retrieve Managed Software Update Plans
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Plans
 
 
@@ -805,10 +1011,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGroupIdGetRequest)
 /*
 V1ManagedSoftwareUpdatesPlansGroupIdGet Retrieve Managed Software Update Plans for a Group
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieves Managed Software Update Plans for a Group
 
 
@@ -944,10 +1146,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansGroupPostRequest) 
 /*
 V1ManagedSoftwareUpdatesPlansGroupPost Create Managed Software Update Plans for a Group
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Creates Managed Software Update Plans for a Group
 
 
@@ -1073,6 +1271,234 @@ func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansGroupPos
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest struct {
+	ctx context.Context
+	ApiService ManagedSoftwareUpdatesAPI
+	id string
+}
+
+func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest) Execute() (*DssDeclarations, *http.Response, error) {
+	return r.ApiService.V1ManagedSoftwareUpdatesPlansIdDeclarationsGetExecute(r)
+}
+
+/*
+V1ManagedSoftwareUpdatesPlansIdDeclarationsGet Retrieve all Declarations associated with a Managed Software Update Plan
+
+Retrieves all Declarations associated with a Managed Software Update Plan
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Managed Software Update Plan Uuid
+ @return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest
+*/
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansIdDeclarationsGet(ctx context.Context, id string) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest {
+	return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return DssDeclarations
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansIdDeclarationsGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdDeclarationsGetRequest) (*DssDeclarations, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *DssDeclarations
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedSoftwareUpdatesAPIService.V1ManagedSoftwareUpdatesPlansIdDeclarationsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/managed-software-updates/plans/{id}/declarations"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest struct {
+	ctx context.Context
+	ApiService ManagedSoftwareUpdatesAPI
+	id string
+}
+
+func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest) Execute() (*ManagedSoftwareUpdatePlanEventStore, *http.Response, error) {
+	return r.ApiService.V1ManagedSoftwareUpdatesPlansIdEventsGetExecute(r)
+}
+
+/*
+V1ManagedSoftwareUpdatesPlansIdEventsGet Retrieve a Managed Software Update Plan Event Store
+
+Retrieves a Managed Software Update Plan Event Store
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Managed Software Update Plan Uuid
+ @return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest
+*/
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansIdEventsGet(ctx context.Context, id string) ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest {
+	return ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ManagedSoftwareUpdatePlanEventStore
+func (a *ManagedSoftwareUpdatesAPIService) V1ManagedSoftwareUpdatesPlansIdEventsGetExecute(r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdEventsGetRequest) (*ManagedSoftwareUpdatePlanEventStore, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ManagedSoftwareUpdatePlanEventStore
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ManagedSoftwareUpdatesAPIService.V1ManagedSoftwareUpdatesPlansIdEventsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/managed-software-updates/plans/{id}/events"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdGetRequest struct {
 	ctx context.Context
 	ApiService ManagedSoftwareUpdatesAPI
@@ -1086,10 +1512,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansIdGetRequest) Exec
 /*
 V1ManagedSoftwareUpdatesPlansIdGet Retrieve a Managed Software Update Plan
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieves a Managed Software Update Plan
 
 
@@ -1210,10 +1632,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesPlansPostRequest) Execu
 /*
 V1ManagedSoftwareUpdatesPlansPost Create a Managed Software Update Plan
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Creates a Managed Software Update Plan.
 
 
@@ -1341,10 +1759,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesUpdateStatusesComputerG
 /*
 V1ManagedSoftwareUpdatesUpdateStatusesComputerGroupsIdGet Retrieve Managed Software Update Statuses for Computer Groups
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Statuses for Computer Groups
 
 
@@ -1449,10 +1863,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesUpdateStatusesComputers
 /*
 V1ManagedSoftwareUpdatesUpdateStatusesComputersIdGet Retrieve Managed Software Update Statuses for Computers
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Statuses for Computers
 
 
@@ -1563,10 +1973,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesUpdateStatusesGetReques
 /*
 V1ManagedSoftwareUpdatesUpdateStatusesGet Retrieve Managed Software Update Statuses
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Statuses
 
 
@@ -1674,10 +2080,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesUpdateStatusesMobileDev
 /*
 V1ManagedSoftwareUpdatesUpdateStatusesMobileDeviceGroupsIdGet Retrieve Managed Software Update Statuses for Mobile Device Groups
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Statuses for Mobile Device Groups
 
 
@@ -1782,10 +2184,6 @@ func (r ManagedSoftwareUpdatesAPIV1ManagedSoftwareUpdatesUpdateStatusesMobileDev
 /*
 V1ManagedSoftwareUpdatesUpdateStatusesMobileDevicesIdGet Retrieve Managed Software Update Statuses for Mobile Devices
 
-## BETA
-  
-These endpoints are available for use in your workflows. It is extremely important to exercise caution when implementing these endpoints, because elements such as the URL or the response could change while this feature is in Beta. If this is the case, we will communicate that upcoming change but there will be no deprecation timeline. Any breaking changes to the API that occur *after* the Beta phase __will be__ held to the standard year-long deprecation timeline.
-  
 Retrieve Managed Software Update Statuses for Mobile Devices
 
 

@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SetRecoveryLockCommand type satisfies the MappedNullable interface at compile time
@@ -19,16 +21,20 @@ var _ MappedNullable = &SetRecoveryLockCommand{}
 
 // SetRecoveryLockCommand struct for SetRecoveryLockCommand
 type SetRecoveryLockCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	// The new password for Recovery Lock. Set as an empty string to clear the Recovery Lock password.
 	NewPassword *string `json:"newPassword,omitempty"`
 }
+
+type _SetRecoveryLockCommand SetRecoveryLockCommand
 
 // NewSetRecoveryLockCommand instantiates a new SetRecoveryLockCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSetRecoveryLockCommand() *SetRecoveryLockCommand {
+func NewSetRecoveryLockCommand(commandType MdmCommandType) *SetRecoveryLockCommand {
 	this := SetRecoveryLockCommand{}
+	this.CommandType = commandType
 	return &this
 }
 
@@ -38,6 +44,30 @@ func NewSetRecoveryLockCommand() *SetRecoveryLockCommand {
 func NewSetRecoveryLockCommandWithDefaults() *SetRecoveryLockCommand {
 	this := SetRecoveryLockCommand{}
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *SetRecoveryLockCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *SetRecoveryLockCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *SetRecoveryLockCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetNewPassword returns the NewPassword field value if set, zero value otherwise.
@@ -82,10 +112,48 @@ func (o SetRecoveryLockCommand) MarshalJSON() ([]byte, error) {
 
 func (o SetRecoveryLockCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.NewPassword) {
 		toSerialize["newPassword"] = o.NewPassword
 	}
 	return toSerialize, nil
+}
+
+func (o *SetRecoveryLockCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSetRecoveryLockCommand := _SetRecoveryLockCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSetRecoveryLockCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SetRecoveryLockCommand(varSetRecoveryLockCommand)
+
+	return err
 }
 
 type NullableSetRecoveryLockCommand struct {

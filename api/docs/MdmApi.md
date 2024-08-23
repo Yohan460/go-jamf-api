@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**V1MdmCommandsGet**](MdmAPI.md#V1MdmCommandsGet) | **Get** /v1/mdm/commands | Get information about mdm commands made by Jamf Pro.
 [**V1MdmRenewProfilePost**](MdmAPI.md#V1MdmRenewProfilePost) | **Post** /v1/mdm/renew-profile | Renew MDM Profile 
 [**V2MdmCommandsGet**](MdmAPI.md#V2MdmCommandsGet) | **Get** /v2/mdm/commands | Get information about mdm commands made by Jamf Pro. 
+[**V2MdmCommandsPost**](MdmAPI.md#V2MdmCommandsPost) | **Post** /v2/mdm/commands | Post a command for creation and queuing 
 
 
 
@@ -345,6 +346,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2MdmCommandsPost
+
+> []HrefResponse V2MdmCommandsPost(ctx).MdmCommandRequest(mdmCommandRequest).Execute()
+
+Post a command for creation and queuing 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	mdmCommandRequest := *openapiclient.NewMdmCommandRequest() // MdmCommandRequest | The mdm command object to create and queue (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V2MdmCommandsPost(context.Background()).MdmCommandRequest(mdmCommandRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V2MdmCommandsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2MdmCommandsPost`: []HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V2MdmCommandsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2MdmCommandsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mdmCommandRequest** | [**MdmCommandRequest**](MdmCommandRequest.md) | The mdm command object to create and queue | 
+
+### Return type
+
+[**[]HrefResponse**](HrefResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

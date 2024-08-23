@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DeleteUserCommand type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,21 @@ var _ MappedNullable = &DeleteUserCommand{}
 
 // DeleteUserCommand struct for DeleteUserCommand
 type DeleteUserCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	UserName *string `json:"userName,omitempty"`
 	ForceDeletion *bool `json:"forceDeletion,omitempty"`
 	DeleteAllUsers *bool `json:"deleteAllUsers,omitempty"`
 }
 
+type _DeleteUserCommand DeleteUserCommand
+
 // NewDeleteUserCommand instantiates a new DeleteUserCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteUserCommand() *DeleteUserCommand {
+func NewDeleteUserCommand(commandType MdmCommandType) *DeleteUserCommand {
 	this := DeleteUserCommand{}
+	this.CommandType = commandType
 	return &this
 }
 
@@ -39,6 +45,30 @@ func NewDeleteUserCommand() *DeleteUserCommand {
 func NewDeleteUserCommandWithDefaults() *DeleteUserCommand {
 	this := DeleteUserCommand{}
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *DeleteUserCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *DeleteUserCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *DeleteUserCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetUserName returns the UserName field value if set, zero value otherwise.
@@ -147,6 +177,7 @@ func (o DeleteUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.UserName) {
 		toSerialize["userName"] = o.UserName
 	}
@@ -157,6 +188,43 @@ func (o DeleteUserCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["deleteAllUsers"] = o.DeleteAllUsers
 	}
 	return toSerialize, nil
+}
+
+func (o *DeleteUserCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeleteUserCommand := _DeleteUserCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeleteUserCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeleteUserCommand(varDeleteUserCommand)
+
+	return err
 }
 
 type NullableDeleteUserCommand struct {

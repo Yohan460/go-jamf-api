@@ -37,6 +37,8 @@ Method | HTTP request | Description
 [**V3EnrollmentLanguagesLanguageIdGet**](EnrollmentAPI.md#V3EnrollmentLanguagesLanguageIdGet) | **Get** /v3/enrollment/languages/{languageId} | Retrieve the Enrollment messaging for a language 
 [**V3EnrollmentLanguagesLanguageIdPut**](EnrollmentAPI.md#V3EnrollmentLanguagesLanguageIdPut) | **Put** /v3/enrollment/languages/{languageId} | Edit Enrollment messaging for a language 
 [**V3EnrollmentPut**](EnrollmentAPI.md#V3EnrollmentPut) | **Put** /v3/enrollment | Update Enrollment object 
+[**V4EnrollmentGet**](EnrollmentAPI.md#V4EnrollmentGet) | **Get** /v4/enrollment | Get Enrollment object and Re-enrollment settings 
+[**V4EnrollmentPut**](EnrollmentAPI.md#V4EnrollmentPut) | **Put** /v4/enrollment | Update Enrollment object 
 
 
 
@@ -2257,6 +2259,133 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EnrollmentSettingsV3**](EnrollmentSettingsV3.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V4EnrollmentGet
+
+> EnrollmentSettingsV4 V4EnrollmentGet(ctx).Execute()
+
+Get Enrollment object and Re-enrollment settings 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V4EnrollmentGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V4EnrollmentGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V4EnrollmentGet`: EnrollmentSettingsV4
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V4EnrollmentGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV4EnrollmentGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**EnrollmentSettingsV4**](EnrollmentSettingsV4.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V4EnrollmentPut
+
+> EnrollmentSettingsV4 V4EnrollmentPut(ctx).EnrollmentSettingsV4(enrollmentSettingsV4).Execute()
+
+Update Enrollment object 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	enrollmentSettingsV4 := *openapiclient.NewEnrollmentSettingsV4("radmin") // EnrollmentSettingsV4 | Update enrollment
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnrollmentAPI.V4EnrollmentPut(context.Background()).EnrollmentSettingsV4(enrollmentSettingsV4).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnrollmentAPI.V4EnrollmentPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V4EnrollmentPut`: EnrollmentSettingsV4
+	fmt.Fprintf(os.Stdout, "Response from `EnrollmentAPI.V4EnrollmentPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV4EnrollmentPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **enrollmentSettingsV4** | [**EnrollmentSettingsV4**](EnrollmentSettingsV4.md) | Update enrollment | 
+
+### Return type
+
+[**EnrollmentSettingsV4**](EnrollmentSettingsV4.md)
 
 ### Authorization
 

@@ -16,6 +16,8 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
+	"reflect"
 )
 
 
@@ -24,7 +26,7 @@ type SitesAPI interface {
 	/*
 	V1SitesGet Find all sites 
 
-	Find all sites.
+	Find all sites
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -35,6 +37,22 @@ type SitesAPI interface {
 	// V1SitesGetExecute executes the request
 	//  @return []V1Site
 	V1SitesGetExecute(r SitesAPIV1SitesGetRequest) ([]V1Site, *http.Response, error)
+
+	/*
+	V1SitesIdObjectsGet Find and filter site objects for a site ID 
+
+	Find site objects for Site ID, with the ability to filter out different object types and object IDs for the site ID
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Site ID to get objects for 
+	@return SitesAPIV1SitesIdObjectsGetRequest
+	*/
+	V1SitesIdObjectsGet(ctx context.Context, id string) SitesAPIV1SitesIdObjectsGetRequest
+
+	// V1SitesIdObjectsGetExecute executes the request
+	//  @return []SiteObject
+	V1SitesIdObjectsGetExecute(r SitesAPIV1SitesIdObjectsGetRequest) ([]SiteObject, *http.Response, error)
 }
 
 // SitesAPIService SitesAPI service
@@ -52,7 +70,7 @@ func (r SitesAPIV1SitesGetRequest) Execute() ([]V1Site, *http.Response, error) {
 /*
 V1SitesGet Find all sites 
 
-Find all sites.
+Find all sites
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -86,6 +104,168 @@ func (a *SitesAPIService) V1SitesGetExecute(r SitesAPIV1SitesGetRequest) ([]V1Si
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SitesAPIV1SitesIdObjectsGetRequest struct {
+	ctx context.Context
+	ApiService SitesAPI
+	id string
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r SitesAPIV1SitesIdObjectsGetRequest) Page(page int64) SitesAPIV1SitesIdObjectsGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r SitesAPIV1SitesIdObjectsGetRequest) PageSize(pageSize int64) SitesAPIV1SitesIdObjectsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;objectType:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Example: &#x60;sort&#x3D;objectId:asc,objectType:desc&#x60;. 
+func (r SitesAPIV1SitesIdObjectsGetRequest) Sort(sort []string) SitesAPIV1SitesIdObjectsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing filter of site object information. Default filter returns all objects for the site ID.  Fields allowed in the query: &#x60;objectType&#x60;, &#x60;objectId&#x60;  Example: &#x60;filter&#x3D;objectType&#x3D;&#x3D;\&quot;User\&quot;&#x60;      List of &#x60;objectType&#x60; options (case-insensitive) [\&quot;Computer\&quot;, \&quot;Peripheral\&quot;, \&quot;Licensed Software\&quot;, \&quot;Licensed Software Template\&quot;, \&quot;Policy\&quot;, \&quot;macOS Configuration Profile\&quot;, \&quot;Restricted Software\&quot;, \&quot;Managed Preference Profile\&quot;, \&quot;Computer Group\&quot;, \&quot;Mobile Device\&quot;, \&quot;Apple TV\&quot;, \&quot;Android Device\&quot;, \&quot;User Group\&quot;, \&quot;iOS Configuration Profile\&quot;, \&quot;Mobile Device App\&quot;, \&quot;E-book\&quot;, \&quot;Mobile Device Group\&quot;, \&quot;Classroom\&quot;, \&quot;Advanced Computer Search\&quot;, \&quot;Advanced Mobile Search\&quot;, \&quot;Advanced User Search\&quot;, \&quot;Advanced User Content Search\&quot;, \&quot;Computer Invitation\&quot;, \&quot;Mobile Device Invitation\&quot;, \&quot;Mobile Device Enrollment Profile\&quot;, \&quot;Device Enrollment Program Instance\&quot;, \&quot;Mobile Device Prestage\&quot;, \&quot;Computer DEP Prestage\&quot;, \&quot;Enrollment Customization\&quot;, \&quot;VPP Location\&quot;, \&quot;VPP Subscription\&quot;, \&quot;VPP Invitation\&quot;, \&quot;VPP Assignment\&quot;, \&quot;User\&quot;, \&quot;Network Integration\&quot;, \&quot;Mac App\&quot;, \&quot;App Installer\&quot;, \&quot;BYO Profile\&quot;, \&quot;Self Service Plugin\&quot;, \&quot;Software Title\&quot;, \&quot;Patch Software Title Summary\&quot;, \&quot;Patch Policy\&quot;, \&quot;Patch Software Title Configuration\&quot;, \&quot;Change Password\&quot;, \&quot;Mobile Device Inventory\&quot;, \&quot;Computer Inventory\&quot;, \&quot;Change Management\&quot;, \&quot;Licensed Software License\&quot;] 
+func (r SitesAPIV1SitesIdObjectsGetRequest) Filter(filter string) SitesAPIV1SitesIdObjectsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r SitesAPIV1SitesIdObjectsGetRequest) Execute() ([]SiteObject, *http.Response, error) {
+	return r.ApiService.V1SitesIdObjectsGetExecute(r)
+}
+
+/*
+V1SitesIdObjectsGet Find and filter site objects for a site ID 
+
+Find site objects for Site ID, with the ability to filter out different object types and object IDs for the site ID
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Site ID to get objects for 
+ @return SitesAPIV1SitesIdObjectsGetRequest
+*/
+func (a *SitesAPIService) V1SitesIdObjectsGet(ctx context.Context, id string) SitesAPIV1SitesIdObjectsGetRequest {
+	return SitesAPIV1SitesIdObjectsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []SiteObject
+func (a *SitesAPIService) V1SitesIdObjectsGetExecute(r SitesAPIV1SitesIdObjectsGetRequest) ([]SiteObject, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SiteObject
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SitesAPIService.V1SitesIdObjectsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/sites/{id}/objects"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int64 = 0
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+	} else {
+		var defaultValue int64 = 100
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+		}
+	} else {
+		defaultValue := []string{"objectType:asc"}
+		r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+	} else {
+		var defaultValue string = "objectType==\"User\""
+		r.filter = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

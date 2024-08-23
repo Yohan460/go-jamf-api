@@ -19,6 +19,7 @@ import (
 type MobileDeviceResponse struct {
 	MobileDeviceIosInventory *MobileDeviceIosInventory
 	MobileDeviceTvOsInventory *MobileDeviceTvOsInventory
+	MobileDeviceWatchOsInventory *MobileDeviceWatchOsInventory
 }
 
 // MobileDeviceIosInventoryAsMobileDeviceResponse is a convenience function that returns MobileDeviceIosInventory wrapped in MobileDeviceResponse
@@ -32,6 +33,13 @@ func MobileDeviceIosInventoryAsMobileDeviceResponse(v *MobileDeviceIosInventory)
 func MobileDeviceTvOsInventoryAsMobileDeviceResponse(v *MobileDeviceTvOsInventory) MobileDeviceResponse {
 	return MobileDeviceResponse{
 		MobileDeviceTvOsInventory: v,
+	}
+}
+
+// MobileDeviceWatchOsInventoryAsMobileDeviceResponse is a convenience function that returns MobileDeviceWatchOsInventory wrapped in MobileDeviceResponse
+func MobileDeviceWatchOsInventoryAsMobileDeviceResponse(v *MobileDeviceWatchOsInventory) MobileDeviceResponse {
+	return MobileDeviceResponse{
+		MobileDeviceWatchOsInventory: v,
 	}
 }
 
@@ -66,10 +74,24 @@ func (dst *MobileDeviceResponse) UnmarshalJSON(data []byte) error {
 		dst.MobileDeviceTvOsInventory = nil
 	}
 
+	// try to unmarshal data into MobileDeviceWatchOsInventory
+	err = newStrictDecoder(data).Decode(&dst.MobileDeviceWatchOsInventory)
+	if err == nil {
+		jsonMobileDeviceWatchOsInventory, _ := json.Marshal(dst.MobileDeviceWatchOsInventory)
+		if string(jsonMobileDeviceWatchOsInventory) == "{}" { // empty struct
+			dst.MobileDeviceWatchOsInventory = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.MobileDeviceWatchOsInventory = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.MobileDeviceIosInventory = nil
 		dst.MobileDeviceTvOsInventory = nil
+		dst.MobileDeviceWatchOsInventory = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(MobileDeviceResponse)")
 	} else if match == 1 {
@@ -89,6 +111,10 @@ func (src MobileDeviceResponse) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.MobileDeviceTvOsInventory)
 	}
 
+	if src.MobileDeviceWatchOsInventory != nil {
+		return json.Marshal(&src.MobileDeviceWatchOsInventory)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -103,6 +129,10 @@ func (obj *MobileDeviceResponse) GetActualInstance() (interface{}) {
 
 	if obj.MobileDeviceTvOsInventory != nil {
 		return obj.MobileDeviceTvOsInventory
+	}
+
+	if obj.MobileDeviceWatchOsInventory != nil {
+		return obj.MobileDeviceWatchOsInventory
 	}
 
 	// all schemas are nil

@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the RestartDeviceCommand type satisfies the MappedNullable interface at compile time
@@ -19,18 +21,22 @@ var _ MappedNullable = &RestartDeviceCommand{}
 
 // RestartDeviceCommand struct for RestartDeviceCommand
 type RestartDeviceCommand struct {
+	CommandType MdmCommandType `json:"commandType"`
 	RebuildKernelCache *bool `json:"rebuildKernelCache,omitempty"`
 	// Only used if RebuildKernelCache is true
 	KextPaths []string `json:"kextPaths,omitempty"`
 	NotifyUser *bool `json:"notifyUser,omitempty"`
 }
 
+type _RestartDeviceCommand RestartDeviceCommand
+
 // NewRestartDeviceCommand instantiates a new RestartDeviceCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRestartDeviceCommand() *RestartDeviceCommand {
+func NewRestartDeviceCommand(commandType MdmCommandType) *RestartDeviceCommand {
 	this := RestartDeviceCommand{}
+	this.CommandType = commandType
 	return &this
 }
 
@@ -40,6 +46,30 @@ func NewRestartDeviceCommand() *RestartDeviceCommand {
 func NewRestartDeviceCommandWithDefaults() *RestartDeviceCommand {
 	this := RestartDeviceCommand{}
 	return &this
+}
+
+// GetCommandType returns the CommandType field value
+func (o *RestartDeviceCommand) GetCommandType() MdmCommandType {
+	if o == nil {
+		var ret MdmCommandType
+		return ret
+	}
+
+	return o.CommandType
+}
+
+// GetCommandTypeOk returns a tuple with the CommandType field value
+// and a boolean to check if the value has been set.
+func (o *RestartDeviceCommand) GetCommandTypeOk() (*MdmCommandType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CommandType, true
+}
+
+// SetCommandType sets field value
+func (o *RestartDeviceCommand) SetCommandType(v MdmCommandType) {
+	o.CommandType = v
 }
 
 // GetRebuildKernelCache returns the RebuildKernelCache field value if set, zero value otherwise.
@@ -148,6 +178,7 @@ func (o RestartDeviceCommand) MarshalJSON() ([]byte, error) {
 
 func (o RestartDeviceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["commandType"] = o.CommandType
 	if !IsNil(o.RebuildKernelCache) {
 		toSerialize["rebuildKernelCache"] = o.RebuildKernelCache
 	}
@@ -158,6 +189,43 @@ func (o RestartDeviceCommand) ToMap() (map[string]interface{}, error) {
 		toSerialize["notifyUser"] = o.NotifyUser
 	}
 	return toSerialize, nil
+}
+
+func (o *RestartDeviceCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"commandType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varRestartDeviceCommand := _RestartDeviceCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varRestartDeviceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RestartDeviceCommand(varRestartDeviceCommand)
+
+	return err
 }
 
 type NullableRestartDeviceCommand struct {
