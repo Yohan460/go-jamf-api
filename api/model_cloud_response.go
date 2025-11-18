@@ -21,6 +21,9 @@ var _ MappedNullable = &CloudResponse{}
 type CloudResponse struct {
 	CloudInstance *bool `json:"cloudInstance,omitempty"`
 	RampInstance *bool `json:"rampInstance,omitempty"`
+	GovCloudInstance *bool `json:"govCloudInstance,omitempty"`
+	// Information whether this instance is managed by managed service provider
+	ManagedServiceProviderInstance *bool `json:"managedServiceProviderInstance,omitempty"`
 }
 
 // NewCloudResponse instantiates a new CloudResponse object
@@ -104,6 +107,70 @@ func (o *CloudResponse) SetRampInstance(v bool) {
 	o.RampInstance = &v
 }
 
+// GetGovCloudInstance returns the GovCloudInstance field value if set, zero value otherwise.
+func (o *CloudResponse) GetGovCloudInstance() bool {
+	if o == nil || IsNil(o.GovCloudInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.GovCloudInstance
+}
+
+// GetGovCloudInstanceOk returns a tuple with the GovCloudInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetGovCloudInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.GovCloudInstance) {
+		return nil, false
+	}
+	return o.GovCloudInstance, true
+}
+
+// HasGovCloudInstance returns a boolean if a field has been set.
+func (o *CloudResponse) HasGovCloudInstance() bool {
+	if o != nil && !IsNil(o.GovCloudInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetGovCloudInstance gets a reference to the given bool and assigns it to the GovCloudInstance field.
+func (o *CloudResponse) SetGovCloudInstance(v bool) {
+	o.GovCloudInstance = &v
+}
+
+// GetManagedServiceProviderInstance returns the ManagedServiceProviderInstance field value if set, zero value otherwise.
+func (o *CloudResponse) GetManagedServiceProviderInstance() bool {
+	if o == nil || IsNil(o.ManagedServiceProviderInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.ManagedServiceProviderInstance
+}
+
+// GetManagedServiceProviderInstanceOk returns a tuple with the ManagedServiceProviderInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetManagedServiceProviderInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.ManagedServiceProviderInstance) {
+		return nil, false
+	}
+	return o.ManagedServiceProviderInstance, true
+}
+
+// HasManagedServiceProviderInstance returns a boolean if a field has been set.
+func (o *CloudResponse) HasManagedServiceProviderInstance() bool {
+	if o != nil && !IsNil(o.ManagedServiceProviderInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagedServiceProviderInstance gets a reference to the given bool and assigns it to the ManagedServiceProviderInstance field.
+func (o *CloudResponse) SetManagedServiceProviderInstance(v bool) {
+	o.ManagedServiceProviderInstance = &v
+}
+
 func (o CloudResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +186,12 @@ func (o CloudResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RampInstance) {
 		toSerialize["rampInstance"] = o.RampInstance
+	}
+	if !IsNil(o.GovCloudInstance) {
+		toSerialize["govCloudInstance"] = o.GovCloudInstance
+	}
+	if !IsNil(o.ManagedServiceProviderInstance) {
+		toSerialize["managedServiceProviderInstance"] = o.ManagedServiceProviderInstance
 	}
 	return toSerialize, nil
 }

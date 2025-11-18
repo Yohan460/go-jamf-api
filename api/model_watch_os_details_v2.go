@@ -33,6 +33,7 @@ type WatchOsDetailsV2 struct {
 	LastCloudBackupTimestamp *time.Time `json:"lastCloudBackupTimestamp,omitempty"`
 	ITunesStoreAccountActive *bool `json:"iTunesStoreAccountActive,omitempty"`
 	BleCapable *bool `json:"bleCapable,omitempty"`
+	UnlockToken *string `json:"unlockToken,omitempty"`
 	Security *SecurityV2 `json:"security,omitempty"`
 	Applications []MobileDeviceApplication `json:"applications,omitempty"`
 	Certificates []MobileDeviceCertificateV2 `json:"certificates,omitempty"`
@@ -474,6 +475,38 @@ func (o *WatchOsDetailsV2) SetBleCapable(v bool) {
 	o.BleCapable = &v
 }
 
+// GetUnlockToken returns the UnlockToken field value if set, zero value otherwise.
+func (o *WatchOsDetailsV2) GetUnlockToken() string {
+	if o == nil || IsNil(o.UnlockToken) {
+		var ret string
+		return ret
+	}
+	return *o.UnlockToken
+}
+
+// GetUnlockTokenOk returns a tuple with the UnlockToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WatchOsDetailsV2) GetUnlockTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.UnlockToken) {
+		return nil, false
+	}
+	return o.UnlockToken, true
+}
+
+// HasUnlockToken returns a boolean if a field has been set.
+func (o *WatchOsDetailsV2) HasUnlockToken() bool {
+	if o != nil && !IsNil(o.UnlockToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockToken gets a reference to the given string and assigns it to the UnlockToken field.
+func (o *WatchOsDetailsV2) SetUnlockToken(v string) {
+	o.UnlockToken = &v
+}
+
 // GetSecurity returns the Security field value if set, zero value otherwise.
 func (o *WatchOsDetailsV2) GetSecurity() SecurityV2 {
 	if o == nil || IsNil(o.Security) {
@@ -714,6 +747,9 @@ func (o WatchOsDetailsV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BleCapable) {
 		toSerialize["bleCapable"] = o.BleCapable
+	}
+	if !IsNil(o.UnlockToken) {
+		toSerialize["unlockToken"] = o.UnlockToken
 	}
 	if !IsNil(o.Security) {
 		toSerialize["security"] = o.Security

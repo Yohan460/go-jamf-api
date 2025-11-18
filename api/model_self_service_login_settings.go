@@ -25,6 +25,8 @@ type SelfServiceLoginSettings struct {
 	UserLoginLevel string `json:"userLoginLevel"`
 	// true if remember me functionality is allowed, false if not 
 	AllowRememberMe *bool `json:"allowRememberMe,omitempty"`
+	// true if use FIDO2 functionality is allowed, false if not 
+	UseFido2 *bool `json:"useFido2,omitempty"`
 	// login type to be used when asking users to log in 
 	AuthType string `json:"authType"`
 }
@@ -40,6 +42,8 @@ func NewSelfServiceLoginSettings(userLoginLevel string, authType string) *SelfSe
 	this.UserLoginLevel = userLoginLevel
 	var allowRememberMe bool = false
 	this.AllowRememberMe = &allowRememberMe
+	var useFido2 bool = false
+	this.UseFido2 = &useFido2
 	this.AuthType = authType
 	return &this
 }
@@ -51,6 +55,8 @@ func NewSelfServiceLoginSettingsWithDefaults() *SelfServiceLoginSettings {
 	this := SelfServiceLoginSettings{}
 	var allowRememberMe bool = false
 	this.AllowRememberMe = &allowRememberMe
+	var useFido2 bool = false
+	this.UseFido2 = &useFido2
 	return &this
 }
 
@@ -110,6 +116,38 @@ func (o *SelfServiceLoginSettings) SetAllowRememberMe(v bool) {
 	o.AllowRememberMe = &v
 }
 
+// GetUseFido2 returns the UseFido2 field value if set, zero value otherwise.
+func (o *SelfServiceLoginSettings) GetUseFido2() bool {
+	if o == nil || IsNil(o.UseFido2) {
+		var ret bool
+		return ret
+	}
+	return *o.UseFido2
+}
+
+// GetUseFido2Ok returns a tuple with the UseFido2 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SelfServiceLoginSettings) GetUseFido2Ok() (*bool, bool) {
+	if o == nil || IsNil(o.UseFido2) {
+		return nil, false
+	}
+	return o.UseFido2, true
+}
+
+// HasUseFido2 returns a boolean if a field has been set.
+func (o *SelfServiceLoginSettings) HasUseFido2() bool {
+	if o != nil && !IsNil(o.UseFido2) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseFido2 gets a reference to the given bool and assigns it to the UseFido2 field.
+func (o *SelfServiceLoginSettings) SetUseFido2(v bool) {
+	o.UseFido2 = &v
+}
+
 // GetAuthType returns the AuthType field value
 func (o *SelfServiceLoginSettings) GetAuthType() string {
 	if o == nil {
@@ -147,6 +185,9 @@ func (o SelfServiceLoginSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize["userLoginLevel"] = o.UserLoginLevel
 	if !IsNil(o.AllowRememberMe) {
 		toSerialize["allowRememberMe"] = o.AllowRememberMe
+	}
+	if !IsNil(o.UseFido2) {
+		toSerialize["useFido2"] = o.UseFido2
 	}
 	toSerialize["authType"] = o.AuthType
 	return toSerialize, nil

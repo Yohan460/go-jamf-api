@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DisplayName** | Pointer to **string** |  | [optional] 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **ProviderName** | Pointer to **string** |  | [optional] 
+**ProviderDescription** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +128,31 @@ SetProviderName sets ProviderName field to given value.
 `func (o *CloudIdPCommonResponse) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### GetProviderDescription
+
+`func (o *CloudIdPCommonResponse) GetProviderDescription() string`
+
+GetProviderDescription returns the ProviderDescription field if non-nil, zero value otherwise.
+
+### GetProviderDescriptionOk
+
+`func (o *CloudIdPCommonResponse) GetProviderDescriptionOk() (*string, bool)`
+
+GetProviderDescriptionOk returns a tuple with the ProviderDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderDescription
+
+`func (o *CloudIdPCommonResponse) SetProviderDescription(v string)`
+
+SetProviderDescription sets ProviderDescription field to given value.
+
+### HasProviderDescription
+
+`func (o *CloudIdPCommonResponse) HasProviderDescription() bool`
+
+HasProviderDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

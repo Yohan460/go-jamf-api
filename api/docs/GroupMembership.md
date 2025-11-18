@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** |  | [optional] 
 **GroupName** | Pointer to **string** |  | [optional] 
+**GroupDescription** | Pointer to **string** |  | [optional] 
 **SmartGroup** | Pointer to **bool** | Indicates that group is smart group | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetGroupName sets GroupName field to given value.
 `func (o *GroupMembership) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### GetGroupDescription
+
+`func (o *GroupMembership) GetGroupDescription() string`
+
+GetGroupDescription returns the GroupDescription field if non-nil, zero value otherwise.
+
+### GetGroupDescriptionOk
+
+`func (o *GroupMembership) GetGroupDescriptionOk() (*string, bool)`
+
+GetGroupDescriptionOk returns a tuple with the GroupDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupDescription
+
+`func (o *GroupMembership) SetGroupDescription(v string)`
+
+SetGroupDescription sets GroupDescription field to given value.
+
+### HasGroupDescription
+
+`func (o *GroupMembership) HasGroupDescription() bool`
+
+HasGroupDescription returns a boolean if a field has been set.
 
 ### GetSmartGroup
 

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**AuthGet**](ApiAuthenticationAPI.md#AuthGet) | **Get** /auth | Get all the Authorization details associated with the current api 
 [**AuthInvalidateTokenPost**](ApiAuthenticationAPI.md#AuthInvalidateTokenPost) | **Post** /auth/invalidateToken | Invalidate current token 
 [**AuthKeepAlivePost**](ApiAuthenticationAPI.md#AuthKeepAlivePost) | **Post** /auth/keepAlive | Invalidate existing token and generates new token 
+[**PostOAuthToken**](ApiAuthenticationAPI.md#PostOAuthToken) | **Post** /v1/oauth/token | Obtain an access token using an API Client
 [**V1AuthGet**](ApiAuthenticationAPI.md#V1AuthGet) | **Get** /v1/auth | Get all the Authorization details associated with the current api 
 [**V1AuthInvalidateTokenPost**](ApiAuthenticationAPI.md#V1AuthInvalidateTokenPost) | **Post** /v1/auth/invalidate-token | Invalidate current token 
 [**V1AuthKeepAlivePost**](ApiAuthenticationAPI.md#V1AuthKeepAlivePost) | **Post** /v1/auth/keep-alive | Invalidate existing token and generates new token 
@@ -250,6 +251,78 @@ Other parameters are passed through a pointer to a apiAuthKeepAlivePostRequest s
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PostOAuthToken
+
+> OAuthTokenResponse PostOAuthToken(ctx).GrantType(grantType).ClientId(clientId).ClientSecret(clientSecret).Scope(scope).Execute()
+
+Obtain an access token using an API Client
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	grantType := "grantType_example" // string | OAuth2 grant type. For Jamf Pro API Clients, use `client_credentials`
+	clientId := "clientId_example" // string | Client ID from your API Client
+	clientSecret := "clientSecret_example" // string | Client secret from your API Client
+	scope := "scope_example" // string | Optional. Provide a space-delimited list of roles that are within the configuration for  this API Client. Omitting this field will grant an access token that includes all of this client's  allowed roles. Specifying a subset of them will limit the privileges for this access token to that subset of roles. Specifying a role that is not assigned to this client will result in  an `invalid_scope` error. The format matches what is returned from the OAuth token endpoint response's `scope` field.  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApiAuthenticationAPI.PostOAuthToken(context.Background()).GrantType(grantType).ClientId(clientId).ClientSecret(clientSecret).Scope(scope).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApiAuthenticationAPI.PostOAuthToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostOAuthToken`: OAuthTokenResponse
+	fmt.Fprintf(os.Stdout, "Response from `ApiAuthenticationAPI.PostOAuthToken`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostOAuthTokenRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **grantType** | **string** | OAuth2 grant type. For Jamf Pro API Clients, use &#x60;client_credentials&#x60; | 
+ **clientId** | **string** | Client ID from your API Client | 
+ **clientSecret** | **string** | Client secret from your API Client | 
+ **scope** | **string** | Optional. Provide a space-delimited list of roles that are within the configuration for  this API Client. Omitting this field will grant an access token that includes all of this client&#39;s  allowed roles. Specifying a subset of them will limit the privileges for this access token to that subset of roles. Specifying a role that is not assigned to this client will result in  an &#x60;invalid_scope&#x60; error. The format matches what is returned from the OAuth token endpoint response&#39;s &#x60;scope&#x60; field.  | 
+
+### Return type
+
+[**OAuthTokenResponse**](OAuthTokenResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/x-www-form-urlencoded
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -4,79 +4,13 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PreviewMdmCommandsPost**](MdmAPI.md#PreviewMdmCommandsPost) | **Post** /preview/mdm/commands | Post a command for creation and queuing 
 [**V1DeployPackagePost**](MdmAPI.md#V1DeployPackagePost) | **Post** /v1/deploy-package | Deploy packages using MDM
 [**V1MdmCommandsGet**](MdmAPI.md#V1MdmCommandsGet) | **Get** /v1/mdm/commands | Get information about mdm commands made by Jamf Pro.
 [**V1MdmRenewProfilePost**](MdmAPI.md#V1MdmRenewProfilePost) | **Post** /v1/mdm/renew-profile | Renew MDM Profile 
+[**V2MdmBlankPushPost**](MdmAPI.md#V2MdmBlankPushPost) | **Post** /v2/mdm/blank-push | Send blank push notifications to a list of client management IDs.
 [**V2MdmCommandsGet**](MdmAPI.md#V2MdmCommandsGet) | **Get** /v2/mdm/commands | Get information about mdm commands made by Jamf Pro. 
 [**V2MdmCommandsPost**](MdmAPI.md#V2MdmCommandsPost) | **Post** /v2/mdm/commands | Post a command for creation and queuing 
 
-
-
-## PreviewMdmCommandsPost
-
-> []HrefResponse PreviewMdmCommandsPost(ctx).MdmCommandRequest(mdmCommandRequest).Execute()
-
-Post a command for creation and queuing 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	mdmCommandRequest := *openapiclient.NewMdmCommandRequest() // MdmCommandRequest | The mdm command object to create and queue (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MdmAPI.PreviewMdmCommandsPost(context.Background()).MdmCommandRequest(mdmCommandRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.PreviewMdmCommandsPost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PreviewMdmCommandsPost`: []HrefResponse
-	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.PreviewMdmCommandsPost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPreviewMdmCommandsPostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **mdmCommandRequest** | [**MdmCommandRequest**](MdmCommandRequest.md) | The mdm command object to create and queue | 
-
-### Return type
-
-[**[]HrefResponse**](HrefResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## V1DeployPackagePost
@@ -135,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -203,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -269,7 +203,73 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2MdmBlankPushPost
+
+> BlankPushResponse V2MdmBlankPushPost(ctx).BlankPushRequest(blankPushRequest).Execute()
+
+Send blank push notifications to a list of client management IDs.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	blankPushRequest := *openapiclient.NewBlankPushRequest([]string{"ClientManagementIds_example"}) // BlankPushRequest | A list of client management IDs to send push notifications to.
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MdmAPI.V2MdmBlankPushPost(context.Background()).BlankPushRequest(blankPushRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MdmAPI.V2MdmBlankPushPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2MdmBlankPushPost`: BlankPushResponse
+	fmt.Fprintf(os.Stdout, "Response from `MdmAPI.V2MdmBlankPushPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2MdmBlankPushPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **blankPushRequest** | [**BlankPushRequest**](BlankPushRequest.md) | A list of client management IDs to send push notifications to. | 
+
+### Return type
+
+[**BlankPushResponse**](BlankPushResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -304,8 +304,8 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["dateSent:asc"])
-	filter := "filter_example" // string | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId==fb511aae-c557-474f-a9c1-5dc845b90d0f;status==Pending;command==INSTALL_PROFILE;uuid==9e18f849-e689-4f2d-b616-a99d3da7db42;clientType==COMPUTER_USER;profileIdentifier==18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted=ge=2021-08-04T14:25:18.26Z;dateCompleted=le=2021-08-04T14:25:18.26Z;validAfter=ge=2021-08-05T14:25:18.26Z;active==true (optional) (default to "")
+	sort := []string{"Inner_example"} // []string | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to {"dateSent:asc"})
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileId, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId==fb511aae-c557-474f-a9c1-5dc845b90d0f;status==Pending;command==INSTALL_PROFILE;uuid==9e18f849-e689-4f2d-b616-a99d3da7db42;clientType==COMPUTER_USER;profileId==1;profileIdentifier==18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted=ge=2021-08-04T14:25:18.26Z;dateCompleted=le=2021-08-04T14:25:18.26Z;validAfter=ge=2021-08-05T14:25:18.26Z;active==true (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -332,8 +332,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;dateSent:asc&quot;]]
- **filter** | **string** | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true | [default to &quot;&quot;]
+ **sort** | **[]string** | Default sort is dateSent:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to {&quot;dateSent:asc&quot;}]
+ **filter** | **string** | Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileId, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileId&#x3D;&#x3D;1;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true | [default to &quot;&quot;]
 
 ### Return type
 
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

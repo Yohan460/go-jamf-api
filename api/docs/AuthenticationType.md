@@ -23,6 +23,8 @@
 
 * `CLIENT_CREDENTIALS` (value: `"CLIENT_CREDENTIALS"`)
 
+* `OIDC` (value: `"OIDC"`)
+
 * `M2_M` (value: `"M2M"`)
 
 

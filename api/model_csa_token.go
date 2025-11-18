@@ -25,6 +25,7 @@ type CsaToken struct {
 	Subject *string `json:"subject,omitempty"`
 	RefreshExpiration *int64 `json:"refreshExpiration,omitempty"`
 	Scopes []string `json:"scopes,omitempty"`
+	LegacyJamfSalesforceIds []string `json:"legacyJamfSalesforceIds,omitempty"`
 }
 
 // NewCsaToken instantiates a new CsaToken object
@@ -182,6 +183,38 @@ func (o *CsaToken) SetScopes(v []string) {
 	o.Scopes = v
 }
 
+// GetLegacyJamfSalesforceIds returns the LegacyJamfSalesforceIds field value if set, zero value otherwise.
+func (o *CsaToken) GetLegacyJamfSalesforceIds() []string {
+	if o == nil || IsNil(o.LegacyJamfSalesforceIds) {
+		var ret []string
+		return ret
+	}
+	return o.LegacyJamfSalesforceIds
+}
+
+// GetLegacyJamfSalesforceIdsOk returns a tuple with the LegacyJamfSalesforceIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CsaToken) GetLegacyJamfSalesforceIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.LegacyJamfSalesforceIds) {
+		return nil, false
+	}
+	return o.LegacyJamfSalesforceIds, true
+}
+
+// HasLegacyJamfSalesforceIds returns a boolean if a field has been set.
+func (o *CsaToken) HasLegacyJamfSalesforceIds() bool {
+	if o != nil && !IsNil(o.LegacyJamfSalesforceIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetLegacyJamfSalesforceIds gets a reference to the given []string and assigns it to the LegacyJamfSalesforceIds field.
+func (o *CsaToken) SetLegacyJamfSalesforceIds(v []string) {
+	o.LegacyJamfSalesforceIds = v
+}
+
 func (o CsaToken) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -203,6 +236,9 @@ func (o CsaToken) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Scopes) {
 		toSerialize["scopes"] = o.Scopes
+	}
+	if !IsNil(o.LegacyJamfSalesforceIds) {
+		toSerialize["legacyJamfSalesforceIds"] = o.LegacyJamfSalesforceIds
 	}
 	return toSerialize, nil
 }

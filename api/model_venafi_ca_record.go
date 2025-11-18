@@ -23,9 +23,6 @@ var _ MappedNullable = &VenafiCaRecord{}
 type VenafiCaRecord struct {
 	Id *int64 `json:"id,omitempty"`
 	Name string `json:"name"`
-	Username *string `json:"username,omitempty"`
-	Password *string `json:"password,omitempty"`
-	PasswordConfigured *bool `json:"passwordConfigured,omitempty"`
 	ProxyAddress *string `json:"proxyAddress,omitempty"`
 	RevocationEnabled *bool `json:"revocationEnabled,omitempty"`
 	ClientId *string `json:"clientId,omitempty"`
@@ -107,102 +104,6 @@ func (o *VenafiCaRecord) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *VenafiCaRecord) SetName(v string) {
 	o.Name = v
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise.
-func (o *VenafiCaRecord) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
-		var ret string
-		return ret
-	}
-	return *o.Username
-}
-
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VenafiCaRecord) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
-		return nil, false
-	}
-	return o.Username, true
-}
-
-// HasUsername returns a boolean if a field has been set.
-func (o *VenafiCaRecord) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *VenafiCaRecord) SetUsername(v string) {
-	o.Username = &v
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise.
-func (o *VenafiCaRecord) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
-		var ret string
-		return ret
-	}
-	return *o.Password
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VenafiCaRecord) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
-		return nil, false
-	}
-	return o.Password, true
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *VenafiCaRecord) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *VenafiCaRecord) SetPassword(v string) {
-	o.Password = &v
-}
-
-// GetPasswordConfigured returns the PasswordConfigured field value if set, zero value otherwise.
-func (o *VenafiCaRecord) GetPasswordConfigured() bool {
-	if o == nil || IsNil(o.PasswordConfigured) {
-		var ret bool
-		return ret
-	}
-	return *o.PasswordConfigured
-}
-
-// GetPasswordConfiguredOk returns a tuple with the PasswordConfigured field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VenafiCaRecord) GetPasswordConfiguredOk() (*bool, bool) {
-	if o == nil || IsNil(o.PasswordConfigured) {
-		return nil, false
-	}
-	return o.PasswordConfigured, true
-}
-
-// HasPasswordConfigured returns a boolean if a field has been set.
-func (o *VenafiCaRecord) HasPasswordConfigured() bool {
-	if o != nil && !IsNil(o.PasswordConfigured) {
-		return true
-	}
-
-	return false
-}
-
-// SetPasswordConfigured gets a reference to the given bool and assigns it to the PasswordConfigured field.
-func (o *VenafiCaRecord) SetPasswordConfigured(v bool) {
-	o.PasswordConfigured = &v
 }
 
 // GetProxyAddress returns the ProxyAddress field value if set, zero value otherwise.
@@ -379,15 +280,6 @@ func (o VenafiCaRecord) ToMap() (map[string]interface{}, error) {
 		toSerialize["id"] = o.Id
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
-	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
-	}
-	if !IsNil(o.PasswordConfigured) {
-		toSerialize["passwordConfigured"] = o.PasswordConfigured
-	}
 	if !IsNil(o.ProxyAddress) {
 		toSerialize["proxyAddress"] = o.ProxyAddress
 	}

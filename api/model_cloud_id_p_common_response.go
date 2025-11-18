@@ -23,6 +23,7 @@ type CloudIdPCommonResponse struct {
 	DisplayName *string `json:"displayName,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 	ProviderName *string `json:"providerName,omitempty"`
+	ProviderDescription *string `json:"providerDescription,omitempty"`
 }
 
 // NewCloudIdPCommonResponse instantiates a new CloudIdPCommonResponse object
@@ -170,6 +171,38 @@ func (o *CloudIdPCommonResponse) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
+// GetProviderDescription returns the ProviderDescription field value if set, zero value otherwise.
+func (o *CloudIdPCommonResponse) GetProviderDescription() string {
+	if o == nil || IsNil(o.ProviderDescription) {
+		var ret string
+		return ret
+	}
+	return *o.ProviderDescription
+}
+
+// GetProviderDescriptionOk returns a tuple with the ProviderDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudIdPCommonResponse) GetProviderDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.ProviderDescription) {
+		return nil, false
+	}
+	return o.ProviderDescription, true
+}
+
+// HasProviderDescription returns a boolean if a field has been set.
+func (o *CloudIdPCommonResponse) HasProviderDescription() bool {
+	if o != nil && !IsNil(o.ProviderDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetProviderDescription gets a reference to the given string and assigns it to the ProviderDescription field.
+func (o *CloudIdPCommonResponse) SetProviderDescription(v string) {
+	o.ProviderDescription = &v
+}
+
 func (o CloudIdPCommonResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +224,9 @@ func (o CloudIdPCommonResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProviderName) {
 		toSerialize["providerName"] = o.ProviderName
+	}
+	if !IsNil(o.ProviderDescription) {
+		toSerialize["providerDescription"] = o.ProviderDescription
 	}
 	return toSerialize, nil
 }

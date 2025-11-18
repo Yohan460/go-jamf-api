@@ -12,12 +12,13 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the MobileDeviceSecurity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MobileDeviceSecurity{}
 
-// MobileDeviceSecurity This section only avaiable for Ios type.
+// MobileDeviceSecurity This section only available for Ios type.
 type MobileDeviceSecurity struct {
 	DataProtected *bool `json:"dataProtected,omitempty"`
 	BlockLevelEncryptionCapable *bool `json:"blockLevelEncryptionCapable,omitempty"`
@@ -28,6 +29,9 @@ type MobileDeviceSecurity struct {
 	HardwareEncryption *int64 `json:"hardwareEncryption,omitempty"`
 	ActivationLockEnabled *bool `json:"activationLockEnabled,omitempty"`
 	JailBreakDetected *bool `json:"jailBreakDetected,omitempty"`
+	AttestationStatus *string `json:"attestationStatus,omitempty"`
+	LastAttestationAttemptDate *time.Time `json:"lastAttestationAttemptDate,omitempty"`
+	LastSuccessfulAttestationDate *time.Time `json:"lastSuccessfulAttestationDate,omitempty"`
 	PasscodeLockGracePeriodEnforcedSeconds *int64 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
 	PersonalDeviceProfileCurrent *bool `json:"personalDeviceProfileCurrent,omitempty"`
 	LostModeEnabled *bool `json:"lostModeEnabled,omitempty"`
@@ -36,6 +40,8 @@ type MobileDeviceSecurity struct {
 	LostModePhoneNumber *string `json:"lostModePhoneNumber,omitempty"`
 	LostModeFootnote *string `json:"lostModeFootnote,omitempty"`
 	LostModeLocation *MobileDeviceLostModeLocation `json:"lostModeLocation,omitempty"`
+	// Indicates the bootstrap token escrow status for the device
+	BootstrapTokenEscrowed *string `json:"bootstrapTokenEscrowed,omitempty"`
 }
 
 // NewMobileDeviceSecurity instantiates a new MobileDeviceSecurity object
@@ -343,6 +349,102 @@ func (o *MobileDeviceSecurity) SetJailBreakDetected(v bool) {
 	o.JailBreakDetected = &v
 }
 
+// GetAttestationStatus returns the AttestationStatus field value if set, zero value otherwise.
+func (o *MobileDeviceSecurity) GetAttestationStatus() string {
+	if o == nil || IsNil(o.AttestationStatus) {
+		var ret string
+		return ret
+	}
+	return *o.AttestationStatus
+}
+
+// GetAttestationStatusOk returns a tuple with the AttestationStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceSecurity) GetAttestationStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.AttestationStatus) {
+		return nil, false
+	}
+	return o.AttestationStatus, true
+}
+
+// HasAttestationStatus returns a boolean if a field has been set.
+func (o *MobileDeviceSecurity) HasAttestationStatus() bool {
+	if o != nil && !IsNil(o.AttestationStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttestationStatus gets a reference to the given string and assigns it to the AttestationStatus field.
+func (o *MobileDeviceSecurity) SetAttestationStatus(v string) {
+	o.AttestationStatus = &v
+}
+
+// GetLastAttestationAttemptDate returns the LastAttestationAttemptDate field value if set, zero value otherwise.
+func (o *MobileDeviceSecurity) GetLastAttestationAttemptDate() time.Time {
+	if o == nil || IsNil(o.LastAttestationAttemptDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastAttestationAttemptDate
+}
+
+// GetLastAttestationAttemptDateOk returns a tuple with the LastAttestationAttemptDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceSecurity) GetLastAttestationAttemptDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastAttestationAttemptDate) {
+		return nil, false
+	}
+	return o.LastAttestationAttemptDate, true
+}
+
+// HasLastAttestationAttemptDate returns a boolean if a field has been set.
+func (o *MobileDeviceSecurity) HasLastAttestationAttemptDate() bool {
+	if o != nil && !IsNil(o.LastAttestationAttemptDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAttestationAttemptDate gets a reference to the given time.Time and assigns it to the LastAttestationAttemptDate field.
+func (o *MobileDeviceSecurity) SetLastAttestationAttemptDate(v time.Time) {
+	o.LastAttestationAttemptDate = &v
+}
+
+// GetLastSuccessfulAttestationDate returns the LastSuccessfulAttestationDate field value if set, zero value otherwise.
+func (o *MobileDeviceSecurity) GetLastSuccessfulAttestationDate() time.Time {
+	if o == nil || IsNil(o.LastSuccessfulAttestationDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastSuccessfulAttestationDate
+}
+
+// GetLastSuccessfulAttestationDateOk returns a tuple with the LastSuccessfulAttestationDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceSecurity) GetLastSuccessfulAttestationDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastSuccessfulAttestationDate) {
+		return nil, false
+	}
+	return o.LastSuccessfulAttestationDate, true
+}
+
+// HasLastSuccessfulAttestationDate returns a boolean if a field has been set.
+func (o *MobileDeviceSecurity) HasLastSuccessfulAttestationDate() bool {
+	if o != nil && !IsNil(o.LastSuccessfulAttestationDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSuccessfulAttestationDate gets a reference to the given time.Time and assigns it to the LastSuccessfulAttestationDate field.
+func (o *MobileDeviceSecurity) SetLastSuccessfulAttestationDate(v time.Time) {
+	o.LastSuccessfulAttestationDate = &v
+}
+
 // GetPasscodeLockGracePeriodEnforcedSeconds returns the PasscodeLockGracePeriodEnforcedSeconds field value if set, zero value otherwise.
 func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int64 {
 	if o == nil || IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
@@ -599,6 +701,38 @@ func (o *MobileDeviceSecurity) SetLostModeLocation(v MobileDeviceLostModeLocatio
 	o.LostModeLocation = &v
 }
 
+// GetBootstrapTokenEscrowed returns the BootstrapTokenEscrowed field value if set, zero value otherwise.
+func (o *MobileDeviceSecurity) GetBootstrapTokenEscrowed() string {
+	if o == nil || IsNil(o.BootstrapTokenEscrowed) {
+		var ret string
+		return ret
+	}
+	return *o.BootstrapTokenEscrowed
+}
+
+// GetBootstrapTokenEscrowedOk returns a tuple with the BootstrapTokenEscrowed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceSecurity) GetBootstrapTokenEscrowedOk() (*string, bool) {
+	if o == nil || IsNil(o.BootstrapTokenEscrowed) {
+		return nil, false
+	}
+	return o.BootstrapTokenEscrowed, true
+}
+
+// HasBootstrapTokenEscrowed returns a boolean if a field has been set.
+func (o *MobileDeviceSecurity) HasBootstrapTokenEscrowed() bool {
+	if o != nil && !IsNil(o.BootstrapTokenEscrowed) {
+		return true
+	}
+
+	return false
+}
+
+// SetBootstrapTokenEscrowed gets a reference to the given string and assigns it to the BootstrapTokenEscrowed field.
+func (o *MobileDeviceSecurity) SetBootstrapTokenEscrowed(v string) {
+	o.BootstrapTokenEscrowed = &v
+}
+
 func (o MobileDeviceSecurity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -636,6 +770,15 @@ func (o MobileDeviceSecurity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.JailBreakDetected) {
 		toSerialize["jailBreakDetected"] = o.JailBreakDetected
 	}
+	if !IsNil(o.AttestationStatus) {
+		toSerialize["attestationStatus"] = o.AttestationStatus
+	}
+	if !IsNil(o.LastAttestationAttemptDate) {
+		toSerialize["lastAttestationAttemptDate"] = o.LastAttestationAttemptDate
+	}
+	if !IsNil(o.LastSuccessfulAttestationDate) {
+		toSerialize["lastSuccessfulAttestationDate"] = o.LastSuccessfulAttestationDate
+	}
 	if !IsNil(o.PasscodeLockGracePeriodEnforcedSeconds) {
 		toSerialize["passcodeLockGracePeriodEnforcedSeconds"] = o.PasscodeLockGracePeriodEnforcedSeconds
 	}
@@ -659,6 +802,9 @@ func (o MobileDeviceSecurity) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LostModeLocation) {
 		toSerialize["lostModeLocation"] = o.LostModeLocation
+	}
+	if !IsNil(o.BootstrapTokenEscrowed) {
+		toSerialize["bootstrapTokenEscrowed"] = o.BootstrapTokenEscrowed
 	}
 	return toSerialize, nil
 }

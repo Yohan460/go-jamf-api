@@ -12,8 +12,6 @@ package api
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the EnrollmentSsoConfig type satisfies the MappedNullable interface at compile time
@@ -21,19 +19,16 @@ var _ MappedNullable = &EnrollmentSsoConfig{}
 
 // EnrollmentSsoConfig struct for EnrollmentSsoConfig
 type EnrollmentSsoConfig struct {
-	Hosts []string `json:"hosts"`
+	Hosts []string `json:"hosts,omitempty"`
 	ManagementHint *string `json:"managementHint,omitempty"`
 }
-
-type _EnrollmentSsoConfig EnrollmentSsoConfig
 
 // NewEnrollmentSsoConfig instantiates a new EnrollmentSsoConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnrollmentSsoConfig(hosts []string) *EnrollmentSsoConfig {
+func NewEnrollmentSsoConfig() *EnrollmentSsoConfig {
 	this := EnrollmentSsoConfig{}
-	this.Hosts = hosts
 	var managementHint string = ""
 	this.ManagementHint = &managementHint
 	return &this
@@ -49,26 +44,34 @@ func NewEnrollmentSsoConfigWithDefaults() *EnrollmentSsoConfig {
 	return &this
 }
 
-// GetHosts returns the Hosts field value
+// GetHosts returns the Hosts field value if set, zero value otherwise.
 func (o *EnrollmentSsoConfig) GetHosts() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Hosts) {
 		var ret []string
 		return ret
 	}
-
 	return o.Hosts
 }
 
-// GetHostsOk returns a tuple with the Hosts field value
+// GetHostsOk returns a tuple with the Hosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *EnrollmentSsoConfig) GetHostsOk() ([]string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hosts) {
 		return nil, false
 	}
 	return o.Hosts, true
 }
 
-// SetHosts sets field value
+// HasHosts returns a boolean if a field has been set.
+func (o *EnrollmentSsoConfig) HasHosts() bool {
+	if o != nil && !IsNil(o.Hosts) {
+		return true
+	}
+
+	return false
+}
+
+// SetHosts gets a reference to the given []string and assigns it to the Hosts field.
 func (o *EnrollmentSsoConfig) SetHosts(v []string) {
 	o.Hosts = v
 }
@@ -115,48 +118,13 @@ func (o EnrollmentSsoConfig) MarshalJSON() ([]byte, error) {
 
 func (o EnrollmentSsoConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["hosts"] = o.Hosts
+	if !IsNil(o.Hosts) {
+		toSerialize["hosts"] = o.Hosts
+	}
 	if !IsNil(o.ManagementHint) {
 		toSerialize["managementHint"] = o.ManagementHint
 	}
 	return toSerialize, nil
-}
-
-func (o *EnrollmentSsoConfig) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"hosts",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnrollmentSsoConfig := _EnrollmentSsoConfig{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnrollmentSsoConfig)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnrollmentSsoConfig(varEnrollmentSsoConfig)
-
-	return err
 }
 
 type NullableEnrollmentSsoConfig struct {

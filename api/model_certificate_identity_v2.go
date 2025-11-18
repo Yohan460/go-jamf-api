@@ -22,8 +22,8 @@ type CertificateIdentityV2 struct {
 	Filename *string `json:"filename,omitempty"`
 	KeystorePassword *string `json:"keystorePassword,omitempty"`
 	// The base 64 encoded certificate.
-	IdentityKeystore *string `json:"identityKeystore,omitempty"`
-	// The md5 checksum of the certificate file. Intended to be used in verifification the cert being used to sign QuickAdd packages.
+	IdentityKeystore *string `json:"identityKeystore,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
+	// The md5 checksum of the certificate file. Intended to be used in verification the cert being used to sign QuickAdd packages.
 	Md5Sum *string `json:"md5Sum,omitempty"`
 }
 

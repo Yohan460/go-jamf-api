@@ -20,7 +20,10 @@ var _ MappedNullable = &ComputerMdmCapability{}
 // ComputerMdmCapability struct for ComputerMdmCapability
 type ComputerMdmCapability struct {
 	Capable *bool `json:"capable,omitempty"`
+	// Deprecated. Use userManagementInfo instead.
+	// Deprecated
 	CapableUsers []string `json:"capableUsers,omitempty"`
+	UserManagementInfo []ComputerUserManagementInfo `json:"userManagementInfo,omitempty"`
 }
 
 // NewComputerMdmCapability instantiates a new ComputerMdmCapability object
@@ -73,6 +76,7 @@ func (o *ComputerMdmCapability) SetCapable(v bool) {
 }
 
 // GetCapableUsers returns the CapableUsers field value if set, zero value otherwise.
+// Deprecated
 func (o *ComputerMdmCapability) GetCapableUsers() []string {
 	if o == nil || IsNil(o.CapableUsers) {
 		var ret []string
@@ -83,6 +87,7 @@ func (o *ComputerMdmCapability) GetCapableUsers() []string {
 
 // GetCapableUsersOk returns a tuple with the CapableUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ComputerMdmCapability) GetCapableUsersOk() ([]string, bool) {
 	if o == nil || IsNil(o.CapableUsers) {
 		return nil, false
@@ -100,8 +105,41 @@ func (o *ComputerMdmCapability) HasCapableUsers() bool {
 }
 
 // SetCapableUsers gets a reference to the given []string and assigns it to the CapableUsers field.
+// Deprecated
 func (o *ComputerMdmCapability) SetCapableUsers(v []string) {
 	o.CapableUsers = v
+}
+
+// GetUserManagementInfo returns the UserManagementInfo field value if set, zero value otherwise.
+func (o *ComputerMdmCapability) GetUserManagementInfo() []ComputerUserManagementInfo {
+	if o == nil || IsNil(o.UserManagementInfo) {
+		var ret []ComputerUserManagementInfo
+		return ret
+	}
+	return o.UserManagementInfo
+}
+
+// GetUserManagementInfoOk returns a tuple with the UserManagementInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerMdmCapability) GetUserManagementInfoOk() ([]ComputerUserManagementInfo, bool) {
+	if o == nil || IsNil(o.UserManagementInfo) {
+		return nil, false
+	}
+	return o.UserManagementInfo, true
+}
+
+// HasUserManagementInfo returns a boolean if a field has been set.
+func (o *ComputerMdmCapability) HasUserManagementInfo() bool {
+	if o != nil && !IsNil(o.UserManagementInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserManagementInfo gets a reference to the given []ComputerUserManagementInfo and assigns it to the UserManagementInfo field.
+func (o *ComputerMdmCapability) SetUserManagementInfo(v []ComputerUserManagementInfo) {
+	o.UserManagementInfo = v
 }
 
 func (o ComputerMdmCapability) MarshalJSON() ([]byte, error) {
@@ -119,6 +157,9 @@ func (o ComputerMdmCapability) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CapableUsers) {
 		toSerialize["capableUsers"] = o.CapableUsers
+	}
+	if !IsNil(o.UserManagementInfo) {
+		toSerialize["userManagementInfo"] = o.UserManagementInfo
 	}
 	return toSerialize, nil
 }

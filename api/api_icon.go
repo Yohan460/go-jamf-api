@@ -135,16 +135,18 @@ func (a *IconAPIService) V1IconDownloadIdGetExecute(r IconAPIV1IconDownloadIdGet
 	localVarFormParams := url.Values{}
 
 	if r.res != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "res", r.res, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "res", r.res, "form", "")
 	} else {
-		var defaultValue string = "original"
-		r.res = &defaultValue
+        var defaultValue string = "original"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "res", defaultValue, "form", "")
+        r.res = &defaultValue
 	}
 	if r.scale != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "scale", r.scale, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "scale", r.scale, "form", "")
 	} else {
-		var defaultValue string = "0"
-		r.scale = &defaultValue
+        var defaultValue string = "0"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "scale", defaultValue, "form", "")
+        r.scale = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

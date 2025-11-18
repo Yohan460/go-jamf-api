@@ -27,6 +27,8 @@ type InventoryListMobileDevice struct {
 	AssetTag *string `json:"assetTag,omitempty"`
 	AvailableSpaceMb *int64 `json:"availableSpaceMb,omitempty"`
 	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
+	// - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting. 
+	BatteryHealth *string `json:"batteryHealth,omitempty"`
 	BluetoothLowEnergyCapable *bool `json:"bluetoothLowEnergyCapable,omitempty"`
 	BluetoothMacAddress *string `json:"bluetoothMacAddress,omitempty"`
 	CapacityMb *int64 `json:"capacityMb,omitempty"`
@@ -58,11 +60,13 @@ type InventoryListMobileDevice struct {
 	LocationServicesForSelfServiceMobileEnabled *bool `json:"locationServicesForSelfServiceMobileEnabled,omitempty"`
 	LostModeEnabled *bool `json:"lostModeEnabled,omitempty"`
 	Managed *bool `json:"managed,omitempty"`
+	ManagementId *string `json:"managementId,omitempty"`
 	MdmProfileExpirationDate *time.Time `json:"mdmProfileExpirationDate,omitempty"`
 	Model *string `json:"model,omitempty"`
 	ModelIdentifier *string `json:"modelIdentifier,omitempty"`
 	ModelNumber *string `json:"modelNumber,omitempty"`
 	ModemFirmwareVersion *string `json:"modemFirmwareVersion,omitempty"`
+	PairedDevices *int64 `json:"pairedDevices,omitempty"`
 	QuotaSize *int64 `json:"quotaSize,omitempty"`
 	ResidentUsers *int64 `json:"residentUsers,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
@@ -117,8 +121,12 @@ type InventoryListMobileDevice struct {
 	Imei2 *string `json:"imei2,omitempty"`
 	Meid *string `json:"meid,omitempty"`
 	PersonalHotspotEnabled *bool `json:"personalHotspotEnabled,omitempty"`
+	PreferredVoiceNumber *string `json:"preferredVoiceNumber,omitempty"`
 	Roaming *bool `json:"roaming,omitempty"`
 	VoiceRoamingEnabled *string `json:"voiceRoamingEnabled,omitempty"`
+	LastLoggedInUsernameSelfService NullableString `json:"lastLoggedInUsernameSelfService,omitempty"`
+	LastLoggedInUsernameSelfServiceTimestamp NullableTime `json:"lastLoggedInUsernameSelfServiceTimestamp,omitempty"`
+	ExtensionAttributeValueList []ExtensionAttributeValue `json:"extensionAttributeValueList,omitempty"`
 }
 
 // NewInventoryListMobileDevice instantiates a new InventoryListMobileDevice object
@@ -127,6 +135,8 @@ type InventoryListMobileDevice struct {
 // will change when the set of required properties is changed
 func NewInventoryListMobileDevice() *InventoryListMobileDevice {
 	this := InventoryListMobileDevice{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -135,6 +145,8 @@ func NewInventoryListMobileDevice() *InventoryListMobileDevice {
 // but it doesn't guarantee that properties required by API are set
 func NewInventoryListMobileDeviceWithDefaults() *InventoryListMobileDevice {
 	this := InventoryListMobileDevice{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -360,6 +372,38 @@ func (o *InventoryListMobileDevice) HasBatteryLevel() bool {
 // SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
 func (o *InventoryListMobileDevice) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
+}
+
+// GetBatteryHealth returns the BatteryHealth field value if set, zero value otherwise.
+func (o *InventoryListMobileDevice) GetBatteryHealth() string {
+	if o == nil || IsNil(o.BatteryHealth) {
+		var ret string
+		return ret
+	}
+	return *o.BatteryHealth
+}
+
+// GetBatteryHealthOk returns a tuple with the BatteryHealth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InventoryListMobileDevice) GetBatteryHealthOk() (*string, bool) {
+	if o == nil || IsNil(o.BatteryHealth) {
+		return nil, false
+	}
+	return o.BatteryHealth, true
+}
+
+// HasBatteryHealth returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasBatteryHealth() bool {
+	if o != nil && !IsNil(o.BatteryHealth) {
+		return true
+	}
+
+	return false
+}
+
+// SetBatteryHealth gets a reference to the given string and assigns it to the BatteryHealth field.
+func (o *InventoryListMobileDevice) SetBatteryHealth(v string) {
+	o.BatteryHealth = &v
 }
 
 // GetBluetoothLowEnergyCapable returns the BluetoothLowEnergyCapable field value if set, zero value otherwise.
@@ -1354,6 +1398,38 @@ func (o *InventoryListMobileDevice) SetManaged(v bool) {
 	o.Managed = &v
 }
 
+// GetManagementId returns the ManagementId field value if set, zero value otherwise.
+func (o *InventoryListMobileDevice) GetManagementId() string {
+	if o == nil || IsNil(o.ManagementId) {
+		var ret string
+		return ret
+	}
+	return *o.ManagementId
+}
+
+// GetManagementIdOk returns a tuple with the ManagementId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InventoryListMobileDevice) GetManagementIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ManagementId) {
+		return nil, false
+	}
+	return o.ManagementId, true
+}
+
+// HasManagementId returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasManagementId() bool {
+	if o != nil && !IsNil(o.ManagementId) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagementId gets a reference to the given string and assigns it to the ManagementId field.
+func (o *InventoryListMobileDevice) SetManagementId(v string) {
+	o.ManagementId = &v
+}
+
 // GetMdmProfileExpirationDate returns the MdmProfileExpirationDate field value if set, zero value otherwise.
 func (o *InventoryListMobileDevice) GetMdmProfileExpirationDate() time.Time {
 	if o == nil || IsNil(o.MdmProfileExpirationDate) {
@@ -1512,6 +1588,38 @@ func (o *InventoryListMobileDevice) HasModemFirmwareVersion() bool {
 // SetModemFirmwareVersion gets a reference to the given string and assigns it to the ModemFirmwareVersion field.
 func (o *InventoryListMobileDevice) SetModemFirmwareVersion(v string) {
 	o.ModemFirmwareVersion = &v
+}
+
+// GetPairedDevices returns the PairedDevices field value if set, zero value otherwise.
+func (o *InventoryListMobileDevice) GetPairedDevices() int64 {
+	if o == nil || IsNil(o.PairedDevices) {
+		var ret int64
+		return ret
+	}
+	return *o.PairedDevices
+}
+
+// GetPairedDevicesOk returns a tuple with the PairedDevices field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InventoryListMobileDevice) GetPairedDevicesOk() (*int64, bool) {
+	if o == nil || IsNil(o.PairedDevices) {
+		return nil, false
+	}
+	return o.PairedDevices, true
+}
+
+// HasPairedDevices returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasPairedDevices() bool {
+	if o != nil && !IsNil(o.PairedDevices) {
+		return true
+	}
+
+	return false
+}
+
+// SetPairedDevices gets a reference to the given int64 and assigns it to the PairedDevices field.
+func (o *InventoryListMobileDevice) SetPairedDevices(v int64) {
+	o.PairedDevices = &v
 }
 
 // GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
@@ -3242,6 +3350,38 @@ func (o *InventoryListMobileDevice) SetPersonalHotspotEnabled(v bool) {
 	o.PersonalHotspotEnabled = &v
 }
 
+// GetPreferredVoiceNumber returns the PreferredVoiceNumber field value if set, zero value otherwise.
+func (o *InventoryListMobileDevice) GetPreferredVoiceNumber() string {
+	if o == nil || IsNil(o.PreferredVoiceNumber) {
+		var ret string
+		return ret
+	}
+	return *o.PreferredVoiceNumber
+}
+
+// GetPreferredVoiceNumberOk returns a tuple with the PreferredVoiceNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InventoryListMobileDevice) GetPreferredVoiceNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.PreferredVoiceNumber) {
+		return nil, false
+	}
+	return o.PreferredVoiceNumber, true
+}
+
+// HasPreferredVoiceNumber returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasPreferredVoiceNumber() bool {
+	if o != nil && !IsNil(o.PreferredVoiceNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreferredVoiceNumber gets a reference to the given string and assigns it to the PreferredVoiceNumber field.
+func (o *InventoryListMobileDevice) SetPreferredVoiceNumber(v string) {
+	o.PreferredVoiceNumber = &v
+}
+
 // GetRoaming returns the Roaming field value if set, zero value otherwise.
 func (o *InventoryListMobileDevice) GetRoaming() bool {
 	if o == nil || IsNil(o.Roaming) {
@@ -3306,6 +3446,122 @@ func (o *InventoryListMobileDevice) SetVoiceRoamingEnabled(v string) {
 	o.VoiceRoamingEnabled = &v
 }
 
+// GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfService() string {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfService.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfService.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfService.Get(), o.LastLoggedInUsernameSelfService.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasLastLoggedInUsernameSelfService() bool {
+	if o != nil && o.LastLoggedInUsernameSelfService.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfService gets a reference to the given NullableString and assigns it to the LastLoggedInUsernameSelfService field.
+func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfService(v string) {
+	o.LastLoggedInUsernameSelfService.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceNil() {
+	o.LastLoggedInUsernameSelfService.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+func (o *InventoryListMobileDevice) UnsetLastLoggedInUsernameSelfService() {
+	o.LastLoggedInUsernameSelfService.Unset()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfServiceTimestamp.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfServiceTimestamp.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfServiceTimestamp.Get(), o.LastLoggedInUsernameSelfServiceTimestamp.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasLastLoggedInUsernameSelfServiceTimestamp() bool {
+	if o != nil && o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfServiceTimestamp gets a reference to the given NullableTime and assigns it to the LastLoggedInUsernameSelfServiceTimestamp field.
+func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time) {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceTimestampNil() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
+func (o *InventoryListMobileDevice) UnsetLastLoggedInUsernameSelfServiceTimestamp() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Unset()
+}
+
+// GetExtensionAttributeValueList returns the ExtensionAttributeValueList field value if set, zero value otherwise.
+func (o *InventoryListMobileDevice) GetExtensionAttributeValueList() []ExtensionAttributeValue {
+	if o == nil || IsNil(o.ExtensionAttributeValueList) {
+		var ret []ExtensionAttributeValue
+		return ret
+	}
+	return o.ExtensionAttributeValueList
+}
+
+// GetExtensionAttributeValueListOk returns a tuple with the ExtensionAttributeValueList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InventoryListMobileDevice) GetExtensionAttributeValueListOk() ([]ExtensionAttributeValue, bool) {
+	if o == nil || IsNil(o.ExtensionAttributeValueList) {
+		return nil, false
+	}
+	return o.ExtensionAttributeValueList, true
+}
+
+// HasExtensionAttributeValueList returns a boolean if a field has been set.
+func (o *InventoryListMobileDevice) HasExtensionAttributeValueList() bool {
+	if o != nil && !IsNil(o.ExtensionAttributeValueList) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtensionAttributeValueList gets a reference to the given []ExtensionAttributeValue and assigns it to the ExtensionAttributeValueList field.
+func (o *InventoryListMobileDevice) SetExtensionAttributeValueList(v []ExtensionAttributeValue) {
+	o.ExtensionAttributeValueList = v
+}
+
 func (o InventoryListMobileDevice) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -3336,6 +3592,9 @@ func (o InventoryListMobileDevice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BatteryLevel) {
 		toSerialize["batteryLevel"] = o.BatteryLevel
+	}
+	if !IsNil(o.BatteryHealth) {
+		toSerialize["batteryHealth"] = o.BatteryHealth
 	}
 	if !IsNil(o.BluetoothLowEnergyCapable) {
 		toSerialize["bluetoothLowEnergyCapable"] = o.BluetoothLowEnergyCapable
@@ -3430,6 +3689,9 @@ func (o InventoryListMobileDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Managed) {
 		toSerialize["managed"] = o.Managed
 	}
+	if !IsNil(o.ManagementId) {
+		toSerialize["managementId"] = o.ManagementId
+	}
 	if !IsNil(o.MdmProfileExpirationDate) {
 		toSerialize["mdmProfileExpirationDate"] = o.MdmProfileExpirationDate
 	}
@@ -3444,6 +3706,9 @@ func (o InventoryListMobileDevice) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ModemFirmwareVersion) {
 		toSerialize["modemFirmwareVersion"] = o.ModemFirmwareVersion
+	}
+	if !IsNil(o.PairedDevices) {
+		toSerialize["pairedDevices"] = o.PairedDevices
 	}
 	if !IsNil(o.QuotaSize) {
 		toSerialize["quotaSize"] = o.QuotaSize
@@ -3607,11 +3872,23 @@ func (o InventoryListMobileDevice) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PersonalHotspotEnabled) {
 		toSerialize["personalHotspotEnabled"] = o.PersonalHotspotEnabled
 	}
+	if !IsNil(o.PreferredVoiceNumber) {
+		toSerialize["preferredVoiceNumber"] = o.PreferredVoiceNumber
+	}
 	if !IsNil(o.Roaming) {
 		toSerialize["roaming"] = o.Roaming
 	}
 	if !IsNil(o.VoiceRoamingEnabled) {
 		toSerialize["voiceRoamingEnabled"] = o.VoiceRoamingEnabled
+	}
+	if o.LastLoggedInUsernameSelfService.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfService"] = o.LastLoggedInUsernameSelfService.Get()
+	}
+	if o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfServiceTimestamp"] = o.LastLoggedInUsernameSelfServiceTimestamp.Get()
+	}
+	if !IsNil(o.ExtensionAttributeValueList) {
+		toSerialize["extensionAttributeValueList"] = o.ExtensionAttributeValueList
 	}
 	return toSerialize, nil
 }

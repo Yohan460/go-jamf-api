@@ -40,7 +40,7 @@ type SsoSettingsV2 struct {
 	EntityId string `json:"entityId"`
 	MetadataFileName *string `json:"metadataFileName,omitempty"`
 	OtherProviderTypeName *string `json:"otherProviderTypeName,omitempty"`
-	FederationMetadataFile *string `json:"federationMetadataFile,omitempty"`
+	FederationMetadataFile *string `json:"federationMetadataFile,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 	MetadataSource string `json:"metadataSource"`
 	SessionTimeout *int64 `json:"sessionTimeout,omitempty"`
 }

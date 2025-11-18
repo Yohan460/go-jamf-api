@@ -321,36 +321,40 @@ func (a *SmtpServerAPIService) V1SmtpServerHistoryGetExecute(r SmtpServerAPIV1Sm
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"date:desc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -899,11 +903,18 @@ type SmtpServerAPIV2SmtpServerPutRequest struct {
 	ctx context.Context
 	ApiService SmtpServerAPI
 	smtpServerV2 *SmtpServerV2
+	oauthState *string
 }
 
 // SMTP Server to update
 func (r SmtpServerAPIV2SmtpServerPutRequest) SmtpServerV2(smtpServerV2 SmtpServerV2) SmtpServerAPIV2SmtpServerPutRequest {
 	r.smtpServerV2 = &smtpServerV2
+	return r
+}
+
+// The OAuth state that was last used to authorize a Google Mail account. This is only required when the authentication type is Google Mail and new accounts are being added.
+func (r SmtpServerAPIV2SmtpServerPutRequest) OauthState(oauthState string) SmtpServerAPIV2SmtpServerPutRequest {
+	r.oauthState = &oauthState
 	return r
 }
 
@@ -951,6 +962,13 @@ func (a *SmtpServerAPIService) V2SmtpServerPutExecute(r SmtpServerAPIV2SmtpServe
 		return localVarReturnValue, nil, reportError("smtpServerV2 is required and must be specified")
 	}
 
+	if r.oauthState != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "oauth-state", r.oauthState, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "oauth-state", defaultValue, "form", "")
+        r.oauthState = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/merge-patch+json"}
 

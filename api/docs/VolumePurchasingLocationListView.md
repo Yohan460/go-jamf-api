@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **TotalUsedLicenses** | Pointer to **int64** |  | [optional] [readonly] 
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **AppleId** | Pointer to **string** |  | [optional] [readonly] 
+**Email** | Pointer to **string** |  | [optional] [readonly] 
 **OrganizationName** | Pointer to **string** |  | [optional] [readonly] 
 **TokenExpiration** | Pointer to **string** |  | [optional] [readonly] 
 **CountryCode** | Pointer to **string** | The two-letter ISO 3166-1 code that designates the country where the Volume Purchasing account is located. | [optional] [readonly] 
@@ -164,6 +165,31 @@ SetAppleId sets AppleId field to given value.
 `func (o *VolumePurchasingLocationListView) HasAppleId() bool`
 
 HasAppleId returns a boolean if a field has been set.
+
+### GetEmail
+
+`func (o *VolumePurchasingLocationListView) GetEmail() string`
+
+GetEmail returns the Email field if non-nil, zero value otherwise.
+
+### GetEmailOk
+
+`func (o *VolumePurchasingLocationListView) GetEmailOk() (*string, bool)`
+
+GetEmailOk returns a tuple with the Email field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEmail
+
+`func (o *VolumePurchasingLocationListView) SetEmail(v string)`
+
+SetEmail sets Email field to given value.
+
+### HasEmail
+
+`func (o *VolumePurchasingLocationListView) HasEmail() bool`
+
+HasEmail returns a boolean if a field has been set.
 
 ### GetOrganizationName
 

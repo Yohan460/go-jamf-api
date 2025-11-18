@@ -21,7 +21,10 @@ var _ MappedNullable = &StaticGroup{}
 type StaticGroup struct {
 	GroupId *string `json:"groupId,omitempty"`
 	GroupName *string `json:"groupName,omitempty"`
+	GroupDescription *string `json:"groupDescription,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`
+	// membership count
+	Count *int64 `json:"count,omitempty"`
 }
 
 // NewStaticGroup instantiates a new StaticGroup object
@@ -105,6 +108,38 @@ func (o *StaticGroup) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
+// GetGroupDescription returns the GroupDescription field value if set, zero value otherwise.
+func (o *StaticGroup) GetGroupDescription() string {
+	if o == nil || IsNil(o.GroupDescription) {
+		var ret string
+		return ret
+	}
+	return *o.GroupDescription
+}
+
+// GetGroupDescriptionOk returns a tuple with the GroupDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticGroup) GetGroupDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupDescription) {
+		return nil, false
+	}
+	return o.GroupDescription, true
+}
+
+// HasGroupDescription returns a boolean if a field has been set.
+func (o *StaticGroup) HasGroupDescription() bool {
+	if o != nil && !IsNil(o.GroupDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupDescription gets a reference to the given string and assigns it to the GroupDescription field.
+func (o *StaticGroup) SetGroupDescription(v string) {
+	o.GroupDescription = &v
+}
+
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *StaticGroup) GetSiteId() string {
 	if o == nil || IsNil(o.SiteId) {
@@ -137,6 +172,38 @@ func (o *StaticGroup) SetSiteId(v string) {
 	o.SiteId = &v
 }
 
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *StaticGroup) GetCount() int64 {
+	if o == nil || IsNil(o.Count) {
+		var ret int64
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticGroup) GetCountOk() (*int64, bool) {
+	if o == nil || IsNil(o.Count) {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *StaticGroup) HasCount() bool {
+	if o != nil && !IsNil(o.Count) {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int64 and assigns it to the Count field.
+func (o *StaticGroup) SetCount(v int64) {
+	o.Count = &v
+}
+
 func (o StaticGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -153,8 +220,14 @@ func (o StaticGroup) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GroupName) {
 		toSerialize["groupName"] = o.GroupName
 	}
+	if !IsNil(o.GroupDescription) {
+		toSerialize["groupDescription"] = o.GroupDescription
+	}
 	if !IsNil(o.SiteId) {
 		toSerialize["siteId"] = o.SiteId
+	}
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
 	}
 	return toSerialize, nil
 }

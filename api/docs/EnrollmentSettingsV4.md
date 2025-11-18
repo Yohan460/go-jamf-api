@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **FlushLocationHistoryInformation** | Pointer to **bool** |  | [optional] [default to false]
 **FlushPolicyHistory** | Pointer to **bool** |  | [optional] [default to false]
 **FlushExtensionAttributes** | Pointer to **bool** |  | [optional] [default to false]
+**FlushSoftwareUpdatePlans** | Pointer to **bool** |  | [optional] [default to false]
 **FlushMdmCommandsOnReenroll** | Pointer to **string** |  | [optional] [default to "DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED"]
 **MacOsEnterpriseEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **ManagementUsername** | **string** |  | [default to ""]
@@ -32,6 +33,7 @@ Name | Type | Description | Notes
 **AccountDrivenDeviceMacosEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **AccountDrivenUserVisionosEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **AccountDrivenDeviceVisionosEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
+**MaidUsernameMergeEnabled** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -261,6 +263,31 @@ SetFlushExtensionAttributes sets FlushExtensionAttributes field to given value.
 `func (o *EnrollmentSettingsV4) HasFlushExtensionAttributes() bool`
 
 HasFlushExtensionAttributes returns a boolean if a field has been set.
+
+### GetFlushSoftwareUpdatePlans
+
+`func (o *EnrollmentSettingsV4) GetFlushSoftwareUpdatePlans() bool`
+
+GetFlushSoftwareUpdatePlans returns the FlushSoftwareUpdatePlans field if non-nil, zero value otherwise.
+
+### GetFlushSoftwareUpdatePlansOk
+
+`func (o *EnrollmentSettingsV4) GetFlushSoftwareUpdatePlansOk() (*bool, bool)`
+
+GetFlushSoftwareUpdatePlansOk returns a tuple with the FlushSoftwareUpdatePlans field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFlushSoftwareUpdatePlans
+
+`func (o *EnrollmentSettingsV4) SetFlushSoftwareUpdatePlans(v bool)`
+
+SetFlushSoftwareUpdatePlans sets FlushSoftwareUpdatePlans field to given value.
+
+### HasFlushSoftwareUpdatePlans
+
+`func (o *EnrollmentSettingsV4) HasFlushSoftwareUpdatePlans() bool`
+
+HasFlushSoftwareUpdatePlans returns a boolean if a field has been set.
 
 ### GetFlushMdmCommandsOnReenroll
 
@@ -766,6 +793,31 @@ SetAccountDrivenDeviceVisionosEnrollmentEnabled sets AccountDrivenDeviceVisionos
 `func (o *EnrollmentSettingsV4) HasAccountDrivenDeviceVisionosEnrollmentEnabled() bool`
 
 HasAccountDrivenDeviceVisionosEnrollmentEnabled returns a boolean if a field has been set.
+
+### GetMaidUsernameMergeEnabled
+
+`func (o *EnrollmentSettingsV4) GetMaidUsernameMergeEnabled() bool`
+
+GetMaidUsernameMergeEnabled returns the MaidUsernameMergeEnabled field if non-nil, zero value otherwise.
+
+### GetMaidUsernameMergeEnabledOk
+
+`func (o *EnrollmentSettingsV4) GetMaidUsernameMergeEnabledOk() (*bool, bool)`
+
+GetMaidUsernameMergeEnabledOk returns a tuple with the MaidUsernameMergeEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaidUsernameMergeEnabled
+
+`func (o *EnrollmentSettingsV4) SetMaidUsernameMergeEnabled(v bool)`
+
+SetMaidUsernameMergeEnabled sets MaidUsernameMergeEnabled field to given value.
+
+### HasMaidUsernameMergeEnabled
+
+`func (o *EnrollmentSettingsV4) HasMaidUsernameMergeEnabled() bool`
+
+HasMaidUsernameMergeEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

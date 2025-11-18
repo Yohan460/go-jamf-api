@@ -24,7 +24,7 @@ type SupervisionIdentityCertificateUpload struct {
 	DisplayName string `json:"displayName"`
 	Password string `json:"password"`
 	// The base 64 encoded supervision identity certificate data
-	CertificateData *string `json:"certificateData,omitempty"`
+	CertificateData *string `json:"certificateData,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 }
 
 type _SupervisionIdentityCertificateUpload SupervisionIdentityCertificateUpload

@@ -6,9 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] [readonly] 
 **Name** | **string** |  | 
-**Username** | Pointer to **string** |  | [optional] 
-**Password** | Pointer to **string** |  | [optional] 
-**PasswordConfigured** | Pointer to **bool** |  | [optional] [readonly] 
 **ProxyAddress** | Pointer to **string** |  | [optional] 
 **RevocationEnabled** | Pointer to **bool** |  | [optional] 
 **ClientId** | Pointer to **string** |  | [optional] 
@@ -78,81 +75,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
-### GetUsername
-
-`func (o *VenafiCaRecord) GetUsername() string`
-
-GetUsername returns the Username field if non-nil, zero value otherwise.
-
-### GetUsernameOk
-
-`func (o *VenafiCaRecord) GetUsernameOk() (*string, bool)`
-
-GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsername
-
-`func (o *VenafiCaRecord) SetUsername(v string)`
-
-SetUsername sets Username field to given value.
-
-### HasUsername
-
-`func (o *VenafiCaRecord) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
-
-### GetPassword
-
-`func (o *VenafiCaRecord) GetPassword() string`
-
-GetPassword returns the Password field if non-nil, zero value otherwise.
-
-### GetPasswordOk
-
-`func (o *VenafiCaRecord) GetPasswordOk() (*string, bool)`
-
-GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPassword
-
-`func (o *VenafiCaRecord) SetPassword(v string)`
-
-SetPassword sets Password field to given value.
-
-### HasPassword
-
-`func (o *VenafiCaRecord) HasPassword() bool`
-
-HasPassword returns a boolean if a field has been set.
-
-### GetPasswordConfigured
-
-`func (o *VenafiCaRecord) GetPasswordConfigured() bool`
-
-GetPasswordConfigured returns the PasswordConfigured field if non-nil, zero value otherwise.
-
-### GetPasswordConfiguredOk
-
-`func (o *VenafiCaRecord) GetPasswordConfiguredOk() (*bool, bool)`
-
-GetPasswordConfiguredOk returns a tuple with the PasswordConfigured field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPasswordConfigured
-
-`func (o *VenafiCaRecord) SetPasswordConfigured(v bool)`
-
-SetPasswordConfigured sets PasswordConfigured field to given value.
-
-### HasPasswordConfigured
-
-`func (o *VenafiCaRecord) HasPasswordConfigured() bool`
-
-HasPasswordConfigured returns a boolean if a field has been set.
 
 ### GetProxyAddress
 

@@ -35,6 +35,21 @@ type DashboardAPI interface {
 	// V1DashboardGetExecute executes the request
 	//  @return DashboardSetup
 	V1DashboardGetExecute(r DashboardAPIV1DashboardGetRequest) (*DashboardSetup, *http.Response, error)
+
+	/*
+	V1DashboardTogglePost Add or remove an object to the Jamf Pro dashboard 
+
+	Add or remove dashboard detail by the type of object, and the object's ID. Duplicates will not be added again.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return DashboardAPIV1DashboardTogglePostRequest
+	*/
+	V1DashboardTogglePost(ctx context.Context) DashboardAPIV1DashboardTogglePostRequest
+
+	// V1DashboardTogglePostExecute executes the request
+	//  @return HrefResponse
+	V1DashboardTogglePostExecute(r DashboardAPIV1DashboardTogglePostRequest) (*HrefResponse, *http.Response, error)
 }
 
 // DashboardAPIService DashboardAPI service
@@ -134,6 +149,118 @@ func (a *DashboardAPIService) V1DashboardGetExecute(r DashboardAPIV1DashboardGet
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DashboardAPIV1DashboardTogglePostRequest struct {
+	ctx context.Context
+	ApiService DashboardAPI
+	dashboardObject *DashboardObject
+}
+
+// Dashboard object with the associated type and ID with a toggle to add or remove the object
+func (r DashboardAPIV1DashboardTogglePostRequest) DashboardObject(dashboardObject DashboardObject) DashboardAPIV1DashboardTogglePostRequest {
+	r.dashboardObject = &dashboardObject
+	return r
+}
+
+func (r DashboardAPIV1DashboardTogglePostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V1DashboardTogglePostExecute(r)
+}
+
+/*
+V1DashboardTogglePost Add or remove an object to the Jamf Pro dashboard 
+
+Add or remove dashboard detail by the type of object, and the object's ID. Duplicates will not be added again.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return DashboardAPIV1DashboardTogglePostRequest
+*/
+func (a *DashboardAPIService) V1DashboardTogglePost(ctx context.Context) DashboardAPIV1DashboardTogglePostRequest {
+	return DashboardAPIV1DashboardTogglePostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *DashboardAPIService) V1DashboardTogglePostExecute(r DashboardAPIV1DashboardTogglePostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DashboardAPIService.V1DashboardTogglePost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/dashboard/toggle"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.dashboardObject == nil {
+		return localVarReturnValue, nil, reportError("dashboardObject is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.dashboardObject
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

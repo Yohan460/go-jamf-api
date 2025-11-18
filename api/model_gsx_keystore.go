@@ -25,7 +25,7 @@ type GsxKeystore struct {
 	ExpirationEpoch *int64 `json:"expirationEpoch,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// The base 64 encoded of the GSX Connection keystore.
-	KeystoreBytes *string `json:"keystoreBytes,omitempty"`
+	KeystoreBytes *string `json:"keystoreBytes,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 	KeystorePassword string `json:"keystorePassword"`
 }
 

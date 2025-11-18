@@ -108,7 +108,7 @@ func (a *JamfPackageAPIService) V1JamfPackageGetExecute(r JamfPackageAPIV1JamfPa
 		return localVarReturnValue, nil, reportError("application is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -228,7 +228,7 @@ func (a *JamfPackageAPIService) V2JamfPackageGetExecute(r JamfPackageAPIV2JamfPa
 		return localVarReturnValue, nil, reportError("application is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "application", r.application, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

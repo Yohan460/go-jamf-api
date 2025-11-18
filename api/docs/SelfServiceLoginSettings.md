@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UserLoginLevel** | **string** | login setting to tell clients how to let users log in  | 
 **AllowRememberMe** | Pointer to **bool** | true if remember me functionality is allowed, false if not  | [optional] [default to false]
+**UseFido2** | Pointer to **bool** | true if use FIDO2 functionality is allowed, false if not  | [optional] [default to false]
 **AuthType** | **string** | login type to be used when asking users to log in  | 
 
 ## Methods
@@ -71,6 +72,31 @@ SetAllowRememberMe sets AllowRememberMe field to given value.
 `func (o *SelfServiceLoginSettings) HasAllowRememberMe() bool`
 
 HasAllowRememberMe returns a boolean if a field has been set.
+
+### GetUseFido2
+
+`func (o *SelfServiceLoginSettings) GetUseFido2() bool`
+
+GetUseFido2 returns the UseFido2 field if non-nil, zero value otherwise.
+
+### GetUseFido2Ok
+
+`func (o *SelfServiceLoginSettings) GetUseFido2Ok() (*bool, bool)`
+
+GetUseFido2Ok returns a tuple with the UseFido2 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseFido2
+
+`func (o *SelfServiceLoginSettings) SetUseFido2(v bool)`
+
+SetUseFido2 sets UseFido2 field to given value.
+
+### HasUseFido2
+
+`func (o *SelfServiceLoginSettings) HasUseFido2() bool`
+
+HasUseFido2 returns a boolean if a field has been set.
 
 ### GetAuthType
 

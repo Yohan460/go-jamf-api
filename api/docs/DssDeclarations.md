@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Declarations** | Pointer to [**[]DssDeclaration**](DssDeclaration.md) |  | [optional] [default to []]
+**Declarations** | Pointer to [**[]DssDeclaration**](DssDeclaration.md) |  | [optional] [default to {}]
 
 ## Methods
 

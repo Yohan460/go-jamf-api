@@ -89,6 +89,20 @@ type ApiAuthenticationAPI interface {
 	AuthKeepAlivePostExecute(r ApiAuthenticationAPIAuthKeepAlivePostRequest) (*AuthToken, *http.Response, error)
 
 	/*
+	PostOAuthToken Obtain an access token using an API Client
+
+	Obtain an access token using the OAuth2 client credentials flow
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiAuthenticationAPIPostOAuthTokenRequest
+	*/
+	PostOAuthToken(ctx context.Context) ApiAuthenticationAPIPostOAuthTokenRequest
+
+	// PostOAuthTokenExecute executes the request
+	//  @return OAuthTokenResponse
+	PostOAuthTokenExecute(r ApiAuthenticationAPIPostOAuthTokenRequest) (*OAuthTokenResponse, *http.Response, error)
+
+	/*
 	V1AuthGet Get all the Authorization details associated with the current api 
 
 	Get all the authorization details associated with the current api token
@@ -529,6 +543,158 @@ func (a *ApiAuthenticationAPIService) AuthKeepAlivePostExecute(r ApiAuthenticati
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiAuthenticationAPIPostOAuthTokenRequest struct {
+	ctx context.Context
+	ApiService ApiAuthenticationAPI
+	grantType *string
+	clientId *string
+	clientSecret *string
+	scope *string
+}
+
+// OAuth2 grant type. For Jamf Pro API Clients, use &#x60;client_credentials&#x60;
+func (r ApiAuthenticationAPIPostOAuthTokenRequest) GrantType(grantType string) ApiAuthenticationAPIPostOAuthTokenRequest {
+	r.grantType = &grantType
+	return r
+}
+
+// Client ID from your API Client
+func (r ApiAuthenticationAPIPostOAuthTokenRequest) ClientId(clientId string) ApiAuthenticationAPIPostOAuthTokenRequest {
+	r.clientId = &clientId
+	return r
+}
+
+// Client secret from your API Client
+func (r ApiAuthenticationAPIPostOAuthTokenRequest) ClientSecret(clientSecret string) ApiAuthenticationAPIPostOAuthTokenRequest {
+	r.clientSecret = &clientSecret
+	return r
+}
+
+// Optional. Provide a space-delimited list of roles that are within the configuration for  this API Client. Omitting this field will grant an access token that includes all of this client&#39;s  allowed roles. Specifying a subset of them will limit the privileges for this access token to that subset of roles. Specifying a role that is not assigned to this client will result in  an &#x60;invalid_scope&#x60; error. The format matches what is returned from the OAuth token endpoint response&#39;s &#x60;scope&#x60; field. 
+func (r ApiAuthenticationAPIPostOAuthTokenRequest) Scope(scope string) ApiAuthenticationAPIPostOAuthTokenRequest {
+	r.scope = &scope
+	return r
+}
+
+func (r ApiAuthenticationAPIPostOAuthTokenRequest) Execute() (*OAuthTokenResponse, *http.Response, error) {
+	return r.ApiService.PostOAuthTokenExecute(r)
+}
+
+/*
+PostOAuthToken Obtain an access token using an API Client
+
+Obtain an access token using the OAuth2 client credentials flow
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthenticationAPIPostOAuthTokenRequest
+*/
+func (a *ApiAuthenticationAPIService) PostOAuthToken(ctx context.Context) ApiAuthenticationAPIPostOAuthTokenRequest {
+	return ApiAuthenticationAPIPostOAuthTokenRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return OAuthTokenResponse
+func (a *ApiAuthenticationAPIService) PostOAuthTokenExecute(r ApiAuthenticationAPIPostOAuthTokenRequest) (*OAuthTokenResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *OAuthTokenResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApiAuthenticationAPIService.PostOAuthToken")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/oauth/token"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.grantType == nil {
+		return localVarReturnValue, nil, reportError("grantType is required and must be specified")
+	}
+	if r.clientId == nil {
+		return localVarReturnValue, nil, reportError("clientId is required and must be specified")
+	}
+	if r.clientSecret == nil {
+		return localVarReturnValue, nil, reportError("clientSecret is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/x-www-form-urlencoded"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "grant_type", r.grantType, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "client_id", r.clientId, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "client_secret", r.clientSecret, "", "")
+	if r.scope != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "scope", r.scope, "", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v OAuthTokenEndpointErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
+**Name** | **string** |  | 
 **Priority** | Pointer to **int64** |  | [optional] 
-**AndOr** | Pointer to **string** |  | [optional] 
-**SearchType** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to **string** |  | [optional] 
+**AndOr** | **string** |  | 
+**SearchType** | **string** |  | 
+**Value** | **string** |  | 
 **OpeningParen** | Pointer to **bool** |  | [optional] 
 **ClosingParen** | Pointer to **bool** |  | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewSmartSearchCriterion
 
-`func NewSmartSearchCriterion() *SmartSearchCriterion`
+`func NewSmartSearchCriterion(name string, andOr string, searchType string, value string, ) *SmartSearchCriterion`
 
 NewSmartSearchCriterion instantiates a new SmartSearchCriterion object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *SmartSearchCriterion) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetPriority
 
@@ -100,11 +95,6 @@ and a boolean to check if the value has been set.
 
 SetAndOr sets AndOr field to given value.
 
-### HasAndOr
-
-`func (o *SmartSearchCriterion) HasAndOr() bool`
-
-HasAndOr returns a boolean if a field has been set.
 
 ### GetSearchType
 
@@ -125,11 +115,6 @@ and a boolean to check if the value has been set.
 
 SetSearchType sets SearchType field to given value.
 
-### HasSearchType
-
-`func (o *SmartSearchCriterion) HasSearchType() bool`
-
-HasSearchType returns a boolean if a field has been set.
 
 ### GetValue
 
@@ -150,11 +135,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-### HasValue
-
-`func (o *SmartSearchCriterion) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 ### GetOpeningParen
 

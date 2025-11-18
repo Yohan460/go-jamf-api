@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **LastCloudBackupTimestamp** | Pointer to **time.Time** |  | [optional] 
 **ITunesStoreAccountActive** | Pointer to **bool** |  | [optional] 
 **BleCapable** | Pointer to **bool** |  | [optional] 
+**UnlockToken** | Pointer to **string** |  | [optional] 
 **Security** | Pointer to [**SecurityV2**](SecurityV2.md) |  | [optional] 
 **Applications** | Pointer to [**[]MobileDeviceApplication**](MobileDeviceApplication.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificateV2**](MobileDeviceCertificateV2.md) |  | [optional] 
@@ -367,6 +368,31 @@ SetBleCapable sets BleCapable field to given value.
 `func (o *WatchOsDetailsV2) HasBleCapable() bool`
 
 HasBleCapable returns a boolean if a field has been set.
+
+### GetUnlockToken
+
+`func (o *WatchOsDetailsV2) GetUnlockToken() string`
+
+GetUnlockToken returns the UnlockToken field if non-nil, zero value otherwise.
+
+### GetUnlockTokenOk
+
+`func (o *WatchOsDetailsV2) GetUnlockTokenOk() (*string, bool)`
+
+GetUnlockTokenOk returns a tuple with the UnlockToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnlockToken
+
+`func (o *WatchOsDetailsV2) SetUnlockToken(v string)`
+
+SetUnlockToken sets UnlockToken field to given value.
+
+### HasUnlockToken
+
+`func (o *WatchOsDetailsV2) HasUnlockToken() bool`
+
+HasUnlockToken returns a boolean if a field has been set.
 
 ### GetSecurity
 

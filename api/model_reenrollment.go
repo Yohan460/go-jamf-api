@@ -25,6 +25,7 @@ type Reenrollment struct {
 	IsFlushLocationInformationEnabled *bool `json:"isFlushLocationInformationEnabled,omitempty"`
 	IsFlushLocationInformationHistoryEnabled *bool `json:"isFlushLocationInformationHistoryEnabled,omitempty"`
 	IsFlushExtensionAttributesEnabled *bool `json:"isFlushExtensionAttributesEnabled,omitempty"`
+	IsFlushSoftwareUpdatePlansEnabled *bool `json:"isFlushSoftwareUpdatePlansEnabled,omitempty"`
 	FlushMDMQueue string `json:"flushMDMQueue"`
 }
 
@@ -44,6 +45,8 @@ func NewReenrollment(flushMDMQueue string) *Reenrollment {
 	this.IsFlushLocationInformationHistoryEnabled = &isFlushLocationInformationHistoryEnabled
 	var isFlushExtensionAttributesEnabled bool = false
 	this.IsFlushExtensionAttributesEnabled = &isFlushExtensionAttributesEnabled
+	var isFlushSoftwareUpdatePlansEnabled bool = false
+	this.IsFlushSoftwareUpdatePlansEnabled = &isFlushSoftwareUpdatePlansEnabled
 	this.FlushMDMQueue = flushMDMQueue
 	return &this
 }
@@ -61,6 +64,8 @@ func NewReenrollmentWithDefaults() *Reenrollment {
 	this.IsFlushLocationInformationHistoryEnabled = &isFlushLocationInformationHistoryEnabled
 	var isFlushExtensionAttributesEnabled bool = false
 	this.IsFlushExtensionAttributesEnabled = &isFlushExtensionAttributesEnabled
+	var isFlushSoftwareUpdatePlansEnabled bool = false
+	this.IsFlushSoftwareUpdatePlansEnabled = &isFlushSoftwareUpdatePlansEnabled
 	return &this
 }
 
@@ -192,6 +197,38 @@ func (o *Reenrollment) SetIsFlushExtensionAttributesEnabled(v bool) {
 	o.IsFlushExtensionAttributesEnabled = &v
 }
 
+// GetIsFlushSoftwareUpdatePlansEnabled returns the IsFlushSoftwareUpdatePlansEnabled field value if set, zero value otherwise.
+func (o *Reenrollment) GetIsFlushSoftwareUpdatePlansEnabled() bool {
+	if o == nil || IsNil(o.IsFlushSoftwareUpdatePlansEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsFlushSoftwareUpdatePlansEnabled
+}
+
+// GetIsFlushSoftwareUpdatePlansEnabledOk returns a tuple with the IsFlushSoftwareUpdatePlansEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Reenrollment) GetIsFlushSoftwareUpdatePlansEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsFlushSoftwareUpdatePlansEnabled) {
+		return nil, false
+	}
+	return o.IsFlushSoftwareUpdatePlansEnabled, true
+}
+
+// HasIsFlushSoftwareUpdatePlansEnabled returns a boolean if a field has been set.
+func (o *Reenrollment) HasIsFlushSoftwareUpdatePlansEnabled() bool {
+	if o != nil && !IsNil(o.IsFlushSoftwareUpdatePlansEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsFlushSoftwareUpdatePlansEnabled gets a reference to the given bool and assigns it to the IsFlushSoftwareUpdatePlansEnabled field.
+func (o *Reenrollment) SetIsFlushSoftwareUpdatePlansEnabled(v bool) {
+	o.IsFlushSoftwareUpdatePlansEnabled = &v
+}
+
 // GetFlushMDMQueue returns the FlushMDMQueue field value
 func (o *Reenrollment) GetFlushMDMQueue() string {
 	if o == nil {
@@ -237,6 +274,9 @@ func (o Reenrollment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsFlushExtensionAttributesEnabled) {
 		toSerialize["isFlushExtensionAttributesEnabled"] = o.IsFlushExtensionAttributesEnabled
+	}
+	if !IsNil(o.IsFlushSoftwareUpdatePlansEnabled) {
+		toSerialize["isFlushSoftwareUpdatePlansEnabled"] = o.IsFlushSoftwareUpdatePlansEnabled
 	}
 	toSerialize["flushMDMQueue"] = o.FlushMDMQueue
 	return toSerialize, nil

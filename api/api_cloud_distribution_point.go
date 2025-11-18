@@ -16,15 +16,133 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 )
 
 
 type CloudDistributionPointAPI interface {
 
 	/*
-	V1CloudDistributionPointUploadCapabilityGet Finds specific information for the currently configured Cloud Distribution Point. 
+	V1CloudDistributionPointDelete Delete cloud distribution point.
 
-	Finds a variety of values based on the currently configured Cloud Distribution Point.
+	The cloud distribution point and inventory details to be deleted.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest
+	*/
+	V1CloudDistributionPointDelete(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest
+
+	// V1CloudDistributionPointDeleteExecute executes the request
+	V1CloudDistributionPointDeleteExecute(r CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CloudDistributionPointFilesGet Get the cloud distribution point Inventory files details
+
+	Retrieves the details of the inventory files associated with a cloud distribution point.This includes information about the files used for content distribution,
+such as their type, status, and categorization.The response provides a comprehensive list of inventory files, which may include packages, ebooks, or mobile device apps,
+allowing users to view the current state and metadata for each file in the distribution system.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest
+	*/
+	V1CloudDistributionPointFilesGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest
+
+	// V1CloudDistributionPointFilesGetExecute executes the request
+	//  @return CloudDistributionPointInventoryFilesResults
+	V1CloudDistributionPointFilesGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) (*CloudDistributionPointInventoryFilesResults, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointGet Get the cloud distribution point Details. 
+
+	Retrieves the details of the cloud distribution point. The distribution point exists only when a content delivery network (CDN) is configured, such as Jamf Cloud(JAMF_CLOUD), Rackspace Cloud Files(RACKSPACE_CLOUD_FILES), Amazon Web Services(AMAZON_S3) or Akamai(AKAMAI). If the **cdnType** is **NONE** the response will be NONE empty CDP object, indicating no distribution point is set up.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointGetRequest
+	*/
+	V1CloudDistributionPointGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointGetRequest
+
+	// V1CloudDistributionPointGetExecute executes the request
+	//  @return CloudDistributionPoint
+	V1CloudDistributionPointGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointGetRequest) (*CloudDistributionPoint, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointHistoryGet Get cloud distribution point history details
+
+	Get cloud distribution point history details
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest
+	*/
+	V1CloudDistributionPointHistoryGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest
+
+	// V1CloudDistributionPointHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1CloudDistributionPointHistoryGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointHistoryPost Add specified cloud distribution point history object notes
+
+	Add specified cloud distribution point history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest
+	*/
+	V1CloudDistributionPointHistoryPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest
+
+	// V1CloudDistributionPointHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1CloudDistributionPointHistoryPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointPatch Update specific fields on a cloud distribution point
+
+	Update specific fields on a cloud distribution point, then return the updated cloud distribution point details object.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointPatchRequest
+	*/
+	V1CloudDistributionPointPatch(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointPatchRequest
+
+	// V1CloudDistributionPointPatchExecute executes the request
+	//  @return CloudDistributionPoint
+	V1CloudDistributionPointPatchExecute(r CloudDistributionPointAPIV1CloudDistributionPointPatchRequest) (*CloudDistributionPoint, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointPost Create cloud distribution point
+
+	Creates cloud distribution point. This operation is triggered when the content delivery network (CDN) settings change, specifically when the network type is updated from "None" to any other supported type. Upon successful creation,the API returns the updated details of the cloud distribution point.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointPostRequest
+	*/
+	V1CloudDistributionPointPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointPostRequest
+
+	// V1CloudDistributionPointPostExecute executes the request
+	//  @return CloudDistributionPoint
+	V1CloudDistributionPointPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointPostRequest) (*CloudDistributionPoint, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointTestConnectionGet Get the cloud distribution point test connection details. 
+
+	Verifies the connection to the cloud distribution point after updating its configuration. 
+This endpoint returns the connection status and a message indicating whether the connection is successful or failed.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest
+	*/
+	V1CloudDistributionPointTestConnectionGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest
+
+	// V1CloudDistributionPointTestConnectionGetExecute executes the request
+	//  @return CloudDistributionPointTestConnection
+	V1CloudDistributionPointTestConnectionGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest) (*CloudDistributionPointTestConnection, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointUploadCapabilityGet Finds specific information for the currently configured cloud distribution point. 
+
+	Finds a variety of values based on the currently configured cloud distribution point.
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -40,6 +158,1011 @@ type CloudDistributionPointAPI interface {
 // CloudDistributionPointAPIService CloudDistributionPointAPI service
 type CloudDistributionPointAPIService service
 
+type CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointDeleteExecute(r)
+}
+
+/*
+V1CloudDistributionPointDelete Delete cloud distribution point.
+
+The cloud distribution point and inventory details to be deleted.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointDelete(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointDeleteExecute(r CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Page(page int64) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) PageSize(pageSize int64) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorts results by one or more criteria, following the format property:asc/desc.&lt;br/&gt; Default sort is id:asc.&lt;br/&gt; If using multiple criteria, separate with commas. Allows sort for id, fileName and type etc.
+func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Sort(sort []string) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Filters results. Use RSQL format for query. Allows for many fields, including fileName and type&lt;br/&gt; Can be combined with paging and sorting.&lt;br/&gt; Fields allowed in the query: fileName and type &lt;br/&gt; Default filter is an empty query and returns all results from the requested page.
+func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Filter(filter string) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Execute() (*CloudDistributionPointInventoryFilesResults, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointFilesGetExecute(r)
+}
+
+/*
+V1CloudDistributionPointFilesGet Get the cloud distribution point Inventory files details
+
+Retrieves the details of the inventory files associated with a cloud distribution point.This includes information about the files used for content distribution,
+such as their type, status, and categorization.The response provides a comprehensive list of inventory files, which may include packages, ebooks, or mobile device apps,
+allowing users to view the current state and metadata for each file in the distribution system.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFilesGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CloudDistributionPointInventoryFilesResults
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFilesGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) (*CloudDistributionPointInventoryFilesResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CloudDistributionPointInventoryFilesResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointFilesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/files"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"id.asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointGetRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointGetRequest) Execute() (*CloudDistributionPoint, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointGetExecute(r)
+}
+
+/*
+V1CloudDistributionPointGet Get the cloud distribution point Details. 
+
+Retrieves the details of the cloud distribution point. The distribution point exists only when a content delivery network (CDN) is configured, such as Jamf Cloud(JAMF_CLOUD), Rackspace Cloud Files(RACKSPACE_CLOUD_FILES), Amazon Web Services(AMAZON_S3) or Akamai(AKAMAI). If the **cdnType** is **NONE** the response will be NONE empty CDP object, indicating no distribution point is set up.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointGetRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointGetRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CloudDistributionPoint
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointGetRequest) (*CloudDistributionPoint, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CloudDistributionPoint
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) Page(page int64) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) PageSize(pageSize int64) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorts results by one or more criteria, following the format property:asc/desc. Default sort is ID:asc. If using multiple criteria, separate with commas.
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) Sort(sort []string) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Filters results. Use RSQL format for query. Allows for many fields, including ID, name, etc. Can be combined with paging and sorting. Default filter is an empty query and returns all results from the requested page.
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) Filter(filter string) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointHistoryGetExecute(r)
+}
+
+/*
+V1CloudDistributionPointHistoryGet Get cloud distribution point history details
+
+Get cloud distribution point history details
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"id:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// History note to be created
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointHistoryPostExecute(r)
+}
+
+/*
+V1CloudDistributionPointHistoryPost Add specified cloud distribution point history object notes
+
+Add specified cloud distribution point history object notes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ObjectHistory
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ObjectHistory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointPatchRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	cloudDistributionPoint *CloudDistributionPoint
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointPatchRequest) CloudDistributionPoint(cloudDistributionPoint CloudDistributionPoint) CloudDistributionPointAPIV1CloudDistributionPointPatchRequest {
+	r.cloudDistributionPoint = &cloudDistributionPoint
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointPatchRequest) Execute() (*CloudDistributionPoint, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointPatchExecute(r)
+}
+
+/*
+V1CloudDistributionPointPatch Update specific fields on a cloud distribution point
+
+Update specific fields on a cloud distribution point, then return the updated cloud distribution point details object.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointPatchRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointPatch(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointPatchRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CloudDistributionPoint
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointPatchExecute(r CloudDistributionPointAPIV1CloudDistributionPointPatchRequest) (*CloudDistributionPoint, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CloudDistributionPoint
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointPatch")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloudDistributionPoint == nil {
+		return localVarReturnValue, nil, reportError("cloudDistributionPoint is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.cloudDistributionPoint
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointPostRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	cloudDistributionPoint *CloudDistributionPoint
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointPostRequest) CloudDistributionPoint(cloudDistributionPoint CloudDistributionPoint) CloudDistributionPointAPIV1CloudDistributionPointPostRequest {
+	r.cloudDistributionPoint = &cloudDistributionPoint
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointPostRequest) Execute() (*CloudDistributionPoint, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointPostExecute(r)
+}
+
+/*
+V1CloudDistributionPointPost Create cloud distribution point
+
+Creates cloud distribution point. This operation is triggered when the content delivery network (CDN) settings change, specifically when the network type is updated from "None" to any other supported type. Upon successful creation,the API returns the updated details of the cloud distribution point.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointPostRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointPostRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CloudDistributionPoint
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointPostRequest) (*CloudDistributionPoint, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CloudDistributionPoint
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.cloudDistributionPoint == nil {
+		return localVarReturnValue, nil, reportError("cloudDistributionPoint is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.cloudDistributionPoint
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest) Execute() (*CloudDistributionPointTestConnection, *http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointTestConnectionGetExecute(r)
+}
+
+/*
+V1CloudDistributionPointTestConnectionGet Get the cloud distribution point test connection details. 
+
+Verifies the connection to the cloud distribution point after updating its configuration. 
+This endpoint returns the connection status and a message indicating whether the connection is successful or failed.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointTestConnectionGet(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CloudDistributionPointTestConnection
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointTestConnectionGetExecute(r CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest) (*CloudDistributionPointTestConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CloudDistributionPointTestConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointTestConnectionGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/test-connection"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type CloudDistributionPointAPIV1CloudDistributionPointUploadCapabilityGetRequest struct {
 	ctx context.Context
 	ApiService CloudDistributionPointAPI
@@ -50,9 +1173,9 @@ func (r CloudDistributionPointAPIV1CloudDistributionPointUploadCapabilityGetRequ
 }
 
 /*
-V1CloudDistributionPointUploadCapabilityGet Finds specific information for the currently configured Cloud Distribution Point. 
+V1CloudDistributionPointUploadCapabilityGet Finds specific information for the currently configured cloud distribution point. 
 
-Finds a variety of values based on the currently configured Cloud Distribution Point.
+Finds a variety of values based on the currently configured cloud distribution point.
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

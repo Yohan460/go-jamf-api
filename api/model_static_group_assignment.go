@@ -21,6 +21,7 @@ var _ MappedNullable = &StaticGroupAssignment{}
 type StaticGroupAssignment struct {
 	GroupId *string `json:"groupId,omitempty"`
 	GroupName *string `json:"groupName,omitempty"`
+	GroupDescription *string `json:"groupDescription,omitempty"`
 	SiteId *string `json:"siteId,omitempty"`
 	Assignments []Assignment `json:"assignments,omitempty"`
 }
@@ -106,6 +107,38 @@ func (o *StaticGroupAssignment) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
+// GetGroupDescription returns the GroupDescription field value if set, zero value otherwise.
+func (o *StaticGroupAssignment) GetGroupDescription() string {
+	if o == nil || IsNil(o.GroupDescription) {
+		var ret string
+		return ret
+	}
+	return *o.GroupDescription
+}
+
+// GetGroupDescriptionOk returns a tuple with the GroupDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticGroupAssignment) GetGroupDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupDescription) {
+		return nil, false
+	}
+	return o.GroupDescription, true
+}
+
+// HasGroupDescription returns a boolean if a field has been set.
+func (o *StaticGroupAssignment) HasGroupDescription() bool {
+	if o != nil && !IsNil(o.GroupDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupDescription gets a reference to the given string and assigns it to the GroupDescription field.
+func (o *StaticGroupAssignment) SetGroupDescription(v string) {
+	o.GroupDescription = &v
+}
+
 // GetSiteId returns the SiteId field value if set, zero value otherwise.
 func (o *StaticGroupAssignment) GetSiteId() string {
 	if o == nil || IsNil(o.SiteId) {
@@ -185,6 +218,9 @@ func (o StaticGroupAssignment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GroupName) {
 		toSerialize["groupName"] = o.GroupName
+	}
+	if !IsNil(o.GroupDescription) {
+		toSerialize["groupDescription"] = o.GroupDescription
 	}
 	if !IsNil(o.SiteId) {
 		toSerialize["siteId"] = o.SiteId

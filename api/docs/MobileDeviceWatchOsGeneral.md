@@ -24,7 +24,10 @@ Name | Type | Description | Notes
 **MdmProfileExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **TimeZone** | Pointer to **string** | IANA time zone database name | [optional] 
 **DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
+**ManagementId** | Pointer to **string** |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]MobileDeviceExtensionAttribute**](MobileDeviceExtensionAttribute.md) |  | [optional] 
+**LastLoggedInUsernameSelfService** | Pointer to **NullableString** |  | [optional] 
+**LastLoggedInUsernameSelfServiceTimestamp** | Pointer to **NullableTime** |  | [optional] 
 **DiagnosticAndUsageReportingEnabled** | Pointer to **bool** |  | [optional] 
 **AppAnalyticsEnabled** | Pointer to **bool** |  | [optional] 
 **DeviceLocatorServiceEnabled** | Pointer to **bool** |  | [optional] 
@@ -551,6 +554,31 @@ SetDeclarativeDeviceManagementEnabled sets DeclarativeDeviceManagementEnabled fi
 
 HasDeclarativeDeviceManagementEnabled returns a boolean if a field has been set.
 
+### GetManagementId
+
+`func (o *MobileDeviceWatchOsGeneral) GetManagementId() string`
+
+GetManagementId returns the ManagementId field if non-nil, zero value otherwise.
+
+### GetManagementIdOk
+
+`func (o *MobileDeviceWatchOsGeneral) GetManagementIdOk() (*string, bool)`
+
+GetManagementIdOk returns a tuple with the ManagementId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagementId
+
+`func (o *MobileDeviceWatchOsGeneral) SetManagementId(v string)`
+
+SetManagementId sets ManagementId field to given value.
+
+### HasManagementId
+
+`func (o *MobileDeviceWatchOsGeneral) HasManagementId() bool`
+
+HasManagementId returns a boolean if a field has been set.
+
 ### GetExtensionAttributes
 
 `func (o *MobileDeviceWatchOsGeneral) GetExtensionAttributes() []MobileDeviceExtensionAttribute`
@@ -576,6 +604,76 @@ SetExtensionAttributes sets ExtensionAttributes field to given value.
 
 HasExtensionAttributes returns a boolean if a field has been set.
 
+### GetLastLoggedInUsernameSelfService
+
+`func (o *MobileDeviceWatchOsGeneral) GetLastLoggedInUsernameSelfService() string`
+
+GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceOk
+
+`func (o *MobileDeviceWatchOsGeneral) GetLastLoggedInUsernameSelfServiceOk() (*string, bool)`
+
+GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfService
+
+`func (o *MobileDeviceWatchOsGeneral) SetLastLoggedInUsernameSelfService(v string)`
+
+SetLastLoggedInUsernameSelfService sets LastLoggedInUsernameSelfService field to given value.
+
+### HasLastLoggedInUsernameSelfService
+
+`func (o *MobileDeviceWatchOsGeneral) HasLastLoggedInUsernameSelfService() bool`
+
+HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceNil
+
+`func (o *MobileDeviceWatchOsGeneral) SetLastLoggedInUsernameSelfServiceNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfService
+`func (o *MobileDeviceWatchOsGeneral) UnsetLastLoggedInUsernameSelfService()`
+
+UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+### GetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *MobileDeviceWatchOsGeneral) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time`
+
+GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceTimestampOk
+
+`func (o *MobileDeviceWatchOsGeneral) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool)`
+
+GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *MobileDeviceWatchOsGeneral) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time)`
+
+SetLastLoggedInUsernameSelfServiceTimestamp sets LastLoggedInUsernameSelfServiceTimestamp field to given value.
+
+### HasLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *MobileDeviceWatchOsGeneral) HasLastLoggedInUsernameSelfServiceTimestamp() bool`
+
+HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestampNil
+
+`func (o *MobileDeviceWatchOsGeneral) SetLastLoggedInUsernameSelfServiceTimestampNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfServiceTimestamp
+`func (o *MobileDeviceWatchOsGeneral) UnsetLastLoggedInUsernameSelfServiceTimestamp()`
+
+UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
 ### GetDiagnosticAndUsageReportingEnabled
 
 `func (o *MobileDeviceWatchOsGeneral) GetDiagnosticAndUsageReportingEnabled() bool`

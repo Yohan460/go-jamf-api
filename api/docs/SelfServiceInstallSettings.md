@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InstallAutomatically** | Pointer to **bool** | true if Self Service is insalled automatically, false if not  | [optional] [default to false]
-**InstallLocation** | **string** | path at which Self Service is installed  | 
+**InstallAutomatically** | Pointer to **bool** | true if Self Service is installed automatically, false if not  | [optional] [default to false]
+**InstallLocation** | **string** | path at which Self Service is installed. Required if installAutomatically is true  | 
 
 ## Methods
 

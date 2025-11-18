@@ -16,10 +16,68 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 )
 
 
 type ActivationCodeAPI interface {
+
+	/*
+	V1ActivationCodeHistoryExportPost Export history object collection in specified format for Activation Code 
+
+	Export history object collection in specified format for Activation Code
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest
+	*/
+	V1ActivationCodeHistoryExportPost(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest
+
+	// V1ActivationCodeHistoryExportPostExecute executes the request
+	//  @return interface{}
+	V1ActivationCodeHistoryExportPostExecute(r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) (interface{}, *http.Response, error)
+
+	/*
+	V1ActivationCodeHistoryGet Get Activation Code history object
+
+	Get Activation Code history object
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ActivationCodeAPIV1ActivationCodeHistoryGetRequest
+	*/
+	V1ActivationCodeHistoryGet(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryGetRequest
+
+	// V1ActivationCodeHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1ActivationCodeHistoryGetExecute(r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1ActivationCodeHistoryPost Add Activation Code object note 
+
+	Adds Activation Code object note.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ActivationCodeAPIV1ActivationCodeHistoryPostRequest
+	*/
+	V1ActivationCodeHistoryPost(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryPostRequest
+
+	// V1ActivationCodeHistoryPostExecute executes the request
+	//  @return ObjectHistory
+	V1ActivationCodeHistoryPostExecute(r ActivationCodeAPIV1ActivationCodeHistoryPostRequest) (*ObjectHistory, *http.Response, error)
+
+	/*
+	V1ActivationCodeOrganizationNamePatch Updates Organization Name
+
+	Updates Organization Name in Jamf Pro.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest
+	*/
+	V1ActivationCodeOrganizationNamePatch(ctx context.Context) ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest
+
+	// V1ActivationCodeOrganizationNamePatchExecute executes the request
+	V1ActivationCodeOrganizationNamePatchExecute(r ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest) (*http.Response, error)
 
 	/*
 	V1ActivationCodePut Updates Activation Code
@@ -37,6 +95,631 @@ type ActivationCodeAPI interface {
 
 // ActivationCodeAPIService ActivationCodeAPI service
 type ActivationCodeAPIService service
+
+type ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest struct {
+	ctx context.Context
+	ApiService ActivationCodeAPI
+	exportFields *[]string
+	exportLabels *[]string
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+	exportParameters *ExportParameters
+}
+
+// Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) ExportFields(exportFields []string) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.exportFields = &exportFields
+	return r
+}
+
+// Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) ExportLabels(exportLabels []string) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.exportLabels = &exportLabels
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) Page(page int64) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.page = &page
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) PageSize(pageSize int64) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) Sort(sort []string) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) Filter(filter string) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.filter = &filter
+	return r
+}
+
+// Optional. Override query parameters since they can make URI exceed 2,000 character limit.
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) ExportParameters(exportParameters ExportParameters) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	r.exportParameters = &exportParameters
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) Execute() (interface{}, *http.Response, error) {
+	return r.ApiService.V1ActivationCodeHistoryExportPostExecute(r)
+}
+
+/*
+V1ActivationCodeHistoryExportPost Export history object collection in specified format for Activation Code 
+
+Export history object collection in specified format for Activation Code
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest
+*/
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryExportPost(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest {
+	return ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return interface{}
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryExportPostExecute(r ActivationCodeAPIV1ActivationCodeHistoryExportPostRequest) (interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivationCodeAPIService.V1ActivationCodeHistoryExportPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/activation-code/history/export"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.exportFields != nil {
+		t := *r.exportFields
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", defaultValue, "form", "multi")
+        r.exportFields = &defaultValue
+	}
+	if r.exportLabels != nil {
+		t := *r.exportLabels
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", defaultValue, "form", "multi")
+        r.exportLabels = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/csv", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.exportParameters
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ActivationCodeAPIV1ActivationCodeHistoryGetRequest struct {
+	ctx context.Context
+	ApiService ActivationCodeAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) Page(page int64) ActivationCodeAPIV1ActivationCodeHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) PageSize(pageSize int64) ActivationCodeAPIV1ActivationCodeHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Fields allowed in the query: id, username, date, note, details Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,note:asc 
+func (r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) Sort(sort []string) ActivationCodeAPIV1ActivationCodeHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) Filter(filter string) ActivationCodeAPIV1ActivationCodeHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V1ActivationCodeHistoryGetExecute(r)
+}
+
+/*
+V1ActivationCodeHistoryGet Get Activation Code history object
+
+Get Activation Code history object
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ActivationCodeAPIV1ActivationCodeHistoryGetRequest
+*/
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryGet(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryGetRequest {
+	return ActivationCodeAPIV1ActivationCodeHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryGetExecute(r ActivationCodeAPIV1ActivationCodeHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivationCodeAPIService.V1ActivationCodeHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/activation-code/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ActivationCodeAPIV1ActivationCodeHistoryPostRequest struct {
+	ctx context.Context
+	ApiService ActivationCodeAPI
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// Activation Code history notes to create.
+func (r ActivationCodeAPIV1ActivationCodeHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) ActivationCodeAPIV1ActivationCodeHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
+	return r.ApiService.V1ActivationCodeHistoryPostExecute(r)
+}
+
+/*
+V1ActivationCodeHistoryPost Add Activation Code object note 
+
+Adds Activation Code object note.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ActivationCodeAPIV1ActivationCodeHistoryPostRequest
+*/
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryPost(ctx context.Context) ActivationCodeAPIV1ActivationCodeHistoryPostRequest {
+	return ActivationCodeAPIV1ActivationCodeHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ObjectHistory
+func (a *ActivationCodeAPIService) V1ActivationCodeHistoryPostExecute(r ActivationCodeAPIV1ActivationCodeHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ObjectHistory
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivationCodeAPIService.V1ActivationCodeHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/activation-code/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest struct {
+	ctx context.Context
+	ApiService ActivationCodeAPI
+	organizationName *OrganizationName
+}
+
+func (r ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest) OrganizationName(organizationName OrganizationName) ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest {
+	r.organizationName = &organizationName
+	return r
+}
+
+func (r ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1ActivationCodeOrganizationNamePatchExecute(r)
+}
+
+/*
+V1ActivationCodeOrganizationNamePatch Updates Organization Name
+
+Updates Organization Name in Jamf Pro.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest
+*/
+func (a *ActivationCodeAPIService) V1ActivationCodeOrganizationNamePatch(ctx context.Context) ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest {
+	return ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ActivationCodeAPIService) V1ActivationCodeOrganizationNamePatchExecute(r ActivationCodeAPIV1ActivationCodeOrganizationNamePatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivationCodeAPIService.V1ActivationCodeOrganizationNamePatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/activation-code/organization-name"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.organizationName
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
 
 type ActivationCodeAPIV1ActivationCodePutRequest struct {
 	ctx context.Context

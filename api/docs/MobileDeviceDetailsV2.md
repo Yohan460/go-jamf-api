@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **string** | Mobile device name. | [optional] 
-**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in. | [optional] 
+**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in. | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
 **OsVersion** | Pointer to **string** |  | [optional] 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** |  | [optional] [readonly] 
 **GroupName** | Pointer to **string** |  | [optional] 
+**GroupDescription** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
 **Assignments** | Pointer to [**[]Assignment**](Assignment.md) |  | [optional] 
 
@@ -77,6 +78,31 @@ SetGroupName sets GroupName field to given value.
 `func (o *StaticGroupAssignment) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### GetGroupDescription
+
+`func (o *StaticGroupAssignment) GetGroupDescription() string`
+
+GetGroupDescription returns the GroupDescription field if non-nil, zero value otherwise.
+
+### GetGroupDescriptionOk
+
+`func (o *StaticGroupAssignment) GetGroupDescriptionOk() (*string, bool)`
+
+GetGroupDescriptionOk returns a tuple with the GroupDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupDescription
+
+`func (o *StaticGroupAssignment) SetGroupDescription(v string)`
+
+SetGroupDescription sets GroupDescription field to given value.
+
+### HasGroupDescription
+
+`func (o *StaticGroupAssignment) HasGroupDescription() bool`
+
+HasGroupDescription returns a boolean if a field has been set.
 
 ### GetSiteId
 

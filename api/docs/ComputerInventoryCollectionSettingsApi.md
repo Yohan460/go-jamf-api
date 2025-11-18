@@ -8,6 +8,10 @@ Method | HTTP request | Description
 [**V1ComputerInventoryCollectionSettingsCustomPathPost**](ComputerInventoryCollectionSettingsAPI.md#V1ComputerInventoryCollectionSettingsCustomPathPost) | **Post** /v1/computer-inventory-collection-settings/custom-path | Create Computer Inventory Collection Settings Custom Path
 [**V1ComputerInventoryCollectionSettingsGet**](ComputerInventoryCollectionSettingsAPI.md#V1ComputerInventoryCollectionSettingsGet) | **Get** /v1/computer-inventory-collection-settings | Returns computer inventory settings
 [**V1ComputerInventoryCollectionSettingsPatch**](ComputerInventoryCollectionSettingsAPI.md#V1ComputerInventoryCollectionSettingsPatch) | **Patch** /v1/computer-inventory-collection-settings | Update computer inventory settings
+[**V2ComputerInventoryCollectionSettingsCustomPathIdDelete**](ComputerInventoryCollectionSettingsAPI.md#V2ComputerInventoryCollectionSettingsCustomPathIdDelete) | **Delete** /v2/computer-inventory-collection-settings/custom-path/{id} | Delete Custom Path from Computer Inventory Collection Settings
+[**V2ComputerInventoryCollectionSettingsCustomPathPost**](ComputerInventoryCollectionSettingsAPI.md#V2ComputerInventoryCollectionSettingsCustomPathPost) | **Post** /v2/computer-inventory-collection-settings/custom-path | Create Computer Inventory Collection Settings Custom Path
+[**V2ComputerInventoryCollectionSettingsGet**](ComputerInventoryCollectionSettingsAPI.md#V2ComputerInventoryCollectionSettingsGet) | **Get** /v2/computer-inventory-collection-settings | Returns computer inventory settings
+[**V2ComputerInventoryCollectionSettingsPatch**](ComputerInventoryCollectionSettingsAPI.md#V2ComputerInventoryCollectionSettingsPatch) | **Patch** /v2/computer-inventory-collection-settings | Update computer inventory settings
 
 
 
@@ -67,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -133,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -194,7 +198,7 @@ Other parameters are passed through a pointer to a apiV1ComputerInventoryCollect
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -260,12 +264,271 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2ComputerInventoryCollectionSettingsCustomPathIdDelete
+
+> V2ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx, id).Execute()
+
+Delete Custom Path from Computer Inventory Collection Settings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | id of Custom Path
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsCustomPathIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsCustomPathIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | id of Custom Path | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2ComputerInventoryCollectionSettingsCustomPathPost
+
+> HrefResponse V2ComputerInventoryCollectionSettingsCustomPathPost(ctx).CreatePathV2(createPathV2).Execute()
+
+Create Computer Inventory Collection Settings Custom Path
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	createPathV2 := *openapiclient.NewCreatePathV2("APP", "/Example/Path/") // CreatePathV2 | Computer inventory settings to update
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsCustomPathPost(context.Background()).CreatePathV2(createPathV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsCustomPathPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2ComputerInventoryCollectionSettingsCustomPathPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsCustomPathPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2ComputerInventoryCollectionSettingsCustomPathPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPathV2** | [**CreatePathV2**](CreatePathV2.md) | Computer inventory settings to update | 
+
+### Return type
+
+[**HrefResponse**](HrefResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2ComputerInventoryCollectionSettingsGet
+
+> ComputerInventoryCollectionSettingsV2 V2ComputerInventoryCollectionSettingsGet(ctx).Execute()
+
+Returns computer inventory settings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2ComputerInventoryCollectionSettingsGet`: ComputerInventoryCollectionSettingsV2
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2ComputerInventoryCollectionSettingsGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**ComputerInventoryCollectionSettingsV2**](ComputerInventoryCollectionSettingsV2.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2ComputerInventoryCollectionSettingsPatch
+
+> V2ComputerInventoryCollectionSettingsPatch(ctx).ComputerInventoryCollectionSettingsV2(computerInventoryCollectionSettingsV2).Execute()
+
+Update computer inventory settings
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	computerInventoryCollectionSettingsV2 := *openapiclient.NewComputerInventoryCollectionSettingsV2() // ComputerInventoryCollectionSettingsV2 | Computer inventory settings to update
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsPatch(context.Background()).ComputerInventoryCollectionSettingsV2(computerInventoryCollectionSettingsV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryCollectionSettingsAPI.V2ComputerInventoryCollectionSettingsPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2ComputerInventoryCollectionSettingsPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **computerInventoryCollectionSettingsV2** | [**ComputerInventoryCollectionSettingsV2**](ComputerInventoryCollectionSettingsV2.md) | Computer inventory settings to update | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

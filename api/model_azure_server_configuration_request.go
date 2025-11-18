@@ -35,6 +35,8 @@ type AzureServerConfigurationRequest struct {
 	// Use this field to enable membership calculation optimization. This setting would not apply to Single Sign On
 	MembershipCalculationOptimizationEnabled *bool `json:"membershipCalculationOptimizationEnabled,omitempty"`
 	Code string `json:"code"`
+	// Type of Entra ID connection
+	Type *string `json:"type,omitempty"`
 }
 
 type _AzureServerConfigurationRequest AzureServerConfigurationRequest
@@ -320,6 +322,38 @@ func (o *AzureServerConfigurationRequest) SetCode(v string) {
 	o.Code = v
 }
 
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *AzureServerConfigurationRequest) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AzureServerConfigurationRequest) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *AzureServerConfigurationRequest) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *AzureServerConfigurationRequest) SetType(v string) {
+	o.Type = &v
+}
+
 func (o AzureServerConfigurationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -344,6 +378,9 @@ func (o AzureServerConfigurationRequest) ToMap() (map[string]interface{}, error)
 		toSerialize["membershipCalculationOptimizationEnabled"] = o.MembershipCalculationOptimizationEnabled
 	}
 	toSerialize["code"] = o.Code
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
 	return toSerialize, nil
 }
 

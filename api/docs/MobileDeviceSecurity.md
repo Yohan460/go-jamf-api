@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **HardwareEncryption** | Pointer to **int64** |  | [optional] 
 **ActivationLockEnabled** | Pointer to **bool** |  | [optional] 
 **JailBreakDetected** | Pointer to **bool** |  | [optional] 
+**AttestationStatus** | Pointer to **string** |  | [optional] [readonly] 
+**LastAttestationAttemptDate** | Pointer to **time.Time** |  | [optional] [readonly] 
+**LastSuccessfulAttestationDate** | Pointer to **time.Time** |  | [optional] [readonly] 
 **PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int64** |  | [optional] 
 **PersonalDeviceProfileCurrent** | Pointer to **bool** |  | [optional] 
 **LostModeEnabled** | Pointer to **bool** |  | [optional] 
@@ -21,6 +24,7 @@ Name | Type | Description | Notes
 **LostModePhoneNumber** | Pointer to **string** |  | [optional] 
 **LostModeFootnote** | Pointer to **string** |  | [optional] 
 **LostModeLocation** | Pointer to [**MobileDeviceLostModeLocation**](MobileDeviceLostModeLocation.md) |  | [optional] 
+**BootstrapTokenEscrowed** | Pointer to **string** | Indicates the bootstrap token escrow status for the device | [optional] 
 
 ## Methods
 
@@ -266,6 +270,81 @@ SetJailBreakDetected sets JailBreakDetected field to given value.
 
 HasJailBreakDetected returns a boolean if a field has been set.
 
+### GetAttestationStatus
+
+`func (o *MobileDeviceSecurity) GetAttestationStatus() string`
+
+GetAttestationStatus returns the AttestationStatus field if non-nil, zero value otherwise.
+
+### GetAttestationStatusOk
+
+`func (o *MobileDeviceSecurity) GetAttestationStatusOk() (*string, bool)`
+
+GetAttestationStatusOk returns a tuple with the AttestationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttestationStatus
+
+`func (o *MobileDeviceSecurity) SetAttestationStatus(v string)`
+
+SetAttestationStatus sets AttestationStatus field to given value.
+
+### HasAttestationStatus
+
+`func (o *MobileDeviceSecurity) HasAttestationStatus() bool`
+
+HasAttestationStatus returns a boolean if a field has been set.
+
+### GetLastAttestationAttemptDate
+
+`func (o *MobileDeviceSecurity) GetLastAttestationAttemptDate() time.Time`
+
+GetLastAttestationAttemptDate returns the LastAttestationAttemptDate field if non-nil, zero value otherwise.
+
+### GetLastAttestationAttemptDateOk
+
+`func (o *MobileDeviceSecurity) GetLastAttestationAttemptDateOk() (*time.Time, bool)`
+
+GetLastAttestationAttemptDateOk returns a tuple with the LastAttestationAttemptDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAttestationAttemptDate
+
+`func (o *MobileDeviceSecurity) SetLastAttestationAttemptDate(v time.Time)`
+
+SetLastAttestationAttemptDate sets LastAttestationAttemptDate field to given value.
+
+### HasLastAttestationAttemptDate
+
+`func (o *MobileDeviceSecurity) HasLastAttestationAttemptDate() bool`
+
+HasLastAttestationAttemptDate returns a boolean if a field has been set.
+
+### GetLastSuccessfulAttestationDate
+
+`func (o *MobileDeviceSecurity) GetLastSuccessfulAttestationDate() time.Time`
+
+GetLastSuccessfulAttestationDate returns the LastSuccessfulAttestationDate field if non-nil, zero value otherwise.
+
+### GetLastSuccessfulAttestationDateOk
+
+`func (o *MobileDeviceSecurity) GetLastSuccessfulAttestationDateOk() (*time.Time, bool)`
+
+GetLastSuccessfulAttestationDateOk returns a tuple with the LastSuccessfulAttestationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSuccessfulAttestationDate
+
+`func (o *MobileDeviceSecurity) SetLastSuccessfulAttestationDate(v time.Time)`
+
+SetLastSuccessfulAttestationDate sets LastSuccessfulAttestationDate field to given value.
+
+### HasLastSuccessfulAttestationDate
+
+`func (o *MobileDeviceSecurity) HasLastSuccessfulAttestationDate() bool`
+
+HasLastSuccessfulAttestationDate returns a boolean if a field has been set.
+
 ### GetPasscodeLockGracePeriodEnforcedSeconds
 
 `func (o *MobileDeviceSecurity) GetPasscodeLockGracePeriodEnforcedSeconds() int64`
@@ -465,6 +544,31 @@ SetLostModeLocation sets LostModeLocation field to given value.
 `func (o *MobileDeviceSecurity) HasLostModeLocation() bool`
 
 HasLostModeLocation returns a boolean if a field has been set.
+
+### GetBootstrapTokenEscrowed
+
+`func (o *MobileDeviceSecurity) GetBootstrapTokenEscrowed() string`
+
+GetBootstrapTokenEscrowed returns the BootstrapTokenEscrowed field if non-nil, zero value otherwise.
+
+### GetBootstrapTokenEscrowedOk
+
+`func (o *MobileDeviceSecurity) GetBootstrapTokenEscrowedOk() (*string, bool)`
+
+GetBootstrapTokenEscrowedOk returns a tuple with the BootstrapTokenEscrowed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBootstrapTokenEscrowed
+
+`func (o *MobileDeviceSecurity) SetBootstrapTokenEscrowed(v string)`
+
+SetBootstrapTokenEscrowed sets BootstrapTokenEscrowed field to given value.
+
+### HasBootstrapTokenEscrowed
+
+`func (o *MobileDeviceSecurity) HasBootstrapTokenEscrowed() bool`
+
+HasBootstrapTokenEscrowed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

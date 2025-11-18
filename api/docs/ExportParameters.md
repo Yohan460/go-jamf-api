@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | Pointer to **NullableInt64** |  | [optional] [default to 0]
 **PageSize** | Pointer to **NullableInt64** |  | [optional] [default to 100]
-**Sort** | Pointer to **[]string** | Sorting criteria in the format: [&lt;property&gt;[:asc/desc]. Default direction when not stated is ascending. | [optional] [default to ["id:desc"]]
+**Sort** | Pointer to **[]string** | Sorting criteria in the format: [&lt;property&gt;[:asc/desc]. Default direction when not stated is ascending. | [optional] [default to {"id:desc"}]
 **Filter** | Pointer to **NullableString** |  | [optional] 
 **Fields** | Pointer to [**[]ExportField**](ExportField.md) | Used to change default order or ignore some of the fields. When null or empty array, all fields will be exported. | [optional] 
 

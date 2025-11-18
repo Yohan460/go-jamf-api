@@ -13,6 +13,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // MobileDeviceResponse - struct for MobileDeviceResponse
@@ -55,7 +56,11 @@ func (dst *MobileDeviceResponse) UnmarshalJSON(data []byte) error {
 		if string(jsonMobileDeviceIosInventory) == "{}" { // empty struct
 			dst.MobileDeviceIosInventory = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MobileDeviceIosInventory); err != nil {
+				dst.MobileDeviceIosInventory = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MobileDeviceIosInventory = nil
@@ -68,7 +73,11 @@ func (dst *MobileDeviceResponse) UnmarshalJSON(data []byte) error {
 		if string(jsonMobileDeviceTvOsInventory) == "{}" { // empty struct
 			dst.MobileDeviceTvOsInventory = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MobileDeviceTvOsInventory); err != nil {
+				dst.MobileDeviceTvOsInventory = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MobileDeviceTvOsInventory = nil
@@ -81,7 +90,11 @@ func (dst *MobileDeviceResponse) UnmarshalJSON(data []byte) error {
 		if string(jsonMobileDeviceWatchOsInventory) == "{}" { // empty struct
 			dst.MobileDeviceWatchOsInventory = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.MobileDeviceWatchOsInventory); err != nil {
+				dst.MobileDeviceWatchOsInventory = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.MobileDeviceWatchOsInventory = nil
@@ -133,6 +146,24 @@ func (obj *MobileDeviceResponse) GetActualInstance() (interface{}) {
 
 	if obj.MobileDeviceWatchOsInventory != nil {
 		return obj.MobileDeviceWatchOsInventory
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj MobileDeviceResponse) GetActualInstanceValue() (interface{}) {
+	if obj.MobileDeviceIosInventory != nil {
+		return *obj.MobileDeviceIosInventory
+	}
+
+	if obj.MobileDeviceTvOsInventory != nil {
+		return *obj.MobileDeviceTvOsInventory
+	}
+
+	if obj.MobileDeviceWatchOsInventory != nil {
+		return *obj.MobileDeviceWatchOsInventory
 	}
 
 	// all schemas are nil

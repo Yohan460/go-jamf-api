@@ -22,7 +22,7 @@ var _ MappedNullable = &CloudLdapKeystoreFile{}
 // CloudLdapKeystoreFile Request with the Base64-encoded keystore file
 type CloudLdapKeystoreFile struct {
 	Password string `json:"password"`
-	FileBytes string `json:"fileBytes"`
+	FileBytes string `json:"fileBytes" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 	FileName string `json:"fileName"`
 }
 

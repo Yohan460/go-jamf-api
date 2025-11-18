@@ -25,6 +25,8 @@ type DetailsV2 struct {
 	ModelNumber *string `json:"modelNumber,omitempty"`
 	Supervised *bool `json:"supervised,omitempty"`
 	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
+	// - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting. 
+	BatteryHealth *string `json:"batteryHealth,omitempty"`
 	LastBackupTimestamp *time.Time `json:"lastBackupTimestamp,omitempty"`
 	CapacityMb *int64 `json:"capacityMb,omitempty"`
 	AvailableMb *int64 `json:"availableMb,omitempty"`
@@ -37,6 +39,7 @@ type DetailsV2 struct {
 	LocationServicesEnabled *bool `json:"locationServicesEnabled,omitempty"`
 	ITunesStoreAccountActive *bool `json:"iTunesStoreAccountActive,omitempty"`
 	BleCapable *bool `json:"bleCapable,omitempty"`
+	UnlockToken *string `json:"unlockToken,omitempty"`
 	Computer *IdAndNameV2 `json:"computer,omitempty"`
 	Purchasing *PurchasingV2 `json:"purchasing,omitempty"`
 	Security *SecurityV2 `json:"security,omitempty"`
@@ -45,6 +48,7 @@ type DetailsV2 struct {
 	Applications []MobileDeviceApplication `json:"applications,omitempty"`
 	Certificates []MobileDeviceCertificateV2 `json:"certificates,omitempty"`
 	Ebooks []MobileDeviceEbook `json:"ebooks,omitempty"`
+	MdmCapableUsers []MobileDeviceMdmCapableUser `json:"mdmCapableUsers,omitempty"`
 	ConfigurationProfiles []ConfigurationProfile `json:"configurationProfiles,omitempty"`
 	ProvisioningProfiles []MobileDeviceProvisioningProfiles `json:"provisioningProfiles,omitempty"`
 	Attachments []MobileDeviceAttachmentV2 `json:"attachments,omitempty"`
@@ -56,6 +60,8 @@ type DetailsV2 struct {
 // will change when the set of required properties is changed
 func NewDetailsV2() *DetailsV2 {
 	this := DetailsV2{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -64,6 +70,8 @@ func NewDetailsV2() *DetailsV2 {
 // but it doesn't guarantee that properties required by API are set
 func NewDetailsV2WithDefaults() *DetailsV2 {
 	this := DetailsV2{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -225,6 +233,38 @@ func (o *DetailsV2) HasBatteryLevel() bool {
 // SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
 func (o *DetailsV2) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
+}
+
+// GetBatteryHealth returns the BatteryHealth field value if set, zero value otherwise.
+func (o *DetailsV2) GetBatteryHealth() string {
+	if o == nil || IsNil(o.BatteryHealth) {
+		var ret string
+		return ret
+	}
+	return *o.BatteryHealth
+}
+
+// GetBatteryHealthOk returns a tuple with the BatteryHealth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DetailsV2) GetBatteryHealthOk() (*string, bool) {
+	if o == nil || IsNil(o.BatteryHealth) {
+		return nil, false
+	}
+	return o.BatteryHealth, true
+}
+
+// HasBatteryHealth returns a boolean if a field has been set.
+func (o *DetailsV2) HasBatteryHealth() bool {
+	if o != nil && !IsNil(o.BatteryHealth) {
+		return true
+	}
+
+	return false
+}
+
+// SetBatteryHealth gets a reference to the given string and assigns it to the BatteryHealth field.
+func (o *DetailsV2) SetBatteryHealth(v string) {
+	o.BatteryHealth = &v
 }
 
 // GetLastBackupTimestamp returns the LastBackupTimestamp field value if set, zero value otherwise.
@@ -611,6 +651,38 @@ func (o *DetailsV2) SetBleCapable(v bool) {
 	o.BleCapable = &v
 }
 
+// GetUnlockToken returns the UnlockToken field value if set, zero value otherwise.
+func (o *DetailsV2) GetUnlockToken() string {
+	if o == nil || IsNil(o.UnlockToken) {
+		var ret string
+		return ret
+	}
+	return *o.UnlockToken
+}
+
+// GetUnlockTokenOk returns a tuple with the UnlockToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DetailsV2) GetUnlockTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.UnlockToken) {
+		return nil, false
+	}
+	return o.UnlockToken, true
+}
+
+// HasUnlockToken returns a boolean if a field has been set.
+func (o *DetailsV2) HasUnlockToken() bool {
+	if o != nil && !IsNil(o.UnlockToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockToken gets a reference to the given string and assigns it to the UnlockToken field.
+func (o *DetailsV2) SetUnlockToken(v string) {
+	o.UnlockToken = &v
+}
+
 // GetComputer returns the Computer field value if set, zero value otherwise.
 func (o *DetailsV2) GetComputer() IdAndNameV2 {
 	if o == nil || IsNil(o.Computer) {
@@ -867,6 +939,38 @@ func (o *DetailsV2) SetEbooks(v []MobileDeviceEbook) {
 	o.Ebooks = v
 }
 
+// GetMdmCapableUsers returns the MdmCapableUsers field value if set, zero value otherwise.
+func (o *DetailsV2) GetMdmCapableUsers() []MobileDeviceMdmCapableUser {
+	if o == nil || IsNil(o.MdmCapableUsers) {
+		var ret []MobileDeviceMdmCapableUser
+		return ret
+	}
+	return o.MdmCapableUsers
+}
+
+// GetMdmCapableUsersOk returns a tuple with the MdmCapableUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DetailsV2) GetMdmCapableUsersOk() ([]MobileDeviceMdmCapableUser, bool) {
+	if o == nil || IsNil(o.MdmCapableUsers) {
+		return nil, false
+	}
+	return o.MdmCapableUsers, true
+}
+
+// HasMdmCapableUsers returns a boolean if a field has been set.
+func (o *DetailsV2) HasMdmCapableUsers() bool {
+	if o != nil && !IsNil(o.MdmCapableUsers) {
+		return true
+	}
+
+	return false
+}
+
+// SetMdmCapableUsers gets a reference to the given []MobileDeviceMdmCapableUser and assigns it to the MdmCapableUsers field.
+func (o *DetailsV2) SetMdmCapableUsers(v []MobileDeviceMdmCapableUser) {
+	o.MdmCapableUsers = v
+}
+
 // GetConfigurationProfiles returns the ConfigurationProfiles field value if set, zero value otherwise.
 func (o *DetailsV2) GetConfigurationProfiles() []ConfigurationProfile {
 	if o == nil || IsNil(o.ConfigurationProfiles) {
@@ -988,6 +1092,9 @@ func (o DetailsV2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BatteryLevel) {
 		toSerialize["batteryLevel"] = o.BatteryLevel
 	}
+	if !IsNil(o.BatteryHealth) {
+		toSerialize["batteryHealth"] = o.BatteryHealth
+	}
 	if !IsNil(o.LastBackupTimestamp) {
 		toSerialize["lastBackupTimestamp"] = o.LastBackupTimestamp
 	}
@@ -1024,6 +1131,9 @@ func (o DetailsV2) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BleCapable) {
 		toSerialize["bleCapable"] = o.BleCapable
 	}
+	if !IsNil(o.UnlockToken) {
+		toSerialize["unlockToken"] = o.UnlockToken
+	}
 	if !IsNil(o.Computer) {
 		toSerialize["computer"] = o.Computer
 	}
@@ -1047,6 +1157,9 @@ func (o DetailsV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Ebooks) {
 		toSerialize["ebooks"] = o.Ebooks
+	}
+	if !IsNil(o.MdmCapableUsers) {
+		toSerialize["mdmCapableUsers"] = o.MdmCapableUsers
 	}
 	if !IsNil(o.ConfigurationProfiles) {
 		toSerialize["configurationProfiles"] = o.ConfigurationProfiles

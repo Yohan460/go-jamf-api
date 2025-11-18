@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Purchasing** | Pointer to [**PurchasingV2**](PurchasingV2.md) |  | [optional] 
 **ConfigurationProfiles** | Pointer to [**[]ConfigurationProfile**](ConfigurationProfile.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificateV2**](MobileDeviceCertificateV2.md) |  | [optional] 
+**Applications** | Pointer to [**[]MobileDeviceApplication**](MobileDeviceApplication.md) |  | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetCertificates sets Certificates field to given value.
 `func (o *TvOsDetails) HasCertificates() bool`
 
 HasCertificates returns a boolean if a field has been set.
+
+### GetApplications
+
+`func (o *TvOsDetails) GetApplications() []MobileDeviceApplication`
+
+GetApplications returns the Applications field if non-nil, zero value otherwise.
+
+### GetApplicationsOk
+
+`func (o *TvOsDetails) GetApplicationsOk() (*[]MobileDeviceApplication, bool)`
+
+GetApplicationsOk returns a tuple with the Applications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplications
+
+`func (o *TvOsDetails) SetApplications(v []MobileDeviceApplication)`
+
+SetApplications sets Applications field to given value.
+
+### HasApplications
+
+`func (o *TvOsDetails) HasApplications() bool`
+
+HasApplications returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

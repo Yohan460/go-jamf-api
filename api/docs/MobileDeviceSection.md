@@ -31,6 +31,8 @@
 
 * `SHARED_USERS` (value: `"SHARED_USERS"`)
 
+* `GROUPS` (value: `"GROUPS"`)
+
 * `EXTENSION_ATTRIBUTES` (value: `"EXTENSION_ATTRIBUTES"`)
 
 

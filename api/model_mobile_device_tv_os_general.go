@@ -41,7 +41,10 @@ type MobileDeviceTvOsGeneral struct {
 	// IANA time zone database name
 	TimeZone *string `json:"timeZone,omitempty"`
 	DeclarativeDeviceManagementEnabled *bool `json:"declarativeDeviceManagementEnabled,omitempty"`
+	ManagementId *string `json:"managementId,omitempty"`
 	ExtensionAttributes []MobileDeviceExtensionAttribute `json:"extensionAttributes,omitempty"`
+	LastLoggedInUsernameSelfService NullableString `json:"lastLoggedInUsernameSelfService,omitempty"`
+	LastLoggedInUsernameSelfServiceTimestamp NullableTime `json:"lastLoggedInUsernameSelfServiceTimestamp,omitempty"`
 	AirPlayPassword *string `json:"airPlayPassword,omitempty"`
 	Locales *string `json:"locales,omitempty"`
 	Languages *string `json:"languages,omitempty"`
@@ -704,6 +707,38 @@ func (o *MobileDeviceTvOsGeneral) SetDeclarativeDeviceManagementEnabled(v bool) 
 	o.DeclarativeDeviceManagementEnabled = &v
 }
 
+// GetManagementId returns the ManagementId field value if set, zero value otherwise.
+func (o *MobileDeviceTvOsGeneral) GetManagementId() string {
+	if o == nil || IsNil(o.ManagementId) {
+		var ret string
+		return ret
+	}
+	return *o.ManagementId
+}
+
+// GetManagementIdOk returns a tuple with the ManagementId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceTvOsGeneral) GetManagementIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ManagementId) {
+		return nil, false
+	}
+	return o.ManagementId, true
+}
+
+// HasManagementId returns a boolean if a field has been set.
+func (o *MobileDeviceTvOsGeneral) HasManagementId() bool {
+	if o != nil && !IsNil(o.ManagementId) {
+		return true
+	}
+
+	return false
+}
+
+// SetManagementId gets a reference to the given string and assigns it to the ManagementId field.
+func (o *MobileDeviceTvOsGeneral) SetManagementId(v string) {
+	o.ManagementId = &v
+}
+
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *MobileDeviceTvOsGeneral) GetExtensionAttributes() []MobileDeviceExtensionAttribute {
 	if o == nil || IsNil(o.ExtensionAttributes) {
@@ -734,6 +769,90 @@ func (o *MobileDeviceTvOsGeneral) HasExtensionAttributes() bool {
 // SetExtensionAttributes gets a reference to the given []MobileDeviceExtensionAttribute and assigns it to the ExtensionAttributes field.
 func (o *MobileDeviceTvOsGeneral) SetExtensionAttributes(v []MobileDeviceExtensionAttribute) {
 	o.ExtensionAttributes = v
+}
+
+// GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MobileDeviceTvOsGeneral) GetLastLoggedInUsernameSelfService() string {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfService.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfService.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MobileDeviceTvOsGeneral) GetLastLoggedInUsernameSelfServiceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfService.Get(), o.LastLoggedInUsernameSelfService.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+func (o *MobileDeviceTvOsGeneral) HasLastLoggedInUsernameSelfService() bool {
+	if o != nil && o.LastLoggedInUsernameSelfService.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfService gets a reference to the given NullableString and assigns it to the LastLoggedInUsernameSelfService field.
+func (o *MobileDeviceTvOsGeneral) SetLastLoggedInUsernameSelfService(v string) {
+	o.LastLoggedInUsernameSelfService.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+func (o *MobileDeviceTvOsGeneral) SetLastLoggedInUsernameSelfServiceNil() {
+	o.LastLoggedInUsernameSelfService.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+func (o *MobileDeviceTvOsGeneral) UnsetLastLoggedInUsernameSelfService() {
+	o.LastLoggedInUsernameSelfService.Unset()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MobileDeviceTvOsGeneral) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfServiceTimestamp.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfServiceTimestamp.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MobileDeviceTvOsGeneral) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfServiceTimestamp.Get(), o.LastLoggedInUsernameSelfServiceTimestamp.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+func (o *MobileDeviceTvOsGeneral) HasLastLoggedInUsernameSelfServiceTimestamp() bool {
+	if o != nil && o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfServiceTimestamp gets a reference to the given NullableTime and assigns it to the LastLoggedInUsernameSelfServiceTimestamp field.
+func (o *MobileDeviceTvOsGeneral) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time) {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+func (o *MobileDeviceTvOsGeneral) SetLastLoggedInUsernameSelfServiceTimestampNil() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
+func (o *MobileDeviceTvOsGeneral) UnsetLastLoggedInUsernameSelfServiceTimestamp() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Unset()
 }
 
 // GetAirPlayPassword returns the AirPlayPassword field value if set, zero value otherwise.
@@ -902,8 +1021,17 @@ func (o MobileDeviceTvOsGeneral) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeclarativeDeviceManagementEnabled) {
 		toSerialize["declarativeDeviceManagementEnabled"] = o.DeclarativeDeviceManagementEnabled
 	}
+	if !IsNil(o.ManagementId) {
+		toSerialize["managementId"] = o.ManagementId
+	}
 	if !IsNil(o.ExtensionAttributes) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes
+	}
+	if o.LastLoggedInUsernameSelfService.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfService"] = o.LastLoggedInUsernameSelfService.Get()
+	}
+	if o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfServiceTimestamp"] = o.LastLoggedInUsernameSelfServiceTimestamp.Get()
 	}
 	if !IsNil(o.AirPlayPassword) {
 		toSerialize["airPlayPassword"] = o.AirPlayPassword

@@ -4,12 +4,6 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet) | **Get** /v1/local-admin-password/{clientManagementId}/account/{username}/audit | Get LAPS password viewed history.
-[**V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet) | **Get** /v1/local-admin-password/{clientManagementId}/account/{username}/password | Get current LAPS password for specified username on a client.
-[**V1LocalAdminPasswordClientManagementIdAccountsGet**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordClientManagementIdAccountsGet) | **Get** /v1/local-admin-password/{clientManagementId}/accounts | Get the LAPS capable admin accounts for a device.
-[**V1LocalAdminPasswordClientManagementIdSetPasswordPut**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordClientManagementIdSetPasswordPut) | **Put** /v1/local-admin-password/{clientManagementId}/set-password | Set the LAPS password for a device.
-[**V1LocalAdminPasswordSettingsGet**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordSettingsGet) | **Get** /v1/local-admin-password/settings | Get the current LAPS settings.
-[**V1LocalAdminPasswordSettingsPut**](LocalAdminPasswordAPI.md#V1LocalAdminPasswordSettingsPut) | **Put** /v1/local-admin-password/settings | Update settings for LAPS.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/audit | Get LAPS password viewed history.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameGuidAuditGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/audit | Get LAPS password viewed history.
 [**V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordClientManagementIdAccountUsernameGuidHistoryGet) | **Get** /v2/local-admin-password/{clientManagementId}/account/{username}/{guid}/history | Get LAPS historical records for target device and user guid.
@@ -23,421 +17,6 @@ Method | HTTP request | Description
 [**V2LocalAdminPasswordSettingsGet**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordSettingsGet) | **Get** /v2/local-admin-password/settings | Get the current LAPS settings.
 [**V2LocalAdminPasswordSettingsPut**](LocalAdminPasswordAPI.md#V2LocalAdminPasswordSettingsPut) | **Put** /v2/local-admin-password/settings | Update settings for LAPS.
 
-
-
-## V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet
-
-> LapsPasswordAuditsResults V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(ctx, clientManagementId, username).Execute()
-
-Get LAPS password viewed history.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	clientManagementId := "clientManagementId_example" // string | client management id of target device.
-	username := "username_example" // string | user name to view audit information for
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet(context.Background(), clientManagementId, username).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: LapsPasswordAuditsResults
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernameAuditGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientManagementId** | **string** | client management id of target device. | 
-**username** | **string** | user name to view audit information for | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordClientManagementIdAccountUsernameAuditGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**LapsPasswordAuditsResults**](LapsPasswordAuditsResults.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet
-
-> LapsPasswordResponse V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(ctx, clientManagementId, username).Execute()
-
-Get current LAPS password for specified username on a client.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	clientManagementId := "clientManagementId_example" // string | client management id of target device.
-	username := "username_example" // string | user name for the account
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet(context.Background(), clientManagementId, username).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: LapsPasswordResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientManagementId** | **string** | client management id of target device. | 
-**username** | **string** | user name for the account | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordClientManagementIdAccountUsernamePasswordGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**LapsPasswordResponse**](LapsPasswordResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1LocalAdminPasswordClientManagementIdAccountsGet
-
-> LapsUserResults V1LocalAdminPasswordClientManagementIdAccountsGet(ctx, clientManagementId).Execute()
-
-Get the LAPS capable admin accounts for a device.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	clientManagementId := "clientManagementId_example" // string | client management id of target device.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet(context.Background(), clientManagementId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordClientManagementIdAccountsGet`: LapsUserResults
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdAccountsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientManagementId** | **string** | client management id of target device. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordClientManagementIdAccountsGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**LapsUserResults**](LapsUserResults.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1LocalAdminPasswordClientManagementIdSetPasswordPut
-
-> LapsUserPasswordResponse V1LocalAdminPasswordClientManagementIdSetPasswordPut(ctx, clientManagementId).LapsUserPasswordRequest(lapsUserPasswordRequest).Execute()
-
-Set the LAPS password for a device.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	clientManagementId := "clientManagementId_example" // string | client management id of target device.
-	lapsUserPasswordRequest := *openapiclient.NewLapsUserPasswordRequest() // LapsUserPasswordRequest | LAPS password to set
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut(context.Background(), clientManagementId).LapsUserPasswordRequest(lapsUserPasswordRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordClientManagementIdSetPasswordPut`: LapsUserPasswordResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordClientManagementIdSetPasswordPut`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**clientManagementId** | **string** | client management id of target device. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordClientManagementIdSetPasswordPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **lapsUserPasswordRequest** | [**LapsUserPasswordRequest**](LapsUserPasswordRequest.md) | LAPS password to set | 
-
-### Return type
-
-[**LapsUserPasswordResponse**](LapsUserPasswordResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1LocalAdminPasswordSettingsGet
-
-> LapsSettingsResponse V1LocalAdminPasswordSettingsGet(ctx).Execute()
-
-Get the current LAPS settings.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordSettingsGet`: LapsSettingsResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordSettingsGetRequest struct via the builder pattern
-
-
-### Return type
-
-[**LapsSettingsResponse**](LapsSettingsResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1LocalAdminPasswordSettingsPut
-
-> LapsSettingsResponse V1LocalAdminPasswordSettingsPut(ctx).LapsSettingsRequest(lapsSettingsRequest).Execute()
-
-Update settings for LAPS.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	lapsSettingsRequest := *openapiclient.NewLapsSettingsRequest(false, int64(3600), int64(7776000)) // LapsSettingsRequest | LAPS settings to update
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut(context.Background()).LapsSettingsRequest(lapsSettingsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1LocalAdminPasswordSettingsPut`: LapsSettingsResponse
-	fmt.Fprintf(os.Stdout, "Response from `LocalAdminPasswordAPI.V1LocalAdminPasswordSettingsPut`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1LocalAdminPasswordSettingsPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **lapsSettingsRequest** | [**LapsSettingsRequest**](LapsSettingsRequest.md) | LAPS settings to update | 
-
-### Return type
-
-[**LapsSettingsResponse**](LapsSettingsResponse.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## V2LocalAdminPasswordClientManagementIdAccountUsernameAuditGet
@@ -501,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -577,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -653,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -729,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -802,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -875,7 +454,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -945,7 +524,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1015,7 +594,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1087,7 +666,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1148,7 +727,7 @@ Other parameters are passed through a pointer to a apiV2LocalAdminPasswordPendin
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1209,7 +788,7 @@ Other parameters are passed through a pointer to a apiV2LocalAdminPasswordSettin
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1275,7 +854,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

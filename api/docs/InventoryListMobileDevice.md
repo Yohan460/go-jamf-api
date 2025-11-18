@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **AssetTag** | Pointer to **string** |  | [optional] 
 **AvailableSpaceMb** | Pointer to **int64** |  | [optional] 
 **BatteryLevel** | Pointer to **int64** |  | [optional] 
+**BatteryHealth** | Pointer to **string** | - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting.  | [optional] [default to "UNKNOWN"]
 **BluetoothLowEnergyCapable** | Pointer to **bool** |  | [optional] 
 **BluetoothMacAddress** | Pointer to **string** |  | [optional] 
 **CapacityMb** | Pointer to **int64** |  | [optional] 
@@ -42,11 +43,13 @@ Name | Type | Description | Notes
 **LocationServicesForSelfServiceMobileEnabled** | Pointer to **bool** |  | [optional] 
 **LostModeEnabled** | Pointer to **bool** |  | [optional] 
 **Managed** | Pointer to **bool** |  | [optional] 
+**ManagementId** | Pointer to **string** |  | [optional] 
 **MdmProfileExpirationDate** | Pointer to **time.Time** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
 **ModelIdentifier** | Pointer to **string** |  | [optional] 
 **ModelNumber** | Pointer to **string** |  | [optional] 
 **ModemFirmwareVersion** | Pointer to **string** |  | [optional] 
+**PairedDevices** | Pointer to **int64** |  | [optional] 
 **QuotaSize** | Pointer to **int64** |  | [optional] 
 **ResidentUsers** | Pointer to **int64** |  | [optional] 
 **SerialNumber** | Pointer to **string** |  | [optional] 
@@ -101,8 +104,12 @@ Name | Type | Description | Notes
 **Imei2** | Pointer to **string** |  | [optional] 
 **Meid** | Pointer to **string** |  | [optional] 
 **PersonalHotspotEnabled** | Pointer to **bool** |  | [optional] 
+**PreferredVoiceNumber** | Pointer to **string** |  | [optional] 
 **Roaming** | Pointer to **bool** |  | [optional] 
 **VoiceRoamingEnabled** | Pointer to **string** |  | [optional] 
+**LastLoggedInUsernameSelfService** | Pointer to **NullableString** |  | [optional] 
+**LastLoggedInUsernameSelfServiceTimestamp** | Pointer to **NullableTime** |  | [optional] 
+**ExtensionAttributeValueList** | Pointer to [**[]ExtensionAttributeValue**](ExtensionAttributeValue.md) |  | [optional] 
 
 ## Methods
 
@@ -297,6 +304,31 @@ SetBatteryLevel sets BatteryLevel field to given value.
 `func (o *InventoryListMobileDevice) HasBatteryLevel() bool`
 
 HasBatteryLevel returns a boolean if a field has been set.
+
+### GetBatteryHealth
+
+`func (o *InventoryListMobileDevice) GetBatteryHealth() string`
+
+GetBatteryHealth returns the BatteryHealth field if non-nil, zero value otherwise.
+
+### GetBatteryHealthOk
+
+`func (o *InventoryListMobileDevice) GetBatteryHealthOk() (*string, bool)`
+
+GetBatteryHealthOk returns a tuple with the BatteryHealth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBatteryHealth
+
+`func (o *InventoryListMobileDevice) SetBatteryHealth(v string)`
+
+SetBatteryHealth sets BatteryHealth field to given value.
+
+### HasBatteryHealth
+
+`func (o *InventoryListMobileDevice) HasBatteryHealth() bool`
+
+HasBatteryHealth returns a boolean if a field has been set.
 
 ### GetBluetoothLowEnergyCapable
 
@@ -1073,6 +1105,31 @@ SetManaged sets Managed field to given value.
 
 HasManaged returns a boolean if a field has been set.
 
+### GetManagementId
+
+`func (o *InventoryListMobileDevice) GetManagementId() string`
+
+GetManagementId returns the ManagementId field if non-nil, zero value otherwise.
+
+### GetManagementIdOk
+
+`func (o *InventoryListMobileDevice) GetManagementIdOk() (*string, bool)`
+
+GetManagementIdOk returns a tuple with the ManagementId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagementId
+
+`func (o *InventoryListMobileDevice) SetManagementId(v string)`
+
+SetManagementId sets ManagementId field to given value.
+
+### HasManagementId
+
+`func (o *InventoryListMobileDevice) HasManagementId() bool`
+
+HasManagementId returns a boolean if a field has been set.
+
 ### GetMdmProfileExpirationDate
 
 `func (o *InventoryListMobileDevice) GetMdmProfileExpirationDate() time.Time`
@@ -1197,6 +1254,31 @@ SetModemFirmwareVersion sets ModemFirmwareVersion field to given value.
 `func (o *InventoryListMobileDevice) HasModemFirmwareVersion() bool`
 
 HasModemFirmwareVersion returns a boolean if a field has been set.
+
+### GetPairedDevices
+
+`func (o *InventoryListMobileDevice) GetPairedDevices() int64`
+
+GetPairedDevices returns the PairedDevices field if non-nil, zero value otherwise.
+
+### GetPairedDevicesOk
+
+`func (o *InventoryListMobileDevice) GetPairedDevicesOk() (*int64, bool)`
+
+GetPairedDevicesOk returns a tuple with the PairedDevices field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPairedDevices
+
+`func (o *InventoryListMobileDevice) SetPairedDevices(v int64)`
+
+SetPairedDevices sets PairedDevices field to given value.
+
+### HasPairedDevices
+
+`func (o *InventoryListMobileDevice) HasPairedDevices() bool`
+
+HasPairedDevices returns a boolean if a field has been set.
 
 ### GetQuotaSize
 
@@ -2548,6 +2630,31 @@ SetPersonalHotspotEnabled sets PersonalHotspotEnabled field to given value.
 
 HasPersonalHotspotEnabled returns a boolean if a field has been set.
 
+### GetPreferredVoiceNumber
+
+`func (o *InventoryListMobileDevice) GetPreferredVoiceNumber() string`
+
+GetPreferredVoiceNumber returns the PreferredVoiceNumber field if non-nil, zero value otherwise.
+
+### GetPreferredVoiceNumberOk
+
+`func (o *InventoryListMobileDevice) GetPreferredVoiceNumberOk() (*string, bool)`
+
+GetPreferredVoiceNumberOk returns a tuple with the PreferredVoiceNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredVoiceNumber
+
+`func (o *InventoryListMobileDevice) SetPreferredVoiceNumber(v string)`
+
+SetPreferredVoiceNumber sets PreferredVoiceNumber field to given value.
+
+### HasPreferredVoiceNumber
+
+`func (o *InventoryListMobileDevice) HasPreferredVoiceNumber() bool`
+
+HasPreferredVoiceNumber returns a boolean if a field has been set.
+
 ### GetRoaming
 
 `func (o *InventoryListMobileDevice) GetRoaming() bool`
@@ -2597,6 +2704,101 @@ SetVoiceRoamingEnabled sets VoiceRoamingEnabled field to given value.
 `func (o *InventoryListMobileDevice) HasVoiceRoamingEnabled() bool`
 
 HasVoiceRoamingEnabled returns a boolean if a field has been set.
+
+### GetLastLoggedInUsernameSelfService
+
+`func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfService() string`
+
+GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceOk
+
+`func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceOk() (*string, bool)`
+
+GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfService
+
+`func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfService(v string)`
+
+SetLastLoggedInUsernameSelfService sets LastLoggedInUsernameSelfService field to given value.
+
+### HasLastLoggedInUsernameSelfService
+
+`func (o *InventoryListMobileDevice) HasLastLoggedInUsernameSelfService() bool`
+
+HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceNil
+
+`func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfService
+`func (o *InventoryListMobileDevice) UnsetLastLoggedInUsernameSelfService()`
+
+UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+### GetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time`
+
+GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceTimestampOk
+
+`func (o *InventoryListMobileDevice) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool)`
+
+GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time)`
+
+SetLastLoggedInUsernameSelfServiceTimestamp sets LastLoggedInUsernameSelfServiceTimestamp field to given value.
+
+### HasLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *InventoryListMobileDevice) HasLastLoggedInUsernameSelfServiceTimestamp() bool`
+
+HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestampNil
+
+`func (o *InventoryListMobileDevice) SetLastLoggedInUsernameSelfServiceTimestampNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfServiceTimestamp
+`func (o *InventoryListMobileDevice) UnsetLastLoggedInUsernameSelfServiceTimestamp()`
+
+UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
+### GetExtensionAttributeValueList
+
+`func (o *InventoryListMobileDevice) GetExtensionAttributeValueList() []ExtensionAttributeValue`
+
+GetExtensionAttributeValueList returns the ExtensionAttributeValueList field if non-nil, zero value otherwise.
+
+### GetExtensionAttributeValueListOk
+
+`func (o *InventoryListMobileDevice) GetExtensionAttributeValueListOk() (*[]ExtensionAttributeValue, bool)`
+
+GetExtensionAttributeValueListOk returns a tuple with the ExtensionAttributeValueList field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtensionAttributeValueList
+
+`func (o *InventoryListMobileDevice) SetExtensionAttributeValueList(v []ExtensionAttributeValue)`
+
+SetExtensionAttributeValueList sets ExtensionAttributeValueList field to given value.
+
+### HasExtensionAttributeValueList
+
+`func (o *InventoryListMobileDevice) HasExtensionAttributeValueList() bool`
+
+HasExtensionAttributeValueList returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -29,11 +29,14 @@ type CloudAzureAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
+
+	Deprecated
 	*/
 	V1CloudAzureDefaultsMappingsGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
 
 	// V1CloudAzureDefaultsMappingsGetExecute executes the request
 	//  @return AzureMappings
+	// Deprecated
 	V1CloudAzureDefaultsMappingsGetExecute(r CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error)
 
 	/*
@@ -128,6 +131,8 @@ This is the default set of attributes that allows you to return the data you nee
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest
+
+Deprecated
 */
 func (a *CloudAzureAPIService) V1CloudAzureDefaultsMappingsGet(ctx context.Context) CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest {
 	return CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest{
@@ -138,6 +143,7 @@ func (a *CloudAzureAPIService) V1CloudAzureDefaultsMappingsGet(ctx context.Conte
 
 // Execute executes the request
 //  @return AzureMappings
+// Deprecated
 func (a *CloudAzureAPIService) V1CloudAzureDefaultsMappingsGetExecute(r CloudAzureAPIV1CloudAzureDefaultsMappingsGetRequest) (*AzureMappings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet

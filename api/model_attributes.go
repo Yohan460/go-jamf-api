@@ -23,6 +23,13 @@ type Attributes struct {
 	AssociatedDomains []string `json:"associatedDomains,omitempty"`
 	Removable *bool `json:"removable,omitempty"`
 	EnableDirectDownloads *bool `json:"enableDirectDownloads,omitempty"`
+	ContentFilterUuid *string `json:"contentFilterUuid,omitempty"`
+	DnsProxyUuid *string `json:"dnsProxyUuid,omitempty"`
+	CellularSliceUuid *string `json:"cellularSliceUuid,omitempty"`
+	RelayUuid *string `json:"relayUuid,omitempty"`
+	TapToPayScreenLock *bool `json:"tapToPayScreenLock,omitempty"`
+	Hideable *bool `json:"hideable,omitempty"`
+	Lockable *bool `json:"lockable,omitempty"`
 }
 
 // NewAttributes instantiates a new Attributes object
@@ -170,6 +177,230 @@ func (o *Attributes) SetEnableDirectDownloads(v bool) {
 	o.EnableDirectDownloads = &v
 }
 
+// GetContentFilterUuid returns the ContentFilterUuid field value if set, zero value otherwise.
+func (o *Attributes) GetContentFilterUuid() string {
+	if o == nil || IsNil(o.ContentFilterUuid) {
+		var ret string
+		return ret
+	}
+	return *o.ContentFilterUuid
+}
+
+// GetContentFilterUuidOk returns a tuple with the ContentFilterUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetContentFilterUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.ContentFilterUuid) {
+		return nil, false
+	}
+	return o.ContentFilterUuid, true
+}
+
+// HasContentFilterUuid returns a boolean if a field has been set.
+func (o *Attributes) HasContentFilterUuid() bool {
+	if o != nil && !IsNil(o.ContentFilterUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetContentFilterUuid gets a reference to the given string and assigns it to the ContentFilterUuid field.
+func (o *Attributes) SetContentFilterUuid(v string) {
+	o.ContentFilterUuid = &v
+}
+
+// GetDnsProxyUuid returns the DnsProxyUuid field value if set, zero value otherwise.
+func (o *Attributes) GetDnsProxyUuid() string {
+	if o == nil || IsNil(o.DnsProxyUuid) {
+		var ret string
+		return ret
+	}
+	return *o.DnsProxyUuid
+}
+
+// GetDnsProxyUuidOk returns a tuple with the DnsProxyUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetDnsProxyUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.DnsProxyUuid) {
+		return nil, false
+	}
+	return o.DnsProxyUuid, true
+}
+
+// HasDnsProxyUuid returns a boolean if a field has been set.
+func (o *Attributes) HasDnsProxyUuid() bool {
+	if o != nil && !IsNil(o.DnsProxyUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnsProxyUuid gets a reference to the given string and assigns it to the DnsProxyUuid field.
+func (o *Attributes) SetDnsProxyUuid(v string) {
+	o.DnsProxyUuid = &v
+}
+
+// GetCellularSliceUuid returns the CellularSliceUuid field value if set, zero value otherwise.
+func (o *Attributes) GetCellularSliceUuid() string {
+	if o == nil || IsNil(o.CellularSliceUuid) {
+		var ret string
+		return ret
+	}
+	return *o.CellularSliceUuid
+}
+
+// GetCellularSliceUuidOk returns a tuple with the CellularSliceUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetCellularSliceUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.CellularSliceUuid) {
+		return nil, false
+	}
+	return o.CellularSliceUuid, true
+}
+
+// HasCellularSliceUuid returns a boolean if a field has been set.
+func (o *Attributes) HasCellularSliceUuid() bool {
+	if o != nil && !IsNil(o.CellularSliceUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetCellularSliceUuid gets a reference to the given string and assigns it to the CellularSliceUuid field.
+func (o *Attributes) SetCellularSliceUuid(v string) {
+	o.CellularSliceUuid = &v
+}
+
+// GetRelayUuid returns the RelayUuid field value if set, zero value otherwise.
+func (o *Attributes) GetRelayUuid() string {
+	if o == nil || IsNil(o.RelayUuid) {
+		var ret string
+		return ret
+	}
+	return *o.RelayUuid
+}
+
+// GetRelayUuidOk returns a tuple with the RelayUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetRelayUuidOk() (*string, bool) {
+	if o == nil || IsNil(o.RelayUuid) {
+		return nil, false
+	}
+	return o.RelayUuid, true
+}
+
+// HasRelayUuid returns a boolean if a field has been set.
+func (o *Attributes) HasRelayUuid() bool {
+	if o != nil && !IsNil(o.RelayUuid) {
+		return true
+	}
+
+	return false
+}
+
+// SetRelayUuid gets a reference to the given string and assigns it to the RelayUuid field.
+func (o *Attributes) SetRelayUuid(v string) {
+	o.RelayUuid = &v
+}
+
+// GetTapToPayScreenLock returns the TapToPayScreenLock field value if set, zero value otherwise.
+func (o *Attributes) GetTapToPayScreenLock() bool {
+	if o == nil || IsNil(o.TapToPayScreenLock) {
+		var ret bool
+		return ret
+	}
+	return *o.TapToPayScreenLock
+}
+
+// GetTapToPayScreenLockOk returns a tuple with the TapToPayScreenLock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetTapToPayScreenLockOk() (*bool, bool) {
+	if o == nil || IsNil(o.TapToPayScreenLock) {
+		return nil, false
+	}
+	return o.TapToPayScreenLock, true
+}
+
+// HasTapToPayScreenLock returns a boolean if a field has been set.
+func (o *Attributes) HasTapToPayScreenLock() bool {
+	if o != nil && !IsNil(o.TapToPayScreenLock) {
+		return true
+	}
+
+	return false
+}
+
+// SetTapToPayScreenLock gets a reference to the given bool and assigns it to the TapToPayScreenLock field.
+func (o *Attributes) SetTapToPayScreenLock(v bool) {
+	o.TapToPayScreenLock = &v
+}
+
+// GetHideable returns the Hideable field value if set, zero value otherwise.
+func (o *Attributes) GetHideable() bool {
+	if o == nil || IsNil(o.Hideable) {
+		var ret bool
+		return ret
+	}
+	return *o.Hideable
+}
+
+// GetHideableOk returns a tuple with the Hideable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetHideableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Hideable) {
+		return nil, false
+	}
+	return o.Hideable, true
+}
+
+// HasHideable returns a boolean if a field has been set.
+func (o *Attributes) HasHideable() bool {
+	if o != nil && !IsNil(o.Hideable) {
+		return true
+	}
+
+	return false
+}
+
+// SetHideable gets a reference to the given bool and assigns it to the Hideable field.
+func (o *Attributes) SetHideable(v bool) {
+	o.Hideable = &v
+}
+
+// GetLockable returns the Lockable field value if set, zero value otherwise.
+func (o *Attributes) GetLockable() bool {
+	if o == nil || IsNil(o.Lockable) {
+		var ret bool
+		return ret
+	}
+	return *o.Lockable
+}
+
+// GetLockableOk returns a tuple with the Lockable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Attributes) GetLockableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Lockable) {
+		return nil, false
+	}
+	return o.Lockable, true
+}
+
+// HasLockable returns a boolean if a field has been set.
+func (o *Attributes) HasLockable() bool {
+	if o != nil && !IsNil(o.Lockable) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockable gets a reference to the given bool and assigns it to the Lockable field.
+func (o *Attributes) SetLockable(v bool) {
+	o.Lockable = &v
+}
+
 func (o Attributes) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -191,6 +422,27 @@ func (o Attributes) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableDirectDownloads) {
 		toSerialize["enableDirectDownloads"] = o.EnableDirectDownloads
+	}
+	if !IsNil(o.ContentFilterUuid) {
+		toSerialize["contentFilterUuid"] = o.ContentFilterUuid
+	}
+	if !IsNil(o.DnsProxyUuid) {
+		toSerialize["dnsProxyUuid"] = o.DnsProxyUuid
+	}
+	if !IsNil(o.CellularSliceUuid) {
+		toSerialize["cellularSliceUuid"] = o.CellularSliceUuid
+	}
+	if !IsNil(o.RelayUuid) {
+		toSerialize["relayUuid"] = o.RelayUuid
+	}
+	if !IsNil(o.TapToPayScreenLock) {
+		toSerialize["tapToPayScreenLock"] = o.TapToPayScreenLock
+	}
+	if !IsNil(o.Hideable) {
+		toSerialize["hideable"] = o.Hideable
+	}
+	if !IsNil(o.Lockable) {
+		toSerialize["lockable"] = o.Lockable
 	}
 	return toSerialize, nil
 }

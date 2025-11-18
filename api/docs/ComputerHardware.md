@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **TotalRamMegabytes** | Pointer to **int64** | Total RAM Size in MB. | [optional] [readonly] 
 **OpenRamSlots** | Pointer to **int64** | Available RAM slots. | [optional] [readonly] 
 **BatteryCapacityPercent** | Pointer to **int64** | Remaining percentage of battery power. | [optional] [readonly] 
+**BatteryHealth** | Pointer to **string** | - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting.  | [optional] [readonly] [default to "UNKNOWN"]
 **SmcVersion** | Pointer to **string** |  | [optional] [readonly] 
 **NicSpeed** | Pointer to **string** |  | [optional] [readonly] 
 **OpticalDrive** | Pointer to **string** |  | [optional] [readonly] 
@@ -29,6 +30,7 @@ Name | Type | Description | Notes
 **BleCapable** | Pointer to **bool** |  | [optional] [readonly] 
 **SupportsIosAppInstalls** | Pointer to **bool** |  | [optional] [readonly] 
 **AppleSilicon** | Pointer to **bool** |  | [optional] [readonly] 
+**ProvisioningUdid** | Pointer to **string** |  | [optional] [readonly] 
 **ExtensionAttributes** | Pointer to [**[]ComputerExtensionAttribute**](ComputerExtensionAttribute.md) |  | [optional] 
 
 ## Methods
@@ -500,6 +502,31 @@ SetBatteryCapacityPercent sets BatteryCapacityPercent field to given value.
 
 HasBatteryCapacityPercent returns a boolean if a field has been set.
 
+### GetBatteryHealth
+
+`func (o *ComputerHardware) GetBatteryHealth() string`
+
+GetBatteryHealth returns the BatteryHealth field if non-nil, zero value otherwise.
+
+### GetBatteryHealthOk
+
+`func (o *ComputerHardware) GetBatteryHealthOk() (*string, bool)`
+
+GetBatteryHealthOk returns a tuple with the BatteryHealth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBatteryHealth
+
+`func (o *ComputerHardware) SetBatteryHealth(v string)`
+
+SetBatteryHealth sets BatteryHealth field to given value.
+
+### HasBatteryHealth
+
+`func (o *ComputerHardware) HasBatteryHealth() bool`
+
+HasBatteryHealth returns a boolean if a field has been set.
+
 ### GetSmcVersion
 
 `func (o *ComputerHardware) GetSmcVersion() string`
@@ -674,6 +701,31 @@ SetAppleSilicon sets AppleSilicon field to given value.
 `func (o *ComputerHardware) HasAppleSilicon() bool`
 
 HasAppleSilicon returns a boolean if a field has been set.
+
+### GetProvisioningUdid
+
+`func (o *ComputerHardware) GetProvisioningUdid() string`
+
+GetProvisioningUdid returns the ProvisioningUdid field if non-nil, zero value otherwise.
+
+### GetProvisioningUdidOk
+
+`func (o *ComputerHardware) GetProvisioningUdidOk() (*string, bool)`
+
+GetProvisioningUdidOk returns a tuple with the ProvisioningUdid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvisioningUdid
+
+`func (o *ComputerHardware) SetProvisioningUdid(v string)`
+
+SetProvisioningUdid sets ProvisioningUdid field to given value.
+
+### HasProvisioningUdid
+
+`func (o *ComputerHardware) HasProvisioningUdid() bool`
+
+HasProvisioningUdid returns a boolean if a field has been set.
 
 ### GetExtensionAttributes
 

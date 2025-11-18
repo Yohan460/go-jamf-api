@@ -22,7 +22,7 @@ var _ MappedNullable = &SsoKeystoreParse{}
 // SsoKeystoreParse struct for SsoKeystoreParse
 type SsoKeystoreParse struct {
 	KeystorePassword string `json:"keystorePassword"`
-	KeystoreFile string `json:"keystoreFile"`
+	KeystoreFile string `json:"keystoreFile" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 	KeystoreFileName string `json:"keystoreFileName"`
 }
 

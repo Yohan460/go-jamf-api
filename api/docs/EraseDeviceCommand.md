@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DisallowProximitySetup** | Pointer to **bool** | If true, disable Proximity Setup on the next reboot and skip the pane in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS 14, don’t use this option with any other option. | [optional] [default to false]
 **Pin** | Pointer to **string** | The six-character PIN for Find My. This value is available in macOS 10.8 and later. | [optional] 
 **ObliterationBehavior** | Pointer to **string** | This key defines the fallback behavior for erasing a device. | [optional] 
-**ReturnToService** | Pointer to [**EraseDeviceCommandAllOfReturnToService**](EraseDeviceCommandAllOfReturnToService.md) |  | [optional] 
+**ReturnToService** | Pointer to [**ReturnToService**](ReturnToService.md) |  | [optional] 
 
 ## Methods
 
@@ -152,20 +152,20 @@ HasObliterationBehavior returns a boolean if a field has been set.
 
 ### GetReturnToService
 
-`func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandAllOfReturnToService`
+`func (o *EraseDeviceCommand) GetReturnToService() ReturnToService`
 
 GetReturnToService returns the ReturnToService field if non-nil, zero value otherwise.
 
 ### GetReturnToServiceOk
 
-`func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandAllOfReturnToService, bool)`
+`func (o *EraseDeviceCommand) GetReturnToServiceOk() (*ReturnToService, bool)`
 
 GetReturnToServiceOk returns a tuple with the ReturnToService field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturnToService
 
-`func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandAllOfReturnToService)`
+`func (o *EraseDeviceCommand) SetReturnToService(v ReturnToService)`
 
 SetReturnToService sets ReturnToService field to given value.
 

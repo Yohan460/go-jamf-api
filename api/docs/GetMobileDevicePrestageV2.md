@@ -42,6 +42,12 @@ Name | Type | Description | Notes
 **TemporarySessionTimeout** | Pointer to **int64** |  | [optional] 
 **EnforceUserSessionTimeout** | Pointer to **bool** |  | [optional] 
 **UserSessionTimeout** | Pointer to **int64** |  | [optional] 
+**PrestageMinimumOsTargetVersionTypeIos** | Pointer to **string** |  | [optional] 
+**MinimumOsSpecificVersionIos** | Pointer to **string** |  | [optional] 
+**PrestageMinimumOsTargetVersionTypeIpad** | Pointer to **string** |  | [optional] 
+**MinimumOsSpecificVersionIpad** | Pointer to **string** |  | [optional] 
+**RtsEnabled** | Pointer to **bool** |  | [optional] 
+**RtsConfigProfileId** | Pointer to **string** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **ProfileUuid** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
@@ -880,6 +886,156 @@ SetUserSessionTimeout sets UserSessionTimeout field to given value.
 `func (o *GetMobileDevicePrestageV2) HasUserSessionTimeout() bool`
 
 HasUserSessionTimeout returns a boolean if a field has been set.
+
+### GetPrestageMinimumOsTargetVersionTypeIos
+
+`func (o *GetMobileDevicePrestageV2) GetPrestageMinimumOsTargetVersionTypeIos() string`
+
+GetPrestageMinimumOsTargetVersionTypeIos returns the PrestageMinimumOsTargetVersionTypeIos field if non-nil, zero value otherwise.
+
+### GetPrestageMinimumOsTargetVersionTypeIosOk
+
+`func (o *GetMobileDevicePrestageV2) GetPrestageMinimumOsTargetVersionTypeIosOk() (*string, bool)`
+
+GetPrestageMinimumOsTargetVersionTypeIosOk returns a tuple with the PrestageMinimumOsTargetVersionTypeIos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrestageMinimumOsTargetVersionTypeIos
+
+`func (o *GetMobileDevicePrestageV2) SetPrestageMinimumOsTargetVersionTypeIos(v string)`
+
+SetPrestageMinimumOsTargetVersionTypeIos sets PrestageMinimumOsTargetVersionTypeIos field to given value.
+
+### HasPrestageMinimumOsTargetVersionTypeIos
+
+`func (o *GetMobileDevicePrestageV2) HasPrestageMinimumOsTargetVersionTypeIos() bool`
+
+HasPrestageMinimumOsTargetVersionTypeIos returns a boolean if a field has been set.
+
+### GetMinimumOsSpecificVersionIos
+
+`func (o *GetMobileDevicePrestageV2) GetMinimumOsSpecificVersionIos() string`
+
+GetMinimumOsSpecificVersionIos returns the MinimumOsSpecificVersionIos field if non-nil, zero value otherwise.
+
+### GetMinimumOsSpecificVersionIosOk
+
+`func (o *GetMobileDevicePrestageV2) GetMinimumOsSpecificVersionIosOk() (*string, bool)`
+
+GetMinimumOsSpecificVersionIosOk returns a tuple with the MinimumOsSpecificVersionIos field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinimumOsSpecificVersionIos
+
+`func (o *GetMobileDevicePrestageV2) SetMinimumOsSpecificVersionIos(v string)`
+
+SetMinimumOsSpecificVersionIos sets MinimumOsSpecificVersionIos field to given value.
+
+### HasMinimumOsSpecificVersionIos
+
+`func (o *GetMobileDevicePrestageV2) HasMinimumOsSpecificVersionIos() bool`
+
+HasMinimumOsSpecificVersionIos returns a boolean if a field has been set.
+
+### GetPrestageMinimumOsTargetVersionTypeIpad
+
+`func (o *GetMobileDevicePrestageV2) GetPrestageMinimumOsTargetVersionTypeIpad() string`
+
+GetPrestageMinimumOsTargetVersionTypeIpad returns the PrestageMinimumOsTargetVersionTypeIpad field if non-nil, zero value otherwise.
+
+### GetPrestageMinimumOsTargetVersionTypeIpadOk
+
+`func (o *GetMobileDevicePrestageV2) GetPrestageMinimumOsTargetVersionTypeIpadOk() (*string, bool)`
+
+GetPrestageMinimumOsTargetVersionTypeIpadOk returns a tuple with the PrestageMinimumOsTargetVersionTypeIpad field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrestageMinimumOsTargetVersionTypeIpad
+
+`func (o *GetMobileDevicePrestageV2) SetPrestageMinimumOsTargetVersionTypeIpad(v string)`
+
+SetPrestageMinimumOsTargetVersionTypeIpad sets PrestageMinimumOsTargetVersionTypeIpad field to given value.
+
+### HasPrestageMinimumOsTargetVersionTypeIpad
+
+`func (o *GetMobileDevicePrestageV2) HasPrestageMinimumOsTargetVersionTypeIpad() bool`
+
+HasPrestageMinimumOsTargetVersionTypeIpad returns a boolean if a field has been set.
+
+### GetMinimumOsSpecificVersionIpad
+
+`func (o *GetMobileDevicePrestageV2) GetMinimumOsSpecificVersionIpad() string`
+
+GetMinimumOsSpecificVersionIpad returns the MinimumOsSpecificVersionIpad field if non-nil, zero value otherwise.
+
+### GetMinimumOsSpecificVersionIpadOk
+
+`func (o *GetMobileDevicePrestageV2) GetMinimumOsSpecificVersionIpadOk() (*string, bool)`
+
+GetMinimumOsSpecificVersionIpadOk returns a tuple with the MinimumOsSpecificVersionIpad field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinimumOsSpecificVersionIpad
+
+`func (o *GetMobileDevicePrestageV2) SetMinimumOsSpecificVersionIpad(v string)`
+
+SetMinimumOsSpecificVersionIpad sets MinimumOsSpecificVersionIpad field to given value.
+
+### HasMinimumOsSpecificVersionIpad
+
+`func (o *GetMobileDevicePrestageV2) HasMinimumOsSpecificVersionIpad() bool`
+
+HasMinimumOsSpecificVersionIpad returns a boolean if a field has been set.
+
+### GetRtsEnabled
+
+`func (o *GetMobileDevicePrestageV2) GetRtsEnabled() bool`
+
+GetRtsEnabled returns the RtsEnabled field if non-nil, zero value otherwise.
+
+### GetRtsEnabledOk
+
+`func (o *GetMobileDevicePrestageV2) GetRtsEnabledOk() (*bool, bool)`
+
+GetRtsEnabledOk returns a tuple with the RtsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRtsEnabled
+
+`func (o *GetMobileDevicePrestageV2) SetRtsEnabled(v bool)`
+
+SetRtsEnabled sets RtsEnabled field to given value.
+
+### HasRtsEnabled
+
+`func (o *GetMobileDevicePrestageV2) HasRtsEnabled() bool`
+
+HasRtsEnabled returns a boolean if a field has been set.
+
+### GetRtsConfigProfileId
+
+`func (o *GetMobileDevicePrestageV2) GetRtsConfigProfileId() string`
+
+GetRtsConfigProfileId returns the RtsConfigProfileId field if non-nil, zero value otherwise.
+
+### GetRtsConfigProfileIdOk
+
+`func (o *GetMobileDevicePrestageV2) GetRtsConfigProfileIdOk() (*string, bool)`
+
+GetRtsConfigProfileIdOk returns a tuple with the RtsConfigProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRtsConfigProfileId
+
+`func (o *GetMobileDevicePrestageV2) SetRtsConfigProfileId(v string)`
+
+SetRtsConfigProfileId sets RtsConfigProfileId field to given value.
+
+### HasRtsConfigProfileId
+
+`func (o *GetMobileDevicePrestageV2) HasRtsConfigProfileId() bool`
+
+HasRtsConfigProfileId returns a boolean if a field has been set.
 
 ### GetId
 

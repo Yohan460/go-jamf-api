@@ -7,12 +7,13 @@ require (
 	github.com/cenkalti/backoff v2.2.1+incompatible
 	github.com/google/go-querystring v1.1.0
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/testify v1.4.0
+	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
+	gopkg.in/validator.v2 v2.0.1
 )
 
 require (
-	github.com/davecgh/go-spew v1.1.0 // indirect
-	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/golang/protobuf v1.3.3 // indirect
 	go4.org v0.0.0-20201209231011-d4a079459e60 // indirect
-	gopkg.in/yaml.v2 v2.2.2 // indirect
+	golang.org/x/net v0.0.0-20200222125558-5a598a2470a0 // indirect
+	google.golang.org/appengine v1.6.5 // indirect
 )

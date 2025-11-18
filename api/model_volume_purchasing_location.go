@@ -24,6 +24,7 @@ type VolumePurchasingLocation struct {
 	TotalUsedLicenses *int64 `json:"totalUsedLicenses,omitempty"`
 	Id *string `json:"id,omitempty"`
 	AppleId *string `json:"appleId,omitempty"`
+	Email *string `json:"email,omitempty"`
 	OrganizationName *string `json:"organizationName,omitempty"`
 	TokenExpiration *string `json:"tokenExpiration,omitempty"`
 	// The two-letter ISO 3166-1 code that designates the country where the Volume Purchasing account is located.
@@ -215,6 +216,38 @@ func (o *VolumePurchasingLocation) HasAppleId() bool {
 // SetAppleId gets a reference to the given string and assigns it to the AppleId field.
 func (o *VolumePurchasingLocation) SetAppleId(v string) {
 	o.AppleId = &v
+}
+
+// GetEmail returns the Email field value if set, zero value otherwise.
+func (o *VolumePurchasingLocation) GetEmail() string {
+	if o == nil || IsNil(o.Email) {
+		var ret string
+		return ret
+	}
+	return *o.Email
+}
+
+// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VolumePurchasingLocation) GetEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.Email) {
+		return nil, false
+	}
+	return o.Email, true
+}
+
+// HasEmail returns a boolean if a field has been set.
+func (o *VolumePurchasingLocation) HasEmail() bool {
+	if o != nil && !IsNil(o.Email) {
+		return true
+	}
+
+	return false
+}
+
+// SetEmail gets a reference to the given string and assigns it to the Email field.
+func (o *VolumePurchasingLocation) SetEmail(v string) {
+	o.Email = &v
 }
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
@@ -625,6 +658,9 @@ func (o VolumePurchasingLocation) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AppleId) {
 		toSerialize["appleId"] = o.AppleId
+	}
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
 	if !IsNil(o.OrganizationName) {
 		toSerialize["organizationName"] = o.OrganizationName
