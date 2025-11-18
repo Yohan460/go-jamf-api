@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiV2SsoCertDeleteRequest str
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -121,7 +121,7 @@ Other parameters are passed through a pointer to a apiV2SsoCertDownloadGetReques
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -182,7 +182,7 @@ Other parameters are passed through a pointer to a apiV2SsoCertGetRequest struct
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ import (
 )
 
 func main() {
-	ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string([B@456be73c), "keystore.p12") // SsoKeystoreParse | 
+	ssoKeystoreParse := *openapiclient.NewSsoKeystoreParse("***", string([B@226f885f), "keystore.p12") // SsoKeystoreParse | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -309,7 +309,7 @@ Other parameters are passed through a pointer to a apiV2SsoCertPostRequest struc
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -342,7 +342,7 @@ import (
 )
 
 func main() {
-	ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string([B@456be73c), "keystore.p12") // SsoKeystore | 
+	ssoKeystore := *openapiclient.NewSsoKeystore("Key_example", "***", "PKCS12", "***", string([B@226f885f), "keystore.p12") // SsoKeystore | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

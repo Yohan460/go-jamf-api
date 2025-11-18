@@ -22,7 +22,12 @@ var _ MappedNullable = &ComputerGeneral{}
 type ComputerGeneral struct {
 	Name *string `json:"name,omitempty"`
 	LastIpAddress *string `json:"lastIpAddress,omitempty"`
+	// Last reported IPv4 address (Deprecated. Use lastReportedIpV4 instead.)
+	// Deprecated
 	LastReportedIp *string `json:"lastReportedIp,omitempty"`
+	// Last reported IPv4 address
+	LastReportedIpV4 *string `json:"lastReportedIpV4,omitempty"`
+	LastReportedIpV6 *string `json:"lastReportedIpV6,omitempty"`
 	JamfBinaryVersion *string `json:"jamfBinaryVersion,omitempty"`
 	Platform *string `json:"platform,omitempty"`
 	Barcode1 *string `json:"barcode1,omitempty"`
@@ -46,6 +51,10 @@ type ComputerGeneral struct {
 	DeclarativeDeviceManagementEnabled *bool `json:"declarativeDeviceManagementEnabled,omitempty"`
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
 	ManagementId *string `json:"managementId,omitempty"`
+	LastLoggedInUsernameSelfService NullableString `json:"lastLoggedInUsernameSelfService,omitempty"`
+	LastLoggedInUsernameSelfServiceTimestamp NullableTime `json:"lastLoggedInUsernameSelfServiceTimestamp,omitempty"`
+	LastLoggedInUsernameBinary NullableString `json:"lastLoggedInUsernameBinary,omitempty"`
+	LastLoggedInUsernameBinaryTimestamp NullableTime `json:"lastLoggedInUsernameBinaryTimestamp,omitempty"`
 }
 
 // NewComputerGeneral instantiates a new ComputerGeneral object
@@ -130,6 +139,7 @@ func (o *ComputerGeneral) SetLastIpAddress(v string) {
 }
 
 // GetLastReportedIp returns the LastReportedIp field value if set, zero value otherwise.
+// Deprecated
 func (o *ComputerGeneral) GetLastReportedIp() string {
 	if o == nil || IsNil(o.LastReportedIp) {
 		var ret string
@@ -140,6 +150,7 @@ func (o *ComputerGeneral) GetLastReportedIp() string {
 
 // GetLastReportedIpOk returns a tuple with the LastReportedIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ComputerGeneral) GetLastReportedIpOk() (*string, bool) {
 	if o == nil || IsNil(o.LastReportedIp) {
 		return nil, false
@@ -157,8 +168,73 @@ func (o *ComputerGeneral) HasLastReportedIp() bool {
 }
 
 // SetLastReportedIp gets a reference to the given string and assigns it to the LastReportedIp field.
+// Deprecated
 func (o *ComputerGeneral) SetLastReportedIp(v string) {
 	o.LastReportedIp = &v
+}
+
+// GetLastReportedIpV4 returns the LastReportedIpV4 field value if set, zero value otherwise.
+func (o *ComputerGeneral) GetLastReportedIpV4() string {
+	if o == nil || IsNil(o.LastReportedIpV4) {
+		var ret string
+		return ret
+	}
+	return *o.LastReportedIpV4
+}
+
+// GetLastReportedIpV4Ok returns a tuple with the LastReportedIpV4 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneral) GetLastReportedIpV4Ok() (*string, bool) {
+	if o == nil || IsNil(o.LastReportedIpV4) {
+		return nil, false
+	}
+	return o.LastReportedIpV4, true
+}
+
+// HasLastReportedIpV4 returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastReportedIpV4() bool {
+	if o != nil && !IsNil(o.LastReportedIpV4) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastReportedIpV4 gets a reference to the given string and assigns it to the LastReportedIpV4 field.
+func (o *ComputerGeneral) SetLastReportedIpV4(v string) {
+	o.LastReportedIpV4 = &v
+}
+
+// GetLastReportedIpV6 returns the LastReportedIpV6 field value if set, zero value otherwise.
+func (o *ComputerGeneral) GetLastReportedIpV6() string {
+	if o == nil || IsNil(o.LastReportedIpV6) {
+		var ret string
+		return ret
+	}
+	return *o.LastReportedIpV6
+}
+
+// GetLastReportedIpV6Ok returns a tuple with the LastReportedIpV6 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGeneral) GetLastReportedIpV6Ok() (*string, bool) {
+	if o == nil || IsNil(o.LastReportedIpV6) {
+		return nil, false
+	}
+	return o.LastReportedIpV6, true
+}
+
+// HasLastReportedIpV6 returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastReportedIpV6() bool {
+	if o != nil && !IsNil(o.LastReportedIpV6) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastReportedIpV6 gets a reference to the given string and assigns it to the LastReportedIpV6 field.
+func (o *ComputerGeneral) SetLastReportedIpV6(v string) {
+	o.LastReportedIpV6 = &v
 }
 
 // GetJamfBinaryVersion returns the JamfBinaryVersion field value if set, zero value otherwise.
@@ -897,6 +973,174 @@ func (o *ComputerGeneral) SetManagementId(v string) {
 	o.ManagementId = &v
 }
 
+// GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerGeneral) GetLastLoggedInUsernameSelfService() string {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfService.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfService.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfService.Get(), o.LastLoggedInUsernameSelfService.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastLoggedInUsernameSelfService() bool {
+	if o != nil && o.LastLoggedInUsernameSelfService.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfService gets a reference to the given NullableString and assigns it to the LastLoggedInUsernameSelfService field.
+func (o *ComputerGeneral) SetLastLoggedInUsernameSelfService(v string) {
+	o.LastLoggedInUsernameSelfService.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceNil() {
+	o.LastLoggedInUsernameSelfService.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+func (o *ComputerGeneral) UnsetLastLoggedInUsernameSelfService() {
+	o.LastLoggedInUsernameSelfService.Unset()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time {
+	if o == nil || IsNil(o.LastLoggedInUsernameSelfServiceTimestamp.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastLoggedInUsernameSelfServiceTimestamp.Get()
+}
+
+// GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameSelfServiceTimestamp.Get(), o.LastLoggedInUsernameSelfServiceTimestamp.IsSet()
+}
+
+// HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastLoggedInUsernameSelfServiceTimestamp() bool {
+	if o != nil && o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameSelfServiceTimestamp gets a reference to the given NullableTime and assigns it to the LastLoggedInUsernameSelfServiceTimestamp field.
+func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time) {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(&v)
+}
+// SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceTimestampNil() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
+func (o *ComputerGeneral) UnsetLastLoggedInUsernameSelfServiceTimestamp() {
+	o.LastLoggedInUsernameSelfServiceTimestamp.Unset()
+}
+
+// GetLastLoggedInUsernameBinary returns the LastLoggedInUsernameBinary field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerGeneral) GetLastLoggedInUsernameBinary() string {
+	if o == nil || IsNil(o.LastLoggedInUsernameBinary.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LastLoggedInUsernameBinary.Get()
+}
+
+// GetLastLoggedInUsernameBinaryOk returns a tuple with the LastLoggedInUsernameBinary field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameBinary.Get(), o.LastLoggedInUsernameBinary.IsSet()
+}
+
+// HasLastLoggedInUsernameBinary returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastLoggedInUsernameBinary() bool {
+	if o != nil && o.LastLoggedInUsernameBinary.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameBinary gets a reference to the given NullableString and assigns it to the LastLoggedInUsernameBinary field.
+func (o *ComputerGeneral) SetLastLoggedInUsernameBinary(v string) {
+	o.LastLoggedInUsernameBinary.Set(&v)
+}
+// SetLastLoggedInUsernameBinaryNil sets the value for LastLoggedInUsernameBinary to be an explicit nil
+func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryNil() {
+	o.LastLoggedInUsernameBinary.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameBinary ensures that no value is present for LastLoggedInUsernameBinary, not even an explicit nil
+func (o *ComputerGeneral) UnsetLastLoggedInUsernameBinary() {
+	o.LastLoggedInUsernameBinary.Unset()
+}
+
+// GetLastLoggedInUsernameBinaryTimestamp returns the LastLoggedInUsernameBinaryTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryTimestamp() time.Time {
+	if o == nil || IsNil(o.LastLoggedInUsernameBinaryTimestamp.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastLoggedInUsernameBinaryTimestamp.Get()
+}
+
+// GetLastLoggedInUsernameBinaryTimestampOk returns a tuple with the LastLoggedInUsernameBinaryTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryTimestampOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastLoggedInUsernameBinaryTimestamp.Get(), o.LastLoggedInUsernameBinaryTimestamp.IsSet()
+}
+
+// HasLastLoggedInUsernameBinaryTimestamp returns a boolean if a field has been set.
+func (o *ComputerGeneral) HasLastLoggedInUsernameBinaryTimestamp() bool {
+	if o != nil && o.LastLoggedInUsernameBinaryTimestamp.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoggedInUsernameBinaryTimestamp gets a reference to the given NullableTime and assigns it to the LastLoggedInUsernameBinaryTimestamp field.
+func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryTimestamp(v time.Time) {
+	o.LastLoggedInUsernameBinaryTimestamp.Set(&v)
+}
+// SetLastLoggedInUsernameBinaryTimestampNil sets the value for LastLoggedInUsernameBinaryTimestamp to be an explicit nil
+func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryTimestampNil() {
+	o.LastLoggedInUsernameBinaryTimestamp.Set(nil)
+}
+
+// UnsetLastLoggedInUsernameBinaryTimestamp ensures that no value is present for LastLoggedInUsernameBinaryTimestamp, not even an explicit nil
+func (o *ComputerGeneral) UnsetLastLoggedInUsernameBinaryTimestamp() {
+	o.LastLoggedInUsernameBinaryTimestamp.Unset()
+}
+
 func (o ComputerGeneral) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -915,6 +1159,12 @@ func (o ComputerGeneral) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastReportedIp) {
 		toSerialize["lastReportedIp"] = o.LastReportedIp
+	}
+	if !IsNil(o.LastReportedIpV4) {
+		toSerialize["lastReportedIpV4"] = o.LastReportedIpV4
+	}
+	if !IsNil(o.LastReportedIpV6) {
+		toSerialize["lastReportedIpV6"] = o.LastReportedIpV6
 	}
 	if !IsNil(o.JamfBinaryVersion) {
 		toSerialize["jamfBinaryVersion"] = o.JamfBinaryVersion
@@ -984,6 +1234,18 @@ func (o ComputerGeneral) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ManagementId) {
 		toSerialize["managementId"] = o.ManagementId
+	}
+	if o.LastLoggedInUsernameSelfService.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfService"] = o.LastLoggedInUsernameSelfService.Get()
+	}
+	if o.LastLoggedInUsernameSelfServiceTimestamp.IsSet() {
+		toSerialize["lastLoggedInUsernameSelfServiceTimestamp"] = o.LastLoggedInUsernameSelfServiceTimestamp.Get()
+	}
+	if o.LastLoggedInUsernameBinary.IsSet() {
+		toSerialize["lastLoggedInUsernameBinary"] = o.LastLoggedInUsernameBinary.Get()
+	}
+	if o.LastLoggedInUsernameBinaryTimestamp.IsSet() {
+		toSerialize["lastLoggedInUsernameBinaryTimestamp"] = o.LastLoggedInUsernameBinaryTimestamp.Get()
 	}
 	return toSerialize, nil
 }

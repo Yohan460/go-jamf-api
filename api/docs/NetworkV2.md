@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Roaming** | Pointer to **bool** |  | [optional] 
 **PersonalHotspotEnabled** | Pointer to **bool** |  | [optional] 
 **PhoneNumber** | Pointer to **string** |  | [optional] 
+**PreferredVoiceNumber** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -465,6 +466,31 @@ SetPhoneNumber sets PhoneNumber field to given value.
 `func (o *NetworkV2) HasPhoneNumber() bool`
 
 HasPhoneNumber returns a boolean if a field has been set.
+
+### GetPreferredVoiceNumber
+
+`func (o *NetworkV2) GetPreferredVoiceNumber() string`
+
+GetPreferredVoiceNumber returns the PreferredVoiceNumber field if non-nil, zero value otherwise.
+
+### GetPreferredVoiceNumberOk
+
+`func (o *NetworkV2) GetPreferredVoiceNumberOk() (*string, bool)`
+
+GetPreferredVoiceNumberOk returns a tuple with the PreferredVoiceNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreferredVoiceNumber
+
+`func (o *NetworkV2) SetPreferredVoiceNumber(v string)`
+
+SetPreferredVoiceNumber sets PreferredVoiceNumber field to given value.
+
+### HasPreferredVoiceNumber
+
+`func (o *NetworkV2) HasPreferredVoiceNumber() bool`
+
+HasPreferredVoiceNumber returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

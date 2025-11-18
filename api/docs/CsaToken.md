@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Subject** | Pointer to **string** | Salesforce CRM account ID | [optional] 
 **RefreshExpiration** | Pointer to **int64** |  | [optional] 
 **Scopes** | Pointer to **[]string** |  | [optional] 
+**LegacyJamfSalesforceIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -137,6 +138,31 @@ SetScopes sets Scopes field to given value.
 `func (o *CsaToken) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
+
+### GetLegacyJamfSalesforceIds
+
+`func (o *CsaToken) GetLegacyJamfSalesforceIds() []string`
+
+GetLegacyJamfSalesforceIds returns the LegacyJamfSalesforceIds field if non-nil, zero value otherwise.
+
+### GetLegacyJamfSalesforceIdsOk
+
+`func (o *CsaToken) GetLegacyJamfSalesforceIdsOk() (*[]string, bool)`
+
+GetLegacyJamfSalesforceIdsOk returns a tuple with the LegacyJamfSalesforceIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLegacyJamfSalesforceIds
+
+`func (o *CsaToken) SetLegacyJamfSalesforceIds(v []string)`
+
+SetLegacyJamfSalesforceIds sets LegacyJamfSalesforceIds field to given value.
+
+### HasLegacyJamfSalesforceIds
+
+`func (o *CsaToken) HasLegacyJamfSalesforceIds() bool`
+
+HasLegacyJamfSalesforceIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

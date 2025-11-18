@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | **string** | A \&quot;-1\&quot; id indicates a built-in path that cannot be deleted or modified. | 
 **Path** | **string** |  | 
 
 ## Methods

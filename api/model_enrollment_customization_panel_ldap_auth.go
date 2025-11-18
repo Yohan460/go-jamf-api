@@ -25,7 +25,7 @@ type EnrollmentCustomizationPanelLdapAuth struct {
 	Rank int64 `json:"rank"`
 	UsernameLabel string `json:"usernameLabel"`
 	PasswordLabel string `json:"passwordLabel"`
-	Title string `json:"title"`
+	Title string `json:"title" validate:"regexp=\\\\S"`
 	BackButtonText string `json:"backButtonText"`
 	ContinueButtonText string `json:"continueButtonText"`
 	LdapGroupAccess []EnrollmentCustomizationLdapGroupAccess `json:"ldapGroupAccess,omitempty"`

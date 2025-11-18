@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** |  | [optional] 
 **GroupName** | Pointer to **string** |  | [optional] 
+**GroupDescription** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
+**Count** | Pointer to **int64** | membership count | [optional] 
 
 ## Methods
 
@@ -77,6 +79,31 @@ SetGroupName sets GroupName field to given value.
 
 HasGroupName returns a boolean if a field has been set.
 
+### GetGroupDescription
+
+`func (o *StaticGroup) GetGroupDescription() string`
+
+GetGroupDescription returns the GroupDescription field if non-nil, zero value otherwise.
+
+### GetGroupDescriptionOk
+
+`func (o *StaticGroup) GetGroupDescriptionOk() (*string, bool)`
+
+GetGroupDescriptionOk returns a tuple with the GroupDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupDescription
+
+`func (o *StaticGroup) SetGroupDescription(v string)`
+
+SetGroupDescription sets GroupDescription field to given value.
+
+### HasGroupDescription
+
+`func (o *StaticGroup) HasGroupDescription() bool`
+
+HasGroupDescription returns a boolean if a field has been set.
+
 ### GetSiteId
 
 `func (o *StaticGroup) GetSiteId() string`
@@ -101,6 +128,31 @@ SetSiteId sets SiteId field to given value.
 `func (o *StaticGroup) HasSiteId() bool`
 
 HasSiteId returns a boolean if a field has been set.
+
+### GetCount
+
+`func (o *StaticGroup) GetCount() int64`
+
+GetCount returns the Count field if non-nil, zero value otherwise.
+
+### GetCountOk
+
+`func (o *StaticGroup) GetCountOk() (*int64, bool)`
+
+GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCount
+
+`func (o *StaticGroup) SetCount(v int64)`
+
+SetCount sets Count field to given value.
+
+### HasCount
+
+`func (o *StaticGroup) HasCount() bool`
+
+HasCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

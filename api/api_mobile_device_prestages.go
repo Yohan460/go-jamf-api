@@ -17,330 +17,12 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
-	"os"
 	"reflect"
+	"os"
 )
 
 
 type MobileDevicePrestagesAPI interface {
-
-	/*
-	V1MobileDevicePrestagesGet Search for sorted and paged Mobile Device Prestages 
-
-	Search for sorted and paged mobile device prestages
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
-
-	// V1MobileDevicePrestagesGetExecute executes the request
-	//  @return MobileDevicePrestageSearchResults
-	// Deprecated
-	V1MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdAttachmentsDelete Remove an attachment for a Mobile Device Prestage 
-
-	Remove an attachment for a Mobile Device Prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
-
-	// V1MobileDevicePrestagesIdAttachmentsDeleteExecute executes the request
-	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
-
-	Get attachments for a Mobile Device Prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
-
-	// V1MobileDevicePrestagesIdAttachmentsGetExecute executes the request
-	//  @return []FileAttachment
-	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
-
-	Add an attachment to a Mobile Device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
-
-	// V1MobileDevicePrestagesIdAttachmentsPostExecute executes the request
-	//  @return PrestageFileAttachment
-	// Deprecated
-	V1MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
-
-	Deletes a Mobile Device Prestage with the supplied id
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
-
-	// V1MobileDevicePrestagesIdDeleteExecute executes the request
-	// Deprecated
-	V1MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
-
-	Retrieves a Mobile Device Prestage with the supplied id
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
-
-	// V1MobileDevicePrestagesIdGetExecute executes the request
-	//  @return GetMobileDevicePrestage
-	// Deprecated
-	V1MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
-
-	Gets sorted and paged mobile device prestage history objects
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
-
-	// V1MobileDevicePrestagesIdHistoryGetExecute executes the request
-	//  @return HistorySearchResults
-	// Deprecated
-	V1MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
-
-	Adds mobile device prestage history object notes
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
-
-	// V1MobileDevicePrestagesIdHistoryPostExecute executes the request
-	//  @return ObjectHistory
-	// Deprecated
-	V1MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
-
-	Updates a Mobile Device Prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdPut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
-
-	// V1MobileDevicePrestagesIdPutExecute executes the request
-	//  @return GetMobileDevicePrestage
-	// Deprecated
-	V1MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdScopeDelete Remove Device Scope for a specific Mobile Device Prestage 
-
-	Remove device scope for a specific mobile device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
-
-	// V1MobileDevicePrestagesIdScopeDeleteExecute executes the request
-	//  @return PrestageScopeResponse
-	// Deprecated
-	V1MobileDevicePrestagesIdScopeDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
-
-	Get device scope for a specific mobile device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
-
-	// V1MobileDevicePrestagesIdScopeGetExecute executes the request
-	//  @return PrestageScopeResponse
-	// Deprecated
-	V1MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
-
-	Add device scope for a specific mobile device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
-
-	// V1MobileDevicePrestagesIdScopePostExecute executes the request
-	//  @return PrestageScopeResponse
-	// Deprecated
-	V1MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
-
-	Replace device scope for a specific mobile device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
-
-	// V1MobileDevicePrestagesIdScopePutExecute executes the request
-	//  @return PrestageScopeResponse
-	// Deprecated
-	V1MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesPost Create a Mobile Device Prestage 
-
-	Create a mobile device prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
-
-	// V1MobileDevicePrestagesPostExecute executes the request
-	//  @return GetMobileDevicePrestage
-	// Deprecated
-	V1MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
-
-	Get all device scope for all mobile device prestages
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
-
-	// V1MobileDevicePrestagesScopeGetExecute executes the request
-	//  @return PrestageScope
-	// Deprecated
-	V1MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesSyncGet Get all Prestage sync States for all prestages 
-
-	Get all prestage sync states for all prestages
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesSyncGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
-
-	// V1MobileDevicePrestagesSyncGetExecute executes the request
-	//  @return []PrestageSyncStatus
-	// Deprecated
-	V1MobileDevicePrestagesSyncGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesSyncIdGet Get all prestage sync states for a single prestage 
-
-	Get all prestage sync states for a single prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
-
-	// V1MobileDevicePrestagesSyncIdGetExecute executes the request
-	//  @return []PrestageSyncStatus
-	// Deprecated
-	V1MobileDevicePrestagesSyncIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error)
-
-	/*
-	V1MobileDevicePrestagesSyncIdLatestGet Get the latest Sync State for a single Prestage 
-
-	Get the latest sync state for a single prestage
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id Mobile Device Prestage identifier
-	@return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
-
-	Deprecated
-	*/
-	V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
-
-	// V1MobileDevicePrestagesSyncIdLatestGetExecute executes the request
-	//  @return PrestageSyncStatus
-	// Deprecated
-	V1MobileDevicePrestagesSyncIdLatestGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error)
 
 	/*
 	V2MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages 
@@ -349,11 +31,14 @@ type MobileDevicePrestagesAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
 
 	// V2MobileDevicePrestagesGetExecute executes the request
 	//  @return MobileDevicePrestageSearchResultsV2
+	// Deprecated
 	V2MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error)
 
 	/*
@@ -364,10 +49,13 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute executes the request
+	// Deprecated
 	V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error)
 
 	/*
@@ -378,11 +66,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsGetExecute executes the request
 	//  @return []FileAttachmentV2
+	// Deprecated
 	V2MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error)
 
 	/*
@@ -393,11 +84,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
 
 	// V2MobileDevicePrestagesIdAttachmentsPostExecute executes the request
 	//  @return PrestageFileAttachmentV2
+	// Deprecated
 	V2MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error)
 
 	/*
@@ -408,10 +102,13 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
 
 	// V2MobileDevicePrestagesIdDeleteExecute executes the request
+	// Deprecated
 	V2MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
 
 	/*
@@ -422,11 +119,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
 
 	// V2MobileDevicePrestagesIdGetExecute executes the request
 	//  @return GetMobileDevicePrestageV2
+	// Deprecated
 	V2MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
 
 	/*
@@ -437,11 +137,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
 
 	// V2MobileDevicePrestagesIdHistoryGetExecute executes the request
 	//  @return HistorySearchResults
+	// Deprecated
 	V2MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
 
 	/*
@@ -452,11 +155,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
 
 	// V2MobileDevicePrestagesIdHistoryPostExecute executes the request
 	//  @return HrefResponse
+	// Deprecated
 	V2MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
@@ -467,11 +173,14 @@ type MobileDevicePrestagesAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id Mobile Device Prestage identifier
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
 
 	// V2MobileDevicePrestagesIdPutExecute executes the request
 	//  @return GetMobileDevicePrestageV2
+	// Deprecated
 	V2MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error)
 
 	/*
@@ -571,11 +280,14 @@ type MobileDevicePrestagesAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
+
+	Deprecated
 	*/
 	V2MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
 
 	// V2MobileDevicePrestagesPostExecute executes the request
 	//  @return HrefResponse
+	// Deprecated
 	V2MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
@@ -605,2300 +317,156 @@ type MobileDevicePrestagesAPI interface {
 	// V2MobileDevicePrestagesSyncsGetExecute executes the request
 	//  @return []PrestageSyncStatusV2
 	V2MobileDevicePrestagesSyncsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesSyncsGetRequest) ([]PrestageSyncStatusV2, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages 
+
+	Gets sorted and paged mobile device prestages
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest
+	*/
+	V3MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest
+
+	// V3MobileDevicePrestagesGetExecute executes the request
+	//  @return MobileDevicePrestageSearchResultsV3
+	V3MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV3, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePost Remove an attachment for a Mobile Device Prestage 
+
+	Remove an attachment for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+	*/
+	V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+
+	// V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute executes the request
+	V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
+
+	Get attachments for a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest
+	*/
+	V3MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest
+
+	// V3MobileDevicePrestagesIdAttachmentsGetExecute executes the request
+	//  @return []FileAttachmentV3
+	V3MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV3, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
+
+	Add an attachment to a Mobile Device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Identifier of the Mobile Device Prestage the attachment should be assigned to
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest
+	*/
+	V3MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest
+
+	// V3MobileDevicePrestagesIdAttachmentsPostExecute executes the request
+	//  @return PrestageFileAttachmentV3
+	V3MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV3, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
+
+	Deletes a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest
+	*/
+	V3MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest
+
+	// V3MobileDevicePrestagesIdDeleteExecute executes the request
+	V3MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
+
+	Retrieves a Mobile Device Prestage with the supplied id
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest
+	*/
+	V3MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest
+
+	// V3MobileDevicePrestagesIdGetExecute executes the request
+	//  @return GetMobileDevicePrestageV3
+	V3MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV3, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
+
+	Gets sorted and paged mobile device prestage history objects
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest
+	*/
+	V3MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest
+
+	// V3MobileDevicePrestagesIdHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V3MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
+
+	Adds mobile device prestage history object notes
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest
+	*/
+	V3MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest
+
+	// V3MobileDevicePrestagesIdHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V3MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
+
+	Updates a Mobile Device Prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Mobile Device Prestage identifier
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest
+	*/
+	V3MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest
+
+	// V3MobileDevicePrestagesIdPutExecute executes the request
+	//  @return GetMobileDevicePrestageV3
+	V3MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV3, *http.Response, error)
+
+	/*
+	V3MobileDevicePrestagesPost Create a Mobile Device Prestage 
+
+	Create a mobile device prestage
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest
+	*/
+	V3MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest
+
+	// V3MobileDevicePrestagesPostExecute executes the request
+	//  @return HrefResponse
+	V3MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error)
 }
 
 // MobileDevicePrestagesAPIService MobileDevicePrestagesAPI service
 type MobileDevicePrestagesAPIService service
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	page *int64
-	size *int64
-	pagesize *int64
-	pageSize *int64
-	sort *string
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Page(page int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	r.page = &page
-	return r
-}
-
-// Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Size(size int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	r.size = &size
-	return r
-}
-
-// Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Pagesize(pagesize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	r.pagesize = &pagesize
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Sort(sort string) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResults, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesGet Search for sorted and paged Mobile Device Prestages 
-
-Search for sorted and paged mobile device prestages
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return MobileDevicePrestageSearchResults
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MobileDevicePrestageSearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
-	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
-	}
-	if r.size != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
-	} else {
-		var defaultValue int64 = 100
-		r.size = &defaultValue
-	}
-	if r.pagesize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pagesize = &defaultValue
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
-	}
-	if r.sort != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", r.sort, "")
-	} else {
-		var defaultValue string = "id:asc"
-		r.sort = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	fileAttachmentDelete *FileAttachmentDelete
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) FileAttachmentDelete(fileAttachmentDelete FileAttachmentDelete) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
-	r.fileAttachmentDelete = &fileAttachmentDelete
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdAttachmentsDelete Remove an attachment for a Mobile Device Prestage 
-
-Remove an attachment for a Mobile Device Prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.fileAttachmentDelete == nil {
-		return nil, reportError("fileAttachmentDelete is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.fileAttachmentDelete
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachment, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
-
-Get attachments for a Mobile Device Prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return []FileAttachment
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachment, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []FileAttachment
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	file *os.File
-}
-
-// The file to upload
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
-	r.file = file
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachment, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdAttachmentsPostExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
-
-Add an attachment to a Mobile Device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Identifier of the Mobile Device Prestage the attachment should be assigned to
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageFileAttachment
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachment, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageFileAttachment
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdAttachmentsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/attachments"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	var fileLocalVarFormFileName string
-	var fileLocalVarFileName     string
-	var fileLocalVarFileBytes    []byte
-
-	fileLocalVarFormFileName = "file"
-	fileLocalVarFile := r.file
-
-	if fileLocalVarFile != nil {
-		fbs, _ := io.ReadAll(fileLocalVarFile)
-
-		fileLocalVarFileBytes = fbs
-		fileLocalVarFileName = fileLocalVarFile.Name()
-		fileLocalVarFile.Close()
-		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 413 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdDeleteExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
-
-Deletes a Mobile Device Prestage with the supplied id
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
-
-Retrieves a Mobile Device Prestage with the supplied id
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GetMobileDevicePrestage
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetMobileDevicePrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	page *int64
-	size *int64
-	pagesize *int64
-	pageSize *int64
-	sort *[]string
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Page(page int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	r.page = &page
-	return r
-}
-
-// Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Size(size int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	r.size = &size
-	return r
-}
-
-// Deprecated
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Pagesize(pagesize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	r.pagesize = &pagesize
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdHistoryGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
-
-Gets sorted and paged mobile device prestage history objects
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return HistorySearchResults
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HistorySearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdHistoryGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
-	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
-	}
-	if r.size != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "size", r.size, "")
-	} else {
-		var defaultValue int64 = 100
-		r.size = &defaultValue
-	}
-	if r.pagesize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pagesize", r.pagesize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pagesize = &defaultValue
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
-		}
-	} else {
-		defaultValue := []string{"date:desc"}
-		r.sort = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	objectHistoryNote *ObjectHistoryNote
-}
-
-// History notes to create
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
-	r.objectHistoryNote = &objectHistoryNote
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) Execute() (*ObjectHistory, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdHistoryPostExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
-
-Adds mobile device prestage history object notes
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return ObjectHistory
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdHistoryPostRequest) (*ObjectHistory, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ObjectHistory
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdHistoryPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/history"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.objectHistoryNote == nil {
-		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.objectHistoryNote
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 503 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	putMobileDevicePrestage *PutMobileDevicePrestage
-}
-
-// Mobile Device Prestage to update
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestage(putMobileDevicePrestage PutMobileDevicePrestage) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
-	r.putMobileDevicePrestage = &putMobileDevicePrestage
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdPutExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
-
-Updates a Mobile Device Prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return GetMobileDevicePrestage
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetMobileDevicePrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.putMobileDevicePrestage == nil {
-		return localVarReturnValue, nil, reportError("putMobileDevicePrestage is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.putMobileDevicePrestage
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	prestageScopeUpdate *PrestageScopeUpdate
-}
-
-// Serial Numbers to remove from scope
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
-	r.prestageScopeUpdate = &prestageScopeUpdate
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdScopeDeleteExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdScopeDelete Remove Device Scope for a specific Mobile Device Prestage 
-
-Remove device scope for a specific mobile device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDelete(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageScopeResponse
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeDeleteExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeDeleteRequest) (*PrestageScopeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageScopeResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopeDelete")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.prestageScopeUpdate == nil {
-		return localVarReturnValue, nil, reportError("prestageScopeUpdate is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.prestageScopeUpdate
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdScopeGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdScopeGet Get Device Scope for a specific Mobile Device Prestage 
-
-Get device scope for a specific mobile device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageScopeResponse
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopeGetRequest) (*PrestageScopeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageScopeResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopeGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	prestageScopeUpdate *PrestageScopeUpdate
-}
-
-// Serial Numbers to scope
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
-	r.prestageScopeUpdate = &prestageScopeUpdate
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdScopePostExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdScopePost Add Device Scope for a specific Mobile Device Prestage 
-
-Add device scope for a specific mobile device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePost(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageScopeResponse
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePostRequest) (*PrestageScopeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageScopeResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopePost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.prestageScopeUpdate == nil {
-		return localVarReturnValue, nil, reportError("prestageScopeUpdate is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.prestageScopeUpdate
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-	prestageScopeUpdate *PrestageScopeUpdate
-}
-
-// Serial Numbers to scope
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) PrestageScopeUpdate(prestageScopeUpdate PrestageScopeUpdate) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
-	r.prestageScopeUpdate = &prestageScopeUpdate
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) Execute() (*PrestageScopeResponse, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesIdScopePutExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesIdScopePut Replace Device Scope for a specific Mobile Device Prestage 
-
-Replace device scope for a specific mobile device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePut(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageScopeResponse
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesIdScopePutExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesIdScopePutRequest) (*PrestageScopeResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageScopeResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesIdScopePut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/{id}/scope"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.prestageScopeUpdate == nil {
-		return localVarReturnValue, nil, reportError("prestageScopeUpdate is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.prestageScopeUpdate
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 409 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	mobileDevicePrestage *MobileDevicePrestage
-}
-
-// Mobile Device Prestage to create. ids defined in this body will be ignored
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) MobileDevicePrestage(mobileDevicePrestage MobileDevicePrestage) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest {
-	r.mobileDevicePrestage = &mobileDevicePrestage
-	return r
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) Execute() (*GetMobileDevicePrestage, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesPostExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesPost Create a Mobile Device Prestage 
-
-Create a mobile device prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return GetMobileDevicePrestage
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesPostRequest) (*GetMobileDevicePrestage, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetMobileDevicePrestage
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.mobileDevicePrestage == nil {
-		return localVarReturnValue, nil, reportError("mobileDevicePrestage is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.mobileDevicePrestage
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) Execute() (*PrestageScope, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesScopeGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesScopeGet Get all Device Scope for all Mobile Device Prestages 
-
-Get all device scope for all mobile device prestages
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesScopeGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageScope
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesScopeGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesScopeGetRequest) (*PrestageScope, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageScope
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesScopeGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/scope"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesSyncGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesSyncGet Get all Prestage sync States for all prestages 
-
-Get all prestage sync states for all prestages
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncGet(ctx context.Context) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []PrestageSyncStatus
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PrestageSyncStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/sync"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) Execute() ([]PrestageSyncStatus, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesSyncIdGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesSyncIdGet Get all prestage sync states for a single prestage 
-
-Get all prestage sync states for a single prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return []PrestageSyncStatus
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdGetRequest) ([]PrestageSyncStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []PrestageSyncStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/sync/{id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest struct {
-	ctx context.Context
-	ApiService MobileDevicePrestagesAPI
-	id int64
-}
-
-func (r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) Execute() (*PrestageSyncStatus, *http.Response, error) {
-	return r.ApiService.V1MobileDevicePrestagesSyncIdLatestGetExecute(r)
-}
-
-/*
-V1MobileDevicePrestagesSyncIdLatestGet Get the latest Sync State for a single Prestage 
-
-Get the latest sync state for a single prestage
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param id Mobile Device Prestage identifier
- @return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest
-
-Deprecated
-*/
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGet(ctx context.Context, id int64) MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest {
-	return MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		id: id,
-	}
-}
-
-// Execute executes the request
-//  @return PrestageSyncStatus
-// Deprecated
-func (a *MobileDevicePrestagesAPIService) V1MobileDevicePrestagesSyncIdLatestGetExecute(r MobileDevicePrestagesAPIV1MobileDevicePrestagesSyncIdLatestGetRequest) (*PrestageSyncStatus, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrestageSyncStatus
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V1MobileDevicePrestagesSyncIdLatestGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/mobile-device-prestages/sync/{id}/latest"
-	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
 
 type MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest struct {
 	ctx context.Context
@@ -2935,6 +503,8 @@ Gets sorted and paged mobile device prestages
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest{
@@ -2945,6 +515,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGet(ctx context
 
 // Execute executes the request
 //  @return MobileDevicePrestageSearchResultsV2
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -2965,30 +536,33 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesGetExecute(r Mo
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"id:desc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"id:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3068,6 +642,8 @@ Remove an attachment for a Mobile Device Prestage
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest{
@@ -3078,6 +654,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsDe
 }
 
 // Execute executes the request
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3165,6 +742,8 @@ Get attachments for a Mobile Device Prestage
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest{
@@ -3176,6 +755,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsGe
 
 // Execute executes the request
 //  @return []FileAttachmentV2
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3285,6 +865,8 @@ Add an attachment to a Mobile Device prestage
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Identifier of the Mobile Device Prestage the attachment should be assigned to
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest{
@@ -3296,6 +878,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPo
 
 // Execute executes the request
 //  @return PrestageFileAttachmentV2
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3427,6 +1010,8 @@ Deletes a Mobile Device Prestage with the supplied id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest{
@@ -3437,6 +1022,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdDelete(ctx co
 }
 
 // Execute executes the request
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -3519,6 +1105,8 @@ Retrieves a Mobile Device Prestage with the supplied id
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest{
@@ -3530,6 +1118,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdGet(ctx conte
 
 // Execute executes the request
 //  @return GetMobileDevicePrestageV2
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3651,6 +1240,8 @@ Gets sorted and paged mobile device prestage history objects
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest{
@@ -3662,6 +1253,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGet(ct
 
 // Execute executes the request
 //  @return HistorySearchResults
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -3683,30 +1275,33 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryGetExe
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"date:desc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3787,6 +1382,8 @@ Adds mobile device prestage history object notes
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest{
@@ -3798,6 +1395,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryPost(c
 
 // Execute executes the request
 //  @return HrefResponse
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3912,6 +1510,8 @@ Updates a Mobile Device Prestage
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id Mobile Device Prestage identifier
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest{
@@ -3923,6 +1523,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdPut(ctx conte
 
 // Execute executes the request
 //  @return GetMobileDevicePrestageV2
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
@@ -4806,6 +2407,8 @@ Create a mobile device prestage
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest
+
+Deprecated
 */
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest {
 	return MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest{
@@ -4816,6 +2419,7 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesPost(ctx contex
 
 // Execute executes the request
 //  @return HrefResponse
+// Deprecated
 func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV2MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -5055,6 +2659,1246 @@ func (a *MobileDevicePrestagesAPIService) V2MobileDevicePrestagesSyncsGetExecute
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) Page(page int64) MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,name:asc 
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) Execute() (*MobileDevicePrestageSearchResultsV3, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesGetExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesGet Get sorted and paged Mobile Device Prestages 
+
+Gets sorted and paged mobile device prestages
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesGet(ctx context.Context) MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MobileDevicePrestageSearchResultsV3
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesGetRequest) (*MobileDevicePrestageSearchResultsV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MobileDevicePrestageSearchResultsV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"id:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+	ids *Ids
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Ids(ids Ids) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
+	r.ids = &ids
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePost Remove an attachment for a Mobile Device Prestage 
+
+Remove an attachment for a Mobile Device Prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsDeleteMultiplePostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdAttachmentsDeleteMultiplePost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}/attachments/delete-multiple"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.ids == nil {
+		return nil, reportError("ids is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.ids
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest) Execute() ([]FileAttachmentV3, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdAttachmentsGetExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdAttachmentsGet Get attachments for a Mobile Device Prestage 
+
+Get attachments for a Mobile Device Prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return []FileAttachmentV3
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsGetRequest) ([]FileAttachmentV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []FileAttachmentV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdAttachmentsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}/attachments"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+	file *os.File
+}
+
+// The file to upload
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest) File(file *os.File) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest {
+	r.file = file
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest) Execute() (*PrestageFileAttachmentV3, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdAttachmentsPostExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdAttachmentsPost Add an attachment to a Mobile Device Prestage 
+
+Add an attachment to a Mobile Device prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Identifier of the Mobile Device Prestage the attachment should be assigned to
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsPost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return PrestageFileAttachmentV3
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdAttachmentsPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdAttachmentsPostRequest) (*PrestageFileAttachmentV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrestageFileAttachmentV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdAttachmentsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}/attachments"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.file == nil {
+		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 413 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdDeleteExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdDelete Delete a Mobile Device Prestage with the supplied id 
+
+Deletes a Mobile Device Prestage with the supplied id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdDelete(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdDeleteExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest) Execute() (*GetMobileDevicePrestageV3, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdGetExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdGet Retrieve a Mobile Device Prestage with the supplied id 
+
+Retrieves a Mobile Device Prestage with the supplied id
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return GetMobileDevicePrestageV3
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdGetRequest) (*GetMobileDevicePrestageV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetMobileDevicePrestageV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+	page *int64
+	pageSize *int64
+	sort *[]string
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) Page(page int64) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) PageSize(pageSize int64) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property,asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name%2Casc&amp;sort&#x3D;date%2Cdesc
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) Sort(sort []string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdHistoryGetExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdHistoryGet Get sorted and paged Mobile Device Prestage history objects 
+
+Gets sorted and paged mobile device prestage history objects
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdHistoryGet(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdHistoryGetExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// History notes to create
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdHistoryPostExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdHistoryPost Add Mobile Device Prestage history object notes 
+
+Adds mobile device prestage history object notes
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdHistoryPost(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdHistoryPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 503 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	id string
+	putMobileDevicePrestageV3 *PutMobileDevicePrestageV3
+}
+
+// Mobile Device Prestage to update
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest) PutMobileDevicePrestageV3(putMobileDevicePrestageV3 PutMobileDevicePrestageV3) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest {
+	r.putMobileDevicePrestageV3 = &putMobileDevicePrestageV3
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest) Execute() (*GetMobileDevicePrestageV3, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesIdPutExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesIdPut Update a Mobile Device Prestage 
+
+Updates a Mobile Device Prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Mobile Device Prestage identifier
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdPut(ctx context.Context, id string) MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return GetMobileDevicePrestageV3
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesIdPutExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesIdPutRequest) (*GetMobileDevicePrestageV3, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetMobileDevicePrestageV3
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.putMobileDevicePrestageV3 == nil {
+		return localVarReturnValue, nil, reportError("putMobileDevicePrestageV3 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.putMobileDevicePrestageV3
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 409 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest struct {
+	ctx context.Context
+	ApiService MobileDevicePrestagesAPI
+	mobileDevicePrestageV3 *MobileDevicePrestageV3
+}
+
+// Mobile Device Prestage to create. ids defined in this body will be ignored
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest) MobileDevicePrestageV3(mobileDevicePrestageV3 MobileDevicePrestageV3) MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest {
+	r.mobileDevicePrestageV3 = &mobileDevicePrestageV3
+	return r
+}
+
+func (r MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V3MobileDevicePrestagesPostExecute(r)
+}
+
+/*
+V3MobileDevicePrestagesPost Create a Mobile Device Prestage 
+
+Create a mobile device prestage
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest
+*/
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesPost(ctx context.Context) MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest {
+	return MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *MobileDevicePrestagesAPIService) V3MobileDevicePrestagesPostExecute(r MobileDevicePrestagesAPIV3MobileDevicePrestagesPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDevicePrestagesAPIService.V3MobileDevicePrestagesPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/mobile-device-prestages"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.mobileDevicePrestageV3 == nil {
+		return localVarReturnValue, nil, reportError("mobileDevicePrestageV3 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.mobileDevicePrestageV3
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -148,10 +148,11 @@ func (a *LdapAPIService) LdapGroupsGetExecute(r LdapAPILdapGroupsGetRequest) (*L
 	localVarFormParams := url.Values{}
 
 	if r.q != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
 	} else {
-		var defaultValue string = "null"
-		r.q = &defaultValue
+        var defaultValue string = "null"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "q", defaultValue, "form", "")
+        r.q = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -359,10 +360,11 @@ func (a *LdapAPIService) V1LdapGroupsGetExecute(r LdapAPIV1LdapGroupsGetRequest)
 	localVarFormParams := url.Values{}
 
 	if r.q != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "q", r.q, "form", "")
 	} else {
-		var defaultValue string = "null"
-		r.q = &defaultValue
+        var defaultValue string = "null"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "q", defaultValue, "form", "")
+        r.q = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -22,24 +22,6 @@ import (
 type JamfProInformationAPI interface {
 
 	/*
-	V1JamfProInformationGet Get basic information about the Jamf Pro Server 
-
-	Deprecated version of the endpoint.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return JamfProInformationAPIV1JamfProInformationGetRequest
-
-	Deprecated
-	*/
-	V1JamfProInformationGet(ctx context.Context) JamfProInformationAPIV1JamfProInformationGetRequest
-
-	// V1JamfProInformationGetExecute executes the request
-	//  @return JamfProInformation
-	// Deprecated
-	V1JamfProInformationGetExecute(r JamfProInformationAPIV1JamfProInformationGetRequest) (*JamfProInformation, *http.Response, error)
-
-	/*
 	V2JamfProInformationGet Get basic information about the Jamf Pro Server 
 
 	Get basic information about the Jamf Pro Server
@@ -57,109 +39,6 @@ type JamfProInformationAPI interface {
 
 // JamfProInformationAPIService JamfProInformationAPI service
 type JamfProInformationAPIService service
-
-type JamfProInformationAPIV1JamfProInformationGetRequest struct {
-	ctx context.Context
-	ApiService JamfProInformationAPI
-}
-
-func (r JamfProInformationAPIV1JamfProInformationGetRequest) Execute() (*JamfProInformation, *http.Response, error) {
-	return r.ApiService.V1JamfProInformationGetExecute(r)
-}
-
-/*
-V1JamfProInformationGet Get basic information about the Jamf Pro Server 
-
-Deprecated version of the endpoint.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return JamfProInformationAPIV1JamfProInformationGetRequest
-
-Deprecated
-*/
-func (a *JamfProInformationAPIService) V1JamfProInformationGet(ctx context.Context) JamfProInformationAPIV1JamfProInformationGetRequest {
-	return JamfProInformationAPIV1JamfProInformationGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return JamfProInformation
-// Deprecated
-func (a *JamfProInformationAPIService) V1JamfProInformationGetExecute(r JamfProInformationAPIV1JamfProInformationGetRequest) (*JamfProInformation, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *JamfProInformation
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInformationAPIService.V1JamfProInformationGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v1/jamf-pro-information"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
 
 type JamfProInformationAPIV2JamfProInformationGetRequest struct {
 	ctx context.Context

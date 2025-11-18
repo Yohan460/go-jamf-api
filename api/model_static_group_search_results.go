@@ -20,7 +20,7 @@ var _ MappedNullable = &StaticGroupSearchResults{}
 // StaticGroupSearchResults struct for StaticGroupSearchResults
 type StaticGroupSearchResults struct {
 	TotalCount *int64 `json:"totalCount,omitempty"`
-	Results []StaticGroupSummary `json:"results,omitempty"`
+	Results []StaticGroup `json:"results,omitempty"`
 }
 
 // NewStaticGroupSearchResults instantiates a new StaticGroupSearchResults object
@@ -73,9 +73,9 @@ func (o *StaticGroupSearchResults) SetTotalCount(v int64) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *StaticGroupSearchResults) GetResults() []StaticGroupSummary {
+func (o *StaticGroupSearchResults) GetResults() []StaticGroup {
 	if o == nil || IsNil(o.Results) {
-		var ret []StaticGroupSummary
+		var ret []StaticGroup
 		return ret
 	}
 	return o.Results
@@ -83,7 +83,7 @@ func (o *StaticGroupSearchResults) GetResults() []StaticGroupSummary {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StaticGroupSearchResults) GetResultsOk() ([]StaticGroupSummary, bool) {
+func (o *StaticGroupSearchResults) GetResultsOk() ([]StaticGroup, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *StaticGroupSearchResults) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []StaticGroupSummary and assigns it to the Results field.
-func (o *StaticGroupSearchResults) SetResults(v []StaticGroupSummary) {
+// SetResults gets a reference to the given []StaticGroup and assigns it to the Results field.
+func (o *StaticGroupSearchResults) SetResults(v []StaticGroup) {
 	o.Results = v
 }
 

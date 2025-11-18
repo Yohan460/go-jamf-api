@@ -13,6 +13,11 @@ Name | Type | Description | Notes
 **HardwareEncryption** | Pointer to **int64** |  | [optional] 
 **ActivationLockEnabled** | Pointer to **bool** |  | [optional] 
 **JailBreakDetected** | Pointer to **bool** |  | [optional] 
+**AttestationStatus** | Pointer to **string** |  | [optional] [readonly] 
+**LastAttestationAttemptDate** | Pointer to **time.Time** |  | [optional] [readonly] 
+**LastSuccessfulAttestationDate** | Pointer to **time.Time** |  | [optional] [readonly] 
+**BootstrapToken** | Pointer to **string** | The bootstrap token for the device | [optional] [readonly] 
+**BootstrapTokenEscrowed** | Pointer to **string** | Indicates the bootstrap token escrow status for the device | [optional] 
 
 ## Methods
 
@@ -257,6 +262,131 @@ SetJailBreakDetected sets JailBreakDetected field to given value.
 `func (o *SecurityV2) HasJailBreakDetected() bool`
 
 HasJailBreakDetected returns a boolean if a field has been set.
+
+### GetAttestationStatus
+
+`func (o *SecurityV2) GetAttestationStatus() string`
+
+GetAttestationStatus returns the AttestationStatus field if non-nil, zero value otherwise.
+
+### GetAttestationStatusOk
+
+`func (o *SecurityV2) GetAttestationStatusOk() (*string, bool)`
+
+GetAttestationStatusOk returns a tuple with the AttestationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttestationStatus
+
+`func (o *SecurityV2) SetAttestationStatus(v string)`
+
+SetAttestationStatus sets AttestationStatus field to given value.
+
+### HasAttestationStatus
+
+`func (o *SecurityV2) HasAttestationStatus() bool`
+
+HasAttestationStatus returns a boolean if a field has been set.
+
+### GetLastAttestationAttemptDate
+
+`func (o *SecurityV2) GetLastAttestationAttemptDate() time.Time`
+
+GetLastAttestationAttemptDate returns the LastAttestationAttemptDate field if non-nil, zero value otherwise.
+
+### GetLastAttestationAttemptDateOk
+
+`func (o *SecurityV2) GetLastAttestationAttemptDateOk() (*time.Time, bool)`
+
+GetLastAttestationAttemptDateOk returns a tuple with the LastAttestationAttemptDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAttestationAttemptDate
+
+`func (o *SecurityV2) SetLastAttestationAttemptDate(v time.Time)`
+
+SetLastAttestationAttemptDate sets LastAttestationAttemptDate field to given value.
+
+### HasLastAttestationAttemptDate
+
+`func (o *SecurityV2) HasLastAttestationAttemptDate() bool`
+
+HasLastAttestationAttemptDate returns a boolean if a field has been set.
+
+### GetLastSuccessfulAttestationDate
+
+`func (o *SecurityV2) GetLastSuccessfulAttestationDate() time.Time`
+
+GetLastSuccessfulAttestationDate returns the LastSuccessfulAttestationDate field if non-nil, zero value otherwise.
+
+### GetLastSuccessfulAttestationDateOk
+
+`func (o *SecurityV2) GetLastSuccessfulAttestationDateOk() (*time.Time, bool)`
+
+GetLastSuccessfulAttestationDateOk returns a tuple with the LastSuccessfulAttestationDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSuccessfulAttestationDate
+
+`func (o *SecurityV2) SetLastSuccessfulAttestationDate(v time.Time)`
+
+SetLastSuccessfulAttestationDate sets LastSuccessfulAttestationDate field to given value.
+
+### HasLastSuccessfulAttestationDate
+
+`func (o *SecurityV2) HasLastSuccessfulAttestationDate() bool`
+
+HasLastSuccessfulAttestationDate returns a boolean if a field has been set.
+
+### GetBootstrapToken
+
+`func (o *SecurityV2) GetBootstrapToken() string`
+
+GetBootstrapToken returns the BootstrapToken field if non-nil, zero value otherwise.
+
+### GetBootstrapTokenOk
+
+`func (o *SecurityV2) GetBootstrapTokenOk() (*string, bool)`
+
+GetBootstrapTokenOk returns a tuple with the BootstrapToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBootstrapToken
+
+`func (o *SecurityV2) SetBootstrapToken(v string)`
+
+SetBootstrapToken sets BootstrapToken field to given value.
+
+### HasBootstrapToken
+
+`func (o *SecurityV2) HasBootstrapToken() bool`
+
+HasBootstrapToken returns a boolean if a field has been set.
+
+### GetBootstrapTokenEscrowed
+
+`func (o *SecurityV2) GetBootstrapTokenEscrowed() string`
+
+GetBootstrapTokenEscrowed returns the BootstrapTokenEscrowed field if non-nil, zero value otherwise.
+
+### GetBootstrapTokenEscrowedOk
+
+`func (o *SecurityV2) GetBootstrapTokenEscrowedOk() (*string, bool)`
+
+GetBootstrapTokenEscrowedOk returns a tuple with the BootstrapTokenEscrowed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBootstrapTokenEscrowed
+
+`func (o *SecurityV2) SetBootstrapTokenEscrowed(v string)`
+
+SetBootstrapTokenEscrowed sets BootstrapTokenEscrowed field to given value.
+
+### HasBootstrapTokenEscrowed
+
+`func (o *SecurityV2) HasBootstrapTokenEscrowed() bool`
+
+HasBootstrapTokenEscrowed returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

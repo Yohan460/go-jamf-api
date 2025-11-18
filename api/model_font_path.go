@@ -21,6 +21,7 @@ var _ MappedNullable = &FontPath{}
 
 // FontPath struct for FontPath
 type FontPath struct {
+	// A \"-1\" id indicates a built-in path that cannot be deleted or modified.
 	Id string `json:"id"`
 	Path string `json:"path"`
 }

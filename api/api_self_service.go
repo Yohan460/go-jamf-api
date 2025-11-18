@@ -16,6 +16,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 )
 
 
@@ -35,6 +36,36 @@ type SelfServiceAPI interface {
 	// V1SelfServiceSettingsGetExecute executes the request
 	//  @return SelfServiceSettings
 	V1SelfServiceSettingsGetExecute(r SelfServiceAPIV1SelfServiceSettingsGetRequest) (*SelfServiceSettings, *http.Response, error)
+
+	/*
+	V1SelfServiceSettingsHistoryGet Get a page of Self Service settings history 
+
+	Get a page of Self Service settings history
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest
+	*/
+	V1SelfServiceSettingsHistoryGet(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest
+
+	// V1SelfServiceSettingsHistoryGetExecute executes the request
+	//  @return HistorySearchResults
+	V1SelfServiceSettingsHistoryGetExecute(r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error)
+
+	/*
+	V1SelfServiceSettingsHistoryPost Add Self Service settings history notes 
+
+	Add Self Service settings history notes
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest
+	*/
+	V1SelfServiceSettingsHistoryPost(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest
+
+	// V1SelfServiceSettingsHistoryPostExecute executes the request
+	//  @return HrefResponse
+	V1SelfServiceSettingsHistoryPostExecute(r SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
 	V1SelfServiceSettingsPut Put an object representation of Self Service settings 
@@ -118,6 +149,280 @@ func (a *SelfServiceAPIService) V1SelfServiceSettingsGetExecute(r SelfServiceAPI
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest struct {
+	ctx context.Context
+	ApiService SelfServiceAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) Page(page int64) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) PageSize(pageSize int64) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort order is descending. Multiple sort criteria are supported and must be entered on separate lines in Swagger UI. In the URI the &#39;sort&#39; query param is not duplicated for each sort criterion, e.g., ...&amp;sort&#x3D;name:asc,date:desc. Fields that can be sorted: status, updated
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) Sort(sort []string) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter results. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: status, updated, version This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) Filter(filter string) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) Execute() (*HistorySearchResults, *http.Response, error) {
+	return r.ApiService.V1SelfServiceSettingsHistoryGetExecute(r)
+}
+
+/*
+V1SelfServiceSettingsHistoryGet Get a page of Self Service settings history 
+
+Get a page of Self Service settings history
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest
+*/
+func (a *SelfServiceAPIService) V1SelfServiceSettingsHistoryGet(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest {
+	return SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HistorySearchResults
+func (a *SelfServiceAPIService) V1SelfServiceSettingsHistoryGetExecute(r SelfServiceAPIV1SelfServiceSettingsHistoryGetRequest) (*HistorySearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HistorySearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceAPIService.V1SelfServiceSettingsHistoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/self-service/settings/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest struct {
+	ctx context.Context
+	ApiService SelfServiceAPI
+	objectHistoryNote *ObjectHistoryNote
+}
+
+// history notes to create
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest) ObjectHistoryNote(objectHistoryNote ObjectHistoryNote) SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest {
+	r.objectHistoryNote = &objectHistoryNote
+	return r
+}
+
+func (r SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V1SelfServiceSettingsHistoryPostExecute(r)
+}
+
+/*
+V1SelfServiceSettingsHistoryPost Add Self Service settings history notes 
+
+Add Self Service settings history notes
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest
+*/
+func (a *SelfServiceAPIService) V1SelfServiceSettingsHistoryPost(ctx context.Context) SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest {
+	return SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *SelfServiceAPIService) V1SelfServiceSettingsHistoryPostExecute(r SelfServiceAPIV1SelfServiceSettingsHistoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SelfServiceAPIService.V1SelfServiceSettingsHistoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/self-service/settings/history"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.objectHistoryNote == nil {
+		return localVarReturnValue, nil, reportError("objectHistoryNote is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.objectHistoryNote
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

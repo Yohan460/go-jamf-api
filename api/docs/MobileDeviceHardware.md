@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AvailableSpaceMb** | Pointer to **int64** |  | [optional] 
 **UsedSpacePercentage** | Pointer to **int64** |  | [optional] 
 **BatteryLevel** | Pointer to **int64** |  | [optional] 
+**BatteryHealth** | Pointer to **string** | - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting.  | [optional] [default to "UNKNOWN"]
 **SerialNumber** | Pointer to **string** |  | [optional] 
 **WifiMacAddress** | Pointer to **string** |  | [optional] 
 **BluetoothMacAddress** | Pointer to **string** |  | [optional] 
@@ -137,6 +138,31 @@ SetBatteryLevel sets BatteryLevel field to given value.
 `func (o *MobileDeviceHardware) HasBatteryLevel() bool`
 
 HasBatteryLevel returns a boolean if a field has been set.
+
+### GetBatteryHealth
+
+`func (o *MobileDeviceHardware) GetBatteryHealth() string`
+
+GetBatteryHealth returns the BatteryHealth field if non-nil, zero value otherwise.
+
+### GetBatteryHealthOk
+
+`func (o *MobileDeviceHardware) GetBatteryHealthOk() (*string, bool)`
+
+GetBatteryHealthOk returns a tuple with the BatteryHealth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBatteryHealth
+
+`func (o *MobileDeviceHardware) SetBatteryHealth(v string)`
+
+SetBatteryHealth sets BatteryHealth field to given value.
+
+### HasBatteryHealth
+
+`func (o *MobileDeviceHardware) HasBatteryHealth() bool`
+
+HasBatteryHealth returns a boolean if a field has been set.
 
 ### GetSerialNumber
 

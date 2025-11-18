@@ -23,6 +23,7 @@ type ComputerDiskEncryption struct {
 	IndividualRecoveryKeyValidityStatus *string `json:"individualRecoveryKeyValidityStatus,omitempty"`
 	InstitutionalRecoveryKeyPresent *bool `json:"institutionalRecoveryKeyPresent,omitempty"`
 	DiskEncryptionConfigurationName *string `json:"diskEncryptionConfigurationName,omitempty"`
+	FileVault2Enabled *bool `json:"fileVault2Enabled,omitempty"`
 	FileVault2EnabledUserNames []string `json:"fileVault2EnabledUserNames,omitempty"`
 	FileVault2EligibilityMessage *string `json:"fileVault2EligibilityMessage,omitempty"`
 }
@@ -172,6 +173,38 @@ func (o *ComputerDiskEncryption) SetDiskEncryptionConfigurationName(v string) {
 	o.DiskEncryptionConfigurationName = &v
 }
 
+// GetFileVault2Enabled returns the FileVault2Enabled field value if set, zero value otherwise.
+func (o *ComputerDiskEncryption) GetFileVault2Enabled() bool {
+	if o == nil || IsNil(o.FileVault2Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.FileVault2Enabled
+}
+
+// GetFileVault2EnabledOk returns a tuple with the FileVault2Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerDiskEncryption) GetFileVault2EnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.FileVault2Enabled) {
+		return nil, false
+	}
+	return o.FileVault2Enabled, true
+}
+
+// HasFileVault2Enabled returns a boolean if a field has been set.
+func (o *ComputerDiskEncryption) HasFileVault2Enabled() bool {
+	if o != nil && !IsNil(o.FileVault2Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetFileVault2Enabled gets a reference to the given bool and assigns it to the FileVault2Enabled field.
+func (o *ComputerDiskEncryption) SetFileVault2Enabled(v bool) {
+	o.FileVault2Enabled = &v
+}
+
 // GetFileVault2EnabledUserNames returns the FileVault2EnabledUserNames field value if set, zero value otherwise.
 func (o *ComputerDiskEncryption) GetFileVault2EnabledUserNames() []string {
 	if o == nil || IsNil(o.FileVault2EnabledUserNames) {
@@ -257,6 +290,9 @@ func (o ComputerDiskEncryption) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskEncryptionConfigurationName) {
 		toSerialize["diskEncryptionConfigurationName"] = o.DiskEncryptionConfigurationName
+	}
+	if !IsNil(o.FileVault2Enabled) {
+		toSerialize["fileVault2Enabled"] = o.FileVault2Enabled
 	}
 	if !IsNil(o.FileVault2EnabledUserNames) {
 		toSerialize["fileVault2EnabledUserNames"] = o.FileVault2EnabledUserNames

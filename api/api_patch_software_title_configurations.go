@@ -750,36 +750,40 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"absoluteOrderId:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"absoluteOrderId:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1124,20 +1128,21 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	}
 
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	{
 		t := *r.columnsToExport
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "columns-to-export", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "columns-to-export", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "columns-to-export", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "columns-to-export", t, "form", "multi")
 		}
 	}
 	// to determine the Content-Type header
@@ -1158,7 +1163,7 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.accept != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "accept", r.accept, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "accept", r.accept, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -1543,36 +1548,40 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"date:desc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2008,36 +2017,40 @@ func (a *PatchSoftwareTitleConfigurationsAPIService) V2PatchSoftwareTitleConfigu
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"computerName:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"computerName:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

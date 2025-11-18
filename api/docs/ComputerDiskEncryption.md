@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IndividualRecoveryKeyValidityStatus** | Pointer to **string** |  | [optional] 
 **InstitutionalRecoveryKeyPresent** | Pointer to **bool** |  | [optional] 
 **DiskEncryptionConfigurationName** | Pointer to **string** |  | [optional] 
+**FileVault2Enabled** | Pointer to **bool** |  | [optional] [readonly] 
 **FileVault2EnabledUserNames** | Pointer to **[]string** |  | [optional] 
 **FileVault2EligibilityMessage** | Pointer to **string** |  | [optional] 
 
@@ -129,6 +130,31 @@ SetDiskEncryptionConfigurationName sets DiskEncryptionConfigurationName field to
 `func (o *ComputerDiskEncryption) HasDiskEncryptionConfigurationName() bool`
 
 HasDiskEncryptionConfigurationName returns a boolean if a field has been set.
+
+### GetFileVault2Enabled
+
+`func (o *ComputerDiskEncryption) GetFileVault2Enabled() bool`
+
+GetFileVault2Enabled returns the FileVault2Enabled field if non-nil, zero value otherwise.
+
+### GetFileVault2EnabledOk
+
+`func (o *ComputerDiskEncryption) GetFileVault2EnabledOk() (*bool, bool)`
+
+GetFileVault2EnabledOk returns a tuple with the FileVault2Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileVault2Enabled
+
+`func (o *ComputerDiskEncryption) SetFileVault2Enabled(v bool)`
+
+SetFileVault2Enabled sets FileVault2Enabled field to given value.
+
+### HasFileVault2Enabled
+
+`func (o *ComputerDiskEncryption) HasFileVault2Enabled() bool`
+
+HasFileVault2Enabled returns a boolean if a field has been set.
 
 ### GetFileVault2EnabledUserNames
 

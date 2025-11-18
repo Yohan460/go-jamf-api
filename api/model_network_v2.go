@@ -37,6 +37,7 @@ type NetworkV2 struct {
 	Roaming *bool `json:"roaming,omitempty"`
 	PersonalHotspotEnabled *bool `json:"personalHotspotEnabled,omitempty"`
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
+	PreferredVoiceNumber *string `json:"preferredVoiceNumber,omitempty"`
 }
 
 // NewNetworkV2 instantiates a new NetworkV2 object
@@ -600,6 +601,38 @@ func (o *NetworkV2) SetPhoneNumber(v string) {
 	o.PhoneNumber = &v
 }
 
+// GetPreferredVoiceNumber returns the PreferredVoiceNumber field value if set, zero value otherwise.
+func (o *NetworkV2) GetPreferredVoiceNumber() string {
+	if o == nil || IsNil(o.PreferredVoiceNumber) {
+		var ret string
+		return ret
+	}
+	return *o.PreferredVoiceNumber
+}
+
+// GetPreferredVoiceNumberOk returns a tuple with the PreferredVoiceNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NetworkV2) GetPreferredVoiceNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.PreferredVoiceNumber) {
+		return nil, false
+	}
+	return o.PreferredVoiceNumber, true
+}
+
+// HasPreferredVoiceNumber returns a boolean if a field has been set.
+func (o *NetworkV2) HasPreferredVoiceNumber() bool {
+	if o != nil && !IsNil(o.PreferredVoiceNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreferredVoiceNumber gets a reference to the given string and assigns it to the PreferredVoiceNumber field.
+func (o *NetworkV2) SetPreferredVoiceNumber(v string) {
+	o.PreferredVoiceNumber = &v
+}
+
 func (o NetworkV2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -660,6 +693,9 @@ func (o NetworkV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PhoneNumber) {
 		toSerialize["phoneNumber"] = o.PhoneNumber
+	}
+	if !IsNil(o.PreferredVoiceNumber) {
+		toSerialize["preferredVoiceNumber"] = o.PreferredVoiceNumber
 	}
 	return toSerialize, nil
 }

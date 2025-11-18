@@ -90,7 +90,7 @@ Other parameters are passed through a pointer to a apiInventoryPreloadCsvTemplat
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -149,7 +149,7 @@ Other parameters are passed through a pointer to a apiInventoryPreloadDeleteRequ
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -429,7 +429,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -499,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -571,7 +571,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -637,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -764,7 +764,7 @@ Other parameters are passed through a pointer to a apiV1InventoryPreloadCsvTempl
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -823,7 +823,7 @@ Other parameters are passed through a pointer to a apiV1InventoryPreloadDeleteRe
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -897,7 +897,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1037,7 +1037,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1105,7 +1105,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1175,7 +1175,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1247,7 +1247,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1313,7 +1313,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1379,7 +1379,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1440,7 +1440,7 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadCsvGetRe
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1506,7 +1506,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1567,7 +1567,7 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadCsvTempl
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1633,7 +1633,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1694,7 +1694,7 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadEaColumn
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1727,11 +1727,11 @@ import (
 )
 
 func main() {
-	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to [])
-	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to [])
+	exportFields := []string{"Inner_example"} // []string | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields=id,username (optional) (default to {})
+	exportLabels := []string{"Inner_example"} // []string | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels=identifier,name with matching: export-fields=id,username (optional) (default to {})
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to {"id:asc"})
 	filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
 	exportParameters := *openapiclient.NewExportParameters() // ExportParameters | Optional. Override query parameters since they can make URI exceed 2,000 character limit. (optional)
 
@@ -1758,11 +1758,11 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadExportPo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to []]
- **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to []]
+ **exportFields** | **[]string** | Export fields parameter, used to change default order or ignore some of the response properties. Default is empty array, which means that all fields of the response entity will be serialized. Example: export-fields&#x3D;id,username | [default to {}]
+ **exportLabels** | **[]string** | Export labels parameter, used to customize fieldnames/columns in the exported file. Default is empty array, which means that response properties names will be used. Number of the provided labels must match the number of export-fields Example: export-labels&#x3D;identifier,name with matching: export-fields&#x3D;id,username | [default to {}]
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;id:asc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to {&quot;id:asc&quot;}]
  **filter** | **string** | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60;  | [default to &quot;&quot;]
  **exportParameters** | [**ExportParameters**](ExportParameters.md) | Optional. Override query parameters since they can make URI exceed 2,000 character limit. | 
 
@@ -1772,7 +1772,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1807,7 +1807,7 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["date:desc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `date:desc`. Multiple sort criteria are supported and must be separated with a comma.  Example: `sort=date:desc,name:asc`.  (optional) (default to {"date:desc"})
 	filter := "filter_example" // string | Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=username==\"admin\"`  (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -1835,7 +1835,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;date:desc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;date:desc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;date:desc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to {&quot;date:desc&quot;}]
  **filter** | **string** | Allows filtering inventory preload history records. Default search is empty query - returning all results for the requested page. All inventory preload history fields are supported.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;username&#x3D;&#x3D;\&quot;admin\&quot;&#x60;  | [default to &quot;&quot;]
 
 ### Return type
@@ -1844,7 +1844,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1910,7 +1910,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -1969,7 +1969,7 @@ Other parameters are passed through a pointer to a apiV2InventoryPreloadRecordsD
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2004,7 +2004,7 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to ["id:asc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `id:asc`. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use `0` for Computer and `1` for Mobile Device.  Example: `sort=date:desc,name:asc`.  (optional) (default to {"id:asc"})
 	filter := "filter_example" // string | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use `0` for Computer and `1` for Mobile Device.  Query in the RSQL format, allowing `==`, `!=`, `>`, `<`, and `=in=`.  Example: `filter=categoryName==\"Category\"`  (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -2032,7 +2032,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to [&quot;id:asc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;id:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. All inventory preload fields are supported, however fields added by extension attributes are not supported. If sorting by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;.  | [default to {&quot;id:asc&quot;}]
  **filter** | **string** | Allowing to filter inventory preload records. Default search is empty query - returning all results for the requested page. All inventory preload fields are supported, however fields added by extension attributes are not supported. If filtering by deviceType, use &#x60;0&#x60; for Computer and &#x60;1&#x60; for Mobile Device.  Query in the RSQL format, allowing &#x60;&#x3D;&#x3D;&#x60;, &#x60;!&#x3D;&#x60;, &#x60;&gt;&#x60;, &#x60;&lt;&#x60;, and &#x60;&#x3D;in&#x3D;&#x60;.  Example: &#x60;filter&#x3D;categoryName&#x3D;&#x3D;\&quot;Category\&quot;&#x60;  | [default to &quot;&quot;]
 
 ### Return type
@@ -2041,7 +2041,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2109,7 +2109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2179,7 +2179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2251,7 +2251,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -2317,7 +2317,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

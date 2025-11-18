@@ -29,6 +29,7 @@ type EnrollmentSettingsV4 struct {
 	FlushLocationHistoryInformation *bool `json:"flushLocationHistoryInformation,omitempty"`
 	FlushPolicyHistory *bool `json:"flushPolicyHistory,omitempty"`
 	FlushExtensionAttributes *bool `json:"flushExtensionAttributes,omitempty"`
+	FlushSoftwareUpdatePlans *bool `json:"flushSoftwareUpdatePlans,omitempty"`
 	FlushMdmCommandsOnReenroll *string `json:"flushMdmCommandsOnReenroll,omitempty"`
 	MacOsEnterpriseEnrollmentEnabled *bool `json:"macOsEnterpriseEnrollmentEnabled,omitempty"`
 	ManagementUsername string `json:"managementUsername"`
@@ -49,6 +50,7 @@ type EnrollmentSettingsV4 struct {
 	AccountDrivenDeviceMacosEnrollmentEnabled *bool `json:"accountDrivenDeviceMacosEnrollmentEnabled,omitempty"`
 	AccountDrivenUserVisionosEnrollmentEnabled *bool `json:"accountDrivenUserVisionosEnrollmentEnabled,omitempty"`
 	AccountDrivenDeviceVisionosEnrollmentEnabled *bool `json:"accountDrivenDeviceVisionosEnrollmentEnabled,omitempty"`
+	MaidUsernameMergeEnabled *bool `json:"maidUsernameMergeEnabled,omitempty"`
 }
 
 type _EnrollmentSettingsV4 EnrollmentSettingsV4
@@ -73,6 +75,8 @@ func NewEnrollmentSettingsV4(managementUsername string) *EnrollmentSettingsV4 {
 	this.FlushPolicyHistory = &flushPolicyHistory
 	var flushExtensionAttributes bool = false
 	this.FlushExtensionAttributes = &flushExtensionAttributes
+	var flushSoftwareUpdatePlans bool = false
+	this.FlushSoftwareUpdatePlans = &flushSoftwareUpdatePlans
 	var flushMdmCommandsOnReenroll string = "DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED"
 	this.FlushMdmCommandsOnReenroll = &flushMdmCommandsOnReenroll
 	var macOsEnterpriseEnrollmentEnabled bool = false
@@ -106,6 +110,8 @@ func NewEnrollmentSettingsV4(managementUsername string) *EnrollmentSettingsV4 {
 	this.AccountDrivenUserVisionosEnrollmentEnabled = &accountDrivenUserVisionosEnrollmentEnabled
 	var accountDrivenDeviceVisionosEnrollmentEnabled bool = false
 	this.AccountDrivenDeviceVisionosEnrollmentEnabled = &accountDrivenDeviceVisionosEnrollmentEnabled
+	var maidUsernameMergeEnabled bool = false
+	this.MaidUsernameMergeEnabled = &maidUsernameMergeEnabled
 	return &this
 }
 
@@ -128,6 +134,8 @@ func NewEnrollmentSettingsV4WithDefaults() *EnrollmentSettingsV4 {
 	this.FlushPolicyHistory = &flushPolicyHistory
 	var flushExtensionAttributes bool = false
 	this.FlushExtensionAttributes = &flushExtensionAttributes
+	var flushSoftwareUpdatePlans bool = false
+	this.FlushSoftwareUpdatePlans = &flushSoftwareUpdatePlans
 	var flushMdmCommandsOnReenroll string = "DELETE_EVERYTHING_EXCEPT_ACKNOWLEDGED"
 	this.FlushMdmCommandsOnReenroll = &flushMdmCommandsOnReenroll
 	var macOsEnterpriseEnrollmentEnabled bool = false
@@ -162,6 +170,8 @@ func NewEnrollmentSettingsV4WithDefaults() *EnrollmentSettingsV4 {
 	this.AccountDrivenUserVisionosEnrollmentEnabled = &accountDrivenUserVisionosEnrollmentEnabled
 	var accountDrivenDeviceVisionosEnrollmentEnabled bool = false
 	this.AccountDrivenDeviceVisionosEnrollmentEnabled = &accountDrivenDeviceVisionosEnrollmentEnabled
+	var maidUsernameMergeEnabled bool = false
+	this.MaidUsernameMergeEnabled = &maidUsernameMergeEnabled
 	return &this
 }
 
@@ -429,6 +439,38 @@ func (o *EnrollmentSettingsV4) HasFlushExtensionAttributes() bool {
 // SetFlushExtensionAttributes gets a reference to the given bool and assigns it to the FlushExtensionAttributes field.
 func (o *EnrollmentSettingsV4) SetFlushExtensionAttributes(v bool) {
 	o.FlushExtensionAttributes = &v
+}
+
+// GetFlushSoftwareUpdatePlans returns the FlushSoftwareUpdatePlans field value if set, zero value otherwise.
+func (o *EnrollmentSettingsV4) GetFlushSoftwareUpdatePlans() bool {
+	if o == nil || IsNil(o.FlushSoftwareUpdatePlans) {
+		var ret bool
+		return ret
+	}
+	return *o.FlushSoftwareUpdatePlans
+}
+
+// GetFlushSoftwareUpdatePlansOk returns a tuple with the FlushSoftwareUpdatePlans field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnrollmentSettingsV4) GetFlushSoftwareUpdatePlansOk() (*bool, bool) {
+	if o == nil || IsNil(o.FlushSoftwareUpdatePlans) {
+		return nil, false
+	}
+	return o.FlushSoftwareUpdatePlans, true
+}
+
+// HasFlushSoftwareUpdatePlans returns a boolean if a field has been set.
+func (o *EnrollmentSettingsV4) HasFlushSoftwareUpdatePlans() bool {
+	if o != nil && !IsNil(o.FlushSoftwareUpdatePlans) {
+		return true
+	}
+
+	return false
+}
+
+// SetFlushSoftwareUpdatePlans gets a reference to the given bool and assigns it to the FlushSoftwareUpdatePlans field.
+func (o *EnrollmentSettingsV4) SetFlushSoftwareUpdatePlans(v bool) {
+	o.FlushSoftwareUpdatePlans = &v
 }
 
 // GetFlushMdmCommandsOnReenroll returns the FlushMdmCommandsOnReenroll field value if set, zero value otherwise.
@@ -1073,6 +1115,38 @@ func (o *EnrollmentSettingsV4) SetAccountDrivenDeviceVisionosEnrollmentEnabled(v
 	o.AccountDrivenDeviceVisionosEnrollmentEnabled = &v
 }
 
+// GetMaidUsernameMergeEnabled returns the MaidUsernameMergeEnabled field value if set, zero value otherwise.
+func (o *EnrollmentSettingsV4) GetMaidUsernameMergeEnabled() bool {
+	if o == nil || IsNil(o.MaidUsernameMergeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MaidUsernameMergeEnabled
+}
+
+// GetMaidUsernameMergeEnabledOk returns a tuple with the MaidUsernameMergeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnrollmentSettingsV4) GetMaidUsernameMergeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MaidUsernameMergeEnabled) {
+		return nil, false
+	}
+	return o.MaidUsernameMergeEnabled, true
+}
+
+// HasMaidUsernameMergeEnabled returns a boolean if a field has been set.
+func (o *EnrollmentSettingsV4) HasMaidUsernameMergeEnabled() bool {
+	if o != nil && !IsNil(o.MaidUsernameMergeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaidUsernameMergeEnabled gets a reference to the given bool and assigns it to the MaidUsernameMergeEnabled field.
+func (o *EnrollmentSettingsV4) SetMaidUsernameMergeEnabled(v bool) {
+	o.MaidUsernameMergeEnabled = &v
+}
+
 func (o EnrollmentSettingsV4) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1106,6 +1180,9 @@ func (o EnrollmentSettingsV4) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FlushExtensionAttributes) {
 		toSerialize["flushExtensionAttributes"] = o.FlushExtensionAttributes
+	}
+	if !IsNil(o.FlushSoftwareUpdatePlans) {
+		toSerialize["flushSoftwareUpdatePlans"] = o.FlushSoftwareUpdatePlans
 	}
 	if !IsNil(o.FlushMdmCommandsOnReenroll) {
 		toSerialize["flushMdmCommandsOnReenroll"] = o.FlushMdmCommandsOnReenroll
@@ -1164,6 +1241,9 @@ func (o EnrollmentSettingsV4) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountDrivenDeviceVisionosEnrollmentEnabled) {
 		toSerialize["accountDrivenDeviceVisionosEnrollmentEnabled"] = o.AccountDrivenDeviceVisionosEnrollmentEnabled
+	}
+	if !IsNil(o.MaidUsernameMergeEnabled) {
+		toSerialize["maidUsernameMergeEnabled"] = o.MaidUsernameMergeEnabled
 	}
 	return toSerialize, nil
 }

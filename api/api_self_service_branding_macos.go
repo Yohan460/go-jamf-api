@@ -164,30 +164,33 @@ func (a *SelfServiceBrandingMacosAPIService) V1SelfServiceBrandingMacosGetExecut
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"id:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"id:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

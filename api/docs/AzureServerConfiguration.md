@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **TransitiveMembershipUserField** | **string** | Use this field to set user field mapping for transitive membership lookup with Single Sign On | 
 **TransitiveDirectoryMembershipEnabled** | **bool** | Use this field to enable transitive membership lookup. This setting would not apply to Single Sign On | 
 **MembershipCalculationOptimizationEnabled** | Pointer to **bool** | Use this field to enable membership calculation optimization. This setting would not apply to Single Sign On | [optional] 
+**Type** | Pointer to **string** | Type of Entra ID connection | [optional] 
 
 ## Methods
 
@@ -259,6 +260,31 @@ SetMembershipCalculationOptimizationEnabled sets MembershipCalculationOptimizati
 `func (o *AzureServerConfiguration) HasMembershipCalculationOptimizationEnabled() bool`
 
 HasMembershipCalculationOptimizationEnabled returns a boolean if a field has been set.
+
+### GetType
+
+`func (o *AzureServerConfiguration) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *AzureServerConfiguration) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *AzureServerConfiguration) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *AzureServerConfiguration) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

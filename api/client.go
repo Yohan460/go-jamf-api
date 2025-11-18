@@ -32,6 +32,7 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"golang.org/x/oauth2"
 )
 
 var (
@@ -49,7 +50,11 @@ type APIClient struct {
 
 	// API Services
 
+	AccountsAPI AccountsAPI
+
 	ActivationCodeAPI ActivationCodeAPI
+
+	AdcsSettingsAPI AdcsSettingsAPI
 
 	AdvancedMobileDeviceSearchesAPI AdvancedMobileDeviceSearchesAPI
 
@@ -91,6 +96,8 @@ type APIClient struct {
 
 	CloudLdapAPI CloudLdapAPI
 
+	ComputerExtensionAttributesAPI ComputerExtensionAttributesAPI
+
 	ComputerGroupsAPI ComputerGroupsAPI
 
 	ComputerInventoryAPI ComputerInventoryAPI
@@ -107,6 +114,8 @@ type APIClient struct {
 
 	DashboardAPI DashboardAPI
 
+	DeclarativeDeviceManagementAPI DeclarativeDeviceManagementAPI
+
 	DepartmentsAPI DepartmentsAPI
 
 	DeviceCommunicationSettingsAPI DeviceCommunicationSettingsAPI
@@ -115,13 +124,13 @@ type APIClient struct {
 
 	DeviceEnrollmentsDevicesAPI DeviceEnrollmentsDevicesAPI
 
+	DigicertAPI DigicertAPI
+
+	DistributionPointAPI DistributionPointAPI
+
 	DockItemsAPI DockItemsAPI
 
-	DssDeclarationsAPI DssDeclarationsAPI
-
 	EbooksAPI EbooksAPI
-
-	EngageAPI EngageAPI
 
 	EnrollmentAPI EnrollmentAPI
 
@@ -129,19 +138,23 @@ type APIClient struct {
 
 	EnrollmentCustomizationPreviewAPI EnrollmentCustomizationPreviewAPI
 
+	GroupsAPI GroupsAPI
+
 	GsxConnectionAPI GsxConnectionAPI
 
 	HealthCheckAPI HealthCheckAPI
 
 	IconAPI IconAPI
 
+	ImpactAlertNotificationSettingsAPI ImpactAlertNotificationSettingsAPI
+
 	InventoryInformationAPI InventoryInformationAPI
 
 	InventoryPreloadAPI InventoryPreloadAPI
 
-	JamfConnectAPI JamfConnectAPI
+	JamfCloudDistributionServiceAPI JamfCloudDistributionServiceAPI
 
-	JamfContentDistributionServerAPI JamfContentDistributionServerAPI
+	JamfConnectAPI JamfConnectAPI
 
 	JamfManagementFrameworkAPI JamfManagementFrameworkAPI
 
@@ -155,13 +168,9 @@ type APIClient struct {
 
 	JamfProNotificationsAPI JamfProNotificationsAPI
 
-	JamfProNotificationsPreviewAPI JamfProNotificationsPreviewAPI
-
 	JamfProServerUrlPreviewAPI JamfProServerUrlPreviewAPI
 
 	JamfProUserAccountSettingsAPI JamfProUserAccountSettingsAPI
-
-	JamfProUserAccountSettingsPreviewAPI JamfProUserAccountSettingsPreviewAPI
 
 	JamfProVersionAPI JamfProVersionAPI
 
@@ -175,6 +184,8 @@ type APIClient struct {
 
 	LocalesPreviewAPI LocalesPreviewAPI
 
+	LogFlushingAPI LogFlushingAPI
+
 	LoginCustomizationAPI LoginCustomizationAPI
 
 	MacosManagedSoftwareUpdatesAPI MacosManagedSoftwareUpdatesAPI
@@ -187,6 +198,8 @@ type APIClient struct {
 
 	MobileDeviceEnrollmentProfileAPI MobileDeviceEnrollmentProfileAPI
 
+	MobileDeviceExtensionAttributesAPI MobileDeviceExtensionAttributesAPI
+
 	MobileDeviceExtensionAttributesPreviewAPI MobileDeviceExtensionAttributesPreviewAPI
 
 	MobileDeviceGroupsAPI MobileDeviceGroupsAPI
@@ -194,6 +207,8 @@ type APIClient struct {
 	MobileDevicePrestagesAPI MobileDevicePrestagesAPI
 
 	MobileDevicesAPI MobileDevicesAPI
+
+	OidcAPI OidcAPI
 
 	OnboardingAPI OnboardingAPI
 
@@ -229,9 +244,9 @@ type APIClient struct {
 
 	SelfServiceBrandingPreviewAPI SelfServiceBrandingPreviewAPI
 
-	SitesAPI SitesAPI
+	SelfServicePlusAPI SelfServicePlusAPI
 
-	SitesPreviewAPI SitesPreviewAPI
+	SitesAPI SitesAPI
 
 	SlasaAPI SlasaAPI
 
@@ -245,9 +260,9 @@ type APIClient struct {
 
 	SsoCertificateAPI SsoCertificateAPI
 
-	SsoCertificatePreviewAPI SsoCertificatePreviewAPI
-
 	SsoFailoverAPI SsoFailoverAPI
+
+	SsoOauthSessionTokensAPI SsoOauthSessionTokensAPI
 
 	SsoSettingsAPI SsoSettingsAPI
 
@@ -292,7 +307,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.ActivationCodeAPI = (*ActivationCodeAPIService)(&c.common)
+	c.AdcsSettingsAPI = (*AdcsSettingsAPIService)(&c.common)
 	c.AdvancedMobileDeviceSearchesAPI = (*AdvancedMobileDeviceSearchesAPIService)(&c.common)
 	c.AdvancedUserContentSearchesAPI = (*AdvancedUserContentSearchesAPIService)(&c.common)
 	c.ApiAuthenticationAPI = (*ApiAuthenticationAPIService)(&c.common)
@@ -313,6 +330,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CloudIdpAPI = (*CloudIdpAPIService)(&c.common)
 	c.CloudInformationAPI = (*CloudInformationAPIService)(&c.common)
 	c.CloudLdapAPI = (*CloudLdapAPIService)(&c.common)
+	c.ComputerExtensionAttributesAPI = (*ComputerExtensionAttributesAPIService)(&c.common)
 	c.ComputerGroupsAPI = (*ComputerGroupsAPIService)(&c.common)
 	c.ComputerInventoryAPI = (*ComputerInventoryAPIService)(&c.common)
 	c.ComputerInventoryCollectionSettingsAPI = (*ComputerInventoryCollectionSettingsAPIService)(&c.common)
@@ -321,50 +339,54 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ConditionalAccessAPI = (*ConditionalAccessAPIService)(&c.common)
 	c.CsaAPI = (*CsaAPIService)(&c.common)
 	c.DashboardAPI = (*DashboardAPIService)(&c.common)
+	c.DeclarativeDeviceManagementAPI = (*DeclarativeDeviceManagementAPIService)(&c.common)
 	c.DepartmentsAPI = (*DepartmentsAPIService)(&c.common)
 	c.DeviceCommunicationSettingsAPI = (*DeviceCommunicationSettingsAPIService)(&c.common)
 	c.DeviceEnrollmentsAPI = (*DeviceEnrollmentsAPIService)(&c.common)
 	c.DeviceEnrollmentsDevicesAPI = (*DeviceEnrollmentsDevicesAPIService)(&c.common)
+	c.DigicertAPI = (*DigicertAPIService)(&c.common)
+	c.DistributionPointAPI = (*DistributionPointAPIService)(&c.common)
 	c.DockItemsAPI = (*DockItemsAPIService)(&c.common)
-	c.DssDeclarationsAPI = (*DssDeclarationsAPIService)(&c.common)
 	c.EbooksAPI = (*EbooksAPIService)(&c.common)
-	c.EngageAPI = (*EngageAPIService)(&c.common)
 	c.EnrollmentAPI = (*EnrollmentAPIService)(&c.common)
 	c.EnrollmentCustomizationAPI = (*EnrollmentCustomizationAPIService)(&c.common)
 	c.EnrollmentCustomizationPreviewAPI = (*EnrollmentCustomizationPreviewAPIService)(&c.common)
+	c.GroupsAPI = (*GroupsAPIService)(&c.common)
 	c.GsxConnectionAPI = (*GsxConnectionAPIService)(&c.common)
 	c.HealthCheckAPI = (*HealthCheckAPIService)(&c.common)
 	c.IconAPI = (*IconAPIService)(&c.common)
+	c.ImpactAlertNotificationSettingsAPI = (*ImpactAlertNotificationSettingsAPIService)(&c.common)
 	c.InventoryInformationAPI = (*InventoryInformationAPIService)(&c.common)
 	c.InventoryPreloadAPI = (*InventoryPreloadAPIService)(&c.common)
+	c.JamfCloudDistributionServiceAPI = (*JamfCloudDistributionServiceAPIService)(&c.common)
 	c.JamfConnectAPI = (*JamfConnectAPIService)(&c.common)
-	c.JamfContentDistributionServerAPI = (*JamfContentDistributionServerAPIService)(&c.common)
 	c.JamfManagementFrameworkAPI = (*JamfManagementFrameworkAPIService)(&c.common)
 	c.JamfPackageAPI = (*JamfPackageAPIService)(&c.common)
 	c.JamfProAccountPreferencesAPI = (*JamfProAccountPreferencesAPIService)(&c.common)
 	c.JamfProInformationAPI = (*JamfProInformationAPIService)(&c.common)
 	c.JamfProInitializationAPI = (*JamfProInitializationAPIService)(&c.common)
 	c.JamfProNotificationsAPI = (*JamfProNotificationsAPIService)(&c.common)
-	c.JamfProNotificationsPreviewAPI = (*JamfProNotificationsPreviewAPIService)(&c.common)
 	c.JamfProServerUrlPreviewAPI = (*JamfProServerUrlPreviewAPIService)(&c.common)
 	c.JamfProUserAccountSettingsAPI = (*JamfProUserAccountSettingsAPIService)(&c.common)
-	c.JamfProUserAccountSettingsPreviewAPI = (*JamfProUserAccountSettingsPreviewAPIService)(&c.common)
 	c.JamfProVersionAPI = (*JamfProVersionAPIService)(&c.common)
 	c.JamfProtectAPI = (*JamfProtectAPIService)(&c.common)
 	c.JamfRemoteAssistAPI = (*JamfRemoteAssistAPIService)(&c.common)
 	c.LdapAPI = (*LdapAPIService)(&c.common)
 	c.LocalAdminPasswordAPI = (*LocalAdminPasswordAPIService)(&c.common)
 	c.LocalesPreviewAPI = (*LocalesPreviewAPIService)(&c.common)
+	c.LogFlushingAPI = (*LogFlushingAPIService)(&c.common)
 	c.LoginCustomizationAPI = (*LoginCustomizationAPIService)(&c.common)
 	c.MacosManagedSoftwareUpdatesAPI = (*MacosManagedSoftwareUpdatesAPIService)(&c.common)
 	c.ManagedSoftwareUpdatesAPI = (*ManagedSoftwareUpdatesAPIService)(&c.common)
 	c.MdmAPI = (*MdmAPIService)(&c.common)
 	c.MobileDeviceAppsAPI = (*MobileDeviceAppsAPIService)(&c.common)
 	c.MobileDeviceEnrollmentProfileAPI = (*MobileDeviceEnrollmentProfileAPIService)(&c.common)
+	c.MobileDeviceExtensionAttributesAPI = (*MobileDeviceExtensionAttributesAPIService)(&c.common)
 	c.MobileDeviceExtensionAttributesPreviewAPI = (*MobileDeviceExtensionAttributesPreviewAPIService)(&c.common)
 	c.MobileDeviceGroupsAPI = (*MobileDeviceGroupsAPIService)(&c.common)
 	c.MobileDevicePrestagesAPI = (*MobileDevicePrestagesAPIService)(&c.common)
 	c.MobileDevicesAPI = (*MobileDevicesAPIService)(&c.common)
+	c.OidcAPI = (*OidcAPIService)(&c.common)
 	c.OnboardingAPI = (*OnboardingAPIService)(&c.common)
 	c.PackagesAPI = (*PackagesAPIService)(&c.common)
 	c.ParentAppPreviewAPI = (*ParentAppPreviewAPIService)(&c.common)
@@ -382,16 +404,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SelfServiceBrandingIosAPI = (*SelfServiceBrandingIosAPIService)(&c.common)
 	c.SelfServiceBrandingMacosAPI = (*SelfServiceBrandingMacosAPIService)(&c.common)
 	c.SelfServiceBrandingPreviewAPI = (*SelfServiceBrandingPreviewAPIService)(&c.common)
+	c.SelfServicePlusAPI = (*SelfServicePlusAPIService)(&c.common)
 	c.SitesAPI = (*SitesAPIService)(&c.common)
-	c.SitesPreviewAPI = (*SitesPreviewAPIService)(&c.common)
 	c.SlasaAPI = (*SlasaAPIService)(&c.common)
 	c.SmartComputerGroupsPreviewAPI = (*SmartComputerGroupsPreviewAPIService)(&c.common)
 	c.SmartMobileDeviceGroupsPreviewAPI = (*SmartMobileDeviceGroupsPreviewAPIService)(&c.common)
 	c.SmartUserGroupsPreviewAPI = (*SmartUserGroupsPreviewAPIService)(&c.common)
 	c.SmtpServerAPI = (*SmtpServerAPIService)(&c.common)
 	c.SsoCertificateAPI = (*SsoCertificateAPIService)(&c.common)
-	c.SsoCertificatePreviewAPI = (*SsoCertificatePreviewAPIService)(&c.common)
 	c.SsoFailoverAPI = (*SsoFailoverAPIService)(&c.common)
+	c.SsoOauthSessionTokensAPI = (*SsoOauthSessionTokensAPIService)(&c.common)
 	c.SsoSettingsAPI = (*SsoSettingsAPIService)(&c.common)
 	c.StartupStatusAPI = (*StartupStatusAPIService)(&c.common)
 	c.StaticUserGroupsPreviewAPI = (*StaticUserGroupsPreviewAPIService)(&c.common)
@@ -463,6 +485,10 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 
 func parameterValueToString( obj interface{}, key string ) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
+		if actualObj, ok := obj.(interface{ GetActualInstanceValue() interface{} }); ok {
+			return fmt.Sprintf("%v", actualObj.GetActualInstanceValue())
+		}
+
 		return fmt.Sprintf("%v", obj)
 	}
 	var param,ok = obj.(MappedNullable)
@@ -478,7 +504,7 @@ func parameterValueToString( obj interface{}, key string ) string {
 
 // parameterAddToHeaderOrQuery adds the provided object to the request header or url query
 // supporting deep object syntax
-func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, collectionType string) {
+func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix string, obj interface{}, style string, collectionType string) {
 	var v = reflect.ValueOf(obj)
 	var value = ""
 	if v == reflect.ValueOf(nil) {
@@ -494,11 +520,11 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 					if err != nil {
 						return
 					}
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, style, collectionType)
 					return
 				}
 				if t, ok := obj.(time.Time); ok {
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339Nano), style, collectionType)
 					return
 				}
 				value = v.Type().String() + " value"
@@ -510,7 +536,11 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 				var lenIndValue = indValue.Len()
 				for i:=0;i<lenIndValue;i++ {
 					var arrayValue = indValue.Index(i)
-					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+					var keyPrefixForCollectionType = keyPrefix
+					if style == "deepObject" {
+						keyPrefixForCollectionType = keyPrefix + "[" + strconv.Itoa(i) + "]"
+					}
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefixForCollectionType, arrayValue.Interface(), style, collectionType)
 				}
 				return
 
@@ -522,14 +552,14 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 				iter := indValue.MapRange()
 				for iter.Next() {
 					k,v := iter.Key(), iter.Value()
-					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), style, collectionType)
 				}
 				return
 
 			case reflect.Interface:
 				fallthrough
 			case reflect.Ptr:
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), style, collectionType)
 				return
 
 			case reflect.Int, reflect.Int8, reflect.Int16,
@@ -746,6 +776,17 @@ func (c *APIClient) prepareRequest(
 
 		// Walk through any authentication.
 
+		// OAuth2 authentication
+		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
+			// We were able to grab an oauth2 token from the context
+			var latestToken *oauth2.Token
+			if latestToken, err = tok.Token(); err != nil {
+				return nil, err
+			}
+
+			latestToken.SetAuthHeader(localVarRequest)
+		}
+
 		// Basic HTTP Authentication
 		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
@@ -837,18 +878,6 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	_, err = io.Copy(part, file)
 
 	return err
-}
-
-// Prevent trying to import "fmt"
-func reportError(format string, a ...interface{}) error {
-	return fmt.Errorf(format, a...)
-}
-
-// A wrapper for strict JSON decoding
-func newStrictDecoder(data []byte) *json.Decoder {
-	dec := json.NewDecoder(bytes.NewBuffer(data))
-	dec.DisallowUnknownFields()
-	return dec
 }
 
 // Set request body from an interface{}

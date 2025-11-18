@@ -21,6 +21,7 @@ var _ MappedNullable = &ComputerGroup{}
 type ComputerGroup struct {
 	Id *string `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 	SmartGroup *bool `json:"smartGroup,omitempty"`
 }
 
@@ -105,6 +106,38 @@ func (o *ComputerGroup) SetName(v string) {
 	o.Name = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *ComputerGroup) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerGroup) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *ComputerGroup) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *ComputerGroup) SetDescription(v string) {
+	o.Description = &v
+}
+
 // GetSmartGroup returns the SmartGroup field value if set, zero value otherwise.
 func (o *ComputerGroup) GetSmartGroup() bool {
 	if o == nil || IsNil(o.SmartGroup) {
@@ -152,6 +185,9 @@ func (o ComputerGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.SmartGroup) {
 		toSerialize["smartGroup"] = o.SmartGroup

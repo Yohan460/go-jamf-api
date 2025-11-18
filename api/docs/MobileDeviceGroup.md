@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **int64** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 **IsSmartGroup** | Pointer to **bool** |  | [optional] 
 
 ## Methods
@@ -76,6 +77,31 @@ SetName sets Name field to given value.
 `func (o *MobileDeviceGroup) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *MobileDeviceGroup) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *MobileDeviceGroup) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *MobileDeviceGroup) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *MobileDeviceGroup) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetIsSmartGroup
 

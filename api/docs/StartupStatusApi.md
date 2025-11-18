@@ -57,7 +57,7 @@ Other parameters are passed through a pointer to a apiStartupStatusGetRequest st
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

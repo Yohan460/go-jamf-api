@@ -16,6 +16,8 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
+	"reflect"
 )
 
 
@@ -35,6 +37,176 @@ type ComputerGroupsAPI interface {
 	// V1ComputerGroupsGetExecute executes the request
 	//  @return []ComputerGroup
 	V1ComputerGroupsGetExecute(r ComputerGroupsAPIV1ComputerGroupsGetRequest) ([]ComputerGroup, *http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupMembershipIdGet Get the membership of a Smart Computer Group 
+
+	Gets the membership of a Smart Computer Group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of the Smart Computer Group
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest
+	*/
+	V2ComputerGroupsSmartGroupMembershipIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest
+
+	// V2ComputerGroupsSmartGroupMembershipIdGetExecute executes the request
+	//  @return SmartGroupMembership
+	V2ComputerGroupsSmartGroupMembershipIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest) (*SmartGroupMembership, *http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupsGet Search for Smart Computer Groups 
+
+	Search for Smart Computer Groups
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest
+	*/
+	V2ComputerGroupsSmartGroupsGet(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest
+
+	// V2ComputerGroupsSmartGroupsGetExecute executes the request
+	//  @return SmartGroupSearchResult
+	V2ComputerGroupsSmartGroupsGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) (*SmartGroupSearchResult, *http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupsIdDelete Remove specified Smart Computer Group 
+
+	Remove specified Smart Computer Group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Smart Computer Group
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest
+	*/
+	V2ComputerGroupsSmartGroupsIdDelete(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest
+
+	// V2ComputerGroupsSmartGroupsIdDeleteExecute executes the request
+	V2ComputerGroupsSmartGroupsIdDeleteExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupsIdGet Get Smart Computer Group by Id 
+
+	Get Smart Computer Group by Id
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of smart computer group
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest
+	*/
+	V2ComputerGroupsSmartGroupsIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest
+
+	// V2ComputerGroupsSmartGroupsIdGetExecute executes the request
+	//  @return SmartComputerGroupV2
+	V2ComputerGroupsSmartGroupsIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest) (*SmartComputerGroupV2, *http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupsIdPut Update a Smart Computer Group 
+
+	Updates a Smart Computer Group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of target Smart Computer Group
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest
+	*/
+	V2ComputerGroupsSmartGroupsIdPut(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest
+
+	// V2ComputerGroupsSmartGroupsIdPutExecute executes the request
+	//  @return SmartComputerGroupV2
+	V2ComputerGroupsSmartGroupsIdPutExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest) (*SmartComputerGroupV2, *http.Response, error)
+
+	/*
+	V2ComputerGroupsSmartGroupsPost Create a Smart Computer Group 
+
+	Creates a Smart Computer Group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest
+	*/
+	V2ComputerGroupsSmartGroupsPost(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest
+
+	// V2ComputerGroupsSmartGroupsPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputerGroupsSmartGroupsPostExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2ComputerGroupsStaticGroupsGet Search for Static Computer Groups 
+
+	Search for Static Computer Groups
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest
+	*/
+	V2ComputerGroupsStaticGroupsGet(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest
+
+	// V2ComputerGroupsStaticGroupsGetExecute executes the request
+	//  @return StaticComputerGroupSearchResults
+	V2ComputerGroupsStaticGroupsGetExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) (*StaticComputerGroupSearchResults, *http.Response, error)
+
+	/*
+	V2ComputerGroupsStaticGroupsIdDelete Remove Static Computer Group by Id 
+
+	Remove Static Computer Group by Id
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of static computer group
+	@return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest
+	*/
+	V2ComputerGroupsStaticGroupsIdDelete(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest
+
+	// V2ComputerGroupsStaticGroupsIdDeleteExecute executes the request
+	V2ComputerGroupsStaticGroupsIdDeleteExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputerGroupsStaticGroupsIdGet Get Static Computer Group by Id 
+
+	Get Static Computer Group by Id
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of static computer group
+	@return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest
+	*/
+	V2ComputerGroupsStaticGroupsIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest
+
+	// V2ComputerGroupsStaticGroupsIdGetExecute executes the request
+	//  @return StaticComputerGroup
+	V2ComputerGroupsStaticGroupsIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest) (*StaticComputerGroup, *http.Response, error)
+
+	/*
+	V2ComputerGroupsStaticGroupsIdPut Update membership of a static computer group. 
+
+	Update membership of a static computer group.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of a static computer group
+	@return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest
+	*/
+	V2ComputerGroupsStaticGroupsIdPut(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest
+
+	// V2ComputerGroupsStaticGroupsIdPutExecute executes the request
+	//  @return StaticComputerGroupAssignment
+	V2ComputerGroupsStaticGroupsIdPutExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest) (*StaticComputerGroupAssignment, *http.Response, error)
+
+	/*
+	V2ComputerGroupsStaticGroupsPost Create membership of a static computer group. 
+
+	Create membership of a static computer group.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest
+	*/
+	V2ComputerGroupsStaticGroupsPost(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest
+
+	// V2ComputerGroupsStaticGroupsPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputerGroupsStaticGroupsPostExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) (*HrefResponse, *http.Response, error)
 }
 
 // ComputerGroupsAPIService ComputerGroupsAPI service
@@ -124,6 +296,1382 @@ func (a *ComputerGroupsAPIService) V1ComputerGroupsGetExecute(r ComputerGroupsAP
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest) Execute() (*SmartGroupMembership, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupMembershipIdGetExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupMembershipIdGet Get the membership of a Smart Computer Group 
+
+Gets the membership of a Smart Computer Group
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of the Smart Computer Group
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupMembershipIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return SmartGroupMembership
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupMembershipIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupMembershipIdGetRequest) (*SmartGroupMembership, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SmartGroupMembership
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupMembershipIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-group-membership/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) Page(page int64) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) PageSize(pageSize int64) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;name:asc
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) Sort(sort []string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter smart computer group collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, siteId. The siteId field can only be filtered by admins with full access. Any sited admin will have siteId filtered automatically. Example: name&#x3D;&#x3D;\&quot;*group*\&quot;
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) Filter(filter string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) Execute() (*SmartGroupSearchResult, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupsGetExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupsGet Search for Smart Computer Groups 
+
+Search for Smart Computer Groups
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsGet(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return SmartGroupSearchResult
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsGetRequest) (*SmartGroupSearchResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SmartGroupSearchResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-groups"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"id:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupsIdDeleteExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupsIdDelete Remove specified Smart Computer Group 
+
+Remove specified Smart Computer Group
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of target Smart Computer Group
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdDelete(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdDeleteExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupsIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest) Execute() (*SmartComputerGroupV2, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupsIdGetExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupsIdGet Get Smart Computer Group by Id 
+
+Get Smart Computer Group by Id
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of smart computer group
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return SmartComputerGroupV2
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdGetRequest) (*SmartComputerGroupV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SmartComputerGroupV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupsIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+	smartComputerGroupV2 *SmartComputerGroupV2
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest) SmartComputerGroupV2(smartComputerGroupV2 SmartComputerGroupV2) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest {
+	r.smartComputerGroupV2 = &smartComputerGroupV2
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest) Execute() (*SmartComputerGroupV2, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupsIdPutExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupsIdPut Update a Smart Computer Group 
+
+Updates a Smart Computer Group
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of target Smart Computer Group
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdPut(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return SmartComputerGroupV2
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsIdPutExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsIdPutRequest) (*SmartComputerGroupV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *SmartComputerGroupV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupsIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.smartComputerGroupV2 == nil {
+		return localVarReturnValue, nil, reportError("smartComputerGroupV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.smartComputerGroupV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	smartComputerGroupV2 *SmartComputerGroupV2
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) SmartComputerGroupV2(smartComputerGroupV2 SmartComputerGroupV2) ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest {
+	r.smartComputerGroupV2 = &smartComputerGroupV2
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsSmartGroupsPostExecute(r)
+}
+
+/*
+V2ComputerGroupsSmartGroupsPost Create a Smart Computer Group 
+
+Creates a Smart Computer Group
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsPost(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest {
+	return ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsPostExecute(r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsSmartGroupsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/smart-groups"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.smartComputerGroupV2 == nil {
+		return localVarReturnValue, nil, reportError("smartComputerGroupV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.smartComputerGroupV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) Page(page int64) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) PageSize(pageSize int64) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;name:asc
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) Sort(sort []string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter static computer group collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, siteId. The siteId field can only be filtered by admins with full access. Any sited admin will have siteId filtered automatically. Example: name&#x3D;&#x3D;\&quot;*group*\&quot;
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) Filter(filter string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) Execute() (*StaticComputerGroupSearchResults, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsStaticGroupsGetExecute(r)
+}
+
+/*
+V2ComputerGroupsStaticGroupsGet Search for Static Computer Groups 
+
+Search for Static Computer Groups
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsGet(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest {
+	return ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return StaticComputerGroupSearchResults
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsGetExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsGetRequest) (*StaticComputerGroupSearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StaticComputerGroupSearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsStaticGroupsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/static-groups"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"id:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputerGroupsStaticGroupsIdDeleteExecute(r)
+}
+
+/*
+V2ComputerGroupsStaticGroupsIdDelete Remove Static Computer Group by Id 
+
+Remove Static Computer Group by Id
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of static computer group
+ @return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdDelete(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest {
+	return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdDeleteExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsStaticGroupsIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/static-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest) Execute() (*StaticComputerGroup, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsStaticGroupsIdGetExecute(r)
+}
+
+/*
+V2ComputerGroupsStaticGroupsIdGet Get Static Computer Group by Id 
+
+Get Static Computer Group by Id
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of static computer group
+ @return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdGet(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest {
+	return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return StaticComputerGroup
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdGetExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdGetRequest) (*StaticComputerGroup, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StaticComputerGroup
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsStaticGroupsIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/static-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	id string
+	staticComputerGroupAssignment *StaticComputerGroupAssignment
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest) StaticComputerGroupAssignment(staticComputerGroupAssignment StaticComputerGroupAssignment) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest {
+	r.staticComputerGroupAssignment = &staticComputerGroupAssignment
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest) Execute() (*StaticComputerGroupAssignment, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsStaticGroupsIdPutExecute(r)
+}
+
+/*
+V2ComputerGroupsStaticGroupsIdPut Update membership of a static computer group. 
+
+Update membership of a static computer group.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of a static computer group
+ @return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdPut(ctx context.Context, id string) ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest {
+	return ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return StaticComputerGroupAssignment
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsIdPutExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsIdPutRequest) (*StaticComputerGroupAssignment, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *StaticComputerGroupAssignment
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsStaticGroupsIdPut")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/static-groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.staticComputerGroupAssignment == nil {
+		return localVarReturnValue, nil, reportError("staticComputerGroupAssignment is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.staticComputerGroupAssignment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest struct {
+	ctx context.Context
+	ApiService ComputerGroupsAPI
+	staticComputerGroupAssignment *StaticComputerGroupAssignment
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) StaticComputerGroupAssignment(staticComputerGroupAssignment StaticComputerGroupAssignment) ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest {
+	r.staticComputerGroupAssignment = &staticComputerGroupAssignment
+	return r
+}
+
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2ComputerGroupsStaticGroupsPostExecute(r)
+}
+
+/*
+V2ComputerGroupsStaticGroupsPost Create membership of a static computer group. 
+
+Create membership of a static computer group.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest
+*/
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsPost(ctx context.Context) ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest {
+	return ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsPostExecute(r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerGroupsAPIService.V2ComputerGroupsStaticGroupsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-groups/static-groups"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.staticComputerGroupAssignment == nil {
+		return localVarReturnValue, nil, reportError("staticComputerGroupAssignment is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.staticComputerGroupAssignment
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

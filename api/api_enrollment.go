@@ -54,133 +54,6 @@ type EnrollmentAPI interface {
 	V1AdueSessionTokenSettingsPutExecute(r EnrollmentAPIV1AdueSessionTokenSettingsPutRequest) (*AccountDrivenUserEnrollmentSessionTokenSettings, *http.Response, error)
 
 	/*
-	V2EnrollmentAccessGroupsGet Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-
-	Retrieves the configured LDAP groups configured for User-Initiated Enrollment.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentAccessGroupsGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentAccessGroupsGet(ctx context.Context) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest
-
-	// V2EnrollmentAccessGroupsGetExecute executes the request
-	//  @return AccessGroupsV2SearchResults
-	// Deprecated
-	V2EnrollmentAccessGroupsGetExecute(r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) (*AccessGroupsV2SearchResults, *http.Response, error)
-
-	/*
-	V2EnrollmentAccessGroupsPost Add the configured LDAP group for User-Initiated Enrollment. 
-
-	Add the configured LDAP group for User-Initiated Enrollment.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentAccessGroupsPostRequest
-
-	Deprecated
-	*/
-	V2EnrollmentAccessGroupsPost(ctx context.Context) EnrollmentAPIV2EnrollmentAccessGroupsPostRequest
-
-	// V2EnrollmentAccessGroupsPostExecute executes the request
-	//  @return HrefResponse
-	// Deprecated
-	V2EnrollmentAccessGroupsPostExecute(r EnrollmentAPIV2EnrollmentAccessGroupsPostRequest) (*HrefResponse, *http.Response, error)
-
-	/*
-	V2EnrollmentAccessGroupsServerIdGroupIdDelete Delete an LDAP group's access to user initiated Enrollment 
-
-	Deletes an LDAP group's access to user initiated enrollment. The group "All LDAP Users" cannot be deleted, but it can be modified to disallow User-Initiated Enrollment.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId LDAP server id
-	@param groupId LDAP group id.
-	@return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest
-
-	Deprecated
-	*/
-	V2EnrollmentAccessGroupsServerIdGroupIdDelete(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest
-
-	// V2EnrollmentAccessGroupsServerIdGroupIdDeleteExecute executes the request
-	// Deprecated
-	V2EnrollmentAccessGroupsServerIdGroupIdDeleteExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest) (*http.Response, error)
-
-	/*
-	V2EnrollmentAccessGroupsServerIdGroupIdGet Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-
-	Retrieves the configured LDAP groups configured for User-Initiated Enrollment.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId LDAP server id.
-	@param groupId LDAP group id.
-	@return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentAccessGroupsServerIdGroupIdGet(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest
-
-	// V2EnrollmentAccessGroupsServerIdGroupIdGetExecute executes the request
-	//  @return EnrollmentAccessGroupV2
-	// Deprecated
-	V2EnrollmentAccessGroupsServerIdGroupIdGetExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest) (*EnrollmentAccessGroupV2, *http.Response, error)
-
-	/*
-	V2EnrollmentAccessGroupsServerIdGroupIdPut Modify the configured LDAP groups configured for User-Initiated Enrollment 
-
-	Modifies the configured LDAP groups configured for User-Initiated Enrollment.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serverId LDAP server id.
-	@param groupId LDAP group id.
-	@return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest
-
-	Deprecated
-	*/
-	V2EnrollmentAccessGroupsServerIdGroupIdPut(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest
-
-	// V2EnrollmentAccessGroupsServerIdGroupIdPutExecute executes the request
-	//  @return EnrollmentAccessGroupV2
-	// Deprecated
-	V2EnrollmentAccessGroupsServerIdGroupIdPutExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest) (*EnrollmentAccessGroupV2, *http.Response, error)
-
-	/*
-	V2EnrollmentFilteredLanguageCodesGet Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
-
-	Retrieves the list of languages and corresponding ISO 639-1 Codes, but only those not already added to Enrollment.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentFilteredLanguageCodesGet(ctx context.Context) EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest
-
-	// V2EnrollmentFilteredLanguageCodesGetExecute executes the request
-	//  @return []LanguageCode
-	// Deprecated
-	V2EnrollmentFilteredLanguageCodesGetExecute(r EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest) ([]LanguageCode, *http.Response, error)
-
-	/*
-	V2EnrollmentGet Get Enrollment object and Re-enrollment settings 
-
-	Gets Enrollment object and re-enrollment settings. The settings can be altered without providing the existing management password by providing the following value for `managementPassword`:
-`\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff`.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentGet(ctx context.Context) EnrollmentAPIV2EnrollmentGetRequest
-
-	// V2EnrollmentGetExecute executes the request
-	//  @return EnrollmentSettingsV2
-	// Deprecated
-	V2EnrollmentGetExecute(r EnrollmentAPIV2EnrollmentGetRequest) (*EnrollmentSettingsV2, *http.Response, error)
-
-	/*
 	V2EnrollmentHistoryExportPost Export enrollment history collection 
 
 	Export enrollment history collection
@@ -224,131 +97,6 @@ type EnrollmentAPI interface {
 	// V2EnrollmentHistoryPostExecute executes the request
 	//  @return HrefResponse
 	V2EnrollmentHistoryPostExecute(r EnrollmentAPIV2EnrollmentHistoryPostRequest) (*HrefResponse, *http.Response, error)
-
-	/*
-	V2EnrollmentLanguageCodesGet Retrieve the list of languages and corresponding ISO 639-1 Codes 
-
-	Retrieves the list of languages and corresponding ISO 639-1 Codes.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentLanguageCodesGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguageCodesGet(ctx context.Context) EnrollmentAPIV2EnrollmentLanguageCodesGetRequest
-
-	// V2EnrollmentLanguageCodesGetExecute executes the request
-	//  @return []LanguageCode
-	// Deprecated
-	V2EnrollmentLanguageCodesGetExecute(r EnrollmentAPIV2EnrollmentLanguageCodesGetRequest) ([]LanguageCode, *http.Response, error)
-
-	/*
-	V2EnrollmentLanguagesDeleteMultiplePost Delete multiple configured languages from User-Initiated Enrollment settings 
-
-	Delete multiple configured languages from User-Initiated Enrollment settings
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguagesDeleteMultiplePost(ctx context.Context) EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest
-
-	// V2EnrollmentLanguagesDeleteMultiplePostExecute executes the request
-	// Deprecated
-	V2EnrollmentLanguagesDeleteMultiplePostExecute(r EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest) (*http.Response, error)
-
-	/*
-	V2EnrollmentLanguagesGet Get an array of the language codes that have Enrollment messaging 
-
-	Returns an array of the language codes that have enrollment messaging currently configured.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentLanguagesGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguagesGet(ctx context.Context) EnrollmentAPIV2EnrollmentLanguagesGetRequest
-
-	// V2EnrollmentLanguagesGetExecute executes the request
-	//  @return ProcessTextsSearchResults
-	// Deprecated
-	V2EnrollmentLanguagesGetExecute(r EnrollmentAPIV2EnrollmentLanguagesGetRequest) (*ProcessTextsSearchResults, *http.Response, error)
-
-	/*
-	V2EnrollmentLanguagesLanguageIdDelete Delete the Enrollment messaging for a language 
-
-	Delete the enrollment messaging for a language.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param languageId Two letter ISO 639-1 Language Code
-	@return EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguagesLanguageIdDelete(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest
-
-	// V2EnrollmentLanguagesLanguageIdDeleteExecute executes the request
-	// Deprecated
-	V2EnrollmentLanguagesLanguageIdDeleteExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest) (*http.Response, error)
-
-	/*
-	V2EnrollmentLanguagesLanguageIdGet Retrieve the Enrollment messaging for a language 
-
-	Retrieves the enrollment messaging for a language.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param languageId Two letter ISO 639-1 Language Code
-	@return EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguagesLanguageIdGet(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest
-
-	// V2EnrollmentLanguagesLanguageIdGetExecute executes the request
-	//  @return EnrollmentProcessTextObject
-	// Deprecated
-	V2EnrollmentLanguagesLanguageIdGetExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest) (*EnrollmentProcessTextObject, *http.Response, error)
-
-	/*
-	V2EnrollmentLanguagesLanguageIdPut Edit Enrollment messaging for a language 
-
-	Edit enrollment messaging for a language.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param languageId Two letter ISO 639-1 Language Code
-	@return EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest
-
-	Deprecated
-	*/
-	V2EnrollmentLanguagesLanguageIdPut(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest
-
-	// V2EnrollmentLanguagesLanguageIdPutExecute executes the request
-	//  @return EnrollmentProcessTextObject
-	// Deprecated
-	V2EnrollmentLanguagesLanguageIdPutExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest) (*EnrollmentProcessTextObject, *http.Response, error)
-
-	/*
-	V2EnrollmentPut Update Enrollment object 
-
-	Update enrollment object. Regarding the `developerCertificateIdentity`,
-if this object is omitted, the certificate will not be deleted from Jamf Pro.
-The `identityKeystore` is the entire cert file as a base64 encoded string. The
-`md5Sum` field is not required in the PUT request, but is calculated and returned
-in the response.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV2EnrollmentPutRequest
-
-	Deprecated
-	*/
-	V2EnrollmentPut(ctx context.Context) EnrollmentAPIV2EnrollmentPutRequest
-
-	// V2EnrollmentPutExecute executes the request
-	//  @return EnrollmentSettingsV2
-	// Deprecated
-	V2EnrollmentPutExecute(r EnrollmentAPIV2EnrollmentPutRequest) (*EnrollmentSettingsV2, *http.Response, error)
 
 	/*
 	V3EnrollmentAccessGroupsGet Retrieve the configured LDAP groups configured for User-Initiated Enrollment. 
@@ -440,24 +188,6 @@ in the response.
 	V3EnrollmentFilteredLanguageCodesGetExecute(r EnrollmentAPIV3EnrollmentFilteredLanguageCodesGetRequest) ([]LanguageCode, *http.Response, error)
 
 	/*
-	V3EnrollmentGet Get Enrollment object and Re-enrollment settings 
-
-	Gets Enrollment object and re-enrollment settings.
-
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV3EnrollmentGetRequest
-
-	Deprecated
-	*/
-	V3EnrollmentGet(ctx context.Context) EnrollmentAPIV3EnrollmentGetRequest
-
-	// V3EnrollmentGetExecute executes the request
-	//  @return EnrollmentSettingsV3
-	// Deprecated
-	V3EnrollmentGetExecute(r EnrollmentAPIV3EnrollmentGetRequest) (*EnrollmentSettingsV3, *http.Response, error)
-
-	/*
 	V3EnrollmentLanguageCodesGet Retrieve the list of languages and corresponding ISO 639-1 Codes 
 
 	Retrieves the list of languages and corresponding ISO 639-1 Codes.
@@ -543,26 +273,33 @@ in the response.
 	V3EnrollmentLanguagesLanguageIdPutExecute(r EnrollmentAPIV3EnrollmentLanguagesLanguageIdPutRequest) (*EnrollmentProcessTextObject, *http.Response, error)
 
 	/*
-	V3EnrollmentPut Update Enrollment object 
+	V4EnrollmentAccessManagementGet Get Access Management settings
 
-	Update enrollment object. Regarding the `developerCertificateIdentity`,
-if this object is omitted, the certificate will not be deleted from Jamf Pro.
-The `identityKeystore` is the entire cert file as a base64 encoded string. The
-`md5Sum` field is not required in the PUT request, but is calculated and returned
-in the response.
+	Get Access Management settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EnrollmentAPIV4EnrollmentAccessManagementGetRequest
+	*/
+	V4EnrollmentAccessManagementGet(ctx context.Context) EnrollmentAPIV4EnrollmentAccessManagementGetRequest
+
+	// V4EnrollmentAccessManagementGetExecute executes the request
+	//  @return AccessManagementSetting
+	V4EnrollmentAccessManagementGetExecute(r EnrollmentAPIV4EnrollmentAccessManagementGetRequest) (*AccessManagementSetting, *http.Response, error)
+
+	/*
+	V4EnrollmentAccessManagementPost Configure Access Management settings 
+
+	Configure Access Management settings
 
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return EnrollmentAPIV3EnrollmentPutRequest
-
-	Deprecated
+	@return EnrollmentAPIV4EnrollmentAccessManagementPostRequest
 	*/
-	V3EnrollmentPut(ctx context.Context) EnrollmentAPIV3EnrollmentPutRequest
+	V4EnrollmentAccessManagementPost(ctx context.Context) EnrollmentAPIV4EnrollmentAccessManagementPostRequest
 
-	// V3EnrollmentPutExecute executes the request
-	//  @return EnrollmentSettingsV3
-	// Deprecated
-	V3EnrollmentPutExecute(r EnrollmentAPIV3EnrollmentPutRequest) (*EnrollmentSettingsV3, *http.Response, error)
+	// V4EnrollmentAccessManagementPostExecute executes the request
+	//  @return AccessManagementSetting
+	V4EnrollmentAccessManagementPostExecute(r EnrollmentAPIV4EnrollmentAccessManagementPostRequest) (*AccessManagementSetting, *http.Response, error)
 
 	/*
 	V4EnrollmentGet Get Enrollment object and Re-enrollment settings 
@@ -824,854 +561,6 @@ func (a *EnrollmentAPIService) V1AdueSessionTokenSettingsPutExecute(r Enrollment
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type EnrollmentAPIV2EnrollmentAccessGroupsGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	page *int64
-	pageSize *int64
-	sort *[]string
-	allUsersOptionFirst *bool
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) Page(page int64) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
-	r.page = &page
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;. 
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) Sort(sort []string) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
-	r.sort = &sort
-	return r
-}
-
-// Return \&quot;All LDAP Users\&quot; option on the first position if it is present in the current page
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) AllUsersOptionFirst(allUsersOptionFirst bool) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
-	r.allUsersOptionFirst = &allUsersOptionFirst
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) Execute() (*AccessGroupsV2SearchResults, *http.Response, error) {
-	return r.ApiService.V2EnrollmentAccessGroupsGetExecute(r)
-}
-
-/*
-V2EnrollmentAccessGroupsGet Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-
-Retrieves the configured LDAP groups configured for User-Initiated Enrollment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentAccessGroupsGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsGet(ctx context.Context) EnrollmentAPIV2EnrollmentAccessGroupsGetRequest {
-	return EnrollmentAPIV2EnrollmentAccessGroupsGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return AccessGroupsV2SearchResults
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsGetExecute(r EnrollmentAPIV2EnrollmentAccessGroupsGetRequest) (*AccessGroupsV2SearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *AccessGroupsV2SearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentAccessGroupsGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/access-groups"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
-	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
-		}
-	} else {
-		defaultValue := []string{"name:asc"}
-		r.sort = &defaultValue
-	}
-	if r.allUsersOptionFirst != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", r.allUsersOptionFirst, "")
-	} else {
-		var defaultValue bool = false
-		r.allUsersOptionFirst = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentAccessGroupsPostRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	enrollmentAccessGroupV2 *EnrollmentAccessGroupV2
-}
-
-// Configured LDAP group to create.
-func (r EnrollmentAPIV2EnrollmentAccessGroupsPostRequest) EnrollmentAccessGroupV2(enrollmentAccessGroupV2 EnrollmentAccessGroupV2) EnrollmentAPIV2EnrollmentAccessGroupsPostRequest {
-	r.enrollmentAccessGroupV2 = &enrollmentAccessGroupV2
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
-	return r.ApiService.V2EnrollmentAccessGroupsPostExecute(r)
-}
-
-/*
-V2EnrollmentAccessGroupsPost Add the configured LDAP group for User-Initiated Enrollment. 
-
-Add the configured LDAP group for User-Initiated Enrollment.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentAccessGroupsPostRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsPost(ctx context.Context) EnrollmentAPIV2EnrollmentAccessGroupsPostRequest {
-	return EnrollmentAPIV2EnrollmentAccessGroupsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return HrefResponse
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsPostExecute(r EnrollmentAPIV2EnrollmentAccessGroupsPostRequest) (*HrefResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HrefResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentAccessGroupsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/access-groups"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.enrollmentAccessGroupV2 == nil {
-		return localVarReturnValue, nil, reportError("enrollmentAccessGroupV2 is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.enrollmentAccessGroupV2
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	serverId string
-	groupId string
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V2EnrollmentAccessGroupsServerIdGroupIdDeleteExecute(r)
-}
-
-/*
-V2EnrollmentAccessGroupsServerIdGroupIdDelete Delete an LDAP group's access to user initiated Enrollment 
-
-Deletes an LDAP group's access to user initiated enrollment. The group "All LDAP Users" cannot be deleted, but it can be modified to disallow User-Initiated Enrollment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId LDAP server id
- @param groupId LDAP group id.
- @return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdDelete(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest {
-	return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		groupId: groupId,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdDeleteExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentAccessGroupsServerIdGroupIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/access-groups/{serverId}/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	serverId string
-	groupId string
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest) Execute() (*EnrollmentAccessGroupV2, *http.Response, error) {
-	return r.ApiService.V2EnrollmentAccessGroupsServerIdGroupIdGetExecute(r)
-}
-
-/*
-V2EnrollmentAccessGroupsServerIdGroupIdGet Retrieve the configured LDAP groups configured for User-Initiated Enrollment 
-
-Retrieves the configured LDAP groups configured for User-Initiated Enrollment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId LDAP server id.
- @param groupId LDAP group id.
- @return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdGet(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest {
-	return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		groupId: groupId,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentAccessGroupV2
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdGetExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdGetRequest) (*EnrollmentAccessGroupV2, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentAccessGroupV2
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentAccessGroupsServerIdGroupIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/access-groups/{serverId}/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	serverId string
-	groupId string
-	enrollmentAccessGroupV2 *EnrollmentAccessGroupV2
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest) EnrollmentAccessGroupV2(enrollmentAccessGroupV2 EnrollmentAccessGroupV2) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest {
-	r.enrollmentAccessGroupV2 = &enrollmentAccessGroupV2
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest) Execute() (*EnrollmentAccessGroupV2, *http.Response, error) {
-	return r.ApiService.V2EnrollmentAccessGroupsServerIdGroupIdPutExecute(r)
-}
-
-/*
-V2EnrollmentAccessGroupsServerIdGroupIdPut Modify the configured LDAP groups configured for User-Initiated Enrollment 
-
-Modifies the configured LDAP groups configured for User-Initiated Enrollment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serverId LDAP server id.
- @param groupId LDAP group id.
- @return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdPut(ctx context.Context, serverId string, groupId string) EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest {
-	return EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		serverId: serverId,
-		groupId: groupId,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentAccessGroupV2
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentAccessGroupsServerIdGroupIdPutExecute(r EnrollmentAPIV2EnrollmentAccessGroupsServerIdGroupIdPutRequest) (*EnrollmentAccessGroupV2, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentAccessGroupV2
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentAccessGroupsServerIdGroupIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/access-groups/{serverId}/{groupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"serverId"+"}", url.PathEscape(parameterValueToString(r.serverId, "serverId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.enrollmentAccessGroupV2
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-}
-
-func (r EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest) Execute() ([]LanguageCode, *http.Response, error) {
-	return r.ApiService.V2EnrollmentFilteredLanguageCodesGetExecute(r)
-}
-
-/*
-V2EnrollmentFilteredLanguageCodesGet Retrieve the list of languages and corresponding ISO 639-1 Codes but only those not already added to Enrollment 
-
-Retrieves the list of languages and corresponding ISO 639-1 Codes, but only those not already added to Enrollment.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentFilteredLanguageCodesGet(ctx context.Context) EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest {
-	return EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []LanguageCode
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentFilteredLanguageCodesGetExecute(r EnrollmentAPIV2EnrollmentFilteredLanguageCodesGetRequest) ([]LanguageCode, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LanguageCode
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentFilteredLanguageCodesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/filtered-language-codes"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-}
-
-func (r EnrollmentAPIV2EnrollmentGetRequest) Execute() (*EnrollmentSettingsV2, *http.Response, error) {
-	return r.ApiService.V2EnrollmentGetExecute(r)
-}
-
-/*
-V2EnrollmentGet Get Enrollment object and Re-enrollment settings 
-
-Gets Enrollment object and re-enrollment settings. The settings can be altered without providing the existing management password by providing the following value for `managementPassword`:
-`\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff\uffff`.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentGet(ctx context.Context) EnrollmentAPIV2EnrollmentGetRequest {
-	return EnrollmentAPIV2EnrollmentGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentSettingsV2
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentGetExecute(r EnrollmentAPIV2EnrollmentGetRequest) (*EnrollmentSettingsV2, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentSettingsV2
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type EnrollmentAPIV2EnrollmentHistoryExportPostRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
@@ -1770,60 +659,66 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{}
-		r.exportFields = &defaultValue
+        var defaultValue []string = []string{}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", defaultValue, "form", "multi")
+        r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
 		t := *r.exportLabels
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{}
-		r.exportLabels = &defaultValue
+        var defaultValue []string = []string{}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", defaultValue, "form", "multi")
+        r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"id:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"id:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1968,30 +863,33 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryGetExecute(r EnrollmentAPIV2En
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"date:desc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"date:desc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2169,842 +1067,6 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryPostExecute(r EnrollmentAPIV2E
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type EnrollmentAPIV2EnrollmentLanguageCodesGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguageCodesGetRequest) Execute() ([]LanguageCode, *http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguageCodesGetExecute(r)
-}
-
-/*
-V2EnrollmentLanguageCodesGet Retrieve the list of languages and corresponding ISO 639-1 Codes 
-
-Retrieves the list of languages and corresponding ISO 639-1 Codes.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentLanguageCodesGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguageCodesGet(ctx context.Context) EnrollmentAPIV2EnrollmentLanguageCodesGetRequest {
-	return EnrollmentAPIV2EnrollmentLanguageCodesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []LanguageCode
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguageCodesGetExecute(r EnrollmentAPIV2EnrollmentLanguageCodesGetRequest) ([]LanguageCode, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []LanguageCode
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguageCodesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/language-codes"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	ids *Ids
-}
-
-// ids of each language to delete
-func (r EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest) Ids(ids Ids) EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest {
-	r.ids = &ids
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguagesDeleteMultiplePostExecute(r)
-}
-
-/*
-V2EnrollmentLanguagesDeleteMultiplePost Delete multiple configured languages from User-Initiated Enrollment settings 
-
-Delete multiple configured languages from User-Initiated Enrollment settings
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesDeleteMultiplePost(ctx context.Context) EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest {
-	return EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesDeleteMultiplePostExecute(r EnrollmentAPIV2EnrollmentLanguagesDeleteMultiplePostRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguagesDeleteMultiplePost")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/languages/delete-multiple"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.ids == nil {
-		return nil, reportError("ids is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.ids
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentLanguagesGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	page *int64
-	pageSize *int64
-	sort *[]string
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) Page(page int64) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
-	r.page = &page
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) PageSize(pageSize int64) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
-	r.pageSize = &pageSize
-	return r
-}
-
-// Sorting criteria in the format: property:asc/desc. Default sort is &#x60;languageCode:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma. Example: &#x60;sort&#x3D;date:desc,name:asc&#x60;. 
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) Sort(sort []string) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
-	r.sort = &sort
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesGetRequest) Execute() (*ProcessTextsSearchResults, *http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguagesGetExecute(r)
-}
-
-/*
-V2EnrollmentLanguagesGet Get an array of the language codes that have Enrollment messaging 
-
-Returns an array of the language codes that have enrollment messaging currently configured.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentLanguagesGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesGet(ctx context.Context) EnrollmentAPIV2EnrollmentLanguagesGetRequest {
-	return EnrollmentAPIV2EnrollmentLanguagesGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return ProcessTextsSearchResults
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesGetExecute(r EnrollmentAPIV2EnrollmentLanguagesGetRequest) (*ProcessTextsSearchResults, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ProcessTextsSearchResults
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguagesGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/languages"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
-	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
-	}
-	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
-	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
-	}
-	if r.sort != nil {
-		t := *r.sort
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
-		}
-	} else {
-		defaultValue := []string{"languageCode:asc"}
-		r.sort = &defaultValue
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	languageId string
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguagesLanguageIdDeleteExecute(r)
-}
-
-/*
-V2EnrollmentLanguagesLanguageIdDelete Delete the Enrollment messaging for a language 
-
-Delete the enrollment messaging for a language.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param languageId Two letter ISO 639-1 Language Code
- @return EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdDelete(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest {
-	return EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest{
-		ApiService: a,
-		ctx: ctx,
-		languageId: languageId,
-	}
-}
-
-// Execute executes the request
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdDeleteExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdDeleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguagesLanguageIdDelete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/languages/{languageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"languageId"+"}", url.PathEscape(parameterValueToString(r.languageId, "languageId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	languageId string
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest) Execute() (*EnrollmentProcessTextObject, *http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguagesLanguageIdGetExecute(r)
-}
-
-/*
-V2EnrollmentLanguagesLanguageIdGet Retrieve the Enrollment messaging for a language 
-
-Retrieves the enrollment messaging for a language.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param languageId Two letter ISO 639-1 Language Code
- @return EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdGet(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest {
-	return EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest{
-		ApiService: a,
-		ctx: ctx,
-		languageId: languageId,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentProcessTextObject
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdGetExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdGetRequest) (*EnrollmentProcessTextObject, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentProcessTextObject
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguagesLanguageIdGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/languages/{languageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"languageId"+"}", url.PathEscape(parameterValueToString(r.languageId, "languageId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	languageId string
-	enrollmentProcessTextObject *EnrollmentProcessTextObject
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest) EnrollmentProcessTextObject(enrollmentProcessTextObject EnrollmentProcessTextObject) EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest {
-	r.enrollmentProcessTextObject = &enrollmentProcessTextObject
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest) Execute() (*EnrollmentProcessTextObject, *http.Response, error) {
-	return r.ApiService.V2EnrollmentLanguagesLanguageIdPutExecute(r)
-}
-
-/*
-V2EnrollmentLanguagesLanguageIdPut Edit Enrollment messaging for a language 
-
-Edit enrollment messaging for a language.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param languageId Two letter ISO 639-1 Language Code
- @return EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdPut(ctx context.Context, languageId string) EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest {
-	return EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest{
-		ApiService: a,
-		ctx: ctx,
-		languageId: languageId,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentProcessTextObject
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentLanguagesLanguageIdPutExecute(r EnrollmentAPIV2EnrollmentLanguagesLanguageIdPutRequest) (*EnrollmentProcessTextObject, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentProcessTextObject
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentLanguagesLanguageIdPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment/languages/{languageId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"languageId"+"}", url.PathEscape(parameterValueToString(r.languageId, "languageId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.enrollmentProcessTextObject
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type EnrollmentAPIV2EnrollmentPutRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-	enrollmentSettingsV2 *EnrollmentSettingsV2
-}
-
-// Update enrollment
-func (r EnrollmentAPIV2EnrollmentPutRequest) EnrollmentSettingsV2(enrollmentSettingsV2 EnrollmentSettingsV2) EnrollmentAPIV2EnrollmentPutRequest {
-	r.enrollmentSettingsV2 = &enrollmentSettingsV2
-	return r
-}
-
-func (r EnrollmentAPIV2EnrollmentPutRequest) Execute() (*EnrollmentSettingsV2, *http.Response, error) {
-	return r.ApiService.V2EnrollmentPutExecute(r)
-}
-
-/*
-V2EnrollmentPut Update Enrollment object 
-
-Update enrollment object. Regarding the `developerCertificateIdentity`,
-if this object is omitted, the certificate will not be deleted from Jamf Pro.
-The `identityKeystore` is the entire cert file as a base64 encoded string. The
-`md5Sum` field is not required in the PUT request, but is calculated and returned
-in the response.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV2EnrollmentPutRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V2EnrollmentPut(ctx context.Context) EnrollmentAPIV2EnrollmentPutRequest {
-	return EnrollmentAPIV2EnrollmentPutRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentSettingsV2
-// Deprecated
-func (a *EnrollmentAPIService) V2EnrollmentPutExecute(r EnrollmentAPIV2EnrollmentPutRequest) (*EnrollmentSettingsV2, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentSettingsV2
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V2EnrollmentPut")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v2/enrollment"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.enrollmentSettingsV2 == nil {
-		return localVarReturnValue, nil, reportError("enrollmentSettingsV2 is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.enrollmentSettingsV2
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type EnrollmentAPIV3EnrollmentAccessGroupsGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
@@ -3078,36 +1140,40 @@ func (a *EnrollmentAPIService) V3EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"name:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"name:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.allUsersOptionFirst != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", r.allUsersOptionFirst, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", r.allUsersOptionFirst, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.allUsersOptionFirst = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", defaultValue, "form", "")
+        r.allUsersOptionFirst = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3735,109 +1801,6 @@ func (a *EnrollmentAPIService) V3EnrollmentFilteredLanguageCodesGetExecute(r Enr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type EnrollmentAPIV3EnrollmentGetRequest struct {
-	ctx context.Context
-	ApiService EnrollmentAPI
-}
-
-func (r EnrollmentAPIV3EnrollmentGetRequest) Execute() (*EnrollmentSettingsV3, *http.Response, error) {
-	return r.ApiService.V3EnrollmentGetExecute(r)
-}
-
-/*
-V3EnrollmentGet Get Enrollment object and Re-enrollment settings 
-
-Gets Enrollment object and re-enrollment settings.
-
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV3EnrollmentGetRequest
-
-Deprecated
-*/
-func (a *EnrollmentAPIService) V3EnrollmentGet(ctx context.Context) EnrollmentAPIV3EnrollmentGetRequest {
-	return EnrollmentAPIV3EnrollmentGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return EnrollmentSettingsV3
-// Deprecated
-func (a *EnrollmentAPIService) V3EnrollmentGetExecute(r EnrollmentAPIV3EnrollmentGetRequest) (*EnrollmentSettingsV3, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EnrollmentSettingsV3
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V3EnrollmentGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/v3/enrollment"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type EnrollmentAPIV3EnrollmentLanguageCodesGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
@@ -4112,30 +2075,33 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesGetExecute(r EnrollmentAPIV3
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"languageCode:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"languageCode:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4527,71 +2493,53 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesLanguageIdPutExecute(r Enrol
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type EnrollmentAPIV3EnrollmentPutRequest struct {
+type EnrollmentAPIV4EnrollmentAccessManagementGetRequest struct {
 	ctx context.Context
 	ApiService EnrollmentAPI
-	enrollmentSettingsV3 *EnrollmentSettingsV3
 }
 
-// Update enrollment
-func (r EnrollmentAPIV3EnrollmentPutRequest) EnrollmentSettingsV3(enrollmentSettingsV3 EnrollmentSettingsV3) EnrollmentAPIV3EnrollmentPutRequest {
-	r.enrollmentSettingsV3 = &enrollmentSettingsV3
-	return r
-}
-
-func (r EnrollmentAPIV3EnrollmentPutRequest) Execute() (*EnrollmentSettingsV3, *http.Response, error) {
-	return r.ApiService.V3EnrollmentPutExecute(r)
+func (r EnrollmentAPIV4EnrollmentAccessManagementGetRequest) Execute() (*AccessManagementSetting, *http.Response, error) {
+	return r.ApiService.V4EnrollmentAccessManagementGetExecute(r)
 }
 
 /*
-V3EnrollmentPut Update Enrollment object 
+V4EnrollmentAccessManagementGet Get Access Management settings
 
-Update enrollment object. Regarding the `developerCertificateIdentity`,
-if this object is omitted, the certificate will not be deleted from Jamf Pro.
-The `identityKeystore` is the entire cert file as a base64 encoded string. The
-`md5Sum` field is not required in the PUT request, but is calculated and returned
-in the response.
-
+Get Access Management settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return EnrollmentAPIV3EnrollmentPutRequest
-
-Deprecated
+ @return EnrollmentAPIV4EnrollmentAccessManagementGetRequest
 */
-func (a *EnrollmentAPIService) V3EnrollmentPut(ctx context.Context) EnrollmentAPIV3EnrollmentPutRequest {
-	return EnrollmentAPIV3EnrollmentPutRequest{
+func (a *EnrollmentAPIService) V4EnrollmentAccessManagementGet(ctx context.Context) EnrollmentAPIV4EnrollmentAccessManagementGetRequest {
+	return EnrollmentAPIV4EnrollmentAccessManagementGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return EnrollmentSettingsV3
-// Deprecated
-func (a *EnrollmentAPIService) V3EnrollmentPutExecute(r EnrollmentAPIV3EnrollmentPutRequest) (*EnrollmentSettingsV3, *http.Response, error) {
+//  @return AccessManagementSetting
+func (a *EnrollmentAPIService) V4EnrollmentAccessManagementGetExecute(r EnrollmentAPIV4EnrollmentAccessManagementGetRequest) (*AccessManagementSetting, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPut
+		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *EnrollmentSettingsV3
+		localVarReturnValue  *AccessManagementSetting
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V3EnrollmentPut")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V4EnrollmentAccessManagementGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/v3/enrollment"
+	localVarPath := localBasePath + "/v4/enrollment/access-management"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.enrollmentSettingsV3 == nil {
-		return localVarReturnValue, nil, reportError("enrollmentSettingsV3 is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -4607,8 +2555,6 @@ func (a *EnrollmentAPIService) V3EnrollmentPutExecute(r EnrollmentAPIV3Enrollmen
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.enrollmentSettingsV3
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -4631,15 +2577,117 @@ func (a *EnrollmentAPIService) V3EnrollmentPutExecute(r EnrollmentAPIV3Enrollmen
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EnrollmentAPIV4EnrollmentAccessManagementPostRequest struct {
+	ctx context.Context
+	ApiService EnrollmentAPI
+	accessManagementSetting *AccessManagementSetting
+}
+
+// Configure Access Management settings
+func (r EnrollmentAPIV4EnrollmentAccessManagementPostRequest) AccessManagementSetting(accessManagementSetting AccessManagementSetting) EnrollmentAPIV4EnrollmentAccessManagementPostRequest {
+	r.accessManagementSetting = &accessManagementSetting
+	return r
+}
+
+func (r EnrollmentAPIV4EnrollmentAccessManagementPostRequest) Execute() (*AccessManagementSetting, *http.Response, error) {
+	return r.ApiService.V4EnrollmentAccessManagementPostExecute(r)
+}
+
+/*
+V4EnrollmentAccessManagementPost Configure Access Management settings 
+
+Configure Access Management settings
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return EnrollmentAPIV4EnrollmentAccessManagementPostRequest
+*/
+func (a *EnrollmentAPIService) V4EnrollmentAccessManagementPost(ctx context.Context) EnrollmentAPIV4EnrollmentAccessManagementPostRequest {
+	return EnrollmentAPIV4EnrollmentAccessManagementPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AccessManagementSetting
+func (a *EnrollmentAPIService) V4EnrollmentAccessManagementPostExecute(r EnrollmentAPIV4EnrollmentAccessManagementPostRequest) (*AccessManagementSetting, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccessManagementSetting
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnrollmentAPIService.V4EnrollmentAccessManagementPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v4/enrollment/access-management"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.accessManagementSetting == nil {
+		return localVarReturnValue, nil, reportError("accessManagementSetting is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.accessManagementSetting
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -21,7 +21,7 @@ var _ MappedNullable = &InternalRecipient{}
 
 // InternalRecipient struct for InternalRecipient
 type InternalRecipient struct {
-	AccountId string `json:"accountId"`
+	AccountId string `json:"accountId" validate:"regexp=^\\\\d+$"`
 	Frequency *string `json:"frequency,omitempty"`
 }
 

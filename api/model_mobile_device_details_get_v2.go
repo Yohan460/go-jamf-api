@@ -23,7 +23,7 @@ type MobileDeviceDetailsGetV2 struct {
 	Id *string `json:"id,omitempty"`
 	// Mobile device name.
 	Name *string `json:"name,omitempty"`
-	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in.
+	// Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in.
 	EnforceName *bool `json:"enforceName,omitempty"`
 	AssetTag *string `json:"assetTag,omitempty"`
 	LastInventoryUpdateTimestamp *time.Time `json:"lastInventoryUpdateTimestamp,omitempty"`
@@ -58,6 +58,7 @@ type MobileDeviceDetailsGetV2 struct {
 	Watchos *WatchOsDetailsV2 `json:"watchos,omitempty"`
 	Visionos *DetailsV2 `json:"visionos,omitempty"`
 	ManagementId *string `json:"managementId,omitempty"`
+	Groups []MobileDeviceInventoryGroup `json:"groups,omitempty"`
 }
 
 // NewMobileDeviceDetailsGetV2 instantiates a new MobileDeviceDetailsGetV2 object
@@ -1133,6 +1134,38 @@ func (o *MobileDeviceDetailsGetV2) SetManagementId(v string) {
 	o.ManagementId = &v
 }
 
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *MobileDeviceDetailsGetV2) GetGroups() []MobileDeviceInventoryGroup {
+	if o == nil || IsNil(o.Groups) {
+		var ret []MobileDeviceInventoryGroup
+		return ret
+	}
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceDetailsGetV2) GetGroupsOk() ([]MobileDeviceInventoryGroup, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *MobileDeviceDetailsGetV2) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []MobileDeviceInventoryGroup and assigns it to the Groups field.
+func (o *MobileDeviceDetailsGetV2) SetGroups(v []MobileDeviceInventoryGroup) {
+	o.Groups = v
+}
+
 func (o MobileDeviceDetailsGetV2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1241,6 +1274,9 @@ func (o MobileDeviceDetailsGetV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ManagementId) {
 		toSerialize["managementId"] = o.ManagementId
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
 	}
 	return toSerialize, nil
 }

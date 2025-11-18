@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **IsFlushLocationInformationEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **IsFlushLocationInformationHistoryEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **IsFlushExtensionAttributesEnabled** | Pointer to **bool** |  | [optional] [default to false]
+**IsFlushSoftwareUpdatePlansEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **FlushMDMQueue** | **string** |  | 
 
 ## Methods
@@ -128,6 +129,31 @@ SetIsFlushExtensionAttributesEnabled sets IsFlushExtensionAttributesEnabled fiel
 `func (o *Reenrollment) HasIsFlushExtensionAttributesEnabled() bool`
 
 HasIsFlushExtensionAttributesEnabled returns a boolean if a field has been set.
+
+### GetIsFlushSoftwareUpdatePlansEnabled
+
+`func (o *Reenrollment) GetIsFlushSoftwareUpdatePlansEnabled() bool`
+
+GetIsFlushSoftwareUpdatePlansEnabled returns the IsFlushSoftwareUpdatePlansEnabled field if non-nil, zero value otherwise.
+
+### GetIsFlushSoftwareUpdatePlansEnabledOk
+
+`func (o *Reenrollment) GetIsFlushSoftwareUpdatePlansEnabledOk() (*bool, bool)`
+
+GetIsFlushSoftwareUpdatePlansEnabledOk returns a tuple with the IsFlushSoftwareUpdatePlansEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFlushSoftwareUpdatePlansEnabled
+
+`func (o *Reenrollment) SetIsFlushSoftwareUpdatePlansEnabled(v bool)`
+
+SetIsFlushSoftwareUpdatePlansEnabled sets IsFlushSoftwareUpdatePlansEnabled field to given value.
+
+### HasIsFlushSoftwareUpdatePlansEnabled
+
+`func (o *Reenrollment) HasIsFlushSoftwareUpdatePlansEnabled() bool`
+
+HasIsFlushSoftwareUpdatePlansEnabled returns a boolean if a field has been set.
 
 ### GetFlushMDMQueue
 

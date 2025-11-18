@@ -30,7 +30,7 @@ type EraseDeviceCommand struct {
 	Pin *string `json:"pin,omitempty"`
 	// This key defines the fallback behavior for erasing a device.
 	ObliterationBehavior *string `json:"obliterationBehavior,omitempty"`
-	ReturnToService *EraseDeviceCommandAllOfReturnToService `json:"returnToService,omitempty"`
+	ReturnToService *ReturnToService `json:"returnToService,omitempty"`
 }
 
 type _EraseDeviceCommand EraseDeviceCommand
@@ -214,9 +214,9 @@ func (o *EraseDeviceCommand) SetObliterationBehavior(v string) {
 }
 
 // GetReturnToService returns the ReturnToService field value if set, zero value otherwise.
-func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandAllOfReturnToService {
+func (o *EraseDeviceCommand) GetReturnToService() ReturnToService {
 	if o == nil || IsNil(o.ReturnToService) {
-		var ret EraseDeviceCommandAllOfReturnToService
+		var ret ReturnToService
 		return ret
 	}
 	return *o.ReturnToService
@@ -224,7 +224,7 @@ func (o *EraseDeviceCommand) GetReturnToService() EraseDeviceCommandAllOfReturnT
 
 // GetReturnToServiceOk returns a tuple with the ReturnToService field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EraseDeviceCommand) GetReturnToServiceOk() (*EraseDeviceCommandAllOfReturnToService, bool) {
+func (o *EraseDeviceCommand) GetReturnToServiceOk() (*ReturnToService, bool) {
 	if o == nil || IsNil(o.ReturnToService) {
 		return nil, false
 	}
@@ -240,8 +240,8 @@ func (o *EraseDeviceCommand) HasReturnToService() bool {
 	return false
 }
 
-// SetReturnToService gets a reference to the given EraseDeviceCommandAllOfReturnToService and assigns it to the ReturnToService field.
-func (o *EraseDeviceCommand) SetReturnToService(v EraseDeviceCommandAllOfReturnToService) {
+// SetReturnToService gets a reference to the given ReturnToService and assigns it to the ReturnToService field.
+func (o *EraseDeviceCommand) SetReturnToService(v ReturnToService) {
 	o.ReturnToService = &v
 }
 

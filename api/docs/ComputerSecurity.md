@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **ExternalBootLevel** | Pointer to **string** | Collected for macOS 10.15.0 or later | [optional] 
 **BootstrapTokenAllowed** | Pointer to **bool** | Collected for macOS 11 or later | [optional] 
 **BootstrapTokenEscrowedStatus** | Pointer to **string** | Collected for macOS 11 or later | [optional] 
+**LastAttestationAttempt** | Pointer to **string** |  | [optional] [readonly] 
+**LastSuccessfulAttestation** | Pointer to **string** |  | [optional] [readonly] 
+**AttestationStatus** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -335,6 +338,81 @@ SetBootstrapTokenEscrowedStatus sets BootstrapTokenEscrowedStatus field to given
 `func (o *ComputerSecurity) HasBootstrapTokenEscrowedStatus() bool`
 
 HasBootstrapTokenEscrowedStatus returns a boolean if a field has been set.
+
+### GetLastAttestationAttempt
+
+`func (o *ComputerSecurity) GetLastAttestationAttempt() string`
+
+GetLastAttestationAttempt returns the LastAttestationAttempt field if non-nil, zero value otherwise.
+
+### GetLastAttestationAttemptOk
+
+`func (o *ComputerSecurity) GetLastAttestationAttemptOk() (*string, bool)`
+
+GetLastAttestationAttemptOk returns a tuple with the LastAttestationAttempt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastAttestationAttempt
+
+`func (o *ComputerSecurity) SetLastAttestationAttempt(v string)`
+
+SetLastAttestationAttempt sets LastAttestationAttempt field to given value.
+
+### HasLastAttestationAttempt
+
+`func (o *ComputerSecurity) HasLastAttestationAttempt() bool`
+
+HasLastAttestationAttempt returns a boolean if a field has been set.
+
+### GetLastSuccessfulAttestation
+
+`func (o *ComputerSecurity) GetLastSuccessfulAttestation() string`
+
+GetLastSuccessfulAttestation returns the LastSuccessfulAttestation field if non-nil, zero value otherwise.
+
+### GetLastSuccessfulAttestationOk
+
+`func (o *ComputerSecurity) GetLastSuccessfulAttestationOk() (*string, bool)`
+
+GetLastSuccessfulAttestationOk returns a tuple with the LastSuccessfulAttestation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastSuccessfulAttestation
+
+`func (o *ComputerSecurity) SetLastSuccessfulAttestation(v string)`
+
+SetLastSuccessfulAttestation sets LastSuccessfulAttestation field to given value.
+
+### HasLastSuccessfulAttestation
+
+`func (o *ComputerSecurity) HasLastSuccessfulAttestation() bool`
+
+HasLastSuccessfulAttestation returns a boolean if a field has been set.
+
+### GetAttestationStatus
+
+`func (o *ComputerSecurity) GetAttestationStatus() string`
+
+GetAttestationStatus returns the AttestationStatus field if non-nil, zero value otherwise.
+
+### GetAttestationStatusOk
+
+`func (o *ComputerSecurity) GetAttestationStatusOk() (*string, bool)`
+
+GetAttestationStatusOk returns a tuple with the AttestationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttestationStatus
+
+`func (o *ComputerSecurity) SetAttestationStatus(v string)`
+
+SetAttestationStatus sets AttestationStatus field to given value.
+
+### HasAttestationStatus
+
+`func (o *ComputerSecurity) HasAttestationStatus() bool`
+
+HasAttestationStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

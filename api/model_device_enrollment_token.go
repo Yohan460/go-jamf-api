@@ -22,7 +22,7 @@ type DeviceEnrollmentToken struct {
 	// Optional name of the token to be saved, if no name is provided one will be auto-generated
 	TokenFileName *string `json:"tokenFileName,omitempty"`
 	// The base 64 encoded token
-	EncodedToken *string `json:"encodedToken,omitempty"`
+	EncodedToken *string `json:"encodedToken,omitempty" validate:"regexp=^(?:[A-Za-z0-9+\\/]{4})*(?:[A-Za-z0-9+\\/]{2}==|[A-Za-z0-9+\\/]{3}=)?$"`
 }
 
 // NewDeviceEnrollmentToken instantiates a new DeviceEnrollmentToken object

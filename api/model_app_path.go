@@ -21,6 +21,7 @@ var _ MappedNullable = &AppPath{}
 
 // AppPath struct for AppPath
 type AppPath struct {
+	// A \"-1\" id indicates a built-in path that cannot be deleted or modified.
 	Id string `json:"id"`
 	Path string `json:"path"`
 }

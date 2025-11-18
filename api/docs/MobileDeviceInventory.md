@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Applications** | Pointer to [**[]MobileDeviceApplicationInventoryDetail**](MobileDeviceApplicationInventoryDetail.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificate**](MobileDeviceCertificate.md) |  | [optional] 
 **Profiles** | Pointer to [**[]MobileDeviceProfile**](MobileDeviceProfile.md) |  | [optional] 
+**Groups** | Pointer to [**[]MobileDeviceInventoryGroup**](MobileDeviceInventoryGroup.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]MobileDeviceExtensionAttribute**](MobileDeviceExtensionAttribute.md) |  | [optional] 
 
 ## Methods
@@ -201,6 +202,31 @@ SetProfiles sets Profiles field to given value.
 `func (o *MobileDeviceInventory) HasProfiles() bool`
 
 HasProfiles returns a boolean if a field has been set.
+
+### GetGroups
+
+`func (o *MobileDeviceInventory) GetGroups() []MobileDeviceInventoryGroup`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *MobileDeviceInventory) GetGroupsOk() (*[]MobileDeviceInventoryGroup, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *MobileDeviceInventory) SetGroups(v []MobileDeviceInventoryGroup)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *MobileDeviceInventory) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 ### GetExtensionAttributes
 

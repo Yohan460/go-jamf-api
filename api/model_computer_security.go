@@ -37,6 +37,9 @@ type ComputerSecurity struct {
 	BootstrapTokenAllowed *bool `json:"bootstrapTokenAllowed,omitempty"`
 	// Collected for macOS 11 or later
 	BootstrapTokenEscrowedStatus *string `json:"bootstrapTokenEscrowedStatus,omitempty"`
+	LastAttestationAttempt *string `json:"lastAttestationAttempt,omitempty"`
+	LastSuccessfulAttestation *string `json:"lastSuccessfulAttestation,omitempty"`
+	AttestationStatus *string `json:"attestationStatus,omitempty"`
 }
 
 // NewComputerSecurity instantiates a new ComputerSecurity object
@@ -440,6 +443,102 @@ func (o *ComputerSecurity) SetBootstrapTokenEscrowedStatus(v string) {
 	o.BootstrapTokenEscrowedStatus = &v
 }
 
+// GetLastAttestationAttempt returns the LastAttestationAttempt field value if set, zero value otherwise.
+func (o *ComputerSecurity) GetLastAttestationAttempt() string {
+	if o == nil || IsNil(o.LastAttestationAttempt) {
+		var ret string
+		return ret
+	}
+	return *o.LastAttestationAttempt
+}
+
+// GetLastAttestationAttemptOk returns a tuple with the LastAttestationAttempt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerSecurity) GetLastAttestationAttemptOk() (*string, bool) {
+	if o == nil || IsNil(o.LastAttestationAttempt) {
+		return nil, false
+	}
+	return o.LastAttestationAttempt, true
+}
+
+// HasLastAttestationAttempt returns a boolean if a field has been set.
+func (o *ComputerSecurity) HasLastAttestationAttempt() bool {
+	if o != nil && !IsNil(o.LastAttestationAttempt) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAttestationAttempt gets a reference to the given string and assigns it to the LastAttestationAttempt field.
+func (o *ComputerSecurity) SetLastAttestationAttempt(v string) {
+	o.LastAttestationAttempt = &v
+}
+
+// GetLastSuccessfulAttestation returns the LastSuccessfulAttestation field value if set, zero value otherwise.
+func (o *ComputerSecurity) GetLastSuccessfulAttestation() string {
+	if o == nil || IsNil(o.LastSuccessfulAttestation) {
+		var ret string
+		return ret
+	}
+	return *o.LastSuccessfulAttestation
+}
+
+// GetLastSuccessfulAttestationOk returns a tuple with the LastSuccessfulAttestation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerSecurity) GetLastSuccessfulAttestationOk() (*string, bool) {
+	if o == nil || IsNil(o.LastSuccessfulAttestation) {
+		return nil, false
+	}
+	return o.LastSuccessfulAttestation, true
+}
+
+// HasLastSuccessfulAttestation returns a boolean if a field has been set.
+func (o *ComputerSecurity) HasLastSuccessfulAttestation() bool {
+	if o != nil && !IsNil(o.LastSuccessfulAttestation) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSuccessfulAttestation gets a reference to the given string and assigns it to the LastSuccessfulAttestation field.
+func (o *ComputerSecurity) SetLastSuccessfulAttestation(v string) {
+	o.LastSuccessfulAttestation = &v
+}
+
+// GetAttestationStatus returns the AttestationStatus field value if set, zero value otherwise.
+func (o *ComputerSecurity) GetAttestationStatus() string {
+	if o == nil || IsNil(o.AttestationStatus) {
+		var ret string
+		return ret
+	}
+	return *o.AttestationStatus
+}
+
+// GetAttestationStatusOk returns a tuple with the AttestationStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerSecurity) GetAttestationStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.AttestationStatus) {
+		return nil, false
+	}
+	return o.AttestationStatus, true
+}
+
+// HasAttestationStatus returns a boolean if a field has been set.
+func (o *ComputerSecurity) HasAttestationStatus() bool {
+	if o != nil && !IsNil(o.AttestationStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttestationStatus gets a reference to the given string and assigns it to the AttestationStatus field.
+func (o *ComputerSecurity) SetAttestationStatus(v string) {
+	o.AttestationStatus = &v
+}
+
 func (o ComputerSecurity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -485,6 +584,15 @@ func (o ComputerSecurity) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BootstrapTokenEscrowedStatus) {
 		toSerialize["bootstrapTokenEscrowedStatus"] = o.BootstrapTokenEscrowedStatus
+	}
+	if !IsNil(o.LastAttestationAttempt) {
+		toSerialize["lastAttestationAttempt"] = o.LastAttestationAttempt
+	}
+	if !IsNil(o.LastSuccessfulAttestation) {
+		toSerialize["lastSuccessfulAttestation"] = o.LastSuccessfulAttestation
+	}
+	if !IsNil(o.AttestationStatus) {
+		toSerialize["attestationStatus"] = o.AttestationStatus
 	}
 	return toSerialize, nil
 }

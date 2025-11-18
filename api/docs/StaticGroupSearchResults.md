@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalCount** | Pointer to **int64** |  | [optional] 
-**Results** | Pointer to [**[]StaticGroupSummary**](StaticGroupSummary.md) |  | [optional] 
+**Results** | Pointer to [**[]StaticGroup**](StaticGroup.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *StaticGroupSearchResults) GetResults() []StaticGroupSummary`
+`func (o *StaticGroupSearchResults) GetResults() []StaticGroup`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *StaticGroupSearchResults) GetResultsOk() (*[]StaticGroupSummary, bool)`
+`func (o *StaticGroupSearchResults) GetResultsOk() (*[]StaticGroup, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *StaticGroupSearchResults) SetResults(v []StaticGroupSummary)`
+`func (o *StaticGroupSearchResults) SetResults(v []StaticGroup)`
 
 SetResults sets Results field to given value.
 

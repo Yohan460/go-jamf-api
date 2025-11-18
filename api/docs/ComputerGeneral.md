@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** |  | [optional] 
 **LastIpAddress** | Pointer to **string** |  | [optional] 
-**LastReportedIp** | Pointer to **string** |  | [optional] 
+**LastReportedIp** | Pointer to **string** | Last reported IPv4 address (Deprecated. Use lastReportedIpV4 instead.) | [optional] 
+**LastReportedIpV4** | Pointer to **string** | Last reported IPv4 address | [optional] 
+**LastReportedIpV6** | Pointer to **string** |  | [optional] 
 **JamfBinaryVersion** | Pointer to **string** |  | [optional] 
 **Platform** | Pointer to **string** |  | [optional] 
 **Barcode1** | Pointer to **string** |  | [optional] 
@@ -30,6 +32,10 @@ Name | Type | Description | Notes
 **DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ComputerExtensionAttribute**](ComputerExtensionAttribute.md) |  | [optional] 
 **ManagementId** | Pointer to **string** |  | [optional] [readonly] 
+**LastLoggedInUsernameSelfService** | Pointer to **NullableString** |  | [optional] 
+**LastLoggedInUsernameSelfServiceTimestamp** | Pointer to **NullableTime** |  | [optional] 
+**LastLoggedInUsernameBinary** | Pointer to **NullableString** |  | [optional] 
+**LastLoggedInUsernameBinaryTimestamp** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
@@ -124,6 +130,56 @@ SetLastReportedIp sets LastReportedIp field to given value.
 `func (o *ComputerGeneral) HasLastReportedIp() bool`
 
 HasLastReportedIp returns a boolean if a field has been set.
+
+### GetLastReportedIpV4
+
+`func (o *ComputerGeneral) GetLastReportedIpV4() string`
+
+GetLastReportedIpV4 returns the LastReportedIpV4 field if non-nil, zero value otherwise.
+
+### GetLastReportedIpV4Ok
+
+`func (o *ComputerGeneral) GetLastReportedIpV4Ok() (*string, bool)`
+
+GetLastReportedIpV4Ok returns a tuple with the LastReportedIpV4 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastReportedIpV4
+
+`func (o *ComputerGeneral) SetLastReportedIpV4(v string)`
+
+SetLastReportedIpV4 sets LastReportedIpV4 field to given value.
+
+### HasLastReportedIpV4
+
+`func (o *ComputerGeneral) HasLastReportedIpV4() bool`
+
+HasLastReportedIpV4 returns a boolean if a field has been set.
+
+### GetLastReportedIpV6
+
+`func (o *ComputerGeneral) GetLastReportedIpV6() string`
+
+GetLastReportedIpV6 returns the LastReportedIpV6 field if non-nil, zero value otherwise.
+
+### GetLastReportedIpV6Ok
+
+`func (o *ComputerGeneral) GetLastReportedIpV6Ok() (*string, bool)`
+
+GetLastReportedIpV6Ok returns a tuple with the LastReportedIpV6 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastReportedIpV6
+
+`func (o *ComputerGeneral) SetLastReportedIpV6(v string)`
+
+SetLastReportedIpV6 sets LastReportedIpV6 field to given value.
+
+### HasLastReportedIpV6
+
+`func (o *ComputerGeneral) HasLastReportedIpV6() bool`
+
+HasLastReportedIpV6 returns a boolean if a field has been set.
 
 ### GetJamfBinaryVersion
 
@@ -700,6 +756,146 @@ SetManagementId sets ManagementId field to given value.
 
 HasManagementId returns a boolean if a field has been set.
 
+### GetLastLoggedInUsernameSelfService
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameSelfService() string`
+
+GetLastLoggedInUsernameSelfService returns the LastLoggedInUsernameSelfService field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceOk
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceOk() (*string, bool)`
+
+GetLastLoggedInUsernameSelfServiceOk returns a tuple with the LastLoggedInUsernameSelfService field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfService
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameSelfService(v string)`
+
+SetLastLoggedInUsernameSelfService sets LastLoggedInUsernameSelfService field to given value.
+
+### HasLastLoggedInUsernameSelfService
+
+`func (o *ComputerGeneral) HasLastLoggedInUsernameSelfService() bool`
+
+HasLastLoggedInUsernameSelfService returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceNil
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceNil sets the value for LastLoggedInUsernameSelfService to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfService
+`func (o *ComputerGeneral) UnsetLastLoggedInUsernameSelfService()`
+
+UnsetLastLoggedInUsernameSelfService ensures that no value is present for LastLoggedInUsernameSelfService, not even an explicit nil
+### GetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceTimestamp() time.Time`
+
+GetLastLoggedInUsernameSelfServiceTimestamp returns the LastLoggedInUsernameSelfServiceTimestamp field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameSelfServiceTimestampOk
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameSelfServiceTimestampOk() (*time.Time, bool)`
+
+GetLastLoggedInUsernameSelfServiceTimestampOk returns a tuple with the LastLoggedInUsernameSelfServiceTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceTimestamp(v time.Time)`
+
+SetLastLoggedInUsernameSelfServiceTimestamp sets LastLoggedInUsernameSelfServiceTimestamp field to given value.
+
+### HasLastLoggedInUsernameSelfServiceTimestamp
+
+`func (o *ComputerGeneral) HasLastLoggedInUsernameSelfServiceTimestamp() bool`
+
+HasLastLoggedInUsernameSelfServiceTimestamp returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameSelfServiceTimestampNil
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameSelfServiceTimestampNil(b bool)`
+
+ SetLastLoggedInUsernameSelfServiceTimestampNil sets the value for LastLoggedInUsernameSelfServiceTimestamp to be an explicit nil
+
+### UnsetLastLoggedInUsernameSelfServiceTimestamp
+`func (o *ComputerGeneral) UnsetLastLoggedInUsernameSelfServiceTimestamp()`
+
+UnsetLastLoggedInUsernameSelfServiceTimestamp ensures that no value is present for LastLoggedInUsernameSelfServiceTimestamp, not even an explicit nil
+### GetLastLoggedInUsernameBinary
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameBinary() string`
+
+GetLastLoggedInUsernameBinary returns the LastLoggedInUsernameBinary field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameBinaryOk
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryOk() (*string, bool)`
+
+GetLastLoggedInUsernameBinaryOk returns a tuple with the LastLoggedInUsernameBinary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameBinary
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameBinary(v string)`
+
+SetLastLoggedInUsernameBinary sets LastLoggedInUsernameBinary field to given value.
+
+### HasLastLoggedInUsernameBinary
+
+`func (o *ComputerGeneral) HasLastLoggedInUsernameBinary() bool`
+
+HasLastLoggedInUsernameBinary returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameBinaryNil
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryNil(b bool)`
+
+ SetLastLoggedInUsernameBinaryNil sets the value for LastLoggedInUsernameBinary to be an explicit nil
+
+### UnsetLastLoggedInUsernameBinary
+`func (o *ComputerGeneral) UnsetLastLoggedInUsernameBinary()`
+
+UnsetLastLoggedInUsernameBinary ensures that no value is present for LastLoggedInUsernameBinary, not even an explicit nil
+### GetLastLoggedInUsernameBinaryTimestamp
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryTimestamp() time.Time`
+
+GetLastLoggedInUsernameBinaryTimestamp returns the LastLoggedInUsernameBinaryTimestamp field if non-nil, zero value otherwise.
+
+### GetLastLoggedInUsernameBinaryTimestampOk
+
+`func (o *ComputerGeneral) GetLastLoggedInUsernameBinaryTimestampOk() (*time.Time, bool)`
+
+GetLastLoggedInUsernameBinaryTimestampOk returns a tuple with the LastLoggedInUsernameBinaryTimestamp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastLoggedInUsernameBinaryTimestamp
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryTimestamp(v time.Time)`
+
+SetLastLoggedInUsernameBinaryTimestamp sets LastLoggedInUsernameBinaryTimestamp field to given value.
+
+### HasLastLoggedInUsernameBinaryTimestamp
+
+`func (o *ComputerGeneral) HasLastLoggedInUsernameBinaryTimestamp() bool`
+
+HasLastLoggedInUsernameBinaryTimestamp returns a boolean if a field has been set.
+
+### SetLastLoggedInUsernameBinaryTimestampNil
+
+`func (o *ComputerGeneral) SetLastLoggedInUsernameBinaryTimestampNil(b bool)`
+
+ SetLastLoggedInUsernameBinaryTimestampNil sets the value for LastLoggedInUsernameBinaryTimestamp to be an explicit nil
+
+### UnsetLastLoggedInUsernameBinaryTimestamp
+`func (o *ComputerGeneral) UnsetLastLoggedInUsernameBinaryTimestamp()`
+
+UnsetLastLoggedInUsernameBinaryTimestamp ensures that no value is present for LastLoggedInUsernameBinaryTimestamp, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

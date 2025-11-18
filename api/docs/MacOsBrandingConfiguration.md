@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **BrandingNameSecondary** | Pointer to **string** |  | [optional] 
 **IconId** | Pointer to **int64** |  | [optional] 
 **BrandingHeaderImageId** | Pointer to **int64** |  | [optional] 
+**HomeHeading** | Pointer to **string** |  | [optional] 
+**HomeSubheading** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetBrandingHeaderImageId sets BrandingHeaderImageId field to given value.
 `func (o *MacOsBrandingConfiguration) HasBrandingHeaderImageId() bool`
 
 HasBrandingHeaderImageId returns a boolean if a field has been set.
+
+### GetHomeHeading
+
+`func (o *MacOsBrandingConfiguration) GetHomeHeading() string`
+
+GetHomeHeading returns the HomeHeading field if non-nil, zero value otherwise.
+
+### GetHomeHeadingOk
+
+`func (o *MacOsBrandingConfiguration) GetHomeHeadingOk() (*string, bool)`
+
+GetHomeHeadingOk returns a tuple with the HomeHeading field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHomeHeading
+
+`func (o *MacOsBrandingConfiguration) SetHomeHeading(v string)`
+
+SetHomeHeading sets HomeHeading field to given value.
+
+### HasHomeHeading
+
+`func (o *MacOsBrandingConfiguration) HasHomeHeading() bool`
+
+HasHomeHeading returns a boolean if a field has been set.
+
+### GetHomeSubheading
+
+`func (o *MacOsBrandingConfiguration) GetHomeSubheading() string`
+
+GetHomeSubheading returns the HomeSubheading field if non-nil, zero value otherwise.
+
+### GetHomeSubheadingOk
+
+`func (o *MacOsBrandingConfiguration) GetHomeSubheadingOk() (*string, bool)`
+
+GetHomeSubheadingOk returns a tuple with the HomeSubheading field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHomeSubheading
+
+`func (o *MacOsBrandingConfiguration) SetHomeSubheading(v string)`
+
+SetHomeSubheading sets HomeSubheading field to given value.
+
+### HasHomeSubheading
+
+`func (o *MacOsBrandingConfiguration) HasHomeSubheading() bool`
+
+HasHomeSubheading returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

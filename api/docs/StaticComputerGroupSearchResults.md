@@ -1,0 +1,72 @@
+# StaticComputerGroupSearchResults
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**TotalCount** | **int64** |  | 
+**Results** | [**[]StaticComputerGroupSummary**](StaticComputerGroupSummary.md) |  | 
+
+## Methods
+
+### NewStaticComputerGroupSearchResults
+
+`func NewStaticComputerGroupSearchResults(totalCount int64, results []StaticComputerGroupSummary, ) *StaticComputerGroupSearchResults`
+
+NewStaticComputerGroupSearchResults instantiates a new StaticComputerGroupSearchResults object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewStaticComputerGroupSearchResultsWithDefaults
+
+`func NewStaticComputerGroupSearchResultsWithDefaults() *StaticComputerGroupSearchResults`
+
+NewStaticComputerGroupSearchResultsWithDefaults instantiates a new StaticComputerGroupSearchResults object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetTotalCount
+
+`func (o *StaticComputerGroupSearchResults) GetTotalCount() int64`
+
+GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+
+### GetTotalCountOk
+
+`func (o *StaticComputerGroupSearchResults) GetTotalCountOk() (*int64, bool)`
+
+GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCount
+
+`func (o *StaticComputerGroupSearchResults) SetTotalCount(v int64)`
+
+SetTotalCount sets TotalCount field to given value.
+
+
+### GetResults
+
+`func (o *StaticComputerGroupSearchResults) GetResults() []StaticComputerGroupSummary`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *StaticComputerGroupSearchResults) GetResultsOk() (*[]StaticComputerGroupSummary, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *StaticComputerGroupSearchResults) SetResults(v []StaticComputerGroupSummary)`
+
+SetResults sets Results field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

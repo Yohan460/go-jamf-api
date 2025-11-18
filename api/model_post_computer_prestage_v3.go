@@ -52,6 +52,10 @@ type PostComputerPrestageV3 struct {
 	EnableRecoveryLock *bool `json:"enableRecoveryLock,omitempty"`
 	RecoveryLockPasswordType *string `json:"recoveryLockPasswordType,omitempty"`
 	RotateRecoveryLockPassword *bool `json:"rotateRecoveryLockPassword,omitempty"`
+	PrestageMinimumOsTargetVersionType *string `json:"prestageMinimumOsTargetVersionType,omitempty"`
+	MinimumOsSpecificVersion *string `json:"minimumOsSpecificVersion,omitempty"`
+	PssoEnabled *bool `json:"pssoEnabled,omitempty"`
+	PlatformSsoAppBundleId *string `json:"platformSsoAppBundleId,omitempty"`
 	AccountSettings *AccountSettingsRequest `json:"accountSettings,omitempty"`
 	RecoveryLockPassword *string `json:"recoveryLockPassword,omitempty"`
 }
@@ -86,6 +90,8 @@ func NewPostComputerPrestageV3(displayName string, mandatory bool, mdmRemovable 
 	this.PrestageInstalledProfileIds = prestageInstalledProfileIds
 	this.CustomPackageIds = customPackageIds
 	this.CustomPackageDistributionPointId = customPackageDistributionPointId
+	var pssoEnabled bool = false
+	this.PssoEnabled = &pssoEnabled
 	return &this
 }
 
@@ -94,6 +100,8 @@ func NewPostComputerPrestageV3(displayName string, mandatory bool, mdmRemovable 
 // but it doesn't guarantee that properties required by API are set
 func NewPostComputerPrestageV3WithDefaults() *PostComputerPrestageV3 {
 	this := PostComputerPrestageV3{}
+	var pssoEnabled bool = false
+	this.PssoEnabled = &pssoEnabled
 	return &this
 }
 
@@ -881,6 +889,134 @@ func (o *PostComputerPrestageV3) SetRotateRecoveryLockPassword(v bool) {
 	o.RotateRecoveryLockPassword = &v
 }
 
+// GetPrestageMinimumOsTargetVersionType returns the PrestageMinimumOsTargetVersionType field value if set, zero value otherwise.
+func (o *PostComputerPrestageV3) GetPrestageMinimumOsTargetVersionType() string {
+	if o == nil || IsNil(o.PrestageMinimumOsTargetVersionType) {
+		var ret string
+		return ret
+	}
+	return *o.PrestageMinimumOsTargetVersionType
+}
+
+// GetPrestageMinimumOsTargetVersionTypeOk returns a tuple with the PrestageMinimumOsTargetVersionType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostComputerPrestageV3) GetPrestageMinimumOsTargetVersionTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.PrestageMinimumOsTargetVersionType) {
+		return nil, false
+	}
+	return o.PrestageMinimumOsTargetVersionType, true
+}
+
+// HasPrestageMinimumOsTargetVersionType returns a boolean if a field has been set.
+func (o *PostComputerPrestageV3) HasPrestageMinimumOsTargetVersionType() bool {
+	if o != nil && !IsNil(o.PrestageMinimumOsTargetVersionType) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrestageMinimumOsTargetVersionType gets a reference to the given string and assigns it to the PrestageMinimumOsTargetVersionType field.
+func (o *PostComputerPrestageV3) SetPrestageMinimumOsTargetVersionType(v string) {
+	o.PrestageMinimumOsTargetVersionType = &v
+}
+
+// GetMinimumOsSpecificVersion returns the MinimumOsSpecificVersion field value if set, zero value otherwise.
+func (o *PostComputerPrestageV3) GetMinimumOsSpecificVersion() string {
+	if o == nil || IsNil(o.MinimumOsSpecificVersion) {
+		var ret string
+		return ret
+	}
+	return *o.MinimumOsSpecificVersion
+}
+
+// GetMinimumOsSpecificVersionOk returns a tuple with the MinimumOsSpecificVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostComputerPrestageV3) GetMinimumOsSpecificVersionOk() (*string, bool) {
+	if o == nil || IsNil(o.MinimumOsSpecificVersion) {
+		return nil, false
+	}
+	return o.MinimumOsSpecificVersion, true
+}
+
+// HasMinimumOsSpecificVersion returns a boolean if a field has been set.
+func (o *PostComputerPrestageV3) HasMinimumOsSpecificVersion() bool {
+	if o != nil && !IsNil(o.MinimumOsSpecificVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetMinimumOsSpecificVersion gets a reference to the given string and assigns it to the MinimumOsSpecificVersion field.
+func (o *PostComputerPrestageV3) SetMinimumOsSpecificVersion(v string) {
+	o.MinimumOsSpecificVersion = &v
+}
+
+// GetPssoEnabled returns the PssoEnabled field value if set, zero value otherwise.
+func (o *PostComputerPrestageV3) GetPssoEnabled() bool {
+	if o == nil || IsNil(o.PssoEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PssoEnabled
+}
+
+// GetPssoEnabledOk returns a tuple with the PssoEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostComputerPrestageV3) GetPssoEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PssoEnabled) {
+		return nil, false
+	}
+	return o.PssoEnabled, true
+}
+
+// HasPssoEnabled returns a boolean if a field has been set.
+func (o *PostComputerPrestageV3) HasPssoEnabled() bool {
+	if o != nil && !IsNil(o.PssoEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPssoEnabled gets a reference to the given bool and assigns it to the PssoEnabled field.
+func (o *PostComputerPrestageV3) SetPssoEnabled(v bool) {
+	o.PssoEnabled = &v
+}
+
+// GetPlatformSsoAppBundleId returns the PlatformSsoAppBundleId field value if set, zero value otherwise.
+func (o *PostComputerPrestageV3) GetPlatformSsoAppBundleId() string {
+	if o == nil || IsNil(o.PlatformSsoAppBundleId) {
+		var ret string
+		return ret
+	}
+	return *o.PlatformSsoAppBundleId
+}
+
+// GetPlatformSsoAppBundleIdOk returns a tuple with the PlatformSsoAppBundleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostComputerPrestageV3) GetPlatformSsoAppBundleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PlatformSsoAppBundleId) {
+		return nil, false
+	}
+	return o.PlatformSsoAppBundleId, true
+}
+
+// HasPlatformSsoAppBundleId returns a boolean if a field has been set.
+func (o *PostComputerPrestageV3) HasPlatformSsoAppBundleId() bool {
+	if o != nil && !IsNil(o.PlatformSsoAppBundleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlatformSsoAppBundleId gets a reference to the given string and assigns it to the PlatformSsoAppBundleId field.
+func (o *PostComputerPrestageV3) SetPlatformSsoAppBundleId(v string) {
+	o.PlatformSsoAppBundleId = &v
+}
+
 // GetAccountSettings returns the AccountSettings field value if set, zero value otherwise.
 func (o *PostComputerPrestageV3) GetAccountSettings() AccountSettingsRequest {
 	if o == nil || IsNil(o.AccountSettings) {
@@ -1000,6 +1136,18 @@ func (o PostComputerPrestageV3) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RotateRecoveryLockPassword) {
 		toSerialize["rotateRecoveryLockPassword"] = o.RotateRecoveryLockPassword
+	}
+	if !IsNil(o.PrestageMinimumOsTargetVersionType) {
+		toSerialize["prestageMinimumOsTargetVersionType"] = o.PrestageMinimumOsTargetVersionType
+	}
+	if !IsNil(o.MinimumOsSpecificVersion) {
+		toSerialize["minimumOsSpecificVersion"] = o.MinimumOsSpecificVersion
+	}
+	if !IsNil(o.PssoEnabled) {
+		toSerialize["pssoEnabled"] = o.PssoEnabled
+	}
+	if !IsNil(o.PlatformSsoAppBundleId) {
+		toSerialize["platformSsoAppBundleId"] = o.PlatformSsoAppBundleId
 	}
 	if !IsNil(o.AccountSettings) {
 		toSerialize["accountSettings"] = o.AccountSettings

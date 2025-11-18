@@ -39,6 +39,21 @@ type MobileDeviceGroupsAPI interface {
 	V1MobileDeviceGroupsGetExecute(r MobileDeviceGroupsAPIV1MobileDeviceGroupsGetRequest) ([]MobileDeviceGroup, *http.Response, error)
 
 	/*
+	V1MobileDeviceGroupsIdErasePost Erase all devices in the group 
+
+	Erase all devices in the group
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of mobile-device-group
+	@return MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest
+	*/
+	V1MobileDeviceGroupsIdErasePost(ctx context.Context, id string) MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest
+
+	// V1MobileDeviceGroupsIdErasePostExecute executes the request
+	V1MobileDeviceGroupsIdErasePostExecute(r MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest) (*http.Response, error)
+
+	/*
 	V1MobileDeviceGroupsStaticGroupMembershipIdGet Get Static Group Membership by Id 
 
 	Get Static Group Membership by Id
@@ -235,6 +250,110 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsGetExecute(r MobileDe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest struct {
+	ctx context.Context
+	ApiService MobileDeviceGroupsAPI
+	id string
+	groupResetRequest *GroupResetRequest
+}
+
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest) GroupResetRequest(groupResetRequest GroupResetRequest) MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest {
+	r.groupResetRequest = &groupResetRequest
+	return r
+}
+
+func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1MobileDeviceGroupsIdErasePostExecute(r)
+}
+
+/*
+V1MobileDeviceGroupsIdErasePost Erase all devices in the group 
+
+Erase all devices in the group
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of mobile-device-group
+ @return MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest
+*/
+func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsIdErasePost(ctx context.Context, id string) MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest {
+	return MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsIdErasePostExecute(r MobileDeviceGroupsAPIV1MobileDeviceGroupsIdErasePostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MobileDeviceGroupsAPIService.V1MobileDeviceGroupsIdErasePost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/mobile-device-groups/{id}/erase"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupResetRequest == nil {
+		return nil, reportError("groupResetRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupResetRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest struct {
 	ctx context.Context
 	ApiService MobileDeviceGroupsAPI
@@ -255,13 +374,13 @@ func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetReque
 	return r
 }
 
-// Sorting criteria in the format: property:asc/desc. Default sort is mobileDeviceId:asc. Multiple sort criteria are supported and must be separated with a comma.   Fields allowed in the sort: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;lostModeEnabledDate&#x60;, &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;,  &#x60;enrollmentSessionTokenValid&#x60;, &#x60;exchangeDeviceId&#x60;, &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastBackupDate&#x60;, &#x60;lastEnrolledDate&#x60;, &#x60;lastCloudBackupDate&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;mdmProfileExpirationDate&#x60;, &#x60;model&#x60;, &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;, &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;, &#x60;wifiMacAddress&#x60;, &#x60;deviceOwnershipType&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;leaseExpirationDate&#x60;,&#x60;lifeExpectancyYears&#x60;, &#x60;poDate&#x60;, &#x60;poNumber&#x60;, &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;warrantyExpirationDate&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;, &#x60;fileEncryptionCapable&#x60;, &#x60;hardwareEncryptionSupported&#x60;, &#x60;jailbreakStatus&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;cellularTechnology&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;,  &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;,  &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;, &#x60;voiceRoamingEnabled&#x60;, &#x60;roaming&#x60;  Example: &#x60;sort&#x3D;displayName:desc,username:asc&#x60; 
+// Sorting criteria in the format: property:asc/desc. Default sort is mobileDeviceId:asc. Multiple sort criteria are supported and must be separated with a comma.   Fields allowed in the sort: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;batteryHealth&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;lostModeEnabledDate&#x60;, &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;,  &#x60;enrollmentSessionTokenValid&#x60;, &#x60;exchangeDeviceId&#x60;, &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;ipAddress&#x60;, &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;managementId&#x60;, &#x60;languages&#x60;, &#x60;lastBackupDate&#x60;, &#x60;lastEnrolledDate&#x60;, &#x60;lastCloudBackupDate&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;mdmProfileExpirationDate&#x60;, &#x60;model&#x60;, &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;preferredVoiceNumber&#x60;, &#x60;quotaSize&#x60;, &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;, &#x60;wifiMacAddress&#x60;, &#x60;deviceOwnershipType&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;leaseExpirationDate&#x60;,&#x60;lifeExpectancyYears&#x60;, &#x60;poDate&#x60;, &#x60;poNumber&#x60;, &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;warrantyExpirationDate&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;, &#x60;fileEncryptionCapable&#x60;, &#x60;hardwareEncryptionSupported&#x60;, &#x60;jailbreakStatus&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;cellularTechnology&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;,  &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;,  &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;, &#x60;voiceRoamingEnabled&#x60;, &#x60;roaming&#x60;, &#x60;lastLoggedInUsernameSelfService&#x60;, &#x60;lastLoggedInUsernameSelfServiceTimestamp&#x60;  Extension attributes can be sorted by using the format &#x60;EA+ID&#x60; where ID is the ID of the extension attribute, for example &#x60;EA+1!&#x3D;null&#x60;  Example: &#x60;sort&#x3D;displayName:desc,username:asc&#x60; 
 func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) Sort(sort []string) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
 	r.sort = &sort
 	return r
 }
 
-// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;exchangeDeviceId&#x60;,  &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;,  &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;languages&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;,  &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;quotaSize&#x60;,  &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;,  &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;,  &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;,  &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;,  &#x60;roaming&#x60;  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
+// Query in the RSQL format, allowing to filter mobile device collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;airPlayPassword&#x60;, &#x60;appAnalyticsEnabled&#x60;, &#x60;assetTag&#x60;, &#x60;availableSpaceMb&#x60;,  &#x60;batteryLevel&#x60;, &#x60;bluetoothLowEnergyCapable&#x60;, &#x60;bluetoothMacAddress&#x60;, &#x60;capacityMb&#x60;,  &#x60;declarativeDeviceManagementEnabled&#x60;, &#x60;deviceId&#x60;, &#x60;deviceLocatorServiceEnabled&#x60;, &#x60;devicePhoneNumber&#x60;, &#x60;diagnosticAndUsageReportingEnabled&#x60;, &#x60;displayName&#x60;, &#x60;doNotDisturbEnabled&#x60;, &#x60;exchangeDeviceId&#x60;,  &#x60;cloudBackupEnabled&#x60;, &#x60;osBuild&#x60;, &#x60;osSupplementalBuildVersion&#x60;, &#x60;osVersion&#x60;, &#x60;osRapidSecurityResponse&#x60;, &#x60;ipAddress&#x60;,  &#x60;itunesStoreAccountActive&#x60;, &#x60;mobileDeviceId&#x60;, &#x60;managementId&#x60;, &#x60;languages&#x60;, &#x60;lastInventoryUpdateDate&#x60;, &#x60;locales&#x60;, &#x60;locationServicesForSelfServiceMobileEnabled&#x60;, &#x60;lostModeEnabled&#x60;, &#x60;managed&#x60;, &#x60;model&#x60;,  &#x60;modelIdentifier&#x60;, &#x60;modelNumber&#x60;, &#x60;modemFirmwareVersion&#x60;, &#x60;preferredVoiceNumber&#x60;, &#x60;quotaSize&#x60;,  &#x60;residentUsers&#x60;, &#x60;serialNumber&#x60;, &#x60;sharedIpad&#x60;, &#x60;supervised&#x60;, &#x60;tethered&#x60;, &#x60;timeZone&#x60;, &#x60;udid&#x60;, &#x60;usedSpacePercentage&#x60;,  &#x60;wifiMacAddress&#x60;, &#x60;building&#x60;, &#x60;department&#x60;, &#x60;emailAddress&#x60;, &#x60;fullName&#x60;, &#x60;userPhoneNumber&#x60;, &#x60;position&#x60;, &#x60;room&#x60;, &#x60;username&#x60;, &#x60;appleCareId&#x60;, &#x60;lifeExpectancyYears&#x60;, &#x60;poNumber&#x60;,  &#x60;purchasePrice&#x60;, &#x60;purchasedOrLeased&#x60;, &#x60;purchasingAccount&#x60;, &#x60;purchasingContact&#x60;, &#x60;vendor&#x60;, &#x60;activationLockEnabled&#x60;, &#x60;blockEncryptionCapable&#x60;, &#x60;dataProtection&#x60;,  &#x60;fileEncryptionCapable&#x60;, &#x60;passcodeCompliant&#x60;, &#x60;passcodeCompliantWithProfile&#x60;, &#x60;passcodeLockGracePeriodEnforcedSeconds&#x60;, &#x60;passcodePresent&#x60;, &#x60;personalDeviceProfileCurrent&#x60;, &#x60;carrierSettingsVersion&#x60;, &#x60;currentCarrierNetwork&#x60;, &#x60;currentMobileCountryCode&#x60;, &#x60;currentMobileNetworkCode&#x60;, &#x60;dataRoamingEnabled&#x60;, &#x60;eid&#x60;, &#x60;network&#x60;, &#x60;homeMobileCountryCode&#x60;, &#x60;homeMobileNetworkCode&#x60;, &#x60;iccid&#x60;, &#x60;imei&#x60;, &#x60;imei2&#x60;, &#x60;meid&#x60;, &#x60;personalHotspotEnabled&#x60;,  &#x60;roaming&#x60;, &#x60;lastLoggedInUsernameSelfService&#x60;, &#x60;lastLoggedInUsernameSelfServiceTimestamp&#x60;  Extension attributes can be filtered by using the format &#x60;EA+ID&#x60; where ID is the ID of the extension attribute, for example &#x60;EA+1!&#x3D;null&#x60;  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;displayName&#x3D;&#x3D;\&quot;iPad\&quot;&#x60; 
 func (r MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest) Filter(filter string) MobileDeviceGroupsAPIV1MobileDeviceGroupsStaticGroupMembershipIdGetRequest {
 	r.filter = &filter
 	return r
@@ -312,36 +431,40 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupMembership
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"displayName:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"displayName:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -480,36 +603,40 @@ func (a *MobileDeviceGroupsAPIService) V1MobileDeviceGroupsStaticGroupsGetExecut
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"groupId:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"groupId:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

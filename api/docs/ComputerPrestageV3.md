@@ -34,6 +34,10 @@ Name | Type | Description | Notes
 **EnableRecoveryLock** | Pointer to **bool** |  | [optional] 
 **RecoveryLockPasswordType** | Pointer to **string** |  | [optional] 
 **RotateRecoveryLockPassword** | Pointer to **bool** |  | [optional] 
+**PrestageMinimumOsTargetVersionType** | Pointer to **string** |  | [optional] 
+**MinimumOsSpecificVersion** | Pointer to **string** |  | [optional] 
+**PssoEnabled** | Pointer to **bool** |  | [optional] [default to false]
+**PlatformSsoAppBundleId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -693,6 +697,106 @@ SetRotateRecoveryLockPassword sets RotateRecoveryLockPassword field to given val
 `func (o *ComputerPrestageV3) HasRotateRecoveryLockPassword() bool`
 
 HasRotateRecoveryLockPassword returns a boolean if a field has been set.
+
+### GetPrestageMinimumOsTargetVersionType
+
+`func (o *ComputerPrestageV3) GetPrestageMinimumOsTargetVersionType() string`
+
+GetPrestageMinimumOsTargetVersionType returns the PrestageMinimumOsTargetVersionType field if non-nil, zero value otherwise.
+
+### GetPrestageMinimumOsTargetVersionTypeOk
+
+`func (o *ComputerPrestageV3) GetPrestageMinimumOsTargetVersionTypeOk() (*string, bool)`
+
+GetPrestageMinimumOsTargetVersionTypeOk returns a tuple with the PrestageMinimumOsTargetVersionType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrestageMinimumOsTargetVersionType
+
+`func (o *ComputerPrestageV3) SetPrestageMinimumOsTargetVersionType(v string)`
+
+SetPrestageMinimumOsTargetVersionType sets PrestageMinimumOsTargetVersionType field to given value.
+
+### HasPrestageMinimumOsTargetVersionType
+
+`func (o *ComputerPrestageV3) HasPrestageMinimumOsTargetVersionType() bool`
+
+HasPrestageMinimumOsTargetVersionType returns a boolean if a field has been set.
+
+### GetMinimumOsSpecificVersion
+
+`func (o *ComputerPrestageV3) GetMinimumOsSpecificVersion() string`
+
+GetMinimumOsSpecificVersion returns the MinimumOsSpecificVersion field if non-nil, zero value otherwise.
+
+### GetMinimumOsSpecificVersionOk
+
+`func (o *ComputerPrestageV3) GetMinimumOsSpecificVersionOk() (*string, bool)`
+
+GetMinimumOsSpecificVersionOk returns a tuple with the MinimumOsSpecificVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMinimumOsSpecificVersion
+
+`func (o *ComputerPrestageV3) SetMinimumOsSpecificVersion(v string)`
+
+SetMinimumOsSpecificVersion sets MinimumOsSpecificVersion field to given value.
+
+### HasMinimumOsSpecificVersion
+
+`func (o *ComputerPrestageV3) HasMinimumOsSpecificVersion() bool`
+
+HasMinimumOsSpecificVersion returns a boolean if a field has been set.
+
+### GetPssoEnabled
+
+`func (o *ComputerPrestageV3) GetPssoEnabled() bool`
+
+GetPssoEnabled returns the PssoEnabled field if non-nil, zero value otherwise.
+
+### GetPssoEnabledOk
+
+`func (o *ComputerPrestageV3) GetPssoEnabledOk() (*bool, bool)`
+
+GetPssoEnabledOk returns a tuple with the PssoEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPssoEnabled
+
+`func (o *ComputerPrestageV3) SetPssoEnabled(v bool)`
+
+SetPssoEnabled sets PssoEnabled field to given value.
+
+### HasPssoEnabled
+
+`func (o *ComputerPrestageV3) HasPssoEnabled() bool`
+
+HasPssoEnabled returns a boolean if a field has been set.
+
+### GetPlatformSsoAppBundleId
+
+`func (o *ComputerPrestageV3) GetPlatformSsoAppBundleId() string`
+
+GetPlatformSsoAppBundleId returns the PlatformSsoAppBundleId field if non-nil, zero value otherwise.
+
+### GetPlatformSsoAppBundleIdOk
+
+`func (o *ComputerPrestageV3) GetPlatformSsoAppBundleIdOk() (*string, bool)`
+
+GetPlatformSsoAppBundleIdOk returns a tuple with the PlatformSsoAppBundleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlatformSsoAppBundleId
+
+`func (o *ComputerPrestageV3) SetPlatformSsoAppBundleId(v string)`
+
+SetPlatformSsoAppBundleId sets PlatformSsoAppBundleId field to given value.
+
+### HasPlatformSsoAppBundleId
+
+`func (o *ComputerPrestageV3) HasPlatformSsoAppBundleId() bool`
+
+HasPlatformSsoAppBundleId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Hosts** | **[]string** |  | [default to []]
+**Hosts** | Pointer to **[]string** |  | [optional] [default to {}]
 **ManagementHint** | Pointer to **string** |  | [optional] [default to ""]
 
 ## Methods
 
 ### NewEnrollmentSsoConfig
 
-`func NewEnrollmentSsoConfig(hosts []string, ) *EnrollmentSsoConfig`
+`func NewEnrollmentSsoConfig() *EnrollmentSsoConfig`
 
 NewEnrollmentSsoConfig instantiates a new EnrollmentSsoConfig object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetHosts sets Hosts field to given value.
 
+### HasHosts
+
+`func (o *EnrollmentSsoConfig) HasHosts() bool`
+
+HasHosts returns a boolean if a field has been set.
 
 ### GetManagementHint
 

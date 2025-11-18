@@ -7,6 +7,10 @@
 
 * `TV` (value: `"TV"`)
 
+* `VISION_PRO` (value: `"VISION_PRO"`)
+
+* `WATCH` (value: `"WATCH"`)
+
 * `COMPUTER` (value: `"COMPUTER"`)
 
 * `COMPUTER_USER` (value: `"COMPUTER_USER"`)

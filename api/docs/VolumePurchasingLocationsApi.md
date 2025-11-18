@@ -40,8 +40,8 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["id:asc"])
-	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, sendNotificationWhenNoLongerAssigned, siteId and siteName. This param can be combined with paging and sorting. (optional) (default to "")
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to {"id:asc"})
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, email, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, sendNotificationWhenNoLongerAssigned, siteId and siteName. This param can be combined with paging and sorting. (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -68,8 +68,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;id:asc&quot;]]
- **filter** | **string** | Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, sendNotificationWhenNoLongerAssigned, siteId and siteName. This param can be combined with paging and sorting. | [default to &quot;&quot;]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is id:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to {&quot;id:asc&quot;}]
+ **filter** | **string** | Query in the RSQL format, allowing to filter Volume Purchasing Location collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: id, name, appleId, email, organizationName, tokenExpiration, countryCode, locationName, automaticallyPopulatePurchasedContent, sendNotificationWhenNoLongerAssigned, siteId and siteName. This param can be combined with paging and sorting. | [default to &quot;&quot;]
 
 ### Return type
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -113,7 +113,7 @@ func main() {
 	id := "id_example" // string | Volume Purchasing Location identifier
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to ["id:asc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. (optional) (default to {"id:asc"})
 	filter := "filter_example" // string | Query in the RSQL format, allowing to filter Volume Purchasing Content collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, licenseCountTotal, licenseCountInUse, licenseCountReported, contentType, and pricingParam. This param can be combined with paging and sorting. (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to [&quot;id:asc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. | [default to {&quot;id:asc&quot;}]
  **filter** | **string** | Query in the RSQL format, allowing to filter Volume Purchasing Content collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: name, licenseCountTotal, licenseCountInUse, licenseCountReported, contentType, and pricingParam. This param can be combined with paging and sorting. | [default to &quot;&quot;]
 
 ### Return type
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -329,7 +329,7 @@ func main() {
 	id := "id_example" // string | instance id of Volume Purchasing Location history record
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  (optional) (default to ["date:desc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  (optional) (default to {"date:desc"})
 	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
 
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  | [default to [&quot;date:desc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is date:desc. Multiple sort criteria are supported and must be separated with a comma.  | [default to {&quot;date:desc&quot;}]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
 ### Return type
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -717,7 +717,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

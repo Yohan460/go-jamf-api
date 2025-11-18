@@ -29,11 +29,14 @@ type JamfProAccountPreferencesAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest
+
+	Deprecated
 	*/
 	V2AccountPreferencesGet(ctx context.Context) JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest
 
 	// V2AccountPreferencesGetExecute executes the request
 	//  @return AccountPreferencesV5
+	// Deprecated
 	V2AccountPreferencesGetExecute(r JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest) (*AccountPreferencesV5, *http.Response, error)
 
 	/*
@@ -44,12 +47,44 @@ type JamfProAccountPreferencesAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest
+
+	Deprecated
 	*/
 	V2AccountPreferencesPatch(ctx context.Context) JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest
 
 	// V2AccountPreferencesPatchExecute executes the request
 	//  @return AccountPreferencesV5
+	// Deprecated
 	V2AccountPreferencesPatchExecute(r JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest) (*AccountPreferencesV5, *http.Response, error)
+
+	/*
+	V3AccountPreferencesGet Get Jamf Pro account preferences 
+
+	Get Jamf Pro account preferences
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest
+	*/
+	V3AccountPreferencesGet(ctx context.Context) JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest
+
+	// V3AccountPreferencesGetExecute executes the request
+	//  @return AccountPreferencesV6
+	V3AccountPreferencesGetExecute(r JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest) (*AccountPreferencesV6, *http.Response, error)
+
+	/*
+	V3AccountPreferencesPatch Update Jamf Pro account preferences 
+
+	Update Jamf Pro account preferences
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest
+	*/
+	V3AccountPreferencesPatch(ctx context.Context) JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest
+
+	// V3AccountPreferencesPatchExecute executes the request
+	V3AccountPreferencesPatchExecute(r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) (*http.Response, error)
 }
 
 // JamfProAccountPreferencesAPIService JamfProAccountPreferencesAPI service
@@ -79,6 +114,8 @@ Get Jamf Pro account preferences
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest
+
+Deprecated
 */
 func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesGet(ctx context.Context) JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest {
 	return JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest{
@@ -89,6 +126,7 @@ func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesGet(ctx contex
 
 // Execute executes the request
 //  @return AccountPreferencesV5
+// Deprecated
 func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesGetExecute(r JamfProAccountPreferencesAPIV2AccountPreferencesGetRequest) (*AccountPreferencesV5, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -126,7 +164,7 @@ func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesGetExecute(r J
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.acceptLanguage != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
@@ -202,6 +240,8 @@ Update Jamf Pro account preferences
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest
+
+Deprecated
 */
 func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesPatch(ctx context.Context) JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest {
 	return JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest{
@@ -212,6 +252,7 @@ func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesPatch(ctx cont
 
 // Execute executes the request
 //  @return AccountPreferencesV5
+// Deprecated
 func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesPatchExecute(r JamfProAccountPreferencesAPIV2AccountPreferencesPatchRequest) (*AccountPreferencesV5, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -249,7 +290,7 @@ func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesPatchExecute(r
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.acceptLanguage != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "")
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
 	}
 	// body params
 	localVarPostBody = r.accountPreferencesV5
@@ -298,4 +339,238 @@ func (a *JamfProAccountPreferencesAPIService) V2AccountPreferencesPatchExecute(r
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest struct {
+	ctx context.Context
+	ApiService JamfProAccountPreferencesAPI
+	acceptLanguage *string
+}
+
+// Locale to be used.
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest) AcceptLanguage(acceptLanguage string) JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
+}
+
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest) Execute() (*AccountPreferencesV6, *http.Response, error) {
+	return r.ApiService.V3AccountPreferencesGetExecute(r)
+}
+
+/*
+V3AccountPreferencesGet Get Jamf Pro account preferences 
+
+Get Jamf Pro account preferences
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest
+*/
+func (a *JamfProAccountPreferencesAPIService) V3AccountPreferencesGet(ctx context.Context) JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest {
+	return JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return AccountPreferencesV6
+func (a *JamfProAccountPreferencesAPIService) V3AccountPreferencesGetExecute(r JamfProAccountPreferencesAPIV3AccountPreferencesGetRequest) (*AccountPreferencesV6, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AccountPreferencesV6
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProAccountPreferencesAPIService.V3AccountPreferencesGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/account-preferences"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest struct {
+	ctx context.Context
+	ApiService JamfProAccountPreferencesAPI
+	acceptLanguage *string
+	jSESSIONID *string
+	accountPreferencesV6 *AccountPreferencesV6
+}
+
+// Locale to be used, when user has not defined preferred language.
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) AcceptLanguage(acceptLanguage string) JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
+}
+
+// Session cookie, that&#39;s used to determine user session where account preferences should be refreshed
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) JSESSIONID(jSESSIONID string) JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest {
+	r.jSESSIONID = &jSESSIONID
+	return r
+}
+
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) AccountPreferencesV6(accountPreferencesV6 AccountPreferencesV6) JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest {
+	r.accountPreferencesV6 = &accountPreferencesV6
+	return r
+}
+
+func (r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V3AccountPreferencesPatchExecute(r)
+}
+
+/*
+V3AccountPreferencesPatch Update Jamf Pro account preferences 
+
+Update Jamf Pro account preferences
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest
+*/
+func (a *JamfProAccountPreferencesAPIService) V3AccountPreferencesPatch(ctx context.Context) JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest {
+	return JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *JamfProAccountPreferencesAPIService) V3AccountPreferencesPatchExecute(r JamfProAccountPreferencesAPIV3AccountPreferencesPatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProAccountPreferencesAPIService.V3AccountPreferencesPatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v3/account-preferences"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
+	// body params
+	localVarPostBody = r.accountPreferencesV6
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

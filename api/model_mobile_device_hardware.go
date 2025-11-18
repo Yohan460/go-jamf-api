@@ -23,6 +23,8 @@ type MobileDeviceHardware struct {
 	AvailableSpaceMb *int64 `json:"availableSpaceMb,omitempty"`
 	UsedSpacePercentage *int64 `json:"usedSpacePercentage,omitempty"`
 	BatteryLevel *int64 `json:"batteryLevel,omitempty"`
+	// - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting. 
+	BatteryHealth *string `json:"batteryHealth,omitempty"`
 	SerialNumber *string `json:"serialNumber,omitempty"`
 	WifiMacAddress *string `json:"wifiMacAddress,omitempty"`
 	BluetoothMacAddress *string `json:"bluetoothMacAddress,omitempty"`
@@ -41,6 +43,8 @@ type MobileDeviceHardware struct {
 // will change when the set of required properties is changed
 func NewMobileDeviceHardware() *MobileDeviceHardware {
 	this := MobileDeviceHardware{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -49,6 +53,8 @@ func NewMobileDeviceHardware() *MobileDeviceHardware {
 // but it doesn't guarantee that properties required by API are set
 func NewMobileDeviceHardwareWithDefaults() *MobileDeviceHardware {
 	this := MobileDeviceHardware{}
+	var batteryHealth string = "UNKNOWN"
+	this.BatteryHealth = &batteryHealth
 	return &this
 }
 
@@ -178,6 +184,38 @@ func (o *MobileDeviceHardware) HasBatteryLevel() bool {
 // SetBatteryLevel gets a reference to the given int64 and assigns it to the BatteryLevel field.
 func (o *MobileDeviceHardware) SetBatteryLevel(v int64) {
 	o.BatteryLevel = &v
+}
+
+// GetBatteryHealth returns the BatteryHealth field value if set, zero value otherwise.
+func (o *MobileDeviceHardware) GetBatteryHealth() string {
+	if o == nil || IsNil(o.BatteryHealth) {
+		var ret string
+		return ret
+	}
+	return *o.BatteryHealth
+}
+
+// GetBatteryHealthOk returns a tuple with the BatteryHealth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceHardware) GetBatteryHealthOk() (*string, bool) {
+	if o == nil || IsNil(o.BatteryHealth) {
+		return nil, false
+	}
+	return o.BatteryHealth, true
+}
+
+// HasBatteryHealth returns a boolean if a field has been set.
+func (o *MobileDeviceHardware) HasBatteryHealth() bool {
+	if o != nil && !IsNil(o.BatteryHealth) {
+		return true
+	}
+
+	return false
+}
+
+// SetBatteryHealth gets a reference to the given string and assigns it to the BatteryHealth field.
+func (o *MobileDeviceHardware) SetBatteryHealth(v string) {
+	o.BatteryHealth = &v
 }
 
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise.
@@ -521,6 +559,9 @@ func (o MobileDeviceHardware) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BatteryLevel) {
 		toSerialize["batteryLevel"] = o.BatteryLevel
+	}
+	if !IsNil(o.BatteryHealth) {
+		toSerialize["batteryHealth"] = o.BatteryHealth
 	}
 	if !IsNil(o.SerialNumber) {
 		toSerialize["serialNumber"] = o.SerialNumber

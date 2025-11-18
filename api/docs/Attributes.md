@@ -8,6 +8,13 @@ Name | Type | Description | Notes
 **AssociatedDomains** | Pointer to **[]string** |  | [optional] 
 **Removable** | Pointer to **bool** |  | [optional] 
 **EnableDirectDownloads** | Pointer to **bool** |  | [optional] 
+**ContentFilterUuid** | Pointer to **string** |  | [optional] 
+**DnsProxyUuid** | Pointer to **string** |  | [optional] 
+**CellularSliceUuid** | Pointer to **string** |  | [optional] 
+**RelayUuid** | Pointer to **string** |  | [optional] 
+**TapToPayScreenLock** | Pointer to **bool** |  | [optional] 
+**Hideable** | Pointer to **bool** |  | [optional] 
+**Lockable** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -127,6 +134,181 @@ SetEnableDirectDownloads sets EnableDirectDownloads field to given value.
 `func (o *Attributes) HasEnableDirectDownloads() bool`
 
 HasEnableDirectDownloads returns a boolean if a field has been set.
+
+### GetContentFilterUuid
+
+`func (o *Attributes) GetContentFilterUuid() string`
+
+GetContentFilterUuid returns the ContentFilterUuid field if non-nil, zero value otherwise.
+
+### GetContentFilterUuidOk
+
+`func (o *Attributes) GetContentFilterUuidOk() (*string, bool)`
+
+GetContentFilterUuidOk returns a tuple with the ContentFilterUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContentFilterUuid
+
+`func (o *Attributes) SetContentFilterUuid(v string)`
+
+SetContentFilterUuid sets ContentFilterUuid field to given value.
+
+### HasContentFilterUuid
+
+`func (o *Attributes) HasContentFilterUuid() bool`
+
+HasContentFilterUuid returns a boolean if a field has been set.
+
+### GetDnsProxyUuid
+
+`func (o *Attributes) GetDnsProxyUuid() string`
+
+GetDnsProxyUuid returns the DnsProxyUuid field if non-nil, zero value otherwise.
+
+### GetDnsProxyUuidOk
+
+`func (o *Attributes) GetDnsProxyUuidOk() (*string, bool)`
+
+GetDnsProxyUuidOk returns a tuple with the DnsProxyUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDnsProxyUuid
+
+`func (o *Attributes) SetDnsProxyUuid(v string)`
+
+SetDnsProxyUuid sets DnsProxyUuid field to given value.
+
+### HasDnsProxyUuid
+
+`func (o *Attributes) HasDnsProxyUuid() bool`
+
+HasDnsProxyUuid returns a boolean if a field has been set.
+
+### GetCellularSliceUuid
+
+`func (o *Attributes) GetCellularSliceUuid() string`
+
+GetCellularSliceUuid returns the CellularSliceUuid field if non-nil, zero value otherwise.
+
+### GetCellularSliceUuidOk
+
+`func (o *Attributes) GetCellularSliceUuidOk() (*string, bool)`
+
+GetCellularSliceUuidOk returns a tuple with the CellularSliceUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCellularSliceUuid
+
+`func (o *Attributes) SetCellularSliceUuid(v string)`
+
+SetCellularSliceUuid sets CellularSliceUuid field to given value.
+
+### HasCellularSliceUuid
+
+`func (o *Attributes) HasCellularSliceUuid() bool`
+
+HasCellularSliceUuid returns a boolean if a field has been set.
+
+### GetRelayUuid
+
+`func (o *Attributes) GetRelayUuid() string`
+
+GetRelayUuid returns the RelayUuid field if non-nil, zero value otherwise.
+
+### GetRelayUuidOk
+
+`func (o *Attributes) GetRelayUuidOk() (*string, bool)`
+
+GetRelayUuidOk returns a tuple with the RelayUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRelayUuid
+
+`func (o *Attributes) SetRelayUuid(v string)`
+
+SetRelayUuid sets RelayUuid field to given value.
+
+### HasRelayUuid
+
+`func (o *Attributes) HasRelayUuid() bool`
+
+HasRelayUuid returns a boolean if a field has been set.
+
+### GetTapToPayScreenLock
+
+`func (o *Attributes) GetTapToPayScreenLock() bool`
+
+GetTapToPayScreenLock returns the TapToPayScreenLock field if non-nil, zero value otherwise.
+
+### GetTapToPayScreenLockOk
+
+`func (o *Attributes) GetTapToPayScreenLockOk() (*bool, bool)`
+
+GetTapToPayScreenLockOk returns a tuple with the TapToPayScreenLock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTapToPayScreenLock
+
+`func (o *Attributes) SetTapToPayScreenLock(v bool)`
+
+SetTapToPayScreenLock sets TapToPayScreenLock field to given value.
+
+### HasTapToPayScreenLock
+
+`func (o *Attributes) HasTapToPayScreenLock() bool`
+
+HasTapToPayScreenLock returns a boolean if a field has been set.
+
+### GetHideable
+
+`func (o *Attributes) GetHideable() bool`
+
+GetHideable returns the Hideable field if non-nil, zero value otherwise.
+
+### GetHideableOk
+
+`func (o *Attributes) GetHideableOk() (*bool, bool)`
+
+GetHideableOk returns a tuple with the Hideable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHideable
+
+`func (o *Attributes) SetHideable(v bool)`
+
+SetHideable sets Hideable field to given value.
+
+### HasHideable
+
+`func (o *Attributes) HasHideable() bool`
+
+HasHideable returns a boolean if a field has been set.
+
+### GetLockable
+
+`func (o *Attributes) GetLockable() bool`
+
+GetLockable returns the Lockable field if non-nil, zero value otherwise.
+
+### GetLockableOk
+
+`func (o *Attributes) GetLockableOk() (*bool, bool)`
+
+GetLockableOk returns a tuple with the Lockable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLockable
+
+`func (o *Attributes) SetLockable(v bool)`
+
+SetLockable sets Lockable field to given value.
+
+### HasLockable
+
+`func (o *Attributes) HasLockable() bool`
+
+HasLockable returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

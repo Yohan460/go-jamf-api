@@ -199,18 +199,20 @@ func (a *AdvancedMobileDeviceSearchesAPIService) V1AdvancedMobileDeviceSearchesC
 		return localVarReturnValue, nil, reportError("criteria is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "criteria", r.criteria, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "criteria", r.criteria, "form", "")
 	if r.site != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "site", r.site, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "site", r.site, "form", "")
 	} else {
-		var defaultValue string = "-1"
-		r.site = &defaultValue
+        var defaultValue string = "-1"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "site", defaultValue, "form", "")
+        r.site = &defaultValue
 	}
 	if r.contains != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "contains", r.contains, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contains", r.contains, "form", "")
 	} else {
-		var defaultValue string = "null"
-		r.contains = &defaultValue
+        var defaultValue string = "null"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "contains", defaultValue, "form", "")
+        r.contains = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

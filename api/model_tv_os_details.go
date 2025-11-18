@@ -29,6 +29,7 @@ type TvOsDetails struct {
 	Purchasing *PurchasingV2 `json:"purchasing,omitempty"`
 	ConfigurationProfiles []ConfigurationProfile `json:"configurationProfiles,omitempty"`
 	Certificates []MobileDeviceCertificateV2 `json:"certificates,omitempty"`
+	Applications []MobileDeviceApplication `json:"applications,omitempty"`
 }
 
 // NewTvOsDetails instantiates a new TvOsDetails object
@@ -368,6 +369,38 @@ func (o *TvOsDetails) SetCertificates(v []MobileDeviceCertificateV2) {
 	o.Certificates = v
 }
 
+// GetApplications returns the Applications field value if set, zero value otherwise.
+func (o *TvOsDetails) GetApplications() []MobileDeviceApplication {
+	if o == nil || IsNil(o.Applications) {
+		var ret []MobileDeviceApplication
+		return ret
+	}
+	return o.Applications
+}
+
+// GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TvOsDetails) GetApplicationsOk() ([]MobileDeviceApplication, bool) {
+	if o == nil || IsNil(o.Applications) {
+		return nil, false
+	}
+	return o.Applications, true
+}
+
+// HasApplications returns a boolean if a field has been set.
+func (o *TvOsDetails) HasApplications() bool {
+	if o != nil && !IsNil(o.Applications) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplications gets a reference to the given []MobileDeviceApplication and assigns it to the Applications field.
+func (o *TvOsDetails) SetApplications(v []MobileDeviceApplication) {
+	o.Applications = v
+}
+
 func (o TvOsDetails) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -407,6 +440,9 @@ func (o TvOsDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Certificates) {
 		toSerialize["certificates"] = o.Certificates
+	}
+	if !IsNil(o.Applications) {
+		toSerialize["applications"] = o.Applications
 	}
 	return toSerialize, nil
 }

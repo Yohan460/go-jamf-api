@@ -13,23 +13,53 @@ package api
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/validator.v2"
 )
 
 // MdmCommandRequestCommandData - struct for MdmCommandRequestCommandData
 type MdmCommandRequestCommandData struct {
+	ApplyRedemptionCodeCommand *ApplyRedemptionCodeCommand
+	ClearPasscodeCommand *ClearPasscodeCommand
 	ClearRestrictionsPasswordCommand *ClearRestrictionsPasswordCommand
 	DeclarativeManagementCommand *DeclarativeManagementCommand
 	DeleteUserCommand *DeleteUserCommand
 	DeviceInformationCommand *DeviceInformationCommand
+	DeviceLocationCommand *DeviceLocationCommand
 	DeviceLockCommand *DeviceLockCommand
+	DisableLostModeCommand *DisableLostModeCommand
+	DisableRemoteDesktopCommand *DisableRemoteDesktopCommand
 	EnableLostModeCommand *EnableLostModeCommand
+	EnableRemoteDesktopCommand *EnableRemoteDesktopCommand
 	EraseDeviceCommand *EraseDeviceCommand
 	LogOutUserCommand *LogOutUserCommand
+	ManagedApplicationListCommand *ManagedApplicationListCommand
+	PlayLostModeSoundCommand *PlayLostModeSoundCommand
+	RefreshCellularPlansCommand *RefreshCellularPlansCommand
+	RequestMirroringCommand *RequestMirroringCommand
 	RestartDeviceCommand *RestartDeviceCommand
+	SecurityInfoCommand *SecurityInfoCommand
 	SetAutoAdminPasswordCommand *SetAutoAdminPasswordCommand
 	SetRecoveryLockCommand *SetRecoveryLockCommand
 	SettingsCommand *SettingsCommand
 	ShutDownDeviceCommand *ShutDownDeviceCommand
+	StopMirroringCommand *StopMirroringCommand
+	UnlockUserAccountCommand *UnlockUserAccountCommand
+	ValidateApplicationsCommand *ValidateApplicationsCommand
+	VerifyRecoveryLockCommand *VerifyRecoveryLockCommand
+}
+
+// ApplyRedemptionCodeCommandAsMdmCommandRequestCommandData is a convenience function that returns ApplyRedemptionCodeCommand wrapped in MdmCommandRequestCommandData
+func ApplyRedemptionCodeCommandAsMdmCommandRequestCommandData(v *ApplyRedemptionCodeCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ApplyRedemptionCodeCommand: v,
+	}
+}
+
+// ClearPasscodeCommandAsMdmCommandRequestCommandData is a convenience function that returns ClearPasscodeCommand wrapped in MdmCommandRequestCommandData
+func ClearPasscodeCommandAsMdmCommandRequestCommandData(v *ClearPasscodeCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ClearPasscodeCommand: v,
+	}
 }
 
 // ClearRestrictionsPasswordCommandAsMdmCommandRequestCommandData is a convenience function that returns ClearRestrictionsPasswordCommand wrapped in MdmCommandRequestCommandData
@@ -60,6 +90,13 @@ func DeviceInformationCommandAsMdmCommandRequestCommandData(v *DeviceInformation
 	}
 }
 
+// DeviceLocationCommandAsMdmCommandRequestCommandData is a convenience function that returns DeviceLocationCommand wrapped in MdmCommandRequestCommandData
+func DeviceLocationCommandAsMdmCommandRequestCommandData(v *DeviceLocationCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		DeviceLocationCommand: v,
+	}
+}
+
 // DeviceLockCommandAsMdmCommandRequestCommandData is a convenience function that returns DeviceLockCommand wrapped in MdmCommandRequestCommandData
 func DeviceLockCommandAsMdmCommandRequestCommandData(v *DeviceLockCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
@@ -67,10 +104,31 @@ func DeviceLockCommandAsMdmCommandRequestCommandData(v *DeviceLockCommand) MdmCo
 	}
 }
 
+// DisableLostModeCommandAsMdmCommandRequestCommandData is a convenience function that returns DisableLostModeCommand wrapped in MdmCommandRequestCommandData
+func DisableLostModeCommandAsMdmCommandRequestCommandData(v *DisableLostModeCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		DisableLostModeCommand: v,
+	}
+}
+
+// DisableRemoteDesktopCommandAsMdmCommandRequestCommandData is a convenience function that returns DisableRemoteDesktopCommand wrapped in MdmCommandRequestCommandData
+func DisableRemoteDesktopCommandAsMdmCommandRequestCommandData(v *DisableRemoteDesktopCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		DisableRemoteDesktopCommand: v,
+	}
+}
+
 // EnableLostModeCommandAsMdmCommandRequestCommandData is a convenience function that returns EnableLostModeCommand wrapped in MdmCommandRequestCommandData
 func EnableLostModeCommandAsMdmCommandRequestCommandData(v *EnableLostModeCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		EnableLostModeCommand: v,
+	}
+}
+
+// EnableRemoteDesktopCommandAsMdmCommandRequestCommandData is a convenience function that returns EnableRemoteDesktopCommand wrapped in MdmCommandRequestCommandData
+func EnableRemoteDesktopCommandAsMdmCommandRequestCommandData(v *EnableRemoteDesktopCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		EnableRemoteDesktopCommand: v,
 	}
 }
 
@@ -88,10 +146,45 @@ func LogOutUserCommandAsMdmCommandRequestCommandData(v *LogOutUserCommand) MdmCo
 	}
 }
 
+// ManagedApplicationListCommandAsMdmCommandRequestCommandData is a convenience function that returns ManagedApplicationListCommand wrapped in MdmCommandRequestCommandData
+func ManagedApplicationListCommandAsMdmCommandRequestCommandData(v *ManagedApplicationListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ManagedApplicationListCommand: v,
+	}
+}
+
+// PlayLostModeSoundCommandAsMdmCommandRequestCommandData is a convenience function that returns PlayLostModeSoundCommand wrapped in MdmCommandRequestCommandData
+func PlayLostModeSoundCommandAsMdmCommandRequestCommandData(v *PlayLostModeSoundCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		PlayLostModeSoundCommand: v,
+	}
+}
+
+// RefreshCellularPlansCommandAsMdmCommandRequestCommandData is a convenience function that returns RefreshCellularPlansCommand wrapped in MdmCommandRequestCommandData
+func RefreshCellularPlansCommandAsMdmCommandRequestCommandData(v *RefreshCellularPlansCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		RefreshCellularPlansCommand: v,
+	}
+}
+
+// RequestMirroringCommandAsMdmCommandRequestCommandData is a convenience function that returns RequestMirroringCommand wrapped in MdmCommandRequestCommandData
+func RequestMirroringCommandAsMdmCommandRequestCommandData(v *RequestMirroringCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		RequestMirroringCommand: v,
+	}
+}
+
 // RestartDeviceCommandAsMdmCommandRequestCommandData is a convenience function that returns RestartDeviceCommand wrapped in MdmCommandRequestCommandData
 func RestartDeviceCommandAsMdmCommandRequestCommandData(v *RestartDeviceCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		RestartDeviceCommand: v,
+	}
+}
+
+// SecurityInfoCommandAsMdmCommandRequestCommandData is a convenience function that returns SecurityInfoCommand wrapped in MdmCommandRequestCommandData
+func SecurityInfoCommandAsMdmCommandRequestCommandData(v *SecurityInfoCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		SecurityInfoCommand: v,
 	}
 }
 
@@ -123,11 +216,73 @@ func ShutDownDeviceCommandAsMdmCommandRequestCommandData(v *ShutDownDeviceComman
 	}
 }
 
+// StopMirroringCommandAsMdmCommandRequestCommandData is a convenience function that returns StopMirroringCommand wrapped in MdmCommandRequestCommandData
+func StopMirroringCommandAsMdmCommandRequestCommandData(v *StopMirroringCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		StopMirroringCommand: v,
+	}
+}
+
+// UnlockUserAccountCommandAsMdmCommandRequestCommandData is a convenience function that returns UnlockUserAccountCommand wrapped in MdmCommandRequestCommandData
+func UnlockUserAccountCommandAsMdmCommandRequestCommandData(v *UnlockUserAccountCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		UnlockUserAccountCommand: v,
+	}
+}
+
+// ValidateApplicationsCommandAsMdmCommandRequestCommandData is a convenience function that returns ValidateApplicationsCommand wrapped in MdmCommandRequestCommandData
+func ValidateApplicationsCommandAsMdmCommandRequestCommandData(v *ValidateApplicationsCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ValidateApplicationsCommand: v,
+	}
+}
+
+// VerifyRecoveryLockCommandAsMdmCommandRequestCommandData is a convenience function that returns VerifyRecoveryLockCommand wrapped in MdmCommandRequestCommandData
+func VerifyRecoveryLockCommandAsMdmCommandRequestCommandData(v *VerifyRecoveryLockCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		VerifyRecoveryLockCommand: v,
+	}
+}
+
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
+	// try to unmarshal data into ApplyRedemptionCodeCommand
+	err = newStrictDecoder(data).Decode(&dst.ApplyRedemptionCodeCommand)
+	if err == nil {
+		jsonApplyRedemptionCodeCommand, _ := json.Marshal(dst.ApplyRedemptionCodeCommand)
+		if string(jsonApplyRedemptionCodeCommand) == "{}" { // empty struct
+			dst.ApplyRedemptionCodeCommand = nil
+		} else {
+			if err = validator.Validate(dst.ApplyRedemptionCodeCommand); err != nil {
+				dst.ApplyRedemptionCodeCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ApplyRedemptionCodeCommand = nil
+	}
+
+	// try to unmarshal data into ClearPasscodeCommand
+	err = newStrictDecoder(data).Decode(&dst.ClearPasscodeCommand)
+	if err == nil {
+		jsonClearPasscodeCommand, _ := json.Marshal(dst.ClearPasscodeCommand)
+		if string(jsonClearPasscodeCommand) == "{}" { // empty struct
+			dst.ClearPasscodeCommand = nil
+		} else {
+			if err = validator.Validate(dst.ClearPasscodeCommand); err != nil {
+				dst.ClearPasscodeCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ClearPasscodeCommand = nil
+	}
+
 	// try to unmarshal data into ClearRestrictionsPasswordCommand
 	err = newStrictDecoder(data).Decode(&dst.ClearRestrictionsPasswordCommand)
 	if err == nil {
@@ -135,7 +290,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonClearRestrictionsPasswordCommand) == "{}" { // empty struct
 			dst.ClearRestrictionsPasswordCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ClearRestrictionsPasswordCommand); err != nil {
+				dst.ClearRestrictionsPasswordCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ClearRestrictionsPasswordCommand = nil
@@ -148,7 +307,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonDeclarativeManagementCommand) == "{}" { // empty struct
 			dst.DeclarativeManagementCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeclarativeManagementCommand); err != nil {
+				dst.DeclarativeManagementCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeclarativeManagementCommand = nil
@@ -161,7 +324,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonDeleteUserCommand) == "{}" { // empty struct
 			dst.DeleteUserCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeleteUserCommand); err != nil {
+				dst.DeleteUserCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeleteUserCommand = nil
@@ -174,10 +341,31 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonDeviceInformationCommand) == "{}" { // empty struct
 			dst.DeviceInformationCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeviceInformationCommand); err != nil {
+				dst.DeviceInformationCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeviceInformationCommand = nil
+	}
+
+	// try to unmarshal data into DeviceLocationCommand
+	err = newStrictDecoder(data).Decode(&dst.DeviceLocationCommand)
+	if err == nil {
+		jsonDeviceLocationCommand, _ := json.Marshal(dst.DeviceLocationCommand)
+		if string(jsonDeviceLocationCommand) == "{}" { // empty struct
+			dst.DeviceLocationCommand = nil
+		} else {
+			if err = validator.Validate(dst.DeviceLocationCommand); err != nil {
+				dst.DeviceLocationCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.DeviceLocationCommand = nil
 	}
 
 	// try to unmarshal data into DeviceLockCommand
@@ -187,10 +375,48 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonDeviceLockCommand) == "{}" { // empty struct
 			dst.DeviceLockCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.DeviceLockCommand); err != nil {
+				dst.DeviceLockCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.DeviceLockCommand = nil
+	}
+
+	// try to unmarshal data into DisableLostModeCommand
+	err = newStrictDecoder(data).Decode(&dst.DisableLostModeCommand)
+	if err == nil {
+		jsonDisableLostModeCommand, _ := json.Marshal(dst.DisableLostModeCommand)
+		if string(jsonDisableLostModeCommand) == "{}" { // empty struct
+			dst.DisableLostModeCommand = nil
+		} else {
+			if err = validator.Validate(dst.DisableLostModeCommand); err != nil {
+				dst.DisableLostModeCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.DisableLostModeCommand = nil
+	}
+
+	// try to unmarshal data into DisableRemoteDesktopCommand
+	err = newStrictDecoder(data).Decode(&dst.DisableRemoteDesktopCommand)
+	if err == nil {
+		jsonDisableRemoteDesktopCommand, _ := json.Marshal(dst.DisableRemoteDesktopCommand)
+		if string(jsonDisableRemoteDesktopCommand) == "{}" { // empty struct
+			dst.DisableRemoteDesktopCommand = nil
+		} else {
+			if err = validator.Validate(dst.DisableRemoteDesktopCommand); err != nil {
+				dst.DisableRemoteDesktopCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.DisableRemoteDesktopCommand = nil
 	}
 
 	// try to unmarshal data into EnableLostModeCommand
@@ -200,10 +426,31 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonEnableLostModeCommand) == "{}" { // empty struct
 			dst.EnableLostModeCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.EnableLostModeCommand); err != nil {
+				dst.EnableLostModeCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.EnableLostModeCommand = nil
+	}
+
+	// try to unmarshal data into EnableRemoteDesktopCommand
+	err = newStrictDecoder(data).Decode(&dst.EnableRemoteDesktopCommand)
+	if err == nil {
+		jsonEnableRemoteDesktopCommand, _ := json.Marshal(dst.EnableRemoteDesktopCommand)
+		if string(jsonEnableRemoteDesktopCommand) == "{}" { // empty struct
+			dst.EnableRemoteDesktopCommand = nil
+		} else {
+			if err = validator.Validate(dst.EnableRemoteDesktopCommand); err != nil {
+				dst.EnableRemoteDesktopCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.EnableRemoteDesktopCommand = nil
 	}
 
 	// try to unmarshal data into EraseDeviceCommand
@@ -213,7 +460,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonEraseDeviceCommand) == "{}" { // empty struct
 			dst.EraseDeviceCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.EraseDeviceCommand); err != nil {
+				dst.EraseDeviceCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.EraseDeviceCommand = nil
@@ -226,10 +477,82 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonLogOutUserCommand) == "{}" { // empty struct
 			dst.LogOutUserCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.LogOutUserCommand); err != nil {
+				dst.LogOutUserCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.LogOutUserCommand = nil
+	}
+
+	// try to unmarshal data into ManagedApplicationListCommand
+	err = newStrictDecoder(data).Decode(&dst.ManagedApplicationListCommand)
+	if err == nil {
+		jsonManagedApplicationListCommand, _ := json.Marshal(dst.ManagedApplicationListCommand)
+		if string(jsonManagedApplicationListCommand) == "{}" { // empty struct
+			dst.ManagedApplicationListCommand = nil
+		} else {
+			if err = validator.Validate(dst.ManagedApplicationListCommand); err != nil {
+				dst.ManagedApplicationListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ManagedApplicationListCommand = nil
+	}
+
+	// try to unmarshal data into PlayLostModeSoundCommand
+	err = newStrictDecoder(data).Decode(&dst.PlayLostModeSoundCommand)
+	if err == nil {
+		jsonPlayLostModeSoundCommand, _ := json.Marshal(dst.PlayLostModeSoundCommand)
+		if string(jsonPlayLostModeSoundCommand) == "{}" { // empty struct
+			dst.PlayLostModeSoundCommand = nil
+		} else {
+			if err = validator.Validate(dst.PlayLostModeSoundCommand); err != nil {
+				dst.PlayLostModeSoundCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.PlayLostModeSoundCommand = nil
+	}
+
+	// try to unmarshal data into RefreshCellularPlansCommand
+	err = newStrictDecoder(data).Decode(&dst.RefreshCellularPlansCommand)
+	if err == nil {
+		jsonRefreshCellularPlansCommand, _ := json.Marshal(dst.RefreshCellularPlansCommand)
+		if string(jsonRefreshCellularPlansCommand) == "{}" { // empty struct
+			dst.RefreshCellularPlansCommand = nil
+		} else {
+			if err = validator.Validate(dst.RefreshCellularPlansCommand); err != nil {
+				dst.RefreshCellularPlansCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.RefreshCellularPlansCommand = nil
+	}
+
+	// try to unmarshal data into RequestMirroringCommand
+	err = newStrictDecoder(data).Decode(&dst.RequestMirroringCommand)
+	if err == nil {
+		jsonRequestMirroringCommand, _ := json.Marshal(dst.RequestMirroringCommand)
+		if string(jsonRequestMirroringCommand) == "{}" { // empty struct
+			dst.RequestMirroringCommand = nil
+		} else {
+			if err = validator.Validate(dst.RequestMirroringCommand); err != nil {
+				dst.RequestMirroringCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.RequestMirroringCommand = nil
 	}
 
 	// try to unmarshal data into RestartDeviceCommand
@@ -239,10 +562,31 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonRestartDeviceCommand) == "{}" { // empty struct
 			dst.RestartDeviceCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.RestartDeviceCommand); err != nil {
+				dst.RestartDeviceCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.RestartDeviceCommand = nil
+	}
+
+	// try to unmarshal data into SecurityInfoCommand
+	err = newStrictDecoder(data).Decode(&dst.SecurityInfoCommand)
+	if err == nil {
+		jsonSecurityInfoCommand, _ := json.Marshal(dst.SecurityInfoCommand)
+		if string(jsonSecurityInfoCommand) == "{}" { // empty struct
+			dst.SecurityInfoCommand = nil
+		} else {
+			if err = validator.Validate(dst.SecurityInfoCommand); err != nil {
+				dst.SecurityInfoCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.SecurityInfoCommand = nil
 	}
 
 	// try to unmarshal data into SetAutoAdminPasswordCommand
@@ -252,7 +596,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonSetAutoAdminPasswordCommand) == "{}" { // empty struct
 			dst.SetAutoAdminPasswordCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SetAutoAdminPasswordCommand); err != nil {
+				dst.SetAutoAdminPasswordCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SetAutoAdminPasswordCommand = nil
@@ -265,7 +613,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonSetRecoveryLockCommand) == "{}" { // empty struct
 			dst.SetRecoveryLockCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SetRecoveryLockCommand); err != nil {
+				dst.SetRecoveryLockCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SetRecoveryLockCommand = nil
@@ -278,7 +630,11 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonSettingsCommand) == "{}" { // empty struct
 			dst.SettingsCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SettingsCommand); err != nil {
+				dst.SettingsCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SettingsCommand = nil
@@ -291,27 +647,114 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		if string(jsonShutDownDeviceCommand) == "{}" { // empty struct
 			dst.ShutDownDeviceCommand = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.ShutDownDeviceCommand); err != nil {
+				dst.ShutDownDeviceCommand = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.ShutDownDeviceCommand = nil
 	}
 
+	// try to unmarshal data into StopMirroringCommand
+	err = newStrictDecoder(data).Decode(&dst.StopMirroringCommand)
+	if err == nil {
+		jsonStopMirroringCommand, _ := json.Marshal(dst.StopMirroringCommand)
+		if string(jsonStopMirroringCommand) == "{}" { // empty struct
+			dst.StopMirroringCommand = nil
+		} else {
+			if err = validator.Validate(dst.StopMirroringCommand); err != nil {
+				dst.StopMirroringCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.StopMirroringCommand = nil
+	}
+
+	// try to unmarshal data into UnlockUserAccountCommand
+	err = newStrictDecoder(data).Decode(&dst.UnlockUserAccountCommand)
+	if err == nil {
+		jsonUnlockUserAccountCommand, _ := json.Marshal(dst.UnlockUserAccountCommand)
+		if string(jsonUnlockUserAccountCommand) == "{}" { // empty struct
+			dst.UnlockUserAccountCommand = nil
+		} else {
+			if err = validator.Validate(dst.UnlockUserAccountCommand); err != nil {
+				dst.UnlockUserAccountCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.UnlockUserAccountCommand = nil
+	}
+
+	// try to unmarshal data into ValidateApplicationsCommand
+	err = newStrictDecoder(data).Decode(&dst.ValidateApplicationsCommand)
+	if err == nil {
+		jsonValidateApplicationsCommand, _ := json.Marshal(dst.ValidateApplicationsCommand)
+		if string(jsonValidateApplicationsCommand) == "{}" { // empty struct
+			dst.ValidateApplicationsCommand = nil
+		} else {
+			if err = validator.Validate(dst.ValidateApplicationsCommand); err != nil {
+				dst.ValidateApplicationsCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ValidateApplicationsCommand = nil
+	}
+
+	// try to unmarshal data into VerifyRecoveryLockCommand
+	err = newStrictDecoder(data).Decode(&dst.VerifyRecoveryLockCommand)
+	if err == nil {
+		jsonVerifyRecoveryLockCommand, _ := json.Marshal(dst.VerifyRecoveryLockCommand)
+		if string(jsonVerifyRecoveryLockCommand) == "{}" { // empty struct
+			dst.VerifyRecoveryLockCommand = nil
+		} else {
+			if err = validator.Validate(dst.VerifyRecoveryLockCommand); err != nil {
+				dst.VerifyRecoveryLockCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.VerifyRecoveryLockCommand = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.ApplyRedemptionCodeCommand = nil
+		dst.ClearPasscodeCommand = nil
 		dst.ClearRestrictionsPasswordCommand = nil
 		dst.DeclarativeManagementCommand = nil
 		dst.DeleteUserCommand = nil
 		dst.DeviceInformationCommand = nil
+		dst.DeviceLocationCommand = nil
 		dst.DeviceLockCommand = nil
+		dst.DisableLostModeCommand = nil
+		dst.DisableRemoteDesktopCommand = nil
 		dst.EnableLostModeCommand = nil
+		dst.EnableRemoteDesktopCommand = nil
 		dst.EraseDeviceCommand = nil
 		dst.LogOutUserCommand = nil
+		dst.ManagedApplicationListCommand = nil
+		dst.PlayLostModeSoundCommand = nil
+		dst.RefreshCellularPlansCommand = nil
+		dst.RequestMirroringCommand = nil
 		dst.RestartDeviceCommand = nil
+		dst.SecurityInfoCommand = nil
 		dst.SetAutoAdminPasswordCommand = nil
 		dst.SetRecoveryLockCommand = nil
 		dst.SettingsCommand = nil
 		dst.ShutDownDeviceCommand = nil
+		dst.StopMirroringCommand = nil
+		dst.UnlockUserAccountCommand = nil
+		dst.ValidateApplicationsCommand = nil
+		dst.VerifyRecoveryLockCommand = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(MdmCommandRequestCommandData)")
 	} else if match == 1 {
@@ -323,6 +766,14 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
+	if src.ApplyRedemptionCodeCommand != nil {
+		return json.Marshal(&src.ApplyRedemptionCodeCommand)
+	}
+
+	if src.ClearPasscodeCommand != nil {
+		return json.Marshal(&src.ClearPasscodeCommand)
+	}
+
 	if src.ClearRestrictionsPasswordCommand != nil {
 		return json.Marshal(&src.ClearRestrictionsPasswordCommand)
 	}
@@ -339,12 +790,28 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.DeviceInformationCommand)
 	}
 
+	if src.DeviceLocationCommand != nil {
+		return json.Marshal(&src.DeviceLocationCommand)
+	}
+
 	if src.DeviceLockCommand != nil {
 		return json.Marshal(&src.DeviceLockCommand)
 	}
 
+	if src.DisableLostModeCommand != nil {
+		return json.Marshal(&src.DisableLostModeCommand)
+	}
+
+	if src.DisableRemoteDesktopCommand != nil {
+		return json.Marshal(&src.DisableRemoteDesktopCommand)
+	}
+
 	if src.EnableLostModeCommand != nil {
 		return json.Marshal(&src.EnableLostModeCommand)
+	}
+
+	if src.EnableRemoteDesktopCommand != nil {
+		return json.Marshal(&src.EnableRemoteDesktopCommand)
 	}
 
 	if src.EraseDeviceCommand != nil {
@@ -355,8 +822,28 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.LogOutUserCommand)
 	}
 
+	if src.ManagedApplicationListCommand != nil {
+		return json.Marshal(&src.ManagedApplicationListCommand)
+	}
+
+	if src.PlayLostModeSoundCommand != nil {
+		return json.Marshal(&src.PlayLostModeSoundCommand)
+	}
+
+	if src.RefreshCellularPlansCommand != nil {
+		return json.Marshal(&src.RefreshCellularPlansCommand)
+	}
+
+	if src.RequestMirroringCommand != nil {
+		return json.Marshal(&src.RequestMirroringCommand)
+	}
+
 	if src.RestartDeviceCommand != nil {
 		return json.Marshal(&src.RestartDeviceCommand)
+	}
+
+	if src.SecurityInfoCommand != nil {
+		return json.Marshal(&src.SecurityInfoCommand)
 	}
 
 	if src.SetAutoAdminPasswordCommand != nil {
@@ -375,6 +862,22 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ShutDownDeviceCommand)
 	}
 
+	if src.StopMirroringCommand != nil {
+		return json.Marshal(&src.StopMirroringCommand)
+	}
+
+	if src.UnlockUserAccountCommand != nil {
+		return json.Marshal(&src.UnlockUserAccountCommand)
+	}
+
+	if src.ValidateApplicationsCommand != nil {
+		return json.Marshal(&src.ValidateApplicationsCommand)
+	}
+
+	if src.VerifyRecoveryLockCommand != nil {
+		return json.Marshal(&src.VerifyRecoveryLockCommand)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -383,6 +886,14 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
+	if obj.ApplyRedemptionCodeCommand != nil {
+		return obj.ApplyRedemptionCodeCommand
+	}
+
+	if obj.ClearPasscodeCommand != nil {
+		return obj.ClearPasscodeCommand
+	}
+
 	if obj.ClearRestrictionsPasswordCommand != nil {
 		return obj.ClearRestrictionsPasswordCommand
 	}
@@ -399,12 +910,28 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.DeviceInformationCommand
 	}
 
+	if obj.DeviceLocationCommand != nil {
+		return obj.DeviceLocationCommand
+	}
+
 	if obj.DeviceLockCommand != nil {
 		return obj.DeviceLockCommand
 	}
 
+	if obj.DisableLostModeCommand != nil {
+		return obj.DisableLostModeCommand
+	}
+
+	if obj.DisableRemoteDesktopCommand != nil {
+		return obj.DisableRemoteDesktopCommand
+	}
+
 	if obj.EnableLostModeCommand != nil {
 		return obj.EnableLostModeCommand
+	}
+
+	if obj.EnableRemoteDesktopCommand != nil {
+		return obj.EnableRemoteDesktopCommand
 	}
 
 	if obj.EraseDeviceCommand != nil {
@@ -415,8 +942,28 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.LogOutUserCommand
 	}
 
+	if obj.ManagedApplicationListCommand != nil {
+		return obj.ManagedApplicationListCommand
+	}
+
+	if obj.PlayLostModeSoundCommand != nil {
+		return obj.PlayLostModeSoundCommand
+	}
+
+	if obj.RefreshCellularPlansCommand != nil {
+		return obj.RefreshCellularPlansCommand
+	}
+
+	if obj.RequestMirroringCommand != nil {
+		return obj.RequestMirroringCommand
+	}
+
 	if obj.RestartDeviceCommand != nil {
 		return obj.RestartDeviceCommand
+	}
+
+	if obj.SecurityInfoCommand != nil {
+		return obj.SecurityInfoCommand
 	}
 
 	if obj.SetAutoAdminPasswordCommand != nil {
@@ -433,6 +980,140 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 
 	if obj.ShutDownDeviceCommand != nil {
 		return obj.ShutDownDeviceCommand
+	}
+
+	if obj.StopMirroringCommand != nil {
+		return obj.StopMirroringCommand
+	}
+
+	if obj.UnlockUserAccountCommand != nil {
+		return obj.UnlockUserAccountCommand
+	}
+
+	if obj.ValidateApplicationsCommand != nil {
+		return obj.ValidateApplicationsCommand
+	}
+
+	if obj.VerifyRecoveryLockCommand != nil {
+		return obj.VerifyRecoveryLockCommand
+	}
+
+	// all schemas are nil
+	return nil
+}
+
+// Get the actual instance value
+func (obj MdmCommandRequestCommandData) GetActualInstanceValue() (interface{}) {
+	if obj.ApplyRedemptionCodeCommand != nil {
+		return *obj.ApplyRedemptionCodeCommand
+	}
+
+	if obj.ClearPasscodeCommand != nil {
+		return *obj.ClearPasscodeCommand
+	}
+
+	if obj.ClearRestrictionsPasswordCommand != nil {
+		return *obj.ClearRestrictionsPasswordCommand
+	}
+
+	if obj.DeclarativeManagementCommand != nil {
+		return *obj.DeclarativeManagementCommand
+	}
+
+	if obj.DeleteUserCommand != nil {
+		return *obj.DeleteUserCommand
+	}
+
+	if obj.DeviceInformationCommand != nil {
+		return *obj.DeviceInformationCommand
+	}
+
+	if obj.DeviceLocationCommand != nil {
+		return *obj.DeviceLocationCommand
+	}
+
+	if obj.DeviceLockCommand != nil {
+		return *obj.DeviceLockCommand
+	}
+
+	if obj.DisableLostModeCommand != nil {
+		return *obj.DisableLostModeCommand
+	}
+
+	if obj.DisableRemoteDesktopCommand != nil {
+		return *obj.DisableRemoteDesktopCommand
+	}
+
+	if obj.EnableLostModeCommand != nil {
+		return *obj.EnableLostModeCommand
+	}
+
+	if obj.EnableRemoteDesktopCommand != nil {
+		return *obj.EnableRemoteDesktopCommand
+	}
+
+	if obj.EraseDeviceCommand != nil {
+		return *obj.EraseDeviceCommand
+	}
+
+	if obj.LogOutUserCommand != nil {
+		return *obj.LogOutUserCommand
+	}
+
+	if obj.ManagedApplicationListCommand != nil {
+		return *obj.ManagedApplicationListCommand
+	}
+
+	if obj.PlayLostModeSoundCommand != nil {
+		return *obj.PlayLostModeSoundCommand
+	}
+
+	if obj.RefreshCellularPlansCommand != nil {
+		return *obj.RefreshCellularPlansCommand
+	}
+
+	if obj.RequestMirroringCommand != nil {
+		return *obj.RequestMirroringCommand
+	}
+
+	if obj.RestartDeviceCommand != nil {
+		return *obj.RestartDeviceCommand
+	}
+
+	if obj.SecurityInfoCommand != nil {
+		return *obj.SecurityInfoCommand
+	}
+
+	if obj.SetAutoAdminPasswordCommand != nil {
+		return *obj.SetAutoAdminPasswordCommand
+	}
+
+	if obj.SetRecoveryLockCommand != nil {
+		return *obj.SetRecoveryLockCommand
+	}
+
+	if obj.SettingsCommand != nil {
+		return *obj.SettingsCommand
+	}
+
+	if obj.ShutDownDeviceCommand != nil {
+		return *obj.ShutDownDeviceCommand
+	}
+
+	if obj.StopMirroringCommand != nil {
+		return *obj.StopMirroringCommand
+	}
+
+	if obj.UnlockUserAccountCommand != nil {
+		return *obj.UnlockUserAccountCommand
+	}
+
+	if obj.ValidateApplicationsCommand != nil {
+		return *obj.ValidateApplicationsCommand
+	}
+
+	if obj.VerifyRecoveryLockCommand != nil {
+		return *obj.VerifyRecoveryLockCommand
 	}
 
 	// all schemas are nil

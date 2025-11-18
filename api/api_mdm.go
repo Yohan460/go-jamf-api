@@ -23,23 +23,6 @@ import (
 type MdmAPI interface {
 
 	/*
-	PreviewMdmCommandsPost Post a command for creation and queuing 
-
-	Provided an MDM command type and appropriate information, will create and then queue said command.
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return MdmAPIPreviewMdmCommandsPostRequest
-
-	Deprecated
-	*/
-	PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest
-
-	// PreviewMdmCommandsPostExecute executes the request
-	//  @return []HrefResponse
-	// Deprecated
-	PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error)
-
-	/*
 	V1DeployPackagePost Deploy packages using MDM
 
 	Deploys packages to macOS devices using the InstallEnterpriseApplication MDM command.
@@ -86,6 +69,20 @@ type MdmAPI interface {
 	V1MdmRenewProfilePostExecute(r MdmAPIV1MdmRenewProfilePostRequest) (*RenewMdmProfileResponse, *http.Response, error)
 
 	/*
+	V2MdmBlankPushPost Send blank push notifications to a list of client management IDs.
+
+	Accepts a list of client management IDs and sends a blank push notification to each. Returns a list of UUIDs that encountered errors.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return MdmAPIV2MdmBlankPushPostRequest
+	*/
+	V2MdmBlankPushPost(ctx context.Context) MdmAPIV2MdmBlankPushPostRequest
+
+	// V2MdmBlankPushPostExecute executes the request
+	//  @return BlankPushResponse
+	V2MdmBlankPushPostExecute(r MdmAPIV2MdmBlankPushPostRequest) (*BlankPushResponse, *http.Response, error)
+
+	/*
 	V2MdmCommandsGet Get information about mdm commands made by Jamf Pro. 
 
 	Get information about mdm commands made by Jamf Pro.
@@ -102,7 +99,7 @@ type MdmAPI interface {
 	/*
 	V2MdmCommandsPost Post a command for creation and queuing 
 
-	Provided an MDM command type and appropriate information, will create and then queue said command.
+	Provided an MDM command type and appropriate information, will create and then queue said command. A separate privilege is required for each device type and MDM command you want to view or send.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return MdmAPIV2MdmCommandsPostRequest
@@ -116,127 +113,6 @@ type MdmAPI interface {
 
 // MdmAPIService MdmAPI service
 type MdmAPIService service
-
-type MdmAPIPreviewMdmCommandsPostRequest struct {
-	ctx context.Context
-	ApiService MdmAPI
-	mdmCommandRequest *MdmCommandRequest
-}
-
-// The mdm command object to create and queue
-func (r MdmAPIPreviewMdmCommandsPostRequest) MdmCommandRequest(mdmCommandRequest MdmCommandRequest) MdmAPIPreviewMdmCommandsPostRequest {
-	r.mdmCommandRequest = &mdmCommandRequest
-	return r
-}
-
-func (r MdmAPIPreviewMdmCommandsPostRequest) Execute() ([]HrefResponse, *http.Response, error) {
-	return r.ApiService.PreviewMdmCommandsPostExecute(r)
-}
-
-/*
-PreviewMdmCommandsPost Post a command for creation and queuing 
-
-Provided an MDM command type and appropriate information, will create and then queue said command.
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return MdmAPIPreviewMdmCommandsPostRequest
-
-Deprecated
-*/
-func (a *MdmAPIService) PreviewMdmCommandsPost(ctx context.Context) MdmAPIPreviewMdmCommandsPostRequest {
-	return MdmAPIPreviewMdmCommandsPostRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-//  @return []HrefResponse
-// Deprecated
-func (a *MdmAPIService) PreviewMdmCommandsPostExecute(r MdmAPIPreviewMdmCommandsPostRequest) ([]HrefResponse, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []HrefResponse
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.PreviewMdmCommandsPost")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/preview/mdm/commands"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.mdmCommandRequest
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ApiError
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
 
 type MdmAPIV1DeployPackagePostRequest struct {
 	ctx context.Context
@@ -300,10 +176,11 @@ func (a *MdmAPIService) V1DeployPackagePostExecute(r MdmAPIV1DeployPackagePostRe
 	}
 
 	if r.verbose != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "verbose", r.verbose, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "verbose", r.verbose, "form", "")
 	} else {
-		var defaultValue bool = false
-		r.verbose = &defaultValue
+        var defaultValue bool = false
+        parameterAddToHeaderOrQuery(localVarQueryParams, "verbose", defaultValue, "form", "")
+        r.verbose = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -428,14 +305,14 @@ func (a *MdmAPIService) V1MdmCommandsGetExecute(r MdmAPIV1MdmCommandsGetRequest)
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "uuids", t, "form", "multi")
 		}
 	}
 	if r.clientManagementId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "client-management-id", r.clientManagementId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "client-management-id", r.clientManagementId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -624,6 +501,138 @@ func (a *MdmAPIService) V1MdmRenewProfilePostExecute(r MdmAPIV1MdmRenewProfilePo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type MdmAPIV2MdmBlankPushPostRequest struct {
+	ctx context.Context
+	ApiService MdmAPI
+	blankPushRequest *BlankPushRequest
+}
+
+// A list of client management IDs to send push notifications to.
+func (r MdmAPIV2MdmBlankPushPostRequest) BlankPushRequest(blankPushRequest BlankPushRequest) MdmAPIV2MdmBlankPushPostRequest {
+	r.blankPushRequest = &blankPushRequest
+	return r
+}
+
+func (r MdmAPIV2MdmBlankPushPostRequest) Execute() (*BlankPushResponse, *http.Response, error) {
+	return r.ApiService.V2MdmBlankPushPostExecute(r)
+}
+
+/*
+V2MdmBlankPushPost Send blank push notifications to a list of client management IDs.
+
+Accepts a list of client management IDs and sends a blank push notification to each. Returns a list of UUIDs that encountered errors.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return MdmAPIV2MdmBlankPushPostRequest
+*/
+func (a *MdmAPIService) V2MdmBlankPushPost(ctx context.Context) MdmAPIV2MdmBlankPushPostRequest {
+	return MdmAPIV2MdmBlankPushPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return BlankPushResponse
+func (a *MdmAPIService) V2MdmBlankPushPostExecute(r MdmAPIV2MdmBlankPushPostRequest) (*BlankPushResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BlankPushResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MdmAPIService.V2MdmBlankPushPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/mdm/blank-push"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.blankPushRequest == nil {
+		return localVarReturnValue, nil, reportError("blankPushRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.blankPushRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type MdmAPIV2MdmCommandsGetRequest struct {
 	ctx context.Context
 	ApiService MdmAPI
@@ -649,7 +658,7 @@ func (r MdmAPIV2MdmCommandsGetRequest) Sort(sort []string) MdmAPIV2MdmCommandsGe
 	return r
 }
 
-// Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true
+// Query in the RSQL format, allowing to filter, for a list of commands. All url must contain minimum one filter field. Fields allowed in the query: uuid, clientManagementId, command, status, clientType, dateSent, validAfter, dateCompleted, profileId, profileIdentifier, and active. This param can be combined with paging. Please note that any date filters must be used with gt, lt, ge, le Example: clientManagementId&#x3D;&#x3D;fb511aae-c557-474f-a9c1-5dc845b90d0f;status&#x3D;&#x3D;Pending;command&#x3D;&#x3D;INSTALL_PROFILE;uuid&#x3D;&#x3D;9e18f849-e689-4f2d-b616-a99d3da7db42;clientType&#x3D;&#x3D;COMPUTER_USER;profileId&#x3D;&#x3D;1;profileIdentifier&#x3D;&#x3D;18cc61c2-01fc-11ed-b939-0242ac120002;dateCompleted&#x3D;ge&#x3D;2021-08-04T14:25:18.26Z;dateCompleted&#x3D;le&#x3D;2021-08-04T14:25:18.26Z;validAfter&#x3D;ge&#x3D;2021-08-05T14:25:18.26Z;active&#x3D;&#x3D;true
 func (r MdmAPIV2MdmCommandsGetRequest) Filter(filter string) MdmAPIV2MdmCommandsGetRequest {
 	r.filter = &filter
 	return r
@@ -696,36 +705,40 @@ func (a *MdmAPIService) V2MdmCommandsGetExecute(r MdmAPIV2MdmCommandsGetRequest)
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"dateSent:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"dateSent:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -810,7 +823,7 @@ func (r MdmAPIV2MdmCommandsPostRequest) Execute() ([]HrefResponse, *http.Respons
 /*
 V2MdmCommandsPost Post a command for creation and queuing 
 
-Provided an MDM command type and appropriate information, will create and then queue said command.
+Provided an MDM command type and appropriate information, will create and then queue said command. A separate privilege is required for each device type and MDM command you want to view or send.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return MdmAPIV2MdmCommandsPostRequest

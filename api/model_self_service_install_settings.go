@@ -21,9 +21,9 @@ var _ MappedNullable = &SelfServiceInstallSettings{}
 
 // SelfServiceInstallSettings object representation of Self Service settings regarding installation 
 type SelfServiceInstallSettings struct {
-	// true if Self Service is insalled automatically, false if not 
+	// true if Self Service is installed automatically, false if not 
 	InstallAutomatically *bool `json:"installAutomatically,omitempty"`
-	// path at which Self Service is installed 
+	// path at which Self Service is installed. Required if installAutomatically is true 
 	InstallLocation string `json:"installLocation"`
 }
 

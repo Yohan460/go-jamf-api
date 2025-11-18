@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ModelNumber** | Pointer to **string** |  | [optional] 
 **Supervised** | Pointer to **bool** |  | [optional] 
 **BatteryLevel** | Pointer to **int64** |  | [optional] 
+**BatteryHealth** | Pointer to **string** | - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting.  | [optional] [default to "UNKNOWN"]
 **LastBackupTimestamp** | Pointer to **time.Time** |  | [optional] 
 **CapacityMb** | Pointer to **int64** |  | [optional] 
 **AvailableMb** | Pointer to **int64** |  | [optional] 
@@ -21,6 +22,7 @@ Name | Type | Description | Notes
 **LocationServicesEnabled** | Pointer to **bool** |  | [optional] 
 **ITunesStoreAccountActive** | Pointer to **bool** |  | [optional] 
 **BleCapable** | Pointer to **bool** |  | [optional] 
+**UnlockToken** | Pointer to **string** |  | [optional] 
 **Computer** | Pointer to [**IdAndNameV2**](IdAndNameV2.md) |  | [optional] 
 **Purchasing** | Pointer to [**PurchasingV2**](PurchasingV2.md) |  | [optional] 
 **Security** | Pointer to [**SecurityV2**](SecurityV2.md) |  | [optional] 
@@ -29,6 +31,7 @@ Name | Type | Description | Notes
 **Applications** | Pointer to [**[]MobileDeviceApplication**](MobileDeviceApplication.md) |  | [optional] 
 **Certificates** | Pointer to [**[]MobileDeviceCertificateV2**](MobileDeviceCertificateV2.md) |  | [optional] 
 **Ebooks** | Pointer to [**[]MobileDeviceEbook**](MobileDeviceEbook.md) |  | [optional] 
+**MdmCapableUsers** | Pointer to [**[]MobileDeviceMdmCapableUser**](MobileDeviceMdmCapableUser.md) |  | [optional] 
 **ConfigurationProfiles** | Pointer to [**[]ConfigurationProfile**](ConfigurationProfile.md) |  | [optional] 
 **ProvisioningProfiles** | Pointer to [**[]MobileDeviceProvisioningProfiles**](MobileDeviceProvisioningProfiles.md) |  | [optional] 
 **Attachments** | Pointer to [**[]MobileDeviceAttachmentV2**](MobileDeviceAttachmentV2.md) |  | [optional] 
@@ -176,6 +179,31 @@ SetBatteryLevel sets BatteryLevel field to given value.
 `func (o *DetailsV2) HasBatteryLevel() bool`
 
 HasBatteryLevel returns a boolean if a field has been set.
+
+### GetBatteryHealth
+
+`func (o *DetailsV2) GetBatteryHealth() string`
+
+GetBatteryHealth returns the BatteryHealth field if non-nil, zero value otherwise.
+
+### GetBatteryHealthOk
+
+`func (o *DetailsV2) GetBatteryHealthOk() (*string, bool)`
+
+GetBatteryHealthOk returns a tuple with the BatteryHealth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBatteryHealth
+
+`func (o *DetailsV2) SetBatteryHealth(v string)`
+
+SetBatteryHealth sets BatteryHealth field to given value.
+
+### HasBatteryHealth
+
+`func (o *DetailsV2) HasBatteryHealth() bool`
+
+HasBatteryHealth returns a boolean if a field has been set.
 
 ### GetLastBackupTimestamp
 
@@ -477,6 +505,31 @@ SetBleCapable sets BleCapable field to given value.
 
 HasBleCapable returns a boolean if a field has been set.
 
+### GetUnlockToken
+
+`func (o *DetailsV2) GetUnlockToken() string`
+
+GetUnlockToken returns the UnlockToken field if non-nil, zero value otherwise.
+
+### GetUnlockTokenOk
+
+`func (o *DetailsV2) GetUnlockTokenOk() (*string, bool)`
+
+GetUnlockTokenOk returns a tuple with the UnlockToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnlockToken
+
+`func (o *DetailsV2) SetUnlockToken(v string)`
+
+SetUnlockToken sets UnlockToken field to given value.
+
+### HasUnlockToken
+
+`func (o *DetailsV2) HasUnlockToken() bool`
+
+HasUnlockToken returns a boolean if a field has been set.
+
 ### GetComputer
 
 `func (o *DetailsV2) GetComputer() IdAndNameV2`
@@ -676,6 +729,31 @@ SetEbooks sets Ebooks field to given value.
 `func (o *DetailsV2) HasEbooks() bool`
 
 HasEbooks returns a boolean if a field has been set.
+
+### GetMdmCapableUsers
+
+`func (o *DetailsV2) GetMdmCapableUsers() []MobileDeviceMdmCapableUser`
+
+GetMdmCapableUsers returns the MdmCapableUsers field if non-nil, zero value otherwise.
+
+### GetMdmCapableUsersOk
+
+`func (o *DetailsV2) GetMdmCapableUsersOk() (*[]MobileDeviceMdmCapableUser, bool)`
+
+GetMdmCapableUsersOk returns a tuple with the MdmCapableUsers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMdmCapableUsers
+
+`func (o *DetailsV2) SetMdmCapableUsers(v []MobileDeviceMdmCapableUser)`
+
+SetMdmCapableUsers sets MdmCapableUsers field to given value.
+
+### HasMdmCapableUsers
+
+`func (o *DetailsV2) HasMdmCapableUsers() bool`
+
+HasMdmCapableUsers returns a boolean if a field has been set.
 
 ### GetConfigurationProfiles
 

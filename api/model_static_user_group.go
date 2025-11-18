@@ -21,6 +21,7 @@ var _ MappedNullable = &StaticUserGroup{}
 type StaticUserGroup struct {
 	Id *int64 `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewStaticUserGroup instantiates a new StaticUserGroup object
@@ -104,6 +105,38 @@ func (o *StaticUserGroup) SetName(v string) {
 	o.Name = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *StaticUserGroup) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StaticUserGroup) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *StaticUserGroup) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *StaticUserGroup) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o StaticUserGroup) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -119,6 +152,9 @@ func (o StaticUserGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
 }

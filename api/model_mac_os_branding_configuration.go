@@ -25,6 +25,8 @@ type MacOsBrandingConfiguration struct {
 	BrandingNameSecondary *string `json:"brandingNameSecondary,omitempty"`
 	IconId *int64 `json:"iconId,omitempty"`
 	BrandingHeaderImageId *int64 `json:"brandingHeaderImageId,omitempty"`
+	HomeHeading *string `json:"homeHeading,omitempty"`
+	HomeSubheading *string `json:"homeSubheading,omitempty"`
 }
 
 // NewMacOsBrandingConfiguration instantiates a new MacOsBrandingConfiguration object
@@ -236,6 +238,70 @@ func (o *MacOsBrandingConfiguration) SetBrandingHeaderImageId(v int64) {
 	o.BrandingHeaderImageId = &v
 }
 
+// GetHomeHeading returns the HomeHeading field value if set, zero value otherwise.
+func (o *MacOsBrandingConfiguration) GetHomeHeading() string {
+	if o == nil || IsNil(o.HomeHeading) {
+		var ret string
+		return ret
+	}
+	return *o.HomeHeading
+}
+
+// GetHomeHeadingOk returns a tuple with the HomeHeading field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsBrandingConfiguration) GetHomeHeadingOk() (*string, bool) {
+	if o == nil || IsNil(o.HomeHeading) {
+		return nil, false
+	}
+	return o.HomeHeading, true
+}
+
+// HasHomeHeading returns a boolean if a field has been set.
+func (o *MacOsBrandingConfiguration) HasHomeHeading() bool {
+	if o != nil && !IsNil(o.HomeHeading) {
+		return true
+	}
+
+	return false
+}
+
+// SetHomeHeading gets a reference to the given string and assigns it to the HomeHeading field.
+func (o *MacOsBrandingConfiguration) SetHomeHeading(v string) {
+	o.HomeHeading = &v
+}
+
+// GetHomeSubheading returns the HomeSubheading field value if set, zero value otherwise.
+func (o *MacOsBrandingConfiguration) GetHomeSubheading() string {
+	if o == nil || IsNil(o.HomeSubheading) {
+		var ret string
+		return ret
+	}
+	return *o.HomeSubheading
+}
+
+// GetHomeSubheadingOk returns a tuple with the HomeSubheading field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MacOsBrandingConfiguration) GetHomeSubheadingOk() (*string, bool) {
+	if o == nil || IsNil(o.HomeSubheading) {
+		return nil, false
+	}
+	return o.HomeSubheading, true
+}
+
+// HasHomeSubheading returns a boolean if a field has been set.
+func (o *MacOsBrandingConfiguration) HasHomeSubheading() bool {
+	if o != nil && !IsNil(o.HomeSubheading) {
+		return true
+	}
+
+	return false
+}
+
+// SetHomeSubheading gets a reference to the given string and assigns it to the HomeSubheading field.
+func (o *MacOsBrandingConfiguration) SetHomeSubheading(v string) {
+	o.HomeSubheading = &v
+}
+
 func (o MacOsBrandingConfiguration) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -263,6 +329,12 @@ func (o MacOsBrandingConfiguration) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BrandingHeaderImageId) {
 		toSerialize["brandingHeaderImageId"] = o.BrandingHeaderImageId
+	}
+	if !IsNil(o.HomeHeading) {
+		toSerialize["homeHeading"] = o.HomeHeading
+	}
+	if !IsNil(o.HomeSubheading) {
+		toSerialize["homeSubheading"] = o.HomeSubheading
 	}
 	return toSerialize, nil
 }

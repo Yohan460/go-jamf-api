@@ -63,7 +63,7 @@ Other parameters are passed through a pointer to a apiV1SmtpServerGetRequest str
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -98,7 +98,7 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,username:asc  (optional) (default to ["date:desc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=date:desc,username:asc  (optional) (default to {"date:desc"})
 	filter := "filter_example" // string | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter=username!=admin and details==*disabled* and date<2019-12-15 (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,username:asc  | [default to [&quot;date:desc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is name:asc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;date:desc,username:asc  | [default to {&quot;date:desc&quot;}]
  **filter** | **string** | Query in the RSQL format, allowing to filter history notes collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: username, date, note, details. This param can be combined with paging and sorting. Example: filter&#x3D;username!&#x3D;admin and details&#x3D;&#x3D;*disabled* and date&lt;2019-12-15 | [default to &quot;&quot;]
 
 ### Return type
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -392,7 +392,7 @@ Other parameters are passed through a pointer to a apiV2SmtpServerGetRequest str
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -406,7 +406,7 @@ Other parameters are passed through a pointer to a apiV2SmtpServerGetRequest str
 
 ## V2SmtpServerPut
 
-> SmtpServerV2 V2SmtpServerPut(ctx).SmtpServerV2(smtpServerV2).Execute()
+> SmtpServerV2 V2SmtpServerPut(ctx).SmtpServerV2(smtpServerV2).OauthState(oauthState).Execute()
 
 Updates Jamf Pro SMTP Server information 
 
@@ -426,10 +426,11 @@ import (
 
 func main() {
 	smtpServerV2 := *openapiclient.NewSmtpServerV2(true, "NONE", *openapiclient.NewSmtpSenderSettings("exampleEmail@example.com")) // SmtpServerV2 | SMTP Server to update
+	oauthState := "oauthState_example" // string | The OAuth state that was last used to authorize a Google Mail account. This is only required when the authentication type is Google Mail and new accounts are being added. (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SmtpServerAPI.V2SmtpServerPut(context.Background()).SmtpServerV2(smtpServerV2).Execute()
+	resp, r, err := apiClient.SmtpServerAPI.V2SmtpServerPut(context.Background()).SmtpServerV2(smtpServerV2).OauthState(oauthState).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SmtpServerAPI.V2SmtpServerPut``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -451,6 +452,7 @@ Other parameters are passed through a pointer to a apiV2SmtpServerPutRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **smtpServerV2** | [**SmtpServerV2**](SmtpServerV2.md) | SMTP Server to update | 
+ **oauthState** | **string** | The OAuth state that was last used to authorize a Google Mail account. This is only required when the authentication type is Google Mail and new accounts are being added. | [default to &quot;&quot;]
 
 ### Return type
 
@@ -458,7 +460,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

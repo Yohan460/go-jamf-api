@@ -30,10 +30,13 @@ type ComputerInventoryCollectionSettingsAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id id of Custom Path
 	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+
+	Deprecated
 	*/
 	V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
 
 	// V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute executes the request
+	// Deprecated
 	V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error)
 
 	/*
@@ -43,11 +46,14 @@ type ComputerInventoryCollectionSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+
+	Deprecated
 	*/
 	V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
 
 	// V1ComputerInventoryCollectionSettingsCustomPathPostExecute executes the request
 	//  @return HrefResponse
+	// Deprecated
 	V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
@@ -57,11 +63,14 @@ type ComputerInventoryCollectionSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
+
+	Deprecated
 	*/
 	V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
 
 	// V1ComputerInventoryCollectionSettingsGetExecute executes the request
 	//  @return ComputerInventoryCollectionSettings
+	// Deprecated
 	V1ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
 
 	/*
@@ -71,12 +80,70 @@ type ComputerInventoryCollectionSettingsAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
+
+	Deprecated
 	*/
 	V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
 
 	// V1ComputerInventoryCollectionSettingsPatchExecute executes the request
 	//  @return ComputerInventoryCollectionSettings
+	// Deprecated
 	V1ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error)
+
+	/*
+	V2ComputerInventoryCollectionSettingsCustomPathIdDelete Delete Custom Path from Computer Inventory Collection Settings
+
+	Delete Custom Path from Computer Inventory Collection Settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id id of Custom Path
+	@return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+	*/
+	V2ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+
+	// V2ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute executes the request
+	V2ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputerInventoryCollectionSettingsCustomPathPost Create Computer Inventory Collection Settings Custom Path
+
+	Creates a custom search path to use when collecting applications.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest
+	*/
+	V2ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest
+
+	// V2ComputerInventoryCollectionSettingsCustomPathPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2ComputerInventoryCollectionSettingsGet Returns computer inventory settings
+
+	Returns computer inventory settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest
+	*/
+	V2ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest
+
+	// V2ComputerInventoryCollectionSettingsGetExecute executes the request
+	//  @return ComputerInventoryCollectionSettingsV2
+	V2ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettingsV2, *http.Response, error)
+
+	/*
+	V2ComputerInventoryCollectionSettingsPatch Update computer inventory settings
+
+	Update computer inventory settings
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest
+	*/
+	V2ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest
+
+	// V2ComputerInventoryCollectionSettingsPatchExecute executes the request
+	V2ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest) (*http.Response, error)
 }
 
 // ComputerInventoryCollectionSettingsAPIService ComputerInventoryCollectionSettingsAPI service
@@ -100,6 +167,8 @@ Delete Custom Path from Computer Inventory Collection Settings
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id id of Custom Path
  @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+
+Deprecated
 */
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest {
 	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest{
@@ -110,6 +179,7 @@ func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryColle
 }
 
 // Execute executes the request
+// Deprecated
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -207,6 +277,8 @@ Creates a custom search path to use when collecting applications, fonts, and plu
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest
+
+Deprecated
 */
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest {
 	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest{
@@ -217,6 +289,7 @@ func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return HrefResponse
+// Deprecated
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -321,6 +394,8 @@ Returns computer inventory settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest {
 	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest{
@@ -331,6 +406,7 @@ func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return ComputerInventoryCollectionSettings
+// Deprecated
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -427,6 +503,8 @@ Update computer inventory settings
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest
+
+Deprecated
 */
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest {
 	return ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest{
@@ -437,6 +515,7 @@ func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryColle
 
 // Execute executes the request
 //  @return ComputerInventoryCollectionSettings
+// Deprecated
 func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV1ComputerInventoryCollectionSettingsPatchRequest) (*ComputerInventoryCollectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -513,4 +592,426 @@ func (a *ComputerInventoryCollectionSettingsAPIService) V1ComputerInventoryColle
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryCollectionSettingsAPI
+	id string
+}
+
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r)
+}
+
+/*
+V2ComputerInventoryCollectionSettingsCustomPathIdDelete Delete Custom Path from Computer Inventory Collection Settings
+
+Delete Custom Path from Computer Inventory Collection Settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id id of Custom Path
+ @return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest
+*/
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsCustomPathIdDelete(ctx context.Context, id string) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest {
+	return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsCustomPathIdDeleteExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V2ComputerInventoryCollectionSettingsCustomPathIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-inventory-collection-settings/custom-path/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryCollectionSettingsAPI
+	createPathV2 *CreatePathV2
+}
+
+// Computer inventory settings to update
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest) CreatePathV2(createPathV2 CreatePathV2) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest {
+	r.createPathV2 = &createPathV2
+	return r
+}
+
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2ComputerInventoryCollectionSettingsCustomPathPostExecute(r)
+}
+
+/*
+V2ComputerInventoryCollectionSettingsCustomPathPost Create Computer Inventory Collection Settings Custom Path
+
+Creates a custom search path to use when collecting applications.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest
+*/
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsCustomPathPost(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest {
+	return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsCustomPathPostExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsCustomPathPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V2ComputerInventoryCollectionSettingsCustomPathPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-inventory-collection-settings/custom-path"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.createPathV2 == nil {
+		return localVarReturnValue, nil, reportError("createPathV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.createPathV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryCollectionSettingsAPI
+}
+
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest) Execute() (*ComputerInventoryCollectionSettingsV2, *http.Response, error) {
+	return r.ApiService.V2ComputerInventoryCollectionSettingsGetExecute(r)
+}
+
+/*
+V2ComputerInventoryCollectionSettingsGet Returns computer inventory settings
+
+Returns computer inventory settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest
+*/
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsGet(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest {
+	return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryCollectionSettingsV2
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsGetExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsGetRequest) (*ComputerInventoryCollectionSettingsV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryCollectionSettingsV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V2ComputerInventoryCollectionSettingsGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-inventory-collection-settings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryCollectionSettingsAPI
+	computerInventoryCollectionSettingsV2 *ComputerInventoryCollectionSettingsV2
+}
+
+// Computer inventory settings to update
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest) ComputerInventoryCollectionSettingsV2(computerInventoryCollectionSettingsV2 ComputerInventoryCollectionSettingsV2) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest {
+	r.computerInventoryCollectionSettingsV2 = &computerInventoryCollectionSettingsV2
+	return r
+}
+
+func (r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputerInventoryCollectionSettingsPatchExecute(r)
+}
+
+/*
+V2ComputerInventoryCollectionSettingsPatch Update computer inventory settings
+
+Update computer inventory settings
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest
+*/
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsPatch(ctx context.Context) ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest {
+	return ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerInventoryCollectionSettingsAPIService) V2ComputerInventoryCollectionSettingsPatchExecute(r ComputerInventoryCollectionSettingsAPIV2ComputerInventoryCollectionSettingsPatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryCollectionSettingsAPIService.V2ComputerInventoryCollectionSettingsPatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computer-inventory-collection-settings"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.computerInventoryCollectionSettingsV2 == nil {
+		return nil, reportError("computerInventoryCollectionSettingsV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.computerInventoryCollectionSettingsV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

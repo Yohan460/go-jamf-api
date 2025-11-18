@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Filename** | Pointer to **string** |  | [optional] [default to "null"]
 **KeystorePassword** | Pointer to **string** |  | [optional] [default to ""]
 **IdentityKeystore** | Pointer to **string** | The base 64 encoded certificate. | [optional] 
-**Md5Sum** | Pointer to **string** | The md5 checksum of the certificate file. Intended to be used in verifification the cert being used to sign QuickAdd packages. | [optional] [readonly] [default to ""]
+**Md5Sum** | Pointer to **string** | The md5 checksum of the certificate file. Intended to be used in verification the cert being used to sign QuickAdd packages. | [optional] [readonly] [default to ""]
 
 ## Methods
 

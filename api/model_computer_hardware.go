@@ -42,6 +42,8 @@ type ComputerHardware struct {
 	OpenRamSlots *int64 `json:"openRamSlots,omitempty"`
 	// Remaining percentage of battery power.
 	BatteryCapacityPercent *int64 `json:"batteryCapacityPercent,omitempty"`
+	// - NON_GENUINE: The battery isn’t a genuine Apple battery. - NORMAL: The battery is operating normally. - SERVICE_RECOMMENDED: The system recommends battery service. - UNKNOWN: The system couldn’t determine battery health information. - UNSUPPORTED: The device doesn’t support battery health reporting. 
+	BatteryHealth *string `json:"batteryHealth,omitempty"`
 	SmcVersion *string `json:"smcVersion,omitempty"`
 	NicSpeed *string `json:"nicSpeed,omitempty"`
 	OpticalDrive *string `json:"opticalDrive,omitempty"`
@@ -49,6 +51,7 @@ type ComputerHardware struct {
 	BleCapable *bool `json:"bleCapable,omitempty"`
 	SupportsIosAppInstalls *bool `json:"supportsIosAppInstalls,omitempty"`
 	AppleSilicon *bool `json:"appleSilicon,omitempty"`
+	ProvisioningUdid *string `json:"provisioningUdid,omitempty"`
 	ExtensionAttributes []ComputerExtensionAttribute `json:"extensionAttributes,omitempty"`
 }
 
@@ -645,6 +648,38 @@ func (o *ComputerHardware) SetBatteryCapacityPercent(v int64) {
 	o.BatteryCapacityPercent = &v
 }
 
+// GetBatteryHealth returns the BatteryHealth field value if set, zero value otherwise.
+func (o *ComputerHardware) GetBatteryHealth() string {
+	if o == nil || IsNil(o.BatteryHealth) {
+		var ret string
+		return ret
+	}
+	return *o.BatteryHealth
+}
+
+// GetBatteryHealthOk returns a tuple with the BatteryHealth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerHardware) GetBatteryHealthOk() (*string, bool) {
+	if o == nil || IsNil(o.BatteryHealth) {
+		return nil, false
+	}
+	return o.BatteryHealth, true
+}
+
+// HasBatteryHealth returns a boolean if a field has been set.
+func (o *ComputerHardware) HasBatteryHealth() bool {
+	if o != nil && !IsNil(o.BatteryHealth) {
+		return true
+	}
+
+	return false
+}
+
+// SetBatteryHealth gets a reference to the given string and assigns it to the BatteryHealth field.
+func (o *ComputerHardware) SetBatteryHealth(v string) {
+	o.BatteryHealth = &v
+}
+
 // GetSmcVersion returns the SmcVersion field value if set, zero value otherwise.
 func (o *ComputerHardware) GetSmcVersion() string {
 	if o == nil || IsNil(o.SmcVersion) {
@@ -869,6 +904,38 @@ func (o *ComputerHardware) SetAppleSilicon(v bool) {
 	o.AppleSilicon = &v
 }
 
+// GetProvisioningUdid returns the ProvisioningUdid field value if set, zero value otherwise.
+func (o *ComputerHardware) GetProvisioningUdid() string {
+	if o == nil || IsNil(o.ProvisioningUdid) {
+		var ret string
+		return ret
+	}
+	return *o.ProvisioningUdid
+}
+
+// GetProvisioningUdidOk returns a tuple with the ProvisioningUdid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ComputerHardware) GetProvisioningUdidOk() (*string, bool) {
+	if o == nil || IsNil(o.ProvisioningUdid) {
+		return nil, false
+	}
+	return o.ProvisioningUdid, true
+}
+
+// HasProvisioningUdid returns a boolean if a field has been set.
+func (o *ComputerHardware) HasProvisioningUdid() bool {
+	if o != nil && !IsNil(o.ProvisioningUdid) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvisioningUdid gets a reference to the given string and assigns it to the ProvisioningUdid field.
+func (o *ComputerHardware) SetProvisioningUdid(v string) {
+	o.ProvisioningUdid = &v
+}
+
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *ComputerHardware) GetExtensionAttributes() []ComputerExtensionAttribute {
 	if o == nil || IsNil(o.ExtensionAttributes) {
@@ -965,6 +1032,9 @@ func (o ComputerHardware) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BatteryCapacityPercent) {
 		toSerialize["batteryCapacityPercent"] = o.BatteryCapacityPercent
 	}
+	if !IsNil(o.BatteryHealth) {
+		toSerialize["batteryHealth"] = o.BatteryHealth
+	}
 	if !IsNil(o.SmcVersion) {
 		toSerialize["smcVersion"] = o.SmcVersion
 	}
@@ -985,6 +1055,9 @@ func (o ComputerHardware) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AppleSilicon) {
 		toSerialize["appleSilicon"] = o.AppleSilicon
+	}
+	if !IsNil(o.ProvisioningUdid) {
+		toSerialize["provisioningUdid"] = o.ProvisioningUdid
 	}
 	if !IsNil(o.ExtensionAttributes) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes

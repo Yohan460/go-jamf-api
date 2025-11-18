@@ -12,6 +12,8 @@ package api
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SmartSearchCriterion type satisfies the MappedNullable interface at compile time
@@ -19,21 +21,27 @@ var _ MappedNullable = &SmartSearchCriterion{}
 
 // SmartSearchCriterion struct for SmartSearchCriterion
 type SmartSearchCriterion struct {
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name"`
 	Priority *int64 `json:"priority,omitempty"`
-	AndOr *string `json:"andOr,omitempty"`
-	SearchType *string `json:"searchType,omitempty"`
-	Value *string `json:"value,omitempty"`
+	AndOr string `json:"andOr"`
+	SearchType string `json:"searchType"`
+	Value string `json:"value"`
 	OpeningParen *bool `json:"openingParen,omitempty"`
 	ClosingParen *bool `json:"closingParen,omitempty"`
 }
+
+type _SmartSearchCriterion SmartSearchCriterion
 
 // NewSmartSearchCriterion instantiates a new SmartSearchCriterion object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSmartSearchCriterion() *SmartSearchCriterion {
+func NewSmartSearchCriterion(name string, andOr string, searchType string, value string) *SmartSearchCriterion {
 	this := SmartSearchCriterion{}
+	this.Name = name
+	this.AndOr = andOr
+	this.SearchType = searchType
+	this.Value = value
 	return &this
 }
 
@@ -45,36 +53,28 @@ func NewSmartSearchCriterionWithDefaults() *SmartSearchCriterion {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *SmartSearchCriterion) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SmartSearchCriterion) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *SmartSearchCriterion) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
@@ -109,100 +109,76 @@ func (o *SmartSearchCriterion) SetPriority(v int64) {
 	o.Priority = &v
 }
 
-// GetAndOr returns the AndOr field value if set, zero value otherwise.
+// GetAndOr returns the AndOr field value
 func (o *SmartSearchCriterion) GetAndOr() string {
-	if o == nil || IsNil(o.AndOr) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AndOr
+
+	return o.AndOr
 }
 
-// GetAndOrOk returns a tuple with the AndOr field value if set, nil otherwise
+// GetAndOrOk returns a tuple with the AndOr field value
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetAndOrOk() (*string, bool) {
-	if o == nil || IsNil(o.AndOr) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AndOr, true
+	return &o.AndOr, true
 }
 
-// HasAndOr returns a boolean if a field has been set.
-func (o *SmartSearchCriterion) HasAndOr() bool {
-	if o != nil && !IsNil(o.AndOr) {
-		return true
-	}
-
-	return false
-}
-
-// SetAndOr gets a reference to the given string and assigns it to the AndOr field.
+// SetAndOr sets field value
 func (o *SmartSearchCriterion) SetAndOr(v string) {
-	o.AndOr = &v
+	o.AndOr = v
 }
 
-// GetSearchType returns the SearchType field value if set, zero value otherwise.
+// GetSearchType returns the SearchType field value
 func (o *SmartSearchCriterion) GetSearchType() string {
-	if o == nil || IsNil(o.SearchType) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SearchType
+
+	return o.SearchType
 }
 
-// GetSearchTypeOk returns a tuple with the SearchType field value if set, nil otherwise
+// GetSearchTypeOk returns a tuple with the SearchType field value
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetSearchTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.SearchType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SearchType, true
+	return &o.SearchType, true
 }
 
-// HasSearchType returns a boolean if a field has been set.
-func (o *SmartSearchCriterion) HasSearchType() bool {
-	if o != nil && !IsNil(o.SearchType) {
-		return true
-	}
-
-	return false
-}
-
-// SetSearchType gets a reference to the given string and assigns it to the SearchType field.
+// SetSearchType sets field value
 func (o *SmartSearchCriterion) SetSearchType(v string) {
-	o.SearchType = &v
+	o.SearchType = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *SmartSearchCriterion) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *SmartSearchCriterion) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *SmartSearchCriterion) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *SmartSearchCriterion) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
 // GetOpeningParen returns the OpeningParen field value if set, zero value otherwise.
@@ -279,21 +255,13 @@ func (o SmartSearchCriterion) MarshalJSON() ([]byte, error) {
 
 func (o SmartSearchCriterion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority
 	}
-	if !IsNil(o.AndOr) {
-		toSerialize["andOr"] = o.AndOr
-	}
-	if !IsNil(o.SearchType) {
-		toSerialize["searchType"] = o.SearchType
-	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["andOr"] = o.AndOr
+	toSerialize["searchType"] = o.SearchType
+	toSerialize["value"] = o.Value
 	if !IsNil(o.OpeningParen) {
 		toSerialize["openingParen"] = o.OpeningParen
 	}
@@ -301,6 +269,46 @@ func (o SmartSearchCriterion) ToMap() (map[string]interface{}, error) {
 		toSerialize["closingParen"] = o.ClosingParen
 	}
 	return toSerialize, nil
+}
+
+func (o *SmartSearchCriterion) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"andOr",
+		"searchType",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSmartSearchCriterion := _SmartSearchCriterion{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSmartSearchCriterion)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SmartSearchCriterion(varSmartSearchCriterion)
+
+	return err
 }
 
 type NullableSmartSearchCriterion struct {

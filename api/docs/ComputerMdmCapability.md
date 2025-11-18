@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capable** | Pointer to **bool** |  | [optional] 
-**CapableUsers** | Pointer to **[]string** |  | [optional] 
+**CapableUsers** | Pointer to **[]string** | Deprecated. Use userManagementInfo instead. | [optional] 
+**UserManagementInfo** | Pointer to [**[]ComputerUserManagementInfo**](ComputerUserManagementInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetCapableUsers sets CapableUsers field to given value.
 `func (o *ComputerMdmCapability) HasCapableUsers() bool`
 
 HasCapableUsers returns a boolean if a field has been set.
+
+### GetUserManagementInfo
+
+`func (o *ComputerMdmCapability) GetUserManagementInfo() []ComputerUserManagementInfo`
+
+GetUserManagementInfo returns the UserManagementInfo field if non-nil, zero value otherwise.
+
+### GetUserManagementInfoOk
+
+`func (o *ComputerMdmCapability) GetUserManagementInfoOk() (*[]ComputerUserManagementInfo, bool)`
+
+GetUserManagementInfoOk returns a tuple with the UserManagementInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserManagementInfo
+
+`func (o *ComputerMdmCapability) SetUserManagementInfo(v []ComputerUserManagementInfo)`
+
+SetUserManagementInfo sets UserManagementInfo field to given value.
+
+### HasUserManagementInfo
+
+`func (o *ComputerMdmCapability) HasUserManagementInfo() bool`
+
+HasUserManagementInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

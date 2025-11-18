@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **Name** | Pointer to **string** | Mobile device name. | [optional] 
-**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ���name��� value each time the device checks in. | [optional] 
+**EnforceName** | Pointer to **bool** | Enforce the mobile device name. Device must be supervised. If set to true, Jamf Pro will revert the Mobile Device Name to the ‘name’ value each time the device checks in. | [optional] 
 **AssetTag** | Pointer to **string** |  | [optional] 
 **LastInventoryUpdateTimestamp** | Pointer to **time.Time** |  | [optional] 
 **OsVersion** | Pointer to **string** |  | [optional] 
@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **Watchos** | Pointer to [**WatchOsDetailsV2**](WatchOsDetailsV2.md) |  | [optional] 
 **Visionos** | Pointer to [**DetailsV2**](DetailsV2.md) |  | [optional] 
 **ManagementId** | Pointer to **string** |  | [optional] [readonly] 
+**Groups** | Pointer to [**[]MobileDeviceInventoryGroup**](MobileDeviceInventoryGroup.md) |  | [optional] 
 
 ## Methods
 
@@ -881,6 +882,31 @@ SetManagementId sets ManagementId field to given value.
 `func (o *MobileDeviceDetailsGetV2) HasManagementId() bool`
 
 HasManagementId returns a boolean if a field has been set.
+
+### GetGroups
+
+`func (o *MobileDeviceDetailsGetV2) GetGroups() []MobileDeviceInventoryGroup`
+
+GetGroups returns the Groups field if non-nil, zero value otherwise.
+
+### GetGroupsOk
+
+`func (o *MobileDeviceDetailsGetV2) GetGroupsOk() (*[]MobileDeviceInventoryGroup, bool)`
+
+GetGroupsOk returns a tuple with the Groups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroups
+
+`func (o *MobileDeviceDetailsGetV2) SetGroups(v []MobileDeviceInventoryGroup)`
+
+SetGroups sets Groups field to given value.
+
+### HasGroups
+
+`func (o *MobileDeviceDetailsGetV2) HasGroups() bool`
+
+HasGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

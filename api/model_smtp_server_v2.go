@@ -27,6 +27,7 @@ type SmtpServerV2 struct {
 	SenderSettings SmtpSenderSettings `json:"senderSettings"`
 	BasicAuthCredentials *SmtpBasicCredentials `json:"basicAuthCredentials,omitempty"`
 	GraphApiCredentials *SmtpGraphApiCredentials `json:"graphApiCredentials,omitempty"`
+	GoogleMailCredentials *SmtpGoogleMailCredentials `json:"googleMailCredentials,omitempty"`
 }
 
 type _SmtpServerV2 SmtpServerV2
@@ -221,6 +222,38 @@ func (o *SmtpServerV2) SetGraphApiCredentials(v SmtpGraphApiCredentials) {
 	o.GraphApiCredentials = &v
 }
 
+// GetGoogleMailCredentials returns the GoogleMailCredentials field value if set, zero value otherwise.
+func (o *SmtpServerV2) GetGoogleMailCredentials() SmtpGoogleMailCredentials {
+	if o == nil || IsNil(o.GoogleMailCredentials) {
+		var ret SmtpGoogleMailCredentials
+		return ret
+	}
+	return *o.GoogleMailCredentials
+}
+
+// GetGoogleMailCredentialsOk returns a tuple with the GoogleMailCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SmtpServerV2) GetGoogleMailCredentialsOk() (*SmtpGoogleMailCredentials, bool) {
+	if o == nil || IsNil(o.GoogleMailCredentials) {
+		return nil, false
+	}
+	return o.GoogleMailCredentials, true
+}
+
+// HasGoogleMailCredentials returns a boolean if a field has been set.
+func (o *SmtpServerV2) HasGoogleMailCredentials() bool {
+	if o != nil && !IsNil(o.GoogleMailCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetGoogleMailCredentials gets a reference to the given SmtpGoogleMailCredentials and assigns it to the GoogleMailCredentials field.
+func (o *SmtpServerV2) SetGoogleMailCredentials(v SmtpGoogleMailCredentials) {
+	o.GoogleMailCredentials = &v
+}
+
 func (o SmtpServerV2) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -242,6 +275,9 @@ func (o SmtpServerV2) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GraphApiCredentials) {
 		toSerialize["graphApiCredentials"] = o.GraphApiCredentials
+	}
+	if !IsNil(o.GoogleMailCredentials) {
+		toSerialize["googleMailCredentials"] = o.GoogleMailCredentials
 	}
 	return toSerialize, nil
 }

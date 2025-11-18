@@ -25,6 +25,36 @@ import (
 type ComputerInventoryAPI interface {
 
 	/*
+	V1ComputerInventoryIdErasePost Erase a computer 
+
+	Erase a computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Id of the computer to erase
+	@return ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest
+	*/
+	V1ComputerInventoryIdErasePost(ctx context.Context, id string) ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest
+
+	// V1ComputerInventoryIdErasePostExecute executes the request
+	//  @return EraseDeviceComputerResponse
+	V1ComputerInventoryIdErasePostExecute(r ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest) (*EraseDeviceComputerResponse, *http.Response, error)
+
+	/*
+	V1ComputerInventoryIdRemoveMdmProfilePost Remove a computer's MDM profile 
+
+	Remove a computer's MDM profile
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id Id of the computer to remove the MDM profile from
+	@return ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest
+	*/
+	V1ComputerInventoryIdRemoveMdmProfilePost(ctx context.Context, id string) ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest
+
+	// V1ComputerInventoryIdRemoveMdmProfilePostExecute executes the request
+	//  @return RemoveComputerMdmProfileResponse
+	V1ComputerInventoryIdRemoveMdmProfilePostExecute(r ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest) (*RemoveComputerMdmProfileResponse, *http.Response, error)
+
+	/*
 	V1ComputersInventoryDetailIdGet Return all sections of a computer
 
 	Return all sections of a computer
@@ -32,11 +62,14 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryDetailIdGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest
 
 	// V1ComputersInventoryDetailIdGetExecute executes the request
 	//  @return ComputerInventory
+	// Deprecated
 	V1ComputersInventoryDetailIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest) (*ComputerInventory, *http.Response, error)
 
 	/*
@@ -47,11 +80,14 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryDetailIdPatch(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest
 
 	// V1ComputersInventoryDetailIdPatchExecute executes the request
 	//  @return ComputerInventory
+	// Deprecated
 	V1ComputersInventoryDetailIdPatchExecute(r ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest) (*ComputerInventory, *http.Response, error)
 
 	/*
@@ -61,11 +97,14 @@ type ComputerInventoryAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryFilevaultGet(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest
 
 	// V1ComputersInventoryFilevaultGetExecute executes the request
 	//  @return ComputerInventoryFileVaultSearchResults
+	// Deprecated
 	V1ComputersInventoryFilevaultGetExecute(r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) (*ComputerInventoryFileVaultSearchResults, *http.Response, error)
 
 	/*
@@ -75,11 +114,14 @@ type ComputerInventoryAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ComputerInventoryAPIV1ComputersInventoryGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryGet(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryGetRequest
 
 	// V1ComputersInventoryGetExecute executes the request
 	//  @return ComputerInventorySearchResults
+	// Deprecated
 	V1ComputersInventoryGetExecute(r ComputerInventoryAPIV1ComputersInventoryGetRequest) (*ComputerInventorySearchResults, *http.Response, error)
 
 	/*
@@ -91,10 +133,13 @@ type ComputerInventoryAPI interface {
 	@param id instance id of computer record
 	@param attachmentId instance id of attachment object
 	@return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
 
 	// V1ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute executes the request
+	// Deprecated
 	V1ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) (*http.Response, error)
 
 	/*
@@ -106,11 +151,14 @@ type ComputerInventoryAPI interface {
 	@param id instance id of computer record
 	@param attachmentId instance id of attachment object
 	@return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdAttachmentsAttachmentIdGet(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest
 
 	// V1ComputersInventoryIdAttachmentsAttachmentIdGetExecute executes the request
 	//  @return *os.File
+	// Deprecated
 	V1ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest) (*os.File, *http.Response, error)
 
 	/*
@@ -121,11 +169,14 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdAttachmentsPost(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest
 
 	// V1ComputersInventoryIdAttachmentsPostExecute executes the request
 	//  @return HrefResponse
+	// Deprecated
 	V1ComputersInventoryIdAttachmentsPostExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest) (*HrefResponse, *http.Response, error)
 
 	/*
@@ -136,10 +187,13 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdDelete(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest
 
 	// V1ComputersInventoryIdDeleteExecute executes the request
+	// Deprecated
 	V1ComputersInventoryIdDeleteExecute(r ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest) (*http.Response, error)
 
 	/*
@@ -150,11 +204,14 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdFilevaultGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest
 
 	// V1ComputersInventoryIdFilevaultGetExecute executes the request
 	//  @return ComputerInventoryFileVault
+	// Deprecated
 	V1ComputersInventoryIdFilevaultGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest) (*ComputerInventoryFileVault, *http.Response, error)
 
 	/*
@@ -165,12 +222,33 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryIdGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdGetRequest
 
 	// V1ComputersInventoryIdGetExecute executes the request
 	//  @return ComputerInventory
+	// Deprecated
 	V1ComputersInventoryIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdGetRequest) (*ComputerInventory, *http.Response, error)
+
+	/*
+	V1ComputersInventoryIdViewDeviceLockPinGet Return a computer's Device Lock PIN
+
+	Return a computer's Device Lock PIN
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest
+
+	Deprecated
+	*/
+	V1ComputersInventoryIdViewDeviceLockPinGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest
+
+	// V1ComputersInventoryIdViewDeviceLockPinGetExecute executes the request
+	//  @return ComputerInventoryDeviceLockPinResponse
+	// Deprecated
+	V1ComputersInventoryIdViewDeviceLockPinGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest) (*ComputerInventoryDeviceLockPinResponse, *http.Response, error)
 
 	/*
 	V1ComputersInventoryIdViewRecoveryLockPasswordGet Return a Computers Recovery Lock Password
@@ -180,16 +258,462 @@ type ComputerInventoryAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param id instance id of computer record
 	@return ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+
+	Deprecated
 	*/
 	V1ComputersInventoryIdViewRecoveryLockPasswordGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest
 
 	// V1ComputersInventoryIdViewRecoveryLockPasswordGetExecute executes the request
 	//  @return ComputerInventoryRecoveryLockPasswordResponse
+	// Deprecated
 	V1ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest) (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error)
+
+	/*
+	V1ComputersInventoryPost Create Computer Inventory record
+
+	Creates Computer Inventory record
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryAPIV1ComputersInventoryPostRequest
+
+	Deprecated
+	*/
+	V1ComputersInventoryPost(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryPostRequest
+
+	// V1ComputersInventoryPostExecute executes the request
+	//  @return HrefResponse
+	// Deprecated
+	V1ComputersInventoryPostExecute(r ComputerInventoryAPIV1ComputersInventoryPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2ComputersInventoryDetailIdGet Return all sections of a computer
+
+	Return all sections of a computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest
+	*/
+	V2ComputersInventoryDetailIdGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest
+
+	// V2ComputersInventoryDetailIdGetExecute executes the request
+	//  @return ComputerInventoryV2
+	V2ComputersInventoryDetailIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest) (*ComputerInventoryV2, *http.Response, error)
+
+	/*
+	V2ComputersInventoryDetailIdPatch Update specific fields on a computer
+
+	Update specific fields on a computer, then return the updated computer object.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest
+	*/
+	V2ComputersInventoryDetailIdPatch(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest
+
+	// V2ComputersInventoryDetailIdPatchExecute executes the request
+	V2ComputersInventoryDetailIdPatchExecute(r ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest) (*http.Response, error)
+
+	/*
+	V2ComputersInventoryFilevaultGet Return paginated FileVault information for all computers
+
+	Return paginated FileVault information for all computers
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest
+	*/
+	V2ComputersInventoryFilevaultGet(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest
+
+	// V2ComputersInventoryFilevaultGetExecute executes the request
+	//  @return ComputerInventoryFileVaultSearchResults
+	V2ComputersInventoryFilevaultGetExecute(r ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest) (*ComputerInventoryFileVaultSearchResults, *http.Response, error)
+
+	/*
+	V2ComputersInventoryGet Return paginated Computer Inventory records
+
+	Return paginated Computer Inventory records
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryAPIV2ComputersInventoryGetRequest
+	*/
+	V2ComputersInventoryGet(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryGetRequest
+
+	// V2ComputersInventoryGetExecute executes the request
+	//  @return ComputerInventorySearchResultsV2
+	V2ComputersInventoryGetExecute(r ComputerInventoryAPIV2ComputersInventoryGetRequest) (*ComputerInventorySearchResultsV2, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdAttachmentsAttachmentIdDelete Remove attachment
+
+	Remove attachment
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@param attachmentId instance id of attachment object
+	@return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+	*/
+	V2ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+
+	// V2ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute executes the request
+	V2ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputersInventoryIdAttachmentsAttachmentIdGet Download attachment file
+
+	Download attachment file
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@param attachmentId instance id of attachment object
+	@return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+	*/
+	V2ComputersInventoryIdAttachmentsAttachmentIdGet(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+
+	// V2ComputersInventoryIdAttachmentsAttachmentIdGetExecute executes the request
+	//  @return *os.File
+	V2ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest) (*os.File, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdAttachmentsPost Upload attachment and assign to computer
+
+	Upload attachment and assign to computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest
+	*/
+	V2ComputersInventoryIdAttachmentsPost(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest
+
+	// V2ComputersInventoryIdAttachmentsPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputersInventoryIdAttachmentsPostExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest) (*HrefResponse, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdDelete Remove specified Computer record
+
+	Remove specified Computer record
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest
+	*/
+	V2ComputersInventoryIdDelete(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest
+
+	// V2ComputersInventoryIdDeleteExecute executes the request
+	V2ComputersInventoryIdDeleteExecute(r ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest) (*http.Response, error)
+
+	/*
+	V2ComputersInventoryIdFilevaultGet Return FileVault information for a specific computer
+
+	Return FileVault information for a specific computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest
+	*/
+	V2ComputersInventoryIdFilevaultGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest
+
+	// V2ComputersInventoryIdFilevaultGetExecute executes the request
+	//  @return ComputerInventoryFileVault
+	V2ComputersInventoryIdFilevaultGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest) (*ComputerInventoryFileVault, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdGet Return General section of a Computer
+
+	Return General section of a Computer
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdGetRequest
+	*/
+	V2ComputersInventoryIdGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdGetRequest
+
+	// V2ComputersInventoryIdGetExecute executes the request
+	//  @return ComputerInventoryV2
+	V2ComputersInventoryIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdGetRequest) (*ComputerInventoryV2, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdViewDeviceLockPinGet Return a computer's Device Lock PIN
+
+	Return a computer's Device Lock PIN
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest
+	*/
+	V2ComputersInventoryIdViewDeviceLockPinGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest
+
+	// V2ComputersInventoryIdViewDeviceLockPinGetExecute executes the request
+	//  @return ComputerInventoryDeviceLockPinResponse
+	V2ComputersInventoryIdViewDeviceLockPinGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest) (*ComputerInventoryDeviceLockPinResponse, *http.Response, error)
+
+	/*
+	V2ComputersInventoryIdViewRecoveryLockPasswordGet Return a Computers Recovery Lock Password
+
+	Return a Computers Recovery Lock Password
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id instance id of computer record
+	@return ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+	*/
+	V2ComputersInventoryIdViewRecoveryLockPasswordGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+
+	// V2ComputersInventoryIdViewRecoveryLockPasswordGetExecute executes the request
+	//  @return ComputerInventoryRecoveryLockPasswordResponse
+	V2ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest) (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error)
+
+	/*
+	V2ComputersInventoryPost Create Computer Inventory record
+
+	Creates Computer Inventory record
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ComputerInventoryAPIV2ComputersInventoryPostRequest
+	*/
+	V2ComputersInventoryPost(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryPostRequest
+
+	// V2ComputersInventoryPostExecute executes the request
+	//  @return HrefResponse
+	V2ComputersInventoryPostExecute(r ComputerInventoryAPIV2ComputersInventoryPostRequest) (*HrefResponse, *http.Response, error)
 }
 
 // ComputerInventoryAPIService ComputerInventoryAPI service
 type ComputerInventoryAPIService service
+
+type ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	eraseDeviceComputerRequest *EraseDeviceComputerRequest
+}
+
+// Options for eraseDevice command
+func (r ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest) EraseDeviceComputerRequest(eraseDeviceComputerRequest EraseDeviceComputerRequest) ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest {
+	r.eraseDeviceComputerRequest = &eraseDeviceComputerRequest
+	return r
+}
+
+func (r ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest) Execute() (*EraseDeviceComputerResponse, *http.Response, error) {
+	return r.ApiService.V1ComputerInventoryIdErasePostExecute(r)
+}
+
+/*
+V1ComputerInventoryIdErasePost Erase a computer 
+
+Erase a computer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Id of the computer to erase
+ @return ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest
+*/
+func (a *ComputerInventoryAPIService) V1ComputerInventoryIdErasePost(ctx context.Context, id string) ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest {
+	return ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return EraseDeviceComputerResponse
+func (a *ComputerInventoryAPIService) V1ComputerInventoryIdErasePostExecute(r ComputerInventoryAPIV1ComputerInventoryIdErasePostRequest) (*EraseDeviceComputerResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *EraseDeviceComputerResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V1ComputerInventoryIdErasePost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/computer-inventory/{id}/erase"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.eraseDeviceComputerRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest) Execute() (*RemoveComputerMdmProfileResponse, *http.Response, error) {
+	return r.ApiService.V1ComputerInventoryIdRemoveMdmProfilePostExecute(r)
+}
+
+/*
+V1ComputerInventoryIdRemoveMdmProfilePost Remove a computer's MDM profile 
+
+Remove a computer's MDM profile
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id Id of the computer to remove the MDM profile from
+ @return ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest
+*/
+func (a *ComputerInventoryAPIService) V1ComputerInventoryIdRemoveMdmProfilePost(ctx context.Context, id string) ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest {
+	return ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return RemoveComputerMdmProfileResponse
+func (a *ComputerInventoryAPIService) V1ComputerInventoryIdRemoveMdmProfilePostExecute(r ComputerInventoryAPIV1ComputerInventoryIdRemoveMdmProfilePostRequest) (*RemoveComputerMdmProfileResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *RemoveComputerMdmProfileResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V1ComputerInventoryIdRemoveMdmProfilePost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/computer-inventory/{id}/remove-mdm-profile"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest struct {
 	ctx context.Context
@@ -209,6 +733,8 @@ Return all sections of a computer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest{
@@ -220,6 +746,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdGet(ctx contex
 
 // Execute executes the request
 //  @return ComputerInventory
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryDetailIdGetRequest) (*ComputerInventory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -328,6 +855,8 @@ Update specific fields on a computer, then return the updated computer object.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdPatch(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest {
 	return ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest{
@@ -339,6 +868,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdPatch(ctx cont
 
 // Execute executes the request
 //  @return ComputerInventory
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryDetailIdPatchExecute(r ComputerInventoryAPIV1ComputersInventoryDetailIdPatchRequest) (*ComputerInventory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
@@ -456,6 +986,8 @@ Return paginated FileVault information for all computers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryFilevaultGet(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest{
@@ -466,6 +998,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryFilevaultGet(ctx conte
 
 // Execute executes the request
 //  @return ComputerInventoryFileVaultSearchResults
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryFilevaultGetExecute(r ComputerInventoryAPIV1ComputersInventoryFilevaultGetRequest) (*ComputerInventoryFileVaultSearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -486,16 +1019,18 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryFilevaultGetExecute(r 
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -577,13 +1112,13 @@ func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) PageSize(pageSize in
 	return r
 }
 
-// Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;general.name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.remoteManagement.managementUsername&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.warrantyDate&#x60;  Example: &#x60;sort&#x3D;udid:desc,general.name:asc&#x60;. 
+// Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;general.name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60; &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.warrantyDate&#x60;  Example: &#x60;sort&#x3D;udid:desc,general.name:asc&#x60;. 
 func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) Sort(sort []string) ComputerInventoryAPIV1ComputersInventoryGetRequest {
 	r.sort = &sort
 	return r
 }
 
-// Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.barcode1&#x60;, &#x60;general.barcode2&#x60;, &#x60;general.enrolledViaAutomatedDeviceEnrollment&#x60;, &#x60;general.lastIpAddress&#x60;, &#x60;general.itunesStoreAccountActive&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.lastReportedIp&#x60;, &#x60;general.managementId&#x60;, &#x60;general.remoteManagement.managed&#x60;, &#x60;general.remoteManagement.managementUsername&#x60;, &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;,  &#x60;hardware.bleCapable&#x60;, &#x60;hardware.macAddress&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;hardware.modelIdentifier&#x60;, &#x60;hardware.serialNumber&#x60;, &#x60;hardware.supportsIosAppInstalls&#x60;,&#x60;hardware.appleSilicon&#x60;, &#x60;operatingSystem.activeDirectoryStatus&#x60;, &#x60;operatingSystem.fileVault2Status&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;security.activationLockEnabled&#x60;, &#x60;security.recoveryLockEnabled&#x60;,&#x60;security.firewallEnabled&#x60;,&#x60;userAndLocation.buildingId&#x60;, &#x60;userAndLocation.departmentId&#x60;, &#x60;userAndLocation.email&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;userAndLocation.phone&#x60;, &#x60;userAndLocation.position&#x60;,&#x60;userAndLocation.room&#x60;, &#x60;userAndLocation.username&#x60;, &#x60;purchasing.appleCareId&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.purchased&#x60;, &#x60;purchasing.leased&#x60;, &#x60;purchasing.vendor&#x60;, &#x60;purchasing.warrantyDate&#x60;,  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;general.name&#x3D;&#x3D;\&quot;Orchard\&quot;&#x60; 
+// Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.barcode1&#x60;, &#x60;general.barcode2&#x60;, &#x60;general.enrolledViaAutomatedDeviceEnrollment&#x60;, &#x60;general.lastIpAddress&#x60;, &#x60;general.itunesStoreAccountActive&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.lastReportedIp&#x60;, &#x60;general.lastReportedIpV4&#x60;, &#x60;general.lastReportedIpV6&#x60;, &#x60;general.managementId&#x60;, &#x60;general.remoteManagement.managed&#x60;, &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;,  &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;,  &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60;, &#x60;hardware.bleCapable&#x60;, &#x60;hardware.macAddress&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;hardware.modelIdentifier&#x60;, &#x60;hardware.serialNumber&#x60;, &#x60;hardware.supportsIosAppInstalls&#x60;,&#x60;hardware.appleSilicon&#x60;, &#x60;operatingSystem.activeDirectoryStatus&#x60;, &#x60;operatingSystem.fileVault2Status&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;security.activationLockEnabled&#x60;, &#x60;security.recoveryLockEnabled&#x60;,&#x60;security.firewallEnabled&#x60;,&#x60;userAndLocation.buildingId&#x60;, &#x60;userAndLocation.departmentId&#x60;, &#x60;userAndLocation.email&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;userAndLocation.phone&#x60;, &#x60;userAndLocation.position&#x60;,&#x60;userAndLocation.room&#x60;, &#x60;userAndLocation.username&#x60;, &#x60;diskEncryption.fileVault2Enabled&#x60;, &#x60;purchasing.appleCareId&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.purchased&#x60;, &#x60;purchasing.leased&#x60;, &#x60;purchasing.vendor&#x60;, &#x60;purchasing.warrantyDate&#x60;,  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;general.name&#x3D;&#x3D;\&quot;Orchard\&quot;&#x60; 
 func (r ComputerInventoryAPIV1ComputersInventoryGetRequest) Filter(filter string) ComputerInventoryAPIV1ComputersInventoryGetRequest {
 	r.filter = &filter
 	return r
@@ -600,6 +1135,8 @@ Return paginated Computer Inventory records
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ComputerInventoryAPIV1ComputersInventoryGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryGet(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryGetRequest{
@@ -610,6 +1147,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryGet(ctx context.Contex
 
 // Execute executes the request
 //  @return ComputerInventorySearchResults
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryGetExecute(r ComputerInventoryAPIV1ComputersInventoryGetRequest) (*ComputerInventorySearchResults, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -634,46 +1172,51 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryGetExecute(r ComputerI
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []ComputerSection{"GENERAL"}
-		r.section = &defaultValue
+        var defaultValue []ComputerSection = []ComputerSection{"GENERAL"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "section", defaultValue, "form", "multi")
+        r.section = &defaultValue
 	}
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-		var defaultValue int64 = 0
-		r.page = &defaultValue
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
 	}
 	if r.pageSize != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-		var defaultValue int64 = 100
-		r.pageSize = &defaultValue
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []string{"general.name:asc"}
-		r.sort = &defaultValue
+        var defaultValue []string = []string{"general.name:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
 	}
 	if r.filter != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-		var defaultValue string = ""
-		r.filter = &defaultValue
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -749,6 +1292,8 @@ Remove attachment
  @param id instance id of computer record
  @param attachmentId instance id of attachment object
  @return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest{
@@ -760,6 +1305,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmen
 }
 
 // Execute executes the request
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -855,6 +1401,8 @@ Download attachment file
  @param id instance id of computer record
  @param attachmentId instance id of attachment object
  @return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmentIdGet(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest{
@@ -867,6 +1415,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmen
 
 // Execute executes the request
 //  @return *os.File
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsAttachmentIdGetRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -977,6 +1526,8 @@ Upload attachment and assign to computer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsPost(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest{
@@ -988,6 +1539,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsPost(ctx 
 
 // Execute executes the request
 //  @return HrefResponse
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdAttachmentsPostExecute(r ComputerInventoryAPIV1ComputersInventoryIdAttachmentsPostRequest) (*HrefResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -1108,6 +1660,8 @@ Remove specified Computer record
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdDelete(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest{
@@ -1118,6 +1672,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdDelete(ctx context.C
 }
 
 // Execute executes the request
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdDeleteExecute(r ComputerInventoryAPIV1ComputersInventoryIdDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -1210,6 +1765,8 @@ Return FileVault information for a specific computer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdFilevaultGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest{
@@ -1221,6 +1778,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdFilevaultGet(ctx con
 
 // Execute executes the request
 //  @return ComputerInventoryFileVault
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdFilevaultGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdFilevaultGetRequest) (*ComputerInventoryFileVault, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1330,6 +1888,8 @@ Return General section of a Computer
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryIdGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdGetRequest{
@@ -1341,6 +1901,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdGet(ctx context.Cont
 
 // Execute executes the request
 //  @return ComputerInventory
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdGetRequest) (*ComputerInventory, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1366,15 +1927,132 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdGetExecute(r Compute
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
 			s := reflect.ValueOf(t)
 			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "multi")
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "form", "multi")
 			}
 		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "multi")
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "form", "multi")
 		}
 	} else {
-		defaultValue := []ComputerSection{"GENERAL"}
-		r.section = &defaultValue
+        var defaultValue []ComputerSection = []ComputerSection{"GENERAL"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "section", defaultValue, "form", "multi")
+        r.section = &defaultValue
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest) Execute() (*ComputerInventoryDeviceLockPinResponse, *http.Response, error) {
+	return r.ApiService.V1ComputersInventoryIdViewDeviceLockPinGetExecute(r)
+}
+
+/*
+V1ComputersInventoryIdViewDeviceLockPinGet Return a computer's Device Lock PIN
+
+Return a computer's Device Lock PIN
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest
+
+Deprecated
+*/
+func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewDeviceLockPinGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest {
+	return ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryDeviceLockPinResponse
+// Deprecated
+func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewDeviceLockPinGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdViewDeviceLockPinGetRequest) (*ComputerInventoryDeviceLockPinResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryDeviceLockPinResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V1ComputersInventoryIdViewDeviceLockPinGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/computers-inventory/{id}/view-device-lock-pin"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1457,6 +2135,8 @@ Return a Computers Recovery Lock Password
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id instance id of computer record
  @return ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+
+Deprecated
 */
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewRecoveryLockPasswordGet(ctx context.Context, id string) ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest {
 	return ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest{
@@ -1468,6 +2148,7 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewRecoveryLockPass
 
 // Execute executes the request
 //  @return ComputerInventoryRecoveryLockPasswordResponse
+// Deprecated
 func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r ComputerInventoryAPIV1ComputersInventoryIdViewRecoveryLockPasswordGetRequest) (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -1536,6 +2217,1700 @@ func (a *ComputerInventoryAPIService) V1ComputersInventoryIdViewRecoveryLockPass
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV1ComputersInventoryPostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	computerInventoryCreateRequest *ComputerInventoryCreateRequest
+}
+
+func (r ComputerInventoryAPIV1ComputersInventoryPostRequest) ComputerInventoryCreateRequest(computerInventoryCreateRequest ComputerInventoryCreateRequest) ComputerInventoryAPIV1ComputersInventoryPostRequest {
+	r.computerInventoryCreateRequest = &computerInventoryCreateRequest
+	return r
+}
+
+func (r ComputerInventoryAPIV1ComputersInventoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V1ComputersInventoryPostExecute(r)
+}
+
+/*
+V1ComputersInventoryPost Create Computer Inventory record
+
+Creates Computer Inventory record
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryAPIV1ComputersInventoryPostRequest
+
+Deprecated
+*/
+func (a *ComputerInventoryAPIService) V1ComputersInventoryPost(ctx context.Context) ComputerInventoryAPIV1ComputersInventoryPostRequest {
+	return ComputerInventoryAPIV1ComputersInventoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+// Deprecated
+func (a *ComputerInventoryAPIService) V1ComputersInventoryPostExecute(r ComputerInventoryAPIV1ComputersInventoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V1ComputersInventoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/computers-inventory"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.computerInventoryCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("computerInventoryCreateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.computerInventoryCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest) Execute() (*ComputerInventoryV2, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryDetailIdGetExecute(r)
+}
+
+/*
+V2ComputersInventoryDetailIdGet Return all sections of a computer
+
+Return all sections of a computer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryDetailIdGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryV2
+func (a *ComputerInventoryAPIService) V2ComputersInventoryDetailIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryDetailIdGetRequest) (*ComputerInventoryV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryDetailIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory-detail/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	computerInventoryUpdateRequest *ComputerInventoryUpdateRequest
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest) ComputerInventoryUpdateRequest(computerInventoryUpdateRequest ComputerInventoryUpdateRequest) ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest {
+	r.computerInventoryUpdateRequest = &computerInventoryUpdateRequest
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputersInventoryDetailIdPatchExecute(r)
+}
+
+/*
+V2ComputersInventoryDetailIdPatch Update specific fields on a computer
+
+Update specific fields on a computer, then return the updated computer object.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryDetailIdPatch(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest {
+	return ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerInventoryAPIService) V2ComputersInventoryDetailIdPatchExecute(r ComputerInventoryAPIV2ComputersInventoryDetailIdPatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryDetailIdPatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory-detail/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.computerInventoryUpdateRequest == nil {
+		return nil, reportError("computerInventoryUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.computerInventoryUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	page *int64
+	pageSize *int64
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest) Page(page int64) ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest) PageSize(pageSize int64) ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest) Execute() (*ComputerInventoryFileVaultSearchResults, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryFilevaultGetExecute(r)
+}
+
+/*
+V2ComputersInventoryFilevaultGet Return paginated FileVault information for all computers
+
+Return paginated FileVault information for all computers
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryFilevaultGet(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryFileVaultSearchResults
+func (a *ComputerInventoryAPIService) V2ComputersInventoryFilevaultGetExecute(r ComputerInventoryAPIV2ComputersInventoryFilevaultGetRequest) (*ComputerInventoryFileVaultSearchResults, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryFileVaultSearchResults
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryFilevaultGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/filevault"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	section *[]ComputerSectionV2
+	page *int64
+	pageSize *int64
+	sort *[]string
+	filter *string
+}
+
+// section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;GENERAL&amp;section&#x3D;HARDWARE
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) Section(section []ComputerSectionV2) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	r.section = &section
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) Page(page int64) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	r.page = &page
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) PageSize(pageSize int64) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+// Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;general.name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60; &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.warrantyDate&#x60;  Example: &#x60;sort&#x3D;udid:desc,general.name:asc&#x60;. 
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) Sort(sort []string) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.barcode1&#x60;, &#x60;general.barcode2&#x60;, &#x60;general.enrolledViaAutomatedDeviceEnrollment&#x60;, &#x60;general.lastIpAddress&#x60;, &#x60;general.itunesStoreAccountActive&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.lastReportedIp&#x60;, &#x60;general.lastReportedIpV4&#x60;, &#x60;general.lastReportedIpV6&#x60;, &#x60;general.managementId&#x60;, &#x60;general.remoteManagement.managed&#x60;, &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;,  &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;,  &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60;, &#x60;hardware.bleCapable&#x60;, &#x60;hardware.macAddress&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;hardware.modelIdentifier&#x60;, &#x60;hardware.serialNumber&#x60;, &#x60;hardware.supportsIosAppInstalls&#x60;,&#x60;hardware.appleSilicon&#x60;, &#x60;operatingSystem.activeDirectoryStatus&#x60;, &#x60;operatingSystem.fileVault2Status&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;security.activationLockEnabled&#x60;, &#x60;security.recoveryLockEnabled&#x60;,&#x60;security.firewallEnabled&#x60;,&#x60;userAndLocation.buildingId&#x60;, &#x60;userAndLocation.departmentId&#x60;, &#x60;userAndLocation.email&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;userAndLocation.phone&#x60;, &#x60;userAndLocation.position&#x60;,&#x60;userAndLocation.room&#x60;, &#x60;userAndLocation.username&#x60;, &#x60;diskEncryption.fileVault2Enabled&#x60;, &#x60;purchasing.appleCareId&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.purchased&#x60;, &#x60;purchasing.leased&#x60;, &#x60;purchasing.vendor&#x60;, &#x60;purchasing.warrantyDate&#x60;,  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;general.name&#x3D;&#x3D;\&quot;Orchard\&quot;&#x60; 
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) Filter(filter string) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	r.filter = &filter
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryGetRequest) Execute() (*ComputerInventorySearchResultsV2, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryGetExecute(r)
+}
+
+/*
+V2ComputersInventoryGet Return paginated Computer Inventory records
+
+Return paginated Computer Inventory records
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryAPIV2ComputersInventoryGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryGet(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventorySearchResultsV2
+func (a *ComputerInventoryAPIService) V2ComputersInventoryGetExecute(r ComputerInventoryAPIV2ComputersInventoryGetRequest) (*ComputerInventorySearchResultsV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventorySearchResultsV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.section != nil {
+		t := *r.section
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []ComputerSectionV2 = []ComputerSectionV2{"GENERAL"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "section", defaultValue, "form", "multi")
+        r.section = &defaultValue
+	}
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
+	} else {
+        var defaultValue int64 = 0
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+        r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
+	} else {
+        var defaultValue int64 = 100
+        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+        r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []string = []string{"general.name:asc"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+        r.sort = &defaultValue
+	}
+	if r.filter != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
+	} else {
+        var defaultValue string = ""
+        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+        r.filter = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	attachmentId string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r)
+}
+
+/*
+V2ComputersInventoryIdAttachmentsAttachmentIdDelete Remove attachment
+
+Remove attachment
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @param attachmentId instance id of attachment object
+ @return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+		attachmentId: attachmentId,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsAttachmentIdDeleteExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdAttachmentsAttachmentIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/attachments/{attachmentId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attachmentId"+"}", url.PathEscape(parameterValueToString(r.attachmentId, "attachmentId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	attachmentId string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest) Execute() (*os.File, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r)
+}
+
+/*
+V2ComputersInventoryIdAttachmentsAttachmentIdGet Download attachment file
+
+Download attachment file
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @param attachmentId instance id of attachment object
+ @return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsAttachmentIdGet(ctx context.Context, id string, attachmentId string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+		attachmentId: attachmentId,
+	}
+}
+
+// Execute executes the request
+//  @return *os.File
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsAttachmentIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsAttachmentIdGetRequest) (*os.File, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *os.File
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdAttachmentsAttachmentIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/attachments/{attachmentId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"attachmentId"+"}", url.PathEscape(parameterValueToString(r.attachmentId, "attachmentId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	file *os.File
+}
+
+// The file to upload
+func (r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest) File(file *os.File) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest {
+	r.file = file
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdAttachmentsPostExecute(r)
+}
+
+/*
+V2ComputersInventoryIdAttachmentsPost Upload attachment and assign to computer
+
+Upload attachment and assign to computer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsPost(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdAttachmentsPostExecute(r ComputerInventoryAPIV2ComputersInventoryIdAttachmentsPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdAttachmentsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/attachments"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.file == nil {
+		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	var fileLocalVarFormFileName string
+	var fileLocalVarFileName     string
+	var fileLocalVarFileBytes    []byte
+
+	fileLocalVarFormFileName = "file"
+	fileLocalVarFile := r.file
+
+	if fileLocalVarFile != nil {
+		fbs, _ := io.ReadAll(fileLocalVarFile)
+
+		fileLocalVarFileBytes = fbs
+		fileLocalVarFileName = fileLocalVarFile.Name()
+		fileLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: fileLocalVarFileBytes, fileName: fileLocalVarFileName, formFileName: fileLocalVarFormFileName})
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdDeleteExecute(r)
+}
+
+/*
+V2ComputersInventoryIdDelete Remove specified Computer record
+
+Remove specified Computer record
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdDelete(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdDeleteExecute(r ComputerInventoryAPIV2ComputersInventoryIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest) Execute() (*ComputerInventoryFileVault, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdFilevaultGetExecute(r)
+}
+
+/*
+V2ComputersInventoryIdFilevaultGet Return FileVault information for a specific computer
+
+Return FileVault information for a specific computer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdFilevaultGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryFileVault
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdFilevaultGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdFilevaultGetRequest) (*ComputerInventoryFileVault, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryFileVault
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdFilevaultGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/filevault"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+	section *[]ComputerSectionV2
+}
+
+// section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;general&amp;section&#x3D;hardware
+func (r ComputerInventoryAPIV2ComputersInventoryIdGetRequest) Section(section []ComputerSectionV2) ComputerInventoryAPIV2ComputersInventoryIdGetRequest {
+	r.section = &section
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdGetRequest) Execute() (*ComputerInventoryV2, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdGetExecute(r)
+}
+
+/*
+V2ComputersInventoryIdGet Return General section of a Computer
+
+Return General section of a Computer
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryV2
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdGetRequest) (*ComputerInventoryV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.section != nil {
+		t := *r.section
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "section", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "section", t, "form", "multi")
+		}
+	} else {
+        var defaultValue []ComputerSectionV2 = []ComputerSectionV2{"GENERAL"}
+        parameterAddToHeaderOrQuery(localVarQueryParams, "section", defaultValue, "form", "multi")
+        r.section = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest) Execute() (*ComputerInventoryDeviceLockPinResponse, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdViewDeviceLockPinGetExecute(r)
+}
+
+/*
+V2ComputersInventoryIdViewDeviceLockPinGet Return a computer's Device Lock PIN
+
+Return a computer's Device Lock PIN
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdViewDeviceLockPinGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryDeviceLockPinResponse
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdViewDeviceLockPinGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdViewDeviceLockPinGetRequest) (*ComputerInventoryDeviceLockPinResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryDeviceLockPinResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdViewDeviceLockPinGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/view-device-lock-pin"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	id string
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest) Execute() (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r)
+}
+
+/*
+V2ComputersInventoryIdViewRecoveryLockPasswordGet Return a Computers Recovery Lock Password
+
+Return a Computers Recovery Lock Password
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id instance id of computer record
+ @return ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdViewRecoveryLockPasswordGet(ctx context.Context, id string) ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest {
+	return ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+//  @return ComputerInventoryRecoveryLockPasswordResponse
+func (a *ComputerInventoryAPIService) V2ComputersInventoryIdViewRecoveryLockPasswordGetExecute(r ComputerInventoryAPIV2ComputersInventoryIdViewRecoveryLockPasswordGetRequest) (*ComputerInventoryRecoveryLockPasswordResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ComputerInventoryRecoveryLockPasswordResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryIdViewRecoveryLockPasswordGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory/{id}/view-recovery-lock-password"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ComputerInventoryAPIV2ComputersInventoryPostRequest struct {
+	ctx context.Context
+	ApiService ComputerInventoryAPI
+	computerInventoryCreateRequestV2 *ComputerInventoryCreateRequestV2
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryPostRequest) ComputerInventoryCreateRequestV2(computerInventoryCreateRequestV2 ComputerInventoryCreateRequestV2) ComputerInventoryAPIV2ComputersInventoryPostRequest {
+	r.computerInventoryCreateRequestV2 = &computerInventoryCreateRequestV2
+	return r
+}
+
+func (r ComputerInventoryAPIV2ComputersInventoryPostRequest) Execute() (*HrefResponse, *http.Response, error) {
+	return r.ApiService.V2ComputersInventoryPostExecute(r)
+}
+
+/*
+V2ComputersInventoryPost Create Computer Inventory record
+
+Creates Computer Inventory record
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ComputerInventoryAPIV2ComputersInventoryPostRequest
+*/
+func (a *ComputerInventoryAPIService) V2ComputersInventoryPost(ctx context.Context) ComputerInventoryAPIV2ComputersInventoryPostRequest {
+	return ComputerInventoryAPIV2ComputersInventoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return HrefResponse
+func (a *ComputerInventoryAPIService) V2ComputersInventoryPostExecute(r ComputerInventoryAPIV2ComputersInventoryPostRequest) (*HrefResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *HrefResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ComputerInventoryAPIService.V2ComputersInventoryPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v2/computers-inventory"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.computerInventoryCreateRequestV2 == nil {
+		return localVarReturnValue, nil, reportError("computerInventoryCreateRequestV2 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.computerInventoryCreateRequestV2
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

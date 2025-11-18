@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Managed** | Pointer to **bool** |  | [optional] 
-**ManagementUsername** | Pointer to **string** |  | [optional] 
-**ManagementPassword** | Pointer to **string** |  | [optional] 
+**ManagementUsername** | Pointer to **string** | This field always returns null, please use /local-admin-password/ endpoint instead. | [optional] 
 
 ## Methods
 
@@ -76,31 +75,6 @@ SetManagementUsername sets ManagementUsername field to given value.
 `func (o *ComputerRemoteManagement) HasManagementUsername() bool`
 
 HasManagementUsername returns a boolean if a field has been set.
-
-### GetManagementPassword
-
-`func (o *ComputerRemoteManagement) GetManagementPassword() string`
-
-GetManagementPassword returns the ManagementPassword field if non-nil, zero value otherwise.
-
-### GetManagementPasswordOk
-
-`func (o *ComputerRemoteManagement) GetManagementPasswordOk() (*string, bool)`
-
-GetManagementPasswordOk returns a tuple with the ManagementPassword field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagementPassword
-
-`func (o *ComputerRemoteManagement) SetManagementPassword(v string)`
-
-SetManagementPassword sets ManagementPassword field to given value.
-
-### HasManagementPassword
-
-`func (o *ComputerRemoteManagement) HasManagementPassword() bool`
-
-HasManagementPassword returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

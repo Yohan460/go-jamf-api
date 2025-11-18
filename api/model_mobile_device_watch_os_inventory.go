@@ -29,6 +29,7 @@ type MobileDeviceWatchOsInventory struct {
 	Applications []MobileDeviceApplicationInventoryDetail `json:"applications,omitempty"`
 	Certificates []MobileDeviceCertificate `json:"certificates,omitempty"`
 	Profiles []MobileDeviceProfile `json:"profiles,omitempty"`
+	Groups []MobileDeviceInventoryGroup `json:"groups,omitempty"`
 	ExtensionAttributes []MobileDeviceExtensionAttribute `json:"extensionAttributes,omitempty"`
 	General *MobileDeviceWatchOsGeneral `json:"general,omitempty"`
 	Security *MobileDeviceSecurity `json:"security,omitempty"`
@@ -271,6 +272,38 @@ func (o *MobileDeviceWatchOsInventory) SetProfiles(v []MobileDeviceProfile) {
 	o.Profiles = v
 }
 
+// GetGroups returns the Groups field value if set, zero value otherwise.
+func (o *MobileDeviceWatchOsInventory) GetGroups() []MobileDeviceInventoryGroup {
+	if o == nil || IsNil(o.Groups) {
+		var ret []MobileDeviceInventoryGroup
+		return ret
+	}
+	return o.Groups
+}
+
+// GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MobileDeviceWatchOsInventory) GetGroupsOk() ([]MobileDeviceInventoryGroup, bool) {
+	if o == nil || IsNil(o.Groups) {
+		return nil, false
+	}
+	return o.Groups, true
+}
+
+// HasGroups returns a boolean if a field has been set.
+func (o *MobileDeviceWatchOsInventory) HasGroups() bool {
+	if o != nil && !IsNil(o.Groups) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroups gets a reference to the given []MobileDeviceInventoryGroup and assigns it to the Groups field.
+func (o *MobileDeviceWatchOsInventory) SetGroups(v []MobileDeviceInventoryGroup) {
+	o.Groups = v
+}
+
 // GetExtensionAttributes returns the ExtensionAttributes field value if set, zero value otherwise.
 func (o *MobileDeviceWatchOsInventory) GetExtensionAttributes() []MobileDeviceExtensionAttribute {
 	if o == nil || IsNil(o.ExtensionAttributes) {
@@ -427,6 +460,9 @@ func (o MobileDeviceWatchOsInventory) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Profiles) {
 		toSerialize["profiles"] = o.Profiles
+	}
+	if !IsNil(o.Groups) {
+		toSerialize["groups"] = o.Groups
 	}
 	if !IsNil(o.ExtensionAttributes) {
 		toSerialize["extensionAttributes"] = o.ExtensionAttributes

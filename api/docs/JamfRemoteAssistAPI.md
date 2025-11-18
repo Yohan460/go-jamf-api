@@ -61,7 +61,7 @@ Other parameters are passed through a pointer to a apiV1JamfRemoteAssistSessionG
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -232,7 +232,7 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is sessionId:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=sessionId:desc,deviceId:asc  (optional) (default to ["sessionId:desc"])
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: property:asc/desc. Default sort is sessionId:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort=sessionId:desc,deviceId:asc  (optional) (default to {"sessionId:desc"})
 	filter := "filter_example" // string | Query in the RSQL format, allowing to filter session history items collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: sessionId, deviceId, sessionAdminId. This param can be combined with paging and sorting. Example: sessionAdminId==\"*Andrzej*\" (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is sessionId:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;sessionId:desc,deviceId:asc  | [default to [&quot;sessionId:desc&quot;]]
+ **sort** | **[]string** | Sorting criteria in the format: property:asc/desc. Default sort is sessionId:desc. Multiple sort criteria are supported and must be separated with a comma. Example: sort&#x3D;sessionId:desc,deviceId:asc  | [default to {&quot;sessionId:desc&quot;}]
  **filter** | **string** | Query in the RSQL format, allowing to filter session history items collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: sessionId, deviceId, sessionAdminId. This param can be combined with paging and sorting. Example: sessionAdminId&#x3D;&#x3D;\&quot;*Andrzej*\&quot; | [default to &quot;&quot;]
 
 ### Return type
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../README.md#Bearer)
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
 
 ### HTTP request headers
 

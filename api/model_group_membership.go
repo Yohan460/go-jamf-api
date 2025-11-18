@@ -21,6 +21,7 @@ var _ MappedNullable = &GroupMembership{}
 type GroupMembership struct {
 	GroupId *string `json:"groupId,omitempty"`
 	GroupName *string `json:"groupName,omitempty"`
+	GroupDescription *string `json:"groupDescription,omitempty"`
 	// Indicates that group is smart group
 	SmartGroup *bool `json:"smartGroup,omitempty"`
 }
@@ -106,6 +107,38 @@ func (o *GroupMembership) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
+// GetGroupDescription returns the GroupDescription field value if set, zero value otherwise.
+func (o *GroupMembership) GetGroupDescription() string {
+	if o == nil || IsNil(o.GroupDescription) {
+		var ret string
+		return ret
+	}
+	return *o.GroupDescription
+}
+
+// GetGroupDescriptionOk returns a tuple with the GroupDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMembership) GetGroupDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupDescription) {
+		return nil, false
+	}
+	return o.GroupDescription, true
+}
+
+// HasGroupDescription returns a boolean if a field has been set.
+func (o *GroupMembership) HasGroupDescription() bool {
+	if o != nil && !IsNil(o.GroupDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupDescription gets a reference to the given string and assigns it to the GroupDescription field.
+func (o *GroupMembership) SetGroupDescription(v string) {
+	o.GroupDescription = &v
+}
+
 // GetSmartGroup returns the SmartGroup field value if set, zero value otherwise.
 func (o *GroupMembership) GetSmartGroup() bool {
 	if o == nil || IsNil(o.SmartGroup) {
@@ -153,6 +186,9 @@ func (o GroupMembership) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GroupName) {
 		toSerialize["groupName"] = o.GroupName
+	}
+	if !IsNil(o.GroupDescription) {
+		toSerialize["groupDescription"] = o.GroupDescription
 	}
 	if !IsNil(o.SmartGroup) {
 		toSerialize["smartGroup"] = o.SmartGroup

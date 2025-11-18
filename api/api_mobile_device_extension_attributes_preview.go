@@ -92,10 +92,11 @@ func (a *MobileDeviceExtensionAttributesPreviewAPIService) DevicesExtensionAttri
 	localVarFormParams := url.Values{}
 
 	if r.select_ != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "select", r.select_, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "select", r.select_, "form", "")
 	} else {
-		var defaultValue string = "name"
-		r.select_ = &defaultValue
+        var defaultValue string = "name"
+        parameterAddToHeaderOrQuery(localVarQueryParams, "select", defaultValue, "form", "")
+        r.select_ = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

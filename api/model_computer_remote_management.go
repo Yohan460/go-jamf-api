@@ -20,8 +20,9 @@ var _ MappedNullable = &ComputerRemoteManagement{}
 // ComputerRemoteManagement struct for ComputerRemoteManagement
 type ComputerRemoteManagement struct {
 	Managed *bool `json:"managed,omitempty"`
+	// This field always returns null, please use /local-admin-password/ endpoint instead.
+	// Deprecated
 	ManagementUsername *string `json:"managementUsername,omitempty"`
-	ManagementPassword *string `json:"managementPassword,omitempty"`
 }
 
 // NewComputerRemoteManagement instantiates a new ComputerRemoteManagement object
@@ -74,6 +75,7 @@ func (o *ComputerRemoteManagement) SetManaged(v bool) {
 }
 
 // GetManagementUsername returns the ManagementUsername field value if set, zero value otherwise.
+// Deprecated
 func (o *ComputerRemoteManagement) GetManagementUsername() string {
 	if o == nil || IsNil(o.ManagementUsername) {
 		var ret string
@@ -84,6 +86,7 @@ func (o *ComputerRemoteManagement) GetManagementUsername() string {
 
 // GetManagementUsernameOk returns a tuple with the ManagementUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ComputerRemoteManagement) GetManagementUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.ManagementUsername) {
 		return nil, false
@@ -101,40 +104,9 @@ func (o *ComputerRemoteManagement) HasManagementUsername() bool {
 }
 
 // SetManagementUsername gets a reference to the given string and assigns it to the ManagementUsername field.
+// Deprecated
 func (o *ComputerRemoteManagement) SetManagementUsername(v string) {
 	o.ManagementUsername = &v
-}
-
-// GetManagementPassword returns the ManagementPassword field value if set, zero value otherwise.
-func (o *ComputerRemoteManagement) GetManagementPassword() string {
-	if o == nil || IsNil(o.ManagementPassword) {
-		var ret string
-		return ret
-	}
-	return *o.ManagementPassword
-}
-
-// GetManagementPasswordOk returns a tuple with the ManagementPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ComputerRemoteManagement) GetManagementPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.ManagementPassword) {
-		return nil, false
-	}
-	return o.ManagementPassword, true
-}
-
-// HasManagementPassword returns a boolean if a field has been set.
-func (o *ComputerRemoteManagement) HasManagementPassword() bool {
-	if o != nil && !IsNil(o.ManagementPassword) {
-		return true
-	}
-
-	return false
-}
-
-// SetManagementPassword gets a reference to the given string and assigns it to the ManagementPassword field.
-func (o *ComputerRemoteManagement) SetManagementPassword(v string) {
-	o.ManagementPassword = &v
 }
 
 func (o ComputerRemoteManagement) MarshalJSON() ([]byte, error) {
@@ -152,9 +124,6 @@ func (o ComputerRemoteManagement) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ManagementUsername) {
 		toSerialize["managementUsername"] = o.ManagementUsername
-	}
-	if !IsNil(o.ManagementPassword) {
-		toSerialize["managementPassword"] = o.ManagementPassword
 	}
 	return toSerialize, nil
 }
