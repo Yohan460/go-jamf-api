@@ -465,7 +465,7 @@ type ComputerInventoryDataSubsetName string
 
 const (
 	ComputerInventoryDataSubsetNameGeneral               ComputerInventoryDataSubsetName = "GENERAL"
-	ComputerInventoryDataSubsetNameLocation              ComputerInventoryDataSubsetName = "DISK_ENCRYPTION"
+	ComputerInventoryDataSubsetNameDiskEncryption        ComputerInventoryDataSubsetName = "DISK_ENCRYPTION"
 	ComputerInventoryDataSubsetNamePurchasing            ComputerInventoryDataSubsetName = "PURCHASING"
 	ComputerInventoryDataSubsetNameApplications          ComputerInventoryDataSubsetName = "APPLICATIONS"
 	ComputerInventoryDataSubsetNameStorage               ComputerInventoryDataSubsetName = "STORAGE"
