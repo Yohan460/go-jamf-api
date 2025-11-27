@@ -239,7 +239,7 @@ type ComputerDataSubsetSoftware struct {
 	} `xml:"available_software_updates,omitempty"`
 	AvailableUpdates []struct {
 		Update struct {
-			Text        string `xml:",chardata,omitempty"`
+			Text        string `xml:"chardata,omitempty"`
 			Name        string `xml:"name,omitempty"`
 			PackageName string `xml:"package_name,omitempty"`
 			Version     string `xml:"version,omitempty"`
