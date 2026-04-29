@@ -2,6 +2,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_account_groups.go
 api_accounts.go
 api_activation_code.go
 api_adcs_settings.go
@@ -11,6 +12,7 @@ api_api_authentication.go
 api_api_integrations.go
 api_api_role_privileges.go
 api_api_roles.go
+api_apns_client_push_status.go
 api_app_request_preview.go
 api_app_store_country_codes_preview.go
 api_branding.go
@@ -39,6 +41,7 @@ api_departments.go
 api_device_communication_settings.go
 api_device_enrollments.go
 api_device_enrollments_devices.go
+api_devices.go
 api_digicert.go
 api_distribution_point.go
 api_dock_items.go
@@ -66,6 +69,7 @@ api_jamf_pro_user_account_settings.go
 api_jamf_pro_version.go
 api_jamf_protect.go
 api_jamf_remote_assist.go
+api_last_login.go
 api_ldap.go
 api_local_admin_password.go
 api_locales_preview.go
@@ -74,6 +78,7 @@ api_login_customization.go
 api_macos_managed_software_updates.go
 api_managed_software_updates.go
 api_mdm.go
+api_mdm_renewal.go
 api_mobile_device_apps.go
 api_mobile_device_enrollment_profile.go
 api_mobile_device_extension_attributes.go
@@ -100,6 +105,7 @@ api_self_service_branding_ios.go
 api_self_service_branding_macos.go
 api_self_service_branding_preview.go
 api_self_service_plus.go
+api_service_discovery_enrollment.go
 api_sites.go
 api_slasa.go
 api_smart_computer_groups_preview.go
@@ -119,6 +125,8 @@ api_time_zones_preview.go
 api_tomcat_settings_preview.go
 api_user.go
 api_user_session_preview.go
+api_user_sessions.go
+api_users.go
 api_venafi_preview.go
 api_volume_purchasing_locations.go
 api_volume_purchasing_subscriptions.go
@@ -129,6 +137,10 @@ docs/AccessManagementSetting.md
 docs/Account.md
 docs/AccountDrivenUserEnrollmentSessionTokenSettings.md
 docs/AccountGroup.md
+docs/AccountGroupSearchResultsV1.md
+docs/AccountGroupV1.md
+docs/AccountGroupV1MembersInner.md
+docs/AccountGroupsAPI.md
 docs/AccountPreferences.md
 docs/AccountPreferencesSearchType.md
 docs/AccountPreferencesUserInterfaceDisplayTheme.md
@@ -140,6 +152,8 @@ docs/AccountSettingsResponse.md
 docs/AccountsAPI.md
 docs/ActivationCode.md
 docs/ActivationCodeAPI.md
+docs/ActiveUserSession.md
+docs/ActiveUsersCount.md
 docs/AdcsCertificate.md
 docs/AdcsCertificateResponse.md
 docs/AdcsDependencies.md
@@ -167,6 +181,10 @@ docs/ApiRolePrivilegesAPI.md
 docs/ApiRoleRequest.md
 docs/ApiRoleResult.md
 docs/ApiRolesAPI.md
+docs/ApnsClientPushStatus.md
+docs/ApnsClientPushStatusAPI.md
+docs/ApnsClientPushStatusSearchResults.md
+docs/ApnsPushEnableRequest.md
 docs/AppAnalyticsSetting.md
 docs/AppConfigReinstallCode.md
 docs/AppPath.md
@@ -180,6 +198,7 @@ docs/ApplicationConfiguration.md
 docs/ApplyRedemptionCodeCommand.md
 docs/AssignRemoveProfileResponseSyncState.md
 docs/Assignment.md
+docs/AssignmentDtoV1.md
 docs/Attributes.md
 docs/AuthAccount.md
 docs/AuthAccountV1.md
@@ -216,6 +235,7 @@ docs/CertificateAuthorityAPI.md
 docs/CertificateDetails.md
 docs/CertificateIdentityV2.md
 docs/CertificateKey.md
+docs/CertificateListCommand.md
 docs/CertificateRecord.md
 docs/CertificateResponse.md
 docs/ChangePassword.md
@@ -251,6 +271,7 @@ docs/CloudResponse.md
 docs/ComplianceVendorDeviceInformation.md
 docs/ComputerApplication.md
 docs/ComputerApplicationCreate.md
+docs/ComputerApplicationV3.md
 docs/ComputerAttachment.md
 docs/ComputerCertificate.md
 docs/ComputerCertificateCreate.md
@@ -300,8 +321,10 @@ docs/ComputerInventoryFileVaultSearchResults.md
 docs/ComputerInventoryRecoveryLockPasswordResponse.md
 docs/ComputerInventorySearchResults.md
 docs/ComputerInventorySearchResultsV2.md
+docs/ComputerInventorySearchResultsV3.md
 docs/ComputerInventoryUpdateRequest.md
 docs/ComputerInventoryV2.md
+docs/ComputerInventoryV3.md
 docs/ComputerLicensedSoftware.md
 docs/ComputerLocalUserAccount.md
 docs/ComputerLocalUserAccountCreate.md
@@ -317,8 +340,6 @@ docs/ComputerPartition.md
 docs/ComputerPartitionCreate.md
 docs/ComputerPartitionEncryption.md
 docs/ComputerPartitionFileVault2State.md
-docs/ComputerPlugin.md
-docs/ComputerPluginCreate.md
 docs/ComputerPrestageSearchResultsV3.md
 docs/ComputerPrestageV3.md
 docs/ComputerPrestagesAPI.md
@@ -330,6 +351,7 @@ docs/ComputerRemoteManagement.md
 docs/ComputerRemoteManagementCreate.md
 docs/ComputerSection.md
 docs/ComputerSectionV2.md
+docs/ComputerSectionV3.md
 docs/ComputerSecurity.md
 docs/ComputerSecurityCreate.md
 docs/ComputerService.md
@@ -375,6 +397,7 @@ docs/DatabasePassword.md
 docs/DayOfWeek.md
 docs/DeclarativeDeviceManagementAPI.md
 docs/DeclarativeManagementCommand.md
+docs/DefaultApplications.md
 docs/DeleteUserCommand.md
 docs/Department.md
 docs/DepartmentsAPI.md
@@ -384,6 +407,8 @@ docs/DependencyObjectResultsResultsInner.md
 docs/DeploymentTask.md
 docs/DeploymentTaskSearchResults.md
 docs/DetailsV2.md
+docs/DeviceCommonDetails.md
+docs/DeviceCommonDetailsRequest.md
 docs/DeviceCommunicationSettings.md
 docs/DeviceCommunicationSettingsAPI.md
 docs/DeviceComplianceInformation.md
@@ -399,9 +424,11 @@ docs/DeviceEnrollmentPrestageV3.md
 docs/DeviceEnrollmentToken.md
 docs/DeviceEnrollmentsAPI.md
 docs/DeviceEnrollmentsDevicesAPI.md
+docs/DeviceGroup.md
 docs/DeviceInformationCommand.md
 docs/DeviceLocationCommand.md
 docs/DeviceLockCommand.md
+docs/DevicesAPI.md
 docs/DiagnosticSubmissionSetting.md
 docs/DigiCertSetting.md
 docs/DigiCertSettingResponse.md
@@ -427,6 +454,7 @@ docs/EbookScope.md
 docs/EbookSearchResults.md
 docs/EbooksAPI.md
 docs/EnableLostModeCommand.md
+docs/EnablePushRequest.md
 docs/EnableRemoteDesktopCommand.md
 docs/EnrollmentAPI.md
 docs/EnrollmentAccessGroupPreview.md
@@ -471,6 +499,7 @@ docs/GetEnrollmentCustomizationPanelSsoAuth.md
 docs/GetEnrollmentCustomizationPanelText.md
 docs/GetMobileDevicePrestageV2.md
 docs/GetMobileDevicePrestageV3.md
+docs/GroupDtoV1.md
 docs/GroupMappings.md
 docs/GroupMembership.md
 docs/GroupResetRequest.md
@@ -478,7 +507,8 @@ docs/GroupSearchResult.md
 docs/GroupTestSearch.md
 docs/GroupTestSearchRequest.md
 docs/GroupTestSearchResponse.md
-docs/GroupV1.md
+docs/GroupUpdateDtoV1.md
+docs/GroupWithCriteriaDtoV1.md
 docs/GroupsAPI.md
 docs/GsxConnection.md
 docs/GsxConnectionAPI.md
@@ -499,6 +529,7 @@ docs/ImpactAlertNotificationSettingsAPI.md
 docs/ImpactAlertNotificationSettingsV1.md
 docs/InitializeV1.md
 docs/InstallPackage.md
+docs/InstalledApplicationListCommand.md
 docs/InternalRecipient.md
 docs/InventoryInformation.md
 docs/InventoryInformationAPI.md
@@ -556,6 +587,8 @@ docs/LapsUserPasswordResponseV2.md
 docs/LapsUserPasswordV2.md
 docs/LapsUserResultsV2.md
 docs/LapsUserV2.md
+docs/LastLoginAPI.md
+docs/LastLoginResponse.md
 docs/LdapAPI.md
 docs/LdapConfigurationRequest.md
 docs/LdapConfigurationResponse.md
@@ -584,6 +617,7 @@ docs/MacOsManagedSoftwareUpdate.md
 docs/MacOsManagedSoftwareUpdateResponse.md
 docs/MacosManagedSoftwareUpdatesAPI.md
 docs/ManagedApplicationListCommand.md
+docs/ManagedMediaListCommand.md
 docs/ManagedSoftwareUpdatePlan.md
 docs/ManagedSoftwareUpdatePlanEventStore.md
 docs/ManagedSoftwareUpdatePlanGroupPost.md
@@ -604,11 +638,18 @@ docs/MdmCommand.md
 docs/MdmCommandBase.md
 docs/MdmCommandClient.md
 docs/MdmCommandClientRequest.md
+docs/MdmCommandError.md
 docs/MdmCommandRequest.md
 docs/MdmCommandRequestCommandData.md
 docs/MdmCommandResults.md
 docs/MdmCommandState.md
 docs/MdmCommandType.md
+docs/MdmRenewalAPI.md
+docs/MdmRenewalError.md
+docs/MdmRenewalErrorStrategiesResponse.md
+docs/MdmRenewalErrorType.md
+docs/MdmRenewalStrategy.md
+docs/MdmRenewalStrategyType.md
 docs/MembershipMappings.md
 docs/MembershipTestSearchRequest.md
 docs/MembershipTestSearchResponse.md
@@ -685,6 +726,8 @@ docs/OidcJwksResponse.md
 docs/OidcJwksResponseKeysInner.md
 docs/OidcLoginDispatchRequest.md
 docs/OidcLoginDispatchResponse.md
+docs/OidcLoginDispatchResponseV2.md
+docs/OidcLoginDispatchResponseV2IdpRedirectsInner.md
 docs/OidcPublicFeaturesResponse.md
 docs/OidcSettings.md
 docs/OnboardingAPI.md
@@ -697,6 +740,7 @@ docs/Package.md
 docs/PackageManifest.md
 docs/PackagesAPI.md
 docs/PackagesSearchResults.md
+docs/PagedUserResults.md
 docs/ParentApp.md
 docs/ParentAppPreviewAPI.md
 docs/ParentAppRestrictedTimes.md
@@ -738,6 +782,7 @@ docs/PlanDeviceResponse.md
 docs/PlanGroupPost.md
 docs/PlanSearchResults.md
 docs/PlanStatus.md
+docs/PlatformInitializeV1.md
 docs/PlayLostModeSoundCommand.md
 docs/PluginPath.md
 docs/PoliciesPreviewAPI.md
@@ -756,9 +801,11 @@ docs/PrestageScopeUpdate.md
 docs/PrestageScopeV2.md
 docs/PrestageSyncStatusV2.md
 docs/ProcessTextsSearchResults.md
+docs/ProfileListCommand.md
 docs/ProtectRegistrationRequest.md
 docs/ProtectSettingsResponse.md
 docs/ProtectUpdatableSettingsRequest.md
+docs/ProvisioningProfileListCommand.md
 docs/PurchasingV2.md
 docs/PutComputerPrestageV3.md
 docs/PutMobileDevicePrestageV2.md
@@ -803,6 +850,8 @@ docs/SelfServiceLoginSettings.md
 docs/SelfServicePlusAPI.md
 docs/SelfServicePlusSettings.md
 docs/SelfServiceSettings.md
+docs/ServiceDiscoveryEnrollmentAPI.md
+docs/ServiceDiscoveryVersion.md
 docs/Session.md
 docs/SessionCandidateRequest.md
 docs/SessionDetails.md
@@ -827,8 +876,13 @@ docs/SlasaAcceptance.md
 docs/SmartComputerGroupSearch.md
 docs/SmartComputerGroupV2.md
 docs/SmartComputerGroupsPreviewAPI.md
+docs/SmartGroup.md
+docs/SmartGroupAssignment.md
+docs/SmartGroupCriteria.md
+docs/SmartGroupDetail.md
 docs/SmartGroupMembership.md
 docs/SmartGroupSearchResult.md
+docs/SmartGroupSearchResults.md
 docs/SmartMobileDeviceGroupsPreviewAPI.md
 docs/SmartSearchCriterion.md
 docs/SmartUserGroupsPreviewAPI.md
@@ -838,7 +892,6 @@ docs/SmtpGoogleMailAuthentication.md
 docs/SmtpGoogleMailCredentials.md
 docs/SmtpGraphApiCredentials.md
 docs/SmtpSenderSettings.md
-docs/SmtpServer.md
 docs/SmtpServerAPI.md
 docs/SmtpServerTest.md
 docs/SmtpServerV2.md
@@ -853,10 +906,8 @@ docs/SsoKeystoreDetails.md
 docs/SsoKeystoreParse.md
 docs/SsoKeystoreResponse.md
 docs/SsoKeystoreResponseWithDetails.md
-docs/SsoMetadataUrl.md
 docs/SsoOauthSessionTokensAPI.md
 docs/SsoSettingsAPI.md
-docs/SsoSettingsV2.md
 docs/SsoSettingsV3.md
 docs/StartupStatus.md
 docs/StartupStatusAPI.md
@@ -894,17 +945,22 @@ docs/UnmanageMobileDeviceResponse.md
 docs/UpdateIosV2.md
 docs/UpdateMobileDeviceV2.md
 docs/UpdateTvOs.md
+docs/User.md
 docs/UserAPI.md
 docs/UserAccount.md
 docs/UserAccountSearchResults.md
+docs/UserInventory.md
 docs/UserMappings.md
 docs/UserPreferencesSettings.md
 docs/UserSessionPreviewAPI.md
+docs/UserSessionsAPI.md
 docs/UserTestAttributes.md
 docs/UserTestSearch.md
 docs/UserTestSearchRequest.md
 docs/UserTestSearchResponse.md
+docs/UsersAPI.md
 docs/V1Site.md
+docs/V1SiteBase.md
 docs/ValidateApplicationsCommand.md
 docs/VenafiCaRecord.md
 docs/VenafiPkiPayloadRecord.md
@@ -930,6 +986,9 @@ docs/VolumePurchasingSubscriptions.md
 docs/VolumePurchasingSubscriptionsAPI.md
 docs/WatchOsDetailsV2.md
 docs/WebLink.md
+docs/WellKnownSetting.md
+docs/WellKnownSettingsRequest.md
+docs/WellKnownSettingsResponse.md
 git_push.sh
 go.mod
 go.sum
@@ -938,6 +997,9 @@ model_access_management_setting.go
 model_account.go
 model_account_driven_user_enrollment_session_token_settings.go
 model_account_group.go
+model_account_group_search_results_v1.go
+model_account_group_v1.go
+model_account_group_v1_members_inner.go
 model_account_preferences.go
 model_account_preferences_search_type.go
 model_account_preferences_user_interface_display_theme.go
@@ -947,6 +1009,8 @@ model_account_preferences_v6.go
 model_account_settings_request.go
 model_account_settings_response.go
 model_activation_code.go
+model_active_user_session.go
+model_active_users_count.go
 model_adcs_certificate.go
 model_adcs_certificate_response.go
 model_adcs_dependencies.go
@@ -967,6 +1031,9 @@ model_api_role.go
 model_api_role_privileges.go
 model_api_role_request.go
 model_api_role_result.go
+model_apns_client_push_status.go
+model_apns_client_push_status_search_results.go
+model_apns_push_enable_request.go
 model_app_analytics_setting.go
 model_app_config_reinstall_code.go
 model_app_path.go
@@ -978,6 +1045,7 @@ model_application_configuration.go
 model_apply_redemption_code_command.go
 model_assign_remove_profile_response_sync_state.go
 model_assignment.go
+model_assignment_dto_v1.go
 model_attributes.go
 model_auth_account.go
 model_auth_account_v1.go
@@ -1009,6 +1077,7 @@ model_certificate.go
 model_certificate_details.go
 model_certificate_identity_v2.go
 model_certificate_key.go
+model_certificate_list_command.go
 model_certificate_record.go
 model_certificate_response.go
 model_change_password.go
@@ -1037,6 +1106,7 @@ model_cloud_response.go
 model_compliance_vendor_device_information.go
 model_computer_application.go
 model_computer_application_create.go
+model_computer_application_v3.go
 model_computer_attachment.go
 model_computer_certificate.go
 model_computer_certificate_create.go
@@ -1082,8 +1152,10 @@ model_computer_inventory_file_vault_search_results.go
 model_computer_inventory_recovery_lock_password_response.go
 model_computer_inventory_search_results.go
 model_computer_inventory_search_results_v2.go
+model_computer_inventory_search_results_v3.go
 model_computer_inventory_update_request.go
 model_computer_inventory_v2.go
+model_computer_inventory_v3.go
 model_computer_licensed_software.go
 model_computer_local_user_account.go
 model_computer_local_user_account_create.go
@@ -1099,8 +1171,6 @@ model_computer_partition.go
 model_computer_partition_create.go
 model_computer_partition_encryption.go
 model_computer_partition_file_vault2_state.go
-model_computer_plugin.go
-model_computer_plugin_create.go
 model_computer_prestage_search_results_v3.go
 model_computer_prestage_v3.go
 model_computer_printer.go
@@ -1111,6 +1181,7 @@ model_computer_remote_management.go
 model_computer_remote_management_create.go
 model_computer_section.go
 model_computer_section_v2.go
+model_computer_section_v3.go
 model_computer_security.go
 model_computer_security_create.go
 model_computer_service.go
@@ -1151,6 +1222,7 @@ model_data_roaming_setting.go
 model_database_password.go
 model_day_of_week.go
 model_declarative_management_command.go
+model_default_applications.go
 model_delete_user_command.go
 model_department.go
 model_departments_search_results.go
@@ -1159,6 +1231,8 @@ model_dependency_object_results_results_inner.go
 model_deployment_task.go
 model_deployment_task_search_results.go
 model_details_v2.go
+model_device_common_details.go
+model_device_common_details_request.go
 model_device_communication_settings.go
 model_device_compliance_information.go
 model_device_enrollment_device.go
@@ -1171,6 +1245,7 @@ model_device_enrollment_instance_sync_status.go
 model_device_enrollment_prestage_v2.go
 model_device_enrollment_prestage_v3.go
 model_device_enrollment_token.go
+model_device_group.go
 model_device_information_command.go
 model_device_location_command.go
 model_device_lock_command.go
@@ -1195,6 +1270,7 @@ model_ebook_limitations_users_inner.go
 model_ebook_scope.go
 model_ebook_search_results.go
 model_enable_lost_mode_command.go
+model_enable_push_request.go
 model_enable_remote_desktop_command.go
 model_enrollment_access_group_preview.go
 model_enrollment_customization_branding_settings.go
@@ -1236,6 +1312,7 @@ model_get_enrollment_customization_panel_sso_auth.go
 model_get_enrollment_customization_panel_text.go
 model_get_mobile_device_prestage_v2.go
 model_get_mobile_device_prestage_v3.go
+model_group_dto_v1.go
 model_group_mappings.go
 model_group_membership.go
 model_group_reset_request.go
@@ -1243,7 +1320,8 @@ model_group_search_result.go
 model_group_test_search.go
 model_group_test_search_request.go
 model_group_test_search_response.go
-model_group_v1.go
+model_group_update_dto_v1.go
+model_group_with_criteria_dto_v1.go
 model_gsx_connection.go
 model_gsx_connection_update.go
 model_gsx_keystore.go
@@ -1259,6 +1337,7 @@ model_ids.go
 model_impact_alert_notification_settings_v1.go
 model_initialize_v1.go
 model_install_package.go
+model_installed_application_list_command.go
 model_internal_recipient.go
 model_inventory_information.go
 model_inventory_list_mobile_device.go
@@ -1301,6 +1380,7 @@ model_laps_user_password_response_v2.go
 model_laps_user_password_v2.go
 model_laps_user_results_v2.go
 model_laps_user_v2.go
+model_last_login_response.go
 model_ldap_configuration_request.go
 model_ldap_configuration_response.go
 model_ldap_configuration_update.go
@@ -1323,6 +1403,7 @@ model_mac_os_branding_search_results.go
 model_mac_os_managed_software_update.go
 model_mac_os_managed_software_update_response.go
 model_managed_application_list_command.go
+model_managed_media_list_command.go
 model_managed_software_update_plan.go
 model_managed_software_update_plan_event_store.go
 model_managed_software_update_plan_group_post.go
@@ -1341,11 +1422,17 @@ model_mdm_command.go
 model_mdm_command_base.go
 model_mdm_command_client.go
 model_mdm_command_client_request.go
+model_mdm_command_error.go
 model_mdm_command_request.go
 model_mdm_command_request_command_data.go
 model_mdm_command_results.go
 model_mdm_command_state.go
 model_mdm_command_type.go
+model_mdm_renewal_error.go
+model_mdm_renewal_error_strategies_response.go
+model_mdm_renewal_error_type.go
+model_mdm_renewal_strategy.go
+model_mdm_renewal_strategy_type.go
 model_membership_mappings.go
 model_membership_test_search_request.go
 model_membership_test_search_response.go
@@ -1414,6 +1501,8 @@ model_oidc_jwks_response.go
 model_oidc_jwks_response_keys_inner.go
 model_oidc_login_dispatch_request.go
 model_oidc_login_dispatch_response.go
+model_oidc_login_dispatch_response_v2.go
+model_oidc_login_dispatch_response_v2_idp_redirects_inner.go
 model_oidc_public_features_response.go
 model_oidc_settings.go
 model_onboarding_configuration.go
@@ -1424,6 +1513,7 @@ model_organization_name.go
 model_package.go
 model_package_manifest.go
 model_packages_search_results.go
+model_paged_user_results.go
 model_parent_app.go
 model_parent_app_restricted_times.go
 model_patch_policies.go
@@ -1460,6 +1550,7 @@ model_plan_device_response.go
 model_plan_group_post.go
 model_plan_search_results.go
 model_plan_status.go
+model_platform_initialize_v1.go
 model_play_lost_mode_sound_command.go
 model_plugin_path.go
 model_policy_properties.go
@@ -1477,9 +1568,11 @@ model_prestage_scope_update.go
 model_prestage_scope_v2.go
 model_prestage_sync_status_v2.go
 model_process_texts_search_results.go
+model_profile_list_command.go
 model_protect_registration_request.go
 model_protect_settings_response.go
 model_protect_updatable_settings_request.go
+model_provisioning_profile_list_command.go
 model_purchasing_v2.go
 model_put_computer_prestage_v3.go
 model_put_mobile_device_prestage_v2.go
@@ -1514,6 +1607,7 @@ model_self_service_interaction_settings.go
 model_self_service_login_settings.go
 model_self_service_plus_settings.go
 model_self_service_settings.go
+model_service_discovery_version.go
 model_session.go
 model_session_candidate_request.go
 model_session_details.go
@@ -1535,8 +1629,13 @@ model_site_object.go
 model_slasa_acceptance.go
 model_smart_computer_group_search.go
 model_smart_computer_group_v2.go
+model_smart_group.go
+model_smart_group_assignment.go
+model_smart_group_criteria.go
+model_smart_group_detail.go
 model_smart_group_membership.go
 model_smart_group_search_result.go
+model_smart_group_search_results.go
 model_smart_search_criterion.go
 model_smtp_basic_credentials.go
 model_smtp_connection_settings.go
@@ -1544,7 +1643,6 @@ model_smtp_google_mail_authentication.go
 model_smtp_google_mail_credentials.go
 model_smtp_graph_api_credentials.go
 model_smtp_sender_settings.go
-model_smtp_server.go
 model_smtp_server_test_.go
 model_smtp_server_v2.go
 model_software_title_configuration_on_dashboard.go
@@ -1556,8 +1654,6 @@ model_sso_keystore_details.go
 model_sso_keystore_parse.go
 model_sso_keystore_response.go
 model_sso_keystore_response_with_details.go
-model_sso_metadata_url.go
-model_sso_settings_v2.go
 model_sso_settings_v3.go
 model_startup_status.go
 model_static_computer_group.go
@@ -1588,8 +1684,10 @@ model_unmanage_mobile_device_response.go
 model_update_ios_v2.go
 model_update_mobile_device_v2.go
 model_update_tv_os.go
+model_user.go
 model_user_account.go
 model_user_account_search_results.go
+model_user_inventory.go
 model_user_mappings.go
 model_user_preferences_settings.go
 model_user_test_attributes.go
@@ -1597,6 +1695,7 @@ model_user_test_search.go
 model_user_test_search_request.go
 model_user_test_search_response.go
 model_v1_site.go
+model_v1_site_base.go
 model_validate_applications_command.go
 model_venafi_ca_record.go
 model_venafi_pki_payload_record.go
@@ -1619,5 +1718,8 @@ model_volume_purchasing_subscription_base.go
 model_volume_purchasing_subscriptions.go
 model_watch_os_details_v2.go
 model_web_link.go
+model_well_known_setting.go
+model_well_known_settings_request.go
+model_well_known_settings_response.go
 response.go
 utils.go

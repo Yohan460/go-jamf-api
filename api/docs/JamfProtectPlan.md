@@ -10,7 +10,9 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] [readonly] 
 **ProfileId** | Pointer to **int64** |  | [optional] [readonly] 
 **ProfileName** | Pointer to **string** |  | [optional] [readonly] 
+**ProfileVersion** | Pointer to **int64** |  | [optional] [readonly] 
 **ScopeDescription** | Pointer to **string** |  | [optional] [readonly] 
+**SiteId** | Pointer to **string** |  | [optional] [readonly] 
 
 ## Methods
 
@@ -181,6 +183,31 @@ SetProfileName sets ProfileName field to given value.
 
 HasProfileName returns a boolean if a field has been set.
 
+### GetProfileVersion
+
+`func (o *JamfProtectPlan) GetProfileVersion() int64`
+
+GetProfileVersion returns the ProfileVersion field if non-nil, zero value otherwise.
+
+### GetProfileVersionOk
+
+`func (o *JamfProtectPlan) GetProfileVersionOk() (*int64, bool)`
+
+GetProfileVersionOk returns a tuple with the ProfileVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileVersion
+
+`func (o *JamfProtectPlan) SetProfileVersion(v int64)`
+
+SetProfileVersion sets ProfileVersion field to given value.
+
+### HasProfileVersion
+
+`func (o *JamfProtectPlan) HasProfileVersion() bool`
+
+HasProfileVersion returns a boolean if a field has been set.
+
 ### GetScopeDescription
 
 `func (o *JamfProtectPlan) GetScopeDescription() string`
@@ -205,6 +232,31 @@ SetScopeDescription sets ScopeDescription field to given value.
 `func (o *JamfProtectPlan) HasScopeDescription() bool`
 
 HasScopeDescription returns a boolean if a field has been set.
+
+### GetSiteId
+
+`func (o *JamfProtectPlan) GetSiteId() string`
+
+GetSiteId returns the SiteId field if non-nil, zero value otherwise.
+
+### GetSiteIdOk
+
+`func (o *JamfProtectPlan) GetSiteIdOk() (*string, bool)`
+
+GetSiteIdOk returns a tuple with the SiteId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSiteId
+
+`func (o *JamfProtectPlan) SetSiteId(v string)`
+
+SetSiteId sets SiteId field to given value.
+
+### HasSiteId
+
+`func (o *JamfProtectPlan) HasSiteId() bool`
+
+HasSiteId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

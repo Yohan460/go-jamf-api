@@ -129,6 +129,10 @@
 
 * `SAML_RESPONSE_ASSERTION_SIGNING_REQUIRED` (value: `"SAML_RESPONSE_ASSERTION_SIGNING_REQUIRED"`)
 
+* `DIRECTORY_CACHE_AWAITING_SYNC` (value: `"DIRECTORY_CACHE_AWAITING_SYNC"`)
+
+* `PSSO_EXTERNAL_URL_UNAVAILABLE` (value: `"PSSO_EXTERNAL_URL_UNAVAILABLE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

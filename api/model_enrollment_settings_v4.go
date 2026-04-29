@@ -44,6 +44,8 @@ type EnrollmentSettingsV4 struct {
 	MdmSigningCertificateDetails *CertificateDetails `json:"mdmSigningCertificateDetails,omitempty"`
 	IosEnterpriseEnrollmentEnabled *bool `json:"iosEnterpriseEnrollmentEnabled,omitempty"`
 	IosPersonalEnrollmentEnabled *bool `json:"iosPersonalEnrollmentEnabled,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns \"USERENROLLMENT\" in GET responses and ignores any input values in PUT requests. 
+	// Deprecated
 	PersonalDeviceEnrollmentType *string `json:"personalDeviceEnrollmentType,omitempty"`
 	AccountDrivenUserEnrollmentEnabled *bool `json:"accountDrivenUserEnrollmentEnabled,omitempty"`
 	AccountDrivenDeviceIosEnrollmentEnabled *bool `json:"accountDrivenDeviceIosEnrollmentEnabled,omitempty"`
@@ -98,8 +100,6 @@ func NewEnrollmentSettingsV4(managementUsername string) *EnrollmentSettingsV4 {
 	this.IosEnterpriseEnrollmentEnabled = &iosEnterpriseEnrollmentEnabled
 	var iosPersonalEnrollmentEnabled bool = false
 	this.IosPersonalEnrollmentEnabled = &iosPersonalEnrollmentEnabled
-	var personalDeviceEnrollmentType string = "PERSONALDEVICEPROFILES"
-	this.PersonalDeviceEnrollmentType = &personalDeviceEnrollmentType
 	var accountDrivenUserEnrollmentEnabled bool = false
 	this.AccountDrivenUserEnrollmentEnabled = &accountDrivenUserEnrollmentEnabled
 	var accountDrivenDeviceIosEnrollmentEnabled bool = false
@@ -158,8 +158,6 @@ func NewEnrollmentSettingsV4WithDefaults() *EnrollmentSettingsV4 {
 	this.IosEnterpriseEnrollmentEnabled = &iosEnterpriseEnrollmentEnabled
 	var iosPersonalEnrollmentEnabled bool = false
 	this.IosPersonalEnrollmentEnabled = &iosPersonalEnrollmentEnabled
-	var personalDeviceEnrollmentType string = "PERSONALDEVICEPROFILES"
-	this.PersonalDeviceEnrollmentType = &personalDeviceEnrollmentType
 	var accountDrivenUserEnrollmentEnabled bool = false
 	this.AccountDrivenUserEnrollmentEnabled = &accountDrivenUserEnrollmentEnabled
 	var accountDrivenDeviceIosEnrollmentEnabled bool = false
@@ -924,6 +922,7 @@ func (o *EnrollmentSettingsV4) SetIosPersonalEnrollmentEnabled(v bool) {
 }
 
 // GetPersonalDeviceEnrollmentType returns the PersonalDeviceEnrollmentType field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentSettingsV4) GetPersonalDeviceEnrollmentType() string {
 	if o == nil || IsNil(o.PersonalDeviceEnrollmentType) {
 		var ret string
@@ -934,6 +933,7 @@ func (o *EnrollmentSettingsV4) GetPersonalDeviceEnrollmentType() string {
 
 // GetPersonalDeviceEnrollmentTypeOk returns a tuple with the PersonalDeviceEnrollmentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentSettingsV4) GetPersonalDeviceEnrollmentTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.PersonalDeviceEnrollmentType) {
 		return nil, false
@@ -951,6 +951,7 @@ func (o *EnrollmentSettingsV4) HasPersonalDeviceEnrollmentType() bool {
 }
 
 // SetPersonalDeviceEnrollmentType gets a reference to the given string and assigns it to the PersonalDeviceEnrollmentType field.
+// Deprecated
 func (o *EnrollmentSettingsV4) SetPersonalDeviceEnrollmentType(v string) {
 	o.PersonalDeviceEnrollmentType = &v
 }

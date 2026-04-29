@@ -143,6 +143,7 @@ func (a *UserAPIService) V1UserChangePasswordPostExecute(r UserAPIV1UserChangePa
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
+			return localVarHTTPResponse, newErr
 		}
 		return localVarHTTPResponse, newErr
 	}

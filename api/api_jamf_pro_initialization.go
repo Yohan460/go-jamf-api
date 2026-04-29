@@ -47,6 +47,20 @@ type JamfProInitializationAPI interface {
 
 	// V1SystemInitializePostExecute executes the request
 	V1SystemInitializePostExecute(r JamfProInitializationAPIV1SystemInitializePostRequest) (*http.Response, error)
+
+	/*
+	V1SystemPlatformInitializePost Set up fresh installed Jamf Pro Server for Platform 
+
+	Set up fresh installed Jamf Pro Server with OIDC SSO enabled and single federated user
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return JamfProInitializationAPIV1SystemPlatformInitializePostRequest
+	*/
+	V1SystemPlatformInitializePost(ctx context.Context) JamfProInitializationAPIV1SystemPlatformInitializePostRequest
+
+	// V1SystemPlatformInitializePostExecute executes the request
+	V1SystemPlatformInitializePostExecute(r JamfProInitializationAPIV1SystemPlatformInitializePostRequest) (*http.Response, error)
 }
 
 // JamfProInitializationAPIService JamfProInitializationAPI service
@@ -244,6 +258,116 @@ func (a *JamfProInitializationAPIService) V1SystemInitializePostExecute(r JamfPr
 	}
 	// body params
 	localVarPostBody = r.initializeV1
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type JamfProInitializationAPIV1SystemPlatformInitializePostRequest struct {
+	ctx context.Context
+	ApiService JamfProInitializationAPI
+	platformInitializeV1 *PlatformInitializeV1
+}
+
+func (r JamfProInitializationAPIV1SystemPlatformInitializePostRequest) PlatformInitializeV1(platformInitializeV1 PlatformInitializeV1) JamfProInitializationAPIV1SystemPlatformInitializePostRequest {
+	r.platformInitializeV1 = &platformInitializeV1
+	return r
+}
+
+func (r JamfProInitializationAPIV1SystemPlatformInitializePostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1SystemPlatformInitializePostExecute(r)
+}
+
+/*
+V1SystemPlatformInitializePost Set up fresh installed Jamf Pro Server for Platform 
+
+Set up fresh installed Jamf Pro Server with OIDC SSO enabled and single federated user
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return JamfProInitializationAPIV1SystemPlatformInitializePostRequest
+*/
+func (a *JamfProInitializationAPIService) V1SystemPlatformInitializePost(ctx context.Context) JamfProInitializationAPIV1SystemPlatformInitializePostRequest {
+	return JamfProInitializationAPIV1SystemPlatformInitializePostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *JamfProInitializationAPIService) V1SystemPlatformInitializePostExecute(r JamfProInitializationAPIV1SystemPlatformInitializePostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JamfProInitializationAPIService.V1SystemPlatformInitializePost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/system/platform-initialize"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.platformInitializeV1 == nil {
+		return nil, reportError("platformInitializeV1 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.platformInitializeV1
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

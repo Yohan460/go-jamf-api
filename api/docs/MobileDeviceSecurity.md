@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **LastAttestationAttemptDate** | Pointer to **time.Time** |  | [optional] [readonly] 
 **LastSuccessfulAttestationDate** | Pointer to **time.Time** |  | [optional] [readonly] 
 **PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int64** |  | [optional] 
-**PersonalDeviceProfileCurrent** | Pointer to **bool** |  | [optional] 
+**PersonalDeviceProfileCurrent** | Pointer to **bool** | **Deprecated as of 11.25.** This field always returns false  | [optional] [readonly] [default to false]
 **LostModeEnabled** | Pointer to **bool** |  | [optional] 
 **LostModePersistent** | Pointer to **bool** |  | [optional] 
 **LostModeMessage** | Pointer to **string** |  | [optional] 

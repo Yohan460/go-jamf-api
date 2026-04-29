@@ -21,6 +21,8 @@ var _ MappedNullable = &JamfProInformationV2{}
 type JamfProInformationV2 struct {
 	VppTokenEnabled *bool `json:"vppTokenEnabled,omitempty"`
 	DepAccountEnabled *bool `json:"depAccountEnabled,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns false. 
+	// Deprecated
 	ByodEnabled *bool `json:"byodEnabled,omitempty"`
 	UserMigrationEnabled *bool `json:"userMigrationEnabled,omitempty"`
 	CloudDeploymentsEnabled *bool `json:"cloudDeploymentsEnabled,omitempty"`
@@ -111,6 +113,7 @@ func (o *JamfProInformationV2) SetDepAccountEnabled(v bool) {
 }
 
 // GetByodEnabled returns the ByodEnabled field value if set, zero value otherwise.
+// Deprecated
 func (o *JamfProInformationV2) GetByodEnabled() bool {
 	if o == nil || IsNil(o.ByodEnabled) {
 		var ret bool
@@ -121,6 +124,7 @@ func (o *JamfProInformationV2) GetByodEnabled() bool {
 
 // GetByodEnabledOk returns a tuple with the ByodEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JamfProInformationV2) GetByodEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.ByodEnabled) {
 		return nil, false
@@ -138,6 +142,7 @@ func (o *JamfProInformationV2) HasByodEnabled() bool {
 }
 
 // SetByodEnabled gets a reference to the given bool and assigns it to the ByodEnabled field.
+// Deprecated
 func (o *JamfProInformationV2) SetByodEnabled(v bool) {
 	o.ByodEnabled = &v
 }

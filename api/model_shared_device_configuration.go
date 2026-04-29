@@ -19,7 +19,7 @@ var _ MappedNullable = &SharedDeviceConfiguration{}
 
 // SharedDeviceConfiguration struct for SharedDeviceConfiguration
 type SharedDeviceConfiguration struct {
-	QuotaSize *int64 `json:"quotaSize,omitempty"`
+	QuotaSize NullableInt64 `json:"quotaSize,omitempty"`
 	ResidentUsers *int64 `json:"residentUsers,omitempty"`
 }
 
@@ -40,36 +40,46 @@ func NewSharedDeviceConfigurationWithDefaults() *SharedDeviceConfiguration {
 	return &this
 }
 
-// GetQuotaSize returns the QuotaSize field value if set, zero value otherwise.
+// GetQuotaSize returns the QuotaSize field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SharedDeviceConfiguration) GetQuotaSize() int64 {
-	if o == nil || IsNil(o.QuotaSize) {
+	if o == nil || IsNil(o.QuotaSize.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.QuotaSize
+	return *o.QuotaSize.Get()
 }
 
 // GetQuotaSizeOk returns a tuple with the QuotaSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SharedDeviceConfiguration) GetQuotaSizeOk() (*int64, bool) {
-	if o == nil || IsNil(o.QuotaSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.QuotaSize, true
+	return o.QuotaSize.Get(), o.QuotaSize.IsSet()
 }
 
 // HasQuotaSize returns a boolean if a field has been set.
 func (o *SharedDeviceConfiguration) HasQuotaSize() bool {
-	if o != nil && !IsNil(o.QuotaSize) {
+	if o != nil && o.QuotaSize.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuotaSize gets a reference to the given int64 and assigns it to the QuotaSize field.
+// SetQuotaSize gets a reference to the given NullableInt64 and assigns it to the QuotaSize field.
 func (o *SharedDeviceConfiguration) SetQuotaSize(v int64) {
-	o.QuotaSize = &v
+	o.QuotaSize.Set(&v)
+}
+// SetQuotaSizeNil sets the value for QuotaSize to be an explicit nil
+func (o *SharedDeviceConfiguration) SetQuotaSizeNil() {
+	o.QuotaSize.Set(nil)
+}
+
+// UnsetQuotaSize ensures that no value is present for QuotaSize, not even an explicit nil
+func (o *SharedDeviceConfiguration) UnsetQuotaSize() {
+	o.QuotaSize.Unset()
 }
 
 // GetResidentUsers returns the ResidentUsers field value if set, zero value otherwise.
@@ -114,8 +124,8 @@ func (o SharedDeviceConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o SharedDeviceConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.QuotaSize) {
-		toSerialize["quotaSize"] = o.QuotaSize
+	if o.QuotaSize.IsSet() {
+		toSerialize["quotaSize"] = o.QuotaSize.Get()
 	}
 	if !IsNil(o.ResidentUsers) {
 		toSerialize["residentUsers"] = o.ResidentUsers

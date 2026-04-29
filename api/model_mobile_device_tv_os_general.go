@@ -33,6 +33,7 @@ type MobileDeviceTvOsGeneral struct {
 	IpAddress *string `json:"ipAddress,omitempty"`
 	Managed *bool `json:"managed,omitempty"`
 	Supervised *bool `json:"supervised,omitempty"`
+	// The enrollment method used for the device. **Note:** The `PersonalDeviceProfile` enrollment method was removed as of 11.25. 
 	DeviceOwnershipType *string `json:"deviceOwnershipType,omitempty"`
 	EnrollmentMethodPrestage *EnrollmentMethodPrestage `json:"enrollmentMethodPrestage,omitempty"`
 	EnrollmentSessionTokenValid *bool `json:"enrollmentSessionTokenValid,omitempty"`

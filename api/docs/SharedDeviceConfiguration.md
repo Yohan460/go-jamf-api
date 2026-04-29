@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**QuotaSize** | Pointer to **int64** |  | [optional] 
+**QuotaSize** | Pointer to **NullableInt64** |  | [optional] 
 **ResidentUsers** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetQuotaSize sets QuotaSize field to given value.
 
 HasQuotaSize returns a boolean if a field has been set.
 
+### SetQuotaSizeNil
+
+`func (o *SharedDeviceConfiguration) SetQuotaSizeNil(b bool)`
+
+ SetQuotaSizeNil sets the value for QuotaSize to be an explicit nil
+
+### UnsetQuotaSize
+`func (o *SharedDeviceConfiguration) UnsetQuotaSize()`
+
+UnsetQuotaSize ensures that no value is present for QuotaSize, not even an explicit nil
 ### GetResidentUsers
 
 `func (o *SharedDeviceConfiguration) GetResidentUsers() int64`

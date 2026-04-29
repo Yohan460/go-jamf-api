@@ -21,9 +21,15 @@ var _ MappedNullable = &CloudResponse{}
 type CloudResponse struct {
 	CloudInstance *bool `json:"cloudInstance,omitempty"`
 	RampInstance *bool `json:"rampInstance,omitempty"`
+	// Information whether this instance is a FedRAMP instance
+	FedRampInstance *bool `json:"fedRampInstance,omitempty"`
 	GovCloudInstance *bool `json:"govCloudInstance,omitempty"`
 	// Information whether this instance is managed by managed service provider
 	ManagedServiceProviderInstance *bool `json:"managedServiceProviderInstance,omitempty"`
+	// Information whether this instance is a High Compliance instance
+	HighComplianceInstance *bool `json:"highComplianceInstance,omitempty"`
+	// Information whether this instance has FIPS enabled
+	FipsEnabled *bool `json:"fipsEnabled,omitempty"`
 }
 
 // NewCloudResponse instantiates a new CloudResponse object
@@ -107,6 +113,38 @@ func (o *CloudResponse) SetRampInstance(v bool) {
 	o.RampInstance = &v
 }
 
+// GetFedRampInstance returns the FedRampInstance field value if set, zero value otherwise.
+func (o *CloudResponse) GetFedRampInstance() bool {
+	if o == nil || IsNil(o.FedRampInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.FedRampInstance
+}
+
+// GetFedRampInstanceOk returns a tuple with the FedRampInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetFedRampInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.FedRampInstance) {
+		return nil, false
+	}
+	return o.FedRampInstance, true
+}
+
+// HasFedRampInstance returns a boolean if a field has been set.
+func (o *CloudResponse) HasFedRampInstance() bool {
+	if o != nil && !IsNil(o.FedRampInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetFedRampInstance gets a reference to the given bool and assigns it to the FedRampInstance field.
+func (o *CloudResponse) SetFedRampInstance(v bool) {
+	o.FedRampInstance = &v
+}
+
 // GetGovCloudInstance returns the GovCloudInstance field value if set, zero value otherwise.
 func (o *CloudResponse) GetGovCloudInstance() bool {
 	if o == nil || IsNil(o.GovCloudInstance) {
@@ -171,6 +209,70 @@ func (o *CloudResponse) SetManagedServiceProviderInstance(v bool) {
 	o.ManagedServiceProviderInstance = &v
 }
 
+// GetHighComplianceInstance returns the HighComplianceInstance field value if set, zero value otherwise.
+func (o *CloudResponse) GetHighComplianceInstance() bool {
+	if o == nil || IsNil(o.HighComplianceInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.HighComplianceInstance
+}
+
+// GetHighComplianceInstanceOk returns a tuple with the HighComplianceInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetHighComplianceInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.HighComplianceInstance) {
+		return nil, false
+	}
+	return o.HighComplianceInstance, true
+}
+
+// HasHighComplianceInstance returns a boolean if a field has been set.
+func (o *CloudResponse) HasHighComplianceInstance() bool {
+	if o != nil && !IsNil(o.HighComplianceInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetHighComplianceInstance gets a reference to the given bool and assigns it to the HighComplianceInstance field.
+func (o *CloudResponse) SetHighComplianceInstance(v bool) {
+	o.HighComplianceInstance = &v
+}
+
+// GetFipsEnabled returns the FipsEnabled field value if set, zero value otherwise.
+func (o *CloudResponse) GetFipsEnabled() bool {
+	if o == nil || IsNil(o.FipsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.FipsEnabled
+}
+
+// GetFipsEnabledOk returns a tuple with the FipsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudResponse) GetFipsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.FipsEnabled) {
+		return nil, false
+	}
+	return o.FipsEnabled, true
+}
+
+// HasFipsEnabled returns a boolean if a field has been set.
+func (o *CloudResponse) HasFipsEnabled() bool {
+	if o != nil && !IsNil(o.FipsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetFipsEnabled gets a reference to the given bool and assigns it to the FipsEnabled field.
+func (o *CloudResponse) SetFipsEnabled(v bool) {
+	o.FipsEnabled = &v
+}
+
 func (o CloudResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -187,11 +289,20 @@ func (o CloudResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RampInstance) {
 		toSerialize["rampInstance"] = o.RampInstance
 	}
+	if !IsNil(o.FedRampInstance) {
+		toSerialize["fedRampInstance"] = o.FedRampInstance
+	}
 	if !IsNil(o.GovCloudInstance) {
 		toSerialize["govCloudInstance"] = o.GovCloudInstance
 	}
 	if !IsNil(o.ManagedServiceProviderInstance) {
 		toSerialize["managedServiceProviderInstance"] = o.ManagedServiceProviderInstance
+	}
+	if !IsNil(o.HighComplianceInstance) {
+		toSerialize["highComplianceInstance"] = o.HighComplianceInstance
+	}
+	if !IsNil(o.FipsEnabled) {
+		toSerialize["fipsEnabled"] = o.FipsEnabled
 	}
 	return toSerialize, nil
 }

@@ -19,7 +19,7 @@ var _ MappedNullable = &Attributes{}
 
 // Attributes struct for Attributes
 type Attributes struct {
-	VpnUuid *string `json:"vpnUuid,omitempty"`
+	VpnUuid NullableString `json:"vpnUuid,omitempty"`
 	AssociatedDomains []string `json:"associatedDomains,omitempty"`
 	Removable *bool `json:"removable,omitempty"`
 	EnableDirectDownloads *bool `json:"enableDirectDownloads,omitempty"`
@@ -49,36 +49,46 @@ func NewAttributesWithDefaults() *Attributes {
 	return &this
 }
 
-// GetVpnUuid returns the VpnUuid field value if set, zero value otherwise.
+// GetVpnUuid returns the VpnUuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Attributes) GetVpnUuid() string {
-	if o == nil || IsNil(o.VpnUuid) {
+	if o == nil || IsNil(o.VpnUuid.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.VpnUuid
+	return *o.VpnUuid.Get()
 }
 
 // GetVpnUuidOk returns a tuple with the VpnUuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Attributes) GetVpnUuidOk() (*string, bool) {
-	if o == nil || IsNil(o.VpnUuid) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VpnUuid, true
+	return o.VpnUuid.Get(), o.VpnUuid.IsSet()
 }
 
 // HasVpnUuid returns a boolean if a field has been set.
 func (o *Attributes) HasVpnUuid() bool {
-	if o != nil && !IsNil(o.VpnUuid) {
+	if o != nil && o.VpnUuid.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVpnUuid gets a reference to the given string and assigns it to the VpnUuid field.
+// SetVpnUuid gets a reference to the given NullableString and assigns it to the VpnUuid field.
 func (o *Attributes) SetVpnUuid(v string) {
-	o.VpnUuid = &v
+	o.VpnUuid.Set(&v)
+}
+// SetVpnUuidNil sets the value for VpnUuid to be an explicit nil
+func (o *Attributes) SetVpnUuidNil() {
+	o.VpnUuid.Set(nil)
+}
+
+// UnsetVpnUuid ensures that no value is present for VpnUuid, not even an explicit nil
+func (o *Attributes) UnsetVpnUuid() {
+	o.VpnUuid.Unset()
 }
 
 // GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise.
@@ -411,8 +421,8 @@ func (o Attributes) MarshalJSON() ([]byte, error) {
 
 func (o Attributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.VpnUuid) {
-		toSerialize["vpnUuid"] = o.VpnUuid
+	if o.VpnUuid.IsSet() {
+		toSerialize["vpnUuid"] = o.VpnUuid.Get()
 	}
 	if !IsNil(o.AssociatedDomains) {
 		toSerialize["associatedDomains"] = o.AssociatedDomains

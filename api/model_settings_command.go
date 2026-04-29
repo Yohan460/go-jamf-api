@@ -22,22 +22,25 @@ var _ MappedNullable = &SettingsCommand{}
 // SettingsCommand struct for SettingsCommand
 type SettingsCommand struct {
 	CommandType MdmCommandType `json:"commandType"`
-	BootstrapTokenAllowed *bool `json:"bootstrapTokenAllowed,omitempty"`
-	Bluetooth *bool `json:"bluetooth,omitempty"`
+	BootstrapTokenAllowed NullableBool `json:"bootstrapTokenAllowed,omitempty"`
+	Bluetooth NullableBool `json:"bluetooth,omitempty"`
 	AppAnalytics *AppAnalyticsSetting `json:"appAnalytics,omitempty"`
 	DiagnosticSubmission *DiagnosticSubmissionSetting `json:"diagnosticSubmission,omitempty"`
 	DataRoaming *DataRoamingSetting `json:"dataRoaming,omitempty"`
+	DefaultApplications *DefaultApplications `json:"defaultApplications,omitempty"`
 	VoiceRoaming *VoiceRoamingSetting `json:"voiceRoaming,omitempty"`
 	PersonalHotspot *PersonalHotspotSetting `json:"personalHotspot,omitempty"`
-	MaximumResidentUsers *int64 `json:"maximumResidentUsers,omitempty"`
+	MaximumResidentUsers NullableInt64 `json:"maximumResidentUsers,omitempty"`
 	DeviceName *string `json:"deviceName,omitempty"`
 	ApplicationAttributes *ApplicationAttributes `json:"applicationAttributes,omitempty"`
 	SharedDeviceConfiguration *SharedDeviceConfiguration `json:"sharedDeviceConfiguration,omitempty"`
 	ApplicationConfiguration *ApplicationConfiguration `json:"applicationConfiguration,omitempty"`
-	TimeZone *string `json:"timeZone,omitempty"`
+	TimeZone NullableString `json:"timeZone,omitempty"`
 	SoftwareUpdateSettings *SoftwareUpdateSettings `json:"softwareUpdateSettings,omitempty"`
 	// The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only)
-	PasscodeLockGracePeriod *int64 `json:"passcodeLockGracePeriod,omitempty"`
+	PasscodeLockGracePeriod NullableInt64 `json:"passcodeLockGracePeriod,omitempty"`
+	// If true, a supervised device registers itself with Activation Lock when the user enables Find My. This setting is available for supervised devices in iOS 7 and later, and macOS 10.15 and later.
+	ActivationLockAllowedWhileSupervised *bool `json:"activationLockAllowedWhileSupervised,omitempty"`
 }
 
 type _SettingsCommand SettingsCommand
@@ -84,68 +87,88 @@ func (o *SettingsCommand) SetCommandType(v MdmCommandType) {
 	o.CommandType = v
 }
 
-// GetBootstrapTokenAllowed returns the BootstrapTokenAllowed field value if set, zero value otherwise.
+// GetBootstrapTokenAllowed returns the BootstrapTokenAllowed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SettingsCommand) GetBootstrapTokenAllowed() bool {
-	if o == nil || IsNil(o.BootstrapTokenAllowed) {
+	if o == nil || IsNil(o.BootstrapTokenAllowed.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.BootstrapTokenAllowed
+	return *o.BootstrapTokenAllowed.Get()
 }
 
 // GetBootstrapTokenAllowedOk returns a tuple with the BootstrapTokenAllowed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsCommand) GetBootstrapTokenAllowedOk() (*bool, bool) {
-	if o == nil || IsNil(o.BootstrapTokenAllowed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BootstrapTokenAllowed, true
+	return o.BootstrapTokenAllowed.Get(), o.BootstrapTokenAllowed.IsSet()
 }
 
 // HasBootstrapTokenAllowed returns a boolean if a field has been set.
 func (o *SettingsCommand) HasBootstrapTokenAllowed() bool {
-	if o != nil && !IsNil(o.BootstrapTokenAllowed) {
+	if o != nil && o.BootstrapTokenAllowed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBootstrapTokenAllowed gets a reference to the given bool and assigns it to the BootstrapTokenAllowed field.
+// SetBootstrapTokenAllowed gets a reference to the given NullableBool and assigns it to the BootstrapTokenAllowed field.
 func (o *SettingsCommand) SetBootstrapTokenAllowed(v bool) {
-	o.BootstrapTokenAllowed = &v
+	o.BootstrapTokenAllowed.Set(&v)
+}
+// SetBootstrapTokenAllowedNil sets the value for BootstrapTokenAllowed to be an explicit nil
+func (o *SettingsCommand) SetBootstrapTokenAllowedNil() {
+	o.BootstrapTokenAllowed.Set(nil)
 }
 
-// GetBluetooth returns the Bluetooth field value if set, zero value otherwise.
+// UnsetBootstrapTokenAllowed ensures that no value is present for BootstrapTokenAllowed, not even an explicit nil
+func (o *SettingsCommand) UnsetBootstrapTokenAllowed() {
+	o.BootstrapTokenAllowed.Unset()
+}
+
+// GetBluetooth returns the Bluetooth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SettingsCommand) GetBluetooth() bool {
-	if o == nil || IsNil(o.Bluetooth) {
+	if o == nil || IsNil(o.Bluetooth.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.Bluetooth
+	return *o.Bluetooth.Get()
 }
 
 // GetBluetoothOk returns a tuple with the Bluetooth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsCommand) GetBluetoothOk() (*bool, bool) {
-	if o == nil || IsNil(o.Bluetooth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Bluetooth, true
+	return o.Bluetooth.Get(), o.Bluetooth.IsSet()
 }
 
 // HasBluetooth returns a boolean if a field has been set.
 func (o *SettingsCommand) HasBluetooth() bool {
-	if o != nil && !IsNil(o.Bluetooth) {
+	if o != nil && o.Bluetooth.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBluetooth gets a reference to the given bool and assigns it to the Bluetooth field.
+// SetBluetooth gets a reference to the given NullableBool and assigns it to the Bluetooth field.
 func (o *SettingsCommand) SetBluetooth(v bool) {
-	o.Bluetooth = &v
+	o.Bluetooth.Set(&v)
+}
+// SetBluetoothNil sets the value for Bluetooth to be an explicit nil
+func (o *SettingsCommand) SetBluetoothNil() {
+	o.Bluetooth.Set(nil)
+}
+
+// UnsetBluetooth ensures that no value is present for Bluetooth, not even an explicit nil
+func (o *SettingsCommand) UnsetBluetooth() {
+	o.Bluetooth.Unset()
 }
 
 // GetAppAnalytics returns the AppAnalytics field value if set, zero value otherwise.
@@ -244,6 +267,38 @@ func (o *SettingsCommand) SetDataRoaming(v DataRoamingSetting) {
 	o.DataRoaming = &v
 }
 
+// GetDefaultApplications returns the DefaultApplications field value if set, zero value otherwise.
+func (o *SettingsCommand) GetDefaultApplications() DefaultApplications {
+	if o == nil || IsNil(o.DefaultApplications) {
+		var ret DefaultApplications
+		return ret
+	}
+	return *o.DefaultApplications
+}
+
+// GetDefaultApplicationsOk returns a tuple with the DefaultApplications field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SettingsCommand) GetDefaultApplicationsOk() (*DefaultApplications, bool) {
+	if o == nil || IsNil(o.DefaultApplications) {
+		return nil, false
+	}
+	return o.DefaultApplications, true
+}
+
+// HasDefaultApplications returns a boolean if a field has been set.
+func (o *SettingsCommand) HasDefaultApplications() bool {
+	if o != nil && !IsNil(o.DefaultApplications) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultApplications gets a reference to the given DefaultApplications and assigns it to the DefaultApplications field.
+func (o *SettingsCommand) SetDefaultApplications(v DefaultApplications) {
+	o.DefaultApplications = &v
+}
+
 // GetVoiceRoaming returns the VoiceRoaming field value if set, zero value otherwise.
 func (o *SettingsCommand) GetVoiceRoaming() VoiceRoamingSetting {
 	if o == nil || IsNil(o.VoiceRoaming) {
@@ -308,36 +363,46 @@ func (o *SettingsCommand) SetPersonalHotspot(v PersonalHotspotSetting) {
 	o.PersonalHotspot = &v
 }
 
-// GetMaximumResidentUsers returns the MaximumResidentUsers field value if set, zero value otherwise.
+// GetMaximumResidentUsers returns the MaximumResidentUsers field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SettingsCommand) GetMaximumResidentUsers() int64 {
-	if o == nil || IsNil(o.MaximumResidentUsers) {
+	if o == nil || IsNil(o.MaximumResidentUsers.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.MaximumResidentUsers
+	return *o.MaximumResidentUsers.Get()
 }
 
 // GetMaximumResidentUsersOk returns a tuple with the MaximumResidentUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsCommand) GetMaximumResidentUsersOk() (*int64, bool) {
-	if o == nil || IsNil(o.MaximumResidentUsers) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaximumResidentUsers, true
+	return o.MaximumResidentUsers.Get(), o.MaximumResidentUsers.IsSet()
 }
 
 // HasMaximumResidentUsers returns a boolean if a field has been set.
 func (o *SettingsCommand) HasMaximumResidentUsers() bool {
-	if o != nil && !IsNil(o.MaximumResidentUsers) {
+	if o != nil && o.MaximumResidentUsers.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMaximumResidentUsers gets a reference to the given int64 and assigns it to the MaximumResidentUsers field.
+// SetMaximumResidentUsers gets a reference to the given NullableInt64 and assigns it to the MaximumResidentUsers field.
 func (o *SettingsCommand) SetMaximumResidentUsers(v int64) {
-	o.MaximumResidentUsers = &v
+	o.MaximumResidentUsers.Set(&v)
+}
+// SetMaximumResidentUsersNil sets the value for MaximumResidentUsers to be an explicit nil
+func (o *SettingsCommand) SetMaximumResidentUsersNil() {
+	o.MaximumResidentUsers.Set(nil)
+}
+
+// UnsetMaximumResidentUsers ensures that no value is present for MaximumResidentUsers, not even an explicit nil
+func (o *SettingsCommand) UnsetMaximumResidentUsers() {
+	o.MaximumResidentUsers.Unset()
 }
 
 // GetDeviceName returns the DeviceName field value if set, zero value otherwise.
@@ -468,36 +533,46 @@ func (o *SettingsCommand) SetApplicationConfiguration(v ApplicationConfiguration
 	o.ApplicationConfiguration = &v
 }
 
-// GetTimeZone returns the TimeZone field value if set, zero value otherwise.
+// GetTimeZone returns the TimeZone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SettingsCommand) GetTimeZone() string {
-	if o == nil || IsNil(o.TimeZone) {
+	if o == nil || IsNil(o.TimeZone.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TimeZone
+	return *o.TimeZone.Get()
 }
 
 // GetTimeZoneOk returns a tuple with the TimeZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsCommand) GetTimeZoneOk() (*string, bool) {
-	if o == nil || IsNil(o.TimeZone) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TimeZone, true
+	return o.TimeZone.Get(), o.TimeZone.IsSet()
 }
 
 // HasTimeZone returns a boolean if a field has been set.
 func (o *SettingsCommand) HasTimeZone() bool {
-	if o != nil && !IsNil(o.TimeZone) {
+	if o != nil && o.TimeZone.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTimeZone gets a reference to the given string and assigns it to the TimeZone field.
+// SetTimeZone gets a reference to the given NullableString and assigns it to the TimeZone field.
 func (o *SettingsCommand) SetTimeZone(v string) {
-	o.TimeZone = &v
+	o.TimeZone.Set(&v)
+}
+// SetTimeZoneNil sets the value for TimeZone to be an explicit nil
+func (o *SettingsCommand) SetTimeZoneNil() {
+	o.TimeZone.Set(nil)
+}
+
+// UnsetTimeZone ensures that no value is present for TimeZone, not even an explicit nil
+func (o *SettingsCommand) UnsetTimeZone() {
+	o.TimeZone.Unset()
 }
 
 // GetSoftwareUpdateSettings returns the SoftwareUpdateSettings field value if set, zero value otherwise.
@@ -532,36 +607,78 @@ func (o *SettingsCommand) SetSoftwareUpdateSettings(v SoftwareUpdateSettings) {
 	o.SoftwareUpdateSettings = &v
 }
 
-// GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field value if set, zero value otherwise.
+// GetPasscodeLockGracePeriod returns the PasscodeLockGracePeriod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SettingsCommand) GetPasscodeLockGracePeriod() int64 {
-	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
+	if o == nil || IsNil(o.PasscodeLockGracePeriod.Get()) {
 		var ret int64
 		return ret
 	}
-	return *o.PasscodeLockGracePeriod
+	return *o.PasscodeLockGracePeriod.Get()
 }
 
 // GetPasscodeLockGracePeriodOk returns a tuple with the PasscodeLockGracePeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SettingsCommand) GetPasscodeLockGracePeriodOk() (*int64, bool) {
-	if o == nil || IsNil(o.PasscodeLockGracePeriod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PasscodeLockGracePeriod, true
+	return o.PasscodeLockGracePeriod.Get(), o.PasscodeLockGracePeriod.IsSet()
 }
 
 // HasPasscodeLockGracePeriod returns a boolean if a field has been set.
 func (o *SettingsCommand) HasPasscodeLockGracePeriod() bool {
-	if o != nil && !IsNil(o.PasscodeLockGracePeriod) {
+	if o != nil && o.PasscodeLockGracePeriod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPasscodeLockGracePeriod gets a reference to the given int64 and assigns it to the PasscodeLockGracePeriod field.
+// SetPasscodeLockGracePeriod gets a reference to the given NullableInt64 and assigns it to the PasscodeLockGracePeriod field.
 func (o *SettingsCommand) SetPasscodeLockGracePeriod(v int64) {
-	o.PasscodeLockGracePeriod = &v
+	o.PasscodeLockGracePeriod.Set(&v)
+}
+// SetPasscodeLockGracePeriodNil sets the value for PasscodeLockGracePeriod to be an explicit nil
+func (o *SettingsCommand) SetPasscodeLockGracePeriodNil() {
+	o.PasscodeLockGracePeriod.Set(nil)
+}
+
+// UnsetPasscodeLockGracePeriod ensures that no value is present for PasscodeLockGracePeriod, not even an explicit nil
+func (o *SettingsCommand) UnsetPasscodeLockGracePeriod() {
+	o.PasscodeLockGracePeriod.Unset()
+}
+
+// GetActivationLockAllowedWhileSupervised returns the ActivationLockAllowedWhileSupervised field value if set, zero value otherwise.
+func (o *SettingsCommand) GetActivationLockAllowedWhileSupervised() bool {
+	if o == nil || IsNil(o.ActivationLockAllowedWhileSupervised) {
+		var ret bool
+		return ret
+	}
+	return *o.ActivationLockAllowedWhileSupervised
+}
+
+// GetActivationLockAllowedWhileSupervisedOk returns a tuple with the ActivationLockAllowedWhileSupervised field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SettingsCommand) GetActivationLockAllowedWhileSupervisedOk() (*bool, bool) {
+	if o == nil || IsNil(o.ActivationLockAllowedWhileSupervised) {
+		return nil, false
+	}
+	return o.ActivationLockAllowedWhileSupervised, true
+}
+
+// HasActivationLockAllowedWhileSupervised returns a boolean if a field has been set.
+func (o *SettingsCommand) HasActivationLockAllowedWhileSupervised() bool {
+	if o != nil && !IsNil(o.ActivationLockAllowedWhileSupervised) {
+		return true
+	}
+
+	return false
+}
+
+// SetActivationLockAllowedWhileSupervised gets a reference to the given bool and assigns it to the ActivationLockAllowedWhileSupervised field.
+func (o *SettingsCommand) SetActivationLockAllowedWhileSupervised(v bool) {
+	o.ActivationLockAllowedWhileSupervised = &v
 }
 
 func (o SettingsCommand) MarshalJSON() ([]byte, error) {
@@ -575,11 +692,11 @@ func (o SettingsCommand) MarshalJSON() ([]byte, error) {
 func (o SettingsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["commandType"] = o.CommandType
-	if !IsNil(o.BootstrapTokenAllowed) {
-		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed
+	if o.BootstrapTokenAllowed.IsSet() {
+		toSerialize["bootstrapTokenAllowed"] = o.BootstrapTokenAllowed.Get()
 	}
-	if !IsNil(o.Bluetooth) {
-		toSerialize["bluetooth"] = o.Bluetooth
+	if o.Bluetooth.IsSet() {
+		toSerialize["bluetooth"] = o.Bluetooth.Get()
 	}
 	if !IsNil(o.AppAnalytics) {
 		toSerialize["appAnalytics"] = o.AppAnalytics
@@ -590,14 +707,17 @@ func (o SettingsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DataRoaming) {
 		toSerialize["dataRoaming"] = o.DataRoaming
 	}
+	if !IsNil(o.DefaultApplications) {
+		toSerialize["defaultApplications"] = o.DefaultApplications
+	}
 	if !IsNil(o.VoiceRoaming) {
 		toSerialize["voiceRoaming"] = o.VoiceRoaming
 	}
 	if !IsNil(o.PersonalHotspot) {
 		toSerialize["personalHotspot"] = o.PersonalHotspot
 	}
-	if !IsNil(o.MaximumResidentUsers) {
-		toSerialize["maximumResidentUsers"] = o.MaximumResidentUsers
+	if o.MaximumResidentUsers.IsSet() {
+		toSerialize["maximumResidentUsers"] = o.MaximumResidentUsers.Get()
 	}
 	if !IsNil(o.DeviceName) {
 		toSerialize["deviceName"] = o.DeviceName
@@ -611,14 +731,17 @@ func (o SettingsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplicationConfiguration) {
 		toSerialize["applicationConfiguration"] = o.ApplicationConfiguration
 	}
-	if !IsNil(o.TimeZone) {
-		toSerialize["timeZone"] = o.TimeZone
+	if o.TimeZone.IsSet() {
+		toSerialize["timeZone"] = o.TimeZone.Get()
 	}
 	if !IsNil(o.SoftwareUpdateSettings) {
 		toSerialize["softwareUpdateSettings"] = o.SoftwareUpdateSettings
 	}
-	if !IsNil(o.PasscodeLockGracePeriod) {
-		toSerialize["passcodeLockGracePeriod"] = o.PasscodeLockGracePeriod
+	if o.PasscodeLockGracePeriod.IsSet() {
+		toSerialize["passcodeLockGracePeriod"] = o.PasscodeLockGracePeriod.Get()
+	}
+	if !IsNil(o.ActivationLockAllowedWhileSupervised) {
+		toSerialize["activationLockAllowedWhileSupervised"] = o.ActivationLockAllowedWhileSupervised
 	}
 	return toSerialize, nil
 }

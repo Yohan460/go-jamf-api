@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Configuration** | Pointer to **string** |  | [optional] 
+**Configuration** | Pointer to **NullableString** |  | [optional] 
 **Identifier** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetConfiguration sets Configuration field to given value.
 
 HasConfiguration returns a boolean if a field has been set.
 
+### SetConfigurationNil
+
+`func (o *ApplicationConfiguration) SetConfigurationNil(b bool)`
+
+ SetConfigurationNil sets the value for Configuration to be an explicit nil
+
+### UnsetConfiguration
+`func (o *ApplicationConfiguration) UnsetConfiguration()`
+
+UnsetConfiguration ensures that no value is present for Configuration, not even an explicit nil
 ### GetIdentifier
 
 `func (o *ApplicationConfiguration) GetIdentifier() string`

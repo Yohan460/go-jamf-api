@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **LocalUserAccounts** | Pointer to [**[]ComputerLocalUserAccount**](ComputerLocalUserAccount.md) |  | [optional] 
 **Certificates** | Pointer to [**[]ComputerCertificate**](ComputerCertificate.md) |  | [optional] 
 **Attachments** | Pointer to [**[]ComputerAttachment**](ComputerAttachment.md) |  | [optional] 
-**Plugins** | Pointer to [**[]ComputerPlugin**](ComputerPlugin.md) |  | [optional] 
+**Plugins** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **PackageReceipts** | Pointer to [**ComputerPackageReceipts**](ComputerPackageReceipts.md) |  | [optional] 
 **Fonts** | Pointer to [**[]ComputerFont**](ComputerFont.md) |  | [optional] 
 **Security** | Pointer to [**ComputerSecurity**](ComputerSecurity.md) |  | [optional] 
@@ -427,20 +427,20 @@ HasAttachments returns a boolean if a field has been set.
 
 ### GetPlugins
 
-`func (o *ComputerInventory) GetPlugins() []ComputerPlugin`
+`func (o *ComputerInventory) GetPlugins() []map[string]interface{}`
 
 GetPlugins returns the Plugins field if non-nil, zero value otherwise.
 
 ### GetPluginsOk
 
-`func (o *ComputerInventory) GetPluginsOk() (*[]ComputerPlugin, bool)`
+`func (o *ComputerInventory) GetPluginsOk() (*[]map[string]interface{}, bool)`
 
 GetPluginsOk returns a tuple with the Plugins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlugins
 
-`func (o *ComputerInventory) SetPlugins(v []ComputerPlugin)`
+`func (o *ComputerInventory) SetPlugins(v []map[string]interface{})`
 
 SetPlugins sets Plugins field to given value.
 

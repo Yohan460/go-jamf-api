@@ -105,6 +105,8 @@ type InventoryListMobileDevice struct {
 	PasscodeCompliantWithProfile *bool `json:"passcodeCompliantWithProfile,omitempty"`
 	PasscodeLockGracePeriodEnforcedSeconds *int64 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
 	PasscodePresent *bool `json:"passcodePresent,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns false. 
+	// Deprecated
 	PersonalDeviceProfileCurrent *bool `json:"personalDeviceProfileCurrent,omitempty"`
 	CarrierSettingsVersion *string `json:"carrierSettingsVersion,omitempty"`
 	CellularTechnology *string `json:"cellularTechnology,omitempty"`
@@ -2839,6 +2841,7 @@ func (o *InventoryListMobileDevice) SetPasscodePresent(v bool) {
 }
 
 // GetPersonalDeviceProfileCurrent returns the PersonalDeviceProfileCurrent field value if set, zero value otherwise.
+// Deprecated
 func (o *InventoryListMobileDevice) GetPersonalDeviceProfileCurrent() bool {
 	if o == nil || IsNil(o.PersonalDeviceProfileCurrent) {
 		var ret bool
@@ -2849,6 +2852,7 @@ func (o *InventoryListMobileDevice) GetPersonalDeviceProfileCurrent() bool {
 
 // GetPersonalDeviceProfileCurrentOk returns a tuple with the PersonalDeviceProfileCurrent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *InventoryListMobileDevice) GetPersonalDeviceProfileCurrentOk() (*bool, bool) {
 	if o == nil || IsNil(o.PersonalDeviceProfileCurrent) {
 		return nil, false
@@ -2866,6 +2870,7 @@ func (o *InventoryListMobileDevice) HasPersonalDeviceProfileCurrent() bool {
 }
 
 // SetPersonalDeviceProfileCurrent gets a reference to the given bool and assigns it to the PersonalDeviceProfileCurrent field.
+// Deprecated
 func (o *InventoryListMobileDevice) SetPersonalDeviceProfileCurrent(v bool) {
 	o.PersonalDeviceProfileCurrent = &v
 }

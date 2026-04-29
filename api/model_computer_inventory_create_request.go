@@ -28,7 +28,7 @@ type ComputerInventoryCreateRequest struct {
 	Services []ComputerServiceCreate `json:"services,omitempty"`
 	LocalUserAccounts []ComputerLocalUserAccountCreate `json:"localUserAccounts,omitempty"`
 	Certificates []ComputerCertificateCreate `json:"certificates,omitempty"`
-	Plugins []ComputerPluginCreate `json:"plugins,omitempty"`
+	Plugins []map[string]interface{} `json:"plugins,omitempty"`
 	PackageReceipts *ComputerPackageReceiptsCreate `json:"packageReceipts,omitempty"`
 	Fonts []ComputerFontCreate `json:"fonts,omitempty"`
 	Security *ComputerSecurityCreate `json:"security,omitempty"`
@@ -361,9 +361,9 @@ func (o *ComputerInventoryCreateRequest) SetCertificates(v []ComputerCertificate
 }
 
 // GetPlugins returns the Plugins field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ComputerInventoryCreateRequest) GetPlugins() []ComputerPluginCreate {
+func (o *ComputerInventoryCreateRequest) GetPlugins() []map[string]interface{} {
 	if o == nil {
-		var ret []ComputerPluginCreate
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Plugins
@@ -372,7 +372,7 @@ func (o *ComputerInventoryCreateRequest) GetPlugins() []ComputerPluginCreate {
 // GetPluginsOk returns a tuple with the Plugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ComputerInventoryCreateRequest) GetPluginsOk() ([]ComputerPluginCreate, bool) {
+func (o *ComputerInventoryCreateRequest) GetPluginsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Plugins) {
 		return nil, false
 	}
@@ -388,8 +388,8 @@ func (o *ComputerInventoryCreateRequest) HasPlugins() bool {
 	return false
 }
 
-// SetPlugins gets a reference to the given []ComputerPluginCreate and assigns it to the Plugins field.
-func (o *ComputerInventoryCreateRequest) SetPlugins(v []ComputerPluginCreate) {
+// SetPlugins gets a reference to the given []map[string]interface{} and assigns it to the Plugins field.
+func (o *ComputerInventoryCreateRequest) SetPlugins(v []map[string]interface{}) {
 	o.Plugins = v
 }
 

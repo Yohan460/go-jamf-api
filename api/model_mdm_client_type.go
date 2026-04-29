@@ -27,6 +27,7 @@ const (
 	MDMCLIENTTYPE_COMPUTER MdmClientType = "COMPUTER"
 	MDMCLIENTTYPE_COMPUTER_USER MdmClientType = "COMPUTER_USER"
 	MDMCLIENTTYPE_MOBILE_DEVICE_USER MdmClientType = "MOBILE_DEVICE_USER"
+	MDMCLIENTTYPE_UNKNOWN MdmClientType = "UNKNOWN"
 )
 
 // All allowed values of MdmClientType enum
@@ -38,6 +39,7 @@ var AllowedMdmClientTypeEnumValues = []MdmClientType{
 	"COMPUTER",
 	"COMPUTER_USER",
 	"MOBILE_DEVICE_USER",
+	"UNKNOWN",
 }
 
 func (v *MdmClientType) UnmarshalJSON(src []byte) error {

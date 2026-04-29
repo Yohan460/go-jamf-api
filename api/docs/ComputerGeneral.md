@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **InitialEntryDate** | Pointer to **string** |  | [optional] 
 **DistributionPoint** | Pointer to **string** |  | [optional] 
 **EnrollmentMethod** | Pointer to [**EnrollmentMethod**](EnrollmentMethod.md) |  | [optional] 
-**Site** | Pointer to [**V1Site**](V1Site.md) |  | [optional] 
+**Site** | Pointer to [**V1SiteBase**](V1SiteBase.md) |  | [optional] 
 **ItunesStoreAccountActive** | Pointer to **bool** |  | [optional] 
 **EnrolledViaAutomatedDeviceEnrollment** | Pointer to **bool** |  | [optional] 
 **UserApprovedMdm** | Pointer to **bool** |  | [optional] 
@@ -583,20 +583,20 @@ HasEnrollmentMethod returns a boolean if a field has been set.
 
 ### GetSite
 
-`func (o *ComputerGeneral) GetSite() V1Site`
+`func (o *ComputerGeneral) GetSite() V1SiteBase`
 
 GetSite returns the Site field if non-nil, zero value otherwise.
 
 ### GetSiteOk
 
-`func (o *ComputerGeneral) GetSiteOk() (*V1Site, bool)`
+`func (o *ComputerGeneral) GetSiteOk() (*V1SiteBase, bool)`
 
 GetSiteOk returns a tuple with the Site field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSite
 
-`func (o *ComputerGeneral) SetSite(v V1Site)`
+`func (o *ComputerGeneral) SetSite(v V1SiteBase)`
 
 SetSite sets Site field to given value.
 

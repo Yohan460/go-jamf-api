@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MobileDeviceId** | Pointer to **string** |  | [optional] 
-**Selected** | Pointer to **bool** | If true the device should be added to the group, if false should be removed from the group. | [optional] 
+**Selected** | Pointer to **bool** | If true the device should be added to the group, if false should be removed from the group | [optional] 
 
 ## Methods
 

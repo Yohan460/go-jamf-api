@@ -22,6 +22,8 @@ var _ MappedNullable = &LoginContent{}
 // LoginContent struct for LoginContent
 type LoginContent struct {
 	RampInstance *bool `json:"rampInstance,omitempty"`
+	FedRampInstance *bool `json:"fedRampInstance,omitempty"`
+	HighComplianceInstance *bool `json:"highComplianceInstance,omitempty"`
 	IncludeCustomDisclaimer bool `json:"includeCustomDisclaimer"`
 	DisclaimerHeading *string `json:"disclaimerHeading,omitempty"`
 	DisclaimerMainText *string `json:"disclaimerMainText,omitempty"`
@@ -78,6 +80,70 @@ func (o *LoginContent) HasRampInstance() bool {
 // SetRampInstance gets a reference to the given bool and assigns it to the RampInstance field.
 func (o *LoginContent) SetRampInstance(v bool) {
 	o.RampInstance = &v
+}
+
+// GetFedRampInstance returns the FedRampInstance field value if set, zero value otherwise.
+func (o *LoginContent) GetFedRampInstance() bool {
+	if o == nil || IsNil(o.FedRampInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.FedRampInstance
+}
+
+// GetFedRampInstanceOk returns a tuple with the FedRampInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoginContent) GetFedRampInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.FedRampInstance) {
+		return nil, false
+	}
+	return o.FedRampInstance, true
+}
+
+// HasFedRampInstance returns a boolean if a field has been set.
+func (o *LoginContent) HasFedRampInstance() bool {
+	if o != nil && !IsNil(o.FedRampInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetFedRampInstance gets a reference to the given bool and assigns it to the FedRampInstance field.
+func (o *LoginContent) SetFedRampInstance(v bool) {
+	o.FedRampInstance = &v
+}
+
+// GetHighComplianceInstance returns the HighComplianceInstance field value if set, zero value otherwise.
+func (o *LoginContent) GetHighComplianceInstance() bool {
+	if o == nil || IsNil(o.HighComplianceInstance) {
+		var ret bool
+		return ret
+	}
+	return *o.HighComplianceInstance
+}
+
+// GetHighComplianceInstanceOk returns a tuple with the HighComplianceInstance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoginContent) GetHighComplianceInstanceOk() (*bool, bool) {
+	if o == nil || IsNil(o.HighComplianceInstance) {
+		return nil, false
+	}
+	return o.HighComplianceInstance, true
+}
+
+// HasHighComplianceInstance returns a boolean if a field has been set.
+func (o *LoginContent) HasHighComplianceInstance() bool {
+	if o != nil && !IsNil(o.HighComplianceInstance) {
+		return true
+	}
+
+	return false
+}
+
+// SetHighComplianceInstance gets a reference to the given bool and assigns it to the HighComplianceInstance field.
+func (o *LoginContent) SetHighComplianceInstance(v bool) {
+	o.HighComplianceInstance = &v
 }
 
 // GetIncludeCustomDisclaimer returns the IncludeCustomDisclaimer field value
@@ -212,6 +278,12 @@ func (o LoginContent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RampInstance) {
 		toSerialize["rampInstance"] = o.RampInstance
+	}
+	if !IsNil(o.FedRampInstance) {
+		toSerialize["fedRampInstance"] = o.FedRampInstance
+	}
+	if !IsNil(o.HighComplianceInstance) {
+		toSerialize["highComplianceInstance"] = o.HighComplianceInstance
 	}
 	toSerialize["includeCustomDisclaimer"] = o.IncludeCustomDisclaimer
 	if !IsNil(o.DisclaimerHeading) {

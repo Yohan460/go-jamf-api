@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**VpnUuid** | Pointer to **string** |  | [optional] 
+**VpnUuid** | Pointer to **NullableString** |  | [optional] 
 **AssociatedDomains** | Pointer to **[]string** |  | [optional] 
 **Removable** | Pointer to **bool** |  | [optional] 
 **EnableDirectDownloads** | Pointer to **bool** |  | [optional] 
@@ -60,6 +60,16 @@ SetVpnUuid sets VpnUuid field to given value.
 
 HasVpnUuid returns a boolean if a field has been set.
 
+### SetVpnUuidNil
+
+`func (o *Attributes) SetVpnUuidNil(b bool)`
+
+ SetVpnUuidNil sets the value for VpnUuid to be an explicit nil
+
+### UnsetVpnUuid
+`func (o *Attributes) UnsetVpnUuid()`
+
+UnsetVpnUuid ensures that no value is present for VpnUuid, not even an explicit nil
 ### GetAssociatedDomains
 
 `func (o *Attributes) GetAssociatedDomains() []string`

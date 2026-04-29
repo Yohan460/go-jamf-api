@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ## V2ComputerGroupsSmartGroupsPost
 
-> HrefResponse V2ComputerGroupsSmartGroupsPost(ctx).SmartComputerGroupV2(smartComputerGroupV2).Execute()
+> HrefResponse V2ComputerGroupsSmartGroupsPost(ctx).SmartComputerGroupV2(smartComputerGroupV2).Platform(platform).Execute()
 
 Create a Smart Computer Group 
 
@@ -454,10 +454,11 @@ import (
 
 func main() {
 	smartComputerGroupV2 := *openapiclient.NewSmartComputerGroupV2("New Group Name") // SmartComputerGroupV2 | 
+	platform := true // bool | Optional. Return platform identifiers instead of internal identifiers when set to true. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ComputerGroupsAPI.V2ComputerGroupsSmartGroupsPost(context.Background()).SmartComputerGroupV2(smartComputerGroupV2).Execute()
+	resp, r, err := apiClient.ComputerGroupsAPI.V2ComputerGroupsSmartGroupsPost(context.Background()).SmartComputerGroupV2(smartComputerGroupV2).Platform(platform).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ComputerGroupsAPI.V2ComputerGroupsSmartGroupsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,6 +480,7 @@ Other parameters are passed through a pointer to a apiV2ComputerGroupsSmartGroup
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **smartComputerGroupV2** | [**SmartComputerGroupV2**](SmartComputerGroupV2.md) |  | 
+ **platform** | **bool** | Optional. Return platform identifiers instead of internal identifiers when set to true. | [default to false]
 
 ### Return type
 
@@ -782,7 +784,7 @@ Name | Type | Description  | Notes
 
 ## V2ComputerGroupsStaticGroupsPost
 
-> HrefResponse V2ComputerGroupsStaticGroupsPost(ctx).StaticComputerGroupAssignment(staticComputerGroupAssignment).Execute()
+> HrefResponse V2ComputerGroupsStaticGroupsPost(ctx).StaticComputerGroupAssignment(staticComputerGroupAssignment).Platform(platform).Execute()
 
 Create membership of a static computer group. 
 
@@ -802,10 +804,11 @@ import (
 
 func main() {
 	staticComputerGroupAssignment := *openapiclient.NewStaticComputerGroupAssignment("Test Static Computer Group") // StaticComputerGroupAssignment | 
+	platform := true // bool | Optional. Return platform identifiers instead of internal identifiers when set to true. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ComputerGroupsAPI.V2ComputerGroupsStaticGroupsPost(context.Background()).StaticComputerGroupAssignment(staticComputerGroupAssignment).Execute()
+	resp, r, err := apiClient.ComputerGroupsAPI.V2ComputerGroupsStaticGroupsPost(context.Background()).StaticComputerGroupAssignment(staticComputerGroupAssignment).Platform(platform).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ComputerGroupsAPI.V2ComputerGroupsStaticGroupsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -827,6 +830,7 @@ Other parameters are passed through a pointer to a apiV2ComputerGroupsStaticGrou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **staticComputerGroupAssignment** | [**StaticComputerGroupAssignment**](StaticComputerGroupAssignment.md) |  | 
+ **platform** | **bool** | Optional. Return platform identifiers instead of internal identifiers when set to true. | [default to false]
 
 ### Return type
 

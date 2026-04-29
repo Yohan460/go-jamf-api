@@ -88,7 +88,7 @@ Name | Type | Description | Notes
 **PasscodeCompliantWithProfile** | Pointer to **bool** |  | [optional] 
 **PasscodeLockGracePeriodEnforcedSeconds** | Pointer to **int64** |  | [optional] 
 **PasscodePresent** | Pointer to **bool** |  | [optional] 
-**PersonalDeviceProfileCurrent** | Pointer to **bool** |  | [optional] 
+**PersonalDeviceProfileCurrent** | Pointer to **bool** | **Deprecated as of 11.25.** This field always returns false.  | [optional] [readonly] [default to false]
 **CarrierSettingsVersion** | Pointer to **string** |  | [optional] 
 **CellularTechnology** | Pointer to **string** |  | [optional] 
 **CurrentCarrierNetwork** | Pointer to **string** |  | [optional] 

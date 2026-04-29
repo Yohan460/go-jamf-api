@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalCount** | Pointer to **int64** |  | [optional] 
-**Results** | Pointer to [**[]GroupV1**](GroupV1.md) |  | [optional] 
+**Results** | Pointer to [**[]GroupDtoV1**](GroupDtoV1.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasTotalCount returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *GroupSearchResult) GetResults() []GroupV1`
+`func (o *GroupSearchResult) GetResults() []GroupDtoV1`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *GroupSearchResult) GetResultsOk() (*[]GroupV1, bool)`
+`func (o *GroupSearchResult) GetResultsOk() (*[]GroupDtoV1, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *GroupSearchResult) SetResults(v []GroupV1)`
+`func (o *GroupSearchResult) SetResults(v []GroupDtoV1)`
 
 SetResults sets Results field to given value.
 

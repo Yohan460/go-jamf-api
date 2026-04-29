@@ -34,7 +34,7 @@ type ComputerInventory struct {
 	LocalUserAccounts []ComputerLocalUserAccount `json:"localUserAccounts,omitempty"`
 	Certificates []ComputerCertificate `json:"certificates,omitempty"`
 	Attachments []ComputerAttachment `json:"attachments,omitempty"`
-	Plugins []ComputerPlugin `json:"plugins,omitempty"`
+	Plugins []map[string]interface{} `json:"plugins,omitempty"`
 	PackageReceipts *ComputerPackageReceipts `json:"packageReceipts,omitempty"`
 	Fonts []ComputerFont `json:"fonts,omitempty"`
 	Security *ComputerSecurity `json:"security,omitempty"`
@@ -545,9 +545,9 @@ func (o *ComputerInventory) SetAttachments(v []ComputerAttachment) {
 }
 
 // GetPlugins returns the Plugins field value if set, zero value otherwise.
-func (o *ComputerInventory) GetPlugins() []ComputerPlugin {
+func (o *ComputerInventory) GetPlugins() []map[string]interface{} {
 	if o == nil || IsNil(o.Plugins) {
-		var ret []ComputerPlugin
+		var ret []map[string]interface{}
 		return ret
 	}
 	return o.Plugins
@@ -555,7 +555,7 @@ func (o *ComputerInventory) GetPlugins() []ComputerPlugin {
 
 // GetPluginsOk returns a tuple with the Plugins field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerInventory) GetPluginsOk() ([]ComputerPlugin, bool) {
+func (o *ComputerInventory) GetPluginsOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Plugins) {
 		return nil, false
 	}
@@ -571,8 +571,8 @@ func (o *ComputerInventory) HasPlugins() bool {
 	return false
 }
 
-// SetPlugins gets a reference to the given []ComputerPlugin and assigns it to the Plugins field.
-func (o *ComputerInventory) SetPlugins(v []ComputerPlugin) {
+// SetPlugins gets a reference to the given []map[string]interface{} and assigns it to the Plugins field.
+func (o *ComputerInventory) SetPlugins(v []map[string]interface{}) {
 	o.Plugins = v
 }
 

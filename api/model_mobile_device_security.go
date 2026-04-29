@@ -33,6 +33,8 @@ type MobileDeviceSecurity struct {
 	LastAttestationAttemptDate *time.Time `json:"lastAttestationAttemptDate,omitempty"`
 	LastSuccessfulAttestationDate *time.Time `json:"lastSuccessfulAttestationDate,omitempty"`
 	PasscodeLockGracePeriodEnforcedSeconds *int64 `json:"passcodeLockGracePeriodEnforcedSeconds,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns false 
+	// Deprecated
 	PersonalDeviceProfileCurrent *bool `json:"personalDeviceProfileCurrent,omitempty"`
 	LostModeEnabled *bool `json:"lostModeEnabled,omitempty"`
 	LostModePersistent *bool `json:"lostModePersistent,omitempty"`
@@ -478,6 +480,7 @@ func (o *MobileDeviceSecurity) SetPasscodeLockGracePeriodEnforcedSeconds(v int64
 }
 
 // GetPersonalDeviceProfileCurrent returns the PersonalDeviceProfileCurrent field value if set, zero value otherwise.
+// Deprecated
 func (o *MobileDeviceSecurity) GetPersonalDeviceProfileCurrent() bool {
 	if o == nil || IsNil(o.PersonalDeviceProfileCurrent) {
 		var ret bool
@@ -488,6 +491,7 @@ func (o *MobileDeviceSecurity) GetPersonalDeviceProfileCurrent() bool {
 
 // GetPersonalDeviceProfileCurrentOk returns a tuple with the PersonalDeviceProfileCurrent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *MobileDeviceSecurity) GetPersonalDeviceProfileCurrentOk() (*bool, bool) {
 	if o == nil || IsNil(o.PersonalDeviceProfileCurrent) {
 		return nil, false
@@ -505,6 +509,7 @@ func (o *MobileDeviceSecurity) HasPersonalDeviceProfileCurrent() bool {
 }
 
 // SetPersonalDeviceProfileCurrent gets a reference to the given bool and assigns it to the PersonalDeviceProfileCurrent field.
+// Deprecated
 func (o *MobileDeviceSecurity) SetPersonalDeviceProfileCurrent(v bool) {
 	o.PersonalDeviceProfileCurrent = &v
 }

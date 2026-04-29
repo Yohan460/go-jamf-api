@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **MdmSigningCertificateDetails** | Pointer to [**CertificateDetails**](CertificateDetails.md) |  | [optional] 
 **IosEnterpriseEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to true]
 **IosPersonalEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**PersonalDeviceEnrollmentType** | Pointer to **string** |  | [optional] [default to "PERSONALDEVICEPROFILES"]
+**PersonalDeviceEnrollmentType** | Pointer to **string** | **Deprecated as of 11.25.** This field always returns \&quot;USERENROLLMENT\&quot; in GET responses and ignores any input values in PUT requests.  | [optional] [readonly] [default to "USERENROLLMENT"]
 **AccountDrivenUserEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **AccountDrivenDeviceIosEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **AccountDrivenDeviceMacosEnrollmentEnabled** | Pointer to **bool** |  | [optional] [default to false]

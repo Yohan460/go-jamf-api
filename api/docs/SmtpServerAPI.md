@@ -4,75 +4,12 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**V1SmtpServerGet**](SmtpServerAPI.md#V1SmtpServerGet) | **Get** /v1/smtp-server | Finds the Jamf Pro SMTP Server information 
 [**V1SmtpServerHistoryGet**](SmtpServerAPI.md#V1SmtpServerHistoryGet) | **Get** /v1/smtp-server/history | Get specified SMTP Server history object 
 [**V1SmtpServerHistoryPost**](SmtpServerAPI.md#V1SmtpServerHistoryPost) | **Post** /v1/smtp-server/history | Add SMTP Server history object notes 
-[**V1SmtpServerPut**](SmtpServerAPI.md#V1SmtpServerPut) | **Put** /v1/smtp-server | Updates Jamf Pro SMTP Server information 
 [**V1SmtpServerTestPost**](SmtpServerAPI.md#V1SmtpServerTestPost) | **Post** /v1/smtp-server/test | Test functionality of an SMTP Server
 [**V2SmtpServerGet**](SmtpServerAPI.md#V2SmtpServerGet) | **Get** /v2/smtp-server | Finds the Jamf Pro SMTP Server information 
 [**V2SmtpServerPut**](SmtpServerAPI.md#V2SmtpServerPut) | **Put** /v2/smtp-server | Updates Jamf Pro SMTP Server information 
 
-
-
-## V1SmtpServerGet
-
-> SmtpServer V1SmtpServerGet(ctx).Execute()
-
-Finds the Jamf Pro SMTP Server information 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SmtpServerAPI.V1SmtpServerGet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmtpServerAPI.V1SmtpServerGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1SmtpServerGet`: SmtpServer
-	fmt.Fprintf(os.Stdout, "Response from `SmtpServerAPI.V1SmtpServerGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1SmtpServerGetRequest struct via the builder pattern
-
-
-### Return type
-
-[**SmtpServer**](SmtpServer.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## V1SmtpServerHistoryGet
@@ -206,72 +143,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## V1SmtpServerPut
-
-> SmtpServer V1SmtpServerPut(ctx).SmtpServer(smtpServer).Execute()
-
-Updates Jamf Pro SMTP Server information 
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/yohan460/go-jamf-api/api"
-)
-
-func main() {
-	smtpServer := *openapiclient.NewSmtpServer(true, "abcd.server.com", int64(25), "SSL", int64(5), "Jamf Pro Server", "exampleEmail@example.com", true) // SmtpServer | SMTP Server to update
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SmtpServerAPI.V1SmtpServerPut(context.Background()).SmtpServer(smtpServer).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SmtpServerAPI.V1SmtpServerPut``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `V1SmtpServerPut`: SmtpServer
-	fmt.Fprintf(os.Stdout, "Response from `SmtpServerAPI.V1SmtpServerPut`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiV1SmtpServerPutRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **smtpServer** | [**SmtpServer**](SmtpServer.md) | SMTP Server to update | 
-
-### Return type
-
-[**SmtpServer**](SmtpServer.md)
-
-### Authorization
-
-[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
-- **Content-Type**: application/merge-patch+json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

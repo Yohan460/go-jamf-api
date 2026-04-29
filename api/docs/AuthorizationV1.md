@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | Pointer to [**AuthAccountV1**](AuthAccountV1.md) |  | [optional] 
 **AccountGroups** | Pointer to [**[]AccountGroup**](AccountGroup.md) |  | [optional] 
-**Sites** | Pointer to [**[]V1Site**](V1Site.md) |  | [optional] 
+**Sites** | Pointer to [**[]V1SiteBase**](V1SiteBase.md) |  | [optional] 
 **AuthenticationType** | Pointer to [**AuthenticationType**](AuthenticationType.md) |  | [optional] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasAccountGroups returns a boolean if a field has been set.
 
 ### GetSites
 
-`func (o *AuthorizationV1) GetSites() []V1Site`
+`func (o *AuthorizationV1) GetSites() []V1SiteBase`
 
 GetSites returns the Sites field if non-nil, zero value otherwise.
 
 ### GetSitesOk
 
-`func (o *AuthorizationV1) GetSitesOk() (*[]V1Site, bool)`
+`func (o *AuthorizationV1) GetSitesOk() (*[]V1SiteBase, bool)`
 
 GetSitesOk returns a tuple with the Sites field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSites
 
-`func (o *AuthorizationV1) SetSites(v []V1Site)`
+`func (o *AuthorizationV1) SetSites(v []V1SiteBase)`
 
 SetSites sets Sites field to given value.
 

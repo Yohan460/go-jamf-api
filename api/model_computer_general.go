@@ -44,7 +44,7 @@ type ComputerGeneral struct {
 	InitialEntryDate *string `json:"initialEntryDate,omitempty"`
 	DistributionPoint *string `json:"distributionPoint,omitempty"`
 	EnrollmentMethod *EnrollmentMethod `json:"enrollmentMethod,omitempty"`
-	Site *V1Site `json:"site,omitempty"`
+	Site *V1SiteBase `json:"site,omitempty"`
 	ItunesStoreAccountActive *bool `json:"itunesStoreAccountActive,omitempty"`
 	EnrolledViaAutomatedDeviceEnrollment *bool `json:"enrolledViaAutomatedDeviceEnrollment,omitempty"`
 	UserApprovedMdm *bool `json:"userApprovedMdm,omitempty"`
@@ -750,9 +750,9 @@ func (o *ComputerGeneral) SetEnrollmentMethod(v EnrollmentMethod) {
 }
 
 // GetSite returns the Site field value if set, zero value otherwise.
-func (o *ComputerGeneral) GetSite() V1Site {
+func (o *ComputerGeneral) GetSite() V1SiteBase {
 	if o == nil || IsNil(o.Site) {
-		var ret V1Site
+		var ret V1SiteBase
 		return ret
 	}
 	return *o.Site
@@ -760,7 +760,7 @@ func (o *ComputerGeneral) GetSite() V1Site {
 
 // GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputerGeneral) GetSiteOk() (*V1Site, bool) {
+func (o *ComputerGeneral) GetSiteOk() (*V1SiteBase, bool) {
 	if o == nil || IsNil(o.Site) {
 		return nil, false
 	}
@@ -776,8 +776,8 @@ func (o *ComputerGeneral) HasSite() bool {
 	return false
 }
 
-// SetSite gets a reference to the given V1Site and assigns it to the Site field.
-func (o *ComputerGeneral) SetSite(v V1Site) {
+// SetSite gets a reference to the given V1SiteBase and assigns it to the Site field.
+func (o *ComputerGeneral) SetSite(v V1SiteBase) {
 	o.Site = &v
 }
 

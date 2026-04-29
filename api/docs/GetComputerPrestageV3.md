@@ -36,8 +36,12 @@ Name | Type | Description | Notes
 **RotateRecoveryLockPassword** | Pointer to **bool** |  | [optional] 
 **PrestageMinimumOsTargetVersionType** | Pointer to **string** |  | [optional] 
 **MinimumOsSpecificVersion** | Pointer to **string** |  | [optional] 
-**PssoEnabled** | Pointer to **bool** |  | [optional] [default to false]
-**PlatformSsoAppBundleId** | Pointer to **string** |  | [optional] 
+**PssoEnabled** | Pointer to **bool** | Indicates whether Platform SSO (PSSO) is enabled for this computer prestage, regardless of unattended or 403 workflows. When enabled, the PSSO application will be deployed to devices during the setup process to facilitate single sign-on (SSO) for users. | [optional] [default to false]
+**PlatformSsoAppBundleId** | Pointer to **string** | The bundle identifier for the Platform SSO (PSSO) application unattended workflow. This identifier is used to specify which PSSO app should be deployed to devices during the setup process. | [optional] 
+**ProfileUrl** | Pointer to **NullableString** | The URL to the configuration profile for the Platform SSO (PSSO) application 403 workflow. This URL is used when deploying the PSSO app to devices during the setup process. Users should use either profileUrl or populate pssoConfigProfileId, but not both. | [optional] 
+**PssoConfigProfileId** | Pointer to **NullableString** | The identifier for the configuration profile associated with the Platform SSO (PSSO) application 403 workflow. This ID is used to specify which configuration profile should be applied to devices during the setup process when PSSO is enabled. Users should use either pssoConfigProfileId or populate profileUrl, but not both. | [optional] 
+**ManifestUrl** | Pointer to **NullableString** | The URL to the manifest file for the Platform SSO (PSSO) application 403 workflow. This URL is used when deploying the PSSO app to devices during the setup process. | [optional] 
+**AuthUrl** | Pointer to **NullableString** | The URL to the identity provider (IdP) for authentication for the Platform SSO (PSSO) application 403 workflow. This URL is used in conjunction with PSSO to facilitate single sign-on for users during the device setup process. | [optional] 
 **Id** | Pointer to **string** |  | [optional] [readonly] 
 **ProfileUuid** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
@@ -803,6 +807,146 @@ SetPlatformSsoAppBundleId sets PlatformSsoAppBundleId field to given value.
 
 HasPlatformSsoAppBundleId returns a boolean if a field has been set.
 
+### GetProfileUrl
+
+`func (o *GetComputerPrestageV3) GetProfileUrl() string`
+
+GetProfileUrl returns the ProfileUrl field if non-nil, zero value otherwise.
+
+### GetProfileUrlOk
+
+`func (o *GetComputerPrestageV3) GetProfileUrlOk() (*string, bool)`
+
+GetProfileUrlOk returns a tuple with the ProfileUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileUrl
+
+`func (o *GetComputerPrestageV3) SetProfileUrl(v string)`
+
+SetProfileUrl sets ProfileUrl field to given value.
+
+### HasProfileUrl
+
+`func (o *GetComputerPrestageV3) HasProfileUrl() bool`
+
+HasProfileUrl returns a boolean if a field has been set.
+
+### SetProfileUrlNil
+
+`func (o *GetComputerPrestageV3) SetProfileUrlNil(b bool)`
+
+ SetProfileUrlNil sets the value for ProfileUrl to be an explicit nil
+
+### UnsetProfileUrl
+`func (o *GetComputerPrestageV3) UnsetProfileUrl()`
+
+UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
+### GetPssoConfigProfileId
+
+`func (o *GetComputerPrestageV3) GetPssoConfigProfileId() string`
+
+GetPssoConfigProfileId returns the PssoConfigProfileId field if non-nil, zero value otherwise.
+
+### GetPssoConfigProfileIdOk
+
+`func (o *GetComputerPrestageV3) GetPssoConfigProfileIdOk() (*string, bool)`
+
+GetPssoConfigProfileIdOk returns a tuple with the PssoConfigProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPssoConfigProfileId
+
+`func (o *GetComputerPrestageV3) SetPssoConfigProfileId(v string)`
+
+SetPssoConfigProfileId sets PssoConfigProfileId field to given value.
+
+### HasPssoConfigProfileId
+
+`func (o *GetComputerPrestageV3) HasPssoConfigProfileId() bool`
+
+HasPssoConfigProfileId returns a boolean if a field has been set.
+
+### SetPssoConfigProfileIdNil
+
+`func (o *GetComputerPrestageV3) SetPssoConfigProfileIdNil(b bool)`
+
+ SetPssoConfigProfileIdNil sets the value for PssoConfigProfileId to be an explicit nil
+
+### UnsetPssoConfigProfileId
+`func (o *GetComputerPrestageV3) UnsetPssoConfigProfileId()`
+
+UnsetPssoConfigProfileId ensures that no value is present for PssoConfigProfileId, not even an explicit nil
+### GetManifestUrl
+
+`func (o *GetComputerPrestageV3) GetManifestUrl() string`
+
+GetManifestUrl returns the ManifestUrl field if non-nil, zero value otherwise.
+
+### GetManifestUrlOk
+
+`func (o *GetComputerPrestageV3) GetManifestUrlOk() (*string, bool)`
+
+GetManifestUrlOk returns a tuple with the ManifestUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManifestUrl
+
+`func (o *GetComputerPrestageV3) SetManifestUrl(v string)`
+
+SetManifestUrl sets ManifestUrl field to given value.
+
+### HasManifestUrl
+
+`func (o *GetComputerPrestageV3) HasManifestUrl() bool`
+
+HasManifestUrl returns a boolean if a field has been set.
+
+### SetManifestUrlNil
+
+`func (o *GetComputerPrestageV3) SetManifestUrlNil(b bool)`
+
+ SetManifestUrlNil sets the value for ManifestUrl to be an explicit nil
+
+### UnsetManifestUrl
+`func (o *GetComputerPrestageV3) UnsetManifestUrl()`
+
+UnsetManifestUrl ensures that no value is present for ManifestUrl, not even an explicit nil
+### GetAuthUrl
+
+`func (o *GetComputerPrestageV3) GetAuthUrl() string`
+
+GetAuthUrl returns the AuthUrl field if non-nil, zero value otherwise.
+
+### GetAuthUrlOk
+
+`func (o *GetComputerPrestageV3) GetAuthUrlOk() (*string, bool)`
+
+GetAuthUrlOk returns a tuple with the AuthUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthUrl
+
+`func (o *GetComputerPrestageV3) SetAuthUrl(v string)`
+
+SetAuthUrl sets AuthUrl field to given value.
+
+### HasAuthUrl
+
+`func (o *GetComputerPrestageV3) HasAuthUrl() bool`
+
+HasAuthUrl returns a boolean if a field has been set.
+
+### SetAuthUrlNil
+
+`func (o *GetComputerPrestageV3) SetAuthUrlNil(b bool)`
+
+ SetAuthUrlNil sets the value for AuthUrl to be an explicit nil
+
+### UnsetAuthUrl
+`func (o *GetComputerPrestageV3) UnsetAuthUrl()`
+
+UnsetAuthUrl ensures that no value is present for AuthUrl, not even an explicit nil
 ### GetId
 
 `func (o *GetComputerPrestageV3) GetId() string`

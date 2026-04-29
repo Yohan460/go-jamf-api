@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GroupId** | Pointer to **string** |  | [optional] [readonly] 
-**GroupName** | Pointer to **string** |  | [optional] 
+**GroupName** | **string** |  | 
 **GroupDescription** | Pointer to **string** |  | [optional] 
 **SiteId** | Pointer to **string** |  | [optional] 
 **Assignments** | Pointer to [**[]Assignment**](Assignment.md) |  | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewStaticGroupAssignment
 
-`func NewStaticGroupAssignment() *StaticGroupAssignment`
+`func NewStaticGroupAssignment(groupName string, ) *StaticGroupAssignment`
 
 NewStaticGroupAssignment instantiates a new StaticGroupAssignment object
 This constructor will assign default values to properties that have it defined,
@@ -73,11 +73,6 @@ and a boolean to check if the value has been set.
 
 SetGroupName sets GroupName field to given value.
 
-### HasGroupName
-
-`func (o *StaticGroupAssignment) HasGroupName() bool`
-
-HasGroupName returns a boolean if a field has been set.
 
 ### GetGroupDescription
 

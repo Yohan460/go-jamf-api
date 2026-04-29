@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ChangePasswordOnNextLogin** | Pointer to **bool** |  | [optional] 
 **FailedLoginAttempts** | Pointer to **int64** |  | [optional] [readonly] 
 **AccountStatus** | Pointer to **string** | Status of the account | [optional] [default to "Enabled"]
+**AccountType** | Pointer to **string** | Type of the account | [optional] [default to "DEFAULT"]
 
 ## Methods
 
@@ -413,6 +414,31 @@ SetAccountStatus sets AccountStatus field to given value.
 `func (o *UserAccount) HasAccountStatus() bool`
 
 HasAccountStatus returns a boolean if a field has been set.
+
+### GetAccountType
+
+`func (o *UserAccount) GetAccountType() string`
+
+GetAccountType returns the AccountType field if non-nil, zero value otherwise.
+
+### GetAccountTypeOk
+
+`func (o *UserAccount) GetAccountTypeOk() (*string, bool)`
+
+GetAccountTypeOk returns a tuple with the AccountType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAccountType
+
+`func (o *UserAccount) SetAccountType(v string)`
+
+SetAccountType sets AccountType field to given value.
+
+### HasAccountType
+
+`func (o *UserAccount) HasAccountType() bool`
+
+HasAccountType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

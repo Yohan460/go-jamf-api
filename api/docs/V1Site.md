@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
+**DivisionId** | Pointer to **NullableString** | Platform division identifier (UUID) for this site. | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -51,6 +52,41 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
+### GetDivisionId
+
+`func (o *V1Site) GetDivisionId() string`
+
+GetDivisionId returns the DivisionId field if non-nil, zero value otherwise.
+
+### GetDivisionIdOk
+
+`func (o *V1Site) GetDivisionIdOk() (*string, bool)`
+
+GetDivisionIdOk returns a tuple with the DivisionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDivisionId
+
+`func (o *V1Site) SetDivisionId(v string)`
+
+SetDivisionId sets DivisionId field to given value.
+
+### HasDivisionId
+
+`func (o *V1Site) HasDivisionId() bool`
+
+HasDivisionId returns a boolean if a field has been set.
+
+### SetDivisionIdNil
+
+`func (o *V1Site) SetDivisionIdNil(b bool)`
+
+ SetDivisionIdNil sets the value for DivisionId to be an explicit nil
+
+### UnsetDivisionId
+`func (o *V1Site) UnsetDivisionId()`
+
+UnsetDivisionId ensures that no value is present for DivisionId, not even an explicit nil
 ### GetName
 
 `func (o *V1Site) GetName() string`

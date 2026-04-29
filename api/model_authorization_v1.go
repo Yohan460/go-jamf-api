@@ -21,7 +21,7 @@ var _ MappedNullable = &AuthorizationV1{}
 type AuthorizationV1 struct {
 	Account *AuthAccountV1 `json:"account,omitempty"`
 	AccountGroups []AccountGroup `json:"accountGroups,omitempty"`
-	Sites []V1Site `json:"sites,omitempty"`
+	Sites []V1SiteBase `json:"sites,omitempty"`
 	AuthenticationType *AuthenticationType `json:"authenticationType,omitempty"`
 }
 
@@ -107,9 +107,9 @@ func (o *AuthorizationV1) SetAccountGroups(v []AccountGroup) {
 }
 
 // GetSites returns the Sites field value if set, zero value otherwise.
-func (o *AuthorizationV1) GetSites() []V1Site {
+func (o *AuthorizationV1) GetSites() []V1SiteBase {
 	if o == nil || IsNil(o.Sites) {
-		var ret []V1Site
+		var ret []V1SiteBase
 		return ret
 	}
 	return o.Sites
@@ -117,7 +117,7 @@ func (o *AuthorizationV1) GetSites() []V1Site {
 
 // GetSitesOk returns a tuple with the Sites field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthorizationV1) GetSitesOk() ([]V1Site, bool) {
+func (o *AuthorizationV1) GetSitesOk() ([]V1SiteBase, bool) {
 	if o == nil || IsNil(o.Sites) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *AuthorizationV1) HasSites() bool {
 	return false
 }
 
-// SetSites gets a reference to the given []V1Site and assigns it to the Sites field.
-func (o *AuthorizationV1) SetSites(v []V1Site) {
+// SetSites gets a reference to the given []V1SiteBase and assigns it to the Sites field.
+func (o *AuthorizationV1) SetSites(v []V1SiteBase) {
 	o.Sites = v
 }
 

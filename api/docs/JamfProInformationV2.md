@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VppTokenEnabled** | Pointer to **bool** |  | [optional] 
 **DepAccountEnabled** | Pointer to **bool** |  | [optional] 
-**ByodEnabled** | Pointer to **bool** |  | [optional] 
+**ByodEnabled** | Pointer to **bool** | **Deprecated as of 11.25.** This field always returns false.  | [optional] [readonly] [default to false]
 **UserMigrationEnabled** | Pointer to **bool** |  | [optional] 
 **CloudDeploymentsEnabled** | Pointer to **bool** |  | [optional] 
 **PatchEnabled** | Pointer to **bool** |  | [optional] 

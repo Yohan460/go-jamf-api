@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationAttributes{}
 
 // ApplicationAttributes struct for ApplicationAttributes
 type ApplicationAttributes struct {
-	Identifier *string `json:"identifier,omitempty"`
+	Identifier NullableString `json:"identifier,omitempty"`
 	Attributes *Attributes `json:"attributes,omitempty"`
 }
 
@@ -40,36 +40,46 @@ func NewApplicationAttributesWithDefaults() *ApplicationAttributes {
 	return &this
 }
 
-// GetIdentifier returns the Identifier field value if set, zero value otherwise.
+// GetIdentifier returns the Identifier field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationAttributes) GetIdentifier() string {
-	if o == nil || IsNil(o.Identifier) {
+	if o == nil || IsNil(o.Identifier.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Identifier
+	return *o.Identifier.Get()
 }
 
 // GetIdentifierOk returns a tuple with the Identifier field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationAttributes) GetIdentifierOk() (*string, bool) {
-	if o == nil || IsNil(o.Identifier) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Identifier, true
+	return o.Identifier.Get(), o.Identifier.IsSet()
 }
 
 // HasIdentifier returns a boolean if a field has been set.
 func (o *ApplicationAttributes) HasIdentifier() bool {
-	if o != nil && !IsNil(o.Identifier) {
+	if o != nil && o.Identifier.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIdentifier gets a reference to the given string and assigns it to the Identifier field.
+// SetIdentifier gets a reference to the given NullableString and assigns it to the Identifier field.
 func (o *ApplicationAttributes) SetIdentifier(v string) {
-	o.Identifier = &v
+	o.Identifier.Set(&v)
+}
+// SetIdentifierNil sets the value for Identifier to be an explicit nil
+func (o *ApplicationAttributes) SetIdentifierNil() {
+	o.Identifier.Set(nil)
+}
+
+// UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
+func (o *ApplicationAttributes) UnsetIdentifier() {
+	o.Identifier.Unset()
 }
 
 // GetAttributes returns the Attributes field value if set, zero value otherwise.
@@ -114,8 +124,8 @@ func (o ApplicationAttributes) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Identifier) {
-		toSerialize["identifier"] = o.Identifier
+	if o.Identifier.IsSet() {
+		toSerialize["identifier"] = o.Identifier.Get()
 	}
 	if !IsNil(o.Attributes) {
 		toSerialize["attributes"] = o.Attributes

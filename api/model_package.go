@@ -49,6 +49,7 @@ type Package struct {
 	InstallLanguage NullableString `json:"installLanguage,omitempty"`
 	Md5 NullableString `json:"md5,omitempty"`
 	Sha256 NullableString `json:"sha256,omitempty"`
+	Sha3512 NullableString `json:"sha3512,omitempty"`
 	HashType NullableString `json:"hashType,omitempty"`
 	HashValue NullableString `json:"hashValue,omitempty"`
 	Size NullableString `json:"size,omitempty"`
@@ -996,6 +997,48 @@ func (o *Package) UnsetSha256() {
 	o.Sha256.Unset()
 }
 
+// GetSha3512 returns the Sha3512 field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Package) GetSha3512() string {
+	if o == nil || IsNil(o.Sha3512.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Sha3512.Get()
+}
+
+// GetSha3512Ok returns a tuple with the Sha3512 field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Package) GetSha3512Ok() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Sha3512.Get(), o.Sha3512.IsSet()
+}
+
+// HasSha3512 returns a boolean if a field has been set.
+func (o *Package) HasSha3512() bool {
+	if o != nil && o.Sha3512.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSha3512 gets a reference to the given NullableString and assigns it to the Sha3512 field.
+func (o *Package) SetSha3512(v string) {
+	o.Sha3512.Set(&v)
+}
+// SetSha3512Nil sets the value for Sha3512 to be an explicit nil
+func (o *Package) SetSha3512Nil() {
+	o.Sha3512.Set(nil)
+}
+
+// UnsetSha3512 ensures that no value is present for Sha3512, not even an explicit nil
+func (o *Package) UnsetSha3512() {
+	o.Sha3512.Unset()
+}
+
 // GetHashType returns the HashType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Package) GetHashType() string {
 	if o == nil || IsNil(o.HashType.Get()) {
@@ -1361,6 +1404,9 @@ func (o Package) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Sha256.IsSet() {
 		toSerialize["sha256"] = o.Sha256.Get()
+	}
+	if o.Sha3512.IsSet() {
+		toSerialize["sha3512"] = o.Sha3512.Get()
 	}
 	if o.HashType.IsSet() {
 		toSerialize["hashType"] = o.HashType.Get()
