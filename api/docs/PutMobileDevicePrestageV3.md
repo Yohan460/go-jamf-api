@@ -49,6 +49,8 @@ Name | Type | Description | Notes
 **RtsEnabled** | Pointer to **bool** |  | [optional] 
 **RtsConfigProfileId** | Pointer to **string** |  | [optional] 
 **PreserveManagedApps** | Pointer to **bool** | Controls whether managed apps are preserved during Return to Service operations. | [optional] 
+**InstallAppsDuringEnrollment** | Pointer to **bool** | Controls whether apps are installed during the enrollment process. | [optional] 
+**DoNotUseProfileFromBackup** | Pointer to **bool** | If true, the device does not use the profile when it restores a backup. Default is false. Available in iOS 26 and later, and visionOS 26 and later; otherwise ignored by devices. | [optional] 
 **VersionLock** | Pointer to **int64** |  | [optional] 
 
 ## Methods
@@ -1059,6 +1061,56 @@ SetPreserveManagedApps sets PreserveManagedApps field to given value.
 `func (o *PutMobileDevicePrestageV3) HasPreserveManagedApps() bool`
 
 HasPreserveManagedApps returns a boolean if a field has been set.
+
+### GetInstallAppsDuringEnrollment
+
+`func (o *PutMobileDevicePrestageV3) GetInstallAppsDuringEnrollment() bool`
+
+GetInstallAppsDuringEnrollment returns the InstallAppsDuringEnrollment field if non-nil, zero value otherwise.
+
+### GetInstallAppsDuringEnrollmentOk
+
+`func (o *PutMobileDevicePrestageV3) GetInstallAppsDuringEnrollmentOk() (*bool, bool)`
+
+GetInstallAppsDuringEnrollmentOk returns a tuple with the InstallAppsDuringEnrollment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstallAppsDuringEnrollment
+
+`func (o *PutMobileDevicePrestageV3) SetInstallAppsDuringEnrollment(v bool)`
+
+SetInstallAppsDuringEnrollment sets InstallAppsDuringEnrollment field to given value.
+
+### HasInstallAppsDuringEnrollment
+
+`func (o *PutMobileDevicePrestageV3) HasInstallAppsDuringEnrollment() bool`
+
+HasInstallAppsDuringEnrollment returns a boolean if a field has been set.
+
+### GetDoNotUseProfileFromBackup
+
+`func (o *PutMobileDevicePrestageV3) GetDoNotUseProfileFromBackup() bool`
+
+GetDoNotUseProfileFromBackup returns the DoNotUseProfileFromBackup field if non-nil, zero value otherwise.
+
+### GetDoNotUseProfileFromBackupOk
+
+`func (o *PutMobileDevicePrestageV3) GetDoNotUseProfileFromBackupOk() (*bool, bool)`
+
+GetDoNotUseProfileFromBackupOk returns a tuple with the DoNotUseProfileFromBackup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDoNotUseProfileFromBackup
+
+`func (o *PutMobileDevicePrestageV3) SetDoNotUseProfileFromBackup(v bool)`
+
+SetDoNotUseProfileFromBackup sets DoNotUseProfileFromBackup field to given value.
+
+### HasDoNotUseProfileFromBackup
+
+`func (o *PutMobileDevicePrestageV3) HasDoNotUseProfileFromBackup() bool`
+
+HasDoNotUseProfileFromBackup returns a boolean if a field has been set.
 
 ### GetVersionLock
 

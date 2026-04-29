@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**V1AccountsGet**](AccountsAPI.md#V1AccountsGet) | **Get** /v1/accounts | Get user accounts
 [**V1AccountsIdDelete**](AccountsAPI.md#V1AccountsIdDelete) | **Delete** /v1/accounts/{id} | Deletes the user account. 
 [**V1AccountsIdGet**](AccountsAPI.md#V1AccountsIdGet) | **Get** /v1/accounts/{id} | Gets the user account. 
+[**V1AccountsIdPut**](AccountsAPI.md#V1AccountsIdPut) | **Put** /v1/accounts/{id} | Updates the user account. 
 [**V1AccountsPost**](AccountsAPI.md#V1AccountsPost) | **Post** /v1/accounts | Adds new account. 
 
 
@@ -214,6 +215,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1AccountsIdPut
+
+> UserAccount V1AccountsIdPut(ctx, id).UserAccount(userAccount).Execute()
+
+Updates the user account. 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | id of target account
+	userAccount := *openapiclient.NewUserAccount() // UserAccount | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccountsAPI.V1AccountsIdPut(context.Background(), id).UserAccount(userAccount).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.V1AccountsIdPut``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V1AccountsIdPut`: UserAccount
+	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.V1AccountsIdPut`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | id of target account | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1AccountsIdPutRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **userAccount** | [**UserAccount**](UserAccount.md) |  | 
+
+### Return type
+
+[**UserAccount**](UserAccount.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

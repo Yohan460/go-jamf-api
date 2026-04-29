@@ -42,7 +42,7 @@ func main() {
 	configurationId := "configurationId_example" // string | ID of the Team Viewer connection configuration
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	filter := "deviceId==1 and deviceType=="COMPUTER" and state=="OPEN"" // string | Query in the RSQL format, allowing to filter sessions collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: `deviceId`, `deviceType`, `state`  This param can be combined with paging.  (optional) (default to "")
+	filter := "deviceId==1 and deviceType==\"COMPUTER\" and state==\"OPEN\"" // string | Query in the RSQL format, allowing to filter sessions collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: `deviceId`, `deviceType`, `state`  This param can be combined with paging.  (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

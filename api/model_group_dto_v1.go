@@ -14,11 +14,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupV1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupV1{}
+// checks if the GroupDtoV1 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GroupDtoV1{}
 
-// GroupV1 struct for GroupV1
-type GroupV1 struct {
+// GroupDtoV1 struct for GroupDtoV1
+type GroupDtoV1 struct {
 	GroupPlatformId *string `json:"groupPlatformId,omitempty"`
 	GroupJamfProId *string `json:"groupJamfProId,omitempty"`
 	GroupName *string `json:"groupName,omitempty"`
@@ -28,25 +28,25 @@ type GroupV1 struct {
 	MembershipCount *int64 `json:"membershipCount,omitempty"`
 }
 
-// NewGroupV1 instantiates a new GroupV1 object
+// NewGroupDtoV1 instantiates a new GroupDtoV1 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupV1() *GroupV1 {
-	this := GroupV1{}
+func NewGroupDtoV1() *GroupDtoV1 {
+	this := GroupDtoV1{}
 	return &this
 }
 
-// NewGroupV1WithDefaults instantiates a new GroupV1 object
+// NewGroupDtoV1WithDefaults instantiates a new GroupDtoV1 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGroupV1WithDefaults() *GroupV1 {
-	this := GroupV1{}
+func NewGroupDtoV1WithDefaults() *GroupDtoV1 {
+	this := GroupDtoV1{}
 	return &this
 }
 
 // GetGroupPlatformId returns the GroupPlatformId field value if set, zero value otherwise.
-func (o *GroupV1) GetGroupPlatformId() string {
+func (o *GroupDtoV1) GetGroupPlatformId() string {
 	if o == nil || IsNil(o.GroupPlatformId) {
 		var ret string
 		return ret
@@ -56,7 +56,7 @@ func (o *GroupV1) GetGroupPlatformId() string {
 
 // GetGroupPlatformIdOk returns a tuple with the GroupPlatformId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetGroupPlatformIdOk() (*string, bool) {
+func (o *GroupDtoV1) GetGroupPlatformIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupPlatformId) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *GroupV1) GetGroupPlatformIdOk() (*string, bool) {
 }
 
 // HasGroupPlatformId returns a boolean if a field has been set.
-func (o *GroupV1) HasGroupPlatformId() bool {
+func (o *GroupDtoV1) HasGroupPlatformId() bool {
 	if o != nil && !IsNil(o.GroupPlatformId) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *GroupV1) HasGroupPlatformId() bool {
 }
 
 // SetGroupPlatformId gets a reference to the given string and assigns it to the GroupPlatformId field.
-func (o *GroupV1) SetGroupPlatformId(v string) {
+func (o *GroupDtoV1) SetGroupPlatformId(v string) {
 	o.GroupPlatformId = &v
 }
 
 // GetGroupJamfProId returns the GroupJamfProId field value if set, zero value otherwise.
-func (o *GroupV1) GetGroupJamfProId() string {
+func (o *GroupDtoV1) GetGroupJamfProId() string {
 	if o == nil || IsNil(o.GroupJamfProId) {
 		var ret string
 		return ret
@@ -88,7 +88,7 @@ func (o *GroupV1) GetGroupJamfProId() string {
 
 // GetGroupJamfProIdOk returns a tuple with the GroupJamfProId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetGroupJamfProIdOk() (*string, bool) {
+func (o *GroupDtoV1) GetGroupJamfProIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupJamfProId) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *GroupV1) GetGroupJamfProIdOk() (*string, bool) {
 }
 
 // HasGroupJamfProId returns a boolean if a field has been set.
-func (o *GroupV1) HasGroupJamfProId() bool {
+func (o *GroupDtoV1) HasGroupJamfProId() bool {
 	if o != nil && !IsNil(o.GroupJamfProId) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *GroupV1) HasGroupJamfProId() bool {
 }
 
 // SetGroupJamfProId gets a reference to the given string and assigns it to the GroupJamfProId field.
-func (o *GroupV1) SetGroupJamfProId(v string) {
+func (o *GroupDtoV1) SetGroupJamfProId(v string) {
 	o.GroupJamfProId = &v
 }
 
 // GetGroupName returns the GroupName field value if set, zero value otherwise.
-func (o *GroupV1) GetGroupName() string {
+func (o *GroupDtoV1) GetGroupName() string {
 	if o == nil || IsNil(o.GroupName) {
 		var ret string
 		return ret
@@ -120,7 +120,7 @@ func (o *GroupV1) GetGroupName() string {
 
 // GetGroupNameOk returns a tuple with the GroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetGroupNameOk() (*string, bool) {
+func (o *GroupDtoV1) GetGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupName) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *GroupV1) GetGroupNameOk() (*string, bool) {
 }
 
 // HasGroupName returns a boolean if a field has been set.
-func (o *GroupV1) HasGroupName() bool {
+func (o *GroupDtoV1) HasGroupName() bool {
 	if o != nil && !IsNil(o.GroupName) {
 		return true
 	}
@@ -137,12 +137,12 @@ func (o *GroupV1) HasGroupName() bool {
 }
 
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
-func (o *GroupV1) SetGroupName(v string) {
+func (o *GroupDtoV1) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
 // GetGroupDescription returns the GroupDescription field value if set, zero value otherwise.
-func (o *GroupV1) GetGroupDescription() string {
+func (o *GroupDtoV1) GetGroupDescription() string {
 	if o == nil || IsNil(o.GroupDescription) {
 		var ret string
 		return ret
@@ -152,7 +152,7 @@ func (o *GroupV1) GetGroupDescription() string {
 
 // GetGroupDescriptionOk returns a tuple with the GroupDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetGroupDescriptionOk() (*string, bool) {
+func (o *GroupDtoV1) GetGroupDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupDescription) {
 		return nil, false
 	}
@@ -160,7 +160,7 @@ func (o *GroupV1) GetGroupDescriptionOk() (*string, bool) {
 }
 
 // HasGroupDescription returns a boolean if a field has been set.
-func (o *GroupV1) HasGroupDescription() bool {
+func (o *GroupDtoV1) HasGroupDescription() bool {
 	if o != nil && !IsNil(o.GroupDescription) {
 		return true
 	}
@@ -169,12 +169,12 @@ func (o *GroupV1) HasGroupDescription() bool {
 }
 
 // SetGroupDescription gets a reference to the given string and assigns it to the GroupDescription field.
-func (o *GroupV1) SetGroupDescription(v string) {
+func (o *GroupDtoV1) SetGroupDescription(v string) {
 	o.GroupDescription = &v
 }
 
 // GetGroupType returns the GroupType field value if set, zero value otherwise.
-func (o *GroupV1) GetGroupType() string {
+func (o *GroupDtoV1) GetGroupType() string {
 	if o == nil || IsNil(o.GroupType) {
 		var ret string
 		return ret
@@ -184,7 +184,7 @@ func (o *GroupV1) GetGroupType() string {
 
 // GetGroupTypeOk returns a tuple with the GroupType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetGroupTypeOk() (*string, bool) {
+func (o *GroupDtoV1) GetGroupTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupType) {
 		return nil, false
 	}
@@ -192,7 +192,7 @@ func (o *GroupV1) GetGroupTypeOk() (*string, bool) {
 }
 
 // HasGroupType returns a boolean if a field has been set.
-func (o *GroupV1) HasGroupType() bool {
+func (o *GroupDtoV1) HasGroupType() bool {
 	if o != nil && !IsNil(o.GroupType) {
 		return true
 	}
@@ -201,12 +201,12 @@ func (o *GroupV1) HasGroupType() bool {
 }
 
 // SetGroupType gets a reference to the given string and assigns it to the GroupType field.
-func (o *GroupV1) SetGroupType(v string) {
+func (o *GroupDtoV1) SetGroupType(v string) {
 	o.GroupType = &v
 }
 
 // GetSmart returns the Smart field value if set, zero value otherwise.
-func (o *GroupV1) GetSmart() bool {
+func (o *GroupDtoV1) GetSmart() bool {
 	if o == nil || IsNil(o.Smart) {
 		var ret bool
 		return ret
@@ -216,7 +216,7 @@ func (o *GroupV1) GetSmart() bool {
 
 // GetSmartOk returns a tuple with the Smart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetSmartOk() (*bool, bool) {
+func (o *GroupDtoV1) GetSmartOk() (*bool, bool) {
 	if o == nil || IsNil(o.Smart) {
 		return nil, false
 	}
@@ -224,7 +224,7 @@ func (o *GroupV1) GetSmartOk() (*bool, bool) {
 }
 
 // HasSmart returns a boolean if a field has been set.
-func (o *GroupV1) HasSmart() bool {
+func (o *GroupDtoV1) HasSmart() bool {
 	if o != nil && !IsNil(o.Smart) {
 		return true
 	}
@@ -233,12 +233,12 @@ func (o *GroupV1) HasSmart() bool {
 }
 
 // SetSmart gets a reference to the given bool and assigns it to the Smart field.
-func (o *GroupV1) SetSmart(v bool) {
+func (o *GroupDtoV1) SetSmart(v bool) {
 	o.Smart = &v
 }
 
 // GetMembershipCount returns the MembershipCount field value if set, zero value otherwise.
-func (o *GroupV1) GetMembershipCount() int64 {
+func (o *GroupDtoV1) GetMembershipCount() int64 {
 	if o == nil || IsNil(o.MembershipCount) {
 		var ret int64
 		return ret
@@ -248,7 +248,7 @@ func (o *GroupV1) GetMembershipCount() int64 {
 
 // GetMembershipCountOk returns a tuple with the MembershipCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupV1) GetMembershipCountOk() (*int64, bool) {
+func (o *GroupDtoV1) GetMembershipCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.MembershipCount) {
 		return nil, false
 	}
@@ -256,7 +256,7 @@ func (o *GroupV1) GetMembershipCountOk() (*int64, bool) {
 }
 
 // HasMembershipCount returns a boolean if a field has been set.
-func (o *GroupV1) HasMembershipCount() bool {
+func (o *GroupDtoV1) HasMembershipCount() bool {
 	if o != nil && !IsNil(o.MembershipCount) {
 		return true
 	}
@@ -265,11 +265,11 @@ func (o *GroupV1) HasMembershipCount() bool {
 }
 
 // SetMembershipCount gets a reference to the given int64 and assigns it to the MembershipCount field.
-func (o *GroupV1) SetMembershipCount(v int64) {
+func (o *GroupDtoV1) SetMembershipCount(v int64) {
 	o.MembershipCount = &v
 }
 
-func (o GroupV1) MarshalJSON() ([]byte, error) {
+func (o GroupDtoV1) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -277,7 +277,7 @@ func (o GroupV1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GroupV1) ToMap() (map[string]interface{}, error) {
+func (o GroupDtoV1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.GroupPlatformId) {
 		toSerialize["groupPlatformId"] = o.GroupPlatformId
@@ -303,38 +303,38 @@ func (o GroupV1) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableGroupV1 struct {
-	value *GroupV1
+type NullableGroupDtoV1 struct {
+	value *GroupDtoV1
 	isSet bool
 }
 
-func (v NullableGroupV1) Get() *GroupV1 {
+func (v NullableGroupDtoV1) Get() *GroupDtoV1 {
 	return v.value
 }
 
-func (v *NullableGroupV1) Set(val *GroupV1) {
+func (v *NullableGroupDtoV1) Set(val *GroupDtoV1) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGroupV1) IsSet() bool {
+func (v NullableGroupDtoV1) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGroupV1) Unset() {
+func (v *NullableGroupDtoV1) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGroupV1(val *GroupV1) *NullableGroupV1 {
-	return &NullableGroupV1{value: val, isSet: true}
+func NewNullableGroupDtoV1(val *GroupDtoV1) *NullableGroupDtoV1 {
+	return &NullableGroupDtoV1{value: val, isSet: true}
 }
 
-func (v NullableGroupV1) MarshalJSON() ([]byte, error) {
+func (v NullableGroupDtoV1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGroupV1) UnmarshalJSON(src []byte) error {
+func (v *NullableGroupDtoV1) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identifier** | Pointer to **string** |  | [optional] 
+**Identifier** | Pointer to **NullableString** |  | [optional] 
 **Attributes** | Pointer to [**Attributes**](Attributes.md) |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetIdentifier sets Identifier field to given value.
 
 HasIdentifier returns a boolean if a field has been set.
 
+### SetIdentifierNil
+
+`func (o *ApplicationAttributes) SetIdentifierNil(b bool)`
+
+ SetIdentifierNil sets the value for Identifier to be an explicit nil
+
+### UnsetIdentifier
+`func (o *ApplicationAttributes) UnsetIdentifier()`
+
+UnsetIdentifier ensures that no value is present for Identifier, not even an explicit nil
 ### GetAttributes
 
 `func (o *ApplicationAttributes) GetAttributes() Attributes`

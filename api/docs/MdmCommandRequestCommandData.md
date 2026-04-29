@@ -17,13 +17,16 @@ Name | Type | Description | Notes
 **DisallowProximitySetup** | Pointer to **bool** | If true, disable Proximity Setup on the next reboot and skip the pane in Setup Assistant. This value is available in iOS 11 and later. Prior to iOS 14, don’t use this option with any other option. | [optional] [default to false]
 **ObliterationBehavior** | Pointer to **string** | This key defines the fallback behavior for erasing a device. | [optional] 
 **ReturnToService** | Pointer to [**ReturnToService**](ReturnToService.md) |  | [optional] 
-**Identifiers** | Pointer to **[]string** | Array of application identifiers to manage | [optional] 
+**Identifiers** | Pointer to **[]string** | Array of application bundle identifiers to query. If not provided, all installed applications are returned. | [optional] 
+**ManagedAppsOnly** | Pointer to **NullableBool** | If true, only managed applications are returned. If false or not provided, all applications are returned. | [optional] 
+**Items** | Pointer to **[]string** | Array of keys to include in the response for each application. If not provided, default keys are returned. | [optional] 
 **UserName** | Pointer to **string** | The username of the user account to unlock | [optional] 
 **ForceDeletion** | Pointer to **bool** |  | [optional] 
 **DeleteAllUsers** | Pointer to **bool** |  | [optional] 
 **LostModeMessage** | Pointer to **string** |  | [optional] 
 **LostModePhone** | Pointer to **string** |  | [optional] 
 **LostModeFootnote** | Pointer to **string** |  | [optional] 
+**ManagedOnly** | Pointer to **NullableBool** | If true, only managed provisioning profiles are returned. If false, all provisioning profiles are returned. The default value is false. | [optional] [default to false]
 **EsimServerUrl** | **string** | The URL of the eSIM server that the device should contact to refresh cellular plans. | 
 **RebuildKernelCache** | Pointer to **bool** |  | [optional] 
 **KextPaths** | Pointer to **[]string** | Only used if RebuildKernelCache is true | [optional] 
@@ -34,21 +37,23 @@ Name | Type | Description | Notes
 **ScanTime** | Pointer to **NullableInt64** | The scan time which device spends in seconds to find the destination device. | [optional] 
 **Guid** | Pointer to **string** | The unique identifier of the local administrator account. Must match the GUID of an administrator account that MDM created during Device Enrollment Program (DEP) enrollment. | [optional] 
 **NewPassword** | Pointer to **string** | The new password for Recovery Lock. Set as an empty string to clear the Recovery Lock password. | [optional] 
-**BootstrapTokenAllowed** | Pointer to **bool** |  | [optional] 
-**Bluetooth** | Pointer to **bool** |  | [optional] 
+**BootstrapTokenAllowed** | Pointer to **NullableBool** |  | [optional] 
+**Bluetooth** | Pointer to **NullableBool** |  | [optional] 
 **AppAnalytics** | Pointer to [**AppAnalyticsSetting**](AppAnalyticsSetting.md) |  | [optional] 
 **DiagnosticSubmission** | Pointer to [**DiagnosticSubmissionSetting**](DiagnosticSubmissionSetting.md) |  | [optional] 
 **DataRoaming** | Pointer to [**DataRoamingSetting**](DataRoamingSetting.md) |  | [optional] 
+**DefaultApplications** | Pointer to [**DefaultApplications**](DefaultApplications.md) |  | [optional] 
 **VoiceRoaming** | Pointer to [**VoiceRoamingSetting**](VoiceRoamingSetting.md) |  | [optional] 
 **PersonalHotspot** | Pointer to [**PersonalHotspotSetting**](PersonalHotspotSetting.md) |  | [optional] 
-**MaximumResidentUsers** | Pointer to **int64** |  | [optional] 
+**MaximumResidentUsers** | Pointer to **NullableInt64** |  | [optional] 
 **DeviceName** | Pointer to **string** |  | [optional] 
 **ApplicationAttributes** | Pointer to [**ApplicationAttributes**](ApplicationAttributes.md) |  | [optional] 
 **SharedDeviceConfiguration** | Pointer to [**SharedDeviceConfiguration**](SharedDeviceConfiguration.md) |  | [optional] 
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
-**TimeZone** | Pointer to **string** |  | [optional] 
+**TimeZone** | Pointer to **NullableString** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
-**PasscodeLockGracePeriod** | Pointer to **int64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **NullableInt64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**ActivationLockAllowedWhileSupervised** | Pointer to **bool** | If true, a supervised device registers itself with Activation Lock when the user enables Find My. This setting is available for supervised devices in iOS 7 and later, and macOS 10.15 and later. | [optional] 
 
 ## Methods
 
@@ -419,6 +424,76 @@ HasIdentifiers returns a boolean if a field has been set.
 `func (o *MdmCommandRequestCommandData) UnsetIdentifiers()`
 
 UnsetIdentifiers ensures that no value is present for Identifiers, not even an explicit nil
+### GetManagedAppsOnly
+
+`func (o *MdmCommandRequestCommandData) GetManagedAppsOnly() bool`
+
+GetManagedAppsOnly returns the ManagedAppsOnly field if non-nil, zero value otherwise.
+
+### GetManagedAppsOnlyOk
+
+`func (o *MdmCommandRequestCommandData) GetManagedAppsOnlyOk() (*bool, bool)`
+
+GetManagedAppsOnlyOk returns a tuple with the ManagedAppsOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedAppsOnly
+
+`func (o *MdmCommandRequestCommandData) SetManagedAppsOnly(v bool)`
+
+SetManagedAppsOnly sets ManagedAppsOnly field to given value.
+
+### HasManagedAppsOnly
+
+`func (o *MdmCommandRequestCommandData) HasManagedAppsOnly() bool`
+
+HasManagedAppsOnly returns a boolean if a field has been set.
+
+### SetManagedAppsOnlyNil
+
+`func (o *MdmCommandRequestCommandData) SetManagedAppsOnlyNil(b bool)`
+
+ SetManagedAppsOnlyNil sets the value for ManagedAppsOnly to be an explicit nil
+
+### UnsetManagedAppsOnly
+`func (o *MdmCommandRequestCommandData) UnsetManagedAppsOnly()`
+
+UnsetManagedAppsOnly ensures that no value is present for ManagedAppsOnly, not even an explicit nil
+### GetItems
+
+`func (o *MdmCommandRequestCommandData) GetItems() []string`
+
+GetItems returns the Items field if non-nil, zero value otherwise.
+
+### GetItemsOk
+
+`func (o *MdmCommandRequestCommandData) GetItemsOk() (*[]string, bool)`
+
+GetItemsOk returns a tuple with the Items field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetItems
+
+`func (o *MdmCommandRequestCommandData) SetItems(v []string)`
+
+SetItems sets Items field to given value.
+
+### HasItems
+
+`func (o *MdmCommandRequestCommandData) HasItems() bool`
+
+HasItems returns a boolean if a field has been set.
+
+### SetItemsNil
+
+`func (o *MdmCommandRequestCommandData) SetItemsNil(b bool)`
+
+ SetItemsNil sets the value for Items to be an explicit nil
+
+### UnsetItems
+`func (o *MdmCommandRequestCommandData) UnsetItems()`
+
+UnsetItems ensures that no value is present for Items, not even an explicit nil
 ### GetUserName
 
 `func (o *MdmCommandRequestCommandData) GetUserName() string`
@@ -569,6 +644,41 @@ SetLostModeFootnote sets LostModeFootnote field to given value.
 
 HasLostModeFootnote returns a boolean if a field has been set.
 
+### GetManagedOnly
+
+`func (o *MdmCommandRequestCommandData) GetManagedOnly() bool`
+
+GetManagedOnly returns the ManagedOnly field if non-nil, zero value otherwise.
+
+### GetManagedOnlyOk
+
+`func (o *MdmCommandRequestCommandData) GetManagedOnlyOk() (*bool, bool)`
+
+GetManagedOnlyOk returns a tuple with the ManagedOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedOnly
+
+`func (o *MdmCommandRequestCommandData) SetManagedOnly(v bool)`
+
+SetManagedOnly sets ManagedOnly field to given value.
+
+### HasManagedOnly
+
+`func (o *MdmCommandRequestCommandData) HasManagedOnly() bool`
+
+HasManagedOnly returns a boolean if a field has been set.
+
+### SetManagedOnlyNil
+
+`func (o *MdmCommandRequestCommandData) SetManagedOnlyNil(b bool)`
+
+ SetManagedOnlyNil sets the value for ManagedOnly to be an explicit nil
+
+### UnsetManagedOnly
+`func (o *MdmCommandRequestCommandData) UnsetManagedOnly()`
+
+UnsetManagedOnly ensures that no value is present for ManagedOnly, not even an explicit nil
 ### GetEsimServerUrl
 
 `func (o *MdmCommandRequestCommandData) GetEsimServerUrl() string`
@@ -849,6 +959,16 @@ SetBootstrapTokenAllowed sets BootstrapTokenAllowed field to given value.
 
 HasBootstrapTokenAllowed returns a boolean if a field has been set.
 
+### SetBootstrapTokenAllowedNil
+
+`func (o *MdmCommandRequestCommandData) SetBootstrapTokenAllowedNil(b bool)`
+
+ SetBootstrapTokenAllowedNil sets the value for BootstrapTokenAllowed to be an explicit nil
+
+### UnsetBootstrapTokenAllowed
+`func (o *MdmCommandRequestCommandData) UnsetBootstrapTokenAllowed()`
+
+UnsetBootstrapTokenAllowed ensures that no value is present for BootstrapTokenAllowed, not even an explicit nil
 ### GetBluetooth
 
 `func (o *MdmCommandRequestCommandData) GetBluetooth() bool`
@@ -874,6 +994,16 @@ SetBluetooth sets Bluetooth field to given value.
 
 HasBluetooth returns a boolean if a field has been set.
 
+### SetBluetoothNil
+
+`func (o *MdmCommandRequestCommandData) SetBluetoothNil(b bool)`
+
+ SetBluetoothNil sets the value for Bluetooth to be an explicit nil
+
+### UnsetBluetooth
+`func (o *MdmCommandRequestCommandData) UnsetBluetooth()`
+
+UnsetBluetooth ensures that no value is present for Bluetooth, not even an explicit nil
 ### GetAppAnalytics
 
 `func (o *MdmCommandRequestCommandData) GetAppAnalytics() AppAnalyticsSetting`
@@ -948,6 +1078,31 @@ SetDataRoaming sets DataRoaming field to given value.
 `func (o *MdmCommandRequestCommandData) HasDataRoaming() bool`
 
 HasDataRoaming returns a boolean if a field has been set.
+
+### GetDefaultApplications
+
+`func (o *MdmCommandRequestCommandData) GetDefaultApplications() DefaultApplications`
+
+GetDefaultApplications returns the DefaultApplications field if non-nil, zero value otherwise.
+
+### GetDefaultApplicationsOk
+
+`func (o *MdmCommandRequestCommandData) GetDefaultApplicationsOk() (*DefaultApplications, bool)`
+
+GetDefaultApplicationsOk returns a tuple with the DefaultApplications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultApplications
+
+`func (o *MdmCommandRequestCommandData) SetDefaultApplications(v DefaultApplications)`
+
+SetDefaultApplications sets DefaultApplications field to given value.
+
+### HasDefaultApplications
+
+`func (o *MdmCommandRequestCommandData) HasDefaultApplications() bool`
+
+HasDefaultApplications returns a boolean if a field has been set.
 
 ### GetVoiceRoaming
 
@@ -1024,6 +1179,16 @@ SetMaximumResidentUsers sets MaximumResidentUsers field to given value.
 
 HasMaximumResidentUsers returns a boolean if a field has been set.
 
+### SetMaximumResidentUsersNil
+
+`func (o *MdmCommandRequestCommandData) SetMaximumResidentUsersNil(b bool)`
+
+ SetMaximumResidentUsersNil sets the value for MaximumResidentUsers to be an explicit nil
+
+### UnsetMaximumResidentUsers
+`func (o *MdmCommandRequestCommandData) UnsetMaximumResidentUsers()`
+
+UnsetMaximumResidentUsers ensures that no value is present for MaximumResidentUsers, not even an explicit nil
 ### GetDeviceName
 
 `func (o *MdmCommandRequestCommandData) GetDeviceName() string`
@@ -1149,6 +1314,16 @@ SetTimeZone sets TimeZone field to given value.
 
 HasTimeZone returns a boolean if a field has been set.
 
+### SetTimeZoneNil
+
+`func (o *MdmCommandRequestCommandData) SetTimeZoneNil(b bool)`
+
+ SetTimeZoneNil sets the value for TimeZone to be an explicit nil
+
+### UnsetTimeZone
+`func (o *MdmCommandRequestCommandData) UnsetTimeZone()`
+
+UnsetTimeZone ensures that no value is present for TimeZone, not even an explicit nil
 ### GetSoftwareUpdateSettings
 
 `func (o *MdmCommandRequestCommandData) GetSoftwareUpdateSettings() SoftwareUpdateSettings`
@@ -1198,6 +1373,41 @@ SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
 `func (o *MdmCommandRequestCommandData) HasPasscodeLockGracePeriod() bool`
 
 HasPasscodeLockGracePeriod returns a boolean if a field has been set.
+
+### SetPasscodeLockGracePeriodNil
+
+`func (o *MdmCommandRequestCommandData) SetPasscodeLockGracePeriodNil(b bool)`
+
+ SetPasscodeLockGracePeriodNil sets the value for PasscodeLockGracePeriod to be an explicit nil
+
+### UnsetPasscodeLockGracePeriod
+`func (o *MdmCommandRequestCommandData) UnsetPasscodeLockGracePeriod()`
+
+UnsetPasscodeLockGracePeriod ensures that no value is present for PasscodeLockGracePeriod, not even an explicit nil
+### GetActivationLockAllowedWhileSupervised
+
+`func (o *MdmCommandRequestCommandData) GetActivationLockAllowedWhileSupervised() bool`
+
+GetActivationLockAllowedWhileSupervised returns the ActivationLockAllowedWhileSupervised field if non-nil, zero value otherwise.
+
+### GetActivationLockAllowedWhileSupervisedOk
+
+`func (o *MdmCommandRequestCommandData) GetActivationLockAllowedWhileSupervisedOk() (*bool, bool)`
+
+GetActivationLockAllowedWhileSupervisedOk returns a tuple with the ActivationLockAllowedWhileSupervised field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivationLockAllowedWhileSupervised
+
+`func (o *MdmCommandRequestCommandData) SetActivationLockAllowedWhileSupervised(v bool)`
+
+SetActivationLockAllowedWhileSupervised sets ActivationLockAllowedWhileSupervised field to given value.
+
+### HasActivationLockAllowedWhileSupervised
+
+`func (o *MdmCommandRequestCommandData) HasActivationLockAllowedWhileSupervised() bool`
+
+HasActivationLockAllowedWhileSupervised returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -6,9 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | Pointer to **string** |  | [optional] 
 **DateSent** | Pointer to **time.Time** |  | [optional] 
+**DateCompleted** | Pointer to **time.Time** |  | [optional] 
 **Client** | Pointer to [**MdmCommandClient**](MdmCommandClient.md) |  | [optional] 
 **CommandState** | Pointer to [**MdmCommandState**](MdmCommandState.md) |  | [optional] 
 **CommandType** | Pointer to [**MdmCommandType**](MdmCommandType.md) |  | [optional] 
+**CommandError** | Pointer to [**MdmCommandError**](MdmCommandError.md) |  | [optional] 
+**ProfileId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -78,6 +81,31 @@ SetDateSent sets DateSent field to given value.
 `func (o *MdmCommand) HasDateSent() bool`
 
 HasDateSent returns a boolean if a field has been set.
+
+### GetDateCompleted
+
+`func (o *MdmCommand) GetDateCompleted() time.Time`
+
+GetDateCompleted returns the DateCompleted field if non-nil, zero value otherwise.
+
+### GetDateCompletedOk
+
+`func (o *MdmCommand) GetDateCompletedOk() (*time.Time, bool)`
+
+GetDateCompletedOk returns a tuple with the DateCompleted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateCompleted
+
+`func (o *MdmCommand) SetDateCompleted(v time.Time)`
+
+SetDateCompleted sets DateCompleted field to given value.
+
+### HasDateCompleted
+
+`func (o *MdmCommand) HasDateCompleted() bool`
+
+HasDateCompleted returns a boolean if a field has been set.
 
 ### GetClient
 
@@ -153,6 +181,56 @@ SetCommandType sets CommandType field to given value.
 `func (o *MdmCommand) HasCommandType() bool`
 
 HasCommandType returns a boolean if a field has been set.
+
+### GetCommandError
+
+`func (o *MdmCommand) GetCommandError() MdmCommandError`
+
+GetCommandError returns the CommandError field if non-nil, zero value otherwise.
+
+### GetCommandErrorOk
+
+`func (o *MdmCommand) GetCommandErrorOk() (*MdmCommandError, bool)`
+
+GetCommandErrorOk returns a tuple with the CommandError field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommandError
+
+`func (o *MdmCommand) SetCommandError(v MdmCommandError)`
+
+SetCommandError sets CommandError field to given value.
+
+### HasCommandError
+
+`func (o *MdmCommand) HasCommandError() bool`
+
+HasCommandError returns a boolean if a field has been set.
+
+### GetProfileId
+
+`func (o *MdmCommand) GetProfileId() int64`
+
+GetProfileId returns the ProfileId field if non-nil, zero value otherwise.
+
+### GetProfileIdOk
+
+`func (o *MdmCommand) GetProfileIdOk() (*int64, bool)`
+
+GetProfileIdOk returns a tuple with the ProfileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProfileId
+
+`func (o *MdmCommand) SetProfileId(v int64)`
+
+SetProfileId sets ProfileId field to given value.
+
+### HasProfileId
+
+`func (o *MdmCommand) HasProfileId() bool`
+
+HasProfileId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

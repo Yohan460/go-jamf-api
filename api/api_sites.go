@@ -184,7 +184,7 @@ func (r SitesAPIV1SitesIdObjectsGetRequest) Sort(sort []string) SitesAPIV1SitesI
 	return r
 }
 
-// Query in the RSQL format, allowing filter of site object information. Default filter returns all objects for the site ID.  Fields allowed in the query: &#x60;objectType&#x60;, &#x60;objectId&#x60;  Example: &#x60;filter&#x3D;objectType&#x3D;&#x3D;\&quot;User\&quot;&#x60;      List of &#x60;objectType&#x60; options (case-insensitive) [\&quot;Computer\&quot;, \&quot;Peripheral\&quot;, \&quot;Licensed Software\&quot;, \&quot;Licensed Software Template\&quot;, \&quot;Policy\&quot;, \&quot;macOS Configuration Profile\&quot;, \&quot;Restricted Software\&quot;, \&quot;Managed Preference Profile\&quot;, \&quot;Computer Group\&quot;, \&quot;Mobile Device\&quot;, \&quot;Apple TV\&quot;, \&quot;Android Device\&quot;, \&quot;User Group\&quot;, \&quot;iOS Configuration Profile\&quot;, \&quot;Mobile Device App\&quot;, \&quot;E-book\&quot;, \&quot;Mobile Device Group\&quot;, \&quot;Classroom\&quot;, \&quot;Advanced Computer Search\&quot;, \&quot;Advanced Mobile Search\&quot;, \&quot;Advanced User Search\&quot;, \&quot;Advanced User Content Search\&quot;, \&quot;Computer Invitation\&quot;, \&quot;Mobile Device Invitation\&quot;, \&quot;Mobile Device Enrollment Profile\&quot;, \&quot;Device Enrollment Program Instance\&quot;, \&quot;Mobile Device Prestage\&quot;, \&quot;Computer DEP Prestage\&quot;, \&quot;Enrollment Customization\&quot;, \&quot;VPP Location\&quot;, \&quot;VPP Subscription\&quot;, \&quot;VPP Invitation\&quot;, \&quot;VPP Assignment\&quot;, \&quot;User\&quot;, \&quot;Network Integration\&quot;, \&quot;Mac App\&quot;, \&quot;App Installer\&quot;, \&quot;BYO Profile\&quot;, \&quot;Self Service Plugin\&quot;, \&quot;Software Title\&quot;, \&quot;Patch Software Title Summary\&quot;, \&quot;Patch Policy\&quot;, \&quot;Patch Software Title Configuration\&quot;, \&quot;Change Password\&quot;, \&quot;Mobile Device Inventory\&quot;, \&quot;Computer Inventory\&quot;, \&quot;Change Management\&quot;, \&quot;Licensed Software License\&quot;] 
+// Query in the RSQL format, allowing filter of site object information. Default filter returns all objects for the site ID.  Fields allowed in the query: &#x60;objectType&#x60;, &#x60;objectId&#x60;  Example: &#x60;filter&#x3D;objectType&#x3D;&#x3D;\&quot;User\&quot;&#x60;  List of &#x60;objectType&#x60; options (case-insensitive) [\&quot;Computer\&quot;, \&quot;Peripheral\&quot;, \&quot;Licensed Software\&quot;, \&quot;Licensed Software Template\&quot;, \&quot;Policy\&quot;, \&quot;macOS Configuration Profile\&quot;, \&quot;Restricted Software\&quot;, \&quot;Managed Preference Profile\&quot;, \&quot;Computer Group\&quot;, \&quot;Mobile Device\&quot;, \&quot;Apple TV\&quot;, \&quot;Android Device\&quot;, \&quot;User Group\&quot;, \&quot;iOS Configuration Profile\&quot;, \&quot;Mobile Device App\&quot;, \&quot;E-book\&quot;, \&quot;Mobile Device Group\&quot;, \&quot;Classroom\&quot;, \&quot;Advanced Computer Search\&quot;, \&quot;Advanced Mobile Search\&quot;, \&quot;Advanced User Search\&quot;, \&quot;Advanced User Content Search\&quot;, \&quot;Computer Invitation\&quot;, \&quot;Mobile Device Invitation\&quot;, \&quot;Mobile Device Enrollment Profile\&quot;, \&quot;Device Enrollment Program Instance\&quot;, \&quot;Mobile Device Prestage\&quot;, \&quot;Computer DEP Prestage\&quot;, \&quot;Enrollment Customization\&quot;, \&quot;VPP Location\&quot;, \&quot;VPP Subscription\&quot;, \&quot;VPP Invitation\&quot;, \&quot;VPP Assignment\&quot;, \&quot;User\&quot;, \&quot;Network Integration\&quot;, \&quot;Mac App\&quot;, \&quot;App Installer\&quot;, \&quot;Self Service Plugin\&quot;, \&quot;Software Title\&quot;, \&quot;Patch Software Title Summary\&quot;, \&quot;Patch Policy\&quot;, \&quot;Patch Software Title Configuration\&quot;, \&quot;Change Password\&quot;, \&quot;Mobile Device Inventory\&quot;, \&quot;Computer Inventory\&quot;, \&quot;Change Management\&quot;, \&quot;Licensed Software License\&quot;] 
 func (r SitesAPIV1SitesIdObjectsGetRequest) Filter(filter string) SitesAPIV1SitesIdObjectsGetRequest {
 	r.filter = &filter
 	return r
@@ -237,16 +237,16 @@ func (a *SitesAPIService) V1SitesIdObjectsGetExecute(r SitesAPIV1SitesIdObjectsG
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -259,16 +259,16 @@ func (a *SitesAPIService) V1SitesIdObjectsGetExecute(r SitesAPIV1SitesIdObjectsG
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"objectType:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"objectType:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = "objectType==\"User\""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = "objectType==\"User\""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

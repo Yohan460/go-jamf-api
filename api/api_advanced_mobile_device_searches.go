@@ -203,16 +203,16 @@ func (a *AdvancedMobileDeviceSearchesAPIService) V1AdvancedMobileDeviceSearchesC
 	if r.site != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "site", r.site, "form", "")
 	} else {
-        var defaultValue string = "-1"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "site", defaultValue, "form", "")
-        r.site = &defaultValue
+		var defaultValue string = "-1"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "site", defaultValue, "form", "")
+		r.site = &defaultValue
 	}
 	if r.contains != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "contains", r.contains, "form", "")
 	} else {
-        var defaultValue string = "null"
-        parameterAddToHeaderOrQuery(localVarQueryParams, "contains", defaultValue, "form", "")
-        r.contains = &defaultValue
+		var defaultValue string = "null"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "contains", defaultValue, "form", "")
+		r.contains = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

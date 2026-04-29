@@ -26,6 +26,8 @@ type ProtectSettingsResponse struct {
 	// ID used when making requests to identify this particular Protect registration.
 	RegistrationId *string `json:"registrationId,omitempty"`
 	ProtectUrl *string `json:"protectUrl,omitempty"`
+	// determines whether Protect Platform Plan syncing is enabled
+	PlatformPlanSync *bool `json:"platformPlanSync,omitempty"`
 	LastSyncTime *string `json:"lastSyncTime,omitempty"`
 	SyncStatus *string `json:"syncStatus,omitempty"`
 	// determines whether the Jamf Protect agent will be automatically installed on client computers
@@ -209,6 +211,38 @@ func (o *ProtectSettingsResponse) SetProtectUrl(v string) {
 	o.ProtectUrl = &v
 }
 
+// GetPlatformPlanSync returns the PlatformPlanSync field value if set, zero value otherwise.
+func (o *ProtectSettingsResponse) GetPlatformPlanSync() bool {
+	if o == nil || IsNil(o.PlatformPlanSync) {
+		var ret bool
+		return ret
+	}
+	return *o.PlatformPlanSync
+}
+
+// GetPlatformPlanSyncOk returns a tuple with the PlatformPlanSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProtectSettingsResponse) GetPlatformPlanSyncOk() (*bool, bool) {
+	if o == nil || IsNil(o.PlatformPlanSync) {
+		return nil, false
+	}
+	return o.PlatformPlanSync, true
+}
+
+// HasPlatformPlanSync returns a boolean if a field has been set.
+func (o *ProtectSettingsResponse) HasPlatformPlanSync() bool {
+	if o != nil && !IsNil(o.PlatformPlanSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetPlatformPlanSync gets a reference to the given bool and assigns it to the PlatformPlanSync field.
+func (o *ProtectSettingsResponse) SetPlatformPlanSync(v bool) {
+	o.PlatformPlanSync = &v
+}
+
 // GetLastSyncTime returns the LastSyncTime field value if set, zero value otherwise.
 func (o *ProtectSettingsResponse) GetLastSyncTime() string {
 	if o == nil || IsNil(o.LastSyncTime) {
@@ -329,6 +363,9 @@ func (o ProtectSettingsResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProtectUrl) {
 		toSerialize["protectUrl"] = o.ProtectUrl
+	}
+	if !IsNil(o.PlatformPlanSync) {
+		toSerialize["platformPlanSync"] = o.PlatformPlanSync
 	}
 	if !IsNil(o.LastSyncTime) {
 		toSerialize["lastSyncTime"] = o.LastSyncTime

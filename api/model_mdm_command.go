@@ -22,9 +22,12 @@ var _ MappedNullable = &MdmCommand{}
 type MdmCommand struct {
 	Uuid *string `json:"uuid,omitempty"`
 	DateSent *time.Time `json:"dateSent,omitempty"`
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 	Client *MdmCommandClient `json:"client,omitempty"`
 	CommandState *MdmCommandState `json:"commandState,omitempty"`
 	CommandType *MdmCommandType `json:"commandType,omitempty"`
+	CommandError *MdmCommandError `json:"commandError,omitempty"`
+	ProfileId *int64 `json:"profileId,omitempty"`
 }
 
 // NewMdmCommand instantiates a new MdmCommand object
@@ -106,6 +109,38 @@ func (o *MdmCommand) HasDateSent() bool {
 // SetDateSent gets a reference to the given time.Time and assigns it to the DateSent field.
 func (o *MdmCommand) SetDateSent(v time.Time) {
 	o.DateSent = &v
+}
+
+// GetDateCompleted returns the DateCompleted field value if set, zero value otherwise.
+func (o *MdmCommand) GetDateCompleted() time.Time {
+	if o == nil || IsNil(o.DateCompleted) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DateCompleted
+}
+
+// GetDateCompletedOk returns a tuple with the DateCompleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MdmCommand) GetDateCompletedOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DateCompleted) {
+		return nil, false
+	}
+	return o.DateCompleted, true
+}
+
+// HasDateCompleted returns a boolean if a field has been set.
+func (o *MdmCommand) HasDateCompleted() bool {
+	if o != nil && !IsNil(o.DateCompleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateCompleted gets a reference to the given time.Time and assigns it to the DateCompleted field.
+func (o *MdmCommand) SetDateCompleted(v time.Time) {
+	o.DateCompleted = &v
 }
 
 // GetClient returns the Client field value if set, zero value otherwise.
@@ -204,6 +239,70 @@ func (o *MdmCommand) SetCommandType(v MdmCommandType) {
 	o.CommandType = &v
 }
 
+// GetCommandError returns the CommandError field value if set, zero value otherwise.
+func (o *MdmCommand) GetCommandError() MdmCommandError {
+	if o == nil || IsNil(o.CommandError) {
+		var ret MdmCommandError
+		return ret
+	}
+	return *o.CommandError
+}
+
+// GetCommandErrorOk returns a tuple with the CommandError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MdmCommand) GetCommandErrorOk() (*MdmCommandError, bool) {
+	if o == nil || IsNil(o.CommandError) {
+		return nil, false
+	}
+	return o.CommandError, true
+}
+
+// HasCommandError returns a boolean if a field has been set.
+func (o *MdmCommand) HasCommandError() bool {
+	if o != nil && !IsNil(o.CommandError) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommandError gets a reference to the given MdmCommandError and assigns it to the CommandError field.
+func (o *MdmCommand) SetCommandError(v MdmCommandError) {
+	o.CommandError = &v
+}
+
+// GetProfileId returns the ProfileId field value if set, zero value otherwise.
+func (o *MdmCommand) GetProfileId() int64 {
+	if o == nil || IsNil(o.ProfileId) {
+		var ret int64
+		return ret
+	}
+	return *o.ProfileId
+}
+
+// GetProfileIdOk returns a tuple with the ProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MdmCommand) GetProfileIdOk() (*int64, bool) {
+	if o == nil || IsNil(o.ProfileId) {
+		return nil, false
+	}
+	return o.ProfileId, true
+}
+
+// HasProfileId returns a boolean if a field has been set.
+func (o *MdmCommand) HasProfileId() bool {
+	if o != nil && !IsNil(o.ProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileId gets a reference to the given int64 and assigns it to the ProfileId field.
+func (o *MdmCommand) SetProfileId(v int64) {
+	o.ProfileId = &v
+}
+
 func (o MdmCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -220,6 +319,9 @@ func (o MdmCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DateSent) {
 		toSerialize["dateSent"] = o.DateSent
 	}
+	if !IsNil(o.DateCompleted) {
+		toSerialize["dateCompleted"] = o.DateCompleted
+	}
 	if !IsNil(o.Client) {
 		toSerialize["client"] = o.Client
 	}
@@ -228,6 +330,12 @@ func (o MdmCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CommandType) {
 		toSerialize["commandType"] = o.CommandType
+	}
+	if !IsNil(o.CommandError) {
+		toSerialize["commandError"] = o.CommandError
+	}
+	if !IsNil(o.ProfileId) {
+		toSerialize["profileId"] = o.ProfileId
 	}
 	return toSerialize, nil
 }

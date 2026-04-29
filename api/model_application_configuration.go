@@ -19,7 +19,7 @@ var _ MappedNullable = &ApplicationConfiguration{}
 
 // ApplicationConfiguration struct for ApplicationConfiguration
 type ApplicationConfiguration struct {
-	Configuration *string `json:"configuration,omitempty"`
+	Configuration NullableString `json:"configuration,omitempty"`
 	Identifier *string `json:"identifier,omitempty"`
 }
 
@@ -40,36 +40,46 @@ func NewApplicationConfigurationWithDefaults() *ApplicationConfiguration {
 	return &this
 }
 
-// GetConfiguration returns the Configuration field value if set, zero value otherwise.
+// GetConfiguration returns the Configuration field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationConfiguration) GetConfiguration() string {
-	if o == nil || IsNil(o.Configuration) {
+	if o == nil || IsNil(o.Configuration.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Configuration
+	return *o.Configuration.Get()
 }
 
 // GetConfigurationOk returns a tuple with the Configuration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationConfiguration) GetConfigurationOk() (*string, bool) {
-	if o == nil || IsNil(o.Configuration) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Configuration, true
+	return o.Configuration.Get(), o.Configuration.IsSet()
 }
 
 // HasConfiguration returns a boolean if a field has been set.
 func (o *ApplicationConfiguration) HasConfiguration() bool {
-	if o != nil && !IsNil(o.Configuration) {
+	if o != nil && o.Configuration.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetConfiguration gets a reference to the given string and assigns it to the Configuration field.
+// SetConfiguration gets a reference to the given NullableString and assigns it to the Configuration field.
 func (o *ApplicationConfiguration) SetConfiguration(v string) {
-	o.Configuration = &v
+	o.Configuration.Set(&v)
+}
+// SetConfigurationNil sets the value for Configuration to be an explicit nil
+func (o *ApplicationConfiguration) SetConfigurationNil() {
+	o.Configuration.Set(nil)
+}
+
+// UnsetConfiguration ensures that no value is present for Configuration, not even an explicit nil
+func (o *ApplicationConfiguration) UnsetConfiguration() {
+	o.Configuration.Unset()
 }
 
 // GetIdentifier returns the Identifier field value if set, zero value otherwise.
@@ -114,8 +124,8 @@ func (o ApplicationConfiguration) MarshalJSON() ([]byte, error) {
 
 func (o ApplicationConfiguration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Configuration) {
-		toSerialize["configuration"] = o.Configuration
+	if o.Configuration.IsSet() {
+		toSerialize["configuration"] = o.Configuration.Get()
 	}
 	if !IsNil(o.Identifier) {
 		toSerialize["identifier"] = o.Identifier

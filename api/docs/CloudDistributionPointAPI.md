@@ -5,12 +5,14 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1CloudDistributionPointDelete**](CloudDistributionPointAPI.md#V1CloudDistributionPointDelete) | **Delete** /v1/cloud-distribution-point | Delete cloud distribution point.
+[**V1CloudDistributionPointFailUploadIdPost**](CloudDistributionPointAPI.md#V1CloudDistributionPointFailUploadIdPost) | **Post** /v1/cloud-distribution-point/fail-upload/{id} | Marks a specific file upload as failed for the currently configured cloud distribution point. 
 [**V1CloudDistributionPointFilesGet**](CloudDistributionPointAPI.md#V1CloudDistributionPointFilesGet) | **Get** /v1/cloud-distribution-point/files | Get the cloud distribution point Inventory files details
 [**V1CloudDistributionPointGet**](CloudDistributionPointAPI.md#V1CloudDistributionPointGet) | **Get** /v1/cloud-distribution-point | Get the cloud distribution point Details. 
 [**V1CloudDistributionPointHistoryGet**](CloudDistributionPointAPI.md#V1CloudDistributionPointHistoryGet) | **Get** /v1/cloud-distribution-point/history | Get cloud distribution point history details
 [**V1CloudDistributionPointHistoryPost**](CloudDistributionPointAPI.md#V1CloudDistributionPointHistoryPost) | **Post** /v1/cloud-distribution-point/history | Add specified cloud distribution point history object notes
 [**V1CloudDistributionPointPatch**](CloudDistributionPointAPI.md#V1CloudDistributionPointPatch) | **Patch** /v1/cloud-distribution-point | Update specific fields on a cloud distribution point
 [**V1CloudDistributionPointPost**](CloudDistributionPointAPI.md#V1CloudDistributionPointPost) | **Post** /v1/cloud-distribution-point | Create cloud distribution point
+[**V1CloudDistributionPointRefreshInventoryPost**](CloudDistributionPointAPI.md#V1CloudDistributionPointRefreshInventoryPost) | **Post** /v1/cloud-distribution-point/refresh-inventory | Updates inventory data for the currently configured cloud distribution point. 
 [**V1CloudDistributionPointTestConnectionGet**](CloudDistributionPointAPI.md#V1CloudDistributionPointTestConnectionGet) | **Get** /v1/cloud-distribution-point/test-connection | Get the cloud distribution point test connection details. 
 [**V1CloudDistributionPointUploadCapabilityGet**](CloudDistributionPointAPI.md#V1CloudDistributionPointUploadCapabilityGet) | **Get** /v1/cloud-distribution-point/upload-capability | Finds specific information for the currently configured cloud distribution point. 
 
@@ -75,6 +77,78 @@ Other parameters are passed through a pointer to a apiV1CloudDistributionPointDe
 [[Back to README]](../README.md)
 
 
+## V1CloudDistributionPointFailUploadIdPost
+
+> V1CloudDistributionPointFailUploadIdPost(ctx, id).FileName(fileName).Type_(type_).Execute()
+
+Marks a specific file upload as failed for the currently configured cloud distribution point. 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "1" // string | The identifier of the inventory file to be marked as failed. The type and ID will make a unique identifier for the file.
+	fileName := "filename.pkg" // string | Name of the file to mark failure for. (default to "")
+	type_ := "PACKAGE" // string | Type of file to mark failure for. Possible values are PACKAGE, EBOOK, MOBILE_DEVICE_APP. (default to "")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudDistributionPointAPI.V1CloudDistributionPointFailUploadIdPost(context.Background(), id).FileName(fileName).Type_(type_).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudDistributionPointAPI.V1CloudDistributionPointFailUploadIdPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | The identifier of the inventory file to be marked as failed. The type and ID will make a unique identifier for the file. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1CloudDistributionPointFailUploadIdPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **fileName** | **string** | Name of the file to mark failure for. | [default to &quot;&quot;]
+ **type_** | **string** | Type of file to mark failure for. Possible values are PACKAGE, EBOOK, MOBILE_DEVICE_APP. | [default to &quot;&quot;]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## V1CloudDistributionPointFilesGet
 
 > CloudDistributionPointInventoryFilesResults V1CloudDistributionPointFilesGet(ctx).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
@@ -98,8 +172,8 @@ import (
 func main() {
 	page := int64(56) // int64 |  (optional) (default to 0)
 	pageSize := int64(56) // int64 |  (optional) (default to 100)
-	sort := []string{"Inner_example"} // []string | Sorts results by one or more criteria, following the format property:asc/desc.<br/> Default sort is id:asc.<br/> If using multiple criteria, separate with commas. Allows sort for id, fileName and type etc. (optional) (default to {"id.asc"})
-	filter := "filter_example" // string | Filters results. Use RSQL format for query. Allows for many fields, including fileName and type<br/> Can be combined with paging and sorting.<br/> Fields allowed in the query: fileName and type <br/> Default filter is an empty query and returns all results from the requested page. (optional) (default to "")
+	sort := []string{"Inner_example"} // []string | Sorts results by one or more criteria, following the format property:asc/desc.<br/> Default sort is id:asc.<br/> If using multiple criteria, separate with commas. Allows sort for id, fileName, inventoryId and type etc. (optional) (default to {"id.asc"})
+	filter := "filter_example" // string | Filters results. Use RSQL format for query. Allows for many fields, including fileName and type<br/> Can be combined with paging and sorting.<br/> Fields allowed in the query: fileName, inventoryId and type <br/> Default filter is an empty query and returns all results from the requested page. (optional) (default to "")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -126,8 +200,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64** |  | [default to 0]
  **pageSize** | **int64** |  | [default to 100]
- **sort** | **[]string** | Sorts results by one or more criteria, following the format property:asc/desc.&lt;br/&gt; Default sort is id:asc.&lt;br/&gt; If using multiple criteria, separate with commas. Allows sort for id, fileName and type etc. | [default to {&quot;id.asc&quot;}]
- **filter** | **string** | Filters results. Use RSQL format for query. Allows for many fields, including fileName and type&lt;br/&gt; Can be combined with paging and sorting.&lt;br/&gt; Fields allowed in the query: fileName and type &lt;br/&gt; Default filter is an empty query and returns all results from the requested page. | [default to &quot;&quot;]
+ **sort** | **[]string** | Sorts results by one or more criteria, following the format property:asc/desc.&lt;br/&gt; Default sort is id:asc.&lt;br/&gt; If using multiple criteria, separate with commas. Allows sort for id, fileName, inventoryId and type etc. | [default to {&quot;id.asc&quot;}]
+ **filter** | **string** | Filters results. Use RSQL format for query. Allows for many fields, including fileName and type&lt;br/&gt; Can be combined with paging and sorting.&lt;br/&gt; Fields allowed in the query: fileName, inventoryId and type &lt;br/&gt; Default filter is an empty query and returns all results from the requested page. | [default to &quot;&quot;]
 
 ### Return type
 
@@ -472,6 +546,70 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1CloudDistributionPointRefreshInventoryPost
+
+> V1CloudDistributionPointRefreshInventoryPost(ctx).FileName(fileName).Execute()
+
+Updates inventory data for the currently configured cloud distribution point. 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	fileName := "filename.pkg" // string | Name of the file to check the availability of. If available, the inventory and status will be updated in Jamf Pro. If no file is specified, it will force an immediate inventory refresh at a rate-limit of once every 15 seconds. (optional) (default to "")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudDistributionPointAPI.V1CloudDistributionPointRefreshInventoryPost(context.Background()).FileName(fileName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudDistributionPointAPI.V1CloudDistributionPointRefreshInventoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1CloudDistributionPointRefreshInventoryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fileName** | **string** | Name of the file to check the availability of. If available, the inventory and status will be updated in Jamf Pro. If no file is specified, it will force an immediate inventory refresh at a rate-limit of once every 15 seconds. | [default to &quot;&quot;]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

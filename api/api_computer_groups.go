@@ -501,16 +501,16 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsGetExecute(r Compu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -523,16 +523,16 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsGetExecute(r Compu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"id:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"id:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -934,10 +934,17 @@ type ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest struct {
 	ctx context.Context
 	ApiService ComputerGroupsAPI
 	smartComputerGroupV2 *SmartComputerGroupV2
+	platform *bool
 }
 
 func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) SmartComputerGroupV2(smartComputerGroupV2 SmartComputerGroupV2) ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest {
 	r.smartComputerGroupV2 = &smartComputerGroupV2
+	return r
+}
+
+// Optional. Return platform identifiers instead of internal identifiers when set to true.
+func (r ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest) Platform(platform bool) ComputerGroupsAPIV2ComputerGroupsSmartGroupsPostRequest {
+	r.platform = &platform
 	return r
 }
 
@@ -985,6 +992,13 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsSmartGroupsPostExecute(r Comp
 		return localVarReturnValue, nil, reportError("smartComputerGroupV2 is required and must be specified")
 	}
 
+	if r.platform != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "platform", r.platform, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "platform", defaultValue, "form", "")
+		r.platform = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 
@@ -1116,16 +1130,16 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsGetExecute(r Comp
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -1138,16 +1152,16 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsGetExecute(r Comp
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"id:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"id:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1560,10 +1574,17 @@ type ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest struct {
 	ctx context.Context
 	ApiService ComputerGroupsAPI
 	staticComputerGroupAssignment *StaticComputerGroupAssignment
+	platform *bool
 }
 
 func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) StaticComputerGroupAssignment(staticComputerGroupAssignment StaticComputerGroupAssignment) ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest {
 	r.staticComputerGroupAssignment = &staticComputerGroupAssignment
+	return r
+}
+
+// Optional. Return platform identifiers instead of internal identifiers when set to true.
+func (r ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest) Platform(platform bool) ComputerGroupsAPIV2ComputerGroupsStaticGroupsPostRequest {
+	r.platform = &platform
 	return r
 }
 
@@ -1611,6 +1632,13 @@ func (a *ComputerGroupsAPIService) V2ComputerGroupsStaticGroupsPostExecute(r Com
 		return localVarReturnValue, nil, reportError("staticComputerGroupAssignment is required and must be specified")
 	}
 
+	if r.platform != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "platform", r.platform, "form", "")
+	} else {
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "platform", defaultValue, "form", "")
+		r.platform = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"reflect"
 )
 
 
@@ -25,7 +26,7 @@ type GroupsAPI interface {
 	/*
 	V1GroupsGet Returns group information for all Mobile Device and Computer groups
 
-	Returns group information for all Mobile Device and Computer groups. The type of groups returned will be dependent upon the corresponding group type READ privileges.
+	Returns group information for all Mobile Device and Computer groups. The type of groups returned will be dependent upon the corresponding group type READ privileges. Results can be sorted by name, description, group type, or isSmart. Default sorting is by group name in ascending order.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return GroupsAPIV1GroupsGetRequest
@@ -35,6 +36,20 @@ type GroupsAPI interface {
 	// V1GroupsGetExecute executes the request
 	//  @return GroupSearchResult
 	V1GroupsGetExecute(r GroupsAPIV1GroupsGetRequest) (*GroupSearchResult, *http.Response, error)
+
+	/*
+	V1GroupsIdDelete Delete a group by platform UUID
+
+	Deletes a group by its platform UUID. Returns a 400 error if the group is being used as a dependency. Requires appropriate DELETE privileges.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id The platform UUID of a group
+	@return GroupsAPIV1GroupsIdDeleteRequest
+	*/
+	V1GroupsIdDelete(ctx context.Context, id string) GroupsAPIV1GroupsIdDeleteRequest
+
+	// V1GroupsIdDeleteExecute executes the request
+	V1GroupsIdDeleteExecute(r GroupsAPIV1GroupsIdDeleteRequest) (*http.Response, error)
 
 	/*
 	V1GroupsIdGet Returns group information for the given platform UUID
@@ -48,8 +63,22 @@ type GroupsAPI interface {
 	V1GroupsIdGet(ctx context.Context, id string) GroupsAPIV1GroupsIdGetRequest
 
 	// V1GroupsIdGetExecute executes the request
-	//  @return GroupV1
-	V1GroupsIdGetExecute(r GroupsAPIV1GroupsIdGetRequest) (*GroupV1, *http.Response, error)
+	//  @return GroupWithCriteriaDtoV1
+	V1GroupsIdGetExecute(r GroupsAPIV1GroupsIdGetRequest) (*GroupWithCriteriaDtoV1, *http.Response, error)
+
+	/*
+	V1GroupsIdPatch Update a group by platform UUID
+
+	Updates a group by its platform UUID. For both smart and static groups, groupName and groupDescription can be updated. For smart groups, criteria can also be updated. For static groups, assignments can also be updated. Requires appropriate UPDATE privileges.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id The platform UUID of a group
+	@return GroupsAPIV1GroupsIdPatchRequest
+	*/
+	V1GroupsIdPatch(ctx context.Context, id string) GroupsAPIV1GroupsIdPatchRequest
+
+	// V1GroupsIdPatchExecute executes the request
+	V1GroupsIdPatchExecute(r GroupsAPIV1GroupsIdPatchRequest) (*http.Response, error)
 }
 
 // GroupsAPIService GroupsAPI service
@@ -60,6 +89,7 @@ type GroupsAPIV1GroupsGetRequest struct {
 	ApiService GroupsAPI
 	page *int64
 	pageSize *int64
+	sort *[]string
 	filter *string
 }
 
@@ -73,7 +103,13 @@ func (r GroupsAPIV1GroupsGetRequest) PageSize(pageSize int64) GroupsAPIV1GroupsG
 	return r
 }
 
-// Query in the RSQL format, allowing to filter group collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: groupName, isSmart. This param can be combined with paging. Example: filter&#x3D;groupName&#x3D;&#x3D;\&quot;*Managed*\&quot; and isSmart&#x3D;&#x3D;\&quot;true\&quot;
+// Sorting criteria in the format: property:asc/desc. Default sort is groupName:asc. Multiple sort criteria are supported and must be separated with a comma. Fields allowed in sorting: groupName, groupDescription, groupType, isSmart. Example: sort&#x3D;groupName:asc,groupType:desc
+func (r GroupsAPIV1GroupsGetRequest) Sort(sort []string) GroupsAPIV1GroupsGetRequest {
+	r.sort = &sort
+	return r
+}
+
+// Query in the RSQL format, allowing to filter group collection. Default filter is empty query - returning all results for the requested page. Fields allowed in the query: groupPlatformId, groupName, groupDescription, groupType, isSmart. This param can be combined with paging and sorting. When using groupPlatformId in the filter, the supported operators are: &#x3D;in&#x3D; (match any in list), &#x3D;out&#x3D; (exclude all in list). When using groupType in the filter, the value must be either \&quot;MOBILE\&quot; or \&quot;COMPUTER\&quot; but not both. When using groupType in the filter, the value is case sensitive. When using groupType in the filter, it will exclude groups of the other type regardless of or/and conditionals. Example: filter&#x3D;groupPlatformId&#x3D;in&#x3D;(&#39;uuid1&#39;,&#39;uuid2&#39;,&#39;uuid3&#39;) Example: filter&#x3D;groupName&#x3D;&#x3D;\&quot;*Managed*\&quot; and isSmart&#x3D;&#x3D;\&quot;true\&quot; Example: filter&#x3D;groupType&#x3D;&#x3D;\&quot;COMPUTER\&quot; and groupDescription&#x3D;&#x3D;\&quot;*Admin*\&quot;
 func (r GroupsAPIV1GroupsGetRequest) Filter(filter string) GroupsAPIV1GroupsGetRequest {
 	r.filter = &filter
 	return r
@@ -86,7 +122,7 @@ func (r GroupsAPIV1GroupsGetRequest) Execute() (*GroupSearchResult, *http.Respon
 /*
 V1GroupsGet Returns group information for all Mobile Device and Computer groups
 
-Returns group information for all Mobile Device and Computer groups. The type of groups returned will be dependent upon the corresponding group type READ privileges.
+Returns group information for all Mobile Device and Computer groups. The type of groups returned will be dependent upon the corresponding group type READ privileges. Results can be sorted by name, description, group type, or isSmart. Default sorting is by group name in ascending order.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return GroupsAPIV1GroupsGetRequest
@@ -122,23 +158,38 @@ func (a *GroupsAPIService) V1GroupsGetExecute(r GroupsAPIV1GroupsGetRequest) (*G
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
+	}
+	if r.sort != nil {
+		t := *r.sort
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "sort", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
+		}
+	} else {
+		var defaultValue []string = []string{"groupName:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -194,13 +245,137 @@ func (a *GroupsAPIService) V1GroupsGetExecute(r GroupsAPIV1GroupsGetRequest) (*G
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GroupsAPIV1GroupsIdDeleteRequest struct {
+	ctx context.Context
+	ApiService GroupsAPI
+	id string
+}
+
+func (r GroupsAPIV1GroupsIdDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1GroupsIdDeleteExecute(r)
+}
+
+/*
+V1GroupsIdDelete Delete a group by platform UUID
+
+Deletes a group by its platform UUID. Returns a 400 error if the group is being used as a dependency. Requires appropriate DELETE privileges.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The platform UUID of a group
+ @return GroupsAPIV1GroupsIdDeleteRequest
+*/
+func (a *GroupsAPIService) V1GroupsIdDelete(ctx context.Context, id string) GroupsAPIV1GroupsIdDeleteRequest {
+	return GroupsAPIV1GroupsIdDeleteRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *GroupsAPIService) V1GroupsIdDeleteExecute(r GroupsAPIV1GroupsIdDeleteRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.V1GroupsIdDelete")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type GroupsAPIV1GroupsIdGetRequest struct {
 	ctx context.Context
 	ApiService GroupsAPI
 	id string
 }
 
-func (r GroupsAPIV1GroupsIdGetRequest) Execute() (*GroupV1, *http.Response, error) {
+func (r GroupsAPIV1GroupsIdGetRequest) Execute() (*GroupWithCriteriaDtoV1, *http.Response, error) {
 	return r.ApiService.V1GroupsIdGetExecute(r)
 }
 
@@ -222,13 +397,13 @@ func (a *GroupsAPIService) V1GroupsIdGet(ctx context.Context, id string) GroupsA
 }
 
 // Execute executes the request
-//  @return GroupV1
-func (a *GroupsAPIService) V1GroupsIdGetExecute(r GroupsAPIV1GroupsIdGetRequest) (*GroupV1, *http.Response, error) {
+//  @return GroupWithCriteriaDtoV1
+func (a *GroupsAPIService) V1GroupsIdGetExecute(r GroupsAPIV1GroupsIdGetRequest) (*GroupWithCriteriaDtoV1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GroupV1
+		localVarReturnValue  *GroupWithCriteriaDtoV1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.V1GroupsIdGet")
@@ -305,4 +480,139 @@ func (a *GroupsAPIService) V1GroupsIdGetExecute(r GroupsAPIV1GroupsIdGetRequest)
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GroupsAPIV1GroupsIdPatchRequest struct {
+	ctx context.Context
+	ApiService GroupsAPI
+	id string
+	groupUpdateDtoV1 *GroupUpdateDtoV1
+}
+
+func (r GroupsAPIV1GroupsIdPatchRequest) GroupUpdateDtoV1(groupUpdateDtoV1 GroupUpdateDtoV1) GroupsAPIV1GroupsIdPatchRequest {
+	r.groupUpdateDtoV1 = &groupUpdateDtoV1
+	return r
+}
+
+func (r GroupsAPIV1GroupsIdPatchRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1GroupsIdPatchExecute(r)
+}
+
+/*
+V1GroupsIdPatch Update a group by platform UUID
+
+Updates a group by its platform UUID. For both smart and static groups, groupName and groupDescription can be updated. For smart groups, criteria can also be updated. For static groups, assignments can also be updated. Requires appropriate UPDATE privileges.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The platform UUID of a group
+ @return GroupsAPIV1GroupsIdPatchRequest
+*/
+func (a *GroupsAPIService) V1GroupsIdPatch(ctx context.Context, id string) GroupsAPIV1GroupsIdPatchRequest {
+	return GroupsAPIV1GroupsIdPatchRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *GroupsAPIService) V1GroupsIdPatchExecute(r GroupsAPIV1GroupsIdPatchRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPatch
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GroupsAPIService.V1GroupsIdPatch")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/groups/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.groupUpdateDtoV1 == nil {
+		return nil, reportError("groupUpdateDtoV1 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupUpdateDtoV1
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }

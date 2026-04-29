@@ -20,7 +20,7 @@ var _ MappedNullable = &Assignment{}
 // Assignment struct for Assignment
 type Assignment struct {
 	MobileDeviceId *string `json:"mobileDeviceId,omitempty"`
-	// If true the device should be added to the group, if false should be removed from the group.
+	// If true the device should be added to the group, if false should be removed from the group
 	Selected *bool `json:"selected,omitempty"`
 }
 

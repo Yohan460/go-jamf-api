@@ -20,6 +20,8 @@ var _ MappedNullable = &V1Site{}
 // V1Site struct for V1Site
 type V1Site struct {
 	Id *string `json:"id,omitempty"`
+	// Platform division identifier (UUID) for this site.
+	DivisionId NullableString `json:"divisionId,omitempty"`
 	Name *string `json:"name,omitempty"`
 }
 
@@ -72,6 +74,48 @@ func (o *V1Site) SetId(v string) {
 	o.Id = &v
 }
 
+// GetDivisionId returns the DivisionId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *V1Site) GetDivisionId() string {
+	if o == nil || IsNil(o.DivisionId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DivisionId.Get()
+}
+
+// GetDivisionIdOk returns a tuple with the DivisionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *V1Site) GetDivisionIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DivisionId.Get(), o.DivisionId.IsSet()
+}
+
+// HasDivisionId returns a boolean if a field has been set.
+func (o *V1Site) HasDivisionId() bool {
+	if o != nil && o.DivisionId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDivisionId gets a reference to the given NullableString and assigns it to the DivisionId field.
+func (o *V1Site) SetDivisionId(v string) {
+	o.DivisionId.Set(&v)
+}
+// SetDivisionIdNil sets the value for DivisionId to be an explicit nil
+func (o *V1Site) SetDivisionIdNil() {
+	o.DivisionId.Set(nil)
+}
+
+// UnsetDivisionId ensures that no value is present for DivisionId, not even an explicit nil
+func (o *V1Site) UnsetDivisionId() {
+	o.DivisionId.Unset()
+}
+
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *V1Site) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -116,6 +160,9 @@ func (o V1Site) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if o.DivisionId.IsSet() {
+		toSerialize["divisionId"] = o.DivisionId.Get()
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name

@@ -19,6 +19,7 @@ import (
 // MdmCommandRequestCommandData - struct for MdmCommandRequestCommandData
 type MdmCommandRequestCommandData struct {
 	ApplyRedemptionCodeCommand *ApplyRedemptionCodeCommand
+	CertificateListCommand *CertificateListCommand
 	ClearPasscodeCommand *ClearPasscodeCommand
 	ClearRestrictionsPasswordCommand *ClearRestrictionsPasswordCommand
 	DeclarativeManagementCommand *DeclarativeManagementCommand
@@ -31,9 +32,13 @@ type MdmCommandRequestCommandData struct {
 	EnableLostModeCommand *EnableLostModeCommand
 	EnableRemoteDesktopCommand *EnableRemoteDesktopCommand
 	EraseDeviceCommand *EraseDeviceCommand
+	InstalledApplicationListCommand *InstalledApplicationListCommand
 	LogOutUserCommand *LogOutUserCommand
 	ManagedApplicationListCommand *ManagedApplicationListCommand
+	ManagedMediaListCommand *ManagedMediaListCommand
 	PlayLostModeSoundCommand *PlayLostModeSoundCommand
+	ProfileListCommand *ProfileListCommand
+	ProvisioningProfileListCommand *ProvisioningProfileListCommand
 	RefreshCellularPlansCommand *RefreshCellularPlansCommand
 	RequestMirroringCommand *RequestMirroringCommand
 	RestartDeviceCommand *RestartDeviceCommand
@@ -52,6 +57,13 @@ type MdmCommandRequestCommandData struct {
 func ApplyRedemptionCodeCommandAsMdmCommandRequestCommandData(v *ApplyRedemptionCodeCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		ApplyRedemptionCodeCommand: v,
+	}
+}
+
+// CertificateListCommandAsMdmCommandRequestCommandData is a convenience function that returns CertificateListCommand wrapped in MdmCommandRequestCommandData
+func CertificateListCommandAsMdmCommandRequestCommandData(v *CertificateListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		CertificateListCommand: v,
 	}
 }
 
@@ -139,6 +151,13 @@ func EraseDeviceCommandAsMdmCommandRequestCommandData(v *EraseDeviceCommand) Mdm
 	}
 }
 
+// InstalledApplicationListCommandAsMdmCommandRequestCommandData is a convenience function that returns InstalledApplicationListCommand wrapped in MdmCommandRequestCommandData
+func InstalledApplicationListCommandAsMdmCommandRequestCommandData(v *InstalledApplicationListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		InstalledApplicationListCommand: v,
+	}
+}
+
 // LogOutUserCommandAsMdmCommandRequestCommandData is a convenience function that returns LogOutUserCommand wrapped in MdmCommandRequestCommandData
 func LogOutUserCommandAsMdmCommandRequestCommandData(v *LogOutUserCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
@@ -153,10 +172,31 @@ func ManagedApplicationListCommandAsMdmCommandRequestCommandData(v *ManagedAppli
 	}
 }
 
+// ManagedMediaListCommandAsMdmCommandRequestCommandData is a convenience function that returns ManagedMediaListCommand wrapped in MdmCommandRequestCommandData
+func ManagedMediaListCommandAsMdmCommandRequestCommandData(v *ManagedMediaListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ManagedMediaListCommand: v,
+	}
+}
+
 // PlayLostModeSoundCommandAsMdmCommandRequestCommandData is a convenience function that returns PlayLostModeSoundCommand wrapped in MdmCommandRequestCommandData
 func PlayLostModeSoundCommandAsMdmCommandRequestCommandData(v *PlayLostModeSoundCommand) MdmCommandRequestCommandData {
 	return MdmCommandRequestCommandData{
 		PlayLostModeSoundCommand: v,
+	}
+}
+
+// ProfileListCommandAsMdmCommandRequestCommandData is a convenience function that returns ProfileListCommand wrapped in MdmCommandRequestCommandData
+func ProfileListCommandAsMdmCommandRequestCommandData(v *ProfileListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ProfileListCommand: v,
+	}
+}
+
+// ProvisioningProfileListCommandAsMdmCommandRequestCommandData is a convenience function that returns ProvisioningProfileListCommand wrapped in MdmCommandRequestCommandData
+func ProvisioningProfileListCommandAsMdmCommandRequestCommandData(v *ProvisioningProfileListCommand) MdmCommandRequestCommandData {
+	return MdmCommandRequestCommandData{
+		ProvisioningProfileListCommand: v,
 	}
 }
 
@@ -264,6 +304,23 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.ApplyRedemptionCodeCommand = nil
+	}
+
+	// try to unmarshal data into CertificateListCommand
+	err = newStrictDecoder(data).Decode(&dst.CertificateListCommand)
+	if err == nil {
+		jsonCertificateListCommand, _ := json.Marshal(dst.CertificateListCommand)
+		if string(jsonCertificateListCommand) == "{}" { // empty struct
+			dst.CertificateListCommand = nil
+		} else {
+			if err = validator.Validate(dst.CertificateListCommand); err != nil {
+				dst.CertificateListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.CertificateListCommand = nil
 	}
 
 	// try to unmarshal data into ClearPasscodeCommand
@@ -470,6 +527,23 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.EraseDeviceCommand = nil
 	}
 
+	// try to unmarshal data into InstalledApplicationListCommand
+	err = newStrictDecoder(data).Decode(&dst.InstalledApplicationListCommand)
+	if err == nil {
+		jsonInstalledApplicationListCommand, _ := json.Marshal(dst.InstalledApplicationListCommand)
+		if string(jsonInstalledApplicationListCommand) == "{}" { // empty struct
+			dst.InstalledApplicationListCommand = nil
+		} else {
+			if err = validator.Validate(dst.InstalledApplicationListCommand); err != nil {
+				dst.InstalledApplicationListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.InstalledApplicationListCommand = nil
+	}
+
 	// try to unmarshal data into LogOutUserCommand
 	err = newStrictDecoder(data).Decode(&dst.LogOutUserCommand)
 	if err == nil {
@@ -504,6 +578,23 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.ManagedApplicationListCommand = nil
 	}
 
+	// try to unmarshal data into ManagedMediaListCommand
+	err = newStrictDecoder(data).Decode(&dst.ManagedMediaListCommand)
+	if err == nil {
+		jsonManagedMediaListCommand, _ := json.Marshal(dst.ManagedMediaListCommand)
+		if string(jsonManagedMediaListCommand) == "{}" { // empty struct
+			dst.ManagedMediaListCommand = nil
+		} else {
+			if err = validator.Validate(dst.ManagedMediaListCommand); err != nil {
+				dst.ManagedMediaListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ManagedMediaListCommand = nil
+	}
+
 	// try to unmarshal data into PlayLostModeSoundCommand
 	err = newStrictDecoder(data).Decode(&dst.PlayLostModeSoundCommand)
 	if err == nil {
@@ -519,6 +610,40 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		}
 	} else {
 		dst.PlayLostModeSoundCommand = nil
+	}
+
+	// try to unmarshal data into ProfileListCommand
+	err = newStrictDecoder(data).Decode(&dst.ProfileListCommand)
+	if err == nil {
+		jsonProfileListCommand, _ := json.Marshal(dst.ProfileListCommand)
+		if string(jsonProfileListCommand) == "{}" { // empty struct
+			dst.ProfileListCommand = nil
+		} else {
+			if err = validator.Validate(dst.ProfileListCommand); err != nil {
+				dst.ProfileListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ProfileListCommand = nil
+	}
+
+	// try to unmarshal data into ProvisioningProfileListCommand
+	err = newStrictDecoder(data).Decode(&dst.ProvisioningProfileListCommand)
+	if err == nil {
+		jsonProvisioningProfileListCommand, _ := json.Marshal(dst.ProvisioningProfileListCommand)
+		if string(jsonProvisioningProfileListCommand) == "{}" { // empty struct
+			dst.ProvisioningProfileListCommand = nil
+		} else {
+			if err = validator.Validate(dst.ProvisioningProfileListCommand); err != nil {
+				dst.ProvisioningProfileListCommand = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.ProvisioningProfileListCommand = nil
 	}
 
 	// try to unmarshal data into RefreshCellularPlansCommand
@@ -728,6 +853,7 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ApplyRedemptionCodeCommand = nil
+		dst.CertificateListCommand = nil
 		dst.ClearPasscodeCommand = nil
 		dst.ClearRestrictionsPasswordCommand = nil
 		dst.DeclarativeManagementCommand = nil
@@ -740,9 +866,13 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 		dst.EnableLostModeCommand = nil
 		dst.EnableRemoteDesktopCommand = nil
 		dst.EraseDeviceCommand = nil
+		dst.InstalledApplicationListCommand = nil
 		dst.LogOutUserCommand = nil
 		dst.ManagedApplicationListCommand = nil
+		dst.ManagedMediaListCommand = nil
 		dst.PlayLostModeSoundCommand = nil
+		dst.ProfileListCommand = nil
+		dst.ProvisioningProfileListCommand = nil
 		dst.RefreshCellularPlansCommand = nil
 		dst.RequestMirroringCommand = nil
 		dst.RestartDeviceCommand = nil
@@ -768,6 +898,10 @@ func (dst *MdmCommandRequestCommandData) UnmarshalJSON(data []byte) error {
 func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 	if src.ApplyRedemptionCodeCommand != nil {
 		return json.Marshal(&src.ApplyRedemptionCodeCommand)
+	}
+
+	if src.CertificateListCommand != nil {
+		return json.Marshal(&src.CertificateListCommand)
 	}
 
 	if src.ClearPasscodeCommand != nil {
@@ -818,6 +952,10 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.EraseDeviceCommand)
 	}
 
+	if src.InstalledApplicationListCommand != nil {
+		return json.Marshal(&src.InstalledApplicationListCommand)
+	}
+
 	if src.LogOutUserCommand != nil {
 		return json.Marshal(&src.LogOutUserCommand)
 	}
@@ -826,8 +964,20 @@ func (src MdmCommandRequestCommandData) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ManagedApplicationListCommand)
 	}
 
+	if src.ManagedMediaListCommand != nil {
+		return json.Marshal(&src.ManagedMediaListCommand)
+	}
+
 	if src.PlayLostModeSoundCommand != nil {
 		return json.Marshal(&src.PlayLostModeSoundCommand)
+	}
+
+	if src.ProfileListCommand != nil {
+		return json.Marshal(&src.ProfileListCommand)
+	}
+
+	if src.ProvisioningProfileListCommand != nil {
+		return json.Marshal(&src.ProvisioningProfileListCommand)
 	}
 
 	if src.RefreshCellularPlansCommand != nil {
@@ -890,6 +1040,10 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.ApplyRedemptionCodeCommand
 	}
 
+	if obj.CertificateListCommand != nil {
+		return obj.CertificateListCommand
+	}
+
 	if obj.ClearPasscodeCommand != nil {
 		return obj.ClearPasscodeCommand
 	}
@@ -938,6 +1092,10 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.EraseDeviceCommand
 	}
 
+	if obj.InstalledApplicationListCommand != nil {
+		return obj.InstalledApplicationListCommand
+	}
+
 	if obj.LogOutUserCommand != nil {
 		return obj.LogOutUserCommand
 	}
@@ -946,8 +1104,20 @@ func (obj *MdmCommandRequestCommandData) GetActualInstance() (interface{}) {
 		return obj.ManagedApplicationListCommand
 	}
 
+	if obj.ManagedMediaListCommand != nil {
+		return obj.ManagedMediaListCommand
+	}
+
 	if obj.PlayLostModeSoundCommand != nil {
 		return obj.PlayLostModeSoundCommand
+	}
+
+	if obj.ProfileListCommand != nil {
+		return obj.ProfileListCommand
+	}
+
+	if obj.ProvisioningProfileListCommand != nil {
+		return obj.ProvisioningProfileListCommand
 	}
 
 	if obj.RefreshCellularPlansCommand != nil {
@@ -1008,6 +1178,10 @@ func (obj MdmCommandRequestCommandData) GetActualInstanceValue() (interface{}) {
 		return *obj.ApplyRedemptionCodeCommand
 	}
 
+	if obj.CertificateListCommand != nil {
+		return *obj.CertificateListCommand
+	}
+
 	if obj.ClearPasscodeCommand != nil {
 		return *obj.ClearPasscodeCommand
 	}
@@ -1056,6 +1230,10 @@ func (obj MdmCommandRequestCommandData) GetActualInstanceValue() (interface{}) {
 		return *obj.EraseDeviceCommand
 	}
 
+	if obj.InstalledApplicationListCommand != nil {
+		return *obj.InstalledApplicationListCommand
+	}
+
 	if obj.LogOutUserCommand != nil {
 		return *obj.LogOutUserCommand
 	}
@@ -1064,8 +1242,20 @@ func (obj MdmCommandRequestCommandData) GetActualInstanceValue() (interface{}) {
 		return *obj.ManagedApplicationListCommand
 	}
 
+	if obj.ManagedMediaListCommand != nil {
+		return *obj.ManagedMediaListCommand
+	}
+
 	if obj.PlayLostModeSoundCommand != nil {
 		return *obj.PlayLostModeSoundCommand
+	}
+
+	if obj.ProfileListCommand != nil {
+		return *obj.ProfileListCommand
+	}
+
+	if obj.ProvisioningProfileListCommand != nil {
+		return *obj.ProvisioningProfileListCommand
 	}
 
 	if obj.RefreshCellularPlansCommand != nil {

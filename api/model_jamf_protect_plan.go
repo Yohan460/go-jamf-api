@@ -25,7 +25,9 @@ type JamfProtectPlan struct {
 	Description *string `json:"description,omitempty"`
 	ProfileId *int64 `json:"profileId,omitempty"`
 	ProfileName *string `json:"profileName,omitempty"`
+	ProfileVersion *int64 `json:"profileVersion,omitempty"`
 	ScopeDescription *string `json:"scopeDescription,omitempty"`
+	SiteId *string `json:"siteId,omitempty"`
 }
 
 // NewJamfProtectPlan instantiates a new JamfProtectPlan object
@@ -237,6 +239,38 @@ func (o *JamfProtectPlan) SetProfileName(v string) {
 	o.ProfileName = &v
 }
 
+// GetProfileVersion returns the ProfileVersion field value if set, zero value otherwise.
+func (o *JamfProtectPlan) GetProfileVersion() int64 {
+	if o == nil || IsNil(o.ProfileVersion) {
+		var ret int64
+		return ret
+	}
+	return *o.ProfileVersion
+}
+
+// GetProfileVersionOk returns a tuple with the ProfileVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JamfProtectPlan) GetProfileVersionOk() (*int64, bool) {
+	if o == nil || IsNil(o.ProfileVersion) {
+		return nil, false
+	}
+	return o.ProfileVersion, true
+}
+
+// HasProfileVersion returns a boolean if a field has been set.
+func (o *JamfProtectPlan) HasProfileVersion() bool {
+	if o != nil && !IsNil(o.ProfileVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileVersion gets a reference to the given int64 and assigns it to the ProfileVersion field.
+func (o *JamfProtectPlan) SetProfileVersion(v int64) {
+	o.ProfileVersion = &v
+}
+
 // GetScopeDescription returns the ScopeDescription field value if set, zero value otherwise.
 func (o *JamfProtectPlan) GetScopeDescription() string {
 	if o == nil || IsNil(o.ScopeDescription) {
@@ -269,6 +303,38 @@ func (o *JamfProtectPlan) SetScopeDescription(v string) {
 	o.ScopeDescription = &v
 }
 
+// GetSiteId returns the SiteId field value if set, zero value otherwise.
+func (o *JamfProtectPlan) GetSiteId() string {
+	if o == nil || IsNil(o.SiteId) {
+		var ret string
+		return ret
+	}
+	return *o.SiteId
+}
+
+// GetSiteIdOk returns a tuple with the SiteId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JamfProtectPlan) GetSiteIdOk() (*string, bool) {
+	if o == nil || IsNil(o.SiteId) {
+		return nil, false
+	}
+	return o.SiteId, true
+}
+
+// HasSiteId returns a boolean if a field has been set.
+func (o *JamfProtectPlan) HasSiteId() bool {
+	if o != nil && !IsNil(o.SiteId) {
+		return true
+	}
+
+	return false
+}
+
+// SetSiteId gets a reference to the given string and assigns it to the SiteId field.
+func (o *JamfProtectPlan) SetSiteId(v string) {
+	o.SiteId = &v
+}
+
 func (o JamfProtectPlan) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -297,8 +363,14 @@ func (o JamfProtectPlan) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProfileName) {
 		toSerialize["profileName"] = o.ProfileName
 	}
+	if !IsNil(o.ProfileVersion) {
+		toSerialize["profileVersion"] = o.ProfileVersion
+	}
 	if !IsNil(o.ScopeDescription) {
 		toSerialize["scopeDescription"] = o.ScopeDescription
+	}
+	if !IsNil(o.SiteId) {
+		toSerialize["siteId"] = o.SiteId
 	}
 	return toSerialize, nil
 }

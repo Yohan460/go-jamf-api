@@ -32,6 +32,19 @@ Method | HTTP request | Description
 [**V2ComputersInventoryIdViewDeviceLockPinGet**](ComputerInventoryAPI.md#V2ComputersInventoryIdViewDeviceLockPinGet) | **Get** /v2/computers-inventory/{id}/view-device-lock-pin | Return a computer&#39;s Device Lock PIN
 [**V2ComputersInventoryIdViewRecoveryLockPasswordGet**](ComputerInventoryAPI.md#V2ComputersInventoryIdViewRecoveryLockPasswordGet) | **Get** /v2/computers-inventory/{id}/view-recovery-lock-password | Return a Computers Recovery Lock Password
 [**V2ComputersInventoryPost**](ComputerInventoryAPI.md#V2ComputersInventoryPost) | **Post** /v2/computers-inventory | Create Computer Inventory record
+[**V3ComputersInventoryDetailIdGet**](ComputerInventoryAPI.md#V3ComputersInventoryDetailIdGet) | **Get** /v3/computers-inventory-detail/{id} | Return all sections of a computer
+[**V3ComputersInventoryDetailIdPatch**](ComputerInventoryAPI.md#V3ComputersInventoryDetailIdPatch) | **Patch** /v3/computers-inventory-detail/{id} | Update specific fields on a computer
+[**V3ComputersInventoryFilevaultGet**](ComputerInventoryAPI.md#V3ComputersInventoryFilevaultGet) | **Get** /v3/computers-inventory/filevault | Return paginated FileVault information for all computers
+[**V3ComputersInventoryGet**](ComputerInventoryAPI.md#V3ComputersInventoryGet) | **Get** /v3/computers-inventory | Return paginated Computer Inventory records
+[**V3ComputersInventoryIdAttachmentsAttachmentIdDelete**](ComputerInventoryAPI.md#V3ComputersInventoryIdAttachmentsAttachmentIdDelete) | **Delete** /v3/computers-inventory/{id}/attachments/{attachmentId} | Remove attachment
+[**V3ComputersInventoryIdAttachmentsAttachmentIdGet**](ComputerInventoryAPI.md#V3ComputersInventoryIdAttachmentsAttachmentIdGet) | **Get** /v3/computers-inventory/{id}/attachments/{attachmentId} | Download attachment file
+[**V3ComputersInventoryIdAttachmentsPost**](ComputerInventoryAPI.md#V3ComputersInventoryIdAttachmentsPost) | **Post** /v3/computers-inventory/{id}/attachments | Upload attachment and assign to computer
+[**V3ComputersInventoryIdDelete**](ComputerInventoryAPI.md#V3ComputersInventoryIdDelete) | **Delete** /v3/computers-inventory/{id} | Remove specified Computer record
+[**V3ComputersInventoryIdFilevaultGet**](ComputerInventoryAPI.md#V3ComputersInventoryIdFilevaultGet) | **Get** /v3/computers-inventory/{id}/filevault | Return FileVault information for a specific computer
+[**V3ComputersInventoryIdGet**](ComputerInventoryAPI.md#V3ComputersInventoryIdGet) | **Get** /v3/computers-inventory/{id} | Return General section of a Computer
+[**V3ComputersInventoryIdViewDeviceLockPinGet**](ComputerInventoryAPI.md#V3ComputersInventoryIdViewDeviceLockPinGet) | **Get** /v3/computers-inventory/{id}/view-device-lock-pin | Return a computer&#39;s Device Lock PIN
+[**V3ComputersInventoryIdViewRecoveryLockPasswordGet**](ComputerInventoryAPI.md#V3ComputersInventoryIdViewRecoveryLockPasswordGet) | **Get** /v3/computers-inventory/{id}/view-recovery-lock-password | Return a Computers Recovery Lock Password
+[**V3ComputersInventoryPost**](ComputerInventoryAPI.md#V3ComputersInventoryPost) | **Post** /v3/computers-inventory | Create Computer Inventory record
 
 
 
@@ -1983,6 +1996,920 @@ func main() {
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiV2ComputersInventoryPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **computerInventoryCreateRequestV2** | [**ComputerInventoryCreateRequestV2**](ComputerInventoryCreateRequestV2.md) |  | 
+
+### Return type
+
+[**HrefResponse**](HrefResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryDetailIdGet
+
+> ComputerInventoryV3 V3ComputersInventoryDetailIdGet(ctx, id).Execute()
+
+Return all sections of a computer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryDetailIdGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryDetailIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryDetailIdGet`: ComputerInventoryV3
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryDetailIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryDetailIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ComputerInventoryV3**](ComputerInventoryV3.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryDetailIdPatch
+
+> V3ComputersInventoryDetailIdPatch(ctx, id).ComputerInventoryUpdateRequest(computerInventoryUpdateRequest).Execute()
+
+Update specific fields on a computer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+	computerInventoryUpdateRequest := *openapiclient.NewComputerInventoryUpdateRequest() // ComputerInventoryUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryDetailIdPatch(context.Background(), id).ComputerInventoryUpdateRequest(computerInventoryUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryDetailIdPatch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryDetailIdPatchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **computerInventoryUpdateRequest** | [**ComputerInventoryUpdateRequest**](ComputerInventoryUpdateRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryFilevaultGet
+
+> ComputerInventoryFileVaultSearchResults V3ComputersInventoryFilevaultGet(ctx).Page(page).PageSize(pageSize).Execute()
+
+Return paginated FileVault information for all computers
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryFilevaultGet(context.Background()).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryFilevaultGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryFilevaultGet`: ComputerInventoryFileVaultSearchResults
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryFilevaultGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryFilevaultGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
+
+### Return type
+
+[**ComputerInventoryFileVaultSearchResults**](ComputerInventoryFileVaultSearchResults.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryGet
+
+> ComputerInventorySearchResultsV3 V3ComputersInventoryGet(ctx).Section(section).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+
+Return paginated Computer Inventory records
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	section := []openapiclient.ComputerSectionV3{openapiclient.ComputerSectionV3("GENERAL")} // []ComputerSectionV3 | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=GENERAL&section=HARDWARE (optional) (default to {"GENERAL"})
+	page := int64(56) // int64 |  (optional) (default to 0)
+	pageSize := int64(56) // int64 |  (optional) (default to 100)
+	sort := []string{"Inner_example"} // []string | Sorting criteria in the format: `property:asc/desc`. Default sort is `general.name:asc`. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: `general.name`, `udid`, `id`, `general.assetTag`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.mdmCertificateExpiration`, `general.platform`, `general.lastLoggedInUsernameSelfService`, `general.lastLoggedInUsernameSelfServiceTimestamp`, `general.mdmCertificateExpiration`, `general.platform`, `general.lastLoggedInUsernameBinary`, `general.lastLoggedInUsernameBinaryTimestamp` `hardware.make`, `hardware.model`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `userAndLocation.realname`, `purchasing.lifeExpectancy`, `purchasing.warrantyDate`  Example: `sort=udid:desc,general.name:asc`.  (optional) (default to {"general.name:asc"})
+	filter := "filter_example" // string | Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: `general.name`, `udid`, `id`, `general.assetTag`, `general.barcode1`, `general.barcode2`, `general.enrolledViaAutomatedDeviceEnrollment`, `general.lastIpAddress`, `general.itunesStoreAccountActive`, `general.jamfBinaryVersion`, `general.lastContactTime`, `general.lastEnrolledDate`, `general.lastCloudBackupDate`, `general.reportDate`, `general.lastReportedIp`, `general.lastReportedIpV4`, `general.lastReportedIpV6`, `general.managementId`, `general.remoteManagement.managed`, `general.mdmCapable.capable`, `general.mdmCertificateExpiration`, `general.platform`, `general.supervised`, `general.userApprovedMdm`, `general.declarativeDeviceManagementEnabled`,  `general.lastLoggedInUsernameSelfService`, `general.lastLoggedInUsernameSelfServiceTimestamp`,  `general.mdmCapable.capable`, `general.mdmCertificateExpiration`, `general.platform`, `general.supervised`, `general.userApprovedMdm`, `general.declarativeDeviceManagementEnabled`, `general.lastLoggedInUsernameBinary`, `general.lastLoggedInUsernameBinaryTimestamp`, `hardware.bleCapable`, `hardware.macAddress`, `hardware.make`, `hardware.model`, `hardware.modelIdentifier`, `hardware.serialNumber`, `hardware.supportsIosAppInstalls`,`hardware.appleSilicon`, `operatingSystem.activeDirectoryStatus`, `operatingSystem.fileVault2Status`, `operatingSystem.build`, `operatingSystem.supplementalBuildVersion`, `operatingSystem.rapidSecurityResponse`, `operatingSystem.name`, `operatingSystem.version`, `security.activationLockEnabled`, `security.recoveryLockEnabled`,`security.firewallEnabled`,`userAndLocation.buildingId`, `userAndLocation.departmentId`, `userAndLocation.email`, `userAndLocation.realname`, `userAndLocation.phone`, `userAndLocation.position`,`userAndLocation.room`, `userAndLocation.username`, `diskEncryption.fileVault2Enabled`, `purchasing.appleCareId`, `purchasing.lifeExpectancy`, `purchasing.purchased`, `purchasing.leased`, `purchasing.vendor`, `purchasing.warrantyDate`,  This param can be combined with paging and sorting. Example: `filter=general.name==\"Orchard\"`  (optional) (default to "")
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryGet(context.Background()).Section(section).Page(page).PageSize(pageSize).Sort(sort).Filter(filter).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryGet`: ComputerInventorySearchResultsV3
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **section** | [**[]ComputerSectionV3**](ComputerSectionV3.md) | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;GENERAL&amp;section&#x3D;HARDWARE | [default to {&quot;GENERAL&quot;}]
+ **page** | **int64** |  | [default to 0]
+ **pageSize** | **int64** |  | [default to 100]
+ **sort** | **[]string** | Sorting criteria in the format: &#x60;property:asc/desc&#x60;. Default sort is &#x60;general.name:asc&#x60;. Multiple sort criteria are supported and must be separated with a comma.  Fields allowed in the sort: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60; &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.warrantyDate&#x60;  Example: &#x60;sort&#x3D;udid:desc,general.name:asc&#x60;.  | [default to {&quot;general.name:asc&quot;}]
+ **filter** | **string** | Query in the RSQL format, allowing to filter computer inventory collection. Default filter is empty query - returning all results for the requested page.  Fields allowed in the query: &#x60;general.name&#x60;, &#x60;udid&#x60;, &#x60;id&#x60;, &#x60;general.assetTag&#x60;, &#x60;general.barcode1&#x60;, &#x60;general.barcode2&#x60;, &#x60;general.enrolledViaAutomatedDeviceEnrollment&#x60;, &#x60;general.lastIpAddress&#x60;, &#x60;general.itunesStoreAccountActive&#x60;, &#x60;general.jamfBinaryVersion&#x60;, &#x60;general.lastContactTime&#x60;, &#x60;general.lastEnrolledDate&#x60;, &#x60;general.lastCloudBackupDate&#x60;, &#x60;general.reportDate&#x60;, &#x60;general.lastReportedIp&#x60;, &#x60;general.lastReportedIpV4&#x60;, &#x60;general.lastReportedIpV6&#x60;, &#x60;general.managementId&#x60;, &#x60;general.remoteManagement.managed&#x60;, &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;,  &#x60;general.lastLoggedInUsernameSelfService&#x60;, &#x60;general.lastLoggedInUsernameSelfServiceTimestamp&#x60;,  &#x60;general.mdmCapable.capable&#x60;, &#x60;general.mdmCertificateExpiration&#x60;, &#x60;general.platform&#x60;, &#x60;general.supervised&#x60;, &#x60;general.userApprovedMdm&#x60;, &#x60;general.declarativeDeviceManagementEnabled&#x60;, &#x60;general.lastLoggedInUsernameBinary&#x60;, &#x60;general.lastLoggedInUsernameBinaryTimestamp&#x60;, &#x60;hardware.bleCapable&#x60;, &#x60;hardware.macAddress&#x60;, &#x60;hardware.make&#x60;, &#x60;hardware.model&#x60;, &#x60;hardware.modelIdentifier&#x60;, &#x60;hardware.serialNumber&#x60;, &#x60;hardware.supportsIosAppInstalls&#x60;,&#x60;hardware.appleSilicon&#x60;, &#x60;operatingSystem.activeDirectoryStatus&#x60;, &#x60;operatingSystem.fileVault2Status&#x60;, &#x60;operatingSystem.build&#x60;, &#x60;operatingSystem.supplementalBuildVersion&#x60;, &#x60;operatingSystem.rapidSecurityResponse&#x60;, &#x60;operatingSystem.name&#x60;, &#x60;operatingSystem.version&#x60;, &#x60;security.activationLockEnabled&#x60;, &#x60;security.recoveryLockEnabled&#x60;,&#x60;security.firewallEnabled&#x60;,&#x60;userAndLocation.buildingId&#x60;, &#x60;userAndLocation.departmentId&#x60;, &#x60;userAndLocation.email&#x60;, &#x60;userAndLocation.realname&#x60;, &#x60;userAndLocation.phone&#x60;, &#x60;userAndLocation.position&#x60;,&#x60;userAndLocation.room&#x60;, &#x60;userAndLocation.username&#x60;, &#x60;diskEncryption.fileVault2Enabled&#x60;, &#x60;purchasing.appleCareId&#x60;, &#x60;purchasing.lifeExpectancy&#x60;, &#x60;purchasing.purchased&#x60;, &#x60;purchasing.leased&#x60;, &#x60;purchasing.vendor&#x60;, &#x60;purchasing.warrantyDate&#x60;,  This param can be combined with paging and sorting. Example: &#x60;filter&#x3D;general.name&#x3D;&#x3D;\&quot;Orchard\&quot;&#x60;  | [default to &quot;&quot;]
+
+### Return type
+
+[**ComputerInventorySearchResultsV3**](ComputerInventorySearchResultsV3.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdAttachmentsAttachmentIdDelete
+
+> V3ComputersInventoryIdAttachmentsAttachmentIdDelete(ctx, id, attachmentId).Execute()
+
+Remove attachment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+	attachmentId := "attachmentId_example" // string | instance id of attachment object
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsAttachmentIdDelete(context.Background(), id, attachmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsAttachmentIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+**attachmentId** | **string** | instance id of attachment object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdAttachmentsAttachmentIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdAttachmentsAttachmentIdGet
+
+> *os.File V3ComputersInventoryIdAttachmentsAttachmentIdGet(ctx, id, attachmentId).Execute()
+
+Download attachment file
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+	attachmentId := "attachmentId_example" // string | instance id of attachment object
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsAttachmentIdGet(context.Background(), id, attachmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsAttachmentIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdAttachmentsAttachmentIdGet`: *os.File
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsAttachmentIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+**attachmentId** | **string** | instance id of attachment object | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdAttachmentsAttachmentIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[***os.File**](*os.File.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdAttachmentsPost
+
+> HrefResponse V3ComputersInventoryIdAttachmentsPost(ctx, id).File(file).Execute()
+
+Upload attachment and assign to computer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+	file := os.NewFile(1234, "some_file") // *os.File | The file to upload
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsPost(context.Background(), id).File(file).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdAttachmentsPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdAttachmentsPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdAttachmentsPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **file** | ***os.File** | The file to upload | 
+
+### Return type
+
+[**HrefResponse**](HrefResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdDelete
+
+> V3ComputersInventoryIdDelete(ctx, id).Execute()
+
+Remove specified Computer record
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdDelete(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdFilevaultGet
+
+> ComputerInventoryFileVault V3ComputersInventoryIdFilevaultGet(ctx, id).Execute()
+
+Return FileVault information for a specific computer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdFilevaultGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdFilevaultGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdFilevaultGet`: ComputerInventoryFileVault
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdFilevaultGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdFilevaultGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ComputerInventoryFileVault**](ComputerInventoryFileVault.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdGet
+
+> ComputerInventoryV3 V3ComputersInventoryIdGet(ctx, id).Section(section).Execute()
+
+Return General section of a Computer
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+	section := []openapiclient.ComputerSectionV3{openapiclient.ComputerSectionV3("GENERAL")} // []ComputerSectionV3 | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section=general&section=hardware (optional) (default to {"GENERAL"})
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdGet(context.Background(), id).Section(section).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdGet`: ComputerInventoryV3
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **section** | [**[]ComputerSectionV3**](ComputerSectionV3.md) | section of computer details, if not specified, General section data is returned. Multiple section parameters are supported, e.g. section&#x3D;general&amp;section&#x3D;hardware | [default to {&quot;GENERAL&quot;}]
+
+### Return type
+
+[**ComputerInventoryV3**](ComputerInventoryV3.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdViewDeviceLockPinGet
+
+> ComputerInventoryDeviceLockPinResponse V3ComputersInventoryIdViewDeviceLockPinGet(ctx, id).Execute()
+
+Return a computer's Device Lock PIN
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdViewDeviceLockPinGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdViewDeviceLockPinGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdViewDeviceLockPinGet`: ComputerInventoryDeviceLockPinResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdViewDeviceLockPinGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdViewDeviceLockPinGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ComputerInventoryDeviceLockPinResponse**](ComputerInventoryDeviceLockPinResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryIdViewRecoveryLockPasswordGet
+
+> ComputerInventoryRecoveryLockPasswordResponse V3ComputersInventoryIdViewRecoveryLockPasswordGet(ctx, id).Execute()
+
+Return a Computers Recovery Lock Password
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	id := "id_example" // string | instance id of computer record
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryIdViewRecoveryLockPasswordGet(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryIdViewRecoveryLockPasswordGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryIdViewRecoveryLockPasswordGet`: ComputerInventoryRecoveryLockPasswordResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryIdViewRecoveryLockPasswordGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string** | instance id of computer record | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryIdViewRecoveryLockPasswordGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ComputerInventoryRecoveryLockPasswordResponse**](ComputerInventoryRecoveryLockPasswordResponse.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V3ComputersInventoryPost
+
+> HrefResponse V3ComputersInventoryPost(ctx).ComputerInventoryCreateRequestV2(computerInventoryCreateRequestV2).Execute()
+
+Create Computer Inventory record
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	computerInventoryCreateRequestV2 := *openapiclient.NewComputerInventoryCreateRequestV2() // ComputerInventoryCreateRequestV2 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ComputerInventoryAPI.V3ComputersInventoryPost(context.Background()).ComputerInventoryCreateRequestV2(computerInventoryCreateRequestV2).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ComputerInventoryAPI.V3ComputersInventoryPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V3ComputersInventoryPost`: HrefResponse
+	fmt.Fprintf(os.Stdout, "Response from `ComputerInventoryAPI.V3ComputersInventoryPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV3ComputersInventoryPostRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

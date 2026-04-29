@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupSearchResult{}
 // GroupSearchResult struct for GroupSearchResult
 type GroupSearchResult struct {
 	TotalCount *int64 `json:"totalCount,omitempty"`
-	Results []GroupV1 `json:"results,omitempty"`
+	Results []GroupDtoV1 `json:"results,omitempty"`
 }
 
 // NewGroupSearchResult instantiates a new GroupSearchResult object
@@ -73,9 +73,9 @@ func (o *GroupSearchResult) SetTotalCount(v int64) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *GroupSearchResult) GetResults() []GroupV1 {
+func (o *GroupSearchResult) GetResults() []GroupDtoV1 {
 	if o == nil || IsNil(o.Results) {
-		var ret []GroupV1
+		var ret []GroupDtoV1
 		return ret
 	}
 	return o.Results
@@ -83,7 +83,7 @@ func (o *GroupSearchResult) GetResults() []GroupV1 {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupSearchResult) GetResultsOk() ([]GroupV1, bool) {
+func (o *GroupSearchResult) GetResultsOk() ([]GroupDtoV1, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *GroupSearchResult) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []GroupV1 and assigns it to the Results field.
-func (o *GroupSearchResult) SetResults(v []GroupV1) {
+// SetResults gets a reference to the given []GroupDtoV1 and assigns it to the Results field.
+func (o *GroupSearchResult) SetResults(v []GroupDtoV1) {
 	o.Results = v
 }
 

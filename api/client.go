@@ -50,6 +50,8 @@ type APIClient struct {
 
 	// API Services
 
+	AccountGroupsAPI AccountGroupsAPI
+
 	AccountsAPI AccountsAPI
 
 	ActivationCodeAPI ActivationCodeAPI
@@ -67,6 +69,8 @@ type APIClient struct {
 	ApiRolePrivilegesAPI ApiRolePrivilegesAPI
 
 	ApiRolesAPI ApiRolesAPI
+
+	ApnsClientPushStatusAPI ApnsClientPushStatusAPI
 
 	AppRequestPreviewAPI AppRequestPreviewAPI
 
@@ -124,6 +128,8 @@ type APIClient struct {
 
 	DeviceEnrollmentsDevicesAPI DeviceEnrollmentsDevicesAPI
 
+	DevicesAPI DevicesAPI
+
 	DigicertAPI DigicertAPI
 
 	DistributionPointAPI DistributionPointAPI
@@ -178,6 +184,8 @@ type APIClient struct {
 
 	JamfRemoteAssistAPI JamfRemoteAssistAPI
 
+	LastLoginAPI LastLoginAPI
+
 	LdapAPI LdapAPI
 
 	LocalAdminPasswordAPI LocalAdminPasswordAPI
@@ -193,6 +201,8 @@ type APIClient struct {
 	ManagedSoftwareUpdatesAPI ManagedSoftwareUpdatesAPI
 
 	MdmAPI MdmAPI
+
+	MdmRenewalAPI MdmRenewalAPI
 
 	MobileDeviceAppsAPI MobileDeviceAppsAPI
 
@@ -246,6 +256,8 @@ type APIClient struct {
 
 	SelfServicePlusAPI SelfServicePlusAPI
 
+	ServiceDiscoveryEnrollmentAPI ServiceDiscoveryEnrollmentAPI
+
 	SitesAPI SitesAPI
 
 	SlasaAPI SlasaAPI
@@ -284,6 +296,10 @@ type APIClient struct {
 
 	UserSessionPreviewAPI UserSessionPreviewAPI
 
+	UserSessionsAPI UserSessionsAPI
+
+	UsersAPI UsersAPI
+
 	VenafiPreviewAPI VenafiPreviewAPI
 
 	VolumePurchasingLocationsAPI VolumePurchasingLocationsAPI
@@ -307,6 +323,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.AccountGroupsAPI = (*AccountGroupsAPIService)(&c.common)
 	c.AccountsAPI = (*AccountsAPIService)(&c.common)
 	c.ActivationCodeAPI = (*ActivationCodeAPIService)(&c.common)
 	c.AdcsSettingsAPI = (*AdcsSettingsAPIService)(&c.common)
@@ -316,6 +333,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApiIntegrationsAPI = (*ApiIntegrationsAPIService)(&c.common)
 	c.ApiRolePrivilegesAPI = (*ApiRolePrivilegesAPIService)(&c.common)
 	c.ApiRolesAPI = (*ApiRolesAPIService)(&c.common)
+	c.ApnsClientPushStatusAPI = (*ApnsClientPushStatusAPIService)(&c.common)
 	c.AppRequestPreviewAPI = (*AppRequestPreviewAPIService)(&c.common)
 	c.AppStoreCountryCodesPreviewAPI = (*AppStoreCountryCodesPreviewAPIService)(&c.common)
 	c.BrandingAPI = (*BrandingAPIService)(&c.common)
@@ -344,6 +362,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DeviceCommunicationSettingsAPI = (*DeviceCommunicationSettingsAPIService)(&c.common)
 	c.DeviceEnrollmentsAPI = (*DeviceEnrollmentsAPIService)(&c.common)
 	c.DeviceEnrollmentsDevicesAPI = (*DeviceEnrollmentsDevicesAPIService)(&c.common)
+	c.DevicesAPI = (*DevicesAPIService)(&c.common)
 	c.DigicertAPI = (*DigicertAPIService)(&c.common)
 	c.DistributionPointAPI = (*DistributionPointAPIService)(&c.common)
 	c.DockItemsAPI = (*DockItemsAPIService)(&c.common)
@@ -371,6 +390,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JamfProVersionAPI = (*JamfProVersionAPIService)(&c.common)
 	c.JamfProtectAPI = (*JamfProtectAPIService)(&c.common)
 	c.JamfRemoteAssistAPI = (*JamfRemoteAssistAPIService)(&c.common)
+	c.LastLoginAPI = (*LastLoginAPIService)(&c.common)
 	c.LdapAPI = (*LdapAPIService)(&c.common)
 	c.LocalAdminPasswordAPI = (*LocalAdminPasswordAPIService)(&c.common)
 	c.LocalesPreviewAPI = (*LocalesPreviewAPIService)(&c.common)
@@ -379,6 +399,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MacosManagedSoftwareUpdatesAPI = (*MacosManagedSoftwareUpdatesAPIService)(&c.common)
 	c.ManagedSoftwareUpdatesAPI = (*ManagedSoftwareUpdatesAPIService)(&c.common)
 	c.MdmAPI = (*MdmAPIService)(&c.common)
+	c.MdmRenewalAPI = (*MdmRenewalAPIService)(&c.common)
 	c.MobileDeviceAppsAPI = (*MobileDeviceAppsAPIService)(&c.common)
 	c.MobileDeviceEnrollmentProfileAPI = (*MobileDeviceEnrollmentProfileAPIService)(&c.common)
 	c.MobileDeviceExtensionAttributesAPI = (*MobileDeviceExtensionAttributesAPIService)(&c.common)
@@ -405,6 +426,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SelfServiceBrandingMacosAPI = (*SelfServiceBrandingMacosAPIService)(&c.common)
 	c.SelfServiceBrandingPreviewAPI = (*SelfServiceBrandingPreviewAPIService)(&c.common)
 	c.SelfServicePlusAPI = (*SelfServicePlusAPIService)(&c.common)
+	c.ServiceDiscoveryEnrollmentAPI = (*ServiceDiscoveryEnrollmentAPIService)(&c.common)
 	c.SitesAPI = (*SitesAPIService)(&c.common)
 	c.SlasaAPI = (*SlasaAPIService)(&c.common)
 	c.SmartComputerGroupsPreviewAPI = (*SmartComputerGroupsPreviewAPIService)(&c.common)
@@ -424,6 +446,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TomcatSettingsPreviewAPI = (*TomcatSettingsPreviewAPIService)(&c.common)
 	c.UserAPI = (*UserAPIService)(&c.common)
 	c.UserSessionPreviewAPI = (*UserSessionPreviewAPIService)(&c.common)
+	c.UserSessionsAPI = (*UserSessionsAPIService)(&c.common)
+	c.UsersAPI = (*UsersAPIService)(&c.common)
 	c.VenafiPreviewAPI = (*VenafiPreviewAPIService)(&c.common)
 	c.VolumePurchasingLocationsAPI = (*VolumePurchasingLocationsAPIService)(&c.common)
 	c.VolumePurchasingSubscriptionsAPI = (*VolumePurchasingSubscriptionsAPIService)(&c.common)
@@ -866,10 +890,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	if err != nil {
 		return err
 	}
-	err = file.Close()
-	if err != nil {
-		return err
-	}
+	defer file.Close()
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {

@@ -40,9 +40,17 @@ type EnrollmentProcessTextObject struct {
 	CertificateButton *string `json:"certificateButton,omitempty"`
 	CertificateProfileName *string `json:"certificateProfileName,omitempty"`
 	CertificateProfileDescription *string `json:"certificateProfileDescription,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns empty string in GET responses and ignores any input values in PUT requests. 
+	// Deprecated
 	PersonalText *string `json:"personalText,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns empty string in GET responses and ignores any input values in PUT requests. 
+	// Deprecated
 	PersonalButton *string `json:"personalButton,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns empty string in GET responses and ignores any input values in PUT requests. 
+	// Deprecated
 	PersonalProfileName *string `json:"personalProfileName,omitempty"`
+	// **Deprecated as of 11.25.** This field always returns empty string in GET responses and ignores any input values in PUT requests. 
+	// Deprecated
 	PersonalProfileDescription *string `json:"personalProfileDescription,omitempty"`
 	UserEnrollmentText *string `json:"userEnrollmentText,omitempty"`
 	UserEnrollmentButton *string `json:"userEnrollmentButton,omitempty"`
@@ -775,6 +783,7 @@ func (o *EnrollmentProcessTextObject) SetCertificateProfileDescription(v string)
 }
 
 // GetPersonalText returns the PersonalText field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalText() string {
 	if o == nil || IsNil(o.PersonalText) {
 		var ret string
@@ -785,6 +794,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalText() string {
 
 // GetPersonalTextOk returns a tuple with the PersonalText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalTextOk() (*string, bool) {
 	if o == nil || IsNil(o.PersonalText) {
 		return nil, false
@@ -802,11 +812,13 @@ func (o *EnrollmentProcessTextObject) HasPersonalText() bool {
 }
 
 // SetPersonalText gets a reference to the given string and assigns it to the PersonalText field.
+// Deprecated
 func (o *EnrollmentProcessTextObject) SetPersonalText(v string) {
 	o.PersonalText = &v
 }
 
 // GetPersonalButton returns the PersonalButton field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalButton() string {
 	if o == nil || IsNil(o.PersonalButton) {
 		var ret string
@@ -817,6 +829,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalButton() string {
 
 // GetPersonalButtonOk returns a tuple with the PersonalButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalButtonOk() (*string, bool) {
 	if o == nil || IsNil(o.PersonalButton) {
 		return nil, false
@@ -834,11 +847,13 @@ func (o *EnrollmentProcessTextObject) HasPersonalButton() bool {
 }
 
 // SetPersonalButton gets a reference to the given string and assigns it to the PersonalButton field.
+// Deprecated
 func (o *EnrollmentProcessTextObject) SetPersonalButton(v string) {
 	o.PersonalButton = &v
 }
 
 // GetPersonalProfileName returns the PersonalProfileName field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalProfileName() string {
 	if o == nil || IsNil(o.PersonalProfileName) {
 		var ret string
@@ -849,6 +864,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileName() string {
 
 // GetPersonalProfileNameOk returns a tuple with the PersonalProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalProfileNameOk() (*string, bool) {
 	if o == nil || IsNil(o.PersonalProfileName) {
 		return nil, false
@@ -866,11 +882,13 @@ func (o *EnrollmentProcessTextObject) HasPersonalProfileName() bool {
 }
 
 // SetPersonalProfileName gets a reference to the given string and assigns it to the PersonalProfileName field.
+// Deprecated
 func (o *EnrollmentProcessTextObject) SetPersonalProfileName(v string) {
 	o.PersonalProfileName = &v
 }
 
 // GetPersonalProfileDescription returns the PersonalProfileDescription field value if set, zero value otherwise.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalProfileDescription() string {
 	if o == nil || IsNil(o.PersonalProfileDescription) {
 		var ret string
@@ -881,6 +899,7 @@ func (o *EnrollmentProcessTextObject) GetPersonalProfileDescription() string {
 
 // GetPersonalProfileDescriptionOk returns a tuple with the PersonalProfileDescription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *EnrollmentProcessTextObject) GetPersonalProfileDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.PersonalProfileDescription) {
 		return nil, false
@@ -898,6 +917,7 @@ func (o *EnrollmentProcessTextObject) HasPersonalProfileDescription() bool {
 }
 
 // SetPersonalProfileDescription gets a reference to the given string and assigns it to the PersonalProfileDescription field.
+// Deprecated
 func (o *EnrollmentProcessTextObject) SetPersonalProfileDescription(v string) {
 	o.PersonalProfileDescription = &v
 }

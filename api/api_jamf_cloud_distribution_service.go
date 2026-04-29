@@ -30,10 +30,13 @@ type JamfCloudDistributionServiceAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param fileName Name of the file that will be deleted from the Jamf Cloud Distribution Service.
 	@return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest
+
+	Deprecated
 	*/
 	V1JcdsFilesFileNameDelete(ctx context.Context, fileName string) JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest
 
 	// V1JcdsFilesFileNameDeleteExecute executes the request
+	// Deprecated
 	V1JcdsFilesFileNameDeleteExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest) (*http.Response, error)
 
 	/*
@@ -44,11 +47,14 @@ type JamfCloudDistributionServiceAPI interface {
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param fileName Name of the file stored in the Jamf Cloud Distribution Service.
 	@return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest
+
+	Deprecated
 	*/
 	V1JcdsFilesFileNameGet(ctx context.Context, fileName string) JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest
 
 	// V1JcdsFilesFileNameGetExecute executes the request
 	//  @return DownloadUrl
+	// Deprecated
 	V1JcdsFilesFileNameGetExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest) (*DownloadUrl, *http.Response, error)
 
 	/*
@@ -58,11 +64,14 @@ type JamfCloudDistributionServiceAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest
+
+	Deprecated
 	*/
 	V1JcdsFilesGet(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest
 
 	// V1JcdsFilesGetExecute executes the request
 	//  @return []FileData
+	// Deprecated
 	V1JcdsFilesGetExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest) ([]FileData, *http.Response, error)
 
 	/*
@@ -72,11 +81,14 @@ type JamfCloudDistributionServiceAPI interface {
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest
+
+	Deprecated
 	*/
 	V1JcdsFilesPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest
 
 	// V1JcdsFilesPostExecute executes the request
 	//  @return Credentials
+	// Deprecated
 	V1JcdsFilesPostExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest) (*Credentials, *http.Response, error)
 
 	/*
@@ -92,10 +104,13 @@ limited to once every 15 seconds.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest
+
+	Deprecated
 	*/
 	V1JcdsRefreshInventoryPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest
 
 	// V1JcdsRefreshInventoryPostExecute executes the request
+	// Deprecated
 	V1JcdsRefreshInventoryPostExecute(r JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest) (*http.Response, error)
 
 	/*
@@ -105,11 +120,14 @@ limited to once every 15 seconds.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest
+
+	Deprecated
 	*/
 	V1JcdsRenewCredentialsPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest
 
 	// V1JcdsRenewCredentialsPostExecute executes the request
 	//  @return Credentials
+	// Deprecated
 	V1JcdsRenewCredentialsPostExecute(r JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest) (*Credentials, *http.Response, error)
 }
 
@@ -134,6 +152,8 @@ Delete a file by filename from the Jamf Cloud Distribution Service.
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fileName Name of the file that will be deleted from the Jamf Cloud Distribution Service.
  @return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameDelete(ctx context.Context, fileName string) JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest{
@@ -144,6 +164,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameDelete(ctx c
 }
 
 // Execute executes the request
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameDeleteExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesFileNameDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
@@ -226,6 +247,8 @@ Retrieve a download URL for a specific file from the Jamf Cloud Distribution Ser
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param fileName Name of the file stored in the Jamf Cloud Distribution Service.
  @return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameGet(ctx context.Context, fileName string) JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest{
@@ -237,6 +260,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameGet(ctx cont
 
 // Execute executes the request
 //  @return DownloadUrl
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesFileNameGetExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesFileNameGetRequest) (*DownloadUrl, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -327,6 +351,8 @@ Retrieve a list of files and file metadata from the Jamf Cloud Distribution Serv
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesGet(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest{
@@ -337,6 +363,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesGet(ctx context.Cont
 
 // Execute executes the request
 //  @return []FileData
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesGetExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesGetRequest) ([]FileData, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
@@ -426,6 +453,8 @@ Creates a temporary record and returns the credentials and information needed fo
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest{
@@ -436,6 +465,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesPost(ctx context.Con
 
 // Execute executes the request
 //  @return Credentials
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsFilesPostExecute(r JamfCloudDistributionServiceAPIV1JcdsFilesPostRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -538,6 +568,8 @@ limited to once every 15 seconds.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsRefreshInventoryPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest{
@@ -547,6 +579,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsRefreshInventoryPost(ctx 
 }
 
 // Execute executes the request
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsRefreshInventoryPostExecute(r JamfCloudDistributionServiceAPIV1JcdsRefreshInventoryPostRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -568,9 +601,9 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsRefreshInventoryPostExecu
 	if r.fileName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", r.fileName, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", defaultValue, "form", "")
-        r.fileName = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", defaultValue, "form", "")
+		r.fileName = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -643,6 +676,8 @@ Renews the credentials needed for uploading the file to the Jamf Cloud Distribut
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest
+
+Deprecated
 */
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsRenewCredentialsPost(ctx context.Context) JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest {
 	return JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest{
@@ -653,6 +688,7 @@ func (a *JamfCloudDistributionServiceAPIService) V1JcdsRenewCredentialsPost(ctx 
 
 // Execute executes the request
 //  @return Credentials
+// Deprecated
 func (a *JamfCloudDistributionServiceAPIService) V1JcdsRenewCredentialsPostExecute(r JamfCloudDistributionServiceAPIV1JcdsRenewCredentialsPostRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost

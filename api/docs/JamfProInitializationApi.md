@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**V1SystemInitializeDatabaseConnectionPost**](JamfProInitializationAPI.md#V1SystemInitializeDatabaseConnectionPost) | **Post** /v1/system/initialize-database-connection | Provide Database Password during startup 
 [**V1SystemInitializePost**](JamfProInitializationAPI.md#V1SystemInitializePost) | **Post** /v1/system/initialize | Set up fresh installed Jamf Pro Server 
+[**V1SystemPlatformInitializePost**](JamfProInitializationAPI.md#V1SystemPlatformInitializePost) | **Post** /v1/system/platform-initialize | Set up fresh installed Jamf Pro Server for Platform 
 
 
 
@@ -118,6 +119,70 @@ Other parameters are passed through a pointer to a apiV1SystemInitializePostRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **initializeV1** | [**InitializeV1**](InitializeV1.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V1SystemPlatformInitializePost
+
+> V1SystemPlatformInitializePost(ctx).PlatformInitializeV1(platformInitializeV1).Execute()
+
+Set up fresh installed Jamf Pro Server for Platform 
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	platformInitializeV1 := *openapiclient.NewPlatformInitializeV1("VFAB-YDAB-DFAB-UDAB-DEAB-EFAB-ABAB-DEAB", "Jamf", false, "admin", "ITBob@jamf.com", "https://jamf.jamfcloud.com") // PlatformInitializeV1 | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JamfProInitializationAPI.V1SystemPlatformInitializePost(context.Background()).PlatformInitializeV1(platformInitializeV1).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JamfProInitializationAPI.V1SystemPlatformInitializePost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV1SystemPlatformInitializePostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **platformInitializeV1** | [**PlatformInitializeV1**](PlatformInitializeV1.md) |  | 
 
 ### Return type
 

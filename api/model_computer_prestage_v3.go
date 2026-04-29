@@ -54,8 +54,18 @@ type ComputerPrestageV3 struct {
 	RotateRecoveryLockPassword *bool `json:"rotateRecoveryLockPassword,omitempty"`
 	PrestageMinimumOsTargetVersionType *string `json:"prestageMinimumOsTargetVersionType,omitempty"`
 	MinimumOsSpecificVersion *string `json:"minimumOsSpecificVersion,omitempty"`
+	// Indicates whether Platform SSO (PSSO) is enabled for this computer prestage, regardless of unattended or 403 workflows. When enabled, the PSSO application will be deployed to devices during the setup process to facilitate single sign-on (SSO) for users.
 	PssoEnabled *bool `json:"pssoEnabled,omitempty"`
+	// The bundle identifier for the Platform SSO (PSSO) application unattended workflow. This identifier is used to specify which PSSO app should be deployed to devices during the setup process.
 	PlatformSsoAppBundleId *string `json:"platformSsoAppBundleId,omitempty"`
+	// The URL to the configuration profile for the Platform SSO (PSSO) application 403 workflow. This URL is used when deploying the PSSO app to devices during the setup process. Users should use either profileUrl or populate pssoConfigProfileId, but not both.
+	ProfileUrl NullableString `json:"profileUrl,omitempty"`
+	// The identifier for the configuration profile associated with the Platform SSO (PSSO) application 403 workflow. This ID is used to specify which configuration profile should be applied to devices during the setup process when PSSO is enabled. Users should use either pssoConfigProfileId or populate profileUrl, but not both.
+	PssoConfigProfileId NullableString `json:"pssoConfigProfileId,omitempty"`
+	// The URL to the manifest file for the Platform SSO (PSSO) application 403 workflow. This URL is used when deploying the PSSO app to devices during the setup process.
+	ManifestUrl NullableString `json:"manifestUrl,omitempty"`
+	// The URL to the identity provider (IdP) for authentication for the Platform SSO (PSSO) application 403 workflow. This URL is used in conjunction with PSSO to facilitate single sign-on for users during the device setup process.
+	AuthUrl NullableString `json:"authUrl,omitempty"`
 }
 
 type _ComputerPrestageV3 ComputerPrestageV3
@@ -1015,6 +1025,174 @@ func (o *ComputerPrestageV3) SetPlatformSsoAppBundleId(v string) {
 	o.PlatformSsoAppBundleId = &v
 }
 
+// GetProfileUrl returns the ProfileUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerPrestageV3) GetProfileUrl() string {
+	if o == nil || IsNil(o.ProfileUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ProfileUrl.Get()
+}
+
+// GetProfileUrlOk returns a tuple with the ProfileUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerPrestageV3) GetProfileUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProfileUrl.Get(), o.ProfileUrl.IsSet()
+}
+
+// HasProfileUrl returns a boolean if a field has been set.
+func (o *ComputerPrestageV3) HasProfileUrl() bool {
+	if o != nil && o.ProfileUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProfileUrl gets a reference to the given NullableString and assigns it to the ProfileUrl field.
+func (o *ComputerPrestageV3) SetProfileUrl(v string) {
+	o.ProfileUrl.Set(&v)
+}
+// SetProfileUrlNil sets the value for ProfileUrl to be an explicit nil
+func (o *ComputerPrestageV3) SetProfileUrlNil() {
+	o.ProfileUrl.Set(nil)
+}
+
+// UnsetProfileUrl ensures that no value is present for ProfileUrl, not even an explicit nil
+func (o *ComputerPrestageV3) UnsetProfileUrl() {
+	o.ProfileUrl.Unset()
+}
+
+// GetPssoConfigProfileId returns the PssoConfigProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerPrestageV3) GetPssoConfigProfileId() string {
+	if o == nil || IsNil(o.PssoConfigProfileId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PssoConfigProfileId.Get()
+}
+
+// GetPssoConfigProfileIdOk returns a tuple with the PssoConfigProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerPrestageV3) GetPssoConfigProfileIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PssoConfigProfileId.Get(), o.PssoConfigProfileId.IsSet()
+}
+
+// HasPssoConfigProfileId returns a boolean if a field has been set.
+func (o *ComputerPrestageV3) HasPssoConfigProfileId() bool {
+	if o != nil && o.PssoConfigProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPssoConfigProfileId gets a reference to the given NullableString and assigns it to the PssoConfigProfileId field.
+func (o *ComputerPrestageV3) SetPssoConfigProfileId(v string) {
+	o.PssoConfigProfileId.Set(&v)
+}
+// SetPssoConfigProfileIdNil sets the value for PssoConfigProfileId to be an explicit nil
+func (o *ComputerPrestageV3) SetPssoConfigProfileIdNil() {
+	o.PssoConfigProfileId.Set(nil)
+}
+
+// UnsetPssoConfigProfileId ensures that no value is present for PssoConfigProfileId, not even an explicit nil
+func (o *ComputerPrestageV3) UnsetPssoConfigProfileId() {
+	o.PssoConfigProfileId.Unset()
+}
+
+// GetManifestUrl returns the ManifestUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerPrestageV3) GetManifestUrl() string {
+	if o == nil || IsNil(o.ManifestUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ManifestUrl.Get()
+}
+
+// GetManifestUrlOk returns a tuple with the ManifestUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerPrestageV3) GetManifestUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManifestUrl.Get(), o.ManifestUrl.IsSet()
+}
+
+// HasManifestUrl returns a boolean if a field has been set.
+func (o *ComputerPrestageV3) HasManifestUrl() bool {
+	if o != nil && o.ManifestUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetManifestUrl gets a reference to the given NullableString and assigns it to the ManifestUrl field.
+func (o *ComputerPrestageV3) SetManifestUrl(v string) {
+	o.ManifestUrl.Set(&v)
+}
+// SetManifestUrlNil sets the value for ManifestUrl to be an explicit nil
+func (o *ComputerPrestageV3) SetManifestUrlNil() {
+	o.ManifestUrl.Set(nil)
+}
+
+// UnsetManifestUrl ensures that no value is present for ManifestUrl, not even an explicit nil
+func (o *ComputerPrestageV3) UnsetManifestUrl() {
+	o.ManifestUrl.Unset()
+}
+
+// GetAuthUrl returns the AuthUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ComputerPrestageV3) GetAuthUrl() string {
+	if o == nil || IsNil(o.AuthUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AuthUrl.Get()
+}
+
+// GetAuthUrlOk returns a tuple with the AuthUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ComputerPrestageV3) GetAuthUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AuthUrl.Get(), o.AuthUrl.IsSet()
+}
+
+// HasAuthUrl returns a boolean if a field has been set.
+func (o *ComputerPrestageV3) HasAuthUrl() bool {
+	if o != nil && o.AuthUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthUrl gets a reference to the given NullableString and assigns it to the AuthUrl field.
+func (o *ComputerPrestageV3) SetAuthUrl(v string) {
+	o.AuthUrl.Set(&v)
+}
+// SetAuthUrlNil sets the value for AuthUrl to be an explicit nil
+func (o *ComputerPrestageV3) SetAuthUrlNil() {
+	o.AuthUrl.Set(nil)
+}
+
+// UnsetAuthUrl ensures that no value is present for AuthUrl, not even an explicit nil
+func (o *ComputerPrestageV3) UnsetAuthUrl() {
+	o.AuthUrl.Unset()
+}
+
 func (o ComputerPrestageV3) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1082,6 +1260,18 @@ func (o ComputerPrestageV3) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PlatformSsoAppBundleId) {
 		toSerialize["platformSsoAppBundleId"] = o.PlatformSsoAppBundleId
+	}
+	if o.ProfileUrl.IsSet() {
+		toSerialize["profileUrl"] = o.ProfileUrl.Get()
+	}
+	if o.PssoConfigProfileId.IsSet() {
+		toSerialize["pssoConfigProfileId"] = o.PssoConfigProfileId.Get()
+	}
+	if o.ManifestUrl.IsSet() {
+		toSerialize["manifestUrl"] = o.ManifestUrl.Get()
+	}
+	if o.AuthUrl.IsSet() {
+		toSerialize["authUrl"] = o.AuthUrl.Get()
 	}
 	return toSerialize, nil
 }

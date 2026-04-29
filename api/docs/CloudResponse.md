@@ -6,8 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudInstance** | Pointer to **bool** |  | [optional] 
 **RampInstance** | Pointer to **bool** |  | [optional] 
+**FedRampInstance** | Pointer to **bool** | Information whether this instance is a FedRAMP instance | [optional] 
 **GovCloudInstance** | Pointer to **bool** |  | [optional] 
 **ManagedServiceProviderInstance** | Pointer to **bool** | Information whether this instance is managed by managed service provider | [optional] 
+**HighComplianceInstance** | Pointer to **bool** | Information whether this instance is a High Compliance instance | [optional] 
+**FipsEnabled** | Pointer to **bool** | Information whether this instance has FIPS enabled | [optional] 
 
 ## Methods
 
@@ -78,6 +81,31 @@ SetRampInstance sets RampInstance field to given value.
 
 HasRampInstance returns a boolean if a field has been set.
 
+### GetFedRampInstance
+
+`func (o *CloudResponse) GetFedRampInstance() bool`
+
+GetFedRampInstance returns the FedRampInstance field if non-nil, zero value otherwise.
+
+### GetFedRampInstanceOk
+
+`func (o *CloudResponse) GetFedRampInstanceOk() (*bool, bool)`
+
+GetFedRampInstanceOk returns a tuple with the FedRampInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFedRampInstance
+
+`func (o *CloudResponse) SetFedRampInstance(v bool)`
+
+SetFedRampInstance sets FedRampInstance field to given value.
+
+### HasFedRampInstance
+
+`func (o *CloudResponse) HasFedRampInstance() bool`
+
+HasFedRampInstance returns a boolean if a field has been set.
+
 ### GetGovCloudInstance
 
 `func (o *CloudResponse) GetGovCloudInstance() bool`
@@ -127,6 +155,56 @@ SetManagedServiceProviderInstance sets ManagedServiceProviderInstance field to g
 `func (o *CloudResponse) HasManagedServiceProviderInstance() bool`
 
 HasManagedServiceProviderInstance returns a boolean if a field has been set.
+
+### GetHighComplianceInstance
+
+`func (o *CloudResponse) GetHighComplianceInstance() bool`
+
+GetHighComplianceInstance returns the HighComplianceInstance field if non-nil, zero value otherwise.
+
+### GetHighComplianceInstanceOk
+
+`func (o *CloudResponse) GetHighComplianceInstanceOk() (*bool, bool)`
+
+GetHighComplianceInstanceOk returns a tuple with the HighComplianceInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHighComplianceInstance
+
+`func (o *CloudResponse) SetHighComplianceInstance(v bool)`
+
+SetHighComplianceInstance sets HighComplianceInstance field to given value.
+
+### HasHighComplianceInstance
+
+`func (o *CloudResponse) HasHighComplianceInstance() bool`
+
+HasHighComplianceInstance returns a boolean if a field has been set.
+
+### GetFipsEnabled
+
+`func (o *CloudResponse) GetFipsEnabled() bool`
+
+GetFipsEnabled returns the FipsEnabled field if non-nil, zero value otherwise.
+
+### GetFipsEnabledOk
+
+`func (o *CloudResponse) GetFipsEnabledOk() (*bool, bool)`
+
+GetFipsEnabledOk returns a tuple with the FipsEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFipsEnabled
+
+`func (o *CloudResponse) SetFipsEnabled(v bool)`
+
+SetFipsEnabled sets FipsEnabled field to given value.
+
+### HasFipsEnabled
+
+`func (o *CloudResponse) HasFipsEnabled() bool`
+
+HasFipsEnabled returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

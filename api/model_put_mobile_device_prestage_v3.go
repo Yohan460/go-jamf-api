@@ -68,6 +68,10 @@ type PutMobileDevicePrestageV3 struct {
 	RtsConfigProfileId *string `json:"rtsConfigProfileId,omitempty"`
 	// Controls whether managed apps are preserved during Return to Service operations.
 	PreserveManagedApps *bool `json:"preserveManagedApps,omitempty"`
+	// Controls whether apps are installed during the enrollment process.
+	InstallAppsDuringEnrollment *bool `json:"installAppsDuringEnrollment,omitempty"`
+	// If true, the device does not use the profile when it restores a backup. Default is false. Available in iOS 26 and later, and visionOS 26 and later; otherwise ignored by devices.
+	DoNotUseProfileFromBackup *bool `json:"doNotUseProfileFromBackup,omitempty"`
 	VersionLock *int64 `json:"versionLock,omitempty"`
 }
 
@@ -1341,6 +1345,70 @@ func (o *PutMobileDevicePrestageV3) SetPreserveManagedApps(v bool) {
 	o.PreserveManagedApps = &v
 }
 
+// GetInstallAppsDuringEnrollment returns the InstallAppsDuringEnrollment field value if set, zero value otherwise.
+func (o *PutMobileDevicePrestageV3) GetInstallAppsDuringEnrollment() bool {
+	if o == nil || IsNil(o.InstallAppsDuringEnrollment) {
+		var ret bool
+		return ret
+	}
+	return *o.InstallAppsDuringEnrollment
+}
+
+// GetInstallAppsDuringEnrollmentOk returns a tuple with the InstallAppsDuringEnrollment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PutMobileDevicePrestageV3) GetInstallAppsDuringEnrollmentOk() (*bool, bool) {
+	if o == nil || IsNil(o.InstallAppsDuringEnrollment) {
+		return nil, false
+	}
+	return o.InstallAppsDuringEnrollment, true
+}
+
+// HasInstallAppsDuringEnrollment returns a boolean if a field has been set.
+func (o *PutMobileDevicePrestageV3) HasInstallAppsDuringEnrollment() bool {
+	if o != nil && !IsNil(o.InstallAppsDuringEnrollment) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallAppsDuringEnrollment gets a reference to the given bool and assigns it to the InstallAppsDuringEnrollment field.
+func (o *PutMobileDevicePrestageV3) SetInstallAppsDuringEnrollment(v bool) {
+	o.InstallAppsDuringEnrollment = &v
+}
+
+// GetDoNotUseProfileFromBackup returns the DoNotUseProfileFromBackup field value if set, zero value otherwise.
+func (o *PutMobileDevicePrestageV3) GetDoNotUseProfileFromBackup() bool {
+	if o == nil || IsNil(o.DoNotUseProfileFromBackup) {
+		var ret bool
+		return ret
+	}
+	return *o.DoNotUseProfileFromBackup
+}
+
+// GetDoNotUseProfileFromBackupOk returns a tuple with the DoNotUseProfileFromBackup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PutMobileDevicePrestageV3) GetDoNotUseProfileFromBackupOk() (*bool, bool) {
+	if o == nil || IsNil(o.DoNotUseProfileFromBackup) {
+		return nil, false
+	}
+	return o.DoNotUseProfileFromBackup, true
+}
+
+// HasDoNotUseProfileFromBackup returns a boolean if a field has been set.
+func (o *PutMobileDevicePrestageV3) HasDoNotUseProfileFromBackup() bool {
+	if o != nil && !IsNil(o.DoNotUseProfileFromBackup) {
+		return true
+	}
+
+	return false
+}
+
+// SetDoNotUseProfileFromBackup gets a reference to the given bool and assigns it to the DoNotUseProfileFromBackup field.
+func (o *PutMobileDevicePrestageV3) SetDoNotUseProfileFromBackup(v bool) {
+	o.DoNotUseProfileFromBackup = &v
+}
+
 // GetVersionLock returns the VersionLock field value if set, zero value otherwise.
 func (o *PutMobileDevicePrestageV3) GetVersionLock() int64 {
 	if o == nil || IsNil(o.VersionLock) {
@@ -1463,6 +1531,12 @@ func (o PutMobileDevicePrestageV3) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.PreserveManagedApps) {
 		toSerialize["preserveManagedApps"] = o.PreserveManagedApps
+	}
+	if !IsNil(o.InstallAppsDuringEnrollment) {
+		toSerialize["installAppsDuringEnrollment"] = o.InstallAppsDuringEnrollment
+	}
+	if !IsNil(o.DoNotUseProfileFromBackup) {
+		toSerialize["doNotUseProfileFromBackup"] = o.DoNotUseProfileFromBackup
 	}
 	if !IsNil(o.VersionLock) {
 		toSerialize["versionLock"] = o.VersionLock

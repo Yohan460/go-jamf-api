@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **EnrollmentMethod** | Pointer to **string** |  | [optional] 
 **EnrollmentSessionTokenValid** | Pointer to **bool** |  | [optional] 
 **DeclarativeDeviceManagementEnabled** | Pointer to **bool** |  | [optional] 
-**Site** | Pointer to [**V1Site**](V1Site.md) |  | [optional] 
+**Site** | Pointer to [**V1SiteBase**](V1SiteBase.md) |  | [optional] 
 **ExtensionAttributes** | Pointer to [**[]ExtensionAttributeV2**](ExtensionAttributeV2.md) |  | [optional] 
 **Location** | Pointer to [**LocationV2**](LocationV2.md) |  | [optional] 
 **Type** | Pointer to **string** | Based on the value of this either iOS, tvOS, watch or visionOS objects will be populated. | [optional] 
@@ -658,20 +658,20 @@ HasDeclarativeDeviceManagementEnabled returns a boolean if a field has been set.
 
 ### GetSite
 
-`func (o *MobileDeviceDetailsV2) GetSite() V1Site`
+`func (o *MobileDeviceDetailsV2) GetSite() V1SiteBase`
 
 GetSite returns the Site field if non-nil, zero value otherwise.
 
 ### GetSiteOk
 
-`func (o *MobileDeviceDetailsV2) GetSiteOk() (*V1Site, bool)`
+`func (o *MobileDeviceDetailsV2) GetSiteOk() (*V1SiteBase, bool)`
 
 GetSiteOk returns a tuple with the Site field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSite
 
-`func (o *MobileDeviceDetailsV2) SetSite(v V1Site)`
+`func (o *MobileDeviceDetailsV2) SetSite(v V1SiteBase)`
 
 SetSite sets Site field to given value.
 

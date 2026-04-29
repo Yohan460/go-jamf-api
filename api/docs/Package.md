@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **InstallLanguage** | Pointer to **NullableString** |  | [optional] 
 **Md5** | Pointer to **NullableString** |  | [optional] 
 **Sha256** | Pointer to **NullableString** |  | [optional] 
+**Sha3512** | Pointer to **NullableString** |  | [optional] 
 **HashType** | Pointer to **NullableString** |  | [optional] 
 **HashValue** | Pointer to **NullableString** |  | [optional] 
 **Size** | Pointer to **NullableString** |  | [optional] [readonly] 
@@ -804,6 +805,41 @@ HasSha256 returns a boolean if a field has been set.
 `func (o *Package) UnsetSha256()`
 
 UnsetSha256 ensures that no value is present for Sha256, not even an explicit nil
+### GetSha3512
+
+`func (o *Package) GetSha3512() string`
+
+GetSha3512 returns the Sha3512 field if non-nil, zero value otherwise.
+
+### GetSha3512Ok
+
+`func (o *Package) GetSha3512Ok() (*string, bool)`
+
+GetSha3512Ok returns a tuple with the Sha3512 field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSha3512
+
+`func (o *Package) SetSha3512(v string)`
+
+SetSha3512 sets Sha3512 field to given value.
+
+### HasSha3512
+
+`func (o *Package) HasSha3512() bool`
+
+HasSha3512 returns a boolean if a field has been set.
+
+### SetSha3512Nil
+
+`func (o *Package) SetSha3512Nil(b bool)`
+
+ SetSha3512Nil sets the value for Sha3512 to be an explicit nil
+
+### UnsetSha3512
+`func (o *Package) UnsetSha3512()`
+
+UnsetSha3512 ensures that no value is present for Sha3512, not even an explicit nil
 ### GetHashType
 
 `func (o *Package) GetHashType() string`

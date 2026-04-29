@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**V1OidcGenerateCertificatePost**](OidcAPI.md#V1OidcGenerateCertificatePost) | **Post** /v1/oidc/generate-certificate | Generate a new keystore used for signing OIDC messages 
 [**V1OidcPublicFeaturesGet**](OidcAPI.md#V1OidcPublicFeaturesGet) | **Get** /v1/oidc/public-features | Get the public features of the OIDC configuration
 [**V1OidcPublicKeyGet**](OidcAPI.md#V1OidcPublicKeyGet) | **Get** /v1/oidc/public-key | Get the public key of the keystore used for signing OIDC messages as a JWT 
+[**V2OidcDispatchPost**](OidcAPI.md#V2OidcDispatchPost) | **Post** /v2/oidc/dispatch | Provide the url to redirect for OIDC login
 
 
 
@@ -313,6 +314,72 @@ Other parameters are passed through a pointer to a apiV1OidcPublicKeyGetRequest 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## V2OidcDispatchPost
+
+> OidcLoginDispatchResponseV2 V2OidcDispatchPost(ctx).OidcLoginDispatchRequest(oidcLoginDispatchRequest).Execute()
+
+Provide the url to redirect for OIDC login
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/yohan460/go-jamf-api/api"
+)
+
+func main() {
+	oidcLoginDispatchRequest := *openapiclient.NewOidcLoginDispatchRequest("aHR0cHM6Ly9qYW1mLXByby11cmwuY29tL2xvZ2dpbmcuaHRtbA==", "admin@domain.name") // OidcLoginDispatchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OidcAPI.V2OidcDispatchPost(context.Background()).OidcLoginDispatchRequest(oidcLoginDispatchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OidcAPI.V2OidcDispatchPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `V2OidcDispatchPost`: OidcLoginDispatchResponseV2
+	fmt.Fprintf(os.Stdout, "Response from `OidcAPI.V2OidcDispatchPost`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiV2OidcDispatchPostRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **oidcLoginDispatchRequest** | [**OidcLoginDispatchRequest**](OidcLoginDispatchRequest.md) |  | 
+
+### Return type
+
+[**OidcLoginDispatchResponseV2**](OidcLoginDispatchResponseV2.md)
+
+### Authorization
+
+[BasicAuth](../README.md#BasicAuth), [ApiClient](../README.md#ApiClient), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **IpAddress** | Pointer to **string** |  | [optional] 
 **Managed** | Pointer to **bool** |  | [optional] 
 **Supervised** | Pointer to **bool** |  | [optional] 
-**DeviceOwnershipType** | Pointer to **string** |  | [optional] 
+**DeviceOwnershipType** | Pointer to **string** | The enrollment method used for the device. **Note:** The &#x60;PersonalDeviceProfile&#x60; enrollment method was removed as of 11.25.  | [optional] 
 **EnrollmentMethodPrestage** | Pointer to [**EnrollmentMethodPrestage**](EnrollmentMethodPrestage.md) |  | [optional] 
 **EnrollmentSessionTokenValid** | Pointer to **bool** |  | [optional] 
 **LastEnrolledDate** | Pointer to **time.Time** |  | [optional] 

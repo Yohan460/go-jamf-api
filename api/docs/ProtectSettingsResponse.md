@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ApiClientName** | Pointer to **string** | display name used when creating the API Client in the Jamf Protect web console | [optional] 
 **RegistrationId** | Pointer to **string** | ID used when making requests to identify this particular Protect registration. | [optional] 
 **ProtectUrl** | Pointer to **string** |  | [optional] 
+**PlatformPlanSync** | Pointer to **bool** | determines whether Protect Platform Plan syncing is enabled | [optional] 
 **LastSyncTime** | Pointer to **string** |  | [optional] 
 **SyncStatus** | Pointer to **string** |  | [optional] 
 **AutoInstall** | Pointer to **bool** | determines whether the Jamf Protect agent will be automatically installed on client computers | [optional] 
@@ -156,6 +157,31 @@ SetProtectUrl sets ProtectUrl field to given value.
 `func (o *ProtectSettingsResponse) HasProtectUrl() bool`
 
 HasProtectUrl returns a boolean if a field has been set.
+
+### GetPlatformPlanSync
+
+`func (o *ProtectSettingsResponse) GetPlatformPlanSync() bool`
+
+GetPlatformPlanSync returns the PlatformPlanSync field if non-nil, zero value otherwise.
+
+### GetPlatformPlanSyncOk
+
+`func (o *ProtectSettingsResponse) GetPlatformPlanSyncOk() (*bool, bool)`
+
+GetPlatformPlanSyncOk returns a tuple with the PlatformPlanSync field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPlatformPlanSync
+
+`func (o *ProtectSettingsResponse) SetPlatformPlanSync(v bool)`
+
+SetPlatformPlanSync sets PlatformPlanSync field to given value.
+
+### HasPlatformPlanSync
+
+`func (o *ProtectSettingsResponse) HasPlatformPlanSync() bool`
+
+HasPlatformPlanSync returns a boolean if a field has been set.
 
 ### GetLastSyncTime
 

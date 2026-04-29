@@ -665,9 +665,9 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", defaultValue, "form", "multi")
-        r.exportFields = &defaultValue
+		var defaultValue []string = []string{}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "export-fields", defaultValue, "form", "multi")
+		r.exportFields = &defaultValue
 	}
 	if r.exportLabels != nil {
 		t := *r.exportLabels
@@ -680,23 +680,23 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", defaultValue, "form", "multi")
-        r.exportLabels = &defaultValue
+		var defaultValue []string = []string{}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "export-labels", defaultValue, "form", "multi")
+		r.exportLabels = &defaultValue
 	}
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -709,16 +709,16 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryExportPostExecute(r Enrollment
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"id:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"id:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -865,16 +865,16 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryGetExecute(r EnrollmentAPIV2En
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -887,9 +887,9 @@ func (a *EnrollmentAPIService) V2EnrollmentHistoryGetExecute(r EnrollmentAPIV2En
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"date:desc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"date:desc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1142,16 +1142,16 @@ func (a *EnrollmentAPIService) V3EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -1164,16 +1164,16 @@ func (a *EnrollmentAPIService) V3EnrollmentAccessGroupsGetExecute(r EnrollmentAP
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"name:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"name:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.allUsersOptionFirst != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", r.allUsersOptionFirst, "form", "")
 	} else {
-        var defaultValue bool = false
-        parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", defaultValue, "form", "")
-        r.allUsersOptionFirst = &defaultValue
+		var defaultValue bool = false
+		parameterAddToHeaderOrQuery(localVarQueryParams, "all-users-option-first", defaultValue, "form", "")
+		r.allUsersOptionFirst = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2077,16 +2077,16 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesGetExecute(r EnrollmentAPIV3
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -2099,9 +2099,9 @@ func (a *EnrollmentAPIService) V3EnrollmentLanguagesGetExecute(r EnrollmentAPIV3
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"languageCode:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"languageCode:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

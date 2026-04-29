@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Services** | Pointer to [**[]ComputerServiceCreate**](ComputerServiceCreate.md) |  | [optional] 
 **LocalUserAccounts** | Pointer to [**[]ComputerLocalUserAccountCreate**](ComputerLocalUserAccountCreate.md) |  | [optional] 
 **Certificates** | Pointer to [**[]ComputerCertificateCreate**](ComputerCertificateCreate.md) |  | [optional] 
-**Plugins** | Pointer to [**[]ComputerPluginCreate**](ComputerPluginCreate.md) |  | [optional] 
+**Plugins** | Pointer to **[]map[string]interface{}** |  | [optional] 
 **PackageReceipts** | Pointer to [**ComputerPackageReceiptsCreate**](ComputerPackageReceiptsCreate.md) |  | [optional] 
 **Fonts** | Pointer to [**[]ComputerFontCreate**](ComputerFontCreate.md) |  | [optional] 
 **Security** | Pointer to [**ComputerSecurityCreate**](ComputerSecurityCreate.md) |  | [optional] 
@@ -339,20 +339,20 @@ HasCertificates returns a boolean if a field has been set.
 UnsetCertificates ensures that no value is present for Certificates, not even an explicit nil
 ### GetPlugins
 
-`func (o *ComputerInventoryCreateRequest) GetPlugins() []ComputerPluginCreate`
+`func (o *ComputerInventoryCreateRequest) GetPlugins() []map[string]interface{}`
 
 GetPlugins returns the Plugins field if non-nil, zero value otherwise.
 
 ### GetPluginsOk
 
-`func (o *ComputerInventoryCreateRequest) GetPluginsOk() (*[]ComputerPluginCreate, bool)`
+`func (o *ComputerInventoryCreateRequest) GetPluginsOk() (*[]map[string]interface{}, bool)`
 
 GetPluginsOk returns a tuple with the Plugins field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlugins
 
-`func (o *ComputerInventoryCreateRequest) SetPlugins(v []ComputerPluginCreate)`
+`func (o *ComputerInventoryCreateRequest) SetPlugins(v []map[string]interface{})`
 
 SetPlugins sets Plugins field to given value.
 

@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RampInstance** | Pointer to **bool** |  | [optional] 
+**FedRampInstance** | Pointer to **bool** |  | [optional] 
+**HighComplianceInstance** | Pointer to **bool** |  | [optional] 
 **IncludeCustomDisclaimer** | **bool** |  | 
 **DisclaimerHeading** | Pointer to **string** |  | [optional] 
 **DisclaimerMainText** | Pointer to **string** |  | [optional] 
@@ -53,6 +55,56 @@ SetRampInstance sets RampInstance field to given value.
 `func (o *LoginContent) HasRampInstance() bool`
 
 HasRampInstance returns a boolean if a field has been set.
+
+### GetFedRampInstance
+
+`func (o *LoginContent) GetFedRampInstance() bool`
+
+GetFedRampInstance returns the FedRampInstance field if non-nil, zero value otherwise.
+
+### GetFedRampInstanceOk
+
+`func (o *LoginContent) GetFedRampInstanceOk() (*bool, bool)`
+
+GetFedRampInstanceOk returns a tuple with the FedRampInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFedRampInstance
+
+`func (o *LoginContent) SetFedRampInstance(v bool)`
+
+SetFedRampInstance sets FedRampInstance field to given value.
+
+### HasFedRampInstance
+
+`func (o *LoginContent) HasFedRampInstance() bool`
+
+HasFedRampInstance returns a boolean if a field has been set.
+
+### GetHighComplianceInstance
+
+`func (o *LoginContent) GetHighComplianceInstance() bool`
+
+GetHighComplianceInstance returns the HighComplianceInstance field if non-nil, zero value otherwise.
+
+### GetHighComplianceInstanceOk
+
+`func (o *LoginContent) GetHighComplianceInstanceOk() (*bool, bool)`
+
+GetHighComplianceInstanceOk returns a tuple with the HighComplianceInstance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHighComplianceInstance
+
+`func (o *LoginContent) SetHighComplianceInstance(v bool)`
+
+SetHighComplianceInstance sets HighComplianceInstance field to given value.
+
+### HasHighComplianceInstance
+
+`func (o *LoginContent) HasHighComplianceInstance() bool`
+
+HasHighComplianceInstance returns a boolean if a field has been set.
 
 ### GetIncludeCustomDisclaimer
 

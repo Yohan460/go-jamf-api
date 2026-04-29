@@ -48,7 +48,7 @@ type MobileDeviceDetailsV2 struct {
 	EnrollmentMethod *string `json:"enrollmentMethod,omitempty"`
 	EnrollmentSessionTokenValid *bool `json:"enrollmentSessionTokenValid,omitempty"`
 	DeclarativeDeviceManagementEnabled *bool `json:"declarativeDeviceManagementEnabled,omitempty"`
-	Site *V1Site `json:"site,omitempty"`
+	Site *V1SiteBase `json:"site,omitempty"`
 	ExtensionAttributes []ExtensionAttributeV2 `json:"extensionAttributes,omitempty"`
 	Location *LocationV2 `json:"location,omitempty"`
 	// Based on the value of this either iOS, tvOS, watch or visionOS objects will be populated.
@@ -845,9 +845,9 @@ func (o *MobileDeviceDetailsV2) SetDeclarativeDeviceManagementEnabled(v bool) {
 }
 
 // GetSite returns the Site field value if set, zero value otherwise.
-func (o *MobileDeviceDetailsV2) GetSite() V1Site {
+func (o *MobileDeviceDetailsV2) GetSite() V1SiteBase {
 	if o == nil || IsNil(o.Site) {
-		var ret V1Site
+		var ret V1SiteBase
 		return ret
 	}
 	return *o.Site
@@ -855,7 +855,7 @@ func (o *MobileDeviceDetailsV2) GetSite() V1Site {
 
 // GetSiteOk returns a tuple with the Site field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MobileDeviceDetailsV2) GetSiteOk() (*V1Site, bool) {
+func (o *MobileDeviceDetailsV2) GetSiteOk() (*V1SiteBase, bool) {
 	if o == nil || IsNil(o.Site) {
 		return nil, false
 	}
@@ -871,8 +871,8 @@ func (o *MobileDeviceDetailsV2) HasSite() bool {
 	return false
 }
 
-// SetSite gets a reference to the given V1Site and assigns it to the Site field.
-func (o *MobileDeviceDetailsV2) SetSite(v V1Site) {
+// SetSite gets a reference to the given V1SiteBase and assigns it to the Site field.
+func (o *MobileDeviceDetailsV2) SetSite(v V1SiteBase) {
 	o.Site = &v
 }
 

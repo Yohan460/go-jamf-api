@@ -16,6 +16,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 	"reflect"
 )
 
@@ -34,6 +35,21 @@ type CloudDistributionPointAPI interface {
 
 	// V1CloudDistributionPointDeleteExecute executes the request
 	V1CloudDistributionPointDeleteExecute(r CloudDistributionPointAPIV1CloudDistributionPointDeleteRequest) (*http.Response, error)
+
+	/*
+	V1CloudDistributionPointFailUploadIdPost Marks a specific file upload as failed for the currently configured cloud distribution point. 
+
+	Marks a specific file upload as failed for the currently configured cloud distribution point.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param id The identifier of the inventory file to be marked as failed. The type and ID will make a unique identifier for the file.
+	@return CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest
+	*/
+	V1CloudDistributionPointFailUploadIdPost(ctx context.Context, id string) CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest
+
+	// V1CloudDistributionPointFailUploadIdPostExecute executes the request
+	V1CloudDistributionPointFailUploadIdPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest) (*http.Response, error)
 
 	/*
 	V1CloudDistributionPointFilesGet Get the cloud distribution point Inventory files details
@@ -122,6 +138,20 @@ allowing users to view the current state and metadata for each file in the distr
 	// V1CloudDistributionPointPostExecute executes the request
 	//  @return CloudDistributionPoint
 	V1CloudDistributionPointPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointPostRequest) (*CloudDistributionPoint, *http.Response, error)
+
+	/*
+	V1CloudDistributionPointRefreshInventoryPost Updates inventory data for the currently configured cloud distribution point. 
+
+	Updates inventory data for the currently configured cloud distribution point.
+
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest
+	*/
+	V1CloudDistributionPointRefreshInventoryPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest
+
+	// V1CloudDistributionPointRefreshInventoryPostExecute executes the request
+	V1CloudDistributionPointRefreshInventoryPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest) (*http.Response, error)
 
 	/*
 	V1CloudDistributionPointTestConnectionGet Get the cloud distribution point test connection details. 
@@ -246,6 +276,137 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointDeleteExecute
 	return localVarHTTPResponse, nil
 }
 
+type CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	id string
+	fileName *string
+	type_ *string
+}
+
+// Name of the file to mark failure for.
+func (r CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest) FileName(fileName string) CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest {
+	r.fileName = &fileName
+	return r
+}
+
+// Type of file to mark failure for. Possible values are PACKAGE, EBOOK, MOBILE_DEVICE_APP.
+func (r CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest) Type_(type_ string) CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest {
+	r.type_ = &type_
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointFailUploadIdPostExecute(r)
+}
+
+/*
+V1CloudDistributionPointFailUploadIdPost Marks a specific file upload as failed for the currently configured cloud distribution point. 
+
+Marks a specific file upload as failed for the currently configured cloud distribution point.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id The identifier of the inventory file to be marked as failed. The type and ID will make a unique identifier for the file.
+ @return CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFailUploadIdPost(ctx context.Context, id string) CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFailUploadIdPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointFailUploadIdPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointFailUploadIdPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/fail-upload/{id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.fileName == nil {
+		return nil, reportError("fileName is required and must be specified")
+	}
+	if strlen(*r.fileName) > 255 {
+		return nil, reportError("fileName must have less than 255 elements")
+	}
+	if r.type_ == nil {
+		return nil, reportError("type_ is required and must be specified")
+	}
+	if strlen(*r.type_) > 50 {
+		return nil, reportError("type_ must have less than 50 elements")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", r.fileName, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "type", r.type_, "form", "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ApiError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest struct {
 	ctx context.Context
 	ApiService CloudDistributionPointAPI
@@ -265,13 +426,13 @@ func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) PageSi
 	return r
 }
 
-// Sorts results by one or more criteria, following the format property:asc/desc.&lt;br/&gt; Default sort is id:asc.&lt;br/&gt; If using multiple criteria, separate with commas. Allows sort for id, fileName and type etc.
+// Sorts results by one or more criteria, following the format property:asc/desc.&lt;br/&gt; Default sort is id:asc.&lt;br/&gt; If using multiple criteria, separate with commas. Allows sort for id, fileName, inventoryId and type etc.
 func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Sort(sort []string) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
 	r.sort = &sort
 	return r
 }
 
-// Filters results. Use RSQL format for query. Allows for many fields, including fileName and type&lt;br/&gt; Can be combined with paging and sorting.&lt;br/&gt; Fields allowed in the query: fileName and type &lt;br/&gt; Default filter is an empty query and returns all results from the requested page.
+// Filters results. Use RSQL format for query. Allows for many fields, including fileName and type&lt;br/&gt; Can be combined with paging and sorting.&lt;br/&gt; Fields allowed in the query: fileName, inventoryId and type &lt;br/&gt; Default filter is an empty query and returns all results from the requested page.
 func (r CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest) Filter(filter string) CloudDistributionPointAPIV1CloudDistributionPointFilesGetRequest {
 	r.filter = &filter
 	return r
@@ -323,16 +484,16 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFilesGetExecu
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -345,16 +506,16 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointFilesGetExecu
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"id.asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"id.asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -604,16 +765,16 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryGetExe
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "form", "")
 	} else {
-        var defaultValue int64 = 0
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
-        r.page = &defaultValue
+		var defaultValue int64 = 0
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", defaultValue, "form", "")
+		r.page = &defaultValue
 	}
 	if r.pageSize != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", r.pageSize, "form", "")
 	} else {
-        var defaultValue int64 = 100
-        parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
-        r.pageSize = &defaultValue
+		var defaultValue int64 = 100
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page-size", defaultValue, "form", "")
+		r.pageSize = &defaultValue
 	}
 	if r.sort != nil {
 		t := *r.sort
@@ -626,16 +787,16 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointHistoryGetExe
 			parameterAddToHeaderOrQuery(localVarQueryParams, "sort", t, "form", "multi")
 		}
 	} else {
-        var defaultValue []string = []string{"id:asc"}
-        parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
-        r.sort = &defaultValue
+		var defaultValue []string = []string{"id:asc"}
+		parameterAddToHeaderOrQuery(localVarQueryParams, "sort", defaultValue, "form", "multi")
+		r.sort = &defaultValue
 	}
 	if r.filter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", r.filter, "form", "")
 	} else {
-        var defaultValue string = ""
-        parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
-        r.filter = &defaultValue
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "filter", defaultValue, "form", "")
+		r.filter = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1060,6 +1221,109 @@ func (a *CloudDistributionPointAPIService) V1CloudDistributionPointPostExecute(r
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest struct {
+	ctx context.Context
+	ApiService CloudDistributionPointAPI
+	fileName *string
+}
+
+// Name of the file to check the availability of. If available, the inventory and status will be updated in Jamf Pro. If no file is specified, it will force an immediate inventory refresh at a rate-limit of once every 15 seconds.
+func (r CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest) FileName(fileName string) CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest {
+	r.fileName = &fileName
+	return r
+}
+
+func (r CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest) Execute() (*http.Response, error) {
+	return r.ApiService.V1CloudDistributionPointRefreshInventoryPostExecute(r)
+}
+
+/*
+V1CloudDistributionPointRefreshInventoryPost Updates inventory data for the currently configured cloud distribution point. 
+
+Updates inventory data for the currently configured cloud distribution point.
+
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest
+*/
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointRefreshInventoryPost(ctx context.Context) CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest {
+	return CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *CloudDistributionPointAPIService) V1CloudDistributionPointRefreshInventoryPostExecute(r CloudDistributionPointAPIV1CloudDistributionPointRefreshInventoryPostRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudDistributionPointAPIService.V1CloudDistributionPointRefreshInventoryPost")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cloud-distribution-point/refresh-inventory"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.fileName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", r.fileName, "form", "")
+	} else {
+		var defaultValue string = ""
+		parameterAddToHeaderOrQuery(localVarQueryParams, "file-name", defaultValue, "form", "")
+		r.fileName = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type CloudDistributionPointAPIV1CloudDistributionPointTestConnectionGetRequest struct {

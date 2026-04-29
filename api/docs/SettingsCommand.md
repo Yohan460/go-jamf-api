@@ -5,21 +5,23 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CommandType** | [**MdmCommandType**](MdmCommandType.md) |  | 
-**BootstrapTokenAllowed** | Pointer to **bool** |  | [optional] 
-**Bluetooth** | Pointer to **bool** |  | [optional] 
+**BootstrapTokenAllowed** | Pointer to **NullableBool** |  | [optional] 
+**Bluetooth** | Pointer to **NullableBool** |  | [optional] 
 **AppAnalytics** | Pointer to [**AppAnalyticsSetting**](AppAnalyticsSetting.md) |  | [optional] 
 **DiagnosticSubmission** | Pointer to [**DiagnosticSubmissionSetting**](DiagnosticSubmissionSetting.md) |  | [optional] 
 **DataRoaming** | Pointer to [**DataRoamingSetting**](DataRoamingSetting.md) |  | [optional] 
+**DefaultApplications** | Pointer to [**DefaultApplications**](DefaultApplications.md) |  | [optional] 
 **VoiceRoaming** | Pointer to [**VoiceRoamingSetting**](VoiceRoamingSetting.md) |  | [optional] 
 **PersonalHotspot** | Pointer to [**PersonalHotspotSetting**](PersonalHotspotSetting.md) |  | [optional] 
-**MaximumResidentUsers** | Pointer to **int64** |  | [optional] 
+**MaximumResidentUsers** | Pointer to **NullableInt64** |  | [optional] 
 **DeviceName** | Pointer to **string** |  | [optional] 
 **ApplicationAttributes** | Pointer to [**ApplicationAttributes**](ApplicationAttributes.md) |  | [optional] 
 **SharedDeviceConfiguration** | Pointer to [**SharedDeviceConfiguration**](SharedDeviceConfiguration.md) |  | [optional] 
 **ApplicationConfiguration** | Pointer to [**ApplicationConfiguration**](ApplicationConfiguration.md) |  | [optional] 
-**TimeZone** | Pointer to **string** |  | [optional] 
+**TimeZone** | Pointer to **NullableString** |  | [optional] 
 **SoftwareUpdateSettings** | Pointer to [**SoftwareUpdateSettings**](SoftwareUpdateSettings.md) |  | [optional] 
-**PasscodeLockGracePeriod** | Pointer to **int64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**PasscodeLockGracePeriod** | Pointer to **NullableInt64** | The number of seconds before a locked screen requires the user to enter the device passcode to unlock it. (Shared iPad Only) | [optional] 
+**ActivationLockAllowedWhileSupervised** | Pointer to **bool** | If true, a supervised device registers itself with Activation Lock when the user enables Find My. This setting is available for supervised devices in iOS 7 and later, and macOS 10.15 and later. | [optional] 
 
 ## Methods
 
@@ -85,6 +87,16 @@ SetBootstrapTokenAllowed sets BootstrapTokenAllowed field to given value.
 
 HasBootstrapTokenAllowed returns a boolean if a field has been set.
 
+### SetBootstrapTokenAllowedNil
+
+`func (o *SettingsCommand) SetBootstrapTokenAllowedNil(b bool)`
+
+ SetBootstrapTokenAllowedNil sets the value for BootstrapTokenAllowed to be an explicit nil
+
+### UnsetBootstrapTokenAllowed
+`func (o *SettingsCommand) UnsetBootstrapTokenAllowed()`
+
+UnsetBootstrapTokenAllowed ensures that no value is present for BootstrapTokenAllowed, not even an explicit nil
 ### GetBluetooth
 
 `func (o *SettingsCommand) GetBluetooth() bool`
@@ -110,6 +122,16 @@ SetBluetooth sets Bluetooth field to given value.
 
 HasBluetooth returns a boolean if a field has been set.
 
+### SetBluetoothNil
+
+`func (o *SettingsCommand) SetBluetoothNil(b bool)`
+
+ SetBluetoothNil sets the value for Bluetooth to be an explicit nil
+
+### UnsetBluetooth
+`func (o *SettingsCommand) UnsetBluetooth()`
+
+UnsetBluetooth ensures that no value is present for Bluetooth, not even an explicit nil
 ### GetAppAnalytics
 
 `func (o *SettingsCommand) GetAppAnalytics() AppAnalyticsSetting`
@@ -184,6 +206,31 @@ SetDataRoaming sets DataRoaming field to given value.
 `func (o *SettingsCommand) HasDataRoaming() bool`
 
 HasDataRoaming returns a boolean if a field has been set.
+
+### GetDefaultApplications
+
+`func (o *SettingsCommand) GetDefaultApplications() DefaultApplications`
+
+GetDefaultApplications returns the DefaultApplications field if non-nil, zero value otherwise.
+
+### GetDefaultApplicationsOk
+
+`func (o *SettingsCommand) GetDefaultApplicationsOk() (*DefaultApplications, bool)`
+
+GetDefaultApplicationsOk returns a tuple with the DefaultApplications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultApplications
+
+`func (o *SettingsCommand) SetDefaultApplications(v DefaultApplications)`
+
+SetDefaultApplications sets DefaultApplications field to given value.
+
+### HasDefaultApplications
+
+`func (o *SettingsCommand) HasDefaultApplications() bool`
+
+HasDefaultApplications returns a boolean if a field has been set.
 
 ### GetVoiceRoaming
 
@@ -260,6 +307,16 @@ SetMaximumResidentUsers sets MaximumResidentUsers field to given value.
 
 HasMaximumResidentUsers returns a boolean if a field has been set.
 
+### SetMaximumResidentUsersNil
+
+`func (o *SettingsCommand) SetMaximumResidentUsersNil(b bool)`
+
+ SetMaximumResidentUsersNil sets the value for MaximumResidentUsers to be an explicit nil
+
+### UnsetMaximumResidentUsers
+`func (o *SettingsCommand) UnsetMaximumResidentUsers()`
+
+UnsetMaximumResidentUsers ensures that no value is present for MaximumResidentUsers, not even an explicit nil
 ### GetDeviceName
 
 `func (o *SettingsCommand) GetDeviceName() string`
@@ -385,6 +442,16 @@ SetTimeZone sets TimeZone field to given value.
 
 HasTimeZone returns a boolean if a field has been set.
 
+### SetTimeZoneNil
+
+`func (o *SettingsCommand) SetTimeZoneNil(b bool)`
+
+ SetTimeZoneNil sets the value for TimeZone to be an explicit nil
+
+### UnsetTimeZone
+`func (o *SettingsCommand) UnsetTimeZone()`
+
+UnsetTimeZone ensures that no value is present for TimeZone, not even an explicit nil
 ### GetSoftwareUpdateSettings
 
 `func (o *SettingsCommand) GetSoftwareUpdateSettings() SoftwareUpdateSettings`
@@ -434,6 +501,41 @@ SetPasscodeLockGracePeriod sets PasscodeLockGracePeriod field to given value.
 `func (o *SettingsCommand) HasPasscodeLockGracePeriod() bool`
 
 HasPasscodeLockGracePeriod returns a boolean if a field has been set.
+
+### SetPasscodeLockGracePeriodNil
+
+`func (o *SettingsCommand) SetPasscodeLockGracePeriodNil(b bool)`
+
+ SetPasscodeLockGracePeriodNil sets the value for PasscodeLockGracePeriod to be an explicit nil
+
+### UnsetPasscodeLockGracePeriod
+`func (o *SettingsCommand) UnsetPasscodeLockGracePeriod()`
+
+UnsetPasscodeLockGracePeriod ensures that no value is present for PasscodeLockGracePeriod, not even an explicit nil
+### GetActivationLockAllowedWhileSupervised
+
+`func (o *SettingsCommand) GetActivationLockAllowedWhileSupervised() bool`
+
+GetActivationLockAllowedWhileSupervised returns the ActivationLockAllowedWhileSupervised field if non-nil, zero value otherwise.
+
+### GetActivationLockAllowedWhileSupervisedOk
+
+`func (o *SettingsCommand) GetActivationLockAllowedWhileSupervisedOk() (*bool, bool)`
+
+GetActivationLockAllowedWhileSupervisedOk returns a tuple with the ActivationLockAllowedWhileSupervised field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActivationLockAllowedWhileSupervised
+
+`func (o *SettingsCommand) SetActivationLockAllowedWhileSupervised(v bool)`
+
+SetActivationLockAllowedWhileSupervised sets ActivationLockAllowedWhileSupervised field to given value.
+
+### HasActivationLockAllowedWhileSupervised
+
+`func (o *SettingsCommand) HasActivationLockAllowedWhileSupervised() bool`
+
+HasActivationLockAllowedWhileSupervised returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

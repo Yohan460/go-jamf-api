@@ -38,6 +38,8 @@ type UserAccount struct {
 	FailedLoginAttempts *int64 `json:"failedLoginAttempts,omitempty"`
 	// Status of the account
 	AccountStatus *string `json:"accountStatus,omitempty"`
+	// Type of the account
+	AccountType *string `json:"accountType,omitempty"`
 }
 
 // NewUserAccount instantiates a new UserAccount object
@@ -56,6 +58,8 @@ func NewUserAccount() *UserAccount {
 	this.PrivilegeLevel = &privilegeLevel
 	var accountStatus string = "Enabled"
 	this.AccountStatus = &accountStatus
+	var accountType string = "DEFAULT"
+	this.AccountType = &accountType
 	return &this
 }
 
@@ -74,6 +78,8 @@ func NewUserAccountWithDefaults() *UserAccount {
 	this.PrivilegeLevel = &privilegeLevel
 	var accountStatus string = "Enabled"
 	this.AccountStatus = &accountStatus
+	var accountType string = "DEFAULT"
+	this.AccountType = &accountType
 	return &this
 }
 
@@ -557,6 +563,38 @@ func (o *UserAccount) SetAccountStatus(v string) {
 	o.AccountStatus = &v
 }
 
+// GetAccountType returns the AccountType field value if set, zero value otherwise.
+func (o *UserAccount) GetAccountType() string {
+	if o == nil || IsNil(o.AccountType) {
+		var ret string
+		return ret
+	}
+	return *o.AccountType
+}
+
+// GetAccountTypeOk returns a tuple with the AccountType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserAccount) GetAccountTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountType) {
+		return nil, false
+	}
+	return o.AccountType, true
+}
+
+// HasAccountType returns a boolean if a field has been set.
+func (o *UserAccount) HasAccountType() bool {
+	if o != nil && !IsNil(o.AccountType) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountType gets a reference to the given string and assigns it to the AccountType field.
+func (o *UserAccount) SetAccountType(v string) {
+	o.AccountType = &v
+}
+
 func (o UserAccount) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -611,6 +649,9 @@ func (o UserAccount) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AccountStatus) {
 		toSerialize["accountStatus"] = o.AccountStatus
+	}
+	if !IsNil(o.AccountType) {
+		toSerialize["accountType"] = o.AccountType
 	}
 	return toSerialize, nil
 }
